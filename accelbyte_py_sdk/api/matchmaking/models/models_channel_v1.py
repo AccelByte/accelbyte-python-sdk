@@ -166,6 +166,7 @@ class ModelsChannelV1(Model):
             return False
         if not hasattr(self, "use_sub_gamemode") or self.use_sub_gamemode is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

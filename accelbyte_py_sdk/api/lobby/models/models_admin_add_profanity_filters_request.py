@@ -58,6 +58,7 @@ class ModelsAdminAddProfanityFiltersRequest(Model):
         # required checks
         if not hasattr(self, "filters") or self.filters is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

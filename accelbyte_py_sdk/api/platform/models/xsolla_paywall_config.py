@@ -83,6 +83,13 @@ class XsollaPaywallConfig(Model):
             return False
         if not hasattr(self, "theme") or self.theme is None:
             return False
+        # enum checks
+        if hasattr(self, "device") and self.device is not None and self.device not in XsollaPaywallConfig.get_enum_map()["device"]:
+            return False
+        if hasattr(self, "size") and self.size is not None and self.size not in XsollaPaywallConfig.get_enum_map()["size"]:
+            return False
+        if hasattr(self, "theme") and self.theme is not None and self.theme not in XsollaPaywallConfig.get_enum_map()["theme"]:
+            return False
         # pattern checks
         return True
 
@@ -177,6 +184,14 @@ class XsollaPaywallConfig(Model):
             "showCloseButton": "show_close_button",
             "size": "size",
             "theme": "theme",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "device": ["DESKTOP", "MOBILE"],
+            "size": ["SMALL", "MEDIUM", "LARGE"],
+            "theme": ["DEFAULT", "DARK", "DEFAULT_DARK"],
         }
 
     # endregion static methods

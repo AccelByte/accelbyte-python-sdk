@@ -142,6 +142,7 @@ class RetrieveSinglePolicy(Operation):
         # required checks
         if not hasattr(self, "base_policy_id") or self.base_policy_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

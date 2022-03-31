@@ -63,6 +63,7 @@ class OauthmodelTokenThirdPartyResponse(Model):
         # required checks
         if not hasattr(self, "platform_token") or self.platform_token is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

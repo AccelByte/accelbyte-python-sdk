@@ -137,6 +137,7 @@ class LocalizedPolicyVersionObject(Model):
             return False
         if not hasattr(self, "locale_code") or self.locale_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -56,6 +56,7 @@ class ModelsClaimSessionRequest(Model):
         # required checks
         if not hasattr(self, "session_id") or self.session_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

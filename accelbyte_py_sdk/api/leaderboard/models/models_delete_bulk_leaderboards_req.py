@@ -56,6 +56,7 @@ class ModelsDeleteBulkLeaderboardsReq(Model):
         # required checks
         if not hasattr(self, "leaderboard_codes") or self.leaderboard_codes is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

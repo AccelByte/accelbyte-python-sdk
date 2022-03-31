@@ -65,6 +65,7 @@ class ModelUpdateUserStatusRequest(Model):
             return False
         if not hasattr(self, "reason") or self.reason is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

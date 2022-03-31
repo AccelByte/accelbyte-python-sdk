@@ -189,6 +189,11 @@ class QueryUserIAPOrders(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in QueryUserIAPOrders.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in QueryUserIAPOrders.get_enum_map()["type"]:
+            return False
         # pattern checks
         return True
 
@@ -391,6 +396,13 @@ class QueryUserIAPOrders(Operation):
             "startTime": "start_time",
             "status": "status",
             "type": "type_",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["FAILED", "FULFILLED", "VERIFIED"],                                         # in query
+            "type": ["APPLE", "EPICGAMES", "GOOGLE", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],# in query
         }
 
     # endregion static methods

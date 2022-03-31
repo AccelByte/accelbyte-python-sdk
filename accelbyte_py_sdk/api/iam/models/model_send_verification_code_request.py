@@ -72,6 +72,7 @@ class ModelSendVerificationCodeRequest(Model):
             return False
         if not hasattr(self, "login_id") or self.login_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -58,6 +58,7 @@ class AccountcommonBanReasonsV3(Model):
         # required checks
         if not hasattr(self, "reasons") or self.reasons is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

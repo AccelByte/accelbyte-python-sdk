@@ -160,6 +160,7 @@ class GetNotificationTopicV1Admin(Operation):
             return False
         if not hasattr(self, "topic_name") or self.topic_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

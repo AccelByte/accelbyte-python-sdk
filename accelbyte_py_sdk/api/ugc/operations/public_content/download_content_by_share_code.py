@@ -148,6 +148,7 @@ class DownloadContentByShareCode(Operation):
             return False
         if not hasattr(self, "share_code") or self.share_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

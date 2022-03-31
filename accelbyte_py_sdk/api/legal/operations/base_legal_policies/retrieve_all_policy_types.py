@@ -144,6 +144,7 @@ class RetrieveAllPolicyTypes(Operation):
         # required checks
         if not hasattr(self, "limit") or self.limit is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

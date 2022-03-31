@@ -56,6 +56,7 @@ class ModelsJoinGameSessionRequest(Model):
         # required checks
         if not hasattr(self, "password") or self.password is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

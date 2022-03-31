@@ -74,6 +74,7 @@ class ModelsArchiveLeaderboardReq(Model):
             return False
         if not hasattr(self, "slug") or self.slug is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

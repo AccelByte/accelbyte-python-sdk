@@ -94,6 +94,7 @@ class ModelsSession(Model):
             return False
         if not hasattr(self, "server") or self.server is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

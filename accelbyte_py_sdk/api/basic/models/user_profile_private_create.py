@@ -117,10 +117,11 @@ class UserProfilePrivateCreate(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
         # pattern checks
-        if hasattr(self, "date_of_birth") and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
+        if hasattr(self, "date_of_birth") and self.date_of_birth is not None and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
             return False
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 

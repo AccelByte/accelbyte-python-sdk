@@ -159,6 +159,7 @@ class AdminGetTag(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

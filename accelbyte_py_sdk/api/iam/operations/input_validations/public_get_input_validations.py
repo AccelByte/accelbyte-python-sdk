@@ -149,6 +149,7 @@ class PublicGetInputValidations(Operation):
 
     def is_valid(self) -> bool:
         # required checks
+        # enum checks
         # pattern checks
         return True
 

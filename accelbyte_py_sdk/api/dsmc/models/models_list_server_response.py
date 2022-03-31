@@ -68,6 +68,7 @@ class ModelsListServerResponse(Model):
             return False
         if not hasattr(self, "servers") or self.servers is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

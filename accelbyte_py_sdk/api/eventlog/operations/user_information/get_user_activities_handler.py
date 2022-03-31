@@ -178,6 +178,7 @@ class GetUserActivitiesHandler(Operation):
             return False
         if not hasattr(self, "page_size") or self.page_size is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

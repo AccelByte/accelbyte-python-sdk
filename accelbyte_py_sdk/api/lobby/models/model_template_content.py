@@ -65,6 +65,7 @@ class ModelTemplateContent(Model):
             return False
         if not hasattr(self, "published") or self.published is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

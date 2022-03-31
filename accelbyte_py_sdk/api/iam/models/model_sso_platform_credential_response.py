@@ -137,6 +137,7 @@ class ModelSSOPlatformCredentialResponse(Model):
             return False
         if not hasattr(self, "truncated_api_key") or self.truncated_api_key is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -92,6 +92,7 @@ class ModelChatMessageResponse(Model):
             return False
         if not hasattr(self, "to") or self.to is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -56,6 +56,7 @@ class EpicGamesIAPConfigRequest(Model):
         # required checks
         if not hasattr(self, "sandbox_id") or self.sandbox_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

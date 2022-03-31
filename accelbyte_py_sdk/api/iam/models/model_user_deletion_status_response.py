@@ -56,6 +56,7 @@ class ModelUserDeletionStatusResponse(Model):
         # required checks
         if not hasattr(self, "deletion_status") or self.deletion_status is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

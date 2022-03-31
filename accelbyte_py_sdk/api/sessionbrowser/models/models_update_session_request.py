@@ -65,6 +65,7 @@ class ModelsUpdateSessionRequest(Model):
             return False
         if not hasattr(self, "game_max_player") or self.game_max_player is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -141,6 +141,11 @@ class AppEntitlementInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in AppEntitlementInfo.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in AppEntitlementInfo.get_enum_map()["appType"]:
+            return False
         # pattern checks
         return True
 
@@ -331,6 +336,13 @@ class AppEntitlementInfo(Model):
             "sku": "sku",
             "startDate": "start_date",
             "storeId": "store_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
+            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
         }
 
     # endregion static methods

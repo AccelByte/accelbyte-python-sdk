@@ -112,6 +112,7 @@ class Requirement(Model):
         # required checks
         if not hasattr(self, "label") or self.label is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

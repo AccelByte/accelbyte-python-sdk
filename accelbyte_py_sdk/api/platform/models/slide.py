@@ -89,6 +89,11 @@ class Slide(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in Slide.get_enum_map()["type"]:
+            return False
+        if hasattr(self, "video_source") and self.video_source is not None and self.video_source not in Slide.get_enum_map()["videoSource"]:
+            return False
         # pattern checks
         return True
 
@@ -211,6 +216,13 @@ class Slide(Model):
             "type": "type_",
             "url": "url",
             "videoSource": "video_source",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["image", "video"],
+            "videoSource": ["generic", "youtube", "vimeo"],
         }
 
     # endregion static methods

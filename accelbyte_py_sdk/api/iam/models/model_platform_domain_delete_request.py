@@ -56,6 +56,7 @@ class ModelPlatformDomainDeleteRequest(Model):
         # required checks
         if not hasattr(self, "domain") or self.domain is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

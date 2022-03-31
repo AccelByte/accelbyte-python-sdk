@@ -56,6 +56,7 @@ class ModelsContentLikeRequest(Model):
         # required checks
         if not hasattr(self, "like_status") or self.like_status is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

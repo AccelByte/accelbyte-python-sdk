@@ -56,6 +56,7 @@ class ModelsUserFollowRequest(Model):
         # required checks
         if not hasattr(self, "follow_status") or self.follow_status is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

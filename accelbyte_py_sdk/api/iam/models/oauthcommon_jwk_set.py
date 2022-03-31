@@ -58,6 +58,7 @@ class OauthcommonJWKSet(Model):
         # required checks
         if not hasattr(self, "keys") or self.keys is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

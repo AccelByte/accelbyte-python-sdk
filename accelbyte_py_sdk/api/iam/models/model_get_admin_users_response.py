@@ -68,6 +68,7 @@ class ModelGetAdminUsersResponse(Model):
             return False
         if not hasattr(self, "paging") or self.paging is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

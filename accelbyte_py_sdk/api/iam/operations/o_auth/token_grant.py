@@ -403,6 +403,9 @@ class TokenGrant(Operation):
         # required checks
         if not hasattr(self, "grant_type") or self.grant_type is None:
             return False
+        # enum checks
+        if hasattr(self, "grant_type") and self.grant_type is not None and self.grant_type not in TokenGrant.get_enum_map()["grant_type"]:
+            return False
         # pattern checks
         return True
 
@@ -614,6 +617,12 @@ class TokenGrant(Operation):
             "refresh_token": "refresh_token",
             "username": "username",
             "grant_type": "grant_type",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "grant_type": ["authorization_code", "client_credentials", "password", "refresh_token"],# in form_data
         }
 
     # endregion static methods

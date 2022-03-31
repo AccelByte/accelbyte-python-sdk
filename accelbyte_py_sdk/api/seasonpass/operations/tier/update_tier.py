@@ -176,9 +176,8 @@ class UpdateTier(Operation):
             return False
         if not hasattr(self, "season_id") or self.season_id is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

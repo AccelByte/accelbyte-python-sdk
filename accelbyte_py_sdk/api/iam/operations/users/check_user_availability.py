@@ -174,6 +174,7 @@ class CheckUserAvailability(Operation):
             return False
         if not hasattr(self, "query") or self.query is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

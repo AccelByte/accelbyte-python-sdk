@@ -83,6 +83,7 @@ class ModelsProfanityFilter(Model):
             return False
         if not hasattr(self, "note") or self.note is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

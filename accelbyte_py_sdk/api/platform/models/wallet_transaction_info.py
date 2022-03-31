@@ -142,6 +142,9 @@ class WalletTransactionInfo(Model):
             return False
         if not hasattr(self, "wallet_id") or self.wallet_id is None:
             return False
+        # enum checks
+        if hasattr(self, "wallet_action") and self.wallet_action is not None and self.wallet_action not in WalletTransactionInfo.get_enum_map()["walletAction"]:
+            return False
         # pattern checks
         return True
 
@@ -315,6 +318,12 @@ class WalletTransactionInfo(Model):
             "walletId": "wallet_id",
             "balanceSource": "balance_source",
             "reason": "reason",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "walletAction": ["CREDIT", "PAYMENT", "DEBIT"],
         }
 
     # endregion static methods

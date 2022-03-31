@@ -83,6 +83,7 @@ class ModelUserVerificationRequestV3(Model):
             return False
         if not hasattr(self, "validate_only") or self.validate_only is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

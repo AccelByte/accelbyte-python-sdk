@@ -58,6 +58,7 @@ class ModelPlatformDomainResponse(Model):
         # required checks
         if not hasattr(self, "registered_domains") or self.registered_domains is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

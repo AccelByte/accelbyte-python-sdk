@@ -65,6 +65,7 @@ class GoogleIAPConfigRequest(Model):
             return False
         if not hasattr(self, "service_account_id") or self.service_account_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

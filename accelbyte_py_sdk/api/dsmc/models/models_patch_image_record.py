@@ -137,6 +137,7 @@ class ModelsPatchImageRecord(Model):
             return False
         if not hasattr(self, "version") or self.version is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

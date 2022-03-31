@@ -56,6 +56,7 @@ class ModelsListBlockedPlayerRequest(Model):
         # required checks
         if not hasattr(self, "list_blocked_user_id") or self.list_blocked_user_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

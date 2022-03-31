@@ -164,6 +164,7 @@ class QueryStats(Operation):
             return False
         if not hasattr(self, "keyword") or self.keyword is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

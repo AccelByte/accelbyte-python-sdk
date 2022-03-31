@@ -142,6 +142,11 @@ class PaymentNotificationInfo(Model):
             return False
         if not hasattr(self, "updated_at") or self.updated_at is None:
             return False
+        # enum checks
+        if hasattr(self, "notification_source") and self.notification_source is not None and self.notification_source not in PaymentNotificationInfo.get_enum_map()["notificationSource"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in PaymentNotificationInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -315,6 +320,13 @@ class PaymentNotificationInfo(Model):
             "updatedAt": "updated_at",
             "externalId": "external_id",
             "statusReason": "status_reason",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "notificationSource": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "status": ["PROCESSED", "ERROR", "WARN", "IGNORED"],
         }
 
     # endregion static methods

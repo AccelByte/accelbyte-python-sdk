@@ -191,6 +191,11 @@ class QueryPaymentNotifications(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "notification_source") and self.notification_source is not None and self.notification_source not in QueryPaymentNotifications.get_enum_map()["notificationSource"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in QueryPaymentNotifications.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -410,6 +415,13 @@ class QueryPaymentNotifications(Operation):
             "paymentOrderNo": "payment_order_no",
             "startDate": "start_date",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "notificationSource": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
+            "status": ["ERROR", "IGNORED", "PROCESSED", "WARN"],                                   # in query
         }
 
     # endregion static methods

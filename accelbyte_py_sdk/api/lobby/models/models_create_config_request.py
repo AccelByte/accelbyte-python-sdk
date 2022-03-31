@@ -56,6 +56,7 @@ class ModelsCreateConfigRequest(Model):
         # required checks
         if not hasattr(self, "api_key") or self.api_key is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

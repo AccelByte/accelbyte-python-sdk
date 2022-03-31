@@ -56,6 +56,7 @@ class ModelsCreatePortRequest(Model):
         # required checks
         if not hasattr(self, "port") or self.port is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

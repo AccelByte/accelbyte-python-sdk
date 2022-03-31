@@ -56,6 +56,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
         # required checks
         if not hasattr(self, "new_secret") or self.new_secret is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

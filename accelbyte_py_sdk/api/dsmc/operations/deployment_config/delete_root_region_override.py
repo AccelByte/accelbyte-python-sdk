@@ -168,6 +168,7 @@ class DeleteRootRegionOverride(Operation):
             return False
         if not hasattr(self, "region") or self.region is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

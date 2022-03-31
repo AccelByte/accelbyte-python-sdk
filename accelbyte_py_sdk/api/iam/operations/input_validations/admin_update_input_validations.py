@@ -214,9 +214,8 @@ class AdminUpdateInputValidations(Operation):
         # required checks
         if not hasattr(self, "body") or self.body is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and any(not x.is_valid() for x in self.body):
-            return False
         return True
 
     # endregion is/has methods

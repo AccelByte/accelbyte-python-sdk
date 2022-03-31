@@ -130,6 +130,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
             return False
         if not hasattr(self, "group_type") or self.group_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

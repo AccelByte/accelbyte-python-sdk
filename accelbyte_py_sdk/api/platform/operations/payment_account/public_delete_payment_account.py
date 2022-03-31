@@ -162,6 +162,9 @@ class PublicDeletePaymentAccount(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in PublicDeletePaymentAccount.get_enum_map()["type"]:
+            return False
         # pattern checks
         return True
 
@@ -282,6 +285,12 @@ class PublicDeletePaymentAccount(Operation):
             "namespace": "namespace",
             "type": "type_",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["card", "paypal"],                                                            # in path
         }
 
     # endregion static methods

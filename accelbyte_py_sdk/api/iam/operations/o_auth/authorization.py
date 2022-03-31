@@ -262,6 +262,9 @@ class Authorization(Operation):
             return False
         if not hasattr(self, "response_type") or self.response_type is None:
             return False
+        # enum checks
+        if hasattr(self, "response_type") and self.response_type is not None and self.response_type not in Authorization.get_enum_map()["response_type"]:
+            return False
         # pattern checks
         return True
 
@@ -439,6 +442,12 @@ class Authorization(Operation):
             "client_id": "client_id",
             "redirect_uri": "redirect_uri",
             "response_type": "response_type",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "response_type": ["code", "token"],                                                    # in form_data
         }
 
     # endregion static methods

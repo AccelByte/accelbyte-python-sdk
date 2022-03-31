@@ -244,6 +244,9 @@ class BillingHistoryInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in BillingHistoryInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -569,6 +572,12 @@ class BillingHistoryInfo(Model):
             "totalPrice": "total_price",
             "totalTax": "total_tax",
             "txEndTime": "tx_end_time",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "CHARGED", "CHARGE_FAILED", "REFUNDED", "REFUND_FAILED"],
         }
 
     # endregion static methods

@@ -172,6 +172,7 @@ class DeleteUserRankingsAdminV1(Operation):
             return False
         if not hasattr(self, "leaderboard_code") or self.leaderboard_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

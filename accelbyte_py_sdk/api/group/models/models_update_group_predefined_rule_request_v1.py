@@ -58,6 +58,7 @@ class ModelsUpdateGroupPredefinedRuleRequestV1(Model):
         # required checks
         if not hasattr(self, "rule_detail") or self.rule_detail is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

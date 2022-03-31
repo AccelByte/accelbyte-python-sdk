@@ -63,6 +63,7 @@ class RestapiErrorResponse(Model):
         # required checks
         if not hasattr(self, "message") or self.message is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

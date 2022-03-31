@@ -147,6 +147,7 @@ class RetrieveUserEligibilitiesResponse(Model):
             return False
         if not hasattr(self, "policy_type") or self.policy_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

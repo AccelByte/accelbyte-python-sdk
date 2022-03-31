@@ -56,6 +56,7 @@ class ModelRoleAdminStatusResponse(Model):
         # required checks
         if not hasattr(self, "admin_role") or self.admin_role is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

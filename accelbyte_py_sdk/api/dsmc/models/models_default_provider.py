@@ -56,6 +56,7 @@ class ModelsDefaultProvider(Model):
         # required checks
         if not hasattr(self, "provider_name") or self.provider_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

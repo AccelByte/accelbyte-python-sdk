@@ -65,6 +65,7 @@ class ModelsGetImageLimitResponseData(Model):
             return False
         if not hasattr(self, "image_limit") or self.image_limit is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

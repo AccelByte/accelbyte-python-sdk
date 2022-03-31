@@ -101,6 +101,7 @@ class LogAppMessageDeclaration(Model):
             return False
         if not hasattr(self, "text") or self.text is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

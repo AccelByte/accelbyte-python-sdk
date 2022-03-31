@@ -58,6 +58,7 @@ class ModelListUserResponseV3(Model):
         # required checks
         if not hasattr(self, "data") or self.data is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

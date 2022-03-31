@@ -58,6 +58,7 @@ class ModelsConfigList(Model):
         # required checks
         if not hasattr(self, "configs") or self.configs is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

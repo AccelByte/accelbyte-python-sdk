@@ -148,6 +148,7 @@ class ModelsAchievementRequest(Model):
             return False
         if not hasattr(self, "unlocked_icons") or self.unlocked_icons is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

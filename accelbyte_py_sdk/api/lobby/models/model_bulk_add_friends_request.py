@@ -56,6 +56,7 @@ class ModelBulkAddFriendsRequest(Model):
         # required checks
         if not hasattr(self, "friend_ids") or self.friend_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

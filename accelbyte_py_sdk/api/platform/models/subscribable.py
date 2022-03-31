@@ -56,6 +56,7 @@ class Subscribable(Model):
         # required checks
         if not hasattr(self, "subscribable") or self.subscribable is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

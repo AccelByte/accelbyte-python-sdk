@@ -65,6 +65,7 @@ class ModelsKickGroupMemberResponseV1(Model):
             return False
         if not hasattr(self, "kicked_user_id") or self.kicked_user_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

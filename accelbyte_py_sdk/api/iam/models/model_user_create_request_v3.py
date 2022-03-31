@@ -133,6 +133,7 @@ class ModelUserCreateRequestV3(Model):
             return False
         if not hasattr(self, "reach_minimum_age") or self.reach_minimum_age is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

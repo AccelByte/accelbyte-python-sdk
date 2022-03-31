@@ -165,6 +165,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             return False
         if not hasattr(self, "policy_version") or self.policy_version is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

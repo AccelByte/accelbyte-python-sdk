@@ -171,6 +171,7 @@ class PublicGetAchievement(Operation):
             return False
         if not hasattr(self, "language") or self.language is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

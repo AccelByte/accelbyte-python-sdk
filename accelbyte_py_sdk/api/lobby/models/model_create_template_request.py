@@ -74,6 +74,7 @@ class ModelCreateTemplateRequest(Model):
             return False
         if not hasattr(self, "template_slug") or self.template_slug is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

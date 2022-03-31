@@ -58,6 +58,7 @@ class ModelRoleManagersRequest(Model):
         # required checks
         if not hasattr(self, "managers") or self.managers is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

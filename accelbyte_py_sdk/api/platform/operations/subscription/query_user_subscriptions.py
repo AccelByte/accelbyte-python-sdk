@@ -189,6 +189,13 @@ class QueryUserSubscriptions(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "charge_status") and self.charge_status is not None and self.charge_status not in QueryUserSubscriptions.get_enum_map()["chargeStatus"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in QueryUserSubscriptions.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in QueryUserSubscriptions.get_enum_map()["subscribedBy"]:
+            return False
         # pattern checks
         return True
 
@@ -391,6 +398,14 @@ class QueryUserSubscriptions(Operation):
             "sku": "sku",
             "status": "status",
             "subscribedBy": "subscribed_by",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "chargeStatus": ["CHARGED", "CHARGE_FAILED", "NEVER", "RECURRING_CHARGING", "SETUP"],  # in query
+            "status": ["ACTIVE", "CANCELLED", "EXPIRED", "INIT"],                                  # in query
+            "subscribedBy": ["PLATFORM", "USER"],                                                  # in query
         }
 
     # endregion static methods

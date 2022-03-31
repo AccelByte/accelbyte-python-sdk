@@ -77,6 +77,7 @@ class ModelSearchUsersResponseWithPaginationV3(Model):
             return False
         if not hasattr(self, "total_data") or self.total_data is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

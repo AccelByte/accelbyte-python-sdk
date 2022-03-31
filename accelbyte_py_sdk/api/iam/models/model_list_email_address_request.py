@@ -56,6 +56,7 @@ class ModelListEmailAddressRequest(Model):
         # required checks
         if not hasattr(self, "list_email_address_request") or self.list_email_address_request is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

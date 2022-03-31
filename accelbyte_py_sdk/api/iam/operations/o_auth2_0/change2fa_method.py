@@ -161,6 +161,7 @@ class Change2faMethod(Operation):
             return False
         if not hasattr(self, "mfa_token") or self.mfa_token is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

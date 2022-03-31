@@ -117,6 +117,9 @@ class EntitlementHistoryInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "action") and self.action is not None and self.action not in EntitlementHistoryInfo.get_enum_map()["action"]:
+            return False
         # pattern checks
         return True
 
@@ -256,6 +259,12 @@ class EntitlementHistoryInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "useCount": "use_count",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "action": ["GRANT", "UPDATE", "DECREMENT", "REVOKE", "DISABLE", "ENABLE"],
         }
 
     # endregion static methods

@@ -93,6 +93,11 @@ class PaymentUrl(Model):
             return False
         if not hasattr(self, "payment_type") or self.payment_type is None:
             return False
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentUrl.get_enum_map()["paymentProvider"]:
+            return False
+        if hasattr(self, "payment_type") and self.payment_type is not None and self.payment_type not in PaymentUrl.get_enum_map()["paymentType"]:
+            return False
         # pattern checks
         return True
 
@@ -213,6 +218,13 @@ class PaymentUrl(Model):
             "returnUrl": "return_url",
             "sessionData": "session_data",
             "sessionId": "session_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "paymentType": ["QR_CODE", "LINK"],
         }
 
     # endregion static methods

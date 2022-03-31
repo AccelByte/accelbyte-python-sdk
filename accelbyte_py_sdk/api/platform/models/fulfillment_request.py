@@ -135,6 +135,9 @@ class FulfillmentRequest(Model):
         # required checks
         if not hasattr(self, "quantity") or self.quantity is None:
             return False
+        # enum checks
+        if hasattr(self, "source") and self.source is not None and self.source not in FulfillmentRequest.get_enum_map()["source"]:
+            return False
         # pattern checks
         return True
 
@@ -328,6 +331,12 @@ class FulfillmentRequest(Model):
             "source": "source",
             "startDate": "start_date",
             "storeId": "store_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }
 
     # endregion static methods

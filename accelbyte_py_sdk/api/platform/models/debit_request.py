@@ -63,6 +63,7 @@ class DebitRequest(Model):
         # required checks
         if not hasattr(self, "amount") or self.amount is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

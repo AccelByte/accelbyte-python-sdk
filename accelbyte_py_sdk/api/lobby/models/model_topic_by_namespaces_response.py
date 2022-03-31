@@ -94,6 +94,7 @@ class ModelTopicByNamespacesResponse(Model):
             return False
         if not hasattr(self, "topics") or self.topics is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

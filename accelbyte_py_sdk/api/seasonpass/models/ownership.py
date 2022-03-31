@@ -56,6 +56,7 @@ class Ownership(Model):
         # required checks
         if not hasattr(self, "owned") or self.owned is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

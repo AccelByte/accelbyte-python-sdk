@@ -144,6 +144,7 @@ class AdminResetInputValidations(Operation):
         # required checks
         if not hasattr(self, "field") or self.field is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

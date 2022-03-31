@@ -68,6 +68,7 @@ class ModelsGroupRule(Model):
             return False
         if not hasattr(self, "group_predefined_rules") or self.group_predefined_rules is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

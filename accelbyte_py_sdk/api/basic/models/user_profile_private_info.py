@@ -145,6 +145,9 @@ class UserProfilePrivateInfo(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in UserProfilePrivateInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -363,6 +366,12 @@ class UserProfilePrivateInfo(Model):
             "timeZone": "time_zone",
             "userId": "user_id",
             "zipCode": "zip_code",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

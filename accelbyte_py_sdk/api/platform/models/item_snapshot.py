@@ -290,6 +290,15 @@ class ItemSnapshot(Model):
             return False
         if not hasattr(self, "title") or self.title is None:
             return False
+        # enum checks
+        if hasattr(self, "entitlement_type") and self.entitlement_type is not None and self.entitlement_type not in ItemSnapshot.get_enum_map()["entitlementType"]:
+            return False
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in ItemSnapshot.get_enum_map()["itemType"]:
+            return False
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in ItemSnapshot.get_enum_map()["appType"]:
+            return False
+        if hasattr(self, "season_type") and self.season_type is not None and self.season_type not in ItemSnapshot.get_enum_map()["seasonType"]:
+            return False
         # pattern checks
         return True
 
@@ -716,6 +725,15 @@ class ItemSnapshot(Model):
             "thumbnailUrl": "thumbnail_url",
             "updatedAt": "updated_at",
             "useCount": "use_count",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "entitlementType": ["DURABLE", "CONSUMABLE"],
+            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
+            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
+            "seasonType": ["PASS", "TIER"],
         }
 
     # endregion static methods

@@ -184,6 +184,7 @@ class GetUserEventsV2Public(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

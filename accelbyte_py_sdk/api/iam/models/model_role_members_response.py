@@ -58,6 +58,7 @@ class ModelRoleMembersResponse(Model):
         # required checks
         if not hasattr(self, "members") or self.members is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

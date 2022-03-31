@@ -56,6 +56,7 @@ class ModelsAdminDeleteProfanityFilterRequest(Model):
         # required checks
         if not hasattr(self, "filter_") or self.filter_ is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

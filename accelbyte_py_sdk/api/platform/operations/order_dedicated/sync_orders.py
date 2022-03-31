@@ -153,6 +153,7 @@ class SyncOrders(Operation):
             return False
         if not hasattr(self, "start") or self.start is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

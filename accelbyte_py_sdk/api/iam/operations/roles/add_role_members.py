@@ -174,9 +174,8 @@ class AddRoleMembers(Operation):
             return False
         if not hasattr(self, "role_id") or self.role_id is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

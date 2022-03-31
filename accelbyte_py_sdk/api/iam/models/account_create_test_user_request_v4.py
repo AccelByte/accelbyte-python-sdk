@@ -137,6 +137,7 @@ class AccountCreateTestUserRequestV4(Model):
             return False
         if not hasattr(self, "verified") or self.verified is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

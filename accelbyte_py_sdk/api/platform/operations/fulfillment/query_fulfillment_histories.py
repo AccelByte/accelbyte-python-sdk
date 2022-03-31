@@ -166,6 +166,9 @@ class QueryFulfillmentHistories(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in QueryFulfillmentHistories.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -305,6 +308,12 @@ class QueryFulfillmentHistories(Operation):
             "offset": "offset",
             "status": "status",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["FAIL", "SUCCESS"],                                                         # in query
         }
 
     # endregion static methods

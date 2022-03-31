@@ -177,9 +177,10 @@ class Pay(Operation):
             return False
         if not hasattr(self, "payment_order_no") or self.payment_order_no is None:
             return False
-        # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in Pay.get_enum_map()["paymentProvider"]:
             return False
+        # pattern checks
         return True
 
     # endregion is/has methods
@@ -329,6 +330,12 @@ class Pay(Operation):
             "paymentOrderNo": "payment_order_no",
             "paymentProvider": "payment_provider",
             "zipCode": "zip_code",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
         }
 
     # endregion static methods

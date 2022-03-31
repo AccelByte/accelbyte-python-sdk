@@ -171,6 +171,11 @@ class QueryPaymentOrders(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "channel") and self.channel is not None and self.channel not in QueryPaymentOrders.get_enum_map()["channel"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in QueryPaymentOrders.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -326,6 +331,13 @@ class QueryPaymentOrders(Operation):
             "limit": "limit",
             "offset": "offset",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "channel": ["EXTERNAL", "INTERNAL"],                                                   # in query
+            "status": ["AUTHORISED", "AUTHORISE_FAILED", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CHARGE_FAILED", "DELETED", "INIT", "NOTIFICATION_OF_CHARGEBACK", "REFUNDED", "REFUNDING", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],# in query
         }
 
     # endregion static methods

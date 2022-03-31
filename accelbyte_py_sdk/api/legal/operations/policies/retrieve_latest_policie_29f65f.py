@@ -175,6 +175,9 @@ class RetrieveLatestPoliciesPublic(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "policy_type") and self.policy_type is not None and self.policy_type not in RetrieveLatestPoliciesPublic.get_enum_map()["policyType"]:
+            return False
         # pattern checks
         return True
 
@@ -318,6 +321,12 @@ class RetrieveLatestPoliciesPublic(Operation):
             "defaultOnEmpty": "default_on_empty",
             "policyType": "policy_type",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "policyType": ["LEGAL_DOCUMENT_TYPE", "MARKETING_PREFERENCE_TYPE"],                    # in query
         }
 
     # endregion static methods

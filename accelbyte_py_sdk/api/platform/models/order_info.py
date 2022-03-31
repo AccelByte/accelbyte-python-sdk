@@ -337,6 +337,11 @@ class OrderInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in OrderInfo.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in OrderInfo.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -817,6 +822,13 @@ class OrderInfo(Model):
             "totalPrice": "total_price",
             "totalTax": "total_tax",
             "vat": "vat",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }
 
     # endregion static methods

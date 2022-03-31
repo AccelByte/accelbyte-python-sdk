@@ -246,6 +246,7 @@ class PlatformAuthenticationV3(Operation):
             return False
         if not hasattr(self, "state") or self.state is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

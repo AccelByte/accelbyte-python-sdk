@@ -400,6 +400,15 @@ class PaymentOrder(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "channel") and self.channel is not None and self.channel not in PaymentOrder.get_enum_map()["channel"]:
+            return False
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in PaymentOrder.get_enum_map()["itemType"]:
+            return False
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrder.get_enum_map()["paymentProvider"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrder.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -1050,6 +1059,15 @@ class PaymentOrder(Model):
             "userId": "user_id",
             "vat": "vat",
             "zipCode": "zip_code",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "channel": ["EXTERNAL", "INTERNAL"],
+            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
         }
 
     # endregion static methods

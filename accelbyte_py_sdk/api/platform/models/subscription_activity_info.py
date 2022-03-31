@@ -172,6 +172,11 @@ class SubscriptionActivityInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "action") and self.action is not None and self.action not in SubscriptionActivityInfo.get_enum_map()["action"]:
+            return False
+        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in SubscriptionActivityInfo.get_enum_map()["subscribedBy"]:
+            return False
         # pattern checks
         return True
 
@@ -392,6 +397,13 @@ class SubscriptionActivityInfo(Model):
             "inFixedFreeDays": "in_fixed_free_days",
             "reason": "reason",
             "trialedCycles": "trialed_cycles",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "action": ["SUBSCRIBE", "CANCEL", "IMMEDIATE_CANCEL", "RESUBSCRIBE", "GRANT_DAYS", "CHANGE_BILLING_ACCOUNT"],
+            "subscribedBy": ["USER", "PLATFORM"],
         }
 
     # endregion static methods

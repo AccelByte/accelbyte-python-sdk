@@ -56,6 +56,7 @@ class ModelsUpdateMemberRoleRequestV1(Model):
         # required checks
         if not hasattr(self, "member_role_name") or self.member_role_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

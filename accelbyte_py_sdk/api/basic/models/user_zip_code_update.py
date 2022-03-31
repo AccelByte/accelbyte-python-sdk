@@ -56,6 +56,7 @@ class UserZipCodeUpdate(Model):
         # required checks
         if not hasattr(self, "zip_code") or self.zip_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

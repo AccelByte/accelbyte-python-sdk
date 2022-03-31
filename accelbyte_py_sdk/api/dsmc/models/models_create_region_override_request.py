@@ -92,6 +92,7 @@ class ModelsCreateRegionOverrideRequest(Model):
             return False
         if not hasattr(self, "use_buffer_percent") or self.use_buffer_percent is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

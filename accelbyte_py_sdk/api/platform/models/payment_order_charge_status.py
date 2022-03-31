@@ -61,6 +61,9 @@ class PaymentOrderChargeStatus(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrderChargeStatus.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -135,6 +138,12 @@ class PaymentOrderChargeStatus(Model):
         return {
             "charging": "charging",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
         }
 
     # endregion static methods

@@ -137,6 +137,7 @@ class ModelsGameSessionSetting(Model):
             return False
         if not hasattr(self, "settings") or self.settings is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

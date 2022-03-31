@@ -123,8 +123,11 @@ class EntitlementGrant(Model):
             return False
         if not hasattr(self, "quantity") or self.quantity is None:
             return False
+        # enum checks
+        if hasattr(self, "source") and self.source is not None and self.source not in EntitlementGrant.get_enum_map()["source"]:
+            return False
         # pattern checks
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 
@@ -292,6 +295,12 @@ class EntitlementGrant(Model):
             "source": "source",
             "startDate": "start_date",
             "storeId": "store_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "OTHER"],
         }
 
     # endregion static methods

@@ -70,6 +70,9 @@ class ExcessStrategy(Model):
         # required checks
         if not hasattr(self, "method") or self.method is None:
             return False
+        # enum checks
+        if hasattr(self, "method") and self.method is not None and self.method not in ExcessStrategy.get_enum_map()["method"]:
+            return False
         # pattern checks
         return True
 
@@ -155,6 +158,12 @@ class ExcessStrategy(Model):
             "method": "method",
             "currency": "currency",
             "percentPerExp": "percent_per_exp",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "method": ["NONE", "CURRENCY"],
         }
 
     # endregion static methods

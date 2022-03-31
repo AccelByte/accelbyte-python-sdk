@@ -110,6 +110,7 @@ class ModelUserLoginHistoryResponse(Model):
             return False
         if not hasattr(self, "timestamp") or self.timestamp is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

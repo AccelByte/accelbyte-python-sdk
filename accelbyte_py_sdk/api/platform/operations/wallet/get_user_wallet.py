@@ -159,6 +159,7 @@ class GetUserWallet(Operation):
             return False
         if not hasattr(self, "wallet_id") or self.wallet_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

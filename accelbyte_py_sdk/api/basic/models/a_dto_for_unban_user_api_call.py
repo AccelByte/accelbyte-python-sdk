@@ -63,6 +63,7 @@ class ADTOForUnbanUserAPICall(Model):
         # required checks
         if not hasattr(self, "user_ids") or self.user_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

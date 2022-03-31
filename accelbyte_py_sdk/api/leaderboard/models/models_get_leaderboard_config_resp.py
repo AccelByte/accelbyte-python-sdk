@@ -166,6 +166,7 @@ class ModelsGetLeaderboardConfigResp(Model):
             return False
         if not hasattr(self, "weekly") or self.weekly is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

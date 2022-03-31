@@ -207,6 +207,7 @@ class QuerySession(Operation):
             return False
         if not hasattr(self, "session_type") or self.session_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

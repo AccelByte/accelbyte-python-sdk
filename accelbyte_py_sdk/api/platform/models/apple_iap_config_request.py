@@ -63,6 +63,7 @@ class AppleIAPConfigRequest(Model):
         # required checks
         if not hasattr(self, "bundle_id") or self.bundle_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

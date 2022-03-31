@@ -63,6 +63,7 @@ class BulkStatItemInc(Model):
         # required checks
         if not hasattr(self, "stat_code") or self.stat_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

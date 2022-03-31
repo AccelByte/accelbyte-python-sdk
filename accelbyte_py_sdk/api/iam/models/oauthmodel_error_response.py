@@ -70,6 +70,7 @@ class OauthmodelErrorResponse(Model):
         # required checks
         if not hasattr(self, "error") or self.error is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -108,6 +108,7 @@ class ModelsRuleSetV1(Model):
             return False
         if not hasattr(self, "sub_game_modes") or self.sub_game_modes is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

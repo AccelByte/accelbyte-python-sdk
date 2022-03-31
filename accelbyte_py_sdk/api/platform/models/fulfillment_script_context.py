@@ -84,6 +84,9 @@ class FulfillmentScriptContext(Model):
             return False
         if not hasattr(self, "source") or self.source is None:
             return False
+        # enum checks
+        if hasattr(self, "source") and self.source is not None and self.source not in FulfillmentScriptContext.get_enum_map()["source"]:
+            return False
         # pattern checks
         return True
 
@@ -179,6 +182,12 @@ class FulfillmentScriptContext(Model):
             "namespace": "namespace",
             "source": "source",
             "order": "order",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }
 
     # endregion static methods

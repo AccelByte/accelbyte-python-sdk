@@ -178,6 +178,9 @@ class QueryUserEntitlementsByAppType(Operation):
             return False
         if not hasattr(self, "app_type") or self.app_type is None:
             return False
+        # enum checks
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in QueryUserEntitlementsByAppType.get_enum_map()["appType"]:
+            return False
         # pattern checks
         return True
 
@@ -331,6 +334,12 @@ class QueryUserEntitlementsByAppType(Operation):
             "limit": "limit",
             "offset": "offset",
             "appType": "app_type",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
         }
 
     # endregion static methods

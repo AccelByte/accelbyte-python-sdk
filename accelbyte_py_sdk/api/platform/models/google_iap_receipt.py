@@ -113,8 +113,9 @@ class GoogleIAPReceipt(Model):
             return False
         if not hasattr(self, "purchase_token") or self.purchase_token is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 

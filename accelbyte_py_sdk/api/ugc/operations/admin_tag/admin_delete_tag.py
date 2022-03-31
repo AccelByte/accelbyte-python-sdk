@@ -150,6 +150,7 @@ class AdminDeleteTag(Operation):
             return False
         if not hasattr(self, "tag_id") or self.tag_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

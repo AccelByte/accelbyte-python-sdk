@@ -56,6 +56,7 @@ class ModelsUserDataURL(Model):
         # required checks
         if not hasattr(self, "url") or self.url is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

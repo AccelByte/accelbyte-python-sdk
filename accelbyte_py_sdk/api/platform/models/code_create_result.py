@@ -56,6 +56,7 @@ class CodeCreateResult(Model):
         # required checks
         if not hasattr(self, "num_created") or self.num_created is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -70,6 +70,9 @@ class BillingAccount(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in BillingAccount.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -156,6 +159,12 @@ class BillingAccount(Model):
             "additionalData": "additional_data",
             "paymentMethod": "payment_method",
             "paymentProvider": "payment_provider",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }
 
     # endregion static methods

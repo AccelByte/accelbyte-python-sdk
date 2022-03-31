@@ -171,6 +171,7 @@ class PublicBulkGetItems(Operation):
             return False
         if not hasattr(self, "item_ids") or self.item_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

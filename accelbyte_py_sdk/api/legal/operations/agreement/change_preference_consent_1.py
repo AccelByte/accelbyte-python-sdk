@@ -134,9 +134,8 @@ class ChangePreferenceConsent1(Operation):
 
     def is_valid(self) -> bool:
         # required checks
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and any(not x.is_valid() for x in self.body):
-            return False
         return True
 
     # endregion is/has methods

@@ -140,6 +140,7 @@ class ModelsCustomGameResponse(Model):
             return False
         if not hasattr(self, "spectators") or self.spectators is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

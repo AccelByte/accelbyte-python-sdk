@@ -81,6 +81,7 @@ class ModelsUserRankingResponseDetail(Model):
             return False
         if not hasattr(self, "rank") or self.rank is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

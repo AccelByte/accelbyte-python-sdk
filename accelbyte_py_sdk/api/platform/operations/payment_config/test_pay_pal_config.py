@@ -158,9 +158,8 @@ class TestPayPalConfig(Operation):
 
     def is_valid(self) -> bool:
         # required checks
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

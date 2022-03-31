@@ -140,6 +140,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
         # required checks
         if not hasattr(self, "steam_id") or self.steam_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

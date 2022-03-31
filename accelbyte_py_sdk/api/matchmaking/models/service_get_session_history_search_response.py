@@ -68,6 +68,7 @@ class ServiceGetSessionHistorySearchResponse(Model):
             return False
         if not hasattr(self, "pagination") or self.pagination is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

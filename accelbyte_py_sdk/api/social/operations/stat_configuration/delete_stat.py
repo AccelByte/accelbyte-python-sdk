@@ -149,6 +149,7 @@ class DeleteStat(Operation):
             return False
         if not hasattr(self, "stat_code") or self.stat_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

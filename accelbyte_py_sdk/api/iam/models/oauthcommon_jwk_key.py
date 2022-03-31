@@ -91,6 +91,7 @@ class OauthcommonJWKKey(Model):
         # required checks
         if not hasattr(self, "kty") or self.kty is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

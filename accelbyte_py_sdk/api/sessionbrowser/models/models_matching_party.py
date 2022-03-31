@@ -76,6 +76,7 @@ class ModelsMatchingParty(Model):
             return False
         if not hasattr(self, "party_members") or self.party_members is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

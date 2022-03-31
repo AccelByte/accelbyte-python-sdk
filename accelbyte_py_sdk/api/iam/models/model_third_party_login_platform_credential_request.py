@@ -164,6 +164,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             return False
         if not hasattr(self, "team_id") or self.team_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

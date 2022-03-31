@@ -170,6 +170,9 @@ class PublicGetUserEntitlementByItemId(Operation):
             return False
         if not hasattr(self, "item_id") or self.item_id is None:
             return False
+        # enum checks
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz is not None and self.entitlement_clazz not in PublicGetUserEntitlementByItemId.get_enum_map()["entitlementClazz"]:
+            return False
         # pattern checks
         return True
 
@@ -295,6 +298,12 @@ class PublicGetUserEntitlementByItemId(Operation):
             "userId": "user_id",
             "entitlementClazz": "entitlement_clazz",
             "itemId": "item_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
         }
 
     # endregion static methods

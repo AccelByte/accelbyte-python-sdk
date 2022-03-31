@@ -191,6 +191,11 @@ class QueryUserEntitlements(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in QueryUserEntitlements.get_enum_map()["appType"]:
+            return False
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz is not None and self.entitlement_clazz not in QueryUserEntitlements.get_enum_map()["entitlementClazz"]:
+            return False
         # pattern checks
         return True
 
@@ -399,6 +404,13 @@ class QueryUserEntitlements(Operation):
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
             "itemId": "multi",                                                                     # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
+            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
         }
 
     # endregion static methods

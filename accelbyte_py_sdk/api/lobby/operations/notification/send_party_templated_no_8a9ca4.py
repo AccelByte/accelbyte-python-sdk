@@ -175,9 +175,8 @@ class SendPartyTemplatedNotificationV1Admin(Operation):
             return False
         if not hasattr(self, "party_id") or self.party_id is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

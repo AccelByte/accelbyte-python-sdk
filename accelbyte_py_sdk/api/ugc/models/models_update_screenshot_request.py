@@ -58,6 +58,7 @@ class ModelsUpdateScreenshotRequest(Model):
         # required checks
         if not hasattr(self, "screenshots") or self.screenshots is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

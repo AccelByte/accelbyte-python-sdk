@@ -65,6 +65,7 @@ class ModelAuthenticatorKeyResponseV4(Model):
             return False
         if not hasattr(self, "uri") or self.uri is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

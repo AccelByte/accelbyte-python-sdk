@@ -134,6 +134,7 @@ class VerifyToken(Operation):
         # required checks
         if not hasattr(self, "token") or self.token is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

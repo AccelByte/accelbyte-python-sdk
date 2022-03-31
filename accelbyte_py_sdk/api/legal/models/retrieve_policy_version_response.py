@@ -143,6 +143,7 @@ class RetrievePolicyVersionResponse(Model):
             return False
         if not hasattr(self, "policy_id") or self.policy_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

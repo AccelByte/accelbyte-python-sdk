@@ -153,6 +153,7 @@ class DeleteStore(Operation):
             return False
         if not hasattr(self, "store_id") or self.store_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

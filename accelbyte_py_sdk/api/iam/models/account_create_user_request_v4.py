@@ -144,6 +144,7 @@ class AccountCreateUserRequestV4(Model):
             return False
         if not hasattr(self, "username") or self.username is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

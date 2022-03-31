@@ -151,6 +151,7 @@ class GetReward(Operation):
             return False
         if not hasattr(self, "reward_id") or self.reward_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -65,6 +65,7 @@ class ModelsStatusHistory(Model):
             return False
         if not hasattr(self, "time_stamp") or self.time_stamp is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -88,6 +88,7 @@ class TelemetryBody(Model):
             return False
         if not hasattr(self, "payload") or self.payload is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

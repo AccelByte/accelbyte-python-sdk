@@ -151,6 +151,7 @@ class GetRegisteredEventIDHandler(Operation):
         # required checks
         if not hasattr(self, "event_id") or self.event_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

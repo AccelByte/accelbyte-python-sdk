@@ -70,6 +70,9 @@ class PaymentOrderChargeRequest(Model):
         # required checks
         if not hasattr(self, "payment_provider") or self.payment_provider is None:
             return False
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrderChargeRequest.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -155,6 +158,12 @@ class PaymentOrderChargeRequest(Model):
             "paymentProvider": "payment_provider",
             "extTxId": "ext_tx_id",
             "paymentMethod": "payment_method",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }
 
     # endregion static methods

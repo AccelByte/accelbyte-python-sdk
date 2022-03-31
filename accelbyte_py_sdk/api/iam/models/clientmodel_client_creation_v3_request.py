@@ -137,6 +137,7 @@ class ClientmodelClientCreationV3Request(Model):
             return False
         if not hasattr(self, "secret") or self.secret is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

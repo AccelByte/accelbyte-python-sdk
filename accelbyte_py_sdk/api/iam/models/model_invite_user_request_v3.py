@@ -74,6 +74,7 @@ class ModelInviteUserRequestV3(Model):
             return False
         if not hasattr(self, "roles") or self.roles is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

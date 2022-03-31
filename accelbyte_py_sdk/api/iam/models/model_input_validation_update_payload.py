@@ -67,6 +67,7 @@ class ModelInputValidationUpdatePayload(Model):
             return False
         if not hasattr(self, "validation") or self.validation is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

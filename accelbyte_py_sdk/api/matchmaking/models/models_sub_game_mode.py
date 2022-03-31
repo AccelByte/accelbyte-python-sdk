@@ -77,6 +77,7 @@ class ModelsSubGameMode(Model):
             return False
         if not hasattr(self, "name") or self.name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -184,6 +184,7 @@ class ModelValidationDetailPublic(Model):
             return False
         if not hasattr(self, "special_characters") or self.special_characters is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

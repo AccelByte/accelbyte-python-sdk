@@ -120,6 +120,11 @@ class SubscriptionSummary(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in SubscriptionSummary.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in SubscriptionSummary.get_enum_map()["subscribedBy"]:
+            return False
         # pattern checks
         return True
 
@@ -273,6 +278,13 @@ class SubscriptionSummary(Model):
             "currentPeriodStart": "current_period_start",
             "sku": "sku",
             "subscribedBy": "subscribed_by",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "ACTIVE", "CANCELLED", "EXPIRED"],
+            "subscribedBy": ["USER", "PLATFORM"],
         }
 
     # endregion static methods

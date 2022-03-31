@@ -85,6 +85,7 @@ class ModelLocalization(Model):
             return False
         if not hasattr(self, "template_language") or self.template_language is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

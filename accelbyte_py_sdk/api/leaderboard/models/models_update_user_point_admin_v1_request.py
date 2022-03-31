@@ -65,6 +65,7 @@ class ModelsUpdateUserPointAdminV1Request(Model):
             return False
         if not hasattr(self, "latest_value") or self.latest_value is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

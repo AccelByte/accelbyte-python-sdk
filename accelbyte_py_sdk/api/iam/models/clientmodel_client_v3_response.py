@@ -148,6 +148,7 @@ class ClientmodelClientV3Response(Model):
             return False
         if not hasattr(self, "scopes") or self.scopes is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

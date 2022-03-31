@@ -65,6 +65,7 @@ class ModelsImportResponse(Model):
             return False
         if not hasattr(self, "failed") or self.failed is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

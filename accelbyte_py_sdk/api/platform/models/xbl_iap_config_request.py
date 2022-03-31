@@ -56,6 +56,7 @@ class XblIAPConfigRequest(Model):
         # required checks
         if not hasattr(self, "relying_party_cert") or self.relying_party_cert is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

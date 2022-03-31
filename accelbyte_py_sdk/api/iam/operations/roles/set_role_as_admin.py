@@ -160,6 +160,7 @@ class SetRoleAsAdmin(Operation):
         # required checks
         if not hasattr(self, "role_id") or self.role_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

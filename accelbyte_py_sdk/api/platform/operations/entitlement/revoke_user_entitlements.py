@@ -162,6 +162,7 @@ class RevokeUserEntitlements(Operation):
             return False
         if not hasattr(self, "entitlement_ids") or self.entitlement_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

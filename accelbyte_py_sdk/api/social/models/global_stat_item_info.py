@@ -108,6 +108,7 @@ class GlobalStatItemInfo(Model):
             return False
         if not hasattr(self, "value") or self.value is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

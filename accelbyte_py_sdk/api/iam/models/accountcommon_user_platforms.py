@@ -58,6 +58,7 @@ class AccountcommonUserPlatforms(Model):
         # required checks
         if not hasattr(self, "user_id_platforms") or self.user_id_platforms is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

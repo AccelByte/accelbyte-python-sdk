@@ -100,6 +100,7 @@ class ModelsUpdateRuleset(Model):
             return False
         if not hasattr(self, "alliance_flexing_rule") or self.alliance_flexing_rule is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

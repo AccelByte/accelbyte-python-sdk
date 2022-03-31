@@ -65,6 +65,9 @@ class TicketBoothID(Model):
             return False
         if not hasattr(self, "type_") or self.type_ is None:
             return False
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in TicketBoothID.get_enum_map()["type"]:
+            return False
         # pattern checks
         return True
 
@@ -137,6 +140,12 @@ class TicketBoothID(Model):
         return {
             "id": "id_",
             "type": "type_",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["CAMPAIGN", "KEYGROUP"],
         }
 
     # endregion static methods

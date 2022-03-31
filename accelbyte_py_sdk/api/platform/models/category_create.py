@@ -65,6 +65,7 @@ class CategoryCreate(Model):
             return False
         if not hasattr(self, "localization_display_names") or self.localization_display_names is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

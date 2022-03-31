@@ -65,6 +65,7 @@ class ResponseErrorV1(Model):
             return False
         if not hasattr(self, "error_message") or self.error_message is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

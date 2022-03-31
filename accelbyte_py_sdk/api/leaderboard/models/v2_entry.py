@@ -70,6 +70,7 @@ class V2Entry(Model):
         # required checks
         if not hasattr(self, "point") or self.point is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

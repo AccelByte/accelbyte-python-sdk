@@ -56,6 +56,7 @@ class ModelsGetLobbyCcuResponse(Model):
         # required checks
         if not hasattr(self, "count_current_users") or self.count_current_users is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

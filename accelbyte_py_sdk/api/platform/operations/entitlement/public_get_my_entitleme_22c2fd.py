@@ -162,6 +162,9 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
             return False
         if not hasattr(self, "sku") or self.sku is None:
             return False
+        # enum checks
+        if hasattr(self, "entitlement_clazz") and self.entitlement_clazz is not None and self.entitlement_clazz not in PublicGetMyEntitlementOwnershipBySku.get_enum_map()["entitlementClazz"]:
+            return False
         # pattern checks
         return True
 
@@ -268,6 +271,12 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
             "namespace": "namespace",
             "entitlementClazz": "entitlement_clazz",
             "sku": "sku",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
         }
 
     # endregion static methods

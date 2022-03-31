@@ -211,6 +211,11 @@ class PublicQueryItems(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in PublicQueryItems.get_enum_map()["appType"]:
+            return False
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in PublicQueryItems.get_enum_map()["itemType"]:
+            return False
         # pattern checks
         return True
 
@@ -486,6 +491,13 @@ class PublicQueryItems(Operation):
             "sortBy": "sort_by",
             "storeId": "store_id",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],# in query
         }
 
     # endregion static methods

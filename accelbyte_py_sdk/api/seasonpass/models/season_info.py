@@ -216,6 +216,9 @@ class SeasonInfo(Model):
             return False
         if not hasattr(self, "updated_at") or self.updated_at is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in SeasonInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -478,6 +481,12 @@ class SeasonInfo(Model):
             "images": "images",
             "passCodes": "pass_codes",
             "publishedAt": "published_at",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["DRAFT", "PUBLISHED", "RETIRED"],
         }
 
     # endregion static methods

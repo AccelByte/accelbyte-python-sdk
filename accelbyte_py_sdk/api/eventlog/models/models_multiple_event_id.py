@@ -58,6 +58,7 @@ class ModelsMultipleEventID(Model):
         # required checks
         if not hasattr(self, "event_i_ds") or self.event_i_ds is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

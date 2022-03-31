@@ -70,6 +70,9 @@ class CreditRequest(Model):
         # required checks
         if not hasattr(self, "amount") or self.amount is None:
             return False
+        # enum checks
+        if hasattr(self, "source") and self.source is not None and self.source not in CreditRequest.get_enum_map()["source"]:
+            return False
         # pattern checks
         return True
 
@@ -155,6 +158,12 @@ class CreditRequest(Model):
             "amount": "amount",
             "reason": "reason",
             "source": "source",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "REFUND", "OTHER"],
         }
 
     # endregion static methods

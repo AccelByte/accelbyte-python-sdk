@@ -162,6 +162,7 @@ class CountOfPurchasedItem(Operation):
             return False
         if not hasattr(self, "item_id") or self.item_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

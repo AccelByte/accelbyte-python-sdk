@@ -74,6 +74,7 @@ class ModelUserPasswordUpdateRequest(Model):
             return False
         if not hasattr(self, "old_password") or self.old_password is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

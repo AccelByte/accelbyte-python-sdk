@@ -94,6 +94,7 @@ class HandlersGetUsersPresenceResponse(Model):
             return False
         if not hasattr(self, "online") or self.online is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

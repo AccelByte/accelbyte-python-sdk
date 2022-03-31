@@ -98,6 +98,7 @@ class OauthmodelTokenIntrospectResponse(Model):
         # required checks
         if not hasattr(self, "active") or self.active is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

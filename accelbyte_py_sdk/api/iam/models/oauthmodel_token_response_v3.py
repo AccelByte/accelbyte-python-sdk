@@ -205,6 +205,7 @@ class OauthmodelTokenResponseV3(Model):
             return False
         if not hasattr(self, "xuid") or self.xuid is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

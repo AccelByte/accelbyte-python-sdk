@@ -56,6 +56,7 @@ class ModelWebLinkingResponse(Model):
         # required checks
         if not hasattr(self, "third_party_url") or self.third_party_url is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

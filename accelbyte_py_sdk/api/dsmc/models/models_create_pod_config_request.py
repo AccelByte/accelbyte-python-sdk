@@ -74,6 +74,7 @@ class ModelsCreatePodConfigRequest(Model):
             return False
         if not hasattr(self, "params") or self.params is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

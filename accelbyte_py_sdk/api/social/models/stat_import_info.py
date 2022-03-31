@@ -83,6 +83,7 @@ class StatImportInfo(Model):
             return False
         if not hasattr(self, "replaced_configs") or self.replaced_configs is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

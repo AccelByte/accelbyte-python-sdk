@@ -83,6 +83,7 @@ class ModelsDetailedCountServerResponse(Model):
             return False
         if not hasattr(self, "unreachable_count") or self.unreachable_count is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

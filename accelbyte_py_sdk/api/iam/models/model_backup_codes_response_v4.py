@@ -74,6 +74,7 @@ class ModelBackupCodesResponseV4(Model):
             return False
         if not hasattr(self, "valid_codes") or self.valid_codes is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

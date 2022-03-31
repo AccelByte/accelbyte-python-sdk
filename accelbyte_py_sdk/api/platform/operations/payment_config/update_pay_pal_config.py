@@ -169,9 +169,8 @@ class UpdatePayPalConfig(Operation):
         # required checks
         if not hasattr(self, "id_") or self.id_ is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

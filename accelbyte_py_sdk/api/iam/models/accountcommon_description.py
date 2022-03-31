@@ -65,6 +65,7 @@ class AccountcommonDescription(Model):
             return False
         if not hasattr(self, "zh_cn") or self.zh_cn is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

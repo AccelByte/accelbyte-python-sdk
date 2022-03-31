@@ -166,6 +166,7 @@ class ImportRewards(Operation):
             return False
         if not hasattr(self, "replace_existing") or self.replace_existing is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

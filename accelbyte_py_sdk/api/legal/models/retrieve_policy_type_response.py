@@ -95,6 +95,7 @@ class RetrievePolicyTypeResponse(Model):
             return False
         if not hasattr(self, "policy_type_name") or self.policy_type_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

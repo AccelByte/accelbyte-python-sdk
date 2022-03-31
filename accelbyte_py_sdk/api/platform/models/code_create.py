@@ -56,6 +56,7 @@ class CodeCreate(Model):
         # required checks
         if not hasattr(self, "quantity") or self.quantity is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

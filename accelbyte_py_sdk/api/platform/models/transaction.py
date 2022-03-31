@@ -183,6 +183,13 @@ class Transaction(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "provider") and self.provider is not None and self.provider not in Transaction.get_enum_map()["provider"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in Transaction.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in Transaction.get_enum_map()["type"]:
+            return False
         # pattern checks
         return True
 
@@ -461,6 +468,14 @@ class Transaction(Model):
             "txId": "tx_id",
             "type": "type_",
             "vat": "vat",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "provider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "status": ["FINISHED", "FAILED"],
+            "type": ["AUTHORISATION", "CHARGE", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUND", "REFUND_FAILED"],
         }
 
     # endregion static methods

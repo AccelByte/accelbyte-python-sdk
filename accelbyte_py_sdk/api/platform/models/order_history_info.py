@@ -117,6 +117,9 @@ class OrderHistoryInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "action") and self.action is not None and self.action not in OrderHistoryInfo.get_enum_map()["action"]:
+            return False
         # pattern checks
         return True
 
@@ -256,6 +259,12 @@ class OrderHistoryInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "reason": "reason",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "action": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSE", "DELETED", "SET_STATUS"],
         }
 
     # endregion static methods

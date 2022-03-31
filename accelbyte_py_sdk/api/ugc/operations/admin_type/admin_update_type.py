@@ -169,9 +169,8 @@ class AdminUpdateType(Operation):
             return False
         if not hasattr(self, "type_id") or self.type_id is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

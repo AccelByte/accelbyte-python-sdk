@@ -83,6 +83,7 @@ class ModelsEventRegistry(Model):
             return False
         if not hasattr(self, "ux") or self.ux is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

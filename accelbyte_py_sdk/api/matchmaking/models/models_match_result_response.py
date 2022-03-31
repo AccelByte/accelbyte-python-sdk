@@ -67,6 +67,7 @@ class ModelsMatchResultResponse(Model):
             return False
         if not hasattr(self, "players") or self.players is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

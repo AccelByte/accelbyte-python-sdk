@@ -97,6 +97,9 @@ class BulkUserStatItemUpdate(Model):
             return False
         if not hasattr(self, "value") or self.value is None:
             return False
+        # enum checks
+        if hasattr(self, "update_strategy") and self.update_strategy is not None and self.update_strategy not in BulkUserStatItemUpdate.get_enum_map()["updateStrategy"]:
+            return False
         # pattern checks
         return True
 
@@ -215,6 +218,12 @@ class BulkUserStatItemUpdate(Model):
             "value": "value",
             "additionalData": "additional_data",
             "additionalKey": "additional_key",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "updateStrategy": ["OVERRIDE", "INCREMENT", "MAX", "MIN"],
         }
 
     # endregion static methods

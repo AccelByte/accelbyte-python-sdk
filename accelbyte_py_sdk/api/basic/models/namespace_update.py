@@ -56,6 +56,7 @@ class NamespaceUpdate(Model):
         # required checks
         if not hasattr(self, "display_name") or self.display_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -358,6 +358,11 @@ class Order(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in Order.get_enum_map()["paymentProvider"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in Order.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -936,6 +941,13 @@ class Order(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "vat": "vat",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],
         }
 
     # endregion static methods

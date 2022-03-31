@@ -133,6 +133,7 @@ class ModelsChannelRequest(Model):
             return False
         if not hasattr(self, "session_queue_timeout_seconds") or self.session_queue_timeout_seconds is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

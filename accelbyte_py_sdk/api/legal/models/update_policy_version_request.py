@@ -74,6 +74,7 @@ class UpdatePolicyVersionRequest(Model):
             return False
         if not hasattr(self, "is_committed") or self.is_committed is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

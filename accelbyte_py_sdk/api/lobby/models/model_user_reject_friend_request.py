@@ -56,6 +56,7 @@ class ModelUserRejectFriendRequest(Model):
         # required checks
         if not hasattr(self, "friend_id") or self.friend_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

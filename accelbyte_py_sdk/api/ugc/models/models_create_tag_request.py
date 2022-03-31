@@ -56,6 +56,7 @@ class ModelsCreateTagRequest(Model):
         # required checks
         if not hasattr(self, "tag") or self.tag is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

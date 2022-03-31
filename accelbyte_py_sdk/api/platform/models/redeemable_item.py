@@ -79,6 +79,7 @@ class RedeemableItem(Model):
             return False
         if not hasattr(self, "item_name") or self.item_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

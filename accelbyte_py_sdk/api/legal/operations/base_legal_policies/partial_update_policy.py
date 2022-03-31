@@ -152,9 +152,8 @@ class PartialUpdatePolicy(Operation):
         # required checks
         if not hasattr(self, "base_policy_id") or self.base_policy_id is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

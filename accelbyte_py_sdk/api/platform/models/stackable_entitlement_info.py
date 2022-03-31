@@ -250,6 +250,17 @@ class StackableEntitlementInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "clazz") and self.clazz is not None and self.clazz not in StackableEntitlementInfo.get_enum_map()["clazz"]:
+            return False
+        if hasattr(self, "source") and self.source is not None and self.source not in StackableEntitlementInfo.get_enum_map()["source"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in StackableEntitlementInfo.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in StackableEntitlementInfo.get_enum_map()["type"]:
+            return False
+        if hasattr(self, "app_type") and self.app_type is not None and self.app_type not in StackableEntitlementInfo.get_enum_map()["appType"]:
+            return False
         # pattern checks
         return True
 
@@ -587,6 +598,16 @@ class StackableEntitlementInfo(Model):
             "startDate": "start_date",
             "storeId": "store_id",
             "useCount": "use_count",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "clazz": ["APP", "ENTITLEMENT", "CODE", "SUBSCRIPTION", "MEDIA"],
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "OTHER"],
+            "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
+            "type": ["DURABLE", "CONSUMABLE"],
+            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
         }
 
     # endregion static methods

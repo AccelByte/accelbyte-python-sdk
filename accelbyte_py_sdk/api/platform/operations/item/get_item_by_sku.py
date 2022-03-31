@@ -168,6 +168,7 @@ class GetItemBySku(Operation):
             return False
         if not hasattr(self, "sku") or self.sku is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

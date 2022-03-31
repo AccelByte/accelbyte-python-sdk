@@ -135,6 +135,11 @@ class RewardInfo(Model):
             return False
         if not hasattr(self, "type_") or self.type_ is None:
             return False
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in RewardInfo.get_enum_map()["type"]:
+            return False
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in RewardInfo.get_enum_map()["itemType"]:
+            return False
         # pattern checks
         return True
 
@@ -313,6 +318,13 @@ class RewardInfo(Model):
             "itemSku": "item_sku",
             "itemType": "item_type",
             "quantity": "quantity",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["ITEM", "CURRENCY"],
+            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON"],
         }
 
     # endregion static methods

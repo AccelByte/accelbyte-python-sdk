@@ -56,6 +56,7 @@ class ModelsDequeueRequest(Model):
         # required checks
         if not hasattr(self, "match_id") or self.match_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

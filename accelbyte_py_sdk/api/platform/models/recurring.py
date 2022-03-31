@@ -83,6 +83,9 @@ class Recurring(Model):
             return False
         if not hasattr(self, "grace_days") or self.grace_days is None:
             return False
+        # enum checks
+        if hasattr(self, "cycle") and self.cycle is not None and self.cycle not in Recurring.get_enum_map()["cycle"]:
+            return False
         # pattern checks
         return True
 
@@ -177,6 +180,12 @@ class Recurring(Model):
             "fixedFreeDays": "fixed_free_days",
             "fixedTrialCycles": "fixed_trial_cycles",
             "graceDays": "grace_days",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "cycle": ["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY"],
         }
 
     # endregion static methods

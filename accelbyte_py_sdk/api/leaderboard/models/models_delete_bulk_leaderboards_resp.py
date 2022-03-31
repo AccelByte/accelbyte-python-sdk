@@ -58,6 +58,7 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
         # required checks
         if not hasattr(self, "failed") or self.failed is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

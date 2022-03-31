@@ -65,6 +65,7 @@ class OauthcommonUserRevocationListRecord(Model):
             return False
         if not hasattr(self, "revoked_at") or self.revoked_at is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -151,6 +151,7 @@ class LocalizedPassInfo(Model):
             return False
         if not hasattr(self, "updated_at") or self.updated_at is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

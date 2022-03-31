@@ -56,6 +56,7 @@ class ModelsDebugProfanityFilterRequest(Model):
         # required checks
         if not hasattr(self, "text") or self.text is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

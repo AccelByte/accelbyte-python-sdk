@@ -56,6 +56,7 @@ class ModelsDailyConfig(Model):
         # required checks
         if not hasattr(self, "reset_time") or self.reset_time is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

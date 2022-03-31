@@ -61,6 +61,9 @@ class PlatformDlcEntry(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "platform") and self.platform is not None and self.platform not in PlatformDlcEntry.get_enum_map()["platform"]:
+            return False
         # pattern checks
         return True
 
@@ -135,6 +138,12 @@ class PlatformDlcEntry(Model):
         return {
             "platform": "platform",
             "platformDlcIdMap": "platform_dlc_id_map",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "platform": ["PSN", "STEAM", "XBOX"],
         }
 
     # endregion static methods

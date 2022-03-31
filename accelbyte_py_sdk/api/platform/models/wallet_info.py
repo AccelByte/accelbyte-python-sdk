@@ -128,6 +128,9 @@ class WalletInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in WalletInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -277,6 +280,12 @@ class WalletInfo(Model):
             "status": "status",
             "updatedAt": "updated_at",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

@@ -166,6 +166,7 @@ class GetImagePatchDetail(Operation):
             return False
         if not hasattr(self, "version_patch") or self.version_patch is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

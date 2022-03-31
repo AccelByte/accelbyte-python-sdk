@@ -166,6 +166,11 @@ class QuerySeasons(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None:
+            valid_enum_values = QuerySeasons.get_enum_map()["status"]
+            if not all(x in valid_enum_values for x in self.status):
+                return False
         # pattern checks
         return True
 
@@ -299,6 +304,12 @@ class QuerySeasons(Operation):
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
             "status": "multi",                                                                     # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["DRAFT", "PUBLISHED", "RETIRED"],                                           # in query
         }
 
     # endregion static methods

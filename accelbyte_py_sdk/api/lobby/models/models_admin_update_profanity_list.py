@@ -74,6 +74,7 @@ class ModelsAdminUpdateProfanityList(Model):
             return False
         if not hasattr(self, "new_name") or self.new_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

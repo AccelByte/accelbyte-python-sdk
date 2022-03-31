@@ -65,6 +65,7 @@ class ModelCreateTopicRequestV1(Model):
             return False
         if not hasattr(self, "topic_name") or self.topic_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

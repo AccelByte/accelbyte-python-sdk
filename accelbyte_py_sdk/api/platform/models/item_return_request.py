@@ -56,6 +56,7 @@ class ItemReturnRequest(Model):
         # required checks
         if not hasattr(self, "order_no") or self.order_no is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

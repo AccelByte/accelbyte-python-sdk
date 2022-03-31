@@ -63,6 +63,7 @@ class GrantSubscriptionDaysRequest(Model):
         # required checks
         if not hasattr(self, "grant_days") or self.grant_days is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

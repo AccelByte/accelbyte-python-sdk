@@ -197,6 +197,7 @@ class AuthCodeRequestV3(Operation):
             return False
         if not hasattr(self, "request_id") or self.request_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

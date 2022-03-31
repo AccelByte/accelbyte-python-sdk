@@ -78,6 +78,9 @@ class PlatformReward(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in PlatformReward.get_enum_map()["type"]:
+            return False
         # pattern checks
         return True
 
@@ -176,6 +179,12 @@ class PlatformReward(Model):
             "item": "item",
             "quantity": "quantity",
             "type": "type_",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["ITEM", "CURRENCY"],
         }
 
     # endregion static methods

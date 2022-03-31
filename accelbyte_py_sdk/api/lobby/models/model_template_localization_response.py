@@ -94,6 +94,7 @@ class ModelTemplateLocalizationResponse(Model):
             return False
         if not hasattr(self, "template_localization") or self.template_localization is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

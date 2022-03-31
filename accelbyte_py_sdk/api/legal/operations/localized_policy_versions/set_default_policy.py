@@ -137,6 +137,7 @@ class SetDefaultPolicy(Operation):
         # required checks
         if not hasattr(self, "localized_policy_version_id") or self.localized_policy_version_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

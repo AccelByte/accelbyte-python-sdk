@@ -206,8 +206,11 @@ class ExternalPaymentOrderCreate(Model):
             return False
         if not hasattr(self, "title") or self.title is None:
             return False
+        # enum checks
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in ExternalPaymentOrderCreate.get_enum_map()["itemType"]:
+            return False
         # pattern checks
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 
@@ -504,6 +507,12 @@ class ExternalPaymentOrderCreate(Model):
             "sandbox": "sandbox",
             "sku": "sku",
             "subscriptionId": "subscription_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
         }
 
     # endregion static methods

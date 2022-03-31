@@ -126,6 +126,7 @@ class CreateBasePolicyResponse(Model):
         # required checks
         if not hasattr(self, "id_") or self.id_ is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

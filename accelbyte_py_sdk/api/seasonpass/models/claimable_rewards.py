@@ -65,6 +65,7 @@ class ClaimableRewards(Model):
             return False
         if not hasattr(self, "to_claim_rewards") or self.to_claim_rewards is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

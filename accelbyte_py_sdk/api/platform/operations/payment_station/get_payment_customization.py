@@ -165,6 +165,9 @@ class GetPaymentCustomization(Operation):
             return False
         if not hasattr(self, "region") or self.region is None:
             return False
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in GetPaymentCustomization.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -286,6 +289,12 @@ class GetPaymentCustomization(Operation):
             "sandbox": "sandbox",
             "paymentProvider": "payment_provider",
             "region": "region",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
         }
 
     # endregion static methods

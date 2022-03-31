@@ -247,6 +247,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
             return False
         if not hasattr(self, "return_url") or self.return_url is None:
             return False
+        # enum checks
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PublicNormalizePaymentReturnUrl.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -570,6 +573,12 @@ class PublicNormalizePaymentReturnUrl(Operation):
             "paymentOrderNo": "payment_order_no",
             "paymentProvider": "payment_provider",
             "returnUrl": "return_url",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
         }
 
     # endregion static methods

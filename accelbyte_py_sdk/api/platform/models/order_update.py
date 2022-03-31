@@ -65,6 +65,9 @@ class OrderUpdate(Model):
             return False
         if not hasattr(self, "status_reason") or self.status_reason is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in OrderUpdate.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -137,6 +140,12 @@ class OrderUpdate(Model):
         return {
             "status": "status",
             "statusReason": "status_reason",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],
         }
 
     # endregion static methods

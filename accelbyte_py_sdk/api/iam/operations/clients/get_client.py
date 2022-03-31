@@ -142,6 +142,7 @@ class GetClient(Operation):
         # required checks
         if not hasattr(self, "client_id") or self.client_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

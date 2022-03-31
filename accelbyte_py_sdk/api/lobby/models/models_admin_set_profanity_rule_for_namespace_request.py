@@ -56,6 +56,7 @@ class ModelsAdminSetProfanityRuleForNamespaceRequest(Model):
         # required checks
         if not hasattr(self, "rule") or self.rule is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

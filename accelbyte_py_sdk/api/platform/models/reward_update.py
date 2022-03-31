@@ -109,6 +109,7 @@ class RewardUpdate(Model):
             return False
         if not hasattr(self, "reward_code") or self.reward_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

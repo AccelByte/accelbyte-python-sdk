@@ -124,6 +124,9 @@ class KeyGroupInfo(Model):
             return False
         if not hasattr(self, "updated_at") or self.updated_at is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in KeyGroupInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -275,6 +278,12 @@ class KeyGroupInfo(Model):
             "updatedAt": "updated_at",
             "description": "description",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

@@ -148,6 +148,7 @@ class PublicGetQRCode(Operation):
             return False
         if not hasattr(self, "code") or self.code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

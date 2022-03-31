@@ -74,6 +74,7 @@ class ModelUserRolesV4Response(Model):
             return False
         if not hasattr(self, "role_name") or self.role_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

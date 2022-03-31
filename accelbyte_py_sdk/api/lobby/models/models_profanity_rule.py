@@ -65,6 +65,7 @@ class ModelsProfanityRule(Model):
             return False
         if not hasattr(self, "rule") or self.rule is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -65,6 +65,7 @@ class ModelsBlockedPlayerData(Model):
             return False
         if not hasattr(self, "blocked_user_id") or self.blocked_user_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

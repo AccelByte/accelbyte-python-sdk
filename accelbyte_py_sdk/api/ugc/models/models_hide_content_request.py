@@ -56,6 +56,7 @@ class ModelsHideContentRequest(Model):
         # required checks
         if not hasattr(self, "is_hidden") or self.is_hidden is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

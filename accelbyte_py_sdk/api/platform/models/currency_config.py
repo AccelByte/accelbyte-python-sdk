@@ -56,6 +56,7 @@ class CurrencyConfig(Model):
         # required checks
         if not hasattr(self, "currency_symbol") or self.currency_symbol is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

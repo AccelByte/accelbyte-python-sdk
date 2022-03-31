@@ -83,6 +83,7 @@ class ModelsPagination(Model):
             return False
         if not hasattr(self, "previous") or self.previous is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

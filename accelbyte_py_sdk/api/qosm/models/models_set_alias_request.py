@@ -56,6 +56,7 @@ class ModelsSetAliasRequest(Model):
         # required checks
         if not hasattr(self, "alias") or self.alias is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

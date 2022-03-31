@@ -74,6 +74,7 @@ class ModelResetPasswordRequest(Model):
             return False
         if not hasattr(self, "new_password") or self.new_password is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

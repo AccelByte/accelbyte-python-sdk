@@ -74,6 +74,7 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
             return False
         if not hasattr(self, "user_ids") or self.user_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

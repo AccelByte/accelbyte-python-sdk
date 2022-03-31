@@ -58,6 +58,7 @@ class ModelsMatchOptionRule(Model):
         # required checks
         if not hasattr(self, "options") or self.options is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

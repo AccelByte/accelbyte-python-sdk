@@ -189,6 +189,7 @@ class ModelsMatchMaking(Model):
             return False
         if not hasattr(self, "status") or self.status is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

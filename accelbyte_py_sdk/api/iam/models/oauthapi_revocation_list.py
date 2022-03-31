@@ -68,6 +68,7 @@ class OauthapiRevocationList(Model):
             return False
         if not hasattr(self, "revoked_users") or self.revoked_users is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -74,6 +74,7 @@ class UserRewardClaim(Model):
             return False
         if not hasattr(self, "tier_index") or self.tier_index is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

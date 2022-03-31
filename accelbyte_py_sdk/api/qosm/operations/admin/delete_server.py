@@ -146,6 +146,7 @@ class DeleteServer(Operation):
         # required checks
         if not hasattr(self, "region") or self.region is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

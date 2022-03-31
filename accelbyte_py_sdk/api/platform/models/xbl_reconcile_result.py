@@ -82,6 +82,9 @@ class XblReconcileResult(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "iap_order_status") and self.iap_order_status is not None and self.iap_order_status not in XblReconcileResult.get_enum_map()["iapOrderStatus"]:
+            return False
         # pattern checks
         return True
 
@@ -192,6 +195,12 @@ class XblReconcileResult(Model):
             "sku": "sku",
             "transactionId": "transaction_id",
             "xboxProductId": "xbox_product_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "iapOrderStatus": ["VERIFIED", "FULFILLED", "FAILED"],
         }
 
     # endregion static methods

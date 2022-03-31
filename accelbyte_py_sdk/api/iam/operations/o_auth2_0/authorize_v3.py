@@ -259,6 +259,11 @@ class AuthorizeV3(Operation):
             return False
         if not hasattr(self, "response_type") or self.response_type is None:
             return False
+        # enum checks
+        if hasattr(self, "code_challenge_method") and self.code_challenge_method is not None and self.code_challenge_method not in AuthorizeV3.get_enum_map()["code_challenge_method"]:
+            return False
+        if hasattr(self, "response_type") and self.response_type is not None and self.response_type not in AuthorizeV3.get_enum_map()["response_type"]:
+            return False
         # pattern checks
         return True
 
@@ -453,6 +458,13 @@ class AuthorizeV3(Operation):
             "target_auth_page": "target_auth_page",
             "client_id": "client_id",
             "response_type": "response_type",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "code_challenge_method": ["S256", "plain"],                                            # in query
+            "response_type": ["code"],                                                             # in query
         }
 
     # endregion static methods

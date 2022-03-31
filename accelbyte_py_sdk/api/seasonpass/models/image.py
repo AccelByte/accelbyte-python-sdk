@@ -95,6 +95,7 @@ class Image(Model):
             return False
         if not hasattr(self, "width") or self.width is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

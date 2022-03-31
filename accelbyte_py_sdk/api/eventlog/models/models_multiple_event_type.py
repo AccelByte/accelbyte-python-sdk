@@ -58,6 +58,7 @@ class ModelsMultipleEventType(Model):
         # required checks
         if not hasattr(self, "event_type") or self.event_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

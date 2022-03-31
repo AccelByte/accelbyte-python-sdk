@@ -92,6 +92,9 @@ class CurrencySummary(Model):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "currency_type") and self.currency_type is not None and self.currency_type not in CurrencySummary.get_enum_map()["currencyType"]:
+            return False
         # pattern checks
         return True
 
@@ -197,6 +200,12 @@ class CurrencySummary(Model):
             "currencyType": "currency_type",
             "decimals": "decimals",
             "namespace": "namespace",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "currencyType": ["REAL", "VIRTUAL"],
         }
 
     # endregion static methods

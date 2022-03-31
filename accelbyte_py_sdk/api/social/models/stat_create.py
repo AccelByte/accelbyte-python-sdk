@@ -125,6 +125,9 @@ class StatCreate(Model):
             return False
         if not hasattr(self, "stat_code") or self.stat_code is None:
             return False
+        # enum checks
+        if hasattr(self, "set_by") and self.set_by is not None and self.set_by not in StatCreate.get_enum_map()["setBy"]:
+            return False
         # pattern checks
         return True
 
@@ -291,6 +294,12 @@ class StatCreate(Model):
             "minimum": "minimum",
             "setAsGlobal": "set_as_global",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "setBy": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

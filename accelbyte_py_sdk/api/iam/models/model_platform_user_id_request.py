@@ -56,6 +56,7 @@ class ModelPlatformUserIDRequest(Model):
         # required checks
         if not hasattr(self, "platform_user_ids") or self.platform_user_ids is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

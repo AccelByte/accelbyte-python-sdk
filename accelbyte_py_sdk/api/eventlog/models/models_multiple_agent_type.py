@@ -58,6 +58,7 @@ class ModelsMultipleAgentType(Model):
         # required checks
         if not hasattr(self, "agent_types") or self.agent_types is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

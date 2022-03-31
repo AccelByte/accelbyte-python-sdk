@@ -163,6 +163,7 @@ class Verify2faCode(Operation):
             return False
         if not hasattr(self, "remember_device") or self.remember_device is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

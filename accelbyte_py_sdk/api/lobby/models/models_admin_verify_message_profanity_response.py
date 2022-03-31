@@ -65,6 +65,7 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
             return False
         if not hasattr(self, "has_profanity") or self.has_profanity is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -56,6 +56,7 @@ class PlaystationIAPConfigRequest(Model):
         # required checks
         if not hasattr(self, "environment") or self.environment is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

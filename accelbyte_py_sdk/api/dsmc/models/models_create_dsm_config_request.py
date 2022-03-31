@@ -128,6 +128,7 @@ class ModelsCreateDSMConfigRequest(Model):
             return False
         if not hasattr(self, "unreachable_timeout") or self.unreachable_timeout is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

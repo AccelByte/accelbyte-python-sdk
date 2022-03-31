@@ -140,6 +140,7 @@ class LoginSSOClient(Operation):
         # required checks
         if not hasattr(self, "platform_id") or self.platform_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

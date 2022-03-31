@@ -63,6 +63,7 @@ class TestResult(Model):
         # required checks
         if not hasattr(self, "success") or self.success is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

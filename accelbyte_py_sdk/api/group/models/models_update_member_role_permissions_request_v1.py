@@ -58,6 +58,7 @@ class ModelsUpdateMemberRolePermissionsRequestV1(Model):
         # required checks
         if not hasattr(self, "member_role_permissions") or self.member_role_permissions is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

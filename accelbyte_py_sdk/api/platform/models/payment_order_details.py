@@ -122,6 +122,7 @@ class PaymentOrderDetails(Model):
             return False
         if not hasattr(self, "title") or self.title is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

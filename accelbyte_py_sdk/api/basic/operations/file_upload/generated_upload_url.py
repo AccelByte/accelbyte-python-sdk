@@ -173,6 +173,7 @@ class GeneratedUploadUrl(Operation):
             return False
         if not hasattr(self, "file_type") or self.file_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

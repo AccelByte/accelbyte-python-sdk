@@ -65,6 +65,7 @@ class ModelsCreateTypeRequest(Model):
             return False
         if not hasattr(self, "type_") or self.type_ is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

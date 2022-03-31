@@ -74,6 +74,7 @@ class ModelsGetUserVisibilityResponse(Model):
             return False
         if not hasattr(self, "visibility") or self.visibility is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

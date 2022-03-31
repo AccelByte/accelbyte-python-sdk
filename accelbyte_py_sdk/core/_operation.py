@@ -183,4 +183,8 @@ class Operation:
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {}
 
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {}
+
     # endregion overrideable members

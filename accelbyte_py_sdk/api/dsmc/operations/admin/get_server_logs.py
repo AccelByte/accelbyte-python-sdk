@@ -160,6 +160,7 @@ class GetServerLogs(Operation):
             return False
         if not hasattr(self, "pod_name") or self.pod_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

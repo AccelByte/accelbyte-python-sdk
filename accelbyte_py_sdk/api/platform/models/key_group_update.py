@@ -77,6 +77,9 @@ class KeyGroupUpdate(Model):
         # required checks
         if not hasattr(self, "name") or self.name is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in KeyGroupUpdate.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -174,6 +177,12 @@ class KeyGroupUpdate(Model):
             "description": "description",
             "status": "status",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

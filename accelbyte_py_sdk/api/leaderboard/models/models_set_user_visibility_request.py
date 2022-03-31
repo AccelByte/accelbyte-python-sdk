@@ -56,6 +56,7 @@ class ModelsSetUserVisibilityRequest(Model):
         # required checks
         if not hasattr(self, "visibility") or self.visibility is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

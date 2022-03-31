@@ -65,6 +65,7 @@ class SteamIAPConfigInfo(Model):
             return False
         if not hasattr(self, "publisher_authentication_key") or self.publisher_authentication_key is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

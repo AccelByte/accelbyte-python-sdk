@@ -70,6 +70,7 @@ class RecurringChargeResult(Model):
         # required checks
         if not hasattr(self, "triggered") or self.triggered is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

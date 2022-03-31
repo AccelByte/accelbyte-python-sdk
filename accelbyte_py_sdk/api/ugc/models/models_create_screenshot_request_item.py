@@ -74,6 +74,9 @@ class ModelsCreateScreenshotRequestItem(Model):
             return False
         if not hasattr(self, "file_extension") or self.file_extension is None:
             return False
+        # enum checks
+        if hasattr(self, "file_extension") and self.file_extension is not None and self.file_extension not in ModelsCreateScreenshotRequestItem.get_enum_map()["fileExtension"]:
+            return False
         # pattern checks
         return True
 
@@ -157,6 +160,12 @@ class ModelsCreateScreenshotRequestItem(Model):
             "contentType": "content_type",
             "description": "description",
             "fileExtension": "file_extension",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "fileExtension": ["pjp", "jpg", "jpeg", "jfif", "bmp", "png"],
         }
 
     # endregion static methods

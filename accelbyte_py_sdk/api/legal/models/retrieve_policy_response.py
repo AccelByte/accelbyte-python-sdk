@@ -154,6 +154,7 @@ class RetrievePolicyResponse(Model):
             return False
         if not hasattr(self, "should_notify_on_update") or self.should_notify_on_update is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -127,6 +127,7 @@ class PolicyVersionWithLocalizedVersionObject(Model):
             return False
         if not hasattr(self, "is_in_effect") or self.is_in_effect is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

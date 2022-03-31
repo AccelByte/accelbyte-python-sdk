@@ -56,6 +56,7 @@ class ModelsServerLogs(Model):
         # required checks
         if not hasattr(self, "logs") or self.logs is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

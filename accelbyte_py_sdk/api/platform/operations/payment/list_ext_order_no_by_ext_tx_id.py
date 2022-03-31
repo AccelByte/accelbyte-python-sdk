@@ -152,6 +152,7 @@ class ListExtOrderNoByExtTxId(Operation):
             return False
         if not hasattr(self, "ext_tx_id") or self.ext_tx_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

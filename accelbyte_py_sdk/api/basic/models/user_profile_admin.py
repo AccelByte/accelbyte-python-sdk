@@ -124,10 +124,13 @@ class UserProfileAdmin(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
-        # pattern checks
-        if hasattr(self, "date_of_birth") and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in UserProfileAdmin.get_enum_map()["status"]:
             return False
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        # pattern checks
+        if hasattr(self, "date_of_birth") and self.date_of_birth is not None and not re.match(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", self.date_of_birth):
+            return False
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 
@@ -310,6 +313,12 @@ class UserProfileAdmin(Model):
             "status": "status",
             "timeZone": "time_zone",
             "zipCode": "zip_code",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

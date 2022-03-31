@@ -265,6 +265,7 @@ class ModelsServer(Model):
             return False
         if not hasattr(self, "status_history") or self.status_history is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

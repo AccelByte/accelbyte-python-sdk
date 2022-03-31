@@ -67,6 +67,7 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
             return False
         if not hasattr(self, "publisher_accounts") or self.publisher_accounts is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

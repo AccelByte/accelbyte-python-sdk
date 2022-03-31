@@ -56,6 +56,7 @@ class ModelCountryAgeRestrictionRequest(Model):
         # required checks
         if not hasattr(self, "age_restriction") or self.age_restriction is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -162,6 +162,7 @@ class PublicGetUserAppEntitlementOwnershipByAppId(Operation):
             return False
         if not hasattr(self, "app_id") or self.app_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

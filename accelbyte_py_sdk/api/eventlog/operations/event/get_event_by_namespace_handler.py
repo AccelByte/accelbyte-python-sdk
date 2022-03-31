@@ -186,6 +186,7 @@ class GetEventByNamespaceHandler(Operation):
             return False
         if not hasattr(self, "start_date") or self.start_date is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

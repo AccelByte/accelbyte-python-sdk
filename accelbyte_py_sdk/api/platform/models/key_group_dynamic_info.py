@@ -74,6 +74,7 @@ class KeyGroupDynamicInfo(Model):
             return False
         if not hasattr(self, "sale_count") or self.sale_count is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

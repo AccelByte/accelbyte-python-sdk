@@ -209,6 +209,7 @@ class ModelsConfigExport(Model):
             return False
         if not hasattr(self, "ready_consent_timeout") or self.ready_consent_timeout is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

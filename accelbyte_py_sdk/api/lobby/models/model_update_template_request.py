@@ -56,6 +56,7 @@ class ModelUpdateTemplateRequest(Model):
         # required checks
         if not hasattr(self, "template_content") or self.template_content is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

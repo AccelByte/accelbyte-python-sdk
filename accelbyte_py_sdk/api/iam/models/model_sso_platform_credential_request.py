@@ -119,6 +119,7 @@ class ModelSSOPlatformCredentialRequest(Model):
             return False
         if not hasattr(self, "sso_url") or self.sso_url is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -92,6 +92,7 @@ class ItemDynamicDataInfo(Model):
             return False
         if not hasattr(self, "user_purchase_limit") or self.user_purchase_limit is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

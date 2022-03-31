@@ -58,6 +58,7 @@ class AccountcommonBansV3(Model):
         # required checks
         if not hasattr(self, "bans") or self.bans is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -65,6 +65,7 @@ class ModelVerifyRegistrationCode(Model):
             return False
         if not hasattr(self, "email_address") or self.email_address is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

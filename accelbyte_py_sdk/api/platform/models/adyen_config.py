@@ -138,6 +138,7 @@ class AdyenConfig(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
         # pattern checks
         return True
 

@@ -90,6 +90,7 @@ class AccountcommonJWTBanV3(Model):
             return False
         if not hasattr(self, "targeted_namespace") or self.targeted_namespace is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -104,6 +104,9 @@ class PaymentOrderRefundResult(Model):
             return False
         if not hasattr(self, "status") or self.status is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in PaymentOrderRefundResult.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -234,6 +237,12 @@ class PaymentOrderRefundResult(Model):
             "refundedTime": "refunded_time",
             "targetNamespace": "target_namespace",
             "targetUserId": "target_user_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
         }
 
     # endregion static methods

@@ -82,6 +82,9 @@ class EntitlementUpdate(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in EntitlementUpdate.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -192,6 +195,12 @@ class EntitlementUpdate(Model):
             "startDate": "start_date",
             "status": "status",
             "useCount": "use_count",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
         }
 
     # endregion static methods

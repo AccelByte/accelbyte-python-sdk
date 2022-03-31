@@ -65,6 +65,7 @@ class ModelsEventType(Model):
             return False
         if not hasattr(self, "event_type") or self.event_type is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

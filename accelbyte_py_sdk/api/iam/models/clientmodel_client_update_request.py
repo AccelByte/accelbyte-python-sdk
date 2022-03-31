@@ -65,6 +65,7 @@ class ClientmodelClientUpdateRequest(Model):
             return False
         if not hasattr(self, "redirect_uri") or self.redirect_uri is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

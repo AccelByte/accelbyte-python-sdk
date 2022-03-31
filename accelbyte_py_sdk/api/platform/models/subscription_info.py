@@ -378,6 +378,13 @@ class SubscriptionInfo(Model):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "charge_status") and self.charge_status is not None and self.charge_status not in SubscriptionInfo.get_enum_map()["chargeStatus"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in SubscriptionInfo.get_enum_map()["status"]:
+            return False
+        if hasattr(self, "subscribed_by") and self.subscribed_by is not None and self.subscribed_by not in SubscriptionInfo.get_enum_map()["subscribedBy"]:
+            return False
         # pattern checks
         return True
 
@@ -932,6 +939,14 @@ class SubscriptionInfo(Model):
             "trialedCycles": "trialed_cycles",
             "unsubscribeReason": "unsubscribe_reason",
             "unsubscribedAt": "unsubscribed_at",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "chargeStatus": ["NEVER", "SETUP", "RECURRING_CHARGING", "CHARGED", "CHARGE_FAILED"],
+            "status": ["INIT", "ACTIVE", "CANCELLED", "EXPIRED"],
+            "subscribedBy": ["USER", "PLATFORM"],
         }
 
     # endregion static methods

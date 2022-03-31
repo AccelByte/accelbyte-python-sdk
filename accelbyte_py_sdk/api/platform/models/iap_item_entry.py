@@ -68,6 +68,9 @@ class IAPItemEntry(Model):
     def is_valid(self) -> bool:
         # pylint: disable=no-self-use
         # required checks
+        # enum checks
+        if hasattr(self, "item_identity_type") and self.item_identity_type is not None and self.item_identity_type not in IAPItemEntry.get_enum_map()["itemIdentityType"]:
+            return False
         # pattern checks
         return True
 
@@ -154,6 +157,12 @@ class IAPItemEntry(Model):
             "itemIdentity": "item_identity",
             "itemIdentityType": "item_identity_type",
             "platformProductIdMap": "platform_product_id_map",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],
         }
 
     # endregion static methods

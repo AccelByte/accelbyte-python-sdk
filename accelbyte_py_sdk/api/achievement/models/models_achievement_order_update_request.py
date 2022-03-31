@@ -56,6 +56,7 @@ class ModelsAchievementOrderUpdateRequest(Model):
         # required checks
         if not hasattr(self, "target_order") or self.target_order is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

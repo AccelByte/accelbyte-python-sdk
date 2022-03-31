@@ -98,6 +98,9 @@ class FulfillmentItem(Model):
         # required checks
         if not hasattr(self, "quantity") or self.quantity is None:
             return False
+        # enum checks
+        if hasattr(self, "item_type") and self.item_type is not None and self.item_type not in FulfillmentItem.get_enum_map()["itemType"]:
+            return False
         # pattern checks
         return True
 
@@ -231,6 +234,12 @@ class FulfillmentItem(Model):
             "itemSku": "item_sku",
             "itemType": "item_type",
             "storeId": "store_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
         }
 
     # endregion static methods

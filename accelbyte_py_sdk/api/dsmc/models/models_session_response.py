@@ -58,6 +58,7 @@ class ModelsSessionResponse(Model):
         # required checks
         if not hasattr(self, "session") or self.session is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

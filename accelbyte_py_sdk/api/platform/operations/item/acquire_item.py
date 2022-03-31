@@ -161,9 +161,8 @@ class AcquireItem(Operation):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and not self.body.is_valid():
-            return False
         return True
 
     # endregion is/has methods

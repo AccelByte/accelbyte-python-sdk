@@ -170,6 +170,7 @@ class UserAuthenticationV3(Operation):
             return False
         if not hasattr(self, "user_name") or self.user_name is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -56,6 +56,9 @@ class NamespaceStatusUpdate(Model):
         # required checks
         if not hasattr(self, "status") or self.status is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in NamespaceStatusUpdate.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -117,6 +120,12 @@ class NamespaceStatusUpdate(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

@@ -74,6 +74,7 @@ class ModelsCreateTagResponse(Model):
             return False
         if not hasattr(self, "tag") or self.tag is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

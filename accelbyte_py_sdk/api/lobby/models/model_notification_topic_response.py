@@ -83,6 +83,7 @@ class ModelNotificationTopicResponse(Model):
             return False
         if not hasattr(self, "topic") or self.topic is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

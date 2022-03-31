@@ -56,6 +56,7 @@ class TicketDynamicInfo(Model):
         # required checks
         if not hasattr(self, "available_sale_count") or self.available_sale_count is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

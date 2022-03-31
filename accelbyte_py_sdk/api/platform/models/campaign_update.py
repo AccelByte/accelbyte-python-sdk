@@ -135,6 +135,11 @@ class CampaignUpdate(Model):
         # required checks
         if not hasattr(self, "name") or self.name is None:
             return False
+        # enum checks
+        if hasattr(self, "redeem_type") and self.redeem_type is not None and self.redeem_type not in CampaignUpdate.get_enum_map()["redeemType"]:
+            return False
+        if hasattr(self, "status") and self.status is not None and self.status not in CampaignUpdate.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -328,6 +333,13 @@ class CampaignUpdate(Model):
             "redeemType": "redeem_type",
             "status": "status",
             "tags": "tags",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "redeemType": ["ITEM"],
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

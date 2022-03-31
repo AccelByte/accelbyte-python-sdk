@@ -174,6 +174,9 @@ class PublicQueryUserOrders(Operation):
             return False
         if not hasattr(self, "user_id") or self.user_id is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in PublicQueryUserOrders.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -328,6 +331,12 @@ class PublicQueryUserOrders(Operation):
             "limit": "limit",
             "offset": "offset",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CLOSED", "DELETED", "FULFILLED", "FULFILL_FAILED", "INIT", "REFUNDED", "REFUNDING", "REFUND_FAILED"],# in query
         }
 
     # endregion static methods

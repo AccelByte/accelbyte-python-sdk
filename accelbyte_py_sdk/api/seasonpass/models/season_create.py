@@ -142,6 +142,7 @@ class SeasonCreate(Model):
             return False
         if not hasattr(self, "tier_item_id") or self.tier_item_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

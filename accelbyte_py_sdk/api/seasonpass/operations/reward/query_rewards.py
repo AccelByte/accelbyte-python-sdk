@@ -165,6 +165,7 @@ class QueryRewards(Operation):
             return False
         if not hasattr(self, "season_id") or self.season_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

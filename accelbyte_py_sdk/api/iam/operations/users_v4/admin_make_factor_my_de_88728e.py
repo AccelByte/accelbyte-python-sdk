@@ -147,6 +147,7 @@ class AdminMakeFactorMyDefaultV4(Operation):
         # required checks
         if not hasattr(self, "factor") or self.factor is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

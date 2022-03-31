@@ -83,6 +83,7 @@ class ModelVerificationCodeResponse(Model):
             return False
         if not hasattr(self, "update_email") or self.update_email is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

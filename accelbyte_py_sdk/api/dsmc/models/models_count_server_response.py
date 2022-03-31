@@ -56,6 +56,7 @@ class ModelsCountServerResponse(Model):
         # required checks
         if not hasattr(self, "count") or self.count is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

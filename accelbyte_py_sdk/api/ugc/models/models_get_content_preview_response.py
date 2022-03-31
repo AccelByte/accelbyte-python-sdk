@@ -56,6 +56,7 @@ class ModelsGetContentPreviewResponse(Model):
         # required checks
         if not hasattr(self, "preview") or self.preview is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

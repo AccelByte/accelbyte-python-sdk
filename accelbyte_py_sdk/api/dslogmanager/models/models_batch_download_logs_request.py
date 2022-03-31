@@ -58,6 +58,7 @@ class ModelsBatchDownloadLogsRequest(Model):
         # required checks
         if not hasattr(self, "downloads") or self.downloads is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

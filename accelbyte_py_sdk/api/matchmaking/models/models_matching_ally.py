@@ -58,6 +58,7 @@ class ModelsMatchingAlly(Model):
         # required checks
         if not hasattr(self, "matching_parties") or self.matching_parties is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

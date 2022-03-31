@@ -83,6 +83,7 @@ class ModelsFlexingRule(Model):
             return False
         if not hasattr(self, "reference") or self.reference is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

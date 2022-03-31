@@ -150,6 +150,7 @@ class AdminDeleteType(Operation):
             return False
         if not hasattr(self, "type_id") or self.type_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

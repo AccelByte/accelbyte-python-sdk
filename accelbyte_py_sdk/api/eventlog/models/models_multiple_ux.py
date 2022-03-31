@@ -58,6 +58,7 @@ class ModelsMultipleUX(Model):
         # required checks
         if not hasattr(self, "ux") or self.ux is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

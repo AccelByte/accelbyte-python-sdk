@@ -74,6 +74,7 @@ class ModelsCountActiveSessionResponse(Model):
             return False
         if not hasattr(self, "total") or self.total is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -58,6 +58,7 @@ class AccountcommonClientPermissionsV3(Model):
         # required checks
         if not hasattr(self, "permissions") or self.permissions is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

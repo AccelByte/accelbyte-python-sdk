@@ -56,6 +56,7 @@ class ModelsUpdateGroupCustomRuleRequestV1(Model):
         # required checks
         if not hasattr(self, "group_custom_rule") or self.group_custom_rule is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

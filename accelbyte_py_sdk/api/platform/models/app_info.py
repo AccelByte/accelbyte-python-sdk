@@ -173,6 +173,21 @@ class AppInfo(Model):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "genres") and self.genres is not None:
+            valid_enum_values = AppInfo.get_enum_map()["genres"]
+            if not all(x in valid_enum_values for x in self.genres):
+                return False
+        if hasattr(self, "platforms") and self.platforms is not None:
+            valid_enum_values = AppInfo.get_enum_map()["platforms"]
+            if not all(x in valid_enum_values for x in self.platforms):
+                return False
+        if hasattr(self, "players") and self.players is not None:
+            valid_enum_values = AppInfo.get_enum_map()["players"]
+            if not all(x in valid_enum_values for x in self.players):
+                return False
+        if hasattr(self, "primary_genre") and self.primary_genre is not None and self.primary_genre not in AppInfo.get_enum_map()["primaryGenre"]:
+            return False
         # pattern checks
         return True
 
@@ -425,6 +440,15 @@ class AppInfo(Model):
             "releaseDate": "release_date",
             "slogan": "slogan",
             "websiteUrl": "website_url",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "genres": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"],
+            "platforms": ["Windows", "MacOS", "Linux", "IOS", "Android"],
+            "players": ["Single", "Multi", "CrossPlatformMulti", "MMO", "Coop", "LocalCoop"],
+            "primaryGenre": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"],
         }
 
     # endregion static methods

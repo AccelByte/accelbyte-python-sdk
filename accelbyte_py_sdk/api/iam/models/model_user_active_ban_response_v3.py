@@ -74,6 +74,7 @@ class ModelUserActiveBanResponseV3(Model):
             return False
         if not hasattr(self, "end_date") or self.end_date is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

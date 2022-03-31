@@ -150,6 +150,7 @@ class RetrievePolicyCountry(Operation):
             return False
         if not hasattr(self, "country_code") or self.country_code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

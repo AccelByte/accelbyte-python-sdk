@@ -84,6 +84,9 @@ class CurrencyCreate(Model):
         # required checks
         if not hasattr(self, "currency_code") or self.currency_code is None:
             return False
+        # enum checks
+        if hasattr(self, "currency_type") and self.currency_type is not None and self.currency_type not in CurrencyCreate.get_enum_map()["currencyType"]:
+            return False
         # pattern checks
         return True
 
@@ -193,6 +196,12 @@ class CurrencyCreate(Model):
             "currencyType": "currency_type",
             "decimals": "decimals",
             "localizationDescriptions": "localization_descriptions",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "currencyType": ["REAL", "VIRTUAL"],
         }
 
     # endregion static methods

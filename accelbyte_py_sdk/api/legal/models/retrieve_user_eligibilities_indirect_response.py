@@ -56,6 +56,7 @@ class RetrieveUserEligibilitiesIndirectResponse(Model):
         # required checks
         if not hasattr(self, "is_comply") or self.is_comply is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

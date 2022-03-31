@@ -74,6 +74,7 @@ class ModelsAdditionalInfo(Model):
             return False
         if not hasattr(self, "number_of_visible_achievements") or self.number_of_visible_achievements is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

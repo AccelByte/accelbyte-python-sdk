@@ -72,6 +72,7 @@ class AcceptAgreementResponse(Model):
             return False
         if not hasattr(self, "proceed") or self.proceed is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

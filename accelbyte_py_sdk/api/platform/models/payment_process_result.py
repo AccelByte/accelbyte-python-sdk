@@ -79,6 +79,7 @@ class PaymentProcessResult(Model):
             return False
         if not hasattr(self, "success") or self.success is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

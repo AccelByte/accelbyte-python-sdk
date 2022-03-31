@@ -191,6 +191,7 @@ class JoinGroupV1(Operation):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

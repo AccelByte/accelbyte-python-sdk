@@ -74,6 +74,7 @@ class InGameItemSync(Model):
             return False
         if not hasattr(self, "target_namespace") or self.target_namespace is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

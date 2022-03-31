@@ -167,6 +167,7 @@ class DeleteAdminEmailConfiguration(Operation):
             return False
         if not hasattr(self, "emails") or self.emails is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

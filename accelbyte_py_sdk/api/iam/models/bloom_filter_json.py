@@ -74,6 +74,7 @@ class BloomFilterJSON(Model):
             return False
         if not hasattr(self, "m") or self.m is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

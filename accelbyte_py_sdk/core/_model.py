@@ -2,7 +2,7 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
-from typing import Dict
+from typing import Any, Dict, List, Union
 
 
 class Model:
@@ -25,5 +25,9 @@ class Model:
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         raise NotImplementedError
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {}
 
     # endregion overrideable members

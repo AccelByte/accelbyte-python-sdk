@@ -63,6 +63,7 @@ class RedeemRequest(Model):
         # required checks
         if not hasattr(self, "code") or self.code is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

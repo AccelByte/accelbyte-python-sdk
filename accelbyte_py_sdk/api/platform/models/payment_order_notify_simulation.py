@@ -95,6 +95,11 @@ class PaymentOrderNotifySimulation(Model):
             return False
         if not hasattr(self, "payment_provider") or self.payment_provider is None:
             return False
+        # enum checks
+        if hasattr(self, "notify_type") and self.notify_type is not None and self.notify_type not in PaymentOrderNotifySimulation.get_enum_map()["notifyType"]:
+            return False
+        if hasattr(self, "payment_provider") and self.payment_provider is not None and self.payment_provider not in PaymentOrderNotifySimulation.get_enum_map()["paymentProvider"]:
+            return False
         # pattern checks
         return True
 
@@ -214,6 +219,13 @@ class PaymentOrderNotifySimulation(Model):
             "amount": "amount",
             "salesTax": "sales_tax",
             "vat": "vat",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "notifyType": ["CHARGE", "REFUND"],
+            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }
 
     # endregion static methods

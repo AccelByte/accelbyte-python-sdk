@@ -68,6 +68,7 @@ class ModelsListPodConfigResponse(Model):
             return False
         if not hasattr(self, "pod_configs") or self.pod_configs is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -125,6 +125,13 @@ class PaymentProviderConfigInfo(Model):
             return False
         if not hasattr(self, "region") or self.region is None:
             return False
+        # enum checks
+        if hasattr(self, "aggregate") and self.aggregate is not None and self.aggregate not in PaymentProviderConfigInfo.get_enum_map()["aggregate"]:
+            return False
+        if hasattr(self, "specials") and self.specials is not None:
+            valid_enum_values = PaymentProviderConfigInfo.get_enum_map()["specials"]
+            if not all(x in valid_enum_values for x in self.specials):
+                return False
         # pattern checks
         return True
 
@@ -291,6 +298,13 @@ class PaymentProviderConfigInfo(Model):
             "taxJarApiToken": "tax_jar_api_token",
             "taxJarEnabled": "tax_jar_enabled",
             "useGlobalTaxJarApiToken": "use_global_tax_jar_api_token",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "aggregate": ["XSOLLA", "ADYEN"],
+            "specials": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
         }
 
     # endregion static methods

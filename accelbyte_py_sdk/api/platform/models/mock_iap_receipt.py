@@ -86,8 +86,13 @@ class MockIAPReceipt(Model):
             return False
         if not hasattr(self, "type_") or self.type_ is None:
             return False
+        # enum checks
+        if hasattr(self, "type_") and self.type_ is not None and self.type_ not in MockIAPReceipt.get_enum_map()["type"]:
+            return False
+        if hasattr(self, "item_identity_type") and self.item_identity_type is not None and self.item_identity_type not in MockIAPReceipt.get_enum_map()["itemIdentityType"]:
+            return False
         # pattern checks
-        if hasattr(self, "language") and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
+        if hasattr(self, "language") and self.language is not None and not re.match(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$", self.language):
             return False
         return True
 
@@ -196,6 +201,13 @@ class MockIAPReceipt(Model):
             "itemIdentityType": "item_identity_type",
             "language": "language",
             "region": "region",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "type": ["APPLE", "GOOGLE", "PLAYSTATION", "STEAM", "XBOX", "STADIA", "EPICGAMES", "TWITCH"],
+            "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],
         }
 
     # endregion static methods

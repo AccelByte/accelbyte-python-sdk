@@ -169,6 +169,9 @@ class ListKeys(Operation):
             return False
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in ListKeys.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -307,6 +310,12 @@ class ListKeys(Operation):
             "limit": "limit",
             "offset": "offset",
             "status": "status",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACQUIRED", "ACTIVE"],                                                      # in query
         }
 
     # endregion static methods

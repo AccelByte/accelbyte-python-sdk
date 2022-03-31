@@ -163,6 +163,7 @@ class ImportImages(Operation):
         # required checks
         if not hasattr(self, "file") or self.file is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

@@ -56,6 +56,7 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
         # required checks
         if not hasattr(self, "attributes") or self.attributes is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

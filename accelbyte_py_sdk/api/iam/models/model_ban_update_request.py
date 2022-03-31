@@ -65,6 +65,7 @@ class ModelBanUpdateRequest(Model):
             return False
         if not hasattr(self, "skip_notif") or self.skip_notif is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

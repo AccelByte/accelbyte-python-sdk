@@ -56,6 +56,7 @@ class ModelsAddDownloadCountResponse(Model):
         # required checks
         if not hasattr(self, "content_id") or self.content_id is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

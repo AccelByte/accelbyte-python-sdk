@@ -133,6 +133,9 @@ class KeyInfo(Model):
             return False
         if not hasattr(self, "value") or self.value is None:
             return False
+        # enum checks
+        if hasattr(self, "status") and self.status is not None and self.status not in KeyInfo.get_enum_map()["status"]:
+            return False
         # pattern checks
         return True
 
@@ -295,6 +298,12 @@ class KeyInfo(Model):
             "value": "value",
             "acquireOrderNo": "acquire_order_no",
             "acquireUserId": "acquire_user_id",
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, Union[None, List[Any]]]:
+        return {
+            "status": ["ACTIVE", "ACQUIRED"],
         }
 
     # endregion static methods

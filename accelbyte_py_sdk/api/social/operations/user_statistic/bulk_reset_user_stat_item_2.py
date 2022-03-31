@@ -154,9 +154,8 @@ class BulkResetUserStatItem2(Operation):
         # required checks
         if not hasattr(self, "namespace") or self.namespace is None:
             return False
+        # enum checks
         # pattern checks
-        if hasattr(self, "body") and any(not x.is_valid() for x in self.body):
-            return False
         return True
 
     # endregion is/has methods

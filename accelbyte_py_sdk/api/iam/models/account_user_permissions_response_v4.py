@@ -86,6 +86,7 @@ class AccountUserPermissionsResponseV4(Model):
             return False
         if not hasattr(self, "resource") or self.resource is None:
             return False
+        # enum checks
         # pattern checks
         return True
 

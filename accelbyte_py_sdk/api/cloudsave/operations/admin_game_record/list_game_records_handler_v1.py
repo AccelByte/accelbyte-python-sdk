@@ -175,6 +175,7 @@ class ListGameRecordsHandlerV1(Operation):
             return False
         if not hasattr(self, "offset") or self.offset is None:
             return False
+        # enum checks
         # pattern checks
         return True
 
