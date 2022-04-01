@@ -79,3 +79,5 @@ from ._core import get_http_client
 from ._core import set_http_client
 from ._core import run_request
 from ._core import run_request_async
+
+from ._strenum import StrEnum
