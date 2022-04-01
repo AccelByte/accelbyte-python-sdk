@@ -130,13 +130,6 @@ class QueryCodes(Operation):
             query_params=self.get_query_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "campaign_id",
-            "namespace",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

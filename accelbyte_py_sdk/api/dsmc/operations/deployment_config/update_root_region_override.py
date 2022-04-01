@@ -133,15 +133,6 @@ class UpdateRootRegionOverride(Operation):
             path_params=self.get_path_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "body",
-            "deployment",
-            "namespace",
-            "region",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

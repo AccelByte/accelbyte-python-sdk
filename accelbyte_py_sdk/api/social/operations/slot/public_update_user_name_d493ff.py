@@ -139,14 +139,6 @@ class PublicUpdateUserNamespaceSlot(Operation):
             collection_format_map=collection_format_map or self.get_collection_format_map(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "namespace",
-            "slot_id",
-            "user_id",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

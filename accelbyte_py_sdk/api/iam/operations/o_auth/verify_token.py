@@ -105,12 +105,6 @@ class VerifyToken(Operation):
             base_url=base_url,
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "token",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

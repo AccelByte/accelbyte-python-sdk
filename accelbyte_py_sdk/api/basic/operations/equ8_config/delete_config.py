@@ -105,12 +105,6 @@ class DeleteConfig(Operation):
             path_params=self.get_path_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "namespace",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

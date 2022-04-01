@@ -126,15 +126,6 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
             query_params=self.get_query_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "namespace",
-            "user_id",
-            "client_id",
-            "country_code",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods

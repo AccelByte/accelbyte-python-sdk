@@ -171,16 +171,6 @@ class PublicNormalizePaymentReturnUrl(Operation):
             query_params=self.get_query_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "namespace",
-            "order_no",
-            "payment_order_no",
-            "payment_provider",
-            "return_url",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods
