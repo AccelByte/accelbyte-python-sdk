@@ -21,7 +21,6 @@
 # justice-group-service (2.11.1)
 
 from __future__ import annotations
-import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
