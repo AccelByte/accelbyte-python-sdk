@@ -1,5 +1,6 @@
 import base64
 import re
+# from enum import StrEnum
 from typing import Any, Tuple, List, Union, Dict, Optional
 from unittest import TestCase
 
@@ -28,6 +29,8 @@ from accelbyte_py_sdk.core import remove_token
 from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import get_query_from_http_redirect_response
 
+from accelbyte_py_sdk.core import StrEnum
+
 
 class TestHttpClient(HttpClient):
 
@@ -53,6 +56,11 @@ class TestHttpClient(HttpClient):
             **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
+
+
+class TestEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
 
 
 class TestModel(Model):
@@ -128,7 +136,7 @@ class TestOperation(Operation):
         self.namespace = value
         return self
 
-    def with_statuses(self, value: List[str]):
+    def with_statuses(self, value: List[Union[str, TestEnum]]):
         self.statuses = value
         return self
 
@@ -487,8 +495,29 @@ class CoreTestCase(TestCase):
         is_valid, error = invalid_operation.is_valid()
         self.assertFalse(is_valid, error)
 
+        valid_operation = TestOperation().with_namespace("namespace") \
+            .with_statuses([TestEnum.INACTIVE])
+        is_valid, error = valid_operation.is_valid()
+        self.assertTrue(is_valid, error)
+
         valid_operation = TestOperation().with_body(TestModel().with_date_of_birth("2000-01-01")) \
             .with_namespace("namespace") \
             .with_statuses(["INACTIVE", "ACTIVE"])
         is_valid, error = valid_operation.is_valid()
         self.assertTrue(is_valid, error)
+
+    def test_str_enum(self):
+        class MenuEnum(StrEnum):
+            SPAM = "SPAM"
+            EGGS = "EGGS"
+
+        self.assertEqual(MenuEnum.SPAM, "SPAM")
+        self.assertNotEqual(MenuEnum.SPAM, "spAM")
+
+        self.assertEqual(str(MenuEnum.SPAM), "SPAM")
+
+        self.assertEqual([MenuEnum.SPAM, MenuEnum.EGGS], ["SPAM", "EGGS"])
+        self.assertNotEqual([MenuEnum.SPAM, MenuEnum.EGGS], ["spAM", "EGGS"])
+
+        self.assertEqual([str(e) for e in [MenuEnum.SPAM, MenuEnum.EGGS]], ["SPAM", "EGGS"])
+        self.assertEqual(list([MenuEnum.SPAM, MenuEnum.EGGS]), ["SPAM", "EGGS"])
