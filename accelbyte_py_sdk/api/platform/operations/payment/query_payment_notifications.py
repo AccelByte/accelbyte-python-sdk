@@ -26,8 +26,27 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import PaymentNotificationPagingSlicedResult
+
+
+class NotificationSourceEnum(StrEnum):
+    ADYEN = "ADYEN"
+    ALIPAY = "ALIPAY"
+    CHECKOUT = "CHECKOUT"
+    PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
+
+
+class StatusEnum(StrEnum):
+    ERROR = "ERROR"
+    IGNORED = "IGNORED"
+    PROCESSED = "PROCESSED"
+    WARN = "WARN"
 
 
 class QueryPaymentNotifications(Operation):

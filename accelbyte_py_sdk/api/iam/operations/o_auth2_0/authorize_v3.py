@@ -26,6 +26,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
+
+
+class CodeChallengeMethodEnum(StrEnum):
+    S256 = "S256"
+    PLAIN = "plain"
+
+
+class ResponseTypeEnum(StrEnum):
+    CODE = "code"
 
 
 class AuthorizeV3(Operation):

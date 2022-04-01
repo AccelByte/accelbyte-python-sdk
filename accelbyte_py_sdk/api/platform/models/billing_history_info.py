@@ -25,9 +25,18 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.billing_account import BillingAccount
 from ..models.currency_summary import CurrencySummary
+
+
+class StatusEnum(StrEnum):
+    INIT = "INIT"
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    REFUNDED = "REFUNDED"
+    REFUND_FAILED = "REFUND_FAILED"
 
 
 class BillingHistoryInfo(Model):

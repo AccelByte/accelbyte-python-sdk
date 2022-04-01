@@ -26,8 +26,17 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import TimedOwnership
+
+
+class EntitlementClazzEnum(StrEnum):
+    APP = "APP"
+    CODE = "CODE"
+    ENTITLEMENT = "ENTITLEMENT"
+    MEDIA = "MEDIA"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class GetUserEntitlementOwnershipByItemId(Operation):

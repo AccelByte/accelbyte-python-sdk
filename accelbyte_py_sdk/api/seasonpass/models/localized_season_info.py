@@ -25,11 +25,18 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.localized_pass_info import LocalizedPassInfo
 from ..models.reward_info import RewardInfo
 from ..models.tier import Tier
+
+
+class StatusEnum(StrEnum):
+    DRAFT = "DRAFT"
+    PUBLISHED = "PUBLISHED"
+    RETIRED = "RETIRED"
 
 
 class LocalizedSeasonInfo(Model):

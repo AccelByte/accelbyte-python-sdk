@@ -26,8 +26,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import RetrievePolicyPublicResponse
+
+
+class PolicyTypeEnum(StrEnum):
+    LEGAL_DOCUMENT_TYPE = "LEGAL_DOCUMENT_TYPE"
+    MARKETING_PREFERENCE_TYPE = "MARKETING_PREFERENCE_TYPE"
 
 
 class RetrieveLatestPolicies(Operation):

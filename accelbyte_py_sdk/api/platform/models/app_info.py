@@ -25,9 +25,55 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.requirement import Requirement
 from ..models.slide import Slide
+
+
+class GenresEnum(StrEnum):
+    ACTION = "Action"
+    ADVENTURE = "Adventure"
+    CASUAL = "Casual"
+    FREETOPLAY = "FreeToPlay"
+    INDIE = "Indie"
+    MASSIVELYMULTIPLAYER = "MassivelyMultiplayer"
+    RACING = "Racing"
+    RPG = "RPG"
+    SIMULATION = "Simulation"
+    SPORTS = "Sports"
+    STRATEGY = "Strategy"
+
+
+class PlatformsEnum(StrEnum):
+    WINDOWS = "Windows"
+    MACOS = "MacOS"
+    LINUX = "Linux"
+    IOS = "IOS"
+    ANDROID = "Android"
+
+
+class PlayersEnum(StrEnum):
+    SINGLE = "Single"
+    MULTI = "Multi"
+    CROSSPLATFORMMULTI = "CrossPlatformMulti"
+    MMO = "MMO"
+    COOP = "Coop"
+    LOCALCOOP = "LocalCoop"
+
+
+class PrimaryGenreEnum(StrEnum):
+    ACTION = "Action"
+    ADVENTURE = "Adventure"
+    CASUAL = "Casual"
+    FREETOPLAY = "FreeToPlay"
+    INDIE = "Indie"
+    MASSIVELYMULTIPLAYER = "MassivelyMultiplayer"
+    RACING = "Racing"
+    RPG = "RPG"
+    SIMULATION = "Simulation"
+    SPORTS = "Sports"
+    STRATEGY = "Strategy"
 
 
 class AppInfo(Model):

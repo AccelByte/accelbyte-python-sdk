@@ -26,6 +26,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
+
+
+class ResponseTypeEnum(StrEnum):
+    CODE = "code"
+    TOKEN = "token"
 
 
 class Authorization(Operation):

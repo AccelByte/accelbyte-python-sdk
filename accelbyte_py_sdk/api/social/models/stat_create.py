@@ -25,6 +25,12 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class StatCreate(Model):

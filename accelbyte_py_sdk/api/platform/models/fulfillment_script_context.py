@@ -25,9 +25,23 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.item_info import ItemInfo
 from ..models.order_summary import OrderSummary
+
+
+class SourceEnum(StrEnum):
+    PURCHASE = "PURCHASE"
+    IAP = "IAP"
+    PROMOTION = "PROMOTION"
+    ACHIEVEMENT = "ACHIEVEMENT"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REDEEM_CODE = "REDEEM_CODE"
+    REWARD = "REWARD"
+    GIFT = "GIFT"
+    DLC = "DLC"
+    OTHER = "OTHER"
 
 
 class FulfillmentScriptContext(Model):

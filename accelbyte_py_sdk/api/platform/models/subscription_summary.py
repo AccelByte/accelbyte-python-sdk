@@ -25,6 +25,19 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    INIT = "INIT"
+    ACTIVE = "ACTIVE"
+    CANCELLED = "CANCELLED"
+    EXPIRED = "EXPIRED"
+
+
+class SubscribedByEnum(StrEnum):
+    USER = "USER"
+    PLATFORM = "PLATFORM"
 
 
 class SubscriptionSummary(Model):

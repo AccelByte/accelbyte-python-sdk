@@ -26,10 +26,29 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import ItemPagingSlicedResult
 from ...models import ValidationErrorEntity
+
+
+class AppTypeEnum(StrEnum):
+    DEMO = "DEMO"
+    DLC = "DLC"
+    GAME = "GAME"
+    SOFTWARE = "SOFTWARE"
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    MEDIA = "MEDIA"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class PublicQueryItems(Operation):

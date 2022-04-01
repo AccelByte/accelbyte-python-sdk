@@ -25,9 +25,35 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
+
+
+class StatusEnum(StrEnum):
+    INIT = "INIT"
+    CHARGED = "CHARGED"
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    FULFILLED = "FULFILLED"
+    FULFILL_FAILED = "FULFILL_FAILED"
+    REFUNDING = "REFUNDING"
+    REFUNDED = "REFUNDED"
+    REFUND_FAILED = "REFUND_FAILED"
+    CLOSED = "CLOSED"
+    DELETED = "DELETED"
+
+
+class PaymentProviderEnum(StrEnum):
+    WALLET = "WALLET"
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+    STRIPE = "STRIPE"
+    CHECKOUT = "CHECKOUT"
+    ALIPAY = "ALIPAY"
+    WXPAY = "WXPAY"
+    PAYPAL = "PAYPAL"
 
 
 class OrderInfo(Model):

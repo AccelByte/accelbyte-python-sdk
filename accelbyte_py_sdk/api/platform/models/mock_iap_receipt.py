@@ -25,6 +25,23 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class TypeEnum(StrEnum):
+    APPLE = "APPLE"
+    GOOGLE = "GOOGLE"
+    PLAYSTATION = "PLAYSTATION"
+    STEAM = "STEAM"
+    XBOX = "XBOX"
+    STADIA = "STADIA"
+    EPICGAMES = "EPICGAMES"
+    TWITCH = "TWITCH"
+
+
+class ItemIdentityTypeEnum(StrEnum):
+    ITEM_ID = "ITEM_ID"
+    ITEM_SKU = "ITEM_SKU"
 
 
 class MockIAPReceipt(Model):

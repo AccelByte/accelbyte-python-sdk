@@ -26,9 +26,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsListImageResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    CREATEDAT = "createdAt"
+    UPDATEDAT = "updatedAt"
+    VERSION = "version"
+
+
+class SortDirectionEnum(StrEnum):
+    ASC = "asc"
+    DESC = "desc"
 
 
 class ListImages(Operation):

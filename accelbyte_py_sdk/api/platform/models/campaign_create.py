@@ -25,8 +25,22 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.redeemable_item import RedeemableItem
+
+
+class RedeemTypeEnum(StrEnum):
+    ITEM = "ITEM"
+
+
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+
+
+class TypeEnum(StrEnum):
+    REDEMPTION = "REDEMPTION"
 
 
 class CampaignCreate(Model):

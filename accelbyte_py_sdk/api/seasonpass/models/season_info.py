@@ -25,10 +25,17 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.excess_strategy import ExcessStrategy
 from ..models.image import Image
 from ..models.localization import Localization
+
+
+class StatusEnum(StrEnum):
+    DRAFT = "DRAFT"
+    PUBLISHED = "PUBLISHED"
+    RETIRED = "RETIRED"
 
 
 class SeasonInfo(Model):

@@ -26,9 +26,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import TaxResult
+
+
+class PaymentProviderEnum(StrEnum):
+    ADYEN = "ADYEN"
+    ALIPAY = "ALIPAY"
+    CHECKOUT = "CHECKOUT"
+    PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
 
 
 class GetPaymentTaxValue(Operation):

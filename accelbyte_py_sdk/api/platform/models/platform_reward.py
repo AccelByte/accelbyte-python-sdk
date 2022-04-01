@@ -25,9 +25,15 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.platform_reward_currency import PlatformRewardCurrency
 from ..models.platform_reward_item import PlatformRewardItem
+
+
+class TypeEnum(StrEnum):
+    ITEM = "ITEM"
+    CURRENCY = "CURRENCY"
 
 
 class PlatformReward(Model):

@@ -26,8 +26,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import FulfillmentHistoryPagingSlicedResult
+
+
+class StatusEnum(StrEnum):
+    FAIL = "FAIL"
+    SUCCESS = "SUCCESS"
 
 
 class QueryFulfillmentHistories(Operation):

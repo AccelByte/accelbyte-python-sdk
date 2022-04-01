@@ -25,6 +25,18 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class PaymentProviderEnum(StrEnum):
+    WALLET = "WALLET"
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+    STRIPE = "STRIPE"
+    CHECKOUT = "CHECKOUT"
+    ALIPAY = "ALIPAY"
+    WXPAY = "WXPAY"
+    PAYPAL = "PAYPAL"
 
 
 class PaymentUrlCreate(Model):

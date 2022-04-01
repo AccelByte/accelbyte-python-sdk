@@ -25,6 +25,23 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class AggregateEnum(StrEnum):
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+
+
+class SpecialsEnum(StrEnum):
+    WALLET = "WALLET"
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+    STRIPE = "STRIPE"
+    CHECKOUT = "CHECKOUT"
+    ALIPAY = "ALIPAY"
+    WXPAY = "WXPAY"
+    PAYPAL = "PAYPAL"
 
 
 class PaymentProviderConfigInfo(Model):

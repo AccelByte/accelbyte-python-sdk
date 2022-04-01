@@ -25,9 +25,38 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.additional_data import AdditionalData
 from ..models.currency_summary import CurrencySummary
+
+
+class ProviderEnum(StrEnum):
+    WALLET = "WALLET"
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+    STRIPE = "STRIPE"
+    CHECKOUT = "CHECKOUT"
+    ALIPAY = "ALIPAY"
+    WXPAY = "WXPAY"
+    PAYPAL = "PAYPAL"
+
+
+class StatusEnum(StrEnum):
+    FINISHED = "FINISHED"
+    FAILED = "FAILED"
+
+
+class TypeEnum(StrEnum):
+    AUTHORISATION = "AUTHORISATION"
+    CHARGE = "CHARGE"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
+    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    REFUND = "REFUND"
+    REFUND_FAILED = "REFUND_FAILED"
 
 
 class Transaction(Model):

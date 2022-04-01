@@ -25,6 +25,20 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SourceEnum(StrEnum):
+    PURCHASE = "PURCHASE"
+    IAP = "IAP"
+    PROMOTION = "PROMOTION"
+    ACHIEVEMENT = "ACHIEVEMENT"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REDEEM_CODE = "REDEEM_CODE"
+    REWARD = "REWARD"
+    GIFT = "GIFT"
+    REFUND = "REFUND"
+    OTHER = "OTHER"
 
 
 class CreditRequest(Model):

@@ -25,8 +25,23 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.item_snapshot import ItemSnapshot
+
+
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    CONSUMED = "CONSUMED"
+    REVOKED = "REVOKED"
+
+
+class AppTypeEnum(StrEnum):
+    GAME = "GAME"
+    SOFTWARE = "SOFTWARE"
+    DLC = "DLC"
+    DEMO = "DEMO"
 
 
 class AppEntitlementInfo(Model):

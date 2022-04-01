@@ -26,9 +26,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import ListSeasonInfoPagingSlicedResult
+
+
+class StatusEnum(StrEnum):
+    DRAFT = "DRAFT"
+    PUBLISHED = "PUBLISHED"
+    RETIRED = "RETIRED"
 
 
 class QuerySeasons(Operation):

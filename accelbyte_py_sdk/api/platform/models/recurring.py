@@ -25,6 +25,14 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class CycleEnum(StrEnum):
+    WEEKLY = "WEEKLY"
+    MONTHLY = "MONTHLY"
+    QUARTERLY = "QUARTERLY"
+    YEARLY = "YEARLY"
 
 
 class Recurring(Model):

@@ -25,6 +25,13 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class PlatformEnum(StrEnum):
+    PSN = "PSN"
+    STEAM = "STEAM"
+    XBOX = "XBOX"
 
 
 class PlatformDlcEntry(Model):

@@ -26,8 +26,29 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import SubscriptionPagingSlicedResult
+
+
+class ChargeStatusEnum(StrEnum):
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    NEVER = "NEVER"
+    RECURRING_CHARGING = "RECURRING_CHARGING"
+    SETUP = "SETUP"
+
+
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    CANCELLED = "CANCELLED"
+    EXPIRED = "EXPIRED"
+    INIT = "INIT"
+
+
+class SubscribedByEnum(StrEnum):
+    PLATFORM = "PLATFORM"
+    USER = "USER"
 
 
 class QuerySubscriptions(Operation):

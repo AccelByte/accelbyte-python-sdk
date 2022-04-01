@@ -25,8 +25,13 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.fulfillment_script_context import FulfillmentScriptContext
+
+
+class TypeEnum(StrEnum):
+    GRANTDAYS = "grantDays"
 
 
 class FulfillmentScriptEvalTestRequest(Model):

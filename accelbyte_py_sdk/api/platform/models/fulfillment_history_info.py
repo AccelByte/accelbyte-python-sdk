@@ -25,11 +25,17 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.credit_summary import CreditSummary
 from ..models.entitlement_summary import EntitlementSummary
 from ..models.fulfillment_error import FulfillmentError
 from ..models.fulfillment_item import FulfillmentItem
+
+
+class StatusEnum(StrEnum):
+    SUCCESS = "SUCCESS"
+    FAIL = "FAIL"
 
 
 class FulfillmentHistoryInfo(Model):

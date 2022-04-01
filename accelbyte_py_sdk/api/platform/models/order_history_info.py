@@ -25,6 +25,22 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ActionEnum(StrEnum):
+    INIT = "INIT"
+    CHARGED = "CHARGED"
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    FULFILLED = "FULFILLED"
+    FULFILL_FAILED = "FULFILL_FAILED"
+    REFUNDING = "REFUNDING"
+    REFUNDED = "REFUNDED"
+    REFUND_FAILED = "REFUND_FAILED"
+    CLOSE = "CLOSE"
+    DELETED = "DELETED"
+    SET_STATUS = "SET_STATUS"
 
 
 class OrderHistoryInfo(Model):

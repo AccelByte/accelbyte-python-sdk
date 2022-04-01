@@ -25,6 +25,13 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class WalletActionEnum(StrEnum):
+    CREDIT = "CREDIT"
+    PAYMENT = "PAYMENT"
+    DEBIT = "DEBIT"
 
 
 class WalletTransactionInfo(Model):

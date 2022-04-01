@@ -25,6 +25,14 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    PROCESSED = "PROCESSED"
+    ERROR = "ERROR"
+    WARN = "WARN"
+    IGNORED = "IGNORED"
 
 
 class NotificationProcessResult(Model):

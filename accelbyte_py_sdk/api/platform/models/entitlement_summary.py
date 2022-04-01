@@ -25,6 +25,20 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ClazzEnum(StrEnum):
+    APP = "APP"
+    ENTITLEMENT = "ENTITLEMENT"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    MEDIA = "MEDIA"
+
+
+class TypeEnum(StrEnum):
+    DURABLE = "DURABLE"
+    CONSUMABLE = "CONSUMABLE"
 
 
 class EntitlementSummary(Model):

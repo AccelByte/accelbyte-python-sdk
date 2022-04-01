@@ -25,6 +25,18 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    SEASON = "SEASON"
+    MEDIA = "MEDIA"
 
 
 class PaymentOrderCreate(Model):

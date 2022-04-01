@@ -25,6 +25,12 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class TypeEnum(StrEnum):
+    CARD = "card"
+    PAYPAL = "paypal"
 
 
 class PaymentAccount(Model):

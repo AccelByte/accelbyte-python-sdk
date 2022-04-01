@@ -25,6 +25,16 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class FileExtensionEnum(StrEnum):
+    PJP = "pjp"
+    JPG = "jpg"
+    JPEG = "jpeg"
+    JFIF = "jfif"
+    BMP = "bmp"
+    PNG = "png"
 
 
 class ModelsCreateScreenshotRequestItem(Model):

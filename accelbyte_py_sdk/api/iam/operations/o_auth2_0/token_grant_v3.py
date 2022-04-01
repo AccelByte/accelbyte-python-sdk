@@ -26,9 +26,17 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import OauthmodelErrorResponse
 from ...models import OauthmodelTokenResponseV3
+
+
+class GrantTypeEnum(StrEnum):
+    AUTHORIZATION_CODE = "authorization_code"
+    CLIENT_CREDENTIALS = "client_credentials"
+    PASSWORD = "password"
+    REFRESH_TOKEN = "refresh_token"
 
 
 class TokenGrantV3(Operation):

@@ -25,9 +25,27 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.credit_summary import CreditSummary
 from ..models.entitlement_summary import EntitlementSummary
+
+
+class StatusEnum(StrEnum):
+    VERIFIED = "VERIFIED"
+    FULFILLED = "FULFILLED"
+    FAILED = "FAILED"
+
+
+class TypeEnum(StrEnum):
+    APPLE = "APPLE"
+    GOOGLE = "GOOGLE"
+    PLAYSTATION = "PLAYSTATION"
+    STEAM = "STEAM"
+    XBOX = "XBOX"
+    STADIA = "STADIA"
+    EPICGAMES = "EPICGAMES"
+    TWITCH = "TWITCH"
 
 
 class IAPOrderInfo(Model):

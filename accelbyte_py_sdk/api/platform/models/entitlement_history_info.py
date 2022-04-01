@@ -25,6 +25,16 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ActionEnum(StrEnum):
+    GRANT = "GRANT"
+    UPDATE = "UPDATE"
+    DECREMENT = "DECREMENT"
+    REVOKE = "REVOKE"
+    DISABLE = "DISABLE"
+    ENABLE = "ENABLE"
 
 
 class EntitlementHistoryInfo(Model):

@@ -26,8 +26,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import PaymentOrderPagingSlicedResult
+
+
+class ChannelEnum(StrEnum):
+    EXTERNAL = "EXTERNAL"
+    INTERNAL = "INTERNAL"
+
+
+class StatusEnum(StrEnum):
+    AUTHORISED = "AUTHORISED"
+    AUTHORISE_FAILED = "AUTHORISE_FAILED"
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    DELETED = "DELETED"
+    INIT = "INIT"
+    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
+    REFUNDED = "REFUNDED"
+    REFUNDING = "REFUNDING"
+    REFUND_FAILED = "REFUND_FAILED"
+    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
 
 
 class QueryPaymentOrders(Operation):

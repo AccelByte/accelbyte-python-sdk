@@ -25,9 +25,53 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
 from ..models.transaction import Transaction
+
+
+class ChannelEnum(StrEnum):
+    EXTERNAL = "EXTERNAL"
+    INTERNAL = "INTERNAL"
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    SEASON = "SEASON"
+    MEDIA = "MEDIA"
+
+
+class PaymentProviderEnum(StrEnum):
+    WALLET = "WALLET"
+    XSOLLA = "XSOLLA"
+    ADYEN = "ADYEN"
+    STRIPE = "STRIPE"
+    CHECKOUT = "CHECKOUT"
+    ALIPAY = "ALIPAY"
+    WXPAY = "WXPAY"
+    PAYPAL = "PAYPAL"
+
+
+class StatusEnum(StrEnum):
+    INIT = "INIT"
+    AUTHORISED = "AUTHORISED"
+    AUTHORISE_FAILED = "AUTHORISE_FAILED"
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
+    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    REFUNDING = "REFUNDING"
+    REFUNDED = "REFUNDED"
+    REFUND_FAILED = "REFUND_FAILED"
+    DELETED = "DELETED"
 
 
 class PaymentOrder(Model):

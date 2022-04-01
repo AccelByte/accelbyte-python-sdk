@@ -26,8 +26,26 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import IAPOrderPagingSlicedResult
+
+
+class StatusEnum(StrEnum):
+    FAILED = "FAILED"
+    FULFILLED = "FULFILLED"
+    VERIFIED = "VERIFIED"
+
+
+class TypeEnum(StrEnum):
+    APPLE = "APPLE"
+    EPICGAMES = "EPICGAMES"
+    GOOGLE = "GOOGLE"
+    PLAYSTATION = "PLAYSTATION"
+    STADIA = "STADIA"
+    STEAM = "STEAM"
+    TWITCH = "TWITCH"
+    XBOX = "XBOX"
 
 
 class QueryUserIAPOrders(Operation):

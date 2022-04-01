@@ -25,6 +25,18 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class TypeEnum(StrEnum):
+    IMAGE = "image"
+    VIDEO = "video"
+
+
+class VideoSourceEnum(StrEnum):
+    GENERIC = "generic"
+    YOUTUBE = "youtube"
+    VIMEO = "vimeo"
 
 
 class Slide(Model):

@@ -25,9 +25,25 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.reward_currency import RewardCurrency
+
+
+class TypeEnum(StrEnum):
+    ITEM = "ITEM"
+    CURRENCY = "CURRENCY"
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    SEASON = "SEASON"
 
 
 class RewardInfo(Model):

@@ -25,8 +25,48 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.item_snapshot import ItemSnapshot
+
+
+class ClazzEnum(StrEnum):
+    APP = "APP"
+    ENTITLEMENT = "ENTITLEMENT"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    MEDIA = "MEDIA"
+
+
+class SourceEnum(StrEnum):
+    PURCHASE = "PURCHASE"
+    IAP = "IAP"
+    PROMOTION = "PROMOTION"
+    ACHIEVEMENT = "ACHIEVEMENT"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REDEEM_CODE = "REDEEM_CODE"
+    REWARD = "REWARD"
+    GIFT = "GIFT"
+    OTHER = "OTHER"
+
+
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    CONSUMED = "CONSUMED"
+    REVOKED = "REVOKED"
+
+
+class TypeEnum(StrEnum):
+    DURABLE = "DURABLE"
+    CONSUMABLE = "CONSUMABLE"
+
+
+class AppTypeEnum(StrEnum):
+    GAME = "GAME"
+    SOFTWARE = "SOFTWARE"
+    DLC = "DLC"
+    DEMO = "DEMO"
 
 
 class EntitlementInfo(Model):

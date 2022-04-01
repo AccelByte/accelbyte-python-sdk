@@ -25,6 +25,24 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class DeviceEnum(StrEnum):
+    DESKTOP = "DESKTOP"
+    MOBILE = "MOBILE"
+
+
+class SizeEnum(StrEnum):
+    SMALL = "SMALL"
+    MEDIUM = "MEDIUM"
+    LARGE = "LARGE"
+
+
+class ThemeEnum(StrEnum):
+    DEFAULT = "DEFAULT"
+    DARK = "DARK"
+    DEFAULT_DARK = "DEFAULT_DARK"
 
 
 class XsollaPaywallConfigRequest(Model):

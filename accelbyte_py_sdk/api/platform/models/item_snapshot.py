@@ -25,9 +25,38 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
+
+
+class EntitlementTypeEnum(StrEnum):
+    DURABLE = "DURABLE"
+    CONSUMABLE = "CONSUMABLE"
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    SUBSCRIPTION = "SUBSCRIPTION"
+    SEASON = "SEASON"
+    MEDIA = "MEDIA"
+
+
+class AppTypeEnum(StrEnum):
+    GAME = "GAME"
+    SOFTWARE = "SOFTWARE"
+    DLC = "DLC"
+    DEMO = "DEMO"
+
+
+class SeasonTypeEnum(StrEnum):
+    PASS = "PASS"
+    TIER = "TIER"
 
 
 class ItemSnapshot(Model):

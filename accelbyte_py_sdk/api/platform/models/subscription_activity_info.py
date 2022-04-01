@@ -25,6 +25,21 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ActionEnum(StrEnum):
+    SUBSCRIBE = "SUBSCRIBE"
+    CANCEL = "CANCEL"
+    IMMEDIATE_CANCEL = "IMMEDIATE_CANCEL"
+    RESUBSCRIBE = "RESUBSCRIBE"
+    GRANT_DAYS = "GRANT_DAYS"
+    CHANGE_BILLING_ACCOUNT = "CHANGE_BILLING_ACCOUNT"
+
+
+class SubscribedByEnum(StrEnum):
+    USER = "USER"
+    PLATFORM = "PLATFORM"
 
 
 class SubscriptionActivityInfo(Model):

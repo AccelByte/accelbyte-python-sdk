@@ -26,9 +26,24 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import OrderPagingResult
 from ...models import ValidationErrorEntity
+
+
+class StatusEnum(StrEnum):
+    CHARGEBACK = "CHARGEBACK"
+    CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    CHARGED = "CHARGED"
+    CLOSED = "CLOSED"
+    DELETED = "DELETED"
+    FULFILLED = "FULFILLED"
+    FULFILL_FAILED = "FULFILL_FAILED"
+    INIT = "INIT"
+    REFUNDED = "REFUNDED"
+    REFUNDING = "REFUNDING"
+    REFUND_FAILED = "REFUND_FAILED"
 
 
 class QueryOrders(Operation):

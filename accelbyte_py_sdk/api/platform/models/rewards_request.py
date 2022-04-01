@@ -25,8 +25,22 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.platform_reward import PlatformReward
+
+
+class SourceEnum(StrEnum):
+    PURCHASE = "PURCHASE"
+    IAP = "IAP"
+    PROMOTION = "PROMOTION"
+    ACHIEVEMENT = "ACHIEVEMENT"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REDEEM_CODE = "REDEEM_CODE"
+    REWARD = "REWARD"
+    GIFT = "GIFT"
+    DLC = "DLC"
+    OTHER = "OTHER"
 
 
 class RewardsRequest(Model):

@@ -25,12 +25,33 @@ import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.billing_account import BillingAccount
 from ..models.currency_summary import CurrencySummary
 from ..models.entitlement_summary import EntitlementSummary
 from ..models.item_snapshot import ItemSnapshot
 from ..models.recurring import Recurring
+
+
+class ChargeStatusEnum(StrEnum):
+    NEVER = "NEVER"
+    SETUP = "SETUP"
+    RECURRING_CHARGING = "RECURRING_CHARGING"
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+
+
+class StatusEnum(StrEnum):
+    INIT = "INIT"
+    ACTIVE = "ACTIVE"
+    CANCELLED = "CANCELLED"
+    EXPIRED = "EXPIRED"
+
+
+class SubscribedByEnum(StrEnum):
+    USER = "USER"
+    PLATFORM = "PLATFORM"
 
 
 class SubscriptionInfo(Model):

@@ -26,9 +26,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
 from .....core import HttpResponse
+from .....core import StrEnum
 from .....core import deprecated
 
 from ...models import Customization
+
+
+@deprecated
+class PaymentProviderEnum(StrEnum):
+    ADYEN = "ADYEN"
+    ALIPAY = "ALIPAY"
+    CHECKOUT = "CHECKOUT"
+    PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
 
 
 @deprecated
