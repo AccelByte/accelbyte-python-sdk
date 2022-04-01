@@ -316,7 +316,7 @@ class StatInfo(Model):
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[StatInfo, List[StatInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[StatInfo, List[StatInfo], Dict[Any, StatInfo]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)

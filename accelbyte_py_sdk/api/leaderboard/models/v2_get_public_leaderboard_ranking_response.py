@@ -111,7 +111,7 @@ class V2GetPublicLeaderboardRankingResponse(Model):
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[V2GetPublicLeaderboardRankingResponse, List[V2GetPublicLeaderboardRankingResponse]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[V2GetPublicLeaderboardRankingResponse, List[V2GetPublicLeaderboardRankingResponse], Dict[Any, V2GetPublicLeaderboardRankingResponse]]:
         if many:
             if isinstance(any_, dict):
                 cls.create_many_from_dict(any_, include_empty=include_empty)
