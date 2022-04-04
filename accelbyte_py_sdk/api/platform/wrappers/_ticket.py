@@ -41,6 +41,7 @@ from ..operations.ticket import DecreaseTicketSale
 from ..operations.ticket import GetTicketBoothID
 from ..operations.ticket import GetTicketDynamic
 from ..operations.ticket import IncreaseTicketSale
+from ..models import TicketBoothIDTypeEnum
 
 
 @same_doc_as(AcquireUserTicket)

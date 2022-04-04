@@ -56,10 +56,14 @@ from ..operations.season import PublicGetCurrentUserSeason
 from ..operations.season import PublicGetUserSeason
 from ..operations.season import PublishSeason
 from ..operations.season import QuerySeasons
+from ..operations.season import QuerySeasonsStatusEnum
 from ..operations.season import ResetUserSeason
 from ..operations.season import RetireSeason
 from ..operations.season import UnpublishSeason
 from ..operations.season import UpdateSeason
+from ..models import LocalizedSeasonInfoStatusEnum
+from ..models import SeasonInfoStatusEnum
+from ..models import SeasonSummaryStatusEnum
 
 
 @same_doc_as(CheckSeasonPurchasable)
@@ -439,7 +443,7 @@ async def publish_season_async(season_id: str, namespace: Optional[str] = None, 
 
 
 @same_doc_as(QuerySeasons)
-def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -454,7 +458,7 @@ def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, sta
 
 
 @same_doc_as(QuerySeasons)
-async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

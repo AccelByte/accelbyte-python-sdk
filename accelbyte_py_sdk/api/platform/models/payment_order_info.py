@@ -77,7 +77,7 @@ class PaymentOrderInfo(Model):
     """Payment order info (PaymentOrderInfo)
 
     Properties:
-        channel: (channel) REQUIRED str
+        channel: (channel) REQUIRED Union[str, ChannelEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -89,13 +89,13 @@ class PaymentOrderInfo(Model):
 
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         price: (price) REQUIRED int
 
         sandbox: (sandbox) REQUIRED bool
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         title: (title) REQUIRED str
 
@@ -121,7 +121,7 @@ class PaymentOrderInfo(Model):
 
         ext_user_id: (extUserId) OPTIONAL str
 
-        item_type: (itemType) OPTIONAL str
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
 
         language: (language) OPTIONAL str
 
@@ -174,16 +174,16 @@ class PaymentOrderInfo(Model):
 
     # region fields
 
-    channel: str                                                                                   # REQUIRED
+    channel: Union[str, ChannelEnum]                                                               # REQUIRED
     created_at: str                                                                                # REQUIRED
     currency: CurrencySummary                                                                      # REQUIRED
     ext_order_no: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
     payment_order_no: str                                                                          # REQUIRED
-    payment_provider: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
     price: int                                                                                     # REQUIRED
     sandbox: bool                                                                                  # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     title: str                                                                                     # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
@@ -196,7 +196,7 @@ class PaymentOrderInfo(Model):
     custom_parameters: Dict[str, Any]                                                              # OPTIONAL
     description: str                                                                               # OPTIONAL
     ext_user_id: str                                                                               # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     language: str                                                                                  # OPTIONAL
     metadata: Dict[str, str]                                                                       # OPTIONAL
     notify_url: str                                                                                # OPTIONAL
@@ -226,7 +226,7 @@ class PaymentOrderInfo(Model):
 
     # region with_x methods
 
-    def with_channel(self, value: str) -> PaymentOrderInfo:
+    def with_channel(self, value: Union[str, ChannelEnum]) -> PaymentOrderInfo:
         self.channel = value
         return self
 
@@ -250,7 +250,7 @@ class PaymentOrderInfo(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentOrderInfo:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentOrderInfo:
         self.payment_provider = value
         return self
 
@@ -262,7 +262,7 @@ class PaymentOrderInfo(Model):
         self.sandbox = value
         return self
 
-    def with_status(self, value: str) -> PaymentOrderInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> PaymentOrderInfo:
         self.status = value
         return self
 
@@ -314,7 +314,7 @@ class PaymentOrderInfo(Model):
         self.ext_user_id = value
         return self
 
-    def with_item_type(self, value: str) -> PaymentOrderInfo:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PaymentOrderInfo:
         self.item_type = value
         return self
 
@@ -423,7 +423,7 @@ class PaymentOrderInfo(Model):
         if hasattr(self, "channel"):
             result["channel"] = str(self.channel)
         elif include_empty:
-            result["channel"] = str()
+            result["channel"] = Union[str, ChannelEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -447,7 +447,7 @@ class PaymentOrderInfo(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -459,7 +459,7 @@ class PaymentOrderInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
@@ -511,7 +511,7 @@ class PaymentOrderInfo(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -617,16 +617,16 @@ class PaymentOrderInfo(Model):
     @classmethod
     def create(
         cls,
-        channel: str,
+        channel: Union[str, ChannelEnum],
         created_at: str,
         currency: CurrencySummary,
         ext_order_no: str,
         namespace: str,
         payment_order_no: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         price: int,
         sandbox: bool,
-        status: str,
+        status: Union[str, StatusEnum],
         title: str,
         updated_at: str,
         user_id: str,
@@ -639,7 +639,7 @@ class PaymentOrderInfo(Model):
         custom_parameters: Optional[Dict[str, Any]] = None,
         description: Optional[str] = None,
         ext_user_id: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         language: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         notify_url: Optional[str] = None,
@@ -757,7 +757,7 @@ class PaymentOrderInfo(Model):
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
-            instance.channel = str()
+            instance.channel = Union[str, ChannelEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -781,7 +781,7 @@ class PaymentOrderInfo(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
@@ -793,7 +793,7 @@ class PaymentOrderInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
@@ -845,7 +845,7 @@ class PaymentOrderInfo(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:

@@ -73,7 +73,7 @@ class QueryUserEntitlementsByAppType(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        app_type: (appType) REQUIRED str in query
+        app_type: (appType) REQUIRED Union[str, AppTypeEnum] in query
 
     Responses:
         200: OK - AppEntitlementPagingSlicedResult (successful operation)
@@ -93,7 +93,7 @@ class QueryUserEntitlementsByAppType(Operation):
     active_only: bool                                                                              # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    app_type: str                                                                                  # REQUIRED in [query]
+    app_type: Union[str, AppTypeEnum]                                                              # REQUIRED in [query]
 
     # endregion fields
 
@@ -193,7 +193,7 @@ class QueryUserEntitlementsByAppType(Operation):
         self.offset = value
         return self
 
-    def with_app_type(self, value: str) -> QueryUserEntitlementsByAppType:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryUserEntitlementsByAppType:
         self.app_type = value
         return self
 
@@ -226,7 +226,7 @@ class QueryUserEntitlementsByAppType(Operation):
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         return result
 
     # endregion to methods
@@ -264,7 +264,7 @@ class QueryUserEntitlementsByAppType(Operation):
         cls,
         namespace: str,
         user_id: str,
-        app_type: str,
+        app_type: Union[str, AppTypeEnum],
         active_only: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -307,7 +307,7 @@ class QueryUserEntitlementsByAppType(Operation):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         return instance
 
     @staticmethod

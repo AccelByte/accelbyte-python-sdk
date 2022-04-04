@@ -79,7 +79,7 @@ class PublicQueryUserSubscriptions(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        charge_status: (chargeStatus) OPTIONAL str in query
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -89,9 +89,9 @@ class PublicQueryUserSubscriptions(Operation):
 
         sku: (sku) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        subscribed_by: (subscribedBy) OPTIONAL str in query
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
 
     Responses:
         200: OK - SubscriptionPagingSlicedResult (successful operation)
@@ -108,13 +108,13 @@ class PublicQueryUserSubscriptions(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    charge_status: str                                                                             # OPTIONAL in [query]
+    charge_status: Union[str, ChargeStatusEnum]                                                    # OPTIONAL in [query]
     item_id: str                                                                                   # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     sku: str                                                                                       # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    subscribed_by: str                                                                             # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -208,7 +208,7 @@ class PublicQueryUserSubscriptions(Operation):
         self.user_id = value
         return self
 
-    def with_charge_status(self, value: str) -> PublicQueryUserSubscriptions:
+    def with_charge_status(self, value: Union[str, ChargeStatusEnum]) -> PublicQueryUserSubscriptions:
         self.charge_status = value
         return self
 
@@ -228,11 +228,11 @@ class PublicQueryUserSubscriptions(Operation):
         self.sku = value
         return self
 
-    def with_status(self, value: str) -> PublicQueryUserSubscriptions:
+    def with_status(self, value: Union[str, StatusEnum]) -> PublicQueryUserSubscriptions:
         self.status = value
         return self
 
-    def with_subscribed_by(self, value: str) -> PublicQueryUserSubscriptions:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> PublicQueryUserSubscriptions:
         self.subscribed_by = value
         return self
 
@@ -253,7 +253,7 @@ class PublicQueryUserSubscriptions(Operation):
         if hasattr(self, "charge_status") and self.charge_status:
             result["chargeStatus"] = str(self.charge_status)
         elif include_empty:
-            result["chargeStatus"] = str()
+            result["chargeStatus"] = Union[str, ChargeStatusEnum]()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -273,11 +273,11 @@ class PublicQueryUserSubscriptions(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "subscribed_by") and self.subscribed_by:
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
-            result["subscribedBy"] = str()
+            result["subscribedBy"] = Union[str, SubscribedByEnum]()
         return result
 
     # endregion to methods
@@ -315,13 +315,13 @@ class PublicQueryUserSubscriptions(Operation):
         cls,
         namespace: str,
         user_id: str,
-        charge_status: Optional[str] = None,
+        charge_status: Optional[Union[str, ChargeStatusEnum]] = None,
         item_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sku: Optional[str] = None,
-        status: Optional[str] = None,
-        subscribed_by: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
+        subscribed_by: Optional[Union[str, SubscribedByEnum]] = None,
     ) -> PublicQueryUserSubscriptions:
         instance = cls()
         instance.namespace = namespace
@@ -356,7 +356,7 @@ class PublicQueryUserSubscriptions(Operation):
         if "chargeStatus" in dict_ and dict_["chargeStatus"] is not None:
             instance.charge_status = str(dict_["chargeStatus"])
         elif include_empty:
-            instance.charge_status = str()
+            instance.charge_status = Union[str, ChargeStatusEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -376,11 +376,11 @@ class PublicQueryUserSubscriptions(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
-            instance.subscribed_by = str()
+            instance.subscribed_by = Union[str, SubscribedByEnum]()
         return instance
 
     @staticmethod

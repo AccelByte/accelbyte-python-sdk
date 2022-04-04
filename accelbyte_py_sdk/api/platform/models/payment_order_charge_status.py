@@ -49,13 +49,13 @@ class PaymentOrderChargeStatus(Model):
     Properties:
         charging: (charging) OPTIONAL bool
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
     """
 
     # region fields
 
     charging: bool                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -65,7 +65,7 @@ class PaymentOrderChargeStatus(Model):
         self.charging = value
         return self
 
-    def with_status(self, value: str) -> PaymentOrderChargeStatus:
+    def with_status(self, value: Union[str, StatusEnum]) -> PaymentOrderChargeStatus:
         self.status = value
         return self
 
@@ -82,7 +82,7 @@ class PaymentOrderChargeStatus(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -93,7 +93,7 @@ class PaymentOrderChargeStatus(Model):
     def create(
         cls,
         charging: Optional[bool] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> PaymentOrderChargeStatus:
         instance = cls()
         if charging is not None:
@@ -114,7 +114,7 @@ class PaymentOrderChargeStatus(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod

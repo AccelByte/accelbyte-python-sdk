@@ -86,9 +86,9 @@ class QueryUserIAPOrders(Operation):
 
         start_time: (startTime) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        type_: (type) OPTIONAL str in query
+        type_: (type) OPTIONAL Union[str, TypeEnum] in query
 
     Responses:
         200: OK - IAPOrderPagingSlicedResult (successful operation)
@@ -110,8 +110,8 @@ class QueryUserIAPOrders(Operation):
     offset: int                                                                                    # OPTIONAL in [query]
     product_id: str                                                                                # OPTIONAL in [query]
     start_time: str                                                                                # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    type_: str                                                                                     # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -225,11 +225,11 @@ class QueryUserIAPOrders(Operation):
         self.start_time = value
         return self
 
-    def with_status(self, value: str) -> QueryUserIAPOrders:
+    def with_status(self, value: Union[str, StatusEnum]) -> QueryUserIAPOrders:
         self.status = value
         return self
 
-    def with_type_(self, value: str) -> QueryUserIAPOrders:
+    def with_type_(self, value: Union[str, TypeEnum]) -> QueryUserIAPOrders:
         self.type_ = value
         return self
 
@@ -270,11 +270,11 @@ class QueryUserIAPOrders(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -317,8 +317,8 @@ class QueryUserIAPOrders(Operation):
         offset: Optional[int] = None,
         product_id: Optional[str] = None,
         start_time: Optional[str] = None,
-        status: Optional[str] = None,
-        type_: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
     ) -> QueryUserIAPOrders:
         instance = cls()
         instance.namespace = namespace
@@ -373,11 +373,11 @@ class QueryUserIAPOrders(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @staticmethod

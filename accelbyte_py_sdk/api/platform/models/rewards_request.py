@@ -48,13 +48,13 @@ class RewardsRequest(Model):
     Properties:
         rewards: (rewards) REQUIRED List[PlatformReward]
 
-        source: (source) OPTIONAL str
+        source: (source) OPTIONAL Union[str, SourceEnum]
     """
 
     # region fields
 
     rewards: List[PlatformReward]                                                                  # REQUIRED
-    source: str                                                                                    # OPTIONAL
+    source: Union[str, SourceEnum]                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -64,7 +64,7 @@ class RewardsRequest(Model):
         self.rewards = value
         return self
 
-    def with_source(self, value: str) -> RewardsRequest:
+    def with_source(self, value: Union[str, SourceEnum]) -> RewardsRequest:
         self.source = value
         return self
 
@@ -81,7 +81,7 @@ class RewardsRequest(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = Union[str, SourceEnum]()
         return result
 
     # endregion to methods
@@ -92,7 +92,7 @@ class RewardsRequest(Model):
     def create(
         cls,
         rewards: List[PlatformReward],
-        source: Optional[str] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards
@@ -112,7 +112,7 @@ class RewardsRequest(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = Union[str, SourceEnum]()
         return instance
 
     @classmethod

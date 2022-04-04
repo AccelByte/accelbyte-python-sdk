@@ -53,7 +53,7 @@ class UserProfileAdmin(Model):
 
         last_name: (lastName) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
 
@@ -70,7 +70,7 @@ class UserProfileAdmin(Model):
     first_name: str                                                                                # OPTIONAL
     language: str                                                                                  # OPTIONAL
     last_name: str                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
 
@@ -110,7 +110,7 @@ class UserProfileAdmin(Model):
         self.last_name = value
         return self
 
-    def with_status(self, value: str) -> UserProfileAdmin:
+    def with_status(self, value: Union[str, StatusEnum]) -> UserProfileAdmin:
         self.status = value
         return self
 
@@ -163,7 +163,7 @@ class UserProfileAdmin(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
@@ -189,7 +189,7 @@ class UserProfileAdmin(Model):
         first_name: Optional[str] = None,
         language: Optional[str] = None,
         last_name: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         zip_code: Optional[str] = None,
     ) -> UserProfileAdmin:
@@ -258,7 +258,7 @@ class UserProfileAdmin(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:

@@ -159,7 +159,7 @@ class Authorization(Operation):
 
         redirect_uri: (redirect_uri) REQUIRED str in form_data
 
-        response_type: (response_type) REQUIRED str in form_data
+        response_type: (response_type) REQUIRED Union[str, ResponseTypeEnum] in form_data
 
     Responses:
         302: Found - (Found)
@@ -180,7 +180,7 @@ class Authorization(Operation):
     state: str                                                                                     # OPTIONAL in [form_data]
     client_id: str                                                                                 # REQUIRED in [form_data]
     redirect_uri: str                                                                              # REQUIRED in [form_data]
-    response_type: str                                                                             # REQUIRED in [form_data]
+    response_type: Union[str, ResponseTypeEnum]                                                    # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -287,7 +287,7 @@ class Authorization(Operation):
         self.redirect_uri = value
         return self
 
-    def with_response_type(self, value: str) -> Authorization:
+    def with_response_type(self, value: Union[str, ResponseTypeEnum]) -> Authorization:
         self.response_type = value
         return self
 
@@ -324,7 +324,7 @@ class Authorization(Operation):
         if hasattr(self, "response_type") and self.response_type:
             result["response_type"] = str(self.response_type)
         elif include_empty:
-            result["response_type"] = str()
+            result["response_type"] = Union[str, ResponseTypeEnum]()
         return result
 
     # endregion to methods
@@ -362,7 +362,7 @@ class Authorization(Operation):
         cls,
         client_id: str,
         redirect_uri: str,
-        response_type: str,
+        response_type: Union[str, ResponseTypeEnum],
         login: Optional[str] = None,
         password: Optional[str] = None,
         scope: Optional[str] = None,
@@ -412,7 +412,7 @@ class Authorization(Operation):
         if "response_type" in dict_ and dict_["response_type"] is not None:
             instance.response_type = str(dict_["response_type"])
         elif include_empty:
-            instance.response_type = str()
+            instance.response_type = Union[str, ResponseTypeEnum]()
         return instance
 
     @staticmethod

@@ -78,7 +78,7 @@ class QueryPaymentOrders(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        channel: (channel) OPTIONAL str in query
+        channel: (channel) OPTIONAL Union[str, ChannelEnum] in query
 
         ext_tx_id: (extTxId) OPTIONAL str in query
 
@@ -86,7 +86,7 @@ class QueryPaymentOrders(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - PaymentOrderPagingSlicedResult (successful operation)
@@ -102,11 +102,11 @@ class QueryPaymentOrders(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    channel: str                                                                                   # OPTIONAL in [query]
+    channel: Union[str, ChannelEnum]                                                               # OPTIONAL in [query]
     ext_tx_id: str                                                                                 # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
 
     # endregion fields
 
@@ -190,7 +190,7 @@ class QueryPaymentOrders(Operation):
         self.namespace = value
         return self
 
-    def with_channel(self, value: str) -> QueryPaymentOrders:
+    def with_channel(self, value: Union[str, ChannelEnum]) -> QueryPaymentOrders:
         self.channel = value
         return self
 
@@ -206,7 +206,7 @@ class QueryPaymentOrders(Operation):
         self.offset = value
         return self
 
-    def with_status(self, value: str) -> QueryPaymentOrders:
+    def with_status(self, value: Union[str, StatusEnum]) -> QueryPaymentOrders:
         self.status = value
         return self
 
@@ -223,7 +223,7 @@ class QueryPaymentOrders(Operation):
         if hasattr(self, "channel") and self.channel:
             result["channel"] = str(self.channel)
         elif include_empty:
-            result["channel"] = str()
+            result["channel"] = Union[str, ChannelEnum]()
         if hasattr(self, "ext_tx_id") and self.ext_tx_id:
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
@@ -239,7 +239,7 @@ class QueryPaymentOrders(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -276,11 +276,11 @@ class QueryPaymentOrders(Operation):
     def create(
         cls,
         namespace: str,
-        channel: Optional[str] = None,
+        channel: Optional[Union[str, ChannelEnum]] = None,
         ext_tx_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> QueryPaymentOrders:
         instance = cls()
         instance.namespace = namespace
@@ -306,7 +306,7 @@ class QueryPaymentOrders(Operation):
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
-            instance.channel = str()
+            instance.channel = Union[str, ChannelEnum]()
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
@@ -322,7 +322,7 @@ class QueryPaymentOrders(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @staticmethod

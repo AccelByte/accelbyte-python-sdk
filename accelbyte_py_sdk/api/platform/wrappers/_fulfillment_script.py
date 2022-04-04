@@ -39,6 +39,7 @@ from ..operations.fulfillment_script import GetFulfillmentScript
 from ..operations.fulfillment_script import ListFulfillmentScripts
 from ..operations.fulfillment_script import TestFulfillmentScriptEval
 from ..operations.fulfillment_script import UpdateFulfillmentScript
+from ..models import FulfillmentScriptEvalTestRequestTypeEnum
 
 
 @same_doc_as(CreateFulfillmentScript)

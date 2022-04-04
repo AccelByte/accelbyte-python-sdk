@@ -38,7 +38,7 @@ class IAPItemEntry(Model):
     Properties:
         item_identity: (itemIdentity) OPTIONAL str
 
-        item_identity_type: (itemIdentityType) OPTIONAL str
+        item_identity_type: (itemIdentityType) OPTIONAL Union[str, ItemIdentityTypeEnum]
 
         platform_product_id_map: (platformProductIdMap) OPTIONAL Dict[str, str]
     """
@@ -46,7 +46,7 @@ class IAPItemEntry(Model):
     # region fields
 
     item_identity: str                                                                             # OPTIONAL
-    item_identity_type: str                                                                        # OPTIONAL
+    item_identity_type: Union[str, ItemIdentityTypeEnum]                                           # OPTIONAL
     platform_product_id_map: Dict[str, str]                                                        # OPTIONAL
 
     # endregion fields
@@ -57,7 +57,7 @@ class IAPItemEntry(Model):
         self.item_identity = value
         return self
 
-    def with_item_identity_type(self, value: str) -> IAPItemEntry:
+    def with_item_identity_type(self, value: Union[str, ItemIdentityTypeEnum]) -> IAPItemEntry:
         self.item_identity_type = value
         return self
 
@@ -78,7 +78,7 @@ class IAPItemEntry(Model):
         if hasattr(self, "item_identity_type"):
             result["itemIdentityType"] = str(self.item_identity_type)
         elif include_empty:
-            result["itemIdentityType"] = str()
+            result["itemIdentityType"] = Union[str, ItemIdentityTypeEnum]()
         if hasattr(self, "platform_product_id_map"):
             result["platformProductIdMap"] = {str(k0): str(v0) for k0, v0 in self.platform_product_id_map.items()}
         elif include_empty:
@@ -93,7 +93,7 @@ class IAPItemEntry(Model):
     def create(
         cls,
         item_identity: Optional[str] = None,
-        item_identity_type: Optional[str] = None,
+        item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
         platform_product_id_map: Optional[Dict[str, str]] = None,
     ) -> IAPItemEntry:
         instance = cls()
@@ -117,7 +117,7 @@ class IAPItemEntry(Model):
         if "itemIdentityType" in dict_ and dict_["itemIdentityType"] is not None:
             instance.item_identity_type = str(dict_["itemIdentityType"])
         elif include_empty:
-            instance.item_identity_type = str()
+            instance.item_identity_type = Union[str, ItemIdentityTypeEnum]()
         if "platformProductIdMap" in dict_ and dict_["platformProductIdMap"] is not None:
             instance.platform_product_id_map = {str(k0): str(v0) for k0, v0 in dict_["platformProductIdMap"].items()}
         elif include_empty:

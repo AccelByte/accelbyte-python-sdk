@@ -53,11 +53,11 @@ class StatInfo(Model):
 
         set_as_global: (setAsGlobal) REQUIRED bool
 
-        set_by: (setBy) REQUIRED str
+        set_by: (setBy) REQUIRED Union[str, SetByEnum]
 
         stat_code: (statCode) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -78,9 +78,9 @@ class StatInfo(Model):
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     set_as_global: bool                                                                            # REQUIRED
-    set_by: str                                                                                    # REQUIRED
+    set_by: Union[str, SetByEnum]                                                                  # REQUIRED
     stat_code: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     description: str                                                                               # OPTIONAL
     maximum: float                                                                                 # OPTIONAL
@@ -115,7 +115,7 @@ class StatInfo(Model):
         self.set_as_global = value
         return self
 
-    def with_set_by(self, value: str) -> StatInfo:
+    def with_set_by(self, value: Union[str, SetByEnum]) -> StatInfo:
         self.set_by = value
         return self
 
@@ -123,7 +123,7 @@ class StatInfo(Model):
         self.stat_code = value
         return self
 
-    def with_status(self, value: str) -> StatInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> StatInfo:
         self.status = value
         return self
 
@@ -180,7 +180,7 @@ class StatInfo(Model):
         if hasattr(self, "set_by"):
             result["setBy"] = str(self.set_by)
         elif include_empty:
-            result["setBy"] = str()
+            result["setBy"] = Union[str, SetByEnum]()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
@@ -188,7 +188,7 @@ class StatInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -224,9 +224,9 @@ class StatInfo(Model):
         name: str,
         namespace: str,
         set_as_global: bool,
-        set_by: str,
+        set_by: Union[str, SetByEnum],
         stat_code: str,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         description: Optional[str] = None,
         maximum: Optional[float] = None,
@@ -286,7 +286,7 @@ class StatInfo(Model):
         if "setBy" in dict_ and dict_["setBy"] is not None:
             instance.set_by = str(dict_["setBy"])
         elif include_empty:
-            instance.set_by = str()
+            instance.set_by = Union[str, SetByEnum]()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
@@ -294,7 +294,7 @@ class StatInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

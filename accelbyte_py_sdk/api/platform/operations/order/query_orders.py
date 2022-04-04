@@ -84,7 +84,7 @@ class QueryOrders(Operation):
 
         start_time: (startTime) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
         with_total: (withTotal) OPTIONAL bool in query
 
@@ -110,7 +110,7 @@ class QueryOrders(Operation):
     order_nos: List[str]                                                                           # OPTIONAL in [query]
     sort_by: str                                                                                   # OPTIONAL in [query]
     start_time: str                                                                                # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
     with_total: bool                                                                               # OPTIONAL in [query]
 
     # endregion fields
@@ -226,7 +226,7 @@ class QueryOrders(Operation):
         self.start_time = value
         return self
 
-    def with_status(self, value: str) -> QueryOrders:
+    def with_status(self, value: Union[str, StatusEnum]) -> QueryOrders:
         self.status = value
         return self
 
@@ -271,7 +271,7 @@ class QueryOrders(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "with_total") and self.with_total:
             result["withTotal"] = bool(self.with_total)
         elif include_empty:
@@ -322,7 +322,7 @@ class QueryOrders(Operation):
         order_nos: Optional[List[str]] = None,
         sort_by: Optional[str] = None,
         start_time: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         with_total: Optional[bool] = None,
     ) -> QueryOrders:
         instance = cls()
@@ -379,7 +379,7 @@ class QueryOrders(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "withTotal" in dict_ and dict_["withTotal"] is not None:
             instance.with_total = bool(dict_["withTotal"])
         elif include_empty:

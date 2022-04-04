@@ -81,7 +81,7 @@ class OrderInfo(Model):
 
         sandbox: (sandbox) REQUIRED bool
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -109,7 +109,7 @@ class OrderInfo(Model):
 
         payment_order_no: (paymentOrderNo) OPTIONAL str
 
-        payment_provider: (paymentProvider) OPTIONAL str
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum]
 
         payment_provider_fee: (paymentProviderFee) OPTIONAL int
 
@@ -147,7 +147,7 @@ class OrderInfo(Model):
     price: int                                                                                     # REQUIRED
     quantity: int                                                                                  # REQUIRED
     sandbox: bool                                                                                  # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     chargeback_reversed_time: str                                                                  # OPTIONAL
@@ -161,7 +161,7 @@ class OrderInfo(Model):
     payment_method: str                                                                            # OPTIONAL
     payment_method_fee: int                                                                        # OPTIONAL
     payment_order_no: str                                                                          # OPTIONAL
-    payment_provider: str                                                                          # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
     payment_provider_fee: int                                                                      # OPTIONAL
     payment_station_url: str                                                                       # OPTIONAL
     refunded_time: str                                                                             # OPTIONAL
@@ -222,7 +222,7 @@ class OrderInfo(Model):
         self.sandbox = value
         return self
 
-    def with_status(self, value: str) -> OrderInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> OrderInfo:
         self.status = value
         return self
 
@@ -278,7 +278,7 @@ class OrderInfo(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> OrderInfo:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> OrderInfo:
         self.payment_provider = value
         return self
 
@@ -379,7 +379,7 @@ class OrderInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -435,7 +435,7 @@ class OrderInfo(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
@@ -500,7 +500,7 @@ class OrderInfo(Model):
         price: int,
         quantity: int,
         sandbox: bool,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         user_id: str,
         chargeback_reversed_time: Optional[str] = None,
@@ -514,7 +514,7 @@ class OrderInfo(Model):
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
-        payment_provider: Optional[str] = None,
+        payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         payment_provider_fee: Optional[int] = None,
         payment_station_url: Optional[str] = None,
         refunded_time: Optional[str] = None,
@@ -642,7 +642,7 @@ class OrderInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -698,7 +698,7 @@ class OrderInfo(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:

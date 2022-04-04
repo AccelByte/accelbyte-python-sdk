@@ -69,7 +69,7 @@ class GetPaymentTaxValue(Operation):
 
         payment_order_no: (paymentOrderNo) REQUIRED str in query
 
-        payment_provider: (paymentProvider) REQUIRED str in query
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
 
     Responses:
         200: OK - TaxResult (successful operation)
@@ -91,7 +91,7 @@ class GetPaymentTaxValue(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     zip_code: str                                                                                  # OPTIONAL in [query]
     payment_order_no: str                                                                          # REQUIRED in [query]
-    payment_provider: str                                                                          # REQUIRED in [query]
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED in [query]
 
     # endregion fields
 
@@ -179,7 +179,7 @@ class GetPaymentTaxValue(Operation):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> GetPaymentTaxValue:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> GetPaymentTaxValue:
         self.payment_provider = value
         return self
 
@@ -204,7 +204,7 @@ class GetPaymentTaxValue(Operation):
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         return result
 
     # endregion to methods
@@ -250,7 +250,7 @@ class GetPaymentTaxValue(Operation):
         cls,
         namespace: str,
         payment_order_no: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         zip_code: Optional[str] = None,
     ) -> GetPaymentTaxValue:
         instance = cls()
@@ -279,7 +279,7 @@ class GetPaymentTaxValue(Operation):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         return instance
 
     @staticmethod

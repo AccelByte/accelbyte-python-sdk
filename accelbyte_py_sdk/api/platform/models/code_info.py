@@ -62,15 +62,15 @@ class CodeInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        redeem_type: (redeemType) REQUIRED str
+        redeem_type: (redeemType) REQUIRED Union[str, RedeemTypeEnum]
 
         redeemed_count: (redeemedCount) REQUIRED int
 
         remainder: (remainder) REQUIRED int
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -97,11 +97,11 @@ class CodeInfo(Model):
     max_redeem_count_per_code: int                                                                 # REQUIRED
     max_redeem_count_per_code_per_user: int                                                        # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    redeem_type: str                                                                               # REQUIRED
+    redeem_type: Union[str, RedeemTypeEnum]                                                        # REQUIRED
     redeemed_count: int                                                                            # REQUIRED
     remainder: int                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     updated_at: str                                                                                # REQUIRED
     value: str                                                                                     # REQUIRED
     acquire_order_no: str                                                                          # OPTIONAL
@@ -146,7 +146,7 @@ class CodeInfo(Model):
         self.namespace = value
         return self
 
-    def with_redeem_type(self, value: str) -> CodeInfo:
+    def with_redeem_type(self, value: Union[str, RedeemTypeEnum]) -> CodeInfo:
         self.redeem_type = value
         return self
 
@@ -158,11 +158,11 @@ class CodeInfo(Model):
         self.remainder = value
         return self
 
-    def with_status(self, value: str) -> CodeInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> CodeInfo:
         self.status = value
         return self
 
-    def with_type(self, value: str) -> CodeInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> CodeInfo:
         self.type_ = value
         return self
 
@@ -235,7 +235,7 @@ class CodeInfo(Model):
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
-            result["redeemType"] = str()
+            result["redeemType"] = Union[str, RedeemTypeEnum]()
         if hasattr(self, "redeemed_count"):
             result["redeemedCount"] = int(self.redeemed_count)
         elif include_empty:
@@ -247,11 +247,11 @@ class CodeInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -297,11 +297,11 @@ class CodeInfo(Model):
         max_redeem_count_per_code: int,
         max_redeem_count_per_code_per_user: int,
         namespace: str,
-        redeem_type: str,
+        redeem_type: Union[str, RedeemTypeEnum],
         redeemed_count: int,
         remainder: int,
-        status: str,
-        type_: str,
+        status: Union[str, StatusEnum],
+        type_: Union[str, TypeEnum],
         updated_at: str,
         value: str,
         acquire_order_no: Optional[str] = None,
@@ -378,7 +378,7 @@ class CodeInfo(Model):
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
-            instance.redeem_type = str()
+            instance.redeem_type = Union[str, RedeemTypeEnum]()
         if "redeemedCount" in dict_ and dict_["redeemedCount"] is not None:
             instance.redeemed_count = int(dict_["redeemedCount"])
         elif include_empty:
@@ -390,11 +390,11 @@ class CodeInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

@@ -43,7 +43,7 @@ class EpicGamesReconcileResult(Model):
 
         sku: (sku) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         transaction_id: (transactionId) OPTIONAL str
     """
@@ -53,7 +53,7 @@ class EpicGamesReconcileResult(Model):
     epic_games_item_id: str                                                                        # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     sku: str                                                                                       # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     transaction_id: str                                                                            # OPTIONAL
 
     # endregion fields
@@ -72,7 +72,7 @@ class EpicGamesReconcileResult(Model):
         self.sku = value
         return self
 
-    def with_status(self, value: str) -> EpicGamesReconcileResult:
+    def with_status(self, value: Union[str, StatusEnum]) -> EpicGamesReconcileResult:
         self.status = value
         return self
 
@@ -101,7 +101,7 @@ class EpicGamesReconcileResult(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
@@ -118,7 +118,7 @@ class EpicGamesReconcileResult(Model):
         epic_games_item_id: Optional[str] = None,
         item_id: Optional[str] = None,
         sku: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         transaction_id: Optional[str] = None,
     ) -> EpicGamesReconcileResult:
         instance = cls()
@@ -154,7 +154,7 @@ class EpicGamesReconcileResult(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:

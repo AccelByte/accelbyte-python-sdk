@@ -36,8 +36,10 @@ from .public_get_item_by_app_id import PublicGetItemByAppId
 from .public_get_item_by_sku import PublicGetItemBySku
 from .public_get_item_dynamic_data import PublicGetItemDynamicData
 from .public_query_items import PublicQueryItems
+from .public_query_items import AppTypeEnum as PublicQueryItemsAppTypeEnum, ItemTypeEnum as PublicQueryItemsItemTypeEnum
 from .public_search_items import PublicSearchItems
 from .query_items import QueryItems
+from .query_items import AppTypeEnum as QueryItemsAppTypeEnum, ItemTypeEnum as QueryItemsItemTypeEnum
 from .query_uncategorized_items import QueryUncategorizedItems
 from .return_item import ReturnItem
 from .search_items import SearchItems

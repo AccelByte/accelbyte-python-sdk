@@ -45,7 +45,7 @@ class PlatformReward(Model):
 
         quantity: (quantity) OPTIONAL int
 
-        type_: (type) OPTIONAL str
+        type_: (type) OPTIONAL Union[str, TypeEnum]
     """
 
     # region fields
@@ -53,7 +53,7 @@ class PlatformReward(Model):
     currency: PlatformRewardCurrency                                                               # OPTIONAL
     item: PlatformRewardItem                                                                       # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -71,7 +71,7 @@ class PlatformReward(Model):
         self.quantity = value
         return self
 
-    def with_type(self, value: str) -> PlatformReward:
+    def with_type(self, value: Union[str, TypeEnum]) -> PlatformReward:
         self.type_ = value
         return self
 
@@ -96,7 +96,7 @@ class PlatformReward(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -109,7 +109,7 @@ class PlatformReward(Model):
         currency: Optional[PlatformRewardCurrency] = None,
         item: Optional[PlatformRewardItem] = None,
         quantity: Optional[int] = None,
-        type_: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
     ) -> PlatformReward:
         instance = cls()
         if currency is not None:
@@ -142,7 +142,7 @@ class PlatformReward(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

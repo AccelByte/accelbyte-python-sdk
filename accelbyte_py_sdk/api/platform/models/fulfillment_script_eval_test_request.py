@@ -41,14 +41,14 @@ class FulfillmentScriptEvalTestRequest(Model):
 
         script: (script) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
     """
 
     # region fields
 
     context: FulfillmentScriptContext                                                              # REQUIRED
     script: str                                                                                    # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
 
     # endregion fields
 
@@ -62,7 +62,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         self.script = value
         return self
 
-    def with_type(self, value: str) -> FulfillmentScriptEvalTestRequest:
+    def with_type(self, value: Union[str, TypeEnum]) -> FulfillmentScriptEvalTestRequest:
         self.type_ = value
         return self
 
@@ -83,7 +83,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -95,7 +95,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         cls,
         context: FulfillmentScriptContext,
         script: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
     ) -> FulfillmentScriptEvalTestRequest:
         instance = cls()
         instance.context = context
@@ -119,7 +119,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

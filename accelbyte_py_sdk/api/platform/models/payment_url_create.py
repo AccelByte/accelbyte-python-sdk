@@ -44,7 +44,7 @@ class PaymentUrlCreate(Model):
     Properties:
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         return_url: (returnUrl) OPTIONAL str
 
@@ -56,7 +56,7 @@ class PaymentUrlCreate(Model):
     # region fields
 
     payment_order_no: str                                                                          # REQUIRED
-    payment_provider: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
     return_url: str                                                                                # OPTIONAL
     ui: str                                                                                        # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
@@ -69,7 +69,7 @@ class PaymentUrlCreate(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentUrlCreate:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentUrlCreate:
         self.payment_provider = value
         return self
 
@@ -98,7 +98,7 @@ class PaymentUrlCreate(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -121,7 +121,7 @@ class PaymentUrlCreate(Model):
     def create(
         cls,
         payment_order_no: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         return_url: Optional[str] = None,
         ui: Optional[str] = None,
         zip_code: Optional[str] = None,
@@ -149,7 +149,7 @@ class PaymentUrlCreate(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:

@@ -73,13 +73,13 @@ class TradeNotification(Model):
 
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         price: (price) REQUIRED int
 
         sandbox: (sandbox) REQUIRED bool
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         type_: (type) REQUIRED str
 
@@ -148,10 +148,10 @@ class TradeNotification(Model):
     namespace: str                                                                                 # REQUIRED
     nonce_str: str                                                                                 # REQUIRED
     payment_order_no: str                                                                          # REQUIRED
-    payment_provider: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
     price: int                                                                                     # REQUIRED
     sandbox: bool                                                                                  # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     type_: str                                                                                     # REQUIRED
     additional_data: AdditionalData                                                                # OPTIONAL
     authorised_time: str                                                                           # OPTIONAL
@@ -210,7 +210,7 @@ class TradeNotification(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> TradeNotification:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> TradeNotification:
         self.payment_provider = value
         return self
 
@@ -222,7 +222,7 @@ class TradeNotification(Model):
         self.sandbox = value
         return self
 
-    def with_status(self, value: str) -> TradeNotification:
+    def with_status(self, value: Union[str, StatusEnum]) -> TradeNotification:
         self.status = value
         return self
 
@@ -375,7 +375,7 @@ class TradeNotification(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -387,7 +387,7 @@ class TradeNotification(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -519,10 +519,10 @@ class TradeNotification(Model):
         namespace: str,
         nonce_str: str,
         payment_order_no: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         price: int,
         sandbox: bool,
-        status: str,
+        status: Union[str, StatusEnum],
         type_: str,
         additional_data: Optional[AdditionalData] = None,
         authorised_time: Optional[str] = None,
@@ -655,7 +655,7 @@ class TradeNotification(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
@@ -667,7 +667,7 @@ class TradeNotification(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:

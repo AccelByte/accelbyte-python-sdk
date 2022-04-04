@@ -40,7 +40,7 @@ class BulkUserStatItemUpdate(Model):
     Properties:
         stat_code: (statCode) REQUIRED str
 
-        update_strategy: (updateStrategy) REQUIRED str
+        update_strategy: (updateStrategy) REQUIRED Union[str, UpdateStrategyEnum]
 
         user_id: (userId) REQUIRED str
 
@@ -54,7 +54,7 @@ class BulkUserStatItemUpdate(Model):
     # region fields
 
     stat_code: str                                                                                 # REQUIRED
-    update_strategy: str                                                                           # REQUIRED
+    update_strategy: Union[str, UpdateStrategyEnum]                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     value: float                                                                                   # REQUIRED
     additional_data: Dict[str, Any]                                                                # OPTIONAL
@@ -68,7 +68,7 @@ class BulkUserStatItemUpdate(Model):
         self.stat_code = value
         return self
 
-    def with_update_strategy(self, value: str) -> BulkUserStatItemUpdate:
+    def with_update_strategy(self, value: Union[str, UpdateStrategyEnum]) -> BulkUserStatItemUpdate:
         self.update_strategy = value
         return self
 
@@ -101,7 +101,7 @@ class BulkUserStatItemUpdate(Model):
         if hasattr(self, "update_strategy"):
             result["updateStrategy"] = str(self.update_strategy)
         elif include_empty:
-            result["updateStrategy"] = str()
+            result["updateStrategy"] = Union[str, UpdateStrategyEnum]()
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -128,7 +128,7 @@ class BulkUserStatItemUpdate(Model):
     def create(
         cls,
         stat_code: str,
-        update_strategy: str,
+        update_strategy: Union[str, UpdateStrategyEnum],
         user_id: str,
         value: float,
         additional_data: Optional[Dict[str, Any]] = None,
@@ -157,7 +157,7 @@ class BulkUserStatItemUpdate(Model):
         if "updateStrategy" in dict_ and dict_["updateStrategy"] is not None:
             instance.update_strategy = str(dict_["updateStrategy"])
         elif include_empty:
-            instance.update_strategy = str()
+            instance.update_strategy = Union[str, UpdateStrategyEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:

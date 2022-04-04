@@ -29,11 +29,13 @@ from ....core import same_doc_as
 from ..models import PaymentAccount
 
 from ..operations.payment_account import PublicDeletePaymentAccount
+from ..operations.payment_account import PublicDeletePaymentAccountTypeEnum
 from ..operations.payment_account import PublicGetPaymentAccounts
+from ..models import PaymentAccountTypeEnum
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-def public_delete_payment_account(id_: str, type_: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_delete_payment_account(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,7 +50,7 @@ def public_delete_payment_account(id_: str, type_: str, user_id: str, namespace:
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-async def public_delete_payment_account_async(id_: str, type_: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_delete_payment_account_async(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

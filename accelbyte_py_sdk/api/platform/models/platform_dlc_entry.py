@@ -37,21 +37,21 @@ class PlatformDlcEntry(Model):
     """Platform dlc entry (PlatformDlcEntry)
 
     Properties:
-        platform: (platform) OPTIONAL str
+        platform: (platform) OPTIONAL Union[str, PlatformEnum]
 
         platform_dlc_id_map: (platformDlcIdMap) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
-    platform: str                                                                                  # OPTIONAL
+    platform: Union[str, PlatformEnum]                                                             # OPTIONAL
     platform_dlc_id_map: Dict[str, str]                                                            # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_platform(self, value: str) -> PlatformDlcEntry:
+    def with_platform(self, value: Union[str, PlatformEnum]) -> PlatformDlcEntry:
         self.platform = value
         return self
 
@@ -68,7 +68,7 @@ class PlatformDlcEntry(Model):
         if hasattr(self, "platform"):
             result["platform"] = str(self.platform)
         elif include_empty:
-            result["platform"] = str()
+            result["platform"] = Union[str, PlatformEnum]()
         if hasattr(self, "platform_dlc_id_map"):
             result["platformDlcIdMap"] = {str(k0): str(v0) for k0, v0 in self.platform_dlc_id_map.items()}
         elif include_empty:
@@ -82,7 +82,7 @@ class PlatformDlcEntry(Model):
     @classmethod
     def create(
         cls,
-        platform: Optional[str] = None,
+        platform: Optional[Union[str, PlatformEnum]] = None,
         platform_dlc_id_map: Optional[Dict[str, str]] = None,
     ) -> PlatformDlcEntry:
         instance = cls()
@@ -100,7 +100,7 @@ class PlatformDlcEntry(Model):
         if "platform" in dict_ and dict_["platform"] is not None:
             instance.platform = str(dict_["platform"])
         elif include_empty:
-            instance.platform = str()
+            instance.platform = Union[str, PlatformEnum]()
         if "platformDlcIdMap" in dict_ and dict_["platformDlcIdMap"] is not None:
             instance.platform_dlc_id_map = {str(k0): str(v0) for k0, v0 in dict_["platformDlcIdMap"].items()}
         elif include_empty:

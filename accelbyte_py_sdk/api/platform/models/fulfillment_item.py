@@ -52,7 +52,7 @@ class FulfillmentItem(Model):
 
         item_sku: (itemSku) OPTIONAL str
 
-        item_type: (itemType) OPTIONAL str
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
 
         store_id: (storeId) OPTIONAL str
     """
@@ -64,7 +64,7 @@ class FulfillmentItem(Model):
     item_id: str                                                                                   # OPTIONAL
     item_name: str                                                                                 # OPTIONAL
     item_sku: str                                                                                  # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     store_id: str                                                                                  # OPTIONAL
 
     # endregion fields
@@ -91,7 +91,7 @@ class FulfillmentItem(Model):
         self.item_sku = value
         return self
 
-    def with_item_type(self, value: str) -> FulfillmentItem:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> FulfillmentItem:
         self.item_type = value
         return self
 
@@ -128,7 +128,7 @@ class FulfillmentItem(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -147,7 +147,7 @@ class FulfillmentItem(Model):
         item_id: Optional[str] = None,
         item_name: Optional[str] = None,
         item_sku: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         store_id: Optional[str] = None,
     ) -> FulfillmentItem:
         instance = cls()
@@ -194,7 +194,7 @@ class FulfillmentItem(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:

@@ -90,17 +90,17 @@ class FullAppInfo(Model):
 
         forum_url: (forumUrl) OPTIONAL str
 
-        genres: (genres) OPTIONAL List[str]
+        genres: (genres) OPTIONAL List[Union[str, GenresEnum]]
 
         localizations: (localizations) OPTIONAL Dict[str, AppLocalization]
 
         platform_requirements: (platformRequirements) OPTIONAL Dict[str, List[Requirement]]
 
-        platforms: (platforms) OPTIONAL List[str]
+        platforms: (platforms) OPTIONAL List[Union[str, PlatformsEnum]]
 
-        players: (players) OPTIONAL List[str]
+        players: (players) OPTIONAL List[Union[str, PlayersEnum]]
 
-        primary_genre: (primaryGenre) OPTIONAL str
+        primary_genre: (primaryGenre) OPTIONAL Union[str, PrimaryGenreEnum]
 
         publisher: (publisher) OPTIONAL str
 
@@ -116,12 +116,12 @@ class FullAppInfo(Model):
     carousel: List[Slide]                                                                          # OPTIONAL
     developer: str                                                                                 # OPTIONAL
     forum_url: str                                                                                 # OPTIONAL
-    genres: List[str]                                                                              # OPTIONAL
+    genres: List[Union[str, GenresEnum]]                                                           # OPTIONAL
     localizations: Dict[str, AppLocalization]                                                      # OPTIONAL
     platform_requirements: Dict[str, List[Requirement]]                                            # OPTIONAL
-    platforms: List[str]                                                                           # OPTIONAL
-    players: List[str]                                                                             # OPTIONAL
-    primary_genre: str                                                                             # OPTIONAL
+    platforms: List[Union[str, PlatformsEnum]]                                                     # OPTIONAL
+    players: List[Union[str, PlayersEnum]]                                                         # OPTIONAL
+    primary_genre: Union[str, PrimaryGenreEnum]                                                    # OPTIONAL
     publisher: str                                                                                 # OPTIONAL
     release_date: str                                                                              # OPTIONAL
     website_url: str                                                                               # OPTIONAL
@@ -150,7 +150,7 @@ class FullAppInfo(Model):
         self.forum_url = value
         return self
 
-    def with_genres(self, value: List[str]) -> FullAppInfo:
+    def with_genres(self, value: List[Union[str, GenresEnum]]) -> FullAppInfo:
         self.genres = value
         return self
 
@@ -162,15 +162,15 @@ class FullAppInfo(Model):
         self.platform_requirements = value
         return self
 
-    def with_platforms(self, value: List[str]) -> FullAppInfo:
+    def with_platforms(self, value: List[Union[str, PlatformsEnum]]) -> FullAppInfo:
         self.platforms = value
         return self
 
-    def with_players(self, value: List[str]) -> FullAppInfo:
+    def with_players(self, value: List[Union[str, PlayersEnum]]) -> FullAppInfo:
         self.players = value
         return self
 
-    def with_primary_genre(self, value: str) -> FullAppInfo:
+    def with_primary_genre(self, value: Union[str, PrimaryGenreEnum]) -> FullAppInfo:
         self.primary_genre = value
         return self
 
@@ -235,7 +235,7 @@ class FullAppInfo(Model):
         if hasattr(self, "primary_genre"):
             result["primaryGenre"] = str(self.primary_genre)
         elif include_empty:
-            result["primaryGenre"] = str()
+            result["primaryGenre"] = Union[str, PrimaryGenreEnum]()
         if hasattr(self, "publisher"):
             result["publisher"] = str(self.publisher)
         elif include_empty:
@@ -262,12 +262,12 @@ class FullAppInfo(Model):
         carousel: Optional[List[Slide]] = None,
         developer: Optional[str] = None,
         forum_url: Optional[str] = None,
-        genres: Optional[List[str]] = None,
+        genres: Optional[List[Union[str, GenresEnum]]] = None,
         localizations: Optional[Dict[str, AppLocalization]] = None,
         platform_requirements: Optional[Dict[str, List[Requirement]]] = None,
-        platforms: Optional[List[str]] = None,
-        players: Optional[List[str]] = None,
-        primary_genre: Optional[str] = None,
+        platforms: Optional[List[Union[str, PlatformsEnum]]] = None,
+        players: Optional[List[Union[str, PlayersEnum]]] = None,
+        primary_genre: Optional[Union[str, PrimaryGenreEnum]] = None,
         publisher: Optional[str] = None,
         release_date: Optional[str] = None,
         website_url: Optional[str] = None,
@@ -349,7 +349,7 @@ class FullAppInfo(Model):
         if "primaryGenre" in dict_ and dict_["primaryGenre"] is not None:
             instance.primary_genre = str(dict_["primaryGenre"])
         elif include_empty:
-            instance.primary_genre = str()
+            instance.primary_genre = Union[str, PrimaryGenreEnum]()
         if "publisher" in dict_ and dict_["publisher"] is not None:
             instance.publisher = str(dict_["publisher"])
         elif include_empty:

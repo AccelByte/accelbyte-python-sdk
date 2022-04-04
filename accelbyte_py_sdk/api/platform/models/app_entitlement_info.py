@@ -51,13 +51,13 @@ class AppEntitlementInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         user_id: (userId) REQUIRED str
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         end_date: (endDate) OPTIONAL str
 
@@ -76,10 +76,10 @@ class AppEntitlementInfo(Model):
 
     granted_at: str                                                                                # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     user_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     item_snapshot: ItemSnapshot                                                                    # OPTIONAL
@@ -99,7 +99,7 @@ class AppEntitlementInfo(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> AppEntitlementInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> AppEntitlementInfo:
         self.status = value
         return self
 
@@ -111,7 +111,7 @@ class AppEntitlementInfo(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> AppEntitlementInfo:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> AppEntitlementInfo:
         self.app_type = value
         return self
 
@@ -156,7 +156,7 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -168,7 +168,7 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -204,10 +204,10 @@ class AppEntitlementInfo(Model):
         cls,
         granted_at: str,
         namespace: str,
-        status: str,
+        status: Union[str, StatusEnum],
         user_id: str,
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
@@ -254,7 +254,7 @@ class AppEntitlementInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -266,7 +266,7 @@ class AppEntitlementInfo(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:

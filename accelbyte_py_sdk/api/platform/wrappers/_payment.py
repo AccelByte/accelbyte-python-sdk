@@ -44,9 +44,17 @@ from ..operations.payment import GetPaymentOrder
 from ..operations.payment import GetPaymentOrderChargeStatus
 from ..operations.payment import ListExtOrderNoByExtTxId
 from ..operations.payment import QueryPaymentNotifications
+from ..operations.payment import QueryPaymentNotificationsStatusEnum, QueryPaymentNotificationsNotificationSourceEnum
 from ..operations.payment import QueryPaymentOrders
+from ..operations.payment import QueryPaymentOrdersStatusEnum, QueryPaymentOrdersChannelEnum
 from ..operations.payment import RefundUserPaymentOrder
 from ..operations.payment import SimulatePaymentOrderNotification
+from ..models import NotificationProcessResultStatusEnum
+from ..models import PaymentOrderChargeRequestPaymentProviderEnum
+from ..models import PaymentOrderChargeStatusStatusEnum
+from ..models import PaymentOrderCreateItemTypeEnum
+from ..models import PaymentOrderInfoItemTypeEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoChannelEnum
+from ..models import PaymentOrderNotifySimulationPaymentProviderEnum, PaymentOrderNotifySimulationNotifyTypeEnum
 
 
 @same_doc_as(ChargePaymentOrder)
@@ -184,7 +192,7 @@ async def list_ext_order_no_by_ext_tx_id_async(ext_tx_id: str, namespace: Option
 
 
 @same_doc_as(QueryPaymentNotifications)
-def query_payment_notifications(end_date: Optional[str] = None, external_id: Optional[str] = None, limit: Optional[int] = None, notification_source: Optional[str] = None, notification_type: Optional[str] = None, offset: Optional[int] = None, payment_order_no: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_payment_notifications(end_date: Optional[str] = None, external_id: Optional[str] = None, limit: Optional[int] = None, notification_source: Optional[Union[str, QueryPaymentNotificationsNotificationSourceEnum]] = None, notification_type: Optional[str] = None, offset: Optional[int] = None, payment_order_no: Optional[str] = None, start_date: Optional[str] = None, status: Optional[Union[str, QueryPaymentNotificationsStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,7 +213,7 @@ def query_payment_notifications(end_date: Optional[str] = None, external_id: Opt
 
 
 @same_doc_as(QueryPaymentNotifications)
-async def query_payment_notifications_async(end_date: Optional[str] = None, external_id: Optional[str] = None, limit: Optional[int] = None, notification_source: Optional[str] = None, notification_type: Optional[str] = None, offset: Optional[int] = None, payment_order_no: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_payment_notifications_async(end_date: Optional[str] = None, external_id: Optional[str] = None, limit: Optional[int] = None, notification_source: Optional[Union[str, QueryPaymentNotificationsNotificationSourceEnum]] = None, notification_type: Optional[str] = None, offset: Optional[int] = None, payment_order_no: Optional[str] = None, start_date: Optional[str] = None, status: Optional[Union[str, QueryPaymentNotificationsStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,7 +234,7 @@ async def query_payment_notifications_async(end_date: Optional[str] = None, exte
 
 
 @same_doc_as(QueryPaymentOrders)
-def query_payment_orders(channel: Optional[str] = None, ext_tx_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_payment_orders(channel: Optional[Union[str, QueryPaymentOrdersChannelEnum]] = None, ext_tx_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryPaymentOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,7 +251,7 @@ def query_payment_orders(channel: Optional[str] = None, ext_tx_id: Optional[str]
 
 
 @same_doc_as(QueryPaymentOrders)
-async def query_payment_orders_async(channel: Optional[str] = None, ext_tx_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_payment_orders_async(channel: Optional[Union[str, QueryPaymentOrdersChannelEnum]] = None, ext_tx_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryPaymentOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

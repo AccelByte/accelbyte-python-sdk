@@ -51,7 +51,7 @@ class FulfillmentScriptContext(Model):
 
         namespace: (namespace) REQUIRED str
 
-        source: (source) REQUIRED str
+        source: (source) REQUIRED Union[str, SourceEnum]
 
         order: (order) OPTIONAL OrderSummary
     """
@@ -60,7 +60,7 @@ class FulfillmentScriptContext(Model):
 
     item: ItemInfo                                                                                 # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    source: str                                                                                    # REQUIRED
+    source: Union[str, SourceEnum]                                                                 # REQUIRED
     order: OrderSummary                                                                            # OPTIONAL
 
     # endregion fields
@@ -75,7 +75,7 @@ class FulfillmentScriptContext(Model):
         self.namespace = value
         return self
 
-    def with_source(self, value: str) -> FulfillmentScriptContext:
+    def with_source(self, value: Union[str, SourceEnum]) -> FulfillmentScriptContext:
         self.source = value
         return self
 
@@ -100,7 +100,7 @@ class FulfillmentScriptContext(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "order"):
             result["order"] = self.order.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -116,7 +116,7 @@ class FulfillmentScriptContext(Model):
         cls,
         item: ItemInfo,
         namespace: str,
-        source: str,
+        source: Union[str, SourceEnum],
         order: Optional[OrderSummary] = None,
     ) -> FulfillmentScriptContext:
         instance = cls()
@@ -143,7 +143,7 @@ class FulfillmentScriptContext(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = Union[str, SourceEnum]()
         if "order" in dict_ and dict_["order"] is not None:
             instance.order = OrderSummary.create_from_dict(dict_["order"], include_empty=include_empty)
         elif include_empty:

@@ -36,18 +36,18 @@ class UserProfileStatusUpdate(Model):
     """A DTO object for updating user profile status API call. (UserProfileStatusUpdate)
 
     Properties:
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
     """
 
     # region fields
 
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_status(self, value: str) -> UserProfileStatusUpdate:
+    def with_status(self, value: Union[str, StatusEnum]) -> UserProfileStatusUpdate:
         self.status = value
         return self
 
@@ -60,7 +60,7 @@ class UserProfileStatusUpdate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -70,7 +70,7 @@ class UserProfileStatusUpdate(Model):
     @classmethod
     def create(
         cls,
-        status: str,
+        status: Union[str, StatusEnum],
     ) -> UserProfileStatusUpdate:
         instance = cls()
         instance.status = status
@@ -84,7 +84,7 @@ class UserProfileStatusUpdate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod

@@ -55,10 +55,17 @@ from ..operations.order import PublicDownloadUserOrderReceipt
 from ..operations.order import PublicGetUserOrder
 from ..operations.order import PublicGetUserOrderHistories
 from ..operations.order import PublicQueryUserOrders
+from ..operations.order import PublicQueryUserOrdersStatusEnum
 from ..operations.order import QueryOrders
+from ..operations.order import QueryOrdersStatusEnum
 from ..operations.order import QueryUserOrders
+from ..operations.order import QueryUserOrdersStatusEnum
 from ..operations.order import RefundOrder
 from ..operations.order import UpdateUserOrderStatus
+from ..models import OrderHistoryInfoActionEnum
+from ..models import OrderInfoPaymentProviderEnum, OrderInfoStatusEnum
+from ..models import OrderUpdateStatusEnum
+from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
 
 
 @same_doc_as(CountOfPurchasedItem)
@@ -450,7 +457,7 @@ async def public_get_user_order_histories_async(order_no: str, user_id: str, nam
 
 
 @same_doc_as(PublicQueryUserOrders)
-def public_query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -467,7 +474,7 @@ def public_query_user_orders(user_id: str, item_id: Optional[str] = None, limit:
 
 
 @same_doc_as(PublicQueryUserOrders)
-async def public_query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -484,7 +491,7 @@ async def public_query_user_orders_async(user_id: str, item_id: Optional[str] = 
 
 
 @same_doc_as(QueryOrders)
-def query_orders(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_orders(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryOrdersStatusEnum]] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -504,7 +511,7 @@ def query_orders(end_time: Optional[str] = None, limit: Optional[int] = None, of
 
 
 @same_doc_as(QueryOrders)
-async def query_orders_async(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_orders_async(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryOrdersStatusEnum]] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -524,7 +531,7 @@ async def query_orders_async(end_time: Optional[str] = None, limit: Optional[int
 
 
 @same_doc_as(QueryUserOrders)
-def query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -541,7 +548,7 @@ def query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Option
 
 
 @same_doc_as(QueryUserOrders)
-async def query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

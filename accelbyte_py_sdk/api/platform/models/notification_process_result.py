@@ -44,7 +44,7 @@ class NotificationProcessResult(Model):
 
         severity: (severity) OPTIONAL int
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
     """
 
     # region fields
@@ -52,7 +52,7 @@ class NotificationProcessResult(Model):
     code: str                                                                                      # OPTIONAL
     custom_param: Dict[str, Any]                                                                   # OPTIONAL
     severity: int                                                                                  # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -70,7 +70,7 @@ class NotificationProcessResult(Model):
         self.severity = value
         return self
 
-    def with_status(self, value: str) -> NotificationProcessResult:
+    def with_status(self, value: Union[str, StatusEnum]) -> NotificationProcessResult:
         self.status = value
         return self
 
@@ -95,7 +95,7 @@ class NotificationProcessResult(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -108,7 +108,7 @@ class NotificationProcessResult(Model):
         code: Optional[str] = None,
         custom_param: Optional[Dict[str, Any]] = None,
         severity: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> NotificationProcessResult:
         instance = cls()
         if code is not None:
@@ -141,7 +141,7 @@ class NotificationProcessResult(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod

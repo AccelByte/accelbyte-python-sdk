@@ -71,9 +71,9 @@ class ItemCreate(Model):
     Properties:
         category_path: (categoryPath) REQUIRED str
 
-        entitlement_type: (entitlementType) REQUIRED str
+        entitlement_type: (entitlementType) REQUIRED Union[str, EntitlementTypeEnum]
 
-        item_type: (itemType) REQUIRED str
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum]
 
         localizations: (localizations) REQUIRED Dict[str, Localization]
 
@@ -81,11 +81,11 @@ class ItemCreate(Model):
 
         region_data: (regionData) REQUIRED Dict[str, List[RegionDataItem]]
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         base_app_id: (baseAppId) OPTIONAL str
 
@@ -115,7 +115,7 @@ class ItemCreate(Model):
 
         recurring: (recurring) OPTIONAL Recurring
 
-        season_type: (seasonType) OPTIONAL str
+        season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
         sku: (sku) OPTIONAL str
 
@@ -135,14 +135,14 @@ class ItemCreate(Model):
     # region fields
 
     category_path: str                                                                             # REQUIRED
-    entitlement_type: str                                                                          # REQUIRED
-    item_type: str                                                                                 # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
+    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
     localizations: Dict[str, Localization]                                                         # REQUIRED
     name: str                                                                                      # REQUIRED
     region_data: Dict[str, List[RegionDataItem]]                                                   # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     booth_name: str                                                                                # OPTIONAL
     clazz: str                                                                                     # OPTIONAL
@@ -157,7 +157,7 @@ class ItemCreate(Model):
     max_count_per_user: int                                                                        # OPTIONAL
     purchasable: bool                                                                              # OPTIONAL
     recurring: Recurring                                                                           # OPTIONAL
-    season_type: str                                                                               # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
@@ -174,11 +174,11 @@ class ItemCreate(Model):
         self.category_path = value
         return self
 
-    def with_entitlement_type(self, value: str) -> ItemCreate:
+    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> ItemCreate:
         self.entitlement_type = value
         return self
 
-    def with_item_type(self, value: str) -> ItemCreate:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> ItemCreate:
         self.item_type = value
         return self
 
@@ -194,7 +194,7 @@ class ItemCreate(Model):
         self.region_data = value
         return self
 
-    def with_status(self, value: str) -> ItemCreate:
+    def with_status(self, value: Union[str, StatusEnum]) -> ItemCreate:
         self.status = value
         return self
 
@@ -202,7 +202,7 @@ class ItemCreate(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> ItemCreate:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> ItemCreate:
         self.app_type = value
         return self
 
@@ -262,7 +262,7 @@ class ItemCreate(Model):
         self.recurring = value
         return self
 
-    def with_season_type(self, value: str) -> ItemCreate:
+    def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> ItemCreate:
         self.season_type = value
         return self
 
@@ -307,11 +307,11 @@ class ItemCreate(Model):
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
-            result["entitlementType"] = str()
+            result["entitlementType"] = Union[str, EntitlementTypeEnum]()
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "localizations"):
             result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
@@ -327,7 +327,7 @@ class ItemCreate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
@@ -335,7 +335,7 @@ class ItemCreate(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -395,7 +395,7 @@ class ItemCreate(Model):
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
-            result["seasonType"] = str()
+            result["seasonType"] = Union[str, SeasonTypeEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -434,14 +434,14 @@ class ItemCreate(Model):
     def create(
         cls,
         category_path: str,
-        entitlement_type: str,
-        item_type: str,
+        entitlement_type: Union[str, EntitlementTypeEnum],
+        item_type: Union[str, ItemTypeEnum],
         localizations: Dict[str, Localization],
         name: str,
         region_data: Dict[str, List[RegionDataItem]],
-        status: str,
+        status: Union[str, StatusEnum],
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         base_app_id: Optional[str] = None,
         booth_name: Optional[str] = None,
         clazz: Optional[str] = None,
@@ -456,7 +456,7 @@ class ItemCreate(Model):
         max_count_per_user: Optional[int] = None,
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
-        season_type: Optional[str] = None,
+        season_type: Optional[Union[str, SeasonTypeEnum]] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         tags: Optional[List[str]] = None,
@@ -535,11 +535,11 @@ class ItemCreate(Model):
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
-            instance.entitlement_type = str()
+            instance.entitlement_type = Union[str, EntitlementTypeEnum]()
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "localizations" in dict_ and dict_["localizations"] is not None:
             instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
@@ -555,7 +555,7 @@ class ItemCreate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
@@ -563,7 +563,7 @@ class ItemCreate(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -623,7 +623,7 @@ class ItemCreate(Model):
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
-            instance.season_type = str()
+            instance.season_type = Union[str, SeasonTypeEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:

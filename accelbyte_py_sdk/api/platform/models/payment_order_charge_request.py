@@ -42,7 +42,7 @@ class PaymentOrderChargeRequest(Model):
     """Payment order charge request (PaymentOrderChargeRequest)
 
     Properties:
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         ext_tx_id: (extTxId) OPTIONAL str
 
@@ -51,7 +51,7 @@ class PaymentOrderChargeRequest(Model):
 
     # region fields
 
-    payment_provider: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
     ext_tx_id: str                                                                                 # OPTIONAL
     payment_method: str                                                                            # OPTIONAL
 
@@ -59,7 +59,7 @@ class PaymentOrderChargeRequest(Model):
 
     # region with_x methods
 
-    def with_payment_provider(self, value: str) -> PaymentOrderChargeRequest:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentOrderChargeRequest:
         self.payment_provider = value
         return self
 
@@ -80,7 +80,7 @@ class PaymentOrderChargeRequest(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
@@ -98,7 +98,7 @@ class PaymentOrderChargeRequest(Model):
     @classmethod
     def create(
         cls,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         ext_tx_id: Optional[str] = None,
         payment_method: Optional[str] = None,
     ) -> PaymentOrderChargeRequest:
@@ -118,7 +118,7 @@ class PaymentOrderChargeRequest(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:

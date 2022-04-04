@@ -57,9 +57,9 @@ class IAPOrderInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -99,8 +99,8 @@ class IAPOrderInfo(Model):
     created_at: str                                                                                # REQUIRED
     iap_order_no: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     credits: List[CreditSummary]                                                                   # OPTIONAL
@@ -134,11 +134,11 @@ class IAPOrderInfo(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> IAPOrderInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> IAPOrderInfo:
         self.status = value
         return self
 
-    def with_type(self, value: str) -> IAPOrderInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> IAPOrderInfo:
         self.type_ = value
         return self
 
@@ -227,11 +227,11 @@ class IAPOrderInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -308,8 +308,8 @@ class IAPOrderInfo(Model):
         created_at: str,
         iap_order_no: str,
         namespace: str,
-        status: str,
-        type_: str,
+        status: Union[str, StatusEnum],
+        type_: Union[str, TypeEnum],
         updated_at: str,
         user_id: str,
         credits: Optional[List[CreditSummary]] = None,
@@ -385,11 +385,11 @@ class IAPOrderInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

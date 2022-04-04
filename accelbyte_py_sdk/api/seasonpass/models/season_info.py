@@ -65,7 +65,7 @@ class SeasonInfo(Model):
 
         start: (start) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         tier_item_id: (tierItemId) REQUIRED str
 
@@ -94,7 +94,7 @@ class SeasonInfo(Model):
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     start: str                                                                                     # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     tier_item_id: str                                                                              # REQUIRED
     tier_item_name: str                                                                            # REQUIRED
     updated_at: str                                                                                # REQUIRED
@@ -154,7 +154,7 @@ class SeasonInfo(Model):
         self.start = value
         return self
 
-    def with_status(self, value: str) -> SeasonInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> SeasonInfo:
         self.status = value
         return self
 
@@ -239,7 +239,7 @@ class SeasonInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
@@ -285,7 +285,7 @@ class SeasonInfo(Model):
         name: str,
         namespace: str,
         start: str,
-        status: str,
+        status: Union[str, StatusEnum],
         tier_item_id: str,
         tier_item_name: str,
         updated_at: str,
@@ -374,7 +374,7 @@ class SeasonInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:

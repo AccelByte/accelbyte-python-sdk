@@ -37,7 +37,10 @@ from ..operations.fulfillment import FulfillItem
 from ..operations.fulfillment import FulfillRewards
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
+from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import RedeemCode
+from ..models import FulfillmentRequestSourceEnum
+from ..models import RewardsRequestSourceEnum
 
 
 @same_doc_as(FulfillItem)
@@ -125,7 +128,7 @@ async def public_redeem_code_async(user_id: str, body: Optional[FulfillCodeReque
 
 
 @same_doc_as(QueryFulfillmentHistories)
-def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,7 +144,7 @@ def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[in
 
 
 @same_doc_as(QueryFulfillmentHistories)
-async def query_fulfillment_histories_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_fulfillment_histories_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -50,9 +50,9 @@ class MockIAPReceipt(Model):
     Properties:
         product_id: (productId) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
-        item_identity_type: (itemIdentityType) OPTIONAL str
+        item_identity_type: (itemIdentityType) OPTIONAL Union[str, ItemIdentityTypeEnum]
 
         language: (language) OPTIONAL str
 
@@ -62,8 +62,8 @@ class MockIAPReceipt(Model):
     # region fields
 
     product_id: str                                                                                # REQUIRED
-    type_: str                                                                                     # REQUIRED
-    item_identity_type: str                                                                        # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
+    item_identity_type: Union[str, ItemIdentityTypeEnum]                                           # OPTIONAL
     language: str                                                                                  # OPTIONAL
     region: str                                                                                    # OPTIONAL
 
@@ -75,11 +75,11 @@ class MockIAPReceipt(Model):
         self.product_id = value
         return self
 
-    def with_type(self, value: str) -> MockIAPReceipt:
+    def with_type(self, value: Union[str, TypeEnum]) -> MockIAPReceipt:
         self.type_ = value
         return self
 
-    def with_item_identity_type(self, value: str) -> MockIAPReceipt:
+    def with_item_identity_type(self, value: Union[str, ItemIdentityTypeEnum]) -> MockIAPReceipt:
         self.item_identity_type = value
         return self
 
@@ -104,11 +104,11 @@ class MockIAPReceipt(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "item_identity_type"):
             result["itemIdentityType"] = str(self.item_identity_type)
         elif include_empty:
-            result["itemIdentityType"] = str()
+            result["itemIdentityType"] = Union[str, ItemIdentityTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -127,8 +127,8 @@ class MockIAPReceipt(Model):
     def create(
         cls,
         product_id: str,
-        type_: str,
-        item_identity_type: Optional[str] = None,
+        type_: Union[str, TypeEnum],
+        item_identity_type: Optional[Union[str, ItemIdentityTypeEnum]] = None,
         language: Optional[str] = None,
         region: Optional[str] = None,
     ) -> MockIAPReceipt:
@@ -155,11 +155,11 @@ class MockIAPReceipt(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "itemIdentityType" in dict_ and dict_["itemIdentityType"] is not None:
             instance.item_identity_type = str(dict_["itemIdentityType"])
         elif include_empty:
-            instance.item_identity_type = str()
+            instance.item_identity_type = Union[str, ItemIdentityTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:

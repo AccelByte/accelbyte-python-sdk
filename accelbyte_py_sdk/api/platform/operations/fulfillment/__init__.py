@@ -16,4 +16,5 @@ from .fulfill_item import FulfillItem
 from .fulfill_rewards import FulfillRewards
 from .public_redeem_code import PublicRedeemCode
 from .query_fulfillment_histories import QueryFulfillmentHistories
+from .query_fulfillment_histories import StatusEnum as QueryFulfillmentHistoriesStatusEnum
 from .redeem_code import RedeemCode

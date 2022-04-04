@@ -274,7 +274,7 @@ class TokenGrantV3(Operation):
 
         username: (username) OPTIONAL str in form_data
 
-        grant_type: (grant_type) REQUIRED str in form_data
+        grant_type: (grant_type) REQUIRED Union[str, GrantTypeEnum] in form_data
 
     Responses:
         200: OK - OauthmodelTokenResponseV3 (Token returned)
@@ -304,7 +304,7 @@ class TokenGrantV3(Operation):
     redirect_uri: str                                                                              # OPTIONAL in [form_data]
     refresh_token: str                                                                             # OPTIONAL in [form_data]
     username: str                                                                                  # OPTIONAL in [form_data]
-    grant_type: str                                                                                # REQUIRED in [form_data]
+    grant_type: Union[str, GrantTypeEnum]                                                          # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -426,7 +426,7 @@ class TokenGrantV3(Operation):
         self.username = value
         return self
 
-    def with_grant_type(self, value: str) -> TokenGrantV3:
+    def with_grant_type(self, value: Union[str, GrantTypeEnum]) -> TokenGrantV3:
         self.grant_type = value
         return self
 
@@ -475,7 +475,7 @@ class TokenGrantV3(Operation):
         if hasattr(self, "grant_type") and self.grant_type:
             result["grant_type"] = str(self.grant_type)
         elif include_empty:
-            result["grant_type"] = str()
+            result["grant_type"] = Union[str, GrantTypeEnum]()
         return result
 
     # endregion to methods
@@ -523,7 +523,7 @@ class TokenGrantV3(Operation):
     @classmethod
     def create(
         cls,
-        grant_type: str,
+        grant_type: Union[str, GrantTypeEnum],
         device_id: Optional[str] = None,
         client_id: Optional[str] = None,
         code: Optional[str] = None,
@@ -598,7 +598,7 @@ class TokenGrantV3(Operation):
         if "grant_type" in dict_ and dict_["grant_type"] is not None:
             instance.grant_type = str(dict_["grant_type"])
         elif include_empty:
-            instance.grant_type = str()
+            instance.grant_type = Union[str, GrantTypeEnum]()
         return instance
 
     @staticmethod

@@ -41,6 +41,9 @@ from ..operations.currency import GetCurrencySummary
 from ..operations.currency import ListCurrencies
 from ..operations.currency import PublicListCurrencies
 from ..operations.currency import UpdateCurrency
+from ..models import CurrencyCreateCurrencyTypeEnum
+from ..models import CurrencyInfoCurrencyTypeEnum
+from ..models import CurrencySummaryCurrencyTypeEnum
 
 
 @same_doc_as(CreateCurrency)

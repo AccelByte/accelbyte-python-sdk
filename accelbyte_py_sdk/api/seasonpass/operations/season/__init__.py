@@ -27,6 +27,7 @@ from .public_get_current_user_season import PublicGetCurrentUserSeason
 from .public_get_user_season import PublicGetUserSeason
 from .publish_season import PublishSeason
 from .query_seasons import QuerySeasons
+from .query_seasons import StatusEnum as QuerySeasonsStatusEnum
 from .reset_user_season import ResetUserSeason
 from .retire_season import RetireSeason
 from .unpublish_season import UnpublishSeason

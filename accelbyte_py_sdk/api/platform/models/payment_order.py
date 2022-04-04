@@ -79,7 +79,7 @@ class PaymentOrder(Model):
     Properties:
         authorised_time: (authorisedTime) OPTIONAL str
 
-        channel: (channel) OPTIONAL str
+        channel: (channel) OPTIONAL Union[str, ChannelEnum]
 
         chargeback_reversed_time: (chargebackReversedTime) OPTIONAL str
 
@@ -103,7 +103,7 @@ class PaymentOrder(Model):
 
         ext_user_id: (extUserId) OPTIONAL str
 
-        item_type: (itemType) OPTIONAL str
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
 
         language: (language) OPTIONAL str
 
@@ -121,7 +121,7 @@ class PaymentOrder(Model):
 
         payment_order_no: (paymentOrderNo) OPTIONAL str
 
-        payment_provider: (paymentProvider) OPTIONAL str
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum]
 
         payment_provider_fee: (paymentProviderFee) OPTIONAL int
 
@@ -147,7 +147,7 @@ class PaymentOrder(Model):
 
         state: (state) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         status_reason: (statusReason) OPTIONAL str
 
@@ -181,7 +181,7 @@ class PaymentOrder(Model):
     # region fields
 
     authorised_time: str                                                                           # OPTIONAL
-    channel: str                                                                                   # OPTIONAL
+    channel: Union[str, ChannelEnum]                                                               # OPTIONAL
     chargeback_reversed_time: str                                                                  # OPTIONAL
     chargeback_time: str                                                                           # OPTIONAL
     charged_time: str                                                                              # OPTIONAL
@@ -193,7 +193,7 @@ class PaymentOrder(Model):
     description: str                                                                               # OPTIONAL
     ext_order_no: str                                                                              # OPTIONAL
     ext_user_id: str                                                                               # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     language: str                                                                                  # OPTIONAL
     metadata: Dict[str, str]                                                                       # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
@@ -202,7 +202,7 @@ class PaymentOrder(Model):
     payment_method: str                                                                            # OPTIONAL
     payment_method_fee: int                                                                        # OPTIONAL
     payment_order_no: str                                                                          # OPTIONAL
-    payment_provider: str                                                                          # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
     payment_provider_fee: int                                                                      # OPTIONAL
     payment_station_url: str                                                                       # OPTIONAL
     price: int                                                                                     # OPTIONAL
@@ -215,7 +215,7 @@ class PaymentOrder(Model):
     sandbox: bool                                                                                  # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     state: str                                                                                     # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     status_reason: str                                                                             # OPTIONAL
     subscription_id: str                                                                           # OPTIONAL
     subtotal_price: int                                                                            # OPTIONAL
@@ -239,7 +239,7 @@ class PaymentOrder(Model):
         self.authorised_time = value
         return self
 
-    def with_channel(self, value: str) -> PaymentOrder:
+    def with_channel(self, value: Union[str, ChannelEnum]) -> PaymentOrder:
         self.channel = value
         return self
 
@@ -287,7 +287,7 @@ class PaymentOrder(Model):
         self.ext_user_id = value
         return self
 
-    def with_item_type(self, value: str) -> PaymentOrder:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PaymentOrder:
         self.item_type = value
         return self
 
@@ -323,7 +323,7 @@ class PaymentOrder(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentOrder:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentOrder:
         self.payment_provider = value
         return self
 
@@ -375,7 +375,7 @@ class PaymentOrder(Model):
         self.state = value
         return self
 
-    def with_status(self, value: str) -> PaymentOrder:
+    def with_status(self, value: Union[str, StatusEnum]) -> PaymentOrder:
         self.status = value
         return self
 
@@ -448,7 +448,7 @@ class PaymentOrder(Model):
         if hasattr(self, "channel"):
             result["channel"] = str(self.channel)
         elif include_empty:
-            result["channel"] = str()
+            result["channel"] = Union[str, ChannelEnum]()
         if hasattr(self, "chargeback_reversed_time"):
             result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
         elif include_empty:
@@ -496,7 +496,7 @@ class PaymentOrder(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -532,7 +532,7 @@ class PaymentOrder(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
@@ -584,7 +584,7 @@ class PaymentOrder(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
@@ -651,7 +651,7 @@ class PaymentOrder(Model):
     def create(
         cls,
         authorised_time: Optional[str] = None,
-        channel: Optional[str] = None,
+        channel: Optional[Union[str, ChannelEnum]] = None,
         chargeback_reversed_time: Optional[str] = None,
         chargeback_time: Optional[str] = None,
         charged_time: Optional[str] = None,
@@ -663,7 +663,7 @@ class PaymentOrder(Model):
         description: Optional[str] = None,
         ext_order_no: Optional[str] = None,
         ext_user_id: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         language: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         namespace: Optional[str] = None,
@@ -672,7 +672,7 @@ class PaymentOrder(Model):
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
-        payment_provider: Optional[str] = None,
+        payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         payment_provider_fee: Optional[int] = None,
         payment_station_url: Optional[str] = None,
         price: Optional[int] = None,
@@ -685,7 +685,7 @@ class PaymentOrder(Model):
         sandbox: Optional[bool] = None,
         sku: Optional[str] = None,
         state: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         status_reason: Optional[str] = None,
         subscription_id: Optional[str] = None,
         subtotal_price: Optional[int] = None,
@@ -816,7 +816,7 @@ class PaymentOrder(Model):
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
-            instance.channel = str()
+            instance.channel = Union[str, ChannelEnum]()
         if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
             instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
         elif include_empty:
@@ -864,7 +864,7 @@ class PaymentOrder(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -900,7 +900,7 @@ class PaymentOrder(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:
@@ -952,7 +952,7 @@ class PaymentOrder(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:

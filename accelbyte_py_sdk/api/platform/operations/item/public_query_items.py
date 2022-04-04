@@ -76,7 +76,7 @@ class PublicQueryItems(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        app_type: (appType) OPTIONAL str in query
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
         base_app_id: (baseAppId) OPTIONAL str in query
 
@@ -84,7 +84,7 @@ class PublicQueryItems(Operation):
 
         features: (features) OPTIONAL str in query
 
-        item_type: (itemType) OPTIONAL str in query
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         language: (language) OPTIONAL str in query
 
@@ -118,11 +118,11 @@ class PublicQueryItems(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    app_type: str                                                                                  # OPTIONAL in [query]
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL in [query]
     base_app_id: str                                                                               # OPTIONAL in [query]
     category_path: str                                                                             # OPTIONAL in [query]
     features: str                                                                                  # OPTIONAL in [query]
-    item_type: str                                                                                 # OPTIONAL in [query]
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL in [query]
     language: str                                                                                  # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
@@ -227,7 +227,7 @@ class PublicQueryItems(Operation):
         self.namespace = value
         return self
 
-    def with_app_type(self, value: str) -> PublicQueryItems:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> PublicQueryItems:
         self.app_type = value
         return self
 
@@ -243,7 +243,7 @@ class PublicQueryItems(Operation):
         self.features = value
         return self
 
-    def with_item_type(self, value: str) -> PublicQueryItems:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PublicQueryItems:
         self.item_type = value
         return self
 
@@ -288,7 +288,7 @@ class PublicQueryItems(Operation):
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -304,7 +304,7 @@ class PublicQueryItems(Operation):
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -377,11 +377,11 @@ class PublicQueryItems(Operation):
     def create(
         cls,
         namespace: str,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         base_app_id: Optional[str] = None,
         category_path: Optional[str] = None,
         features: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         language: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -428,7 +428,7 @@ class PublicQueryItems(Operation):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -444,7 +444,7 @@ class PublicQueryItems(Operation):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:

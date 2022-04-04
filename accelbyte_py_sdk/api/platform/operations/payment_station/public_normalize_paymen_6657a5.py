@@ -106,7 +106,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
 
         payment_order_no: (paymentOrderNo) REQUIRED str in query
 
-        payment_provider: (paymentProvider) REQUIRED str in query
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
 
         return_url: (returnUrl) REQUIRED str in query
 
@@ -139,7 +139,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
     user_id: str                                                                                   # OPTIONAL in [query]
     order_no: str                                                                                  # REQUIRED in [query]
     payment_order_no: str                                                                          # REQUIRED in [query]
-    payment_provider: str                                                                          # REQUIRED in [query]
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED in [query]
     return_url: str                                                                                # REQUIRED in [query]
 
     # endregion fields
@@ -304,7 +304,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> PublicNormalizePaymentReturnUrl:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PublicNormalizePaymentReturnUrl:
         self.payment_provider = value
         return self
 
@@ -377,7 +377,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "return_url") and self.return_url:
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -424,7 +424,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         namespace: str,
         order_no: str,
         payment_order_no: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         return_url: str,
         payer_id: Optional[str] = None,
         foreinginvoice: Optional[str] = None,
@@ -530,7 +530,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:

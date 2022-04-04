@@ -68,7 +68,7 @@ class ListKeys(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - KeyPagingSliceResult (successful operation)
@@ -87,7 +87,7 @@ class ListKeys(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
 
     # endregion fields
 
@@ -181,7 +181,7 @@ class ListKeys(Operation):
         self.offset = value
         return self
 
-    def with_status(self, value: str) -> ListKeys:
+    def with_status(self, value: Union[str, StatusEnum]) -> ListKeys:
         self.status = value
         return self
 
@@ -210,7 +210,7 @@ class ListKeys(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -250,7 +250,7 @@ class ListKeys(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> ListKeys:
         instance = cls()
         instance.key_group_id = key_group_id
@@ -285,7 +285,7 @@ class ListKeys(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @staticmethod

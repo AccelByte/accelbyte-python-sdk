@@ -62,7 +62,7 @@ class LocalizedSeasonInfo(Model):
 
         start: (start) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         tier_item_id: (tierItemId) REQUIRED str
 
@@ -93,7 +93,7 @@ class LocalizedSeasonInfo(Model):
     passes: List[LocalizedPassInfo]                                                                # REQUIRED
     rewards: Dict[str, RewardInfo]                                                                 # REQUIRED
     start: str                                                                                     # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     tier_item_id: str                                                                              # REQUIRED
     tiers: List[Tier]                                                                              # REQUIRED
     updated_at: str                                                                                # REQUIRED
@@ -147,7 +147,7 @@ class LocalizedSeasonInfo(Model):
         self.start = value
         return self
 
-    def with_status(self, value: str) -> LocalizedSeasonInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> LocalizedSeasonInfo:
         self.status = value
         return self
 
@@ -232,7 +232,7 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
@@ -284,7 +284,7 @@ class LocalizedSeasonInfo(Model):
         passes: List[LocalizedPassInfo],
         rewards: Dict[str, RewardInfo],
         start: str,
-        status: str,
+        status: Union[str, StatusEnum],
         tier_item_id: str,
         tiers: List[Tier],
         updated_at: str,
@@ -369,7 +369,7 @@ class LocalizedSeasonInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:

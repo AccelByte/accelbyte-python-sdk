@@ -48,6 +48,8 @@ from ..operations.wallet import PublicGetMyWallet
 from ..operations.wallet import PublicGetWallet
 from ..operations.wallet import PublicListUserWalletTransactions
 from ..operations.wallet import QueryWallets
+from ..models import CreditRequestSourceEnum
+from ..models import WalletInfoStatusEnum
 
 
 @same_doc_as(CheckWallet)

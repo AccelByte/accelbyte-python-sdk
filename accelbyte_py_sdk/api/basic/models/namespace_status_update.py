@@ -36,18 +36,18 @@ class NamespaceStatusUpdate(Model):
     """A DTO object for updating namespace status API call. (NamespaceStatusUpdate)
 
     Properties:
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
     """
 
     # region fields
 
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_status(self, value: str) -> NamespaceStatusUpdate:
+    def with_status(self, value: Union[str, StatusEnum]) -> NamespaceStatusUpdate:
         self.status = value
         return self
 
@@ -60,7 +60,7 @@ class NamespaceStatusUpdate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -70,7 +70,7 @@ class NamespaceStatusUpdate(Model):
     @classmethod
     def create(
         cls,
-        status: str,
+        status: Union[str, StatusEnum],
     ) -> NamespaceStatusUpdate:
         instance = cls()
         instance.status = status
@@ -84,7 +84,7 @@ class NamespaceStatusUpdate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod

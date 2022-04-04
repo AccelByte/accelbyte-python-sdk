@@ -38,6 +38,7 @@ from ..models import RestErrorResponse
 from ..operations.o_auth2_0 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import AuthCodeRequestV3
 from ..operations.o_auth2_0 import AuthorizeV3
+from ..operations.o_auth2_0 import AuthorizeV3CodeChallengeMethodEnum, AuthorizeV3ResponseTypeEnum
 from ..operations.o_auth2_0 import Change2faMethod
 from ..operations.o_auth2_0 import GetJWKSV3
 from ..operations.o_auth2_0 import GetRevocationListV3
@@ -45,6 +46,7 @@ from ..operations.o_auth2_0 import PlatformTokenGrantV3
 from ..operations.o_auth2_0 import RetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import RevokeUserV3
 from ..operations.o_auth2_0 import TokenGrantV3
+from ..operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 from ..operations.o_auth2_0 import TokenIntrospectionV3
 from ..operations.o_auth2_0 import TokenRevocationV3
 from ..operations.o_auth2_0 import Verify2faCode
@@ -101,7 +103,7 @@ async def auth_code_request_v3_async(platform_id: str, request_id: str, client_i
 
 
 @same_doc_as(AuthorizeV3)
-def authorize_v3(client_id: str, response_type: str, code_challenge: Optional[str] = None, code_challenge_method: Optional[str] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def authorize_v3(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
@@ -116,7 +118,7 @@ def authorize_v3(client_id: str, response_type: str, code_challenge: Optional[st
 
 
 @same_doc_as(AuthorizeV3)
-async def authorize_v3_async(client_id: str, response_type: str, code_challenge: Optional[str] = None, code_challenge_method: Optional[str] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def authorize_v3_async(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
@@ -249,7 +251,7 @@ async def revoke_user_v3_async(user_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant_v3(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
@@ -266,7 +268,7 @@ def token_grant_v3(grant_type: str, client_id: Optional[str] = None, code: Optio
 
 
 @same_doc_as(TokenGrantV3)
-async def token_grant_v3_async(grant_type: str, client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def token_grant_v3_async(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,

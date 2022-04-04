@@ -38,7 +38,7 @@ class Recurring(Model):
     """Recurring (Recurring)
 
     Properties:
-        cycle: (cycle) REQUIRED str
+        cycle: (cycle) REQUIRED Union[str, CycleEnum]
 
         fixed_free_days: (fixedFreeDays) REQUIRED int
 
@@ -49,7 +49,7 @@ class Recurring(Model):
 
     # region fields
 
-    cycle: str                                                                                     # REQUIRED
+    cycle: Union[str, CycleEnum]                                                                   # REQUIRED
     fixed_free_days: int                                                                           # REQUIRED
     fixed_trial_cycles: int                                                                        # REQUIRED
     grace_days: int                                                                                # REQUIRED
@@ -58,7 +58,7 @@ class Recurring(Model):
 
     # region with_x methods
 
-    def with_cycle(self, value: str) -> Recurring:
+    def with_cycle(self, value: Union[str, CycleEnum]) -> Recurring:
         self.cycle = value
         return self
 
@@ -83,7 +83,7 @@ class Recurring(Model):
         if hasattr(self, "cycle"):
             result["cycle"] = str(self.cycle)
         elif include_empty:
-            result["cycle"] = str()
+            result["cycle"] = Union[str, CycleEnum]()
         if hasattr(self, "fixed_free_days"):
             result["fixedFreeDays"] = int(self.fixed_free_days)
         elif include_empty:
@@ -105,7 +105,7 @@ class Recurring(Model):
     @classmethod
     def create(
         cls,
-        cycle: str,
+        cycle: Union[str, CycleEnum],
         fixed_free_days: int,
         fixed_trial_cycles: int,
         grace_days: int,
@@ -125,7 +125,7 @@ class Recurring(Model):
         if "cycle" in dict_ and dict_["cycle"] is not None:
             instance.cycle = str(dict_["cycle"])
         elif include_empty:
-            instance.cycle = str()
+            instance.cycle = Union[str, CycleEnum]()
         if "fixedFreeDays" in dict_ and dict_["fixedFreeDays"] is not None:
             instance.fixed_free_days = int(dict_["fixedFreeDays"])
         elif include_empty:

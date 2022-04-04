@@ -147,7 +147,7 @@ class AuthorizeV3(Operation):
 
         code_challenge: (code_challenge) OPTIONAL str in query
 
-        code_challenge_method: (code_challenge_method) OPTIONAL str in query
+        code_challenge_method: (code_challenge_method) OPTIONAL Union[str, CodeChallengeMethodEnum] in query
 
         redirect_uri: (redirect_uri) OPTIONAL str in query
 
@@ -159,7 +159,7 @@ class AuthorizeV3(Operation):
 
         client_id: (client_id) REQUIRED str in query
 
-        response_type: (response_type) REQUIRED str in query
+        response_type: (response_type) REQUIRED Union[str, ResponseTypeEnum] in query
 
     Responses:
         302: Found - (Found. Redirected to login page with either request_id or error.)
@@ -175,13 +175,13 @@ class AuthorizeV3(Operation):
     _location_query: str = "request_id"
 
     code_challenge: str                                                                            # OPTIONAL in [query]
-    code_challenge_method: str                                                                     # OPTIONAL in [query]
+    code_challenge_method: Union[str, CodeChallengeMethodEnum]                                     # OPTIONAL in [query]
     redirect_uri: str                                                                              # OPTIONAL in [query]
     scope: str                                                                                     # OPTIONAL in [query]
     state: str                                                                                     # OPTIONAL in [query]
     target_auth_page: str                                                                          # OPTIONAL in [query]
     client_id: str                                                                                 # REQUIRED in [query]
-    response_type: str                                                                             # REQUIRED in [query]
+    response_type: Union[str, ResponseTypeEnum]                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -271,7 +271,7 @@ class AuthorizeV3(Operation):
         self.code_challenge = value
         return self
 
-    def with_code_challenge_method(self, value: str) -> AuthorizeV3:
+    def with_code_challenge_method(self, value: Union[str, CodeChallengeMethodEnum]) -> AuthorizeV3:
         self.code_challenge_method = value
         return self
 
@@ -295,7 +295,7 @@ class AuthorizeV3(Operation):
         self.client_id = value
         return self
 
-    def with_response_type(self, value: str) -> AuthorizeV3:
+    def with_response_type(self, value: Union[str, ResponseTypeEnum]) -> AuthorizeV3:
         self.response_type = value
         return self
 
@@ -312,7 +312,7 @@ class AuthorizeV3(Operation):
         if hasattr(self, "code_challenge_method") and self.code_challenge_method:
             result["code_challenge_method"] = str(self.code_challenge_method)
         elif include_empty:
-            result["code_challenge_method"] = str()
+            result["code_challenge_method"] = Union[str, CodeChallengeMethodEnum]()
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
@@ -336,7 +336,7 @@ class AuthorizeV3(Operation):
         if hasattr(self, "response_type") and self.response_type:
             result["response_type"] = str(self.response_type)
         elif include_empty:
-            result["response_type"] = str()
+            result["response_type"] = Union[str, ResponseTypeEnum]()
         return result
 
     # endregion to methods
@@ -373,9 +373,9 @@ class AuthorizeV3(Operation):
     def create(
         cls,
         client_id: str,
-        response_type: str,
+        response_type: Union[str, ResponseTypeEnum],
         code_challenge: Optional[str] = None,
-        code_challenge_method: Optional[str] = None,
+        code_challenge_method: Optional[Union[str, CodeChallengeMethodEnum]] = None,
         redirect_uri: Optional[str] = None,
         scope: Optional[str] = None,
         state: Optional[str] = None,
@@ -408,7 +408,7 @@ class AuthorizeV3(Operation):
         if "code_challenge_method" in dict_ and dict_["code_challenge_method"] is not None:
             instance.code_challenge_method = str(dict_["code_challenge_method"])
         elif include_empty:
-            instance.code_challenge_method = str()
+            instance.code_challenge_method = Union[str, CodeChallengeMethodEnum]()
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
@@ -432,7 +432,7 @@ class AuthorizeV3(Operation):
         if "response_type" in dict_ and dict_["response_type"] is not None:
             instance.response_type = str(dict_["response_type"])
         elif include_empty:
-            instance.response_type = str()
+            instance.response_type = Union[str, ResponseTypeEnum]()
         return instance
 
     @staticmethod

@@ -55,11 +55,11 @@ class PaymentProviderConfigInfo(Model):
 
         region: (region) REQUIRED str
 
-        aggregate: (aggregate) OPTIONAL str
+        aggregate: (aggregate) OPTIONAL Union[str, AggregateEnum]
 
         sandbox_tax_jar_api_token: (sandboxTaxJarApiToken) OPTIONAL str
 
-        specials: (specials) OPTIONAL List[str]
+        specials: (specials) OPTIONAL List[Union[str, SpecialsEnum]]
 
         tax_jar_api_token: (taxJarApiToken) OPTIONAL str
 
@@ -74,9 +74,9 @@ class PaymentProviderConfigInfo(Model):
     namespace: str                                                                                 # REQUIRED
     payment_merchant_config_id: str                                                                # REQUIRED
     region: str                                                                                    # REQUIRED
-    aggregate: str                                                                                 # OPTIONAL
+    aggregate: Union[str, AggregateEnum]                                                           # OPTIONAL
     sandbox_tax_jar_api_token: str                                                                 # OPTIONAL
-    specials: List[str]                                                                            # OPTIONAL
+    specials: List[Union[str, SpecialsEnum]]                                                       # OPTIONAL
     tax_jar_api_token: str                                                                         # OPTIONAL
     tax_jar_enabled: bool                                                                          # OPTIONAL
     use_global_tax_jar_api_token: bool                                                             # OPTIONAL
@@ -101,7 +101,7 @@ class PaymentProviderConfigInfo(Model):
         self.region = value
         return self
 
-    def with_aggregate(self, value: str) -> PaymentProviderConfigInfo:
+    def with_aggregate(self, value: Union[str, AggregateEnum]) -> PaymentProviderConfigInfo:
         self.aggregate = value
         return self
 
@@ -109,7 +109,7 @@ class PaymentProviderConfigInfo(Model):
         self.sandbox_tax_jar_api_token = value
         return self
 
-    def with_specials(self, value: List[str]) -> PaymentProviderConfigInfo:
+    def with_specials(self, value: List[Union[str, SpecialsEnum]]) -> PaymentProviderConfigInfo:
         self.specials = value
         return self
 
@@ -150,7 +150,7 @@ class PaymentProviderConfigInfo(Model):
         if hasattr(self, "aggregate"):
             result["aggregate"] = str(self.aggregate)
         elif include_empty:
-            result["aggregate"] = str()
+            result["aggregate"] = Union[str, AggregateEnum]()
         if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
@@ -184,9 +184,9 @@ class PaymentProviderConfigInfo(Model):
         namespace: str,
         payment_merchant_config_id: str,
         region: str,
-        aggregate: Optional[str] = None,
+        aggregate: Optional[Union[str, AggregateEnum]] = None,
         sandbox_tax_jar_api_token: Optional[str] = None,
-        specials: Optional[List[str]] = None,
+        specials: Optional[List[Union[str, SpecialsEnum]]] = None,
         tax_jar_api_token: Optional[str] = None,
         tax_jar_enabled: Optional[bool] = None,
         use_global_tax_jar_api_token: Optional[bool] = None,
@@ -234,7 +234,7 @@ class PaymentProviderConfigInfo(Model):
         if "aggregate" in dict_ and dict_["aggregate"] is not None:
             instance.aggregate = str(dict_["aggregate"])
         elif include_empty:
-            instance.aggregate = str()
+            instance.aggregate = Union[str, AggregateEnum]()
         if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:

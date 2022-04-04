@@ -68,7 +68,7 @@ class PublicGetUserEntitlementBySku(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         sku: (sku) REQUIRED str in query
 
@@ -89,7 +89,7 @@ class PublicGetUserEntitlementBySku(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
     sku: str                                                                                       # REQUIRED in [query]
 
     # endregion fields
@@ -174,7 +174,7 @@ class PublicGetUserEntitlementBySku(Operation):
         self.user_id = value
         return self
 
-    def with_entitlement_clazz(self, value: str) -> PublicGetUserEntitlementBySku:
+    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> PublicGetUserEntitlementBySku:
         self.entitlement_clazz = value
         return self
 
@@ -199,7 +199,7 @@ class PublicGetUserEntitlementBySku(Operation):
         if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
-            result["entitlementClazz"] = str()
+            result["entitlementClazz"] = Union[str, EntitlementClazzEnum]()
         if hasattr(self, "sku") and self.sku:
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -246,7 +246,7 @@ class PublicGetUserEntitlementBySku(Operation):
         namespace: str,
         user_id: str,
         sku: str,
-        entitlement_clazz: Optional[str] = None,
+        entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
     ) -> PublicGetUserEntitlementBySku:
         instance = cls()
         instance.namespace = namespace
@@ -270,7 +270,7 @@ class PublicGetUserEntitlementBySku(Operation):
         if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
-            instance.entitlement_clazz = str()
+            instance.entitlement_clazz = Union[str, EntitlementClazzEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:

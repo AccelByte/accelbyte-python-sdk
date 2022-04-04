@@ -16,28 +16,36 @@ from .claimable_rewards import ClaimableRewards
 from .claimable_user_season_info import ClaimableUserSeasonInfo
 from .error_entity import ErrorEntity
 from .excess_strategy import ExcessStrategy
+from .excess_strategy import MethodEnum as ExcessStrategyMethodEnum
 from .field_validation_error import FieldValidationError
 from .image import Image
 from .list_season_info import ListSeasonInfo
+from .list_season_info import StatusEnum as ListSeasonInfoStatusEnum
 from .list_season_info_paging_sliced_result import ListSeasonInfoPagingSlicedResult
 from .list_user_season_info import ListUserSeasonInfo
 from .list_user_season_info_paging_sliced_result import ListUserSeasonInfoPagingSlicedResult
 from .localization import Localization
 from .localized_pass_info import LocalizedPassInfo
 from .localized_season_info import LocalizedSeasonInfo
+from .localized_season_info import StatusEnum as LocalizedSeasonInfoStatusEnum
 from .ownership import Ownership
 from .paging import Paging
 from .pass_create import PassCreate
 from .pass_info import PassInfo
 from .pass_update import PassUpdate
 from .reward_create import RewardCreate
+from .reward_create import TypeEnum as RewardCreateTypeEnum
 from .reward_currency import RewardCurrency
 from .reward_info import RewardInfo
+from .reward_info import ItemTypeEnum as RewardInfoItemTypeEnum, TypeEnum as RewardInfoTypeEnum
 from .reward_update import RewardUpdate
+from .reward_update import TypeEnum as RewardUpdateTypeEnum
 from .season_clone_request import SeasonCloneRequest
 from .season_create import SeasonCreate
 from .season_info import SeasonInfo
+from .season_info import StatusEnum as SeasonInfoStatusEnum
 from .season_summary import SeasonSummary
+from .season_summary import StatusEnum as SeasonSummaryStatusEnum
 from .season_update import SeasonUpdate
 from .tier import Tier
 from .tier_create import TierCreate

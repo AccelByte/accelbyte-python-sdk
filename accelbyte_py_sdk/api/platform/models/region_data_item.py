@@ -40,7 +40,7 @@ class RegionDataItem(Model):
 
         currency_namespace: (currencyNamespace) REQUIRED str
 
-        currency_type: (currencyType) REQUIRED str
+        currency_type: (currencyType) REQUIRED Union[str, CurrencyTypeEnum]
 
         price: (price) REQUIRED int
 
@@ -65,7 +65,7 @@ class RegionDataItem(Model):
 
     currency_code: str                                                                             # REQUIRED
     currency_namespace: str                                                                        # REQUIRED
-    currency_type: str                                                                             # REQUIRED
+    currency_type: Union[str, CurrencyTypeEnum]                                                    # REQUIRED
     price: int                                                                                     # REQUIRED
     discount_amount: int                                                                           # OPTIONAL
     discount_expire_at: str                                                                        # OPTIONAL
@@ -88,7 +88,7 @@ class RegionDataItem(Model):
         self.currency_namespace = value
         return self
 
-    def with_currency_type(self, value: str) -> RegionDataItem:
+    def with_currency_type(self, value: Union[str, CurrencyTypeEnum]) -> RegionDataItem:
         self.currency_type = value
         return self
 
@@ -145,7 +145,7 @@ class RegionDataItem(Model):
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
-            result["currencyType"] = str()
+            result["currencyType"] = Union[str, CurrencyTypeEnum]()
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -193,7 +193,7 @@ class RegionDataItem(Model):
         cls,
         currency_code: str,
         currency_namespace: str,
-        currency_type: str,
+        currency_type: Union[str, CurrencyTypeEnum],
         price: int,
         discount_amount: Optional[int] = None,
         discount_expire_at: Optional[str] = None,
@@ -243,7 +243,7 @@ class RegionDataItem(Model):
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
-            instance.currency_type = str()
+            instance.currency_type = Union[str, CurrencyTypeEnum]()
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:

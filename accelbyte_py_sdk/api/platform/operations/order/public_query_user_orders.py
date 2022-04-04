@@ -79,7 +79,7 @@ class PublicQueryUserOrders(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - OrderPagingSlicedResult (successful operation)
@@ -99,7 +99,7 @@ class PublicQueryUserOrders(Operation):
     item_id: str                                                                                   # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
 
     # endregion fields
 
@@ -199,7 +199,7 @@ class PublicQueryUserOrders(Operation):
         self.offset = value
         return self
 
-    def with_status(self, value: str) -> PublicQueryUserOrders:
+    def with_status(self, value: Union[str, StatusEnum]) -> PublicQueryUserOrders:
         self.status = value
         return self
 
@@ -232,7 +232,7 @@ class PublicQueryUserOrders(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -273,7 +273,7 @@ class PublicQueryUserOrders(Operation):
         item_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> PublicQueryUserOrders:
         instance = cls()
         instance.namespace = namespace
@@ -314,7 +314,7 @@ class PublicQueryUserOrders(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @staticmethod

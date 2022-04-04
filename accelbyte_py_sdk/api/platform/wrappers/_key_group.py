@@ -40,9 +40,13 @@ from ..operations.key_group import CreateKeyGroup
 from ..operations.key_group import GetKeyGroup
 from ..operations.key_group import GetKeyGroupDynamic
 from ..operations.key_group import ListKeys
+from ..operations.key_group import ListKeysStatusEnum
 from ..operations.key_group import QueryKeyGroups
 from ..operations.key_group import UpdateKeyGroup
 from ..operations.key_group import UploadKeys
+from ..models import KeyGroupCreateStatusEnum
+from ..models import KeyGroupInfoStatusEnum
+from ..models import KeyGroupUpdateStatusEnum
 
 
 @same_doc_as(CreateKeyGroup)
@@ -124,7 +128,7 @@ async def get_key_group_dynamic_async(key_group_id: str, namespace: Optional[str
 
 
 @same_doc_as(ListKeys)
-def list_keys(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_keys(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, ListKeysStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -140,7 +144,7 @@ def list_keys(key_group_id: str, limit: Optional[int] = None, offset: Optional[i
 
 
 @same_doc_as(ListKeys)
-async def list_keys_async(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_keys_async(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, ListKeysStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

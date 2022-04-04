@@ -64,13 +64,13 @@ class CampaignCreate(Model):
 
         redeem_start: (redeemStart) OPTIONAL str
 
-        redeem_type: (redeemType) OPTIONAL str
+        redeem_type: (redeemType) OPTIONAL Union[str, RedeemTypeEnum]
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         tags: (tags) OPTIONAL List[str]
 
-        type_: (type) OPTIONAL str
+        type_: (type) OPTIONAL Union[str, TypeEnum]
     """
 
     # region fields
@@ -84,10 +84,10 @@ class CampaignCreate(Model):
     max_sale_count: int                                                                            # OPTIONAL
     redeem_end: str                                                                                # OPTIONAL
     redeem_start: str                                                                              # OPTIONAL
-    redeem_type: str                                                                               # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    redeem_type: Union[str, RedeemTypeEnum]                                                        # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -129,11 +129,11 @@ class CampaignCreate(Model):
         self.redeem_start = value
         return self
 
-    def with_redeem_type(self, value: str) -> CampaignCreate:
+    def with_redeem_type(self, value: Union[str, RedeemTypeEnum]) -> CampaignCreate:
         self.redeem_type = value
         return self
 
-    def with_status(self, value: str) -> CampaignCreate:
+    def with_status(self, value: Union[str, StatusEnum]) -> CampaignCreate:
         self.status = value
         return self
 
@@ -141,7 +141,7 @@ class CampaignCreate(Model):
         self.tags = value
         return self
 
-    def with_type(self, value: str) -> CampaignCreate:
+    def with_type(self, value: Union[str, TypeEnum]) -> CampaignCreate:
         self.type_ = value
         return self
 
@@ -190,11 +190,11 @@ class CampaignCreate(Model):
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
-            result["redeemType"] = str()
+            result["redeemType"] = Union[str, RedeemTypeEnum]()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -202,7 +202,7 @@ class CampaignCreate(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -221,10 +221,10 @@ class CampaignCreate(Model):
         max_sale_count: Optional[int] = None,
         redeem_end: Optional[str] = None,
         redeem_start: Optional[str] = None,
-        redeem_type: Optional[str] = None,
-        status: Optional[str] = None,
+        redeem_type: Optional[Union[str, RedeemTypeEnum]] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         tags: Optional[List[str]] = None,
-        type_: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
     ) -> CampaignCreate:
         instance = cls()
         instance.name = name
@@ -298,11 +298,11 @@ class CampaignCreate(Model):
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
-            instance.redeem_type = str()
+            instance.redeem_type = Union[str, RedeemTypeEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -310,7 +310,7 @@ class CampaignCreate(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

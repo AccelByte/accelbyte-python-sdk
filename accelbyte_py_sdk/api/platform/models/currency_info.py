@@ -42,7 +42,7 @@ class CurrencyInfo(Model):
 
         currency_symbol: (currencySymbol) REQUIRED str
 
-        currency_type: (currencyType) REQUIRED str
+        currency_type: (currencyType) REQUIRED Union[str, CurrencyTypeEnum]
 
         decimals: (decimals) REQUIRED int
 
@@ -58,7 +58,7 @@ class CurrencyInfo(Model):
     created_at: str                                                                                # REQUIRED
     currency_code: str                                                                             # REQUIRED
     currency_symbol: str                                                                           # REQUIRED
-    currency_type: str                                                                             # REQUIRED
+    currency_type: Union[str, CurrencyTypeEnum]                                                    # REQUIRED
     decimals: int                                                                                  # REQUIRED
     namespace: str                                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
@@ -80,7 +80,7 @@ class CurrencyInfo(Model):
         self.currency_symbol = value
         return self
 
-    def with_currency_type(self, value: str) -> CurrencyInfo:
+    def with_currency_type(self, value: Union[str, CurrencyTypeEnum]) -> CurrencyInfo:
         self.currency_type = value
         return self
 
@@ -121,7 +121,7 @@ class CurrencyInfo(Model):
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
-            result["currencyType"] = str()
+            result["currencyType"] = Union[str, CurrencyTypeEnum]()
         if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
@@ -150,7 +150,7 @@ class CurrencyInfo(Model):
         created_at: str,
         currency_code: str,
         currency_symbol: str,
-        currency_type: str,
+        currency_type: Union[str, CurrencyTypeEnum],
         decimals: int,
         namespace: str,
         updated_at: str,
@@ -188,7 +188,7 @@ class CurrencyInfo(Model):
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
-            instance.currency_type = str()
+            instance.currency_type = Union[str, CurrencyTypeEnum]()
         if "decimals" in dict_ and dict_["decimals"] is not None:
             instance.decimals = int(dict_["decimals"])
         elif include_empty:

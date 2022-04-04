@@ -45,21 +45,21 @@ class OrderUpdate(Model):
     """A DTO object for updating order API call. (OrderUpdate)
 
     Properties:
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         status_reason: (statusReason) REQUIRED str
     """
 
     # region fields
 
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     status_reason: str                                                                             # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_status(self, value: str) -> OrderUpdate:
+    def with_status(self, value: Union[str, StatusEnum]) -> OrderUpdate:
         self.status = value
         return self
 
@@ -76,7 +76,7 @@ class OrderUpdate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
@@ -90,7 +90,7 @@ class OrderUpdate(Model):
     @classmethod
     def create(
         cls,
-        status: str,
+        status: Union[str, StatusEnum],
         status_reason: str,
     ) -> OrderUpdate:
         instance = cls()
@@ -106,7 +106,7 @@ class OrderUpdate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:

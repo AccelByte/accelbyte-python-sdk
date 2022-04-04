@@ -55,7 +55,7 @@ class RewardInfo(Model):
 
         season_id: (seasonId) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         currency: (currency) OPTIONAL RewardCurrency
 
@@ -67,7 +67,7 @@ class RewardInfo(Model):
 
         item_sku: (itemSku) OPTIONAL str
 
-        item_type: (itemType) OPTIONAL str
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
 
         quantity: (quantity) OPTIONAL int
     """
@@ -77,13 +77,13 @@ class RewardInfo(Model):
     code: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     season_id: str                                                                                 # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     currency: RewardCurrency                                                                       # OPTIONAL
     image: Image                                                                                   # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     item_name: str                                                                                 # OPTIONAL
     item_sku: str                                                                                  # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
@@ -102,7 +102,7 @@ class RewardInfo(Model):
         self.season_id = value
         return self
 
-    def with_type(self, value: str) -> RewardInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> RewardInfo:
         self.type_ = value
         return self
 
@@ -126,7 +126,7 @@ class RewardInfo(Model):
         self.item_sku = value
         return self
 
-    def with_item_type(self, value: str) -> RewardInfo:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> RewardInfo:
         self.item_type = value
         return self
 
@@ -155,7 +155,7 @@ class RewardInfo(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -179,7 +179,7 @@ class RewardInfo(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -196,13 +196,13 @@ class RewardInfo(Model):
         code: str,
         namespace: str,
         season_id: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
         currency: Optional[RewardCurrency] = None,
         image: Optional[Image] = None,
         item_id: Optional[str] = None,
         item_name: Optional[str] = None,
         item_sku: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         quantity: Optional[int] = None,
     ) -> RewardInfo:
         instance = cls()
@@ -246,7 +246,7 @@ class RewardInfo(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = RewardCurrency.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
@@ -270,7 +270,7 @@ class RewardInfo(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:

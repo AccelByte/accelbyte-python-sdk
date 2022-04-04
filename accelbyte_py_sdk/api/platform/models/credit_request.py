@@ -48,14 +48,14 @@ class CreditRequest(Model):
 
         reason: (reason) OPTIONAL str
 
-        source: (source) OPTIONAL str
+        source: (source) OPTIONAL Union[str, SourceEnum]
     """
 
     # region fields
 
     amount: int                                                                                    # REQUIRED
     reason: str                                                                                    # OPTIONAL
-    source: str                                                                                    # OPTIONAL
+    source: Union[str, SourceEnum]                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -69,7 +69,7 @@ class CreditRequest(Model):
         self.reason = value
         return self
 
-    def with_source(self, value: str) -> CreditRequest:
+    def with_source(self, value: Union[str, SourceEnum]) -> CreditRequest:
         self.source = value
         return self
 
@@ -90,7 +90,7 @@ class CreditRequest(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = Union[str, SourceEnum]()
         return result
 
     # endregion to methods
@@ -102,7 +102,7 @@ class CreditRequest(Model):
         cls,
         amount: int,
         reason: Optional[str] = None,
-        source: Optional[str] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
     ) -> CreditRequest:
         instance = cls()
         instance.amount = amount
@@ -128,7 +128,7 @@ class CreditRequest(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = Union[str, SourceEnum]()
         return instance
 
     @classmethod

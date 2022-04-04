@@ -40,7 +40,7 @@ class StatCreate(Model):
 
         name: (name) REQUIRED str
 
-        set_by: (setBy) REQUIRED str
+        set_by: (setBy) REQUIRED Union[str, SetByEnum]
 
         stat_code: (statCode) REQUIRED str
 
@@ -61,7 +61,7 @@ class StatCreate(Model):
 
     default_value: float                                                                           # REQUIRED
     name: str                                                                                      # REQUIRED
-    set_by: str                                                                                    # REQUIRED
+    set_by: Union[str, SetByEnum]                                                                  # REQUIRED
     stat_code: str                                                                                 # REQUIRED
     description: str                                                                               # OPTIONAL
     increment_only: bool                                                                           # OPTIONAL
@@ -82,7 +82,7 @@ class StatCreate(Model):
         self.name = value
         return self
 
-    def with_set_by(self, value: str) -> StatCreate:
+    def with_set_by(self, value: Union[str, SetByEnum]) -> StatCreate:
         self.set_by = value
         return self
 
@@ -131,7 +131,7 @@ class StatCreate(Model):
         if hasattr(self, "set_by"):
             result["setBy"] = str(self.set_by)
         elif include_empty:
-            result["setBy"] = str()
+            result["setBy"] = Union[str, SetByEnum]()
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
@@ -171,7 +171,7 @@ class StatCreate(Model):
         cls,
         default_value: float,
         name: str,
-        set_by: str,
+        set_by: Union[str, SetByEnum],
         stat_code: str,
         description: Optional[str] = None,
         increment_only: Optional[bool] = None,
@@ -215,7 +215,7 @@ class StatCreate(Model):
         if "setBy" in dict_ and dict_["setBy"] is not None:
             instance.set_by = str(dict_["setBy"])
         elif include_empty:
-            instance.set_by = str()
+            instance.set_by = Union[str, SetByEnum]()
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:

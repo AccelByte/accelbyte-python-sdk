@@ -62,7 +62,7 @@ class PublicDeletePaymentAccount(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        type_: (type) REQUIRED str in path
+        type_: (type) REQUIRED Union[str, TypeEnum] in path
 
         user_id: (userId) REQUIRED str in path
 
@@ -81,7 +81,7 @@ class PublicDeletePaymentAccount(Operation):
 
     id_: str                                                                                       # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
-    type_: str                                                                                     # REQUIRED in [path]
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
@@ -160,7 +160,7 @@ class PublicDeletePaymentAccount(Operation):
         self.namespace = value
         return self
 
-    def with_type_(self, value: str) -> PublicDeletePaymentAccount:
+    def with_type_(self, value: Union[str, TypeEnum]) -> PublicDeletePaymentAccount:
         self.type_ = value
         return self
 
@@ -185,7 +185,7 @@ class PublicDeletePaymentAccount(Operation):
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -227,7 +227,7 @@ class PublicDeletePaymentAccount(Operation):
         cls,
         id_: str,
         namespace: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
         user_id: str,
     ) -> PublicDeletePaymentAccount:
         instance = cls()
@@ -251,7 +251,7 @@ class PublicDeletePaymentAccount(Operation):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:

@@ -66,29 +66,29 @@ class BasicItem(Model):
     Properties:
         created_at: (createdAt) REQUIRED str
 
-        entitlement_type: (entitlementType) REQUIRED str
+        entitlement_type: (entitlementType) REQUIRED Union[str, EntitlementTypeEnum]
 
         item_id: (itemId) REQUIRED str
 
-        item_type: (itemType) REQUIRED str
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum]
 
         name: (name) REQUIRED str
 
         namespace: (namespace) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         base_app_id: (baseAppId) OPTIONAL str
 
         features: (features) OPTIONAL List[str]
 
-        season_type: (seasonType) OPTIONAL str
+        season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
         sku: (sku) OPTIONAL str
 
@@ -100,18 +100,18 @@ class BasicItem(Model):
     # region fields
 
     created_at: str                                                                                # REQUIRED
-    entitlement_type: str                                                                          # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
     item_id: str                                                                                   # REQUIRED
-    item_type: str                                                                                 # REQUIRED
+    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     features: List[str]                                                                            # OPTIONAL
-    season_type: str                                                                               # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
     use_count: int                                                                                 # OPTIONAL
@@ -124,7 +124,7 @@ class BasicItem(Model):
         self.created_at = value
         return self
 
-    def with_entitlement_type(self, value: str) -> BasicItem:
+    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> BasicItem:
         self.entitlement_type = value
         return self
 
@@ -132,7 +132,7 @@ class BasicItem(Model):
         self.item_id = value
         return self
 
-    def with_item_type(self, value: str) -> BasicItem:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> BasicItem:
         self.item_type = value
         return self
 
@@ -144,7 +144,7 @@ class BasicItem(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> BasicItem:
+    def with_status(self, value: Union[str, StatusEnum]) -> BasicItem:
         self.status = value
         return self
 
@@ -156,7 +156,7 @@ class BasicItem(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> BasicItem:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> BasicItem:
         self.app_type = value
         return self
 
@@ -168,7 +168,7 @@ class BasicItem(Model):
         self.features = value
         return self
 
-    def with_season_type(self, value: str) -> BasicItem:
+    def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> BasicItem:
         self.season_type = value
         return self
 
@@ -197,7 +197,7 @@ class BasicItem(Model):
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
-            result["entitlementType"] = str()
+            result["entitlementType"] = Union[str, EntitlementTypeEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -205,7 +205,7 @@ class BasicItem(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -217,7 +217,7 @@ class BasicItem(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -229,7 +229,7 @@ class BasicItem(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -241,7 +241,7 @@ class BasicItem(Model):
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
-            result["seasonType"] = str()
+            result["seasonType"] = Union[str, SeasonTypeEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -264,18 +264,18 @@ class BasicItem(Model):
     def create(
         cls,
         created_at: str,
-        entitlement_type: str,
+        entitlement_type: Union[str, EntitlementTypeEnum],
         item_id: str,
-        item_type: str,
+        item_type: Union[str, ItemTypeEnum],
         name: str,
         namespace: str,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         base_app_id: Optional[str] = None,
         features: Optional[List[str]] = None,
-        season_type: Optional[str] = None,
+        season_type: Optional[Union[str, SeasonTypeEnum]] = None,
         sku: Optional[str] = None,
         tags: Optional[List[str]] = None,
         use_count: Optional[int] = None,
@@ -319,7 +319,7 @@ class BasicItem(Model):
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
-            instance.entitlement_type = str()
+            instance.entitlement_type = Union[str, EntitlementTypeEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -327,7 +327,7 @@ class BasicItem(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -339,7 +339,7 @@ class BasicItem(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -351,7 +351,7 @@ class BasicItem(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -363,7 +363,7 @@ class BasicItem(Model):
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
-            instance.season_type = str()
+            instance.season_type = Union[str, SeasonTypeEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:

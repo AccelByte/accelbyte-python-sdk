@@ -46,7 +46,7 @@ class KeyGroupInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -62,7 +62,7 @@ class KeyGroupInfo(Model):
     id_: str                                                                                       # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     description: str                                                                               # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
@@ -91,7 +91,7 @@ class KeyGroupInfo(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> KeyGroupInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> KeyGroupInfo:
         self.status = value
         return self
 
@@ -136,7 +136,7 @@ class KeyGroupInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -163,7 +163,7 @@ class KeyGroupInfo(Model):
         id_: str,
         name: str,
         namespace: str,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         description: Optional[str] = None,
         tags: Optional[List[str]] = None,
@@ -210,7 +210,7 @@ class KeyGroupInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

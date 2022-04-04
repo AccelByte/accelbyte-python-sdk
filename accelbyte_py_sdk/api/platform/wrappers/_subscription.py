@@ -55,10 +55,15 @@ from ..operations.subscription import PublicCheckUserSubscriptionSubscribableByI
 from ..operations.subscription import PublicGetUserSubscription
 from ..operations.subscription import PublicGetUserSubscriptionBillingHistories
 from ..operations.subscription import PublicQueryUserSubscriptions
+from ..operations.subscription import PublicQueryUserSubscriptionsSubscribedByEnum, PublicQueryUserSubscriptionsChargeStatusEnum, PublicQueryUserSubscriptionsStatusEnum
 from ..operations.subscription import PublicSubscribeSubscription
 from ..operations.subscription import QuerySubscriptions
+from ..operations.subscription import QuerySubscriptionsSubscribedByEnum, QuerySubscriptionsStatusEnum, QuerySubscriptionsChargeStatusEnum
 from ..operations.subscription import QueryUserSubscriptions
+from ..operations.subscription import QueryUserSubscriptionsSubscribedByEnum, QueryUserSubscriptionsStatusEnum, QueryUserSubscriptionsChargeStatusEnum
 from ..operations.subscription import RecurringChargeSubscription
+from ..models import SubscriptionInfoSubscribedByEnum, SubscriptionInfoStatusEnum, SubscriptionInfoChargeStatusEnum
+from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
 
 
 @same_doc_as(CancelSubscription)
@@ -482,7 +487,7 @@ async def public_get_user_subscription_billing_histories_async(subscription_id: 
 
 
 @same_doc_as(PublicQueryUserSubscriptions)
-def public_query_user_subscriptions(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_user_subscriptions(user_id: str, charge_status: Optional[Union[str, PublicQueryUserSubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, PublicQueryUserSubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, PublicQueryUserSubscriptionsSubscribedByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -502,7 +507,7 @@ def public_query_user_subscriptions(user_id: str, charge_status: Optional[str] =
 
 
 @same_doc_as(PublicQueryUserSubscriptions)
-async def public_query_user_subscriptions_async(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_query_user_subscriptions_async(user_id: str, charge_status: Optional[Union[str, PublicQueryUserSubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, PublicQueryUserSubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, PublicQueryUserSubscriptionsSubscribedByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -550,7 +555,7 @@ async def public_subscribe_subscription_async(user_id: str, body: Optional[Subsc
 
 
 @same_doc_as(QuerySubscriptions)
-def query_subscriptions(charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_subscriptions(charge_status: Optional[Union[str, QuerySubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, QuerySubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, QuerySubscriptionsSubscribedByEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -570,7 +575,7 @@ def query_subscriptions(charge_status: Optional[str] = None, item_id: Optional[s
 
 
 @same_doc_as(QuerySubscriptions)
-async def query_subscriptions_async(charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_subscriptions_async(charge_status: Optional[Union[str, QuerySubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, QuerySubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, QuerySubscriptionsSubscribedByEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -590,7 +595,7 @@ async def query_subscriptions_async(charge_status: Optional[str] = None, item_id
 
 
 @same_doc_as(QueryUserSubscriptions)
-def query_user_subscriptions(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_subscriptions(user_id: str, charge_status: Optional[Union[str, QueryUserSubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, QueryUserSubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, QueryUserSubscriptionsSubscribedByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -610,7 +615,7 @@ def query_user_subscriptions(user_id: str, charge_status: Optional[str] = None, 
 
 
 @same_doc_as(QueryUserSubscriptions)
-async def query_user_subscriptions_async(user_id: str, charge_status: Optional[str] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[str] = None, subscribed_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_user_subscriptions_async(user_id: str, charge_status: Optional[Union[str, QueryUserSubscriptionsChargeStatusEnum]] = None, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sku: Optional[str] = None, status: Optional[Union[str, QueryUserSubscriptionsStatusEnum]] = None, subscribed_by: Optional[Union[str, QueryUserSubscriptionsSubscribedByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

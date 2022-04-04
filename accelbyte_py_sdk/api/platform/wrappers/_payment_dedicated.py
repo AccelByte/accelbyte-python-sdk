@@ -37,6 +37,9 @@ from ..models import ValidationErrorEntity
 from ..operations.payment_dedicated import CreatePaymentOrderByDedicated
 from ..operations.payment_dedicated import RefundPaymentOrderByDedicated
 from ..operations.payment_dedicated import SyncPaymentOrders
+from ..models import ExternalPaymentOrderCreateItemTypeEnum
+from ..models import PaymentOrderCreateResultStatusEnum
+from ..models import PaymentOrderRefundResultStatusEnum
 
 
 @same_doc_as(CreatePaymentOrderByDedicated)

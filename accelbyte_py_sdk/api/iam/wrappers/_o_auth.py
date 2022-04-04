@@ -33,6 +33,7 @@ from ..models import OauthmodelErrorResponse
 from ..models import OauthmodelTokenResponse
 
 from ..operations.o_auth import Authorization
+from ..operations.o_auth import AuthorizationResponseTypeEnum
 from ..operations.o_auth import GetJWKS
 from ..operations.o_auth import GetRevocationList
 from ..operations.o_auth import PlatformTokenRequestHandler
@@ -40,11 +41,12 @@ from ..operations.o_auth import RevokeAUser
 from ..operations.o_auth import RevokeToken
 from ..operations.o_auth import RevokeUser
 from ..operations.o_auth import TokenGrant
+from ..operations.o_auth import TokenGrantGrantTypeEnum
 from ..operations.o_auth import VerifyToken
 
 
 @same_doc_as(Authorization)
-def authorization(client_id: str, redirect_uri: str, response_type: str, login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def authorization(client_id: str, redirect_uri: str, response_type: Union[str, AuthorizationResponseTypeEnum], login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = Authorization.create(
         client_id=client_id,
         redirect_uri=redirect_uri,
@@ -58,7 +60,7 @@ def authorization(client_id: str, redirect_uri: str, response_type: str, login: 
 
 
 @same_doc_as(Authorization)
-async def authorization_async(client_id: str, redirect_uri: str, response_type: str, login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def authorization_async(client_id: str, redirect_uri: str, response_type: Union[str, AuthorizationResponseTypeEnum], login: Optional[str] = None, password: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = Authorization.create(
         client_id=client_id,
         redirect_uri=redirect_uri,
@@ -190,7 +192,7 @@ async def revoke_user_async(user_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(TokenGrant)
-def token_grant(grant_type: str, code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         code=code,
@@ -206,7 +208,7 @@ def token_grant(grant_type: str, code: Optional[str] = None, device_id: Optional
 
 
 @same_doc_as(TokenGrant)
-async def token_grant_async(grant_type: str, code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def token_grant_async(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         code=code,

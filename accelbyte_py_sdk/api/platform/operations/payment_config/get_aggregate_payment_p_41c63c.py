@@ -53,7 +53,7 @@ class GetAggregatePaymentProviders(Operation):
         security_type: bearer
 
     Responses:
-        200: OK - List[str] (successful operation)
+        200: OK - List[Union[str, ResponseEnum]] (successful operation)
     """
 
     # region fields
@@ -132,10 +132,10 @@ class GetAggregatePaymentProviders(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[str]], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[Union[str, ResponseEnum]]], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[str] (successful operation)
+        200: OK - List[Union[str, ResponseEnum]] (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 

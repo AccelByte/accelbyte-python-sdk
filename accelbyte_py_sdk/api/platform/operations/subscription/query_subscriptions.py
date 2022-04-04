@@ -77,7 +77,7 @@ class QuerySubscriptions(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        charge_status: (chargeStatus) OPTIONAL str in query
+        charge_status: (chargeStatus) OPTIONAL Union[str, ChargeStatusEnum] in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -87,9 +87,9 @@ class QuerySubscriptions(Operation):
 
         sku: (sku) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        subscribed_by: (subscribedBy) OPTIONAL str in query
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum] in query
 
         user_id: (userId) OPTIONAL str in query
 
@@ -107,13 +107,13 @@ class QuerySubscriptions(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    charge_status: str                                                                             # OPTIONAL in [query]
+    charge_status: Union[str, ChargeStatusEnum]                                                    # OPTIONAL in [query]
     item_id: str                                                                                   # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     sku: str                                                                                       # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    subscribed_by: str                                                                             # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -204,7 +204,7 @@ class QuerySubscriptions(Operation):
         self.namespace = value
         return self
 
-    def with_charge_status(self, value: str) -> QuerySubscriptions:
+    def with_charge_status(self, value: Union[str, ChargeStatusEnum]) -> QuerySubscriptions:
         self.charge_status = value
         return self
 
@@ -224,11 +224,11 @@ class QuerySubscriptions(Operation):
         self.sku = value
         return self
 
-    def with_status(self, value: str) -> QuerySubscriptions:
+    def with_status(self, value: Union[str, StatusEnum]) -> QuerySubscriptions:
         self.status = value
         return self
 
-    def with_subscribed_by(self, value: str) -> QuerySubscriptions:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> QuerySubscriptions:
         self.subscribed_by = value
         return self
 
@@ -249,7 +249,7 @@ class QuerySubscriptions(Operation):
         if hasattr(self, "charge_status") and self.charge_status:
             result["chargeStatus"] = str(self.charge_status)
         elif include_empty:
-            result["chargeStatus"] = str()
+            result["chargeStatus"] = Union[str, ChargeStatusEnum]()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -269,11 +269,11 @@ class QuerySubscriptions(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "subscribed_by") and self.subscribed_by:
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
-            result["subscribedBy"] = str()
+            result["subscribedBy"] = Union[str, SubscribedByEnum]()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -314,13 +314,13 @@ class QuerySubscriptions(Operation):
     def create(
         cls,
         namespace: str,
-        charge_status: Optional[str] = None,
+        charge_status: Optional[Union[str, ChargeStatusEnum]] = None,
         item_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sku: Optional[str] = None,
-        status: Optional[str] = None,
-        subscribed_by: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
+        subscribed_by: Optional[Union[str, SubscribedByEnum]] = None,
         user_id: Optional[str] = None,
     ) -> QuerySubscriptions:
         instance = cls()
@@ -353,7 +353,7 @@ class QuerySubscriptions(Operation):
         if "chargeStatus" in dict_ and dict_["chargeStatus"] is not None:
             instance.charge_status = str(dict_["chargeStatus"])
         elif include_empty:
-            instance.charge_status = str()
+            instance.charge_status = Union[str, ChargeStatusEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -373,11 +373,11 @@ class QuerySubscriptions(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
-            instance.subscribed_by = str()
+            instance.subscribed_by = Union[str, SubscribedByEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:

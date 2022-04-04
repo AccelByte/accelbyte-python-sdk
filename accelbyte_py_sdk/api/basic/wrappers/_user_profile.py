@@ -63,6 +63,10 @@ from ..operations.user_profile import UpdateMyZipCode
 from ..operations.user_profile import UpdatePrivateCustomAttributesPartially
 from ..operations.user_profile import UpdateUserProfile
 from ..operations.user_profile import UpdateUserProfileStatus
+from ..models import UserProfileAdminStatusEnum
+from ..models import UserProfileInfoStatusEnum
+from ..models import UserProfilePrivateInfoStatusEnum
+from ..models import UserProfileStatusUpdateStatusEnum
 
 
 @same_doc_as(AdminGetUserProfilePublicInfoByIds)

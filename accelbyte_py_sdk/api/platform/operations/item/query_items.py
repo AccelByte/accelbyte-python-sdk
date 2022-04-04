@@ -80,7 +80,7 @@ class QueryItems(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        app_type: (appType) OPTIONAL str in query
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
         available_date: (availableDate) OPTIONAL str in query
 
@@ -90,7 +90,7 @@ class QueryItems(Operation):
 
         features: (features) OPTIONAL str in query
 
-        item_type: (itemType) OPTIONAL str in query
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -125,12 +125,12 @@ class QueryItems(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     active_only: bool                                                                              # OPTIONAL in [query]
-    app_type: str                                                                                  # OPTIONAL in [query]
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL in [query]
     available_date: str                                                                            # OPTIONAL in [query]
     base_app_id: str                                                                               # OPTIONAL in [query]
     category_path: str                                                                             # OPTIONAL in [query]
     features: str                                                                                  # OPTIONAL in [query]
-    item_type: str                                                                                 # OPTIONAL in [query]
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
@@ -243,7 +243,7 @@ class QueryItems(Operation):
         self.active_only = value
         return self
 
-    def with_app_type(self, value: str) -> QueryItems:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryItems:
         self.app_type = value
         return self
 
@@ -263,7 +263,7 @@ class QueryItems(Operation):
         self.features = value
         return self
 
-    def with_item_type(self, value: str) -> QueryItems:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> QueryItems:
         self.item_type = value
         return self
 
@@ -312,7 +312,7 @@ class QueryItems(Operation):
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "available_date") and self.available_date:
             result["availableDate"] = str(self.available_date)
         elif include_empty:
@@ -332,7 +332,7 @@ class QueryItems(Operation):
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -406,12 +406,12 @@ class QueryItems(Operation):
         cls,
         namespace: str,
         active_only: Optional[bool] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         available_date: Optional[str] = None,
         base_app_id: Optional[str] = None,
         category_path: Optional[str] = None,
         features: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
@@ -466,7 +466,7 @@ class QueryItems(Operation):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "availableDate" in dict_ and dict_["availableDate"] is not None:
             instance.available_date = str(dict_["availableDate"])
         elif include_empty:
@@ -486,7 +486,7 @@ class QueryItems(Operation):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:

@@ -27,7 +27,10 @@ from .public_download_user_or_6ea3e8 import PublicDownloadUserOrderReceipt
 from .public_get_user_order import PublicGetUserOrder
 from .public_get_user_order_h_063753 import PublicGetUserOrderHistories
 from .public_query_user_orders import PublicQueryUserOrders
+from .public_query_user_orders import StatusEnum as PublicQueryUserOrdersStatusEnum
 from .query_orders import QueryOrders
+from .query_orders import StatusEnum as QueryOrdersStatusEnum
 from .query_user_orders import QueryUserOrders
+from .query_user_orders import StatusEnum as QueryUserOrdersStatusEnum
 from .refund_order import RefundOrder
 from .update_user_order_status import UpdateUserOrderStatus

@@ -46,7 +46,7 @@ class OrderHistoryInfo(Model):
     """Order history info (OrderHistoryInfo)
 
     Properties:
-        action: (action) REQUIRED str
+        action: (action) REQUIRED Union[str, ActionEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -65,7 +65,7 @@ class OrderHistoryInfo(Model):
 
     # region fields
 
-    action: str                                                                                    # REQUIRED
+    action: Union[str, ActionEnum]                                                                 # REQUIRED
     created_at: str                                                                                # REQUIRED
     namespace: str                                                                                 # REQUIRED
     operator: str                                                                                  # REQUIRED
@@ -78,7 +78,7 @@ class OrderHistoryInfo(Model):
 
     # region with_x methods
 
-    def with_action(self, value: str) -> OrderHistoryInfo:
+    def with_action(self, value: Union[str, ActionEnum]) -> OrderHistoryInfo:
         self.action = value
         return self
 
@@ -119,7 +119,7 @@ class OrderHistoryInfo(Model):
         if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
-            result["action"] = str()
+            result["action"] = Union[str, ActionEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -157,7 +157,7 @@ class OrderHistoryInfo(Model):
     @classmethod
     def create(
         cls,
-        action: str,
+        action: Union[str, ActionEnum],
         created_at: str,
         namespace: str,
         operator: str,
@@ -186,7 +186,7 @@ class OrderHistoryInfo(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = str(dict_["action"])
         elif include_empty:
-            instance.action = str()
+            instance.action = Union[str, ActionEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:

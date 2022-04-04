@@ -40,7 +40,7 @@ class EntitlementHistoryInfo(Model):
     """Entitlement history info (EntitlementHistoryInfo)
 
     Properties:
-        action: (action) REQUIRED str
+        action: (action) REQUIRED Union[str, ActionEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -59,7 +59,7 @@ class EntitlementHistoryInfo(Model):
 
     # region fields
 
-    action: str                                                                                    # REQUIRED
+    action: Union[str, ActionEnum]                                                                 # REQUIRED
     created_at: str                                                                                # REQUIRED
     entitlement_id: str                                                                            # REQUIRED
     namespace: str                                                                                 # REQUIRED
@@ -72,7 +72,7 @@ class EntitlementHistoryInfo(Model):
 
     # region with_x methods
 
-    def with_action(self, value: str) -> EntitlementHistoryInfo:
+    def with_action(self, value: Union[str, ActionEnum]) -> EntitlementHistoryInfo:
         self.action = value
         return self
 
@@ -113,7 +113,7 @@ class EntitlementHistoryInfo(Model):
         if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
-            result["action"] = str()
+            result["action"] = Union[str, ActionEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -151,7 +151,7 @@ class EntitlementHistoryInfo(Model):
     @classmethod
     def create(
         cls,
-        action: str,
+        action: Union[str, ActionEnum],
         created_at: str,
         entitlement_id: str,
         namespace: str,
@@ -180,7 +180,7 @@ class EntitlementHistoryInfo(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = str(dict_["action"])
         elif include_empty:
-            instance.action = str()
+            instance.action = Union[str, ActionEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:

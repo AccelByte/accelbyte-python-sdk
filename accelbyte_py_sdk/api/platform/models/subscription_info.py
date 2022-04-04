@@ -57,7 +57,7 @@ class SubscriptionInfo(Model):
     """Subscription info (SubscriptionInfo)
 
     Properties:
-        charge_status: (chargeStatus) REQUIRED str
+        charge_status: (chargeStatus) REQUIRED Union[str, ChargeStatusEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -75,7 +75,7 @@ class SubscriptionInfo(Model):
 
         recurring: (recurring) REQUIRED Recurring
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -131,7 +131,7 @@ class SubscriptionInfo(Model):
 
         subscribed_at: (subscribedAt) OPTIONAL str
 
-        subscribed_by: (subscribedBy) OPTIONAL str
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum]
 
         title: (title) OPTIONAL str
 
@@ -146,7 +146,7 @@ class SubscriptionInfo(Model):
 
     # region fields
 
-    charge_status: str                                                                             # REQUIRED
+    charge_status: Union[str, ChargeStatusEnum]                                                    # REQUIRED
     created_at: str                                                                                # REQUIRED
     id_: str                                                                                       # REQUIRED
     in_fixed_cycle_trial: bool                                                                     # REQUIRED
@@ -155,7 +155,7 @@ class SubscriptionInfo(Model):
     namespace: str                                                                                 # REQUIRED
     payment_flow_required: bool                                                                    # REQUIRED
     recurring: Recurring                                                                           # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     billing_account: BillingAccount                                                                # OPTIONAL
@@ -183,7 +183,7 @@ class SubscriptionInfo(Model):
     source: str                                                                                    # OPTIONAL
     start: str                                                                                     # OPTIONAL
     subscribed_at: str                                                                             # OPTIONAL
-    subscribed_by: str                                                                             # OPTIONAL
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # OPTIONAL
     title: str                                                                                     # OPTIONAL
     trial_price: int                                                                               # OPTIONAL
     trialed_cycles: int                                                                            # OPTIONAL
@@ -194,7 +194,7 @@ class SubscriptionInfo(Model):
 
     # region with_x methods
 
-    def with_charge_status(self, value: str) -> SubscriptionInfo:
+    def with_charge_status(self, value: Union[str, ChargeStatusEnum]) -> SubscriptionInfo:
         self.charge_status = value
         return self
 
@@ -230,7 +230,7 @@ class SubscriptionInfo(Model):
         self.recurring = value
         return self
 
-    def with_status(self, value: str) -> SubscriptionInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> SubscriptionInfo:
         self.status = value
         return self
 
@@ -342,7 +342,7 @@ class SubscriptionInfo(Model):
         self.subscribed_at = value
         return self
 
-    def with_subscribed_by(self, value: str) -> SubscriptionInfo:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> SubscriptionInfo:
         self.subscribed_by = value
         return self
 
@@ -375,7 +375,7 @@ class SubscriptionInfo(Model):
         if hasattr(self, "charge_status"):
             result["chargeStatus"] = str(self.charge_status)
         elif include_empty:
-            result["chargeStatus"] = str()
+            result["chargeStatus"] = Union[str, ChargeStatusEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -411,7 +411,7 @@ class SubscriptionInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -523,7 +523,7 @@ class SubscriptionInfo(Model):
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
-            result["subscribedBy"] = str()
+            result["subscribedBy"] = Union[str, SubscribedByEnum]()
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
@@ -553,7 +553,7 @@ class SubscriptionInfo(Model):
     @classmethod
     def create(
         cls,
-        charge_status: str,
+        charge_status: Union[str, ChargeStatusEnum],
         created_at: str,
         id_: str,
         in_fixed_cycle_trial: bool,
@@ -562,7 +562,7 @@ class SubscriptionInfo(Model):
         namespace: str,
         payment_flow_required: bool,
         recurring: Recurring,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         user_id: str,
         billing_account: Optional[BillingAccount] = None,
@@ -590,7 +590,7 @@ class SubscriptionInfo(Model):
         source: Optional[str] = None,
         start: Optional[str] = None,
         subscribed_at: Optional[str] = None,
-        subscribed_by: Optional[str] = None,
+        subscribed_by: Optional[Union[str, SubscribedByEnum]] = None,
         title: Optional[str] = None,
         trial_price: Optional[int] = None,
         trialed_cycles: Optional[int] = None,
@@ -682,7 +682,7 @@ class SubscriptionInfo(Model):
         if "chargeStatus" in dict_ and dict_["chargeStatus"] is not None:
             instance.charge_status = str(dict_["chargeStatus"])
         elif include_empty:
-            instance.charge_status = str()
+            instance.charge_status = Union[str, ChargeStatusEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -718,7 +718,7 @@ class SubscriptionInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -830,7 +830,7 @@ class SubscriptionInfo(Model):
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
-            instance.subscribed_by = str()
+            instance.subscribed_by = Union[str, SubscribedByEnum]()
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:

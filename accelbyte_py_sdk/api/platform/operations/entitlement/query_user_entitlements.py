@@ -77,9 +77,9 @@ class QueryUserEntitlements(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        app_type: (appType) OPTIONAL str in query
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
-        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
 
@@ -105,8 +105,8 @@ class QueryUserEntitlements(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
     active_only: bool                                                                              # OPTIONAL in [query]
-    app_type: str                                                                                  # OPTIONAL in [query]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL in [query]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
     entitlement_name: str                                                                          # OPTIONAL in [query]
     item_id: List[str]                                                                             # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
@@ -209,11 +209,11 @@ class QueryUserEntitlements(Operation):
         self.active_only = value
         return self
 
-    def with_app_type(self, value: str) -> QueryUserEntitlements:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryUserEntitlements:
         self.app_type = value
         return self
 
-    def with_entitlement_clazz(self, value: str) -> QueryUserEntitlements:
+    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> QueryUserEntitlements:
         self.entitlement_clazz = value
         return self
 
@@ -254,11 +254,11 @@ class QueryUserEntitlements(Operation):
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
-            result["entitlementClazz"] = str()
+            result["entitlementClazz"] = Union[str, EntitlementClazzEnum]()
         if hasattr(self, "entitlement_name") and self.entitlement_name:
             result["entitlementName"] = str(self.entitlement_name)
         elif include_empty:
@@ -313,8 +313,8 @@ class QueryUserEntitlements(Operation):
         namespace: str,
         user_id: str,
         active_only: Optional[bool] = None,
-        app_type: Optional[str] = None,
-        entitlement_clazz: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
+        entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
         entitlement_name: Optional[str] = None,
         item_id: Optional[List[str]] = None,
         limit: Optional[int] = None,
@@ -357,11 +357,11 @@ class QueryUserEntitlements(Operation):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
-            instance.entitlement_clazz = str()
+            instance.entitlement_clazz = Union[str, EntitlementClazzEnum]()
         if "entitlementName" in dict_ and dict_["entitlementName"] is not None:
             instance.entitlement_name = str(dict_["entitlementName"])
         elif include_empty:

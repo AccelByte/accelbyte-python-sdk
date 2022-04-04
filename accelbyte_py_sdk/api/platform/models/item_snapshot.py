@@ -62,11 +62,11 @@ class ItemSnapshot(Model):
     """Item snapshot (ItemSnapshot)
 
     Properties:
-        entitlement_type: (entitlementType) REQUIRED str
+        entitlement_type: (entitlementType) REQUIRED Union[str, EntitlementTypeEnum]
 
         item_id: (itemId) REQUIRED str
 
-        item_type: (itemType) REQUIRED str
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum]
 
         language: (language) REQUIRED str
 
@@ -80,7 +80,7 @@ class ItemSnapshot(Model):
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         base_app_id: (baseAppId) OPTIONAL str
 
@@ -108,7 +108,7 @@ class ItemSnapshot(Model):
 
         region_data_item: (regionDataItem) OPTIONAL RegionDataItem
 
-        season_type: (seasonType) OPTIONAL str
+        season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
         sku: (sku) OPTIONAL str
 
@@ -129,16 +129,16 @@ class ItemSnapshot(Model):
 
     # region fields
 
-    entitlement_type: str                                                                          # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
     item_id: str                                                                                   # REQUIRED
-    item_type: str                                                                                 # REQUIRED
+    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
     language: str                                                                                  # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     region: str                                                                                    # REQUIRED
     title: str                                                                                     # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     booth_name: str                                                                                # OPTIONAL
     created_at: str                                                                                # OPTIONAL
@@ -152,7 +152,7 @@ class ItemSnapshot(Model):
     purchasable: bool                                                                              # OPTIONAL
     recurring: Recurring                                                                           # OPTIONAL
     region_data_item: RegionDataItem                                                               # OPTIONAL
-    season_type: str                                                                               # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
     target_currency_code: str                                                                      # OPTIONAL
@@ -166,7 +166,7 @@ class ItemSnapshot(Model):
 
     # region with_x methods
 
-    def with_entitlement_type(self, value: str) -> ItemSnapshot:
+    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> ItemSnapshot:
         self.entitlement_type = value
         return self
 
@@ -174,7 +174,7 @@ class ItemSnapshot(Model):
         self.item_id = value
         return self
 
-    def with_item_type(self, value: str) -> ItemSnapshot:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> ItemSnapshot:
         self.item_type = value
         return self
 
@@ -202,7 +202,7 @@ class ItemSnapshot(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> ItemSnapshot:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> ItemSnapshot:
         self.app_type = value
         return self
 
@@ -258,7 +258,7 @@ class ItemSnapshot(Model):
         self.region_data_item = value
         return self
 
-    def with_season_type(self, value: str) -> ItemSnapshot:
+    def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> ItemSnapshot:
         self.season_type = value
         return self
 
@@ -303,7 +303,7 @@ class ItemSnapshot(Model):
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
-            result["entitlementType"] = str()
+            result["entitlementType"] = Union[str, EntitlementTypeEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -311,7 +311,7 @@ class ItemSnapshot(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -339,7 +339,7 @@ class ItemSnapshot(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -395,7 +395,7 @@ class ItemSnapshot(Model):
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
-            result["seasonType"] = str()
+            result["seasonType"] = Union[str, SeasonTypeEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -437,16 +437,16 @@ class ItemSnapshot(Model):
     @classmethod
     def create(
         cls,
-        entitlement_type: str,
+        entitlement_type: Union[str, EntitlementTypeEnum],
         item_id: str,
-        item_type: str,
+        item_type: Union[str, ItemTypeEnum],
         language: str,
         name: str,
         namespace: str,
         region: str,
         title: str,
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         base_app_id: Optional[str] = None,
         booth_name: Optional[str] = None,
         created_at: Optional[str] = None,
@@ -460,7 +460,7 @@ class ItemSnapshot(Model):
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         region_data_item: Optional[RegionDataItem] = None,
-        season_type: Optional[str] = None,
+        season_type: Optional[Union[str, SeasonTypeEnum]] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         target_currency_code: Optional[str] = None,
@@ -537,7 +537,7 @@ class ItemSnapshot(Model):
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
-            instance.entitlement_type = str()
+            instance.entitlement_type = Union[str, EntitlementTypeEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -545,7 +545,7 @@ class ItemSnapshot(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -573,7 +573,7 @@ class ItemSnapshot(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -629,7 +629,7 @@ class ItemSnapshot(Model):
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
-            instance.season_type = str()
+            instance.season_type = Union[str, SeasonTypeEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:

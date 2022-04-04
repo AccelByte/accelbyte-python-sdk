@@ -45,7 +45,7 @@ class SubscriptionActivityInfo(Model):
     """Subscription activity info (SubscriptionActivityInfo)
 
     Properties:
-        action: (action) REQUIRED str
+        action: (action) REQUIRED Union[str, ActionEnum]
 
         charged_cycles: (chargedCycles) REQUIRED int
 
@@ -57,7 +57,7 @@ class SubscriptionActivityInfo(Model):
 
         operator: (operator) REQUIRED str
 
-        subscribed_by: (subscribedBy) REQUIRED str
+        subscribed_by: (subscribedBy) REQUIRED Union[str, SubscribedByEnum]
 
         subscription_id: (subscriptionId) REQUIRED str
 
@@ -78,13 +78,13 @@ class SubscriptionActivityInfo(Model):
 
     # region fields
 
-    action: str                                                                                    # REQUIRED
+    action: Union[str, ActionEnum]                                                                 # REQUIRED
     charged_cycles: int                                                                            # REQUIRED
     created_at: str                                                                                # REQUIRED
     current_cycle: int                                                                             # REQUIRED
     namespace: str                                                                                 # REQUIRED
     operator: str                                                                                  # REQUIRED
-    subscribed_by: str                                                                             # REQUIRED
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # REQUIRED
     subscription_id: str                                                                           # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
@@ -98,7 +98,7 @@ class SubscriptionActivityInfo(Model):
 
     # region with_x methods
 
-    def with_action(self, value: str) -> SubscriptionActivityInfo:
+    def with_action(self, value: Union[str, ActionEnum]) -> SubscriptionActivityInfo:
         self.action = value
         return self
 
@@ -122,7 +122,7 @@ class SubscriptionActivityInfo(Model):
         self.operator = value
         return self
 
-    def with_subscribed_by(self, value: str) -> SubscriptionActivityInfo:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> SubscriptionActivityInfo:
         self.subscribed_by = value
         return self
 
@@ -167,7 +167,7 @@ class SubscriptionActivityInfo(Model):
         if hasattr(self, "action"):
             result["action"] = str(self.action)
         elif include_empty:
-            result["action"] = str()
+            result["action"] = Union[str, ActionEnum]()
         if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
@@ -191,7 +191,7 @@ class SubscriptionActivityInfo(Model):
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
-            result["subscribedBy"] = str()
+            result["subscribedBy"] = Union[str, SubscribedByEnum]()
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
@@ -233,13 +233,13 @@ class SubscriptionActivityInfo(Model):
     @classmethod
     def create(
         cls,
-        action: str,
+        action: Union[str, ActionEnum],
         charged_cycles: int,
         created_at: str,
         current_cycle: int,
         namespace: str,
         operator: str,
-        subscribed_by: str,
+        subscribed_by: Union[str, SubscribedByEnum],
         subscription_id: str,
         updated_at: str,
         user_id: str,
@@ -280,7 +280,7 @@ class SubscriptionActivityInfo(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = str(dict_["action"])
         elif include_empty:
-            instance.action = str()
+            instance.action = Union[str, ActionEnum]()
         if "chargedCycles" in dict_ and dict_["chargedCycles"] is not None:
             instance.charged_cycles = int(dict_["chargedCycles"])
         elif include_empty:
@@ -304,7 +304,7 @@ class SubscriptionActivityInfo(Model):
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
-            instance.subscribed_by = str()
+            instance.subscribed_by = Union[str, SubscribedByEnum]()
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:

@@ -64,7 +64,7 @@ class FulfillmentRequest(Model):
 
         region: (region) OPTIONAL str
 
-        source: (source) OPTIONAL str
+        source: (source) OPTIONAL Union[str, SourceEnum]
 
         start_date: (startDate) OPTIONAL str
 
@@ -82,7 +82,7 @@ class FulfillmentRequest(Model):
     order: OrderSummary                                                                            # OPTIONAL
     order_no: str                                                                                  # OPTIONAL
     region: str                                                                                    # OPTIONAL
-    source: str                                                                                    # OPTIONAL
+    source: Union[str, SourceEnum]                                                                 # OPTIONAL
     start_date: str                                                                                # OPTIONAL
     store_id: str                                                                                  # OPTIONAL
 
@@ -126,7 +126,7 @@ class FulfillmentRequest(Model):
         self.region = value
         return self
 
-    def with_source(self, value: str) -> FulfillmentRequest:
+    def with_source(self, value: Union[str, SourceEnum]) -> FulfillmentRequest:
         self.source = value
         return self
 
@@ -183,7 +183,7 @@ class FulfillmentRequest(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -210,7 +210,7 @@ class FulfillmentRequest(Model):
         order: Optional[OrderSummary] = None,
         order_no: Optional[str] = None,
         region: Optional[str] = None,
-        source: Optional[str] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
     ) -> FulfillmentRequest:
@@ -284,7 +284,7 @@ class FulfillmentRequest(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = Union[str, SourceEnum]()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:

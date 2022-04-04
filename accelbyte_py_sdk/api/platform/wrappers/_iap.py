@@ -85,6 +85,7 @@ from ..operations.iap import PublicFulfillGoogleIAPItem
 from ..operations.iap import PublicReconcilePlayStationStore
 from ..operations.iap import QueryAllUserIAPOrders
 from ..operations.iap import QueryUserIAPOrders
+from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTypeEnum
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncStadiaEntitlement
 from ..operations.iap import SyncSteamInventory
@@ -101,6 +102,10 @@ from ..operations.iap import UpdateSteamIAPConfig
 from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
+from ..models import EpicGamesReconcileResultStatusEnum
+from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
+from ..models import PlayStationReconcileResultStatusEnum
+from ..models import XblReconcileResultIapOrderStatusEnum
 
 
 @same_doc_as(DeleteAppleIAPConfig)
@@ -674,7 +679,7 @@ async def query_all_user_iap_orders_async(user_id: str, namespace: Optional[str]
 
 
 @same_doc_as(QueryUserIAPOrders)
-def query_user_iap_orders(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_user_iap_orders(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryUserIAPOrdersStatusEnum]] = None, type_: Optional[Union[str, QueryUserIAPOrdersTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -694,7 +699,7 @@ def query_user_iap_orders(user_id: str, end_time: Optional[str] = None, limit: O
 
 
 @same_doc_as(QueryUserIAPOrders)
-async def query_user_iap_orders_async(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_user_iap_orders_async(user_id: str, end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, product_id: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryUserIAPOrdersStatusEnum]] = None, type_: Optional[Union[str, QueryUserIAPOrdersTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -18,6 +18,8 @@ from .get_payment_order import GetPaymentOrder
 from .get_payment_order_charg_9acbf8 import GetPaymentOrderChargeStatus
 from .list_ext_order_no_by_ext_tx_id import ListExtOrderNoByExtTxId
 from .query_payment_notifications import QueryPaymentNotifications
+from .query_payment_notifications import NotificationSourceEnum as QueryPaymentNotificationsNotificationSourceEnum, StatusEnum as QueryPaymentNotificationsStatusEnum
 from .query_payment_orders import QueryPaymentOrders
+from .query_payment_orders import ChannelEnum as QueryPaymentOrdersChannelEnum, StatusEnum as QueryPaymentOrdersStatusEnum
 from .refund_user_payment_order import RefundUserPaymentOrder
 from .simulate_payment_order__cf0fbc import SimulatePaymentOrderNotification

@@ -57,13 +57,13 @@ class PaymentNotificationInfo(Model):
 
         notification: (notification) REQUIRED Dict[str, Any]
 
-        notification_source: (notificationSource) REQUIRED str
+        notification_source: (notificationSource) REQUIRED Union[str, NotificationSourceEnum]
 
         notification_type: (notificationType) REQUIRED str
 
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -78,10 +78,10 @@ class PaymentNotificationInfo(Model):
     id_: str                                                                                       # REQUIRED
     namespace: str                                                                                 # REQUIRED
     notification: Dict[str, Any]                                                                   # REQUIRED
-    notification_source: str                                                                       # REQUIRED
+    notification_source: Union[str, NotificationSourceEnum]                                        # REQUIRED
     notification_type: str                                                                         # REQUIRED
     payment_order_no: str                                                                          # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     external_id: str                                                                               # OPTIONAL
     status_reason: str                                                                             # OPTIONAL
@@ -106,7 +106,7 @@ class PaymentNotificationInfo(Model):
         self.notification = value
         return self
 
-    def with_notification_source(self, value: str) -> PaymentNotificationInfo:
+    def with_notification_source(self, value: Union[str, NotificationSourceEnum]) -> PaymentNotificationInfo:
         self.notification_source = value
         return self
 
@@ -118,7 +118,7 @@ class PaymentNotificationInfo(Model):
         self.payment_order_no = value
         return self
 
-    def with_status(self, value: str) -> PaymentNotificationInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> PaymentNotificationInfo:
         self.status = value
         return self
 
@@ -159,7 +159,7 @@ class PaymentNotificationInfo(Model):
         if hasattr(self, "notification_source"):
             result["notificationSource"] = str(self.notification_source)
         elif include_empty:
-            result["notificationSource"] = str()
+            result["notificationSource"] = Union[str, NotificationSourceEnum]()
         if hasattr(self, "notification_type"):
             result["notificationType"] = str(self.notification_type)
         elif include_empty:
@@ -171,7 +171,7 @@ class PaymentNotificationInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -197,10 +197,10 @@ class PaymentNotificationInfo(Model):
         id_: str,
         namespace: str,
         notification: Dict[str, Any],
-        notification_source: str,
+        notification_source: Union[str, NotificationSourceEnum],
         notification_type: str,
         payment_order_no: str,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         external_id: Optional[str] = None,
         status_reason: Optional[str] = None,
@@ -245,7 +245,7 @@ class PaymentNotificationInfo(Model):
         if "notificationSource" in dict_ and dict_["notificationSource"] is not None:
             instance.notification_source = str(dict_["notificationSource"])
         elif include_empty:
-            instance.notification_source = str()
+            instance.notification_source = Union[str, NotificationSourceEnum]()
         if "notificationType" in dict_ and dict_["notificationType"] is not None:
             instance.notification_type = str(dict_["notificationType"])
         elif include_empty:
@@ -257,7 +257,7 @@ class PaymentNotificationInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

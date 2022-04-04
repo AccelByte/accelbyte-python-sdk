@@ -73,11 +73,11 @@ class PopulatedItemInfo(Model):
 
         created_at: (createdAt) REQUIRED str
 
-        entitlement_type: (entitlementType) REQUIRED str
+        entitlement_type: (entitlementType) REQUIRED Union[str, EntitlementTypeEnum]
 
         item_id: (itemId) REQUIRED str
 
-        item_type: (itemType) REQUIRED str
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum]
 
         language: (language) REQUIRED str
 
@@ -87,7 +87,7 @@ class PopulatedItemInfo(Model):
 
         region: (region) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         title: (title) REQUIRED str
 
@@ -95,7 +95,7 @@ class PopulatedItemInfo(Model):
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         base_app_id: (baseAppId) OPTIONAL str
 
@@ -137,7 +137,7 @@ class PopulatedItemInfo(Model):
 
         region_data: (regionData) OPTIONAL List[RegionDataItem]
 
-        season_type: (seasonType) OPTIONAL str
+        season_type: (seasonType) OPTIONAL Union[str, SeasonTypeEnum]
 
         sku: (sku) OPTIONAL str
 
@@ -160,18 +160,18 @@ class PopulatedItemInfo(Model):
 
     category_path: str                                                                             # REQUIRED
     created_at: str                                                                                # REQUIRED
-    entitlement_type: str                                                                          # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
     item_id: str                                                                                   # REQUIRED
-    item_type: str                                                                                 # REQUIRED
+    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
     language: str                                                                                  # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     region: str                                                                                    # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     title: str                                                                                     # REQUIRED
     updated_at: str                                                                                # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     base_app_id: str                                                                               # OPTIONAL
     booth_name: str                                                                                # OPTIONAL
     bound_item_ids: List[str]                                                                      # OPTIONAL
@@ -192,7 +192,7 @@ class PopulatedItemInfo(Model):
     purchasable: bool                                                                              # OPTIONAL
     recurring: Recurring                                                                           # OPTIONAL
     region_data: List[RegionDataItem]                                                              # OPTIONAL
-    season_type: str                                                                               # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     stackable: bool                                                                                # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
@@ -214,7 +214,7 @@ class PopulatedItemInfo(Model):
         self.created_at = value
         return self
 
-    def with_entitlement_type(self, value: str) -> PopulatedItemInfo:
+    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> PopulatedItemInfo:
         self.entitlement_type = value
         return self
 
@@ -222,7 +222,7 @@ class PopulatedItemInfo(Model):
         self.item_id = value
         return self
 
-    def with_item_type(self, value: str) -> PopulatedItemInfo:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PopulatedItemInfo:
         self.item_type = value
         return self
 
@@ -242,7 +242,7 @@ class PopulatedItemInfo(Model):
         self.region = value
         return self
 
-    def with_status(self, value: str) -> PopulatedItemInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> PopulatedItemInfo:
         self.status = value
         return self
 
@@ -258,7 +258,7 @@ class PopulatedItemInfo(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> PopulatedItemInfo:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> PopulatedItemInfo:
         self.app_type = value
         return self
 
@@ -342,7 +342,7 @@ class PopulatedItemInfo(Model):
         self.region_data = value
         return self
 
-    def with_season_type(self, value: str) -> PopulatedItemInfo:
+    def with_season_type(self, value: Union[str, SeasonTypeEnum]) -> PopulatedItemInfo:
         self.season_type = value
         return self
 
@@ -395,7 +395,7 @@ class PopulatedItemInfo(Model):
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
-            result["entitlementType"] = str()
+            result["entitlementType"] = Union[str, EntitlementTypeEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -403,7 +403,7 @@ class PopulatedItemInfo(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -423,7 +423,7 @@ class PopulatedItemInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
@@ -439,7 +439,7 @@ class PopulatedItemInfo(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
@@ -523,7 +523,7 @@ class PopulatedItemInfo(Model):
         if hasattr(self, "season_type"):
             result["seasonType"] = str(self.season_type)
         elif include_empty:
-            result["seasonType"] = str()
+            result["seasonType"] = Union[str, SeasonTypeEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -567,18 +567,18 @@ class PopulatedItemInfo(Model):
         cls,
         category_path: str,
         created_at: str,
-        entitlement_type: str,
+        entitlement_type: Union[str, EntitlementTypeEnum],
         item_id: str,
-        item_type: str,
+        item_type: Union[str, ItemTypeEnum],
         language: str,
         name: str,
         namespace: str,
         region: str,
-        status: str,
+        status: Union[str, StatusEnum],
         title: str,
         updated_at: str,
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         base_app_id: Optional[str] = None,
         booth_name: Optional[str] = None,
         bound_item_ids: Optional[List[str]] = None,
@@ -599,7 +599,7 @@ class PopulatedItemInfo(Model):
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         region_data: Optional[List[RegionDataItem]] = None,
-        season_type: Optional[str] = None,
+        season_type: Optional[Union[str, SeasonTypeEnum]] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         tags: Optional[List[str]] = None,
@@ -702,7 +702,7 @@ class PopulatedItemInfo(Model):
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
-            instance.entitlement_type = str()
+            instance.entitlement_type = Union[str, EntitlementTypeEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -710,7 +710,7 @@ class PopulatedItemInfo(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -730,7 +730,7 @@ class PopulatedItemInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
@@ -746,7 +746,7 @@ class PopulatedItemInfo(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
@@ -830,7 +830,7 @@ class PopulatedItemInfo(Model):
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
             instance.season_type = str(dict_["seasonType"])
         elif include_empty:
-            instance.season_type = str()
+            instance.season_type = Union[str, SeasonTypeEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:

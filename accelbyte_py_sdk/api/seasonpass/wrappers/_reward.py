@@ -41,6 +41,9 @@ from ..operations.reward import PublicBulkClaimUserRewards
 from ..operations.reward import PublicClaimUserReward
 from ..operations.reward import QueryRewards
 from ..operations.reward import UpdateReward
+from ..models import RewardCreateTypeEnum
+from ..models import RewardInfoTypeEnum, RewardInfoItemTypeEnum
+from ..models import RewardUpdateTypeEnum
 
 
 @same_doc_as(CreateReward)

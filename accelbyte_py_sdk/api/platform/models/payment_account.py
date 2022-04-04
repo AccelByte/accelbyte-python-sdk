@@ -40,14 +40,14 @@ class PaymentAccount(Model):
 
         name: (name) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
     """
 
     # region fields
 
     id_: str                                                                                       # REQUIRED
     name: str                                                                                      # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
 
     # endregion fields
 
@@ -61,7 +61,7 @@ class PaymentAccount(Model):
         self.name = value
         return self
 
-    def with_type(self, value: str) -> PaymentAccount:
+    def with_type(self, value: Union[str, TypeEnum]) -> PaymentAccount:
         self.type_ = value
         return self
 
@@ -82,7 +82,7 @@ class PaymentAccount(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -94,7 +94,7 @@ class PaymentAccount(Model):
         cls,
         id_: str,
         name: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
     ) -> PaymentAccount:
         instance = cls()
         instance.id_ = id_
@@ -118,7 +118,7 @@ class PaymentAccount(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

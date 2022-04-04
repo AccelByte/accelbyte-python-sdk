@@ -43,6 +43,8 @@ from ..operations.namespace import GetNamespaces
 from ..operations.namespace import PublicGetNamespacePublisher
 from ..operations.namespace import PublicGetNamespaces
 from ..operations.namespace import UpdateNamespace
+from ..models import NamespaceInfoStatusEnum
+from ..models import NamespaceStatusUpdateStatusEnum
 
 
 @same_doc_as(ChangeNamespaceStatus)

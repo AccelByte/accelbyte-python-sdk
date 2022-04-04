@@ -48,27 +48,27 @@ class XsollaPaywallConfigRequest(Model):
     """Xsolla paywall config request (XsollaPaywallConfigRequest)
 
     Properties:
-        device: (device) OPTIONAL str
+        device: (device) OPTIONAL Union[str, DeviceEnum]
 
         show_close_button: (showCloseButton) OPTIONAL bool
 
-        size: (size) OPTIONAL str
+        size: (size) OPTIONAL Union[str, SizeEnum]
 
-        theme: (theme) OPTIONAL str
+        theme: (theme) OPTIONAL Union[str, ThemeEnum]
     """
 
     # region fields
 
-    device: str                                                                                    # OPTIONAL
+    device: Union[str, DeviceEnum]                                                                 # OPTIONAL
     show_close_button: bool                                                                        # OPTIONAL
-    size: str                                                                                      # OPTIONAL
-    theme: str                                                                                     # OPTIONAL
+    size: Union[str, SizeEnum]                                                                     # OPTIONAL
+    theme: Union[str, ThemeEnum]                                                                   # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_device(self, value: str) -> XsollaPaywallConfigRequest:
+    def with_device(self, value: Union[str, DeviceEnum]) -> XsollaPaywallConfigRequest:
         self.device = value
         return self
 
@@ -76,11 +76,11 @@ class XsollaPaywallConfigRequest(Model):
         self.show_close_button = value
         return self
 
-    def with_size(self, value: str) -> XsollaPaywallConfigRequest:
+    def with_size(self, value: Union[str, SizeEnum]) -> XsollaPaywallConfigRequest:
         self.size = value
         return self
 
-    def with_theme(self, value: str) -> XsollaPaywallConfigRequest:
+    def with_theme(self, value: Union[str, ThemeEnum]) -> XsollaPaywallConfigRequest:
         self.theme = value
         return self
 
@@ -93,7 +93,7 @@ class XsollaPaywallConfigRequest(Model):
         if hasattr(self, "device"):
             result["device"] = str(self.device)
         elif include_empty:
-            result["device"] = str()
+            result["device"] = Union[str, DeviceEnum]()
         if hasattr(self, "show_close_button"):
             result["showCloseButton"] = bool(self.show_close_button)
         elif include_empty:
@@ -101,11 +101,11 @@ class XsollaPaywallConfigRequest(Model):
         if hasattr(self, "size"):
             result["size"] = str(self.size)
         elif include_empty:
-            result["size"] = str()
+            result["size"] = Union[str, SizeEnum]()
         if hasattr(self, "theme"):
             result["theme"] = str(self.theme)
         elif include_empty:
-            result["theme"] = str()
+            result["theme"] = Union[str, ThemeEnum]()
         return result
 
     # endregion to methods
@@ -115,10 +115,10 @@ class XsollaPaywallConfigRequest(Model):
     @classmethod
     def create(
         cls,
-        device: Optional[str] = None,
+        device: Optional[Union[str, DeviceEnum]] = None,
         show_close_button: Optional[bool] = None,
-        size: Optional[str] = None,
-        theme: Optional[str] = None,
+        size: Optional[Union[str, SizeEnum]] = None,
+        theme: Optional[Union[str, ThemeEnum]] = None,
     ) -> XsollaPaywallConfigRequest:
         instance = cls()
         if device is not None:
@@ -139,7 +139,7 @@ class XsollaPaywallConfigRequest(Model):
         if "device" in dict_ and dict_["device"] is not None:
             instance.device = str(dict_["device"])
         elif include_empty:
-            instance.device = str()
+            instance.device = Union[str, DeviceEnum]()
         if "showCloseButton" in dict_ and dict_["showCloseButton"] is not None:
             instance.show_close_button = bool(dict_["showCloseButton"])
         elif include_empty:
@@ -147,11 +147,11 @@ class XsollaPaywallConfigRequest(Model):
         if "size" in dict_ and dict_["size"] is not None:
             instance.size = str(dict_["size"])
         elif include_empty:
-            instance.size = str()
+            instance.size = Union[str, SizeEnum]()
         if "theme" in dict_ and dict_["theme"] is not None:
             instance.theme = str(dict_["theme"])
         elif include_empty:
-            instance.theme = str()
+            instance.theme = Union[str, ThemeEnum]()
         return instance
 
     @classmethod

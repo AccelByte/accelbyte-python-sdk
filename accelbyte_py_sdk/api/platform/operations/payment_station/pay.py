@@ -70,7 +70,7 @@ class Pay(Operation):
 
         payment_order_no: (paymentOrderNo) REQUIRED str in path
 
-        payment_provider: (paymentProvider) OPTIONAL str in query
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum] in query
 
         zip_code: (zipCode) OPTIONAL str in query
 
@@ -96,7 +96,7 @@ class Pay(Operation):
     body: PaymentToken                                                                             # OPTIONAL in [body]
     namespace: str                                                                                 # REQUIRED in [path]
     payment_order_no: str                                                                          # REQUIRED in [path]
-    payment_provider: str                                                                          # OPTIONAL in [query]
+    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL in [query]
     zip_code: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
@@ -191,7 +191,7 @@ class Pay(Operation):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: str) -> Pay:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> Pay:
         self.payment_provider = value
         return self
 
@@ -220,7 +220,7 @@ class Pay(Operation):
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "zip_code") and self.zip_code:
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
@@ -275,7 +275,7 @@ class Pay(Operation):
         namespace: str,
         payment_order_no: str,
         body: Optional[PaymentToken] = None,
-        payment_provider: Optional[str] = None,
+        payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         zip_code: Optional[str] = None,
     ) -> Pay:
         instance = cls()
@@ -307,7 +307,7 @@ class Pay(Operation):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:

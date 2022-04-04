@@ -19,9 +19,11 @@ from .bulk_stat_item_inc import BulkStatItemInc
 from .bulk_stat_item_operation_result import BulkStatItemOperationResult
 from .bulk_stat_item_reset import BulkStatItemReset
 from .bulk_stat_item_update import BulkStatItemUpdate
+from .bulk_stat_item_update import UpdateStrategyEnum as BulkStatItemUpdateUpdateStrategyEnum
 from .bulk_user_stat_item_inc import BulkUserStatItemInc
 from .bulk_user_stat_item_reset import BulkUserStatItemReset
 from .bulk_user_stat_item_update import BulkUserStatItemUpdate
+from .bulk_user_stat_item_update import UpdateStrategyEnum as BulkUserStatItemUpdateUpdateStrategyEnum
 from .error_entity import ErrorEntity
 from .field_validation_error import FieldValidationError
 from .game_profile_header import GameProfileHeader
@@ -36,11 +38,14 @@ from .slot_config_update import SlotConfigUpdate
 from .slot_info import SlotInfo
 from .slot_metadata_update import SlotMetadataUpdate
 from .stat_create import StatCreate
+from .stat_create import SetByEnum as StatCreateSetByEnum
 from .stat_import_info import StatImportInfo
 from .stat_info import StatInfo
+from .stat_info import SetByEnum as StatInfoSetByEnum, StatusEnum as StatInfoStatusEnum
 from .stat_item_inc import StatItemInc
 from .stat_item_inc_result import StatItemIncResult
 from .stat_item_update import StatItemUpdate
+from .stat_item_update import UpdateStrategyEnum as StatItemUpdateUpdateStrategyEnum
 from .stat_paging_sliced_result import StatPagingSlicedResult
 from .stat_reset_info import StatResetInfo
 from .stat_update import StatUpdate

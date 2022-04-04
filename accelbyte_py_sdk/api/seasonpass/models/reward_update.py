@@ -49,7 +49,7 @@ class RewardUpdate(Model):
 
         quantity: (quantity) OPTIONAL int
 
-        type_: (type) OPTIONAL str
+        type_: (type) OPTIONAL Union[str, TypeEnum]
     """
 
     # region fields
@@ -59,7 +59,7 @@ class RewardUpdate(Model):
     item_id: str                                                                                   # OPTIONAL
     null_fields: List[str]                                                                         # OPTIONAL
     quantity: int                                                                                  # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -85,7 +85,7 @@ class RewardUpdate(Model):
         self.quantity = value
         return self
 
-    def with_type(self, value: str) -> RewardUpdate:
+    def with_type(self, value: Union[str, TypeEnum]) -> RewardUpdate:
         self.type_ = value
         return self
 
@@ -118,7 +118,7 @@ class RewardUpdate(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -133,7 +133,7 @@ class RewardUpdate(Model):
         item_id: Optional[str] = None,
         null_fields: Optional[List[str]] = None,
         quantity: Optional[int] = None,
-        type_: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
     ) -> RewardUpdate:
         instance = cls()
         if currency is not None:
@@ -178,7 +178,7 @@ class RewardUpdate(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

@@ -63,7 +63,7 @@ class ExternalPaymentOrderCreate(Model):
 
         ext_user_id: (extUserId) OPTIONAL str
 
-        item_type: (itemType) OPTIONAL str
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
 
         language: (language) OPTIONAL str
 
@@ -98,7 +98,7 @@ class ExternalPaymentOrderCreate(Model):
     currency_namespace: str                                                                        # OPTIONAL
     custom_parameters: Dict[str, Any]                                                              # OPTIONAL
     ext_user_id: str                                                                               # OPTIONAL
-    item_type: str                                                                                 # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     language: str                                                                                  # OPTIONAL
     metadata: Dict[str, str]                                                                       # OPTIONAL
     notify_url: str                                                                                # OPTIONAL
@@ -154,7 +154,7 @@ class ExternalPaymentOrderCreate(Model):
         self.ext_user_id = value
         return self
 
-    def with_item_type(self, value: str) -> ExternalPaymentOrderCreate:
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> ExternalPaymentOrderCreate:
         self.item_type = value
         return self
 
@@ -247,7 +247,7 @@ class ExternalPaymentOrderCreate(Model):
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
@@ -307,7 +307,7 @@ class ExternalPaymentOrderCreate(Model):
         currency_namespace: Optional[str] = None,
         custom_parameters: Optional[Dict[str, Any]] = None,
         ext_user_id: Optional[str] = None,
-        item_type: Optional[str] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         language: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         notify_url: Optional[str] = None,
@@ -406,7 +406,7 @@ class ExternalPaymentOrderCreate(Model):
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:

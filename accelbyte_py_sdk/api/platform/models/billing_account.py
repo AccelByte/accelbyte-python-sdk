@@ -48,14 +48,14 @@ class BillingAccount(Model):
 
         payment_method: (paymentMethod) OPTIONAL str
 
-        payment_provider: (paymentProvider) OPTIONAL str
+        payment_provider: (paymentProvider) OPTIONAL Union[str, PaymentProviderEnum]
     """
 
     # region fields
 
     additional_data: AdditionalData                                                                # OPTIONAL
     payment_method: str                                                                            # OPTIONAL
-    payment_provider: str                                                                          # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
 
     # endregion fields
 
@@ -69,7 +69,7 @@ class BillingAccount(Model):
         self.payment_method = value
         return self
 
-    def with_payment_provider(self, value: str) -> BillingAccount:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> BillingAccount:
         self.payment_provider = value
         return self
 
@@ -90,7 +90,7 @@ class BillingAccount(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         return result
 
     # endregion to methods
@@ -102,7 +102,7 @@ class BillingAccount(Model):
         cls,
         additional_data: Optional[AdditionalData] = None,
         payment_method: Optional[str] = None,
-        payment_provider: Optional[str] = None,
+        payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
     ) -> BillingAccount:
         instance = cls()
         if additional_data is not None:
@@ -129,7 +129,7 @@ class BillingAccount(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         return instance
 
     @classmethod

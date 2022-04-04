@@ -49,9 +49,9 @@ class PaymentOrderNotifySimulation(Model):
     Properties:
         currency_code: (currencyCode) REQUIRED str
 
-        notify_type: (notifyType) REQUIRED str
+        notify_type: (notifyType) REQUIRED Union[str, NotifyTypeEnum]
 
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
         amount: (amount) OPTIONAL int
 
@@ -63,8 +63,8 @@ class PaymentOrderNotifySimulation(Model):
     # region fields
 
     currency_code: str                                                                             # REQUIRED
-    notify_type: str                                                                               # REQUIRED
-    payment_provider: str                                                                          # REQUIRED
+    notify_type: Union[str, NotifyTypeEnum]                                                        # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
     amount: int                                                                                    # OPTIONAL
     sales_tax: int                                                                                 # OPTIONAL
     vat: int                                                                                       # OPTIONAL
@@ -77,11 +77,11 @@ class PaymentOrderNotifySimulation(Model):
         self.currency_code = value
         return self
 
-    def with_notify_type(self, value: str) -> PaymentOrderNotifySimulation:
+    def with_notify_type(self, value: Union[str, NotifyTypeEnum]) -> PaymentOrderNotifySimulation:
         self.notify_type = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentOrderNotifySimulation:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentOrderNotifySimulation:
         self.payment_provider = value
         return self
 
@@ -110,11 +110,11 @@ class PaymentOrderNotifySimulation(Model):
         if hasattr(self, "notify_type"):
             result["notifyType"] = str(self.notify_type)
         elif include_empty:
-            result["notifyType"] = str()
+            result["notifyType"] = Union[str, NotifyTypeEnum]()
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
@@ -137,8 +137,8 @@ class PaymentOrderNotifySimulation(Model):
     def create(
         cls,
         currency_code: str,
-        notify_type: str,
-        payment_provider: str,
+        notify_type: Union[str, NotifyTypeEnum],
+        payment_provider: Union[str, PaymentProviderEnum],
         amount: Optional[int] = None,
         sales_tax: Optional[int] = None,
         vat: Optional[int] = None,
@@ -167,11 +167,11 @@ class PaymentOrderNotifySimulation(Model):
         if "notifyType" in dict_ and dict_["notifyType"] is not None:
             instance.notify_type = str(dict_["notifyType"])
         elif include_empty:
-            instance.notify_type = str()
+            instance.notify_type = Union[str, NotifyTypeEnum]()
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:

@@ -51,7 +51,7 @@ class ListSeasonInfo(Model):
 
         start: (start) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -69,7 +69,7 @@ class ListSeasonInfo(Model):
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     start: str                                                                                     # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     pass_codes: List[str]                                                                          # OPTIONAL
     published_at: str                                                                              # OPTIONAL
@@ -106,7 +106,7 @@ class ListSeasonInfo(Model):
         self.start = value
         return self
 
-    def with_status(self, value: str) -> ListSeasonInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> ListSeasonInfo:
         self.status = value
         return self
 
@@ -159,7 +159,7 @@ class ListSeasonInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -188,7 +188,7 @@ class ListSeasonInfo(Model):
         name: str,
         namespace: str,
         start: str,
-        status: str,
+        status: Union[str, StatusEnum],
         updated_at: str,
         pass_codes: Optional[List[str]] = None,
         published_at: Optional[str] = None,
@@ -245,7 +245,7 @@ class ListSeasonInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

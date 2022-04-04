@@ -66,7 +66,7 @@ class QueryFulfillmentHistories(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
         user_id: (userId) OPTIONAL str in query
 
@@ -86,7 +86,7 @@ class QueryFulfillmentHistories(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -177,7 +177,7 @@ class QueryFulfillmentHistories(Operation):
         self.offset = value
         return self
 
-    def with_status(self, value: str) -> QueryFulfillmentHistories:
+    def with_status(self, value: Union[str, StatusEnum]) -> QueryFulfillmentHistories:
         self.status = value
         return self
 
@@ -206,7 +206,7 @@ class QueryFulfillmentHistories(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -249,7 +249,7 @@ class QueryFulfillmentHistories(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         user_id: Optional[str] = None,
     ) -> QueryFulfillmentHistories:
         instance = cls()
@@ -282,7 +282,7 @@ class QueryFulfillmentHistories(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:

@@ -73,7 +73,7 @@ class RetrieveLatestPoliciesPublic(Operation):
 
         default_on_empty: (defaultOnEmpty) OPTIONAL bool in query
 
-        policy_type: (policyType) OPTIONAL str in query
+        policy_type: (policyType) OPTIONAL Union[str, PolicyTypeEnum] in query
 
         tags: (tags) OPTIONAL str in query
 
@@ -95,7 +95,7 @@ class RetrieveLatestPoliciesPublic(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     always_include_default: bool                                                                   # OPTIONAL in [query]
     default_on_empty: bool                                                                         # OPTIONAL in [query]
-    policy_type: str                                                                               # OPTIONAL in [query]
+    policy_type: Union[str, PolicyTypeEnum]                                                        # OPTIONAL in [query]
     tags: str                                                                                      # OPTIONAL in [query]
 
     # endregion fields
@@ -186,7 +186,7 @@ class RetrieveLatestPoliciesPublic(Operation):
         self.default_on_empty = value
         return self
 
-    def with_policy_type(self, value: str) -> RetrieveLatestPoliciesPublic:
+    def with_policy_type(self, value: Union[str, PolicyTypeEnum]) -> RetrieveLatestPoliciesPublic:
         self.policy_type = value
         return self
 
@@ -215,7 +215,7 @@ class RetrieveLatestPoliciesPublic(Operation):
         if hasattr(self, "policy_type") and self.policy_type:
             result["policyType"] = str(self.policy_type)
         elif include_empty:
-            result["policyType"] = str()
+            result["policyType"] = Union[str, PolicyTypeEnum]()
         if hasattr(self, "tags") and self.tags:
             result["tags"] = str(self.tags)
         elif include_empty:
@@ -262,7 +262,7 @@ class RetrieveLatestPoliciesPublic(Operation):
         namespace: str,
         always_include_default: Optional[bool] = None,
         default_on_empty: Optional[bool] = None,
-        policy_type: Optional[str] = None,
+        policy_type: Optional[Union[str, PolicyTypeEnum]] = None,
         tags: Optional[str] = None,
     ) -> RetrieveLatestPoliciesPublic:
         instance = cls()
@@ -295,7 +295,7 @@ class RetrieveLatestPoliciesPublic(Operation):
         if "policyType" in dict_ and dict_["policyType"] is not None:
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
-            instance.policy_type = str()
+            instance.policy_type = Union[str, PolicyTypeEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = str(dict_["tags"])
         elif include_empty:

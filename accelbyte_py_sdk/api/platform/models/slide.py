@@ -48,11 +48,11 @@ class Slide(Model):
 
         thumbnail_url: (thumbnailUrl) OPTIONAL str
 
-        type_: (type) OPTIONAL str
+        type_: (type) OPTIONAL Union[str, TypeEnum]
 
         url: (url) OPTIONAL str
 
-        video_source: (videoSource) OPTIONAL str
+        video_source: (videoSource) OPTIONAL Union[str, VideoSourceEnum]
     """
 
     # region fields
@@ -60,9 +60,9 @@ class Slide(Model):
     alt: str                                                                                       # OPTIONAL
     preview_url: str                                                                               # OPTIONAL
     thumbnail_url: str                                                                             # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
     url: str                                                                                       # OPTIONAL
-    video_source: str                                                                              # OPTIONAL
+    video_source: Union[str, VideoSourceEnum]                                                      # OPTIONAL
 
     # endregion fields
 
@@ -80,7 +80,7 @@ class Slide(Model):
         self.thumbnail_url = value
         return self
 
-    def with_type(self, value: str) -> Slide:
+    def with_type(self, value: Union[str, TypeEnum]) -> Slide:
         self.type_ = value
         return self
 
@@ -88,7 +88,7 @@ class Slide(Model):
         self.url = value
         return self
 
-    def with_video_source(self, value: str) -> Slide:
+    def with_video_source(self, value: Union[str, VideoSourceEnum]) -> Slide:
         self.video_source = value
         return self
 
@@ -113,7 +113,7 @@ class Slide(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
@@ -121,7 +121,7 @@ class Slide(Model):
         if hasattr(self, "video_source"):
             result["videoSource"] = str(self.video_source)
         elif include_empty:
-            result["videoSource"] = str()
+            result["videoSource"] = Union[str, VideoSourceEnum]()
         return result
 
     # endregion to methods
@@ -134,9 +134,9 @@ class Slide(Model):
         alt: Optional[str] = None,
         preview_url: Optional[str] = None,
         thumbnail_url: Optional[str] = None,
-        type_: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
         url: Optional[str] = None,
-        video_source: Optional[str] = None,
+        video_source: Optional[Union[str, VideoSourceEnum]] = None,
     ) -> Slide:
         instance = cls()
         if alt is not None:
@@ -173,7 +173,7 @@ class Slide(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
@@ -181,7 +181,7 @@ class Slide(Model):
         if "videoSource" in dict_ and dict_["videoSource"] is not None:
             instance.video_source = str(dict_["videoSource"])
         elif include_empty:
-            instance.video_source = str()
+            instance.video_source = Union[str, VideoSourceEnum]()
         return instance
 
     @classmethod

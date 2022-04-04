@@ -36,7 +36,7 @@ class ExcessStrategy(Model):
     """Excess strategy (ExcessStrategy)
 
     Properties:
-        method: (method) REQUIRED str
+        method: (method) REQUIRED Union[str, MethodEnum]
 
         currency: (currency) OPTIONAL str
 
@@ -45,7 +45,7 @@ class ExcessStrategy(Model):
 
     # region fields
 
-    method: str                                                                                    # REQUIRED
+    method: Union[str, MethodEnum]                                                                 # REQUIRED
     currency: str                                                                                  # OPTIONAL
     percent_per_exp: int                                                                           # OPTIONAL
 
@@ -53,7 +53,7 @@ class ExcessStrategy(Model):
 
     # region with_x methods
 
-    def with_method(self, value: str) -> ExcessStrategy:
+    def with_method(self, value: Union[str, MethodEnum]) -> ExcessStrategy:
         self.method = value
         return self
 
@@ -74,7 +74,7 @@ class ExcessStrategy(Model):
         if hasattr(self, "method"):
             result["method"] = str(self.method)
         elif include_empty:
-            result["method"] = str()
+            result["method"] = Union[str, MethodEnum]()
         if hasattr(self, "currency"):
             result["currency"] = str(self.currency)
         elif include_empty:
@@ -92,7 +92,7 @@ class ExcessStrategy(Model):
     @classmethod
     def create(
         cls,
-        method: str,
+        method: Union[str, MethodEnum],
         currency: Optional[str] = None,
         percent_per_exp: Optional[int] = None,
     ) -> ExcessStrategy:
@@ -112,7 +112,7 @@ class ExcessStrategy(Model):
         if "method" in dict_ and dict_["method"] is not None:
             instance.method = str(dict_["method"])
         elif include_empty:
-            instance.method = str()
+            instance.method = Union[str, MethodEnum]()
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = str(dict_["currency"])
         elif include_empty:

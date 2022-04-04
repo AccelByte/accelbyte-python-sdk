@@ -51,7 +51,7 @@ class WalletTransactionInfo(Model):
 
         user_id: (userId) REQUIRED str
 
-        wallet_action: (walletAction) REQUIRED str
+        wallet_action: (walletAction) REQUIRED Union[str, WalletActionEnum]
 
         wallet_id: (walletId) REQUIRED str
 
@@ -69,7 +69,7 @@ class WalletTransactionInfo(Model):
     operator: str                                                                                  # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
-    wallet_action: str                                                                             # REQUIRED
+    wallet_action: Union[str, WalletActionEnum]                                                    # REQUIRED
     wallet_id: str                                                                                 # REQUIRED
     balance_source: str                                                                            # OPTIONAL
     reason: str                                                                                    # OPTIONAL
@@ -106,7 +106,7 @@ class WalletTransactionInfo(Model):
         self.user_id = value
         return self
 
-    def with_wallet_action(self, value: str) -> WalletTransactionInfo:
+    def with_wallet_action(self, value: Union[str, WalletActionEnum]) -> WalletTransactionInfo:
         self.wallet_action = value
         return self
 
@@ -159,7 +159,7 @@ class WalletTransactionInfo(Model):
         if hasattr(self, "wallet_action"):
             result["walletAction"] = str(self.wallet_action)
         elif include_empty:
-            result["walletAction"] = str()
+            result["walletAction"] = Union[str, WalletActionEnum]()
         if hasattr(self, "wallet_id"):
             result["walletId"] = str(self.wallet_id)
         elif include_empty:
@@ -188,7 +188,7 @@ class WalletTransactionInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
-        wallet_action: str,
+        wallet_action: Union[str, WalletActionEnum],
         wallet_id: str,
         balance_source: Optional[str] = None,
         reason: Optional[str] = None,
@@ -245,7 +245,7 @@ class WalletTransactionInfo(Model):
         if "walletAction" in dict_ and dict_["walletAction"] is not None:
             instance.wallet_action = str(dict_["walletAction"])
         elif include_empty:
-            instance.wallet_action = str()
+            instance.wallet_action = Union[str, WalletActionEnum]()
         if "walletId" in dict_ and dict_["walletId"] is not None:
             instance.wallet_id = str(dict_["walletId"])
         elif include_empty:

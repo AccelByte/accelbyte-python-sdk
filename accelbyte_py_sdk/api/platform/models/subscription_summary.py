@@ -49,7 +49,7 @@ class SubscriptionSummary(Model):
 
         namespace: (namespace) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         user_id: (userId) REQUIRED str
 
@@ -59,7 +59,7 @@ class SubscriptionSummary(Model):
 
         sku: (sku) OPTIONAL str
 
-        subscribed_by: (subscribedBy) OPTIONAL str
+        subscribed_by: (subscribedBy) OPTIONAL Union[str, SubscribedByEnum]
     """
 
     # region fields
@@ -67,12 +67,12 @@ class SubscriptionSummary(Model):
     id_: str                                                                                       # REQUIRED
     item_id: str                                                                                   # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     user_id: str                                                                                   # REQUIRED
     current_period_end: str                                                                        # OPTIONAL
     current_period_start: str                                                                      # OPTIONAL
     sku: str                                                                                       # OPTIONAL
-    subscribed_by: str                                                                             # OPTIONAL
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # OPTIONAL
 
     # endregion fields
 
@@ -90,7 +90,7 @@ class SubscriptionSummary(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> SubscriptionSummary:
+    def with_status(self, value: Union[str, StatusEnum]) -> SubscriptionSummary:
         self.status = value
         return self
 
@@ -110,7 +110,7 @@ class SubscriptionSummary(Model):
         self.sku = value
         return self
 
-    def with_subscribed_by(self, value: str) -> SubscriptionSummary:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> SubscriptionSummary:
         self.subscribed_by = value
         return self
 
@@ -135,7 +135,7 @@ class SubscriptionSummary(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -155,7 +155,7 @@ class SubscriptionSummary(Model):
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
-            result["subscribedBy"] = str()
+            result["subscribedBy"] = Union[str, SubscribedByEnum]()
         return result
 
     # endregion to methods
@@ -168,12 +168,12 @@ class SubscriptionSummary(Model):
         id_: str,
         item_id: str,
         namespace: str,
-        status: str,
+        status: Union[str, StatusEnum],
         user_id: str,
         current_period_end: Optional[str] = None,
         current_period_start: Optional[str] = None,
         sku: Optional[str] = None,
-        subscribed_by: Optional[str] = None,
+        subscribed_by: Optional[Union[str, SubscribedByEnum]] = None,
     ) -> SubscriptionSummary:
         instance = cls()
         instance.id_ = id_
@@ -211,7 +211,7 @@ class SubscriptionSummary(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -231,7 +231,7 @@ class SubscriptionSummary(Model):
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
-            instance.subscribed_by = str()
+            instance.subscribed_by = Union[str, SubscribedByEnum]()
         return instance
 
     @classmethod

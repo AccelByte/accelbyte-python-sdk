@@ -47,7 +47,7 @@ class SeasonSummary(Model):
 
         start: (start) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         pass_codes: (passCodes) OPTIONAL List[str]
 
@@ -63,7 +63,7 @@ class SeasonSummary(Model):
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
     start: str                                                                                     # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     pass_codes: List[str]                                                                          # OPTIONAL
     previous: SeasonSummary                                                                        # OPTIONAL
     published_at: str                                                                              # OPTIONAL
@@ -92,7 +92,7 @@ class SeasonSummary(Model):
         self.start = value
         return self
 
-    def with_status(self, value: str) -> SeasonSummary:
+    def with_status(self, value: Union[str, StatusEnum]) -> SeasonSummary:
         self.status = value
         return self
 
@@ -137,7 +137,7 @@ class SeasonSummary(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "pass_codes"):
             result["passCodes"] = [str(i0) for i0 in self.pass_codes]
         elif include_empty:
@@ -164,7 +164,7 @@ class SeasonSummary(Model):
         name: str,
         namespace: str,
         start: str,
-        status: str,
+        status: Union[str, StatusEnum],
         pass_codes: Optional[List[str]] = None,
         previous: Optional[SeasonSummary] = None,
         published_at: Optional[str] = None,
@@ -212,7 +212,7 @@ class SeasonSummary(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "passCodes" in dict_ and dict_["passCodes"] is not None:
             instance.pass_codes = [str(i0) for i0 in dict_["passCodes"]]
         elif include_empty:

@@ -64,7 +64,7 @@ class GetPaymentPublicConfig(Operation):
 
         sandbox: (sandbox) OPTIONAL bool in query
 
-        payment_provider: (paymentProvider) REQUIRED str in query
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum] in query
 
         region: (region) REQUIRED str in query
 
@@ -83,7 +83,7 @@ class GetPaymentPublicConfig(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     sandbox: bool                                                                                  # OPTIONAL in [query]
-    payment_provider: str                                                                          # REQUIRED in [query]
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED in [query]
     region: str                                                                                    # REQUIRED in [query]
 
     # endregion fields
@@ -168,7 +168,7 @@ class GetPaymentPublicConfig(Operation):
         self.sandbox = value
         return self
 
-    def with_payment_provider(self, value: str) -> GetPaymentPublicConfig:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> GetPaymentPublicConfig:
         self.payment_provider = value
         return self
 
@@ -193,7 +193,7 @@ class GetPaymentPublicConfig(Operation):
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -234,7 +234,7 @@ class GetPaymentPublicConfig(Operation):
     def create(
         cls,
         namespace: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
         region: str,
         sandbox: Optional[bool] = None,
     ) -> GetPaymentPublicConfig:
@@ -260,7 +260,7 @@ class GetPaymentPublicConfig(Operation):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:

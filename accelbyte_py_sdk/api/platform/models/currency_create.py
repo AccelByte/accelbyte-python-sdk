@@ -40,7 +40,7 @@ class CurrencyCreate(Model):
 
         currency_symbol: (currencySymbol) OPTIONAL str
 
-        currency_type: (currencyType) OPTIONAL str
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum]
 
         decimals: (decimals) OPTIONAL int
 
@@ -51,7 +51,7 @@ class CurrencyCreate(Model):
 
     currency_code: str                                                                             # REQUIRED
     currency_symbol: str                                                                           # OPTIONAL
-    currency_type: str                                                                             # OPTIONAL
+    currency_type: Union[str, CurrencyTypeEnum]                                                    # OPTIONAL
     decimals: int                                                                                  # OPTIONAL
     localization_descriptions: Dict[str, str]                                                      # OPTIONAL
 
@@ -67,7 +67,7 @@ class CurrencyCreate(Model):
         self.currency_symbol = value
         return self
 
-    def with_currency_type(self, value: str) -> CurrencyCreate:
+    def with_currency_type(self, value: Union[str, CurrencyTypeEnum]) -> CurrencyCreate:
         self.currency_type = value
         return self
 
@@ -96,7 +96,7 @@ class CurrencyCreate(Model):
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
-            result["currencyType"] = str()
+            result["currencyType"] = Union[str, CurrencyTypeEnum]()
         if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
@@ -116,7 +116,7 @@ class CurrencyCreate(Model):
         cls,
         currency_code: str,
         currency_symbol: Optional[str] = None,
-        currency_type: Optional[str] = None,
+        currency_type: Optional[Union[str, CurrencyTypeEnum]] = None,
         decimals: Optional[int] = None,
         localization_descriptions: Optional[Dict[str, str]] = None,
     ) -> CurrencyCreate:
@@ -148,7 +148,7 @@ class CurrencyCreate(Model):
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
-            instance.currency_type = str()
+            instance.currency_type = Union[str, CurrencyTypeEnum]()
         if "decimals" in dict_ and dict_["decimals"] is not None:
             instance.decimals = int(dict_["decimals"])
         elif include_empty:

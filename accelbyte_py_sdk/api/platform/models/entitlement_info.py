@@ -72,7 +72,7 @@ class EntitlementInfo(Model):
     """Entitlement info (EntitlementInfo)
 
     Properties:
-        clazz: (clazz) REQUIRED str
+        clazz: (clazz) REQUIRED Union[str, ClazzEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -88,11 +88,11 @@ class EntitlementInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        source: (source) REQUIRED str
+        source: (source) REQUIRED Union[str, SourceEnum]
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -100,7 +100,7 @@ class EntitlementInfo(Model):
 
         app_id: (appId) OPTIONAL str
 
-        app_type: (appType) OPTIONAL str
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
         end_date: (endDate) OPTIONAL str
 
@@ -123,7 +123,7 @@ class EntitlementInfo(Model):
 
     # region fields
 
-    clazz: str                                                                                     # REQUIRED
+    clazz: Union[str, ClazzEnum]                                                                   # REQUIRED
     created_at: str                                                                                # REQUIRED
     granted_at: str                                                                                # REQUIRED
     id_: str                                                                                       # REQUIRED
@@ -131,13 +131,13 @@ class EntitlementInfo(Model):
     item_namespace: str                                                                            # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    source: str                                                                                    # REQUIRED
-    status: str                                                                                    # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    source: Union[str, SourceEnum]                                                                 # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     app_id: str                                                                                    # OPTIONAL
-    app_type: str                                                                                  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
     end_date: str                                                                                  # OPTIONAL
     features: List[str]                                                                            # OPTIONAL
     granted_code: str                                                                              # OPTIONAL
@@ -152,7 +152,7 @@ class EntitlementInfo(Model):
 
     # region with_x methods
 
-    def with_clazz(self, value: str) -> EntitlementInfo:
+    def with_clazz(self, value: Union[str, ClazzEnum]) -> EntitlementInfo:
         self.clazz = value
         return self
 
@@ -184,15 +184,15 @@ class EntitlementInfo(Model):
         self.namespace = value
         return self
 
-    def with_source(self, value: str) -> EntitlementInfo:
+    def with_source(self, value: Union[str, SourceEnum]) -> EntitlementInfo:
         self.source = value
         return self
 
-    def with_status(self, value: str) -> EntitlementInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> EntitlementInfo:
         self.status = value
         return self
 
-    def with_type(self, value: str) -> EntitlementInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> EntitlementInfo:
         self.type_ = value
         return self
 
@@ -208,7 +208,7 @@ class EntitlementInfo(Model):
         self.app_id = value
         return self
 
-    def with_app_type(self, value: str) -> EntitlementInfo:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> EntitlementInfo:
         self.app_type = value
         return self
 
@@ -257,7 +257,7 @@ class EntitlementInfo(Model):
         if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
-            result["clazz"] = str()
+            result["clazz"] = Union[str, ClazzEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -289,15 +289,15 @@ class EntitlementInfo(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -313,7 +313,7 @@ class EntitlementInfo(Model):
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
-            result["appType"] = str()
+            result["appType"] = Union[str, AppTypeEnum]()
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -359,7 +359,7 @@ class EntitlementInfo(Model):
     @classmethod
     def create(
         cls,
-        clazz: str,
+        clazz: Union[str, ClazzEnum],
         created_at: str,
         granted_at: str,
         id_: str,
@@ -367,13 +367,13 @@ class EntitlementInfo(Model):
         item_namespace: str,
         name: str,
         namespace: str,
-        source: str,
-        status: str,
-        type_: str,
+        source: Union[str, SourceEnum],
+        status: Union[str, StatusEnum],
+        type_: Union[str, TypeEnum],
         updated_at: str,
         user_id: str,
         app_id: Optional[str] = None,
-        app_type: Optional[str] = None,
+        app_type: Optional[Union[str, AppTypeEnum]] = None,
         end_date: Optional[str] = None,
         features: Optional[List[str]] = None,
         granted_code: Optional[str] = None,
@@ -430,7 +430,7 @@ class EntitlementInfo(Model):
         if "clazz" in dict_ and dict_["clazz"] is not None:
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
-            instance.clazz = str()
+            instance.clazz = Union[str, ClazzEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -462,15 +462,15 @@ class EntitlementInfo(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = Union[str, SourceEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -486,7 +486,7 @@ class EntitlementInfo(Model):
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
-            instance.app_type = str()
+            instance.app_type = Union[str, AppTypeEnum]()
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:

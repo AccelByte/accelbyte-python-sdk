@@ -40,7 +40,7 @@ class KeyGroupCreate(Model):
 
         description: (description) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         tags: (tags) OPTIONAL List[str]
     """
@@ -49,7 +49,7 @@ class KeyGroupCreate(Model):
 
     name: str                                                                                      # REQUIRED
     description: str                                                                               # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
@@ -64,7 +64,7 @@ class KeyGroupCreate(Model):
         self.description = value
         return self
 
-    def with_status(self, value: str) -> KeyGroupCreate:
+    def with_status(self, value: Union[str, StatusEnum]) -> KeyGroupCreate:
         self.status = value
         return self
 
@@ -89,7 +89,7 @@ class KeyGroupCreate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -105,7 +105,7 @@ class KeyGroupCreate(Model):
         cls,
         name: str,
         description: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         tags: Optional[List[str]] = None,
     ) -> KeyGroupCreate:
         instance = cls()
@@ -134,7 +134,7 @@ class KeyGroupCreate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

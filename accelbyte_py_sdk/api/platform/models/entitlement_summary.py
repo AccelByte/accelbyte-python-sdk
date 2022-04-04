@@ -44,7 +44,7 @@ class EntitlementSummary(Model):
     """Entitlement summary (EntitlementSummary)
 
     Properties:
-        clazz: (clazz) REQUIRED str
+        clazz: (clazz) REQUIRED Union[str, ClazzEnum]
 
         created_at: (createdAt) REQUIRED str
 
@@ -52,7 +52,7 @@ class EntitlementSummary(Model):
 
         namespace: (namespace) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -75,11 +75,11 @@ class EntitlementSummary(Model):
 
     # region fields
 
-    clazz: str                                                                                     # REQUIRED
+    clazz: Union[str, ClazzEnum]                                                                   # REQUIRED
     created_at: str                                                                                # REQUIRED
     id_: str                                                                                       # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     end_date: str                                                                                  # OPTIONAL
@@ -94,7 +94,7 @@ class EntitlementSummary(Model):
 
     # region with_x methods
 
-    def with_clazz(self, value: str) -> EntitlementSummary:
+    def with_clazz(self, value: Union[str, ClazzEnum]) -> EntitlementSummary:
         self.clazz = value
         return self
 
@@ -110,7 +110,7 @@ class EntitlementSummary(Model):
         self.namespace = value
         return self
 
-    def with_type(self, value: str) -> EntitlementSummary:
+    def with_type(self, value: Union[str, TypeEnum]) -> EntitlementSummary:
         self.type_ = value
         return self
 
@@ -159,7 +159,7 @@ class EntitlementSummary(Model):
         if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
-            result["clazz"] = str()
+            result["clazz"] = Union[str, ClazzEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -175,7 +175,7 @@ class EntitlementSummary(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -221,11 +221,11 @@ class EntitlementSummary(Model):
     @classmethod
     def create(
         cls,
-        clazz: str,
+        clazz: Union[str, ClazzEnum],
         created_at: str,
         id_: str,
         namespace: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
         updated_at: str,
         user_id: str,
         end_date: Optional[str] = None,
@@ -268,7 +268,7 @@ class EntitlementSummary(Model):
         if "clazz" in dict_ and dict_["clazz"] is not None:
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
-            instance.clazz = str()
+            instance.clazz = Union[str, ClazzEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -284,7 +284,7 @@ class EntitlementSummary(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

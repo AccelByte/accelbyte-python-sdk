@@ -79,6 +79,9 @@ from ..operations.user_statistic import ResetUserStatItemValue
 from ..operations.user_statistic import ResetUserStatItemValue1
 from ..operations.user_statistic import UpdateUserStatItemValue
 from ..operations.user_statistic import UpdateUserStatItemValue1
+from ..models import BulkStatItemUpdateUpdateStrategyEnum
+from ..models import BulkUserStatItemUpdateUpdateStrategyEnum
+from ..models import StatItemUpdateUpdateStrategyEnum
 
 
 @same_doc_as(BulkCreateUserStatItems)

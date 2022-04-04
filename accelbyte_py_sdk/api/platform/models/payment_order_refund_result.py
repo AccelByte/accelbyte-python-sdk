@@ -53,7 +53,7 @@ class PaymentOrderRefundResult(Model):
 
         payment_order_no: (paymentOrderNo) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         refunded_time: (refundedTime) OPTIONAL str
 
@@ -67,7 +67,7 @@ class PaymentOrderRefundResult(Model):
     created_time: str                                                                              # REQUIRED
     namespace: str                                                                                 # REQUIRED
     payment_order_no: str                                                                          # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     refunded_time: str                                                                             # OPTIONAL
     target_namespace: str                                                                          # OPTIONAL
     target_user_id: str                                                                            # OPTIONAL
@@ -88,7 +88,7 @@ class PaymentOrderRefundResult(Model):
         self.payment_order_no = value
         return self
 
-    def with_status(self, value: str) -> PaymentOrderRefundResult:
+    def with_status(self, value: Union[str, StatusEnum]) -> PaymentOrderRefundResult:
         self.status = value
         return self
 
@@ -125,7 +125,7 @@ class PaymentOrderRefundResult(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "refunded_time"):
             result["refundedTime"] = str(self.refunded_time)
         elif include_empty:
@@ -150,7 +150,7 @@ class PaymentOrderRefundResult(Model):
         created_time: str,
         namespace: str,
         payment_order_no: str,
-        status: str,
+        status: Union[str, StatusEnum],
         refunded_time: Optional[str] = None,
         target_namespace: Optional[str] = None,
         target_user_id: Optional[str] = None,
@@ -188,7 +188,7 @@ class PaymentOrderRefundResult(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
             instance.refunded_time = str(dict_["refundedTime"])
         elif include_empty:

@@ -39,20 +39,28 @@ from ..models import PaymentUrlCreate
 from ..models import TaxResult
 
 from ..operations.payment_station import GetPaymentCustomization
+from ..operations.payment_station import GetPaymentCustomizationPaymentProviderEnum
 from ..operations.payment_station import GetPaymentPublicConfig
+from ..operations.payment_station import GetPaymentPublicConfigPaymentProviderEnum
 from ..operations.payment_station import GetPaymentTaxValue
+from ..operations.payment_station import GetPaymentTaxValuePaymentProviderEnum
 from ..operations.payment_station import Pay
+from ..operations.payment_station import PayPaymentProviderEnum
 from ..operations.payment_station import PublicCheckPaymentOrderPaidStatus
 from ..operations.payment_station import PublicGetPaymentMethods
 from ..operations.payment_station import PublicGetPaymentUrl
 from ..operations.payment_station import PublicGetQRCode
 from ..operations.payment_station import PublicGetUnpaidPaymentOrder
 from ..operations.payment_station import PublicNormalizePaymentReturnUrl
+from ..operations.payment_station import PublicNormalizePaymentReturnUrlPaymentProviderEnum
+from ..models import PaymentMethodPaymentProviderEnum
+from ..models import PaymentUrlPaymentTypeEnum, PaymentUrlPaymentProviderEnum
+from ..models import PaymentUrlCreatePaymentProviderEnum
 
 
 @deprecated
 @same_doc_as(GetPaymentCustomization)
-def get_payment_customization(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_payment_customization(payment_provider: Union[str, GetPaymentCustomizationPaymentProviderEnum], region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,7 +76,7 @@ def get_payment_customization(payment_provider: str, region: str, sandbox: Optio
 
 @deprecated
 @same_doc_as(GetPaymentCustomization)
-async def get_payment_customization_async(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_payment_customization_async(payment_provider: Union[str, GetPaymentCustomizationPaymentProviderEnum], region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,7 +91,7 @@ async def get_payment_customization_async(payment_provider: str, region: str, sa
 
 
 @same_doc_as(GetPaymentPublicConfig)
-def get_payment_public_config(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_payment_public_config(payment_provider: Union[str, GetPaymentPublicConfigPaymentProviderEnum], region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,7 +106,7 @@ def get_payment_public_config(payment_provider: str, region: str, sandbox: Optio
 
 
 @same_doc_as(GetPaymentPublicConfig)
-async def get_payment_public_config_async(payment_provider: str, region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_payment_public_config_async(payment_provider: Union[str, GetPaymentPublicConfigPaymentProviderEnum], region: str, sandbox: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,7 +121,7 @@ async def get_payment_public_config_async(payment_provider: str, region: str, sa
 
 
 @same_doc_as(GetPaymentTaxValue)
-def get_payment_tax_value(payment_order_no: str, payment_provider: str, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_payment_tax_value(payment_order_no: str, payment_provider: Union[str, GetPaymentTaxValuePaymentProviderEnum], zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,7 +136,7 @@ def get_payment_tax_value(payment_order_no: str, payment_provider: str, zip_code
 
 
 @same_doc_as(GetPaymentTaxValue)
-async def get_payment_tax_value_async(payment_order_no: str, payment_provider: str, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_payment_tax_value_async(payment_order_no: str, payment_provider: Union[str, GetPaymentTaxValuePaymentProviderEnum], zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,7 +151,7 @@ async def get_payment_tax_value_async(payment_order_no: str, payment_provider: s
 
 
 @same_doc_as(Pay)
-def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[str] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[Union[str, PayPaymentProviderEnum]] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,7 +167,7 @@ def pay(payment_order_no: str, body: Optional[PaymentToken] = None, payment_prov
 
 
 @same_doc_as(Pay)
-async def pay_async(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[str] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def pay_async(payment_order_no: str, body: Optional[PaymentToken] = None, payment_provider: Optional[Union[str, PayPaymentProviderEnum]] = None, zip_code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,7 +313,7 @@ async def public_get_unpaid_payment_order_async(payment_order_no: str, namespace
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_normalize_payment_return_url(order_no: str, payment_order_no: str, payment_provider: Union[str, PublicNormalizePaymentReturnUrlPaymentProviderEnum], return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -332,7 +340,7 @@ def public_normalize_payment_return_url(order_no: str, payment_order_no: str, pa
 
 
 @same_doc_as(PublicNormalizePaymentReturnUrl)
-async def public_normalize_payment_return_url_async(order_no: str, payment_order_no: str, payment_provider: str, return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_normalize_payment_return_url_async(order_no: str, payment_order_no: str, payment_provider: Union[str, PublicNormalizePaymentReturnUrlPaymentProviderEnum], return_url: str, foreinginvoice: Optional[str] = None, invoice_id: Optional[str] = None, payer_id: Optional[str] = None, payload: Optional[str] = None, redirect_result: Optional[str] = None, result_code: Optional[str] = None, session_id: Optional[str] = None, status: Optional[str] = None, token: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

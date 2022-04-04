@@ -44,13 +44,13 @@ class PaymentMethod(Model):
     Properties:
         name: (name) REQUIRED str
 
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
     """
 
     # region fields
 
     name: str                                                                                      # REQUIRED
-    payment_provider: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
 
     # endregion fields
 
@@ -60,7 +60,7 @@ class PaymentMethod(Model):
         self.name = value
         return self
 
-    def with_payment_provider(self, value: str) -> PaymentMethod:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentMethod:
         self.payment_provider = value
         return self
 
@@ -77,7 +77,7 @@ class PaymentMethod(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         return result
 
     # endregion to methods
@@ -88,7 +88,7 @@ class PaymentMethod(Model):
     def create(
         cls,
         name: str,
-        payment_provider: str,
+        payment_provider: Union[str, PaymentProviderEnum],
     ) -> PaymentMethod:
         instance = cls()
         instance.name = name
@@ -107,7 +107,7 @@ class PaymentMethod(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         return instance
 
     @classmethod

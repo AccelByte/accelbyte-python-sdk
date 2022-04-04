@@ -78,9 +78,9 @@ class ListImages(Operation):
 
         q: (q) OPTIONAL str in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
-        sort_direction: (sortDirection) OPTIONAL str in query
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ModelsListImageResponse (configs listed)
@@ -105,8 +105,8 @@ class ListImages(Operation):
     count: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     q: str                                                                                         # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
-    sort_direction: str                                                                            # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]                                                                # OPTIONAL in [query]
+    sort_direction: Union[str, SortDirectionEnum]                                                  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -202,11 +202,11 @@ class ListImages(Operation):
         self.q = value
         return self
 
-    def with_sort_by(self, value: str) -> ListImages:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> ListImages:
         self.sort_by = value
         return self
 
-    def with_sort_direction(self, value: str) -> ListImages:
+    def with_sort_direction(self, value: Union[str, SortDirectionEnum]) -> ListImages:
         self.sort_direction = value
         return self
 
@@ -235,11 +235,11 @@ class ListImages(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = str()
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "sort_direction") and self.sort_direction:
             result["sortDirection"] = str(self.sort_direction)
         elif include_empty:
-            result["sortDirection"] = str()
+            result["sortDirection"] = Union[str, SortDirectionEnum]()
         return result
 
     # endregion to methods
@@ -291,8 +291,8 @@ class ListImages(Operation):
         count: Optional[int] = None,
         offset: Optional[int] = None,
         q: Optional[str] = None,
-        sort_by: Optional[str] = None,
-        sort_direction: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
+        sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
     ) -> ListImages:
         instance = cls()
         instance.namespace = namespace
@@ -330,11 +330,11 @@ class ListImages(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = str()
+            instance.sort_by = Union[str, SortByEnum]()
         if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
             instance.sort_direction = str(dict_["sortDirection"])
         elif include_empty:
-            instance.sort_direction = str()
+            instance.sort_direction = Union[str, SortDirectionEnum]()
         return instance
 
     @staticmethod

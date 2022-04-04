@@ -44,14 +44,14 @@ class ModelsCreateScreenshotRequestItem(Model):
 
         description: (description) REQUIRED str
 
-        file_extension: (fileExtension) REQUIRED str
+        file_extension: (fileExtension) REQUIRED Union[str, FileExtensionEnum]
     """
 
     # region fields
 
     content_type: str                                                                              # REQUIRED
     description: str                                                                               # REQUIRED
-    file_extension: str                                                                            # REQUIRED
+    file_extension: Union[str, FileExtensionEnum]                                                  # REQUIRED
 
     # endregion fields
 
@@ -65,7 +65,7 @@ class ModelsCreateScreenshotRequestItem(Model):
         self.description = value
         return self
 
-    def with_file_extension(self, value: str) -> ModelsCreateScreenshotRequestItem:
+    def with_file_extension(self, value: Union[str, FileExtensionEnum]) -> ModelsCreateScreenshotRequestItem:
         self.file_extension = value
         return self
 
@@ -86,7 +86,7 @@ class ModelsCreateScreenshotRequestItem(Model):
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
-            result["fileExtension"] = str()
+            result["fileExtension"] = Union[str, FileExtensionEnum]()
         return result
 
     # endregion to methods
@@ -98,7 +98,7 @@ class ModelsCreateScreenshotRequestItem(Model):
         cls,
         content_type: str,
         description: str,
-        file_extension: str,
+        file_extension: Union[str, FileExtensionEnum],
     ) -> ModelsCreateScreenshotRequestItem:
         instance = cls()
         instance.content_type = content_type
@@ -122,7 +122,7 @@ class ModelsCreateScreenshotRequestItem(Model):
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
-            instance.file_extension = str()
+            instance.file_extension = Union[str, FileExtensionEnum]()
         return instance
 
     @classmethod

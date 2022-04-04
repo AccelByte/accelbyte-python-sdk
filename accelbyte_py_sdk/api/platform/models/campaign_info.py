@@ -64,11 +64,11 @@ class CampaignInfo(Model):
 
         namespace: (namespace) REQUIRED str
 
-        redeem_type: (redeemType) REQUIRED str
+        redeem_type: (redeemType) REQUIRED Union[str, RedeemTypeEnum]
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -94,9 +94,9 @@ class CampaignInfo(Model):
     max_sale_count: int                                                                            # REQUIRED
     name: str                                                                                      # REQUIRED
     namespace: str                                                                                 # REQUIRED
-    redeem_type: str                                                                               # REQUIRED
-    status: str                                                                                    # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    redeem_type: Union[str, RedeemTypeEnum]                                                        # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     updated_at: str                                                                                # REQUIRED
     description: str                                                                               # OPTIONAL
     items: List[RedeemableItem]                                                                    # OPTIONAL
@@ -144,15 +144,15 @@ class CampaignInfo(Model):
         self.namespace = value
         return self
 
-    def with_redeem_type(self, value: str) -> CampaignInfo:
+    def with_redeem_type(self, value: Union[str, RedeemTypeEnum]) -> CampaignInfo:
         self.redeem_type = value
         return self
 
-    def with_status(self, value: str) -> CampaignInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> CampaignInfo:
         self.status = value
         return self
 
-    def with_type(self, value: str) -> CampaignInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> CampaignInfo:
         self.type_ = value
         return self
 
@@ -225,15 +225,15 @@ class CampaignInfo(Model):
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
-            result["redeemType"] = str()
+            result["redeemType"] = Union[str, RedeemTypeEnum]()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -276,9 +276,9 @@ class CampaignInfo(Model):
         max_sale_count: int,
         name: str,
         namespace: str,
-        redeem_type: str,
-        status: str,
-        type_: str,
+        redeem_type: Union[str, RedeemTypeEnum],
+        status: Union[str, StatusEnum],
+        type_: Union[str, TypeEnum],
         updated_at: str,
         description: Optional[str] = None,
         items: Optional[List[RedeemableItem]] = None,
@@ -356,15 +356,15 @@ class CampaignInfo(Model):
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
-            instance.redeem_type = str()
+            instance.redeem_type = Union[str, RedeemTypeEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

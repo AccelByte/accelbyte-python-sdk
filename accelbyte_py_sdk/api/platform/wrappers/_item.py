@@ -70,14 +70,25 @@ from ..operations.item import PublicGetItemByAppId
 from ..operations.item import PublicGetItemBySku
 from ..operations.item import PublicGetItemDynamicData
 from ..operations.item import PublicQueryItems
+from ..operations.item import PublicQueryItemsAppTypeEnum, PublicQueryItemsItemTypeEnum
 from ..operations.item import PublicSearchItems
 from ..operations.item import QueryItems
+from ..operations.item import QueryItemsItemTypeEnum, QueryItemsAppTypeEnum
 from ..operations.item import QueryUncategorizedItems
 from ..operations.item import ReturnItem
 from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
+from ..models import AppInfoPlatformsEnum, AppInfoGenresEnum, AppInfoPlayersEnum, AppInfoPrimaryGenreEnum
+from ..models import AppUpdatePlatformsEnum, AppUpdateGenresEnum, AppUpdatePrimaryGenreEnum, AppUpdatePlayersEnum
+from ..models import BasicItemStatusEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum, BasicItemAppTypeEnum, BasicItemEntitlementTypeEnum
+from ..models import FullAppInfoPrimaryGenreEnum, FullAppInfoPlayersEnum, FullAppInfoPlatformsEnum, FullAppInfoGenresEnum
+from ..models import FullItemInfoItemTypeEnum, FullItemInfoStatusEnum, FullItemInfoAppTypeEnum, FullItemInfoEntitlementTypeEnum, FullItemInfoSeasonTypeEnum
+from ..models import ItemCreateEntitlementTypeEnum, ItemCreateItemTypeEnum, ItemCreateAppTypeEnum, ItemCreateSeasonTypeEnum, ItemCreateStatusEnum
+from ..models import ItemInfoItemTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoSeasonTypeEnum, ItemInfoAppTypeEnum, ItemInfoStatusEnum
+from ..models import ItemUpdateSeasonTypeEnum, ItemUpdateAppTypeEnum, ItemUpdateEntitlementTypeEnum, ItemUpdateItemTypeEnum, ItemUpdateStatusEnum
+from ..models import PopulatedItemInfoAppTypeEnum, PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoStatusEnum
 
 
 @same_doc_as(AcquireItem)
@@ -779,7 +790,7 @@ async def public_get_item_dynamic_data_async(item_id: str, namespace: Optional[s
 
 
 @same_doc_as(PublicQueryItems)
-def public_query_items(app_type: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[str] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -803,7 +814,7 @@ def public_query_items(app_type: Optional[str] = None, base_app_id: Optional[str
 
 
 @same_doc_as(PublicQueryItems)
-async def public_query_items_async(app_type: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[str] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_query_items_async(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -863,7 +874,7 @@ async def public_search_items_async(keyword: str, language: str, limit: Optional
 
 
 @same_doc_as(QueryItems)
-def query_items(active_only: Optional[bool] = None, app_type: Optional[str] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -889,7 +900,7 @@ def query_items(active_only: Optional[bool] = None, app_type: Optional[str] = No
 
 
 @same_doc_as(QueryItems)
-async def query_items_async(active_only: Optional[bool] = None, app_type: Optional[str] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_items_async(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

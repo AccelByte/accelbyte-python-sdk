@@ -40,7 +40,7 @@ class BulkStatItemUpdate(Model):
     Properties:
         stat_code: (statCode) REQUIRED str
 
-        update_strategy: (updateStrategy) REQUIRED str
+        update_strategy: (updateStrategy) REQUIRED Union[str, UpdateStrategyEnum]
 
         value: (value) REQUIRED float
 
@@ -50,7 +50,7 @@ class BulkStatItemUpdate(Model):
     # region fields
 
     stat_code: str                                                                                 # REQUIRED
-    update_strategy: str                                                                           # REQUIRED
+    update_strategy: Union[str, UpdateStrategyEnum]                                                # REQUIRED
     value: float                                                                                   # REQUIRED
     additional_data: Dict[str, Any]                                                                # OPTIONAL
 
@@ -62,7 +62,7 @@ class BulkStatItemUpdate(Model):
         self.stat_code = value
         return self
 
-    def with_update_strategy(self, value: str) -> BulkStatItemUpdate:
+    def with_update_strategy(self, value: Union[str, UpdateStrategyEnum]) -> BulkStatItemUpdate:
         self.update_strategy = value
         return self
 
@@ -87,7 +87,7 @@ class BulkStatItemUpdate(Model):
         if hasattr(self, "update_strategy"):
             result["updateStrategy"] = str(self.update_strategy)
         elif include_empty:
-            result["updateStrategy"] = str()
+            result["updateStrategy"] = Union[str, UpdateStrategyEnum]()
         if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
@@ -106,7 +106,7 @@ class BulkStatItemUpdate(Model):
     def create(
         cls,
         stat_code: str,
-        update_strategy: str,
+        update_strategy: Union[str, UpdateStrategyEnum],
         value: float,
         additional_data: Optional[Dict[str, Any]] = None,
     ) -> BulkStatItemUpdate:
@@ -130,7 +130,7 @@ class BulkStatItemUpdate(Model):
         if "updateStrategy" in dict_ and dict_["updateStrategy"] is not None:
             instance.update_strategy = str(dict_["updateStrategy"])
         elif include_empty:
-            instance.update_strategy = str()
+            instance.update_strategy = Union[str, UpdateStrategyEnum]()
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = float(dict_["value"])
         elif include_empty:

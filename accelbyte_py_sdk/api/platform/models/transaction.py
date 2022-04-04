@@ -84,11 +84,11 @@ class Transaction(Model):
 
         payment_provider_fee: (paymentProviderFee) OPTIONAL int
 
-        provider: (provider) OPTIONAL str
+        provider: (provider) OPTIONAL Union[str, ProviderEnum]
 
         sales_tax: (salesTax) OPTIONAL int
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         tax: (tax) OPTIONAL int
 
@@ -96,7 +96,7 @@ class Transaction(Model):
 
         tx_id: (txId) OPTIONAL str
 
-        type_: (type) OPTIONAL str
+        type_: (type) OPTIONAL Union[str, TypeEnum]
 
         vat: (vat) OPTIONAL int
     """
@@ -114,13 +114,13 @@ class Transaction(Model):
     payment_method: str                                                                            # OPTIONAL
     payment_method_fee: int                                                                        # OPTIONAL
     payment_provider_fee: int                                                                      # OPTIONAL
-    provider: str                                                                                  # OPTIONAL
+    provider: Union[str, ProviderEnum]                                                             # OPTIONAL
     sales_tax: int                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     tax: int                                                                                       # OPTIONAL
     tx_end_time: str                                                                               # OPTIONAL
     tx_id: str                                                                                     # OPTIONAL
-    type_: str                                                                                     # OPTIONAL
+    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
     vat: int                                                                                       # OPTIONAL
 
     # endregion fields
@@ -171,7 +171,7 @@ class Transaction(Model):
         self.payment_provider_fee = value
         return self
 
-    def with_provider(self, value: str) -> Transaction:
+    def with_provider(self, value: Union[str, ProviderEnum]) -> Transaction:
         self.provider = value
         return self
 
@@ -179,7 +179,7 @@ class Transaction(Model):
         self.sales_tax = value
         return self
 
-    def with_status(self, value: str) -> Transaction:
+    def with_status(self, value: Union[str, StatusEnum]) -> Transaction:
         self.status = value
         return self
 
@@ -195,7 +195,7 @@ class Transaction(Model):
         self.tx_id = value
         return self
 
-    def with_type(self, value: str) -> Transaction:
+    def with_type(self, value: Union[str, TypeEnum]) -> Transaction:
         self.type_ = value
         return self
 
@@ -256,7 +256,7 @@ class Transaction(Model):
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
-            result["provider"] = str()
+            result["provider"] = Union[str, ProviderEnum]()
         if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
@@ -264,7 +264,7 @@ class Transaction(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
@@ -280,7 +280,7 @@ class Transaction(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
@@ -305,13 +305,13 @@ class Transaction(Model):
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_provider_fee: Optional[int] = None,
-        provider: Optional[str] = None,
+        provider: Optional[Union[str, ProviderEnum]] = None,
         sales_tax: Optional[int] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         tax: Optional[int] = None,
         tx_end_time: Optional[str] = None,
         tx_id: Optional[str] = None,
-        type_: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
         vat: Optional[int] = None,
     ) -> Transaction:
         instance = cls()
@@ -407,7 +407,7 @@ class Transaction(Model):
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
-            instance.provider = str()
+            instance.provider = Union[str, ProviderEnum]()
         if "salesTax" in dict_ and dict_["salesTax"] is not None:
             instance.sales_tax = int(dict_["salesTax"])
         elif include_empty:
@@ -415,7 +415,7 @@ class Transaction(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "tax" in dict_ and dict_["tax"] is not None:
             instance.tax = int(dict_["tax"])
         elif include_empty:
@@ -431,7 +431,7 @@ class Transaction(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "vat" in dict_ and dict_["vat"] is not None:
             instance.vat = int(dict_["vat"])
         elif include_empty:

@@ -24,4 +24,5 @@ from .get_image_patches import GetImagePatches
 from .image_detail_client import ImageDetailClient
 from .import_images import ImportImages
 from .list_images import ListImages
+from .list_images import SortByEnum as ListImagesSortByEnum, SortDirectionEnum as ListImagesSortDirectionEnum
 from .update_image import UpdateImage

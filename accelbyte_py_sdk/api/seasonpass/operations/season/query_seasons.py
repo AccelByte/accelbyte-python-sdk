@@ -69,7 +69,7 @@ class QuerySeasons(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        status: (status) OPTIONAL List[str] in query
+        status: (status) OPTIONAL List[Union[str, StatusEnum]] in query
 
     Responses:
         200: OK - ListSeasonInfoPagingSlicedResult (successful operation)
@@ -89,7 +89,7 @@ class QuerySeasons(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    status: List[str]                                                                              # OPTIONAL in [query]
+    status: List[Union[str, StatusEnum]]                                                           # OPTIONAL in [query]
 
     # endregion fields
 
@@ -178,7 +178,7 @@ class QuerySeasons(Operation):
         self.offset = value
         return self
 
-    def with_status(self, value: List[str]) -> QuerySeasons:
+    def with_status(self, value: List[Union[str, StatusEnum]]) -> QuerySeasons:
         self.status = value
         return self
 
@@ -246,7 +246,7 @@ class QuerySeasons(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        status: Optional[List[str]] = None,
+        status: Optional[List[Union[str, StatusEnum]]] = None,
     ) -> QuerySeasons:
         instance = cls()
         instance.namespace = namespace

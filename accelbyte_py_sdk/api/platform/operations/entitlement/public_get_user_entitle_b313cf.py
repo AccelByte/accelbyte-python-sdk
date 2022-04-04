@@ -67,7 +67,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        entitlement_clazz: (entitlementClazz) OPTIONAL str in query
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         item_id: (itemId) REQUIRED str in query
 
@@ -86,7 +86,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    entitlement_clazz: str                                                                         # OPTIONAL in [query]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
     item_id: str                                                                                   # REQUIRED in [query]
 
     # endregion fields
@@ -171,7 +171,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
         self.user_id = value
         return self
 
-    def with_entitlement_clazz(self, value: str) -> PublicGetUserEntitlementOwnershipByItemId:
+    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> PublicGetUserEntitlementOwnershipByItemId:
         self.entitlement_clazz = value
         return self
 
@@ -196,7 +196,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
         if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
-            result["entitlementClazz"] = str()
+            result["entitlementClazz"] = Union[str, EntitlementClazzEnum]()
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -239,7 +239,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
         namespace: str,
         user_id: str,
         item_id: str,
-        entitlement_clazz: Optional[str] = None,
+        entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
     ) -> PublicGetUserEntitlementOwnershipByItemId:
         instance = cls()
         instance.namespace = namespace
@@ -263,7 +263,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
         if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
-            instance.entitlement_clazz = str()
+            instance.entitlement_clazz = Union[str, EntitlementClazzEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:

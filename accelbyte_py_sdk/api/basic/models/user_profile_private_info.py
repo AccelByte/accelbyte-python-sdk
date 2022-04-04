@@ -56,7 +56,7 @@ class UserProfilePrivateInfo(Model):
 
         private_custom_attributes: (privateCustomAttributes) OPTIONAL Dict[str, Any]
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
 
@@ -77,7 +77,7 @@ class UserProfilePrivateInfo(Model):
     last_name: str                                                                                 # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     private_custom_attributes: Dict[str, Any]                                                      # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
@@ -126,7 +126,7 @@ class UserProfilePrivateInfo(Model):
         self.private_custom_attributes = value
         return self
 
-    def with_status(self, value: str) -> UserProfilePrivateInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> UserProfilePrivateInfo:
         self.status = value
         return self
 
@@ -191,7 +191,7 @@ class UserProfilePrivateInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
@@ -223,7 +223,7 @@ class UserProfilePrivateInfo(Model):
         last_name: Optional[str] = None,
         namespace: Optional[str] = None,
         private_custom_attributes: Optional[Dict[str, Any]] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
         zip_code: Optional[str] = None,
@@ -307,7 +307,7 @@ class UserProfilePrivateInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:

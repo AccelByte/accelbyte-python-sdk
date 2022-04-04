@@ -81,7 +81,7 @@ class QueryPaymentNotifications(Operation):
 
         limit: (limit) OPTIONAL int in query
 
-        notification_source: (notificationSource) OPTIONAL str in query
+        notification_source: (notificationSource) OPTIONAL Union[str, NotificationSourceEnum] in query
 
         notification_type: (notificationType) OPTIONAL str in query
 
@@ -91,7 +91,7 @@ class QueryPaymentNotifications(Operation):
 
         start_date: (startDate) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - PaymentNotificationPagingSlicedResult (successful operation)
@@ -110,12 +110,12 @@ class QueryPaymentNotifications(Operation):
     end_date: str                                                                                  # OPTIONAL in [query]
     external_id: str                                                                               # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
-    notification_source: str                                                                       # OPTIONAL in [query]
+    notification_source: Union[str, NotificationSourceEnum]                                        # OPTIONAL in [query]
     notification_type: str                                                                         # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     payment_order_no: str                                                                          # OPTIONAL in [query]
     start_date: str                                                                                # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
 
     # endregion fields
 
@@ -219,7 +219,7 @@ class QueryPaymentNotifications(Operation):
         self.limit = value
         return self
 
-    def with_notification_source(self, value: str) -> QueryPaymentNotifications:
+    def with_notification_source(self, value: Union[str, NotificationSourceEnum]) -> QueryPaymentNotifications:
         self.notification_source = value
         return self
 
@@ -239,7 +239,7 @@ class QueryPaymentNotifications(Operation):
         self.start_date = value
         return self
 
-    def with_status(self, value: str) -> QueryPaymentNotifications:
+    def with_status(self, value: Union[str, StatusEnum]) -> QueryPaymentNotifications:
         self.status = value
         return self
 
@@ -268,7 +268,7 @@ class QueryPaymentNotifications(Operation):
         if hasattr(self, "notification_source") and self.notification_source:
             result["notificationSource"] = str(self.notification_source)
         elif include_empty:
-            result["notificationSource"] = str()
+            result["notificationSource"] = Union[str, NotificationSourceEnum]()
         if hasattr(self, "notification_type") and self.notification_type:
             result["notificationType"] = str(self.notification_type)
         elif include_empty:
@@ -288,7 +288,7 @@ class QueryPaymentNotifications(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -328,12 +328,12 @@ class QueryPaymentNotifications(Operation):
         end_date: Optional[str] = None,
         external_id: Optional[str] = None,
         limit: Optional[int] = None,
-        notification_source: Optional[str] = None,
+        notification_source: Optional[Union[str, NotificationSourceEnum]] = None,
         notification_type: Optional[str] = None,
         offset: Optional[int] = None,
         payment_order_no: Optional[str] = None,
         start_date: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> QueryPaymentNotifications:
         instance = cls()
         instance.namespace = namespace
@@ -379,7 +379,7 @@ class QueryPaymentNotifications(Operation):
         if "notificationSource" in dict_ and dict_["notificationSource"] is not None:
             instance.notification_source = str(dict_["notificationSource"])
         elif include_empty:
-            instance.notification_source = str()
+            instance.notification_source = Union[str, NotificationSourceEnum]()
         if "notificationType" in dict_ and dict_["notificationType"] is not None:
             instance.notification_type = str(dict_["notificationType"])
         elif include_empty:
@@ -399,7 +399,7 @@ class QueryPaymentNotifications(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @staticmethod

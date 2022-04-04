@@ -37,7 +37,7 @@ class XblReconcileResult(Model):
     """Xbl reconcile result (XblReconcileResult)
 
     Properties:
-        iap_order_status: (iapOrderStatus) OPTIONAL str
+        iap_order_status: (iapOrderStatus) OPTIONAL Union[str, IapOrderStatusEnum]
 
         item_id: (itemId) OPTIONAL str
 
@@ -50,7 +50,7 @@ class XblReconcileResult(Model):
 
     # region fields
 
-    iap_order_status: str                                                                          # OPTIONAL
+    iap_order_status: Union[str, IapOrderStatusEnum]                                               # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     sku: str                                                                                       # OPTIONAL
     transaction_id: str                                                                            # OPTIONAL
@@ -60,7 +60,7 @@ class XblReconcileResult(Model):
 
     # region with_x methods
 
-    def with_iap_order_status(self, value: str) -> XblReconcileResult:
+    def with_iap_order_status(self, value: Union[str, IapOrderStatusEnum]) -> XblReconcileResult:
         self.iap_order_status = value
         return self
 
@@ -89,7 +89,7 @@ class XblReconcileResult(Model):
         if hasattr(self, "iap_order_status"):
             result["iapOrderStatus"] = str(self.iap_order_status)
         elif include_empty:
-            result["iapOrderStatus"] = str()
+            result["iapOrderStatus"] = Union[str, IapOrderStatusEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -115,7 +115,7 @@ class XblReconcileResult(Model):
     @classmethod
     def create(
         cls,
-        iap_order_status: Optional[str] = None,
+        iap_order_status: Optional[Union[str, IapOrderStatusEnum]] = None,
         item_id: Optional[str] = None,
         sku: Optional[str] = None,
         transaction_id: Optional[str] = None,
@@ -142,7 +142,7 @@ class XblReconcileResult(Model):
         if "iapOrderStatus" in dict_ and dict_["iapOrderStatus"] is not None:
             instance.iap_order_status = str(dict_["iapOrderStatus"])
         elif include_empty:
-            instance.iap_order_status = str()
+            instance.iap_order_status = Union[str, IapOrderStatusEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:

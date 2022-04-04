@@ -47,9 +47,9 @@ class PaymentUrl(Model):
     """Payment url (PaymentUrl)
 
     Properties:
-        payment_provider: (paymentProvider) REQUIRED str
+        payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
-        payment_type: (paymentType) REQUIRED str
+        payment_type: (paymentType) REQUIRED Union[str, PaymentTypeEnum]
 
         payment_url: (paymentUrl) OPTIONAL str
 
@@ -62,8 +62,8 @@ class PaymentUrl(Model):
 
     # region fields
 
-    payment_provider: str                                                                          # REQUIRED
-    payment_type: str                                                                              # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
+    payment_type: Union[str, PaymentTypeEnum]                                                      # REQUIRED
     payment_url: str                                                                               # OPTIONAL
     return_url: str                                                                                # OPTIONAL
     session_data: str                                                                              # OPTIONAL
@@ -73,11 +73,11 @@ class PaymentUrl(Model):
 
     # region with_x methods
 
-    def with_payment_provider(self, value: str) -> PaymentUrl:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentUrl:
         self.payment_provider = value
         return self
 
-    def with_payment_type(self, value: str) -> PaymentUrl:
+    def with_payment_type(self, value: Union[str, PaymentTypeEnum]) -> PaymentUrl:
         self.payment_type = value
         return self
 
@@ -106,11 +106,11 @@ class PaymentUrl(Model):
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
-            result["paymentProvider"] = str()
+            result["paymentProvider"] = Union[str, PaymentProviderEnum]()
         if hasattr(self, "payment_type"):
             result["paymentType"] = str(self.payment_type)
         elif include_empty:
-            result["paymentType"] = str()
+            result["paymentType"] = Union[str, PaymentTypeEnum]()
         if hasattr(self, "payment_url"):
             result["paymentUrl"] = str(self.payment_url)
         elif include_empty:
@@ -136,8 +136,8 @@ class PaymentUrl(Model):
     @classmethod
     def create(
         cls,
-        payment_provider: str,
-        payment_type: str,
+        payment_provider: Union[str, PaymentProviderEnum],
+        payment_type: Union[str, PaymentTypeEnum],
         payment_url: Optional[str] = None,
         return_url: Optional[str] = None,
         session_data: Optional[str] = None,
@@ -164,11 +164,11 @@ class PaymentUrl(Model):
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
-            instance.payment_provider = str()
+            instance.payment_provider = Union[str, PaymentProviderEnum]()
         if "paymentType" in dict_ and dict_["paymentType"] is not None:
             instance.payment_type = str(dict_["paymentType"])
         elif include_empty:
-            instance.payment_type = str()
+            instance.payment_type = Union[str, PaymentTypeEnum]()
         if "paymentUrl" in dict_ and dict_["paymentUrl"] is not None:
             instance.payment_url = str(dict_["paymentUrl"])
         elif include_empty:

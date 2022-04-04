@@ -38,13 +38,13 @@ class TicketBoothID(Model):
     Properties:
         id_: (id) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
     """
 
     # region fields
 
     id_: str                                                                                       # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
 
     # endregion fields
 
@@ -54,7 +54,7 @@ class TicketBoothID(Model):
         self.id_ = value
         return self
 
-    def with_type(self, value: str) -> TicketBoothID:
+    def with_type(self, value: Union[str, TypeEnum]) -> TicketBoothID:
         self.type_ = value
         return self
 
@@ -71,7 +71,7 @@ class TicketBoothID(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         return result
 
     # endregion to methods
@@ -82,7 +82,7 @@ class TicketBoothID(Model):
     def create(
         cls,
         id_: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
     ) -> TicketBoothID:
         instance = cls()
         instance.id_ = id_
@@ -101,7 +101,7 @@ class TicketBoothID(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         return instance
 
     @classmethod

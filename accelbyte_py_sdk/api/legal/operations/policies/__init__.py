@@ -13,8 +13,11 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .retrieve_latest_policies import RetrieveLatestPolicies
+from .retrieve_latest_policies import PolicyTypeEnum as RetrieveLatestPoliciesPolicyTypeEnum
 from .retrieve_latest_policie_95ffb6 import RetrieveLatestPoliciesByNamespaceAndCountryPublic
+from .retrieve_latest_policie_95ffb6 import PolicyTypeEnum as RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum
 from .retrieve_latest_policie_29f65f import RetrieveLatestPoliciesPublic
+from .retrieve_latest_policie_29f65f import PolicyTypeEnum as RetrieveLatestPoliciesPublicPolicyTypeEnum
 from .retrieve_policies import RetrievePolicies
 from .set_default_policy_1 import SetDefaultPolicy1
 from .update_policy import UpdatePolicy

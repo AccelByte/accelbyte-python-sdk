@@ -44,7 +44,7 @@ class EntitlementUpdate(Model):
 
         start_date: (startDate) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         use_count: (useCount) OPTIONAL int
     """
@@ -54,7 +54,7 @@ class EntitlementUpdate(Model):
     end_date: str                                                                                  # OPTIONAL
     null_field_list: List[str]                                                                     # OPTIONAL
     start_date: str                                                                                # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
@@ -73,7 +73,7 @@ class EntitlementUpdate(Model):
         self.start_date = value
         return self
 
-    def with_status(self, value: str) -> EntitlementUpdate:
+    def with_status(self, value: Union[str, StatusEnum]) -> EntitlementUpdate:
         self.status = value
         return self
 
@@ -102,7 +102,7 @@ class EntitlementUpdate(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -119,7 +119,7 @@ class EntitlementUpdate(Model):
         end_date: Optional[str] = None,
         null_field_list: Optional[List[str]] = None,
         start_date: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         use_count: Optional[int] = None,
     ) -> EntitlementUpdate:
         instance = cls()
@@ -155,7 +155,7 @@ class EntitlementUpdate(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:

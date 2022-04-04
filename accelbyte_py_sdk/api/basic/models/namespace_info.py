@@ -43,7 +43,7 @@ class NamespaceInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         updated_at: (updatedAt) OPTIONAL str
     """
@@ -53,7 +53,7 @@ class NamespaceInfo(Model):
     created_at: str                                                                                # OPTIONAL
     display_name: str                                                                              # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     updated_at: str                                                                                # OPTIONAL
 
     # endregion fields
@@ -72,7 +72,7 @@ class NamespaceInfo(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> NamespaceInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> NamespaceInfo:
         self.status = value
         return self
 
@@ -101,7 +101,7 @@ class NamespaceInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -118,7 +118,7 @@ class NamespaceInfo(Model):
         created_at: Optional[str] = None,
         display_name: Optional[str] = None,
         namespace: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         updated_at: Optional[str] = None,
     ) -> NamespaceInfo:
         instance = cls()
@@ -154,7 +154,7 @@ class NamespaceInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:

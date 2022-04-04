@@ -54,7 +54,7 @@ class UserProfileInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
 
@@ -74,7 +74,7 @@ class UserProfileInfo(Model):
     language: str                                                                                  # OPTIONAL
     last_name: str                                                                                 # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
@@ -119,7 +119,7 @@ class UserProfileInfo(Model):
         self.namespace = value
         return self
 
-    def with_status(self, value: str) -> UserProfileInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> UserProfileInfo:
         self.status = value
         return self
 
@@ -180,7 +180,7 @@ class UserProfileInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
@@ -211,7 +211,7 @@ class UserProfileInfo(Model):
         language: Optional[str] = None,
         last_name: Optional[str] = None,
         namespace: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
         zip_code: Optional[str] = None,
@@ -289,7 +289,7 @@ class UserProfileInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:

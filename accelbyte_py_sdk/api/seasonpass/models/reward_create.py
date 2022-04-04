@@ -41,7 +41,7 @@ class RewardCreate(Model):
     Properties:
         code: (code) REQUIRED str
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         currency: (currency) OPTIONAL RewardCurrency
 
@@ -55,7 +55,7 @@ class RewardCreate(Model):
     # region fields
 
     code: str                                                                                      # REQUIRED
-    type_: str                                                                                     # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
     currency: RewardCurrency                                                                       # OPTIONAL
     image: Image                                                                                   # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
@@ -69,7 +69,7 @@ class RewardCreate(Model):
         self.code = value
         return self
 
-    def with_type(self, value: str) -> RewardCreate:
+    def with_type(self, value: Union[str, TypeEnum]) -> RewardCreate:
         self.type_ = value
         return self
 
@@ -102,7 +102,7 @@ class RewardCreate(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -129,7 +129,7 @@ class RewardCreate(Model):
     def create(
         cls,
         code: str,
-        type_: str,
+        type_: Union[str, TypeEnum],
         currency: Optional[RewardCurrency] = None,
         image: Optional[Image] = None,
         item_id: Optional[str] = None,
@@ -160,7 +160,7 @@ class RewardCreate(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = Union[str, TypeEnum]()
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = RewardCurrency.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:

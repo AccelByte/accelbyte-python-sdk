@@ -58,7 +58,7 @@ class BillingHistoryInfo(Model):
 
         sandbox: (sandbox) REQUIRED bool
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
         subscription_id: (subscriptionId) REQUIRED str
 
@@ -101,7 +101,7 @@ class BillingHistoryInfo(Model):
     payment_order_no: str                                                                          # REQUIRED
     recurring_order_no: str                                                                        # REQUIRED
     sandbox: bool                                                                                  # REQUIRED
-    status: str                                                                                    # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
     subscription_id: str                                                                           # REQUIRED
     title: str                                                                                     # REQUIRED
     updated_at: str                                                                                # REQUIRED
@@ -154,7 +154,7 @@ class BillingHistoryInfo(Model):
         self.sandbox = value
         return self
 
-    def with_status(self, value: str) -> BillingHistoryInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> BillingHistoryInfo:
         self.status = value
         return self
 
@@ -259,7 +259,7 @@ class BillingHistoryInfo(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
@@ -337,7 +337,7 @@ class BillingHistoryInfo(Model):
         payment_order_no: str,
         recurring_order_no: str,
         sandbox: bool,
-        status: str,
+        status: Union[str, StatusEnum],
         subscription_id: str,
         title: str,
         updated_at: str,
@@ -432,7 +432,7 @@ class BillingHistoryInfo(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = Union[str, StatusEnum]()
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
