@@ -1,6 +1,14 @@
 # AccelByte Python SDK
 
+A software development kit (SDK) for interacting with AccelByte services written in Python.
+
+This SDK was generated from OpenAPI specification documents included in the [spec](spec) directory.
+
 ## Setup
+
+This SDK requires Python 3.9 to be installed.
+
+### Install with Pip
 
 ```sh
 pip install requests httpx websockets pyyaml
@@ -17,23 +25,39 @@ using the latest release version is recommended.
 
 If you encounter error `path too long` when attempting to install the SDK. The steps to solve this are:
 
-1. [Enable long paths in registry](https://docs.python.org/3/using/windows.html#removing-the-max-path-limitation)
+1. [Enable long paths in registry.](https://docs.python.org/3/using/windows.html#removing-the-max-path-limitation)
 
-2. Enable long paths in git 
+2. Enable long paths in git.
 
    ```
    git config --global core.longpaths true
    ```
 
-3. Restart the powershell window you used to take effect
+3. Restart the powershell window you used to take effect.
 
-4. Try installing SDK again
+4. Try installing SDK again.
 
    ```
    pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
    ```
 
-## Initializing
+### Environment Variables
+
+The following environment variables need to be set when using `EnvironmentConfigRepository` (default).
+
+| Name             | Required                                                                               | Example                          |
+|------------------|----------------------------------------------------------------------------------------|----------------------------------|
+| AB_BASE_URL      | Yes                                                                                    | https://demo/accelbyte.io        |
+| AB_CLIENT_ID     | Yes                                                                                    | abcdef0123456789abcdef0123456789 |
+| AB_CLIENT_SECRET | Yes, only if you use a private `AB_CLIENT_ID`                                          | ab#c,d)ef(ab#c,d)ef(ab#c,d)ef(ab |
+| AB_NAMESPACE     | Yes, the SDK will automatically fill up the `{namespace}` path parameter (overridable) | accelbyte                        |
+| AB_APP_NAME      | No, the SDK will automatically fill up the `User-Agent` header (overridable)           | MyApp                            |
+| AB_APP_VERSION   | No, the SDK will automatically fill up the `User-Agent` header (overridable)           | 1.0.0                            |
+
+
+## Usage
+
+### Initializing
 
 You'll have to initialize the SDK using the `initialize()` function.
 
@@ -80,7 +104,7 @@ if __name__ == "__main__":
 
 ```
 
-## Logging In
+### Logging In and Logging Out
 
 ```python
 from os import environ
@@ -123,7 +147,7 @@ if __name__ == "__main__":
 
 ```
 
-## Using the API
+## Interacting with a Service Endpoint
 
 ### Example A
 
@@ -199,9 +223,7 @@ if __name__ == "__main__":
 
 :bulb: You could also write your own wrapper functions by using the models and operations in `accelbyte_py_sdk.api.<service-name>` and `accelbyte_py_sdk.api.<service-name>.models` respectively.
 
-## Using the API with `async`
-
-All wrapper functions have an asynchronous counterpart that ends with `_async`.
+:bulb: All wrapper functions have an asynchronous counterpart that ends with `_async`.
 
 ### Example A (`async`)
 
@@ -319,6 +341,18 @@ if __name__ == "__main__":
     loop.run_until_complete(main())
 
 ```
+
+---
+
+## Samples
+
+Sample apps are available in the [samples](samples) directory
+
+## Documentation
+
+For documentation about AccelByte services and SDK, see [docs.accelbyte.io](https://docs.accelbyte.io/)
+
+---
 
 ## Misc
 
@@ -517,7 +551,7 @@ class UserProfileInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
-        status: (status) OPTIONAL str
+        status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
 
@@ -537,7 +571,7 @@ class UserProfileInfo(Model):
     language: str                                                                                  # OPTIONAL
     last_name: str                                                                                 # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
-    status: str                                                                                    # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
     zip_code: str                                                                                  # OPTIONAL
@@ -575,7 +609,7 @@ there are also a number of utility functions generated with each model that shou
         language: Optional[str] = None,
         last_name: Optional[str] = None,
         namespace: Optional[str] = None,
-        status: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
         zip_code: Optional[str] = None,
@@ -703,7 +737,6 @@ same with the models there are also a number of utility functions generated with
 # justice-basic-service (1.35.0)
 
 from __future__ import annotations
-import re
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -807,13 +840,6 @@ class GetUserProfileInfo(Operation):
             path_params=self.get_path_params(),
         )
 
-    # noinspection PyMethodMayBeStatic
-    def get_all_required_fields(self) -> List[str]:
-        return [
-            "namespace",
-            "user_id",
-        ]
-
     # endregion get methods
 
     # region get_x_params methods
@@ -834,15 +860,6 @@ class GetUserProfileInfo(Operation):
     # endregion get_x_params methods
 
     # region is/has methods
-
-    def is_valid(self) -> bool:
-        # required checks
-        if not hasattr(self, "namespace") or self.namespace is None:
-            return False
-        if not hasattr(self, "user_id") or self.user_id is None:
-            return False
-        # pattern checks
-        return True
 
     # endregion is/has methods
 
@@ -947,6 +964,13 @@ class GetUserProfileInfo(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "namespace": True,
+            "userId": True,
         }
 
     # endregion static methods
