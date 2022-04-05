@@ -82,7 +82,7 @@ from ..operations.entitlement import PublicGetUserEntitlementOwnershipByItemIdEn
 from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySku
 from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySkuEntitlementClazzEnum
 from ..operations.entitlement import PublicQueryUserEntitlements
-from ..operations.entitlement import PublicQueryUserEntitlementsEntitlementClazzEnum, PublicQueryUserEntitlementsAppTypeEnum
+from ..operations.entitlement import PublicQueryUserEntitlementsAppTypeEnum, PublicQueryUserEntitlementsEntitlementClazzEnum
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppType
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import QueryEntitlements
@@ -94,12 +94,12 @@ from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import UpdateUserEntitlement
-from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
+from ..models import AppEntitlementInfoStatusEnum, AppEntitlementInfoAppTypeEnum
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
-from ..models import EntitlementInfoClazzEnum, EntitlementInfoStatusEnum, EntitlementInfoSourceEnum, EntitlementInfoTypeEnum, EntitlementInfoAppTypeEnum
+from ..models import EntitlementInfoSourceEnum, EntitlementInfoTypeEnum, EntitlementInfoStatusEnum, EntitlementInfoAppTypeEnum, EntitlementInfoClazzEnum
 from ..models import EntitlementUpdateStatusEnum
-from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoStatusEnum, StackableEntitlementInfoTypeEnum
+from ..models import StackableEntitlementInfoClazzEnum, StackableEntitlementInfoStatusEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum
 
 
 @same_doc_as(ConsumeUserEntitlement)

@@ -44,16 +44,16 @@ from ..operations.payment import GetPaymentOrder
 from ..operations.payment import GetPaymentOrderChargeStatus
 from ..operations.payment import ListExtOrderNoByExtTxId
 from ..operations.payment import QueryPaymentNotifications
-from ..operations.payment import QueryPaymentNotificationsStatusEnum, QueryPaymentNotificationsNotificationSourceEnum
+from ..operations.payment import QueryPaymentNotificationsNotificationSourceEnum, QueryPaymentNotificationsStatusEnum
 from ..operations.payment import QueryPaymentOrders
-from ..operations.payment import QueryPaymentOrdersStatusEnum, QueryPaymentOrdersChannelEnum
+from ..operations.payment import QueryPaymentOrdersChannelEnum, QueryPaymentOrdersStatusEnum
 from ..operations.payment import RefundUserPaymentOrder
 from ..operations.payment import SimulatePaymentOrderNotification
 from ..models import NotificationProcessResultStatusEnum
 from ..models import PaymentOrderChargeRequestPaymentProviderEnum
 from ..models import PaymentOrderChargeStatusStatusEnum
 from ..models import PaymentOrderCreateItemTypeEnum
-from ..models import PaymentOrderInfoItemTypeEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoChannelEnum
+from ..models import PaymentOrderInfoChannelEnum, PaymentOrderInfoItemTypeEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum
 from ..models import PaymentOrderNotifySimulationPaymentProviderEnum, PaymentOrderNotifySimulationNotifyTypeEnum
 
 

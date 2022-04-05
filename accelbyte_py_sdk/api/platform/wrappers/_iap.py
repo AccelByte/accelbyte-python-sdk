@@ -103,7 +103,7 @@ from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
 from ..models import EpicGamesReconcileResultStatusEnum
-from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
+from ..models import MockIAPReceiptTypeEnum, MockIAPReceiptItemIdentityTypeEnum
 from ..models import PlayStationReconcileResultStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
 

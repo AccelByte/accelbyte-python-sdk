@@ -1023,9 +1023,11 @@ class PaymentOrder(Model):
     def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentOrder, List[PaymentOrder], Dict[Any, PaymentOrder]]:
         if many:
             if isinstance(any_, dict):
-                cls.create_many_from_dict(any_, include_empty=include_empty)
+                return cls.create_many_from_dict(any_, include_empty=include_empty)
             elif isinstance(any_, list):
-                cls.create_many_from_list(any_, include_empty=include_empty)
+                return cls.create_many_from_list(any_, include_empty=include_empty)
+            else:
+                raise ValueError()
         else:
             return cls.create_from_dict(any_, include_empty=include_empty)
 

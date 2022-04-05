@@ -80,7 +80,7 @@ from ..operations.payment_config import UpdateXsollaConfig
 from ..operations.payment_config import UpdateXsollaUIConfig
 from ..models import PaymentProviderConfigEditAggregateEnum, PaymentProviderConfigEditSpecialsEnum
 from ..models import PaymentProviderConfigInfoAggregateEnum, PaymentProviderConfigInfoSpecialsEnum
-from ..models import XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestThemeEnum, XsollaPaywallConfigRequestSizeEnum
+from ..models import XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestThemeEnum, XsollaPaywallConfigRequestDeviceEnum
 
 
 @same_doc_as(CreatePaymentProviderConfig)

@@ -37,7 +37,7 @@ class ModelsGameRecordRequest(Model, MutableMapping):
     # region mutable mapping
 
     def __init__(self):
-        self.store = dict()
+        self.store = {}
 
     def __getitem__(self, key):
         return self.store[self._keytransform(key)]
@@ -99,9 +99,11 @@ class ModelsGameRecordRequest(Model, MutableMapping):
     def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGameRecordRequest, List[ModelsGameRecordRequest], Dict[Any, ModelsGameRecordRequest]]:
         if many:
             if isinstance(any_, dict):
-                cls.create_many_from_dict(any_, include_empty=include_empty)
+                return cls.create_many_from_dict(any_, include_empty=include_empty)
             elif isinstance(any_, list):
-                cls.create_many_from_list(any_, include_empty=include_empty)
+                return cls.create_many_from_list(any_, include_empty=include_empty)
+            else:
+                raise ValueError()
         else:
             return cls.create_from_dict(any_, include_empty=include_empty)
 
