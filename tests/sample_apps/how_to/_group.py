@@ -11,6 +11,9 @@ from accelbyte_py_sdk.api.group.models import ModelsGroupResponseV1
 
 class GroupTestCase(IntegrationTestCase):
 
+    initial_configuration_code = "initialConfigurationCode"
+    group_admin_role_id: str = ""
+    group_member_role_id: str = ""
     group_configuration_code = "pythonServerSDKConfigurationCode"
     group_namespace: str = ""
     group_id: Optional[str] = None
@@ -32,10 +35,29 @@ class GroupTestCase(IntegrationTestCase):
     )
 
     def setUp(self) -> None:
+        from accelbyte_py_sdk.api.group import get_group_configuration_admin_v1
+        from accelbyte_py_sdk.api.group import initiate_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group.models import ModelsCreateGroupConfigurationRequestV1
 
         super().setUp()
+
+        result, error = get_group_configuration_admin_v1(configuration_code=self.initial_configuration_code)
+        if error:
+            result, error = initiate_group_configuration_admin_v1()
+            if error:
+                self.skipTest(reason="Failed to get and initiate group configuration.")
+                return
+            else:
+                self.group_admin_role_id = result.group_admin_role_id
+                self.group_member_role_id = result.group_member_role_id
+        else:
+            self.group_admin_role_id = result.group_admin_role_id
+            self.group_member_role_id = result.group_member_role_id
+
+        if not self.group_admin_role_id or not self.group_member_role_id:
+            self.skipTest(reason="Failed to get admin and member role IDs.")
+            return
 
         self.group_namespace = self.namespace
 
@@ -44,9 +66,9 @@ class GroupTestCase(IntegrationTestCase):
                 configuration_code=self.group_configuration_code,
                 description="DESCRIPTION",
                 global_rules=[],
-                group_admin_role_id="623295c3000e792bf1e902b7",
+                group_admin_role_id=self.group_admin_role_id,
                 group_max_member=50,
-                group_member_role_id="623295c3000e792bf1e902b8",
+                group_member_role_id=self.group_member_role_id,
                 name="Python Server SDK Configuration Code"
             )
         )
