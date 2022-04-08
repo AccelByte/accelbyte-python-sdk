@@ -2,6 +2,8 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+SHELL := /bin/bash
+
 INTEGRATION_TEST_ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/how_to.env
 
 lint:
@@ -33,13 +35,16 @@ test_integration:
 test_cli:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
 	rm -f test.err
-	docker run -t --rm -u $$(id -u):$$(id -g) -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data -w /data --entrypoint /bin/sh -e PIP_CACHE_DIR=/tmp/pip python:3.9-slim \
+	docker run -t --rm -u $$(id -u):$$(id -g) -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data -w /data --entrypoint /bin/bash -e PIP_CACHE_DIR=/tmp/pip python:3.9-slim \
 			-c 'python -m venv /tmp/server && \
 					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
 					python -m venv /tmp/client && \
 					(cd samples/cli && /tmp/client/bin/pip install -r requirements.txt) && \
 					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
-					(for i in $$(seq 1 10); do python -c "import sys;import socket;sys.exit(socket.socket(socket.AF_INET,socket.SOCK_STREAM).connect_ex((\"localhost\",8080)))" && exit 0 || sleep 10; done; exit 1) && \
+					(for i in $$(seq 1 10); do bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; exit 1) && \
 					sed -i "s/\r//" tests/sh/* && \
-					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/tests/sh/*.sh | grep -v run-python-cli-all-unit-test.sh); do bash $$FILE || touch /data/test.err; done)'
+					rm -f tests/sh/*.tap && \
+					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/tests/sh/*.sh); do \
+							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test.err; \
+					done)'
 	[ ! -f test.err ]
