@@ -16,7 +16,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=3
+OPERATIONS_COUNT=5
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -70,7 +70,21 @@ create_file 'tmp.dat'
 echo 'TAP version 13'
 echo "1..$OPERATIONS_COUNT"
 
-#- 1 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
+#- 1 AdminGetEventsGameTelemetryV1AdminEventsGet
+$PYTHON -m $MODULE 'gametelemetry-admin-get-events-game-telemetry-v1-admin-events-get' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'AdminGetEventsGameTelemetryV1AdminEventsGet'
+delete_file $TEMP_FILE
+
+#- 2 AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet
+$PYTHON -m $MODULE 'gametelemetry-admin-get-namespace-game-telemetry-v1-admin-telemetrynamespace-get' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet'
+delete_file $TEMP_FILE
+
+#- 3 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
 $PYTHON -m $MODULE 'gametelemetry-protected-save-events-game-telemetry-v1-protected-events-post' \
     '[{"EventId": "FtBxyZcD", "EventName": "XBpGlsQu", "EventNamespace": "Ju8vMf0I", "EventTimestamp": "1980-10-10T00:00:00Z", "Payload": {"kTrd8IDc": {}}}]' \
     --login_with_auth "Bearer foo" \
@@ -78,7 +92,7 @@ $PYTHON -m $MODULE 'gametelemetry-protected-save-events-game-telemetry-v1-protec
 update_status $? 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost'
 delete_file $TEMP_FILE
 
-#- 2 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
+#- 4 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
 $PYTHON -m $MODULE 'gametelemetry-protected-get-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-get' \
     'V2zXnTKj' \
     --login_with_auth "Bearer foo" \
@@ -86,7 +100,7 @@ $PYTHON -m $MODULE 'gametelemetry-protected-get-playtime-game-telemetry-v1-prote
 update_status $? 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet'
 delete_file $TEMP_FILE
 
-#- 3 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+#- 5 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
 $PYTHON -m $MODULE 'gametelemetry-protected-update-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-playtime-put' \
     'XY1bPqam' \
     'iBxx9Cs1' \

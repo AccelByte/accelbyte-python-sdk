@@ -73,7 +73,7 @@ echo "1..$OPERATIONS_COUNT"
 #- 1 ChangePreferenceConsent
 $PYTHON -m $MODULE 'legal-change-preference-consent' \
     'FtBxyZcD' \
-    --body '[{"isAccepted": true, "localizedPolicyVersionId": "pGlsQuJu", "policyId": "8vMf0IsJ", "policyVersionId": "kTrd8IDc"}]' \
+    --body '[{"isAccepted": true, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "GlsQuJu8", "policyId": "vMf0IsJk", "policyVersionId": "Trd8IDcV"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ChangePreferenceConsent'
@@ -81,7 +81,7 @@ delete_file $TEMP_FILE
 
 #- 2 RetrieveAcceptedAgreements
 $PYTHON -m $MODULE 'legal-retrieve-accepted-agreements' \
-    'V2zXnTKj' \
+    '2zXnTKjX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAcceptedAgreements'
@@ -89,7 +89,7 @@ delete_file $TEMP_FILE
 
 #- 3 RetrieveAllUsersByPolicyVersion
 $PYTHON -m $MODULE 'legal-retrieve-all-users-by-policy-version' \
-    'XY1bPqam' \
+    'Y1bPqami' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveAllUsersByPolicyVersion'
@@ -104,7 +104,7 @@ delete_file $TEMP_FILE
 
 #- 5 CreatePolicy
 $PYTHON -m $MODULE 'legal-create-policy' \
-    --body '{"affectedClientIds": ["iBxx9Cs1"], "affectedCountries": ["8EY84ekI"], "basePolicyName": "tqRzHU1o", "description": "h570KQBV", "namespace": "aewc72kr", "tags": ["Sha68n3Y"], "typeId": "nozp1C2K"}' \
+    --body '{"affectedClientIds": ["Bxx9Cs18"], "affectedCountries": ["EY84ekIt"], "basePolicyName": "qRzHU1oh", "description": "570KQBVa", "namespace": "ewc72krS", "tags": ["ha68n3Yn"], "typeId": "ozp1C2Km"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreatePolicy'
@@ -112,7 +112,7 @@ delete_file $TEMP_FILE
 
 #- 6 RetrieveSinglePolicy
 $PYTHON -m $MODULE 'legal-retrieve-single-policy' \
-    'mIQTuBdN' \
+    'IQTuBdNE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveSinglePolicy'
@@ -120,8 +120,8 @@ delete_file $TEMP_FILE
 
 #- 7 PartialUpdatePolicy
 $PYTHON -m $MODULE 'legal-partial-update-policy' \
-    'EUsxFb8C' \
-    --body '{"affectedClientIds": ["J17M7DJZ"], "affectedCountries": ["aMSxECbZ"], "basePolicyName": "bygyoarO", "description": "RoeNHSb8", "namespace": "Rh3kgs9q", "tags": ["qJbnQsoB"]}' \
+    'UsxFb8CJ' \
+    --body '{"affectedClientIds": ["17M7DJZa"], "affectedCountries": ["MSxECbZb"], "basePolicyName": "ygyoarOR", "description": "oeNHSb8R", "namespace": "h3kgs9qq", "tags": ["JbnQsoBg"]}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PartialUpdatePolicy'
@@ -129,8 +129,8 @@ delete_file $TEMP_FILE
 
 #- 8 RetrievePolicyCountry
 $PYTHON -m $MODULE 'legal-retrieve-policy-country' \
-    'giVpP8Cm' \
-    '3yvASUox' \
+    'iVpP8Cm3' \
+    'yvASUoxd' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrievePolicyCountry'
@@ -138,7 +138,7 @@ delete_file $TEMP_FILE
 
 #- 9 RetrieveLocalizedPolicyVersions
 $PYTHON -m $MODULE 'legal-retrieve-localized-policy-versions' \
-    'dxxFqmAG' \
+    'xxFqmAGT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveLocalizedPolicyVersions'
@@ -146,8 +146,8 @@ delete_file $TEMP_FILE
 
 #- 10 CreateLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-create-localized-policy-version' \
-    'TJ8IEdag' \
-    --body '{"contentType": "Etp4w29K", "description": "Ou9c19R6", "localeCode": "XDqWHkkP"}' \
+    'J8IEdagE' \
+    --body '{"contentType": "tp4w29KO", "description": "u9c19R6X", "localeCode": "DqWHkkP8"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateLocalizedPolicyVersion'
@@ -155,7 +155,7 @@ delete_file $TEMP_FILE
 
 #- 11 RetrieveSingleLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-retrieve-single-localized-policy-version' \
-    '8npLEKMf' \
+    'npLEKMfj' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveSingleLocalizedPolicyVersion'
@@ -163,8 +163,8 @@ delete_file $TEMP_FILE
 
 #- 12 UpdateLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-update-localized-policy-version' \
-    'jiX7jpkV' \
-    --body '{"attachmentChecksum": "Zk3IaQYE", "attachmentLocation": "mqGodOEG", "attachmentVersionIdentifier": "t9gPOj0c", "contentType": "6i0JkvIa", "description": "s73ucYnF"}' \
+    'iX7jpkVZ' \
+    --body '{"attachmentChecksum": "k3IaQYEm", "attachmentLocation": "qGodOEGt", "attachmentVersionIdentifier": "9gPOj0c6", "contentType": "i0JkvIas", "description": "73ucYnFA"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateLocalizedPolicyVersion'
@@ -172,8 +172,8 @@ delete_file $TEMP_FILE
 
 #- 13 RequestPresignedURL
 $PYTHON -m $MODULE 'legal-request-presigned-url' \
-    'AJ3DK5T4' \
-    --body '{"contentMD5": "Eogg0Y39", "contentType": "UoYlpv5b"}' \
+    'J3DK5T4E' \
+    --body '{"contentMD5": "ogg0Y39U", "contentType": "oYlpv5bV"}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RequestPresignedURL'
@@ -181,7 +181,7 @@ delete_file $TEMP_FILE
 
 #- 14 SetDefaultPolicy
 $PYTHON -m $MODULE 'legal-set-default-policy' \
-    'VAgtsDhU' \
+    'AgtsDhUT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'SetDefaultPolicy'
@@ -189,10 +189,10 @@ delete_file $TEMP_FILE
 
 #- 15 IndirectBulkAcceptVersionedPolicy
 $PYTHON -m $MODULE 'legal-indirect-bulk-accept-versioned-policy' \
-    'TDUscbQD' \
-    'jbTQuPMz' \
-    '2PTRlkyU' \
-    --body '[{"isAccepted": true, "localizedPolicyVersionId": "6zPFJ42c", "policyId": "wmzBBSMN", "policyVersionId": "coAAOjKN"}]' \
+    'DUscbQDj' \
+    'bTQuPMz2' \
+    'PTRlkyU8' \
+    --body '[{"isAccepted": true, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "PFJ42cwm", "policyId": "zBBSMNco", "policyVersionId": "AAOjKNjf"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'IndirectBulkAcceptVersionedPolicy'
@@ -200,9 +200,9 @@ delete_file $TEMP_FILE
 
 #- 16 AdminRetrieveEligibilities
 $PYTHON -m $MODULE 'legal-admin-retrieve-eligibilities' \
-    'jfcYHm09' \
-    '3aYgBU1s' \
-    'qjyK0XH4' \
+    'cYHm093a' \
+    'YgBU1sqj' \
+    'yK0XH45P' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AdminRetrieveEligibilities'
@@ -210,7 +210,7 @@ delete_file $TEMP_FILE
 
 #- 17 RetrievePolicies
 $PYTHON -m $MODULE 'legal-retrieve-policies' \
-    '5PaRSOFQ' \
+    'aRSOFQBt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrievePolicies'
@@ -218,8 +218,8 @@ delete_file $TEMP_FILE
 
 #- 18 UpdatePolicyVersion
 $PYTHON -m $MODULE 'legal-update-policy-version' \
-    'Btu23REZ' \
-    --body '{"description": "8hRVX7LG", "displayVersion": "OvDdYiQS", "isCommitted": false}' \
+    'u23REZ8h' \
+    --body '{"description": "RVX7LGOv", "displayVersion": "DdYiQS9i", "isCommitted": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePolicyVersion'
@@ -227,7 +227,7 @@ delete_file $TEMP_FILE
 
 #- 19 PublishPolicyVersion
 $PYTHON -m $MODULE 'legal-publish-policy-version' \
-    '7mV1C91p' \
+    'V1C91pjG' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublishPolicyVersion'
@@ -235,8 +235,8 @@ delete_file $TEMP_FILE
 
 #- 20 UpdatePolicy
 $PYTHON -m $MODULE 'legal-update-policy' \
-    'jG9gpxL6' \
-    --body '{"description": "ycTQdvln", "isDefaultOpted": true, "isMandatory": true, "policyName": "SQWEXL6L", "readableId": "FE1YHo9m", "shouldNotifyOnUpdate": false}' \
+    '9gpxL6yc' \
+    --body '{"description": "TQdvln2L", "isDefaultOpted": true, "isMandatory": true, "policyName": "SQWEXL6L", "readableId": "FE1YHo9m", "shouldNotifyOnUpdate": false}' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdatePolicy'
@@ -306,7 +306,7 @@ delete_file $TEMP_FILE
 
 #- 29 ChangePreferenceConsent1
 $PYTHON -m $MODULE 'legal-change-preference-consent-1' \
-    --body '[{"isAccepted": true, "localizedPolicyVersionId": "0B7WOfer", "policyId": "cZdpMci3", "policyVersionId": "7Ds7YSfE"}]' \
+    --body '[{"isAccepted": true, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "7WOfercZ", "policyId": "dpMci37D", "policyVersionId": "s7YSfExa"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'ChangePreferenceConsent1'
@@ -314,7 +314,7 @@ delete_file $TEMP_FILE
 
 #- 30 AcceptVersionedPolicy
 $PYTHON -m $MODULE 'legal-accept-versioned-policy' \
-    'xaI3uzLt' \
+    'I3uzLteM' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'AcceptVersionedPolicy'
@@ -329,7 +329,7 @@ delete_file $TEMP_FILE
 
 #- 32 BulkAcceptVersionedPolicy
 $PYTHON -m $MODULE 'legal-bulk-accept-versioned-policy' \
-    --body '[{"isAccepted": false, "localizedPolicyVersionId": "MbFAlt4h", "policyId": "r7HmOYiB", "policyVersionId": "A5ltAOXm"}]' \
+    --body '[{"isAccepted": false, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "Alt4hr7H", "policyId": "mOYiBA5l", "policyVersionId": "tAOXmlG6"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'BulkAcceptVersionedPolicy'
@@ -337,10 +337,10 @@ delete_file $TEMP_FILE
 
 #- 33 IndirectBulkAcceptVersionedPolicyV2
 $PYTHON -m $MODULE 'legal-indirect-bulk-accept-versioned-policy-v2' \
-    'lG6eh1dT' \
-    'doTFpBIc' \
-    'uC1dQY93' \
-    --body '[{"isAccepted": false, "localizedPolicyVersionId": "J6Te9vD8", "policyId": "ldz7Hu8A", "policyVersionId": "D79kdWun"}]' \
+    'eh1dTdoT' \
+    'FpBIcuC1' \
+    'dQY93OJn' \
+    --body '[{"isAccepted": false, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "D8ldz7Hu", "policyId": "8AD79kdW", "policyVersionId": "unvizU0q"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'IndirectBulkAcceptVersionedPolicyV2'
@@ -348,8 +348,8 @@ delete_file $TEMP_FILE
 
 #- 34 IndirectBulkAcceptVersionedPolicy1
 $PYTHON -m $MODULE 'legal-indirect-bulk-accept-versioned-policy-1' \
-    'vizU0q1p' \
-    --body '[{"isAccepted": true, "localizedPolicyVersionId": "hhERoGgd", "policyId": "rysMizBG", "policyVersionId": "SRdP2l7D"}]' \
+    '1pHyhhER' \
+    --body '[{"isAccepted": false, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "drysMizB", "policyId": "GSRdP2l7", "policyVersionId": "DNSZ8Aq0"}]' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'IndirectBulkAcceptVersionedPolicy1'
@@ -364,9 +364,9 @@ delete_file $TEMP_FILE
 
 #- 36 RetrieveEligibilitiesPublicIndirect
 $PYTHON -m $MODULE 'legal-retrieve-eligibilities-public-indirect' \
-    'NSZ8Aq0X' \
-    'iPLQXSe0' \
-    '7ZddOGTM' \
+    'XiPLQXSe' \
+    '07ZddOGT' \
+    'MlJjBwj9' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveEligibilitiesPublicIndirect'
@@ -374,7 +374,7 @@ delete_file $TEMP_FILE
 
 #- 37 RetrieveSingleLocalizedPolicyVersion1
 $PYTHON -m $MODULE 'legal-retrieve-single-localized-policy-version-1' \
-    'lJjBwj9H' \
+    'HJHQKseE' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveSingleLocalizedPolicyVersion1'
@@ -389,7 +389,7 @@ delete_file $TEMP_FILE
 
 #- 39 RetrieveLatestPolicies
 $PYTHON -m $MODULE 'legal-retrieve-latest-policies' \
-    'JHQKseEd' \
+    'dSXRDSvg' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveLatestPolicies'
@@ -404,7 +404,7 @@ delete_file $TEMP_FILE
 
 #- 41 RetrieveLatestPoliciesByNamespaceAndCountryPublic
 $PYTHON -m $MODULE 'legal-retrieve-latest-policies-by-namespace-and-country-public' \
-    'SXRDSvgu' \
+    'uauw1xT7' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'RetrieveLatestPoliciesByNamespaceAndCountryPublic'

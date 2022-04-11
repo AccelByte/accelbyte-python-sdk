@@ -16,7 +16,7 @@ MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 TEMP_FILE='file.tmp'
 
-OPERATIONS_COUNT=84
+OPERATIONS_COUNT=87
 
 FINISHED_COUNT=0
 SUCCESS_COUNT=0
@@ -550,207 +550,231 @@ $PYTHON -m $MODULE 'ugc-get-followed-users' \
 update_status $? 'GetFollowedUsers'
 delete_file $TEMP_FILE
 
-#- 61 GetChannels
-$PYTHON -m $MODULE 'ugc-get-channels' \
+#- 61 GetCreator
+$PYTHON -m $MODULE 'ugc-get-creator' \
     't7xk6Qxy' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetCreator'
+delete_file $TEMP_FILE
+
+#- 62 GetChannels
+$PYTHON -m $MODULE 'ugc-get-channels' \
+    'WhfqoWfJ' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetChannels'
 delete_file $TEMP_FILE
 
-#- 62 CreateChannel
+#- 63 CreateChannel
 $PYTHON -m $MODULE 'ugc-create-channel' \
-    '{"name": "WhfqoWfJ"}' \
-    'w2o8oWUq' \
+    '{"name": "w2o8oWUq"}' \
+    'vPCZ2HzT' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateChannel'
 delete_file $TEMP_FILE
 
-#- 63 DeleteAllUserChannel
+#- 64 DeleteAllUserChannel
 $PYTHON -m $MODULE 'ugc-delete-all-user-channel' \
-    'vPCZ2HzT' \
+    '7NXmWDlX' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteAllUserChannel'
 delete_file $TEMP_FILE
 
-#- 64 UpdateChannel
+#- 65 UpdateChannel
 $PYTHON -m $MODULE 'ugc-update-channel' \
-    '{"name": "7NXmWDlX"}' \
-    'suNIdQJR' \
+    '{"name": "suNIdQJR"}' \
     '5lsNOlvk' \
+    'fwaSbnsu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateChannel'
 delete_file $TEMP_FILE
 
-#- 65 DeleteChannel
+#- 66 DeleteChannel
 $PYTHON -m $MODULE 'ugc-delete-channel' \
-    'fwaSbnsu' \
     'LCgToxuV' \
+    'TekJgvg6' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteChannel'
 delete_file $TEMP_FILE
 
-#- 66 CreateContentDirect
+#- 67 CreateContentDirect
 update_status 0 'CreateContentDirect (skipped deprecated)'
 
-#- 67 CreateContentS3
+#- 68 CreateContentS3
 $PYTHON -m $MODULE 'ugc-create-content-s3' \
-    '{"contentType": "TekJgvg6", "fileExtension": "h5HIpH0D", "name": "viplEk4v", "preview": "j3LDp4yq", "subType": "Dt8QUZDp", "tags": ["xlHasinG"], "type": "cjrkmRMt"}' \
-    'tgjDSaIV' \
+    '{"contentType": "h5HIpH0D", "fileExtension": "viplEk4v", "name": "j3LDp4yq", "preview": "Dt8QUZDp", "subType": "xlHasinG", "tags": ["cjrkmRMt"], "type": "tgjDSaIV"}' \
     'Bmft3Udg' \
+    '7p9PGmY2' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateContentS3'
 delete_file $TEMP_FILE
 
-#- 68 UpdateContentS3
+#- 69 UpdateContentS3
 $PYTHON -m $MODULE 'ugc-update-content-s3' \
-    '{"contentType": "7p9PGmY2", "fileExtension": "H5kX4Msi", "name": "sSX28nAR", "preview": "xWRpv5ou", "subType": "5xtvd28O", "tags": ["UfCt8UJC"], "type": "5flNyj6H"}' \
-    'sTtX8P3l' \
+    '{"contentType": "H5kX4Msi", "fileExtension": "sSX28nAR", "name": "xWRpv5ou", "preview": "5xtvd28O", "subType": "UfCt8UJC", "tags": ["5flNyj6H"], "type": "sTtX8P3l"}' \
     'lnaaS9lq' \
     'yygPcfkJ' \
+    'IxfQZza8' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateContentS3'
 delete_file $TEMP_FILE
 
-#- 69 UpdateContentDirect
+#- 70 UpdateContentDirect
 update_status 0 'UpdateContentDirect (skipped deprecated)'
 
-#- 70 DeleteContent
+#- 71 DeleteContent
 $PYTHON -m $MODULE 'ugc-delete-content' \
-    'IxfQZza8' \
     'kNVbDxVM' \
     'q7HJk0F8' \
+    '9xAc3YVf' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteContent'
 delete_file $TEMP_FILE
 
-#- 71 PublicGetUserContent
+#- 72 PublicGetUserContent
 $PYTHON -m $MODULE 'ugc-public-get-user-content' \
-    '9xAc3YVf' \
+    'aENtrl0p' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'PublicGetUserContent'
 delete_file $TEMP_FILE
 
-#- 72 DeleteAllUserContents
+#- 73 DeleteAllUserContents
 $PYTHON -m $MODULE 'ugc-delete-all-user-contents' \
-    'aENtrl0p' \
+    'TKZTXqzH' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteAllUserContents'
 delete_file $TEMP_FILE
 
-#- 73 UpdateScreenshots
+#- 74 UpdateScreenshots
 $PYTHON -m $MODULE 'ugc-update-screenshots' \
-    '{"screenshots": [{"description": "TKZTXqzH", "screenshotId": "uBMYQSA2"}]}' \
-    'jz1ZOpdO' \
+    '{"screenshots": [{"description": "uBMYQSA2", "screenshotId": "jz1ZOpdO"}]}' \
     'jSyMddB4' \
+    '1JuMf7RU' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateScreenshots'
 delete_file $TEMP_FILE
 
-#- 74 UploadContentScreenshot
+#- 75 UploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "1JuMf7RU", "description": "yBHRj8Ii", "fileExtension": "png"}]}' \
-    'imRllHT6' \
-    'Dc40vFFA' \
+    '{"screenshots": [{"contentType": "yBHRj8Ii", "description": "RimRllHT", "fileExtension": "jfif"}]}' \
+    'c40vFFA6' \
+    'gpU7EW3x' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UploadContentScreenshot'
 delete_file $TEMP_FILE
 
-#- 75 DeleteContentScreenshot
+#- 76 DeleteContentScreenshot
 $PYTHON -m $MODULE 'ugc-delete-content-screenshot' \
-    '6gpU7EW3' \
-    'x1dCpm55' \
-    'gOeqQIqc' \
+    '1dCpm55g' \
+    'OeqQIqcJ' \
+    'VKmBM1J1' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteContentScreenshot'
 delete_file $TEMP_FILE
 
-#- 76 UpdateUserFollowStatus
+#- 77 UpdateUserFollowStatus
 $PYTHON -m $MODULE 'ugc-update-user-follow-status' \
     '{"followStatus": false}' \
-    'BM1J1Ibu' \
+    'uTrrkbmu' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateUserFollowStatus'
 delete_file $TEMP_FILE
 
-#- 77 GetGroups
+#- 78 GetPublicFollowers
+$PYTHON -m $MODULE 'ugc-get-public-followers' \
+    'T1whOqmE' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetPublicFollowers'
+delete_file $TEMP_FILE
+
+#- 79 GetPublicFollowing
+$PYTHON -m $MODULE 'ugc-get-public-following' \
+    'nDXIWrBP' \
+    --login_with_auth "Bearer foo" \
+    >$TEMP_FILE 2>&1
+update_status $? 'GetPublicFollowing'
+delete_file $TEMP_FILE
+
+#- 80 GetGroups
 $PYTHON -m $MODULE 'ugc-get-groups' \
-    'TrrkbmuT' \
+    'lSay46mv' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetGroups'
 delete_file $TEMP_FILE
 
-#- 78 CreateGroup
+#- 81 CreateGroup
 $PYTHON -m $MODULE 'ugc-create-group' \
-    '{"contents": ["1whOqmEn"], "name": "DXIWrBPl"}' \
-    'Say46mv7' \
+    '{"contents": ["71BAZAOj"], "name": "tFJ2vmTj"}' \
+    '7tT7TZHW' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'CreateGroup'
 delete_file $TEMP_FILE
 
-#- 79 DeleteAllUserGroup
+#- 82 DeleteAllUserGroup
 $PYTHON -m $MODULE 'ugc-delete-all-user-group' \
-    '1BAZAOjt' \
+    'DdCkIsZo' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteAllUserGroup'
 delete_file $TEMP_FILE
 
-#- 80 GetGroup
+#- 83 GetGroup
 $PYTHON -m $MODULE 'ugc-get-group' \
-    'FJ2vmTj7' \
-    'tT7TZHWD' \
+    'ArWwPHcy' \
+    'FAdAtYci' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetGroup'
 delete_file $TEMP_FILE
 
-#- 81 UpdateGroup
+#- 84 UpdateGroup
 $PYTHON -m $MODULE 'ugc-update-group' \
-    '{"contents": ["dCkIsZoA"], "name": "rWwPHcyF"}' \
-    'AdAtYciL' \
-    'IgRwFRr0' \
+    '{"contents": ["LIgRwFRr"], "name": "0gwB9tz3"}' \
+    'vp99XVlV' \
+    '8rK3tE6n' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'UpdateGroup'
 delete_file $TEMP_FILE
 
-#- 82 DeleteGroup
+#- 85 DeleteGroup
 $PYTHON -m $MODULE 'ugc-delete-group' \
-    'gwB9tz3v' \
-    'p99XVlV8' \
+    '0smip1tw' \
+    '3L7cUd9p' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteGroup'
 delete_file $TEMP_FILE
 
-#- 83 GetGroupContent
+#- 86 GetGroupContent
 $PYTHON -m $MODULE 'ugc-get-group-content' \
-    'rK3tE6n0' \
-    'smip1tw3' \
+    'qtv6JfPZ' \
+    'wcCVOXcV' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'GetGroupContent'
 delete_file $TEMP_FILE
 
-#- 84 DeleteAllUserStates
+#- 87 DeleteAllUserStates
 $PYTHON -m $MODULE 'ugc-delete-all-user-states' \
-    'L7cUd9pq' \
+    'a80TmCwt' \
     --login_with_auth "Bearer foo" \
     >$TEMP_FILE 2>&1
 update_status $? 'DeleteAllUserStates'
