@@ -258,6 +258,7 @@ from ._logout_sso_client import logout_sso_client
 from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
 from ._admin_update_user_email_address_v4 import admin_update_user_email_address_v4
+from ._admin_disable_user_mfav4 import admin_disable_user_mfav4
 from ._admin_list_user_roles_v4 import admin_list_user_roles_v4
 from ._admin_update_user_role_v4 import admin_update_user_role_v4
 from ._admin_add_user_role_v4 import admin_add_user_role_v4
@@ -300,6 +301,7 @@ from ._public_generate_my_backup_codes_v4 import public_generate_my_backup_codes
 from ._public_disable_my_backup_codes_v4 import public_disable_my_backup_codes_v4
 from ._public_download_my_backup_codes_v4 import public_download_my_backup_codes_v4
 from ._public_enable_my_backup_codes_v4 import public_enable_my_backup_codes_v4
+from ._public_remove_trusted_device_v4 import public_remove_trusted_device_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
 
@@ -557,6 +559,7 @@ commands = [
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,
     admin_update_user_email_address_v4,
+    admin_disable_user_mfav4,
     admin_list_user_roles_v4,
     admin_update_user_role_v4,
     admin_add_user_role_v4,
@@ -599,6 +602,7 @@ commands = [
     public_disable_my_backup_codes_v4,
     public_download_my_backup_codes_v4,
     public_enable_my_backup_codes_v4,
+    public_remove_trusted_device_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
 ]

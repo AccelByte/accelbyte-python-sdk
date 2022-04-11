@@ -6,12 +6,14 @@
 
 # justice-cloudsave-service (2.4.0)
 
+from ._admin_put_game_record_concurrent_handler_v1 import admin_put_game_record_concurrent_handler_v1
 from ._list_game_records_handler_v1 import list_game_records_handler_v1
 from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1
 from ._admin_put_game_record_handler_v1 import admin_put_game_record_handler_v1
 from ._admin_post_game_record_handler_v1 import admin_post_game_record_handler_v1
 from ._admin_delete_game_record_handler_v1 import admin_delete_game_record_handler_v1
 from ._list_player_record_handler_v1 import list_player_record_handler_v1
+from ._admin_put_player_public_record_concurrent_handler_v1 import admin_put_player_public_record_concurrent_handler_v1
 from ._admin_retrieve_player_records import admin_retrieve_player_records
 from ._admin_get_player_record_handler_v1 import admin_get_player_record_handler_v1
 from ._admin_put_player_record_handler_v1 import admin_put_player_record_handler_v1
@@ -39,12 +41,14 @@ from ._post_player_public_record_handler_v1 import post_player_public_record_han
 
 
 commands = [
+    admin_put_game_record_concurrent_handler_v1,
     list_game_records_handler_v1,
     admin_get_game_record_handler_v1,
     admin_put_game_record_handler_v1,
     admin_post_game_record_handler_v1,
     admin_delete_game_record_handler_v1,
     list_player_record_handler_v1,
+    admin_put_player_public_record_concurrent_handler_v1,
     admin_retrieve_player_records,
     admin_get_player_record_handler_v1,
     admin_put_player_record_handler_v1,

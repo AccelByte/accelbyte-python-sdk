@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (2.16.1)
+# justice-iam-service (5.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,28 +28,23 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dsmc import delete_root_region_override as delete_root_region_override_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
-from accelbyte_py_sdk.api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.iam import public_remove_trusted_device_v4 as public_remove_trusted_device_v4_internal
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.argument("deployment", type=str)
-@click.argument("region", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def delete_root_region_override(
-        deployment: str,
-        region: str,
+def public_remove_trusted_device_v4(
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(delete_root_region_override_internal.__doc__)
+        click.echo(public_remove_trusted_device_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -58,12 +53,10 @@ def delete_root_region_override(
         }
     else:
         login_as_internal(login_as)
-    result, error = delete_root_region_override_internal(
-        deployment=deployment,
-        region=region,
+    result, error = public_remove_trusted_device_v4_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"DeleteRootRegionOverride failed: {str(error)}")
+        raise Exception(f"PublicRemoveTrustedDeviceV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

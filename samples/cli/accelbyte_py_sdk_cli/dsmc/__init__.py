@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (2.16.0)
+# justice-dsm-controller-service (2.16.1)
 
 from ._list_config import list_config
 from ._save_config import save_config

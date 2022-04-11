@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (2.16.1)
+# Analytics Game Telemetry (0.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,28 +28,20 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dsmc import delete_root_region_override as delete_root_region_override_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsDeploymentWithOverride
-from accelbyte_py_sdk.api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.gametelemetry import admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get as admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get_internal
 
 
 @click.command()
-@click.argument("deployment", type=str)
-@click.argument("region", type=str)
-@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def delete_root_region_override(
-        deployment: str,
-        region: str,
-        namespace: Optional[str] = None,
+def admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get(
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(delete_root_region_override_internal.__doc__)
+        click.echo(admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -58,12 +50,9 @@ def delete_root_region_override(
         }
     else:
         login_as_internal(login_as)
-    result, error = delete_root_region_override_internal(
-        deployment=deployment,
-        region=region,
-        namespace=namespace,
+    result, error = admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"DeleteRootRegionOverride failed: {str(error)}")
+        raise Exception(f"admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))

@@ -66,6 +66,7 @@ from ._public_download_content_preview import public_download_content_preview
 from ._get_tag import get_tag
 from ._get_type import get_type
 from ._get_followed_users import get_followed_users
+from ._get_creator import get_creator
 from ._get_channels import get_channels
 from ._create_channel import create_channel
 from ._delete_all_user_channel import delete_all_user_channel
@@ -82,6 +83,8 @@ from ._update_screenshots import update_screenshots
 from ._upload_content_screenshot import upload_content_screenshot
 from ._delete_content_screenshot import delete_content_screenshot
 from ._update_user_follow_status import update_user_follow_status
+from ._get_public_followers import get_public_followers
+from ._get_public_following import get_public_following
 from ._get_groups import get_groups
 from ._create_group import create_group
 from ._delete_all_user_group import delete_all_user_group
@@ -153,6 +156,7 @@ commands = [
     get_tag,
     get_type,
     get_followed_users,
+    get_creator,
     get_channels,
     create_channel,
     delete_all_user_channel,
@@ -169,6 +173,8 @@ commands = [
     upload_content_screenshot,
     delete_content_screenshot,
     update_user_follow_status,
+    get_public_followers,
+    get_public_following,
     get_groups,
     create_group,
     delete_all_user_group,

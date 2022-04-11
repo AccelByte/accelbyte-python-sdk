@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (2.16.0)
+# justice-dsm-controller-service (2.16.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
