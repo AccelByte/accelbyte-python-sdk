@@ -1,6 +1,10 @@
 # Changelog
 
 ## v0.12.0
+- Add enum classes for parameters / definitions with an `enum` property
+- Fix integration tests
+- Fix linter errors
+- Move request field validation logic into base classes
 - Update APIs
     - cloudsave
         - new endpoints
