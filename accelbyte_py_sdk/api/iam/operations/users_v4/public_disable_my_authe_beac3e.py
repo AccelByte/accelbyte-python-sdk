@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class PublicDisableMyAuthenticatorV4(Operation):
     """Disable 2FA authenticator (PublicDisableMyAuthenticatorV4)
 
-    (In Development)This endpoint is used to disable 2FA authenticator.
+    This endpoint is used to disable 2FA authenticator.
 
 
 
@@ -57,13 +57,13 @@ class PublicDisableMyAuthenticatorV4(Operation):
     Responses:
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -167,13 +167,13 @@ class PublicDisableMyAuthenticatorV4(Operation):
 
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

@@ -56,6 +56,14 @@ from .wrappers import user_request_friend_async
 from .wrappers import user_unfriend_request
 from .wrappers import user_unfriend_request_async
 
+# lobby_operations
+from .wrappers import admin_join_party_v1
+from .wrappers import admin_join_party_v1_async
+from .wrappers import admin_update_party_attributes_v1
+from .wrappers import admin_update_party_attributes_v1_async
+from .wrappers import public_get_messages
+from .wrappers import public_get_messages_async
+
 # notification
 from .wrappers import create_notification_template_v1_admin
 from .wrappers import create_notification_template_v1_admin_async
@@ -131,14 +139,6 @@ from .wrappers import update_template_localization_v1_admin
 from .wrappers import update_template_localization_v1_admin_async
 from .wrappers import update_topic_by_topic_name
 from .wrappers import update_topic_by_topic_name_async
-
-# operations
-from .wrappers import admin_join_party_v1
-from .wrappers import admin_join_party_v1_async
-from .wrappers import admin_update_party_attributes_v1
-from .wrappers import admin_update_party_attributes_v1_async
-from .wrappers import public_get_messages
-from .wrappers import public_get_messages_async
 
 # party
 from .wrappers import admin_get_party_data_v1

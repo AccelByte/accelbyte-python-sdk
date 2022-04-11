@@ -32,13 +32,13 @@
 | /matchmaking/namespaces/{namespace}/matchresult | POST | StoreMatchResults | [StoreMatchResults](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/store_match_results.py) | [store_match_results](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName} | PATCH | UpdateMatchmakingChannel | [UpdateMatchmakingChannel](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/update_matchmaking_channel.py) | [update_matchmaking_channel](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) |
 
-### Operations
+### Matchmaking Operations
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
-| /healthz | GET | GetHealthcheckInfo | [GetHealthcheckInfo](../accelbyte_py_sdk/api/matchmaking/operations/operations/get_healthcheck_info.py) | [get_healthcheck_info](../accelbyte_py_sdk/api/matchmaking/wrappers/_operations.py) |
-| /matchmaking/healthz | GET | handlerV3Healthz | [HandlerV3Healthz](../accelbyte_py_sdk/api/matchmaking/operations/operations/handler_v3_healthz.py) | [handler_v3_healthz](../accelbyte_py_sdk/api/matchmaking/wrappers/_operations.py) |
-| /matchmaking/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/matchmaking/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/matchmaking/wrappers/_operations.py) |
-| /matchmaking/version | GET | versionCheckHandler | [VersionCheckHandler](../accelbyte_py_sdk/api/matchmaking/operations/operations/version_check_handler.py) | [version_check_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_operations.py) |
+| /healthz | GET | GetHealthcheckInfo | [GetHealthcheckInfo](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking_operations/get_healthcheck_info.py) | [get_healthcheck_info](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking_operations.py) |
+| /matchmaking/healthz | GET | handlerV3Healthz | [HandlerV3Healthz](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking_operations/handler_v3_healthz.py) | [handler_v3_healthz](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking_operations.py) |
+| /matchmaking/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking_operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking_operations.py) |
+| /matchmaking/version | GET | versionCheckHandler | [VersionCheckHandler](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking_operations/version_check_handler.py) | [version_check_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking_operations.py) |
 
 ### Social Matchmaking
 | Endpoint | Method | ID | Class | Wrapper |

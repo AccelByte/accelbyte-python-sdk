@@ -33,7 +33,7 @@ from ...models import RestErrorResponse
 class PublicGenerateMyAuthenticatorKeyV4(Operation):
     """Generate secret key for 3rd-party authenticate app (PublicGenerateMyAuthenticatorKeyV4)
 
-    (In Development)This endpoint is used to generate a secret key for 3rd-party authenticator app.
+    This endpoint is used to generate a secret key for 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
 
 
@@ -59,13 +59,13 @@ class PublicGenerateMyAuthenticatorKeyV4(Operation):
     Responses:
         200: OK - ModelAuthenticatorKeyResponseV4 (Key generated)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -169,13 +169,13 @@ class PublicGenerateMyAuthenticatorKeyV4(Operation):
 
         200: OK - ModelAuthenticatorKeyResponseV4 (Key generated)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

@@ -26,6 +26,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.models_creator_overview_response import ModelsCreatorOverviewResponse
+from ..models.models_paging_cursor import ModelsPagingCursor
 
 
 class ModelsPaginatedCreatorOverviewResponse(Model):
@@ -33,11 +34,14 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
 
     Properties:
         data: (data) REQUIRED List[ModelsCreatorOverviewResponse]
+
+        paging: (paging) REQUIRED ModelsPagingCursor
     """
 
     # region fields
 
     data: List[ModelsCreatorOverviewResponse]                                                      # REQUIRED
+    paging: ModelsPagingCursor                                                                     # REQUIRED
 
     # endregion fields
 
@@ -45,6 +49,10 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
 
     def with_data(self, value: List[ModelsCreatorOverviewResponse]) -> ModelsPaginatedCreatorOverviewResponse:
         self.data = value
+        return self
+
+    def with_paging(self, value: ModelsPagingCursor) -> ModelsPaginatedCreatorOverviewResponse:
+        self.paging = value
         return self
 
     # endregion with_x methods
@@ -57,6 +65,10 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:
             result["data"] = []
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = ModelsPagingCursor()
         return result
 
     # endregion to methods
@@ -67,9 +79,11 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
     def create(
         cls,
         data: List[ModelsCreatorOverviewResponse],
+        paging: ModelsPagingCursor,
     ) -> ModelsPaginatedCreatorOverviewResponse:
         instance = cls()
         instance.data = data
+        instance.paging = paging
         return instance
 
     @classmethod
@@ -81,6 +95,10 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
             instance.data = [ModelsCreatorOverviewResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:
             instance.data = []
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = ModelsPagingCursor.create_from_dict(dict_["paging"], include_empty=include_empty)
+        elif include_empty:
+            instance.paging = ModelsPagingCursor()
         return instance
 
     @classmethod
@@ -107,12 +125,14 @@ class ModelsPaginatedCreatorOverviewResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "data": "data",
+            "paging": "paging",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "data": True,
+            "paging": True,
         }
 
     # endregion static methods

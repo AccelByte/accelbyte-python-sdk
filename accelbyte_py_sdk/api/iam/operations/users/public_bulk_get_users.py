@@ -41,7 +41,7 @@ class PublicBulkGetUsers(Operation):
 
 
 
-      * This endpoint bulk get users' basic info by userId, max allowed 20 at a time
+      * This endpoint bulk get users' basic info by userId, max allowed 100 at a time
 
 
       * If namespace is game, will search by game user Id, other wise will search by publisher namespace

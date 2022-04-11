@@ -32,6 +32,8 @@ class ModelsConfig(Model):
     Properties:
         allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
 
+        allow_join_party_during_matchmaking: (allowJoinPartyDuringMatchmaking) OPTIONAL bool
+
         auto_kick_on_disconnect: (autoKickOnDisconnect) OPTIONAL bool
 
         auto_kick_on_disconnect_delay: (autoKickOnDisconnectDelay) OPTIONAL int
@@ -44,7 +46,7 @@ class ModelsConfig(Model):
 
         concurrent_users_limit: (concurrentUsersLimit) OPTIONAL int
 
-        disable_party_invitation_token: (disablePartyInvitationToken) OPTIONAL bool
+        disable_invitation_on_join_party: (disableInvitationOnJoinParty) OPTIONAL bool
 
         enable_chat: (enableChat) OPTIONAL bool
 
@@ -70,13 +72,14 @@ class ModelsConfig(Model):
     # region fields
 
     allow_invite_non_connected_user: bool                                                          # OPTIONAL
+    allow_join_party_during_matchmaking: bool                                                      # OPTIONAL
     auto_kick_on_disconnect: bool                                                                  # OPTIONAL
     auto_kick_on_disconnect_delay: int                                                             # OPTIONAL
     cancel_ticket_on_disconnect: bool                                                              # OPTIONAL
     chat_rate_limit_burst: int                                                                     # OPTIONAL
     chat_rate_limit_duration: int                                                                  # OPTIONAL
     concurrent_users_limit: int                                                                    # OPTIONAL
-    disable_party_invitation_token: bool                                                           # OPTIONAL
+    disable_invitation_on_join_party: bool                                                         # OPTIONAL
     enable_chat: bool                                                                              # OPTIONAL
     entitlement_check: bool                                                                        # OPTIONAL
     entitlement_item_id: str                                                                       # OPTIONAL
@@ -94,6 +97,10 @@ class ModelsConfig(Model):
 
     def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfig:
         self.allow_invite_non_connected_user = value
+        return self
+
+    def with_allow_join_party_during_matchmaking(self, value: bool) -> ModelsConfig:
+        self.allow_join_party_during_matchmaking = value
         return self
 
     def with_auto_kick_on_disconnect(self, value: bool) -> ModelsConfig:
@@ -120,8 +127,8 @@ class ModelsConfig(Model):
         self.concurrent_users_limit = value
         return self
 
-    def with_disable_party_invitation_token(self, value: bool) -> ModelsConfig:
-        self.disable_party_invitation_token = value
+    def with_disable_invitation_on_join_party(self, value: bool) -> ModelsConfig:
+        self.disable_invitation_on_join_party = value
         return self
 
     def with_enable_chat(self, value: bool) -> ModelsConfig:
@@ -174,6 +181,10 @@ class ModelsConfig(Model):
             result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
         elif include_empty:
             result["allowInviteNonConnectedUser"] = bool()
+        if hasattr(self, "allow_join_party_during_matchmaking"):
+            result["allowJoinPartyDuringMatchmaking"] = bool(self.allow_join_party_during_matchmaking)
+        elif include_empty:
+            result["allowJoinPartyDuringMatchmaking"] = bool()
         if hasattr(self, "auto_kick_on_disconnect"):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
@@ -198,10 +209,10 @@ class ModelsConfig(Model):
             result["concurrentUsersLimit"] = int(self.concurrent_users_limit)
         elif include_empty:
             result["concurrentUsersLimit"] = int()
-        if hasattr(self, "disable_party_invitation_token"):
-            result["disablePartyInvitationToken"] = bool(self.disable_party_invitation_token)
+        if hasattr(self, "disable_invitation_on_join_party"):
+            result["disableInvitationOnJoinParty"] = bool(self.disable_invitation_on_join_party)
         elif include_empty:
-            result["disablePartyInvitationToken"] = bool()
+            result["disableInvitationOnJoinParty"] = bool()
         if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
@@ -252,13 +263,14 @@ class ModelsConfig(Model):
     def create(
         cls,
         allow_invite_non_connected_user: Optional[bool] = None,
+        allow_join_party_during_matchmaking: Optional[bool] = None,
         auto_kick_on_disconnect: Optional[bool] = None,
         auto_kick_on_disconnect_delay: Optional[int] = None,
         cancel_ticket_on_disconnect: Optional[bool] = None,
         chat_rate_limit_burst: Optional[int] = None,
         chat_rate_limit_duration: Optional[int] = None,
         concurrent_users_limit: Optional[int] = None,
-        disable_party_invitation_token: Optional[bool] = None,
+        disable_invitation_on_join_party: Optional[bool] = None,
         enable_chat: Optional[bool] = None,
         entitlement_check: Optional[bool] = None,
         entitlement_item_id: Optional[str] = None,
@@ -273,6 +285,8 @@ class ModelsConfig(Model):
         instance = cls()
         if allow_invite_non_connected_user is not None:
             instance.allow_invite_non_connected_user = allow_invite_non_connected_user
+        if allow_join_party_during_matchmaking is not None:
+            instance.allow_join_party_during_matchmaking = allow_join_party_during_matchmaking
         if auto_kick_on_disconnect is not None:
             instance.auto_kick_on_disconnect = auto_kick_on_disconnect
         if auto_kick_on_disconnect_delay is not None:
@@ -285,8 +299,8 @@ class ModelsConfig(Model):
             instance.chat_rate_limit_duration = chat_rate_limit_duration
         if concurrent_users_limit is not None:
             instance.concurrent_users_limit = concurrent_users_limit
-        if disable_party_invitation_token is not None:
-            instance.disable_party_invitation_token = disable_party_invitation_token
+        if disable_invitation_on_join_party is not None:
+            instance.disable_invitation_on_join_party = disable_invitation_on_join_party
         if enable_chat is not None:
             instance.enable_chat = enable_chat
         if entitlement_check is not None:
@@ -318,6 +332,10 @@ class ModelsConfig(Model):
             instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
         elif include_empty:
             instance.allow_invite_non_connected_user = bool()
+        if "allowJoinPartyDuringMatchmaking" in dict_ and dict_["allowJoinPartyDuringMatchmaking"] is not None:
+            instance.allow_join_party_during_matchmaking = bool(dict_["allowJoinPartyDuringMatchmaking"])
+        elif include_empty:
+            instance.allow_join_party_during_matchmaking = bool()
         if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
@@ -342,10 +360,10 @@ class ModelsConfig(Model):
             instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
         elif include_empty:
             instance.concurrent_users_limit = int()
-        if "disablePartyInvitationToken" in dict_ and dict_["disablePartyInvitationToken"] is not None:
-            instance.disable_party_invitation_token = bool(dict_["disablePartyInvitationToken"])
+        if "disableInvitationOnJoinParty" in dict_ and dict_["disableInvitationOnJoinParty"] is not None:
+            instance.disable_invitation_on_join_party = bool(dict_["disableInvitationOnJoinParty"])
         elif include_empty:
-            instance.disable_party_invitation_token = bool()
+            instance.disable_invitation_on_join_party = bool()
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
@@ -412,13 +430,14 @@ class ModelsConfig(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
+            "allowJoinPartyDuringMatchmaking": "allow_join_party_during_matchmaking",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
             "autoKickOnDisconnectDelay": "auto_kick_on_disconnect_delay",
             "cancelTicketOnDisconnect": "cancel_ticket_on_disconnect",
             "chatRateLimitBurst": "chat_rate_limit_burst",
             "chatRateLimitDuration": "chat_rate_limit_duration",
             "concurrentUsersLimit": "concurrent_users_limit",
-            "disablePartyInvitationToken": "disable_party_invitation_token",
+            "disableInvitationOnJoinParty": "disable_invitation_on_join_party",
             "enableChat": "enable_chat",
             "entitlementCheck": "entitlement_check",
             "entitlementItemID": "entitlement_item_id",
@@ -435,13 +454,14 @@ class ModelsConfig(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "allowInviteNonConnectedUser": False,
+            "allowJoinPartyDuringMatchmaking": False,
             "autoKickOnDisconnect": False,
             "autoKickOnDisconnectDelay": False,
             "cancelTicketOnDisconnect": False,
             "chatRateLimitBurst": False,
             "chatRateLimitDuration": False,
             "concurrentUsersLimit": False,
-            "disablePartyInvitationToken": False,
+            "disableInvitationOnJoinParty": False,
             "enableChat": False,
             "entitlementCheck": False,
             "entitlementItemID": False,

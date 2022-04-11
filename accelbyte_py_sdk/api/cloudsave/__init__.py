@@ -12,6 +12,12 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+# admin_concurrent_record
+from .wrappers import admin_put_game_record_concurrent_handler_v1
+from .wrappers import admin_put_game_record_concurrent_handler_v1_async
+from .wrappers import admin_put_player_public_record_concurrent_handler_v1
+from .wrappers import admin_put_player_public_record_concurrent_handler_v1_async
+
 # admin_game_record
 from .wrappers import admin_delete_game_record_handler_v1
 from .wrappers import admin_delete_game_record_handler_v1_async

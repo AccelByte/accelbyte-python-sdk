@@ -44,17 +44,29 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         federation_metadata_url: (FederationMetadataURL) REQUIRED str
 
+        generic_oauth_flow: (GenericOauthFlow) REQUIRED bool
+
         is_active: (IsActive) REQUIRED bool
+
+        issuer: (Issuer) REQUIRED str
+
+        jwks_endpoint: (JWKSEndpoint) REQUIRED str
 
         key_id: (KeyID) REQUIRED str
 
         organization_id: (OrganizationId) REQUIRED str
+
+        platform_name: (PlatformName) REQUIRED str
 
         redirect_uri: (RedirectUri) REQUIRED str
 
         secret: (Secret) REQUIRED str
 
         team_id: (TeamID) REQUIRED str
+
+        token_authentication_type: (TokenAuthenticationType) REQUIRED str
+
+        token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
     """
 
     # region fields
@@ -66,12 +78,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     client_id: str                                                                                 # REQUIRED
     environment: str                                                                               # REQUIRED
     federation_metadata_url: str                                                                   # REQUIRED
+    generic_oauth_flow: bool                                                                       # REQUIRED
     is_active: bool                                                                                # REQUIRED
+    issuer: str                                                                                    # REQUIRED
+    jwks_endpoint: str                                                                             # REQUIRED
     key_id: str                                                                                    # REQUIRED
     organization_id: str                                                                           # REQUIRED
+    platform_name: str                                                                             # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
     secret: str                                                                                    # REQUIRED
     team_id: str                                                                                   # REQUIRED
+    token_authentication_type: str                                                                 # REQUIRED
+    token_claims_mapping: Dict[str, str]                                                           # REQUIRED
 
     # endregion fields
 
@@ -105,8 +123,20 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.federation_metadata_url = value
         return self
 
+    def with_generic_oauth_flow(self, value: bool) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.generic_oauth_flow = value
+        return self
+
     def with_is_active(self, value: bool) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.is_active = value
+        return self
+
+    def with_issuer(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.issuer = value
+        return self
+
+    def with_jwks_endpoint(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.jwks_endpoint = value
         return self
 
     def with_key_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -115,6 +145,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_organization_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.organization_id = value
+        return self
+
+    def with_platform_name(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.platform_name = value
         return self
 
     def with_redirect_uri(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -127,6 +161,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_team_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.team_id = value
+        return self
+
+    def with_token_authentication_type(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.token_authentication_type = value
+        return self
+
+    def with_token_claims_mapping(self, value: Dict[str, str]) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.token_claims_mapping = value
         return self
 
     # endregion with_x methods
@@ -163,10 +205,22 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["FederationMetadataURL"] = str(self.federation_metadata_url)
         elif include_empty:
             result["FederationMetadataURL"] = str()
+        if hasattr(self, "generic_oauth_flow"):
+            result["GenericOauthFlow"] = bool(self.generic_oauth_flow)
+        elif include_empty:
+            result["GenericOauthFlow"] = bool()
         if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
             result["IsActive"] = bool()
+        if hasattr(self, "issuer"):
+            result["Issuer"] = str(self.issuer)
+        elif include_empty:
+            result["Issuer"] = str()
+        if hasattr(self, "jwks_endpoint"):
+            result["JWKSEndpoint"] = str(self.jwks_endpoint)
+        elif include_empty:
+            result["JWKSEndpoint"] = str()
         if hasattr(self, "key_id"):
             result["KeyID"] = str(self.key_id)
         elif include_empty:
@@ -175,6 +229,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["OrganizationId"] = str(self.organization_id)
         elif include_empty:
             result["OrganizationId"] = str()
+        if hasattr(self, "platform_name"):
+            result["PlatformName"] = str(self.platform_name)
+        elif include_empty:
+            result["PlatformName"] = str()
         if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
@@ -187,6 +245,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["TeamID"] = str(self.team_id)
         elif include_empty:
             result["TeamID"] = str()
+        if hasattr(self, "token_authentication_type"):
+            result["TokenAuthenticationType"] = str(self.token_authentication_type)
+        elif include_empty:
+            result["TokenAuthenticationType"] = str()
+        if hasattr(self, "token_claims_mapping"):
+            result["TokenClaimsMapping"] = {str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()}
+        elif include_empty:
+            result["TokenClaimsMapping"] = {}
         return result
 
     # endregion to methods
@@ -203,12 +269,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         client_id: str,
         environment: str,
         federation_metadata_url: str,
+        generic_oauth_flow: bool,
         is_active: bool,
+        issuer: str,
+        jwks_endpoint: str,
         key_id: str,
         organization_id: str,
+        platform_name: str,
         redirect_uri: str,
         secret: str,
         team_id: str,
+        token_authentication_type: str,
+        token_claims_mapping: Dict[str, str],
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
@@ -218,12 +290,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.client_id = client_id
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url
+        instance.generic_oauth_flow = generic_oauth_flow
         instance.is_active = is_active
+        instance.issuer = issuer
+        instance.jwks_endpoint = jwks_endpoint
         instance.key_id = key_id
         instance.organization_id = organization_id
+        instance.platform_name = platform_name
         instance.redirect_uri = redirect_uri
         instance.secret = secret
         instance.team_id = team_id
+        instance.token_authentication_type = token_authentication_type
+        instance.token_claims_mapping = token_claims_mapping
         return instance
 
     @classmethod
@@ -259,10 +337,22 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.federation_metadata_url = str(dict_["FederationMetadataURL"])
         elif include_empty:
             instance.federation_metadata_url = str()
+        if "GenericOauthFlow" in dict_ and dict_["GenericOauthFlow"] is not None:
+            instance.generic_oauth_flow = bool(dict_["GenericOauthFlow"])
+        elif include_empty:
+            instance.generic_oauth_flow = bool()
         if "IsActive" in dict_ and dict_["IsActive"] is not None:
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
             instance.is_active = bool()
+        if "Issuer" in dict_ and dict_["Issuer"] is not None:
+            instance.issuer = str(dict_["Issuer"])
+        elif include_empty:
+            instance.issuer = str()
+        if "JWKSEndpoint" in dict_ and dict_["JWKSEndpoint"] is not None:
+            instance.jwks_endpoint = str(dict_["JWKSEndpoint"])
+        elif include_empty:
+            instance.jwks_endpoint = str()
         if "KeyID" in dict_ and dict_["KeyID"] is not None:
             instance.key_id = str(dict_["KeyID"])
         elif include_empty:
@@ -271,6 +361,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.organization_id = str(dict_["OrganizationId"])
         elif include_empty:
             instance.organization_id = str()
+        if "PlatformName" in dict_ and dict_["PlatformName"] is not None:
+            instance.platform_name = str(dict_["PlatformName"])
+        elif include_empty:
+            instance.platform_name = str()
         if "RedirectUri" in dict_ and dict_["RedirectUri"] is not None:
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
@@ -283,6 +377,14 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.team_id = str(dict_["TeamID"])
         elif include_empty:
             instance.team_id = str()
+        if "TokenAuthenticationType" in dict_ and dict_["TokenAuthenticationType"] is not None:
+            instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
+        elif include_empty:
+            instance.token_authentication_type = str()
+        if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
+            instance.token_claims_mapping = {str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()}
+        elif include_empty:
+            instance.token_claims_mapping = {}
         return instance
 
     @classmethod
@@ -315,12 +417,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "ClientId": "client_id",
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",
+            "GenericOauthFlow": "generic_oauth_flow",
             "IsActive": "is_active",
+            "Issuer": "issuer",
+            "JWKSEndpoint": "jwks_endpoint",
             "KeyID": "key_id",
             "OrganizationId": "organization_id",
+            "PlatformName": "platform_name",
             "RedirectUri": "redirect_uri",
             "Secret": "secret",
             "TeamID": "team_id",
+            "TokenAuthenticationType": "token_authentication_type",
+            "TokenClaimsMapping": "token_claims_mapping",
         }
 
     @staticmethod
@@ -333,12 +441,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "ClientId": True,
             "Environment": True,
             "FederationMetadataURL": True,
+            "GenericOauthFlow": True,
             "IsActive": True,
+            "Issuer": True,
+            "JWKSEndpoint": True,
             "KeyID": True,
             "OrganizationId": True,
+            "PlatformName": True,
             "RedirectUri": True,
             "Secret": True,
             "TeamID": True,
+            "TokenAuthenticationType": True,
+            "TokenClaimsMapping": True,
         }
 
     # endregion static methods

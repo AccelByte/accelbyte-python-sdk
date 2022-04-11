@@ -80,15 +80,15 @@ from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
-from ..models import AppInfoPlayersEnum, AppInfoPrimaryGenreEnum, AppInfoPlatformsEnum, AppInfoGenresEnum
-from ..models import AppUpdateGenresEnum, AppUpdatePlayersEnum, AppUpdatePlatformsEnum, AppUpdatePrimaryGenreEnum
-from ..models import BasicItemAppTypeEnum, BasicItemEntitlementTypeEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum, BasicItemStatusEnum
-from ..models import FullAppInfoGenresEnum, FullAppInfoPlatformsEnum, FullAppInfoPrimaryGenreEnum, FullAppInfoPlayersEnum
-from ..models import FullItemInfoStatusEnum, FullItemInfoItemTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoEntitlementTypeEnum, FullItemInfoSeasonTypeEnum
-from ..models import ItemCreateItemTypeEnum, ItemCreateAppTypeEnum, ItemCreateEntitlementTypeEnum, ItemCreateStatusEnum, ItemCreateSeasonTypeEnum
-from ..models import ItemInfoAppTypeEnum, ItemInfoItemTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoSeasonTypeEnum, ItemInfoStatusEnum
-from ..models import ItemUpdateAppTypeEnum, ItemUpdateStatusEnum, ItemUpdateItemTypeEnum, ItemUpdateEntitlementTypeEnum, ItemUpdateSeasonTypeEnum
-from ..models import PopulatedItemInfoAppTypeEnum, PopulatedItemInfoStatusEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoEntitlementTypeEnum
+from ..models import AppInfoPlatformsEnum, AppInfoPlayersEnum, AppInfoGenresEnum, AppInfoPrimaryGenreEnum
+from ..models import AppUpdatePrimaryGenreEnum, AppUpdateGenresEnum, AppUpdatePlatformsEnum, AppUpdatePlayersEnum
+from ..models import BasicItemAppTypeEnum, BasicItemEntitlementTypeEnum, BasicItemStatusEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum
+from ..models import FullAppInfoGenresEnum, FullAppInfoPlatformsEnum, FullAppInfoPlayersEnum, FullAppInfoPrimaryGenreEnum
+from ..models import FullItemInfoEntitlementTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoSeasonTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoStatusEnum
+from ..models import ItemCreateEntitlementTypeEnum, ItemCreateItemTypeEnum, ItemCreateStatusEnum, ItemCreateAppTypeEnum, ItemCreateSeasonTypeEnum
+from ..models import ItemInfoAppTypeEnum, ItemInfoItemTypeEnum, ItemInfoStatusEnum, ItemInfoEntitlementTypeEnum, ItemInfoSeasonTypeEnum
+from ..models import ItemUpdateAppTypeEnum, ItemUpdateItemTypeEnum, ItemUpdateSeasonTypeEnum, ItemUpdateStatusEnum, ItemUpdateEntitlementTypeEnum
+from ..models import PopulatedItemInfoAppTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoStatusEnum
 
 
 @same_doc_as(AcquireItem)

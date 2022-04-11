@@ -40,7 +40,7 @@ class PublicGetMessages(Operation):
 
         method: GET
 
-        tags: []
+        tags: ["Matchmaking Operations"]
 
         consumes: ["application/json"]
 

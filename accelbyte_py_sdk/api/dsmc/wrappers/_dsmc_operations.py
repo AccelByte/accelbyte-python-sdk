@@ -29,7 +29,7 @@ from ....core import same_doc_as
 from ..models import LogAppMessageDeclaration
 from ..models import ResponseError
 
-from ..operations.operations import PublicGetMessages
+from ..operations.dsmc_operations import PublicGetMessages
 
 
 @same_doc_as(PublicGetMessages)

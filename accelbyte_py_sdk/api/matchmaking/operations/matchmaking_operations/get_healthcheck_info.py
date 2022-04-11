@@ -35,7 +35,7 @@ class GetHealthcheckInfo(Operation):
 
         method: GET
 
-        tags: []
+        tags: ["Matchmaking Operations"]
 
         consumes: []
 

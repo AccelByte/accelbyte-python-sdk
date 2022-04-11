@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-lobby-server (staging)
+# justice-ugc-service (1.15.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,30 +26,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import RestapiErrorResponseBody
+from ...models import ModelsPaginatedCreatorOverviewResponse
+from ...models import ResponseError
 
 
-class AdminJoinPartyV1(Operation):
-    """admin join a player into a party (adminJoinPartyV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
-
-    admin join a player into a party.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
-
-    Required Scope(s):
-        - social
+class GetPublicFollowers(Operation):
+    """Get list of followers (GetPublicFollowers)
 
     Properties:
-        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/followers
 
-        method: POST
+        method: GET
 
-        tags: []
+        tags: ["Public Follow"]
 
-        consumes: ["application/json"]
+        consumes: ["application/json", "application/octet-stream"]
 
         produces: ["application/json"]
 
@@ -57,38 +48,35 @@ class AdminJoinPartyV1(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        party_id: (partyId) REQUIRED str in path
-
         user_id: (userId) REQUIRED str in path
 
+        limit: (limit) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL str in query
+
     Responses:
-        202: Accepted - (Accepted)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        401: Unauthorized - ResponseError (Unauthorized)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        404: Not Found - ResponseError (Not Found)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
-
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId}"
-    _method: str = "POST"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/ugc/v1/public/namespaces/{namespace}/users/{userId}/followers"
+    _method: str = "GET"
+    _consumes: List[str] = ["application/json", "application/octet-stream"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    party_id: str                                                                                  # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
+    limit: str                                                                                     # OPTIONAL in [query]
+    offset: str                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -127,6 +115,7 @@ class AdminJoinPartyV1(Operation):
             url=self.url,
             base_url=base_url,
             path_params=self.get_path_params(),
+            query_params=self.get_query_params(),
         )
 
     # endregion get methods
@@ -136,16 +125,23 @@ class AdminJoinPartyV1(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "party_id"):
-            result["partyId"] = self.party_id
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -156,16 +152,20 @@ class AdminJoinPartyV1(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AdminJoinPartyV1:
+    def with_namespace(self, value: str) -> GetPublicFollowers:
         self.namespace = value
         return self
 
-    def with_party_id(self, value: str) -> AdminJoinPartyV1:
-        self.party_id = value
+    def with_user_id(self, value: str) -> GetPublicFollowers:
+        self.user_id = value
         return self
 
-    def with_user_id(self, value: str) -> AdminJoinPartyV1:
-        self.user_id = value
+    def with_limit(self, value: str) -> GetPublicFollowers:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: str) -> GetPublicFollowers:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -178,14 +178,18 @@ class AdminJoinPartyV1(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "party_id") and self.party_id:
-            result["partyId"] = str(self.party_id)
-        elif include_empty:
-            result["partyId"] = str()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = str()
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = str(self.limit)
+        elif include_empty:
+            result["limit"] = str()
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = str(self.offset)
+        elif include_empty:
+            result["offset"] = str()
         return result
 
     # endregion to methods
@@ -193,22 +197,16 @@ class AdminJoinPartyV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPaginatedCreatorOverviewResponse], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        202: Accepted - (Accepted)
+        200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        401: Unauthorized - ResponseError (Unauthorized)
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        404: Not Found - ResponseError (Not Found)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
-
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -221,20 +219,14 @@ class AdminJoinPartyV1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 202:
-            return HttpResponse.create(code, "Accepted"), None
-        if code == 400:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 200:
+            return ModelsPaginatedCreatorOverviewResponse.create_from_dict(content), None
         if code == 401:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 403:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseError.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 412:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseError.create_from_dict(content)
         if code == 500:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ResponseError.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -246,46 +238,56 @@ class AdminJoinPartyV1(Operation):
     def create(
         cls,
         namespace: str,
-        party_id: str,
         user_id: str,
-    ) -> AdminJoinPartyV1:
+        limit: Optional[str] = None,
+        offset: Optional[str] = None,
+    ) -> GetPublicFollowers:
         instance = cls()
         instance.namespace = namespace
-        instance.party_id = party_id
         instance.user_id = user_id
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminJoinPartyV1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetPublicFollowers:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "partyId" in dict_ and dict_["partyId"] is not None:
-            instance.party_id = str(dict_["partyId"])
-        elif include_empty:
-            instance.party_id = str()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = str()
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = str(dict_["limit"])
+        elif include_empty:
+            instance.limit = str()
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = str(dict_["offset"])
+        elif include_empty:
+            instance.offset = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "partyId": "party_id",
             "userId": "user_id",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "partyId": True,
             "userId": True,
+            "limit": False,
+            "offset": False,
         }
 
     # endregion static methods

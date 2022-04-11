@@ -56,6 +56,8 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
 
         status: (status) REQUIRED str
 
+        sub_game_mode: (sub_game_mode) REQUIRED List[str]
+
         party_id: (party_id) OPTIONAL str
     """
 
@@ -74,6 +76,7 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
     region: str                                                                                    # REQUIRED
     server_name: str                                                                               # REQUIRED
     status: str                                                                                    # REQUIRED
+    sub_game_mode: List[str]                                                                       # REQUIRED
     party_id: str                                                                                  # OPTIONAL
 
     # endregion fields
@@ -130,6 +133,10 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
 
     def with_status(self, value: str) -> ServiceGetSessionHistorySearchResponseItem:
         self.status = value
+        return self
+
+    def with_sub_game_mode(self, value: List[str]) -> ServiceGetSessionHistorySearchResponseItem:
+        self.sub_game_mode = value
         return self
 
     def with_party_id(self, value: str) -> ServiceGetSessionHistorySearchResponseItem:
@@ -194,6 +201,10 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "sub_game_mode"):
+            result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
+        elif include_empty:
+            result["sub_game_mode"] = []
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
@@ -220,6 +231,7 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
         region: str,
         server_name: str,
         status: str,
+        sub_game_mode: List[str],
         party_id: Optional[str] = None,
     ) -> ServiceGetSessionHistorySearchResponseItem:
         instance = cls()
@@ -236,6 +248,7 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
         instance.region = region
         instance.server_name = server_name
         instance.status = status
+        instance.sub_game_mode = sub_game_mode
         if party_id is not None:
             instance.party_id = party_id
         return instance
@@ -297,6 +310,10 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
+            instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
+        elif include_empty:
+            instance.sub_game_mode = []
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
@@ -339,6 +356,7 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
             "region": "region",
             "server_name": "server_name",
             "status": "status",
+            "sub_game_mode": "sub_game_mode",
             "party_id": "party_id",
         }
 
@@ -358,6 +376,7 @@ class ServiceGetSessionHistorySearchResponseItem(Model):
             "region": True,
             "server_name": True,
             "status": True,
+            "sub_game_mode": True,
             "party_id": False,
         }
 

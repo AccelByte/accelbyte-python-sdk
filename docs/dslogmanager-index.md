@@ -11,10 +11,10 @@
 | /dslogmanager/servers/logs/download | POST | batchDownloadServerLogs | [BatchDownloadServerLogs](../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/batch_download_server_logs.py) | [batch_download_server_logs](../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) |
 | /dslogmanager/servers/search | GET | listAllTerminatedServers | [ListAllTerminatedServers](../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_all_terminated_servers.py) | [list_all_terminated_servers](../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) |
 
-### Operations
+### Dslogmanager Operations
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
-| /dslogmanager/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/dslogmanager/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/dslogmanager/wrappers/_operations.py) |
+| /dslogmanager/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/dslogmanager/operations/dslogmanager_operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/dslogmanager/wrappers/_dslogmanager_operations.py) |
 
 ### Terminated Servers
 | Endpoint | Method | ID | Class | Wrapper |

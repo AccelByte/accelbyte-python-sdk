@@ -43,6 +43,8 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         namespace: (namespace) REQUIRED str
 
         status: (status) REQUIRED str
+
+        sub_game_mode: (sub_game_mode) REQUIRED List[str]
     """
 
     # region fields
@@ -54,6 +56,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
     match_id: str                                                                                  # REQUIRED
     namespace: str                                                                                 # REQUIRED
     status: str                                                                                    # REQUIRED
+    sub_game_mode: List[str]                                                                       # REQUIRED
 
     # endregion fields
 
@@ -85,6 +88,10 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
 
     def with_status(self, value: str) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.status = value
+        return self
+
+    def with_sub_game_mode(self, value: List[str]) -> ServiceGetSessionHistorySearchResponseItemV2:
+        self.sub_game_mode = value
         return self
 
     # endregion with_x methods
@@ -121,6 +128,10 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = str()
+        if hasattr(self, "sub_game_mode"):
+            result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
+        elif include_empty:
+            result["sub_game_mode"] = []
         return result
 
     # endregion to methods
@@ -137,6 +148,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         match_id: str,
         namespace: str,
         status: str,
+        sub_game_mode: List[str],
     ) -> ServiceGetSessionHistorySearchResponseItemV2:
         instance = cls()
         instance.created_at = created_at
@@ -146,6 +158,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         instance.match_id = match_id
         instance.namespace = namespace
         instance.status = status
+        instance.sub_game_mode = sub_game_mode
         return instance
 
     @classmethod
@@ -181,6 +194,10 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = str()
+        if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
+            instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
+        elif include_empty:
+            instance.sub_game_mode = []
         return instance
 
     @classmethod
@@ -213,6 +230,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
             "match_id": "match_id",
             "namespace": "namespace",
             "status": "status",
+            "sub_game_mode": "sub_game_mode",
         }
 
     @staticmethod
@@ -225,6 +243,7 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
             "match_id": True,
             "namespace": True,
             "status": True,
+            "sub_game_mode": True,
         }
 
     # endregion static methods

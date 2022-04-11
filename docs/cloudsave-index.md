@@ -5,6 +5,12 @@
 
 ## Operations
 
+### AdminConcurrentRecord
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key} | PUT | adminPutGameRecordConcurrentHandlerV1 | [AdminPutGameRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_concurrent_record/admin_put_game_record_c_886b02.py) | [admin_put_game_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_concurrent_record.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public | PUT | adminPutPlayerPublicRecordConcurrentHandlerV1 | [AdminPutPlayerPublicRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_concurrent_record/admin_put_player_public_1624a9.py) | [admin_put_player_public_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_concurrent_record.py) |
+
 ### AdminGameRecord
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -59,6 +65,7 @@
 ## Models
 | Model | Class |
 |---|---|
+| models.AdminConcurrentRecordRequest | [ModelsAdminConcurrentRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_admin_concurrent_record_request.py) |
 | models.BulkGetPlayerRecordResponse | [ModelsBulkGetPlayerRecordResponse](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_record_response.py) |
 | models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_i_ds_request.py) |
 | models.ConcurrentRecordRequest | [ModelsConcurrentRecordRequest](../accelbyte_py_sdk/api/cloudsave/models/models_concurrent_record_request.py) |

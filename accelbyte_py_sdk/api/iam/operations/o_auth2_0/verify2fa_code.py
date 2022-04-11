@@ -33,7 +33,7 @@ from ...models import OauthmodelTokenResponseV3
 class Verify2faCode(Operation):
     """Verify 2FA code (Verify2FACode)
 
-    Verify 2FA code(In Development)
+    Verify 2FA code
 
 
 

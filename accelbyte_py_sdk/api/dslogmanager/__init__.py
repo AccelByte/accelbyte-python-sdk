@@ -18,7 +18,7 @@ from .wrappers import batch_download_server_logs_async
 from .wrappers import list_all_terminated_servers
 from .wrappers import list_all_terminated_servers_async
 
-# operations
+# dslogmanager_operations
 from .wrappers import public_get_messages
 from .wrappers import public_get_messages_async
 

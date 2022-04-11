@@ -33,7 +33,7 @@ from ...models import RestErrorResponse
 class AdminGenerateMyBackupCodesV4(Operation):
     """Generate backup codes (AdminGenerateMyBackupCodesV4)
 
-    (In Development)This endpoint is used to generate 8-digits backup codes.
+    This endpoint is used to generate 8-digits backup codes.
     Each code is a one-time code and will be deleted once used.
 
 
@@ -57,13 +57,13 @@ class AdminGenerateMyBackupCodesV4(Operation):
     Responses:
         200: OK - ModelBackupCodesResponseV4 (Backup codes generated)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -149,13 +149,13 @@ class AdminGenerateMyBackupCodesV4(Operation):
 
         200: OK - ModelBackupCodesResponseV4 (Backup codes generated)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

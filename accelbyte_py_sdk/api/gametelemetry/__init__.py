@@ -12,7 +12,11 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-# operations
+# gametelemetry_operations
+from .wrappers import admin_get_events_game_telemetry_v1_admin_events_get
+from .wrappers import admin_get_events_game_telemetry_v1_admin_events_get_async
+from .wrappers import admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get
+from .wrappers import admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get_async
 from .wrappers import protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get
 from .wrappers import protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_async
 from .wrappers import protected_save_events_game_telemetry_v1_protected_events_post

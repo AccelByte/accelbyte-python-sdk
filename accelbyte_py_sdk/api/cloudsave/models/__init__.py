@@ -12,6 +12,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .models_admin_concurrent_record_request import ModelsAdminConcurrentRecordRequest
 from .models_bulk_get_player_record_response import ModelsBulkGetPlayerRecordResponse
 from .models_bulk_user_i_ds_request import ModelsBulkUserIDsRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest

@@ -168,6 +168,10 @@ from .wrappers import update_screenshots_async
 from .wrappers import upload_content_screenshot
 from .wrappers import upload_content_screenshot_async
 
+# public_creator
+from .wrappers import get_creator
+from .wrappers import get_creator_async
+
 # public_download_count
 from .wrappers import add_download_count
 from .wrappers import add_download_count_async
@@ -177,6 +181,10 @@ from .wrappers import get_followed_content
 from .wrappers import get_followed_content_async
 from .wrappers import get_followed_users
 from .wrappers import get_followed_users_async
+from .wrappers import get_public_followers
+from .wrappers import get_public_followers_async
+from .wrappers import get_public_following
+from .wrappers import get_public_following_async
 from .wrappers import update_user_follow_status
 from .wrappers import update_user_follow_status_async
 

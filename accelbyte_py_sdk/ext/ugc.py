@@ -246,8 +246,10 @@ def create_models_creator_follow_state_example() -> ModelsCreatorFollowState:
 def create_models_creator_overview_response_example() -> ModelsCreatorOverviewResponse:
     instance = ModelsCreatorOverviewResponse()
     instance.follow_count = randomize("int", min_val=1, max_val=1000)
+    instance.following_count = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
+    instance.total_liked_content = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -280,6 +282,7 @@ def create_models_paginated_content_download_response_example() -> ModelsPaginat
 def create_models_paginated_creator_overview_response_example() -> ModelsPaginatedCreatorOverviewResponse:
     instance = ModelsPaginatedCreatorOverviewResponse()
     instance.data = [create_models_creator_overview_response_example()]
+    instance.paging = create_models_paging_cursor_example()
     return instance
 
 

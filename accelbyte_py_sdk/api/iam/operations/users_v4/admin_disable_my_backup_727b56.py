@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class AdminDisableMyBackupCodesV4(Operation):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    (In Development)This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to enable 2FA backup codes.
 
 
 
@@ -55,13 +55,13 @@ class AdminDisableMyBackupCodesV4(Operation):
     Responses:
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -147,13 +147,13 @@ class AdminDisableMyBackupCodesV4(Operation):
 
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

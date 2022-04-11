@@ -552,6 +552,8 @@ from ._users_v4 import admin_disable_my_authenticator_v4
 from ._users_v4 import admin_disable_my_authenticator_v4_async
 from ._users_v4 import admin_disable_my_backup_codes_v4
 from ._users_v4 import admin_disable_my_backup_codes_v4_async
+from ._users_v4 import admin_disable_user_mfav4
+from ._users_v4 import admin_disable_user_mfav4_async
 from ._users_v4 import admin_download_my_backup_codes_v4
 from ._users_v4 import admin_download_my_backup_codes_v4_async
 from ._users_v4 import admin_enable_my_authenticator_v4
@@ -608,6 +610,8 @@ from ._users_v4 import public_get_my_enabled_factors_v4
 from ._users_v4 import public_get_my_enabled_factors_v4_async
 from ._users_v4 import public_make_factor_my_default_v4
 from ._users_v4 import public_make_factor_my_default_v4_async
+from ._users_v4 import public_remove_trusted_device_v4
+from ._users_v4 import public_remove_trusted_device_v4_async
 from ._users_v4 import public_update_user_email_address_v4
 from ._users_v4 import public_update_user_email_address_v4_async
 from ._users_v4 import public_update_user_v4

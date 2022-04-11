@@ -22,6 +22,7 @@
 
 from .utils import randomize
 
+from ..api.cloudsave.models import ModelsAdminConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
@@ -34,6 +35,14 @@ from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsPlayerRecordResponse
 from ..api.cloudsave.models import ModelsResponseError
+
+
+def create_models_admin_concurrent_record_request_example() -> ModelsAdminConcurrentRecordRequest:
+    instance = ModelsAdminConcurrentRecordRequest()
+    instance.set_by = randomize()
+    instance.updated_at = randomize()
+    instance.value = {randomize(): randomize()}
+    return instance
 
 
 def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlayerRecordResponse:

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ds-log-manager-service (2.2.1)
+# Analytics Game Telemetry (0.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,42 +26,61 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import LogAppMessageDeclaration
-from ...models import ResponseError
+from ...models import HTTPValidationError
 
 
-class PublicGetMessages(Operation):
-    """get service messages (publicGetMessages)
+class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
+    """Admin Get Events (admin_get_events_game_telemetry_v1_admin_events_get)
 
-    get the list of messages.
+    This endpoint requires valid JWT token and permission **ADMIN:ANALYTICS:TELEMETRY:{EventNamespace}** **READ**.
+
+    This endpoint retrieve the latest event from each event name on specific namespace.
+
+
+
+    Parameter:
+
+    - **Namespace (required) (case-sensitive)**: telemetry namespace.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    Example: accelbyte or accelbyte.game2
 
     Properties:
-        url: /dslogmanager/v1/messages
+        url: /game-telemetry/v1/admin/events
 
         method: GET
 
-        tags: []
+        tags: ["Gametelemetry Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         security_type: bearer
 
-    Responses:
-        200: OK - List[LogAppMessageDeclaration]
+        namespace: (namespace) REQUIRED str in query
 
-        500: Internal Server Error - ResponseError
+    Responses:
+        200: OK - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
 
     # region fields
 
-    _url: str = "/dslogmanager/v1/messages"
+    _url: str = "/game-telemetry/v1/admin/events"
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
+
+    namespace: str                                                                                 # REQUIRED in [query]
 
     # endregion fields
 
@@ -99,6 +118,7 @@ class PublicGetMessages(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
+            query_params=self.get_query_params(),
         )
 
     # endregion get methods
@@ -107,7 +127,14 @@ class PublicGetMessages(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "query": self.get_query_params(),
         }
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        return result
 
     # endregion get_x_params methods
 
@@ -117,12 +144,20 @@ class PublicGetMessages(Operation):
 
     # region with_x methods
 
+    def with_namespace(self, value: str) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
+        self.namespace = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -130,12 +165,12 @@ class PublicGetMessages(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[LogAppMessageDeclaration]], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[LogAppMessageDeclaration]
+        200: OK - (Successful Response)
 
-        500: Internal Server Error - ResponseError
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -149,9 +184,9 @@ class PublicGetMessages(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [LogAppMessageDeclaration.create_from_dict(i) for i in content], None
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return HttpResponse.create(code, "OK"), None
+        if code == 422:
+            return None, HTTPValidationError.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -162,23 +197,31 @@ class PublicGetMessages(Operation):
     @classmethod
     def create(
         cls,
-    ) -> PublicGetMessages:
+        namespace: str,
+    ) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
         instance = cls()
+        instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetMessages:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
         instance = cls()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "namespace": True,
         }
 
     # endregion static methods

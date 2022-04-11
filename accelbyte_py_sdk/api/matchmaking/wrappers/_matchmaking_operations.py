@@ -29,10 +29,10 @@ from ....core import same_doc_as
 from ..models import LogAppMessageDeclaration
 from ..models import ResponseError
 
-from ..operations.operations import GetHealthcheckInfo
-from ..operations.operations import HandlerV3Healthz
-from ..operations.operations import PublicGetMessages
-from ..operations.operations import VersionCheckHandler
+from ..operations.matchmaking_operations import GetHealthcheckInfo
+from ..operations.matchmaking_operations import HandlerV3Healthz
+from ..operations.matchmaking_operations import PublicGetMessages
+from ..operations.matchmaking_operations import VersionCheckHandler
 
 
 @same_doc_as(GetHealthcheckInfo)

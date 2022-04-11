@@ -24,6 +24,13 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class RuleCriteriaEnum(StrEnum):
+    EQUAL = "EQUAL"
+    MINIMUM = "MINIMUM"
+    MAXIMUM = "MAXIMUM"
 
 
 class ModelsRuleInformation(Model):
@@ -32,7 +39,7 @@ class ModelsRuleInformation(Model):
     Properties:
         rule_attribute: (ruleAttribute) REQUIRED str
 
-        rule_criteria: (ruleCriteria) REQUIRED str
+        rule_criteria: (ruleCriteria) REQUIRED Union[str, RuleCriteriaEnum]
 
         rule_value: (ruleValue) REQUIRED float
     """
@@ -40,7 +47,7 @@ class ModelsRuleInformation(Model):
     # region fields
 
     rule_attribute: str                                                                            # REQUIRED
-    rule_criteria: str                                                                             # REQUIRED
+    rule_criteria: Union[str, RuleCriteriaEnum]                                                    # REQUIRED
     rule_value: float                                                                              # REQUIRED
 
     # endregion fields
@@ -51,7 +58,7 @@ class ModelsRuleInformation(Model):
         self.rule_attribute = value
         return self
 
-    def with_rule_criteria(self, value: str) -> ModelsRuleInformation:
+    def with_rule_criteria(self, value: Union[str, RuleCriteriaEnum]) -> ModelsRuleInformation:
         self.rule_criteria = value
         return self
 
@@ -72,7 +79,7 @@ class ModelsRuleInformation(Model):
         if hasattr(self, "rule_criteria"):
             result["ruleCriteria"] = str(self.rule_criteria)
         elif include_empty:
-            result["ruleCriteria"] = str()
+            result["ruleCriteria"] = Union[str, RuleCriteriaEnum]()
         if hasattr(self, "rule_value"):
             result["ruleValue"] = float(self.rule_value)
         elif include_empty:
@@ -87,7 +94,7 @@ class ModelsRuleInformation(Model):
     def create(
         cls,
         rule_attribute: str,
-        rule_criteria: str,
+        rule_criteria: Union[str, RuleCriteriaEnum],
         rule_value: float,
     ) -> ModelsRuleInformation:
         instance = cls()
@@ -108,7 +115,7 @@ class ModelsRuleInformation(Model):
         if "ruleCriteria" in dict_ and dict_["ruleCriteria"] is not None:
             instance.rule_criteria = str(dict_["ruleCriteria"])
         elif include_empty:
-            instance.rule_criteria = str()
+            instance.rule_criteria = Union[str, RuleCriteriaEnum]()
         if "ruleValue" in dict_ and dict_["ruleValue"] is not None:
             instance.rule_value = float(dict_["ruleValue"])
         elif include_empty:
@@ -149,6 +156,12 @@ class ModelsRuleInformation(Model):
             "ruleAttribute": True,
             "ruleCriteria": True,
             "ruleValue": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "ruleCriteria": ["EQUAL", "MINIMUM", "MAXIMUM"],
         }
 
     # endregion static methods

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Justice Matchmaking Service (2.14.1)
+# Analytics Game Telemetry (0.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,35 +26,50 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
+from ...models import HTTPValidationError
 
-class HandlerV3Healthz(Operation):
-    """Handler V3 healthz (handlerV3Healthz)
+
+class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Operation):
+    """Protected Get Playtime (protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint retrieves player's total playtime in Steam for a specific game (AppId) and store them in service's cache.
+
+    Players' Steam account must be set into public to enable the service fetch their total playtime data.
 
     Properties:
-        url: /matchmaking/healthz
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime
 
         method: GET
 
-        tags: []
+        tags: ["Gametelemetry Operations"]
 
         consumes: []
 
-        produces: []
+        produces: ["application/json"]
 
         security_type: bearer
 
+        steam_id: (steamId) REQUIRED str in path
+
     Responses:
-        200: OK - (OK)
+        200: OK - Dict[str, Any] (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
 
     # region fields
 
-    _url: str = "/matchmaking/healthz"
+    _url: str = "/game-telemetry/v1/protected/steamIds/{steamId}/playtime"
     _method: str = "GET"
     _consumes: List[str] = []
-    _produces: List[str] = []
+    _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
+
+    steam_id: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -92,6 +107,7 @@ class HandlerV3Healthz(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
+            path_params=self.get_path_params(),
         )
 
     # endregion get methods
@@ -100,7 +116,14 @@ class HandlerV3Healthz(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "path": self.get_path_params(),
         }
+
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "steam_id"):
+            result["steamId"] = self.steam_id
+        return result
 
     # endregion get_x_params methods
 
@@ -110,12 +133,20 @@ class HandlerV3Healthz(Operation):
 
     # region with_x methods
 
+    def with_steam_id(self, value: str) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
+        self.steam_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "steam_id") and self.steam_id:
+            result["steamId"] = str(self.steam_id)
+        elif include_empty:
+            result["steamId"] = str()
         return result
 
     # endregion to methods
@@ -123,10 +154,12 @@ class HandlerV3Healthz(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Dict[str, Any]], Union[None, HTTPValidationError, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (OK)
+        200: OK - Dict[str, Any] (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -140,7 +173,9 @@ class HandlerV3Healthz(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return {str(k): v for k, v in content.items()}, None
+        if code == 422:
+            return None, HTTPValidationError.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -151,23 +186,31 @@ class HandlerV3Healthz(Operation):
     @classmethod
     def create(
         cls,
-    ) -> HandlerV3Healthz:
+        steam_id: str,
+    ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         instance = cls()
+        instance.steam_id = steam_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HandlerV3Healthz:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         instance = cls()
+        if "steamId" in dict_ and dict_["steamId"] is not None:
+            instance.steam_id = str(dict_["steamId"])
+        elif include_empty:
+            instance.steam_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "steamId": "steam_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "steamId": True,
         }
 
     # endregion static methods

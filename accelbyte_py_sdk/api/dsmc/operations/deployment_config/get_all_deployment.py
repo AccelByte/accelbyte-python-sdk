@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (2.16.0)
+# justice-dsm-controller-service (2.16.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,6 +62,8 @@ class GetAllDeployment(Operation):
 
         count: (count) OPTIONAL int in query
 
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
 
     Responses:
@@ -85,6 +87,7 @@ class GetAllDeployment(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     count: int                                                                                     # OPTIONAL in [query]
+    name: str                                                                                      # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
@@ -147,6 +150,8 @@ class GetAllDeployment(Operation):
         result = {}
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -167,6 +172,10 @@ class GetAllDeployment(Operation):
         self.count = value
         return self
 
+    def with_name(self, value: str) -> GetAllDeployment:
+        self.name = value
+        return self
+
     def with_offset(self, value: int) -> GetAllDeployment:
         self.offset = value
         return self
@@ -185,6 +194,10 @@ class GetAllDeployment(Operation):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = int()
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = str()
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -238,12 +251,15 @@ class GetAllDeployment(Operation):
         cls,
         namespace: str,
         count: Optional[int] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
     ) -> GetAllDeployment:
         instance = cls()
         instance.namespace = namespace
         if count is not None:
             instance.count = count
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
         return instance
@@ -259,6 +275,10 @@ class GetAllDeployment(Operation):
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = int()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = str()
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -270,6 +290,7 @@ class GetAllDeployment(Operation):
         return {
             "namespace": "namespace",
             "count": "count",
+            "name": "name",
             "offset": "offset",
         }
 
@@ -278,6 +299,7 @@ class GetAllDeployment(Operation):
         return {
             "namespace": True,
             "count": False,
+            "name": False,
             "offset": False,
         }
 

@@ -26,79 +26,66 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import LogAppMessageDeclaration
-from ..models import ModelsPartyData
-from ..models import ModelsPartyPUTCustomAttributesRequest
-from ..models import RestapiErrorResponseBody
+from ..models import ModelsAdminConcurrentRecordRequest
+from ..models import ModelsResponseError
 
-from ..operations.operations import AdminJoinPartyV1
-from ..operations.operations import AdminUpdatePartyAttributesV1
-from ..operations.operations import PublicGetMessages
+from ..operations.admin_concurrent_record import AdminPutGameRecordConcurrentHandlerV1
+from ..operations.admin_concurrent_record import AdminPutPlayerPublicRecordConcurrentHandlerV1
 
 
-@same_doc_as(AdminJoinPartyV1)
-def admin_join_party_v1(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(AdminPutGameRecordConcurrentHandlerV1)
+def admin_put_game_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = AdminJoinPartyV1.create(
-        party_id=party_id,
+    request = AdminPutGameRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminPutGameRecordConcurrentHandlerV1)
+async def admin_put_game_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPutGameRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminPutPlayerPublicRecordConcurrentHandlerV1)
+def admin_put_player_public_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPutPlayerPublicRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
         user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(AdminJoinPartyV1)
-async def admin_join_party_v1_async(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+@same_doc_as(AdminPutPlayerPublicRecordConcurrentHandlerV1)
+async def admin_put_player_public_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = AdminJoinPartyV1.create(
-        party_id=party_id,
+    request = AdminPutPlayerPublicRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(AdminUpdatePartyAttributesV1)
-def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminUpdatePartyAttributesV1.create(
-        body=body,
-        party_id=party_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(AdminUpdatePartyAttributesV1)
-async def admin_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminUpdatePartyAttributesV1.create(
-        body=body,
-        party_id=party_id,
-        namespace=namespace,
-    )
-    return await run_request_async(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicGetMessages)
-def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
-    request = PublicGetMessages.create()
-    return run_request(request, additional_headers=x_additional_headers)
-
-
-@same_doc_as(PublicGetMessages)
-async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None):
-    request = PublicGetMessages.create()
     return await run_request_async(request, additional_headers=x_additional_headers)

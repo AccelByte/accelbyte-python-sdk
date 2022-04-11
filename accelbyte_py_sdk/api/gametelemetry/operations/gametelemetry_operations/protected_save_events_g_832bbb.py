@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Justice Matchmaking Service (2.14.1)
+# Analytics Game Telemetry (0.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,35 +26,88 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
+from ...models import HTTPValidationError
+from ...models import TelemetryBody
 
-class VersionCheckHandler(Operation):
-    """Version check handler (versionCheckHandler)
+
+class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
+    """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
+
+    This endpoint requires valid JWT token.
+    This endpoint does not require permission.
+
+    This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
+
+
+    Format of the event:
+
+    - **EventNamespace (required)**: namespace of the relevant game with domain name format.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: io.accelbyte.justice.dev.samplegame
+
+
+
+    - **EventName (required)**: name of the event.
+
+
+    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
+
+
+
+
+    It is encouraged to use alphanumeric only characters. _.- will be deprecated soon
+
+
+
+
+    Example: player_killed, mission_accomplished
+
+
+
+    - **Payload (required)**: an arbitrary json with the payload of the said event
 
     Properties:
-        url: /matchmaking/version
+        url: /game-telemetry/v1/protected/events
 
-        method: GET
+        method: POST
 
-        tags: []
+        tags: ["Gametelemetry Operations"]
 
-        consumes: []
+        consumes: ["application/json"]
 
-        produces: []
+        produces: ["application/json"]
 
         security_type: bearer
 
+        body: (body) REQUIRED List[TelemetryBody] in body
+
     Responses:
-        200: OK - (OK)
+        204: No Content - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
 
     # region fields
 
-    _url: str = "/matchmaking/version"
-    _method: str = "GET"
-    _consumes: List[str] = []
-    _produces: List[str] = []
+    _url: str = "/game-telemetry/v1/protected/events"
+    _method: str = "POST"
+    _consumes: List[str] = ["application/json"]
+    _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
+
+    body: List[TelemetryBody]                                                                      # REQUIRED in [body]
 
     # endregion fields
 
@@ -100,7 +153,13 @@ class VersionCheckHandler(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return [i.to_dict() for i in self.body]
 
     # endregion get_x_params methods
 
@@ -110,12 +169,20 @@ class VersionCheckHandler(Operation):
 
     # region with_x methods
 
+    def with_body(self, value: List[TelemetryBody]) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+        self.body = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
+        elif include_empty:
+            result["body"] = []
         return result
 
     # endregion to methods
@@ -123,10 +190,12 @@ class VersionCheckHandler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HTTPValidationError, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (OK)
+        204: No Content - (Successful Response)
+
+        422: Unprocessable Entity - HTTPValidationError (Validation Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -139,8 +208,10 @@ class VersionCheckHandler(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 204:
+            return None, None
+        if code == 422:
+            return None, HTTPValidationError.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -151,23 +222,31 @@ class VersionCheckHandler(Operation):
     @classmethod
     def create(
         cls,
-    ) -> VersionCheckHandler:
+        body: List[TelemetryBody],
+    ) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
+        instance.body = body
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> VersionCheckHandler:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = [TelemetryBody.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
+        elif include_empty:
+            instance.body = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": True,
         }
 
     # endregion static methods

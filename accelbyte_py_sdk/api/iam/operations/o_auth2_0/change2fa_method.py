@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class Change2faMethod(Operation):
     """Change 2FA method (Change2FAMethod)
 
-    Change 2FA method(In Development)
+    Change 2FA method
 
 
 

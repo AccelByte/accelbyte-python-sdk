@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-dsm-controller-service Index (2.16.0)
+# justice-dsm-controller-service Index (2.16.1)
 
 
 ## Operations
@@ -54,6 +54,11 @@
 | /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region} | PATCH | UpdateOverrideRegionOverride | [UpdateOverrideRegionOverride](../accelbyte_py_sdk/api/dsmc/operations/deployment_config/update_override_region__fb90bf.py) | [update_override_region_override](../accelbyte_py_sdk/api/dsmc/wrappers/_deployment_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region} | PATCH | UpdateRootRegionOverride | [UpdateRootRegionOverride](../accelbyte_py_sdk/api/dsmc/operations/deployment_config/update_root_region_override.py) | [update_root_region_override](../accelbyte_py_sdk/api/dsmc/wrappers/_deployment_config.py) |
 
+### Dsmc Operations
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /dsmcontroller/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/dsmc/operations/dsmc_operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/dsmc/wrappers/_dsmc_operations.py) |
+
 ### Image Config
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -70,11 +75,6 @@
 | /dsmcontroller/admin/images/import | POST | ImportImages | [ImportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/import_images.py) | [import_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | GET | ListImages | [ListImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images.py) | [list_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
 | /dsmcontroller/admin/images | PUT | UpdateImage | [UpdateImage](../accelbyte_py_sdk/api/dsmc/operations/image_config/update_image.py) | [update_image](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) |
-
-### Operations
-| Endpoint | Method | ID | Class | Wrapper |
-|---|---|---|---|---|
-| /dsmcontroller/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/dsmc/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/dsmc/wrappers/_operations.py) |
 
 ### Pod Config
 | Endpoint | Method | ID | Class | Wrapper |

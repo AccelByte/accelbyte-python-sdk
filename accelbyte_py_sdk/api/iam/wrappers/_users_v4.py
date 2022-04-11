@@ -52,6 +52,7 @@ from ..operations.users_v4 import AdminAddUserRoleV4
 from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
 from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
 from ..operations.users_v4 import AdminDisableMyBackupCodesV4
+from ..operations.users_v4 import AdminDisableUserMFAV4
 from ..operations.users_v4 import AdminDownloadMyBackupCodesV4
 from ..operations.users_v4 import AdminEnableMyAuthenticatorV4
 from ..operations.users_v4 import AdminEnableMyBackupCodesV4
@@ -80,6 +81,7 @@ from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
 from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
+from ..operations.users_v4 import PublicRemoveTrustedDeviceV4
 from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
@@ -161,6 +163,32 @@ def admin_disable_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, st
 @same_doc_as(AdminDisableMyBackupCodesV4)
 async def admin_disable_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None):
     request = AdminDisableMyBackupCodesV4.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableUserMFAV4)
+def admin_disable_user_mfav4(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDisableUserMFAV4.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminDisableUserMFAV4)
+async def admin_disable_user_mfav4_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDisableUserMFAV4.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
@@ -757,6 +785,30 @@ async def public_make_factor_my_default_v4_async(factor: str, namespace: Optiona
             return None, error
     request = PublicMakeFactorMyDefaultV4.create(
         factor=factor,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicRemoveTrustedDeviceV4)
+def public_remove_trusted_device_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicRemoveTrustedDeviceV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicRemoveTrustedDeviceV4)
+async def public_remove_trusted_device_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicRemoveTrustedDeviceV4.create(
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

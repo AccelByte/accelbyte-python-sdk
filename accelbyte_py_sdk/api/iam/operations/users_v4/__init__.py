@@ -16,6 +16,7 @@ from .admin_add_user_role_v4 import AdminAddUserRoleV4
 from .admin_bulk_check_valid__17860c import AdminBulkCheckValidUserIDV4
 from .admin_disable_my_authen_d71ec4 import AdminDisableMyAuthenticatorV4
 from .admin_disable_my_backup_727b56 import AdminDisableMyBackupCodesV4
+from .admin_disable_user_mfav4 import AdminDisableUserMFAV4
 from .admin_download_my_backu_29ee48 import AdminDownloadMyBackupCodesV4
 from .admin_enable_my_authent_263fb3 import AdminEnableMyAuthenticatorV4
 from .admin_enable_my_backup__1f7c71 import AdminEnableMyBackupCodesV4
@@ -44,6 +45,7 @@ from .public_generate_my_back_da569a import PublicGenerateMyBackupCodesV4
 from .public_get_my_backup_codes_v4 import PublicGetMyBackupCodesV4
 from .public_get_my_enabled_f_a93b10 import PublicGetMyEnabledFactorsV4
 from .public_make_factor_my_d_4f4f01 import PublicMakeFactorMyDefaultV4
+from .public_remove_trusted_d_78cd8f import PublicRemoveTrustedDeviceV4
 from .public_update_user_emai_2d6478 import PublicUpdateUserEmailAddressV4
 from .public_update_user_v4 import PublicUpdateUserV4
 from .public_upgrade_headless_966239 import PublicUpgradeHeadlessAccountV4

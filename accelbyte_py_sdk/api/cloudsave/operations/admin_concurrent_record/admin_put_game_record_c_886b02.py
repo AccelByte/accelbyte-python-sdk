@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-lobby-server (staging)
+# justice-cloudsave-service (2.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,30 +26,122 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import ModelsPartyData
-from ...models import ModelsPartyPUTCustomAttributesRequest
-from ...models import RestapiErrorResponseBody
+from ...models import ModelsAdminConcurrentRecordRequest
+from ...models import ModelsResponseError
 
 
-class AdminUpdatePartyAttributesV1(Operation):
-    """admin update party attributes (adminUpdatePartyAttributesV1)
+class AdminPutGameRecordConcurrentHandlerV1(Operation):
+    """Create or replace game record (adminPutGameRecordConcurrentHandlerV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]` with scope `social`
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
+    --------------------|---------------------------------------------------------
+    Required Scope      | `social`
 
-    update party attributes in a namespace.
+
+
+
+
+
+
+
+    ## Description
+
+
+
+    This endpoints will create new game record or replace the existing game record.
+
+     Replace behaviour:
+    The existing value will be replaced completely with the new value.
+
+    Example
+    - Existing JSON:
+
+
+
+        { "data1": "value" }
+
+
+    - New JSON:
+
+
+
+        { "data2": "new value" }
+
+
+    - Result:
+
+
+
+        { "data2": "new value" }
+
+
+
+
+
+
+
+    ## Reserved Word
+
+
+
+    Reserved Word List: META
+
+    The reserved word cannot be used as a field in record value,
+    If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+    ## Parameters Notes
+
+
+    1. set_by (default: CLIENT, type: string)
+    Indicate which party that could modify the game record.
+    SERVER: record can be modified by server only.
+    CLIENT: record can be modified by client and server.
+    2. updatedAt (required: true)
+    Time format style: RFC3339
+    3. value
+    Json
+     Request Body Example:
+
+
+
+
+            {
+                "set_by": "SERVER",
+                "value": {},
+                "updatedAt": "2022-03-17T10:42:15.444Z"
+            }
+
+
+
+
+
+
+    ## Optimistic Concurrency Control
+
+
+
+    This endpoint implement optimistic concurrency control to avoid race condition.
+    If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
+    and client need to redo the operation (fetch data and do update).
+    Otherwise, the server will process the request.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PARTY:STORAGE [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
+
+        - CLIENT []
 
     Required Scope(s):
         - social
 
     Properties:
-        url: /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes
+        url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
 
         method: PUT
 
-        tags: []
+        tags: ["AdminConcurrentRecord"]
 
         consumes: ["application/json"]
 
@@ -57,40 +149,36 @@ class AdminUpdatePartyAttributesV1(Operation):
 
         security_type: bearer
 
-        body: (body) REQUIRED ModelsPartyPUTCustomAttributesRequest in body
+        body: (body) REQUIRED ModelsAdminConcurrentRecordRequest in body
+
+        key: (key) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
-        party_id: (partyId) REQUIRED str in path
-
     Responses:
-        200: OK - ModelsPartyData (OK)
+        204: No Content - (Record saved)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes"
+    _url: str = "/cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: ModelsPartyPUTCustomAttributesRequest                                                    # REQUIRED in [body]
+    body: ModelsAdminConcurrentRecordRequest                                                       # REQUIRED in [body]
+    key: str                                                                                       # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
-    party_id: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -148,10 +236,10 @@ class AdminUpdatePartyAttributesV1(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "key"):
+            result["key"] = self.key
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "party_id"):
-            result["partyId"] = self.party_id
         return result
 
     # endregion get_x_params methods
@@ -162,16 +250,16 @@ class AdminUpdatePartyAttributesV1(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsPartyPUTCustomAttributesRequest) -> AdminUpdatePartyAttributesV1:
+    def with_body(self, value: ModelsAdminConcurrentRecordRequest) -> AdminPutGameRecordConcurrentHandlerV1:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AdminUpdatePartyAttributesV1:
-        self.namespace = value
+    def with_key(self, value: str) -> AdminPutGameRecordConcurrentHandlerV1:
+        self.key = value
         return self
 
-    def with_party_id(self, value: str) -> AdminUpdatePartyAttributesV1:
-        self.party_id = value
+    def with_namespace(self, value: str) -> AdminPutGameRecordConcurrentHandlerV1:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -183,15 +271,15 @@ class AdminUpdatePartyAttributesV1(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsPartyPUTCustomAttributesRequest()
+            result["body"] = ModelsAdminConcurrentRecordRequest()
+        if hasattr(self, "key") and self.key:
+            result["key"] = str(self.key)
+        elif include_empty:
+            result["key"] = str()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
-        if hasattr(self, "party_id") and self.party_id:
-            result["partyId"] = str(self.party_id)
-        elif include_empty:
-            result["partyId"] = str()
         return result
 
     # endregion to methods
@@ -199,22 +287,18 @@ class AdminUpdatePartyAttributesV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPartyData], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsPartyData (OK)
+        204: No Content - (Record saved)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+        400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
-        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+        401: Unauthorized - ModelsResponseError (Unauthorized)
 
-        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+        412: Precondition Failed - ModelsResponseError (Precondition Failed)
 
-        404: Not Found - RestapiErrorResponseBody (Not Found)
-
-        412: Precondition Failed - RestapiErrorResponseBody (Precondition Failed)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        500: Internal Server Error - ModelsResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -227,20 +311,16 @@ class AdminUpdatePartyAttributesV1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return ModelsPartyData.create_from_dict(content), None
+        if code == 204:
+            return None, None
         if code == 400:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 403:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 404:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 412:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
         if code == 500:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return None, ModelsResponseError.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -251,47 +331,47 @@ class AdminUpdatePartyAttributesV1(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsPartyPUTCustomAttributesRequest,
+        body: ModelsAdminConcurrentRecordRequest,
+        key: str,
         namespace: str,
-        party_id: str,
-    ) -> AdminUpdatePartyAttributesV1:
+    ) -> AdminPutGameRecordConcurrentHandlerV1:
         instance = cls()
         instance.body = body
+        instance.key = key
         instance.namespace = namespace
-        instance.party_id = party_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminUpdatePartyAttributesV1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminPutGameRecordConcurrentHandlerV1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsPartyPUTCustomAttributesRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsAdminConcurrentRecordRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = ModelsPartyPUTCustomAttributesRequest()
+            instance.body = ModelsAdminConcurrentRecordRequest()
+        if "key" in dict_ and dict_["key"] is not None:
+            instance.key = str(dict_["key"])
+        elif include_empty:
+            instance.key = str()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
-        if "partyId" in dict_ and dict_["partyId"] is not None:
-            instance.party_id = str(dict_["partyId"])
-        elif include_empty:
-            instance.party_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "key": "key",
             "namespace": "namespace",
-            "partyId": "party_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "body": True,
+            "key": True,
             "namespace": True,
-            "partyId": True,
         }
 
     # endregion static methods

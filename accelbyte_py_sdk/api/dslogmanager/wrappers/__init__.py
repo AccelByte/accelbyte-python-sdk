@@ -17,8 +17,8 @@ from ._all_terminated_servers import batch_download_server_logs_async
 from ._all_terminated_servers import list_all_terminated_servers
 from ._all_terminated_servers import list_all_terminated_servers_async
 
-from ._operations import public_get_messages
-from ._operations import public_get_messages_async
+from ._dslogmanager_operations import public_get_messages
+from ._dslogmanager_operations import public_get_messages_async
 
 from ._terminated_servers import check_server_logs
 from ._terminated_servers import check_server_logs_async

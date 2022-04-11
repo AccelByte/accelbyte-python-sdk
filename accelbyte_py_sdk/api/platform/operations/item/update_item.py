@@ -200,7 +200,7 @@ class UpdateItem(Operation):
 
            "tags": [
 
-               "tag"
+               "exampleTag24"
 
            ],
 

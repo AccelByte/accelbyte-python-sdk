@@ -37,6 +37,8 @@ class AcceptAgreementRequest(Model):
         policy_id: (policyId) REQUIRED str
 
         policy_version_id: (policyVersionId) REQUIRED str
+
+        is_need_to_send_event_marketing: (isNeedToSendEventMarketing) OPTIONAL bool
     """
 
     # region fields
@@ -45,6 +47,7 @@ class AcceptAgreementRequest(Model):
     localized_policy_version_id: str                                                               # REQUIRED
     policy_id: str                                                                                 # REQUIRED
     policy_version_id: str                                                                         # REQUIRED
+    is_need_to_send_event_marketing: bool                                                          # OPTIONAL
 
     # endregion fields
 
@@ -64,6 +67,10 @@ class AcceptAgreementRequest(Model):
 
     def with_policy_version_id(self, value: str) -> AcceptAgreementRequest:
         self.policy_version_id = value
+        return self
+
+    def with_is_need_to_send_event_marketing(self, value: bool) -> AcceptAgreementRequest:
+        self.is_need_to_send_event_marketing = value
         return self
 
     # endregion with_x methods
@@ -88,6 +95,10 @@ class AcceptAgreementRequest(Model):
             result["policyVersionId"] = str(self.policy_version_id)
         elif include_empty:
             result["policyVersionId"] = str()
+        if hasattr(self, "is_need_to_send_event_marketing"):
+            result["isNeedToSendEventMarketing"] = bool(self.is_need_to_send_event_marketing)
+        elif include_empty:
+            result["isNeedToSendEventMarketing"] = bool()
         return result
 
     # endregion to methods
@@ -101,12 +112,15 @@ class AcceptAgreementRequest(Model):
         localized_policy_version_id: str,
         policy_id: str,
         policy_version_id: str,
+        is_need_to_send_event_marketing: Optional[bool] = None,
     ) -> AcceptAgreementRequest:
         instance = cls()
         instance.is_accepted = is_accepted
         instance.localized_policy_version_id = localized_policy_version_id
         instance.policy_id = policy_id
         instance.policy_version_id = policy_version_id
+        if is_need_to_send_event_marketing is not None:
+            instance.is_need_to_send_event_marketing = is_need_to_send_event_marketing
         return instance
 
     @classmethod
@@ -130,6 +144,10 @@ class AcceptAgreementRequest(Model):
             instance.policy_version_id = str(dict_["policyVersionId"])
         elif include_empty:
             instance.policy_version_id = str()
+        if "isNeedToSendEventMarketing" in dict_ and dict_["isNeedToSendEventMarketing"] is not None:
+            instance.is_need_to_send_event_marketing = bool(dict_["isNeedToSendEventMarketing"])
+        elif include_empty:
+            instance.is_need_to_send_event_marketing = bool()
         return instance
 
     @classmethod
@@ -159,6 +177,7 @@ class AcceptAgreementRequest(Model):
             "localizedPolicyVersionId": "localized_policy_version_id",
             "policyId": "policy_id",
             "policyVersionId": "policy_version_id",
+            "isNeedToSendEventMarketing": "is_need_to_send_event_marketing",
         }
 
     @staticmethod
@@ -168,6 +187,7 @@ class AcceptAgreementRequest(Model):
             "localizedPolicyVersionId": True,
             "policyId": True,
             "policyVersionId": True,
+            "isNeedToSendEventMarketing": False,
         }
 
     # endregion static methods

@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class AdminEnableMyAuthenticatorV4(Operation):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
-    (In Development)This endpoint is used to enable 2FA authenticator.
+    This endpoint is used to enable 2FA authenticator.
 
 
 
@@ -57,13 +57,13 @@ class AdminEnableMyAuthenticatorV4(Operation):
     Responses:
         204: No Content - (Authenticator enabled)
 
-        400: Bad Request - RestErrorResponse (10138: code not match | 10191: email address not verified | 10190: auth secret key expired)
+        400: Bad Request - RestErrorResponse (10138: code not match | 10191: email address not verified | 10190: auth secret key expired | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         409: Conflict - RestErrorResponse (10194: factor already enabled)
 
@@ -168,13 +168,13 @@ class AdminEnableMyAuthenticatorV4(Operation):
 
         204: No Content - (Authenticator enabled)
 
-        400: Bad Request - RestErrorResponse (10138: code not match | 10191: email address not verified | 10190: auth secret key expired)
+        400: Bad Request - RestErrorResponse (10138: code not match | 10191: email address not verified | 10190: auth secret key expired | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         409: Conflict - RestErrorResponse (10194: factor already enabled)
 

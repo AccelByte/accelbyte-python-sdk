@@ -33,7 +33,7 @@ from ...models import ResponseError
 class PublicDownloadContentByContentID(Operation):
     """Get user specific content (PublicDownloadContentByContentID)
 
-    Requires valid user token
+    Public user can access without token or if token specified, requires valid user token
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}

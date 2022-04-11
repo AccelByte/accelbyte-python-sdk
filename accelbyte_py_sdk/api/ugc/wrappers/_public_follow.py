@@ -34,6 +34,8 @@ from ..models import ResponseError
 
 from ..operations.public_follow import GetFollowedContent
 from ..operations.public_follow import GetFollowedUsers
+from ..operations.public_follow import GetPublicFollowers
+from ..operations.public_follow import GetPublicFollowing
 from ..operations.public_follow import UpdateUserFollowStatus
 
 
@@ -86,6 +88,66 @@ async def get_followed_users_async(limit: Optional[int] = None, offset: Optional
         if error:
             return None, error
     request = GetFollowedUsers.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPublicFollowers)
+def get_public_followers(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublicFollowers.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPublicFollowers)
+async def get_public_followers_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublicFollowers.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPublicFollowing)
+def get_public_following(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublicFollowing.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPublicFollowing)
+async def get_public_following_async(user_id: str, limit: Optional[str] = None, offset: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPublicFollowing.create(
+        user_id=user_id,
         limit=limit,
         offset=offset,
         namespace=namespace,

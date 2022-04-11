@@ -29,9 +29,47 @@ from ....core import same_doc_as
 from ..models import HTTPValidationError
 from ..models import TelemetryBody
 
-from ..operations.operations import ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
-from ..operations.operations import ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
-from ..operations.operations import ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+from ..operations.gametelemetry_operations import AdminGetEventsGameTelemetryV1AdminEventsGet
+from ..operations.gametelemetry_operations import AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet
+from ..operations.gametelemetry_operations import ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
+from ..operations.gametelemetry_operations import ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
+from ..operations.gametelemetry_operations import ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+
+
+@same_doc_as(AdminGetEventsGameTelemetryV1AdminEventsGet)
+def admin_get_events_game_telemetry_v1_admin_events_get(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetEventsGameTelemetryV1AdminEventsGet.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetEventsGameTelemetryV1AdminEventsGet)
+async def admin_get_events_game_telemetry_v1_admin_events_get_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetEventsGameTelemetryV1AdminEventsGet.create(
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet)
+def admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet.create()
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet)
+async def admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get_async(x_additional_headers: Optional[Dict[str, str]] = None):
+    request = AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet.create()
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet)

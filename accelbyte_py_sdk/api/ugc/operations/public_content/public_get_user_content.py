@@ -33,7 +33,7 @@ from ...models import ResponseError
 class PublicGetUserContent(Operation):
     """Get user's generated contents (PublicGetUserContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
+    Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]

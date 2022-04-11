@@ -32,7 +32,7 @@ from ...models import RestErrorResponse
 class PublicDownloadMyBackupCodesV4(Operation):
     """Download user backup codes (PublicDownloadMyBackupCodesV4)
 
-    (In Development)This endpoint is used to download backup codes.
+    This endpoint is used to download backup codes.
 
 
 
@@ -57,13 +57,13 @@ class PublicDownloadMyBackupCodesV4(Operation):
     Responses:
         200: OK - (Backup codes downloaded)
 
-        400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found)
+        400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -167,13 +167,13 @@ class PublicDownloadMyBackupCodesV4(Operation):
 
         200: OK - (Backup codes downloaded)
 
-        400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found)
+        400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

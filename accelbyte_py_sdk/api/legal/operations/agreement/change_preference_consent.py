@@ -52,7 +52,7 @@ class ChangePreferenceConsent(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        204: No Content - (successful operation)
     """
 
     # region fields
@@ -175,10 +175,10 @@ class ChangePreferenceConsent(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
-        default: (successful operation)
+        204: No Content - (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -191,8 +191,8 @@ class ChangePreferenceConsent(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 204:
+            return None, None
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

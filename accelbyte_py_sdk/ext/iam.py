@@ -1569,12 +1569,18 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.client_id = randomize("uid")
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
+    instance.generic_oauth_flow = randomize("bool")
     instance.is_active = randomize("bool")
+    instance.issuer = randomize()
+    instance.jwks_endpoint = randomize()
     instance.key_id = randomize()
     instance.organization_id = randomize()
+    instance.platform_name = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
     instance.team_id = randomize()
+    instance.token_authentication_type = randomize()
+    instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
 
@@ -1587,15 +1593,21 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.client_id = randomize("uid")
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
+    instance.generic_oauth_flow = randomize("bool")
     instance.is_active = randomize("bool")
+    instance.issuer = randomize()
+    instance.jwks_endpoint = randomize()
     instance.key_id = randomize()
     instance.namespace = randomize("slug")
     instance.organization_id = randomize()
     instance.platform_id = randomize()
+    instance.platform_name = randomize()
     instance.redirect_uri = randomize()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.secret = randomize()
     instance.team_id = randomize()
+    instance.token_authentication_type = randomize()
+    instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
 
@@ -2090,8 +2102,11 @@ def create_oauthmodel_country_location_response_example() -> OauthmodelCountryLo
 def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance = OauthmodelErrorResponse()
     instance.error = randomize()
+    instance.default_factor = randomize()
     instance.error_description = randomize()
     instance.error_uri = randomize()
+    instance.factors = [randomize()]
+    instance.mfa_token = randomize()
     return instance
 
 

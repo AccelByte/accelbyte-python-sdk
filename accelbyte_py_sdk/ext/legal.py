@@ -69,6 +69,7 @@ def create_accept_agreement_request_example() -> AcceptAgreementRequest:
     instance.localized_policy_version_id = randomize()
     instance.policy_id = randomize()
     instance.policy_version_id = randomize()
+    instance.is_need_to_send_event_marketing = randomize("bool")
     return instance
 
 

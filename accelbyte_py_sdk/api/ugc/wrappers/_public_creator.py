@@ -26,19 +26,33 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import LogAppMessageDeclaration
+from ..models import ModelsCreatorOverviewResponse
 from ..models import ResponseError
 
-from ..operations.operations import PublicGetMessages
+from ..operations.public_creator import GetCreator
 
 
-@same_doc_as(PublicGetMessages)
-def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
-    request = PublicGetMessages.create()
+@same_doc_as(GetCreator)
+def get_creator(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCreator.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
     return run_request(request, additional_headers=x_additional_headers)
 
 
-@same_doc_as(PublicGetMessages)
-async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None):
-    request = PublicGetMessages.create()
+@same_doc_as(GetCreator)
+async def get_creator_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCreator.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
     return await run_request_async(request, additional_headers=x_additional_headers)

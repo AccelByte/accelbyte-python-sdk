@@ -200,7 +200,7 @@ class CreateItem(Operation):
 
            "tags": [
 
-               "tag"
+               "exampleTag24"
 
            ],
 

@@ -469,6 +469,7 @@ def create_service_get_session_history_search_response_item_example() -> Service
     instance.region = randomize()
     instance.server_name = randomize()
     instance.status = randomize()
+    instance.sub_game_mode = [randomize()]
     instance.party_id = randomize("uid")
     return instance
 
@@ -482,6 +483,7 @@ def create_service_get_session_history_search_response_item_v2_example() -> Serv
     instance.match_id = randomize()
     instance.namespace = randomize("slug")
     instance.status = randomize()
+    instance.sub_game_mode = [randomize()]
     return instance
 
 

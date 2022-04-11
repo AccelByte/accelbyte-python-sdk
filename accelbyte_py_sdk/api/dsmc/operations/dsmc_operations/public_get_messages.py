@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (2.16.0)
+# justice-dsm-controller-service (2.16.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,7 +40,7 @@ class PublicGetMessages(Operation):
 
         method: GET
 
-        tags: []
+        tags: ["Dsmc Operations"]
 
         consumes: ["application/json"]
 

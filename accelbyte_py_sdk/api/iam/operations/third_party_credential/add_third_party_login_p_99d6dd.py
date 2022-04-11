@@ -46,6 +46,23 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
     The secret for apple is base64 encoded private key.
 
+
+
+
+    If generic oauth flow is set to true:
+
+
+
+
+
+
+      * Current supported value for TokenAuthenticationType is idToken
+
+
+      * `TokenClaimsMapping` is used to extract user info from idToken claims.
+    Its a JSON format with key should be `name`, `email` and `avatarURL`
+    since IAM will look up for these key when extracting user info.
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:PLATFORM:{platformId}:CLIENT [CREATE]
 

@@ -33,7 +33,7 @@ from ...models import RestErrorResponse
 class AdminEnableMyBackupCodesV4(Operation):
     """Enable 2FA backup codes (AdminEnableMyBackupCodesV4)
 
-    (In Development)This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to enable 2FA backup codes.
 
 
 
@@ -56,13 +56,13 @@ class AdminEnableMyBackupCodesV4(Operation):
     Responses:
         200: OK - ModelBackupCodesResponseV4 (Backup codes enabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         409: Conflict - RestErrorResponse (10194: factor already enabled)
 
@@ -150,13 +150,13 @@ class AdminEnableMyBackupCodesV4(Operation):
 
         200: OK - ModelBackupCodesResponseV4 (Backup codes enabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled | 10171: email address not found)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        404: Not Found - RestErrorResponse (10139: platform account not found | 10171: email address not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
         409: Conflict - RestErrorResponse (10194: factor already enabled)
 

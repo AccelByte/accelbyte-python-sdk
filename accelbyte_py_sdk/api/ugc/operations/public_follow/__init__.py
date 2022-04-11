@@ -14,4 +14,6 @@ __email__ = "dev@accelbyte.net"
 
 from .get_followed_content import GetFollowedContent
 from .get_followed_users import GetFollowedUsers
+from .get_public_followers import GetPublicFollowers
+from .get_public_following import GetPublicFollowing
 from .update_user_follow_status import UpdateUserFollowStatus

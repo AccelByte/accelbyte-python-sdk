@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
-__version__ = "2.16.0"
+__version__ = "2.16.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -89,6 +89,9 @@ from ._deployment_config import update_override_region_override_async
 from ._deployment_config import update_root_region_override
 from ._deployment_config import update_root_region_override_async
 
+from ._dsmc_operations import public_get_messages
+from ._dsmc_operations import public_get_messages_async
+
 from ._image_config import create_image
 from ._image_config import create_image_async
 from ._image_config import create_image_patch
@@ -115,9 +118,6 @@ from ._image_config import list_images
 from ._image_config import list_images_async
 from ._image_config import update_image
 from ._image_config import update_image_async
-
-from ._operations import public_get_messages
-from ._operations import public_get_messages_async
 
 from ._pod_config import create_pod_config
 from ._pod_config import create_pod_config_async

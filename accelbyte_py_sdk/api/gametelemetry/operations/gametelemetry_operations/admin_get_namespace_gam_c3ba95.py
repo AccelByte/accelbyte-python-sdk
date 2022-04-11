@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-lobby-server (staging)
+# Analytics Game Telemetry (0.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,39 +26,36 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import LogAppMessageDeclaration
-from ...models import RestapiErrorResponseBody
 
+class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
+    """Admin Get Namespace (admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get)
 
-class PublicGetMessages(Operation):
-    """get service messages (publicGetMessages)
+    This endpoint requires valid JWT token and permission **ADMIN:ANALYTICS:TELEMETRY:{EventNamespace}** **READ**.
 
-    get the list of messages.
+    This endpoint retrieve namespace from kafka topic.
 
     Properties:
-        url: /lobby/v1/messages
+        url: /game-telemetry/v1/admin/telemetrynamespace
 
         method: GET
 
-        tags: []
+        tags: ["Gametelemetry Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         security_type: bearer
 
     Responses:
-        200: OK - List[LogAppMessageDeclaration] (OK)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        200: OK - (Successful Response)
     """
 
     # region fields
 
-    _url: str = "/lobby/v1/messages"
+    _url: str = "/game-telemetry/v1/admin/telemetrynamespace"
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
@@ -130,12 +127,10 @@ class PublicGetMessages(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[LogAppMessageDeclaration]], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[LogAppMessageDeclaration] (OK)
-
-        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+        200: OK - (Successful Response)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -149,9 +144,7 @@ class PublicGetMessages(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [LogAppMessageDeclaration.create_from_dict(i) for i in content], None
-        if code == 500:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
+            return HttpResponse.create(code, "OK"), None
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -162,12 +155,12 @@ class PublicGetMessages(Operation):
     @classmethod
     def create(
         cls,
-    ) -> PublicGetMessages:
+    ) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
         instance = cls()
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetMessages:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
         instance = cls()
         return instance
 

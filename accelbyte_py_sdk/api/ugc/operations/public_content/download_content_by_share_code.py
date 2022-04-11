@@ -33,7 +33,7 @@ from ...models import ResponseError
 class DownloadContentByShareCode(Operation):
     """Get content by sharecode (DownloadContentByShareCode)
 
-    Requires valid user token
+    Public user can access without token or if token specified, requires valid user token
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/{shareCode}

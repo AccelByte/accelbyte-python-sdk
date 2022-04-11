@@ -107,6 +107,11 @@
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots | PUT | UpdateScreenshots | [UpdateScreenshots](../accelbyte_py_sdk/api/ugc/operations/public_content/update_screenshots.py) | [update_screenshots](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots | POST | UploadContentScreenshot | [UploadContentScreenshot](../accelbyte_py_sdk/api/ugc/operations/public_content/upload_content_screenshot.py) | [upload_content_screenshot](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) |
 
+### Public Creator
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /ugc/v1/public/namespaces/{namespace}/users/{userId} | GET | GetCreator | [GetCreator](../accelbyte_py_sdk/api/ugc/operations/public_creator/get_creator.py) | [get_creator](../accelbyte_py_sdk/api/ugc/wrappers/_public_creator.py) |
+
 ### Public Download Count
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -117,6 +122,8 @@
 |---|---|---|---|---|
 | /ugc/v1/public/namespaces/{namespace}/contents/followed | GET | GetFollowedContent | [GetFollowedContent](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_followed_content.py) | [get_followed_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/followed | GET | GetFollowedUsers | [GetFollowedUsers](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_followed_users.py) | [get_followed_users](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
+| /ugc/v1/public/namespaces/{namespace}/users/{userId}/followers | GET | GetPublicFollowers | [GetPublicFollowers](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_public_followers.py) | [get_public_followers](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
+| /ugc/v1/public/namespaces/{namespace}/users/{userId}/following | GET | GetPublicFollowing | [GetPublicFollowing](../accelbyte_py_sdk/api/ugc/operations/public_follow/get_public_following.py) | [get_public_following](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/follow | PUT | UpdateUserFollowStatus | [UpdateUserFollowStatus](../accelbyte_py_sdk/api/ugc/operations/public_follow/update_user_follow_status.py) | [update_user_follow_status](../accelbyte_py_sdk/api/ugc/wrappers/_public_follow.py) |
 
 ### Public Group

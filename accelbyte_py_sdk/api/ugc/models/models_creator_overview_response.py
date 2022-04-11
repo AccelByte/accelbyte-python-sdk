@@ -32,16 +32,22 @@ class ModelsCreatorOverviewResponse(Model):
     Properties:
         follow_count: (followCount) REQUIRED int
 
+        following_count: (followingCount) REQUIRED int
+
         id_: (id) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        total_liked_content: (totalLikedContent) REQUIRED int
     """
 
     # region fields
 
     follow_count: int                                                                              # REQUIRED
+    following_count: int                                                                           # REQUIRED
     id_: str                                                                                       # REQUIRED
     namespace: str                                                                                 # REQUIRED
+    total_liked_content: int                                                                       # REQUIRED
 
     # endregion fields
 
@@ -51,12 +57,20 @@ class ModelsCreatorOverviewResponse(Model):
         self.follow_count = value
         return self
 
+    def with_following_count(self, value: int) -> ModelsCreatorOverviewResponse:
+        self.following_count = value
+        return self
+
     def with_id(self, value: str) -> ModelsCreatorOverviewResponse:
         self.id_ = value
         return self
 
     def with_namespace(self, value: str) -> ModelsCreatorOverviewResponse:
         self.namespace = value
+        return self
+
+    def with_total_liked_content(self, value: int) -> ModelsCreatorOverviewResponse:
+        self.total_liked_content = value
         return self
 
     # endregion with_x methods
@@ -69,6 +83,10 @@ class ModelsCreatorOverviewResponse(Model):
             result["followCount"] = int(self.follow_count)
         elif include_empty:
             result["followCount"] = int()
+        if hasattr(self, "following_count"):
+            result["followingCount"] = int(self.following_count)
+        elif include_empty:
+            result["followingCount"] = int()
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -77,6 +95,10 @@ class ModelsCreatorOverviewResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = str()
+        if hasattr(self, "total_liked_content"):
+            result["totalLikedContent"] = int(self.total_liked_content)
+        elif include_empty:
+            result["totalLikedContent"] = int()
         return result
 
     # endregion to methods
@@ -87,13 +109,17 @@ class ModelsCreatorOverviewResponse(Model):
     def create(
         cls,
         follow_count: int,
+        following_count: int,
         id_: str,
         namespace: str,
+        total_liked_content: int,
     ) -> ModelsCreatorOverviewResponse:
         instance = cls()
         instance.follow_count = follow_count
+        instance.following_count = following_count
         instance.id_ = id_
         instance.namespace = namespace
+        instance.total_liked_content = total_liked_content
         return instance
 
     @classmethod
@@ -105,6 +131,10 @@ class ModelsCreatorOverviewResponse(Model):
             instance.follow_count = int(dict_["followCount"])
         elif include_empty:
             instance.follow_count = int()
+        if "followingCount" in dict_ and dict_["followingCount"] is not None:
+            instance.following_count = int(dict_["followingCount"])
+        elif include_empty:
+            instance.following_count = int()
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -113,6 +143,10 @@ class ModelsCreatorOverviewResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = str()
+        if "totalLikedContent" in dict_ and dict_["totalLikedContent"] is not None:
+            instance.total_liked_content = int(dict_["totalLikedContent"])
+        elif include_empty:
+            instance.total_liked_content = int()
         return instance
 
     @classmethod
@@ -139,16 +173,20 @@ class ModelsCreatorOverviewResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "followCount": "follow_count",
+            "followingCount": "following_count",
             "id": "id_",
             "namespace": "namespace",
+            "totalLikedContent": "total_liked_content",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "followCount": True,
+            "followingCount": True,
             "id": True,
             "namespace": True,
+            "totalLikedContent": True,
         }
 
     # endregion static methods

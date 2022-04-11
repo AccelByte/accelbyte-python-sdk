@@ -53,6 +53,13 @@ from ._friends import user_request_friend_async
 from ._friends import user_unfriend_request
 from ._friends import user_unfriend_request_async
 
+from ._lobby_operations import admin_join_party_v1
+from ._lobby_operations import admin_join_party_v1_async
+from ._lobby_operations import admin_update_party_attributes_v1
+from ._lobby_operations import admin_update_party_attributes_v1_async
+from ._lobby_operations import public_get_messages
+from ._lobby_operations import public_get_messages_async
+
 from ._notification import create_notification_template_v1_admin
 from ._notification import create_notification_template_v1_admin_async
 from ._notification import create_notification_topic_v1_admin
@@ -127,13 +134,6 @@ from ._notification import update_template_localization_v1_admin
 from ._notification import update_template_localization_v1_admin_async
 from ._notification import update_topic_by_topic_name
 from ._notification import update_topic_by_topic_name_async
-
-from ._operations import admin_join_party_v1
-from ._operations import admin_join_party_v1_async
-from ._operations import admin_update_party_attributes_v1
-from ._operations import admin_update_party_attributes_v1_async
-from ._operations import public_get_messages
-from ._operations import public_get_messages_async
 
 from ._party import admin_get_party_data_v1
 from ._party import admin_get_party_data_v1_async

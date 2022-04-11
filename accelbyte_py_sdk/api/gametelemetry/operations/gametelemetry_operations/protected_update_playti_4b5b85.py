@@ -27,77 +27,50 @@ from .....core import Operation
 from .....core import HttpResponse
 
 from ...models import HTTPValidationError
-from ...models import TelemetryBody
 
 
-class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
-    """Protected Save Events (protected_save_events_game_telemetry_v1_protected_events_post)
+class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(Operation):
+    """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
 
     This endpoint requires valid JWT token.
     This endpoint does not require permission.
 
-    This endpoint send events into designated streaming pipeline and each request can contain single or multiple events.
-
-
-    Format of the event:
-
-    - **EventNamespace (required)**: namespace of the relevant game with domain name format.
-
-
-    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
-
-
-
-
-    Example: io.accelbyte.justice.dev.samplegame
-
-
-
-    - **EventName (required)**: name of the event.
-
-
-    Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
-
-
-
-
-    Example: player_killed, mission_accomplished
-
-
-
-    - **Payload (required)**: an arbitrary json with the payload of the said event
+    This endpoint update player's total playtime in a specific game (AppId) from service's cache.
 
     Properties:
-        url: /game-telemetry/v1/protected/events
+        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}
 
-        method: POST
+        method: PUT
 
-        tags: []
+        tags: ["Gametelemetry Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
         security_type: bearer
 
-        body: (body) REQUIRED List[TelemetryBody] in body
+        playtime: (playtime) REQUIRED str in path
+
+        steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        204: No Content - (Successful Response)
+        200: OK - (Successful Response)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
 
     # region fields
 
-    _url: str = "/game-telemetry/v1/protected/events"
-    _method: str = "POST"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}"
+    _method: str = "PUT"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    body: List[TelemetryBody]                                                                      # REQUIRED in [body]
+    playtime: str                                                                                  # REQUIRED in [path]
+    steam_id: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -135,6 +108,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         return self.create_full_url(
             url=self.url,
             base_url=base_url,
+            path_params=self.get_path_params(),
         )
 
     # endregion get methods
@@ -143,13 +117,16 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "body": self.get_body_params(),
+            "path": self.get_path_params(),
         }
 
-    def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
-            return None
-        return [i.to_dict() for i in self.body]
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "playtime"):
+            result["playtime"] = self.playtime
+        if hasattr(self, "steam_id"):
+            result["steamId"] = self.steam_id
+        return result
 
     # endregion get_x_params methods
 
@@ -159,8 +136,12 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: List[TelemetryBody]) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
-        self.body = value
+    def with_playtime(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        self.playtime = value
+        return self
+
+    def with_steam_id(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        self.steam_id = value
         return self
 
     # endregion with_x methods
@@ -169,10 +150,14 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
+        if hasattr(self, "playtime") and self.playtime:
+            result["playtime"] = str(self.playtime)
         elif include_empty:
-            result["body"] = []
+            result["playtime"] = str()
+        if hasattr(self, "steam_id") and self.steam_id:
+            result["steamId"] = str(self.steam_id)
+        elif include_empty:
+            result["steamId"] = str()
         return result
 
     # endregion to methods
@@ -180,10 +165,10 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HTTPValidationError, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (Successful Response)
+        200: OK - (Successful Response)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
 
@@ -198,8 +183,8 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
 
@@ -212,31 +197,39 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     @classmethod
     def create(
         cls,
-        body: List[TelemetryBody],
-    ) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+        playtime: str,
+        steam_id: str,
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
-        instance.body = body
+        instance.playtime = playtime
+        instance.steam_id = steam_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [TelemetryBody.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
+        if "playtime" in dict_ and dict_["playtime"] is not None:
+            instance.playtime = str(dict_["playtime"])
         elif include_empty:
-            instance.body = []
+            instance.playtime = str()
+        if "steamId" in dict_ and dict_["steamId"] is not None:
+            instance.steam_id = str(dict_["steamId"])
+        elif include_empty:
+            instance.steam_id = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "body": "body",
+            "playtime": "playtime",
+            "steamId": "steam_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": True,
+            "playtime": True,
+            "steamId": True,
         }
 
     # endregion static methods

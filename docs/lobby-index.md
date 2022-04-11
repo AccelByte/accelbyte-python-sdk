@@ -36,6 +36,13 @@
 | /friends/namespaces/{namespace}/me/request | POST | userRequestFriend | [UserRequestFriend](../accelbyte_py_sdk/api/lobby/operations/friends/user_request_friend.py) | [user_request_friend](../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) |
 | /friends/namespaces/{namespace}/me/unfriend | POST | userUnfriendRequest | [UserUnfriendRequest](../accelbyte_py_sdk/api/lobby/operations/friends/user_unfriend_request.py) | [user_unfriend_request](../accelbyte_py_sdk/api/lobby/wrappers/_friends.py) |
 
+### Lobby Operations
+| Endpoint | Method | ID | Class | Wrapper |
+|---|---|---|---|---|
+| /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId} | POST | adminJoinPartyV1 | [AdminJoinPartyV1](../accelbyte_py_sdk/api/lobby/operations/lobby_operations/admin_join_party_v1.py) | [admin_join_party_v1](../accelbyte_py_sdk/api/lobby/wrappers/_lobby_operations.py) |
+| /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes | PUT | adminUpdatePartyAttributesV1 | [AdminUpdatePartyAttributesV1](../accelbyte_py_sdk/api/lobby/operations/lobby_operations/admin_update_party_attr_920eb3.py) | [admin_update_party_attributes_v1](../accelbyte_py_sdk/api/lobby/wrappers/_lobby_operations.py) |
+| /lobby/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/lobby/operations/lobby_operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/lobby/wrappers/_lobby_operations.py) |
+
 ### notification
 | Endpoint | Method | ID | Class | Wrapper |
 |---|---|---|---|---|
@@ -76,13 +83,6 @@
 | /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName} | PUT | updateNotificationTopicV1Admin | [UpdateNotificationTopicV1Admin](../accelbyte_py_sdk/api/lobby/operations/notification/update_notification_top_0e4c05.py) | [update_notification_topic_v1_admin](../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) |
 | /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage} | PUT | updateTemplateLocalizationV1Admin | [UpdateTemplateLocalizationV1Admin](../accelbyte_py_sdk/api/lobby/operations/notification/update_template_localiz_cc6e6e.py) | [update_template_localization_v1_admin](../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) |
 | /notification/namespaces/{namespace}/topics/{topic} | PUT | updateTopicByTopicName | [UpdateTopicByTopicName](../accelbyte_py_sdk/api/lobby/operations/notification/update_topic_by_topic_name.py) | [update_topic_by_topic_name](../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) |
-
-### Operations
-| Endpoint | Method | ID | Class | Wrapper |
-|---|---|---|---|---|
-| /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/join/{userId} | POST | adminJoinPartyV1 | [AdminJoinPartyV1](../accelbyte_py_sdk/api/lobby/operations/operations/admin_join_party_v1.py) | [admin_join_party_v1](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
-| /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId}/attributes | PUT | adminUpdatePartyAttributesV1 | [AdminUpdatePartyAttributesV1](../accelbyte_py_sdk/api/lobby/operations/operations/admin_update_party_attr_920eb3.py) | [admin_update_party_attributes_v1](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
-| /lobby/v1/messages | GET | publicGetMessages | [PublicGetMessages](../accelbyte_py_sdk/api/lobby/operations/operations/public_get_messages.py) | [public_get_messages](../accelbyte_py_sdk/api/lobby/wrappers/_operations.py) |
 
 ### party
 | Endpoint | Method | ID | Class | Wrapper |

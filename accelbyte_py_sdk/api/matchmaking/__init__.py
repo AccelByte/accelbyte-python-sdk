@@ -60,7 +60,7 @@ from .wrappers import store_match_results_async
 from .wrappers import update_matchmaking_channel
 from .wrappers import update_matchmaking_channel_async
 
-# operations
+# matchmaking_operations
 from .wrappers import get_healthcheck_info
 from .wrappers import get_healthcheck_info_async
 from .wrappers import handler_v3_healthz

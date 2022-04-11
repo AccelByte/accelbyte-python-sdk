@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (0.0.1)
+# justice-iam-service (5.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -26,23 +26,31 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HttpResponse
 
-from ...models import HTTPValidationError
+from ...models import RestErrorResponse
 
 
-class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(Operation):
-    """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
+class PublicRemoveTrustedDeviceV4(Operation):
+    """Remove Trusted Device (PublicRemoveTrustedDeviceV4)
 
-    This endpoint requires valid JWT token.
-    This endpoint does not require permission.
+    (Only for test)This endpoint is used to remove trusted device.
 
-    This endpoint update player's total playtime in a specific game (AppId) from service's cache.
+
+
+
+    This endpoint Requires valid user access token
+
+
+
+
+
+    This endpoint Requires device_token in cookie
 
     Properties:
-        url: /game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/device
 
-        method: PUT
+        method: DELETE
 
-        tags: []
+        tags: ["Users V4"]
 
         consumes: []
 
@@ -50,27 +58,32 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
         security_type: bearer
 
-        playtime: (playtime) REQUIRED str in path
-
-        steam_id: (steamId) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful Response)
+        204: No Content - (Device removed)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = "/game-telemetry/v1/protected/steamIds/{steamId}/playtime/{playtime}"
-    _method: str = "PUT"
+    _url: str = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/device"
+    _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
-    playtime: str                                                                                  # REQUIRED in [path]
-    steam_id: str                                                                                  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -122,10 +135,8 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "playtime"):
-            result["playtime"] = self.playtime
-        if hasattr(self, "steam_id"):
-            result["steamId"] = self.steam_id
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -136,12 +147,8 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     # region with_x methods
 
-    def with_playtime(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
-        self.playtime = value
-        return self
-
-    def with_steam_id(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
-        self.steam_id = value
+    def with_namespace(self, value: str) -> PublicRemoveTrustedDeviceV4:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -150,14 +157,10 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "playtime") and self.playtime:
-            result["playtime"] = str(self.playtime)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["playtime"] = str()
-        if hasattr(self, "steam_id") and self.steam_id:
-            result["steamId"] = str(self.steam_id)
-        elif include_empty:
-            result["steamId"] = str()
+            result["namespace"] = str()
         return result
 
     # endregion to methods
@@ -165,12 +168,20 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - (Successful Response)
+        204: No Content - (Device removed)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -183,10 +194,18 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
-        if code == 422:
-            return None, HTTPValidationError.create_from_dict(content)
+        if code == 204:
+            return None, None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
@@ -197,39 +216,31 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     @classmethod
     def create(
         cls,
-        playtime: str,
-        steam_id: str,
-    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        namespace: str,
+    ) -> PublicRemoveTrustedDeviceV4:
         instance = cls()
-        instance.playtime = playtime
-        instance.steam_id = steam_id
+        instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicRemoveTrustedDeviceV4:
         instance = cls()
-        if "playtime" in dict_ and dict_["playtime"] is not None:
-            instance.playtime = str(dict_["playtime"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.playtime = str()
-        if "steamId" in dict_ and dict_["steamId"] is not None:
-            instance.steam_id = str(dict_["steamId"])
-        elif include_empty:
-            instance.steam_id = str()
+            instance.namespace = str()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "playtime": "playtime",
-            "steamId": "steam_id",
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "playtime": True,
-            "steamId": True,
+            "namespace": True,
         }
 
     # endregion static methods

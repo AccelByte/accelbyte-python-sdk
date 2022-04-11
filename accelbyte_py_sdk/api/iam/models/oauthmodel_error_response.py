@@ -32,16 +32,25 @@ class OauthmodelErrorResponse(Model):
     Properties:
         error: (error) REQUIRED str
 
+        default_factor: (default_factor) OPTIONAL str
+
         error_description: (error_description) OPTIONAL str
 
         error_uri: (error_uri) OPTIONAL str
+
+        factors: (factors) OPTIONAL List[str]
+
+        mfa_token: (mfa_token) OPTIONAL str
     """
 
     # region fields
 
     error: str                                                                                     # REQUIRED
+    default_factor: str                                                                            # OPTIONAL
     error_description: str                                                                         # OPTIONAL
     error_uri: str                                                                                 # OPTIONAL
+    factors: List[str]                                                                             # OPTIONAL
+    mfa_token: str                                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -51,12 +60,24 @@ class OauthmodelErrorResponse(Model):
         self.error = value
         return self
 
+    def with_default_factor(self, value: str) -> OauthmodelErrorResponse:
+        self.default_factor = value
+        return self
+
     def with_error_description(self, value: str) -> OauthmodelErrorResponse:
         self.error_description = value
         return self
 
     def with_error_uri(self, value: str) -> OauthmodelErrorResponse:
         self.error_uri = value
+        return self
+
+    def with_factors(self, value: List[str]) -> OauthmodelErrorResponse:
+        self.factors = value
+        return self
+
+    def with_mfa_token(self, value: str) -> OauthmodelErrorResponse:
+        self.mfa_token = value
         return self
 
     # endregion with_x methods
@@ -69,6 +90,10 @@ class OauthmodelErrorResponse(Model):
             result["error"] = str(self.error)
         elif include_empty:
             result["error"] = str()
+        if hasattr(self, "default_factor"):
+            result["default_factor"] = str(self.default_factor)
+        elif include_empty:
+            result["default_factor"] = str()
         if hasattr(self, "error_description"):
             result["error_description"] = str(self.error_description)
         elif include_empty:
@@ -77,6 +102,14 @@ class OauthmodelErrorResponse(Model):
             result["error_uri"] = str(self.error_uri)
         elif include_empty:
             result["error_uri"] = str()
+        if hasattr(self, "factors"):
+            result["factors"] = [str(i0) for i0 in self.factors]
+        elif include_empty:
+            result["factors"] = []
+        if hasattr(self, "mfa_token"):
+            result["mfa_token"] = str(self.mfa_token)
+        elif include_empty:
+            result["mfa_token"] = str()
         return result
 
     # endregion to methods
@@ -87,15 +120,24 @@ class OauthmodelErrorResponse(Model):
     def create(
         cls,
         error: str,
+        default_factor: Optional[str] = None,
         error_description: Optional[str] = None,
         error_uri: Optional[str] = None,
+        factors: Optional[List[str]] = None,
+        mfa_token: Optional[str] = None,
     ) -> OauthmodelErrorResponse:
         instance = cls()
         instance.error = error
+        if default_factor is not None:
+            instance.default_factor = default_factor
         if error_description is not None:
             instance.error_description = error_description
         if error_uri is not None:
             instance.error_uri = error_uri
+        if factors is not None:
+            instance.factors = factors
+        if mfa_token is not None:
+            instance.mfa_token = mfa_token
         return instance
 
     @classmethod
@@ -107,6 +149,10 @@ class OauthmodelErrorResponse(Model):
             instance.error = str(dict_["error"])
         elif include_empty:
             instance.error = str()
+        if "default_factor" in dict_ and dict_["default_factor"] is not None:
+            instance.default_factor = str(dict_["default_factor"])
+        elif include_empty:
+            instance.default_factor = str()
         if "error_description" in dict_ and dict_["error_description"] is not None:
             instance.error_description = str(dict_["error_description"])
         elif include_empty:
@@ -115,6 +161,14 @@ class OauthmodelErrorResponse(Model):
             instance.error_uri = str(dict_["error_uri"])
         elif include_empty:
             instance.error_uri = str()
+        if "factors" in dict_ and dict_["factors"] is not None:
+            instance.factors = [str(i0) for i0 in dict_["factors"]]
+        elif include_empty:
+            instance.factors = []
+        if "mfa_token" in dict_ and dict_["mfa_token"] is not None:
+            instance.mfa_token = str(dict_["mfa_token"])
+        elif include_empty:
+            instance.mfa_token = str()
         return instance
 
     @classmethod
@@ -141,16 +195,22 @@ class OauthmodelErrorResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "error": "error",
+            "default_factor": "default_factor",
             "error_description": "error_description",
             "error_uri": "error_uri",
+            "factors": "factors",
+            "mfa_token": "mfa_token",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "error": True,
+            "default_factor": False,
             "error_description": False,
             "error_uri": False,
+            "factors": False,
+            "mfa_token": False,
         }
 
     # endregion static methods

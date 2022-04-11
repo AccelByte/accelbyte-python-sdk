@@ -160,6 +160,9 @@ from ._public_content import update_screenshots_async
 from ._public_content import upload_content_screenshot
 from ._public_content import upload_content_screenshot_async
 
+from ._public_creator import get_creator
+from ._public_creator import get_creator_async
+
 from ._public_download_count import add_download_count
 from ._public_download_count import add_download_count_async
 
@@ -167,6 +170,10 @@ from ._public_follow import get_followed_content
 from ._public_follow import get_followed_content_async
 from ._public_follow import get_followed_users
 from ._public_follow import get_followed_users_async
+from ._public_follow import get_public_followers
+from ._public_follow import get_public_followers_async
+from ._public_follow import get_public_following
+from ._public_follow import get_public_following_async
 from ._public_follow import update_user_follow_status
 from ._public_follow import update_user_follow_status_async
 
