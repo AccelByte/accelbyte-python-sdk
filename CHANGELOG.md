@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.12.0
+- Update APIs
+    - cloudsave
+        - new endpoints
+        - new models
+    - dslogmanager
+        - update endpoints
+    - dsmc
+        - version bump
+        - update endpoints
+    - gametelemetry
+        - add, update endpoints
+        - update security definitions
+    - group
+        - update endpoints
+    - iam
+        - add, update endpoints
+    - legal
+        - update endpoints
+    - lobby
+        - update endpoints
+    - matchmaking
+        - update endpoints
+    - platform
+        - update endpoints
+    - ugc
+        - add, update endpoints
+
 ## v0.11.0
 - Add integration tests for commonly used endpoints
 - Add `is_valid()` method for all Model classes
