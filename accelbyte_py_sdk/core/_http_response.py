@@ -77,6 +77,9 @@ class HttpResponse(Model):
         if code not in HTTP_STATUS_CODES:
             return None
         content_type = "error"
+        if code == 200 and not content:
+            content_type = "no_content"
+            content = None
         if code == 204:
             content_type = "no_content"
             content = None
