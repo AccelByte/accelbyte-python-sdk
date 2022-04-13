@@ -106,6 +106,8 @@ if __name__ == "__main__":
 
 ### Logging In and Logging Out
 
+#### Login using Username and Password
+
 ```python
 from os import environ
 
@@ -128,6 +130,8 @@ if __name__ == "__main__":
 ```
 
 Here `login_user(username, password)` and `logout()` are wrapper functions.
+
+#### Login using OAuth Client (Public or Confidential)
 
 ```python
 import accelbyte_py_sdk
