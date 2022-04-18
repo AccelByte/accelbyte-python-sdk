@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import HTTPValidationError
@@ -92,6 +93,8 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
         body: (body) REQUIRED List[TelemetryBody] in body
 
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
     Responses:
         204: No Content - (Successful Response)
 
@@ -108,6 +111,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     _location_query: str = None
 
     body: List[TelemetryBody]                                                                      # REQUIRED in [body]
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
 
     # endregion fields
 
@@ -154,12 +158,19 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     def get_all_params(self) -> dict:
         return {
             "body": self.get_body_params(),
+            "header": self.get_header_params(),
         }
 
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
         return [i.to_dict() for i in self.body]
+
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = self.cookie
+        return result
 
     # endregion get_x_params methods
 
@@ -173,6 +184,16 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         self.body = value
         return self
 
+    def with_cookie(self, value: Union[str, HeaderStr]) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+        self.cookie = value
+        return self
+
+    def with_cookie_access_token(self, value: str) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["access_token"] = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -183,6 +204,10 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
             result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
             result["body"] = []
+        if hasattr(self, "cookie") and self.cookie:
+            result["Cookie"] = str(self.cookie)
+        elif include_empty:
+            result["Cookie"] = ""
         return result
 
     # endregion to methods
@@ -223,9 +248,12 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     def create(
         cls,
         body: List[TelemetryBody],
+        cookie: Optional[Union[str, HeaderStr]] = None,
     ) -> ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost:
         instance = cls()
         instance.body = body
+        if cookie is not None:
+            instance.cookie = cookie
         return instance
 
     @classmethod
@@ -235,18 +263,24 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
             instance.body = [TelemetryBody.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
+        if "Cookie" in dict_ and dict_["Cookie"] is not None:
+            instance.cookie = str(dict_["Cookie"])
+        elif include_empty:
+            instance.cookie = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "Cookie": "cookie",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "body": True,
+            "Cookie": False,
         }
 
     # endregion static methods

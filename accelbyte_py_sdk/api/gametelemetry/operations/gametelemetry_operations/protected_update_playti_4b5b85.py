@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import HTTPValidationError
@@ -50,6 +51,8 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
         security_type: bearer
 
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
         playtime: (playtime) REQUIRED str in path
 
         steam_id: (steamId) REQUIRED str in path
@@ -69,6 +72,7 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
     playtime: str                                                                                  # REQUIRED in [path]
     steam_id: str                                                                                  # REQUIRED in [path]
 
@@ -117,8 +121,15 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def get_all_params(self) -> dict:
         return {
+            "header": self.get_header_params(),
             "path": self.get_path_params(),
         }
+
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = self.cookie
+        return result
 
     def get_path_params(self) -> dict:
         result = {}
@@ -136,6 +147,16 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     # region with_x methods
 
+    def with_cookie(self, value: Union[str, HeaderStr]) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        self.cookie = value
+        return self
+
+    def with_cookie_access_token(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["access_token"] = value
+        return self
+
     def with_playtime(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         self.playtime = value
         return self
@@ -150,14 +171,18 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cookie") and self.cookie:
+            result["Cookie"] = str(self.cookie)
+        elif include_empty:
+            result["Cookie"] = ""
         if hasattr(self, "playtime") and self.playtime:
             result["playtime"] = str(self.playtime)
         elif include_empty:
-            result["playtime"] = str()
+            result["playtime"] = ""
         if hasattr(self, "steam_id") and self.steam_id:
             result["steamId"] = str(self.steam_id)
         elif include_empty:
-            result["steamId"] = str()
+            result["steamId"] = ""
         return result
 
     # endregion to methods
@@ -199,28 +224,36 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         cls,
         playtime: str,
         steam_id: str,
+        cookie: Optional[Union[str, HeaderStr]] = None,
     ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
         instance.playtime = playtime
         instance.steam_id = steam_id
+        if cookie is not None:
+            instance.cookie = cookie
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
+        if "Cookie" in dict_ and dict_["Cookie"] is not None:
+            instance.cookie = str(dict_["Cookie"])
+        elif include_empty:
+            instance.cookie = ""
         if "playtime" in dict_ and dict_["playtime"] is not None:
             instance.playtime = str(dict_["playtime"])
         elif include_empty:
-            instance.playtime = str()
+            instance.playtime = ""
         if "steamId" in dict_ and dict_["steamId"] is not None:
             instance.steam_id = str(dict_["steamId"])
         elif include_empty:
-            instance.steam_id = str()
+            instance.steam_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "Cookie": "cookie",
             "playtime": "playtime",
             "steamId": "steam_id",
         }
@@ -228,6 +261,7 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "Cookie": False,
             "playtime": True,
             "steamId": True,
         }

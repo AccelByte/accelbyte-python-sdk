@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -47,6 +48,8 @@ class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
 
         security_type: bearer
 
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
     Responses:
         200: OK - (Successful Response)
     """
@@ -59,6 +62,8 @@ class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
     _produces: List[str] = ["application/json"]
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
+
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
 
     # endregion fields
 
@@ -104,7 +109,14 @@ class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "header": self.get_header_params(),
         }
+
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = self.cookie
+        return result
 
     # endregion get_x_params methods
 
@@ -114,12 +126,26 @@ class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
 
     # region with_x methods
 
+    def with_cookie(self, value: Union[str, HeaderStr]) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
+        self.cookie = value
+        return self
+
+    def with_cookie_access_token(self, value: str) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["access_token"] = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cookie") and self.cookie:
+            result["Cookie"] = str(self.cookie)
+        elif include_empty:
+            result["Cookie"] = ""
         return result
 
     # endregion to methods
@@ -155,23 +181,32 @@ class AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet(Operation):
     @classmethod
     def create(
         cls,
+        cookie: Optional[Union[str, HeaderStr]] = None,
     ) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
         instance = cls()
+        if cookie is not None:
+            instance.cookie = cookie
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet:
         instance = cls()
+        if "Cookie" in dict_ and dict_["Cookie"] is not None:
+            instance.cookie = str(dict_["Cookie"])
+        elif include_empty:
+            instance.cookie = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "Cookie": "cookie",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "Cookie": False,
         }
 
     # endregion static methods

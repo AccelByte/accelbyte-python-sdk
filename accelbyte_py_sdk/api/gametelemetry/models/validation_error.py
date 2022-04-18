@@ -72,11 +72,11 @@ class ValidationError(Model):
         if hasattr(self, "msg"):
             result["msg"] = str(self.msg)
         elif include_empty:
-            result["msg"] = str()
+            result["msg"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         return result
 
     # endregion to methods
@@ -108,11 +108,11 @@ class ValidationError(Model):
         if "msg" in dict_ and dict_["msg"] is not None:
             instance.msg = str(dict_["msg"])
         elif include_empty:
-            instance.msg = str()
+            instance.msg = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         return instance
 
     @classmethod

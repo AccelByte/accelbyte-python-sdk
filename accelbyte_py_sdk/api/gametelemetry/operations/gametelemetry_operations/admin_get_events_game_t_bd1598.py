@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import HTTPValidationError
@@ -63,6 +64,8 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
 
         security_type: bearer
 
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
         namespace: (namespace) REQUIRED str in query
 
     Responses:
@@ -80,6 +83,7 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
     _security_type: Optional[str] = "bearer"
     _location_query: str = None
 
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
     namespace: str                                                                                 # REQUIRED in [query]
 
     # endregion fields
@@ -127,8 +131,15 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "header": self.get_header_params(),
             "query": self.get_query_params(),
         }
+
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = self.cookie
+        return result
 
     def get_query_params(self) -> dict:
         result = {}
@@ -144,6 +155,16 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
 
     # region with_x methods
 
+    def with_cookie(self, value: Union[str, HeaderStr]) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
+        self.cookie = value
+        return self
+
+    def with_cookie_access_token(self, value: str) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["access_token"] = value
+        return self
+
     def with_namespace(self, value: str) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
         self.namespace = value
         return self
@@ -154,10 +175,14 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cookie") and self.cookie:
+            result["Cookie"] = str(self.cookie)
+        elif include_empty:
+            result["Cookie"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -198,29 +223,38 @@ class AdminGetEventsGameTelemetryV1AdminEventsGet(Operation):
     def create(
         cls,
         namespace: str,
+        cookie: Optional[Union[str, HeaderStr]] = None,
     ) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
         instance = cls()
         instance.namespace = namespace
+        if cookie is not None:
+            instance.cookie = cookie
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetEventsGameTelemetryV1AdminEventsGet:
         instance = cls()
+        if "Cookie" in dict_ and dict_["Cookie"] is not None:
+            instance.cookie = str(dict_["Cookie"])
+        elif include_empty:
+            instance.cookie = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "Cookie": "cookie",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "Cookie": False,
             "namespace": True,
         }
 

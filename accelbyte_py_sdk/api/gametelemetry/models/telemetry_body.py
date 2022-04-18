@@ -82,11 +82,11 @@ class TelemetryBody(Model):
         if hasattr(self, "event_name"):
             result["EventName"] = str(self.event_name)
         elif include_empty:
-            result["EventName"] = str()
+            result["EventName"] = ""
         if hasattr(self, "event_namespace"):
             result["EventNamespace"] = str(self.event_namespace)
         elif include_empty:
-            result["EventNamespace"] = str()
+            result["EventNamespace"] = ""
         if hasattr(self, "payload"):
             result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
@@ -94,11 +94,11 @@ class TelemetryBody(Model):
         if hasattr(self, "event_id"):
             result["EventId"] = str(self.event_id)
         elif include_empty:
-            result["EventId"] = str()
+            result["EventId"] = ""
         if hasattr(self, "event_timestamp"):
             result["EventTimestamp"] = str(self.event_timestamp)
         elif include_empty:
-            result["EventTimestamp"] = str()
+            result["EventTimestamp"] = ""
         return result
 
     # endregion to methods
@@ -132,11 +132,11 @@ class TelemetryBody(Model):
         if "EventName" in dict_ and dict_["EventName"] is not None:
             instance.event_name = str(dict_["EventName"])
         elif include_empty:
-            instance.event_name = str()
+            instance.event_name = ""
         if "EventNamespace" in dict_ and dict_["EventNamespace"] is not None:
             instance.event_namespace = str(dict_["EventNamespace"])
         elif include_empty:
-            instance.event_namespace = str()
+            instance.event_namespace = ""
         if "Payload" in dict_ and dict_["Payload"] is not None:
             instance.payload = {str(k0): v0 for k0, v0 in dict_["Payload"].items()}
         elif include_empty:
@@ -144,11 +144,11 @@ class TelemetryBody(Model):
         if "EventId" in dict_ and dict_["EventId"] is not None:
             instance.event_id = str(dict_["EventId"])
         elif include_empty:
-            instance.event_id = str()
+            instance.event_id = ""
         if "EventTimestamp" in dict_ and dict_["EventTimestamp"] is not None:
             instance.event_timestamp = str(dict_["EventTimestamp"])
         elif include_empty:
-            instance.event_timestamp = str()
+            instance.event_timestamp = ""
         return instance
 
     @classmethod
