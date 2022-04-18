@@ -69,7 +69,12 @@ class Operation:
 
     def get_headers(self) -> Header:
         headers = Header()
-        headers.update(self.get_header_params())
+        header_params = self.get_header_params()
+        if header_params:
+            for k, v in header_params.items():
+                value = str(v)
+                if value:
+                    headers[k] = value
         infer_headers_from_operation(self, existing=headers)
         return headers
 
