@@ -17,6 +17,7 @@ from ._token_repository import InMemoryTokenRepository
 from ._token_repository import MyTokenRepository
 
 from ._header import Header
+from ._headerstr import HeaderStr
 from ._http_client import HttpClient
 from ._http_client import HttpRawResponse
 from ._http_client import HttpxHttpClient
@@ -79,5 +80,7 @@ from ._core import get_http_client
 from ._core import set_http_client
 from ._core import run_request
 from ._core import run_request_async
+
+from ._core import get_final_headers
 
 from ._strenum import StrEnum
