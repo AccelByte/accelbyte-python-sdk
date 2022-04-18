@@ -11,6 +11,7 @@ from accelbyte_py_sdk.core import RequestsHttpClient
 from accelbyte_py_sdk.core import Model
 from accelbyte_py_sdk.core import Operation
 from accelbyte_py_sdk.core import Header
+from accelbyte_py_sdk.core import HeaderStr
 from accelbyte_py_sdk.core import HttpClient
 from accelbyte_py_sdk.core import HttpRawResponse
 from accelbyte_py_sdk.core import HttpResponse
@@ -25,6 +26,7 @@ from accelbyte_py_sdk.core import get_app_version
 from accelbyte_py_sdk.core import get_token_repository
 from accelbyte_py_sdk.core import get_access_token
 from accelbyte_py_sdk.core import get_http_client
+from accelbyte_py_sdk.core import get_final_headers
 from accelbyte_py_sdk.core import remove_token
 from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import get_query_from_http_redirect_response
@@ -94,6 +96,7 @@ class TestOperation(Operation):
     _location_query: str = None
 
     body: TestModel
+    cookie: Union[str, HeaderStr]
     namespace: str
     statuses: List[str]
 
@@ -116,6 +119,12 @@ class TestOperation(Operation):
             return None
         return self.body.to_dict()
 
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = str(self.cookie)
+        return result
+
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
@@ -130,6 +139,16 @@ class TestOperation(Operation):
 
     def with_body(self, value: TestModel):
         self.body = value
+        return self
+
+    def with_cookie(self, value: Union[str, HeaderStr]):
+        self.cookie = value
+        return self
+
+    def with_cookie_access_token(self, value: str):
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["access_token"] = value
         return self
 
     def with_namespace(self, value: str):
@@ -147,6 +166,7 @@ class TestOperation(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "Cookie": "cookie",
             "namespace": "namespace",
             "statuses": "statuses",
         }
@@ -154,7 +174,10 @@ class TestOperation(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": False,
+            "Cookie": False,
             "namespace": True,
+            "statuses": False,
         }
 
     @staticmethod
@@ -436,6 +459,70 @@ class CoreTestCase(TestCase):
         header.add_user_agent(app_info=("AppName", "0.1.0"))
         self.assertTrue("User-Agent" in header)
         self.assertEqual(f"{product}/{product_version} (AppName/0.1.0)", header["User-Agent"])
+
+    def test_headerstr(self):
+        headerstr = HeaderStr()
+        self.assertFalse(headerstr)
+
+        headerstr = HeaderStr()
+        headerstr["order"] = "spameggs"
+        self.assertEqual("order=spameggs", str(headerstr))
+
+        headerstr = HeaderStr()
+        headerstr["order1"] = "spam"
+        headerstr["order2"] = "eggs"
+        self.assertEqual("order1=spam; order2=eggs", str(headerstr))
+
+    def test_headerstr_in_operation_with_zero_values(self):
+        valid_operation = TestOperation()
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertNotIn("Cookie", final_headers)
+
+    def test_headerstr_in_operation_with_one_value(self):
+        valid_operation = TestOperation().with_cookie_access_token("test")
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertIn("Cookie", final_headers)
+        self.assertEqual("access_token=test", final_headers.get("Cookie"))
+
+    def test_headerstr_in_operation_with_two_or_more_values(self):
+        valid_operation = TestOperation().with_cookie_access_token("test")
+        valid_operation.cookie["other_token"] = "hello"
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertIn("Cookie", final_headers)
+        self.assertEqual("access_token=test; other_token=hello", final_headers.get("Cookie"))
+
+    def test_headerstr_in_operation_as_empty_string(self):
+        valid_operation = TestOperation().with_cookie("")
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertNotIn("Cookie", final_headers)
+
+    def test_headerstr_in_operation_as_empty_headerstr(self):
+        empty_headerstr = HeaderStr()
+        valid_operation = TestOperation().with_cookie(empty_headerstr)
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertNotIn("Cookie", final_headers)
+
+    def test_headerstr_in_operation_with_empty_string_value(self):
+        empty_headerstr = HeaderStr()
+        empty_headerstr["empty_token"] = ""
+        valid_operation = TestOperation().with_cookie(empty_headerstr)
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertNotIn("Cookie", final_headers)
+
+    def test_headerstr_in_operation_with_non_string_value(self):
+        empty_headerstr = HeaderStr()
+        empty_headerstr["false_token"] = False
+        valid_operation = TestOperation().with_cookie(empty_headerstr)
+        final_headers, error = get_final_headers(operation=valid_operation)
+        self.assertIsNone(error)
+        self.assertIn("Cookie", final_headers)
+        self.assertEqual("false_token=False", final_headers.get("Cookie"))
 
     def test_url_creation_with_path_params(self):
         full_url = Operation.create_full_url(
