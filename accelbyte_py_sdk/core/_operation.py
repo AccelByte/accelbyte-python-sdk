@@ -8,16 +8,15 @@ from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ._http_response import HttpResponse
-from ._header import Header
 from ._model import Model
 from ._utils import clean_content_type
-from ._utils import infer_headers_from_operation
 from ._utils import try_convert_content_type
 from ._validators import validate_field
 
 
 class Operation:
 
+    # TODO: remove
     @staticmethod
     def create_full_url(
             url: str,
@@ -66,17 +65,6 @@ class Operation:
             result += "?" + "&".join(flattened_query_params)
 
         return result
-
-    def get_headers(self) -> Header:
-        headers = Header()
-        header_params = self.get_header_params()
-        if header_params:
-            for k, v in header_params.items():
-                value = str(v)
-                if value:
-                    headers[k] = value
-        infer_headers_from_operation(self, existing=headers)
-        return headers
 
     def is_valid(
             self,
@@ -178,10 +166,12 @@ class Operation:
     method: str = ""
     consumes: List[str] = []
     produces: List[str] = []
-    security_type: Optional[str] = None
+    securities: List[str] = []
+    security_type: Optional[str] = None  # TODO: remove
     location_query: Optional[str] = None
     authorization_override: Optional[str] = None
 
+    # TODO: remove
     def get_full_url(
             self,
             base_url: Union[None, str] = None,

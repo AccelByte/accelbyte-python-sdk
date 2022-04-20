@@ -17,6 +17,13 @@ from uuid import uuid4
 
 from ._http_response import HttpResponse
 
+QUERY_DELIMITER_MAP = {
+    "csv": ",",
+    "ssv": " ",
+    "tsv": "\t",
+    "pipes": "|",
+}
+
 
 def add_buffered_file_handler_to_logger(
         filename: Union[str, os.PathLike[str]],
@@ -133,6 +140,58 @@ def create_pkce_verifier_and_challenge_s256(
     return verifier_str, challenge_str, method
 
 
+def create_url(
+        path: str,
+        base: str = "",
+        path_params: Optional[Dict[str, str]] = None,
+        query_params: Optional[Dict[str, Union[Any, List[Any]]]] = None,
+        collection_format_map: Optional[Dict[str, Optional[str]]] = None,
+) -> str:
+    result = base.removesuffix("/")
+
+    if path_params:
+        for key, value in path_params.items():
+            path = path.replace(f"{{{key}}}", str(value))
+
+    result += "/" + path.removeprefix("/")
+
+    if query_params:
+        flattened_query_params = flatten_query_params(
+            query_params=query_params,
+            collection_format_map=collection_format_map
+        )
+        result += flattened_query_params
+
+    return result
+
+
+def flatten_query_params(
+        query_params: Optional[Dict[str, Union[Any, List[Any]]]] = None,
+        collection_format_map: Optional[Dict[str, Optional[str]]] = None,
+) -> str:
+    if not query_params:
+        return ""
+    if collection_format_map:
+        flattened_query_params = []
+        for key, value in query_params.items():
+            if isinstance(value, list):
+                if len(value) == 0:
+                    continue
+                collection_format = collection_format_map.get(key, "csv")
+                if collection_format == "multi":
+                    for v in value:
+                        flattened_query_params.append((key, str(v)))
+                else:
+                    delimiter = QUERY_DELIMITER_MAP.get(collection_format, ",")
+                    flattened_query_value = delimiter.join([str(v) for v in value])
+                    flattened_query_params.append((key, flattened_query_value))
+            else:
+                flattened_query_params.append((key, str(value)))
+    else:
+        flattened_query_params = [(key, value) for key, value in query_params.items()]
+    return "?" + "&".join(f"{k}={v}" for k, v in flattened_query_params)
+
+
 def generate_amazon_xray_trace_id(version: int = 1, request_time: Union[None, float] = None) -> str:
     request_time = request_time or time()
     current_time_hex = hex(int(request_time))[2:]                  # time of the original request, in Unix epoch time, in 8 hexadecimal digits
@@ -186,40 +245,26 @@ def get_query_from_http_redirect_response(
     return query_value, None
 
 
-def infer_content_type_from_params(params: dict, default: Union[None, str] = None) -> str:
-    content_type_default = default if default is not None else "application/octet-stream"
-
-    if "body" in params:
-        return "application/json"
-
-    if "form_data" in params:
-        return "application/x-www-form-urlencoded"
-
-    return content_type_default
+def is_file(key: str, value: Any) -> bool:
+    return key.casefold() == "file"
 
 
-# TODO(elmer): set flag to allow overwrites?
-def infer_headers_from_operation(operation, existing: Union[None, dict] = None) -> Dict[str, str]:
-    result = existing if existing is not None else {}
-
-    if "Accept" not in result:
-        if operation.produces is not None and len(operation.produces) > 0:
-            accept = operation.produces[0]
-        else:
-            accept = "application/json"
-        if accept:
-            result["Accept"] = accept
-
-    if "Content-Type" not in result:
-        if operation.consumes is not None and len(operation.consumes) > 0:
-            content_type = operation.consumes[0]
-        else:
-            params = operation.get_all_params()
-            content_type = infer_content_type_from_params(params)
-        if content_type:
-            result["Content-Type"] = content_type
-
-    return result
+def is_json_mime_type(content_type: Optional[str]) -> bool:
+    if content_type is None:
+        return False
+    parts = content_type.split("; ")
+    for part in parts:
+        if "/" not in part:
+            continue
+        subparts = part.split("/", maxsplit=1)
+        if len(subparts) != 2:
+            continue
+        p0, p1 = subparts
+        if p0 != "application":
+            continue
+        if p1 == "json" or p1.endswith("+json"):
+            return True
+    return False
 
 
 def set_env_config(base_url: str, client_id: str, client_secret: str, namespace: str) -> None:

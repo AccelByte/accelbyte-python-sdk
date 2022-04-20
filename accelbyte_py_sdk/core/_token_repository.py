@@ -5,7 +5,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
-from typing import Any
+from typing import Any, Optional
 
 
 class TokenRepository(ABC):
@@ -22,6 +22,17 @@ class TokenRepository(ABC):
     @abstractmethod
     def store_token(self, token: Any) -> bool:
         pass
+
+    def get_access_token(self) -> Optional[str]:
+        token = self.get_token()
+        if token is None:
+            return None
+        if hasattr(token, "access_token"):
+            return str(token.access_token)
+        elif hasattr(token, "__iter__") and "access_token" in token:
+            return str(token["access_token"])
+        else:
+            return None
 
 
 class MyTokenRepository(TokenRepository):

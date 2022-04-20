@@ -1,62 +1,50 @@
 import base64
 import re
-# from enum import StrEnum
 from typing import Any, Tuple, List, Union, Dict, Optional
 from unittest import TestCase
 
 import accelbyte_py_sdk
-from accelbyte_py_sdk.core import MyConfigRepository
-from accelbyte_py_sdk.core import MyTokenRepository
-from accelbyte_py_sdk.core import RequestsHttpClient
-from accelbyte_py_sdk.core import Model
-from accelbyte_py_sdk.core import Operation
 from accelbyte_py_sdk.core import Header
 from accelbyte_py_sdk.core import HeaderStr
 from accelbyte_py_sdk.core import HttpClient
 from accelbyte_py_sdk.core import HttpRawResponse
 from accelbyte_py_sdk.core import HttpResponse
-from accelbyte_py_sdk.core import get_config_repository
+from accelbyte_py_sdk.core import Model
+from accelbyte_py_sdk.core import MyConfigRepository
+from accelbyte_py_sdk.core import MyTokenRepository
+from accelbyte_py_sdk.core import Operation
+from accelbyte_py_sdk.core import ProtoHttpRequest
+from accelbyte_py_sdk.core import RequestsHttpClient
+from accelbyte_py_sdk.core import StrEnum
+from accelbyte_py_sdk.core import create_basic_authentication
+from accelbyte_py_sdk.core import create_proto_from_operation
+from accelbyte_py_sdk.core import get_access_token
+from accelbyte_py_sdk.core import get_app_name
+from accelbyte_py_sdk.core import get_app_version
 from accelbyte_py_sdk.core import get_base_url
 from accelbyte_py_sdk.core import get_client_auth
 from accelbyte_py_sdk.core import get_client_id
 from accelbyte_py_sdk.core import get_client_secret
-from accelbyte_py_sdk.core import get_namespace
-from accelbyte_py_sdk.core import get_app_name
-from accelbyte_py_sdk.core import get_app_version
-from accelbyte_py_sdk.core import get_token_repository
-from accelbyte_py_sdk.core import get_access_token
+from accelbyte_py_sdk.core import get_config_repository
 from accelbyte_py_sdk.core import get_http_client
-from accelbyte_py_sdk.core import get_final_headers
-from accelbyte_py_sdk.core import remove_token
-from accelbyte_py_sdk.core import create_basic_authentication
+from accelbyte_py_sdk.core import get_namespace
 from accelbyte_py_sdk.core import get_query_from_http_redirect_response
-
-from accelbyte_py_sdk.core import StrEnum
+from accelbyte_py_sdk.core import get_token_repository
+from accelbyte_py_sdk.core import remove_token
 
 
 class TestHttpClient(HttpClient):
 
-    def create_request(
-            self,
-            operation: Operation,
-            base_url: Union[None, str] = None,
-            headers: Union[None, Header] = None,
-            **kwargs
-    ) -> Tuple[Any, Union[None, HttpResponse]]:
+    def create_request_from_proto(self, proto: ProtoHttpRequest) -> Any:
         return None, HttpResponse.create_unhandled_error()
 
-    def send_request(
-            self,
-            request: Any,
-            **kwargs
-    ) -> Tuple[Any, Union[None, HttpResponse]]:
+    def create_request(self, operation: Operation, base_url: Union[None, str] = None, headers: Union[None, Header] = None, **kwargs) -> Tuple[Any, Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
 
-    def handle_response(
-            self,
-            raw_response: Any,
-            **kwargs
-    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
+    def send_request(self, request: Any, **kwargs) -> Tuple[Any, Union[None, HttpResponse]]:
+        return None, HttpResponse.create_unhandled_error()
+
+    def handle_response(self, raw_response: Any, **kwargs) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
 
 
@@ -438,6 +426,36 @@ class CoreTestCase(TestCase):
         self.assertTrue("Authorization" in header)
         self.assertEqual("Bearer spam&eggs", header["Authorization"])
 
+    def test_header_add_cookie(self):
+        header = Header()
+        header.add_cookie("order", "spam&eggs")
+        self.assertTrue("order=spam&eggs", header["Cookie"])
+
+        header = Header()
+        header["Cookie"] = "order1=spam"
+        header.add_cookie("order2", "eggs")
+        self.assertTrue("order1=spam; order2=eggs", header["Cookie"])
+
+        header = Header()
+        header["Cookie"] = "order=spam"
+        header.add_cookie("order", "eggs", replace_existing=False)
+        self.assertTrue("order=spam", header["Cookie"])
+
+        header = Header()
+        header["Cookie"] = "order1=spam; order2=eggs"
+        header.add_cookie("order2", "toast", replace_existing=False)
+        self.assertTrue("order1=spam; order2=eggs", header["Cookie"])
+
+        header = Header()
+        header["Cookie"] = "order=spam"
+        header.add_cookie("order", "eggs", replace_existing=True)
+        self.assertTrue("order=eggs", header["Cookie"])
+
+        header = Header()
+        header["Cookie"] = "order1=spam; order2=eggs"
+        header.add_cookie("order2", "toast", replace_existing=True)
+        self.assertTrue("order1=spam; order2=toast", header["Cookie"])
+
     def test_header_add_user_agent_directly(self):
         header = Header()
         header.add_user_agent(user_agent="spam&eggs")
@@ -475,54 +493,61 @@ class CoreTestCase(TestCase):
 
     def test_headerstr_in_operation_with_zero_values(self):
         valid_operation = TestOperation()
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertNotIn("Cookie", final_headers)
+        self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_with_one_value(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertIn("Cookie", final_headers)
-        self.assertEqual("access_token=test", final_headers.get("Cookie"))
+        self.assertIn("Cookie", headers)
+        self.assertEqual("access_token=test", headers.get("Cookie"))
 
     def test_headerstr_in_operation_with_two_or_more_values(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
         valid_operation.cookie["other_token"] = "hello"
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertIn("Cookie", final_headers)
-        self.assertEqual("access_token=test; other_token=hello", final_headers.get("Cookie"))
+        self.assertIn("Cookie", headers)
+        self.assertEqual("access_token=test; other_token=hello", headers.get("Cookie"))
 
     def test_headerstr_in_operation_as_empty_string(self):
         valid_operation = TestOperation().with_cookie("")
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertNotIn("Cookie", final_headers)
+        self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_as_empty_headerstr(self):
         empty_headerstr = HeaderStr()
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertNotIn("Cookie", final_headers)
+        self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_with_empty_string_value(self):
         empty_headerstr = HeaderStr()
         empty_headerstr["empty_token"] = ""
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertNotIn("Cookie", final_headers)
+        self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_with_non_string_value(self):
         empty_headerstr = HeaderStr()
         empty_headerstr["false_token"] = False
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        final_headers, error = get_final_headers(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation)
+        headers = proto.headers
         self.assertIsNone(error)
-        self.assertIn("Cookie", final_headers)
-        self.assertEqual("false_token=False", final_headers.get("Cookie"))
+        self.assertIn("Cookie", headers)
+        self.assertEqual("false_token=False", headers.get("Cookie"))
 
     def test_url_creation_with_path_params(self):
         full_url = Operation.create_full_url(

@@ -5,16 +5,22 @@
 from __future__ import annotations
 from typing import Dict, Tuple, Union
 
+from ._headerstr import HeaderStr
 from ._utils import create_basic_authentication
 from ._utils import generate_amazon_xray_trace_id
 
 import accelbyte_py_sdk
 
+HEADER_AUTHORIZATION_KEY: str = "Authorization"
+HEADER_COOKIE_KEY: str = "Cookie"
+HEADER_USER_AGENT_KEY: str = "User-Agent"
+HEADER_X_AMAZON_TRACE_ID_KEY: str = "X-Amzn-Trace-Id"
+
 
 class Header(dict):
 
     def add_authorization(self, authorization: str) -> Header:
-        self["Authorization"] = authorization
+        self[HEADER_AUTHORIZATION_KEY] = authorization
         return self
 
     def add_basic_authorization(self, username: str, password: str) -> Header:
@@ -29,7 +35,20 @@ class Header(dict):
     def add_amazon_xray_trace_id(self, amazon_xray_trace_id: Union[None, str] = None) -> Header:
         if amazon_xray_trace_id is None:
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
-        self["X-Amzn-Trace-Id"] = amazon_xray_trace_id
+        self[HEADER_X_AMAZON_TRACE_ID_KEY] = amazon_xray_trace_id
+        return self
+
+    def add_cookie(self, key: str, value: str, replace_existing: bool = False) -> Header:
+        if HEADER_COOKIE_KEY in self:
+            cookie_value = self[HEADER_COOKIE_KEY]
+            if f"{key}=" in cookie_value and replace_existing:
+                headerstr = HeaderStr.create_from_str(cookie_value)
+                headerstr[key] = value
+                self[HEADER_COOKIE_KEY] = str(headerstr)
+            else:
+                self[HEADER_COOKIE_KEY] = cookie_value + f"; {key}={value}"
+        else:
+            self[HEADER_COOKIE_KEY] = f"{key}={value}"
         return self
 
     def add_user_agent(
@@ -53,17 +72,23 @@ class Header(dict):
                     if app_version:
                         user_agent += f"/{app_version}"
                     user_agent += ")"
-        self["User-Agent"] = user_agent
+        self[HEADER_USER_AGENT_KEY] = user_agent
         return self
 
     def has_amazon_xray_trace_id(self) -> bool:
-        return "X-Amzn-Trace-Id" in self
+        return HEADER_X_AMAZON_TRACE_ID_KEY in self
 
     def has_authorization(self) -> bool:
-        return "Authorization" in self
+        return HEADER_AUTHORIZATION_KEY in self
+
+    def has_cookie(self) -> bool:
+        return HEADER_COOKIE_KEY in self
+
+    def has_cookie_key(self, key: str) -> bool:
+        return self.has_cookie() and f"{key}=" in self[HEADER_COOKIE_KEY]
 
     def has_user_agent(self) -> bool:
-        return "User-Agent" in self
+        return HEADER_USER_AGENT_KEY in self
 
     @classmethod
     def create_from_dict(cls, dict_: Dict[str, str]):

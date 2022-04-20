@@ -117,6 +117,54 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
+    def create_base_url_not_set_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Base URL not set."
+        return instance
+
+    @classmethod
+    def create_client_not_registered_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Client not registered."
+        return instance
+
+    @classmethod
+    def create_token_not_found_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Token not found."
+        return instance
+
+    @classmethod
+    def create_config_repo_not_found_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Config repository not found."
+        return instance
+
+    @classmethod
+    def create_token_repo_not_found_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Token repository not found."
+        return instance
+
+    @classmethod
+    def create_http_client_not_found_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "HTTP client not found."
+        return instance
+
+    @classmethod
     def try_create_undocumented_response(cls, code: int, content: Any):
         if code not in HTTP_STATUS_CODES:
             return False, None

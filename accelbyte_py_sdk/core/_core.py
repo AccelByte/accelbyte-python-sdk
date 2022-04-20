@@ -24,9 +24,13 @@ from ._http_client import HttpClient
 from ._http_client import RequestsHttpClient
 from ._http_client import HttpxHttpClient
 
-from ._header import Header
+from ._proto_http_request import ProtoHttpRequest
+from ._proto_http_request import create_proto_from_operation
+
 from ._http_response import HttpResponse
+
 from ._operation import Operation
+
 from ._utils import add_buffered_file_handler_to_logger
 from ._utils import get_query_from_http_redirect_response
 
@@ -228,21 +232,21 @@ def set_config_repository(config_repository: ConfigRepository) -> None:
 def get_base_url() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     base_url = config_repo.get_base_url()
     if not base_url:
-        return None, HttpResponse.create_error(400, "Base URL not set.")
+        return None, HttpResponse.create_base_url_not_set_error()
     return base_url, None
 
 
 def get_client_auth() -> Tuple[Union[None, Tuple[str, str]], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     client_id = config_repo.get_client_id()
     client_secret = config_repo.get_client_secret()
     if not client_id:
-        return None, HttpResponse.create_error(400, "Client not registered.")
+        return None, HttpResponse.create_client_not_registered_error()
     client_secret = client_secret or ""
     return (client_id, client_secret), None
 
@@ -250,17 +254,17 @@ def get_client_auth() -> Tuple[Union[None, Tuple[str, str]], Union[None, HttpRes
 def get_client_id() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     client_id = config_repo.get_client_id()
     if not client_id:
-        return None, HttpResponse.create_error(400, "Client not registered.")
+        return None, HttpResponse.create_client_not_registered_error()
     return client_id, None
 
 
 def get_client_secret() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     client_secret = config_repo.get_client_secret() or ""
     return client_secret, None
 
@@ -268,7 +272,7 @@ def get_client_secret() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 def get_namespace() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     namespace = config_repo.get_namespace()
     if not namespace:
         return None, HttpResponse.create_error(400, "Namespace not found.")
@@ -278,7 +282,7 @@ def get_namespace() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 def get_app_name() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     app_name = config_repo.get_app_name()
     if not app_name:
         return None, HttpResponse.create_error(400, "App name not found.")
@@ -288,7 +292,7 @@ def get_app_name() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
 def get_app_version() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     config_repo = _CONFIG_REPOSITORY
     if not config_repo:
-        return None, HttpResponse.create_error(400, "Can't find config repository.")
+        return None, HttpResponse.create_config_repo_not_found_error()
     app_version = config_repo.get_app_version()
     if not app_version:
         return None, HttpResponse.create_error(400, "App version not found.")
@@ -315,22 +319,22 @@ def set_token_repository(token_repository: TokenRepository) -> None:
 def get_access_token() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
     token_repo = _TOKEN_REPOSITORY
     if not token_repo:
-        return None, HttpResponse.create_error(400, "Can't find token repository.")
+        return None, HttpResponse.create_token_repo_not_found_error()
     token = token_repo.get_token()
     if not token:
-        return None, HttpResponse.create_error(400, "Can't find token.")
+        return None, HttpResponse.create_token_not_found_error()
     if hasattr(token, "access_token"):
         return str(token.access_token), None
     elif hasattr(token, "__iter__") and "access_token" in token:
         return str(token["access_token"]), None
     else:
-        return None, HttpResponse.create_error(400, "Failed to get access token.")
+        return None, HttpResponse.create_token_not_found_error()
 
 
 def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
     token_repo = _TOKEN_REPOSITORY
     if not token_repo:
-        return None, HttpResponse.create_error(400, "Can't find token repository.")
+        return None, HttpResponse.create_token_repo_not_found_error()
     success = token_repo.remove_token()
     if not success:
         return None, HttpResponse.create_error(400, "Failed to remove token.")
@@ -340,7 +344,7 @@ def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
 def set_token(token: Any) -> Tuple[None, Union[None, HttpResponse]]:
     token_repo = _TOKEN_REPOSITORY
     if not token_repo:
-        return None, HttpResponse.create_error(400, "Can't find token repository.")
+        return None, HttpResponse.create_token_repo_not_found_error()
     success = token_repo.store_token(token)
     if not success:
         return None, HttpResponse.create_error(400, "Failed to set token.")
@@ -386,171 +390,183 @@ def set_http_client(http_client: HttpClient) -> None:
     _HTTP_CLIENT = http_client
 
 
-def run_request(
+def __pre_run_request(
         operation: Operation,
-        base_url: Union[None, str] = None,
-        headers: Union[None, Header] = None,
-        additional_headers: Union[None, Dict[str, str]] = None,
+        base_url: Optional[str] = "",
+        additional_headers: Optional[Dict[str, str]] = None,
         additional_headers_override: bool = True,
-        **kwargs) -> Tuple[Any, Any]:
-    http_client = _HTTP_CLIENT
+        config_repo: Optional[ConfigRepository] = None,
+        token_repo: Optional[TokenRepository] = None,
+        **kwargs
+) -> Tuple[Any, Any]:
+    if not config_repo:
+        if not _CONFIG_REPOSITORY:
+            return None, HttpResponse.create_config_repo_not_found_error()
+        config_repo = _CONFIG_REPOSITORY
+    if not token_repo:
+        if not _TOKEN_REPOSITORY:
+            return None, HttpResponse.create_token_repo_not_found_error()
+        token_repo = _TOKEN_REPOSITORY
+    if not base_url:
+        base_url = config_repo.get_base_url()
 
-    if not http_client:
-        return None, HttpResponse.create_error(400, "Can't find HTTP client.")
+    proto, error = create_proto_from_operation(
+        operation=operation,
+        base_url=base_url,
+        additional_headers=additional_headers,
+        additional_headers_override=additional_headers_override,
+        config_repo=config_repo,
+        token_repo=token_repo,
+        **kwargs
+    )
+    return proto, error
 
-    if base_url is None:
-        config_base_url, error = get_base_url()
-        if not error:
-            base_url = config_base_url
 
-    headers, error = get_final_headers(operation, headers, additional_headers, additional_headers_override)
+def __post_run_request(
+        operation: Operation,
+        response: Any,
+        error: Any
+) -> Tuple[Any, Any]:
+    success, error = operation.parse_response(*response)
     if error:
         return None, error
 
-    if operation.has_redirects() and "allow_redirects" not in kwargs:
+    if operation.has_redirects() and operation.location_query:
+        query, error = get_query_from_http_redirect_response(success, operation.location_query)
+        if error:
+            return None, error
+        else:
+            return query, None
+
+    # TODO(elmer): still not a fan of this bit
+    is_valid_token, error = _try_set_token(success)
+    if error and is_valid_token:
+        return None, error
+
+    return success, None
+
+
+def run_proto_request(
+        proto: ProtoHttpRequest,
+        has_redirects: bool = False,
+        http_client: Optional[HttpClient] = None,
+        **kwargs
+) -> Tuple[Any, Any]:
+    if has_redirects and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
+    if not http_client:
+        if not _HTTP_CLIENT:
+            return None, HttpResponse.create_http_client_not_found_error()
+        http_client = _HTTP_CLIENT
 
-    request, error = http_client.create_request(operation, base_url, headers, **kwargs)
-    if error:
-        return None, error
+    request = http_client.create_request(proto=proto)
 
     raw_response, error = http_client.send_request(request, **kwargs)
     if error:
         return None, error
 
     response, error = http_client.handle_response(raw_response, **kwargs)
-    if error:
-        return None, error
-
-    success, failure = operation.parse_response(*response)
-
-    if failure:
-        return None, failure
-
-    if operation.has_redirects() and operation.location_query:
-        query, error = get_query_from_http_redirect_response(success, operation.location_query)
-        if error:
-            return None, error
-        else:
-            return query, None
-
-    # TODO(elmer): still not a fan of this bit
-    is_valid_token, error = _try_set_token(success)
-    if is_valid_token:
-        if error:
-            return None, error
-        return success, None
-
-    return success, None
+    return response, error
 
 
-async def run_request_async(
-        operation: Operation,
-        base_url: Union[None, str] = None,
-        headers: Union[None, Header] = None,
-        additional_headers: Union[None, Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        **kwargs) -> Tuple[Any, Any]:
-    http_client = _HTTP_CLIENT
-
-    if not http_client:
-        return None, HttpResponse.create_error(400, "Can't find HTTP client.")
-
-    if base_url is None:
-        config_base_url, error = get_base_url()
-        if not error:
-            base_url = config_base_url
-
-    headers, error = get_final_headers(operation, headers, additional_headers, additional_headers_override)
-    if error:
-        return None, error
-
-    if operation.has_redirects() and "allow_redirects" not in kwargs:
+async def run_proto_request_async(
+        proto: ProtoHttpRequest,
+        has_redirects: bool = False,
+        http_client: Optional[HttpClient] = None,
+        **kwargs
+) -> Tuple[Any, Any]:
+    if has_redirects and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
+    if not http_client:
+        if not _HTTP_CLIENT:
+            return None, HttpResponse.create_http_client_not_found_error()
+        http_client = _HTTP_CLIENT
 
-    request, error = http_client.create_request(operation, base_url, headers, **kwargs)
-    if error:
-        return None, error
+    request = http_client.create_request(proto=proto)
 
     raw_response, error = await http_client.send_request_async(request, **kwargs)
     if error:
         return None, error
 
     response, error = http_client.handle_response(raw_response, **kwargs)
+    return response, error
+
+
+def run_request(
+        operation: Operation,
+        base_url: Optional[str] = "",
+        additional_headers: Optional[Dict[str, str]] = None,
+        additional_headers_override: bool = True,
+        config_repo: Optional[ConfigRepository] = None,
+        token_repo: Optional[TokenRepository] = None,
+        http_client: Optional[HttpClient] = None,
+        **kwargs
+) -> Tuple[Any, Any]:
+    proto, error = __pre_run_request(
+        operation=operation,
+        base_url=base_url,
+        additional_headers=additional_headers,
+        additional_headers_override=additional_headers_override,
+        config_repo=config_repo,
+        token_repo=token_repo,
+        http_client=http_client,
+        **kwargs
+    )
     if error:
         return None, error
 
-    success, failure = operation.parse_response(*response)
+    response, error = run_proto_request(
+        proto=proto,
+        has_redirects=operation.has_redirects(),
+        http_client=http_client,
+    )
+    if error:
+        return None, error
 
-    if failure:
-        return None, failure
-
-    if operation.has_redirects() and operation.location_query:
-        query, error = get_query_from_http_redirect_response(success, operation.location_query)
-        if error:
-            return None, error
-        else:
-            return query, None
-
-    # TODO(elmer): still not a fan of this bit
-    is_valid_token, error = _try_set_token(success)
-    if is_valid_token:
-        if error:
-            return None, error
-        return success, None
-
-    return success, None
+    result, error = __post_run_request(
+        operation=operation,
+        response=response,
+        error=error
+    )
+    return result, error
 
 
-def get_final_headers(
+async def run_request_async(
         operation: Operation,
-        headers: Union[None, Header] = None,
-        additional_headers: Union[None, Dict[str, str]] = None,
+        base_url: Optional[str] = "",
+        additional_headers: Optional[Dict[str, str]] = None,
         additional_headers_override: bool = True,
-        add_authorization: bool = True,
-        auto_add_bearer_auth: bool = True,
-) -> Tuple[Optional[Header], Optional[HttpResponse]]:
-    headers = headers if headers is not None else operation.get_headers()
+        config_repo: Optional[ConfigRepository] = None,
+        token_repo: Optional[TokenRepository] = None,
+        http_client: Optional[HttpClient] = None,
+        **kwargs
+) -> Tuple[Any, Any]:
+    proto, error = __pre_run_request(
+        operation=operation,
+        base_url=base_url,
+        additional_headers=additional_headers,
+        additional_headers_override=additional_headers_override,
+        config_repo=config_repo,
+        token_repo=token_repo,
+        http_client=http_client,
+        **kwargs
+    )
+    if error:
+        return None, error
 
-    if headers.has_authorization():
-        add_authorization = False
-    elif additional_headers and "Authorization" in additional_headers:
-        add_authorization = False
+    response, error = await run_proto_request_async(
+        proto=proto,
+        has_redirects=operation.has_redirects(),
+        http_client=http_client,
+    )
+    if error:
+        return None, error
 
-    if add_authorization:
-        if hasattr(operation, "authorization_override") and operation.authorization_override:
-            headers.add_authorization(operation.authorization_override)
-        elif operation.security_type == "basic":
-            client_auth, error = get_client_auth()
-            if error:
-                return None, error
-            headers.add_basic_authorization2(client_auth)
-        elif operation.security_type == "bearer":
-            access_token, error = get_access_token()
-            if error:
-                return None, error
-            headers.add_bearer_authorization(access_token)
-        elif auto_add_bearer_auth:
-            access_token, _ = get_access_token()
-            if access_token:
-                headers.add_bearer_authorization(access_token)
-
-    config_repo = _CONFIG_REPOSITORY
-    if config_repo is not None:
-        if not headers.has_amazon_xray_trace_id() and config_repo.auto_add_amazon_trace_id():
-            headers.add_amazon_xray_trace_id()
-        if not headers.has_user_agent() and config_repo.auto_add_user_agent():
-            app_name = config_repo.get_app_name()
-            app_version = config_repo.get_app_version()
-            headers.add_user_agent(app_info=(app_name, app_version))
-
-    if additional_headers:
-        for k, v in additional_headers.items():
-            if not additional_headers_override and k in headers:
-                continue
-            headers[k] = v
-
-    return headers, None
-
+    result, error = __post_run_request(
+        operation=operation,
+        response=response,
+        error=error
+    )
+    return result, error
 
 # endregion HttpClient

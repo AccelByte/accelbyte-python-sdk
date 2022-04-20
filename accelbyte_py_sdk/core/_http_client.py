@@ -2,19 +2,17 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 import asyncio
-import json
 import logging
 import time
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Any, Callable, Dict, IO, List, Optional, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import httpx
 import requests
 
-from ._header import Header
 from ._http_response import HttpResponse
-from ._operation import Operation
+from ._proto_http_request import ProtoHttpRequest
+from ._proto_http_request import is_json_mime_type
 from ._utils import create_curl_request
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk.http")
@@ -37,13 +35,7 @@ class HttpClient(ABC):
         return False
 
     @abstractmethod
-    def create_request(
-            self,
-            operation: Operation,
-            base_url: Union[None, str] = None,
-            headers: Union[None, Header] = None,
-            **kwargs
-    ) -> Tuple[Any, Union[None, HttpResponse]]:
+    def create_request(self, proto: ProtoHttpRequest) -> Any:
         pass
 
     @abstractmethod
@@ -71,27 +63,6 @@ class HttpClient(ABC):
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         pass
 
-    def run_request(
-            self,
-            operation: Operation,
-            base_url: Union[None, str] = None,
-            headers: Union[None, Header] = None,
-            **kwargs
-    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
-        request, error = self.create_request(operation, base_url, headers, **kwargs)
-        if error:
-            return None, error
-
-        raw_response, error = self.send_request(request, **kwargs)
-        if error:
-            return None, error
-
-        response, error = self.handle_response(raw_response, **kwargs)
-        if error:
-            return None, error
-
-        return response, None
-
     def _log_request(self, request_dict: dict) -> None:
         req_fmt = self.request_log_formatter or format_request_log
         _LOGGER.debug(req_fmt(request_dict))
@@ -112,23 +83,16 @@ class RequestsHttpClient(HttpClient):
         if self.session is not None:
             self.session.close()
 
-    def create_request(
-            self,
-            operation: Operation,
-            base_url: Union[None, str] = None,
-            headers: Union[None, Header] = None,
-            **kwargs
-    ) -> Tuple[Any, Union[None, HttpResponse]]:
-        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers, **kwargs)
+    def create_request(self, proto: ProtoHttpRequest) -> Any:
         prepared_request = requests.Request(
-            method=method,
-            url=url,
-            headers=headers,
-            files=files,
-            data=data,
-            json=json_,
+            method=proto.method,
+            url=proto.url,
+            headers=proto.headers,
+            files=proto.files,
+            data=proto.data,
+            json=proto.json_,
         ).prepare()
-        return prepared_request, None
+        return prepared_request
 
     def send_request(
             self,
@@ -247,23 +211,16 @@ class HttpxHttpClient(HttpClient):
     def is_async_compatible(self) -> bool:
         return True
 
-    def create_request(
-            self,
-            operation: Operation,
-            base_url: Union[None, str] = None,
-            headers: Union[None, Header] = None,
-            **kwargs
-    ) -> Tuple[Any, Union[None, HttpResponse]]:
-        method, url, headers, files, data, json_ = convert_operation(operation, base_url, headers, **kwargs)
+    def create_request(self, proto: ProtoHttpRequest) -> Any:
         httpx_request = httpx.Request(
-            method=method,
-            url=url,
-            headers=headers,
-            files=files,
-            data=data,
-            json=json_,
+            method=proto.method,
+            url=proto.url,
+            headers=proto.headers,
+            files=proto.files,
+            data=proto.data,
+            json=proto.json_,
         )
-        return httpx_request, None
+        return httpx_request
 
     def send_request(
             self,
@@ -339,106 +296,12 @@ class HttpxHttpClient(HttpClient):
         }
 
 
-# TODO(elmer): convert into a dataclass?
-def convert_operation(
-        operation: Operation,
-        base_url: Union[None, str] = None,
-        headers: Union[None, Header] = None,
-        validate: bool = True,
-        **kwargs
-) -> Tuple[
-    str,     # method
-    str,     # url
-    Header,  # headers
-    Any,     # files
-    Any,     # data
-    Any,     # json
-]:
-    if validate:
-        is_valid, error = operation.is_valid(**kwargs)
-        if not is_valid:
-            raise Exception(error)
-
-    headers = headers if headers is not None else operation.get_headers()
-
-    body_params = operation.get_body_params()
-    form_data_params = operation.get_form_data_params()
-
-    content_type = headers.get("Content-Type")
-
-    if body_params is not None:
-        if is_json_mime_type(content_type):
-            files, data, json_ = None, None, body_params
-        else:
-            files, data, json_ = None, json.dumps(body_params), None
-    elif form_data_params:
-        preprocess_form_data_params(form_data_params)
-        files = {}
-        data = {}
-        json_ = None
-        for k, v in form_data_params.items():
-            if is_file(k):
-                files[k] = v
-            else:
-                data[k] = v
-        if not files:
-            files = None
-        if not data:
-            data = None
-    else:
-        files = None
-        data = None
-        json_ = None
-
-    # NOTE(elmer): Remove 'Content-Type' when 'files' is truthy.
-    # See: https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python#comment90642370_12385661
-    if files and "Content-Type" in headers:
-        headers.pop("Content-Type")
-
-    return operation.method, operation.get_full_url(base_url=base_url), headers, files, data, json_
-
-
-def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, IO]:
-    if isinstance(file, IO):
-        return name, file
-
-    if isinstance(file, str):
-        file = Path(file)
-    if isinstance(file, Path):
-        if not file.exists():
-            raise FileNotFoundError
-        return file.name, file.open()
-
-    raise ValueError
-
-
 def format_request_log(request_dict: dict) -> str:
     return str(request_dict)
 
 
 def format_response_log(response_dict: dict) -> str:
     return str(response_dict)
-
-
-def is_file(key: str) -> bool:
-    return key.casefold() == "file"
-
-
-def is_json_mime_type(mime_type: Optional[str]) -> bool:
-    if mime_type is None:
-        return False
-    split = mime_type.split("/")
-    if len(split) != 2:
-        _LOGGER.warning(f"Invalid MIME Type: {mime_type}")
-        return False
-    main, sub = split
-    return main == "application" and (sub == "json" or sub.endswith("+json"))
-
-
-def preprocess_form_data_params(form_data_params: dict) -> None:
-    for form_data_key in form_data_params.keys():
-        if is_file(form_data_key):
-            form_data_params[form_data_key] = convert_any_to_file_tuple(form_data_key, form_data_params[form_data_key])
 
 
 def process_response(

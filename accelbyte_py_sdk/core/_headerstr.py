@@ -16,3 +16,15 @@ class HeaderStr(UserDict):
             first = False
             sio.write(f"{k}={self[k]}")
         return sio.getvalue()
+
+    @classmethod
+    def create_from_str(cls, string: str):
+        instance = cls()
+        parts = string.split("; ")
+        for part in parts:
+            key_value = part.split("=", maxsplit=1)
+            if len(key_value) != 2:
+                raise ValueError()
+            key, value = key_value
+            instance[key] = value
+        return instance
