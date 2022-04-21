@@ -171,24 +171,23 @@ def flatten_query_params(
 ) -> str:
     if not query_params:
         return ""
-    if collection_format_map:
-        flattened_query_params = []
-        for key, value in query_params.items():
-            if isinstance(value, list):
-                if len(value) == 0:
-                    continue
-                collection_format = collection_format_map.get(key, "csv")
-                if collection_format == "multi":
-                    for v in value:
-                        flattened_query_params.append((key, str(v)))
-                else:
-                    delimiter = QUERY_DELIMITER_MAP.get(collection_format, ",")
-                    flattened_query_value = delimiter.join([str(v) for v in value])
-                    flattened_query_params.append((key, flattened_query_value))
+    if collection_format_map is None:
+        collection_format_map = {}
+    flattened_query_params = []
+    for key, value in query_params.items():
+        if isinstance(value, list):
+            if len(value) == 0:
+                continue
+            collection_format = collection_format_map.get(key, "csv")
+            if collection_format == "multi":
+                for v in value:
+                    flattened_query_params.append((key, str(v)))
             else:
-                flattened_query_params.append((key, str(value)))
-    else:
-        flattened_query_params = [(key, value) for key, value in query_params.items()]
+                delimiter = QUERY_DELIMITER_MAP.get(collection_format, ",")
+                flattened_query_value = delimiter.join([str(v) for v in value])
+                flattened_query_params.append((key, flattened_query_value))
+        else:
+            flattened_query_params.append((key, str(value)))
     return "?" + "&".join(f"{k}={v}" for k, v in flattened_query_params)
 
 
