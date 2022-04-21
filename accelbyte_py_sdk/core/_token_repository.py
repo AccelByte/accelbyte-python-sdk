@@ -18,7 +18,6 @@ class TokenRepository(ABC):
     def remove_token(self) -> bool:
         pass
 
-    # TODO(elmer): define what a Token is.
     @abstractmethod
     def store_token(self, token: Any) -> bool:
         pass
