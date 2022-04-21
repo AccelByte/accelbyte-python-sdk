@@ -68,15 +68,15 @@ class BulkUserStatItemInc(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
-            result["inc"] = float()
+            result["inc"] = 0.0
         return result
 
     # endregion to methods
@@ -105,15 +105,15 @@ class BulkUserStatItemInc(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "inc" in dict_ and dict_["inc"] is not None:
             instance.inc = float(dict_["inc"])
         elif include_empty:
-            instance.inc = float()
+            instance.inc = 0.0
         return instance
 
     @classmethod

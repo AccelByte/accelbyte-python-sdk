@@ -126,15 +126,15 @@ class RetrieveBasePolicyResponse(Model):
         if hasattr(self, "base_policy_name"):
             result["basePolicyName"] = str(self.base_policy_name)
         elif include_empty:
-            result["basePolicyName"] = str()
+            result["basePolicyName"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "affected_client_ids"):
             result["affectedClientIds"] = [str(i0) for i0 in self.affected_client_ids]
         elif include_empty:
@@ -142,11 +142,11 @@ class RetrieveBasePolicyResponse(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "policies"):
             result["policies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.policies]
         elif include_empty:
@@ -154,11 +154,11 @@ class RetrieveBasePolicyResponse(Model):
         if hasattr(self, "policy_type_id"):
             result["policyTypeId"] = str(self.policy_type_id)
         elif include_empty:
-            result["policyTypeId"] = str()
+            result["policyTypeId"] = ""
         if hasattr(self, "policy_type_name"):
             result["policyTypeName"] = str(self.policy_type_name)
         elif include_empty:
-            result["policyTypeName"] = str()
+            result["policyTypeName"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -166,7 +166,7 @@ class RetrieveBasePolicyResponse(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -218,15 +218,15 @@ class RetrieveBasePolicyResponse(Model):
         if "basePolicyName" in dict_ and dict_["basePolicyName"] is not None:
             instance.base_policy_name = str(dict_["basePolicyName"])
         elif include_empty:
-            instance.base_policy_name = str()
+            instance.base_policy_name = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "affectedClientIds" in dict_ and dict_["affectedClientIds"] is not None:
             instance.affected_client_ids = [str(i0) for i0 in dict_["affectedClientIds"]]
         elif include_empty:
@@ -234,11 +234,11 @@ class RetrieveBasePolicyResponse(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "policies" in dict_ and dict_["policies"] is not None:
             instance.policies = [PolicyObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["policies"]]
         elif include_empty:
@@ -246,11 +246,11 @@ class RetrieveBasePolicyResponse(Model):
         if "policyTypeId" in dict_ and dict_["policyTypeId"] is not None:
             instance.policy_type_id = str(dict_["policyTypeId"])
         elif include_empty:
-            instance.policy_type_id = str()
+            instance.policy_type_id = ""
         if "policyTypeName" in dict_ and dict_["policyTypeName"] is not None:
             instance.policy_type_name = str(dict_["policyTypeName"])
         elif include_empty:
-            instance.policy_type_name = str()
+            instance.policy_type_name = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -258,7 +258,7 @@ class RetrieveBasePolicyResponse(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

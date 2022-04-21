@@ -68,7 +68,7 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         if hasattr(self, "blocked_players"):
             result["blocked_players"] = [str(i0) for i0 in self.blocked_players]
         elif include_empty:
@@ -76,7 +76,7 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
-            result["party_id"] = str()
+            result["party_id"] = ""
         return result
 
     # endregion to methods
@@ -106,7 +106,7 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "blocked_players" in dict_ and dict_["blocked_players"] is not None:
             instance.blocked_players = [str(i0) for i0 in dict_["blocked_players"]]
         elif include_empty:
@@ -114,7 +114,7 @@ class ModelsMatchAddUserIntoSessionRequest(Model):
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         return instance
 
     @classmethod

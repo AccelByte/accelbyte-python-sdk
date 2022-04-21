@@ -65,7 +65,7 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = int(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = int()
+            result["updatedAt"] = 0
         return result
 
     # endregion to methods
@@ -95,7 +95,7 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = int(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = int()
+            instance.updated_at = 0
         return instance
 
     @classmethod

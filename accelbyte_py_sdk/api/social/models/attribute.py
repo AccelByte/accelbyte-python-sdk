@@ -61,11 +61,11 @@ class Attribute(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
-            result["value"] = str()
+            result["value"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class Attribute(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
-            instance.value = str()
+            instance.value = ""
         return instance
 
     @classmethod

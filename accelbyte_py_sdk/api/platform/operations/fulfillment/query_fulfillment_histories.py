@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -58,7 +59,7 @@ class QueryFulfillmentHistories(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +81,7 @@ class QueryFulfillmentHistories(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -110,8 +111,8 @@ class QueryFulfillmentHistories(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -120,14 +121,6 @@ class QueryFulfillmentHistories(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -194,15 +187,15 @@ class QueryFulfillmentHistories(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -210,7 +203,7 @@ class QueryFulfillmentHistories(Operation):
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -270,15 +263,15 @@ class QueryFulfillmentHistories(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -286,7 +279,7 @@ class QueryFulfillmentHistories(Operation):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

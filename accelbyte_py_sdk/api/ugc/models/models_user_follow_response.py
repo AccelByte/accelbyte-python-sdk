@@ -61,11 +61,11 @@ class ModelsUserFollowResponse(Model):
         if hasattr(self, "follow_status"):
             result["followStatus"] = bool(self.follow_status)
         elif include_empty:
-            result["followStatus"] = bool()
+            result["followStatus"] = False
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUserFollowResponse(Model):
         if "followStatus" in dict_ and dict_["followStatus"] is not None:
             instance.follow_status = bool(dict_["followStatus"])
         elif include_empty:
-            instance.follow_status = bool()
+            instance.follow_status = False
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

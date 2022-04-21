@@ -54,7 +54,7 @@ class ModelsUpdateConfigRequest(Model):
         if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
-            result["apiKey"] = str()
+            result["apiKey"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsUpdateConfigRequest(Model):
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:
-            instance.api_key = str()
+            instance.api_key = ""
         return instance
 
     @classmethod

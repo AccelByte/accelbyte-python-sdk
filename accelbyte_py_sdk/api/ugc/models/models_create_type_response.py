@@ -75,11 +75,11 @@ class ModelsCreateTypeResponse(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "subtype"):
             result["subtype"] = [str(i0) for i0 in self.subtype]
         elif include_empty:
@@ -87,7 +87,7 @@ class ModelsCreateTypeResponse(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         return result
 
     # endregion to methods
@@ -117,11 +117,11 @@ class ModelsCreateTypeResponse(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "subtype" in dict_ and dict_["subtype"] is not None:
             instance.subtype = [str(i0) for i0 in dict_["subtype"]]
         elif include_empty:
@@ -129,7 +129,7 @@ class ModelsCreateTypeResponse(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         return instance
 
     @classmethod

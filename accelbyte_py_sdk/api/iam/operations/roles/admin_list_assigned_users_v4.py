@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelListAssignedUsersV4Response
@@ -51,7 +52,7 @@ class AdminListAssignedUsersV4(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         role_id: (roleId) REQUIRED str in path
 
@@ -79,7 +80,7 @@ class AdminListAssignedUsersV4(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     role_id: str                                                                                   # REQUIRED in [path]
@@ -108,8 +109,8 @@ class AdminListAssignedUsersV4(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -118,14 +119,6 @@ class AdminListAssignedUsersV4(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -186,19 +179,19 @@ class AdminListAssignedUsersV4(Operation):
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
-            result["after"] = str()
+            result["after"] = ""
         if hasattr(self, "before") and self.before:
             result["before"] = str(self.before)
         elif include_empty:
-            result["before"] = str()
+            result["before"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         return result
 
     # endregion to methods
@@ -271,19 +264,19 @@ class AdminListAssignedUsersV4(Operation):
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
-            instance.after = str()
+            instance.after = ""
         if "before" in dict_ and dict_["before"] is not None:
             instance.before = str(dict_["before"])
         elif include_empty:
-            instance.before = str()
+            instance.before = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         return instance
 
     @staticmethod

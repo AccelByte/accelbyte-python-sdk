@@ -61,11 +61,11 @@ class ModelsEventID(Model):
         if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
-            result["Description"] = str()
+            result["Description"] = ""
         if hasattr(self, "event_id"):
             result["EventID"] = int(self.event_id)
         elif include_empty:
-            result["EventID"] = int()
+            result["EventID"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsEventID(Model):
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = str(dict_["Description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "EventID" in dict_ and dict_["EventID"] is not None:
             instance.event_id = int(dict_["EventID"])
         elif include_empty:
-            instance.event_id = int()
+            instance.event_id = 0
         return instance
 
     @classmethod

@@ -89,27 +89,27 @@ class ModelsRecentPlayerHistory(Model):
         if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
-            result["created_at"] = str()
+            result["created_at"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "other_display_name"):
             result["other_display_name"] = str(self.other_display_name)
         elif include_empty:
-            result["other_display_name"] = str()
+            result["other_display_name"] = ""
         if hasattr(self, "other_id"):
             result["other_id"] = str(self.other_id)
         elif include_empty:
-            result["other_id"] = str()
+            result["other_id"] = ""
         if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
-            result["updated_at"] = str()
+            result["updated_at"] = ""
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -143,27 +143,27 @@ class ModelsRecentPlayerHistory(Model):
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "other_display_name" in dict_ and dict_["other_display_name"] is not None:
             instance.other_display_name = str(dict_["other_display_name"])
         elif include_empty:
-            instance.other_display_name = str()
+            instance.other_display_name = ""
         if "other_id" in dict_ and dict_["other_id"] is not None:
             instance.other_id = str(dict_["other_id"])
         elif include_empty:
-            instance.other_id = str()
+            instance.other_id = ""
         if "updated_at" in dict_ and dict_["updated_at"] is not None:
             instance.updated_at = str(dict_["updated_at"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

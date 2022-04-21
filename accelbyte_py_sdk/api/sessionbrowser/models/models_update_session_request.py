@@ -61,11 +61,11 @@ class ModelsUpdateSessionRequest(Model):
         if hasattr(self, "game_current_player"):
             result["game_current_player"] = int(self.game_current_player)
         elif include_empty:
-            result["game_current_player"] = int()
+            result["game_current_player"] = 0
         if hasattr(self, "game_max_player"):
             result["game_max_player"] = int(self.game_max_player)
         elif include_empty:
-            result["game_max_player"] = int()
+            result["game_max_player"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUpdateSessionRequest(Model):
         if "game_current_player" in dict_ and dict_["game_current_player"] is not None:
             instance.game_current_player = int(dict_["game_current_player"])
         elif include_empty:
-            instance.game_current_player = int()
+            instance.game_current_player = 0
         if "game_max_player" in dict_ and dict_["game_max_player"] is not None:
             instance.game_max_player = int(dict_["game_max_player"])
         elif include_empty:
-            instance.game_max_player = int()
+            instance.game_max_player = 0
         return instance
 
     @classmethod

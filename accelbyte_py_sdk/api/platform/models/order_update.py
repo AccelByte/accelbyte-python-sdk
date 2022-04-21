@@ -80,7 +80,7 @@ class OrderUpdate(Model):
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
-            result["statusReason"] = str()
+            result["statusReason"] = ""
         return result
 
     # endregion to methods
@@ -110,7 +110,7 @@ class OrderUpdate(Model):
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:
-            instance.status_reason = str()
+            instance.status_reason = ""
         return instance
 
     @classmethod

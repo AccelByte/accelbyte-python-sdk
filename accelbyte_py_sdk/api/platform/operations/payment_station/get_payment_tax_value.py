@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -61,7 +62,7 @@ class GetPaymentTaxValue(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -85,7 +86,7 @@ class GetPaymentTaxValue(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -114,8 +115,8 @@ class GetPaymentTaxValue(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -124,14 +125,6 @@ class GetPaymentTaxValue(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -192,15 +185,15 @@ class GetPaymentTaxValue(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "zip_code") and self.zip_code:
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
-            result["zipCode"] = str()
+            result["zipCode"] = ""
         if hasattr(self, "payment_order_no") and self.payment_order_no:
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -267,15 +260,15 @@ class GetPaymentTaxValue(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:
-            instance.zip_code = str()
+            instance.zip_code = ""
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:

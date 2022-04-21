@@ -192,31 +192,31 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "auto_claim"):
             result["autoClaim"] = bool(self.auto_claim)
         elif include_empty:
-            result["autoClaim"] = bool()
+            result["autoClaim"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "passes"):
             result["passes"] = [i0.to_dict(include_empty=include_empty) for i0 in self.passes]
         elif include_empty:
@@ -228,7 +228,7 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -236,7 +236,7 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
-            result["tierItemId"] = str()
+            result["tierItemId"] = ""
         if hasattr(self, "tiers"):
             result["tiers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.tiers]
         elif include_empty:
@@ -244,11 +244,11 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
@@ -260,11 +260,11 @@ class LocalizedSeasonInfo(Model):
         if hasattr(self, "published_at"):
             result["publishedAt"] = str(self.published_at)
         elif include_empty:
-            result["publishedAt"] = str()
+            result["publishedAt"] = ""
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         return result
 
     # endregion to methods
@@ -329,31 +329,31 @@ class LocalizedSeasonInfo(Model):
         if "autoClaim" in dict_ and dict_["autoClaim"] is not None:
             instance.auto_claim = bool(dict_["autoClaim"])
         elif include_empty:
-            instance.auto_claim = bool()
+            instance.auto_claim = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "passes" in dict_ and dict_["passes"] is not None:
             instance.passes = [LocalizedPassInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["passes"]]
         elif include_empty:
@@ -365,7 +365,7 @@ class LocalizedSeasonInfo(Model):
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -373,7 +373,7 @@ class LocalizedSeasonInfo(Model):
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:
-            instance.tier_item_id = str()
+            instance.tier_item_id = ""
         if "tiers" in dict_ and dict_["tiers"] is not None:
             instance.tiers = [Tier.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["tiers"]]
         elif include_empty:
@@ -381,11 +381,11 @@ class LocalizedSeasonInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
@@ -397,11 +397,11 @@ class LocalizedSeasonInfo(Model):
         if "publishedAt" in dict_ and dict_["publishedAt"] is not None:
             instance.published_at = str(dict_["publishedAt"])
         elif include_empty:
-            instance.published_at = str()
+            instance.published_at = ""
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class ModelsEventLevel(Model):
         if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
-            result["Description"] = str()
+            result["Description"] = ""
         if hasattr(self, "event_level"):
             result["EventLevel"] = int(self.event_level)
         elif include_empty:
-            result["EventLevel"] = int()
+            result["EventLevel"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsEventLevel(Model):
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = str(dict_["Description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "EventLevel" in dict_ and dict_["EventLevel"] is not None:
             instance.event_level = int(dict_["EventLevel"])
         elif include_empty:
-            instance.event_level = int()
+            instance.event_level = 0
         return instance
 
     @classmethod

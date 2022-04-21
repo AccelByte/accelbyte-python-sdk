@@ -75,19 +75,19 @@ class ModelsDetailedCountServerResponse(Model):
         if hasattr(self, "busy_count"):
             result["busy_count"] = int(self.busy_count)
         elif include_empty:
-            result["busy_count"] = int()
+            result["busy_count"] = 0
         if hasattr(self, "creating_count"):
             result["creating_count"] = int(self.creating_count)
         elif include_empty:
-            result["creating_count"] = int()
+            result["creating_count"] = 0
         if hasattr(self, "ready_count"):
             result["ready_count"] = int(self.ready_count)
         elif include_empty:
-            result["ready_count"] = int()
+            result["ready_count"] = 0
         if hasattr(self, "unreachable_count"):
             result["unreachable_count"] = int(self.unreachable_count)
         elif include_empty:
-            result["unreachable_count"] = int()
+            result["unreachable_count"] = 0
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsDetailedCountServerResponse(Model):
         if "busy_count" in dict_ and dict_["busy_count"] is not None:
             instance.busy_count = int(dict_["busy_count"])
         elif include_empty:
-            instance.busy_count = int()
+            instance.busy_count = 0
         if "creating_count" in dict_ and dict_["creating_count"] is not None:
             instance.creating_count = int(dict_["creating_count"])
         elif include_empty:
-            instance.creating_count = int()
+            instance.creating_count = 0
         if "ready_count" in dict_ and dict_["ready_count"] is not None:
             instance.ready_count = int(dict_["ready_count"])
         elif include_empty:
-            instance.ready_count = int()
+            instance.ready_count = 0
         if "unreachable_count" in dict_ and dict_["unreachable_count"] is not None:
             instance.unreachable_count = int(dict_["unreachable_count"])
         elif include_empty:
-            instance.unreachable_count = int()
+            instance.unreachable_count = 0
         return instance
 
     @classmethod

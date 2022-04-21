@@ -61,11 +61,11 @@ class ModelsGetPlayerSessionAttributeResponse(Model):
         if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
-            result["key"] = str()
+            result["key"] = ""
         if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
-            result["value"] = str()
+            result["value"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsGetPlayerSessionAttributeResponse(Model):
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])
         elif include_empty:
-            instance.key = str()
+            instance.key = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
-            instance.value = str()
+            instance.value = ""
         return instance
 
     @classmethod

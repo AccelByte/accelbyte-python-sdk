@@ -103,35 +103,35 @@ class ModelsPodConfigRecord(Model):
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
-            result["cpu_limit"] = int()
+            result["cpu_limit"] = 0
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
-            result["mem_limit"] = int()
+            result["mem_limit"] = 0
         if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
-            result["modifiedBy"] = str()
+            result["modifiedBy"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
-            result["params"] = str()
+            result["params"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -169,35 +169,35 @@ class ModelsPodConfigRecord(Model):
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
-            instance.cpu_limit = int()
+            instance.cpu_limit = 0
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "mem_limit" in dict_ and dict_["mem_limit"] is not None:
             instance.mem_limit = int(dict_["mem_limit"])
         elif include_empty:
-            instance.mem_limit = int()
+            instance.mem_limit = 0
         if "modifiedBy" in dict_ and dict_["modifiedBy"] is not None:
             instance.modified_by = str(dict_["modifiedBy"])
         elif include_empty:
-            instance.modified_by = str()
+            instance.modified_by = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "params" in dict_ and dict_["params"] is not None:
             instance.params = str(dict_["params"])
         elif include_empty:
-            instance.params = str()
+            instance.params = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

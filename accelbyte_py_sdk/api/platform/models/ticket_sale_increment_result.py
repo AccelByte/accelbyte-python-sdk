@@ -61,11 +61,11 @@ class TicketSaleIncrementResult(Model):
         if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
-            result["maxSaleCount"] = int()
+            result["maxSaleCount"] = 0
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class TicketSaleIncrementResult(Model):
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
             instance.max_sale_count = int(dict_["maxSaleCount"])
         elif include_empty:
-            instance.max_sale_count = int()
+            instance.max_sale_count = 0
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         return instance
 
     @classmethod

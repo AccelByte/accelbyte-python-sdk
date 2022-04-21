@@ -61,11 +61,11 @@ class ModelsShutdownServerRequest(Model):
         if hasattr(self, "kill_me"):
             result["kill_me"] = bool(self.kill_me)
         elif include_empty:
-            result["kill_me"] = bool()
+            result["kill_me"] = False
         if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsShutdownServerRequest(Model):
         if "kill_me" in dict_ and dict_["kill_me"] is not None:
             instance.kill_me = bool(dict_["kill_me"])
         elif include_empty:
-            instance.kill_me = bool()
+            instance.kill_me = False
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         return instance
 
     @classmethod

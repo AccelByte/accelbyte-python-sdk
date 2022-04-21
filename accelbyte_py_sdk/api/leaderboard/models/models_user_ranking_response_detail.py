@@ -79,15 +79,15 @@ class ModelsUserRankingResponseDetail(Model):
         if hasattr(self, "point"):
             result["point"] = float(self.point)
         elif include_empty:
-            result["point"] = float()
+            result["point"] = 0.0
         if hasattr(self, "rank"):
             result["rank"] = int(self.rank)
         elif include_empty:
-            result["rank"] = int()
+            result["rank"] = 0
         if hasattr(self, "hidden"):
             result["hidden"] = bool(self.hidden)
         elif include_empty:
-            result["hidden"] = bool()
+            result["hidden"] = False
         return result
 
     # endregion to methods
@@ -122,15 +122,15 @@ class ModelsUserRankingResponseDetail(Model):
         if "point" in dict_ and dict_["point"] is not None:
             instance.point = float(dict_["point"])
         elif include_empty:
-            instance.point = float()
+            instance.point = 0.0
         if "rank" in dict_ and dict_["rank"] is not None:
             instance.rank = int(dict_["rank"])
         elif include_empty:
-            instance.rank = int()
+            instance.rank = 0
         if "hidden" in dict_ and dict_["hidden"] is not None:
             instance.hidden = bool(dict_["hidden"])
         elif include_empty:
-            instance.hidden = bool()
+            instance.hidden = False
         return instance
 
     @classmethod

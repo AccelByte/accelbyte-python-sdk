@@ -54,7 +54,7 @@ class FulfillmentScriptCreate(Model):
         if hasattr(self, "grant_days"):
             result["grantDays"] = str(self.grant_days)
         elif include_empty:
-            result["grantDays"] = str()
+            result["grantDays"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class FulfillmentScriptCreate(Model):
         if "grantDays" in dict_ and dict_["grantDays"] is not None:
             instance.grant_days = str(dict_["grantDays"])
         elif include_empty:
-            instance.grant_days = str()
+            instance.grant_days = ""
         return instance
 
     @classmethod

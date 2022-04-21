@@ -54,7 +54,7 @@ class ModelsServerLogs(Model):
         if hasattr(self, "logs"):
             result["logs"] = str(self.logs)
         elif include_empty:
-            result["logs"] = str()
+            result["logs"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsServerLogs(Model):
         if "logs" in dict_ and dict_["logs"] is not None:
             instance.logs = str(dict_["logs"])
         elif include_empty:
-            instance.logs = str()
+            instance.logs = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class GoogleReceiptResolveResult(Model):
         if hasattr(self, "need_consume"):
             result["needConsume"] = bool(self.need_consume)
         elif include_empty:
-            result["needConsume"] = bool()
+            result["needConsume"] = False
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class GoogleReceiptResolveResult(Model):
         if "needConsume" in dict_ and dict_["needConsume"] is not None:
             instance.need_consume = bool(dict_["needConsume"])
         elif include_empty:
-            instance.need_consume = bool()
+            instance.need_consume = False
         return instance
 
     @classmethod

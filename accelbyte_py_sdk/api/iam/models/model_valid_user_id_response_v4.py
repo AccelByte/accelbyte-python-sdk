@@ -61,11 +61,11 @@ class ModelValidUserIDResponseV4(Model):
         if hasattr(self, "exists"):
             result["exists"] = bool(self.exists)
         elif include_empty:
-            result["exists"] = bool()
+            result["exists"] = False
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelValidUserIDResponseV4(Model):
         if "exists" in dict_ and dict_["exists"] is not None:
             instance.exists = bool(dict_["exists"])
         elif include_empty:
-            instance.exists = bool()
+            instance.exists = False
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

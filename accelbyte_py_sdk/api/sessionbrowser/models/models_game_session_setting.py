@@ -117,39 +117,39 @@ class ModelsGameSessionSetting(Model):
         if hasattr(self, "allow_join_in_progress"):
             result["allow_join_in_progress"] = bool(self.allow_join_in_progress)
         elif include_empty:
-            result["allow_join_in_progress"] = bool()
+            result["allow_join_in_progress"] = False
         if hasattr(self, "current_internal_player"):
             result["current_internal_player"] = int(self.current_internal_player)
         elif include_empty:
-            result["current_internal_player"] = int()
+            result["current_internal_player"] = 0
         if hasattr(self, "current_player"):
             result["current_player"] = int(self.current_player)
         elif include_empty:
-            result["current_player"] = int()
+            result["current_player"] = 0
         if hasattr(self, "map_name"):
             result["map_name"] = str(self.map_name)
         elif include_empty:
-            result["map_name"] = str()
+            result["map_name"] = ""
         if hasattr(self, "max_internal_player"):
             result["max_internal_player"] = int(self.max_internal_player)
         elif include_empty:
-            result["max_internal_player"] = int()
+            result["max_internal_player"] = 0
         if hasattr(self, "max_player"):
             result["max_player"] = int(self.max_player)
         elif include_empty:
-            result["max_player"] = int()
+            result["max_player"] = 0
         if hasattr(self, "mode"):
             result["mode"] = str(self.mode)
         elif include_empty:
-            result["mode"] = str()
+            result["mode"] = ""
         if hasattr(self, "num_bot"):
             result["num_bot"] = int(self.num_bot)
         elif include_empty:
-            result["num_bot"] = int()
+            result["num_bot"] = 0
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "settings"):
             result["settings"] = {str(k0): v0 for k0, v0 in self.settings.items()}
         elif include_empty:
@@ -195,39 +195,39 @@ class ModelsGameSessionSetting(Model):
         if "allow_join_in_progress" in dict_ and dict_["allow_join_in_progress"] is not None:
             instance.allow_join_in_progress = bool(dict_["allow_join_in_progress"])
         elif include_empty:
-            instance.allow_join_in_progress = bool()
+            instance.allow_join_in_progress = False
         if "current_internal_player" in dict_ and dict_["current_internal_player"] is not None:
             instance.current_internal_player = int(dict_["current_internal_player"])
         elif include_empty:
-            instance.current_internal_player = int()
+            instance.current_internal_player = 0
         if "current_player" in dict_ and dict_["current_player"] is not None:
             instance.current_player = int(dict_["current_player"])
         elif include_empty:
-            instance.current_player = int()
+            instance.current_player = 0
         if "map_name" in dict_ and dict_["map_name"] is not None:
             instance.map_name = str(dict_["map_name"])
         elif include_empty:
-            instance.map_name = str()
+            instance.map_name = ""
         if "max_internal_player" in dict_ and dict_["max_internal_player"] is not None:
             instance.max_internal_player = int(dict_["max_internal_player"])
         elif include_empty:
-            instance.max_internal_player = int()
+            instance.max_internal_player = 0
         if "max_player" in dict_ and dict_["max_player"] is not None:
             instance.max_player = int(dict_["max_player"])
         elif include_empty:
-            instance.max_player = int()
+            instance.max_player = 0
         if "mode" in dict_ and dict_["mode"] is not None:
             instance.mode = str(dict_["mode"])
         elif include_empty:
-            instance.mode = str()
+            instance.mode = ""
         if "num_bot" in dict_ and dict_["num_bot"] is not None:
             instance.num_bot = int(dict_["num_bot"])
         elif include_empty:
-            instance.num_bot = int()
+            instance.num_bot = 0
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "settings" in dict_ and dict_["settings"] is not None:
             instance.settings = {str(k0): v0 for k0, v0 in dict_["settings"].items()}
         elif include_empty:

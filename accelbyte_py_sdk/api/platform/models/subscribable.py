@@ -54,7 +54,7 @@ class Subscribable(Model):
         if hasattr(self, "subscribable"):
             result["subscribable"] = bool(self.subscribable)
         elif include_empty:
-            result["subscribable"] = bool()
+            result["subscribable"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class Subscribable(Model):
         if "subscribable" in dict_ and dict_["subscribable"] is not None:
             instance.subscribable = bool(dict_["subscribable"])
         elif include_empty:
-            instance.subscribable = bool()
+            instance.subscribable = False
         return instance
 
     @classmethod

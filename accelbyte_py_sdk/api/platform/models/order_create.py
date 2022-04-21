@@ -111,23 +111,23 @@ class OrderCreate(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
-            result["discountedPrice"] = int()
+            result["discountedPrice"] = 0
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
-            result["price"] = int()
+            result["price"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -135,15 +135,15 @@ class OrderCreate(Model):
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         return result
 
     # endregion to methods
@@ -187,23 +187,23 @@ class OrderCreate(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
             instance.discounted_price = int(dict_["discountedPrice"])
         elif include_empty:
-            instance.discounted_price = int()
+            instance.discounted_price = 0
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
-            instance.price = int()
+            instance.price = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -211,15 +211,15 @@ class OrderCreate(Model):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         return instance
 
     @classmethod

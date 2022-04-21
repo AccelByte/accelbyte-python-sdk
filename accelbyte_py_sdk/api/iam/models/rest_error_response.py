@@ -70,11 +70,11 @@ class RestErrorResponse(Model):
         if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
-            result["errorCode"] = int()
+            result["errorCode"] = 0
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
-            result["errorMessage"] = str()
+            result["errorMessage"] = ""
         if hasattr(self, "message_variables"):
             result["messageVariables"] = self.message_variables.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -107,11 +107,11 @@ class RestErrorResponse(Model):
         if "errorCode" in dict_ and dict_["errorCode"] is not None:
             instance.error_code = int(dict_["errorCode"])
         elif include_empty:
-            instance.error_code = int()
+            instance.error_code = 0
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
-            instance.error_message = str()
+            instance.error_message = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = AccountcommonConflictedUserPlatformAccounts.create_from_dict(dict_["messageVariables"], include_empty=include_empty)
         elif include_empty:

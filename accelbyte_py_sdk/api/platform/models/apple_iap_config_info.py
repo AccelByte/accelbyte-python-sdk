@@ -68,15 +68,15 @@ class AppleIAPConfigInfo(Model):
         if hasattr(self, "bundle_id"):
             result["bundleId"] = str(self.bundle_id)
         elif include_empty:
-            result["bundleId"] = str()
+            result["bundleId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         return result
 
     # endregion to methods
@@ -105,15 +105,15 @@ class AppleIAPConfigInfo(Model):
         if "bundleId" in dict_ and dict_["bundleId"] is not None:
             instance.bundle_id = str(dict_["bundleId"])
         elif include_empty:
-            instance.bundle_id = str()
+            instance.bundle_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         return instance
 
     @classmethod

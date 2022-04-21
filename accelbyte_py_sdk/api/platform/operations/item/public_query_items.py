@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -72,7 +73,7 @@ class PublicQueryItems(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -114,7 +115,7 @@ class PublicQueryItems(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -152,8 +153,8 @@ class PublicQueryItems(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -162,14 +163,6 @@ class PublicQueryItems(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -284,7 +277,7 @@ class PublicQueryItems(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
@@ -292,15 +285,15 @@ class PublicQueryItems(Operation):
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
-            result["baseAppId"] = str()
+            result["baseAppId"] = ""
         if hasattr(self, "category_path") and self.category_path:
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "features") and self.features:
             result["features"] = str(self.features)
         elif include_empty:
-            result["features"] = str()
+            result["features"] = ""
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -308,31 +301,31 @@ class PublicQueryItems(Operation):
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = str()
+            result["sortBy"] = ""
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = str(self.tags)
         elif include_empty:
-            result["tags"] = str()
+            result["tags"] = ""
         return result
 
     # endregion to methods
@@ -424,7 +417,7 @@ class PublicQueryItems(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
@@ -432,15 +425,15 @@ class PublicQueryItems(Operation):
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
-            instance.base_app_id = str()
+            instance.base_app_id = ""
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "features" in dict_ and dict_["features"] is not None:
             instance.features = str(dict_["features"])
         elif include_empty:
-            instance.features = str()
+            instance.features = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -448,31 +441,31 @@ class PublicQueryItems(Operation):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = str()
+            instance.sort_by = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = str(dict_["tags"])
         elif include_empty:
-            instance.tags = str()
+            instance.tags = ""
         return instance
 
     @staticmethod

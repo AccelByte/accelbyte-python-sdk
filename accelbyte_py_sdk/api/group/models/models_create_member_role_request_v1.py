@@ -63,7 +63,7 @@ class ModelsCreateMemberRoleRequestV1(Model):
         if hasattr(self, "member_role_name"):
             result["memberRoleName"] = str(self.member_role_name)
         elif include_empty:
-            result["memberRoleName"] = str()
+            result["memberRoleName"] = ""
         if hasattr(self, "member_role_permissions"):
             result["memberRolePermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.member_role_permissions]
         elif include_empty:
@@ -93,7 +93,7 @@ class ModelsCreateMemberRoleRequestV1(Model):
         if "memberRoleName" in dict_ and dict_["memberRoleName"] is not None:
             instance.member_role_name = str(dict_["memberRoleName"])
         elif include_empty:
-            instance.member_role_name = str()
+            instance.member_role_name = ""
         if "memberRolePermissions" in dict_ and dict_["memberRolePermissions"] is not None:
             instance.member_role_permissions = [ModelsRolePermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["memberRolePermissions"]]
         elif include_empty:

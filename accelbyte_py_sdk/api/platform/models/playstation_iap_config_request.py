@@ -54,7 +54,7 @@ class PlaystationIAPConfigRequest(Model):
         if hasattr(self, "environment"):
             result["environment"] = str(self.environment)
         elif include_empty:
-            result["environment"] = str()
+            result["environment"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class PlaystationIAPConfigRequest(Model):
         if "environment" in dict_ and dict_["environment"] is not None:
             instance.environment = str(dict_["environment"])
         elif include_empty:
-            instance.environment = str()
+            instance.environment = ""
         return instance
 
     @classmethod

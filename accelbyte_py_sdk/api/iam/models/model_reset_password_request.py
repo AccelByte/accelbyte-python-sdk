@@ -68,15 +68,15 @@ class ModelResetPasswordRequest(Model):
         if hasattr(self, "code"):
             result["Code"] = str(self.code)
         elif include_empty:
-            result["Code"] = str()
+            result["Code"] = ""
         if hasattr(self, "login_id"):
             result["LoginID"] = str(self.login_id)
         elif include_empty:
-            result["LoginID"] = str()
+            result["LoginID"] = ""
         if hasattr(self, "new_password"):
             result["NewPassword"] = str(self.new_password)
         elif include_empty:
-            result["NewPassword"] = str()
+            result["NewPassword"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelResetPasswordRequest(Model):
         if "Code" in dict_ and dict_["Code"] is not None:
             instance.code = str(dict_["Code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "LoginID" in dict_ and dict_["LoginID"] is not None:
             instance.login_id = str(dict_["LoginID"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "NewPassword" in dict_ and dict_["NewPassword"] is not None:
             instance.new_password = str(dict_["NewPassword"])
         elif include_empty:
-            instance.new_password = str()
+            instance.new_password = ""
         return instance
 
     @classmethod

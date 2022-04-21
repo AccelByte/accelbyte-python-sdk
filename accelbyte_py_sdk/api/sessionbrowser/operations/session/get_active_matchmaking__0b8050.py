@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsActiveMatchmakingGameResponse
@@ -54,7 +55,7 @@ class GetActiveMatchmakingGameSessions(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +79,7 @@ class GetActiveMatchmakingGameSessions(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -107,8 +108,8 @@ class GetActiveMatchmakingGameSessions(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -117,14 +118,6 @@ class GetActiveMatchmakingGameSessions(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -185,19 +178,19 @@ class GetActiveMatchmakingGameSessions(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "match_id") and self.match_id:
             result["match_id"] = str(self.match_id)
         elif include_empty:
-            result["match_id"] = str()
+            result["match_id"] = ""
         if hasattr(self, "server_region") and self.server_region:
             result["server_region"] = str(self.server_region)
         elif include_empty:
-            result["server_region"] = str()
+            result["server_region"] = ""
         if hasattr(self, "session_id") and self.session_id:
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         return result
 
     # endregion to methods
@@ -262,19 +255,19 @@ class GetActiveMatchmakingGameSessions(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         if "server_region" in dict_ and dict_["server_region"] is not None:
             instance.server_region = str(dict_["server_region"])
         elif include_empty:
-            instance.server_region = str()
+            instance.server_region = ""
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         return instance
 
     @staticmethod

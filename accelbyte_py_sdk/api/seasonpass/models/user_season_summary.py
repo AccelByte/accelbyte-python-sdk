@@ -138,31 +138,31 @@ class UserSeasonSummary(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "cleared"):
             result["cleared"] = bool(self.cleared)
         elif include_empty:
-            result["cleared"] = bool()
+            result["cleared"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "current_exp"):
             result["currentExp"] = int(self.current_exp)
         elif include_empty:
-            result["currentExp"] = int()
+            result["currentExp"] = 0
         if hasattr(self, "current_tier_index"):
             result["currentTierIndex"] = int(self.current_tier_index)
         elif include_empty:
-            result["currentTierIndex"] = int()
+            result["currentTierIndex"] = 0
         if hasattr(self, "enrolled_at"):
             result["enrolledAt"] = str(self.enrolled_at)
         elif include_empty:
-            result["enrolledAt"] = str()
+            result["enrolledAt"] = ""
         if hasattr(self, "enrolled_passes"):
             result["enrolledPasses"] = [str(i0) for i0 in self.enrolled_passes]
         elif include_empty:
@@ -170,23 +170,23 @@ class UserSeasonSummary(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "last_tier_index"):
             result["lastTierIndex"] = int(self.last_tier_index)
         elif include_empty:
-            result["lastTierIndex"] = int()
+            result["lastTierIndex"] = 0
         if hasattr(self, "required_exp"):
             result["requiredExp"] = int(self.required_exp)
         elif include_empty:
-            result["requiredExp"] = int()
+            result["requiredExp"] = 0
         if hasattr(self, "season_id"):
             result["seasonId"] = str(self.season_id)
         elif include_empty:
-            result["seasonId"] = str()
+            result["seasonId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -245,31 +245,31 @@ class UserSeasonSummary(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "cleared" in dict_ and dict_["cleared"] is not None:
             instance.cleared = bool(dict_["cleared"])
         elif include_empty:
-            instance.cleared = bool()
+            instance.cleared = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "currentExp" in dict_ and dict_["currentExp"] is not None:
             instance.current_exp = int(dict_["currentExp"])
         elif include_empty:
-            instance.current_exp = int()
+            instance.current_exp = 0
         if "currentTierIndex" in dict_ and dict_["currentTierIndex"] is not None:
             instance.current_tier_index = int(dict_["currentTierIndex"])
         elif include_empty:
-            instance.current_tier_index = int()
+            instance.current_tier_index = 0
         if "enrolledAt" in dict_ and dict_["enrolledAt"] is not None:
             instance.enrolled_at = str(dict_["enrolledAt"])
         elif include_empty:
-            instance.enrolled_at = str()
+            instance.enrolled_at = ""
         if "enrolledPasses" in dict_ and dict_["enrolledPasses"] is not None:
             instance.enrolled_passes = [str(i0) for i0 in dict_["enrolledPasses"]]
         elif include_empty:
@@ -277,23 +277,23 @@ class UserSeasonSummary(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "lastTierIndex" in dict_ and dict_["lastTierIndex"] is not None:
             instance.last_tier_index = int(dict_["lastTierIndex"])
         elif include_empty:
-            instance.last_tier_index = int()
+            instance.last_tier_index = 0
         if "requiredExp" in dict_ and dict_["requiredExp"] is not None:
             instance.required_exp = int(dict_["requiredExp"])
         elif include_empty:
-            instance.required_exp = int()
+            instance.required_exp = 0
         if "seasonId" in dict_ and dict_["seasonId"] is not None:
             instance.season_id = str(dict_["seasonId"])
         elif include_empty:
-            instance.season_id = str()
+            instance.season_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

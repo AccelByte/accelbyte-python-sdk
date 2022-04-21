@@ -61,11 +61,11 @@ class AccountcommonNamespaceRole(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class AccountcommonNamespaceRole(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         return instance
 
     @classmethod

@@ -61,7 +61,7 @@ class ValidationDescription(Model):
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "message"):
             result["message"] = [str(i0) for i0 in self.message]
         elif include_empty:
@@ -91,7 +91,7 @@ class ValidationDescription(Model):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = [str(i0) for i0 in dict_["message"]]
         elif include_empty:

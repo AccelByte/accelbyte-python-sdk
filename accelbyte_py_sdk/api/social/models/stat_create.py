@@ -123,11 +123,11 @@ class StatCreate(Model):
         if hasattr(self, "default_value"):
             result["defaultValue"] = float(self.default_value)
         elif include_empty:
-            result["defaultValue"] = float()
+            result["defaultValue"] = 0.0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "set_by"):
             result["setBy"] = str(self.set_by)
         elif include_empty:
@@ -135,27 +135,27 @@ class StatCreate(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "increment_only"):
             result["incrementOnly"] = bool(self.increment_only)
         elif include_empty:
-            result["incrementOnly"] = bool()
+            result["incrementOnly"] = False
         if hasattr(self, "maximum"):
             result["maximum"] = float(self.maximum)
         elif include_empty:
-            result["maximum"] = float()
+            result["maximum"] = 0.0
         if hasattr(self, "minimum"):
             result["minimum"] = float(self.minimum)
         elif include_empty:
-            result["minimum"] = float()
+            result["minimum"] = 0.0
         if hasattr(self, "set_as_global"):
             result["setAsGlobal"] = bool(self.set_as_global)
         elif include_empty:
-            result["setAsGlobal"] = bool()
+            result["setAsGlobal"] = False
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -207,11 +207,11 @@ class StatCreate(Model):
         if "defaultValue" in dict_ and dict_["defaultValue"] is not None:
             instance.default_value = float(dict_["defaultValue"])
         elif include_empty:
-            instance.default_value = float()
+            instance.default_value = 0.0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "setBy" in dict_ and dict_["setBy"] is not None:
             instance.set_by = str(dict_["setBy"])
         elif include_empty:
@@ -219,27 +219,27 @@ class StatCreate(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "incrementOnly" in dict_ and dict_["incrementOnly"] is not None:
             instance.increment_only = bool(dict_["incrementOnly"])
         elif include_empty:
-            instance.increment_only = bool()
+            instance.increment_only = False
         if "maximum" in dict_ and dict_["maximum"] is not None:
             instance.maximum = float(dict_["maximum"])
         elif include_empty:
-            instance.maximum = float()
+            instance.maximum = 0.0
         if "minimum" in dict_ and dict_["minimum"] is not None:
             instance.minimum = float(dict_["minimum"])
         elif include_empty:
-            instance.minimum = float()
+            instance.minimum = 0.0
         if "setAsGlobal" in dict_ and dict_["setAsGlobal"] is not None:
             instance.set_as_global = bool(dict_["setAsGlobal"])
         elif include_empty:
-            instance.set_as_global = bool()
+            instance.set_as_global = False
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

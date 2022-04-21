@@ -72,11 +72,11 @@ class ModelsArchiveLeaderboardReq(Model):
         if hasattr(self, "limit"):
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "slug"):
             result["slug"] = str(self.slug)
         elif include_empty:
-            result["slug"] = str()
+            result["slug"] = ""
         return result
 
     # endregion to methods
@@ -108,11 +108,11 @@ class ModelsArchiveLeaderboardReq(Model):
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "slug" in dict_ and dict_["slug"] is not None:
             instance.slug = str(dict_["slug"])
         elif include_empty:
-            instance.slug = str()
+            instance.slug = ""
         return instance
 
     @classmethod

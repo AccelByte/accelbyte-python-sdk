@@ -61,11 +61,11 @@ class ModelUserGetFriendshipStatusResponse(Model):
         if hasattr(self, "code"):
             result["code"] = int(self.code)
         elif include_empty:
-            result["code"] = int()
+            result["code"] = 0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelUserGetFriendshipStatusResponse(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = int(dict_["code"])
         elif include_empty:
-            instance.code = int()
+            instance.code = 0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         return instance
 
     @classmethod

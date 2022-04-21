@@ -72,11 +72,11 @@ class ModelUserRolesV4Response(Model):
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         if hasattr(self, "role_name"):
             result["roleName"] = str(self.role_name)
         elif include_empty:
-            result["roleName"] = str()
+            result["roleName"] = ""
         return result
 
     # endregion to methods
@@ -108,11 +108,11 @@ class ModelUserRolesV4Response(Model):
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "roleName" in dict_ and dict_["roleName"] is not None:
             instance.role_name = str(dict_["roleName"])
         elif include_empty:
-            instance.role_name = str()
+            instance.role_name = ""
         return instance
 
     @classmethod

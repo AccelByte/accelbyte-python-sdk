@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUpdatePermissionScheduleRequest
@@ -139,7 +140,7 @@ class AddUserPermission(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) REQUIRED ModelUpdatePermissionScheduleRequest in body
 
@@ -169,7 +170,7 @@ class AddUserPermission(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: ModelUpdatePermissionScheduleRequest                                                     # REQUIRED in [body]
@@ -199,8 +200,8 @@ class AddUserPermission(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -209,13 +210,6 @@ class AddUserPermission(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -285,19 +279,19 @@ class AddUserPermission(Operation):
         if hasattr(self, "action") and self.action:
             result["action"] = int(self.action)
         elif include_empty:
-            result["action"] = int()
+            result["action"] = 0
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "resource") and self.resource:
             result["resource"] = str(self.resource)
         elif include_empty:
-            result["resource"] = str()
+            result["resource"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -373,19 +367,19 @@ class AddUserPermission(Operation):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "resource" in dict_ and dict_["resource"] is not None:
             instance.resource = str(dict_["resource"])
         elif include_empty:
-            instance.resource = str()
+            instance.resource = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

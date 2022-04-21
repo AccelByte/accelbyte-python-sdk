@@ -61,11 +61,11 @@ class ModelsBlockedByPlayerData(Model):
         if hasattr(self, "blocked_at"):
             result["blockedAt"] = str(self.blocked_at)
         elif include_empty:
-            result["blockedAt"] = str()
+            result["blockedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsBlockedByPlayerData(Model):
         if "blockedAt" in dict_ and dict_["blockedAt"] is not None:
             instance.blocked_at = str(dict_["blockedAt"])
         elif include_empty:
-            instance.blocked_at = str()
+            instance.blocked_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

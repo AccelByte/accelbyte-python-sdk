@@ -120,19 +120,19 @@ class ModelsCreateSessionRequest(Model):
         if hasattr(self, "client_version"):
             result["client_version"] = str(self.client_version)
         elif include_empty:
-            result["client_version"] = str()
+            result["client_version"] = ""
         if hasattr(self, "configuration"):
             result["configuration"] = str(self.configuration)
         elif include_empty:
-            result["configuration"] = str()
+            result["configuration"] = ""
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
@@ -140,19 +140,19 @@ class ModelsCreateSessionRequest(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         if hasattr(self, "notification_payload"):
             result["notification_payload"] = self.notification_payload.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -199,19 +199,19 @@ class ModelsCreateSessionRequest(Model):
         if "client_version" in dict_ and dict_["client_version"] is not None:
             instance.client_version = str(dict_["client_version"])
         elif include_empty:
-            instance.client_version = str()
+            instance.client_version = ""
         if "configuration" in dict_ and dict_["configuration"] is not None:
             instance.configuration = str(dict_["configuration"])
         elif include_empty:
-            instance.configuration = str()
+            instance.configuration = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
             instance.matching_allies = [ModelsRequestMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
@@ -219,19 +219,19 @@ class ModelsCreateSessionRequest(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "notification_payload" in dict_ and dict_["notification_payload"] is not None:
             instance.notification_payload = ModelsMatchResultNotificationPayload.create_from_dict(dict_["notification_payload"], include_empty=include_empty)
         elif include_empty:

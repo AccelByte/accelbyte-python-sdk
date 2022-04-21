@@ -85,11 +85,11 @@ class PassUpdate(Model):
         if hasattr(self, "auto_enroll"):
             result["autoEnroll"] = bool(self.auto_enroll)
         elif include_empty:
-            result["autoEnroll"] = bool()
+            result["autoEnroll"] = False
         if hasattr(self, "display_order"):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
-            result["displayOrder"] = int()
+            result["displayOrder"] = 0
         if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
@@ -101,7 +101,7 @@ class PassUpdate(Model):
         if hasattr(self, "pass_item_id"):
             result["passItemId"] = str(self.pass_item_id)
         elif include_empty:
-            result["passItemId"] = str()
+            result["passItemId"] = ""
         return result
 
     # endregion to methods
@@ -138,11 +138,11 @@ class PassUpdate(Model):
         if "autoEnroll" in dict_ and dict_["autoEnroll"] is not None:
             instance.auto_enroll = bool(dict_["autoEnroll"])
         elif include_empty:
-            instance.auto_enroll = bool()
+            instance.auto_enroll = False
         if "displayOrder" in dict_ and dict_["displayOrder"] is not None:
             instance.display_order = int(dict_["displayOrder"])
         elif include_empty:
-            instance.display_order = int()
+            instance.display_order = 0
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
@@ -154,7 +154,7 @@ class PassUpdate(Model):
         if "passItemId" in dict_ and dict_["passItemId"] is not None:
             instance.pass_item_id = str(dict_["passItemId"])
         elif include_empty:
-            instance.pass_item_id = str()
+            instance.pass_item_id = ""
         return instance
 
     @classmethod

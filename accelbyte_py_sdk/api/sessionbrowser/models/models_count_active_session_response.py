@@ -68,15 +68,15 @@ class ModelsCountActiveSessionResponse(Model):
         if hasattr(self, "custom_game"):
             result["custom_game"] = int(self.custom_game)
         elif include_empty:
-            result["custom_game"] = int()
+            result["custom_game"] = 0
         if hasattr(self, "matchmaking_game"):
             result["matchmaking_game"] = int(self.matchmaking_game)
         elif include_empty:
-            result["matchmaking_game"] = int()
+            result["matchmaking_game"] = 0
         if hasattr(self, "total"):
             result["total"] = int(self.total)
         elif include_empty:
-            result["total"] = int()
+            result["total"] = 0
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsCountActiveSessionResponse(Model):
         if "custom_game" in dict_ and dict_["custom_game"] is not None:
             instance.custom_game = int(dict_["custom_game"])
         elif include_empty:
-            instance.custom_game = int()
+            instance.custom_game = 0
         if "matchmaking_game" in dict_ and dict_["matchmaking_game"] is not None:
             instance.matchmaking_game = int(dict_["matchmaking_game"])
         elif include_empty:
-            instance.matchmaking_game = int()
+            instance.matchmaking_game = 0
         if "total" in dict_ and dict_["total"] is not None:
             instance.total = int(dict_["total"])
         elif include_empty:
-            instance.total = int()
+            instance.total = 0
         return instance
 
     @classmethod

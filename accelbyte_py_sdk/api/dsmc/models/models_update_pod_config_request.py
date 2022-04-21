@@ -75,19 +75,19 @@ class ModelsUpdatePodConfigRequest(Model):
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
-            result["cpu_limit"] = int()
+            result["cpu_limit"] = 0
         if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
-            result["mem_limit"] = int()
+            result["mem_limit"] = 0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
-            result["params"] = str()
+            result["params"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsUpdatePodConfigRequest(Model):
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
-            instance.cpu_limit = int()
+            instance.cpu_limit = 0
         if "mem_limit" in dict_ and dict_["mem_limit"] is not None:
             instance.mem_limit = int(dict_["mem_limit"])
         elif include_empty:
-            instance.mem_limit = int()
+            instance.mem_limit = 0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "params" in dict_ and dict_["params"] is not None:
             instance.params = str(dict_["params"])
         elif include_empty:
-            instance.params = str()
+            instance.params = ""
         return instance
 
     @classmethod

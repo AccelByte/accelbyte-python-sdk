@@ -75,19 +75,19 @@ class ModelUserVerificationRequestV3(Model):
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "contact_type"):
             result["contactType"] = str(self.contact_type)
         elif include_empty:
-            result["contactType"] = str()
+            result["contactType"] = ""
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
-            result["languageTag"] = str()
+            result["languageTag"] = ""
         if hasattr(self, "validate_only"):
             result["validateOnly"] = bool(self.validate_only)
         elif include_empty:
-            result["validateOnly"] = bool()
+            result["validateOnly"] = False
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelUserVerificationRequestV3(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "contactType" in dict_ and dict_["contactType"] is not None:
             instance.contact_type = str(dict_["contactType"])
         elif include_empty:
-            instance.contact_type = str()
+            instance.contact_type = ""
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
             instance.validate_only = bool(dict_["validateOnly"])
         elif include_empty:
-            instance.validate_only = bool()
+            instance.validate_only = False
         return instance
 
     @classmethod

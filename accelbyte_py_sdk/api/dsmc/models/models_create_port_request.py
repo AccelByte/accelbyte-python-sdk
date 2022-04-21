@@ -54,7 +54,7 @@ class ModelsCreatePortRequest(Model):
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsCreatePortRequest(Model):
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         return instance
 
     @classmethod

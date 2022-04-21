@@ -134,19 +134,19 @@ class PaymentProviderConfigInfo(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "payment_merchant_config_id"):
             result["paymentMerchantConfigId"] = str(self.payment_merchant_config_id)
         elif include_empty:
-            result["paymentMerchantConfigId"] = str()
+            result["paymentMerchantConfigId"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "aggregate"):
             result["aggregate"] = str(self.aggregate)
         elif include_empty:
@@ -154,7 +154,7 @@ class PaymentProviderConfigInfo(Model):
         if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
-            result["sandboxTaxJarApiToken"] = str()
+            result["sandboxTaxJarApiToken"] = ""
         if hasattr(self, "specials"):
             result["specials"] = [str(i0) for i0 in self.specials]
         elif include_empty:
@@ -162,15 +162,15 @@ class PaymentProviderConfigInfo(Model):
         if hasattr(self, "tax_jar_api_token"):
             result["taxJarApiToken"] = str(self.tax_jar_api_token)
         elif include_empty:
-            result["taxJarApiToken"] = str()
+            result["taxJarApiToken"] = ""
         if hasattr(self, "tax_jar_enabled"):
             result["taxJarEnabled"] = bool(self.tax_jar_enabled)
         elif include_empty:
-            result["taxJarEnabled"] = bool()
+            result["taxJarEnabled"] = False
         if hasattr(self, "use_global_tax_jar_api_token"):
             result["useGlobalTaxJarApiToken"] = bool(self.use_global_tax_jar_api_token)
         elif include_empty:
-            result["useGlobalTaxJarApiToken"] = bool()
+            result["useGlobalTaxJarApiToken"] = False
         return result
 
     # endregion to methods
@@ -218,19 +218,19 @@ class PaymentProviderConfigInfo(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "paymentMerchantConfigId" in dict_ and dict_["paymentMerchantConfigId"] is not None:
             instance.payment_merchant_config_id = str(dict_["paymentMerchantConfigId"])
         elif include_empty:
-            instance.payment_merchant_config_id = str()
+            instance.payment_merchant_config_id = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "aggregate" in dict_ and dict_["aggregate"] is not None:
             instance.aggregate = str(dict_["aggregate"])
         elif include_empty:
@@ -238,7 +238,7 @@ class PaymentProviderConfigInfo(Model):
         if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:
-            instance.sandbox_tax_jar_api_token = str()
+            instance.sandbox_tax_jar_api_token = ""
         if "specials" in dict_ and dict_["specials"] is not None:
             instance.specials = [str(i0) for i0 in dict_["specials"]]
         elif include_empty:
@@ -246,15 +246,15 @@ class PaymentProviderConfigInfo(Model):
         if "taxJarApiToken" in dict_ and dict_["taxJarApiToken"] is not None:
             instance.tax_jar_api_token = str(dict_["taxJarApiToken"])
         elif include_empty:
-            instance.tax_jar_api_token = str()
+            instance.tax_jar_api_token = ""
         if "taxJarEnabled" in dict_ and dict_["taxJarEnabled"] is not None:
             instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
         elif include_empty:
-            instance.tax_jar_enabled = bool()
+            instance.tax_jar_enabled = False
         if "useGlobalTaxJarApiToken" in dict_ and dict_["useGlobalTaxJarApiToken"] is not None:
             instance.use_global_tax_jar_api_token = bool(dict_["useGlobalTaxJarApiToken"])
         elif include_empty:
-            instance.use_global_tax_jar_api_token = bool()
+            instance.use_global_tax_jar_api_token = False
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelUpdateTemplateRequest(Model):
         if hasattr(self, "template_content"):
             result["templateContent"] = str(self.template_content)
         elif include_empty:
-            result["templateContent"] = str()
+            result["templateContent"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelUpdateTemplateRequest(Model):
         if "templateContent" in dict_ and dict_["templateContent"] is not None:
             instance.template_content = str(dict_["templateContent"])
         elif include_empty:
-            instance.template_content = str()
+            instance.template_content = ""
         return instance
 
     @classmethod

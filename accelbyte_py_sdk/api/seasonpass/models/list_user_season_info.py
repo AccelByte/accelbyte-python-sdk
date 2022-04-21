@@ -112,27 +112,27 @@ class ListUserSeasonInfo(Model):
         if hasattr(self, "cleared"):
             result["cleared"] = bool(self.cleared)
         elif include_empty:
-            result["cleared"] = bool()
+            result["cleared"] = False
         if hasattr(self, "current_tier_index"):
             result["currentTierIndex"] = int(self.current_tier_index)
         elif include_empty:
-            result["currentTierIndex"] = int()
+            result["currentTierIndex"] = 0
         if hasattr(self, "enrolled_at"):
             result["enrolledAt"] = str(self.enrolled_at)
         elif include_empty:
-            result["enrolledAt"] = str()
+            result["enrolledAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "last_tier_index"):
             result["lastTierIndex"] = int(self.last_tier_index)
         elif include_empty:
-            result["lastTierIndex"] = int()
+            result["lastTierIndex"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "season"):
             result["season"] = self.season.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -140,11 +140,11 @@ class ListUserSeasonInfo(Model):
         if hasattr(self, "season_id"):
             result["seasonId"] = str(self.season_id)
         elif include_empty:
-            result["seasonId"] = str()
+            result["seasonId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -184,27 +184,27 @@ class ListUserSeasonInfo(Model):
         if "cleared" in dict_ and dict_["cleared"] is not None:
             instance.cleared = bool(dict_["cleared"])
         elif include_empty:
-            instance.cleared = bool()
+            instance.cleared = False
         if "currentTierIndex" in dict_ and dict_["currentTierIndex"] is not None:
             instance.current_tier_index = int(dict_["currentTierIndex"])
         elif include_empty:
-            instance.current_tier_index = int()
+            instance.current_tier_index = 0
         if "enrolledAt" in dict_ and dict_["enrolledAt"] is not None:
             instance.enrolled_at = str(dict_["enrolledAt"])
         elif include_empty:
-            instance.enrolled_at = str()
+            instance.enrolled_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "lastTierIndex" in dict_ and dict_["lastTierIndex"] is not None:
             instance.last_tier_index = int(dict_["lastTierIndex"])
         elif include_empty:
-            instance.last_tier_index = int()
+            instance.last_tier_index = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "season" in dict_ and dict_["season"] is not None:
             instance.season = SeasonSummary.create_from_dict(dict_["season"], include_empty=include_empty)
         elif include_empty:
@@ -212,11 +212,11 @@ class ListUserSeasonInfo(Model):
         if "seasonId" in dict_ and dict_["seasonId"] is not None:
             instance.season_id = str(dict_["seasonId"])
         elif include_empty:
-            instance.season_id = str()
+            instance.season_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

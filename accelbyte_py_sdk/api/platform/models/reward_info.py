@@ -133,39 +133,39 @@ class RewardInfo(Model):
         if hasattr(self, "event_topic"):
             result["eventTopic"] = str(self.event_topic)
         elif include_empty:
-            result["eventTopic"] = str()
+            result["eventTopic"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "reward_id"):
             result["rewardId"] = str(self.reward_id)
         elif include_empty:
-            result["rewardId"] = str()
+            result["rewardId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "max_awarded"):
             result["maxAwarded"] = int(self.max_awarded)
         elif include_empty:
-            result["maxAwarded"] = int()
+            result["maxAwarded"] = 0
         if hasattr(self, "max_awarded_per_user"):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
-            result["maxAwardedPerUser"] = int()
+            result["maxAwardedPerUser"] = 0
         if hasattr(self, "namespace_expression"):
             result["namespaceExpression"] = str(self.namespace_expression)
         elif include_empty:
-            result["namespaceExpression"] = str()
+            result["namespaceExpression"] = ""
         if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
-            result["rewardCode"] = str()
+            result["rewardCode"] = ""
         if hasattr(self, "reward_conditions"):
             result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
         elif include_empty:
@@ -173,11 +173,11 @@ class RewardInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id_expression"):
             result["userIdExpression"] = str(self.user_id_expression)
         elif include_empty:
-            result["userIdExpression"] = str()
+            result["userIdExpression"] = ""
         return result
 
     # endregion to methods
@@ -232,39 +232,39 @@ class RewardInfo(Model):
         if "eventTopic" in dict_ and dict_["eventTopic"] is not None:
             instance.event_topic = str(dict_["eventTopic"])
         elif include_empty:
-            instance.event_topic = str()
+            instance.event_topic = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "rewardId" in dict_ and dict_["rewardId"] is not None:
             instance.reward_id = str(dict_["rewardId"])
         elif include_empty:
-            instance.reward_id = str()
+            instance.reward_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "maxAwarded" in dict_ and dict_["maxAwarded"] is not None:
             instance.max_awarded = int(dict_["maxAwarded"])
         elif include_empty:
-            instance.max_awarded = int()
+            instance.max_awarded = 0
         if "maxAwardedPerUser" in dict_ and dict_["maxAwardedPerUser"] is not None:
             instance.max_awarded_per_user = int(dict_["maxAwardedPerUser"])
         elif include_empty:
-            instance.max_awarded_per_user = int()
+            instance.max_awarded_per_user = 0
         if "namespaceExpression" in dict_ and dict_["namespaceExpression"] is not None:
             instance.namespace_expression = str(dict_["namespaceExpression"])
         elif include_empty:
-            instance.namespace_expression = str()
+            instance.namespace_expression = ""
         if "rewardCode" in dict_ and dict_["rewardCode"] is not None:
             instance.reward_code = str(dict_["rewardCode"])
         elif include_empty:
-            instance.reward_code = str()
+            instance.reward_code = ""
         if "rewardConditions" in dict_ and dict_["rewardConditions"] is not None:
             instance.reward_conditions = [RewardCondition.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewardConditions"]]
         elif include_empty:
@@ -272,11 +272,11 @@ class RewardInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userIdExpression" in dict_ and dict_["userIdExpression"] is not None:
             instance.user_id_expression = str(dict_["userIdExpression"])
         elif include_empty:
-            instance.user_id_expression = str()
+            instance.user_id_expression = ""
         return instance
 
     @classmethod

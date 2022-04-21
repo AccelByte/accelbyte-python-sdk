@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ConditionMatchResult
@@ -53,7 +54,7 @@ class CheckEventCondition(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) OPTIONAL EventPayload in body
 
@@ -73,7 +74,7 @@ class CheckEventCondition(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: EventPayload                                                                             # OPTIONAL in [body]
@@ -101,8 +102,8 @@ class CheckEventCondition(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -111,13 +112,6 @@ class CheckEventCondition(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -175,11 +169,11 @@ class CheckEventCondition(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "reward_id") and self.reward_id:
             result["rewardId"] = str(self.reward_id)
         elif include_empty:
-            result["rewardId"] = str()
+            result["rewardId"] = ""
         return result
 
     # endregion to methods
@@ -240,11 +234,11 @@ class CheckEventCondition(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "rewardId" in dict_ and dict_["rewardId"] is not None:
             instance.reward_id = str(dict_["rewardId"])
         elif include_empty:
-            instance.reward_id = str()
+            instance.reward_id = ""
         return instance
 
     @staticmethod

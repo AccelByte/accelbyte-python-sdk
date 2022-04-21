@@ -171,23 +171,23 @@ class SubscriptionActivityInfo(Model):
         if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
-            result["chargedCycles"] = int()
+            result["chargedCycles"] = 0
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "current_cycle"):
             result["currentCycle"] = int(self.current_cycle)
         elif include_empty:
-            result["currentCycle"] = int()
+            result["currentCycle"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
-            result["operator"] = str()
+            result["operator"] = ""
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
@@ -195,35 +195,35 @@ class SubscriptionActivityInfo(Model):
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
-            result["subscriptionId"] = str()
+            result["subscriptionId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
-            result["grantDays"] = int()
+            result["grantDays"] = 0
         if hasattr(self, "in_fixed_cycle_trial"):
             result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
         elif include_empty:
-            result["inFixedCycleTrial"] = bool()
+            result["inFixedCycleTrial"] = False
         if hasattr(self, "in_fixed_free_days"):
             result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
         elif include_empty:
-            result["inFixedFreeDays"] = bool()
+            result["inFixedFreeDays"] = False
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         if hasattr(self, "trialed_cycles"):
             result["trialedCycles"] = int(self.trialed_cycles)
         elif include_empty:
-            result["trialedCycles"] = int()
+            result["trialedCycles"] = 0
         return result
 
     # endregion to methods
@@ -284,23 +284,23 @@ class SubscriptionActivityInfo(Model):
         if "chargedCycles" in dict_ and dict_["chargedCycles"] is not None:
             instance.charged_cycles = int(dict_["chargedCycles"])
         elif include_empty:
-            instance.charged_cycles = int()
+            instance.charged_cycles = 0
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "currentCycle" in dict_ and dict_["currentCycle"] is not None:
             instance.current_cycle = int(dict_["currentCycle"])
         elif include_empty:
-            instance.current_cycle = int()
+            instance.current_cycle = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "operator" in dict_ and dict_["operator"] is not None:
             instance.operator = str(dict_["operator"])
         elif include_empty:
-            instance.operator = str()
+            instance.operator = ""
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
@@ -308,35 +308,35 @@ class SubscriptionActivityInfo(Model):
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
-            instance.subscription_id = str()
+            instance.subscription_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "grantDays" in dict_ and dict_["grantDays"] is not None:
             instance.grant_days = int(dict_["grantDays"])
         elif include_empty:
-            instance.grant_days = int()
+            instance.grant_days = 0
         if "inFixedCycleTrial" in dict_ and dict_["inFixedCycleTrial"] is not None:
             instance.in_fixed_cycle_trial = bool(dict_["inFixedCycleTrial"])
         elif include_empty:
-            instance.in_fixed_cycle_trial = bool()
+            instance.in_fixed_cycle_trial = False
         if "inFixedFreeDays" in dict_ and dict_["inFixedFreeDays"] is not None:
             instance.in_fixed_free_days = bool(dict_["inFixedFreeDays"])
         elif include_empty:
-            instance.in_fixed_free_days = bool()
+            instance.in_fixed_free_days = False
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         if "trialedCycles" in dict_ and dict_["trialedCycles"] is not None:
             instance.trialed_cycles = int(dict_["trialedCycles"])
         elif include_empty:
-            instance.trialed_cycles = int()
+            instance.trialed_cycles = 0
         return instance
 
     @classmethod

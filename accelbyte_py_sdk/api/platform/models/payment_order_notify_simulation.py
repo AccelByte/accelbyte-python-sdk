@@ -106,7 +106,7 @@ class PaymentOrderNotifySimulation(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "notify_type"):
             result["notifyType"] = str(self.notify_type)
         elif include_empty:
@@ -118,15 +118,15 @@ class PaymentOrderNotifySimulation(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
-            result["salesTax"] = int()
+            result["salesTax"] = 0
         if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
-            result["vat"] = int()
+            result["vat"] = 0
         return result
 
     # endregion to methods
@@ -163,7 +163,7 @@ class PaymentOrderNotifySimulation(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "notifyType" in dict_ and dict_["notifyType"] is not None:
             instance.notify_type = str(dict_["notifyType"])
         elif include_empty:
@@ -175,15 +175,15 @@ class PaymentOrderNotifySimulation(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         if "salesTax" in dict_ and dict_["salesTax"] is not None:
             instance.sales_tax = int(dict_["salesTax"])
         elif include_empty:
-            instance.sales_tax = int()
+            instance.sales_tax = 0
         if "vat" in dict_ and dict_["vat"] is not None:
             instance.vat = int(dict_["vat"])
         elif include_empty:
-            instance.vat = int()
+            instance.vat = 0
         return instance
 
     @classmethod

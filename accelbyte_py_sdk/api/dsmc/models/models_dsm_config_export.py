@@ -156,19 +156,19 @@ class ModelsDSMConfigExport(Model):
         if hasattr(self, "claim_timeout"):
             result["claim_timeout"] = int(self.claim_timeout)
         elif include_empty:
-            result["claim_timeout"] = int()
+            result["claim_timeout"] = 0
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "creation_timeout"):
             result["creation_timeout"] = int(self.creation_timeout)
         elif include_empty:
-            result["creation_timeout"] = int()
+            result["creation_timeout"] = 0
         if hasattr(self, "default_version"):
             result["default_version"] = str(self.default_version)
         elif include_empty:
-            result["default_version"] = str()
+            result["default_version"] = ""
         if hasattr(self, "deployments"):
             result["deployments"] = [i0.to_dict(include_empty=include_empty) for i0 in self.deployments]
         elif include_empty:
@@ -180,7 +180,7 @@ class ModelsDSMConfigExport(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "pod_configs"):
             result["pod_configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.pod_configs]
         elif include_empty:
@@ -188,7 +188,7 @@ class ModelsDSMConfigExport(Model):
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         if hasattr(self, "ports"):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
@@ -196,7 +196,7 @@ class ModelsDSMConfigExport(Model):
         if hasattr(self, "protocol"):
             result["protocol"] = str(self.protocol)
         elif include_empty:
-            result["protocol"] = str()
+            result["protocol"] = ""
         if hasattr(self, "providers"):
             result["providers"] = [str(i0) for i0 in self.providers]
         elif include_empty:
@@ -204,15 +204,15 @@ class ModelsDSMConfigExport(Model):
         if hasattr(self, "session_timeout"):
             result["session_timeout"] = int(self.session_timeout)
         elif include_empty:
-            result["session_timeout"] = int()
+            result["session_timeout"] = 0
         if hasattr(self, "unreachable_timeout"):
             result["unreachable_timeout"] = int(self.unreachable_timeout)
         elif include_empty:
-            result["unreachable_timeout"] = int()
+            result["unreachable_timeout"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -264,19 +264,19 @@ class ModelsDSMConfigExport(Model):
         if "claim_timeout" in dict_ and dict_["claim_timeout"] is not None:
             instance.claim_timeout = int(dict_["claim_timeout"])
         elif include_empty:
-            instance.claim_timeout = int()
+            instance.claim_timeout = 0
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "creation_timeout" in dict_ and dict_["creation_timeout"] is not None:
             instance.creation_timeout = int(dict_["creation_timeout"])
         elif include_empty:
-            instance.creation_timeout = int()
+            instance.creation_timeout = 0
         if "default_version" in dict_ and dict_["default_version"] is not None:
             instance.default_version = str(dict_["default_version"])
         elif include_empty:
-            instance.default_version = str()
+            instance.default_version = ""
         if "deployments" in dict_ and dict_["deployments"] is not None:
             instance.deployments = [ModelsDeploymentWithOverride.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["deployments"]]
         elif include_empty:
@@ -288,7 +288,7 @@ class ModelsDSMConfigExport(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "pod_configs" in dict_ and dict_["pod_configs"] is not None:
             instance.pod_configs = [ModelsPodConfigRecord.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["pod_configs"]]
         elif include_empty:
@@ -296,7 +296,7 @@ class ModelsDSMConfigExport(Model):
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         if "ports" in dict_ and dict_["ports"] is not None:
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
@@ -304,7 +304,7 @@ class ModelsDSMConfigExport(Model):
         if "protocol" in dict_ and dict_["protocol"] is not None:
             instance.protocol = str(dict_["protocol"])
         elif include_empty:
-            instance.protocol = str()
+            instance.protocol = ""
         if "providers" in dict_ and dict_["providers"] is not None:
             instance.providers = [str(i0) for i0 in dict_["providers"]]
         elif include_empty:
@@ -312,15 +312,15 @@ class ModelsDSMConfigExport(Model):
         if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
             instance.session_timeout = int(dict_["session_timeout"])
         elif include_empty:
-            instance.session_timeout = int()
+            instance.session_timeout = 0
         if "unreachable_timeout" in dict_ and dict_["unreachable_timeout"] is not None:
             instance.unreachable_timeout = int(dict_["unreachable_timeout"])
         elif include_empty:
-            instance.unreachable_timeout = int()
+            instance.unreachable_timeout = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

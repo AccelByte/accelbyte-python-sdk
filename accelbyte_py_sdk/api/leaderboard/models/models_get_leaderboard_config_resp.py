@@ -146,23 +146,23 @@ class ModelsGetLeaderboardConfigResp(Model):
         if hasattr(self, "descending"):
             result["descending"] = bool(self.descending)
         elif include_empty:
-            result["descending"] = bool()
+            result["descending"] = False
         if hasattr(self, "icon_url"):
             result["iconURL"] = str(self.icon_url)
         elif include_empty:
-            result["iconURL"] = str()
+            result["iconURL"] = ""
         if hasattr(self, "is_archived"):
             result["isArchived"] = bool(self.is_archived)
         elif include_empty:
-            result["isArchived"] = bool()
+            result["isArchived"] = False
         if hasattr(self, "is_deleted"):
             result["isDeleted"] = bool(self.is_deleted)
         elif include_empty:
-            result["isDeleted"] = bool()
+            result["isDeleted"] = False
         if hasattr(self, "leaderboard_code"):
             result["leaderboardCode"] = str(self.leaderboard_code)
         elif include_empty:
-            result["leaderboardCode"] = str()
+            result["leaderboardCode"] = ""
         if hasattr(self, "monthly"):
             result["monthly"] = self.monthly.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -170,19 +170,19 @@ class ModelsGetLeaderboardConfigResp(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "season_period"):
             result["seasonPeriod"] = int(self.season_period)
         elif include_empty:
-            result["seasonPeriod"] = int()
+            result["seasonPeriod"] = 0
         if hasattr(self, "start_time"):
             result["startTime"] = str(self.start_time)
         elif include_empty:
-            result["startTime"] = str()
+            result["startTime"] = ""
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "weekly"):
             result["weekly"] = self.weekly.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -190,7 +190,7 @@ class ModelsGetLeaderboardConfigResp(Model):
         if hasattr(self, "deleted_at"):
             result["deletedAt"] = str(self.deleted_at)
         elif include_empty:
-            result["deletedAt"] = str()
+            result["deletedAt"] = ""
         return result
 
     # endregion to methods
@@ -243,23 +243,23 @@ class ModelsGetLeaderboardConfigResp(Model):
         if "descending" in dict_ and dict_["descending"] is not None:
             instance.descending = bool(dict_["descending"])
         elif include_empty:
-            instance.descending = bool()
+            instance.descending = False
         if "iconURL" in dict_ and dict_["iconURL"] is not None:
             instance.icon_url = str(dict_["iconURL"])
         elif include_empty:
-            instance.icon_url = str()
+            instance.icon_url = ""
         if "isArchived" in dict_ and dict_["isArchived"] is not None:
             instance.is_archived = bool(dict_["isArchived"])
         elif include_empty:
-            instance.is_archived = bool()
+            instance.is_archived = False
         if "isDeleted" in dict_ and dict_["isDeleted"] is not None:
             instance.is_deleted = bool(dict_["isDeleted"])
         elif include_empty:
-            instance.is_deleted = bool()
+            instance.is_deleted = False
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
             instance.leaderboard_code = str(dict_["leaderboardCode"])
         elif include_empty:
-            instance.leaderboard_code = str()
+            instance.leaderboard_code = ""
         if "monthly" in dict_ and dict_["monthly"] is not None:
             instance.monthly = ModelsMonthlyConfig.create_from_dict(dict_["monthly"], include_empty=include_empty)
         elif include_empty:
@@ -267,19 +267,19 @@ class ModelsGetLeaderboardConfigResp(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "seasonPeriod" in dict_ and dict_["seasonPeriod"] is not None:
             instance.season_period = int(dict_["seasonPeriod"])
         elif include_empty:
-            instance.season_period = int()
+            instance.season_period = 0
         if "startTime" in dict_ and dict_["startTime"] is not None:
             instance.start_time = str(dict_["startTime"])
         elif include_empty:
-            instance.start_time = str()
+            instance.start_time = ""
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "weekly" in dict_ and dict_["weekly"] is not None:
             instance.weekly = ModelsWeeklyConfig.create_from_dict(dict_["weekly"], include_empty=include_empty)
         elif include_empty:
@@ -287,7 +287,7 @@ class ModelsGetLeaderboardConfigResp(Model):
         if "deletedAt" in dict_ and dict_["deletedAt"] is not None:
             instance.deleted_at = str(dict_["deletedAt"])
         elif include_empty:
-            instance.deleted_at = str()
+            instance.deleted_at = ""
         return instance
 
     @classmethod

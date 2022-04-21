@@ -103,31 +103,31 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
-            result["created_at"] = str()
+            result["created_at"] = ""
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "id_"):
             result["_id"] = str(self.id_)
         elif include_empty:
-            result["_id"] = str()
+            result["_id"] = ""
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
-            result["joinable"] = bool()
+            result["joinable"] = False
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
-            result["match_id"] = str()
+            result["match_id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "sub_game_mode"):
             result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
         elif include_empty:
@@ -169,31 +169,31 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "_id" in dict_ and dict_["_id"] is not None:
             instance.id_ = str(dict_["_id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
-            instance.joinable = bool()
+            instance.joinable = False
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
             instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
         elif include_empty:

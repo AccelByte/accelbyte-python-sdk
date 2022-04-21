@@ -110,39 +110,39 @@ class AccountcommonUserLinkedPlatformV3(Model):
         if hasattr(self, "account_group"):
             result["accountGroup"] = str(self.account_group)
         elif include_empty:
-            result["accountGroup"] = str()
+            result["accountGroup"] = ""
         if hasattr(self, "linked_at"):
             result["linkedAt"] = str(self.linked_at)
         elif include_empty:
-            result["linkedAt"] = str()
+            result["linkedAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "origin_namespace"):
             result["originNamespace"] = str(self.origin_namespace)
         elif include_empty:
-            result["originNamespace"] = str()
+            result["originNamespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserId"] = str()
+            result["platformUserId"] = ""
         return result
 
     # endregion to methods
@@ -186,39 +186,39 @@ class AccountcommonUserLinkedPlatformV3(Model):
         if "accountGroup" in dict_ and dict_["accountGroup"] is not None:
             instance.account_group = str(dict_["accountGroup"])
         elif include_empty:
-            instance.account_group = str()
+            instance.account_group = ""
         if "linkedAt" in dict_ and dict_["linkedAt"] is not None:
             instance.linked_at = str(dict_["linkedAt"])
         elif include_empty:
-            instance.linked_at = str()
+            instance.linked_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "originNamespace" in dict_ and dict_["originNamespace"] is not None:
             instance.origin_namespace = str(dict_["originNamespace"])
         elif include_empty:
-            instance.origin_namespace = str()
+            instance.origin_namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         return instance
 
     @classmethod

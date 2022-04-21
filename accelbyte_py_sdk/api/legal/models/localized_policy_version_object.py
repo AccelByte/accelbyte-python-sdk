@@ -131,51 +131,51 @@ class LocalizedPolicyVersionObject(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "is_default_selection"):
             result["isDefaultSelection"] = bool(self.is_default_selection)
         elif include_empty:
-            result["isDefaultSelection"] = bool()
+            result["isDefaultSelection"] = False
         if hasattr(self, "locale_code"):
             result["localeCode"] = str(self.locale_code)
         elif include_empty:
-            result["localeCode"] = str()
+            result["localeCode"] = ""
         if hasattr(self, "attachment_checksum"):
             result["attachmentChecksum"] = str(self.attachment_checksum)
         elif include_empty:
-            result["attachmentChecksum"] = str()
+            result["attachmentChecksum"] = ""
         if hasattr(self, "attachment_location"):
             result["attachmentLocation"] = str(self.attachment_location)
         elif include_empty:
-            result["attachmentLocation"] = str()
+            result["attachmentLocation"] = ""
         if hasattr(self, "attachment_version_identifier"):
             result["attachmentVersionIdentifier"] = str(self.attachment_version_identifier)
         elif include_empty:
-            result["attachmentVersionIdentifier"] = str()
+            result["attachmentVersionIdentifier"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "published_date"):
             result["publishedDate"] = str(self.published_date)
         elif include_empty:
-            result["publishedDate"] = str()
+            result["publishedDate"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -230,51 +230,51 @@ class LocalizedPolicyVersionObject(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "isDefaultSelection" in dict_ and dict_["isDefaultSelection"] is not None:
             instance.is_default_selection = bool(dict_["isDefaultSelection"])
         elif include_empty:
-            instance.is_default_selection = bool()
+            instance.is_default_selection = False
         if "localeCode" in dict_ and dict_["localeCode"] is not None:
             instance.locale_code = str(dict_["localeCode"])
         elif include_empty:
-            instance.locale_code = str()
+            instance.locale_code = ""
         if "attachmentChecksum" in dict_ and dict_["attachmentChecksum"] is not None:
             instance.attachment_checksum = str(dict_["attachmentChecksum"])
         elif include_empty:
-            instance.attachment_checksum = str()
+            instance.attachment_checksum = ""
         if "attachmentLocation" in dict_ and dict_["attachmentLocation"] is not None:
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
-            instance.attachment_location = str()
+            instance.attachment_location = ""
         if "attachmentVersionIdentifier" in dict_ and dict_["attachmentVersionIdentifier"] is not None:
             instance.attachment_version_identifier = str(dict_["attachmentVersionIdentifier"])
         elif include_empty:
-            instance.attachment_version_identifier = str()
+            instance.attachment_version_identifier = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "publishedDate" in dict_ and dict_["publishedDate"] is not None:
             instance.published_date = str(dict_["publishedDate"])
         elif include_empty:
-            instance.published_date = str()
+            instance.published_date = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

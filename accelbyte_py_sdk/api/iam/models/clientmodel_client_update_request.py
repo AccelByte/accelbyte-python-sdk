@@ -61,11 +61,11 @@ class ClientmodelClientUpdateRequest(Model):
         if hasattr(self, "client_name"):
             result["ClientName"] = str(self.client_name)
         elif include_empty:
-            result["ClientName"] = str()
+            result["ClientName"] = ""
         if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["RedirectUri"] = str()
+            result["RedirectUri"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ClientmodelClientUpdateRequest(Model):
         if "ClientName" in dict_ and dict_["ClientName"] is not None:
             instance.client_name = str(dict_["ClientName"])
         elif include_empty:
-            instance.client_name = str()
+            instance.client_name = ""
         if "RedirectUri" in dict_ and dict_["RedirectUri"] is not None:
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         return instance
 
     @classmethod

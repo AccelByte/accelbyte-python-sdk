@@ -54,7 +54,7 @@ class ModelsCreateTagRequest(Model):
         if hasattr(self, "tag"):
             result["tag"] = str(self.tag)
         elif include_empty:
-            result["tag"] = str()
+            result["tag"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsCreateTagRequest(Model):
         if "tag" in dict_ and dict_["tag"] is not None:
             instance.tag = str(dict_["tag"])
         elif include_empty:
-            instance.tag = str()
+            instance.tag = ""
         return instance
 
     @classmethod

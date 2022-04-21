@@ -61,11 +61,11 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
-            result["message"] = str()
+            result["message"] = ""
         if hasattr(self, "profanity_level"):
             result["profanityLevel"] = str(self.profanity_level)
         elif include_empty:
-            result["profanityLevel"] = str()
+            result["profanityLevel"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsAdminVerifyMessageProfanityRequest(Model):
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         if "profanityLevel" in dict_ and dict_["profanityLevel"] is not None:
             instance.profanity_level = str(dict_["profanityLevel"])
         elif include_empty:
-            instance.profanity_level = str()
+            instance.profanity_level = ""
         return instance
 
     @classmethod

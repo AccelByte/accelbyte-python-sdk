@@ -75,19 +75,19 @@ class PlayStationReconcileRequest(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "price"):
             result["price"] = float(self.price)
         elif include_empty:
-            result["price"] = float()
+            result["price"] = 0.0
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "service_label"):
             result["serviceLabel"] = int(self.service_label)
         elif include_empty:
-            result["serviceLabel"] = int()
+            result["serviceLabel"] = 0
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class PlayStationReconcileRequest(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = float(dict_["price"])
         elif include_empty:
-            instance.price = float()
+            instance.price = 0.0
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "serviceLabel" in dict_ and dict_["serviceLabel"] is not None:
             instance.service_label = int(dict_["serviceLabel"])
         elif include_empty:
-            instance.service_label = int()
+            instance.service_label = 0
         return instance
 
     @classmethod

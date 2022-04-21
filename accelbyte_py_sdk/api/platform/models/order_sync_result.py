@@ -63,7 +63,7 @@ class OrderSyncResult(Model):
         if hasattr(self, "next_evaluated_key"):
             result["nextEvaluatedKey"] = str(self.next_evaluated_key)
         elif include_empty:
-            result["nextEvaluatedKey"] = str()
+            result["nextEvaluatedKey"] = ""
         if hasattr(self, "orders"):
             result["orders"] = [i0.to_dict(include_empty=include_empty) for i0 in self.orders]
         elif include_empty:
@@ -95,7 +95,7 @@ class OrderSyncResult(Model):
         if "nextEvaluatedKey" in dict_ and dict_["nextEvaluatedKey"] is not None:
             instance.next_evaluated_key = str(dict_["nextEvaluatedKey"])
         elif include_empty:
-            instance.next_evaluated_key = str()
+            instance.next_evaluated_key = ""
         if "orders" in dict_ and dict_["orders"] is not None:
             instance.orders = [Order.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["orders"]]
         elif include_empty:

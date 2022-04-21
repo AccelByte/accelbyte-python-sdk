@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUserInvitationV3
@@ -46,7 +47,7 @@ class GetAdminInvitationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -66,7 +67,7 @@ class GetAdminInvitationV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     invitation_id: str                                                                             # REQUIRED in [path]
@@ -93,8 +94,8 @@ class GetAdminInvitationV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -103,13 +104,6 @@ class GetAdminInvitationV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -153,11 +147,11 @@ class GetAdminInvitationV3(Operation):
         if hasattr(self, "invitation_id") and self.invitation_id:
             result["invitationId"] = str(self.invitation_id)
         elif include_empty:
-            result["invitationId"] = str()
+            result["invitationId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -215,11 +209,11 @@ class GetAdminInvitationV3(Operation):
         if "invitationId" in dict_ and dict_["invitationId"] is not None:
             instance.invitation_id = str(dict_["invitationId"])
         elif include_empty:
-            instance.invitation_id = str()
+            instance.invitation_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @staticmethod

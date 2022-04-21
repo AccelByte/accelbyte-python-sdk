@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -97,9 +98,9 @@ from ..operations.entitlement import UpdateUserEntitlement
 from ..models import AppEntitlementInfoStatusEnum, AppEntitlementInfoAppTypeEnum
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
-from ..models import EntitlementInfoAppTypeEnum, EntitlementInfoClazzEnum, EntitlementInfoStatusEnum, EntitlementInfoTypeEnum, EntitlementInfoSourceEnum
+from ..models import EntitlementInfoAppTypeEnum, EntitlementInfoTypeEnum, EntitlementInfoStatusEnum, EntitlementInfoClazzEnum, EntitlementInfoSourceEnum
 from ..models import EntitlementUpdateStatusEnum
-from ..models import StackableEntitlementInfoStatusEnum, StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoSourceEnum
+from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoStatusEnum, StackableEntitlementInfoClazzEnum
 
 
 @same_doc_as(ConsumeUserEntitlement)

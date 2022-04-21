@@ -54,7 +54,7 @@ class EpicGamesIAPConfigRequest(Model):
         if hasattr(self, "sandbox_id"):
             result["sandboxId"] = str(self.sandbox_id)
         elif include_empty:
-            result["sandboxId"] = str()
+            result["sandboxId"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class EpicGamesIAPConfigRequest(Model):
         if "sandboxId" in dict_ and dict_["sandboxId"] is not None:
             instance.sandbox_id = str(dict_["sandboxId"])
         elif include_empty:
-            instance.sandbox_id = str()
+            instance.sandbox_id = ""
         return instance
 
     @classmethod

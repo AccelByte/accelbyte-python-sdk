@@ -96,23 +96,23 @@ class ModelsCreateContentRequestS3(Model):
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
-            result["fileExtension"] = str()
+            result["fileExtension"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "preview"):
             result["preview"] = str(self.preview)
         elif include_empty:
-            result["preview"] = str()
+            result["preview"] = ""
         if hasattr(self, "sub_type"):
             result["subType"] = str(self.sub_type)
         elif include_empty:
-            result["subType"] = str()
+            result["subType"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -120,7 +120,7 @@ class ModelsCreateContentRequestS3(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         return result
 
     # endregion to methods
@@ -156,23 +156,23 @@ class ModelsCreateContentRequestS3(Model):
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
-            instance.file_extension = str()
+            instance.file_extension = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "preview" in dict_ and dict_["preview"] is not None:
             instance.preview = str(dict_["preview"])
         elif include_empty:
-            instance.preview = str()
+            instance.preview = ""
         if "subType" in dict_ and dict_["subType"] is not None:
             instance.sub_type = str(dict_["subType"])
         elif include_empty:
-            instance.sub_type = str()
+            instance.sub_type = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -180,7 +180,7 @@ class ModelsCreateContentRequestS3(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         return instance
 
     @classmethod

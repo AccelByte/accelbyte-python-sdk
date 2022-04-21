@@ -140,43 +140,43 @@ class RetrievePolicyResponse(Model):
         if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "is_default_opted"):
             result["isDefaultOpted"] = bool(self.is_default_opted)
         elif include_empty:
-            result["isDefaultOpted"] = bool()
+            result["isDefaultOpted"] = False
         if hasattr(self, "is_default_selection"):
             result["isDefaultSelection"] = bool(self.is_default_selection)
         elif include_empty:
-            result["isDefaultSelection"] = bool()
+            result["isDefaultSelection"] = False
         if hasattr(self, "is_mandatory"):
             result["isMandatory"] = bool(self.is_mandatory)
         elif include_empty:
-            result["isMandatory"] = bool()
+            result["isMandatory"] = False
         if hasattr(self, "policy_name"):
             result["policyName"] = str(self.policy_name)
         elif include_empty:
-            result["policyName"] = str()
+            result["policyName"] = ""
         if hasattr(self, "should_notify_on_update"):
             result["shouldNotifyOnUpdate"] = bool(self.should_notify_on_update)
         elif include_empty:
-            result["shouldNotifyOnUpdate"] = bool()
+            result["shouldNotifyOnUpdate"] = False
         if hasattr(self, "country_group_code"):
             result["countryGroupCode"] = str(self.country_group_code)
         elif include_empty:
-            result["countryGroupCode"] = str()
+            result["countryGroupCode"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "policy_versions"):
             result["policyVersions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions]
         elif include_empty:
@@ -184,11 +184,11 @@ class RetrievePolicyResponse(Model):
         if hasattr(self, "readable_id"):
             result["readableId"] = str(self.readable_id)
         elif include_empty:
-            result["readableId"] = str()
+            result["readableId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -242,43 +242,43 @@ class RetrievePolicyResponse(Model):
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "isDefaultOpted" in dict_ and dict_["isDefaultOpted"] is not None:
             instance.is_default_opted = bool(dict_["isDefaultOpted"])
         elif include_empty:
-            instance.is_default_opted = bool()
+            instance.is_default_opted = False
         if "isDefaultSelection" in dict_ and dict_["isDefaultSelection"] is not None:
             instance.is_default_selection = bool(dict_["isDefaultSelection"])
         elif include_empty:
-            instance.is_default_selection = bool()
+            instance.is_default_selection = False
         if "isMandatory" in dict_ and dict_["isMandatory"] is not None:
             instance.is_mandatory = bool(dict_["isMandatory"])
         elif include_empty:
-            instance.is_mandatory = bool()
+            instance.is_mandatory = False
         if "policyName" in dict_ and dict_["policyName"] is not None:
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
-            instance.policy_name = str()
+            instance.policy_name = ""
         if "shouldNotifyOnUpdate" in dict_ and dict_["shouldNotifyOnUpdate"] is not None:
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
-            instance.should_notify_on_update = bool()
+            instance.should_notify_on_update = False
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])
         elif include_empty:
-            instance.country_group_code = str()
+            instance.country_group_code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "policyVersions" in dict_ and dict_["policyVersions"] is not None:
             instance.policy_versions = [PolicyVersionObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["policyVersions"]]
         elif include_empty:
@@ -286,11 +286,11 @@ class RetrievePolicyResponse(Model):
         if "readableId" in dict_ and dict_["readableId"] is not None:
             instance.readable_id = str(dict_["readableId"])
         elif include_empty:
-            instance.readable_id = str()
+            instance.readable_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

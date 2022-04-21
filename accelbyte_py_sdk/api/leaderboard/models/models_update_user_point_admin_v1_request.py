@@ -61,11 +61,11 @@ class ModelsUpdateUserPointAdminV1Request(Model):
         if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
-            result["inc"] = float()
+            result["inc"] = 0.0
         if hasattr(self, "latest_value"):
             result["latestValue"] = float(self.latest_value)
         elif include_empty:
-            result["latestValue"] = float()
+            result["latestValue"] = 0.0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUpdateUserPointAdminV1Request(Model):
         if "inc" in dict_ and dict_["inc"] is not None:
             instance.inc = float(dict_["inc"])
         elif include_empty:
-            instance.inc = float()
+            instance.inc = 0.0
         if "latestValue" in dict_ and dict_["latestValue"] is not None:
             instance.latest_value = float(dict_["latestValue"])
         elif include_empty:
-            instance.latest_value = float()
+            instance.latest_value = 0.0
         return instance
 
     @classmethod

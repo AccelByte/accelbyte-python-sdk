@@ -61,11 +61,11 @@ class UserPassGrant(Model):
         if hasattr(self, "pass_code"):
             result["passCode"] = str(self.pass_code)
         elif include_empty:
-            result["passCode"] = str()
+            result["passCode"] = ""
         if hasattr(self, "pass_item_id"):
             result["passItemId"] = str(self.pass_item_id)
         elif include_empty:
-            result["passItemId"] = str()
+            result["passItemId"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class UserPassGrant(Model):
         if "passCode" in dict_ and dict_["passCode"] is not None:
             instance.pass_code = str(dict_["passCode"])
         elif include_empty:
-            instance.pass_code = str()
+            instance.pass_code = ""
         if "passItemId" in dict_ and dict_["passItemId"] is not None:
             instance.pass_item_id = str(dict_["passItemId"])
         elif include_empty:
-            instance.pass_item_id = str()
+            instance.pass_item_id = ""
         return instance
 
     @classmethod

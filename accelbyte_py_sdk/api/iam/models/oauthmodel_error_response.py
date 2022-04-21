@@ -89,19 +89,19 @@ class OauthmodelErrorResponse(Model):
         if hasattr(self, "error"):
             result["error"] = str(self.error)
         elif include_empty:
-            result["error"] = str()
+            result["error"] = ""
         if hasattr(self, "default_factor"):
             result["default_factor"] = str(self.default_factor)
         elif include_empty:
-            result["default_factor"] = str()
+            result["default_factor"] = ""
         if hasattr(self, "error_description"):
             result["error_description"] = str(self.error_description)
         elif include_empty:
-            result["error_description"] = str()
+            result["error_description"] = ""
         if hasattr(self, "error_uri"):
             result["error_uri"] = str(self.error_uri)
         elif include_empty:
-            result["error_uri"] = str()
+            result["error_uri"] = ""
         if hasattr(self, "factors"):
             result["factors"] = [str(i0) for i0 in self.factors]
         elif include_empty:
@@ -109,7 +109,7 @@ class OauthmodelErrorResponse(Model):
         if hasattr(self, "mfa_token"):
             result["mfa_token"] = str(self.mfa_token)
         elif include_empty:
-            result["mfa_token"] = str()
+            result["mfa_token"] = ""
         return result
 
     # endregion to methods
@@ -148,19 +148,19 @@ class OauthmodelErrorResponse(Model):
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = str(dict_["error"])
         elif include_empty:
-            instance.error = str()
+            instance.error = ""
         if "default_factor" in dict_ and dict_["default_factor"] is not None:
             instance.default_factor = str(dict_["default_factor"])
         elif include_empty:
-            instance.default_factor = str()
+            instance.default_factor = ""
         if "error_description" in dict_ and dict_["error_description"] is not None:
             instance.error_description = str(dict_["error_description"])
         elif include_empty:
-            instance.error_description = str()
+            instance.error_description = ""
         if "error_uri" in dict_ and dict_["error_uri"] is not None:
             instance.error_uri = str(dict_["error_uri"])
         elif include_empty:
-            instance.error_uri = str()
+            instance.error_uri = ""
         if "factors" in dict_ and dict_["factors"] is not None:
             instance.factors = [str(i0) for i0 in dict_["factors"]]
         elif include_empty:
@@ -168,7 +168,7 @@ class OauthmodelErrorResponse(Model):
         if "mfa_token" in dict_ and dict_["mfa_token"] is not None:
             instance.mfa_token = str(dict_["mfa_token"])
         elif include_empty:
-            instance.mfa_token = str()
+            instance.mfa_token = ""
         return instance
 
     @classmethod

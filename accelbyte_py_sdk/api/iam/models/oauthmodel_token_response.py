@@ -156,7 +156,7 @@ class OauthmodelTokenResponse(Model):
         if hasattr(self, "access_token"):
             result["access_token"] = str(self.access_token)
         elif include_empty:
-            result["access_token"] = str()
+            result["access_token"] = ""
         if hasattr(self, "bans"):
             result["bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
@@ -164,15 +164,15 @@ class OauthmodelTokenResponse(Model):
         if hasattr(self, "display_name"):
             result["display_name"] = str(self.display_name)
         elif include_empty:
-            result["display_name"] = str()
+            result["display_name"] = ""
         if hasattr(self, "expires_in"):
             result["expires_in"] = int(self.expires_in)
         elif include_empty:
-            result["expires_in"] = int()
+            result["expires_in"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "namespace_roles"):
             result["namespace_roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
@@ -184,7 +184,7 @@ class OauthmodelTokenResponse(Model):
         if hasattr(self, "refresh_token"):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
-            result["refresh_token"] = str()
+            result["refresh_token"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -192,27 +192,27 @@ class OauthmodelTokenResponse(Model):
         if hasattr(self, "token_type"):
             result["token_type"] = str(self.token_type)
         elif include_empty:
-            result["token_type"] = str()
+            result["token_type"] = ""
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         if hasattr(self, "is_comply"):
             result["is_comply"] = bool(self.is_comply)
         elif include_empty:
-            result["is_comply"] = bool()
+            result["is_comply"] = False
         if hasattr(self, "jflgs"):
             result["jflgs"] = int(self.jflgs)
         elif include_empty:
-            result["jflgs"] = int()
+            result["jflgs"] = 0
         if hasattr(self, "platform_id"):
             result["platform_id"] = str(self.platform_id)
         elif include_empty:
-            result["platform_id"] = str()
+            result["platform_id"] = ""
         if hasattr(self, "platform_user_id"):
             result["platform_user_id"] = str(self.platform_user_id)
         elif include_empty:
-            result["platform_user_id"] = str()
+            result["platform_user_id"] = ""
         return result
 
     # endregion to methods
@@ -268,7 +268,7 @@ class OauthmodelTokenResponse(Model):
         if "access_token" in dict_ and dict_["access_token"] is not None:
             instance.access_token = str(dict_["access_token"])
         elif include_empty:
-            instance.access_token = str()
+            instance.access_token = ""
         if "bans" in dict_ and dict_["bans"] is not None:
             instance.bans = [AccountcommonJWTBanV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
         elif include_empty:
@@ -276,15 +276,15 @@ class OauthmodelTokenResponse(Model):
         if "display_name" in dict_ and dict_["display_name"] is not None:
             instance.display_name = str(dict_["display_name"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "expires_in" in dict_ and dict_["expires_in"] is not None:
             instance.expires_in = int(dict_["expires_in"])
         elif include_empty:
-            instance.expires_in = int()
+            instance.expires_in = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "namespace_roles" in dict_ and dict_["namespace_roles"] is not None:
             instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["namespace_roles"]]
         elif include_empty:
@@ -296,7 +296,7 @@ class OauthmodelTokenResponse(Model):
         if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
-            instance.refresh_token = str()
+            instance.refresh_token = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
@@ -304,27 +304,27 @@ class OauthmodelTokenResponse(Model):
         if "token_type" in dict_ and dict_["token_type"] is not None:
             instance.token_type = str(dict_["token_type"])
         elif include_empty:
-            instance.token_type = str()
+            instance.token_type = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "is_comply" in dict_ and dict_["is_comply"] is not None:
             instance.is_comply = bool(dict_["is_comply"])
         elif include_empty:
-            instance.is_comply = bool()
+            instance.is_comply = False
         if "jflgs" in dict_ and dict_["jflgs"] is not None:
             instance.jflgs = int(dict_["jflgs"])
         elif include_empty:
-            instance.jflgs = int()
+            instance.jflgs = 0
         if "platform_id" in dict_ and dict_["platform_id"] is not None:
             instance.platform_id = str(dict_["platform_id"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "platform_user_id" in dict_ and dict_["platform_user_id"] is not None:
             instance.platform_user_id = str(dict_["platform_user_id"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         return instance
 
     @classmethod

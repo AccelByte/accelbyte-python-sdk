@@ -68,11 +68,11 @@ class ModelsAdminConcurrentRecordRequest(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = str()
+            result["set_by"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "value"):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
@@ -104,11 +104,11 @@ class ModelsAdminConcurrentRecordRequest(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = str()
+            instance.set_by = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:

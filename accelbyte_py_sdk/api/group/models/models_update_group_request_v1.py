@@ -95,23 +95,23 @@ class ModelsUpdateGroupRequestV1(Model):
         if hasattr(self, "group_description"):
             result["groupDescription"] = str(self.group_description)
         elif include_empty:
-            result["groupDescription"] = str()
+            result["groupDescription"] = ""
         if hasattr(self, "group_icon"):
             result["groupIcon"] = str(self.group_icon)
         elif include_empty:
-            result["groupIcon"] = str()
+            result["groupIcon"] = ""
         if hasattr(self, "group_name"):
             result["groupName"] = str(self.group_name)
         elif include_empty:
-            result["groupName"] = str()
+            result["groupName"] = ""
         if hasattr(self, "group_region"):
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
-            result["groupRegion"] = str()
+            result["groupRegion"] = ""
         if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
-            result["groupType"] = str()
+            result["groupType"] = ""
         return result
 
     # endregion to methods
@@ -149,23 +149,23 @@ class ModelsUpdateGroupRequestV1(Model):
         if "groupDescription" in dict_ and dict_["groupDescription"] is not None:
             instance.group_description = str(dict_["groupDescription"])
         elif include_empty:
-            instance.group_description = str()
+            instance.group_description = ""
         if "groupIcon" in dict_ and dict_["groupIcon"] is not None:
             instance.group_icon = str(dict_["groupIcon"])
         elif include_empty:
-            instance.group_icon = str()
+            instance.group_icon = ""
         if "groupName" in dict_ and dict_["groupName"] is not None:
             instance.group_name = str(dict_["groupName"])
         elif include_empty:
-            instance.group_name = str()
+            instance.group_name = ""
         if "groupRegion" in dict_ and dict_["groupRegion"] is not None:
             instance.group_region = str(dict_["groupRegion"])
         elif include_empty:
-            instance.group_region = str()
+            instance.group_region = ""
         if "groupType" in dict_ and dict_["groupType"] is not None:
             instance.group_type = str(dict_["groupType"])
         elif include_empty:
-            instance.group_type = str()
+            instance.group_type = ""
         return instance
 
     @classmethod

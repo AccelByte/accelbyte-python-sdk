@@ -61,11 +61,11 @@ class ModelsProfanityRule(Model):
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "rule"):
             result["Rule"] = str(self.rule)
         elif include_empty:
-            result["Rule"] = str()
+            result["Rule"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsProfanityRule(Model):
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "Rule" in dict_ and dict_["Rule"] is not None:
             instance.rule = str(dict_["Rule"])
         elif include_empty:
-            instance.rule = str()
+            instance.rule = ""
         return instance
 
     @classmethod

@@ -127,19 +127,19 @@ class PassInfo(Model):
         if hasattr(self, "auto_enroll"):
             result["autoEnroll"] = bool(self.auto_enroll)
         elif include_empty:
-            result["autoEnroll"] = bool()
+            result["autoEnroll"] = False
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "display_order"):
             result["displayOrder"] = str(self.display_order)
         elif include_empty:
-            result["displayOrder"] = str()
+            result["displayOrder"] = ""
         if hasattr(self, "localizations"):
             result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
@@ -147,23 +147,23 @@ class PassInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "pass_item_id"):
             result["passItemId"] = str(self.pass_item_id)
         elif include_empty:
-            result["passItemId"] = str()
+            result["passItemId"] = ""
         if hasattr(self, "pass_item_name"):
             result["passItemName"] = str(self.pass_item_name)
         elif include_empty:
-            result["passItemName"] = str()
+            result["passItemName"] = ""
         if hasattr(self, "season_id"):
             result["seasonId"] = str(self.season_id)
         elif include_empty:
-            result["seasonId"] = str()
+            result["seasonId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
@@ -212,19 +212,19 @@ class PassInfo(Model):
         if "autoEnroll" in dict_ and dict_["autoEnroll"] is not None:
             instance.auto_enroll = bool(dict_["autoEnroll"])
         elif include_empty:
-            instance.auto_enroll = bool()
+            instance.auto_enroll = False
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "displayOrder" in dict_ and dict_["displayOrder"] is not None:
             instance.display_order = str(dict_["displayOrder"])
         elif include_empty:
-            instance.display_order = str()
+            instance.display_order = ""
         if "localizations" in dict_ and dict_["localizations"] is not None:
             instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
@@ -232,23 +232,23 @@ class PassInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "passItemId" in dict_ and dict_["passItemId"] is not None:
             instance.pass_item_id = str(dict_["passItemId"])
         elif include_empty:
-            instance.pass_item_id = str()
+            instance.pass_item_id = ""
         if "passItemName" in dict_ and dict_["passItemName"] is not None:
             instance.pass_item_name = str(dict_["passItemName"])
         elif include_empty:
-            instance.pass_item_name = str()
+            instance.pass_item_name = ""
         if "seasonId" in dict_ and dict_["seasonId"] is not None:
             instance.season_id = str(dict_["seasonId"])
         elif include_empty:
-            instance.season_id = str()
+            instance.season_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:

@@ -89,19 +89,19 @@ class ModelsCreateContentRequest(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "payload"):
             result["payload"] = str(self.payload)
         elif include_empty:
-            result["payload"] = str()
+            result["payload"] = ""
         if hasattr(self, "preview"):
             result["preview"] = str(self.preview)
         elif include_empty:
-            result["preview"] = str()
+            result["preview"] = ""
         if hasattr(self, "sub_type"):
             result["subType"] = str(self.sub_type)
         elif include_empty:
-            result["subType"] = str()
+            result["subType"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -109,7 +109,7 @@ class ModelsCreateContentRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         return result
 
     # endregion to methods
@@ -143,19 +143,19 @@ class ModelsCreateContentRequest(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = str(dict_["payload"])
         elif include_empty:
-            instance.payload = str()
+            instance.payload = ""
         if "preview" in dict_ and dict_["preview"] is not None:
             instance.preview = str(dict_["preview"])
         elif include_empty:
-            instance.preview = str()
+            instance.preview = ""
         if "subType" in dict_ and dict_["subType"] is not None:
             instance.sub_type = str(dict_["subType"])
         elif include_empty:
-            instance.sub_type = str()
+            instance.sub_type = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -163,7 +163,7 @@ class ModelsCreateContentRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         return instance
 
     @classmethod

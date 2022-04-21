@@ -82,23 +82,23 @@ class ItemDynamicDataInfo(Model):
         if hasattr(self, "available_count"):
             result["availableCount"] = int(self.available_count)
         elif include_empty:
-            result["availableCount"] = int()
+            result["availableCount"] = 0
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_available_count"):
             result["userAvailableCount"] = int(self.user_available_count)
         elif include_empty:
-            result["userAvailableCount"] = int()
+            result["userAvailableCount"] = 0
         if hasattr(self, "user_purchase_limit"):
             result["userPurchaseLimit"] = int(self.user_purchase_limit)
         elif include_empty:
-            result["userPurchaseLimit"] = int()
+            result["userPurchaseLimit"] = 0
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ItemDynamicDataInfo(Model):
         if "availableCount" in dict_ and dict_["availableCount"] is not None:
             instance.available_count = int(dict_["availableCount"])
         elif include_empty:
-            instance.available_count = int()
+            instance.available_count = 0
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userAvailableCount" in dict_ and dict_["userAvailableCount"] is not None:
             instance.user_available_count = int(dict_["userAvailableCount"])
         elif include_empty:
-            instance.user_available_count = int()
+            instance.user_available_count = 0
         if "userPurchaseLimit" in dict_ and dict_["userPurchaseLimit"] is not None:
             instance.user_purchase_limit = int(dict_["userPurchaseLimit"])
         elif include_empty:
-            instance.user_purchase_limit = int()
+            instance.user_purchase_limit = 0
         return instance
 
     @classmethod

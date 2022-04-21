@@ -189,39 +189,39 @@ class CampaignInfo(Model):
         if hasattr(self, "booth_name"):
             result["boothName"] = str(self.booth_name)
         elif include_empty:
-            result["boothName"] = str()
+            result["boothName"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "max_redeem_count_per_campaign_per_user"):
             result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCampaignPerUser"] = int()
+            result["maxRedeemCountPerCampaignPerUser"] = 0
         if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
-            result["maxRedeemCountPerCode"] = int()
+            result["maxRedeemCountPerCode"] = 0
         if hasattr(self, "max_redeem_count_per_code_per_user"):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCodePerUser"] = int()
+            result["maxRedeemCountPerCodePerUser"] = 0
         if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
-            result["maxSaleCount"] = int()
+            result["maxSaleCount"] = 0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
@@ -237,11 +237,11 @@ class CampaignInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
@@ -249,11 +249,11 @@ class CampaignInfo(Model):
         if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
-            result["redeemEnd"] = str()
+            result["redeemEnd"] = ""
         if hasattr(self, "redeem_start"):
             result["redeemStart"] = str(self.redeem_start)
         elif include_empty:
-            result["redeemStart"] = str()
+            result["redeemStart"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -320,39 +320,39 @@ class CampaignInfo(Model):
         if "boothName" in dict_ and dict_["boothName"] is not None:
             instance.booth_name = str(dict_["boothName"])
         elif include_empty:
-            instance.booth_name = str()
+            instance.booth_name = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
             instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_campaign_per_user = int()
+            instance.max_redeem_count_per_campaign_per_user = 0
         if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
-            instance.max_redeem_count_per_code = int()
+            instance.max_redeem_count_per_code = 0
         if "maxRedeemCountPerCodePerUser" in dict_ and dict_["maxRedeemCountPerCodePerUser"] is not None:
             instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_code_per_user = int()
+            instance.max_redeem_count_per_code_per_user = 0
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
             instance.max_sale_count = int(dict_["maxSaleCount"])
         elif include_empty:
-            instance.max_sale_count = int()
+            instance.max_sale_count = 0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
@@ -368,11 +368,11 @@ class CampaignInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
@@ -380,11 +380,11 @@ class CampaignInfo(Model):
         if "redeemEnd" in dict_ and dict_["redeemEnd"] is not None:
             instance.redeem_end = str(dict_["redeemEnd"])
         elif include_empty:
-            instance.redeem_end = str()
+            instance.redeem_end = ""
         if "redeemStart" in dict_ and dict_["redeemStart"] is not None:
             instance.redeem_start = str(dict_["redeemStart"])
         elif include_empty:
-            instance.redeem_start = str()
+            instance.redeem_start = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

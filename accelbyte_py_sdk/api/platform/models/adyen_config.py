@@ -142,11 +142,11 @@ class AdyenConfig(Model):
         if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
-            result["apiKey"] = str()
+            result["apiKey"] = ""
         if hasattr(self, "authorise_as_capture"):
             result["authoriseAsCapture"] = bool(self.authorise_as_capture)
         elif include_empty:
-            result["authoriseAsCapture"] = bool()
+            result["authoriseAsCapture"] = False
         if hasattr(self, "blocked_payment_methods"):
             result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
         elif include_empty:
@@ -154,39 +154,39 @@ class AdyenConfig(Model):
         if hasattr(self, "client_key"):
             result["clientKey"] = str(self.client_key)
         elif include_empty:
-            result["clientKey"] = str()
+            result["clientKey"] = ""
         if hasattr(self, "drop_in_settings"):
             result["dropInSettings"] = str(self.drop_in_settings)
         elif include_empty:
-            result["dropInSettings"] = str()
+            result["dropInSettings"] = ""
         if hasattr(self, "live_endpoint_url_prefix"):
             result["liveEndpointUrlPrefix"] = str(self.live_endpoint_url_prefix)
         elif include_empty:
-            result["liveEndpointUrlPrefix"] = str()
+            result["liveEndpointUrlPrefix"] = ""
         if hasattr(self, "merchant_account"):
             result["merchantAccount"] = str(self.merchant_account)
         elif include_empty:
-            result["merchantAccount"] = str()
+            result["merchantAccount"] = ""
         if hasattr(self, "notification_hmac_key"):
             result["notificationHmacKey"] = str(self.notification_hmac_key)
         elif include_empty:
-            result["notificationHmacKey"] = str()
+            result["notificationHmacKey"] = ""
         if hasattr(self, "notification_password"):
             result["notificationPassword"] = str(self.notification_password)
         elif include_empty:
-            result["notificationPassword"] = str()
+            result["notificationPassword"] = ""
         if hasattr(self, "notification_username"):
             result["notificationUsername"] = str(self.notification_username)
         elif include_empty:
-            result["notificationUsername"] = str()
+            result["notificationUsername"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "settings"):
             result["settings"] = str(self.settings)
         elif include_empty:
-            result["settings"] = str()
+            result["settings"] = ""
         return result
 
     # endregion to methods
@@ -251,11 +251,11 @@ class AdyenConfig(Model):
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:
-            instance.api_key = str()
+            instance.api_key = ""
         if "authoriseAsCapture" in dict_ and dict_["authoriseAsCapture"] is not None:
             instance.authorise_as_capture = bool(dict_["authoriseAsCapture"])
         elif include_empty:
-            instance.authorise_as_capture = bool()
+            instance.authorise_as_capture = False
         if "blockedPaymentMethods" in dict_ and dict_["blockedPaymentMethods"] is not None:
             instance.blocked_payment_methods = [str(i0) for i0 in dict_["blockedPaymentMethods"]]
         elif include_empty:
@@ -263,39 +263,39 @@ class AdyenConfig(Model):
         if "clientKey" in dict_ and dict_["clientKey"] is not None:
             instance.client_key = str(dict_["clientKey"])
         elif include_empty:
-            instance.client_key = str()
+            instance.client_key = ""
         if "dropInSettings" in dict_ and dict_["dropInSettings"] is not None:
             instance.drop_in_settings = str(dict_["dropInSettings"])
         elif include_empty:
-            instance.drop_in_settings = str()
+            instance.drop_in_settings = ""
         if "liveEndpointUrlPrefix" in dict_ and dict_["liveEndpointUrlPrefix"] is not None:
             instance.live_endpoint_url_prefix = str(dict_["liveEndpointUrlPrefix"])
         elif include_empty:
-            instance.live_endpoint_url_prefix = str()
+            instance.live_endpoint_url_prefix = ""
         if "merchantAccount" in dict_ and dict_["merchantAccount"] is not None:
             instance.merchant_account = str(dict_["merchantAccount"])
         elif include_empty:
-            instance.merchant_account = str()
+            instance.merchant_account = ""
         if "notificationHmacKey" in dict_ and dict_["notificationHmacKey"] is not None:
             instance.notification_hmac_key = str(dict_["notificationHmacKey"])
         elif include_empty:
-            instance.notification_hmac_key = str()
+            instance.notification_hmac_key = ""
         if "notificationPassword" in dict_ and dict_["notificationPassword"] is not None:
             instance.notification_password = str(dict_["notificationPassword"])
         elif include_empty:
-            instance.notification_password = str()
+            instance.notification_password = ""
         if "notificationUsername" in dict_ and dict_["notificationUsername"] is not None:
             instance.notification_username = str(dict_["notificationUsername"])
         elif include_empty:
-            instance.notification_username = str()
+            instance.notification_username = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "settings" in dict_ and dict_["settings"] is not None:
             instance.settings = str(dict_["settings"])
         elif include_empty:
-            instance.settings = str()
+            instance.settings = ""
         return instance
 
     @classmethod

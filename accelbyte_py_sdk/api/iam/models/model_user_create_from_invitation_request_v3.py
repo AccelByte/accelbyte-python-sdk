@@ -98,23 +98,23 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
-            result["authType"] = str()
+            result["authType"] = ""
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
-            result["country"] = str()
+            result["country"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "reach_minimum_age"):
             result["reachMinimumAge"] = bool(self.reach_minimum_age)
         elif include_empty:
-            result["reachMinimumAge"] = bool()
+            result["reachMinimumAge"] = False
         if hasattr(self, "accepted_policies"):
             result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
         elif include_empty:
@@ -122,7 +122,7 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["dateOfBirth"] = str()
+            result["dateOfBirth"] = ""
         return result
 
     # endregion to methods
@@ -160,23 +160,23 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
-            instance.auth_type = str()
+            instance.auth_type = ""
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
             instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
         elif include_empty:
-            instance.reach_minimum_age = bool()
+            instance.reach_minimum_age = False
         if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
             instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
         elif include_empty:
@@ -184,7 +184,7 @@ class ModelUserCreateFromInvitationRequestV3(Model):
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         return instance
 
     @classmethod

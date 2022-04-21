@@ -82,23 +82,23 @@ class CampaignDynamicInfo(Model):
         if hasattr(self, "available_sale_count"):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
-            result["availableSaleCount"] = int()
+            result["availableSaleCount"] = 0
         if hasattr(self, "last_batch_no"):
             result["lastBatchNo"] = int(self.last_batch_no)
         elif include_empty:
-            result["lastBatchNo"] = int()
+            result["lastBatchNo"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "remainder"):
             result["remainder"] = int(self.remainder)
         elif include_empty:
-            result["remainder"] = int()
+            result["remainder"] = 0
         if hasattr(self, "sale_count"):
             result["saleCount"] = int(self.sale_count)
         elif include_empty:
-            result["saleCount"] = int()
+            result["saleCount"] = 0
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class CampaignDynamicInfo(Model):
         if "availableSaleCount" in dict_ and dict_["availableSaleCount"] is not None:
             instance.available_sale_count = int(dict_["availableSaleCount"])
         elif include_empty:
-            instance.available_sale_count = int()
+            instance.available_sale_count = 0
         if "lastBatchNo" in dict_ and dict_["lastBatchNo"] is not None:
             instance.last_batch_no = int(dict_["lastBatchNo"])
         elif include_empty:
-            instance.last_batch_no = int()
+            instance.last_batch_no = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "remainder" in dict_ and dict_["remainder"] is not None:
             instance.remainder = int(dict_["remainder"])
         elif include_empty:
-            instance.remainder = int()
+            instance.remainder = 0
         if "saleCount" in dict_ and dict_["saleCount"] is not None:
             instance.sale_count = int(dict_["saleCount"])
         elif include_empty:
-            instance.sale_count = int()
+            instance.sale_count = 0
         return instance
 
     @classmethod

@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -251,7 +252,7 @@ async def revoke_user_v3_async(user_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant_v3(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
@@ -268,7 +269,7 @@ def token_grant_v3(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id:
 
 
 @same_doc_as(TokenGrantV3)
-async def token_grant_v3_async(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def token_grant_v3_async(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,

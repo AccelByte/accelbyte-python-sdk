@@ -216,7 +216,7 @@ class Transaction(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -224,35 +224,35 @@ class Transaction(Model):
         if hasattr(self, "ext_message"):
             result["extMessage"] = str(self.ext_message)
         elif include_empty:
-            result["extMessage"] = str()
+            result["extMessage"] = ""
         if hasattr(self, "ext_status_code"):
             result["extStatusCode"] = str(self.ext_status_code)
         elif include_empty:
-            result["extStatusCode"] = str()
+            result["extStatusCode"] = ""
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
-            result["extTxId"] = str()
+            result["extTxId"] = ""
         if hasattr(self, "merchant_id"):
             result["merchantId"] = str(self.merchant_id)
         elif include_empty:
-            result["merchantId"] = str()
+            result["merchantId"] = ""
         if hasattr(self, "notified"):
             result["notified"] = bool(self.notified)
         elif include_empty:
-            result["notified"] = bool()
+            result["notified"] = False
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
-            result["paymentMethod"] = str()
+            result["paymentMethod"] = ""
         if hasattr(self, "payment_method_fee"):
             result["paymentMethodFee"] = int(self.payment_method_fee)
         elif include_empty:
-            result["paymentMethodFee"] = int()
+            result["paymentMethodFee"] = 0
         if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
-            result["paymentProviderFee"] = int()
+            result["paymentProviderFee"] = 0
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
@@ -260,7 +260,7 @@ class Transaction(Model):
         if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
-            result["salesTax"] = int()
+            result["salesTax"] = 0
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -268,15 +268,15 @@ class Transaction(Model):
         if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
-            result["tax"] = int()
+            result["tax"] = 0
         if hasattr(self, "tx_end_time"):
             result["txEndTime"] = str(self.tx_end_time)
         elif include_empty:
-            result["txEndTime"] = str()
+            result["txEndTime"] = ""
         if hasattr(self, "tx_id"):
             result["txId"] = str(self.tx_id)
         elif include_empty:
-            result["txId"] = str()
+            result["txId"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -284,7 +284,7 @@ class Transaction(Model):
         if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
-            result["vat"] = int()
+            result["vat"] = 0
         return result
 
     # endregion to methods
@@ -367,7 +367,7 @@ class Transaction(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
@@ -375,35 +375,35 @@ class Transaction(Model):
         if "extMessage" in dict_ and dict_["extMessage"] is not None:
             instance.ext_message = str(dict_["extMessage"])
         elif include_empty:
-            instance.ext_message = str()
+            instance.ext_message = ""
         if "extStatusCode" in dict_ and dict_["extStatusCode"] is not None:
             instance.ext_status_code = str(dict_["extStatusCode"])
         elif include_empty:
-            instance.ext_status_code = str()
+            instance.ext_status_code = ""
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
-            instance.ext_tx_id = str()
+            instance.ext_tx_id = ""
         if "merchantId" in dict_ and dict_["merchantId"] is not None:
             instance.merchant_id = str(dict_["merchantId"])
         elif include_empty:
-            instance.merchant_id = str()
+            instance.merchant_id = ""
         if "notified" in dict_ and dict_["notified"] is not None:
             instance.notified = bool(dict_["notified"])
         elif include_empty:
-            instance.notified = bool()
+            instance.notified = False
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
-            instance.payment_method = str()
+            instance.payment_method = ""
         if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
             instance.payment_method_fee = int(dict_["paymentMethodFee"])
         elif include_empty:
-            instance.payment_method_fee = int()
+            instance.payment_method_fee = 0
         if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:
-            instance.payment_provider_fee = int()
+            instance.payment_provider_fee = 0
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
@@ -411,7 +411,7 @@ class Transaction(Model):
         if "salesTax" in dict_ and dict_["salesTax"] is not None:
             instance.sales_tax = int(dict_["salesTax"])
         elif include_empty:
-            instance.sales_tax = int()
+            instance.sales_tax = 0
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -419,15 +419,15 @@ class Transaction(Model):
         if "tax" in dict_ and dict_["tax"] is not None:
             instance.tax = int(dict_["tax"])
         elif include_empty:
-            instance.tax = int()
+            instance.tax = 0
         if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
             instance.tx_end_time = str(dict_["txEndTime"])
         elif include_empty:
-            instance.tx_end_time = str()
+            instance.tx_end_time = ""
         if "txId" in dict_ and dict_["txId"] is not None:
             instance.tx_id = str(dict_["txId"])
         elif include_empty:
-            instance.tx_id = str()
+            instance.tx_id = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -435,7 +435,7 @@ class Transaction(Model):
         if "vat" in dict_ and dict_["vat"] is not None:
             instance.vat = int(dict_["vat"])
         elif include_empty:
-            instance.vat = int()
+            instance.vat = 0
         return instance
 
     @classmethod

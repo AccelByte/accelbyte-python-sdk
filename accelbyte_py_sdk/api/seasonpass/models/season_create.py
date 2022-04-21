@@ -128,15 +128,15 @@ class SeasonCreate(Model):
         if hasattr(self, "default_required_exp"):
             result["defaultRequiredExp"] = int(self.default_required_exp)
         elif include_empty:
-            result["defaultRequiredExp"] = int()
+            result["defaultRequiredExp"] = 0
         if hasattr(self, "draft_store_id"):
             result["draftStoreId"] = str(self.draft_store_id)
         elif include_empty:
-            result["draftStoreId"] = str()
+            result["draftStoreId"] = ""
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "localizations"):
             result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
@@ -144,23 +144,23 @@ class SeasonCreate(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
-            result["tierItemId"] = str()
+            result["tierItemId"] = ""
         if hasattr(self, "auto_claim"):
             result["autoClaim"] = bool(self.auto_claim)
         elif include_empty:
-            result["autoClaim"] = bool()
+            result["autoClaim"] = False
         if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["defaultLanguage"] = str()
+            result["defaultLanguage"] = ""
         if hasattr(self, "excess_strategy"):
             result["excessStrategy"] = self.excess_strategy.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -216,15 +216,15 @@ class SeasonCreate(Model):
         if "defaultRequiredExp" in dict_ and dict_["defaultRequiredExp"] is not None:
             instance.default_required_exp = int(dict_["defaultRequiredExp"])
         elif include_empty:
-            instance.default_required_exp = int()
+            instance.default_required_exp = 0
         if "draftStoreId" in dict_ and dict_["draftStoreId"] is not None:
             instance.draft_store_id = str(dict_["draftStoreId"])
         elif include_empty:
-            instance.draft_store_id = str()
+            instance.draft_store_id = ""
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "localizations" in dict_ and dict_["localizations"] is not None:
             instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
@@ -232,23 +232,23 @@ class SeasonCreate(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:
-            instance.tier_item_id = str()
+            instance.tier_item_id = ""
         if "autoClaim" in dict_ and dict_["autoClaim"] is not None:
             instance.auto_claim = bool(dict_["autoClaim"])
         elif include_empty:
-            instance.auto_claim = bool()
+            instance.auto_claim = False
         if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
             instance.default_language = str(dict_["defaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "excessStrategy" in dict_ and dict_["excessStrategy"] is not None:
             instance.excess_strategy = ExcessStrategy.create_from_dict(dict_["excessStrategy"], include_empty=include_empty)
         elif include_empty:

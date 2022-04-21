@@ -89,19 +89,19 @@ class StoreUpdate(Model):
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["defaultLanguage"] = str()
+            result["defaultLanguage"] = ""
         if hasattr(self, "default_region"):
             result["defaultRegion"] = str(self.default_region)
         elif include_empty:
-            result["defaultRegion"] = str()
+            result["defaultRegion"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "supported_languages"):
             result["supportedLanguages"] = [str(i0) for i0 in self.supported_languages]
         elif include_empty:
@@ -148,19 +148,19 @@ class StoreUpdate(Model):
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
             instance.default_language = str(dict_["defaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "defaultRegion" in dict_ and dict_["defaultRegion"] is not None:
             instance.default_region = str(dict_["defaultRegion"])
         elif include_empty:
-            instance.default_region = str()
+            instance.default_region = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "supportedLanguages" in dict_ and dict_["supportedLanguages"] is not None:
             instance.supported_languages = [str(i0) for i0 in dict_["supportedLanguages"]]
         elif include_empty:

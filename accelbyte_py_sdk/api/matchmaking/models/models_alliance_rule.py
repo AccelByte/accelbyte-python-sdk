@@ -75,19 +75,19 @@ class ModelsAllianceRule(Model):
         if hasattr(self, "max_number"):
             result["max_number"] = int(self.max_number)
         elif include_empty:
-            result["max_number"] = int()
+            result["max_number"] = 0
         if hasattr(self, "min_number"):
             result["min_number"] = int(self.min_number)
         elif include_empty:
-            result["min_number"] = int()
+            result["min_number"] = 0
         if hasattr(self, "player_max_number"):
             result["player_max_number"] = int(self.player_max_number)
         elif include_empty:
-            result["player_max_number"] = int()
+            result["player_max_number"] = 0
         if hasattr(self, "player_min_number"):
             result["player_min_number"] = int(self.player_min_number)
         elif include_empty:
-            result["player_min_number"] = int()
+            result["player_min_number"] = 0
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsAllianceRule(Model):
         if "max_number" in dict_ and dict_["max_number"] is not None:
             instance.max_number = int(dict_["max_number"])
         elif include_empty:
-            instance.max_number = int()
+            instance.max_number = 0
         if "min_number" in dict_ and dict_["min_number"] is not None:
             instance.min_number = int(dict_["min_number"])
         elif include_empty:
-            instance.min_number = int()
+            instance.min_number = 0
         if "player_max_number" in dict_ and dict_["player_max_number"] is not None:
             instance.player_max_number = int(dict_["player_max_number"])
         elif include_empty:
-            instance.player_max_number = int()
+            instance.player_max_number = 0
         if "player_min_number" in dict_ and dict_["player_min_number"] is not None:
             instance.player_min_number = int(dict_["player_min_number"])
         elif include_empty:
-            instance.player_min_number = int()
+            instance.player_min_number = 0
         return instance
 
     @classmethod

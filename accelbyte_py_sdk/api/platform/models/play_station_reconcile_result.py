@@ -89,15 +89,15 @@ class PlayStationReconcileResult(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "psn_item_id"):
             result["psnItemId"] = str(self.psn_item_id)
         elif include_empty:
-            result["psnItemId"] = str()
+            result["psnItemId"] = ""
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -105,7 +105,7 @@ class PlayStationReconcileResult(Model):
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["transactionId"] = str()
+            result["transactionId"] = ""
         return result
 
     # endregion to methods
@@ -142,15 +142,15 @@ class PlayStationReconcileResult(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "psnItemId" in dict_ and dict_["psnItemId"] is not None:
             instance.psn_item_id = str(dict_["psnItemId"])
         elif include_empty:
-            instance.psn_item_id = str()
+            instance.psn_item_id = ""
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -158,7 +158,7 @@ class PlayStationReconcileResult(Model):
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.transaction_id = str()
+            instance.transaction_id = ""
         return instance
 
     @classmethod

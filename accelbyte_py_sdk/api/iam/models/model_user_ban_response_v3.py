@@ -126,11 +126,11 @@ class ModelUserBanResponseV3(Model):
         if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
-            result["ban"] = str()
+            result["ban"] = ""
         if hasattr(self, "ban_id"):
             result["banId"] = str(self.ban_id)
         elif include_empty:
-            result["banId"] = str()
+            result["banId"] = ""
         if hasattr(self, "banned_by"):
             result["bannedBy"] = self.banned_by.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -138,35 +138,35 @@ class ModelUserBanResponseV3(Model):
         if hasattr(self, "comment"):
             result["comment"] = str(self.comment)
         elif include_empty:
-            result["comment"] = str()
+            result["comment"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "disabled_date"):
             result["disabledDate"] = str(self.disabled_date)
         elif include_empty:
-            result["disabledDate"] = str()
+            result["disabledDate"] = ""
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -210,11 +210,11 @@ class ModelUserBanResponseV3(Model):
         if "ban" in dict_ and dict_["ban"] is not None:
             instance.ban = str(dict_["ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "banId" in dict_ and dict_["banId"] is not None:
             instance.ban_id = str(dict_["banId"])
         elif include_empty:
-            instance.ban_id = str()
+            instance.ban_id = ""
         if "bannedBy" in dict_ and dict_["bannedBy"] is not None:
             instance.banned_by = AccountcommonBannedByV3.create_from_dict(dict_["bannedBy"], include_empty=include_empty)
         elif include_empty:
@@ -222,35 +222,35 @@ class ModelUserBanResponseV3(Model):
         if "comment" in dict_ and dict_["comment"] is not None:
             instance.comment = str(dict_["comment"])
         elif include_empty:
-            instance.comment = str()
+            instance.comment = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "disabledDate" in dict_ and dict_["disabledDate"] is not None:
             instance.disabled_date = str(dict_["disabledDate"])
         elif include_empty:
-            instance.disabled_date = str()
+            instance.disabled_date = ""
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

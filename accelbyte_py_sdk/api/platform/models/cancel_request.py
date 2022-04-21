@@ -61,11 +61,11 @@ class CancelRequest(Model):
         if hasattr(self, "immediate"):
             result["immediate"] = bool(self.immediate)
         elif include_empty:
-            result["immediate"] = bool()
+            result["immediate"] = False
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class CancelRequest(Model):
         if "immediate" in dict_ and dict_["immediate"] is not None:
             instance.immediate = bool(dict_["immediate"])
         elif include_empty:
-            instance.immediate = bool()
+            instance.immediate = False
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

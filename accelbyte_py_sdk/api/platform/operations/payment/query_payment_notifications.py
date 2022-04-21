@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -71,7 +72,7 @@ class QueryPaymentNotifications(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -103,7 +104,7 @@ class QueryPaymentNotifications(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -138,8 +139,8 @@ class QueryPaymentNotifications(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -148,14 +149,6 @@ class QueryPaymentNotifications(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -252,19 +245,19 @@ class QueryPaymentNotifications(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "external_id") and self.external_id:
             result["externalId"] = str(self.external_id)
         elif include_empty:
-            result["externalId"] = str()
+            result["externalId"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "notification_source") and self.notification_source:
             result["notificationSource"] = str(self.notification_source)
         elif include_empty:
@@ -272,19 +265,19 @@ class QueryPaymentNotifications(Operation):
         if hasattr(self, "notification_type") and self.notification_type:
             result["notificationType"] = str(self.notification_type)
         elif include_empty:
-            result["notificationType"] = str()
+            result["notificationType"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "payment_order_no") and self.payment_order_no:
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
-            result["startDate"] = str()
+            result["startDate"] = ""
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -363,19 +356,19 @@ class QueryPaymentNotifications(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "externalId" in dict_ and dict_["externalId"] is not None:
             instance.external_id = str(dict_["externalId"])
         elif include_empty:
-            instance.external_id = str()
+            instance.external_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "notificationSource" in dict_ and dict_["notificationSource"] is not None:
             instance.notification_source = str(dict_["notificationSource"])
         elif include_empty:
@@ -383,19 +376,19 @@ class QueryPaymentNotifications(Operation):
         if "notificationType" in dict_ and dict_["notificationType"] is not None:
             instance.notification_type = str(dict_["notificationType"])
         elif include_empty:
-            instance.notification_type = str()
+            instance.notification_type = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:

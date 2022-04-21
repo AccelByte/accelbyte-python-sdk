@@ -147,27 +147,27 @@ class FulfillmentRequest(Model):
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
-            result["duration"] = int()
+            result["duration"] = 0
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
-            result["itemSku"] = str()
+            result["itemSku"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "order"):
             result["order"] = self.order.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -175,11 +175,11 @@ class FulfillmentRequest(Model):
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -187,11 +187,11 @@ class FulfillmentRequest(Model):
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
-            result["startDate"] = str()
+            result["startDate"] = ""
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         return result
 
     # endregion to methods
@@ -248,27 +248,27 @@ class FulfillmentRequest(Model):
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
-            instance.duration = int()
+            instance.duration = 0
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemSku" in dict_ and dict_["itemSku"] is not None:
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
-            instance.item_sku = str()
+            instance.item_sku = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "order" in dict_ and dict_["order"] is not None:
             instance.order = OrderSummary.create_from_dict(dict_["order"], include_empty=include_empty)
         elif include_empty:
@@ -276,11 +276,11 @@ class FulfillmentRequest(Model):
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -288,11 +288,11 @@ class FulfillmentRequest(Model):
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         return instance
 
     @classmethod

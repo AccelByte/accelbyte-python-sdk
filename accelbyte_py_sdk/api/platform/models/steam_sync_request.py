@@ -97,31 +97,31 @@ class SteamSyncRequest(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "steam_id"):
             result["steamId"] = str(self.steam_id)
         elif include_empty:
-            result["steamId"] = str()
+            result["steamId"] = ""
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "price"):
             result["price"] = float(self.price)
         elif include_empty:
-            result["price"] = float()
+            result["price"] = 0.0
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -162,31 +162,31 @@ class SteamSyncRequest(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "steamId" in dict_ and dict_["steamId"] is not None:
             instance.steam_id = str(dict_["steamId"])
         elif include_empty:
-            instance.steam_id = str()
+            instance.steam_id = ""
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = float(dict_["price"])
         elif include_empty:
-            instance.price = float()
+            instance.price = 0.0
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class XblIAPConfigRequest(Model):
         if hasattr(self, "relying_party_cert"):
             result["relyingPartyCert"] = str(self.relying_party_cert)
         elif include_empty:
-            result["relyingPartyCert"] = str()
+            result["relyingPartyCert"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class XblIAPConfigRequest(Model):
         if "relyingPartyCert" in dict_ and dict_["relyingPartyCert"] is not None:
             instance.relying_party_cert = str(dict_["relyingPartyCert"])
         elif include_empty:
-            instance.relying_party_cert = str()
+            instance.relying_party_cert = ""
         return instance
 
     @classmethod

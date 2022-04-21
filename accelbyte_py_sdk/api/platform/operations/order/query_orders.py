@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -68,7 +69,7 @@ class QueryOrders(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -100,7 +101,7 @@ class QueryOrders(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -134,8 +135,8 @@ class QueryOrders(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -144,15 +145,6 @@ class QueryOrders(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-            collection_format_map=collection_format_map or self.get_collection_format_map(),
-        )
 
     # endregion get methods
 
@@ -243,19 +235,19 @@ class QueryOrders(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "end_time") and self.end_time:
             result["endTime"] = str(self.end_time)
         elif include_empty:
-            result["endTime"] = str()
+            result["endTime"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "order_nos") and self.order_nos:
             result["orderNos"] = [str(i0) for i0 in self.order_nos]
         elif include_empty:
@@ -263,11 +255,11 @@ class QueryOrders(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = str()
+            result["sortBy"] = ""
         if hasattr(self, "start_time") and self.start_time:
             result["startTime"] = str(self.start_time)
         elif include_empty:
-            result["startTime"] = str()
+            result["startTime"] = ""
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -275,7 +267,7 @@ class QueryOrders(Operation):
         if hasattr(self, "with_total") and self.with_total:
             result["withTotal"] = bool(self.with_total)
         elif include_empty:
-            result["withTotal"] = bool()
+            result["withTotal"] = False
         return result
 
     # endregion to methods
@@ -351,19 +343,19 @@ class QueryOrders(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "endTime" in dict_ and dict_["endTime"] is not None:
             instance.end_time = str(dict_["endTime"])
         elif include_empty:
-            instance.end_time = str()
+            instance.end_time = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "orderNos" in dict_ and dict_["orderNos"] is not None:
             instance.order_nos = [str(i0) for i0 in dict_["orderNos"]]
         elif include_empty:
@@ -371,11 +363,11 @@ class QueryOrders(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = str()
+            instance.sort_by = ""
         if "startTime" in dict_ and dict_["startTime"] is not None:
             instance.start_time = str(dict_["startTime"])
         elif include_empty:
-            instance.start_time = str()
+            instance.start_time = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -383,7 +375,7 @@ class QueryOrders(Operation):
         if "withTotal" in dict_ and dict_["withTotal"] is not None:
             instance.with_total = bool(dict_["withTotal"])
         elif include_empty:
-            instance.with_total = bool()
+            instance.with_total = False
         return instance
 
     @staticmethod

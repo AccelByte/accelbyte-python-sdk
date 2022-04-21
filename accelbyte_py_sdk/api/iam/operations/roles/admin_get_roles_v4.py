@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelListRoleV4Response
@@ -51,7 +52,7 @@ class AdminGetRolesV4(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         admin_role: (adminRole) OPTIONAL bool in query
 
@@ -77,7 +78,7 @@ class AdminGetRolesV4(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     admin_role: bool                                                                               # OPTIONAL in [query]
@@ -106,8 +107,8 @@ class AdminGetRolesV4(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -116,13 +117,6 @@ class AdminGetRolesV4(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -178,19 +172,19 @@ class AdminGetRolesV4(Operation):
         if hasattr(self, "admin_role") and self.admin_role:
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
-            result["adminRole"] = bool()
+            result["adminRole"] = False
         if hasattr(self, "is_wildcard") and self.is_wildcard:
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
-            result["isWildcard"] = bool()
+            result["isWildcard"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -260,19 +254,19 @@ class AdminGetRolesV4(Operation):
         if "adminRole" in dict_ and dict_["adminRole"] is not None:
             instance.admin_role = bool(dict_["adminRole"])
         elif include_empty:
-            instance.admin_role = bool()
+            instance.admin_role = False
         if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
             instance.is_wildcard = bool(dict_["isWildcard"])
         elif include_empty:
-            instance.is_wildcard = bool()
+            instance.is_wildcard = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         return instance
 
     @staticmethod

@@ -65,7 +65,7 @@ class ADTOForUnbanUserAPICall(Model):
         if hasattr(self, "comment"):
             result["comment"] = str(self.comment)
         elif include_empty:
-            result["comment"] = str()
+            result["comment"] = ""
         return result
 
     # endregion to methods
@@ -96,7 +96,7 @@ class ADTOForUnbanUserAPICall(Model):
         if "comment" in dict_ and dict_["comment"] is not None:
             instance.comment = str(dict_["comment"])
         elif include_empty:
-            instance.comment = str()
+            instance.comment = ""
         return instance
 
     @classmethod

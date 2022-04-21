@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsSetAliasRequest
@@ -57,7 +58,7 @@ class SetServerAlias(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) REQUIRED ModelsSetAliasRequest in body
 
@@ -79,7 +80,7 @@ class SetServerAlias(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: ModelsSetAliasRequest                                                                    # REQUIRED in [body]
@@ -106,8 +107,8 @@ class SetServerAlias(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -116,13 +117,6 @@ class SetServerAlias(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -174,7 +168,7 @@ class SetServerAlias(Operation):
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -240,7 +234,7 @@ class SetServerAlias(Operation):
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @staticmethod

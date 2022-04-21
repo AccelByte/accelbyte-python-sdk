@@ -98,11 +98,11 @@ class ModelUserInformation(Model):
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "email_addresses"):
             result["EmailAddresses"] = [str(i0) for i0 in self.email_addresses]
         elif include_empty:
@@ -114,15 +114,15 @@ class ModelUserInformation(Model):
         if hasattr(self, "phone_number"):
             result["PhoneNumber"] = str(self.phone_number)
         elif include_empty:
-            result["PhoneNumber"] = str()
+            result["PhoneNumber"] = ""
         if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
-            result["Username"] = str()
+            result["Username"] = ""
         if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
-            result["XUID"] = str()
+            result["XUID"] = ""
         return result
 
     # endregion to methods
@@ -159,11 +159,11 @@ class ModelUserInformation(Model):
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "EmailAddresses" in dict_ and dict_["EmailAddresses"] is not None:
             instance.email_addresses = [str(i0) for i0 in dict_["EmailAddresses"]]
         elif include_empty:
@@ -175,15 +175,15 @@ class ModelUserInformation(Model):
         if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
             instance.phone_number = str(dict_["PhoneNumber"])
         elif include_empty:
-            instance.phone_number = str()
+            instance.phone_number = ""
         if "Username" in dict_ and dict_["Username"] is not None:
             instance.username = str(dict_["Username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         if "XUID" in dict_ and dict_["XUID"] is not None:
             instance.xuid = str(dict_["XUID"])
         elif include_empty:
-            instance.xuid = str()
+            instance.xuid = ""
         return instance
 
     @classmethod

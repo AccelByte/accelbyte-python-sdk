@@ -61,11 +61,11 @@ class AccountcommonDescription(Model):
         if hasattr(self, "en_us"):
             result["en-US"] = str(self.en_us)
         elif include_empty:
-            result["en-US"] = str()
+            result["en-US"] = ""
         if hasattr(self, "zh_cn"):
             result["zh-CN"] = str(self.zh_cn)
         elif include_empty:
-            result["zh-CN"] = str()
+            result["zh-CN"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class AccountcommonDescription(Model):
         if "en-US" in dict_ and dict_["en-US"] is not None:
             instance.en_us = str(dict_["en-US"])
         elif include_empty:
-            instance.en_us = str()
+            instance.en_us = ""
         if "zh-CN" in dict_ and dict_["zh-CN"] is not None:
             instance.zh_cn = str(dict_["zh-CN"])
         elif include_empty:
-            instance.zh_cn = str()
+            instance.zh_cn = ""
         return instance
 
     @classmethod

@@ -63,7 +63,7 @@ class ModelsMatchResultRequest(Model):
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
-            result["match_id"] = str()
+            result["match_id"] = ""
         if hasattr(self, "players"):
             result["players"] = [i0.to_dict(include_empty=include_empty) for i0 in self.players]
         elif include_empty:
@@ -93,7 +93,7 @@ class ModelsMatchResultRequest(Model):
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         if "players" in dict_ and dict_["players"] is not None:
             instance.players = [ModelsPlayerResultRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["players"]]
         elif include_empty:

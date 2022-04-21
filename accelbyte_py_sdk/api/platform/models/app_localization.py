@@ -61,11 +61,11 @@ class AppLocalization(Model):
         if hasattr(self, "announcement"):
             result["announcement"] = str(self.announcement)
         elif include_empty:
-            result["announcement"] = str()
+            result["announcement"] = ""
         if hasattr(self, "slogan"):
             result["slogan"] = str(self.slogan)
         elif include_empty:
-            result["slogan"] = str()
+            result["slogan"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class AppLocalization(Model):
         if "announcement" in dict_ and dict_["announcement"] is not None:
             instance.announcement = str(dict_["announcement"])
         elif include_empty:
-            instance.announcement = str()
+            instance.announcement = ""
         if "slogan" in dict_ and dict_["slogan"] is not None:
             instance.slogan = str(dict_["slogan"])
         elif include_empty:
-            instance.slogan = str()
+            instance.slogan = ""
         return instance
 
     @classmethod

@@ -86,19 +86,19 @@ class ModelAssignedUserV4Response(Model):
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
-            result["email"] = str()
+            result["email"] = ""
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -134,19 +134,19 @@ class ModelAssignedUserV4Response(Model):
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "email" in dict_ and dict_["email"] is not None:
             instance.email = str(dict_["email"])
         elif include_empty:
-            instance.email = str()
+            instance.email = ""
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

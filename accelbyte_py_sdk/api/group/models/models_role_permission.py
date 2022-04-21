@@ -61,11 +61,11 @@ class ModelsRolePermission(Model):
         if hasattr(self, "action"):
             result["action"] = int(self.action)
         elif include_empty:
-            result["action"] = int()
+            result["action"] = 0
         if hasattr(self, "resource_name"):
             result["resourceName"] = str(self.resource_name)
         elif include_empty:
-            result["resourceName"] = str()
+            result["resourceName"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsRolePermission(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "resourceName" in dict_ and dict_["resourceName"] is not None:
             instance.resource_name = str(dict_["resourceName"])
         elif include_empty:
-            instance.resource_name = str()
+            instance.resource_name = ""
         return instance
 
     @classmethod

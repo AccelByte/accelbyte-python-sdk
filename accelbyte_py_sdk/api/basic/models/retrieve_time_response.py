@@ -54,7 +54,7 @@ class RetrieveTimeResponse(Model):
         if hasattr(self, "current_time"):
             result["currentTime"] = str(self.current_time)
         elif include_empty:
-            result["currentTime"] = str()
+            result["currentTime"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class RetrieveTimeResponse(Model):
         if "currentTime" in dict_ and dict_["currentTime"] is not None:
             instance.current_time = str(dict_["currentTime"])
         elif include_empty:
-            instance.current_time = str()
+            instance.current_time = ""
         return instance
 
     @classmethod

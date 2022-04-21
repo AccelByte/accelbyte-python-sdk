@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
@@ -55,7 +56,7 @@ class GeneratedUploadUrl(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         folder: (folder) REQUIRED str in path
 
@@ -81,7 +82,7 @@ class GeneratedUploadUrl(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     folder: str                                                                                    # REQUIRED in [path]
@@ -109,8 +110,8 @@ class GeneratedUploadUrl(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -119,14 +120,6 @@ class GeneratedUploadUrl(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -181,15 +174,15 @@ class GeneratedUploadUrl(Operation):
         if hasattr(self, "folder") and self.folder:
             result["folder"] = str(self.folder)
         elif include_empty:
-            result["folder"] = str()
+            result["folder"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "file_type") and self.file_type:
             result["fileType"] = str(self.file_type)
         elif include_empty:
-            result["fileType"] = str()
+            result["fileType"] = ""
         return result
 
     # endregion to methods
@@ -257,15 +250,15 @@ class GeneratedUploadUrl(Operation):
         if "folder" in dict_ and dict_["folder"] is not None:
             instance.folder = str(dict_["folder"])
         elif include_empty:
-            instance.folder = str()
+            instance.folder = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "fileType" in dict_ and dict_["fileType"] is not None:
             instance.file_type = str(dict_["fileType"])
         elif include_empty:
-            instance.file_type = str()
+            instance.file_type = ""
         return instance
 
     @staticmethod

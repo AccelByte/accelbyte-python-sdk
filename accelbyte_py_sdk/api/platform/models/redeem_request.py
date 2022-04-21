@@ -61,11 +61,11 @@ class RedeemRequest(Model):
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class RedeemRequest(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class ModelsLikeState(Model):
         if hasattr(self, "state"):
             result["state"] = bool(self.state)
         elif include_empty:
-            result["state"] = bool()
+            result["state"] = False
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsLikeState(Model):
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = bool(dict_["state"])
         elif include_empty:
-            instance.state = bool()
+            instance.state = False
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

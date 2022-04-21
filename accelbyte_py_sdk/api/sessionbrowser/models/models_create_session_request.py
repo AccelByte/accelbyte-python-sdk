@@ -88,19 +88,19 @@ class ModelsCreateSessionRequest(Model):
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
-            result["game_version"] = str()
+            result["game_version"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "session_type"):
             result["session_type"] = str(self.session_type)
         elif include_empty:
-            result["session_type"] = str()
+            result["session_type"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
-            result["username"] = str()
+            result["username"] = ""
         return result
 
     # endregion to methods
@@ -136,19 +136,19 @@ class ModelsCreateSessionRequest(Model):
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
-            instance.game_version = str()
+            instance.game_version = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "session_type" in dict_ and dict_["session_type"] is not None:
             instance.session_type = str(dict_["session_type"])
         elif include_empty:
-            instance.session_type = str()
+            instance.session_type = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         return instance
 
     @classmethod

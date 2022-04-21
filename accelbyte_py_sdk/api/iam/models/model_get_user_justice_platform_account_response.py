@@ -61,11 +61,11 @@ class ModelGetUserJusticePlatformAccountResponse(Model):
         if hasattr(self, "designated_namespace"):
             result["DesignatedNamespace"] = str(self.designated_namespace)
         elif include_empty:
-            result["DesignatedNamespace"] = str()
+            result["DesignatedNamespace"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelGetUserJusticePlatformAccountResponse(Model):
         if "DesignatedNamespace" in dict_ and dict_["DesignatedNamespace"] is not None:
             instance.designated_namespace = str(dict_["DesignatedNamespace"])
         elif include_empty:
-            instance.designated_namespace = str()
+            instance.designated_namespace = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

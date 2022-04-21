@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import Attribute
@@ -54,7 +55,7 @@ class PublicUpdateAttribute(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) OPTIONAL Attribute in body
 
@@ -80,7 +81,7 @@ class PublicUpdateAttribute(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: Attribute                                                                                # OPTIONAL in [body]
@@ -110,8 +111,8 @@ class PublicUpdateAttribute(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -120,13 +121,6 @@ class PublicUpdateAttribute(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -196,19 +190,19 @@ class PublicUpdateAttribute(Operation):
         if hasattr(self, "attribute_name") and self.attribute_name:
             result["attributeName"] = str(self.attribute_name)
         elif include_empty:
-            result["attributeName"] = str()
+            result["attributeName"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "profile_id") and self.profile_id:
             result["profileId"] = str(self.profile_id)
         elif include_empty:
-            result["profileId"] = str()
+            result["profileId"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -277,19 +271,19 @@ class PublicUpdateAttribute(Operation):
         if "attributeName" in dict_ and dict_["attributeName"] is not None:
             instance.attribute_name = str(dict_["attributeName"])
         elif include_empty:
-            instance.attribute_name = str()
+            instance.attribute_name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "profileId" in dict_ and dict_["profileId"] is not None:
             instance.profile_id = str(dict_["profileId"])
         elif include_empty:
-            instance.profile_id = str()
+            instance.profile_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

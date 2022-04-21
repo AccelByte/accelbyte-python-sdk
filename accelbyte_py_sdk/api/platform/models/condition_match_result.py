@@ -68,7 +68,7 @@ class ConditionMatchResult(Model):
         if hasattr(self, "matched"):
             result["matched"] = bool(self.matched)
         elif include_empty:
-            result["matched"] = bool()
+            result["matched"] = False
         if hasattr(self, "matched_conditions"):
             result["matchedConditions"] = [{str(k1): v1 for k1, v1 in i0.items()} for i0 in self.matched_conditions]
         elif include_empty:
@@ -76,7 +76,7 @@ class ConditionMatchResult(Model):
         if hasattr(self, "not_match_reason"):
             result["notMatchReason"] = str(self.not_match_reason)
         elif include_empty:
-            result["notMatchReason"] = str()
+            result["notMatchReason"] = ""
         return result
 
     # endregion to methods
@@ -107,7 +107,7 @@ class ConditionMatchResult(Model):
         if "matched" in dict_ and dict_["matched"] is not None:
             instance.matched = bool(dict_["matched"])
         elif include_empty:
-            instance.matched = bool()
+            instance.matched = False
         if "matchedConditions" in dict_ and dict_["matchedConditions"] is not None:
             instance.matched_conditions = [{str(k1): v1 for k1, v1 in i0.items()} for i0 in dict_["matchedConditions"]]
         elif include_empty:
@@ -115,7 +115,7 @@ class ConditionMatchResult(Model):
         if "notMatchReason" in dict_ and dict_["notMatchReason"] is not None:
             instance.not_match_reason = str(dict_["notMatchReason"])
         elif include_empty:
-            instance.not_match_reason = str()
+            instance.not_match_reason = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class StatItemInc(Model):
         if hasattr(self, "inc"):
             result["inc"] = float(self.inc)
         elif include_empty:
-            result["inc"] = float()
+            result["inc"] = 0.0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class StatItemInc(Model):
         if "inc" in dict_ and dict_["inc"] is not None:
             instance.inc = float(dict_["inc"])
         elif include_empty:
-            instance.inc = float()
+            instance.inc = 0.0
         return instance
 
     @classmethod

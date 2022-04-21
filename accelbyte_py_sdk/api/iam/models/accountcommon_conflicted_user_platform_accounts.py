@@ -63,7 +63,7 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         if hasattr(self, "platform_user_id"):
             result["platformUserID"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserID"] = str()
+            result["platformUserID"] = ""
         if hasattr(self, "publisher_accounts"):
             result["publisherAccounts"] = [i0.to_dict(include_empty=include_empty) for i0 in self.publisher_accounts]
         elif include_empty:
@@ -93,7 +93,7 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         if "platformUserID" in dict_ and dict_["platformUserID"] is not None:
             instance.platform_user_id = str(dict_["platformUserID"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "publisherAccounts" in dict_ and dict_["publisherAccounts"] is not None:
             instance.publisher_accounts = [AccountcommonUserWithLinkedPlatformAccounts.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["publisherAccounts"]]
         elif include_empty:

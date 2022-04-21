@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -83,7 +84,7 @@ class AuthCodeRequestV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         location query: code
 
@@ -105,7 +106,7 @@ class AuthCodeRequestV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = "code"
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -134,8 +135,8 @@ class AuthCodeRequestV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -144,14 +145,6 @@ class AuthCodeRequestV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -220,19 +213,19 @@ class AuthCodeRequestV3(Operation):
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "request_id") and self.request_id:
             result["request_id"] = str(self.request_id)
         elif include_empty:
-            result["request_id"] = str()
+            result["request_id"] = ""
         return result
 
     # endregion to methods
@@ -288,19 +281,19 @@ class AuthCodeRequestV3(Operation):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "request_id" in dict_ and dict_["request_id"] is not None:
             instance.request_id = str(dict_["request_id"])
         elif include_empty:
-            instance.request_id = str()
+            instance.request_id = ""
         return instance
 
     @staticmethod

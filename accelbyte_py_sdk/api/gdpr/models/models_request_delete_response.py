@@ -61,11 +61,11 @@ class ModelsRequestDeleteResponse(Model):
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsRequestDeleteResponse(Model):
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

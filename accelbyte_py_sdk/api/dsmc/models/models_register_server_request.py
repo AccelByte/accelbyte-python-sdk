@@ -61,11 +61,11 @@ class ModelsRegisterServerRequest(Model):
         if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
-            result["custom_attribute"] = str()
+            result["custom_attribute"] = ""
         if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsRegisterServerRequest(Model):
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:
-            instance.custom_attribute = str()
+            instance.custom_attribute = ""
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         return instance
 
     @classmethod

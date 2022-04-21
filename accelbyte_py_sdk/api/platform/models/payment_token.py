@@ -54,7 +54,7 @@ class PaymentToken(Model):
         if hasattr(self, "token"):
             result["token"] = str(self.token)
         elif include_empty:
-            result["token"] = str()
+            result["token"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class PaymentToken(Model):
         if "token" in dict_ and dict_["token"] is not None:
             instance.token = str(dict_["token"])
         elif include_empty:
-            instance.token = str()
+            instance.token = ""
         return instance
 
     @classmethod

@@ -75,19 +75,19 @@ class OauthmodelCountryLocationResponse(Model):
         if hasattr(self, "city"):
             result["city"] = str(self.city)
         elif include_empty:
-            result["city"] = str()
+            result["city"] = ""
         if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "country_name"):
             result["countryName"] = str(self.country_name)
         elif include_empty:
-            result["countryName"] = str()
+            result["countryName"] = ""
         if hasattr(self, "state"):
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class OauthmodelCountryLocationResponse(Model):
         if "city" in dict_ and dict_["city"] is not None:
             instance.city = str(dict_["city"])
         elif include_empty:
-            instance.city = str()
+            instance.city = ""
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "countryName" in dict_ and dict_["countryName"] is not None:
             instance.country_name = str(dict_["countryName"])
         elif include_empty:
-            instance.country_name = str()
+            instance.country_name = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         return instance
 
     @classmethod

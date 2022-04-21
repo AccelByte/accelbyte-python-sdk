@@ -61,11 +61,11 @@ class TimedOwnership(Model):
         if hasattr(self, "owned"):
             result["owned"] = bool(self.owned)
         elif include_empty:
-            result["owned"] = bool()
+            result["owned"] = False
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class TimedOwnership(Model):
         if "owned" in dict_ and dict_["owned"] is not None:
             instance.owned = bool(dict_["owned"])
         elif include_empty:
-            instance.owned = bool()
+            instance.owned = False
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         return instance
 
     @classmethod

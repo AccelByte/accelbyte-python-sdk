@@ -61,11 +61,11 @@ class ModelSendRegisterVerificationCodeRequest(Model):
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
-            result["languageTag"] = str()
+            result["languageTag"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class ModelSendRegisterVerificationCodeRequest(Model):
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         return instance
 
     @classmethod

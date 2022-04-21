@@ -54,7 +54,7 @@ class Ownership(Model):
         if hasattr(self, "owned"):
             result["owned"] = bool(self.owned)
         elif include_empty:
-            result["owned"] = bool()
+            result["owned"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class Ownership(Model):
         if "owned" in dict_ and dict_["owned"] is not None:
             instance.owned = bool(dict_["owned"])
         elif include_empty:
-            instance.owned = bool()
+            instance.owned = False
         return instance
 
     @classmethod

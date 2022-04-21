@@ -68,15 +68,15 @@ class ModelsUserLastActivity(Model):
         if hasattr(self, "last_activity_time"):
             result["LastActivityTime"] = str(self.last_activity_time)
         elif include_empty:
-            result["LastActivityTime"] = str()
+            result["LastActivityTime"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsUserLastActivity(Model):
         if "LastActivityTime" in dict_ and dict_["LastActivityTime"] is not None:
             instance.last_activity_time = str(dict_["LastActivityTime"])
         elif include_empty:
-            instance.last_activity_time = str()
+            instance.last_activity_time = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

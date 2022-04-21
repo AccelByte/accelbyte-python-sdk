@@ -54,7 +54,7 @@ class EpicGamesReconcileRequest(Model):
         if hasattr(self, "epic_games_jwt_token"):
             result["epicGamesJwtToken"] = str(self.epic_games_jwt_token)
         elif include_empty:
-            result["epicGamesJwtToken"] = str()
+            result["epicGamesJwtToken"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class EpicGamesReconcileRequest(Model):
         if "epicGamesJwtToken" in dict_ and dict_["epicGamesJwtToken"] is not None:
             instance.epic_games_jwt_token = str(dict_["epicGamesJwtToken"])
         elif include_empty:
-            instance.epic_games_jwt_token = str()
+            instance.epic_games_jwt_token = ""
         return instance
 
     @classmethod

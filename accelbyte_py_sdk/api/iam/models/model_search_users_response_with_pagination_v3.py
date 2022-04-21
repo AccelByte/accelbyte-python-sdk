@@ -79,7 +79,7 @@ class ModelSearchUsersResponseWithPaginationV3(Model):
         if hasattr(self, "total_data"):
             result["totalData"] = int(self.total_data)
         elif include_empty:
-            result["totalData"] = int()
+            result["totalData"] = 0
         return result
 
     # endregion to methods
@@ -115,7 +115,7 @@ class ModelSearchUsersResponseWithPaginationV3(Model):
         if "totalData" in dict_ and dict_["totalData"] is not None:
             instance.total_data = int(dict_["totalData"])
         elif include_empty:
-            instance.total_data = int()
+            instance.total_data = 0
         return instance
 
     @classmethod

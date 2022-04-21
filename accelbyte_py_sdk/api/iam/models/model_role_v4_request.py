@@ -75,19 +75,19 @@ class ModelRoleV4Request(Model):
         if hasattr(self, "admin_role"):
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
-            result["adminRole"] = bool()
+            result["adminRole"] = False
         if hasattr(self, "is_wildcard"):
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
-            result["isWildcard"] = bool()
+            result["isWildcard"] = False
         if hasattr(self, "role_name"):
             result["roleName"] = str(self.role_name)
         elif include_empty:
-            result["roleName"] = str()
+            result["roleName"] = ""
         if hasattr(self, "deletable"):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
-            result["deletable"] = bool()
+            result["deletable"] = False
         return result
 
     # endregion to methods
@@ -118,19 +118,19 @@ class ModelRoleV4Request(Model):
         if "adminRole" in dict_ and dict_["adminRole"] is not None:
             instance.admin_role = bool(dict_["adminRole"])
         elif include_empty:
-            instance.admin_role = bool()
+            instance.admin_role = False
         if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
             instance.is_wildcard = bool(dict_["isWildcard"])
         elif include_empty:
-            instance.is_wildcard = bool()
+            instance.is_wildcard = False
         if "roleName" in dict_ and dict_["roleName"] is not None:
             instance.role_name = str(dict_["roleName"])
         elif include_empty:
-            instance.role_name = str()
+            instance.role_name = ""
         if "deletable" in dict_ and dict_["deletable"] is not None:
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
-            instance.deletable = bool()
+            instance.deletable = False
         return instance
 
     @classmethod

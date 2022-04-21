@@ -82,23 +82,23 @@ class SteamIAPConfig(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "publisher_authentication_key"):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
-            result["publisherAuthenticationKey"] = str()
+            result["publisherAuthenticationKey"] = ""
         if hasattr(self, "rvn"):
             result["rvn"] = int(self.rvn)
         elif include_empty:
-            result["rvn"] = int()
+            result["rvn"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class SteamIAPConfig(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
-            instance.publisher_authentication_key = str()
+            instance.publisher_authentication_key = ""
         if "rvn" in dict_ and dict_["rvn"] is not None:
             instance.rvn = int(dict_["rvn"])
         elif include_empty:
-            instance.rvn = int()
+            instance.rvn = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

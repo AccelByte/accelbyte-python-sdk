@@ -154,19 +154,19 @@ class ModelValidationDetailPublic(Model):
         if hasattr(self, "allow_digit"):
             result["allowDigit"] = bool(self.allow_digit)
         elif include_empty:
-            result["allowDigit"] = bool()
+            result["allowDigit"] = False
         if hasattr(self, "allow_letter"):
             result["allowLetter"] = bool(self.allow_letter)
         elif include_empty:
-            result["allowLetter"] = bool()
+            result["allowLetter"] = False
         if hasattr(self, "allow_space"):
             result["allowSpace"] = bool(self.allow_space)
         elif include_empty:
-            result["allowSpace"] = bool()
+            result["allowSpace"] = False
         if hasattr(self, "allow_unicode"):
             result["allowUnicode"] = bool(self.allow_unicode)
         elif include_empty:
-            result["allowUnicode"] = bool()
+            result["allowUnicode"] = False
         if hasattr(self, "description"):
             result["description"] = self.description.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -174,39 +174,39 @@ class ModelValidationDetailPublic(Model):
         if hasattr(self, "is_custom_regex"):
             result["isCustomRegex"] = bool(self.is_custom_regex)
         elif include_empty:
-            result["isCustomRegex"] = bool()
+            result["isCustomRegex"] = False
         if hasattr(self, "letter_case"):
             result["letterCase"] = str(self.letter_case)
         elif include_empty:
-            result["letterCase"] = str()
+            result["letterCase"] = ""
         if hasattr(self, "max_length"):
             result["maxLength"] = int(self.max_length)
         elif include_empty:
-            result["maxLength"] = int()
+            result["maxLength"] = 0
         if hasattr(self, "max_repeating_alpha_num"):
             result["maxRepeatingAlphaNum"] = int(self.max_repeating_alpha_num)
         elif include_empty:
-            result["maxRepeatingAlphaNum"] = int()
+            result["maxRepeatingAlphaNum"] = 0
         if hasattr(self, "max_repeating_special_character"):
             result["maxRepeatingSpecialCharacter"] = int(self.max_repeating_special_character)
         elif include_empty:
-            result["maxRepeatingSpecialCharacter"] = int()
+            result["maxRepeatingSpecialCharacter"] = 0
         if hasattr(self, "min_char_type"):
             result["minCharType"] = int(self.min_char_type)
         elif include_empty:
-            result["minCharType"] = int()
+            result["minCharType"] = 0
         if hasattr(self, "min_length"):
             result["minLength"] = int(self.min_length)
         elif include_empty:
-            result["minLength"] = int()
+            result["minLength"] = 0
         if hasattr(self, "regex"):
             result["regex"] = str(self.regex)
         elif include_empty:
-            result["regex"] = str()
+            result["regex"] = ""
         if hasattr(self, "special_character_location"):
             result["specialCharacterLocation"] = str(self.special_character_location)
         elif include_empty:
-            result["specialCharacterLocation"] = str()
+            result["specialCharacterLocation"] = ""
         if hasattr(self, "special_characters"):
             result["specialCharacters"] = [str(i0) for i0 in self.special_characters]
         elif include_empty:
@@ -262,19 +262,19 @@ class ModelValidationDetailPublic(Model):
         if "allowDigit" in dict_ and dict_["allowDigit"] is not None:
             instance.allow_digit = bool(dict_["allowDigit"])
         elif include_empty:
-            instance.allow_digit = bool()
+            instance.allow_digit = False
         if "allowLetter" in dict_ and dict_["allowLetter"] is not None:
             instance.allow_letter = bool(dict_["allowLetter"])
         elif include_empty:
-            instance.allow_letter = bool()
+            instance.allow_letter = False
         if "allowSpace" in dict_ and dict_["allowSpace"] is not None:
             instance.allow_space = bool(dict_["allowSpace"])
         elif include_empty:
-            instance.allow_space = bool()
+            instance.allow_space = False
         if "allowUnicode" in dict_ and dict_["allowUnicode"] is not None:
             instance.allow_unicode = bool(dict_["allowUnicode"])
         elif include_empty:
-            instance.allow_unicode = bool()
+            instance.allow_unicode = False
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = AccountcommonInputValidationDescription.create_from_dict(dict_["description"], include_empty=include_empty)
         elif include_empty:
@@ -282,39 +282,39 @@ class ModelValidationDetailPublic(Model):
         if "isCustomRegex" in dict_ and dict_["isCustomRegex"] is not None:
             instance.is_custom_regex = bool(dict_["isCustomRegex"])
         elif include_empty:
-            instance.is_custom_regex = bool()
+            instance.is_custom_regex = False
         if "letterCase" in dict_ and dict_["letterCase"] is not None:
             instance.letter_case = str(dict_["letterCase"])
         elif include_empty:
-            instance.letter_case = str()
+            instance.letter_case = ""
         if "maxLength" in dict_ and dict_["maxLength"] is not None:
             instance.max_length = int(dict_["maxLength"])
         elif include_empty:
-            instance.max_length = int()
+            instance.max_length = 0
         if "maxRepeatingAlphaNum" in dict_ and dict_["maxRepeatingAlphaNum"] is not None:
             instance.max_repeating_alpha_num = int(dict_["maxRepeatingAlphaNum"])
         elif include_empty:
-            instance.max_repeating_alpha_num = int()
+            instance.max_repeating_alpha_num = 0
         if "maxRepeatingSpecialCharacter" in dict_ and dict_["maxRepeatingSpecialCharacter"] is not None:
             instance.max_repeating_special_character = int(dict_["maxRepeatingSpecialCharacter"])
         elif include_empty:
-            instance.max_repeating_special_character = int()
+            instance.max_repeating_special_character = 0
         if "minCharType" in dict_ and dict_["minCharType"] is not None:
             instance.min_char_type = int(dict_["minCharType"])
         elif include_empty:
-            instance.min_char_type = int()
+            instance.min_char_type = 0
         if "minLength" in dict_ and dict_["minLength"] is not None:
             instance.min_length = int(dict_["minLength"])
         elif include_empty:
-            instance.min_length = int()
+            instance.min_length = 0
         if "regex" in dict_ and dict_["regex"] is not None:
             instance.regex = str(dict_["regex"])
         elif include_empty:
-            instance.regex = str()
+            instance.regex = ""
         if "specialCharacterLocation" in dict_ and dict_["specialCharacterLocation"] is not None:
             instance.special_character_location = str(dict_["specialCharacterLocation"])
         elif include_empty:
-            instance.special_character_location = str()
+            instance.special_character_location = ""
         if "specialCharacters" in dict_ and dict_["specialCharacters"] is not None:
             instance.special_characters = [str(i0) for i0 in dict_["specialCharacters"]]
         elif include_empty:

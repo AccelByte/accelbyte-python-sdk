@@ -110,39 +110,39 @@ class Requirement(Model):
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "additionals"):
             result["additionals"] = str(self.additionals)
         elif include_empty:
-            result["additionals"] = str()
+            result["additionals"] = ""
         if hasattr(self, "direct_x_version"):
             result["directXVersion"] = str(self.direct_x_version)
         elif include_empty:
-            result["directXVersion"] = str()
+            result["directXVersion"] = ""
         if hasattr(self, "disk_space"):
             result["diskSpace"] = str(self.disk_space)
         elif include_empty:
-            result["diskSpace"] = str()
+            result["diskSpace"] = ""
         if hasattr(self, "graphics"):
             result["graphics"] = str(self.graphics)
         elif include_empty:
-            result["graphics"] = str()
+            result["graphics"] = ""
         if hasattr(self, "os_version"):
             result["osVersion"] = str(self.os_version)
         elif include_empty:
-            result["osVersion"] = str()
+            result["osVersion"] = ""
         if hasattr(self, "processor"):
             result["processor"] = str(self.processor)
         elif include_empty:
-            result["processor"] = str()
+            result["processor"] = ""
         if hasattr(self, "ram"):
             result["ram"] = str(self.ram)
         elif include_empty:
-            result["ram"] = str()
+            result["ram"] = ""
         if hasattr(self, "sound_card"):
             result["soundCard"] = str(self.sound_card)
         elif include_empty:
-            result["soundCard"] = str()
+            result["soundCard"] = ""
         return result
 
     # endregion to methods
@@ -190,39 +190,39 @@ class Requirement(Model):
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "additionals" in dict_ and dict_["additionals"] is not None:
             instance.additionals = str(dict_["additionals"])
         elif include_empty:
-            instance.additionals = str()
+            instance.additionals = ""
         if "directXVersion" in dict_ and dict_["directXVersion"] is not None:
             instance.direct_x_version = str(dict_["directXVersion"])
         elif include_empty:
-            instance.direct_x_version = str()
+            instance.direct_x_version = ""
         if "diskSpace" in dict_ and dict_["diskSpace"] is not None:
             instance.disk_space = str(dict_["diskSpace"])
         elif include_empty:
-            instance.disk_space = str()
+            instance.disk_space = ""
         if "graphics" in dict_ and dict_["graphics"] is not None:
             instance.graphics = str(dict_["graphics"])
         elif include_empty:
-            instance.graphics = str()
+            instance.graphics = ""
         if "osVersion" in dict_ and dict_["osVersion"] is not None:
             instance.os_version = str(dict_["osVersion"])
         elif include_empty:
-            instance.os_version = str()
+            instance.os_version = ""
         if "processor" in dict_ and dict_["processor"] is not None:
             instance.processor = str(dict_["processor"])
         elif include_empty:
-            instance.processor = str()
+            instance.processor = ""
         if "ram" in dict_ and dict_["ram"] is not None:
             instance.ram = str(dict_["ram"])
         elif include_empty:
-            instance.ram = str()
+            instance.ram = ""
         if "soundCard" in dict_ and dict_["soundCard"] is not None:
             instance.sound_card = str(dict_["soundCard"])
         elif include_empty:
-            instance.sound_card = str()
+            instance.sound_card = ""
         return instance
 
     @classmethod

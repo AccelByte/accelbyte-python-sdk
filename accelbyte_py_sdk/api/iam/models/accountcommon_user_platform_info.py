@@ -68,15 +68,15 @@ class AccountcommonUserPlatformInfo(Model):
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserId"] = str()
+            result["platformUserId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class AccountcommonUserPlatformInfo(Model):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

@@ -68,11 +68,11 @@ class ModelUpdatePermissionScheduleRequest(Model):
         if hasattr(self, "sched_action"):
             result["SchedAction"] = int(self.sched_action)
         elif include_empty:
-            result["SchedAction"] = int()
+            result["SchedAction"] = 0
         if hasattr(self, "sched_cron"):
             result["SchedCron"] = str(self.sched_cron)
         elif include_empty:
-            result["SchedCron"] = str()
+            result["SchedCron"] = ""
         if hasattr(self, "sched_range"):
             result["SchedRange"] = [str(i0) for i0 in self.sched_range]
         elif include_empty:
@@ -107,11 +107,11 @@ class ModelUpdatePermissionScheduleRequest(Model):
         if "SchedAction" in dict_ and dict_["SchedAction"] is not None:
             instance.sched_action = int(dict_["SchedAction"])
         elif include_empty:
-            instance.sched_action = int()
+            instance.sched_action = 0
         if "SchedCron" in dict_ and dict_["SchedCron"] is not None:
             instance.sched_cron = str(dict_["SchedCron"])
         elif include_empty:
-            instance.sched_cron = str()
+            instance.sched_cron = ""
         if "SchedRange" in dict_ and dict_["SchedRange"] is not None:
             instance.sched_range = [str(i0) for i0 in dict_["SchedRange"]]
         elif include_empty:

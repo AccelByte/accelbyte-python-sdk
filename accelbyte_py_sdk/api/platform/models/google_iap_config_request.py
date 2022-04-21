@@ -61,11 +61,11 @@ class GoogleIAPConfigRequest(Model):
         if hasattr(self, "application_name"):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
-            result["applicationName"] = str()
+            result["applicationName"] = ""
         if hasattr(self, "service_account_id"):
             result["serviceAccountId"] = str(self.service_account_id)
         elif include_empty:
-            result["serviceAccountId"] = str()
+            result["serviceAccountId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class GoogleIAPConfigRequest(Model):
         if "applicationName" in dict_ and dict_["applicationName"] is not None:
             instance.application_name = str(dict_["applicationName"])
         elif include_empty:
-            instance.application_name = str()
+            instance.application_name = ""
         if "serviceAccountId" in dict_ and dict_["serviceAccountId"] is not None:
             instance.service_account_id = str(dict_["serviceAccountId"])
         elif include_empty:
-            instance.service_account_id = str()
+            instance.service_account_id = ""
         return instance
 
     @classmethod

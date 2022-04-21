@@ -68,15 +68,15 @@ class ModelSendVerificationCodeRequest(Model):
         if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
-            result["LanguageTag"] = str()
+            result["LanguageTag"] = ""
         if hasattr(self, "login_id"):
             result["LoginID"] = str(self.login_id)
         elif include_empty:
-            result["LoginID"] = str()
+            result["LoginID"] = ""
         if hasattr(self, "context"):
             result["Context"] = str(self.context)
         elif include_empty:
-            result["Context"] = str()
+            result["Context"] = ""
         return result
 
     # endregion to methods
@@ -105,15 +105,15 @@ class ModelSendVerificationCodeRequest(Model):
         if "LanguageTag" in dict_ and dict_["LanguageTag"] is not None:
             instance.language_tag = str(dict_["LanguageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         if "LoginID" in dict_ and dict_["LoginID"] is not None:
             instance.login_id = str(dict_["LoginID"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "Context" in dict_ and dict_["Context"] is not None:
             instance.context = str(dict_["Context"])
         elif include_empty:
-            instance.context = str()
+            instance.context = ""
         return instance
 
     @classmethod

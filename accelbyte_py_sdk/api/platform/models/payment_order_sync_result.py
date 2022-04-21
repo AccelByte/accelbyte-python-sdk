@@ -63,7 +63,7 @@ class PaymentOrderSyncResult(Model):
         if hasattr(self, "next_evaluated_key"):
             result["nextEvaluatedKey"] = str(self.next_evaluated_key)
         elif include_empty:
-            result["nextEvaluatedKey"] = str()
+            result["nextEvaluatedKey"] = ""
         if hasattr(self, "payment_orders"):
             result["paymentOrders"] = [i0.to_dict(include_empty=include_empty) for i0 in self.payment_orders]
         elif include_empty:
@@ -95,7 +95,7 @@ class PaymentOrderSyncResult(Model):
         if "nextEvaluatedKey" in dict_ and dict_["nextEvaluatedKey"] is not None:
             instance.next_evaluated_key = str(dict_["nextEvaluatedKey"])
         elif include_empty:
-            instance.next_evaluated_key = str()
+            instance.next_evaluated_key = ""
         if "paymentOrders" in dict_ and dict_["paymentOrders"] is not None:
             instance.payment_orders = [PaymentOrder.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["paymentOrders"]]
         elif include_empty:

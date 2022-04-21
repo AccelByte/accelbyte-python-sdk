@@ -68,15 +68,15 @@ class ModelsGetUserVisibilityResponse(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "visibility"):
             result["visibility"] = bool(self.visibility)
         elif include_empty:
-            result["visibility"] = bool()
+            result["visibility"] = False
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsGetUserVisibilityResponse(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "visibility" in dict_ and dict_["visibility"] is not None:
             instance.visibility = bool(dict_["visibility"])
         elif include_empty:
-            instance.visibility = bool()
+            instance.visibility = False
         return instance
 
     @classmethod

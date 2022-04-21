@@ -92,7 +92,7 @@ class PlatformReward(Model):
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -138,7 +138,7 @@ class PlatformReward(Model):
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:

@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import RestErrorResponse
@@ -48,7 +49,7 @@ class LogoutSSOClient(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         platform_id: (platformId) REQUIRED str in path
 
@@ -68,7 +69,7 @@ class LogoutSSOClient(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -94,8 +95,8 @@ class LogoutSSOClient(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -104,13 +105,6 @@ class LogoutSSOClient(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -148,7 +142,7 @@ class LogoutSSOClient(Operation):
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -208,7 +202,7 @@ class LogoutSSOClient(Operation):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         return instance
 
     @staticmethod

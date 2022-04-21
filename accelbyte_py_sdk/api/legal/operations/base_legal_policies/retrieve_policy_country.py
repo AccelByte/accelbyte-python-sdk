@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
@@ -52,7 +53,7 @@ class RetrievePolicyCountry(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -70,7 +71,7 @@ class RetrievePolicyCountry(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     base_policy_id: str                                                                            # REQUIRED in [path]
@@ -97,8 +98,8 @@ class RetrievePolicyCountry(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -107,13 +108,6 @@ class RetrievePolicyCountry(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -157,11 +151,11 @@ class RetrievePolicyCountry(Operation):
         if hasattr(self, "base_policy_id") and self.base_policy_id:
             result["basePolicyId"] = str(self.base_policy_id)
         elif include_empty:
-            result["basePolicyId"] = str()
+            result["basePolicyId"] = ""
         if hasattr(self, "country_code") and self.country_code:
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         return result
 
     # endregion to methods
@@ -215,11 +209,11 @@ class RetrievePolicyCountry(Operation):
         if "basePolicyId" in dict_ and dict_["basePolicyId"] is not None:
             instance.base_policy_id = str(dict_["basePolicyId"])
         elif include_empty:
-            instance.base_policy_id = str()
+            instance.base_policy_id = ""
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         return instance
 
     @staticmethod

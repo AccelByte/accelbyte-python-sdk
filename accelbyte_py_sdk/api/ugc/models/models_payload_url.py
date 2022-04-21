@@ -61,11 +61,11 @@ class ModelsPayloadURL(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsPayloadURL(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         return instance
 
     @classmethod

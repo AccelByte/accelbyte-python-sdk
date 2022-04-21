@@ -61,11 +61,11 @@ class RewardCurrency(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class RewardCurrency(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @classmethod

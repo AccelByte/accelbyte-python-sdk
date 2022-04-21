@@ -75,19 +75,19 @@ class GameProfilePublicInfo(Model):
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "profile_id"):
             result["profileId"] = str(self.profile_id)
         elif include_empty:
-            result["profileId"] = str()
+            result["profileId"] = ""
         if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
-            result["profileName"] = str()
+            result["profileName"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class GameProfilePublicInfo(Model):
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "profileId" in dict_ and dict_["profileId"] is not None:
             instance.profile_id = str(dict_["profileId"])
         elif include_empty:
-            instance.profile_id = str()
+            instance.profile_id = ""
         if "profileName" in dict_ and dict_["profileName"] is not None:
             instance.profile_name = str(dict_["profileName"])
         elif include_empty:
-            instance.profile_name = str()
+            instance.profile_name = ""
         return instance
 
     @classmethod

@@ -67,7 +67,7 @@ class ModelInputValidationsResponse(Model):
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
-            result["version"] = int()
+            result["version"] = 0
         return result
 
     # endregion to methods
@@ -97,7 +97,7 @@ class ModelInputValidationsResponse(Model):
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
-            instance.version = int()
+            instance.version = 0
         return instance
 
     @classmethod

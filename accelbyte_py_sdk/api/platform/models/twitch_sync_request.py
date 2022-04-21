@@ -69,15 +69,15 @@ class TwitchSyncRequest(Model):
         if hasattr(self, "game_id"):
             result["gameId"] = str(self.game_id)
         elif include_empty:
-            result["gameId"] = str()
+            result["gameId"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -108,15 +108,15 @@ class TwitchSyncRequest(Model):
         if "gameId" in dict_ and dict_["gameId"] is not None:
             instance.game_id = str(dict_["gameId"])
         elif include_empty:
-            instance.game_id = str()
+            instance.game_id = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @classmethod

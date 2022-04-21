@@ -54,7 +54,7 @@ class TicketDynamicInfo(Model):
         if hasattr(self, "available_sale_count"):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
-            result["availableSaleCount"] = int()
+            result["availableSaleCount"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class TicketDynamicInfo(Model):
         if "availableSaleCount" in dict_ and dict_["availableSaleCount"] is not None:
             instance.available_sale_count = int(dict_["availableSaleCount"])
         elif include_empty:
-            instance.available_sale_count = int()
+            instance.available_sale_count = 0
         return instance
 
     @classmethod

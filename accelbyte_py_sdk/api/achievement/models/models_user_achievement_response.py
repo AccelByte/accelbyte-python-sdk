@@ -89,19 +89,19 @@ class ModelsUserAchievementResponse(Model):
         if hasattr(self, "achieved_at"):
             result["achievedAt"] = str(self.achieved_at)
         elif include_empty:
-            result["achievedAt"] = str()
+            result["achievedAt"] = ""
         if hasattr(self, "achievement_code"):
             result["achievementCode"] = str(self.achievement_code)
         elif include_empty:
-            result["achievementCode"] = str()
+            result["achievementCode"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "latest_value"):
             result["latestValue"] = float(self.latest_value)
         elif include_empty:
-            result["latestValue"] = float()
+            result["latestValue"] = 0.0
         if hasattr(self, "name"):
             result["name"] = {str(k0): str(v0) for k0, v0 in self.name.items()}
         elif include_empty:
@@ -109,7 +109,7 @@ class ModelsUserAchievementResponse(Model):
         if hasattr(self, "status"):
             result["status"] = int(self.status)
         elif include_empty:
-            result["status"] = int()
+            result["status"] = 0
         return result
 
     # endregion to methods
@@ -143,19 +143,19 @@ class ModelsUserAchievementResponse(Model):
         if "achievedAt" in dict_ and dict_["achievedAt"] is not None:
             instance.achieved_at = str(dict_["achievedAt"])
         elif include_empty:
-            instance.achieved_at = str()
+            instance.achieved_at = ""
         if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
             instance.achievement_code = str(dict_["achievementCode"])
         elif include_empty:
-            instance.achievement_code = str()
+            instance.achievement_code = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "latestValue" in dict_ and dict_["latestValue"] is not None:
             instance.latest_value = float(dict_["latestValue"])
         elif include_empty:
-            instance.latest_value = float()
+            instance.latest_value = 0.0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = {str(k0): str(v0) for k0, v0 in dict_["name"].items()}
         elif include_empty:
@@ -163,7 +163,7 @@ class ModelsUserAchievementResponse(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = int(dict_["status"])
         elif include_empty:
-            instance.status = int()
+            instance.status = 0
         return instance
 
     @classmethod

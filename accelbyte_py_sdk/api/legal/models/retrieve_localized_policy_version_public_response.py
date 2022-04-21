@@ -155,15 +155,15 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "locale_code"):
             result["localeCode"] = str(self.locale_code)
         elif include_empty:
-            result["localeCode"] = str()
+            result["localeCode"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "policy"):
             result["policy"] = self.policy.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -175,19 +175,19 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if hasattr(self, "attachment_checksum"):
             result["attachmentChecksum"] = str(self.attachment_checksum)
         elif include_empty:
-            result["attachmentChecksum"] = str()
+            result["attachmentChecksum"] = ""
         if hasattr(self, "attachment_location"):
             result["attachmentLocation"] = str(self.attachment_location)
         elif include_empty:
-            result["attachmentLocation"] = str()
+            result["attachmentLocation"] = ""
         if hasattr(self, "attachment_version_identifier"):
             result["attachmentVersionIdentifier"] = str(self.attachment_version_identifier)
         elif include_empty:
-            result["attachmentVersionIdentifier"] = str()
+            result["attachmentVersionIdentifier"] = ""
         if hasattr(self, "base_policy_id"):
             result["basePolicyId"] = str(self.base_policy_id)
         elif include_empty:
-            result["basePolicyId"] = str()
+            result["basePolicyId"] = ""
         if hasattr(self, "base_urls"):
             result["baseUrls"] = [str(i0) for i0 in self.base_urls]
         elif include_empty:
@@ -195,15 +195,15 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -211,7 +211,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -273,15 +273,15 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "localeCode" in dict_ and dict_["localeCode"] is not None:
             instance.locale_code = str(dict_["localeCode"])
         elif include_empty:
-            instance.locale_code = str()
+            instance.locale_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "policy" in dict_ and dict_["policy"] is not None:
             instance.policy = PolicyObject.create_from_dict(dict_["policy"], include_empty=include_empty)
         elif include_empty:
@@ -293,19 +293,19 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if "attachmentChecksum" in dict_ and dict_["attachmentChecksum"] is not None:
             instance.attachment_checksum = str(dict_["attachmentChecksum"])
         elif include_empty:
-            instance.attachment_checksum = str()
+            instance.attachment_checksum = ""
         if "attachmentLocation" in dict_ and dict_["attachmentLocation"] is not None:
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
-            instance.attachment_location = str()
+            instance.attachment_location = ""
         if "attachmentVersionIdentifier" in dict_ and dict_["attachmentVersionIdentifier"] is not None:
             instance.attachment_version_identifier = str(dict_["attachmentVersionIdentifier"])
         elif include_empty:
-            instance.attachment_version_identifier = str()
+            instance.attachment_version_identifier = ""
         if "basePolicyId" in dict_ and dict_["basePolicyId"] is not None:
             instance.base_policy_id = str(dict_["basePolicyId"])
         elif include_empty:
-            instance.base_policy_id = str()
+            instance.base_policy_id = ""
         if "baseUrls" in dict_ and dict_["baseUrls"] is not None:
             instance.base_urls = [str(i0) for i0 in dict_["baseUrls"]]
         elif include_empty:
@@ -313,15 +313,15 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -329,7 +329,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

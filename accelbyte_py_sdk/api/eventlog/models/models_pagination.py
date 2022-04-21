@@ -61,11 +61,11 @@ class ModelsPagination(Model):
         if hasattr(self, "next_"):
             result["Next"] = str(self.next_)
         elif include_empty:
-            result["Next"] = str()
+            result["Next"] = ""
         if hasattr(self, "previous"):
             result["Previous"] = str(self.previous)
         elif include_empty:
-            result["Previous"] = str()
+            result["Previous"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class ModelsPagination(Model):
         if "Next" in dict_ and dict_["Next"] is not None:
             instance.next_ = str(dict_["Next"])
         elif include_empty:
-            instance.next_ = str()
+            instance.next_ = ""
         if "Previous" in dict_ and dict_["Previous"] is not None:
             instance.previous = str(dict_["Previous"])
         elif include_empty:
-            instance.previous = str()
+            instance.previous = ""
         return instance
 
     @classmethod

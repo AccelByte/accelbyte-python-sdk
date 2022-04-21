@@ -68,11 +68,11 @@ class AcceptAgreementResponse(Model):
         if hasattr(self, "comply"):
             result["comply"] = bool(self.comply)
         elif include_empty:
-            result["comply"] = bool()
+            result["comply"] = False
         if hasattr(self, "proceed"):
             result["proceed"] = bool(self.proceed)
         elif include_empty:
-            result["proceed"] = bool()
+            result["proceed"] = False
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -105,11 +105,11 @@ class AcceptAgreementResponse(Model):
         if "comply" in dict_ and dict_["comply"] is not None:
             instance.comply = bool(dict_["comply"])
         elif include_empty:
-            instance.comply = bool()
+            instance.comply = False
         if "proceed" in dict_ and dict_["proceed"] is not None:
             instance.proceed = bool(dict_["proceed"])
         elif include_empty:
-            instance.proceed = bool()
+            instance.proceed = False
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:

@@ -145,59 +145,59 @@ class ModelsEvent(Model):
         if hasattr(self, "agent_type"):
             result["AgentType"] = int(self.agent_type)
         elif include_empty:
-            result["AgentType"] = int()
+            result["AgentType"] = 0
         if hasattr(self, "client_id"):
             result["ClientID"] = str(self.client_id)
         elif include_empty:
-            result["ClientID"] = str()
+            result["ClientID"] = ""
         if hasattr(self, "component_id"):
             result["ComponentID"] = int(self.component_id)
         elif include_empty:
-            result["ComponentID"] = int()
+            result["ComponentID"] = 0
         if hasattr(self, "event_id"):
             result["EventID"] = int(self.event_id)
         elif include_empty:
-            result["EventID"] = int()
+            result["EventID"] = 0
         if hasattr(self, "event_level"):
             result["EventLevel"] = int(self.event_level)
         elif include_empty:
-            result["EventLevel"] = int()
+            result["EventLevel"] = 0
         if hasattr(self, "event_type"):
             result["EventType"] = int(self.event_type)
         elif include_empty:
-            result["EventType"] = int()
+            result["EventType"] = 0
         if hasattr(self, "ip_address"):
             result["IPAddress"] = str(self.ip_address)
         elif include_empty:
-            result["IPAddress"] = str()
+            result["IPAddress"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "realm"):
             result["Realm"] = str(self.realm)
         elif include_empty:
-            result["Realm"] = str()
+            result["Realm"] = ""
         if hasattr(self, "target_namespace"):
             result["TargetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["TargetNamespace"] = str()
+            result["TargetNamespace"] = ""
         if hasattr(self, "target_user_id"):
             result["TargetUserID"] = str(self.target_user_id)
         elif include_empty:
-            result["TargetUserID"] = str()
+            result["TargetUserID"] = ""
         if hasattr(self, "time"):
             result["Time"] = str(self.time)
         elif include_empty:
-            result["Time"] = str()
+            result["Time"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         if hasattr(self, "ux"):
             result["UX"] = int(self.ux)
         elif include_empty:
-            result["UX"] = int()
+            result["UX"] = 0
         return result
 
     # endregion to methods
@@ -247,59 +247,59 @@ class ModelsEvent(Model):
         if "AgentType" in dict_ and dict_["AgentType"] is not None:
             instance.agent_type = int(dict_["AgentType"])
         elif include_empty:
-            instance.agent_type = int()
+            instance.agent_type = 0
         if "ClientID" in dict_ and dict_["ClientID"] is not None:
             instance.client_id = str(dict_["ClientID"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "ComponentID" in dict_ and dict_["ComponentID"] is not None:
             instance.component_id = int(dict_["ComponentID"])
         elif include_empty:
-            instance.component_id = int()
+            instance.component_id = 0
         if "EventID" in dict_ and dict_["EventID"] is not None:
             instance.event_id = int(dict_["EventID"])
         elif include_empty:
-            instance.event_id = int()
+            instance.event_id = 0
         if "EventLevel" in dict_ and dict_["EventLevel"] is not None:
             instance.event_level = int(dict_["EventLevel"])
         elif include_empty:
-            instance.event_level = int()
+            instance.event_level = 0
         if "EventType" in dict_ and dict_["EventType"] is not None:
             instance.event_type = int(dict_["EventType"])
         elif include_empty:
-            instance.event_type = int()
+            instance.event_type = 0
         if "IPAddress" in dict_ and dict_["IPAddress"] is not None:
             instance.ip_address = str(dict_["IPAddress"])
         elif include_empty:
-            instance.ip_address = str()
+            instance.ip_address = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "Realm" in dict_ and dict_["Realm"] is not None:
             instance.realm = str(dict_["Realm"])
         elif include_empty:
-            instance.realm = str()
+            instance.realm = ""
         if "TargetNamespace" in dict_ and dict_["TargetNamespace"] is not None:
             instance.target_namespace = str(dict_["TargetNamespace"])
         elif include_empty:
-            instance.target_namespace = str()
+            instance.target_namespace = ""
         if "TargetUserID" in dict_ and dict_["TargetUserID"] is not None:
             instance.target_user_id = str(dict_["TargetUserID"])
         elif include_empty:
-            instance.target_user_id = str()
+            instance.target_user_id = ""
         if "Time" in dict_ and dict_["Time"] is not None:
             instance.time = str(dict_["Time"])
         elif include_empty:
-            instance.time = str()
+            instance.time = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "UX" in dict_ and dict_["UX"] is not None:
             instance.ux = int(dict_["UX"])
         elif include_empty:
-            instance.ux = int()
+            instance.ux = 0
         return instance
 
     @classmethod

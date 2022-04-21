@@ -68,15 +68,15 @@ class InGameItemSync(Model):
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "target_item_id"):
             result["targetItemId"] = str(self.target_item_id)
         elif include_empty:
-            result["targetItemId"] = str()
+            result["targetItemId"] = ""
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["targetNamespace"] = str()
+            result["targetNamespace"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class InGameItemSync(Model):
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "targetItemId" in dict_ and dict_["targetItemId"] is not None:
             instance.target_item_id = str(dict_["targetItemId"])
         elif include_empty:
-            instance.target_item_id = str()
+            instance.target_item_id = ""
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.target_namespace = str()
+            instance.target_namespace = ""
         return instance
 
     @classmethod

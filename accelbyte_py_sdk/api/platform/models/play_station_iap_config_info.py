@@ -61,11 +61,11 @@ class PlayStationIAPConfigInfo(Model):
         if hasattr(self, "environment"):
             result["environment"] = str(self.environment)
         elif include_empty:
-            result["environment"] = str()
+            result["environment"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class PlayStationIAPConfigInfo(Model):
         if "environment" in dict_ and dict_["environment"] is not None:
             instance.environment = str(dict_["environment"])
         elif include_empty:
-            instance.environment = str()
+            instance.environment = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @classmethod

@@ -75,19 +75,19 @@ class AccountcommonPagination(Model):
         if hasattr(self, "first"):
             result["First"] = str(self.first)
         elif include_empty:
-            result["First"] = str()
+            result["First"] = ""
         if hasattr(self, "last"):
             result["Last"] = str(self.last)
         elif include_empty:
-            result["Last"] = str()
+            result["Last"] = ""
         if hasattr(self, "next_"):
             result["Next"] = str(self.next_)
         elif include_empty:
-            result["Next"] = str()
+            result["Next"] = ""
         if hasattr(self, "previous"):
             result["Previous"] = str(self.previous)
         elif include_empty:
-            result["Previous"] = str()
+            result["Previous"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class AccountcommonPagination(Model):
         if "First" in dict_ and dict_["First"] is not None:
             instance.first = str(dict_["First"])
         elif include_empty:
-            instance.first = str()
+            instance.first = ""
         if "Last" in dict_ and dict_["Last"] is not None:
             instance.last = str(dict_["Last"])
         elif include_empty:
-            instance.last = str()
+            instance.last = ""
         if "Next" in dict_ and dict_["Next"] is not None:
             instance.next_ = str(dict_["Next"])
         elif include_empty:
-            instance.next_ = str()
+            instance.next_ = ""
         if "Previous" in dict_ and dict_["Previous"] is not None:
             instance.previous = str(dict_["Previous"])
         elif include_empty:
-            instance.previous = str()
+            instance.previous = ""
         return instance
 
     @classmethod

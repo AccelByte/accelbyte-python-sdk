@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
@@ -52,7 +53,7 @@ class PublicCreateUserNamespaceSlot(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -82,7 +83,7 @@ class PublicCreateUserNamespaceSlot(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     checksum: str                                                                                  # OPTIONAL in [form_data]
@@ -114,8 +115,8 @@ class PublicCreateUserNamespaceSlot(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -124,15 +125,6 @@ class PublicCreateUserNamespaceSlot(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-            collection_format_map=collection_format_map or self.get_collection_format_map(),
-        )
 
     # endregion get methods
 
@@ -216,11 +208,11 @@ class PublicCreateUserNamespaceSlot(Operation):
         if hasattr(self, "checksum") and self.checksum:
             result["checksum"] = str(self.checksum)
         elif include_empty:
-            result["checksum"] = str()
+            result["checksum"] = ""
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
-            result["customAttribute"] = str()
+            result["customAttribute"] = ""
         if hasattr(self, "file") and self.file:
             result["file"] = Any(self.file)
         elif include_empty:
@@ -228,15 +220,15 @@ class PublicCreateUserNamespaceSlot(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "label") and self.label:
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -313,11 +305,11 @@ class PublicCreateUserNamespaceSlot(Operation):
         if "checksum" in dict_ and dict_["checksum"] is not None:
             instance.checksum = str(dict_["checksum"])
         elif include_empty:
-            instance.checksum = str()
+            instance.checksum = ""
         if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
             instance.custom_attribute = str(dict_["customAttribute"])
         elif include_empty:
-            instance.custom_attribute = str()
+            instance.custom_attribute = ""
         if "file" in dict_ and dict_["file"] is not None:
             instance.file = Any(dict_["file"])
         elif include_empty:
@@ -325,15 +317,15 @@ class PublicCreateUserNamespaceSlot(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

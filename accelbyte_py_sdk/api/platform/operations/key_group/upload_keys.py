@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import BulkOperationResult
@@ -54,7 +55,7 @@ class UploadKeys(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -76,7 +77,7 @@ class UploadKeys(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     file: Any                                                                                      # OPTIONAL in [form_data]
@@ -104,8 +105,8 @@ class UploadKeys(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -114,13 +115,6 @@ class UploadKeys(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -179,11 +173,11 @@ class UploadKeys(Operation):
         if hasattr(self, "key_group_id") and self.key_group_id:
             result["keyGroupId"] = str(self.key_group_id)
         elif include_empty:
-            result["keyGroupId"] = str()
+            result["keyGroupId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -248,11 +242,11 @@ class UploadKeys(Operation):
         if "keyGroupId" in dict_ and dict_["keyGroupId"] is not None:
             instance.key_group_id = str(dict_["keyGroupId"])
         elif include_empty:
-            instance.key_group_id = str()
+            instance.key_group_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @staticmethod

@@ -82,23 +82,23 @@ class UpdateLocalizedPolicyVersionRequest(Model):
         if hasattr(self, "attachment_checksum"):
             result["attachmentChecksum"] = str(self.attachment_checksum)
         elif include_empty:
-            result["attachmentChecksum"] = str()
+            result["attachmentChecksum"] = ""
         if hasattr(self, "attachment_location"):
             result["attachmentLocation"] = str(self.attachment_location)
         elif include_empty:
-            result["attachmentLocation"] = str()
+            result["attachmentLocation"] = ""
         if hasattr(self, "attachment_version_identifier"):
             result["attachmentVersionIdentifier"] = str(self.attachment_version_identifier)
         elif include_empty:
-            result["attachmentVersionIdentifier"] = str()
+            result["attachmentVersionIdentifier"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class UpdateLocalizedPolicyVersionRequest(Model):
         if "attachmentChecksum" in dict_ and dict_["attachmentChecksum"] is not None:
             instance.attachment_checksum = str(dict_["attachmentChecksum"])
         elif include_empty:
-            instance.attachment_checksum = str()
+            instance.attachment_checksum = ""
         if "attachmentLocation" in dict_ and dict_["attachmentLocation"] is not None:
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
-            instance.attachment_location = str()
+            instance.attachment_location = ""
         if "attachmentVersionIdentifier" in dict_ and dict_["attachmentVersionIdentifier"] is not None:
             instance.attachment_version_identifier = str(dict_["attachmentVersionIdentifier"])
         elif include_empty:
-            instance.attachment_version_identifier = str()
+            instance.attachment_version_identifier = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         return instance
 
     @classmethod

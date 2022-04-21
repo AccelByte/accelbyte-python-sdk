@@ -82,23 +82,23 @@ class XsollaConfig(Model):
         if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
-            result["apiKey"] = str()
+            result["apiKey"] = ""
         if hasattr(self, "flow_completion_url"):
             result["flowCompletionUrl"] = str(self.flow_completion_url)
         elif include_empty:
-            result["flowCompletionUrl"] = str()
+            result["flowCompletionUrl"] = ""
         if hasattr(self, "merchant_id"):
             result["merchantId"] = int(self.merchant_id)
         elif include_empty:
-            result["merchantId"] = int()
+            result["merchantId"] = 0
         if hasattr(self, "project_id"):
             result["projectId"] = int(self.project_id)
         elif include_empty:
-            result["projectId"] = int()
+            result["projectId"] = 0
         if hasattr(self, "project_secret_key"):
             result["projectSecretKey"] = str(self.project_secret_key)
         elif include_empty:
-            result["projectSecretKey"] = str()
+            result["projectSecretKey"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class XsollaConfig(Model):
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:
-            instance.api_key = str()
+            instance.api_key = ""
         if "flowCompletionUrl" in dict_ and dict_["flowCompletionUrl"] is not None:
             instance.flow_completion_url = str(dict_["flowCompletionUrl"])
         elif include_empty:
-            instance.flow_completion_url = str()
+            instance.flow_completion_url = ""
         if "merchantId" in dict_ and dict_["merchantId"] is not None:
             instance.merchant_id = int(dict_["merchantId"])
         elif include_empty:
-            instance.merchant_id = int()
+            instance.merchant_id = 0
         if "projectId" in dict_ and dict_["projectId"] is not None:
             instance.project_id = int(dict_["projectId"])
         elif include_empty:
-            instance.project_id = int()
+            instance.project_id = 0
         if "projectSecretKey" in dict_ and dict_["projectSecretKey"] is not None:
             instance.project_secret_key = str(dict_["projectSecretKey"])
         elif include_empty:
-            instance.project_secret_key = str()
+            instance.project_secret_key = ""
         return instance
 
     @classmethod

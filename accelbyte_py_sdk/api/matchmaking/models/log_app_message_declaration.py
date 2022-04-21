@@ -93,23 +93,23 @@ class LogAppMessageDeclaration(Model):
         if hasattr(self, "code"):
             result["Code"] = str(self.code)
         elif include_empty:
-            result["Code"] = str()
+            result["Code"] = ""
         if hasattr(self, "code_name"):
             result["CodeName"] = str(self.code_name)
         elif include_empty:
-            result["CodeName"] = str()
+            result["CodeName"] = ""
         if hasattr(self, "section"):
             result["Section"] = str(self.section)
         elif include_empty:
-            result["Section"] = str()
+            result["Section"] = ""
         if hasattr(self, "service"):
             result["Service"] = str(self.service)
         elif include_empty:
-            result["Service"] = str()
+            result["Service"] = ""
         if hasattr(self, "text"):
             result["Text"] = str(self.text)
         elif include_empty:
-            result["Text"] = str()
+            result["Text"] = ""
         return result
 
     # endregion to methods
@@ -147,23 +147,23 @@ class LogAppMessageDeclaration(Model):
         if "Code" in dict_ and dict_["Code"] is not None:
             instance.code = str(dict_["Code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "CodeName" in dict_ and dict_["CodeName"] is not None:
             instance.code_name = str(dict_["CodeName"])
         elif include_empty:
-            instance.code_name = str()
+            instance.code_name = ""
         if "Section" in dict_ and dict_["Section"] is not None:
             instance.section = str(dict_["Section"])
         elif include_empty:
-            instance.section = str()
+            instance.section = ""
         if "Service" in dict_ and dict_["Service"] is not None:
             instance.service = str(dict_["Service"])
         elif include_empty:
-            instance.service = str()
+            instance.service = ""
         if "Text" in dict_ and dict_["Text"] is not None:
             instance.text = str(dict_["Text"])
         elif include_empty:
-            instance.text = str()
+            instance.text = ""
         return instance
 
     @classmethod

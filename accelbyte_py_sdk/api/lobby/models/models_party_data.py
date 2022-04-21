@@ -104,7 +104,7 @@ class ModelsPartyData(Model):
         if hasattr(self, "leader"):
             result["leader"] = str(self.leader)
         elif include_empty:
-            result["leader"] = str()
+            result["leader"] = ""
         if hasattr(self, "members"):
             result["members"] = [str(i0) for i0 in self.members]
         elif include_empty:
@@ -112,15 +112,15 @@ class ModelsPartyData(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "party_id"):
             result["partyId"] = str(self.party_id)
         elif include_empty:
-            result["partyId"] = str()
+            result["partyId"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = int(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = int()
+            result["updatedAt"] = 0
         return result
 
     # endregion to methods
@@ -164,7 +164,7 @@ class ModelsPartyData(Model):
         if "leader" in dict_ and dict_["leader"] is not None:
             instance.leader = str(dict_["leader"])
         elif include_empty:
-            instance.leader = str()
+            instance.leader = ""
         if "members" in dict_ and dict_["members"] is not None:
             instance.members = [str(i0) for i0 in dict_["members"]]
         elif include_empty:
@@ -172,15 +172,15 @@ class ModelsPartyData(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "partyId" in dict_ and dict_["partyId"] is not None:
             instance.party_id = str(dict_["partyId"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = int(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = int()
+            instance.updated_at = 0
         return instance
 
     @classmethod

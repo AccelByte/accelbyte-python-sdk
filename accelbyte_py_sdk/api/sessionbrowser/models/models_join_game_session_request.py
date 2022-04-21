@@ -54,7 +54,7 @@ class ModelsJoinGameSessionRequest(Model):
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsJoinGameSessionRequest(Model):
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelDisableUserRequest(Model):
         if hasattr(self, "reason"):
             result["Reason"] = str(self.reason)
         elif include_empty:
-            result["Reason"] = str()
+            result["Reason"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class ModelDisableUserRequest(Model):
         if "Reason" in dict_ and dict_["Reason"] is not None:
             instance.reason = str(dict_["Reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

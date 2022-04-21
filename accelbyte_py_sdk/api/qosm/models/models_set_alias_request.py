@@ -54,7 +54,7 @@ class ModelsSetAliasRequest(Model):
         if hasattr(self, "alias"):
             result["alias"] = str(self.alias)
         elif include_empty:
-            result["alias"] = str()
+            result["alias"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsSetAliasRequest(Model):
         if "alias" in dict_ and dict_["alias"] is not None:
             instance.alias = str(dict_["alias"])
         elif include_empty:
-            instance.alias = str()
+            instance.alias = ""
         return instance
 
     @classmethod

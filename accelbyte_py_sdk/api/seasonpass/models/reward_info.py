@@ -143,15 +143,15 @@ class RewardInfo(Model):
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "season_id"):
             result["seasonId"] = str(self.season_id)
         elif include_empty:
-            result["seasonId"] = str()
+            result["seasonId"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -167,15 +167,15 @@ class RewardInfo(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_name"):
             result["itemName"] = str(self.item_name)
         elif include_empty:
-            result["itemName"] = str()
+            result["itemName"] = ""
         if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
-            result["itemSku"] = str()
+            result["itemSku"] = ""
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -183,7 +183,7 @@ class RewardInfo(Model):
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         return result
 
     # endregion to methods
@@ -234,15 +234,15 @@ class RewardInfo(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "seasonId" in dict_ and dict_["seasonId"] is not None:
             instance.season_id = str(dict_["seasonId"])
         elif include_empty:
-            instance.season_id = str()
+            instance.season_id = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -258,15 +258,15 @@ class RewardInfo(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemName" in dict_ and dict_["itemName"] is not None:
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
-            instance.item_name = str()
+            instance.item_name = ""
         if "itemSku" in dict_ and dict_["itemSku"] is not None:
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
-            instance.item_sku = str()
+            instance.item_sku = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -274,7 +274,7 @@ class RewardInfo(Model):
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         return instance
 
     @classmethod

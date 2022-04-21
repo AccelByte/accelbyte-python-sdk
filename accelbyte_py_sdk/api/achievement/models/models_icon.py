@@ -61,11 +61,11 @@ class ModelsIcon(Model):
         if hasattr(self, "slug"):
             result["slug"] = str(self.slug)
         elif include_empty:
-            result["slug"] = str()
+            result["slug"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsIcon(Model):
         if "slug" in dict_ and dict_["slug"] is not None:
             instance.slug = str(dict_["slug"])
         elif include_empty:
-            instance.slug = str()
+            instance.slug = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         return instance
 
     @classmethod

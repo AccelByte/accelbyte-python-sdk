@@ -61,7 +61,7 @@ class FulfillmentScriptEvalTestResult(Model):
         if hasattr(self, "error_stack_trace"):
             result["errorStackTrace"] = str(self.error_stack_trace)
         elif include_empty:
-            result["errorStackTrace"] = str()
+            result["errorStackTrace"] = ""
         if hasattr(self, "result"):
             result["result"] = {str(k0): v0 for k0, v0 in self.result.items()}
         elif include_empty:
@@ -93,7 +93,7 @@ class FulfillmentScriptEvalTestResult(Model):
         if "errorStackTrace" in dict_ and dict_["errorStackTrace"] is not None:
             instance.error_stack_trace = str(dict_["errorStackTrace"])
         elif include_empty:
-            instance.error_stack_trace = str()
+            instance.error_stack_trace = ""
         if "result" in dict_ and dict_["result"] is not None:
             instance.result = {str(k0): v0 for k0, v0 in dict_["result"].items()}
         elif include_empty:

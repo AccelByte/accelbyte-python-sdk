@@ -90,27 +90,27 @@ class AppleIAPReceipt(Model):
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "receipt_data"):
             result["receiptData"] = str(self.receipt_data)
         elif include_empty:
-            result["receiptData"] = str()
+            result["receiptData"] = ""
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["transactionId"] = str()
+            result["transactionId"] = ""
         if hasattr(self, "exclude_old_transactions"):
             result["excludeOldTransactions"] = bool(self.exclude_old_transactions)
         elif include_empty:
-            result["excludeOldTransactions"] = bool()
+            result["excludeOldTransactions"] = False
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -147,27 +147,27 @@ class AppleIAPReceipt(Model):
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "receiptData" in dict_ and dict_["receiptData"] is not None:
             instance.receipt_data = str(dict_["receiptData"])
         elif include_empty:
-            instance.receipt_data = str()
+            instance.receipt_data = ""
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.transaction_id = str()
+            instance.transaction_id = ""
         if "excludeOldTransactions" in dict_ and dict_["excludeOldTransactions"] is not None:
             instance.exclude_old_transactions = bool(dict_["excludeOldTransactions"])
         elif include_empty:
-            instance.exclude_old_transactions = bool()
+            instance.exclude_old_transactions = False
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @classmethod

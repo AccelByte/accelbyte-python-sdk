@@ -68,7 +68,7 @@ class ModelBackupCodesResponseV4(Model):
         if hasattr(self, "generated_at"):
             result["generatedAt"] = int(self.generated_at)
         elif include_empty:
-            result["generatedAt"] = int()
+            result["generatedAt"] = 0
         if hasattr(self, "invalid_codes"):
             result["invalidCodes"] = [str(i0) for i0 in self.invalid_codes]
         elif include_empty:
@@ -104,7 +104,7 @@ class ModelBackupCodesResponseV4(Model):
         if "generatedAt" in dict_ and dict_["generatedAt"] is not None:
             instance.generated_at = int(dict_["generatedAt"])
         elif include_empty:
-            instance.generated_at = int()
+            instance.generated_at = 0
         if "invalidCodes" in dict_ and dict_["invalidCodes"] is not None:
             instance.invalid_codes = [str(i0) for i0 in dict_["invalidCodes"]]
         elif include_empty:

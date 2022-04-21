@@ -75,19 +75,19 @@ class UserSlotConfigInfo(Model):
         if hasattr(self, "max_slot_size"):
             result["maxSlotSize"] = int(self.max_slot_size)
         elif include_empty:
-            result["maxSlotSize"] = int()
+            result["maxSlotSize"] = 0
         if hasattr(self, "max_slots"):
             result["maxSlots"] = int(self.max_slots)
         elif include_empty:
-            result["maxSlots"] = int()
+            result["maxSlots"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class UserSlotConfigInfo(Model):
         if "maxSlotSize" in dict_ and dict_["maxSlotSize"] is not None:
             instance.max_slot_size = int(dict_["maxSlotSize"])
         elif include_empty:
-            instance.max_slot_size = int()
+            instance.max_slot_size = 0
         if "maxSlots" in dict_ and dict_["maxSlots"] is not None:
             instance.max_slots = int(dict_["maxSlots"])
         elif include_empty:
-            instance.max_slots = int()
+            instance.max_slots = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

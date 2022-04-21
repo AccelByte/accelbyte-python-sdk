@@ -68,15 +68,15 @@ class ModelCreateTemplateRequest(Model):
         if hasattr(self, "template_content"):
             result["templateContent"] = str(self.template_content)
         elif include_empty:
-            result["templateContent"] = str()
+            result["templateContent"] = ""
         if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
-            result["templateLanguage"] = str()
+            result["templateLanguage"] = ""
         if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
-            result["templateSlug"] = str()
+            result["templateSlug"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelCreateTemplateRequest(Model):
         if "templateContent" in dict_ and dict_["templateContent"] is not None:
             instance.template_content = str(dict_["templateContent"])
         elif include_empty:
-            instance.template_content = str()
+            instance.template_content = ""
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
             instance.template_language = str(dict_["templateLanguage"])
         elif include_empty:
-            instance.template_language = str()
+            instance.template_language = ""
         if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
             instance.template_slug = str(dict_["templateSlug"])
         elif include_empty:
-            instance.template_slug = str()
+            instance.template_slug = ""
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class PaymentOrderPaidResult(Model):
         if hasattr(self, "charging"):
             result["charging"] = bool(self.charging)
         elif include_empty:
-            result["charging"] = bool()
+            result["charging"] = False
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class PaymentOrderPaidResult(Model):
         if "charging" in dict_ and dict_["charging"] is not None:
             instance.charging = bool(dict_["charging"])
         elif include_empty:
-            instance.charging = bool()
+            instance.charging = False
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         return instance
 
     @classmethod

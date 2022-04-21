@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsPaginatedContentDownloadResponse
@@ -49,7 +50,7 @@ class AdminSearchChannelSpecificContent(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -93,7 +94,7 @@ class AdminSearchChannelSpecificContent(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     channel_id: str                                                                                # REQUIRED in [path]
@@ -131,8 +132,8 @@ class AdminSearchChannelSpecificContent(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -141,14 +142,6 @@ class AdminSearchChannelSpecificContent(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -263,55 +256,55 @@ class AdminSearchChannelSpecificContent(Operation):
         if hasattr(self, "channel_id") and self.channel_id:
             result["channelId"] = str(self.channel_id)
         elif include_empty:
-            result["channelId"] = str()
+            result["channelId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "creator") and self.creator:
             result["creator"] = str(self.creator)
         elif include_empty:
-            result["creator"] = str()
+            result["creator"] = ""
         if hasattr(self, "isofficial") and self.isofficial:
             result["isofficial"] = str(self.isofficial)
         elif include_empty:
-            result["isofficial"] = str()
+            result["isofficial"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "orderby") and self.orderby:
             result["orderby"] = str(self.orderby)
         elif include_empty:
-            result["orderby"] = str()
+            result["orderby"] = ""
         if hasattr(self, "sortby") and self.sortby:
             result["sortby"] = str(self.sortby)
         elif include_empty:
-            result["sortby"] = str()
+            result["sortby"] = ""
         if hasattr(self, "subtype") and self.subtype:
             result["subtype"] = str(self.subtype)
         elif include_empty:
-            result["subtype"] = str()
+            result["subtype"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = str(self.tags)
         elif include_empty:
-            result["tags"] = str()
+            result["tags"] = ""
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -406,55 +399,55 @@ class AdminSearchChannelSpecificContent(Operation):
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:
-            instance.channel_id = str()
+            instance.channel_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "creator" in dict_ and dict_["creator"] is not None:
             instance.creator = str(dict_["creator"])
         elif include_empty:
-            instance.creator = str()
+            instance.creator = ""
         if "isofficial" in dict_ and dict_["isofficial"] is not None:
             instance.isofficial = str(dict_["isofficial"])
         elif include_empty:
-            instance.isofficial = str()
+            instance.isofficial = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "orderby" in dict_ and dict_["orderby"] is not None:
             instance.orderby = str(dict_["orderby"])
         elif include_empty:
-            instance.orderby = str()
+            instance.orderby = ""
         if "sortby" in dict_ and dict_["sortby"] is not None:
             instance.sortby = str(dict_["sortby"])
         elif include_empty:
-            instance.sortby = str()
+            instance.sortby = ""
         if "subtype" in dict_ and dict_["subtype"] is not None:
             instance.subtype = str(dict_["subtype"])
         elif include_empty:
-            instance.subtype = str()
+            instance.subtype = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = str(dict_["tags"])
         elif include_empty:
-            instance.tags = str()
+            instance.tags = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

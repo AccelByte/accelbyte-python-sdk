@@ -114,19 +114,19 @@ class PaymentUrl(Model):
         if hasattr(self, "payment_url"):
             result["paymentUrl"] = str(self.payment_url)
         elif include_empty:
-            result["paymentUrl"] = str()
+            result["paymentUrl"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "session_data"):
             result["sessionData"] = str(self.session_data)
         elif include_empty:
-            result["sessionData"] = str()
+            result["sessionData"] = ""
         if hasattr(self, "session_id"):
             result["sessionId"] = str(self.session_id)
         elif include_empty:
-            result["sessionId"] = str()
+            result["sessionId"] = ""
         return result
 
     # endregion to methods
@@ -172,19 +172,19 @@ class PaymentUrl(Model):
         if "paymentUrl" in dict_ and dict_["paymentUrl"] is not None:
             instance.payment_url = str(dict_["paymentUrl"])
         elif include_empty:
-            instance.payment_url = str()
+            instance.payment_url = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "sessionData" in dict_ and dict_["sessionData"] is not None:
             instance.session_data = str(dict_["sessionData"])
         elif include_empty:
-            instance.session_data = str()
+            instance.session_data = ""
         if "sessionId" in dict_ and dict_["sessionId"] is not None:
             instance.session_id = str(dict_["sessionId"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         return instance
 
     @classmethod

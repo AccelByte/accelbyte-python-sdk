@@ -96,31 +96,31 @@ class Action(Model):
         if hasattr(self, "color"):
             result["color"] = str(self.color)
         elif include_empty:
-            result["color"] = str()
+            result["color"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
-            result["duration"] = int()
+            result["duration"] = 0
         if hasattr(self, "icon"):
             result["icon"] = str(self.icon)
         elif include_empty:
-            result["icon"] = str()
+            result["icon"] = ""
         if hasattr(self, "id_"):
             result["id"] = int(self.id_)
         elif include_empty:
-            result["id"] = int()
+            result["id"] = 0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "priority"):
             result["priority"] = int(self.priority)
         elif include_empty:
-            result["priority"] = int()
+            result["priority"] = 0
         return result
 
     # endregion to methods
@@ -163,31 +163,31 @@ class Action(Model):
         if "color" in dict_ and dict_["color"] is not None:
             instance.color = str(dict_["color"])
         elif include_empty:
-            instance.color = str()
+            instance.color = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
-            instance.duration = int()
+            instance.duration = 0
         if "icon" in dict_ and dict_["icon"] is not None:
             instance.icon = str(dict_["icon"])
         elif include_empty:
-            instance.icon = str()
+            instance.icon = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = int(dict_["id"])
         elif include_empty:
-            instance.id_ = int()
+            instance.id_ = 0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "priority" in dict_ and dict_["priority"] is not None:
             instance.priority = int(dict_["priority"])
         elif include_empty:
-            instance.priority = int()
+            instance.priority = 0
         return instance
 
     @classmethod

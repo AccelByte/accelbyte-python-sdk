@@ -61,11 +61,11 @@ class ResponseError(Model):
         if hasattr(self, "error_code"):
             result["ErrorCode"] = int(self.error_code)
         elif include_empty:
-            result["ErrorCode"] = int()
+            result["ErrorCode"] = 0
         if hasattr(self, "error_message"):
             result["ErrorMessage"] = str(self.error_message)
         elif include_empty:
-            result["ErrorMessage"] = str()
+            result["ErrorMessage"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ResponseError(Model):
         if "ErrorCode" in dict_ and dict_["ErrorCode"] is not None:
             instance.error_code = int(dict_["ErrorCode"])
         elif include_empty:
-            instance.error_code = int()
+            instance.error_code = 0
         if "ErrorMessage" in dict_ and dict_["ErrorMessage"] is not None:
             instance.error_message = str(dict_["ErrorMessage"])
         elif include_empty:
-            instance.error_message = str()
+            instance.error_message = ""
         return instance
 
     @classmethod

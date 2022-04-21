@@ -54,7 +54,7 @@ class ModelsGetContentPreviewResponse(Model):
         if hasattr(self, "preview"):
             result["preview"] = str(self.preview)
         elif include_empty:
-            result["preview"] = str()
+            result["preview"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsGetContentPreviewResponse(Model):
         if "preview" in dict_ and dict_["preview"] is not None:
             instance.preview = str(dict_["preview"])
         elif include_empty:
-            instance.preview = str()
+            instance.preview = ""
         return instance
 
     @classmethod

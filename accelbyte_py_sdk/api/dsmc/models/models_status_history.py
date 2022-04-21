@@ -61,11 +61,11 @@ class ModelsStatusHistory(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "time_stamp"):
             result["time_stamp"] = str(self.time_stamp)
         elif include_empty:
-            result["time_stamp"] = str()
+            result["time_stamp"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsStatusHistory(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "time_stamp" in dict_ and dict_["time_stamp"] is not None:
             instance.time_stamp = str(dict_["time_stamp"])
         elif include_empty:
-            instance.time_stamp = str()
+            instance.time_stamp = ""
         return instance
 
     @classmethod

@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
@@ -53,7 +54,7 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         event_type: (eventType) REQUIRED str in path
 
@@ -77,7 +78,7 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     event_type: str                                                                                # REQUIRED in [path]
@@ -103,8 +104,8 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -113,13 +114,6 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -157,7 +151,7 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
         if hasattr(self, "event_type") and self.event_type:
             result["eventType"] = str(self.event_type)
         elif include_empty:
-            result["eventType"] = str()
+            result["eventType"] = ""
         return result
 
     # endregion to methods
@@ -225,7 +219,7 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
         if "eventType" in dict_ and dict_["eventType"] is not None:
             instance.event_type = str(dict_["eventType"])
         elif include_empty:
-            instance.event_type = str()
+            instance.event_type = ""
         return instance
 
     @staticmethod

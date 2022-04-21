@@ -140,31 +140,31 @@ class ModelsChannel(Model):
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "find_match_timeout_seconds"):
             result["find_match_timeout_seconds"] = int(self.find_match_timeout_seconds)
         elif include_empty:
-            result["find_match_timeout_seconds"] = int()
+            result["find_match_timeout_seconds"] = 0
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
-            result["joinable"] = bool()
+            result["joinable"] = False
         if hasattr(self, "max_delay_ms"):
             result["max_delay_ms"] = int(self.max_delay_ms)
         elif include_empty:
-            result["max_delay_ms"] = int()
+            result["max_delay_ms"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "ruleset"):
             result["ruleset"] = self.ruleset.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -172,23 +172,23 @@ class ModelsChannel(Model):
         if hasattr(self, "session_queue_timeout_seconds"):
             result["session_queue_timeout_seconds"] = int(self.session_queue_timeout_seconds)
         elif include_empty:
-            result["session_queue_timeout_seconds"] = int()
+            result["session_queue_timeout_seconds"] = 0
         if hasattr(self, "slug"):
             result["slug"] = str(self.slug)
         elif include_empty:
-            result["slug"] = str()
+            result["slug"] = ""
         if hasattr(self, "social_matchmaking"):
             result["social_matchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
-            result["social_matchmaking"] = bool()
+            result["social_matchmaking"] = False
         if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
-            result["updated_at"] = str()
+            result["updated_at"] = ""
         if hasattr(self, "use_sub_gamemode"):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
-            result["use_sub_gamemode"] = bool()
+            result["use_sub_gamemode"] = False
         return result
 
     # endregion to methods
@@ -236,31 +236,31 @@ class ModelsChannel(Model):
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "find_match_timeout_seconds" in dict_ and dict_["find_match_timeout_seconds"] is not None:
             instance.find_match_timeout_seconds = int(dict_["find_match_timeout_seconds"])
         elif include_empty:
-            instance.find_match_timeout_seconds = int()
+            instance.find_match_timeout_seconds = 0
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
-            instance.joinable = bool()
+            instance.joinable = False
         if "max_delay_ms" in dict_ and dict_["max_delay_ms"] is not None:
             instance.max_delay_ms = int(dict_["max_delay_ms"])
         elif include_empty:
-            instance.max_delay_ms = int()
+            instance.max_delay_ms = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "ruleset" in dict_ and dict_["ruleset"] is not None:
             instance.ruleset = ModelsRuleSet.create_from_dict(dict_["ruleset"], include_empty=include_empty)
         elif include_empty:
@@ -268,23 +268,23 @@ class ModelsChannel(Model):
         if "session_queue_timeout_seconds" in dict_ and dict_["session_queue_timeout_seconds"] is not None:
             instance.session_queue_timeout_seconds = int(dict_["session_queue_timeout_seconds"])
         elif include_empty:
-            instance.session_queue_timeout_seconds = int()
+            instance.session_queue_timeout_seconds = 0
         if "slug" in dict_ and dict_["slug"] is not None:
             instance.slug = str(dict_["slug"])
         elif include_empty:
-            instance.slug = str()
+            instance.slug = ""
         if "social_matchmaking" in dict_ and dict_["social_matchmaking"] is not None:
             instance.social_matchmaking = bool(dict_["social_matchmaking"])
         elif include_empty:
-            instance.social_matchmaking = bool()
+            instance.social_matchmaking = False
         if "updated_at" in dict_ and dict_["updated_at"] is not None:
             instance.updated_at = str(dict_["updated_at"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "use_sub_gamemode" in dict_ and dict_["use_sub_gamemode"] is not None:
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
-            instance.use_sub_gamemode = bool()
+            instance.use_sub_gamemode = False
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class ModelsMonthlyConfig(Model):
         if hasattr(self, "reset_date"):
             result["resetDate"] = int(self.reset_date)
         elif include_empty:
-            result["resetDate"] = int()
+            result["resetDate"] = 0
         if hasattr(self, "reset_time"):
             result["resetTime"] = str(self.reset_time)
         elif include_empty:
-            result["resetTime"] = str()
+            result["resetTime"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsMonthlyConfig(Model):
         if "resetDate" in dict_ and dict_["resetDate"] is not None:
             instance.reset_date = int(dict_["resetDate"])
         elif include_empty:
-            instance.reset_date = int()
+            instance.reset_date = 0
         if "resetTime" in dict_ and dict_["resetTime"] is not None:
             instance.reset_time = str(dict_["resetTime"])
         elif include_empty:
-            instance.reset_time = str()
+            instance.reset_time = ""
         return instance
 
     @classmethod

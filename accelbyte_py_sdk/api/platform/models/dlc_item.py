@@ -63,7 +63,7 @@ class DLCItem(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "rewards"):
             result["rewards"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rewards]
         elif include_empty:
@@ -95,7 +95,7 @@ class DLCItem(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "rewards" in dict_ and dict_["rewards"] is not None:
             instance.rewards = [PlatformReward.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewards"]]
         elif include_empty:

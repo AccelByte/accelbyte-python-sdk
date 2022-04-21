@@ -75,19 +75,19 @@ class ModelsEventRegistry(Model):
         if hasattr(self, "event_id"):
             result["EventID"] = int(self.event_id)
         elif include_empty:
-            result["EventID"] = int()
+            result["EventID"] = 0
         if hasattr(self, "event_level"):
             result["EventLevel"] = int(self.event_level)
         elif include_empty:
-            result["EventLevel"] = int()
+            result["EventLevel"] = 0
         if hasattr(self, "event_type"):
             result["EventType"] = int(self.event_type)
         elif include_empty:
-            result["EventType"] = int()
+            result["EventType"] = 0
         if hasattr(self, "ux"):
             result["UX"] = int(self.ux)
         elif include_empty:
-            result["UX"] = int()
+            result["UX"] = 0
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsEventRegistry(Model):
         if "EventID" in dict_ and dict_["EventID"] is not None:
             instance.event_id = int(dict_["EventID"])
         elif include_empty:
-            instance.event_id = int()
+            instance.event_id = 0
         if "EventLevel" in dict_ and dict_["EventLevel"] is not None:
             instance.event_level = int(dict_["EventLevel"])
         elif include_empty:
-            instance.event_level = int()
+            instance.event_level = 0
         if "EventType" in dict_ and dict_["EventType"] is not None:
             instance.event_type = int(dict_["EventType"])
         elif include_empty:
-            instance.event_type = int()
+            instance.event_type = 0
         if "UX" in dict_ and dict_["UX"] is not None:
             instance.ux = int(dict_["UX"])
         elif include_empty:
-            instance.ux = int()
+            instance.ux = 0
         return instance
 
     @classmethod

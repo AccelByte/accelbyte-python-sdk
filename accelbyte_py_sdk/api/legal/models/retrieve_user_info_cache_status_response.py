@@ -61,11 +61,11 @@ class RetrieveUserInfoCacheStatusResponse(Model):
         if hasattr(self, "last_updated_at"):
             result["lastUpdatedAt"] = str(self.last_updated_at)
         elif include_empty:
-            result["lastUpdatedAt"] = str()
+            result["lastUpdatedAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class RetrieveUserInfoCacheStatusResponse(Model):
         if "lastUpdatedAt" in dict_ and dict_["lastUpdatedAt"] is not None:
             instance.last_updated_at = str(dict_["lastUpdatedAt"])
         elif include_empty:
-            instance.last_updated_at = str()
+            instance.last_updated_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @classmethod

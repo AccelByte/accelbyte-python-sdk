@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -50,7 +51,7 @@ class UserAuthenticationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: basic
+        securities: ["BASIC_AUTH", "BEARER_AUTH"]
 
         location query: code
 
@@ -76,7 +77,7 @@ class UserAuthenticationV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "basic"
+    _securities: List[str] = ["BASIC_AUTH", "BEARER_AUTH"]
     _location_query: str = "code"
 
     client_id: str                                                                                 # OPTIONAL in [form_data]
@@ -107,8 +108,8 @@ class UserAuthenticationV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -117,12 +118,6 @@ class UserAuthenticationV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -198,27 +193,27 @@ class UserAuthenticationV3(Operation):
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "extend_exp") and self.extend_exp:
             result["extend_exp"] = bool(self.extend_exp)
         elif include_empty:
-            result["extend_exp"] = bool()
+            result["extend_exp"] = False
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "password") and self.password:
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "request_id") and self.request_id:
             result["request_id"] = str(self.request_id)
         elif include_empty:
-            result["request_id"] = str()
+            result["request_id"] = ""
         if hasattr(self, "user_name") and self.user_name:
             result["user_name"] = str(self.user_name)
         elif include_empty:
-            result["user_name"] = str()
+            result["user_name"] = ""
         return result
 
     # endregion to methods
@@ -279,27 +274,27 @@ class UserAuthenticationV3(Operation):
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "extend_exp" in dict_ and dict_["extend_exp"] is not None:
             instance.extend_exp = bool(dict_["extend_exp"])
         elif include_empty:
-            instance.extend_exp = bool()
+            instance.extend_exp = False
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "request_id" in dict_ and dict_["request_id"] is not None:
             instance.request_id = str(dict_["request_id"])
         elif include_empty:
-            instance.request_id = str()
+            instance.request_id = ""
         if "user_name" in dict_ and dict_["user_name"] is not None:
             instance.user_name = str(dict_["user_name"])
         elif include_empty:
-            instance.user_name = str()
+            instance.user_name = ""
         return instance
 
     @staticmethod

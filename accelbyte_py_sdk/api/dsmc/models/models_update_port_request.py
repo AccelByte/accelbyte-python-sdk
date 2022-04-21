@@ -61,11 +61,11 @@ class ModelsUpdatePortRequest(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUpdatePortRequest(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         return instance
 
     @classmethod

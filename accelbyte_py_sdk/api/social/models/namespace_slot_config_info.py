@@ -68,15 +68,15 @@ class NamespaceSlotConfigInfo(Model):
         if hasattr(self, "max_slot_size"):
             result["maxSlotSize"] = int(self.max_slot_size)
         elif include_empty:
-            result["maxSlotSize"] = int()
+            result["maxSlotSize"] = 0
         if hasattr(self, "max_slots"):
             result["maxSlots"] = int(self.max_slots)
         elif include_empty:
-            result["maxSlots"] = int()
+            result["maxSlots"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class NamespaceSlotConfigInfo(Model):
         if "maxSlotSize" in dict_ and dict_["maxSlotSize"] is not None:
             instance.max_slot_size = int(dict_["maxSlotSize"])
         elif include_empty:
-            instance.max_slot_size = int()
+            instance.max_slot_size = 0
         if "maxSlots" in dict_ and dict_["maxSlots"] is not None:
             instance.max_slots = int(dict_["maxSlots"])
         elif include_empty:
-            instance.max_slots = int()
+            instance.max_slots = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @classmethod

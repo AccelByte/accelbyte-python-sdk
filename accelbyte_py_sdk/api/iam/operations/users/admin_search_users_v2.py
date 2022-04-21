@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelSearchUsersByPlatformIDResponse
@@ -48,7 +49,7 @@ class AdminSearchUsersV2(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +87,7 @@ class AdminSearchUsersV2(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -121,8 +122,8 @@ class AdminSearchUsersV2(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -131,14 +132,6 @@ class AdminSearchUsersV2(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -235,43 +228,43 @@ class AdminSearchUsersV2(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
-            result["after"] = str()
+            result["after"] = ""
         if hasattr(self, "before") and self.before:
             result["before"] = str(self.before)
         elif include_empty:
-            result["before"] = str()
+            result["before"] = ""
         if hasattr(self, "display_name") and self.display_name:
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "login_id") and self.login_id:
             result["loginId"] = str(self.login_id)
         elif include_empty:
-            result["loginId"] = str()
+            result["loginId"] = ""
         if hasattr(self, "platform_user_id") and self.platform_user_id:
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserId"] = str()
+            result["platformUserId"] = ""
         if hasattr(self, "role_id") and self.role_id:
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -357,43 +350,43 @@ class AdminSearchUsersV2(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
-            instance.after = str()
+            instance.after = ""
         if "before" in dict_ and dict_["before"] is not None:
             instance.before = str(dict_["before"])
         elif include_empty:
-            instance.before = str()
+            instance.before = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "loginId" in dict_ and dict_["loginId"] is not None:
             instance.login_id = str(dict_["loginId"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         return instance
 
     @staticmethod

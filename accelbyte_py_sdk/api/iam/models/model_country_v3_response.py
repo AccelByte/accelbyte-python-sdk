@@ -75,19 +75,19 @@ class ModelCountryV3Response(Model):
         if hasattr(self, "age_restriction"):
             result["ageRestriction"] = int(self.age_restriction)
         elif include_empty:
-            result["ageRestriction"] = int()
+            result["ageRestriction"] = 0
         if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "country_name"):
             result["countryName"] = str(self.country_name)
         elif include_empty:
-            result["countryName"] = str()
+            result["countryName"] = ""
         if hasattr(self, "enable"):
             result["enable"] = bool(self.enable)
         elif include_empty:
-            result["enable"] = bool()
+            result["enable"] = False
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelCountryV3Response(Model):
         if "ageRestriction" in dict_ and dict_["ageRestriction"] is not None:
             instance.age_restriction = int(dict_["ageRestriction"])
         elif include_empty:
-            instance.age_restriction = int()
+            instance.age_restriction = 0
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "countryName" in dict_ and dict_["countryName"] is not None:
             instance.country_name = str(dict_["countryName"])
         elif include_empty:
-            instance.country_name = str()
+            instance.country_name = ""
         if "enable" in dict_ and dict_["enable"] is not None:
             instance.enable = bool(dict_["enable"])
         elif include_empty:
-            instance.enable = bool()
+            instance.enable = False
         return instance
 
     @classmethod

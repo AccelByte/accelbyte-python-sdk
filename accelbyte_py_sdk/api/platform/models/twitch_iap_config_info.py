@@ -75,19 +75,19 @@ class TwitchIAPConfigInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "client_secret"):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
-            result["clientSecret"] = str()
+            result["clientSecret"] = ""
         if hasattr(self, "organization_id"):
             result["organizationId"] = str(self.organization_id)
         elif include_empty:
-            result["organizationId"] = str()
+            result["organizationId"] = ""
         return result
 
     # endregion to methods
@@ -120,19 +120,19 @@ class TwitchIAPConfigInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "clientSecret" in dict_ and dict_["clientSecret"] is not None:
             instance.client_secret = str(dict_["clientSecret"])
         elif include_empty:
-            instance.client_secret = str()
+            instance.client_secret = ""
         if "organizationId" in dict_ and dict_["organizationId"] is not None:
             instance.organization_id = str(dict_["organizationId"])
         elif include_empty:
-            instance.organization_id = str()
+            instance.organization_id = ""
         return instance
 
     @classmethod

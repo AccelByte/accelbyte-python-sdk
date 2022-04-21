@@ -61,11 +61,11 @@ class ADTOObjectForEqu8UserBanStatus(Model):
         if hasattr(self, "expires"):
             result["expires"] = str(self.expires)
         elif include_empty:
-            result["expires"] = str()
+            result["expires"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class ADTOObjectForEqu8UserBanStatus(Model):
         if "expires" in dict_ and dict_["expires"] is not None:
             instance.expires = str(dict_["expires"])
         elif include_empty:
-            instance.expires = str()
+            instance.expires = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

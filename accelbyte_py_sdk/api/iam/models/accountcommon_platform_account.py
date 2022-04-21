@@ -61,11 +61,11 @@ class AccountcommonPlatformAccount(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserId"] = str()
+            result["platformUserId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class AccountcommonPlatformAccount(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         return instance
 
     @classmethod

@@ -82,23 +82,23 @@ class ModelChatMessageResponse(Model):
         if hasattr(self, "from_"):
             result["from"] = str(self.from_)
         elif include_empty:
-            result["from"] = str()
+            result["from"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "payload"):
             result["payload"] = str(self.payload)
         elif include_empty:
-            result["payload"] = str()
+            result["payload"] = ""
         if hasattr(self, "received_at"):
             result["receivedAt"] = int(self.received_at)
         elif include_empty:
-            result["receivedAt"] = int()
+            result["receivedAt"] = 0
         if hasattr(self, "to"):
             result["to"] = str(self.to)
         elif include_empty:
-            result["to"] = str()
+            result["to"] = ""
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ModelChatMessageResponse(Model):
         if "from" in dict_ and dict_["from"] is not None:
             instance.from_ = str(dict_["from"])
         elif include_empty:
-            instance.from_ = str()
+            instance.from_ = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = str(dict_["payload"])
         elif include_empty:
-            instance.payload = str()
+            instance.payload = ""
         if "receivedAt" in dict_ and dict_["receivedAt"] is not None:
             instance.received_at = int(dict_["receivedAt"])
         elif include_empty:
-            instance.received_at = int()
+            instance.received_at = 0
         if "to" in dict_ and dict_["to"] is not None:
             instance.to = str(dict_["to"])
         elif include_empty:
-            instance.to = str()
+            instance.to = ""
         return instance
 
     @classmethod

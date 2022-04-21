@@ -61,11 +61,11 @@ class ModelGetUserMapping(Model):
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
-            result["UserId"] = str()
+            result["UserId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelGetUserMapping(Model):
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "UserId" in dict_ and dict_["UserId"] is not None:
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class ModelAgeRestrictionResponse(Model):
         if hasattr(self, "age_restriction"):
             result["AgeRestriction"] = int(self.age_restriction)
         elif include_empty:
-            result["AgeRestriction"] = int()
+            result["AgeRestriction"] = 0
         if hasattr(self, "enable"):
             result["Enable"] = bool(self.enable)
         elif include_empty:
-            result["Enable"] = bool()
+            result["Enable"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelAgeRestrictionResponse(Model):
         if "AgeRestriction" in dict_ and dict_["AgeRestriction"] is not None:
             instance.age_restriction = int(dict_["AgeRestriction"])
         elif include_empty:
-            instance.age_restriction = int()
+            instance.age_restriction = 0
         if "Enable" in dict_ and dict_["Enable"] is not None:
             instance.enable = bool(dict_["Enable"])
         elif include_empty:
-            instance.enable = bool()
+            instance.enable = False
         return instance
 
     @classmethod

@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsUpdateGroupConfigurationGlobalRulesRequestV1
@@ -60,7 +61,7 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) REQUIRED ModelsUpdateGroupConfigurationGlobalRulesRequestV1 in body
 
@@ -90,7 +91,7 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1                                       # REQUIRED in [body]
@@ -119,8 +120,8 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -129,13 +130,6 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -199,15 +193,15 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
         if hasattr(self, "allowed_action") and self.allowed_action:
             result["allowedAction"] = str(self.allowed_action)
         elif include_empty:
-            result["allowedAction"] = str()
+            result["allowedAction"] = ""
         if hasattr(self, "configuration_code") and self.configuration_code:
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
-            result["configurationCode"] = str()
+            result["configurationCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -285,15 +279,15 @@ class UpdateGroupConfigurationGlobalRuleAdminV1(Operation):
         if "allowedAction" in dict_ and dict_["allowedAction"] is not None:
             instance.allowed_action = str(dict_["allowedAction"])
         elif include_empty:
-            instance.allowed_action = str()
+            instance.allowed_action = ""
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
-            instance.configuration_code = str()
+            instance.configuration_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         return instance
 
     @staticmethod

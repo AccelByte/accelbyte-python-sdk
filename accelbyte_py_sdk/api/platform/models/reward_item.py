@@ -68,15 +68,15 @@ class RewardItem(Model):
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
-            result["duration"] = int()
+            result["duration"] = 0
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class RewardItem(Model):
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
-            instance.duration = int()
+            instance.duration = 0
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         return instance
 
     @classmethod

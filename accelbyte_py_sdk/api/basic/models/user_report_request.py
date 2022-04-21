@@ -82,23 +82,23 @@ class UserReportRequest(Model):
         if hasattr(self, "category"):
             result["category"] = str(self.category)
         elif include_empty:
-            result["category"] = str()
+            result["category"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "game_session_id"):
             result["gameSessionId"] = str(self.game_session_id)
         elif include_empty:
-            result["gameSessionId"] = str()
+            result["gameSessionId"] = ""
         if hasattr(self, "subcategory"):
             result["subcategory"] = str(self.subcategory)
         elif include_empty:
-            result["subcategory"] = str()
+            result["subcategory"] = ""
         return result
 
     # endregion to methods
@@ -133,23 +133,23 @@ class UserReportRequest(Model):
         if "category" in dict_ and dict_["category"] is not None:
             instance.category = str(dict_["category"])
         elif include_empty:
-            instance.category = str()
+            instance.category = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "gameSessionId" in dict_ and dict_["gameSessionId"] is not None:
             instance.game_session_id = str(dict_["gameSessionId"])
         elif include_empty:
-            instance.game_session_id = str()
+            instance.game_session_id = ""
         if "subcategory" in dict_ and dict_["subcategory"] is not None:
             instance.subcategory = str(dict_["subcategory"])
         elif include_empty:
-            instance.subcategory = str()
+            instance.subcategory = ""
         return instance
 
     @classmethod

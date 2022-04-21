@@ -61,11 +61,11 @@ class ModelsArchiveLeaderboardSignedURLResponse(Model):
         if hasattr(self, "leaderboard_code"):
             result["leaderboardCode"] = str(self.leaderboard_code)
         elif include_empty:
-            result["leaderboardCode"] = str()
+            result["leaderboardCode"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsArchiveLeaderboardSignedURLResponse(Model):
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
             instance.leaderboard_code = str(dict_["leaderboardCode"])
         elif include_empty:
-            instance.leaderboard_code = str()
+            instance.leaderboard_code = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         return instance
 
     @classmethod

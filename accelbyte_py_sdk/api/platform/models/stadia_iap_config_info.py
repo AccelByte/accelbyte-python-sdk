@@ -61,11 +61,11 @@ class StadiaIAPConfigInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "json_file"):
             result["jsonFile"] = str(self.json_file)
         elif include_empty:
-            result["jsonFile"] = str()
+            result["jsonFile"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class StadiaIAPConfigInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "jsonFile" in dict_ and dict_["jsonFile"] is not None:
             instance.json_file = str(dict_["jsonFile"])
         elif include_empty:
-            instance.json_file = str()
+            instance.json_file = ""
         return instance
 
     @classmethod

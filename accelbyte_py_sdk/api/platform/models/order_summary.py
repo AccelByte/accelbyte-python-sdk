@@ -78,7 +78,7 @@ class OrderSummary(Model):
         if hasattr(self, "free"):
             result["free"] = bool(self.free)
         elif include_empty:
-            result["free"] = bool()
+            result["free"] = False
         return result
 
     # endregion to methods
@@ -117,7 +117,7 @@ class OrderSummary(Model):
         if "free" in dict_ and dict_["free"] is not None:
             instance.free = bool(dict_["free"])
         elif include_empty:
-            instance.free = bool()
+            instance.free = False
         return instance
 
     @classmethod

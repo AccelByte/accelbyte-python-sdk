@@ -83,11 +83,11 @@ class ModelPlatformDomainUpdateRequest(Model):
         if hasattr(self, "domain"):
             result["domain"] = str(self.domain)
         elif include_empty:
-            result["domain"] = str()
+            result["domain"] = ""
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -125,11 +125,11 @@ class ModelPlatformDomainUpdateRequest(Model):
         if "domain" in dict_ and dict_["domain"] is not None:
             instance.domain = str(dict_["domain"])
         elif include_empty:
-            instance.domain = str()
+            instance.domain = ""
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         return instance
 
     @classmethod

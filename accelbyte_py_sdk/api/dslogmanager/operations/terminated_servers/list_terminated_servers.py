@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsListTerminatedServersResponse
@@ -53,7 +54,7 @@ class ListTerminatedServers(Operation):
 
         produces: ["application/json", "text/x-log"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -99,7 +100,7 @@ class ListTerminatedServers(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json", "text/x-log"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -138,8 +139,8 @@ class ListTerminatedServers(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -148,14 +149,6 @@ class ListTerminatedServers(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -276,59 +269,59 @@ class ListTerminatedServers(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "deployment") and self.deployment:
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "end_date") and self.end_date:
             result["end_date"] = str(self.end_date)
         elif include_empty:
-            result["end_date"] = str()
+            result["end_date"] = ""
         if hasattr(self, "game_mode") and self.game_mode:
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "next_") and self.next_:
             result["next"] = str(self.next_)
         elif include_empty:
-            result["next"] = str()
+            result["next"] = ""
         if hasattr(self, "party_id") and self.party_id:
             result["party_id"] = str(self.party_id)
         elif include_empty:
-            result["party_id"] = str()
+            result["party_id"] = ""
         if hasattr(self, "pod_name") and self.pod_name:
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         if hasattr(self, "previous") and self.previous:
             result["previous"] = str(self.previous)
         elif include_empty:
-            result["previous"] = str()
+            result["previous"] = ""
         if hasattr(self, "provider") and self.provider:
             result["provider"] = str(self.provider)
         elif include_empty:
-            result["provider"] = str()
+            result["provider"] = ""
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "session_id") and self.session_id:
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         if hasattr(self, "start_date") and self.start_date:
             result["start_date"] = str(self.start_date)
         elif include_empty:
-            result["start_date"] = str()
+            result["start_date"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -427,59 +420,59 @@ class ListTerminatedServers(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "end_date" in dict_ and dict_["end_date"] is not None:
             instance.end_date = str(dict_["end_date"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "next" in dict_ and dict_["next"] is not None:
             instance.next_ = str(dict_["next"])
         elif include_empty:
-            instance.next_ = str()
+            instance.next_ = ""
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         if "previous" in dict_ and dict_["previous"] is not None:
             instance.previous = str(dict_["previous"])
         elif include_empty:
-            instance.previous = str()
+            instance.previous = ""
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
-            instance.provider = str()
+            instance.provider = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "start_date" in dict_ and dict_["start_date"] is not None:
             instance.start_date = str(dict_["start_date"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

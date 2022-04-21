@@ -61,11 +61,11 @@ class ModelsGetImageLimitResponseData(Model):
         if hasattr(self, "image_count"):
             result["image_count"] = int(self.image_count)
         elif include_empty:
-            result["image_count"] = int()
+            result["image_count"] = 0
         if hasattr(self, "image_limit"):
             result["image_limit"] = int(self.image_limit)
         elif include_empty:
-            result["image_limit"] = int()
+            result["image_limit"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsGetImageLimitResponseData(Model):
         if "image_count" in dict_ and dict_["image_count"] is not None:
             instance.image_count = int(dict_["image_count"])
         elif include_empty:
-            instance.image_count = int()
+            instance.image_count = 0
         if "image_limit" in dict_ and dict_["image_limit"] is not None:
             instance.image_limit = int(dict_["image_limit"])
         elif include_empty:
-            instance.image_limit = int()
+            instance.image_limit = 0
         return instance
 
     @classmethod

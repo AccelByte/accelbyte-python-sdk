@@ -68,15 +68,15 @@ class RecurringChargeResult(Model):
         if hasattr(self, "triggered"):
             result["triggered"] = bool(self.triggered)
         elif include_empty:
-            result["triggered"] = bool()
+            result["triggered"] = False
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "detail"):
             result["detail"] = str(self.detail)
         elif include_empty:
-            result["detail"] = str()
+            result["detail"] = ""
         return result
 
     # endregion to methods
@@ -106,15 +106,15 @@ class RecurringChargeResult(Model):
         if "triggered" in dict_ and dict_["triggered"] is not None:
             instance.triggered = bool(dict_["triggered"])
         elif include_empty:
-            instance.triggered = bool()
+            instance.triggered = False
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "detail" in dict_ and dict_["detail"] is not None:
             instance.detail = str(dict_["detail"])
         elif include_empty:
-            instance.detail = str()
+            instance.detail = ""
         return instance
 
     @classmethod

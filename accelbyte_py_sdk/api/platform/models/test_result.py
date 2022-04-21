@@ -61,11 +61,11 @@ class TestResult(Model):
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         if hasattr(self, "msg"):
             result["msg"] = str(self.msg)
         elif include_empty:
-            result["msg"] = str()
+            result["msg"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class TestResult(Model):
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         if "msg" in dict_ and dict_["msg"] is not None:
             instance.msg = str(dict_["msg"])
         elif include_empty:
-            instance.msg = str()
+            instance.msg = ""
         return instance
 
     @classmethod

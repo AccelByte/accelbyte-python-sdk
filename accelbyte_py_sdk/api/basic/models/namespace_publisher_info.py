@@ -61,11 +61,11 @@ class NamespacePublisherInfo(Model):
         if hasattr(self, "publisher"):
             result["publisher"] = bool(self.publisher)
         elif include_empty:
-            result["publisher"] = bool()
+            result["publisher"] = False
         if hasattr(self, "publisher_namespace"):
             result["publisherNamespace"] = str(self.publisher_namespace)
         elif include_empty:
-            result["publisherNamespace"] = str()
+            result["publisherNamespace"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class NamespacePublisherInfo(Model):
         if "publisher" in dict_ and dict_["publisher"] is not None:
             instance.publisher = bool(dict_["publisher"])
         elif include_empty:
-            instance.publisher = bool()
+            instance.publisher = False
         if "publisherNamespace" in dict_ and dict_["publisherNamespace"] is not None:
             instance.publisher_namespace = str(dict_["publisherNamespace"])
         elif include_empty:
-            instance.publisher_namespace = str()
+            instance.publisher_namespace = ""
         return instance
 
     @classmethod

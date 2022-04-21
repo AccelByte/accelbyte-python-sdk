@@ -82,23 +82,23 @@ class ADTOObjectForEqu8UserStatus(Model):
         if hasattr(self, "action_comment"):
             result["actionComment"] = str(self.action_comment)
         elif include_empty:
-            result["actionComment"] = str()
+            result["actionComment"] = ""
         if hasattr(self, "action_id"):
             result["actionId"] = int(self.action_id)
         elif include_empty:
-            result["actionId"] = int()
+            result["actionId"] = 0
         if hasattr(self, "expires"):
             result["expires"] = str(self.expires)
         elif include_empty:
-            result["expires"] = str()
+            result["expires"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "when"):
             result["when"] = str(self.when)
         elif include_empty:
-            result["when"] = str()
+            result["when"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class ADTOObjectForEqu8UserStatus(Model):
         if "actionComment" in dict_ and dict_["actionComment"] is not None:
             instance.action_comment = str(dict_["actionComment"])
         elif include_empty:
-            instance.action_comment = str()
+            instance.action_comment = ""
         if "actionId" in dict_ and dict_["actionId"] is not None:
             instance.action_id = int(dict_["actionId"])
         elif include_empty:
-            instance.action_id = int()
+            instance.action_id = 0
         if "expires" in dict_ and dict_["expires"] is not None:
             instance.expires = str(dict_["expires"])
         elif include_empty:
-            instance.expires = str()
+            instance.expires = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "when" in dict_ and dict_["when"] is not None:
             instance.when = str(dict_["when"])
         elif include_empty:
-            instance.when = str()
+            instance.when = ""
         return instance
 
     @classmethod

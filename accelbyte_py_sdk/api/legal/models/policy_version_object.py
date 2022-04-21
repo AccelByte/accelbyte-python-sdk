@@ -110,39 +110,39 @@ class PolicyVersionObject(Model):
         if hasattr(self, "display_version"):
             result["displayVersion"] = str(self.display_version)
         elif include_empty:
-            result["displayVersion"] = str()
+            result["displayVersion"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "is_committed"):
             result["isCommitted"] = bool(self.is_committed)
         elif include_empty:
-            result["isCommitted"] = bool()
+            result["isCommitted"] = False
         if hasattr(self, "is_in_effect"):
             result["isInEffect"] = bool(self.is_in_effect)
         elif include_empty:
-            result["isInEffect"] = bool()
+            result["isInEffect"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "published_date"):
             result["publishedDate"] = str(self.published_date)
         elif include_empty:
-            result["publishedDate"] = str()
+            result["publishedDate"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -187,39 +187,39 @@ class PolicyVersionObject(Model):
         if "displayVersion" in dict_ and dict_["displayVersion"] is not None:
             instance.display_version = str(dict_["displayVersion"])
         elif include_empty:
-            instance.display_version = str()
+            instance.display_version = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "isCommitted" in dict_ and dict_["isCommitted"] is not None:
             instance.is_committed = bool(dict_["isCommitted"])
         elif include_empty:
-            instance.is_committed = bool()
+            instance.is_committed = False
         if "isInEffect" in dict_ and dict_["isInEffect"] is not None:
             instance.is_in_effect = bool(dict_["isInEffect"])
         elif include_empty:
-            instance.is_in_effect = bool()
+            instance.is_in_effect = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "publishedDate" in dict_ and dict_["publishedDate"] is not None:
             instance.published_date = str(dict_["publishedDate"])
         elif include_empty:
-            instance.published_date = str()
+            instance.published_date = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

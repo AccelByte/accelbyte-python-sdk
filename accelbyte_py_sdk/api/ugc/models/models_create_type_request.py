@@ -65,7 +65,7 @@ class ModelsCreateTypeRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         return result
 
     # endregion to methods
@@ -95,7 +95,7 @@ class ModelsCreateTypeRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         return instance
 
     @classmethod

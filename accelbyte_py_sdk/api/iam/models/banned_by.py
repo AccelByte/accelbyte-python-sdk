@@ -61,11 +61,11 @@ class BannedBy(Model):
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class BannedBy(Model):
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

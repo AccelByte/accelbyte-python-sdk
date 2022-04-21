@@ -76,19 +76,19 @@ class StadiaSyncRequest(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "stadia_player_id"):
             result["stadiaPlayerId"] = str(self.stadia_player_id)
         elif include_empty:
-            result["stadiaPlayerId"] = str()
+            result["stadiaPlayerId"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -120,19 +120,19 @@ class StadiaSyncRequest(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "stadiaPlayerId" in dict_ and dict_["stadiaPlayerId"] is not None:
             instance.stadia_player_id = str(dict_["stadiaPlayerId"])
         elif include_empty:
-            instance.stadia_player_id = str()
+            instance.stadia_player_id = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @classmethod

@@ -96,31 +96,31 @@ class ModelPlatformUserInformation(Model):
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "linked_at"):
             result["LinkedAt"] = str(self.linked_at)
         elif include_empty:
-            result["LinkedAt"] = str()
+            result["LinkedAt"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "platform_id"):
             result["PlatformID"] = str(self.platform_id)
         elif include_empty:
-            result["PlatformID"] = str()
+            result["PlatformID"] = ""
         if hasattr(self, "platform_user_id"):
             result["PlatformUserID"] = str(self.platform_user_id)
         elif include_empty:
-            result["PlatformUserID"] = str()
+            result["PlatformUserID"] = ""
         if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
-            result["EmailAddress"] = str()
+            result["EmailAddress"] = ""
         if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
-            result["XUID"] = str()
+            result["XUID"] = ""
         return result
 
     # endregion to methods
@@ -158,31 +158,31 @@ class ModelPlatformUserInformation(Model):
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "LinkedAt" in dict_ and dict_["LinkedAt"] is not None:
             instance.linked_at = str(dict_["LinkedAt"])
         elif include_empty:
-            instance.linked_at = str()
+            instance.linked_at = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "PlatformID" in dict_ and dict_["PlatformID"] is not None:
             instance.platform_id = str(dict_["PlatformID"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "PlatformUserID" in dict_ and dict_["PlatformUserID"] is not None:
             instance.platform_user_id = str(dict_["PlatformUserID"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
             instance.email_address = str(dict_["EmailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "XUID" in dict_ and dict_["XUID"] is not None:
             instance.xuid = str(dict_["XUID"])
         elif include_empty:
-            instance.xuid = str()
+            instance.xuid = ""
         return instance
 
     @classmethod

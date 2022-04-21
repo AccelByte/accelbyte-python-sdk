@@ -68,15 +68,15 @@ class UploadLocalizedPolicyVersionAttachmentResponse(Model):
         if hasattr(self, "attachment_checksum"):
             result["attachmentChecksum"] = str(self.attachment_checksum)
         elif include_empty:
-            result["attachmentChecksum"] = str()
+            result["attachmentChecksum"] = ""
         if hasattr(self, "attachment_location"):
             result["attachmentLocation"] = str(self.attachment_location)
         elif include_empty:
-            result["attachmentLocation"] = str()
+            result["attachmentLocation"] = ""
         if hasattr(self, "attachment_upload_url"):
             result["attachmentUploadUrl"] = str(self.attachment_upload_url)
         elif include_empty:
-            result["attachmentUploadUrl"] = str()
+            result["attachmentUploadUrl"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class UploadLocalizedPolicyVersionAttachmentResponse(Model):
         if "attachmentChecksum" in dict_ and dict_["attachmentChecksum"] is not None:
             instance.attachment_checksum = str(dict_["attachmentChecksum"])
         elif include_empty:
-            instance.attachment_checksum = str()
+            instance.attachment_checksum = ""
         if "attachmentLocation" in dict_ and dict_["attachmentLocation"] is not None:
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
-            instance.attachment_location = str()
+            instance.attachment_location = ""
         if "attachmentUploadUrl" in dict_ and dict_["attachmentUploadUrl"] is not None:
             instance.attachment_upload_url = str(dict_["attachmentUploadUrl"])
         elif include_empty:
-            instance.attachment_upload_url = str()
+            instance.attachment_upload_url = ""
         return instance
 
     @classmethod

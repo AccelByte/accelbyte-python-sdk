@@ -79,7 +79,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         if hasattr(self, "script"):
             result["script"] = str(self.script)
         elif include_empty:
-            result["script"] = str()
+            result["script"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -115,7 +115,7 @@ class FulfillmentScriptEvalTestRequest(Model):
         if "script" in dict_ and dict_["script"] is not None:
             instance.script = str(dict_["script"])
         elif include_empty:
-            instance.script = str()
+            instance.script = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:

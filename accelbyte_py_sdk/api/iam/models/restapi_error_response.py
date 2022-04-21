@@ -61,11 +61,11 @@ class RestapiErrorResponse(Model):
         if hasattr(self, "message"):
             result["Message"] = str(self.message)
         elif include_empty:
-            result["Message"] = str()
+            result["Message"] = ""
         if hasattr(self, "code"):
             result["Code"] = int(self.code)
         elif include_empty:
-            result["Code"] = int()
+            result["Code"] = 0
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class RestapiErrorResponse(Model):
         if "Message" in dict_ and dict_["Message"] is not None:
             instance.message = str(dict_["Message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         if "Code" in dict_ and dict_["Code"] is not None:
             instance.code = int(dict_["Code"])
         elif include_empty:
-            instance.code = int()
+            instance.code = 0
         return instance
 
     @classmethod

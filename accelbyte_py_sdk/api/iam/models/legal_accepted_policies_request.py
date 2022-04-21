@@ -75,19 +75,19 @@ class LegalAcceptedPoliciesRequest(Model):
         if hasattr(self, "is_accepted"):
             result["isAccepted"] = bool(self.is_accepted)
         elif include_empty:
-            result["isAccepted"] = bool()
+            result["isAccepted"] = False
         if hasattr(self, "localized_policy_version_id"):
             result["localizedPolicyVersionId"] = str(self.localized_policy_version_id)
         elif include_empty:
-            result["localizedPolicyVersionId"] = str()
+            result["localizedPolicyVersionId"] = ""
         if hasattr(self, "policy_id"):
             result["policyId"] = str(self.policy_id)
         elif include_empty:
-            result["policyId"] = str()
+            result["policyId"] = ""
         if hasattr(self, "policy_version_id"):
             result["policyVersionId"] = str(self.policy_version_id)
         elif include_empty:
-            result["policyVersionId"] = str()
+            result["policyVersionId"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class LegalAcceptedPoliciesRequest(Model):
         if "isAccepted" in dict_ and dict_["isAccepted"] is not None:
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
-            instance.is_accepted = bool()
+            instance.is_accepted = False
         if "localizedPolicyVersionId" in dict_ and dict_["localizedPolicyVersionId"] is not None:
             instance.localized_policy_version_id = str(dict_["localizedPolicyVersionId"])
         elif include_empty:
-            instance.localized_policy_version_id = str()
+            instance.localized_policy_version_id = ""
         if "policyId" in dict_ and dict_["policyId"] is not None:
             instance.policy_id = str(dict_["policyId"])
         elif include_empty:
-            instance.policy_id = str()
+            instance.policy_id = ""
         if "policyVersionId" in dict_ and dict_["policyVersionId"] is not None:
             instance.policy_version_id = str(dict_["policyVersionId"])
         elif include_empty:
-            instance.policy_version_id = str()
+            instance.policy_version_id = ""
         return instance
 
     @classmethod

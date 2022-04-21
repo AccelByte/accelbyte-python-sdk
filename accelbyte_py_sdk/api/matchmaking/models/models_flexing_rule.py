@@ -75,19 +75,19 @@ class ModelsFlexingRule(Model):
         if hasattr(self, "attribute"):
             result["attribute"] = str(self.attribute)
         elif include_empty:
-            result["attribute"] = str()
+            result["attribute"] = ""
         if hasattr(self, "criteria"):
             result["criteria"] = str(self.criteria)
         elif include_empty:
-            result["criteria"] = str()
+            result["criteria"] = ""
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
-            result["duration"] = int()
+            result["duration"] = 0
         if hasattr(self, "reference"):
             result["reference"] = float(self.reference)
         elif include_empty:
-            result["reference"] = float()
+            result["reference"] = 0.0
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsFlexingRule(Model):
         if "attribute" in dict_ and dict_["attribute"] is not None:
             instance.attribute = str(dict_["attribute"])
         elif include_empty:
-            instance.attribute = str()
+            instance.attribute = ""
         if "criteria" in dict_ and dict_["criteria"] is not None:
             instance.criteria = str(dict_["criteria"])
         elif include_empty:
-            instance.criteria = str()
+            instance.criteria = ""
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
-            instance.duration = int()
+            instance.duration = 0
         if "reference" in dict_ and dict_["reference"] is not None:
             instance.reference = float(dict_["reference"])
         elif include_empty:
-            instance.reference = float()
+            instance.reference = 0.0
         return instance
 
     @classmethod

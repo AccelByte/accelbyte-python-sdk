@@ -54,7 +54,7 @@ class ModelUnlinkUserPlatformRequest(Model):
         if hasattr(self, "platform_namespace"):
             result["platformNamespace"] = str(self.platform_namespace)
         elif include_empty:
-            result["platformNamespace"] = str()
+            result["platformNamespace"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class ModelUnlinkUserPlatformRequest(Model):
         if "platformNamespace" in dict_ and dict_["platformNamespace"] is not None:
             instance.platform_namespace = str(dict_["platformNamespace"])
         elif include_empty:
-            instance.platform_namespace = str()
+            instance.platform_namespace = ""
         return instance
 
     @classmethod

@@ -163,15 +163,15 @@ class EntitlementSummary(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -179,39 +179,39 @@ class EntitlementSummary(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "granted_code"):
             result["grantedCode"] = str(self.granted_code)
         elif include_empty:
-            result["grantedCode"] = str()
+            result["grantedCode"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
-            result["stackable"] = bool()
+            result["stackable"] = False
         if hasattr(self, "stacked_use_count"):
             result["stackedUseCount"] = int(self.stacked_use_count)
         elif include_empty:
-            result["stackedUseCount"] = int()
+            result["stackedUseCount"] = 0
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
-            result["startDate"] = str()
+            result["startDate"] = ""
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         return result
 
     # endregion to methods
@@ -272,15 +272,15 @@ class EntitlementSummary(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -288,39 +288,39 @@ class EntitlementSummary(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
             instance.granted_code = str(dict_["grantedCode"])
         elif include_empty:
-            instance.granted_code = str()
+            instance.granted_code = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
-            instance.stackable = bool()
+            instance.stackable = False
         if "stackedUseCount" in dict_ and dict_["stackedUseCount"] is not None:
             instance.stacked_use_count = int(dict_["stackedUseCount"])
         elif include_empty:
-            instance.stacked_use_count = int()
+            instance.stacked_use_count = 0
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         return instance
 
     @classmethod

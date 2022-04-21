@@ -61,11 +61,11 @@ class ModelsUpdateUserPointAdminV1Response(Model):
         if hasattr(self, "point"):
             result["point"] = float(self.point)
         elif include_empty:
-            result["point"] = float()
+            result["point"] = 0.0
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUpdateUserPointAdminV1Response(Model):
         if "point" in dict_ and dict_["point"] is not None:
             instance.point = float(dict_["point"])
         elif include_empty:
-            instance.point = float()
+            instance.point = 0.0
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

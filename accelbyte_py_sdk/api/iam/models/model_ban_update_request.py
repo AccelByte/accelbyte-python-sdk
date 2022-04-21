@@ -61,11 +61,11 @@ class ModelBanUpdateRequest(Model):
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         if hasattr(self, "skip_notif"):
             result["skipNotif"] = bool(self.skip_notif)
         elif include_empty:
-            result["skipNotif"] = bool()
+            result["skipNotif"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelBanUpdateRequest(Model):
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "skipNotif" in dict_ and dict_["skipNotif"] is not None:
             instance.skip_notif = bool(dict_["skipNotif"])
         elif include_empty:
-            instance.skip_notif = bool()
+            instance.skip_notif = False
         return instance
 
     @classmethod

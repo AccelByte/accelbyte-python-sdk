@@ -54,7 +54,7 @@ class CurrencyConfig(Model):
         if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
-            result["currencySymbol"] = str()
+            result["currencySymbol"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class CurrencyConfig(Model):
         if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
             instance.currency_symbol = str(dict_["currencySymbol"])
         elif include_empty:
-            instance.currency_symbol = str()
+            instance.currency_symbol = ""
         return instance
 
     @classmethod

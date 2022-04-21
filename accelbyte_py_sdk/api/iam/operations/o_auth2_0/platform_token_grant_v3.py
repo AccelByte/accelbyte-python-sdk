@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import OauthmodelErrorResponse
@@ -294,7 +295,7 @@ class PlatformTokenGrantV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: basic
+        securities: ["BASIC_AUTH", "BEARER_AUTH"]
 
         client_id: (client_id) OPTIONAL str in form_data
 
@@ -318,7 +319,7 @@ class PlatformTokenGrantV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "basic"
+    _securities: List[str] = ["BASIC_AUTH", "BEARER_AUTH"]
     _location_query: str = None
 
     client_id: str                                                                                 # OPTIONAL in [form_data]
@@ -347,8 +348,8 @@ class PlatformTokenGrantV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -357,13 +358,6 @@ class PlatformTokenGrantV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -424,19 +418,19 @@ class PlatformTokenGrantV3(Operation):
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:
-            result["device_id"] = str()
+            result["device_id"] = ""
         if hasattr(self, "platform_token") and self.platform_token:
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
-            result["platform_token"] = str()
+            result["platform_token"] = ""
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -501,19 +495,19 @@ class PlatformTokenGrantV3(Operation):
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
-            instance.device_id = str()
+            instance.device_id = ""
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
-            instance.platform_token = str()
+            instance.platform_token = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         return instance
 
     @staticmethod

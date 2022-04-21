@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -41,7 +42,7 @@ class LoginSSOClient(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         platform_id: (platformId) REQUIRED str in path
 
@@ -57,7 +58,7 @@ class LoginSSOClient(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -84,8 +85,8 @@ class LoginSSOClient(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -94,14 +95,6 @@ class LoginSSOClient(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -150,11 +143,11 @@ class LoginSSOClient(Operation):
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "payload") and self.payload:
             result["payload"] = str(self.payload)
         elif include_empty:
-            result["payload"] = str()
+            result["payload"] = ""
         return result
 
     # endregion to methods
@@ -205,11 +198,11 @@ class LoginSSOClient(Operation):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = str(dict_["payload"])
         elif include_empty:
-            instance.payload = str()
+            instance.payload = ""
         return instance
 
     @staticmethod

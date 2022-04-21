@@ -54,7 +54,7 @@ class ModelsUpdateMemberRoleRequestV1(Model):
         if hasattr(self, "member_role_name"):
             result["memberRoleName"] = str(self.member_role_name)
         elif include_empty:
-            result["memberRoleName"] = str()
+            result["memberRoleName"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsUpdateMemberRoleRequestV1(Model):
         if "memberRoleName" in dict_ and dict_["memberRoleName"] is not None:
             instance.member_role_name = str(dict_["memberRoleName"])
         elif include_empty:
-            instance.member_role_name = str()
+            instance.member_role_name = ""
         return instance
 
     @classmethod

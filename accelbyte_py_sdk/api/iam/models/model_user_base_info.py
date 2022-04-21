@@ -68,15 +68,15 @@ class ModelUserBaseInfo(Model):
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelUserBaseInfo(Model):
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

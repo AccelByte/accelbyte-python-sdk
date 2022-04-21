@@ -89,27 +89,27 @@ class Image(Model):
         if hasattr(self, "height"):
             result["height"] = int(self.height)
         elif include_empty:
-            result["height"] = int()
+            result["height"] = 0
         if hasattr(self, "image_url"):
             result["imageUrl"] = str(self.image_url)
         elif include_empty:
-            result["imageUrl"] = str()
+            result["imageUrl"] = ""
         if hasattr(self, "small_image_url"):
             result["smallImageUrl"] = str(self.small_image_url)
         elif include_empty:
-            result["smallImageUrl"] = str()
+            result["smallImageUrl"] = ""
         if hasattr(self, "width"):
             result["width"] = int(self.width)
         elif include_empty:
-            result["width"] = int()
+            result["width"] = 0
         if hasattr(self, "as_"):
             result["as"] = str(self.as_)
         elif include_empty:
-            result["as"] = str()
+            result["as"] = ""
         if hasattr(self, "caption"):
             result["caption"] = str(self.caption)
         elif include_empty:
-            result["caption"] = str()
+            result["caption"] = ""
         return result
 
     # endregion to methods
@@ -145,27 +145,27 @@ class Image(Model):
         if "height" in dict_ and dict_["height"] is not None:
             instance.height = int(dict_["height"])
         elif include_empty:
-            instance.height = int()
+            instance.height = 0
         if "imageUrl" in dict_ and dict_["imageUrl"] is not None:
             instance.image_url = str(dict_["imageUrl"])
         elif include_empty:
-            instance.image_url = str()
+            instance.image_url = ""
         if "smallImageUrl" in dict_ and dict_["smallImageUrl"] is not None:
             instance.small_image_url = str(dict_["smallImageUrl"])
         elif include_empty:
-            instance.small_image_url = str()
+            instance.small_image_url = ""
         if "width" in dict_ and dict_["width"] is not None:
             instance.width = int(dict_["width"])
         elif include_empty:
-            instance.width = int()
+            instance.width = 0
         if "as" in dict_ and dict_["as"] is not None:
             instance.as_ = str(dict_["as"])
         elif include_empty:
-            instance.as_ = str()
+            instance.as_ = ""
         if "caption" in dict_ and dict_["caption"] is not None:
             instance.caption = str(dict_["caption"])
         elif include_empty:
-            instance.caption = str()
+            instance.caption = ""
         return instance
 
     @classmethod

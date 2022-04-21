@@ -233,7 +233,7 @@ class ModelUserResponse(Model):
         if hasattr(self, "auth_type"):
             result["AuthType"] = str(self.auth_type)
         elif include_empty:
-            result["AuthType"] = str()
+            result["AuthType"] = ""
         if hasattr(self, "bans"):
             result["Bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
@@ -241,47 +241,47 @@ class ModelUserResponse(Model):
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
-            result["CreatedAt"] = str()
+            result["CreatedAt"] = ""
         if hasattr(self, "date_of_birth"):
             result["DateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["DateOfBirth"] = str()
+            result["DateOfBirth"] = ""
         if hasattr(self, "deletion_status"):
             result["DeletionStatus"] = bool(self.deletion_status)
         elif include_empty:
-            result["DeletionStatus"] = bool()
+            result["DeletionStatus"] = False
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "email_verified"):
             result["EmailVerified"] = bool(self.email_verified)
         elif include_empty:
-            result["EmailVerified"] = bool()
+            result["EmailVerified"] = False
         if hasattr(self, "enabled"):
             result["Enabled"] = bool(self.enabled)
         elif include_empty:
-            result["Enabled"] = bool()
+            result["Enabled"] = False
         if hasattr(self, "last_date_of_birth_changed_time"):
             result["LastDateOfBirthChangedTime"] = str(self.last_date_of_birth_changed_time)
         elif include_empty:
-            result["LastDateOfBirthChangedTime"] = str()
+            result["LastDateOfBirthChangedTime"] = ""
         if hasattr(self, "last_enabled_changed_time"):
             result["LastEnabledChangedTime"] = str(self.last_enabled_changed_time)
         elif include_empty:
-            result["LastEnabledChangedTime"] = str()
+            result["LastEnabledChangedTime"] = ""
         if hasattr(self, "login_id"):
             result["LoginId"] = str(self.login_id)
         elif include_empty:
-            result["LoginId"] = str()
+            result["LoginId"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "namespace_roles"):
             result["NamespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
@@ -289,7 +289,7 @@ class ModelUserResponse(Model):
         if hasattr(self, "old_email_address"):
             result["OldEmailAddress"] = str(self.old_email_address)
         elif include_empty:
-            result["OldEmailAddress"] = str()
+            result["OldEmailAddress"] = ""
         if hasattr(self, "permissions"):
             result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
@@ -297,7 +297,7 @@ class ModelUserResponse(Model):
         if hasattr(self, "phone_verified"):
             result["PhoneVerified"] = bool(self.phone_verified)
         elif include_empty:
-            result["PhoneVerified"] = bool()
+            result["PhoneVerified"] = False
         if hasattr(self, "roles"):
             result["Roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -305,35 +305,35 @@ class ModelUserResponse(Model):
         if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
-            result["UserId"] = str()
+            result["UserId"] = ""
         if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
-            result["EmailAddress"] = str()
+            result["EmailAddress"] = ""
         if hasattr(self, "new_email_address"):
             result["NewEmailAddress"] = str(self.new_email_address)
         elif include_empty:
-            result["NewEmailAddress"] = str()
+            result["NewEmailAddress"] = ""
         if hasattr(self, "phone_number"):
             result["PhoneNumber"] = str(self.phone_number)
         elif include_empty:
-            result["PhoneNumber"] = str()
+            result["PhoneNumber"] = ""
         if hasattr(self, "platform_id"):
             result["PlatformId"] = str(self.platform_id)
         elif include_empty:
-            result["PlatformId"] = str()
+            result["PlatformId"] = ""
         if hasattr(self, "platform_user_id"):
             result["PlatformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["PlatformUserId"] = str()
+            result["PlatformUserId"] = ""
         if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
-            result["Username"] = str()
+            result["Username"] = ""
         if hasattr(self, "xuid"):
             result["XUID"] = str(self.xuid)
         elif include_empty:
-            result["XUID"] = str()
+            result["XUID"] = ""
         return result
 
     # endregion to methods
@@ -414,7 +414,7 @@ class ModelUserResponse(Model):
         if "AuthType" in dict_ and dict_["AuthType"] is not None:
             instance.auth_type = str(dict_["AuthType"])
         elif include_empty:
-            instance.auth_type = str()
+            instance.auth_type = ""
         if "Bans" in dict_ and dict_["Bans"] is not None:
             instance.bans = [ModelUserActiveBanResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Bans"]]
         elif include_empty:
@@ -422,47 +422,47 @@ class ModelUserResponse(Model):
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "DateOfBirth" in dict_ and dict_["DateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["DateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "DeletionStatus" in dict_ and dict_["DeletionStatus"] is not None:
             instance.deletion_status = bool(dict_["DeletionStatus"])
         elif include_empty:
-            instance.deletion_status = bool()
+            instance.deletion_status = False
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "EmailVerified" in dict_ and dict_["EmailVerified"] is not None:
             instance.email_verified = bool(dict_["EmailVerified"])
         elif include_empty:
-            instance.email_verified = bool()
+            instance.email_verified = False
         if "Enabled" in dict_ and dict_["Enabled"] is not None:
             instance.enabled = bool(dict_["Enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "LastDateOfBirthChangedTime" in dict_ and dict_["LastDateOfBirthChangedTime"] is not None:
             instance.last_date_of_birth_changed_time = str(dict_["LastDateOfBirthChangedTime"])
         elif include_empty:
-            instance.last_date_of_birth_changed_time = str()
+            instance.last_date_of_birth_changed_time = ""
         if "LastEnabledChangedTime" in dict_ and dict_["LastEnabledChangedTime"] is not None:
             instance.last_enabled_changed_time = str(dict_["LastEnabledChangedTime"])
         elif include_empty:
-            instance.last_enabled_changed_time = str()
+            instance.last_enabled_changed_time = ""
         if "LoginId" in dict_ and dict_["LoginId"] is not None:
             instance.login_id = str(dict_["LoginId"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "NamespaceRoles" in dict_ and dict_["NamespaceRoles"] is not None:
             instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["NamespaceRoles"]]
         elif include_empty:
@@ -470,7 +470,7 @@ class ModelUserResponse(Model):
         if "OldEmailAddress" in dict_ and dict_["OldEmailAddress"] is not None:
             instance.old_email_address = str(dict_["OldEmailAddress"])
         elif include_empty:
-            instance.old_email_address = str()
+            instance.old_email_address = ""
         if "Permissions" in dict_ and dict_["Permissions"] is not None:
             instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
         elif include_empty:
@@ -478,7 +478,7 @@ class ModelUserResponse(Model):
         if "PhoneVerified" in dict_ and dict_["PhoneVerified"] is not None:
             instance.phone_verified = bool(dict_["PhoneVerified"])
         elif include_empty:
-            instance.phone_verified = bool()
+            instance.phone_verified = False
         if "Roles" in dict_ and dict_["Roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["Roles"]]
         elif include_empty:
@@ -486,35 +486,35 @@ class ModelUserResponse(Model):
         if "UserId" in dict_ and dict_["UserId"] is not None:
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
             instance.email_address = str(dict_["EmailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "NewEmailAddress" in dict_ and dict_["NewEmailAddress"] is not None:
             instance.new_email_address = str(dict_["NewEmailAddress"])
         elif include_empty:
-            instance.new_email_address = str()
+            instance.new_email_address = ""
         if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
             instance.phone_number = str(dict_["PhoneNumber"])
         elif include_empty:
-            instance.phone_number = str()
+            instance.phone_number = ""
         if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
             instance.platform_id = str(dict_["PlatformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "PlatformUserId" in dict_ and dict_["PlatformUserId"] is not None:
             instance.platform_user_id = str(dict_["PlatformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "Username" in dict_ and dict_["Username"] is not None:
             instance.username = str(dict_["Username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         if "XUID" in dict_ and dict_["XUID"] is not None:
             instance.xuid = str(dict_["XUID"])
         elif include_empty:
-            instance.xuid = str()
+            instance.xuid = ""
         return instance
 
     @classmethod

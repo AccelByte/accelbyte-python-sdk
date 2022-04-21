@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsGetGroupsListResponseV1
@@ -59,7 +60,7 @@ class GetGroupListAdminV1(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -91,7 +92,7 @@ class GetGroupListAdminV1(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -122,8 +123,8 @@ class GetGroupListAdminV1(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -132,14 +133,6 @@ class GetGroupListAdminV1(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -212,27 +205,27 @@ class GetGroupListAdminV1(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "configuration_code") and self.configuration_code:
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
-            result["configurationCode"] = str()
+            result["configurationCode"] = ""
         if hasattr(self, "group_name") and self.group_name:
             result["groupName"] = str(self.group_name)
         elif include_empty:
-            result["groupName"] = str()
+            result["groupName"] = ""
         if hasattr(self, "group_region") and self.group_region:
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
-            result["groupRegion"] = str()
+            result["groupRegion"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -311,27 +304,27 @@ class GetGroupListAdminV1(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
-            instance.configuration_code = str()
+            instance.configuration_code = ""
         if "groupName" in dict_ and dict_["groupName"] is not None:
             instance.group_name = str(dict_["groupName"])
         elif include_empty:
-            instance.group_name = str()
+            instance.group_name = ""
         if "groupRegion" in dict_ and dict_["groupRegion"] is not None:
             instance.group_region = str(dict_["groupRegion"])
         elif include_empty:
-            instance.group_region = str()
+            instance.group_region = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         return instance
 
     @staticmethod

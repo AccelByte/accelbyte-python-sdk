@@ -83,7 +83,7 @@ class BulkStatItemUpdate(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "update_strategy"):
             result["updateStrategy"] = str(self.update_strategy)
         elif include_empty:
@@ -91,7 +91,7 @@ class BulkStatItemUpdate(Model):
         if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
-            result["value"] = float()
+            result["value"] = 0.0
         if hasattr(self, "additional_data"):
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
@@ -126,7 +126,7 @@ class BulkStatItemUpdate(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "updateStrategy" in dict_ and dict_["updateStrategy"] is not None:
             instance.update_strategy = str(dict_["updateStrategy"])
         elif include_empty:
@@ -134,7 +134,7 @@ class BulkStatItemUpdate(Model):
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = float(dict_["value"])
         elif include_empty:
-            instance.value = float()
+            instance.value = 0.0
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:

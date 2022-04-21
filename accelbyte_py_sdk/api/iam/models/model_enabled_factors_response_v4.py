@@ -61,7 +61,7 @@ class ModelEnabledFactorsResponseV4(Model):
         if hasattr(self, "default"):
             result["default"] = str(self.default)
         elif include_empty:
-            result["default"] = str()
+            result["default"] = ""
         if hasattr(self, "enabled"):
             result["enabled"] = [str(i0) for i0 in self.enabled]
         elif include_empty:
@@ -91,7 +91,7 @@ class ModelEnabledFactorsResponseV4(Model):
         if "default" in dict_ and dict_["default"] is not None:
             instance.default = str(dict_["default"])
         elif include_empty:
-            instance.default = str()
+            instance.default = ""
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = [str(i0) for i0 in dict_["enabled"]]
         elif include_empty:

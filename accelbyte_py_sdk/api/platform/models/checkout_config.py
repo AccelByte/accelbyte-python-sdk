@@ -61,11 +61,11 @@ class CheckoutConfig(Model):
         if hasattr(self, "public_key"):
             result["publicKey"] = str(self.public_key)
         elif include_empty:
-            result["publicKey"] = str()
+            result["publicKey"] = ""
         if hasattr(self, "secret_key"):
             result["secretKey"] = str(self.secret_key)
         elif include_empty:
-            result["secretKey"] = str()
+            result["secretKey"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class CheckoutConfig(Model):
         if "publicKey" in dict_ and dict_["publicKey"] is not None:
             instance.public_key = str(dict_["publicKey"])
         elif include_empty:
-            instance.public_key = str()
+            instance.public_key = ""
         if "secretKey" in dict_ and dict_["secretKey"] is not None:
             instance.secret_key = str(dict_["secretKey"])
         elif include_empty:
-            instance.secret_key = str()
+            instance.secret_key = ""
         return instance
 
     @classmethod

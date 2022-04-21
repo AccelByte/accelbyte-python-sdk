@@ -68,15 +68,15 @@ class UserRewardClaim(Model):
         if hasattr(self, "pass_code"):
             result["passCode"] = str(self.pass_code)
         elif include_empty:
-            result["passCode"] = str()
+            result["passCode"] = ""
         if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
-            result["rewardCode"] = str()
+            result["rewardCode"] = ""
         if hasattr(self, "tier_index"):
             result["tierIndex"] = int(self.tier_index)
         elif include_empty:
-            result["tierIndex"] = int()
+            result["tierIndex"] = 0
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class UserRewardClaim(Model):
         if "passCode" in dict_ and dict_["passCode"] is not None:
             instance.pass_code = str(dict_["passCode"])
         elif include_empty:
-            instance.pass_code = str()
+            instance.pass_code = ""
         if "rewardCode" in dict_ and dict_["rewardCode"] is not None:
             instance.reward_code = str(dict_["rewardCode"])
         elif include_empty:
-            instance.reward_code = str()
+            instance.reward_code = ""
         if "tierIndex" in dict_ and dict_["tierIndex"] is not None:
             instance.tier_index = int(dict_["tierIndex"])
         elif include_empty:
-            instance.tier_index = int()
+            instance.tier_index = 0
         return instance
 
     @classmethod

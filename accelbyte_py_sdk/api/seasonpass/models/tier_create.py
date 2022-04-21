@@ -70,11 +70,11 @@ class TierCreate(Model):
         if hasattr(self, "index"):
             result["index"] = int(self.index)
         elif include_empty:
-            result["index"] = int()
+            result["index"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "tier"):
             result["tier"] = self.tier.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -109,11 +109,11 @@ class TierCreate(Model):
         if "index" in dict_ and dict_["index"] is not None:
             instance.index = int(dict_["index"])
         elif include_empty:
-            instance.index = int()
+            instance.index = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "tier" in dict_ and dict_["tier"] is not None:
             instance.tier = TierInput.create_from_dict(dict_["tier"], include_empty=include_empty)
         elif include_empty:

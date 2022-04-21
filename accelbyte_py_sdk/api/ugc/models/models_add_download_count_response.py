@@ -54,7 +54,7 @@ class ModelsAddDownloadCountResponse(Model):
         if hasattr(self, "content_id"):
             result["contentId"] = str(self.content_id)
         elif include_empty:
-            result["contentId"] = str()
+            result["contentId"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsAddDownloadCountResponse(Model):
         if "contentId" in dict_ and dict_["contentId"] is not None:
             instance.content_id = str(dict_["contentId"])
         elif include_empty:
-            instance.content_id = str()
+            instance.content_id = ""
         return instance
 
     @classmethod

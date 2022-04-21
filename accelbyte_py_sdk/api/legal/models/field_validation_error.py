@@ -82,19 +82,19 @@ class FieldValidationError(Model):
         if hasattr(self, "error_code"):
             result["errorCode"] = str(self.error_code)
         elif include_empty:
-            result["errorCode"] = str()
+            result["errorCode"] = ""
         if hasattr(self, "error_field"):
             result["errorField"] = str(self.error_field)
         elif include_empty:
-            result["errorField"] = str()
+            result["errorField"] = ""
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
-            result["errorMessage"] = str()
+            result["errorMessage"] = ""
         if hasattr(self, "error_value"):
             result["errorValue"] = str(self.error_value)
         elif include_empty:
-            result["errorValue"] = str()
+            result["errorValue"] = ""
         if hasattr(self, "message_variables"):
             result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
@@ -135,19 +135,19 @@ class FieldValidationError(Model):
         if "errorCode" in dict_ and dict_["errorCode"] is not None:
             instance.error_code = str(dict_["errorCode"])
         elif include_empty:
-            instance.error_code = str()
+            instance.error_code = ""
         if "errorField" in dict_ and dict_["errorField"] is not None:
             instance.error_field = str(dict_["errorField"])
         elif include_empty:
-            instance.error_field = str()
+            instance.error_field = ""
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
-            instance.error_message = str()
+            instance.error_message = ""
         if "errorValue" in dict_ and dict_["errorValue"] is not None:
             instance.error_value = str(dict_["errorValue"])
         elif include_empty:
-            instance.error_value = str()
+            instance.error_value = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
         elif include_empty:

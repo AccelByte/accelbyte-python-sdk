@@ -61,11 +61,11 @@ class OauthmodelTokenThirdPartyResponse(Model):
         if hasattr(self, "platform_token"):
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
-            result["platform_token"] = str()
+            result["platform_token"] = ""
         if hasattr(self, "sand_box_id"):
             result["sand_box_id"] = str(self.sand_box_id)
         elif include_empty:
-            result["sand_box_id"] = str()
+            result["sand_box_id"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class OauthmodelTokenThirdPartyResponse(Model):
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
-            instance.platform_token = str()
+            instance.platform_token = ""
         if "sand_box_id" in dict_ and dict_["sand_box_id"] is not None:
             instance.sand_box_id = str(dict_["sand_box_id"])
         elif include_empty:
-            instance.sand_box_id = str()
+            instance.sand_box_id = ""
         return instance
 
     @classmethod

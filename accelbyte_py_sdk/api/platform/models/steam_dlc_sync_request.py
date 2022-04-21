@@ -61,11 +61,11 @@ class SteamDLCSyncRequest(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "steam_id"):
             result["steamId"] = str(self.steam_id)
         elif include_empty:
-            result["steamId"] = str()
+            result["steamId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class SteamDLCSyncRequest(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "steamId" in dict_ and dict_["steamId"] is not None:
             instance.steam_id = str(dict_["steamId"])
         elif include_empty:
-            instance.steam_id = str()
+            instance.steam_id = ""
         return instance
 
     @classmethod

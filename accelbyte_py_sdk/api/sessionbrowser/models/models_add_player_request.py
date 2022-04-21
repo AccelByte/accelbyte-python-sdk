@@ -61,11 +61,11 @@ class ModelsAddPlayerRequest(Model):
         if hasattr(self, "as_spectator"):
             result["as_spectator"] = bool(self.as_spectator)
         elif include_empty:
-            result["as_spectator"] = bool()
+            result["as_spectator"] = False
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsAddPlayerRequest(Model):
         if "as_spectator" in dict_ and dict_["as_spectator"] is not None:
             instance.as_spectator = bool(dict_["as_spectator"])
         elif include_empty:
-            instance.as_spectator = bool()
+            instance.as_spectator = False
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

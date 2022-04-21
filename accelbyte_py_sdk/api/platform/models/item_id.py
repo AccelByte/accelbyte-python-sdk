@@ -54,7 +54,7 @@ class ItemId(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ItemId(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         return instance
 
     @classmethod

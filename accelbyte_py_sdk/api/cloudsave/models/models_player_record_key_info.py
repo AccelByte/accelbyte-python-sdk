@@ -61,11 +61,11 @@ class ModelsPlayerRecordKeyInfo(Model):
         if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
-            result["key"] = str()
+            result["key"] = ""
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsPlayerRecordKeyInfo(Model):
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])
         elif include_empty:
-            instance.key = str()
+            instance.key = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

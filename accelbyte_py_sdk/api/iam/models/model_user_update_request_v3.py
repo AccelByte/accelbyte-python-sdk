@@ -82,23 +82,23 @@ class ModelUserUpdateRequestV3(Model):
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
-            result["country"] = str()
+            result["country"] = ""
         if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["dateOfBirth"] = str()
+            result["dateOfBirth"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
-            result["languageTag"] = str()
+            result["languageTag"] = ""
         if hasattr(self, "user_name"):
             result["userName"] = str(self.user_name)
         elif include_empty:
-            result["userName"] = str()
+            result["userName"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class ModelUserUpdateRequestV3(Model):
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         if "userName" in dict_ and dict_["userName"] is not None:
             instance.user_name = str(dict_["userName"])
         elif include_empty:
-            instance.user_name = str()
+            instance.user_name = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelRequestFriendsRequest(Model):
         if hasattr(self, "friend_id"):
             result["friendId"] = str(self.friend_id)
         elif include_empty:
-            result["friendId"] = str()
+            result["friendId"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelRequestFriendsRequest(Model):
         if "friendId" in dict_ and dict_["friendId"] is not None:
             instance.friend_id = str(dict_["friendId"])
         elif include_empty:
-            instance.friend_id = str()
+            instance.friend_id = ""
         return instance
 
     @classmethod

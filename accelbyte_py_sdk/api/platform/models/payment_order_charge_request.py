@@ -84,11 +84,11 @@ class PaymentOrderChargeRequest(Model):
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
-            result["extTxId"] = str()
+            result["extTxId"] = ""
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
-            result["paymentMethod"] = str()
+            result["paymentMethod"] = ""
         return result
 
     # endregion to methods
@@ -122,11 +122,11 @@ class PaymentOrderChargeRequest(Model):
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
-            instance.ext_tx_id = str()
+            instance.ext_tx_id = ""
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
-            instance.payment_method = str()
+            instance.payment_method = ""
         return instance
 
     @classmethod

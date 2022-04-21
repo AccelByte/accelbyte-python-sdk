@@ -54,7 +54,7 @@ class SteamIAPConfigRequest(Model):
         if hasattr(self, "publisher_authentication_key"):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
-            result["publisherAuthenticationKey"] = str()
+            result["publisherAuthenticationKey"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class SteamIAPConfigRequest(Model):
         if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
-            instance.publisher_authentication_key = str()
+            instance.publisher_authentication_key = ""
         return instance
 
     @classmethod

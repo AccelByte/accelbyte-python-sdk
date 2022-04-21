@@ -75,19 +75,19 @@ class FileUploadUrlInfo(Model):
         if hasattr(self, "access_url"):
             result["accessUrl"] = str(self.access_url)
         elif include_empty:
-            result["accessUrl"] = str()
+            result["accessUrl"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "method"):
             result["method"] = str(self.method)
         elif include_empty:
-            result["method"] = str()
+            result["method"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class FileUploadUrlInfo(Model):
         if "accessUrl" in dict_ and dict_["accessUrl"] is not None:
             instance.access_url = str(dict_["accessUrl"])
         elif include_empty:
-            instance.access_url = str()
+            instance.access_url = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "method" in dict_ and dict_["method"] is not None:
             instance.method = str(dict_["method"])
         elif include_empty:
-            instance.method = str()
+            instance.method = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         return instance
 
     @classmethod

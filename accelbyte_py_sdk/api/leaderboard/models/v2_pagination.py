@@ -75,19 +75,19 @@ class V2Pagination(Model):
         if hasattr(self, "first"):
             result["first"] = str(self.first)
         elif include_empty:
-            result["first"] = str()
+            result["first"] = ""
         if hasattr(self, "last"):
             result["last"] = str(self.last)
         elif include_empty:
-            result["last"] = str()
+            result["last"] = ""
         if hasattr(self, "next_"):
             result["next"] = str(self.next_)
         elif include_empty:
-            result["next"] = str()
+            result["next"] = ""
         if hasattr(self, "previous"):
             result["previous"] = str(self.previous)
         elif include_empty:
-            result["previous"] = str()
+            result["previous"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class V2Pagination(Model):
         if "first" in dict_ and dict_["first"] is not None:
             instance.first = str(dict_["first"])
         elif include_empty:
-            instance.first = str()
+            instance.first = ""
         if "last" in dict_ and dict_["last"] is not None:
             instance.last = str(dict_["last"])
         elif include_empty:
-            instance.last = str()
+            instance.last = ""
         if "next" in dict_ and dict_["next"] is not None:
             instance.next_ = str(dict_["next"])
         elif include_empty:
-            instance.next_ = str()
+            instance.next_ = ""
         if "previous" in dict_ and dict_["previous"] is not None:
             instance.previous = str(dict_["previous"])
         elif include_empty:
-            instance.previous = str()
+            instance.previous = ""
         return instance
 
     @classmethod

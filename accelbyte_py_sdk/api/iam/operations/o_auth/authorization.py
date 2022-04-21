@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -143,7 +144,7 @@ class Authorization(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         location query: PLACEHOLDER
 
@@ -171,7 +172,7 @@ class Authorization(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = "PLACEHOLDER"
 
     login: str                                                                                     # OPTIONAL in [form_data]
@@ -203,8 +204,8 @@ class Authorization(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -213,12 +214,6 @@ class Authorization(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -300,27 +295,27 @@ class Authorization(Operation):
         if hasattr(self, "login") and self.login:
             result["login"] = str(self.login)
         elif include_empty:
-            result["login"] = str()
+            result["login"] = ""
         if hasattr(self, "password") and self.password:
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "scope") and self.scope:
             result["scope"] = str(self.scope)
         elif include_empty:
-            result["scope"] = str()
+            result["scope"] = ""
         if hasattr(self, "state") and self.state:
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "response_type") and self.response_type:
             result["response_type"] = str(self.response_type)
         elif include_empty:
@@ -388,27 +383,27 @@ class Authorization(Operation):
         if "login" in dict_ and dict_["login"] is not None:
             instance.login = str(dict_["login"])
         elif include_empty:
-            instance.login = str()
+            instance.login = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
-            instance.scope = str()
+            instance.scope = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "response_type" in dict_ and dict_["response_type"] is not None:
             instance.response_type = str(dict_["response_type"])
         elif include_empty:

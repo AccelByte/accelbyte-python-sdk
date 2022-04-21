@@ -117,23 +117,23 @@ class SeasonSummary(Model):
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -149,7 +149,7 @@ class SeasonSummary(Model):
         if hasattr(self, "published_at"):
             result["publishedAt"] = str(self.published_at)
         elif include_empty:
-            result["publishedAt"] = str()
+            result["publishedAt"] = ""
         return result
 
     # endregion to methods
@@ -192,23 +192,23 @@ class SeasonSummary(Model):
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -224,7 +224,7 @@ class SeasonSummary(Model):
         if "publishedAt" in dict_ and dict_["publishedAt"] is not None:
             instance.published_at = str(dict_["publishedAt"])
         elif include_empty:
-            instance.published_at = str()
+            instance.published_at = ""
         return instance
 
     @classmethod

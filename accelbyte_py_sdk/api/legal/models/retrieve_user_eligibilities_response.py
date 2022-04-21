@@ -133,31 +133,31 @@ class RetrieveUserEligibilitiesResponse(Model):
         if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "is_accepted"):
             result["isAccepted"] = bool(self.is_accepted)
         elif include_empty:
-            result["isAccepted"] = bool()
+            result["isAccepted"] = False
         if hasattr(self, "is_mandatory"):
             result["isMandatory"] = bool(self.is_mandatory)
         elif include_empty:
-            result["isMandatory"] = bool()
+            result["isMandatory"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "policy_id"):
             result["policyId"] = str(self.policy_id)
         elif include_empty:
-            result["policyId"] = str()
+            result["policyId"] = ""
         if hasattr(self, "policy_name"):
             result["policyName"] = str(self.policy_name)
         elif include_empty:
-            result["policyName"] = str()
+            result["policyName"] = ""
         if hasattr(self, "policy_type"):
             result["policyType"] = str(self.policy_type)
         elif include_empty:
-            result["policyType"] = str()
+            result["policyType"] = ""
         if hasattr(self, "base_urls"):
             result["baseUrls"] = [str(i0) for i0 in self.base_urls]
         elif include_empty:
@@ -165,11 +165,11 @@ class RetrieveUserEligibilitiesResponse(Model):
         if hasattr(self, "country_group_code"):
             result["countryGroupCode"] = str(self.country_group_code)
         elif include_empty:
-            result["countryGroupCode"] = str()
+            result["countryGroupCode"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "policy_versions"):
             result["policyVersions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions]
         elif include_empty:
@@ -177,7 +177,7 @@ class RetrieveUserEligibilitiesResponse(Model):
         if hasattr(self, "readable_id"):
             result["readableId"] = str(self.readable_id)
         elif include_empty:
-            result["readableId"] = str()
+            result["readableId"] = ""
         return result
 
     # endregion to methods
@@ -228,31 +228,31 @@ class RetrieveUserEligibilitiesResponse(Model):
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "isAccepted" in dict_ and dict_["isAccepted"] is not None:
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
-            instance.is_accepted = bool()
+            instance.is_accepted = False
         if "isMandatory" in dict_ and dict_["isMandatory"] is not None:
             instance.is_mandatory = bool(dict_["isMandatory"])
         elif include_empty:
-            instance.is_mandatory = bool()
+            instance.is_mandatory = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "policyId" in dict_ and dict_["policyId"] is not None:
             instance.policy_id = str(dict_["policyId"])
         elif include_empty:
-            instance.policy_id = str()
+            instance.policy_id = ""
         if "policyName" in dict_ and dict_["policyName"] is not None:
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
-            instance.policy_name = str()
+            instance.policy_name = ""
         if "policyType" in dict_ and dict_["policyType"] is not None:
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
-            instance.policy_type = str()
+            instance.policy_type = ""
         if "baseUrls" in dict_ and dict_["baseUrls"] is not None:
             instance.base_urls = [str(i0) for i0 in dict_["baseUrls"]]
         elif include_empty:
@@ -260,11 +260,11 @@ class RetrieveUserEligibilitiesResponse(Model):
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])
         elif include_empty:
-            instance.country_group_code = str()
+            instance.country_group_code = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "policyVersions" in dict_ and dict_["policyVersions"] is not None:
             instance.policy_versions = [PolicyVersionWithLocalizedVersionObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["policyVersions"]]
         elif include_empty:
@@ -272,7 +272,7 @@ class RetrieveUserEligibilitiesResponse(Model):
         if "readableId" in dict_ and dict_["readableId"] is not None:
             instance.readable_id = str(dict_["readableId"])
         elif include_empty:
-            instance.readable_id = str()
+            instance.readable_id = ""
         return instance
 
     @classmethod

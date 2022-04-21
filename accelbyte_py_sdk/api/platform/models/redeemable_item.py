@@ -75,19 +75,19 @@ class RedeemableItem(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_name"):
             result["itemName"] = str(self.item_name)
         elif include_empty:
-            result["itemName"] = str()
+            result["itemName"] = ""
         if hasattr(self, "extra_subscription_days"):
             result["extraSubscriptionDays"] = int(self.extra_subscription_days)
         elif include_empty:
-            result["extraSubscriptionDays"] = int()
+            result["extraSubscriptionDays"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         return result
 
     # endregion to methods
@@ -119,19 +119,19 @@ class RedeemableItem(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemName" in dict_ and dict_["itemName"] is not None:
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
-            instance.item_name = str()
+            instance.item_name = ""
         if "extraSubscriptionDays" in dict_ and dict_["extraSubscriptionDays"] is not None:
             instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
         elif include_empty:
-            instance.extra_subscription_days = int()
+            instance.extra_subscription_days = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         return instance
 
     @classmethod

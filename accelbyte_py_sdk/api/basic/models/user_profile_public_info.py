@@ -96,15 +96,15 @@ class UserProfilePublicInfo(Model):
         if hasattr(self, "avatar_large_url"):
             result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
-            result["avatarLargeUrl"] = str()
+            result["avatarLargeUrl"] = ""
         if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
-            result["avatarSmallUrl"] = str()
+            result["avatarSmallUrl"] = ""
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
@@ -112,15 +112,15 @@ class UserProfilePublicInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
-            result["timeZone"] = str()
+            result["timeZone"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -163,15 +163,15 @@ class UserProfilePublicInfo(Model):
         if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
             instance.avatar_large_url = str(dict_["avatarLargeUrl"])
         elif include_empty:
-            instance.avatar_large_url = str()
+            instance.avatar_large_url = ""
         if "avatarSmallUrl" in dict_ and dict_["avatarSmallUrl"] is not None:
             instance.avatar_small_url = str(dict_["avatarSmallUrl"])
         elif include_empty:
-            instance.avatar_small_url = str()
+            instance.avatar_small_url = ""
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:
@@ -179,15 +179,15 @@ class UserProfilePublicInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:
-            instance.time_zone = str()
+            instance.time_zone = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

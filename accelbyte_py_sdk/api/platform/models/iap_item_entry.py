@@ -74,7 +74,7 @@ class IAPItemEntry(Model):
         if hasattr(self, "item_identity"):
             result["itemIdentity"] = str(self.item_identity)
         elif include_empty:
-            result["itemIdentity"] = str()
+            result["itemIdentity"] = ""
         if hasattr(self, "item_identity_type"):
             result["itemIdentityType"] = str(self.item_identity_type)
         elif include_empty:
@@ -113,7 +113,7 @@ class IAPItemEntry(Model):
         if "itemIdentity" in dict_ and dict_["itemIdentity"] is not None:
             instance.item_identity = str(dict_["itemIdentity"])
         elif include_empty:
-            instance.item_identity = str()
+            instance.item_identity = ""
         if "itemIdentityType" in dict_ and dict_["itemIdentityType"] is not None:
             instance.item_identity_type = str(dict_["itemIdentityType"])
         elif include_empty:

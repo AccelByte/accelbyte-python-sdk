@@ -384,39 +384,39 @@ class Order(Model):
         if hasattr(self, "chargeback_reversed_time"):
             result["chargebackReversedTime"] = str(self.chargeback_reversed_time)
         elif include_empty:
-            result["chargebackReversedTime"] = str()
+            result["chargebackReversedTime"] = ""
         if hasattr(self, "chargeback_time"):
             result["chargebackTime"] = str(self.chargeback_time)
         elif include_empty:
-            result["chargebackTime"] = str()
+            result["chargebackTime"] = ""
         if hasattr(self, "charged"):
             result["charged"] = bool(self.charged)
         elif include_empty:
-            result["charged"] = bool()
+            result["charged"] = False
         if hasattr(self, "charged_time"):
             result["chargedTime"] = str(self.charged_time)
         elif include_empty:
-            result["chargedTime"] = str()
+            result["chargedTime"] = ""
         if hasattr(self, "count_item_id"):
             result["countItemId"] = str(self.count_item_id)
         elif include_empty:
-            result["countItemId"] = str()
+            result["countItemId"] = ""
         if hasattr(self, "count_namespace"):
             result["countNamespace"] = str(self.count_namespace)
         elif include_empty:
-            result["countNamespace"] = str()
+            result["countNamespace"] = ""
         if hasattr(self, "count_user_id"):
             result["countUserId"] = str(self.count_user_id)
         elif include_empty:
-            result["countUserId"] = str()
+            result["countUserId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["createdTime"] = str()
+            result["createdTime"] = ""
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -424,11 +424,11 @@ class Order(Model):
         if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
-            result["discountedPrice"] = int()
+            result["discountedPrice"] = 0
         if hasattr(self, "expire_time"):
             result["expireTime"] = str(self.expire_time)
         elif include_empty:
-            result["expireTime"] = str()
+            result["expireTime"] = ""
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -436,15 +436,15 @@ class Order(Model):
         if hasattr(self, "free"):
             result["free"] = bool(self.free)
         elif include_empty:
-            result["free"] = bool()
+            result["free"] = False
         if hasattr(self, "fulfilled_time"):
             result["fulfilledTime"] = str(self.fulfilled_time)
         elif include_empty:
-            result["fulfilledTime"] = str()
+            result["fulfilledTime"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -452,27 +452,27 @@ class Order(Model):
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
-            result["paymentMethod"] = str()
+            result["paymentMethod"] = ""
         if hasattr(self, "payment_method_fee"):
             result["paymentMethodFee"] = int(self.payment_method_fee)
         elif include_empty:
-            result["paymentMethodFee"] = int()
+            result["paymentMethodFee"] = 0
         if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -480,47 +480,47 @@ class Order(Model):
         if hasattr(self, "payment_provider_fee"):
             result["paymentProviderFee"] = int(self.payment_provider_fee)
         elif include_empty:
-            result["paymentProviderFee"] = int()
+            result["paymentProviderFee"] = 0
         if hasattr(self, "payment_remain_seconds"):
             result["paymentRemainSeconds"] = int(self.payment_remain_seconds)
         elif include_empty:
-            result["paymentRemainSeconds"] = int()
+            result["paymentRemainSeconds"] = 0
         if hasattr(self, "payment_station_url"):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
-            result["paymentStationUrl"] = str()
+            result["paymentStationUrl"] = ""
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
-            result["price"] = int()
+            result["price"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "refunded_time"):
             result["refundedTime"] = str(self.refunded_time)
         elif include_empty:
-            result["refundedTime"] = str()
+            result["refundedTime"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "rvn"):
             result["rvn"] = int(self.rvn)
         elif include_empty:
-            result["rvn"] = int()
+            result["rvn"] = 0
         if hasattr(self, "sales_tax"):
             result["salesTax"] = int(self.sales_tax)
         elif include_empty:
-            result["salesTax"] = int()
+            result["salesTax"] = 0
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -528,35 +528,35 @@ class Order(Model):
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
-            result["statusReason"] = str()
+            result["statusReason"] = ""
         if hasattr(self, "subtotal_price"):
             result["subtotalPrice"] = int(self.subtotal_price)
         elif include_empty:
-            result["subtotalPrice"] = int()
+            result["subtotalPrice"] = 0
         if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
-            result["tax"] = int()
+            result["tax"] = 0
         if hasattr(self, "total_price"):
             result["totalPrice"] = int(self.total_price)
         elif include_empty:
-            result["totalPrice"] = int()
+            result["totalPrice"] = 0
         if hasattr(self, "total_tax"):
             result["totalTax"] = int(self.total_tax)
         elif include_empty:
-            result["totalTax"] = int()
+            result["totalTax"] = 0
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "vat"):
             result["vat"] = int(self.vat)
         elif include_empty:
-            result["vat"] = int()
+            result["vat"] = 0
         return result
 
     # endregion to methods
@@ -710,39 +710,39 @@ class Order(Model):
         if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
             instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
         elif include_empty:
-            instance.chargeback_reversed_time = str()
+            instance.chargeback_reversed_time = ""
         if "chargebackTime" in dict_ and dict_["chargebackTime"] is not None:
             instance.chargeback_time = str(dict_["chargebackTime"])
         elif include_empty:
-            instance.chargeback_time = str()
+            instance.chargeback_time = ""
         if "charged" in dict_ and dict_["charged"] is not None:
             instance.charged = bool(dict_["charged"])
         elif include_empty:
-            instance.charged = bool()
+            instance.charged = False
         if "chargedTime" in dict_ and dict_["chargedTime"] is not None:
             instance.charged_time = str(dict_["chargedTime"])
         elif include_empty:
-            instance.charged_time = str()
+            instance.charged_time = ""
         if "countItemId" in dict_ and dict_["countItemId"] is not None:
             instance.count_item_id = str(dict_["countItemId"])
         elif include_empty:
-            instance.count_item_id = str()
+            instance.count_item_id = ""
         if "countNamespace" in dict_ and dict_["countNamespace"] is not None:
             instance.count_namespace = str(dict_["countNamespace"])
         elif include_empty:
-            instance.count_namespace = str()
+            instance.count_namespace = ""
         if "countUserId" in dict_ and dict_["countUserId"] is not None:
             instance.count_user_id = str(dict_["countUserId"])
         elif include_empty:
-            instance.count_user_id = str()
+            instance.count_user_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "createdTime" in dict_ and dict_["createdTime"] is not None:
             instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.created_time = str()
+            instance.created_time = ""
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
@@ -750,11 +750,11 @@ class Order(Model):
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
             instance.discounted_price = int(dict_["discountedPrice"])
         elif include_empty:
-            instance.discounted_price = int()
+            instance.discounted_price = 0
         if "expireTime" in dict_ and dict_["expireTime"] is not None:
             instance.expire_time = str(dict_["expireTime"])
         elif include_empty:
-            instance.expire_time = str()
+            instance.expire_time = ""
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -762,15 +762,15 @@ class Order(Model):
         if "free" in dict_ and dict_["free"] is not None:
             instance.free = bool(dict_["free"])
         elif include_empty:
-            instance.free = bool()
+            instance.free = False
         if "fulfilledTime" in dict_ and dict_["fulfilledTime"] is not None:
             instance.fulfilled_time = str(dict_["fulfilledTime"])
         elif include_empty:
-            instance.fulfilled_time = str()
+            instance.fulfilled_time = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
             instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
         elif include_empty:
@@ -778,27 +778,27 @@ class Order(Model):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
-            instance.payment_method = str()
+            instance.payment_method = ""
         if "paymentMethodFee" in dict_ and dict_["paymentMethodFee"] is not None:
             instance.payment_method_fee = int(dict_["paymentMethodFee"])
         elif include_empty:
-            instance.payment_method_fee = int()
+            instance.payment_method_fee = 0
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
@@ -806,47 +806,47 @@ class Order(Model):
         if "paymentProviderFee" in dict_ and dict_["paymentProviderFee"] is not None:
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:
-            instance.payment_provider_fee = int()
+            instance.payment_provider_fee = 0
         if "paymentRemainSeconds" in dict_ and dict_["paymentRemainSeconds"] is not None:
             instance.payment_remain_seconds = int(dict_["paymentRemainSeconds"])
         elif include_empty:
-            instance.payment_remain_seconds = int()
+            instance.payment_remain_seconds = 0
         if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
             instance.payment_station_url = str(dict_["paymentStationUrl"])
         elif include_empty:
-            instance.payment_station_url = str()
+            instance.payment_station_url = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
-            instance.price = int()
+            instance.price = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
             instance.refunded_time = str(dict_["refundedTime"])
         elif include_empty:
-            instance.refunded_time = str()
+            instance.refunded_time = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "rvn" in dict_ and dict_["rvn"] is not None:
             instance.rvn = int(dict_["rvn"])
         elif include_empty:
-            instance.rvn = int()
+            instance.rvn = 0
         if "salesTax" in dict_ and dict_["salesTax"] is not None:
             instance.sales_tax = int(dict_["salesTax"])
         elif include_empty:
-            instance.sales_tax = int()
+            instance.sales_tax = 0
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -854,35 +854,35 @@ class Order(Model):
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:
-            instance.status_reason = str()
+            instance.status_reason = ""
         if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
             instance.subtotal_price = int(dict_["subtotalPrice"])
         elif include_empty:
-            instance.subtotal_price = int()
+            instance.subtotal_price = 0
         if "tax" in dict_ and dict_["tax"] is not None:
             instance.tax = int(dict_["tax"])
         elif include_empty:
-            instance.tax = int()
+            instance.tax = 0
         if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
             instance.total_price = int(dict_["totalPrice"])
         elif include_empty:
-            instance.total_price = int()
+            instance.total_price = 0
         if "totalTax" in dict_ and dict_["totalTax"] is not None:
             instance.total_tax = int(dict_["totalTax"])
         elif include_empty:
-            instance.total_tax = int()
+            instance.total_tax = 0
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "vat" in dict_ and dict_["vat"] is not None:
             instance.vat = int(dict_["vat"])
         elif include_empty:
-            instance.vat = int()
+            instance.vat = 0
         return instance
 
     @classmethod

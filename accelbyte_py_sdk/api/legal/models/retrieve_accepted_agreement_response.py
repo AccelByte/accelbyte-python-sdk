@@ -147,27 +147,27 @@ class RetrieveAcceptedAgreementResponse(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "country_code"):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "display_version"):
             result["displayVersion"] = str(self.display_version)
         elif include_empty:
-            result["displayVersion"] = str()
+            result["displayVersion"] = ""
         if hasattr(self, "is_accepted"):
             result["isAccepted"] = bool(self.is_accepted)
         elif include_empty:
-            result["isAccepted"] = bool()
+            result["isAccepted"] = False
         if hasattr(self, "localized_policy_version"):
             result["localizedPolicyVersion"] = self.localized_policy_version.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -175,31 +175,31 @@ class RetrieveAcceptedAgreementResponse(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "policy_id"):
             result["policyId"] = str(self.policy_id)
         elif include_empty:
-            result["policyId"] = str()
+            result["policyId"] = ""
         if hasattr(self, "policy_name"):
             result["policyName"] = str(self.policy_name)
         elif include_empty:
-            result["policyName"] = str()
+            result["policyName"] = ""
         if hasattr(self, "policy_type"):
             result["policyType"] = str(self.policy_type)
         elif include_empty:
-            result["policyType"] = str()
+            result["policyType"] = ""
         if hasattr(self, "signing_date"):
             result["signingDate"] = str(self.signing_date)
         elif include_empty:
-            result["signingDate"] = str()
+            result["signingDate"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -262,27 +262,27 @@ class RetrieveAcceptedAgreementResponse(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "displayVersion" in dict_ and dict_["displayVersion"] is not None:
             instance.display_version = str(dict_["displayVersion"])
         elif include_empty:
-            instance.display_version = str()
+            instance.display_version = ""
         if "isAccepted" in dict_ and dict_["isAccepted"] is not None:
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
-            instance.is_accepted = bool()
+            instance.is_accepted = False
         if "localizedPolicyVersion" in dict_ and dict_["localizedPolicyVersion"] is not None:
             instance.localized_policy_version = LocalizedPolicyVersionObject.create_from_dict(dict_["localizedPolicyVersion"], include_empty=include_empty)
         elif include_empty:
@@ -290,31 +290,31 @@ class RetrieveAcceptedAgreementResponse(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "policyId" in dict_ and dict_["policyId"] is not None:
             instance.policy_id = str(dict_["policyId"])
         elif include_empty:
-            instance.policy_id = str()
+            instance.policy_id = ""
         if "policyName" in dict_ and dict_["policyName"] is not None:
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
-            instance.policy_name = str()
+            instance.policy_name = ""
         if "policyType" in dict_ and dict_["policyType"] is not None:
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
-            instance.policy_type = str()
+            instance.policy_type = ""
         if "signingDate" in dict_ and dict_["signingDate"] is not None:
             instance.signing_date = str(dict_["signingDate"])
         elif include_empty:
-            instance.signing_date = str()
+            instance.signing_date = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

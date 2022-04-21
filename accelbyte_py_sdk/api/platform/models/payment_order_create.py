@@ -193,27 +193,27 @@ class PaymentOrderCreate(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "ext_order_no"):
             result["extOrderNo"] = str(self.ext_order_no)
         elif include_empty:
-            result["extOrderNo"] = str()
+            result["extOrderNo"] = ""
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
-            result["price"] = int()
+            result["price"] = 0
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "currency_namespace"):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
-            result["currencyNamespace"] = str()
+            result["currencyNamespace"] = ""
         if hasattr(self, "custom_parameters"):
             result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
         elif include_empty:
@@ -221,7 +221,7 @@ class PaymentOrderCreate(Model):
         if hasattr(self, "ext_user_id"):
             result["extUserId"] = str(self.ext_user_id)
         elif include_empty:
-            result["extUserId"] = str()
+            result["extUserId"] = ""
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -229,7 +229,7 @@ class PaymentOrderCreate(Model):
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "metadata"):
             result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
         elif include_empty:
@@ -237,35 +237,35 @@ class PaymentOrderCreate(Model):
         if hasattr(self, "notify_url"):
             result["notifyUrl"] = str(self.notify_url)
         elif include_empty:
-            result["notifyUrl"] = str()
+            result["notifyUrl"] = ""
         if hasattr(self, "omit_notification"):
             result["omitNotification"] = bool(self.omit_notification)
         elif include_empty:
-            result["omitNotification"] = bool()
+            result["omitNotification"] = False
         if hasattr(self, "recurring_payment_order_no"):
             result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
         elif include_empty:
-            result["recurringPaymentOrderNo"] = str()
+            result["recurringPaymentOrderNo"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
-            result["subscriptionId"] = str()
+            result["subscriptionId"] = ""
         return result
 
     # endregion to methods
@@ -340,27 +340,27 @@ class PaymentOrderCreate(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
             instance.ext_order_no = str(dict_["extOrderNo"])
         elif include_empty:
-            instance.ext_order_no = str()
+            instance.ext_order_no = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
-            instance.price = int()
+            instance.price = 0
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "currencyNamespace" in dict_ and dict_["currencyNamespace"] is not None:
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
-            instance.currency_namespace = str()
+            instance.currency_namespace = ""
         if "customParameters" in dict_ and dict_["customParameters"] is not None:
             instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
         elif include_empty:
@@ -368,7 +368,7 @@ class PaymentOrderCreate(Model):
         if "extUserId" in dict_ and dict_["extUserId"] is not None:
             instance.ext_user_id = str(dict_["extUserId"])
         elif include_empty:
-            instance.ext_user_id = str()
+            instance.ext_user_id = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -376,7 +376,7 @@ class PaymentOrderCreate(Model):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "metadata" in dict_ and dict_["metadata"] is not None:
             instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
         elif include_empty:
@@ -384,35 +384,35 @@ class PaymentOrderCreate(Model):
         if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
             instance.notify_url = str(dict_["notifyUrl"])
         elif include_empty:
-            instance.notify_url = str()
+            instance.notify_url = ""
         if "omitNotification" in dict_ and dict_["omitNotification"] is not None:
             instance.omit_notification = bool(dict_["omitNotification"])
         elif include_empty:
-            instance.omit_notification = bool()
+            instance.omit_notification = False
         if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
             instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
         elif include_empty:
-            instance.recurring_payment_order_no = str()
+            instance.recurring_payment_order_no = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
-            instance.subscription_id = str()
+            instance.subscription_id = ""
         return instance
 
     @classmethod

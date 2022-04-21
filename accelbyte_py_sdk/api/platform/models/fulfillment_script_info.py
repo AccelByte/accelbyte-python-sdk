@@ -61,11 +61,11 @@ class FulfillmentScriptInfo(Model):
         if hasattr(self, "grant_days"):
             result["grantDays"] = str(self.grant_days)
         elif include_empty:
-            result["grantDays"] = str()
+            result["grantDays"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class FulfillmentScriptInfo(Model):
         if "grantDays" in dict_ and dict_["grantDays"] is not None:
             instance.grant_days = str(dict_["grantDays"])
         elif include_empty:
-            instance.grant_days = str()
+            instance.grant_days = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         return instance
 
     @classmethod

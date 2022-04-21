@@ -82,23 +82,23 @@ class AccountcommonJWTBanV3(Model):
         if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
-            result["ban"] = str()
+            result["ban"] = ""
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "targeted_namespace"):
             result["targetedNamespace"] = str(self.targeted_namespace)
         elif include_empty:
-            result["targetedNamespace"] = str()
+            result["targetedNamespace"] = ""
         if hasattr(self, "disabled_date"):
             result["disabledDate"] = str(self.disabled_date)
         elif include_empty:
-            result["disabledDate"] = str()
+            result["disabledDate"] = ""
         return result
 
     # endregion to methods
@@ -131,23 +131,23 @@ class AccountcommonJWTBanV3(Model):
         if "ban" in dict_ and dict_["ban"] is not None:
             instance.ban = str(dict_["ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "targetedNamespace" in dict_ and dict_["targetedNamespace"] is not None:
             instance.targeted_namespace = str(dict_["targetedNamespace"])
         elif include_empty:
-            instance.targeted_namespace = str()
+            instance.targeted_namespace = ""
         if "disabledDate" in dict_ and dict_["disabledDate"] is not None:
             instance.disabled_date = str(dict_["disabledDate"])
         elif include_empty:
-            instance.disabled_date = str()
+            instance.disabled_date = ""
         return instance
 
     @classmethod

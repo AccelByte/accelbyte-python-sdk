@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import CheckoutConfig
@@ -58,7 +59,7 @@ class TestCheckoutConfig(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) OPTIONAL CheckoutConfig in body
 
@@ -74,7 +75,7 @@ class TestCheckoutConfig(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: CheckoutConfig                                                                           # OPTIONAL in [body]
@@ -101,8 +102,8 @@ class TestCheckoutConfig(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -111,13 +112,6 @@ class TestCheckoutConfig(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -169,7 +163,7 @@ class TestCheckoutConfig(Operation):
         if hasattr(self, "sandbox") and self.sandbox:
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         return result
 
     # endregion to methods
@@ -225,7 +219,7 @@ class TestCheckoutConfig(Operation):
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         return instance
 
     @staticmethod

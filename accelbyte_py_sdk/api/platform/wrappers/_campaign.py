@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -57,9 +58,9 @@ from ..operations.campaign import QueryCampaigns
 from ..operations.campaign import QueryCodes
 from ..operations.campaign import QueryRedeemHistory
 from ..operations.campaign import UpdateCampaign
-from ..models import CampaignCreateStatusEnum, CampaignCreateTypeEnum, CampaignCreateRedeemTypeEnum
-from ..models import CampaignInfoStatusEnum, CampaignInfoRedeemTypeEnum, CampaignInfoTypeEnum
-from ..models import CampaignUpdateRedeemTypeEnum, CampaignUpdateStatusEnum
+from ..models import CampaignCreateTypeEnum, CampaignCreateRedeemTypeEnum, CampaignCreateStatusEnum
+from ..models import CampaignInfoRedeemTypeEnum, CampaignInfoTypeEnum, CampaignInfoStatusEnum
+from ..models import CampaignUpdateStatusEnum, CampaignUpdateRedeemTypeEnum
 from ..models import CodeInfoRedeemTypeEnum, CodeInfoStatusEnum, CodeInfoTypeEnum
 
 

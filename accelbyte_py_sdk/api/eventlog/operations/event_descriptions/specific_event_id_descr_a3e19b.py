@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
@@ -45,7 +46,7 @@ class SpecificEventIDDescriptionHandler(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         event_ids: (eventIds) OPTIONAL str in query
 
@@ -63,7 +64,7 @@ class SpecificEventIDDescriptionHandler(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     event_ids: str                                                                                 # OPTIONAL in [query]
@@ -89,8 +90,8 @@ class SpecificEventIDDescriptionHandler(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -99,13 +100,6 @@ class SpecificEventIDDescriptionHandler(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -143,7 +137,7 @@ class SpecificEventIDDescriptionHandler(Operation):
         if hasattr(self, "event_ids") and self.event_ids:
             result["eventIds"] = str(self.event_ids)
         elif include_empty:
-            result["eventIds"] = str()
+            result["eventIds"] = ""
         return result
 
     # endregion to methods
@@ -200,7 +194,7 @@ class SpecificEventIDDescriptionHandler(Operation):
         if "eventIds" in dict_ and dict_["eventIds"] is not None:
             instance.event_ids = str(dict_["eventIds"])
         elif include_empty:
-            instance.event_ids = str()
+            instance.event_ids = ""
         return instance
 
     @staticmethod

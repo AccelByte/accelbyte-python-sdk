@@ -90,7 +90,7 @@ class EntitlementUpdate(Model):
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "null_field_list"):
             result["nullFieldList"] = [str(i0) for i0 in self.null_field_list]
         elif include_empty:
@@ -98,7 +98,7 @@ class EntitlementUpdate(Model):
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
-            result["startDate"] = str()
+            result["startDate"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -106,7 +106,7 @@ class EntitlementUpdate(Model):
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
-            result["useCount"] = int()
+            result["useCount"] = 0
         return result
 
     # endregion to methods
@@ -143,7 +143,7 @@ class EntitlementUpdate(Model):
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "nullFieldList" in dict_ and dict_["nullFieldList"] is not None:
             instance.null_field_list = [str(i0) for i0 in dict_["nullFieldList"]]
         elif include_empty:
@@ -151,7 +151,7 @@ class EntitlementUpdate(Model):
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -159,7 +159,7 @@ class EntitlementUpdate(Model):
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
-            instance.use_count = int()
+            instance.use_count = 0
         return instance
 
     @classmethod

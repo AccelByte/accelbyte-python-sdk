@@ -110,39 +110,39 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "reach_minimum_age"):
             result["reachMinimumAge"] = bool(self.reach_minimum_age)
         elif include_empty:
-            result["reachMinimumAge"] = bool()
+            result["reachMinimumAge"] = False
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
-            result["username"] = str()
+            result["username"] = ""
         if hasattr(self, "validate_only"):
             result["validateOnly"] = bool(self.validate_only)
         elif include_empty:
-            result["validateOnly"] = bool()
+            result["validateOnly"] = False
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
-            result["country"] = str()
+            result["country"] = ""
         if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["dateOfBirth"] = str()
+            result["dateOfBirth"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         return result
 
     # endregion to methods
@@ -185,39 +185,39 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
             instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
         elif include_empty:
-            instance.reach_minimum_age = bool()
+            instance.reach_minimum_age = False
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
             instance.validate_only = bool(dict_["validateOnly"])
         elif include_empty:
-            instance.validate_only = bool()
+            instance.validate_only = False
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         return instance
 
     @classmethod

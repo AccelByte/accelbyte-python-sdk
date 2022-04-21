@@ -54,7 +54,7 @@ class ModelsServerSessionResponse(Model):
         if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsServerSessionResponse(Model):
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         return instance
 
     @classmethod

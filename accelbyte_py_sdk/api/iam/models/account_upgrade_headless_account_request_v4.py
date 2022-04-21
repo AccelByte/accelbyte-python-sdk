@@ -68,15 +68,15 @@ class AccountUpgradeHeadlessAccountRequestV4(Model):
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
-            result["username"] = str()
+            result["username"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class AccountUpgradeHeadlessAccountRequestV4(Model):
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         return instance
 
     @classmethod

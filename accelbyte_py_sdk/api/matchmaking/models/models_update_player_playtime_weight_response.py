@@ -68,15 +68,15 @@ class ModelsUpdatePlayerPlaytimeWeightResponse(Model):
         if hasattr(self, "playtime"):
             result["playtime"] = str(self.playtime)
         elif include_empty:
-            result["playtime"] = str()
+            result["playtime"] = ""
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userID"] = ""
         if hasattr(self, "weight"):
             result["weight"] = float(self.weight)
         elif include_empty:
-            result["weight"] = float()
+            result["weight"] = 0.0
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsUpdatePlayerPlaytimeWeightResponse(Model):
         if "playtime" in dict_ and dict_["playtime"] is not None:
             instance.playtime = str(dict_["playtime"])
         elif include_empty:
-            instance.playtime = str()
+            instance.playtime = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "weight" in dict_ and dict_["weight"] is not None:
             instance.weight = float(dict_["weight"])
         elif include_empty:
-            instance.weight = float()
+            instance.weight = 0.0
         return instance
 
     @classmethod

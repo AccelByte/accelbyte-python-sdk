@@ -96,31 +96,31 @@ class ModelUserCreateResponse(Model):
         if hasattr(self, "auth_type"):
             result["AuthType"] = str(self.auth_type)
         elif include_empty:
-            result["AuthType"] = str()
+            result["AuthType"] = ""
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "date_of_birth"):
             result["DateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["DateOfBirth"] = str()
+            result["DateOfBirth"] = ""
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "login_id"):
             result["LoginId"] = str(self.login_id)
         elif include_empty:
-            result["LoginId"] = str()
+            result["LoginId"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
-            result["UserId"] = str()
+            result["UserId"] = ""
         return result
 
     # endregion to methods
@@ -156,31 +156,31 @@ class ModelUserCreateResponse(Model):
         if "AuthType" in dict_ and dict_["AuthType"] is not None:
             instance.auth_type = str(dict_["AuthType"])
         elif include_empty:
-            instance.auth_type = str()
+            instance.auth_type = ""
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "DateOfBirth" in dict_ and dict_["DateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["DateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "LoginId" in dict_ and dict_["LoginId"] is not None:
             instance.login_id = str(dict_["LoginId"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "UserId" in dict_ and dict_["UserId"] is not None:
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

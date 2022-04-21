@@ -68,15 +68,15 @@ class PaymentCallbackConfigUpdate(Model):
         if hasattr(self, "dry_run"):
             result["dryRun"] = bool(self.dry_run)
         elif include_empty:
-            result["dryRun"] = bool()
+            result["dryRun"] = False
         if hasattr(self, "notify_url"):
             result["notifyUrl"] = str(self.notify_url)
         elif include_empty:
-            result["notifyUrl"] = str()
+            result["notifyUrl"] = ""
         if hasattr(self, "private_key"):
             result["privateKey"] = str(self.private_key)
         elif include_empty:
-            result["privateKey"] = str()
+            result["privateKey"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class PaymentCallbackConfigUpdate(Model):
         if "dryRun" in dict_ and dict_["dryRun"] is not None:
             instance.dry_run = bool(dict_["dryRun"])
         elif include_empty:
-            instance.dry_run = bool()
+            instance.dry_run = False
         if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
             instance.notify_url = str(dict_["notifyUrl"])
         elif include_empty:
-            instance.notify_url = str()
+            instance.notify_url = ""
         if "privateKey" in dict_ and dict_["privateKey"] is not None:
             instance.private_key = str(dict_["privateKey"])
         elif include_empty:
-            instance.private_key = str()
+            instance.private_key = ""
         return instance
 
     @classmethod

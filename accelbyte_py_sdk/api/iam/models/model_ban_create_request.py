@@ -82,23 +82,23 @@ class ModelBanCreateRequest(Model):
         if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
-            result["ban"] = str()
+            result["ban"] = ""
         if hasattr(self, "comment"):
             result["comment"] = str(self.comment)
         elif include_empty:
-            result["comment"] = str()
+            result["comment"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         if hasattr(self, "skip_notif"):
             result["skipNotif"] = bool(self.skip_notif)
         elif include_empty:
-            result["skipNotif"] = bool()
+            result["skipNotif"] = False
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ModelBanCreateRequest(Model):
         if "ban" in dict_ and dict_["ban"] is not None:
             instance.ban = str(dict_["ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "comment" in dict_ and dict_["comment"] is not None:
             instance.comment = str(dict_["comment"])
         elif include_empty:
-            instance.comment = str()
+            instance.comment = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         if "skipNotif" in dict_ and dict_["skipNotif"] is not None:
             instance.skip_notif = bool(dict_["skipNotif"])
         elif include_empty:
-            instance.skip_notif = bool()
+            instance.skip_notif = False
         return instance
 
     @classmethod

@@ -154,11 +154,11 @@ class CampaignCreate(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
@@ -166,27 +166,27 @@ class CampaignCreate(Model):
         if hasattr(self, "max_redeem_count_per_campaign_per_user"):
             result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCampaignPerUser"] = int()
+            result["maxRedeemCountPerCampaignPerUser"] = 0
         if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
-            result["maxRedeemCountPerCode"] = int()
+            result["maxRedeemCountPerCode"] = 0
         if hasattr(self, "max_redeem_count_per_code_per_user"):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCodePerUser"] = int()
+            result["maxRedeemCountPerCodePerUser"] = 0
         if hasattr(self, "max_sale_count"):
             result["maxSaleCount"] = int(self.max_sale_count)
         elif include_empty:
-            result["maxSaleCount"] = int()
+            result["maxSaleCount"] = 0
         if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
-            result["redeemEnd"] = str()
+            result["redeemEnd"] = ""
         if hasattr(self, "redeem_start"):
             result["redeemStart"] = str(self.redeem_start)
         elif include_empty:
-            result["redeemStart"] = str()
+            result["redeemStart"] = ""
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
@@ -262,11 +262,11 @@ class CampaignCreate(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
@@ -274,27 +274,27 @@ class CampaignCreate(Model):
         if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
             instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_campaign_per_user = int()
+            instance.max_redeem_count_per_campaign_per_user = 0
         if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
-            instance.max_redeem_count_per_code = int()
+            instance.max_redeem_count_per_code = 0
         if "maxRedeemCountPerCodePerUser" in dict_ and dict_["maxRedeemCountPerCodePerUser"] is not None:
             instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_code_per_user = int()
+            instance.max_redeem_count_per_code_per_user = 0
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
             instance.max_sale_count = int(dict_["maxSaleCount"])
         elif include_empty:
-            instance.max_sale_count = int()
+            instance.max_sale_count = 0
         if "redeemEnd" in dict_ and dict_["redeemEnd"] is not None:
             instance.redeem_end = str(dict_["redeemEnd"])
         elif include_empty:
-            instance.redeem_end = str()
+            instance.redeem_end = ""
         if "redeemStart" in dict_ and dict_["redeemStart"] is not None:
             instance.redeem_start = str(dict_["redeemStart"])
         elif include_empty:
-            instance.redeem_start = str()
+            instance.redeem_start = ""
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:

@@ -72,7 +72,7 @@ class ModelInviteUserRequestV3(Model):
         if hasattr(self, "is_admin"):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
-            result["isAdmin"] = bool()
+            result["isAdmin"] = False
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -108,7 +108,7 @@ class ModelInviteUserRequestV3(Model):
         if "isAdmin" in dict_ and dict_["isAdmin"] is not None:
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
-            instance.is_admin = bool()
+            instance.is_admin = False
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:

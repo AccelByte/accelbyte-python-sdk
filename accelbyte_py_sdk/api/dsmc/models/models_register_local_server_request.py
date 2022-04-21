@@ -75,19 +75,19 @@ class ModelsRegisterLocalServerRequest(Model):
         if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
-            result["custom_attribute"] = str()
+            result["custom_attribute"] = ""
         if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
-            result["ip"] = str()
+            result["ip"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsRegisterLocalServerRequest(Model):
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:
-            instance.custom_attribute = str()
+            instance.custom_attribute = ""
         if "ip" in dict_ and dict_["ip"] is not None:
             instance.ip = str(dict_["ip"])
         elif include_empty:
-            instance.ip = str()
+            instance.ip = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         return instance
 
     @classmethod

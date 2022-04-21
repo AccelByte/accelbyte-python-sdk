@@ -61,11 +61,11 @@ class ModelFreeFormNotificationRequestV1(Model):
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
-            result["message"] = str()
+            result["message"] = ""
         if hasattr(self, "topic_name"):
             result["topicName"] = str(self.topic_name)
         elif include_empty:
-            result["topicName"] = str()
+            result["topicName"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelFreeFormNotificationRequestV1(Model):
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         if "topicName" in dict_ and dict_["topicName"] is not None:
             instance.topic_name = str(dict_["topicName"])
         elif include_empty:
-            instance.topic_name = str()
+            instance.topic_name = ""
         return instance
 
     @classmethod

@@ -68,15 +68,15 @@ class ModelSendVerificationCodeRequestV3(Model):
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "context"):
             result["context"] = str(self.context)
         elif include_empty:
-            result["context"] = str()
+            result["context"] = ""
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
-            result["languageTag"] = str()
+            result["languageTag"] = ""
         return result
 
     # endregion to methods
@@ -106,15 +106,15 @@ class ModelSendVerificationCodeRequestV3(Model):
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "context" in dict_ and dict_["context"] is not None:
             instance.context = str(dict_["context"])
         elif include_empty:
-            instance.context = str()
+            instance.context = ""
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         return instance
 
     @classmethod

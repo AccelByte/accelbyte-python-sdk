@@ -75,19 +75,19 @@ class PayPalConfig(Model):
         if hasattr(self, "client_id"):
             result["clientID"] = str(self.client_id)
         elif include_empty:
-            result["clientID"] = str()
+            result["clientID"] = ""
         if hasattr(self, "client_secret"):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
-            result["clientSecret"] = str()
+            result["clientSecret"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "web_hook_id"):
             result["webHookId"] = str(self.web_hook_id)
         elif include_empty:
-            result["webHookId"] = str()
+            result["webHookId"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class PayPalConfig(Model):
         if "clientID" in dict_ and dict_["clientID"] is not None:
             instance.client_id = str(dict_["clientID"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "clientSecret" in dict_ and dict_["clientSecret"] is not None:
             instance.client_secret = str(dict_["clientSecret"])
         elif include_empty:
-            instance.client_secret = str()
+            instance.client_secret = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "webHookId" in dict_ and dict_["webHookId"] is not None:
             instance.web_hook_id = str(dict_["webHookId"])
         elif include_empty:
-            instance.web_hook_id = str()
+            instance.web_hook_id = ""
         return instance
 
     @classmethod

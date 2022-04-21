@@ -80,7 +80,7 @@ class StatItemUpdate(Model):
         if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
-            result["value"] = float()
+            result["value"] = 0.0
         if hasattr(self, "additional_data"):
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
@@ -117,7 +117,7 @@ class StatItemUpdate(Model):
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = float(dict_["value"])
         elif include_empty:
-            instance.value = float()
+            instance.value = 0.0
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:

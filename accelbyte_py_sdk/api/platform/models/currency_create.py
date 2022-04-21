@@ -88,11 +88,11 @@ class CurrencyCreate(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "currency_symbol"):
             result["currencySymbol"] = str(self.currency_symbol)
         elif include_empty:
-            result["currencySymbol"] = str()
+            result["currencySymbol"] = ""
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
@@ -100,7 +100,7 @@ class CurrencyCreate(Model):
         if hasattr(self, "decimals"):
             result["decimals"] = int(self.decimals)
         elif include_empty:
-            result["decimals"] = int()
+            result["decimals"] = 0
         if hasattr(self, "localization_descriptions"):
             result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
         elif include_empty:
@@ -140,11 +140,11 @@ class CurrencyCreate(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "currencySymbol" in dict_ and dict_["currencySymbol"] is not None:
             instance.currency_symbol = str(dict_["currencySymbol"])
         elif include_empty:
-            instance.currency_symbol = str()
+            instance.currency_symbol = ""
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
@@ -152,7 +152,7 @@ class CurrencyCreate(Model):
         if "decimals" in dict_ and dict_["decimals"] is not None:
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
-            instance.decimals = int()
+            instance.decimals = 0
         if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
             instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
         elif include_empty:

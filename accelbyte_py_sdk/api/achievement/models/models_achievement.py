@@ -161,15 +161,15 @@ class ModelsAchievement(Model):
         if hasattr(self, "achievement_code"):
             result["AchievementCode"] = str(self.achievement_code)
         elif include_empty:
-            result["AchievementCode"] = str()
+            result["AchievementCode"] = ""
         if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
-            result["CreatedAt"] = str()
+            result["CreatedAt"] = ""
         if hasattr(self, "default_language"):
             result["DefaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["DefaultLanguage"] = str()
+            result["DefaultLanguage"] = ""
         if hasattr(self, "description"):
             result["Description"] = {str(k0): str(v0) for k0, v0 in self.description.items()}
         elif include_empty:
@@ -177,23 +177,23 @@ class ModelsAchievement(Model):
         if hasattr(self, "goal_value"):
             result["GoalValue"] = float(self.goal_value)
         elif include_empty:
-            result["GoalValue"] = float()
+            result["GoalValue"] = 0.0
         if hasattr(self, "hidden"):
             result["Hidden"] = bool(self.hidden)
         elif include_empty:
-            result["Hidden"] = bool()
+            result["Hidden"] = False
         if hasattr(self, "id_"):
             result["ID"] = str(self.id_)
         elif include_empty:
-            result["ID"] = str()
+            result["ID"] = ""
         if hasattr(self, "incremental"):
             result["Incremental"] = bool(self.incremental)
         elif include_empty:
-            result["Incremental"] = bool()
+            result["Incremental"] = False
         if hasattr(self, "list_order"):
             result["ListOrder"] = int(self.list_order)
         elif include_empty:
-            result["ListOrder"] = int()
+            result["ListOrder"] = 0
         if hasattr(self, "locked_icons"):
             result["LockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons]
         elif include_empty:
@@ -205,11 +205,11 @@ class ModelsAchievement(Model):
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "stat_code"):
             result["StatCode"] = str(self.stat_code)
         elif include_empty:
-            result["StatCode"] = str()
+            result["StatCode"] = ""
         if hasattr(self, "tags"):
             result["Tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -221,7 +221,7 @@ class ModelsAchievement(Model):
         if hasattr(self, "updated_at"):
             result["UpdatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["UpdatedAt"] = str()
+            result["UpdatedAt"] = ""
         return result
 
     # endregion to methods
@@ -275,15 +275,15 @@ class ModelsAchievement(Model):
         if "AchievementCode" in dict_ and dict_["AchievementCode"] is not None:
             instance.achievement_code = str(dict_["AchievementCode"])
         elif include_empty:
-            instance.achievement_code = str()
+            instance.achievement_code = ""
         if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "DefaultLanguage" in dict_ and dict_["DefaultLanguage"] is not None:
             instance.default_language = str(dict_["DefaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = {str(k0): str(v0) for k0, v0 in dict_["Description"].items()}
         elif include_empty:
@@ -291,23 +291,23 @@ class ModelsAchievement(Model):
         if "GoalValue" in dict_ and dict_["GoalValue"] is not None:
             instance.goal_value = float(dict_["GoalValue"])
         elif include_empty:
-            instance.goal_value = float()
+            instance.goal_value = 0.0
         if "Hidden" in dict_ and dict_["Hidden"] is not None:
             instance.hidden = bool(dict_["Hidden"])
         elif include_empty:
-            instance.hidden = bool()
+            instance.hidden = False
         if "ID" in dict_ and dict_["ID"] is not None:
             instance.id_ = str(dict_["ID"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "Incremental" in dict_ and dict_["Incremental"] is not None:
             instance.incremental = bool(dict_["Incremental"])
         elif include_empty:
-            instance.incremental = bool()
+            instance.incremental = False
         if "ListOrder" in dict_ and dict_["ListOrder"] is not None:
             instance.list_order = int(dict_["ListOrder"])
         elif include_empty:
-            instance.list_order = int()
+            instance.list_order = 0
         if "LockedIcons" in dict_ and dict_["LockedIcons"] is not None:
             instance.locked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["LockedIcons"]]
         elif include_empty:
@@ -319,11 +319,11 @@ class ModelsAchievement(Model):
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "StatCode" in dict_ and dict_["StatCode"] is not None:
             instance.stat_code = str(dict_["StatCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "Tags" in dict_ and dict_["Tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["Tags"]]
         elif include_empty:
@@ -335,7 +335,7 @@ class ModelsAchievement(Model):
         if "UpdatedAt" in dict_ and dict_["UpdatedAt"] is not None:
             instance.updated_at = str(dict_["UpdatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

@@ -86,7 +86,7 @@ class ModelRoleCreateRequest(Model):
         if hasattr(self, "admin_role"):
             result["AdminRole"] = bool(self.admin_role)
         elif include_empty:
-            result["AdminRole"] = bool()
+            result["AdminRole"] = False
         if hasattr(self, "managers"):
             result["Managers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.managers]
         elif include_empty:
@@ -102,7 +102,7 @@ class ModelRoleCreateRequest(Model):
         if hasattr(self, "role_name"):
             result["RoleName"] = str(self.role_name)
         elif include_empty:
-            result["RoleName"] = str()
+            result["RoleName"] = ""
         return result
 
     # endregion to methods
@@ -134,7 +134,7 @@ class ModelRoleCreateRequest(Model):
         if "AdminRole" in dict_ and dict_["AdminRole"] is not None:
             instance.admin_role = bool(dict_["AdminRole"])
         elif include_empty:
-            instance.admin_role = bool()
+            instance.admin_role = False
         if "Managers" in dict_ and dict_["Managers"] is not None:
             instance.managers = [AccountcommonRoleManager.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Managers"]]
         elif include_empty:
@@ -150,7 +150,7 @@ class ModelRoleCreateRequest(Model):
         if "RoleName" in dict_ and dict_["RoleName"] is not None:
             instance.role_name = str(dict_["RoleName"])
         elif include_empty:
-            instance.role_name = str()
+            instance.role_name = ""
         return instance
 
     @classmethod

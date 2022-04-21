@@ -61,11 +61,11 @@ class ModelUpgradeHeadlessAccountRequest(Model):
         if hasattr(self, "login_id"):
             result["LoginID"] = str(self.login_id)
         elif include_empty:
-            result["LoginID"] = str()
+            result["LoginID"] = ""
         if hasattr(self, "password"):
             result["Password"] = str(self.password)
         elif include_empty:
-            result["Password"] = str()
+            result["Password"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelUpgradeHeadlessAccountRequest(Model):
         if "LoginID" in dict_ and dict_["LoginID"] is not None:
             instance.login_id = str(dict_["LoginID"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "Password" in dict_ and dict_["Password"] is not None:
             instance.password = str(dict_["Password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         return instance
 
     @classmethod

@@ -124,7 +124,7 @@ class ModelsCustomGameResponse(Model):
         if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
-            result["created_at"] = str()
+            result["created_at"] = ""
         if hasattr(self, "game_session_setting"):
             result["game_session_setting"] = self.game_session_setting.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -132,11 +132,11 @@ class ModelsCustomGameResponse(Model):
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
-            result["joinable"] = bool()
+            result["joinable"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "players"):
             result["players"] = [str(i0) for i0 in self.players]
         elif include_empty:
@@ -148,11 +148,11 @@ class ModelsCustomGameResponse(Model):
         if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         if hasattr(self, "session_type"):
             result["session_type"] = str(self.session_type)
         elif include_empty:
-            result["session_type"] = str()
+            result["session_type"] = ""
         if hasattr(self, "spectators"):
             result["spectators"] = [str(i0) for i0 in self.spectators]
         elif include_empty:
@@ -202,7 +202,7 @@ class ModelsCustomGameResponse(Model):
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "game_session_setting" in dict_ and dict_["game_session_setting"] is not None:
             instance.game_session_setting = ModelsGameSessionSetting.create_from_dict(dict_["game_session_setting"], include_empty=include_empty)
         elif include_empty:
@@ -210,11 +210,11 @@ class ModelsCustomGameResponse(Model):
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
-            instance.joinable = bool()
+            instance.joinable = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "players" in dict_ and dict_["players"] is not None:
             instance.players = [str(i0) for i0 in dict_["players"]]
         elif include_empty:
@@ -226,11 +226,11 @@ class ModelsCustomGameResponse(Model):
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "session_type" in dict_ and dict_["session_type"] is not None:
             instance.session_type = str(dict_["session_type"])
         elif include_empty:
-            instance.session_type = str()
+            instance.session_type = ""
         if "spectators" in dict_ and dict_["spectators"] is not None:
             instance.spectators = [str(i0) for i0 in dict_["spectators"]]
         elif include_empty:

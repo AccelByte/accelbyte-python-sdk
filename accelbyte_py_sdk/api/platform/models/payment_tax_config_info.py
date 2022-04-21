@@ -75,15 +75,15 @@ class PaymentTaxConfigInfo(Model):
         if hasattr(self, "sandbox_tax_jar_api_token"):
             result["sandboxTaxJarApiToken"] = str(self.sandbox_tax_jar_api_token)
         elif include_empty:
-            result["sandboxTaxJarApiToken"] = str()
+            result["sandboxTaxJarApiToken"] = ""
         if hasattr(self, "tax_jar_api_token"):
             result["taxJarApiToken"] = str(self.tax_jar_api_token)
         elif include_empty:
-            result["taxJarApiToken"] = str()
+            result["taxJarApiToken"] = ""
         if hasattr(self, "tax_jar_enabled"):
             result["taxJarEnabled"] = bool(self.tax_jar_enabled)
         elif include_empty:
-            result["taxJarEnabled"] = bool()
+            result["taxJarEnabled"] = False
         if hasattr(self, "tax_jar_product_codes_mapping"):
             result["taxJarProductCodesMapping"] = {str(k0): str(v0) for k0, v0 in self.tax_jar_product_codes_mapping.items()}
         elif include_empty:
@@ -121,15 +121,15 @@ class PaymentTaxConfigInfo(Model):
         if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:
-            instance.sandbox_tax_jar_api_token = str()
+            instance.sandbox_tax_jar_api_token = ""
         if "taxJarApiToken" in dict_ and dict_["taxJarApiToken"] is not None:
             instance.tax_jar_api_token = str(dict_["taxJarApiToken"])
         elif include_empty:
-            instance.tax_jar_api_token = str()
+            instance.tax_jar_api_token = ""
         if "taxJarEnabled" in dict_ and dict_["taxJarEnabled"] is not None:
             instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
         elif include_empty:
-            instance.tax_jar_enabled = bool()
+            instance.tax_jar_enabled = False
         if "taxJarProductCodesMapping" in dict_ and dict_["taxJarProductCodesMapping"] is not None:
             instance.tax_jar_product_codes_mapping = {str(k0): str(v0) for k0, v0 in dict_["taxJarProductCodesMapping"].items()}
         elif include_empty:

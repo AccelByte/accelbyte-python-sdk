@@ -75,19 +75,19 @@ class ModelsDeletionData(Model):
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "request_date"):
             result["RequestDate"] = str(self.request_date)
         elif include_empty:
-            result["RequestDate"] = str()
+            result["RequestDate"] = ""
         if hasattr(self, "status"):
             result["Status"] = str(self.status)
         elif include_empty:
-            result["Status"] = str()
+            result["Status"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsDeletionData(Model):
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "RequestDate" in dict_ and dict_["RequestDate"] is not None:
             instance.request_date = str(dict_["RequestDate"])
         elif include_empty:
-            instance.request_date = str()
+            instance.request_date = ""
         if "Status" in dict_ and dict_["Status"] is not None:
             instance.status = str(dict_["Status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

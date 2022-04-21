@@ -86,7 +86,7 @@ class BillingAccount(Model):
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
-            result["paymentMethod"] = str()
+            result["paymentMethod"] = ""
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -125,7 +125,7 @@ class BillingAccount(Model):
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
-            instance.payment_method = str()
+            instance.payment_method = ""
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:

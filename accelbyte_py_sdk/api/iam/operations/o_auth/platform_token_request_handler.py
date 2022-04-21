@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
@@ -75,7 +76,7 @@ class PlatformTokenRequestHandler(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         device_id: (device_id) OPTIONAL str in form_data
 
@@ -99,7 +100,7 @@ class PlatformTokenRequestHandler(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     device_id: str                                                                                 # OPTIONAL in [form_data]
@@ -128,8 +129,8 @@ class PlatformTokenRequestHandler(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -138,13 +139,6 @@ class PlatformTokenRequestHandler(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -205,19 +199,19 @@ class PlatformTokenRequestHandler(Operation):
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:
-            result["device_id"] = str()
+            result["device_id"] = ""
         if hasattr(self, "platform_token") and self.platform_token:
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
-            result["platform_token"] = str()
+            result["platform_token"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -281,19 +275,19 @@ class PlatformTokenRequestHandler(Operation):
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
-            instance.device_id = str()
+            instance.device_id = ""
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
-            instance.platform_token = str()
+            instance.platform_token = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         return instance
 
     @staticmethod

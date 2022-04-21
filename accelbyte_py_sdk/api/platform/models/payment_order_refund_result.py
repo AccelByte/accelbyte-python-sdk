@@ -113,15 +113,15 @@ class PaymentOrderRefundResult(Model):
         if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["createdTime"] = str()
+            result["createdTime"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -129,15 +129,15 @@ class PaymentOrderRefundResult(Model):
         if hasattr(self, "refunded_time"):
             result["refundedTime"] = str(self.refunded_time)
         elif include_empty:
-            result["refundedTime"] = str()
+            result["refundedTime"] = ""
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["targetNamespace"] = str()
+            result["targetNamespace"] = ""
         if hasattr(self, "target_user_id"):
             result["targetUserId"] = str(self.target_user_id)
         elif include_empty:
-            result["targetUserId"] = str()
+            result["targetUserId"] = ""
         return result
 
     # endregion to methods
@@ -176,15 +176,15 @@ class PaymentOrderRefundResult(Model):
         if "createdTime" in dict_ and dict_["createdTime"] is not None:
             instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.created_time = str()
+            instance.created_time = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -192,15 +192,15 @@ class PaymentOrderRefundResult(Model):
         if "refundedTime" in dict_ and dict_["refundedTime"] is not None:
             instance.refunded_time = str(dict_["refundedTime"])
         elif include_empty:
-            instance.refunded_time = str()
+            instance.refunded_time = ""
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.target_namespace = str()
+            instance.target_namespace = ""
         if "targetUserId" in dict_ and dict_["targetUserId"] is not None:
             instance.target_user_id = str(dict_["targetUserId"])
         elif include_empty:
-            instance.target_user_id = str()
+            instance.target_user_id = ""
         return instance
 
     @classmethod

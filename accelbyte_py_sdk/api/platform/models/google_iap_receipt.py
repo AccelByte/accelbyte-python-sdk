@@ -104,35 +104,35 @@ class GoogleIAPReceipt(Model):
         if hasattr(self, "order_id"):
             result["orderId"] = str(self.order_id)
         elif include_empty:
-            result["orderId"] = str()
+            result["orderId"] = ""
         if hasattr(self, "package_name"):
             result["packageName"] = str(self.package_name)
         elif include_empty:
-            result["packageName"] = str()
+            result["packageName"] = ""
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "purchase_time"):
             result["purchaseTime"] = int(self.purchase_time)
         elif include_empty:
-            result["purchaseTime"] = int()
+            result["purchaseTime"] = 0
         if hasattr(self, "purchase_token"):
             result["purchaseToken"] = str(self.purchase_token)
         elif include_empty:
-            result["purchaseToken"] = str()
+            result["purchaseToken"] = ""
         if hasattr(self, "auto_ack"):
             result["autoAck"] = bool(self.auto_ack)
         elif include_empty:
-            result["autoAck"] = bool()
+            result["autoAck"] = False
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -173,35 +173,35 @@ class GoogleIAPReceipt(Model):
         if "orderId" in dict_ and dict_["orderId"] is not None:
             instance.order_id = str(dict_["orderId"])
         elif include_empty:
-            instance.order_id = str()
+            instance.order_id = ""
         if "packageName" in dict_ and dict_["packageName"] is not None:
             instance.package_name = str(dict_["packageName"])
         elif include_empty:
-            instance.package_name = str()
+            instance.package_name = ""
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "purchaseTime" in dict_ and dict_["purchaseTime"] is not None:
             instance.purchase_time = int(dict_["purchaseTime"])
         elif include_empty:
-            instance.purchase_time = int()
+            instance.purchase_time = 0
         if "purchaseToken" in dict_ and dict_["purchaseToken"] is not None:
             instance.purchase_token = str(dict_["purchaseToken"])
         elif include_empty:
-            instance.purchase_token = str()
+            instance.purchase_token = ""
         if "autoAck" in dict_ and dict_["autoAck"] is not None:
             instance.auto_ack = bool(dict_["autoAck"])
         elif include_empty:
-            instance.auto_ack = bool()
+            instance.auto_ack = False
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         return instance
 
     @classmethod

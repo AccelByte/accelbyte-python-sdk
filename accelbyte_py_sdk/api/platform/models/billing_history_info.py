@@ -227,11 +227,11 @@ class BillingHistoryInfo(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -239,23 +239,23 @@ class BillingHistoryInfo(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "recurring_order_no"):
             result["recurringOrderNo"] = str(self.recurring_order_no)
         elif include_empty:
-            result["recurringOrderNo"] = str()
+            result["recurringOrderNo"] = ""
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -263,19 +263,19 @@ class BillingHistoryInfo(Model):
         if hasattr(self, "subscription_id"):
             result["subscriptionId"] = str(self.subscription_id)
         elif include_empty:
-            result["subscriptionId"] = str()
+            result["subscriptionId"] = ""
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "billing_account"):
             result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -283,43 +283,43 @@ class BillingHistoryInfo(Model):
         if hasattr(self, "change_billing_account"):
             result["changeBillingAccount"] = bool(self.change_billing_account)
         elif include_empty:
-            result["changeBillingAccount"] = bool()
+            result["changeBillingAccount"] = False
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "ext_tx_id"):
             result["extTxId"] = str(self.ext_tx_id)
         elif include_empty:
-            result["extTxId"] = str()
+            result["extTxId"] = ""
         if hasattr(self, "retry_attempted"):
             result["retryAttempted"] = int(self.retry_attempted)
         elif include_empty:
-            result["retryAttempted"] = int()
+            result["retryAttempted"] = 0
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
-            result["statusReason"] = str()
+            result["statusReason"] = ""
         if hasattr(self, "subtotal_price"):
             result["subtotalPrice"] = int(self.subtotal_price)
         elif include_empty:
-            result["subtotalPrice"] = int()
+            result["subtotalPrice"] = 0
         if hasattr(self, "total_price"):
             result["totalPrice"] = int(self.total_price)
         elif include_empty:
-            result["totalPrice"] = int()
+            result["totalPrice"] = 0
         if hasattr(self, "total_tax"):
             result["totalTax"] = int(self.total_tax)
         elif include_empty:
-            result["totalTax"] = int()
+            result["totalTax"] = 0
         if hasattr(self, "tx_end_time"):
             result["txEndTime"] = str(self.tx_end_time)
         elif include_empty:
-            result["txEndTime"] = str()
+            result["txEndTime"] = ""
         return result
 
     # endregion to methods
@@ -400,11 +400,11 @@ class BillingHistoryInfo(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
@@ -412,23 +412,23 @@ class BillingHistoryInfo(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "recurringOrderNo" in dict_ and dict_["recurringOrderNo"] is not None:
             instance.recurring_order_no = str(dict_["recurringOrderNo"])
         elif include_empty:
-            instance.recurring_order_no = str()
+            instance.recurring_order_no = ""
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -436,19 +436,19 @@ class BillingHistoryInfo(Model):
         if "subscriptionId" in dict_ and dict_["subscriptionId"] is not None:
             instance.subscription_id = str(dict_["subscriptionId"])
         elif include_empty:
-            instance.subscription_id = str()
+            instance.subscription_id = ""
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "billingAccount" in dict_ and dict_["billingAccount"] is not None:
             instance.billing_account = BillingAccount.create_from_dict(dict_["billingAccount"], include_empty=include_empty)
         elif include_empty:
@@ -456,43 +456,43 @@ class BillingHistoryInfo(Model):
         if "changeBillingAccount" in dict_ and dict_["changeBillingAccount"] is not None:
             instance.change_billing_account = bool(dict_["changeBillingAccount"])
         elif include_empty:
-            instance.change_billing_account = bool()
+            instance.change_billing_account = False
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
             instance.ext_tx_id = str(dict_["extTxId"])
         elif include_empty:
-            instance.ext_tx_id = str()
+            instance.ext_tx_id = ""
         if "retryAttempted" in dict_ and dict_["retryAttempted"] is not None:
             instance.retry_attempted = int(dict_["retryAttempted"])
         elif include_empty:
-            instance.retry_attempted = int()
+            instance.retry_attempted = 0
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:
-            instance.status_reason = str()
+            instance.status_reason = ""
         if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
             instance.subtotal_price = int(dict_["subtotalPrice"])
         elif include_empty:
-            instance.subtotal_price = int()
+            instance.subtotal_price = 0
         if "totalPrice" in dict_ and dict_["totalPrice"] is not None:
             instance.total_price = int(dict_["totalPrice"])
         elif include_empty:
-            instance.total_price = int()
+            instance.total_price = 0
         if "totalTax" in dict_ and dict_["totalTax"] is not None:
             instance.total_tax = int(dict_["totalTax"])
         elif include_empty:
-            instance.total_tax = int()
+            instance.total_tax = 0
         if "txEndTime" in dict_ and dict_["txEndTime"] is not None:
             instance.tx_end_time = str(dict_["txEndTime"])
         elif include_empty:
-            instance.tx_end_time = str()
+            instance.tx_end_time = ""
         return instance
 
     @classmethod

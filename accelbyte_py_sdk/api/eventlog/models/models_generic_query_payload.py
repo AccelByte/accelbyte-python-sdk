@@ -96,11 +96,11 @@ class ModelsGenericQueryPayload(Model):
         if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "event_name"):
             result["eventName"] = str(self.event_name)
         elif include_empty:
-            result["eventName"] = str()
+            result["eventName"] = ""
         if hasattr(self, "payload_query"):
             result["payloadQuery"] = {str(k0): v0 for k0, v0 in self.payload_query.items()}
         elif include_empty:
@@ -108,19 +108,19 @@ class ModelsGenericQueryPayload(Model):
         if hasattr(self, "session_id"):
             result["sessionId"] = str(self.session_id)
         elif include_empty:
-            result["sessionId"] = str()
+            result["sessionId"] = ""
         if hasattr(self, "trace_id"):
             result["traceId"] = str(self.trace_id)
         elif include_empty:
-            result["traceId"] = str()
+            result["traceId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
-            result["version"] = int()
+            result["version"] = 0
         return result
 
     # endregion to methods
@@ -156,11 +156,11 @@ class ModelsGenericQueryPayload(Model):
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "eventName" in dict_ and dict_["eventName"] is not None:
             instance.event_name = str(dict_["eventName"])
         elif include_empty:
-            instance.event_name = str()
+            instance.event_name = ""
         if "payloadQuery" in dict_ and dict_["payloadQuery"] is not None:
             instance.payload_query = {str(k0): v0 for k0, v0 in dict_["payloadQuery"].items()}
         elif include_empty:
@@ -168,19 +168,19 @@ class ModelsGenericQueryPayload(Model):
         if "sessionId" in dict_ and dict_["sessionId"] is not None:
             instance.session_id = str(dict_["sessionId"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "traceId" in dict_ and dict_["traceId"] is not None:
             instance.trace_id = str(dict_["traceId"])
         elif include_empty:
-            instance.trace_id = str()
+            instance.trace_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
-            instance.version = int()
+            instance.version = 0
         return instance
 
     @classmethod

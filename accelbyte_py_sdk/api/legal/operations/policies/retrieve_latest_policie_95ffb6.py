@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -63,7 +64,7 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         country_code: (countryCode) REQUIRED str in path
 
@@ -87,7 +88,7 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     country_code: str                                                                              # REQUIRED in [path]
@@ -118,8 +119,8 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -128,14 +129,6 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -208,19 +201,19 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         if hasattr(self, "country_code") and self.country_code:
             result["countryCode"] = str(self.country_code)
         elif include_empty:
-            result["countryCode"] = str()
+            result["countryCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "always_include_default") and self.always_include_default:
             result["alwaysIncludeDefault"] = bool(self.always_include_default)
         elif include_empty:
-            result["alwaysIncludeDefault"] = bool()
+            result["alwaysIncludeDefault"] = False
         if hasattr(self, "default_on_empty") and self.default_on_empty:
             result["defaultOnEmpty"] = bool(self.default_on_empty)
         elif include_empty:
-            result["defaultOnEmpty"] = bool()
+            result["defaultOnEmpty"] = False
         if hasattr(self, "policy_type") and self.policy_type:
             result["policyType"] = str(self.policy_type)
         elif include_empty:
@@ -228,7 +221,7 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         if hasattr(self, "tags") and self.tags:
             result["tags"] = str(self.tags)
         elif include_empty:
-            result["tags"] = str()
+            result["tags"] = ""
         return result
 
     # endregion to methods
@@ -290,19 +283,19 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
-            instance.country_code = str()
+            instance.country_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "alwaysIncludeDefault" in dict_ and dict_["alwaysIncludeDefault"] is not None:
             instance.always_include_default = bool(dict_["alwaysIncludeDefault"])
         elif include_empty:
-            instance.always_include_default = bool()
+            instance.always_include_default = False
         if "defaultOnEmpty" in dict_ and dict_["defaultOnEmpty"] is not None:
             instance.default_on_empty = bool(dict_["defaultOnEmpty"])
         elif include_empty:
-            instance.default_on_empty = bool()
+            instance.default_on_empty = False
         if "policyType" in dict_ and dict_["policyType"] is not None:
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
@@ -310,7 +303,7 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = str(dict_["tags"])
         elif include_empty:
-            instance.tags = str()
+            instance.tags = ""
         return instance
 
     @staticmethod

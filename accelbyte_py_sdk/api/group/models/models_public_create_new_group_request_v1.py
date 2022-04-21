@@ -112,7 +112,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
-            result["configurationCode"] = str()
+            result["configurationCode"] = ""
         if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
@@ -120,23 +120,23 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if hasattr(self, "group_description"):
             result["groupDescription"] = str(self.group_description)
         elif include_empty:
-            result["groupDescription"] = str()
+            result["groupDescription"] = ""
         if hasattr(self, "group_icon"):
             result["groupIcon"] = str(self.group_icon)
         elif include_empty:
-            result["groupIcon"] = str()
+            result["groupIcon"] = ""
         if hasattr(self, "group_max_member"):
             result["groupMaxMember"] = int(self.group_max_member)
         elif include_empty:
-            result["groupMaxMember"] = int()
+            result["groupMaxMember"] = 0
         if hasattr(self, "group_name"):
             result["groupName"] = str(self.group_name)
         elif include_empty:
-            result["groupName"] = str()
+            result["groupName"] = ""
         if hasattr(self, "group_region"):
             result["groupRegion"] = str(self.group_region)
         elif include_empty:
-            result["groupRegion"] = str()
+            result["groupRegion"] = ""
         if hasattr(self, "group_rules"):
             result["groupRules"] = self.group_rules.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -144,7 +144,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
-            result["groupType"] = str()
+            result["groupType"] = ""
         return result
 
     # endregion to methods
@@ -184,7 +184,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
-            instance.configuration_code = str()
+            instance.configuration_code = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:
@@ -192,23 +192,23 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if "groupDescription" in dict_ and dict_["groupDescription"] is not None:
             instance.group_description = str(dict_["groupDescription"])
         elif include_empty:
-            instance.group_description = str()
+            instance.group_description = ""
         if "groupIcon" in dict_ and dict_["groupIcon"] is not None:
             instance.group_icon = str(dict_["groupIcon"])
         elif include_empty:
-            instance.group_icon = str()
+            instance.group_icon = ""
         if "groupMaxMember" in dict_ and dict_["groupMaxMember"] is not None:
             instance.group_max_member = int(dict_["groupMaxMember"])
         elif include_empty:
-            instance.group_max_member = int()
+            instance.group_max_member = 0
         if "groupName" in dict_ and dict_["groupName"] is not None:
             instance.group_name = str(dict_["groupName"])
         elif include_empty:
-            instance.group_name = str()
+            instance.group_name = ""
         if "groupRegion" in dict_ and dict_["groupRegion"] is not None:
             instance.group_region = str(dict_["groupRegion"])
         elif include_empty:
-            instance.group_region = str()
+            instance.group_region = ""
         if "groupRules" in dict_ and dict_["groupRules"] is not None:
             instance.group_rules = ModelsGroupRule.create_from_dict(dict_["groupRules"], include_empty=include_empty)
         elif include_empty:
@@ -216,7 +216,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         if "groupType" in dict_ and dict_["groupType"] is not None:
             instance.group_type = str(dict_["groupType"])
         elif include_empty:
-            instance.group_type = str()
+            instance.group_type = ""
         return instance
 
     @classmethod

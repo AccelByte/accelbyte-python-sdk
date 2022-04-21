@@ -68,15 +68,15 @@ class KeyGroupDynamicInfo(Model):
         if hasattr(self, "available_sale_count"):
             result["availableSaleCount"] = int(self.available_sale_count)
         elif include_empty:
-            result["availableSaleCount"] = int()
+            result["availableSaleCount"] = 0
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "sale_count"):
             result["saleCount"] = int(self.sale_count)
         elif include_empty:
-            result["saleCount"] = int()
+            result["saleCount"] = 0
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class KeyGroupDynamicInfo(Model):
         if "availableSaleCount" in dict_ and dict_["availableSaleCount"] is not None:
             instance.available_sale_count = int(dict_["availableSaleCount"])
         elif include_empty:
-            instance.available_sale_count = int()
+            instance.available_sale_count = 0
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "saleCount" in dict_ and dict_["saleCount"] is not None:
             instance.sale_count = int(dict_["saleCount"])
         elif include_empty:
-            instance.sale_count = int()
+            instance.sale_count = 0
         return instance
 
     @classmethod

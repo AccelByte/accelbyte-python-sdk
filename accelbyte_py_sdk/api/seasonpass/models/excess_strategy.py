@@ -78,11 +78,11 @@ class ExcessStrategy(Model):
         if hasattr(self, "currency"):
             result["currency"] = str(self.currency)
         elif include_empty:
-            result["currency"] = str()
+            result["currency"] = ""
         if hasattr(self, "percent_per_exp"):
             result["percentPerExp"] = int(self.percent_per_exp)
         elif include_empty:
-            result["percentPerExp"] = int()
+            result["percentPerExp"] = 0
         return result
 
     # endregion to methods
@@ -116,11 +116,11 @@ class ExcessStrategy(Model):
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = str(dict_["currency"])
         elif include_empty:
-            instance.currency = str()
+            instance.currency = ""
         if "percentPerExp" in dict_ and dict_["percentPerExp"] is not None:
             instance.percent_per_exp = int(dict_["percentPerExp"])
         elif include_empty:
-            instance.percent_per_exp = int()
+            instance.percent_per_exp = 0
         return instance
 
     @classmethod

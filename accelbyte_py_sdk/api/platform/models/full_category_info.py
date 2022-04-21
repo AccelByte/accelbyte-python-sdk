@@ -96,11 +96,11 @@ class FullCategoryInfo(Model):
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "localization_display_names"):
             result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
         elif include_empty:
@@ -108,19 +108,19 @@ class FullCategoryInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "parent_category_path"):
             result["parentCategoryPath"] = str(self.parent_category_path)
         elif include_empty:
-            result["parentCategoryPath"] = str()
+            result["parentCategoryPath"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "root"):
             result["root"] = bool(self.root)
         elif include_empty:
-            result["root"] = bool()
+            result["root"] = False
         return result
 
     # endregion to methods
@@ -157,11 +157,11 @@ class FullCategoryInfo(Model):
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "localizationDisplayNames" in dict_ and dict_["localizationDisplayNames"] is not None:
             instance.localization_display_names = {str(k0): str(v0) for k0, v0 in dict_["localizationDisplayNames"].items()}
         elif include_empty:
@@ -169,19 +169,19 @@ class FullCategoryInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "parentCategoryPath" in dict_ and dict_["parentCategoryPath"] is not None:
             instance.parent_category_path = str(dict_["parentCategoryPath"])
         elif include_empty:
-            instance.parent_category_path = str()
+            instance.parent_category_path = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "root" in dict_ and dict_["root"] is not None:
             instance.root = bool(dict_["root"])
         elif include_empty:
-            instance.root = bool()
+            instance.root = False
         return instance
 
     @classmethod

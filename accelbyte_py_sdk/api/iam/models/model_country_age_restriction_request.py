@@ -54,7 +54,7 @@ class ModelCountryAgeRestrictionRequest(Model):
         if hasattr(self, "age_restriction"):
             result["AgeRestriction"] = int(self.age_restriction)
         elif include_empty:
-            result["AgeRestriction"] = int()
+            result["AgeRestriction"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelCountryAgeRestrictionRequest(Model):
         if "AgeRestriction" in dict_ and dict_["AgeRestriction"] is not None:
             instance.age_restriction = int(dict_["AgeRestriction"])
         elif include_empty:
-            instance.age_restriction = int()
+            instance.age_restriction = 0
         return instance
 
     @classmethod

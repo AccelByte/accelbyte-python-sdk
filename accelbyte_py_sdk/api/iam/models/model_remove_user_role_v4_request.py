@@ -65,7 +65,7 @@ class ModelRemoveUserRoleV4Request(Model):
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -95,7 +95,7 @@ class ModelRemoveUserRoleV4Request(Model):
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         return instance
 
     @classmethod

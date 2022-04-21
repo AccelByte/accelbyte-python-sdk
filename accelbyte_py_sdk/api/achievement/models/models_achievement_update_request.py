@@ -119,7 +119,7 @@ class ModelsAchievementUpdateRequest(Model):
         if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["defaultLanguage"] = str()
+            result["defaultLanguage"] = ""
         if hasattr(self, "description"):
             result["description"] = {str(k0): str(v0) for k0, v0 in self.description.items()}
         elif include_empty:
@@ -127,15 +127,15 @@ class ModelsAchievementUpdateRequest(Model):
         if hasattr(self, "goal_value"):
             result["goalValue"] = float(self.goal_value)
         elif include_empty:
-            result["goalValue"] = float()
+            result["goalValue"] = 0.0
         if hasattr(self, "hidden"):
             result["hidden"] = bool(self.hidden)
         elif include_empty:
-            result["hidden"] = bool()
+            result["hidden"] = False
         if hasattr(self, "incremental"):
             result["incremental"] = bool(self.incremental)
         elif include_empty:
-            result["incremental"] = bool()
+            result["incremental"] = False
         if hasattr(self, "locked_icons"):
             result["lockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons]
         elif include_empty:
@@ -147,7 +147,7 @@ class ModelsAchievementUpdateRequest(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -197,7 +197,7 @@ class ModelsAchievementUpdateRequest(Model):
         if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
             instance.default_language = str(dict_["defaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = {str(k0): str(v0) for k0, v0 in dict_["description"].items()}
         elif include_empty:
@@ -205,15 +205,15 @@ class ModelsAchievementUpdateRequest(Model):
         if "goalValue" in dict_ and dict_["goalValue"] is not None:
             instance.goal_value = float(dict_["goalValue"])
         elif include_empty:
-            instance.goal_value = float()
+            instance.goal_value = 0.0
         if "hidden" in dict_ and dict_["hidden"] is not None:
             instance.hidden = bool(dict_["hidden"])
         elif include_empty:
-            instance.hidden = bool()
+            instance.hidden = False
         if "incremental" in dict_ and dict_["incremental"] is not None:
             instance.incremental = bool(dict_["incremental"])
         elif include_empty:
-            instance.incremental = bool()
+            instance.incremental = False
         if "lockedIcons" in dict_ and dict_["lockedIcons"] is not None:
             instance.locked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["lockedIcons"]]
         elif include_empty:
@@ -225,7 +225,7 @@ class ModelsAchievementUpdateRequest(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

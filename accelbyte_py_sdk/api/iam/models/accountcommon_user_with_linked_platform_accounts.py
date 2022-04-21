@@ -84,11 +84,11 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
-            result["emailAddress"] = str()
+            result["emailAddress"] = ""
         if hasattr(self, "linked_platforms"):
             result["linkedPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platforms]
         elif include_empty:
@@ -96,11 +96,11 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -132,11 +132,11 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "linkedPlatforms" in dict_ and dict_["linkedPlatforms"] is not None:
             instance.linked_platforms = [AccountcommonPlatformAccount.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["linkedPlatforms"]]
         elif include_empty:
@@ -144,11 +144,11 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

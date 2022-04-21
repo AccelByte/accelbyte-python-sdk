@@ -68,15 +68,15 @@ class ModelsAdminGetProfanityListsListResponse(Model):
         if hasattr(self, "is_enabled"):
             result["isEnabled"] = bool(self.is_enabled)
         elif include_empty:
-            result["isEnabled"] = bool()
+            result["isEnabled"] = False
         if hasattr(self, "is_mandatory"):
             result["isMandatory"] = bool(self.is_mandatory)
         elif include_empty:
-            result["isMandatory"] = bool()
+            result["isMandatory"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsAdminGetProfanityListsListResponse(Model):
         if "isEnabled" in dict_ and dict_["isEnabled"] is not None:
             instance.is_enabled = bool(dict_["isEnabled"])
         elif include_empty:
-            instance.is_enabled = bool()
+            instance.is_enabled = False
         if "isMandatory" in dict_ and dict_["isMandatory"] is not None:
             instance.is_mandatory = bool(dict_["isMandatory"])
         elif include_empty:
-            instance.is_mandatory = bool()
+            instance.is_mandatory = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         return instance
 
     @classmethod

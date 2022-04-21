@@ -110,39 +110,39 @@ class RedeemHistoryInfo(Model):
         if hasattr(self, "campaign_id"):
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
-            result["campaignId"] = str()
+            result["campaignId"] = ""
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         if hasattr(self, "redeemed_at"):
             result["redeemedAt"] = str(self.redeemed_at)
         elif include_empty:
-            result["redeemedAt"] = str()
+            result["redeemedAt"] = ""
         return result
 
     # endregion to methods
@@ -184,39 +184,39 @@ class RedeemHistoryInfo(Model):
         if "campaignId" in dict_ and dict_["campaignId"] is not None:
             instance.campaign_id = str(dict_["campaignId"])
         elif include_empty:
-            instance.campaign_id = str()
+            instance.campaign_id = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         if "redeemedAt" in dict_ and dict_["redeemedAt"] is not None:
             instance.redeemed_at = str(dict_["redeemedAt"])
         elif include_empty:
-            instance.redeemed_at = str()
+            instance.redeemed_at = ""
         return instance
 
     @classmethod

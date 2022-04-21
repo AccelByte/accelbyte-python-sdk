@@ -67,7 +67,7 @@ class UpdateCountryGroupRequest(Model):
         if hasattr(self, "country_group_name"):
             result["countryGroupName"] = str(self.country_group_name)
         elif include_empty:
-            result["countryGroupName"] = str()
+            result["countryGroupName"] = ""
         return result
 
     # endregion to methods
@@ -99,7 +99,7 @@ class UpdateCountryGroupRequest(Model):
         if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
             instance.country_group_name = str(dict_["countryGroupName"])
         elif include_empty:
-            instance.country_group_name = str()
+            instance.country_group_name = ""
         return instance
 
     @classmethod

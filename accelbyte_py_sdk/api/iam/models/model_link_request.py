@@ -112,15 +112,15 @@ class ModelLinkRequest(Model):
         if hasattr(self, "client_id"):
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "operation_name"):
             result["operation_name"] = str(self.operation_name)
         elif include_empty:
-            result["operation_name"] = str()
+            result["operation_name"] = ""
         if hasattr(self, "payload"):
             result["payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
@@ -128,15 +128,15 @@ class ModelLinkRequest(Model):
         if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "request_id"):
             result["request_id"] = str(self.request_id)
         elif include_empty:
-            result["request_id"] = str()
+            result["request_id"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "error"):
             result["error"] = self.error.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -144,7 +144,7 @@ class ModelLinkRequest(Model):
         if hasattr(self, "expiration"):
             result["expiration"] = int(self.expiration)
         elif include_empty:
-            result["expiration"] = int()
+            result["expiration"] = 0
         return result
 
     # endregion to methods
@@ -186,15 +186,15 @@ class ModelLinkRequest(Model):
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "operation_name" in dict_ and dict_["operation_name"] is not None:
             instance.operation_name = str(dict_["operation_name"])
         elif include_empty:
-            instance.operation_name = str()
+            instance.operation_name = ""
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = {str(k0): v0 for k0, v0 in dict_["payload"].items()}
         elif include_empty:
@@ -202,15 +202,15 @@ class ModelLinkRequest(Model):
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "request_id" in dict_ and dict_["request_id"] is not None:
             instance.request_id = str(dict_["request_id"])
         elif include_empty:
-            instance.request_id = str()
+            instance.request_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = RestErrorResponse.create_from_dict(dict_["error"], include_empty=include_empty)
         elif include_empty:
@@ -218,7 +218,7 @@ class ModelLinkRequest(Model):
         if "expiration" in dict_ and dict_["expiration"] is not None:
             instance.expiration = int(dict_["expiration"])
         elif include_empty:
-            instance.expiration = int()
+            instance.expiration = 0
         return instance
 
     @classmethod

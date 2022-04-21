@@ -75,19 +75,19 @@ class ModelVerificationCodeResponse(Model):
         if hasattr(self, "account_registration"):
             result["accountRegistration"] = str(self.account_registration)
         elif include_empty:
-            result["accountRegistration"] = str()
+            result["accountRegistration"] = ""
         if hasattr(self, "account_upgrade"):
             result["accountUpgrade"] = str(self.account_upgrade)
         elif include_empty:
-            result["accountUpgrade"] = str()
+            result["accountUpgrade"] = ""
         if hasattr(self, "password_reset"):
             result["passwordReset"] = str(self.password_reset)
         elif include_empty:
-            result["passwordReset"] = str()
+            result["passwordReset"] = ""
         if hasattr(self, "update_email"):
             result["updateEmail"] = str(self.update_email)
         elif include_empty:
-            result["updateEmail"] = str()
+            result["updateEmail"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelVerificationCodeResponse(Model):
         if "accountRegistration" in dict_ and dict_["accountRegistration"] is not None:
             instance.account_registration = str(dict_["accountRegistration"])
         elif include_empty:
-            instance.account_registration = str()
+            instance.account_registration = ""
         if "accountUpgrade" in dict_ and dict_["accountUpgrade"] is not None:
             instance.account_upgrade = str(dict_["accountUpgrade"])
         elif include_empty:
-            instance.account_upgrade = str()
+            instance.account_upgrade = ""
         if "passwordReset" in dict_ and dict_["passwordReset"] is not None:
             instance.password_reset = str(dict_["passwordReset"])
         elif include_empty:
-            instance.password_reset = str()
+            instance.password_reset = ""
         if "updateEmail" in dict_ and dict_["updateEmail"] is not None:
             instance.update_email = str(dict_["updateEmail"])
         elif include_empty:
-            instance.update_email = str()
+            instance.update_email = ""
         return instance
 
     @classmethod

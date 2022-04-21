@@ -91,11 +91,11 @@ class ClientmodelClientResponse(Model):
         if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
-            result["ClientId"] = str()
+            result["ClientId"] = ""
         if hasattr(self, "client_name"):
             result["ClientName"] = str(self.client_name)
         elif include_empty:
-            result["ClientName"] = str()
+            result["ClientName"] = ""
         if hasattr(self, "client_permissions"):
             result["ClientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
@@ -103,15 +103,15 @@ class ClientmodelClientResponse(Model):
         if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
-            result["CreatedAt"] = str()
+            result["CreatedAt"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
-            result["Namespace"] = str()
+            result["Namespace"] = ""
         if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["RedirectUri"] = str()
+            result["RedirectUri"] = ""
         return result
 
     # endregion to methods
@@ -145,11 +145,11 @@ class ClientmodelClientResponse(Model):
         if "ClientId" in dict_ and dict_["ClientId"] is not None:
             instance.client_id = str(dict_["ClientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "ClientName" in dict_ and dict_["ClientName"] is not None:
             instance.client_name = str(dict_["ClientName"])
         elif include_empty:
-            instance.client_name = str()
+            instance.client_name = ""
         if "ClientPermissions" in dict_ and dict_["ClientPermissions"] is not None:
             instance.client_permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["ClientPermissions"]]
         elif include_empty:
@@ -157,15 +157,15 @@ class ClientmodelClientResponse(Model):
         if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "RedirectUri" in dict_ and dict_["RedirectUri"] is not None:
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         return instance
 
     @classmethod

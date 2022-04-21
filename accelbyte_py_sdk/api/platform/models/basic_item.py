@@ -193,7 +193,7 @@ class BasicItem(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
@@ -201,7 +201,7 @@ class BasicItem(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -209,11 +209,11 @@ class BasicItem(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -221,11 +221,11 @@ class BasicItem(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
@@ -233,7 +233,7 @@ class BasicItem(Model):
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
-            result["baseAppId"] = str()
+            result["baseAppId"] = ""
         if hasattr(self, "features"):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
@@ -245,7 +245,7 @@ class BasicItem(Model):
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -253,7 +253,7 @@ class BasicItem(Model):
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
-            result["useCount"] = int()
+            result["useCount"] = 0
         return result
 
     # endregion to methods
@@ -315,7 +315,7 @@ class BasicItem(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
@@ -323,7 +323,7 @@ class BasicItem(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -331,11 +331,11 @@ class BasicItem(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -343,11 +343,11 @@ class BasicItem(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
@@ -355,7 +355,7 @@ class BasicItem(Model):
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
-            instance.base_app_id = str()
+            instance.base_app_id = ""
         if "features" in dict_ and dict_["features"] is not None:
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
@@ -367,7 +367,7 @@ class BasicItem(Model):
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -375,7 +375,7 @@ class BasicItem(Model):
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
-            instance.use_count = int()
+            instance.use_count = 0
         return instance
 
     @classmethod

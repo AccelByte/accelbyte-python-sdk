@@ -74,7 +74,7 @@ class ModelsRequestMatchParty(Model):
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
-            result["party_id"] = str()
+            result["party_id"] = ""
         if hasattr(self, "party_members"):
             result["party_members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.party_members]
         elif include_empty:
@@ -110,7 +110,7 @@ class ModelsRequestMatchParty(Model):
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         if "party_members" in dict_ and dict_["party_members"] is not None:
             instance.party_members = [ModelsRequestMatchMember.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["party_members"]]
         elif include_empty:

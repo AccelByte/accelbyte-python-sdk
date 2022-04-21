@@ -107,7 +107,7 @@ class ModelsUserRankingResponse(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "weekly"):
             result["weekly"] = self.weekly.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -161,7 +161,7 @@ class ModelsUserRankingResponse(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "weekly" in dict_ and dict_["weekly"] is not None:
             instance.weekly = ModelsUserRankingResponseDetail.create_from_dict(dict_["weekly"], include_empty=include_empty)
         elif include_empty:

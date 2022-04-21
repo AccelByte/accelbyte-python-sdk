@@ -61,11 +61,11 @@ class ModelsContentLikeResponse(Model):
         if hasattr(self, "content_id"):
             result["contentId"] = str(self.content_id)
         elif include_empty:
-            result["contentId"] = str()
+            result["contentId"] = ""
         if hasattr(self, "like_status"):
             result["likeStatus"] = bool(self.like_status)
         elif include_empty:
-            result["likeStatus"] = bool()
+            result["likeStatus"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsContentLikeResponse(Model):
         if "contentId" in dict_ and dict_["contentId"] is not None:
             instance.content_id = str(dict_["contentId"])
         elif include_empty:
-            instance.content_id = str()
+            instance.content_id = ""
         if "likeStatus" in dict_ and dict_["likeStatus"] is not None:
             instance.like_status = bool(dict_["likeStatus"])
         elif include_empty:
-            instance.like_status = bool()
+            instance.like_status = False
         return instance
 
     @classmethod

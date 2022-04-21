@@ -89,27 +89,27 @@ class ModelsServer(Model):
         if hasattr(self, "alias"):
             result["alias"] = str(self.alias)
         elif include_empty:
-            result["alias"] = str()
+            result["alias"] = ""
         if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
-            result["ip"] = str()
+            result["ip"] = ""
         if hasattr(self, "last_update"):
             result["last_update"] = str(self.last_update)
         elif include_empty:
-            result["last_update"] = str()
+            result["last_update"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         return result
 
     # endregion to methods
@@ -143,27 +143,27 @@ class ModelsServer(Model):
         if "alias" in dict_ and dict_["alias"] is not None:
             instance.alias = str(dict_["alias"])
         elif include_empty:
-            instance.alias = str()
+            instance.alias = ""
         if "ip" in dict_ and dict_["ip"] is not None:
             instance.ip = str(dict_["ip"])
         elif include_empty:
-            instance.ip = str()
+            instance.ip = ""
         if "last_update" in dict_ and dict_["last_update"] is not None:
             instance.last_update = str(dict_["last_update"])
         elif include_empty:
-            instance.last_update = str()
+            instance.last_update = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         return instance
 
     @classmethod

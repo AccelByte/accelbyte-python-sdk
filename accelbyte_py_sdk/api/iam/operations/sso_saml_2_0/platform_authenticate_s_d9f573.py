@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -54,7 +55,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
         produces: []
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         location query: PLACEHOLDER
 
@@ -76,7 +77,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = []
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = "PLACEHOLDER"
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -105,8 +106,8 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -115,14 +116,6 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -191,19 +184,19 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "error") and self.error:
             result["error"] = str(self.error)
         elif include_empty:
-            result["error"] = str()
+            result["error"] = ""
         if hasattr(self, "state") and self.state:
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         return result
 
     # endregion to methods
@@ -259,19 +252,19 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = str(dict_["error"])
         elif include_empty:
-            instance.error = str()
+            instance.error = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         return instance
 
     @staticmethod

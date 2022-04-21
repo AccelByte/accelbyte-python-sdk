@@ -54,7 +54,7 @@ class ModelsHideContentRequest(Model):
         if hasattr(self, "is_hidden"):
             result["isHidden"] = bool(self.is_hidden)
         elif include_empty:
-            result["isHidden"] = bool()
+            result["isHidden"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsHideContentRequest(Model):
         if "isHidden" in dict_ and dict_["isHidden"] is not None:
             instance.is_hidden = bool(dict_["isHidden"])
         elif include_empty:
-            instance.is_hidden = bool()
+            instance.is_hidden = False
         return instance
 
     @classmethod

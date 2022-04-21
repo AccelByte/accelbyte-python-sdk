@@ -102,11 +102,11 @@ class ClientmodelClientUpdateV3Request(Model):
         if hasattr(self, "base_uri"):
             result["baseUri"] = str(self.base_uri)
         elif include_empty:
-            result["baseUri"] = str()
+            result["baseUri"] = ""
         if hasattr(self, "client_name"):
             result["clientName"] = str(self.client_name)
         elif include_empty:
-            result["clientName"] = str()
+            result["clientName"] = ""
         if hasattr(self, "client_permissions"):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
@@ -114,15 +114,15 @@ class ClientmodelClientUpdateV3Request(Model):
         if hasattr(self, "deletable"):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
-            result["deletable"] = bool()
+            result["deletable"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirectUri"] = str()
+            result["redirectUri"] = ""
         return result
 
     # endregion to methods
@@ -169,11 +169,11 @@ class ClientmodelClientUpdateV3Request(Model):
         if "baseUri" in dict_ and dict_["baseUri"] is not None:
             instance.base_uri = str(dict_["baseUri"])
         elif include_empty:
-            instance.base_uri = str()
+            instance.base_uri = ""
         if "clientName" in dict_ and dict_["clientName"] is not None:
             instance.client_name = str(dict_["clientName"])
         elif include_empty:
-            instance.client_name = str()
+            instance.client_name = ""
         if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
             instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
@@ -181,15 +181,15 @@ class ClientmodelClientUpdateV3Request(Model):
         if "deletable" in dict_ and dict_["deletable"] is not None:
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
-            instance.deletable = bool()
+            instance.deletable = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         return instance
 
     @classmethod

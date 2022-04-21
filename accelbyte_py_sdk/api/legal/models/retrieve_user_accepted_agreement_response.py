@@ -147,23 +147,23 @@ class RetrieveUserAcceptedAgreementResponse(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
-            result["email"] = str()
+            result["email"] = ""
         if hasattr(self, "is_accepted"):
             result["isAccepted"] = bool(self.is_accepted)
         elif include_empty:
-            result["isAccepted"] = bool()
+            result["isAccepted"] = False
         if hasattr(self, "localized_policy_version"):
             result["localizedPolicyVersion"] = self.localized_policy_version.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -171,35 +171,35 @@ class RetrieveUserAcceptedAgreementResponse(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "policy_name"):
             result["policyName"] = str(self.policy_name)
         elif include_empty:
-            result["policyName"] = str()
+            result["policyName"] = ""
         if hasattr(self, "policy_type"):
             result["policyType"] = str(self.policy_type)
         elif include_empty:
-            result["policyType"] = str()
+            result["policyType"] = ""
         if hasattr(self, "publisher_user_id"):
             result["publisherUserId"] = str(self.publisher_user_id)
         elif include_empty:
-            result["publisherUserId"] = str()
+            result["publisherUserId"] = ""
         if hasattr(self, "signing_date"):
             result["signingDate"] = str(self.signing_date)
         elif include_empty:
-            result["signingDate"] = str()
+            result["signingDate"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
-            result["username"] = str()
+            result["username"] = ""
         return result
 
     # endregion to methods
@@ -262,23 +262,23 @@ class RetrieveUserAcceptedAgreementResponse(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "email" in dict_ and dict_["email"] is not None:
             instance.email = str(dict_["email"])
         elif include_empty:
-            instance.email = str()
+            instance.email = ""
         if "isAccepted" in dict_ and dict_["isAccepted"] is not None:
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
-            instance.is_accepted = bool()
+            instance.is_accepted = False
         if "localizedPolicyVersion" in dict_ and dict_["localizedPolicyVersion"] is not None:
             instance.localized_policy_version = LocalizedPolicyVersionObject.create_from_dict(dict_["localizedPolicyVersion"], include_empty=include_empty)
         elif include_empty:
@@ -286,35 +286,35 @@ class RetrieveUserAcceptedAgreementResponse(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "policyName" in dict_ and dict_["policyName"] is not None:
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
-            instance.policy_name = str()
+            instance.policy_name = ""
         if "policyType" in dict_ and dict_["policyType"] is not None:
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
-            instance.policy_type = str()
+            instance.policy_type = ""
         if "publisherUserId" in dict_ and dict_["publisherUserId"] is not None:
             instance.publisher_user_id = str(dict_["publisherUserId"])
         elif include_empty:
-            instance.publisher_user_id = str()
+            instance.publisher_user_id = ""
         if "signingDate" in dict_ and dict_["signingDate"] is not None:
             instance.signing_date = str(dict_["signingDate"])
         elif include_empty:
-            instance.signing_date = str()
+            instance.signing_date = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         return instance
 
     @classmethod

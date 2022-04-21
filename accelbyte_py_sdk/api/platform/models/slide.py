@@ -101,15 +101,15 @@ class Slide(Model):
         if hasattr(self, "alt"):
             result["alt"] = str(self.alt)
         elif include_empty:
-            result["alt"] = str()
+            result["alt"] = ""
         if hasattr(self, "preview_url"):
             result["previewUrl"] = str(self.preview_url)
         elif include_empty:
-            result["previewUrl"] = str()
+            result["previewUrl"] = ""
         if hasattr(self, "thumbnail_url"):
             result["thumbnailUrl"] = str(self.thumbnail_url)
         elif include_empty:
-            result["thumbnailUrl"] = str()
+            result["thumbnailUrl"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -117,7 +117,7 @@ class Slide(Model):
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         if hasattr(self, "video_source"):
             result["videoSource"] = str(self.video_source)
         elif include_empty:
@@ -161,15 +161,15 @@ class Slide(Model):
         if "alt" in dict_ and dict_["alt"] is not None:
             instance.alt = str(dict_["alt"])
         elif include_empty:
-            instance.alt = str()
+            instance.alt = ""
         if "previewUrl" in dict_ and dict_["previewUrl"] is not None:
             instance.preview_url = str(dict_["previewUrl"])
         elif include_empty:
-            instance.preview_url = str()
+            instance.preview_url = ""
         if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
             instance.thumbnail_url = str(dict_["thumbnailUrl"])
         elif include_empty:
-            instance.thumbnail_url = str()
+            instance.thumbnail_url = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -177,7 +177,7 @@ class Slide(Model):
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         if "videoSource" in dict_ and dict_["videoSource"] is not None:
             instance.video_source = str(dict_["videoSource"])
         elif include_empty:

@@ -63,7 +63,7 @@ class ModelsRule(Model):
         if hasattr(self, "allowed_action"):
             result["allowedAction"] = str(self.allowed_action)
         elif include_empty:
-            result["allowedAction"] = str()
+            result["allowedAction"] = ""
         if hasattr(self, "rule_detail"):
             result["ruleDetail"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rule_detail]
         elif include_empty:
@@ -93,7 +93,7 @@ class ModelsRule(Model):
         if "allowedAction" in dict_ and dict_["allowedAction"] is not None:
             instance.allowed_action = str(dict_["allowedAction"])
         elif include_empty:
-            instance.allowed_action = str()
+            instance.allowed_action = ""
         if "ruleDetail" in dict_ and dict_["ruleDetail"] is not None:
             instance.rule_detail = [ModelsRuleInformation.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["ruleDetail"]]
         elif include_empty:

@@ -148,11 +148,11 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "granted_at"):
             result["grantedAt"] = str(self.granted_at)
         elif include_empty:
-            result["grantedAt"] = str()
+            result["grantedAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -160,11 +160,11 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
@@ -172,11 +172,11 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
-            result["endDate"] = str()
+            result["endDate"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -184,15 +184,15 @@ class AppEntitlementInfo(Model):
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
-            result["startDate"] = str()
+            result["startDate"] = ""
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         return result
 
     # endregion to methods
@@ -246,11 +246,11 @@ class AppEntitlementInfo(Model):
         if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
             instance.granted_at = str(dict_["grantedAt"])
         elif include_empty:
-            instance.granted_at = str()
+            instance.granted_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -258,11 +258,11 @@ class AppEntitlementInfo(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
@@ -270,11 +270,11 @@ class AppEntitlementInfo(Model):
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
             instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
         elif include_empty:
@@ -282,15 +282,15 @@ class AppEntitlementInfo(Model):
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
-            instance.start_date = str()
+            instance.start_date = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         return instance
 
     @classmethod

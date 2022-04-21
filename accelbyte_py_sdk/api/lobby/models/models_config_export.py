@@ -180,79 +180,79 @@ class ModelsConfigExport(Model):
         if hasattr(self, "allow_invite_non_connected_user"):
             result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
         elif include_empty:
-            result["allowInviteNonConnectedUser"] = bool()
+            result["allowInviteNonConnectedUser"] = False
         if hasattr(self, "allow_join_party_during_matchmaking"):
             result["allowJoinPartyDuringMatchmaking"] = bool(self.allow_join_party_during_matchmaking)
         elif include_empty:
-            result["allowJoinPartyDuringMatchmaking"] = bool()
+            result["allowJoinPartyDuringMatchmaking"] = False
         if hasattr(self, "auto_kick_on_disconnect"):
             result["autoKickOnDisconnect"] = bool(self.auto_kick_on_disconnect)
         elif include_empty:
-            result["autoKickOnDisconnect"] = bool()
+            result["autoKickOnDisconnect"] = False
         if hasattr(self, "auto_kick_on_disconnect_delay"):
             result["autoKickOnDisconnectDelay"] = int(self.auto_kick_on_disconnect_delay)
         elif include_empty:
-            result["autoKickOnDisconnectDelay"] = int()
+            result["autoKickOnDisconnectDelay"] = 0
         if hasattr(self, "cancel_ticket_on_disconnect"):
             result["cancelTicketOnDisconnect"] = bool(self.cancel_ticket_on_disconnect)
         elif include_empty:
-            result["cancelTicketOnDisconnect"] = bool()
+            result["cancelTicketOnDisconnect"] = False
         if hasattr(self, "chat_rate_limit_burst"):
             result["chatRateLimitBurst"] = int(self.chat_rate_limit_burst)
         elif include_empty:
-            result["chatRateLimitBurst"] = int()
+            result["chatRateLimitBurst"] = 0
         if hasattr(self, "chat_rate_limit_duration"):
             result["chatRateLimitDuration"] = int(self.chat_rate_limit_duration)
         elif include_empty:
-            result["chatRateLimitDuration"] = int()
+            result["chatRateLimitDuration"] = 0
         if hasattr(self, "concurrent_users_limit"):
             result["concurrentUsersLimit"] = int(self.concurrent_users_limit)
         elif include_empty:
-            result["concurrentUsersLimit"] = int()
+            result["concurrentUsersLimit"] = 0
         if hasattr(self, "disable_invitation_on_join_party"):
             result["disableInvitationOnJoinParty"] = bool(self.disable_invitation_on_join_party)
         elif include_empty:
-            result["disableInvitationOnJoinParty"] = bool()
+            result["disableInvitationOnJoinParty"] = False
         if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
-            result["enableChat"] = bool()
+            result["enableChat"] = False
         if hasattr(self, "entitlement_check"):
             result["entitlementCheck"] = bool(self.entitlement_check)
         elif include_empty:
-            result["entitlementCheck"] = bool()
+            result["entitlementCheck"] = False
         if hasattr(self, "entitlement_item_id"):
             result["entitlementItemID"] = str(self.entitlement_item_id)
         elif include_empty:
-            result["entitlementItemID"] = str()
+            result["entitlementItemID"] = ""
         if hasattr(self, "general_rate_limit_burst"):
             result["generalRateLimitBurst"] = int(self.general_rate_limit_burst)
         elif include_empty:
-            result["generalRateLimitBurst"] = int()
+            result["generalRateLimitBurst"] = 0
         if hasattr(self, "general_rate_limit_duration"):
             result["generalRateLimitDuration"] = int(self.general_rate_limit_duration)
         elif include_empty:
-            result["generalRateLimitDuration"] = int()
+            result["generalRateLimitDuration"] = 0
         if hasattr(self, "keep_presence_activity_on_disconnect"):
             result["keepPresenceActivityOnDisconnect"] = bool(self.keep_presence_activity_on_disconnect)
         elif include_empty:
-            result["keepPresenceActivityOnDisconnect"] = bool()
+            result["keepPresenceActivityOnDisconnect"] = False
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
-            result["maxPartyMember"] = int()
+            result["maxPartyMember"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "profanity_filter"):
             result["profanityFilter"] = bool(self.profanity_filter)
         elif include_empty:
-            result["profanityFilter"] = bool()
+            result["profanityFilter"] = False
         if hasattr(self, "ready_consent_timeout"):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
-            result["readyConsentTimeout"] = int()
+            result["readyConsentTimeout"] = 0
         return result
 
     # endregion to methods
@@ -312,79 +312,79 @@ class ModelsConfigExport(Model):
         if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
             instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
         elif include_empty:
-            instance.allow_invite_non_connected_user = bool()
+            instance.allow_invite_non_connected_user = False
         if "allowJoinPartyDuringMatchmaking" in dict_ and dict_["allowJoinPartyDuringMatchmaking"] is not None:
             instance.allow_join_party_during_matchmaking = bool(dict_["allowJoinPartyDuringMatchmaking"])
         elif include_empty:
-            instance.allow_join_party_during_matchmaking = bool()
+            instance.allow_join_party_during_matchmaking = False
         if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
-            instance.auto_kick_on_disconnect = bool()
+            instance.auto_kick_on_disconnect = False
         if "autoKickOnDisconnectDelay" in dict_ and dict_["autoKickOnDisconnectDelay"] is not None:
             instance.auto_kick_on_disconnect_delay = int(dict_["autoKickOnDisconnectDelay"])
         elif include_empty:
-            instance.auto_kick_on_disconnect_delay = int()
+            instance.auto_kick_on_disconnect_delay = 0
         if "cancelTicketOnDisconnect" in dict_ and dict_["cancelTicketOnDisconnect"] is not None:
             instance.cancel_ticket_on_disconnect = bool(dict_["cancelTicketOnDisconnect"])
         elif include_empty:
-            instance.cancel_ticket_on_disconnect = bool()
+            instance.cancel_ticket_on_disconnect = False
         if "chatRateLimitBurst" in dict_ and dict_["chatRateLimitBurst"] is not None:
             instance.chat_rate_limit_burst = int(dict_["chatRateLimitBurst"])
         elif include_empty:
-            instance.chat_rate_limit_burst = int()
+            instance.chat_rate_limit_burst = 0
         if "chatRateLimitDuration" in dict_ and dict_["chatRateLimitDuration"] is not None:
             instance.chat_rate_limit_duration = int(dict_["chatRateLimitDuration"])
         elif include_empty:
-            instance.chat_rate_limit_duration = int()
+            instance.chat_rate_limit_duration = 0
         if "concurrentUsersLimit" in dict_ and dict_["concurrentUsersLimit"] is not None:
             instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
         elif include_empty:
-            instance.concurrent_users_limit = int()
+            instance.concurrent_users_limit = 0
         if "disableInvitationOnJoinParty" in dict_ and dict_["disableInvitationOnJoinParty"] is not None:
             instance.disable_invitation_on_join_party = bool(dict_["disableInvitationOnJoinParty"])
         elif include_empty:
-            instance.disable_invitation_on_join_party = bool()
+            instance.disable_invitation_on_join_party = False
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
-            instance.enable_chat = bool()
+            instance.enable_chat = False
         if "entitlementCheck" in dict_ and dict_["entitlementCheck"] is not None:
             instance.entitlement_check = bool(dict_["entitlementCheck"])
         elif include_empty:
-            instance.entitlement_check = bool()
+            instance.entitlement_check = False
         if "entitlementItemID" in dict_ and dict_["entitlementItemID"] is not None:
             instance.entitlement_item_id = str(dict_["entitlementItemID"])
         elif include_empty:
-            instance.entitlement_item_id = str()
+            instance.entitlement_item_id = ""
         if "generalRateLimitBurst" in dict_ and dict_["generalRateLimitBurst"] is not None:
             instance.general_rate_limit_burst = int(dict_["generalRateLimitBurst"])
         elif include_empty:
-            instance.general_rate_limit_burst = int()
+            instance.general_rate_limit_burst = 0
         if "generalRateLimitDuration" in dict_ and dict_["generalRateLimitDuration"] is not None:
             instance.general_rate_limit_duration = int(dict_["generalRateLimitDuration"])
         elif include_empty:
-            instance.general_rate_limit_duration = int()
+            instance.general_rate_limit_duration = 0
         if "keepPresenceActivityOnDisconnect" in dict_ and dict_["keepPresenceActivityOnDisconnect"] is not None:
             instance.keep_presence_activity_on_disconnect = bool(dict_["keepPresenceActivityOnDisconnect"])
         elif include_empty:
-            instance.keep_presence_activity_on_disconnect = bool()
+            instance.keep_presence_activity_on_disconnect = False
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
-            instance.max_party_member = int()
+            instance.max_party_member = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "profanityFilter" in dict_ and dict_["profanityFilter"] is not None:
             instance.profanity_filter = bool(dict_["profanityFilter"])
         elif include_empty:
-            instance.profanity_filter = bool()
+            instance.profanity_filter = False
         if "readyConsentTimeout" in dict_ and dict_["readyConsentTimeout"] is not None:
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
-            instance.ready_consent_timeout = int()
+            instance.ready_consent_timeout = 0
         return instance
 
     @classmethod

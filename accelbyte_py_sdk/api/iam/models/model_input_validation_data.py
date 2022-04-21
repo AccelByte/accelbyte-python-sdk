@@ -63,7 +63,7 @@ class ModelInputValidationData(Model):
         if hasattr(self, "field"):
             result["field"] = str(self.field)
         elif include_empty:
-            result["field"] = str()
+            result["field"] = ""
         if hasattr(self, "validation"):
             result["validation"] = self.validation.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -93,7 +93,7 @@ class ModelInputValidationData(Model):
         if "field" in dict_ and dict_["field"] is not None:
             instance.field = str(dict_["field"])
         elif include_empty:
-            instance.field = str()
+            instance.field = ""
         if "validation" in dict_ and dict_["validation"] is not None:
             instance.validation = ModelValidationDetail.create_from_dict(dict_["validation"], include_empty=include_empty)
         elif include_empty:

@@ -94,7 +94,7 @@ class PaymentUrlCreate(Model):
         if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "payment_provider"):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -102,15 +102,15 @@ class PaymentUrlCreate(Model):
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "ui"):
             result["ui"] = str(self.ui)
         elif include_empty:
-            result["ui"] = str()
+            result["ui"] = ""
         if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
-            result["zipCode"] = str()
+            result["zipCode"] = ""
         return result
 
     # endregion to methods
@@ -145,7 +145,7 @@ class PaymentUrlCreate(Model):
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
@@ -153,15 +153,15 @@ class PaymentUrlCreate(Model):
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "ui" in dict_ and dict_["ui"] is not None:
             instance.ui = str(dict_["ui"])
         elif include_empty:
-            instance.ui = str()
+            instance.ui = ""
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:
-            instance.zip_code = str()
+            instance.zip_code = ""
         return instance
 
     @classmethod

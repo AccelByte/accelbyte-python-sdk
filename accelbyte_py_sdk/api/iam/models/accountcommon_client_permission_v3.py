@@ -61,11 +61,11 @@ class AccountcommonClientPermissionV3(Model):
         if hasattr(self, "action"):
             result["action"] = int(self.action)
         elif include_empty:
-            result["action"] = int()
+            result["action"] = 0
         if hasattr(self, "resource"):
             result["resource"] = str(self.resource)
         elif include_empty:
-            result["resource"] = str()
+            result["resource"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class AccountcommonClientPermissionV3(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "resource" in dict_ and dict_["resource"] is not None:
             instance.resource = str(dict_["resource"])
         elif include_empty:
-            instance.resource = str()
+            instance.resource = ""
         return instance
 
     @classmethod

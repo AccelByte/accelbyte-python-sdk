@@ -68,7 +68,7 @@ class UserBanRequest(Model):
         if hasattr(self, "action_id"):
             result["actionId"] = int(self.action_id)
         elif include_empty:
-            result["actionId"] = int()
+            result["actionId"] = 0
         if hasattr(self, "user_ids"):
             result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
@@ -76,7 +76,7 @@ class UserBanRequest(Model):
         if hasattr(self, "comment"):
             result["comment"] = str(self.comment)
         elif include_empty:
-            result["comment"] = str()
+            result["comment"] = ""
         return result
 
     # endregion to methods
@@ -105,7 +105,7 @@ class UserBanRequest(Model):
         if "actionId" in dict_ and dict_["actionId"] is not None:
             instance.action_id = int(dict_["actionId"])
         elif include_empty:
-            instance.action_id = int()
+            instance.action_id = 0
         if "userIds" in dict_ and dict_["userIds"] is not None:
             instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:
@@ -113,7 +113,7 @@ class UserBanRequest(Model):
         if "comment" in dict_ and dict_["comment"] is not None:
             instance.comment = str(dict_["comment"])
         elif include_empty:
-            instance.comment = str()
+            instance.comment = ""
         return instance
 
     @classmethod

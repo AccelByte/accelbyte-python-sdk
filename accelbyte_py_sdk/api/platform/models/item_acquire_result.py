@@ -61,11 +61,11 @@ class ItemAcquireResult(Model):
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
-            result["maxCount"] = int()
+            result["maxCount"] = 0
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ItemAcquireResult(Model):
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
-            instance.max_count = int()
+            instance.max_count = 0
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         return instance
 
     @classmethod

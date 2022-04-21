@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
@@ -45,7 +46,7 @@ class SpecificEventTypeDescriptionHandler(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         event_types: (eventTypes) OPTIONAL str in query
 
@@ -63,7 +64,7 @@ class SpecificEventTypeDescriptionHandler(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     event_types: str                                                                               # OPTIONAL in [query]
@@ -89,8 +90,8 @@ class SpecificEventTypeDescriptionHandler(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -99,13 +100,6 @@ class SpecificEventTypeDescriptionHandler(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -143,7 +137,7 @@ class SpecificEventTypeDescriptionHandler(Operation):
         if hasattr(self, "event_types") and self.event_types:
             result["eventTypes"] = str(self.event_types)
         elif include_empty:
-            result["eventTypes"] = str()
+            result["eventTypes"] = ""
         return result
 
     # endregion to methods
@@ -200,7 +194,7 @@ class SpecificEventTypeDescriptionHandler(Operation):
         if "eventTypes" in dict_ and dict_["eventTypes"] is not None:
             instance.event_types = str(dict_["eventTypes"])
         elif include_empty:
-            instance.event_types = str()
+            instance.event_types = ""
         return instance
 
     @staticmethod

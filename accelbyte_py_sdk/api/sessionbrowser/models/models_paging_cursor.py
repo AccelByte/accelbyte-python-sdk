@@ -61,11 +61,11 @@ class ModelsPagingCursor(Model):
         if hasattr(self, "next_"):
             result["next"] = str(self.next_)
         elif include_empty:
-            result["next"] = str()
+            result["next"] = ""
         if hasattr(self, "previous"):
             result["previous"] = str(self.previous)
         elif include_empty:
-            result["previous"] = str()
+            result["previous"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsPagingCursor(Model):
         if "next" in dict_ and dict_["next"] is not None:
             instance.next_ = str(dict_["next"])
         elif include_empty:
-            instance.next_ = str()
+            instance.next_ = ""
         if "previous" in dict_ and dict_["previous"] is not None:
             instance.previous = str(dict_["previous"])
         elif include_empty:
-            instance.previous = str()
+            instance.previous = ""
         return instance
 
     @classmethod

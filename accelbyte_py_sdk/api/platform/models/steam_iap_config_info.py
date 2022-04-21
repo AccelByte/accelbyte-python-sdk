@@ -61,11 +61,11 @@ class SteamIAPConfigInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "publisher_authentication_key"):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
-            result["publisherAuthenticationKey"] = str()
+            result["publisherAuthenticationKey"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class SteamIAPConfigInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
-            instance.publisher_authentication_key = str()
+            instance.publisher_authentication_key = ""
         return instance
 
     @classmethod

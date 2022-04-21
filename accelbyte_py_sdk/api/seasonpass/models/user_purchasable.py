@@ -68,15 +68,15 @@ class UserPurchasable(Model):
         if hasattr(self, "pass_item_id"):
             result["passItemId"] = str(self.pass_item_id)
         elif include_empty:
-            result["passItemId"] = str()
+            result["passItemId"] = ""
         if hasattr(self, "tier_item_count"):
             result["tierItemCount"] = int(self.tier_item_count)
         elif include_empty:
-            result["tierItemCount"] = int()
+            result["tierItemCount"] = 0
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
-            result["tierItemId"] = str()
+            result["tierItemId"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class UserPurchasable(Model):
         if "passItemId" in dict_ and dict_["passItemId"] is not None:
             instance.pass_item_id = str(dict_["passItemId"])
         elif include_empty:
-            instance.pass_item_id = str()
+            instance.pass_item_id = ""
         if "tierItemCount" in dict_ and dict_["tierItemCount"] is not None:
             instance.tier_item_count = int(dict_["tierItemCount"])
         elif include_empty:
-            instance.tier_item_count = int()
+            instance.tier_item_count = 0
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:
-            instance.tier_item_id = str()
+            instance.tier_item_id = ""
         return instance
 
     @classmethod

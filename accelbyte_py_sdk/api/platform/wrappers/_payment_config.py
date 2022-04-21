@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -78,9 +79,9 @@ from ..operations.payment_config import UpdateWxPayConfig
 from ..operations.payment_config import UpdateWxPayConfigCert
 from ..operations.payment_config import UpdateXsollaConfig
 from ..operations.payment_config import UpdateXsollaUIConfig
-from ..models import PaymentProviderConfigEditSpecialsEnum, PaymentProviderConfigEditAggregateEnum
-from ..models import PaymentProviderConfigInfoAggregateEnum, PaymentProviderConfigInfoSpecialsEnum
-from ..models import XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestThemeEnum
+from ..models import PaymentProviderConfigEditAggregateEnum, PaymentProviderConfigEditSpecialsEnum
+from ..models import PaymentProviderConfigInfoSpecialsEnum, PaymentProviderConfigInfoAggregateEnum
+from ..models import XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestThemeEnum
 
 
 @same_doc_as(CreatePaymentProviderConfig)

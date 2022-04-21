@@ -112,23 +112,23 @@ class ModelsUpdateChannelRequest(Model):
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "find_match_timeout_seconds"):
             result["findMatchTimeoutSeconds"] = int(self.find_match_timeout_seconds)
         elif include_empty:
-            result["findMatchTimeoutSeconds"] = int()
+            result["findMatchTimeoutSeconds"] = 0
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
-            result["joinable"] = bool()
+            result["joinable"] = False
         if hasattr(self, "max_delay_ms"):
             result["max_delay_ms"] = int(self.max_delay_ms)
         elif include_empty:
-            result["max_delay_ms"] = int()
+            result["max_delay_ms"] = 0
         if hasattr(self, "rule_set"):
             result["ruleSet"] = self.rule_set.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -136,15 +136,15 @@ class ModelsUpdateChannelRequest(Model):
         if hasattr(self, "session_queue_timeout_seconds"):
             result["sessionQueueTimeoutSeconds"] = int(self.session_queue_timeout_seconds)
         elif include_empty:
-            result["sessionQueueTimeoutSeconds"] = int()
+            result["sessionQueueTimeoutSeconds"] = 0
         if hasattr(self, "social_matchmaking"):
             result["socialMatchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
-            result["socialMatchmaking"] = bool()
+            result["socialMatchmaking"] = False
         if hasattr(self, "use_sub_gamemode"):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
-            result["use_sub_gamemode"] = bool()
+            result["use_sub_gamemode"] = False
         return result
 
     # endregion to methods
@@ -184,23 +184,23 @@ class ModelsUpdateChannelRequest(Model):
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "findMatchTimeoutSeconds" in dict_ and dict_["findMatchTimeoutSeconds"] is not None:
             instance.find_match_timeout_seconds = int(dict_["findMatchTimeoutSeconds"])
         elif include_empty:
-            instance.find_match_timeout_seconds = int()
+            instance.find_match_timeout_seconds = 0
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
-            instance.joinable = bool()
+            instance.joinable = False
         if "max_delay_ms" in dict_ and dict_["max_delay_ms"] is not None:
             instance.max_delay_ms = int(dict_["max_delay_ms"])
         elif include_empty:
-            instance.max_delay_ms = int()
+            instance.max_delay_ms = 0
         if "ruleSet" in dict_ and dict_["ruleSet"] is not None:
             instance.rule_set = ModelsUpdateRuleset.create_from_dict(dict_["ruleSet"], include_empty=include_empty)
         elif include_empty:
@@ -208,15 +208,15 @@ class ModelsUpdateChannelRequest(Model):
         if "sessionQueueTimeoutSeconds" in dict_ and dict_["sessionQueueTimeoutSeconds"] is not None:
             instance.session_queue_timeout_seconds = int(dict_["sessionQueueTimeoutSeconds"])
         elif include_empty:
-            instance.session_queue_timeout_seconds = int()
+            instance.session_queue_timeout_seconds = 0
         if "socialMatchmaking" in dict_ and dict_["socialMatchmaking"] is not None:
             instance.social_matchmaking = bool(dict_["socialMatchmaking"])
         elif include_empty:
-            instance.social_matchmaking = bool()
+            instance.social_matchmaking = False
         if "use_sub_gamemode" in dict_ and dict_["use_sub_gamemode"] is not None:
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
-            instance.use_sub_gamemode = bool()
+            instance.use_sub_gamemode = False
         return instance
 
     @classmethod

@@ -118,15 +118,15 @@ class UserProfileUpdate(Model):
         if hasattr(self, "avatar_large_url"):
             result["avatarLargeUrl"] = str(self.avatar_large_url)
         elif include_empty:
-            result["avatarLargeUrl"] = str()
+            result["avatarLargeUrl"] = ""
         if hasattr(self, "avatar_small_url"):
             result["avatarSmallUrl"] = str(self.avatar_small_url)
         elif include_empty:
-            result["avatarSmallUrl"] = str()
+            result["avatarSmallUrl"] = ""
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "custom_attributes"):
             result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
@@ -134,27 +134,27 @@ class UserProfileUpdate(Model):
         if hasattr(self, "date_of_birth"):
             result["dateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["dateOfBirth"] = str()
+            result["dateOfBirth"] = ""
         if hasattr(self, "first_name"):
             result["firstName"] = str(self.first_name)
         elif include_empty:
-            result["firstName"] = str()
+            result["firstName"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "last_name"):
             result["lastName"] = str(self.last_name)
         elif include_empty:
-            result["lastName"] = str()
+            result["lastName"] = ""
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
-            result["timeZone"] = str()
+            result["timeZone"] = ""
         if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
-            result["zipCode"] = str()
+            result["zipCode"] = ""
         return result
 
     # endregion to methods
@@ -206,15 +206,15 @@ class UserProfileUpdate(Model):
         if "avatarLargeUrl" in dict_ and dict_["avatarLargeUrl"] is not None:
             instance.avatar_large_url = str(dict_["avatarLargeUrl"])
         elif include_empty:
-            instance.avatar_large_url = str()
+            instance.avatar_large_url = ""
         if "avatarSmallUrl" in dict_ and dict_["avatarSmallUrl"] is not None:
             instance.avatar_small_url = str(dict_["avatarSmallUrl"])
         elif include_empty:
-            instance.avatar_small_url = str()
+            instance.avatar_small_url = ""
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
             instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:
@@ -222,27 +222,27 @@ class UserProfileUpdate(Model):
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "firstName" in dict_ and dict_["firstName"] is not None:
             instance.first_name = str(dict_["firstName"])
         elif include_empty:
-            instance.first_name = str()
+            instance.first_name = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "lastName" in dict_ and dict_["lastName"] is not None:
             instance.last_name = str(dict_["lastName"])
         elif include_empty:
-            instance.last_name = str()
+            instance.last_name = ""
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:
-            instance.time_zone = str()
+            instance.time_zone = ""
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:
-            instance.zip_code = str()
+            instance.zip_code = ""
         return instance
 
     @classmethod

@@ -203,35 +203,35 @@ class CodeInfo(Model):
         if hasattr(self, "batch_no"):
             result["batchNo"] = int(self.batch_no)
         elif include_empty:
-            result["batchNo"] = int()
+            result["batchNo"] = 0
         if hasattr(self, "campaign_id"):
             result["campaignId"] = str(self.campaign_id)
         elif include_empty:
-            result["campaignId"] = str()
+            result["campaignId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "max_redeem_count_per_campaign_per_user"):
             result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCampaignPerUser"] = int()
+            result["maxRedeemCountPerCampaignPerUser"] = 0
         if hasattr(self, "max_redeem_count_per_code"):
             result["maxRedeemCountPerCode"] = int(self.max_redeem_count_per_code)
         elif include_empty:
-            result["maxRedeemCountPerCode"] = int()
+            result["maxRedeemCountPerCode"] = 0
         if hasattr(self, "max_redeem_count_per_code_per_user"):
             result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
-            result["maxRedeemCountPerCodePerUser"] = int()
+            result["maxRedeemCountPerCodePerUser"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "redeem_type"):
             result["redeemType"] = str(self.redeem_type)
         elif include_empty:
@@ -239,11 +239,11 @@ class CodeInfo(Model):
         if hasattr(self, "redeemed_count"):
             result["redeemedCount"] = int(self.redeemed_count)
         elif include_empty:
-            result["redeemedCount"] = int()
+            result["redeemedCount"] = 0
         if hasattr(self, "remainder"):
             result["remainder"] = int(self.remainder)
         elif include_empty:
-            result["remainder"] = int()
+            result["remainder"] = 0
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -255,19 +255,19 @@ class CodeInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
-            result["value"] = str()
+            result["value"] = ""
         if hasattr(self, "acquire_order_no"):
             result["acquireOrderNo"] = str(self.acquire_order_no)
         elif include_empty:
-            result["acquireOrderNo"] = str()
+            result["acquireOrderNo"] = ""
         if hasattr(self, "acquire_user_id"):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
-            result["acquireUserId"] = str()
+            result["acquireUserId"] = ""
         if hasattr(self, "items"):
             result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
@@ -275,11 +275,11 @@ class CodeInfo(Model):
         if hasattr(self, "redeem_end"):
             result["redeemEnd"] = str(self.redeem_end)
         elif include_empty:
-            result["redeemEnd"] = str()
+            result["redeemEnd"] = ""
         if hasattr(self, "redeem_start"):
             result["redeemStart"] = str(self.redeem_start)
         elif include_empty:
-            result["redeemStart"] = str()
+            result["redeemStart"] = ""
         return result
 
     # endregion to methods
@@ -346,35 +346,35 @@ class CodeInfo(Model):
         if "batchNo" in dict_ and dict_["batchNo"] is not None:
             instance.batch_no = int(dict_["batchNo"])
         elif include_empty:
-            instance.batch_no = int()
+            instance.batch_no = 0
         if "campaignId" in dict_ and dict_["campaignId"] is not None:
             instance.campaign_id = str(dict_["campaignId"])
         elif include_empty:
-            instance.campaign_id = str()
+            instance.campaign_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
             instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_campaign_per_user = int()
+            instance.max_redeem_count_per_campaign_per_user = 0
         if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
-            instance.max_redeem_count_per_code = int()
+            instance.max_redeem_count_per_code = 0
         if "maxRedeemCountPerCodePerUser" in dict_ and dict_["maxRedeemCountPerCodePerUser"] is not None:
             instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
         elif include_empty:
-            instance.max_redeem_count_per_code_per_user = int()
+            instance.max_redeem_count_per_code_per_user = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "redeemType" in dict_ and dict_["redeemType"] is not None:
             instance.redeem_type = str(dict_["redeemType"])
         elif include_empty:
@@ -382,11 +382,11 @@ class CodeInfo(Model):
         if "redeemedCount" in dict_ and dict_["redeemedCount"] is not None:
             instance.redeemed_count = int(dict_["redeemedCount"])
         elif include_empty:
-            instance.redeemed_count = int()
+            instance.redeemed_count = 0
         if "remainder" in dict_ and dict_["remainder"] is not None:
             instance.remainder = int(dict_["remainder"])
         elif include_empty:
-            instance.remainder = int()
+            instance.remainder = 0
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -398,19 +398,19 @@ class CodeInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
-            instance.value = str()
+            instance.value = ""
         if "acquireOrderNo" in dict_ and dict_["acquireOrderNo"] is not None:
             instance.acquire_order_no = str(dict_["acquireOrderNo"])
         elif include_empty:
-            instance.acquire_order_no = str()
+            instance.acquire_order_no = ""
         if "acquireUserId" in dict_ and dict_["acquireUserId"] is not None:
             instance.acquire_user_id = str(dict_["acquireUserId"])
         elif include_empty:
-            instance.acquire_user_id = str()
+            instance.acquire_user_id = ""
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
@@ -418,11 +418,11 @@ class CodeInfo(Model):
         if "redeemEnd" in dict_ and dict_["redeemEnd"] is not None:
             instance.redeem_end = str(dict_["redeemEnd"])
         elif include_empty:
-            instance.redeem_end = str()
+            instance.redeem_end = ""
         if "redeemStart" in dict_ and dict_["redeemStart"] is not None:
             instance.redeem_start = str(dict_["redeemStart"])
         elif include_empty:
-            instance.redeem_start = str()
+            instance.redeem_start = ""
         return instance
 
     @classmethod

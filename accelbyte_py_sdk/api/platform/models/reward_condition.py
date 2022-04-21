@@ -77,15 +77,15 @@ class RewardCondition(Model):
         if hasattr(self, "condition"):
             result["condition"] = str(self.condition)
         elif include_empty:
-            result["condition"] = str()
+            result["condition"] = ""
         if hasattr(self, "condition_name"):
             result["conditionName"] = str(self.condition_name)
         elif include_empty:
-            result["conditionName"] = str()
+            result["conditionName"] = ""
         if hasattr(self, "event_name"):
             result["eventName"] = str(self.event_name)
         elif include_empty:
-            result["eventName"] = str()
+            result["eventName"] = ""
         if hasattr(self, "reward_items"):
             result["rewardItems"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_items]
         elif include_empty:
@@ -123,15 +123,15 @@ class RewardCondition(Model):
         if "condition" in dict_ and dict_["condition"] is not None:
             instance.condition = str(dict_["condition"])
         elif include_empty:
-            instance.condition = str()
+            instance.condition = ""
         if "conditionName" in dict_ and dict_["conditionName"] is not None:
             instance.condition_name = str(dict_["conditionName"])
         elif include_empty:
-            instance.condition_name = str()
+            instance.condition_name = ""
         if "eventName" in dict_ and dict_["eventName"] is not None:
             instance.event_name = str(dict_["eventName"])
         elif include_empty:
-            instance.event_name = str()
+            instance.event_name = ""
         if "rewardItems" in dict_ and dict_["rewardItems"] is not None:
             instance.reward_items = [RewardItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewardItems"]]
         elif include_empty:

@@ -61,11 +61,11 @@ class OauthcommonUserRevocationListRecord(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "revoked_at"):
             result["revoked_at"] = str(self.revoked_at)
         elif include_empty:
-            result["revoked_at"] = str()
+            result["revoked_at"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class OauthcommonUserRevocationListRecord(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "revoked_at" in dict_ and dict_["revoked_at"] is not None:
             instance.revoked_at = str(dict_["revoked_at"])
         elif include_empty:
-            instance.revoked_at = str()
+            instance.revoked_at = ""
         return instance
 
     @classmethod

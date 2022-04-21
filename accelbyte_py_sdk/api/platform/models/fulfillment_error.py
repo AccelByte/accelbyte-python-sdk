@@ -68,15 +68,15 @@ class FulfillmentError(Model):
         if hasattr(self, "code"):
             result["code"] = int(self.code)
         elif include_empty:
-            result["code"] = int()
+            result["code"] = 0
         if hasattr(self, "http_status"):
             result["httpStatus"] = int(self.http_status)
         elif include_empty:
-            result["httpStatus"] = int()
+            result["httpStatus"] = 0
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
-            result["message"] = str()
+            result["message"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class FulfillmentError(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = int(dict_["code"])
         elif include_empty:
-            instance.code = int()
+            instance.code = 0
         if "httpStatus" in dict_ and dict_["httpStatus"] is not None:
             instance.http_status = int(dict_["httpStatus"])
         elif include_empty:
-            instance.http_status = int()
+            instance.http_status = 0
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         return instance
 
     @classmethod

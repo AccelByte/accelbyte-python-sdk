@@ -89,27 +89,27 @@ class ModelUserCreateRequest(Model):
         if hasattr(self, "auth_type"):
             result["AuthType"] = str(self.auth_type)
         elif include_empty:
-            result["AuthType"] = str()
+            result["AuthType"] = ""
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "login_id"):
             result["LoginId"] = str(self.login_id)
         elif include_empty:
-            result["LoginId"] = str()
+            result["LoginId"] = ""
         if hasattr(self, "password"):
             result["Password"] = str(self.password)
         elif include_empty:
-            result["Password"] = str()
+            result["Password"] = ""
         if hasattr(self, "password_md5_sum"):
             result["PasswordMD5Sum"] = str(self.password_md5_sum)
         elif include_empty:
-            result["PasswordMD5Sum"] = str()
+            result["PasswordMD5Sum"] = ""
         return result
 
     # endregion to methods
@@ -144,27 +144,27 @@ class ModelUserCreateRequest(Model):
         if "AuthType" in dict_ and dict_["AuthType"] is not None:
             instance.auth_type = str(dict_["AuthType"])
         elif include_empty:
-            instance.auth_type = str()
+            instance.auth_type = ""
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "LoginId" in dict_ and dict_["LoginId"] is not None:
             instance.login_id = str(dict_["LoginId"])
         elif include_empty:
-            instance.login_id = str()
+            instance.login_id = ""
         if "Password" in dict_ and dict_["Password"] is not None:
             instance.password = str(dict_["Password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "PasswordMD5Sum" in dict_ and dict_["PasswordMD5Sum"] is not None:
             instance.password_md5_sum = str(dict_["PasswordMD5Sum"])
         elif include_empty:
-            instance.password_md5_sum = str()
+            instance.password_md5_sum = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelsSetUserVisibilityRequest(Model):
         if hasattr(self, "visibility"):
             result["visibility"] = bool(self.visibility)
         elif include_empty:
-            result["visibility"] = bool()
+            result["visibility"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsSetUserVisibilityRequest(Model):
         if "visibility" in dict_ and dict_["visibility"] is not None:
             instance.visibility = bool(dict_["visibility"])
         elif include_empty:
-            instance.visibility = bool()
+            instance.visibility = False
         return instance
 
     @classmethod

@@ -77,15 +77,15 @@ class AccountcommonBanV3(Model):
         if hasattr(self, "ban"):
             result["ban"] = str(self.ban)
         elif include_empty:
-            result["ban"] = str()
+            result["ban"] = ""
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "descriptions"):
             result["descriptions"] = self.descriptions.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -121,15 +121,15 @@ class AccountcommonBanV3(Model):
         if "ban" in dict_ and dict_["ban"] is not None:
             instance.ban = str(dict_["ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "descriptions" in dict_ and dict_["descriptions"] is not None:
             instance.descriptions = AccountcommonDescription.create_from_dict(dict_["descriptions"], include_empty=include_empty)
         elif include_empty:

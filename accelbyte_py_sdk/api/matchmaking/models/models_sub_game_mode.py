@@ -79,7 +79,7 @@ class ModelsSubGameMode(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         return result
 
     # endregion to methods
@@ -115,7 +115,7 @@ class ModelsSubGameMode(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         return instance
 
     @classmethod

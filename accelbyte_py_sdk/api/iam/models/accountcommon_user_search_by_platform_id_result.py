@@ -84,11 +84,11 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
-            result["EmailAddress"] = str()
+            result["EmailAddress"] = ""
         if hasattr(self, "linked_platforms"):
             result["LinkedPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platforms]
         elif include_empty:
@@ -96,11 +96,11 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
         if hasattr(self, "phone_number"):
             result["PhoneNumber"] = str(self.phone_number)
         elif include_empty:
-            result["PhoneNumber"] = str()
+            result["PhoneNumber"] = ""
         if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
-            result["UserId"] = str()
+            result["UserId"] = ""
         return result
 
     # endregion to methods
@@ -132,11 +132,11 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
             instance.email_address = str(dict_["EmailAddress"])
         elif include_empty:
-            instance.email_address = str()
+            instance.email_address = ""
         if "LinkedPlatforms" in dict_ and dict_["LinkedPlatforms"] is not None:
             instance.linked_platforms = [AccountcommonUserLinkedPlatform.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["LinkedPlatforms"]]
         elif include_empty:
@@ -144,11 +144,11 @@ class AccountcommonUserSearchByPlatformIDResult(Model):
         if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
             instance.phone_number = str(dict_["PhoneNumber"])
         elif include_empty:
-            instance.phone_number = str()
+            instance.phone_number = ""
         if "UserId" in dict_ and dict_["UserId"] is not None:
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

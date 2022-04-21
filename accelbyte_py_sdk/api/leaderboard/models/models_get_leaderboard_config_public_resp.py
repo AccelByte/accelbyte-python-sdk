@@ -75,19 +75,19 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
         if hasattr(self, "icon_url"):
             result["iconURL"] = str(self.icon_url)
         elif include_empty:
-            result["iconURL"] = str()
+            result["iconURL"] = ""
         if hasattr(self, "leaderboard_code"):
             result["leaderboardCode"] = str(self.leaderboard_code)
         elif include_empty:
-            result["leaderboardCode"] = str()
+            result["leaderboardCode"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
         if "iconURL" in dict_ and dict_["iconURL"] is not None:
             instance.icon_url = str(dict_["iconURL"])
         elif include_empty:
-            instance.icon_url = str()
+            instance.icon_url = ""
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
             instance.leaderboard_code = str(dict_["leaderboardCode"])
         elif include_empty:
-            instance.leaderboard_code = str()
+            instance.leaderboard_code = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         return instance
 
     @classmethod

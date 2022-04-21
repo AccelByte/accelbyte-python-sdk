@@ -61,11 +61,11 @@ class ModelsAgentType(Model):
         if hasattr(self, "agent_type"):
             result["AgentType"] = int(self.agent_type)
         elif include_empty:
-            result["AgentType"] = int()
+            result["AgentType"] = 0
         if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
-            result["Description"] = str()
+            result["Description"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsAgentType(Model):
         if "AgentType" in dict_ and dict_["AgentType"] is not None:
             instance.agent_type = int(dict_["AgentType"])
         elif include_empty:
-            instance.agent_type = int()
+            instance.agent_type = 0
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = str(dict_["Description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         return instance
 
     @classmethod

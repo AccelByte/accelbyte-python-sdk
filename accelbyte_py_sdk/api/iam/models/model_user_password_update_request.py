@@ -68,15 +68,15 @@ class ModelUserPasswordUpdateRequest(Model):
         if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
-            result["LanguageTag"] = str()
+            result["LanguageTag"] = ""
         if hasattr(self, "new_password"):
             result["NewPassword"] = str(self.new_password)
         elif include_empty:
-            result["NewPassword"] = str()
+            result["NewPassword"] = ""
         if hasattr(self, "old_password"):
             result["OldPassword"] = str(self.old_password)
         elif include_empty:
-            result["OldPassword"] = str()
+            result["OldPassword"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelUserPasswordUpdateRequest(Model):
         if "LanguageTag" in dict_ and dict_["LanguageTag"] is not None:
             instance.language_tag = str(dict_["LanguageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         if "NewPassword" in dict_ and dict_["NewPassword"] is not None:
             instance.new_password = str(dict_["NewPassword"])
         elif include_empty:
-            instance.new_password = str()
+            instance.new_password = ""
         if "OldPassword" in dict_ and dict_["OldPassword"] is not None:
             instance.old_password = str(dict_["OldPassword"])
         elif include_empty:
-            instance.old_password = str()
+            instance.old_password = ""
         return instance
 
     @classmethod

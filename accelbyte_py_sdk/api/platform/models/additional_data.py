@@ -54,7 +54,7 @@ class AdditionalData(Model):
         if hasattr(self, "card_summary"):
             result["cardSummary"] = str(self.card_summary)
         elif include_empty:
-            result["cardSummary"] = str()
+            result["cardSummary"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class AdditionalData(Model):
         if "cardSummary" in dict_ and dict_["cardSummary"] is not None:
             instance.card_summary = str(dict_["cardSummary"])
         elif include_empty:
-            instance.card_summary = str()
+            instance.card_summary = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
         if hasattr(self, "new_secret"):
             result["NewSecret"] = str(self.new_secret)
         elif include_empty:
-            result["NewSecret"] = str()
+            result["NewSecret"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ClientmodelClientUpdateSecretRequest(Model):
         if "NewSecret" in dict_ and dict_["NewSecret"] is not None:
             instance.new_secret = str(dict_["NewSecret"])
         elif include_empty:
-            instance.new_secret = str()
+            instance.new_secret = ""
         return instance
 
     @classmethod

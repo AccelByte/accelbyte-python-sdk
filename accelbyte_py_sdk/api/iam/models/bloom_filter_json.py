@@ -72,11 +72,11 @@ class BloomFilterJSON(Model):
         if hasattr(self, "k"):
             result["k"] = int(self.k)
         elif include_empty:
-            result["k"] = int()
+            result["k"] = 0
         if hasattr(self, "m"):
             result["m"] = int(self.m)
         elif include_empty:
-            result["m"] = int()
+            result["m"] = 0
         return result
 
     # endregion to methods
@@ -108,11 +108,11 @@ class BloomFilterJSON(Model):
         if "k" in dict_ and dict_["k"] is not None:
             instance.k = int(dict_["k"])
         elif include_empty:
-            instance.k = int()
+            instance.k = 0
         if "m" in dict_ and dict_["m"] is not None:
             instance.m = int(dict_["m"])
         elif include_empty:
-            instance.m = int()
+            instance.m = 0
         return instance
 
     @classmethod

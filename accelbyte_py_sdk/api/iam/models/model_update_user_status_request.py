@@ -61,11 +61,11 @@ class ModelUpdateUserStatusRequest(Model):
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelUpdateUserStatusRequest(Model):
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

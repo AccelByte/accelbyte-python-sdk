@@ -96,31 +96,31 @@ class ModelUserLoginHistoryResponse(Model):
         if hasattr(self, "application_name"):
             result["ApplicationName"] = str(self.application_name)
         elif include_empty:
-            result["ApplicationName"] = str()
+            result["ApplicationName"] = ""
         if hasattr(self, "city"):
             result["City"] = str(self.city)
         elif include_empty:
-            result["City"] = str()
+            result["City"] = ""
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "device_id"):
             result["DeviceId"] = str(self.device_id)
         elif include_empty:
-            result["DeviceId"] = str()
+            result["DeviceId"] = ""
         if hasattr(self, "device_name"):
             result["deviceName"] = str(self.device_name)
         elif include_empty:
-            result["deviceName"] = str()
+            result["deviceName"] = ""
         if hasattr(self, "state"):
             result["State"] = str(self.state)
         elif include_empty:
-            result["State"] = str()
+            result["State"] = ""
         if hasattr(self, "timestamp"):
             result["Timestamp"] = int(self.timestamp)
         elif include_empty:
-            result["Timestamp"] = int()
+            result["Timestamp"] = 0
         return result
 
     # endregion to methods
@@ -156,31 +156,31 @@ class ModelUserLoginHistoryResponse(Model):
         if "ApplicationName" in dict_ and dict_["ApplicationName"] is not None:
             instance.application_name = str(dict_["ApplicationName"])
         elif include_empty:
-            instance.application_name = str()
+            instance.application_name = ""
         if "City" in dict_ and dict_["City"] is not None:
             instance.city = str(dict_["City"])
         elif include_empty:
-            instance.city = str()
+            instance.city = ""
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "DeviceId" in dict_ and dict_["DeviceId"] is not None:
             instance.device_id = str(dict_["DeviceId"])
         elif include_empty:
-            instance.device_id = str()
+            instance.device_id = ""
         if "deviceName" in dict_ and dict_["deviceName"] is not None:
             instance.device_name = str(dict_["deviceName"])
         elif include_empty:
-            instance.device_name = str()
+            instance.device_name = ""
         if "State" in dict_ and dict_["State"] is not None:
             instance.state = str(dict_["State"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         if "Timestamp" in dict_ and dict_["Timestamp"] is not None:
             instance.timestamp = int(dict_["Timestamp"])
         elif include_empty:
-            instance.timestamp = int()
+            instance.timestamp = 0
         return instance
 
     @classmethod

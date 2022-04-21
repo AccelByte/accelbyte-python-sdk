@@ -82,23 +82,23 @@ class ModelsCreatorOverviewResponse(Model):
         if hasattr(self, "follow_count"):
             result["followCount"] = int(self.follow_count)
         elif include_empty:
-            result["followCount"] = int()
+            result["followCount"] = 0
         if hasattr(self, "following_count"):
             result["followingCount"] = int(self.following_count)
         elif include_empty:
-            result["followingCount"] = int()
+            result["followingCount"] = 0
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "total_liked_content"):
             result["totalLikedContent"] = int(self.total_liked_content)
         elif include_empty:
-            result["totalLikedContent"] = int()
+            result["totalLikedContent"] = 0
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ModelsCreatorOverviewResponse(Model):
         if "followCount" in dict_ and dict_["followCount"] is not None:
             instance.follow_count = int(dict_["followCount"])
         elif include_empty:
-            instance.follow_count = int()
+            instance.follow_count = 0
         if "followingCount" in dict_ and dict_["followingCount"] is not None:
             instance.following_count = int(dict_["followingCount"])
         elif include_empty:
-            instance.following_count = int()
+            instance.following_count = 0
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "totalLikedContent" in dict_ and dict_["totalLikedContent"] is not None:
             instance.total_liked_content = int(dict_["totalLikedContent"])
         elif include_empty:
-            instance.total_liked_content = int()
+            instance.total_liked_content = 0
         return instance
 
     @classmethod

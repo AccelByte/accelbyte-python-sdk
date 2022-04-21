@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -82,7 +83,7 @@ class PlatformAuthenticationV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         location query: PLACEHOLDER
 
@@ -124,7 +125,7 @@ class PlatformAuthenticationV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = "PLACEHOLDER"
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -163,8 +164,8 @@ class PlatformAuthenticationV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -173,14 +174,6 @@ class PlatformAuthenticationV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -309,59 +302,59 @@ class PlatformAuthenticationV3(Operation):
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "error") and self.error:
             result["error"] = str(self.error)
         elif include_empty:
-            result["error"] = str()
+            result["error"] = ""
         if hasattr(self, "openid_assoc_handle") and self.openid_assoc_handle:
             result["openid.assoc_handle"] = str(self.openid_assoc_handle)
         elif include_empty:
-            result["openid.assoc_handle"] = str()
+            result["openid.assoc_handle"] = ""
         if hasattr(self, "openid_claimed_id") and self.openid_claimed_id:
             result["openid.claimed_id"] = str(self.openid_claimed_id)
         elif include_empty:
-            result["openid.claimed_id"] = str()
+            result["openid.claimed_id"] = ""
         if hasattr(self, "openid_identity") and self.openid_identity:
             result["openid.identity"] = str(self.openid_identity)
         elif include_empty:
-            result["openid.identity"] = str()
+            result["openid.identity"] = ""
         if hasattr(self, "openid_mode") and self.openid_mode:
             result["openid.mode"] = str(self.openid_mode)
         elif include_empty:
-            result["openid.mode"] = str()
+            result["openid.mode"] = ""
         if hasattr(self, "openid_ns") and self.openid_ns:
             result["openid.ns"] = str(self.openid_ns)
         elif include_empty:
-            result["openid.ns"] = str()
+            result["openid.ns"] = ""
         if hasattr(self, "openid_op_endpoint") and self.openid_op_endpoint:
             result["openid.op_endpoint"] = str(self.openid_op_endpoint)
         elif include_empty:
-            result["openid.op_endpoint"] = str()
+            result["openid.op_endpoint"] = ""
         if hasattr(self, "openid_response_nonce") and self.openid_response_nonce:
             result["openid.response_nonce"] = str(self.openid_response_nonce)
         elif include_empty:
-            result["openid.response_nonce"] = str()
+            result["openid.response_nonce"] = ""
         if hasattr(self, "openid_return_to") and self.openid_return_to:
             result["openid.return_to"] = str(self.openid_return_to)
         elif include_empty:
-            result["openid.return_to"] = str()
+            result["openid.return_to"] = ""
         if hasattr(self, "openid_sig") and self.openid_sig:
             result["openid.sig"] = str(self.openid_sig)
         elif include_empty:
-            result["openid.sig"] = str()
+            result["openid.sig"] = ""
         if hasattr(self, "openid_signed") and self.openid_signed:
             result["openid.signed"] = str(self.openid_signed)
         elif include_empty:
-            result["openid.signed"] = str()
+            result["openid.signed"] = ""
         if hasattr(self, "state") and self.state:
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         return result
 
     # endregion to methods
@@ -447,59 +440,59 @@ class PlatformAuthenticationV3(Operation):
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = str(dict_["error"])
         elif include_empty:
-            instance.error = str()
+            instance.error = ""
         if "openid.assoc_handle" in dict_ and dict_["openid.assoc_handle"] is not None:
             instance.openid_assoc_handle = str(dict_["openid.assoc_handle"])
         elif include_empty:
-            instance.openid_assoc_handle = str()
+            instance.openid_assoc_handle = ""
         if "openid.claimed_id" in dict_ and dict_["openid.claimed_id"] is not None:
             instance.openid_claimed_id = str(dict_["openid.claimed_id"])
         elif include_empty:
-            instance.openid_claimed_id = str()
+            instance.openid_claimed_id = ""
         if "openid.identity" in dict_ and dict_["openid.identity"] is not None:
             instance.openid_identity = str(dict_["openid.identity"])
         elif include_empty:
-            instance.openid_identity = str()
+            instance.openid_identity = ""
         if "openid.mode" in dict_ and dict_["openid.mode"] is not None:
             instance.openid_mode = str(dict_["openid.mode"])
         elif include_empty:
-            instance.openid_mode = str()
+            instance.openid_mode = ""
         if "openid.ns" in dict_ and dict_["openid.ns"] is not None:
             instance.openid_ns = str(dict_["openid.ns"])
         elif include_empty:
-            instance.openid_ns = str()
+            instance.openid_ns = ""
         if "openid.op_endpoint" in dict_ and dict_["openid.op_endpoint"] is not None:
             instance.openid_op_endpoint = str(dict_["openid.op_endpoint"])
         elif include_empty:
-            instance.openid_op_endpoint = str()
+            instance.openid_op_endpoint = ""
         if "openid.response_nonce" in dict_ and dict_["openid.response_nonce"] is not None:
             instance.openid_response_nonce = str(dict_["openid.response_nonce"])
         elif include_empty:
-            instance.openid_response_nonce = str()
+            instance.openid_response_nonce = ""
         if "openid.return_to" in dict_ and dict_["openid.return_to"] is not None:
             instance.openid_return_to = str(dict_["openid.return_to"])
         elif include_empty:
-            instance.openid_return_to = str()
+            instance.openid_return_to = ""
         if "openid.sig" in dict_ and dict_["openid.sig"] is not None:
             instance.openid_sig = str(dict_["openid.sig"])
         elif include_empty:
-            instance.openid_sig = str()
+            instance.openid_sig = ""
         if "openid.signed" in dict_ and dict_["openid.signed"] is not None:
             instance.openid_signed = str(dict_["openid.signed"])
         elif include_empty:
-            instance.openid_signed = str()
+            instance.openid_signed = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         return instance
 
     @staticmethod

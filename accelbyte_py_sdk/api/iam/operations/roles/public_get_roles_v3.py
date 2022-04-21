@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelRoleNamesResponseV3
@@ -50,7 +51,7 @@ class PublicGetRolesV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         after: (after) OPTIONAL str in query
 
@@ -72,7 +73,7 @@ class PublicGetRolesV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     after: str                                                                                     # OPTIONAL in [query]
@@ -101,8 +102,8 @@ class PublicGetRolesV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -111,13 +112,6 @@ class PublicGetRolesV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -173,19 +167,19 @@ class PublicGetRolesV3(Operation):
         if hasattr(self, "after") and self.after:
             result["after"] = str(self.after)
         elif include_empty:
-            result["after"] = str()
+            result["after"] = ""
         if hasattr(self, "before") and self.before:
             result["before"] = str(self.before)
         elif include_empty:
-            result["before"] = str()
+            result["before"] = ""
         if hasattr(self, "is_wildcard") and self.is_wildcard:
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
-            result["isWildcard"] = bool()
+            result["isWildcard"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         return result
 
     # endregion to methods
@@ -247,19 +241,19 @@ class PublicGetRolesV3(Operation):
         if "after" in dict_ and dict_["after"] is not None:
             instance.after = str(dict_["after"])
         elif include_empty:
-            instance.after = str()
+            instance.after = ""
         if "before" in dict_ and dict_["before"] is not None:
             instance.before = str(dict_["before"])
         elif include_empty:
-            instance.before = str()
+            instance.before = ""
         if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
             instance.is_wildcard = bool(dict_["isWildcard"])
         elif include_empty:
-            instance.is_wildcard = bool()
+            instance.is_wildcard = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         return instance
 
     @staticmethod

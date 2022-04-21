@@ -215,15 +215,15 @@ class IAPOrderInfo(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "iap_order_no"):
             result["iapOrderNo"] = str(self.iap_order_no)
         elif include_empty:
-            result["iapOrderNo"] = str()
+            result["iapOrderNo"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -235,11 +235,11 @@ class IAPOrderInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "credits"):
             result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
         elif include_empty:
@@ -247,7 +247,7 @@ class IAPOrderInfo(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
@@ -255,47 +255,47 @@ class IAPOrderInfo(Model):
         if hasattr(self, "fulfilled_time"):
             result["fulfilledTime"] = str(self.fulfilled_time)
         elif include_empty:
-            result["fulfilledTime"] = str()
+            result["fulfilledTime"] = ""
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "price"):
             result["price"] = float(self.price)
         elif include_empty:
-            result["price"] = float()
+            result["price"] = 0.0
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "receipt_data"):
             result["receiptData"] = str(self.receipt_data)
         elif include_empty:
-            result["receiptData"] = str()
+            result["receiptData"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "retry_count"):
             result["retryCount"] = int(self.retry_count)
         elif include_empty:
-            result["retryCount"] = int()
+            result["retryCount"] = 0
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         if hasattr(self, "status_reason"):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
-            result["statusReason"] = str()
+            result["statusReason"] = ""
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["transactionId"] = str()
+            result["transactionId"] = ""
         return result
 
     # endregion to methods
@@ -373,15 +373,15 @@ class IAPOrderInfo(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "iapOrderNo" in dict_ and dict_["iapOrderNo"] is not None:
             instance.iap_order_no = str(dict_["iapOrderNo"])
         elif include_empty:
-            instance.iap_order_no = str()
+            instance.iap_order_no = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -393,11 +393,11 @@ class IAPOrderInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "credits" in dict_ and dict_["credits"] is not None:
             instance.credits = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["credits"]]
         elif include_empty:
@@ -405,7 +405,7 @@ class IAPOrderInfo(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "entitlements" in dict_ and dict_["entitlements"] is not None:
             instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
         elif include_empty:
@@ -413,47 +413,47 @@ class IAPOrderInfo(Model):
         if "fulfilledTime" in dict_ and dict_["fulfilledTime"] is not None:
             instance.fulfilled_time = str(dict_["fulfilledTime"])
         elif include_empty:
-            instance.fulfilled_time = str()
+            instance.fulfilled_time = ""
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = float(dict_["price"])
         elif include_empty:
-            instance.price = float()
+            instance.price = 0.0
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "receiptData" in dict_ and dict_["receiptData"] is not None:
             instance.receipt_data = str(dict_["receiptData"])
         elif include_empty:
-            instance.receipt_data = str()
+            instance.receipt_data = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "retryCount" in dict_ and dict_["retryCount"] is not None:
             instance.retry_count = int(dict_["retryCount"])
         elif include_empty:
-            instance.retry_count = int()
+            instance.retry_count = 0
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         if "statusReason" in dict_ and dict_["statusReason"] is not None:
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:
-            instance.status_reason = str()
+            instance.status_reason = ""
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.transaction_id = str()
+            instance.transaction_id = ""
         return instance
 
     @classmethod

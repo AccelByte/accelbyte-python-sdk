@@ -61,11 +61,11 @@ class ModelsDeleteBulkLeaderboardFailedResp(Model):
         if hasattr(self, "error"):
             result["error"] = str(self.error)
         elif include_empty:
-            result["error"] = str()
+            result["error"] = ""
         if hasattr(self, "leaderboard_code"):
             result["leaderboardCode"] = str(self.leaderboard_code)
         elif include_empty:
-            result["leaderboardCode"] = str()
+            result["leaderboardCode"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsDeleteBulkLeaderboardFailedResp(Model):
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = str(dict_["error"])
         elif include_empty:
-            instance.error = str()
+            instance.error = ""
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
             instance.leaderboard_code = str(dict_["leaderboardCode"])
         elif include_empty:
-            instance.leaderboard_code = str()
+            instance.leaderboard_code = ""
         return instance
 
     @classmethod

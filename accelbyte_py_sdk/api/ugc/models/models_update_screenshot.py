@@ -61,11 +61,11 @@ class ModelsUpdateScreenshot(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "screenshot_id"):
             result["screenshotId"] = str(self.screenshot_id)
         elif include_empty:
-            result["screenshotId"] = str()
+            result["screenshotId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUpdateScreenshot(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "screenshotId" in dict_ and dict_["screenshotId"] is not None:
             instance.screenshot_id = str(dict_["screenshotId"])
         elif include_empty:
-            instance.screenshot_id = str()
+            instance.screenshot_id = ""
         return instance
 
     @classmethod

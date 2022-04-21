@@ -78,7 +78,7 @@ class PaymentOrderChargeStatus(Model):
         if hasattr(self, "charging"):
             result["charging"] = bool(self.charging)
         elif include_empty:
-            result["charging"] = bool()
+            result["charging"] = False
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -110,7 +110,7 @@ class PaymentOrderChargeStatus(Model):
         if "charging" in dict_ and dict_["charging"] is not None:
             instance.charging = bool(dict_["charging"])
         elif include_empty:
-            instance.charging = bool()
+            instance.charging = False
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:

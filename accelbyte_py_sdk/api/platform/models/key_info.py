@@ -123,23 +123,23 @@ class KeyInfo(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "key_file"):
             result["keyFile"] = str(self.key_file)
         elif include_empty:
-            result["keyFile"] = str()
+            result["keyFile"] = ""
         if hasattr(self, "key_group_id"):
             result["keyGroupId"] = str(self.key_group_id)
         elif include_empty:
-            result["keyGroupId"] = str()
+            result["keyGroupId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -147,19 +147,19 @@ class KeyInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "value"):
             result["value"] = str(self.value)
         elif include_empty:
-            result["value"] = str()
+            result["value"] = ""
         if hasattr(self, "acquire_order_no"):
             result["acquireOrderNo"] = str(self.acquire_order_no)
         elif include_empty:
-            result["acquireOrderNo"] = str()
+            result["acquireOrderNo"] = ""
         if hasattr(self, "acquire_user_id"):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
-            result["acquireUserId"] = str()
+            result["acquireUserId"] = ""
         return result
 
     # endregion to methods
@@ -203,23 +203,23 @@ class KeyInfo(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "keyFile" in dict_ and dict_["keyFile"] is not None:
             instance.key_file = str(dict_["keyFile"])
         elif include_empty:
-            instance.key_file = str()
+            instance.key_file = ""
         if "keyGroupId" in dict_ and dict_["keyGroupId"] is not None:
             instance.key_group_id = str(dict_["keyGroupId"])
         elif include_empty:
-            instance.key_group_id = str()
+            instance.key_group_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -227,19 +227,19 @@ class KeyInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
-            instance.value = str()
+            instance.value = ""
         if "acquireOrderNo" in dict_ and dict_["acquireOrderNo"] is not None:
             instance.acquire_order_no = str(dict_["acquireOrderNo"])
         elif include_empty:
-            instance.acquire_order_no = str()
+            instance.acquire_order_no = ""
         if "acquireUserId" in dict_ and dict_["acquireUserId"] is not None:
             instance.acquire_user_id = str(dict_["acquireUserId"])
         elif include_empty:
-            instance.acquire_user_id = str()
+            instance.acquire_user_id = ""
         return instance
 
     @classmethod

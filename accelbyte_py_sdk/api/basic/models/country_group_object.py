@@ -74,11 +74,11 @@ class CountryGroupObject(Model):
         if hasattr(self, "country_group_code"):
             result["countryGroupCode"] = str(self.country_group_code)
         elif include_empty:
-            result["countryGroupCode"] = str()
+            result["countryGroupCode"] = ""
         if hasattr(self, "country_group_name"):
             result["countryGroupName"] = str(self.country_group_name)
         elif include_empty:
-            result["countryGroupName"] = str()
+            result["countryGroupName"] = ""
         return result
 
     # endregion to methods
@@ -113,11 +113,11 @@ class CountryGroupObject(Model):
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])
         elif include_empty:
-            instance.country_group_code = str()
+            instance.country_group_code = ""
         if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
             instance.country_group_name = str(dict_["countryGroupName"])
         elif include_empty:
-            instance.country_group_name = str()
+            instance.country_group_name = ""
         return instance
 
     @classmethod

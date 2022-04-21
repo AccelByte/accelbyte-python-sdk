@@ -191,27 +191,27 @@ class SeasonInfo(Model):
         if hasattr(self, "auto_claim"):
             result["autoClaim"] = bool(self.auto_claim)
         elif include_empty:
-            result["autoClaim"] = bool()
+            result["autoClaim"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["defaultLanguage"] = str()
+            result["defaultLanguage"] = ""
         if hasattr(self, "default_required_exp"):
             result["defaultRequiredExp"] = int(self.default_required_exp)
         elif include_empty:
-            result["defaultRequiredExp"] = int()
+            result["defaultRequiredExp"] = 0
         if hasattr(self, "draft_store_id"):
             result["draftStoreId"] = str(self.draft_store_id)
         elif include_empty:
-            result["draftStoreId"] = str()
+            result["draftStoreId"] = ""
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "excess_strategy"):
             result["excessStrategy"] = self.excess_strategy.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -219,7 +219,7 @@ class SeasonInfo(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "localizations"):
             result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
@@ -227,15 +227,15 @@ class SeasonInfo(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -243,15 +243,15 @@ class SeasonInfo(Model):
         if hasattr(self, "tier_item_id"):
             result["tierItemId"] = str(self.tier_item_id)
         elif include_empty:
-            result["tierItemId"] = str()
+            result["tierItemId"] = ""
         if hasattr(self, "tier_item_name"):
             result["tierItemName"] = str(self.tier_item_name)
         elif include_empty:
-            result["tierItemName"] = str()
+            result["tierItemName"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "images"):
             result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
@@ -263,7 +263,7 @@ class SeasonInfo(Model):
         if hasattr(self, "published_at"):
             result["publishedAt"] = str(self.published_at)
         elif include_empty:
-            result["publishedAt"] = str()
+            result["publishedAt"] = ""
         return result
 
     # endregion to methods
@@ -326,27 +326,27 @@ class SeasonInfo(Model):
         if "autoClaim" in dict_ and dict_["autoClaim"] is not None:
             instance.auto_claim = bool(dict_["autoClaim"])
         elif include_empty:
-            instance.auto_claim = bool()
+            instance.auto_claim = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
             instance.default_language = str(dict_["defaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "defaultRequiredExp" in dict_ and dict_["defaultRequiredExp"] is not None:
             instance.default_required_exp = int(dict_["defaultRequiredExp"])
         elif include_empty:
-            instance.default_required_exp = int()
+            instance.default_required_exp = 0
         if "draftStoreId" in dict_ and dict_["draftStoreId"] is not None:
             instance.draft_store_id = str(dict_["draftStoreId"])
         elif include_empty:
-            instance.draft_store_id = str()
+            instance.draft_store_id = ""
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "excessStrategy" in dict_ and dict_["excessStrategy"] is not None:
             instance.excess_strategy = ExcessStrategy.create_from_dict(dict_["excessStrategy"], include_empty=include_empty)
         elif include_empty:
@@ -354,7 +354,7 @@ class SeasonInfo(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "localizations" in dict_ and dict_["localizations"] is not None:
             instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
@@ -362,15 +362,15 @@ class SeasonInfo(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -378,15 +378,15 @@ class SeasonInfo(Model):
         if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
             instance.tier_item_id = str(dict_["tierItemId"])
         elif include_empty:
-            instance.tier_item_id = str()
+            instance.tier_item_id = ""
         if "tierItemName" in dict_ and dict_["tierItemName"] is not None:
             instance.tier_item_name = str(dict_["tierItemName"])
         elif include_empty:
-            instance.tier_item_name = str()
+            instance.tier_item_name = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
@@ -398,7 +398,7 @@ class SeasonInfo(Model):
         if "publishedAt" in dict_ and dict_["publishedAt"] is not None:
             instance.published_at = str(dict_["publishedAt"])
         elif include_empty:
-            instance.published_at = str()
+            instance.published_at = ""
         return instance
 
     @classmethod

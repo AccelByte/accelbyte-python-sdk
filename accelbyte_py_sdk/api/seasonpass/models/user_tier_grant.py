@@ -54,7 +54,7 @@ class UserTierGrant(Model):
         if hasattr(self, "count"):
             result["count"] = int(self.count)
         elif include_empty:
-            result["count"] = int()
+            result["count"] = 0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class UserTierGrant(Model):
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
-            instance.count = int()
+            instance.count = 0
         return instance
 
     @classmethod

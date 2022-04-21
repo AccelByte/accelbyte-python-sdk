@@ -77,7 +77,7 @@ class ModelsMatchingParty(Model):
         if hasattr(self, "first_ticket_created_at"):
             result["first_ticket_created_at"] = int(self.first_ticket_created_at)
         elif include_empty:
-            result["first_ticket_created_at"] = int()
+            result["first_ticket_created_at"] = 0
         if hasattr(self, "party_attributes"):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
@@ -85,7 +85,7 @@ class ModelsMatchingParty(Model):
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
-            result["party_id"] = str()
+            result["party_id"] = ""
         if hasattr(self, "party_members"):
             result["party_members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.party_members]
         elif include_empty:
@@ -119,7 +119,7 @@ class ModelsMatchingParty(Model):
         if "first_ticket_created_at" in dict_ and dict_["first_ticket_created_at"] is not None:
             instance.first_ticket_created_at = int(dict_["first_ticket_created_at"])
         elif include_empty:
-            instance.first_ticket_created_at = int()
+            instance.first_ticket_created_at = 0
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
             instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
@@ -127,7 +127,7 @@ class ModelsMatchingParty(Model):
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         if "party_members" in dict_ and dict_["party_members"] is not None:
             instance.party_members = [ModelsPartyMember.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["party_members"]]
         elif include_empty:

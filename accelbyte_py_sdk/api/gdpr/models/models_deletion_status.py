@@ -82,23 +82,23 @@ class ModelsDeletionStatus(Model):
         if hasattr(self, "deletion_status"):
             result["DeletionStatus"] = bool(self.deletion_status)
         elif include_empty:
-            result["DeletionStatus"] = bool()
+            result["DeletionStatus"] = False
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "status"):
             result["Status"] = str(self.status)
         elif include_empty:
-            result["Status"] = str()
+            result["Status"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
-            result["UserID"] = str()
+            result["UserID"] = ""
         if hasattr(self, "execution_date"):
             result["ExecutionDate"] = str(self.execution_date)
         elif include_empty:
-            result["ExecutionDate"] = str()
+            result["ExecutionDate"] = ""
         return result
 
     # endregion to methods
@@ -131,23 +131,23 @@ class ModelsDeletionStatus(Model):
         if "DeletionStatus" in dict_ and dict_["DeletionStatus"] is not None:
             instance.deletion_status = bool(dict_["DeletionStatus"])
         elif include_empty:
-            instance.deletion_status = bool()
+            instance.deletion_status = False
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "Status" in dict_ and dict_["Status"] is not None:
             instance.status = str(dict_["Status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "ExecutionDate" in dict_ and dict_["ExecutionDate"] is not None:
             instance.execution_date = str(dict_["ExecutionDate"])
         elif include_empty:
-            instance.execution_date = str()
+            instance.execution_date = ""
         return instance
 
     @classmethod

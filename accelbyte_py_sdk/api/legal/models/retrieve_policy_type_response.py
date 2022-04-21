@@ -89,27 +89,27 @@ class RetrievePolicyTypeResponse(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "is_need_document"):
             result["isNeedDocument"] = bool(self.is_need_document)
         elif include_empty:
-            result["isNeedDocument"] = bool()
+            result["isNeedDocument"] = False
         if hasattr(self, "policy_type_name"):
             result["policyTypeName"] = str(self.policy_type_name)
         elif include_empty:
-            result["policyTypeName"] = str()
+            result["policyTypeName"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -146,27 +146,27 @@ class RetrievePolicyTypeResponse(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "isNeedDocument" in dict_ and dict_["isNeedDocument"] is not None:
             instance.is_need_document = bool(dict_["isNeedDocument"])
         elif include_empty:
-            instance.is_need_document = bool()
+            instance.is_need_document = False
         if "policyTypeName" in dict_ and dict_["policyTypeName"] is not None:
             instance.policy_type_name = str(dict_["policyTypeName"])
         elif include_empty:
-            instance.policy_type_name = str()
+            instance.policy_type_name = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         return instance
 
     @classmethod

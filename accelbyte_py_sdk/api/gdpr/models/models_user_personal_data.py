@@ -68,15 +68,15 @@ class ModelsUserPersonalData(Model):
         if hasattr(self, "data_expiration_date"):
             result["DataExpirationDate"] = str(self.data_expiration_date)
         elif include_empty:
-            result["DataExpirationDate"] = str()
+            result["DataExpirationDate"] = ""
         if hasattr(self, "request_date"):
             result["RequestDate"] = str(self.request_date)
         elif include_empty:
-            result["RequestDate"] = str()
+            result["RequestDate"] = ""
         if hasattr(self, "status"):
             result["Status"] = str(self.status)
         elif include_empty:
-            result["Status"] = str()
+            result["Status"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsUserPersonalData(Model):
         if "DataExpirationDate" in dict_ and dict_["DataExpirationDate"] is not None:
             instance.data_expiration_date = str(dict_["DataExpirationDate"])
         elif include_empty:
-            instance.data_expiration_date = str()
+            instance.data_expiration_date = ""
         if "RequestDate" in dict_ and dict_["RequestDate"] is not None:
             instance.request_date = str(dict_["RequestDate"])
         elif include_empty:
-            instance.request_date = str()
+            instance.request_date = ""
         if "Status" in dict_ and dict_["Status"] is not None:
             instance.status = str(dict_["Status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         return instance
 
     @classmethod

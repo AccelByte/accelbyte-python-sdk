@@ -131,31 +131,31 @@ class WalletTransactionInfo(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
-            result["operator"] = str()
+            result["operator"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "wallet_action"):
             result["walletAction"] = str(self.wallet_action)
         elif include_empty:
@@ -163,15 +163,15 @@ class WalletTransactionInfo(Model):
         if hasattr(self, "wallet_id"):
             result["walletId"] = str(self.wallet_id)
         elif include_empty:
-            result["walletId"] = str()
+            result["walletId"] = ""
         if hasattr(self, "balance_source"):
             result["balanceSource"] = str(self.balance_source)
         elif include_empty:
-            result["balanceSource"] = str()
+            result["balanceSource"] = ""
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -217,31 +217,31 @@ class WalletTransactionInfo(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "operator" in dict_ and dict_["operator"] is not None:
             instance.operator = str(dict_["operator"])
         elif include_empty:
-            instance.operator = str()
+            instance.operator = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "walletAction" in dict_ and dict_["walletAction"] is not None:
             instance.wallet_action = str(dict_["walletAction"])
         elif include_empty:
@@ -249,15 +249,15 @@ class WalletTransactionInfo(Model):
         if "walletId" in dict_ and dict_["walletId"] is not None:
             instance.wallet_id = str(dict_["walletId"])
         elif include_empty:
-            instance.wallet_id = str()
+            instance.wallet_id = ""
         if "balanceSource" in dict_ and dict_["balanceSource"] is not None:
             instance.balance_source = str(dict_["balanceSource"])
         elif include_empty:
-            instance.balance_source = str()
+            instance.balance_source = ""
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelsContentLikeRequest(Model):
         if hasattr(self, "like_status"):
             result["likeStatus"] = bool(self.like_status)
         elif include_empty:
-            result["likeStatus"] = bool()
+            result["likeStatus"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsContentLikeRequest(Model):
         if "likeStatus" in dict_ and dict_["likeStatus"] is not None:
             instance.like_status = bool(dict_["likeStatus"])
         elif include_empty:
-            instance.like_status = bool()
+            instance.like_status = False
         return instance
 
     @classmethod

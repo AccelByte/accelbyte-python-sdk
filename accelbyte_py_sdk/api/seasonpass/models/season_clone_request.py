@@ -68,15 +68,15 @@ class SeasonCloneRequest(Model):
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class SeasonCloneRequest(Model):
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class XblDLCSyncRequest(Model):
         if hasattr(self, "xsts_token"):
             result["xstsToken"] = str(self.xsts_token)
         elif include_empty:
-            result["xstsToken"] = str()
+            result["xstsToken"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class XblDLCSyncRequest(Model):
         if "xstsToken" in dict_ and dict_["xstsToken"] is not None:
             instance.xsts_token = str(dict_["xstsToken"])
         elif include_empty:
-            instance.xsts_token = str()
+            instance.xsts_token = ""
         return instance
 
     @classmethod

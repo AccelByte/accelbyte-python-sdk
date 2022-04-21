@@ -77,7 +77,7 @@ class ModelsMatchResult(Model):
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
@@ -85,11 +85,11 @@ class ModelsMatchResult(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         return result
 
     # endregion to methods
@@ -119,7 +119,7 @@ class ModelsMatchResult(Model):
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
             instance.matching_allies = [ModelsRequestMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
@@ -127,11 +127,11 @@ class ModelsMatchResult(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         return instance
 
     @classmethod

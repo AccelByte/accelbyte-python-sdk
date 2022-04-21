@@ -82,19 +82,19 @@ class ModelUserPermissionsResponseV3(Model):
         if hasattr(self, "action"):
             result["action"] = int(self.action)
         elif include_empty:
-            result["action"] = int()
+            result["action"] = 0
         if hasattr(self, "resource"):
             result["resource"] = str(self.resource)
         elif include_empty:
-            result["resource"] = str()
+            result["resource"] = ""
         if hasattr(self, "sched_action"):
             result["schedAction"] = int(self.sched_action)
         elif include_empty:
-            result["schedAction"] = int()
+            result["schedAction"] = 0
         if hasattr(self, "sched_cron"):
             result["schedCron"] = str(self.sched_cron)
         elif include_empty:
-            result["schedCron"] = str()
+            result["schedCron"] = ""
         if hasattr(self, "sched_range"):
             result["schedRange"] = [str(i0) for i0 in self.sched_range]
         elif include_empty:
@@ -133,19 +133,19 @@ class ModelUserPermissionsResponseV3(Model):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "resource" in dict_ and dict_["resource"] is not None:
             instance.resource = str(dict_["resource"])
         elif include_empty:
-            instance.resource = str()
+            instance.resource = ""
         if "schedAction" in dict_ and dict_["schedAction"] is not None:
             instance.sched_action = int(dict_["schedAction"])
         elif include_empty:
-            instance.sched_action = int()
+            instance.sched_action = 0
         if "schedCron" in dict_ and dict_["schedCron"] is not None:
             instance.sched_cron = str(dict_["schedCron"])
         elif include_empty:
-            instance.sched_cron = str()
+            instance.sched_cron = ""
         if "schedRange" in dict_ and dict_["schedRange"] is not None:
             instance.sched_range = [str(i0) for i0 in dict_["schedRange"]]
         elif include_empty:

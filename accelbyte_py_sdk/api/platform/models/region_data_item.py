@@ -137,11 +137,11 @@ class RegionDataItem(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "currency_namespace"):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
-            result["currencyNamespace"] = str()
+            result["currencyNamespace"] = ""
         if hasattr(self, "currency_type"):
             result["currencyType"] = str(self.currency_type)
         elif include_empty:
@@ -149,39 +149,39 @@ class RegionDataItem(Model):
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
-            result["price"] = int()
+            result["price"] = 0
         if hasattr(self, "discount_amount"):
             result["discountAmount"] = int(self.discount_amount)
         elif include_empty:
-            result["discountAmount"] = int()
+            result["discountAmount"] = 0
         if hasattr(self, "discount_expire_at"):
             result["discountExpireAt"] = str(self.discount_expire_at)
         elif include_empty:
-            result["discountExpireAt"] = str()
+            result["discountExpireAt"] = ""
         if hasattr(self, "discount_percentage"):
             result["discountPercentage"] = int(self.discount_percentage)
         elif include_empty:
-            result["discountPercentage"] = int()
+            result["discountPercentage"] = 0
         if hasattr(self, "discount_purchase_at"):
             result["discountPurchaseAt"] = str(self.discount_purchase_at)
         elif include_empty:
-            result["discountPurchaseAt"] = str()
+            result["discountPurchaseAt"] = ""
         if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
-            result["discountedPrice"] = int()
+            result["discountedPrice"] = 0
         if hasattr(self, "expire_at"):
             result["expireAt"] = str(self.expire_at)
         elif include_empty:
-            result["expireAt"] = str()
+            result["expireAt"] = ""
         if hasattr(self, "purchase_at"):
             result["purchaseAt"] = str(self.purchase_at)
         elif include_empty:
-            result["purchaseAt"] = str()
+            result["purchaseAt"] = ""
         if hasattr(self, "trial_price"):
             result["trialPrice"] = int(self.trial_price)
         elif include_empty:
-            result["trialPrice"] = int()
+            result["trialPrice"] = 0
         return result
 
     # endregion to methods
@@ -235,11 +235,11 @@ class RegionDataItem(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "currencyNamespace" in dict_ and dict_["currencyNamespace"] is not None:
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
-            instance.currency_namespace = str()
+            instance.currency_namespace = ""
         if "currencyType" in dict_ and dict_["currencyType"] is not None:
             instance.currency_type = str(dict_["currencyType"])
         elif include_empty:
@@ -247,39 +247,39 @@ class RegionDataItem(Model):
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
-            instance.price = int()
+            instance.price = 0
         if "discountAmount" in dict_ and dict_["discountAmount"] is not None:
             instance.discount_amount = int(dict_["discountAmount"])
         elif include_empty:
-            instance.discount_amount = int()
+            instance.discount_amount = 0
         if "discountExpireAt" in dict_ and dict_["discountExpireAt"] is not None:
             instance.discount_expire_at = str(dict_["discountExpireAt"])
         elif include_empty:
-            instance.discount_expire_at = str()
+            instance.discount_expire_at = ""
         if "discountPercentage" in dict_ and dict_["discountPercentage"] is not None:
             instance.discount_percentage = int(dict_["discountPercentage"])
         elif include_empty:
-            instance.discount_percentage = int()
+            instance.discount_percentage = 0
         if "discountPurchaseAt" in dict_ and dict_["discountPurchaseAt"] is not None:
             instance.discount_purchase_at = str(dict_["discountPurchaseAt"])
         elif include_empty:
-            instance.discount_purchase_at = str()
+            instance.discount_purchase_at = ""
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
             instance.discounted_price = int(dict_["discountedPrice"])
         elif include_empty:
-            instance.discounted_price = int()
+            instance.discounted_price = 0
         if "expireAt" in dict_ and dict_["expireAt"] is not None:
             instance.expire_at = str(dict_["expireAt"])
         elif include_empty:
-            instance.expire_at = str()
+            instance.expire_at = ""
         if "purchaseAt" in dict_ and dict_["purchaseAt"] is not None:
             instance.purchase_at = str(dict_["purchaseAt"])
         elif include_empty:
-            instance.purchase_at = str()
+            instance.purchase_at = ""
         if "trialPrice" in dict_ and dict_["trialPrice"] is not None:
             instance.trial_price = int(dict_["trialPrice"])
         elif include_empty:
-            instance.trial_price = int()
+            instance.trial_price = 0
         return instance
 
     @classmethod

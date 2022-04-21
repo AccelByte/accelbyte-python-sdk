@@ -111,7 +111,7 @@ class GameProfileRequest(Model):
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "inventories"):
             result["inventories"] = [str(i0) for i0 in self.inventories]
         elif include_empty:
@@ -119,11 +119,11 @@ class GameProfileRequest(Model):
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
-            result["profileName"] = str()
+            result["profileName"] = ""
         if hasattr(self, "statistics"):
             result["statistics"] = [str(i0) for i0 in self.statistics]
         elif include_empty:
@@ -185,7 +185,7 @@ class GameProfileRequest(Model):
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "inventories" in dict_ and dict_["inventories"] is not None:
             instance.inventories = [str(i0) for i0 in dict_["inventories"]]
         elif include_empty:
@@ -193,11 +193,11 @@ class GameProfileRequest(Model):
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "profileName" in dict_ and dict_["profileName"] is not None:
             instance.profile_name = str(dict_["profileName"])
         elif include_empty:
-            instance.profile_name = str()
+            instance.profile_name = ""
         if "statistics" in dict_ and dict_["statistics"] is not None:
             instance.statistics = [str(i0) for i0 in dict_["statistics"]]
         elif include_empty:

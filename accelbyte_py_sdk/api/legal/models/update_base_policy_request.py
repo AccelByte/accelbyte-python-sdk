@@ -97,15 +97,15 @@ class UpdateBasePolicyRequest(Model):
         if hasattr(self, "base_policy_name"):
             result["basePolicyName"] = str(self.base_policy_name)
         elif include_empty:
-            result["basePolicyName"] = str()
+            result["basePolicyName"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -157,15 +157,15 @@ class UpdateBasePolicyRequest(Model):
         if "basePolicyName" in dict_ and dict_["basePolicyName"] is not None:
             instance.base_policy_name = str(dict_["basePolicyName"])
         elif include_empty:
-            instance.base_policy_name = str()
+            instance.base_policy_name = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

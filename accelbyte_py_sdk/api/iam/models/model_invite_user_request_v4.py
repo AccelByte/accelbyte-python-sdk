@@ -83,11 +83,11 @@ class ModelInviteUserRequestV4(Model):
         if hasattr(self, "is_admin"):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
-            result["isAdmin"] = bool()
+            result["isAdmin"] = False
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -125,11 +125,11 @@ class ModelInviteUserRequestV4(Model):
         if "isAdmin" in dict_ and dict_["isAdmin"] is not None:
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
-            instance.is_admin = bool()
+            instance.is_admin = False
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         return instance
 
     @classmethod

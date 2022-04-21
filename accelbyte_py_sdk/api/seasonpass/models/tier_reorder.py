@@ -54,7 +54,7 @@ class TierReorder(Model):
         if hasattr(self, "new_index"):
             result["newIndex"] = int(self.new_index)
         elif include_empty:
-            result["newIndex"] = int()
+            result["newIndex"] = 0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class TierReorder(Model):
         if "newIndex" in dict_ and dict_["newIndex"] is not None:
             instance.new_index = int(dict_["newIndex"])
         elif include_empty:
-            instance.new_index = int()
+            instance.new_index = 0
         return instance
 
     @classmethod

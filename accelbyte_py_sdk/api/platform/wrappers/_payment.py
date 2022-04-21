@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -53,7 +54,7 @@ from ..models import NotificationProcessResultStatusEnum
 from ..models import PaymentOrderChargeRequestPaymentProviderEnum
 from ..models import PaymentOrderChargeStatusStatusEnum
 from ..models import PaymentOrderCreateItemTypeEnum
-from ..models import PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoChannelEnum, PaymentOrderInfoItemTypeEnum
+from ..models import PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoChannelEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoItemTypeEnum
 from ..models import PaymentOrderNotifySimulationNotifyTypeEnum, PaymentOrderNotifySimulationPaymentProviderEnum
 
 

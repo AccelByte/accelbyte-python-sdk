@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -76,7 +77,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
 
         produces: []
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -122,7 +123,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -163,8 +164,8 @@ class PublicNormalizePaymentReturnUrl(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -173,14 +174,6 @@ class PublicNormalizePaymentReturnUrl(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -321,59 +314,59 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "payer_id") and self.payer_id:
             result["PayerID"] = str(self.payer_id)
         elif include_empty:
-            result["PayerID"] = str()
+            result["PayerID"] = ""
         if hasattr(self, "foreinginvoice") and self.foreinginvoice:
             result["foreinginvoice"] = str(self.foreinginvoice)
         elif include_empty:
-            result["foreinginvoice"] = str()
+            result["foreinginvoice"] = ""
         if hasattr(self, "invoice_id") and self.invoice_id:
             result["invoice_id"] = str(self.invoice_id)
         elif include_empty:
-            result["invoice_id"] = str()
+            result["invoice_id"] = ""
         if hasattr(self, "payload") and self.payload:
             result["payload"] = str(self.payload)
         elif include_empty:
-            result["payload"] = str()
+            result["payload"] = ""
         if hasattr(self, "redirect_result") and self.redirect_result:
             result["redirectResult"] = str(self.redirect_result)
         elif include_empty:
-            result["redirectResult"] = str()
+            result["redirectResult"] = ""
         if hasattr(self, "result_code") and self.result_code:
             result["resultCode"] = str(self.result_code)
         elif include_empty:
-            result["resultCode"] = str()
+            result["resultCode"] = ""
         if hasattr(self, "session_id") and self.session_id:
             result["sessionId"] = str(self.session_id)
         elif include_empty:
-            result["sessionId"] = str()
+            result["sessionId"] = ""
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "token") and self.token:
             result["token"] = str(self.token)
         elif include_empty:
-            result["token"] = str()
+            result["token"] = ""
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         if hasattr(self, "order_no") and self.order_no:
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         if hasattr(self, "payment_order_no") and self.payment_order_no:
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "payment_provider") and self.payment_provider:
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
@@ -381,7 +374,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if hasattr(self, "return_url") and self.return_url:
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         return result
 
     # endregion to methods
@@ -474,59 +467,59 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "PayerID" in dict_ and dict_["PayerID"] is not None:
             instance.payer_id = str(dict_["PayerID"])
         elif include_empty:
-            instance.payer_id = str()
+            instance.payer_id = ""
         if "foreinginvoice" in dict_ and dict_["foreinginvoice"] is not None:
             instance.foreinginvoice = str(dict_["foreinginvoice"])
         elif include_empty:
-            instance.foreinginvoice = str()
+            instance.foreinginvoice = ""
         if "invoice_id" in dict_ and dict_["invoice_id"] is not None:
             instance.invoice_id = str(dict_["invoice_id"])
         elif include_empty:
-            instance.invoice_id = str()
+            instance.invoice_id = ""
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = str(dict_["payload"])
         elif include_empty:
-            instance.payload = str()
+            instance.payload = ""
         if "redirectResult" in dict_ and dict_["redirectResult"] is not None:
             instance.redirect_result = str(dict_["redirectResult"])
         elif include_empty:
-            instance.redirect_result = str()
+            instance.redirect_result = ""
         if "resultCode" in dict_ and dict_["resultCode"] is not None:
             instance.result_code = str(dict_["resultCode"])
         elif include_empty:
-            instance.result_code = str()
+            instance.result_code = ""
         if "sessionId" in dict_ and dict_["sessionId"] is not None:
             instance.session_id = str(dict_["sessionId"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "token" in dict_ and dict_["token"] is not None:
             instance.token = str(dict_["token"])
         elif include_empty:
-            instance.token = str()
+            instance.token = ""
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "paymentProvider" in dict_ and dict_["paymentProvider"] is not None:
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
@@ -534,7 +527,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         return instance
 
     @staticmethod

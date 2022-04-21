@@ -68,15 +68,15 @@ class ModelUserActiveBanResponse(Model):
         if hasattr(self, "ban"):
             result["Ban"] = str(self.ban)
         elif include_empty:
-            result["Ban"] = str()
+            result["Ban"] = ""
         if hasattr(self, "ban_id"):
             result["BanId"] = str(self.ban_id)
         elif include_empty:
-            result["BanId"] = str()
+            result["BanId"] = ""
         if hasattr(self, "end_date"):
             result["EndDate"] = str(self.end_date)
         elif include_empty:
-            result["EndDate"] = str()
+            result["EndDate"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelUserActiveBanResponse(Model):
         if "Ban" in dict_ and dict_["Ban"] is not None:
             instance.ban = str(dict_["Ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "BanId" in dict_ and dict_["BanId"] is not None:
             instance.ban_id = str(dict_["BanId"])
         elif include_empty:
-            instance.ban_id = str()
+            instance.ban_id = ""
         if "EndDate" in dict_ and dict_["EndDate"] is not None:
             instance.end_date = str(dict_["EndDate"])
         elif include_empty:
-            instance.end_date = str()
+            instance.end_date = ""
         return instance
 
     @classmethod

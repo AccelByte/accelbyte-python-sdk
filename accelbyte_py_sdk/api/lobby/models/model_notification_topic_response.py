@@ -75,19 +75,19 @@ class ModelNotificationTopicResponse(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = int(self.created_at)
         elif include_empty:
-            result["createdAt"] = int()
+            result["createdAt"] = 0
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "topic"):
             result["topic"] = str(self.topic)
         elif include_empty:
-            result["topic"] = str()
+            result["topic"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelNotificationTopicResponse(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = int(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = int()
+            instance.created_at = 0
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "topic" in dict_ and dict_["topic"] is not None:
             instance.topic = str(dict_["topic"])
         elif include_empty:
-            instance.topic = str()
+            instance.topic = ""
         return instance
 
     @classmethod

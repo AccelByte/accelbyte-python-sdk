@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -192,7 +193,7 @@ async def revoke_user_async(user_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(TokenGrant)
-def token_grant(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def token_grant(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         code=code,
@@ -208,7 +209,7 @@ def token_grant(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[
 
 
 @same_doc_as(TokenGrant)
-async def token_grant_async(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[str] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def token_grant_async(grant_type: Union[str, TokenGrantGrantTypeEnum], code: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, namespace: Optional[str] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     request = TokenGrant.create(
         grant_type=grant_type,
         code=code,

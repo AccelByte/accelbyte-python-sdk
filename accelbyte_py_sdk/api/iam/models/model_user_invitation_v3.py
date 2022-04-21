@@ -77,11 +77,11 @@ class ModelUserInvitationV3(Model):
         if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
-            result["email"] = str()
+            result["email"] = ""
         if hasattr(self, "expired_at"):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
-            result["expiredAt"] = str()
+            result["expiredAt"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.roles]
         elif include_empty:
@@ -89,7 +89,7 @@ class ModelUserInvitationV3(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         return result
 
     # endregion to methods
@@ -120,11 +120,11 @@ class ModelUserInvitationV3(Model):
         if "email" in dict_ and dict_["email"] is not None:
             instance.email = str(dict_["email"])
         elif include_empty:
-            instance.email = str()
+            instance.email = ""
         if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
-            instance.expired_at = str()
+            instance.expired_at = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["roles"]]
         elif include_empty:
@@ -132,7 +132,7 @@ class ModelUserInvitationV3(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         return instance
 
     @classmethod

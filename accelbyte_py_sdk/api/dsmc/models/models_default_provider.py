@@ -54,7 +54,7 @@ class ModelsDefaultProvider(Model):
         if hasattr(self, "provider_name"):
             result["provider_name"] = str(self.provider_name)
         elif include_empty:
-            result["provider_name"] = str()
+            result["provider_name"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsDefaultProvider(Model):
         if "provider_name" in dict_ and dict_["provider_name"] is not None:
             instance.provider_name = str(dict_["provider_name"])
         elif include_empty:
-            instance.provider_name = str()
+            instance.provider_name = ""
         return instance
 
     @classmethod

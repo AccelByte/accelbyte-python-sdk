@@ -61,11 +61,11 @@ class DebitRequest(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class DebitRequest(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

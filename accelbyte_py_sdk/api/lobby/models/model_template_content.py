@@ -61,11 +61,11 @@ class ModelTemplateContent(Model):
         if hasattr(self, "draft"):
             result["draft"] = str(self.draft)
         elif include_empty:
-            result["draft"] = str()
+            result["draft"] = ""
         if hasattr(self, "published"):
             result["published"] = str(self.published)
         elif include_empty:
-            result["published"] = str()
+            result["published"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelTemplateContent(Model):
         if "draft" in dict_ and dict_["draft"] is not None:
             instance.draft = str(dict_["draft"])
         elif include_empty:
-            instance.draft = str()
+            instance.draft = ""
         if "published" in dict_ and dict_["published"] is not None:
             instance.published = str(dict_["published"])
         elif include_empty:
-            instance.published = str()
+            instance.published = ""
         return instance
 
     @classmethod

@@ -82,23 +82,23 @@ class ModelsUpdateRegionOverrideRequest(Model):
         if hasattr(self, "buffer_count"):
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:
-            result["buffer_count"] = int()
+            result["buffer_count"] = 0
         if hasattr(self, "buffer_percent"):
             result["buffer_percent"] = int(self.buffer_percent)
         elif include_empty:
-            result["buffer_percent"] = int()
+            result["buffer_percent"] = 0
         if hasattr(self, "max_count"):
             result["max_count"] = int(self.max_count)
         elif include_empty:
-            result["max_count"] = int()
+            result["max_count"] = 0
         if hasattr(self, "min_count"):
             result["min_count"] = int(self.min_count)
         elif include_empty:
-            result["min_count"] = int()
+            result["min_count"] = 0
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
-            result["use_buffer_percent"] = bool()
+            result["use_buffer_percent"] = False
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ModelsUpdateRegionOverrideRequest(Model):
         if "buffer_count" in dict_ and dict_["buffer_count"] is not None:
             instance.buffer_count = int(dict_["buffer_count"])
         elif include_empty:
-            instance.buffer_count = int()
+            instance.buffer_count = 0
         if "buffer_percent" in dict_ and dict_["buffer_percent"] is not None:
             instance.buffer_percent = int(dict_["buffer_percent"])
         elif include_empty:
-            instance.buffer_percent = int()
+            instance.buffer_percent = 0
         if "max_count" in dict_ and dict_["max_count"] is not None:
             instance.max_count = int(dict_["max_count"])
         elif include_empty:
-            instance.max_count = int()
+            instance.max_count = 0
         if "min_count" in dict_ and dict_["min_count"] is not None:
             instance.min_count = int(dict_["min_count"])
         elif include_empty:
-            instance.min_count = int()
+            instance.min_count = 0
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
-            instance.use_buffer_percent = bool()
+            instance.use_buffer_percent = False
         return instance
 
     @classmethod

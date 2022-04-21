@@ -54,7 +54,7 @@ class ModelsAddPlayerResponse(Model):
         if hasattr(self, "status"):
             result["status"] = bool(self.status)
         elif include_empty:
-            result["status"] = bool()
+            result["status"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsAddPlayerResponse(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = bool(dict_["status"])
         elif include_empty:
-            instance.status = bool()
+            instance.status = False
         return instance
 
     @classmethod

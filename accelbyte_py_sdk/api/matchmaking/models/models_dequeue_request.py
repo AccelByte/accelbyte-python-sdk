@@ -54,7 +54,7 @@ class ModelsDequeueRequest(Model):
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
-            result["match_id"] = str()
+            result["match_id"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsDequeueRequest(Model):
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         return instance
 
     @classmethod

@@ -68,11 +68,11 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
-            result["message"] = str()
+            result["message"] = ""
         if hasattr(self, "topic_name"):
             result["topicName"] = str(self.topic_name)
         elif include_empty:
-            result["topicName"] = str()
+            result["topicName"] = ""
         if hasattr(self, "user_ids"):
             result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
@@ -104,11 +104,11 @@ class ModelBulkUsersFreeFormNotificationRequestV1(Model):
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         if "topicName" in dict_ and dict_["topicName"] is not None:
             instance.topic_name = str(dict_["topicName"])
         elif include_empty:
-            instance.topic_name = str()
+            instance.topic_name = ""
         if "userIds" in dict_ and dict_["userIds"] is not None:
             instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:

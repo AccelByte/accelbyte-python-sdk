@@ -54,7 +54,7 @@ class PaymentOrderRefund(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class PaymentOrderRefund(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         return instance
 
     @classmethod

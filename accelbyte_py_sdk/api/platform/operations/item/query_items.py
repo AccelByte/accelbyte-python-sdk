@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -74,7 +75,7 @@ class QueryItems(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -120,7 +121,7 @@ class QueryItems(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -160,8 +161,8 @@ class QueryItems(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -170,14 +171,6 @@ class QueryItems(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -304,11 +297,11 @@ class QueryItems(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "active_only") and self.active_only:
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
-            result["activeOnly"] = bool()
+            result["activeOnly"] = False
         if hasattr(self, "app_type") and self.app_type:
             result["appType"] = str(self.app_type)
         elif include_empty:
@@ -316,19 +309,19 @@ class QueryItems(Operation):
         if hasattr(self, "available_date") and self.available_date:
             result["availableDate"] = str(self.available_date)
         elif include_empty:
-            result["availableDate"] = str()
+            result["availableDate"] = ""
         if hasattr(self, "base_app_id") and self.base_app_id:
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
-            result["baseAppId"] = str()
+            result["baseAppId"] = ""
         if hasattr(self, "category_path") and self.category_path:
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "features") and self.features:
             result["features"] = str(self.features)
         elif include_empty:
-            result["features"] = str()
+            result["features"] = ""
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -336,31 +329,31 @@ class QueryItems(Operation):
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = str()
+            result["sortBy"] = ""
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = str(self.tags)
         elif include_empty:
-            result["tags"] = str()
+            result["tags"] = ""
         if hasattr(self, "target_namespace") and self.target_namespace:
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["targetNamespace"] = str()
+            result["targetNamespace"] = ""
         return result
 
     # endregion to methods
@@ -458,11 +451,11 @@ class QueryItems(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
-            instance.active_only = bool()
+            instance.active_only = False
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
@@ -470,19 +463,19 @@ class QueryItems(Operation):
         if "availableDate" in dict_ and dict_["availableDate"] is not None:
             instance.available_date = str(dict_["availableDate"])
         elif include_empty:
-            instance.available_date = str()
+            instance.available_date = ""
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
-            instance.base_app_id = str()
+            instance.base_app_id = ""
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "features" in dict_ and dict_["features"] is not None:
             instance.features = str(dict_["features"])
         elif include_empty:
-            instance.features = str()
+            instance.features = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -490,31 +483,31 @@ class QueryItems(Operation):
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = str()
+            instance.sort_by = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = str(dict_["tags"])
         elif include_empty:
-            instance.tags = str()
+            instance.tags = ""
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.target_namespace = str()
+            instance.target_namespace = ""
         return instance
 
     @staticmethod

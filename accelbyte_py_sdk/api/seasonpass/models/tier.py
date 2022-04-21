@@ -68,11 +68,11 @@ class Tier(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "required_exp"):
             result["requiredExp"] = int(self.required_exp)
         elif include_empty:
-            result["requiredExp"] = int()
+            result["requiredExp"] = 0
         if hasattr(self, "rewards"):
             result["rewards"] = {str(k0): [str(i1) for i1 in v0] for k0, v0 in self.rewards.items()}
         elif include_empty:
@@ -107,11 +107,11 @@ class Tier(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "requiredExp" in dict_ and dict_["requiredExp"] is not None:
             instance.required_exp = int(dict_["requiredExp"])
         elif include_empty:
-            instance.required_exp = int()
+            instance.required_exp = 0
         if "rewards" in dict_ and dict_["rewards"] is not None:
             instance.rewards = {str(k0): [str(i1) for i1 in v0] for k0, v0 in dict_["rewards"].items()}
         elif include_empty:

@@ -54,7 +54,7 @@ class ModelsUserDataURL(Model):
         if hasattr(self, "url"):
             result["URL"] = str(self.url)
         elif include_empty:
-            result["URL"] = str()
+            result["URL"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsUserDataURL(Model):
         if "URL" in dict_ and dict_["URL"] is not None:
             instance.url = str(dict_["URL"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         return instance
 
     @classmethod

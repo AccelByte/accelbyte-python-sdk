@@ -54,7 +54,7 @@ class OwnershipToken(Model):
         if hasattr(self, "ownership_token"):
             result["ownershipToken"] = str(self.ownership_token)
         elif include_empty:
-            result["ownershipToken"] = str()
+            result["ownershipToken"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class OwnershipToken(Model):
         if "ownershipToken" in dict_ and dict_["ownershipToken"] is not None:
             instance.ownership_token = str(dict_["ownershipToken"])
         elif include_empty:
-            instance.ownership_token = str()
+            instance.ownership_token = ""
         return instance
 
     @classmethod

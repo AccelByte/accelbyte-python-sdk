@@ -85,7 +85,7 @@ class ModelRoleResponseWithManagers(Model):
         if hasattr(self, "is_wildcard"):
             result["IsWildcard"] = bool(self.is_wildcard)
         elif include_empty:
-            result["IsWildcard"] = bool()
+            result["IsWildcard"] = False
         if hasattr(self, "managers"):
             result["Managers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.managers]
         elif include_empty:
@@ -97,11 +97,11 @@ class ModelRoleResponseWithManagers(Model):
         if hasattr(self, "role_id"):
             result["RoleId"] = str(self.role_id)
         elif include_empty:
-            result["RoleId"] = str()
+            result["RoleId"] = ""
         if hasattr(self, "role_name"):
             result["RoleName"] = str(self.role_name)
         elif include_empty:
-            result["RoleName"] = str()
+            result["RoleName"] = ""
         return result
 
     # endregion to methods
@@ -133,7 +133,7 @@ class ModelRoleResponseWithManagers(Model):
         if "IsWildcard" in dict_ and dict_["IsWildcard"] is not None:
             instance.is_wildcard = bool(dict_["IsWildcard"])
         elif include_empty:
-            instance.is_wildcard = bool()
+            instance.is_wildcard = False
         if "Managers" in dict_ and dict_["Managers"] is not None:
             instance.managers = [AccountcommonRoleManager.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Managers"]]
         elif include_empty:
@@ -145,11 +145,11 @@ class ModelRoleResponseWithManagers(Model):
         if "RoleId" in dict_ and dict_["RoleId"] is not None:
             instance.role_id = str(dict_["RoleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "RoleName" in dict_ and dict_["RoleName"] is not None:
             instance.role_name = str(dict_["RoleName"])
         elif include_empty:
-            instance.role_name = str()
+            instance.role_name = ""
         return instance
 
     @classmethod

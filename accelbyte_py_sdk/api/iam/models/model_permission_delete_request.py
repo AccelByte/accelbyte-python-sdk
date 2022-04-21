@@ -61,11 +61,11 @@ class ModelPermissionDeleteRequest(Model):
         if hasattr(self, "action"):
             result["Action"] = int(self.action)
         elif include_empty:
-            result["Action"] = int()
+            result["Action"] = 0
         if hasattr(self, "resource"):
             result["Resource"] = str(self.resource)
         elif include_empty:
-            result["Resource"] = str()
+            result["Resource"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelPermissionDeleteRequest(Model):
         if "Action" in dict_ and dict_["Action"] is not None:
             instance.action = int(dict_["Action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "Resource" in dict_ and dict_["Resource"] is not None:
             instance.resource = str(dict_["Resource"])
         elif include_empty:
-            instance.resource = str()
+            instance.resource = ""
         return instance
 
     @classmethod

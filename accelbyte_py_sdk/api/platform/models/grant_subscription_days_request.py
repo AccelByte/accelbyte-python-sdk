@@ -61,11 +61,11 @@ class GrantSubscriptionDaysRequest(Model):
         if hasattr(self, "grant_days"):
             result["grantDays"] = int(self.grant_days)
         elif include_empty:
-            result["grantDays"] = int()
+            result["grantDays"] = 0
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -92,11 +92,11 @@ class GrantSubscriptionDaysRequest(Model):
         if "grantDays" in dict_ and dict_["grantDays"] is not None:
             instance.grant_days = int(dict_["grantDays"])
         elif include_empty:
-            instance.grant_days = int()
+            instance.grant_days = 0
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         return instance
 
     @classmethod

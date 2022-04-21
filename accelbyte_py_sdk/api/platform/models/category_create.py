@@ -61,7 +61,7 @@ class CategoryCreate(Model):
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "localization_display_names"):
             result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
         elif include_empty:
@@ -91,7 +91,7 @@ class CategoryCreate(Model):
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "localizationDisplayNames" in dict_ and dict_["localizationDisplayNames"] is not None:
             instance.localization_display_names = {str(k0): str(v0) for k0, v0 in dict_["localizationDisplayNames"].items()}
         elif include_empty:

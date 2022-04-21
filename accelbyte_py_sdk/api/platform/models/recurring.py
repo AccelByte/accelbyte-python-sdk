@@ -87,15 +87,15 @@ class Recurring(Model):
         if hasattr(self, "fixed_free_days"):
             result["fixedFreeDays"] = int(self.fixed_free_days)
         elif include_empty:
-            result["fixedFreeDays"] = int()
+            result["fixedFreeDays"] = 0
         if hasattr(self, "fixed_trial_cycles"):
             result["fixedTrialCycles"] = int(self.fixed_trial_cycles)
         elif include_empty:
-            result["fixedTrialCycles"] = int()
+            result["fixedTrialCycles"] = 0
         if hasattr(self, "grace_days"):
             result["graceDays"] = int(self.grace_days)
         elif include_empty:
-            result["graceDays"] = int()
+            result["graceDays"] = 0
         return result
 
     # endregion to methods
@@ -129,15 +129,15 @@ class Recurring(Model):
         if "fixedFreeDays" in dict_ and dict_["fixedFreeDays"] is not None:
             instance.fixed_free_days = int(dict_["fixedFreeDays"])
         elif include_empty:
-            instance.fixed_free_days = int()
+            instance.fixed_free_days = 0
         if "fixedTrialCycles" in dict_ and dict_["fixedTrialCycles"] is not None:
             instance.fixed_trial_cycles = int(dict_["fixedTrialCycles"])
         elif include_empty:
-            instance.fixed_trial_cycles = int()
+            instance.fixed_trial_cycles = 0
         if "graceDays" in dict_ and dict_["graceDays"] is not None:
             instance.grace_days = int(dict_["graceDays"])
         elif include_empty:
-            instance.grace_days = int()
+            instance.grace_days = 0
         return instance
 
     @classmethod

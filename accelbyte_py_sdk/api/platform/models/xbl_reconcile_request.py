@@ -75,19 +75,19 @@ class XblReconcileRequest(Model):
         if hasattr(self, "currency_code"):
             result["currencyCode"] = str(self.currency_code)
         elif include_empty:
-            result["currencyCode"] = str()
+            result["currencyCode"] = ""
         if hasattr(self, "price"):
             result["price"] = float(self.price)
         elif include_empty:
-            result["price"] = float()
+            result["price"] = 0.0
         if hasattr(self, "product_id"):
             result["productId"] = str(self.product_id)
         elif include_empty:
-            result["productId"] = str()
+            result["productId"] = ""
         if hasattr(self, "xsts_token"):
             result["xstsToken"] = str(self.xsts_token)
         elif include_empty:
-            result["xstsToken"] = str()
+            result["xstsToken"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class XblReconcileRequest(Model):
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
             instance.currency_code = str(dict_["currencyCode"])
         elif include_empty:
-            instance.currency_code = str()
+            instance.currency_code = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = float(dict_["price"])
         elif include_empty:
-            instance.price = float()
+            instance.price = 0.0
         if "productId" in dict_ and dict_["productId"] is not None:
             instance.product_id = str(dict_["productId"])
         elif include_empty:
-            instance.product_id = str()
+            instance.product_id = ""
         if "xstsToken" in dict_ and dict_["xstsToken"] is not None:
             instance.xsts_token = str(dict_["xstsToken"])
         elif include_empty:
-            instance.xsts_token = str()
+            instance.xsts_token = ""
         return instance
 
     @classmethod

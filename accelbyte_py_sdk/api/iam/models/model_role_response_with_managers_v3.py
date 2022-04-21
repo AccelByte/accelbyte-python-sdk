@@ -92,11 +92,11 @@ class ModelRoleResponseWithManagersV3(Model):
         if hasattr(self, "admin_role"):
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
-            result["adminRole"] = bool()
+            result["adminRole"] = False
         if hasattr(self, "is_wildcard"):
             result["isWildcard"] = bool(self.is_wildcard)
         elif include_empty:
-            result["isWildcard"] = bool()
+            result["isWildcard"] = False
         if hasattr(self, "managers"):
             result["managers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.managers]
         elif include_empty:
@@ -108,11 +108,11 @@ class ModelRoleResponseWithManagersV3(Model):
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         if hasattr(self, "role_name"):
             result["roleName"] = str(self.role_name)
         elif include_empty:
-            result["roleName"] = str()
+            result["roleName"] = ""
         return result
 
     # endregion to methods
@@ -146,11 +146,11 @@ class ModelRoleResponseWithManagersV3(Model):
         if "adminRole" in dict_ and dict_["adminRole"] is not None:
             instance.admin_role = bool(dict_["adminRole"])
         elif include_empty:
-            instance.admin_role = bool()
+            instance.admin_role = False
         if "isWildcard" in dict_ and dict_["isWildcard"] is not None:
             instance.is_wildcard = bool(dict_["isWildcard"])
         elif include_empty:
-            instance.is_wildcard = bool()
+            instance.is_wildcard = False
         if "managers" in dict_ and dict_["managers"] is not None:
             instance.managers = [AccountcommonRoleManagerV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["managers"]]
         elif include_empty:
@@ -162,11 +162,11 @@ class ModelRoleResponseWithManagersV3(Model):
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         if "roleName" in dict_ and dict_["roleName"] is not None:
             instance.role_name = str(dict_["roleName"])
         elif include_empty:
-            instance.role_name = str()
+            instance.role_name = ""
         return instance
 
     @classmethod

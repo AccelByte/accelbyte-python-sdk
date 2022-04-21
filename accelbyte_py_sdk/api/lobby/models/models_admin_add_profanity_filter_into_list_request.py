@@ -61,11 +61,11 @@ class ModelsAdminAddProfanityFilterIntoListRequest(Model):
         if hasattr(self, "filter_"):
             result["filter"] = str(self.filter_)
         elif include_empty:
-            result["filter"] = str()
+            result["filter"] = ""
         if hasattr(self, "note"):
             result["note"] = str(self.note)
         elif include_empty:
-            result["note"] = str()
+            result["note"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsAdminAddProfanityFilterIntoListRequest(Model):
         if "filter" in dict_ and dict_["filter"] is not None:
             instance.filter_ = str(dict_["filter"])
         elif include_empty:
-            instance.filter_ = str()
+            instance.filter_ = ""
         if "note" in dict_ and dict_["note"] is not None:
             instance.note = str(dict_["note"])
         elif include_empty:
-            instance.note = str()
+            instance.note = ""
         return instance
 
     @classmethod

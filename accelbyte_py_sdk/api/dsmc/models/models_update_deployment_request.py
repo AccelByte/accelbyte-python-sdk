@@ -117,35 +117,35 @@ class ModelsUpdateDeploymentRequest(Model):
         if hasattr(self, "allow_version_override"):
             result["allow_version_override"] = bool(self.allow_version_override)
         elif include_empty:
-            result["allow_version_override"] = bool()
+            result["allow_version_override"] = False
         if hasattr(self, "buffer_count"):
             result["buffer_count"] = int(self.buffer_count)
         elif include_empty:
-            result["buffer_count"] = int()
+            result["buffer_count"] = 0
         if hasattr(self, "buffer_percent"):
             result["buffer_percent"] = int(self.buffer_percent)
         elif include_empty:
-            result["buffer_percent"] = int()
+            result["buffer_percent"] = 0
         if hasattr(self, "configuration"):
             result["configuration"] = str(self.configuration)
         elif include_empty:
-            result["configuration"] = str()
+            result["configuration"] = ""
         if hasattr(self, "enable_region_overrides"):
             result["enable_region_overrides"] = bool(self.enable_region_overrides)
         elif include_empty:
-            result["enable_region_overrides"] = bool()
+            result["enable_region_overrides"] = False
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
-            result["game_version"] = str()
+            result["game_version"] = ""
         if hasattr(self, "max_count"):
             result["max_count"] = int(self.max_count)
         elif include_empty:
-            result["max_count"] = int()
+            result["max_count"] = 0
         if hasattr(self, "min_count"):
             result["min_count"] = int(self.min_count)
         elif include_empty:
-            result["min_count"] = int()
+            result["min_count"] = 0
         if hasattr(self, "regions"):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
@@ -153,7 +153,7 @@ class ModelsUpdateDeploymentRequest(Model):
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
-            result["use_buffer_percent"] = bool()
+            result["use_buffer_percent"] = False
         return result
 
     # endregion to methods
@@ -195,35 +195,35 @@ class ModelsUpdateDeploymentRequest(Model):
         if "allow_version_override" in dict_ and dict_["allow_version_override"] is not None:
             instance.allow_version_override = bool(dict_["allow_version_override"])
         elif include_empty:
-            instance.allow_version_override = bool()
+            instance.allow_version_override = False
         if "buffer_count" in dict_ and dict_["buffer_count"] is not None:
             instance.buffer_count = int(dict_["buffer_count"])
         elif include_empty:
-            instance.buffer_count = int()
+            instance.buffer_count = 0
         if "buffer_percent" in dict_ and dict_["buffer_percent"] is not None:
             instance.buffer_percent = int(dict_["buffer_percent"])
         elif include_empty:
-            instance.buffer_percent = int()
+            instance.buffer_percent = 0
         if "configuration" in dict_ and dict_["configuration"] is not None:
             instance.configuration = str(dict_["configuration"])
         elif include_empty:
-            instance.configuration = str()
+            instance.configuration = ""
         if "enable_region_overrides" in dict_ and dict_["enable_region_overrides"] is not None:
             instance.enable_region_overrides = bool(dict_["enable_region_overrides"])
         elif include_empty:
-            instance.enable_region_overrides = bool()
+            instance.enable_region_overrides = False
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
-            instance.game_version = str()
+            instance.game_version = ""
         if "max_count" in dict_ and dict_["max_count"] is not None:
             instance.max_count = int(dict_["max_count"])
         elif include_empty:
-            instance.max_count = int()
+            instance.max_count = 0
         if "min_count" in dict_ and dict_["min_count"] is not None:
             instance.min_count = int(dict_["min_count"])
         elif include_empty:
-            instance.min_count = int()
+            instance.min_count = 0
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
@@ -231,7 +231,7 @@ class ModelsUpdateDeploymentRequest(Model):
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
-            instance.use_buffer_percent = bool()
+            instance.use_buffer_percent = False
         return instance
 
     @classmethod

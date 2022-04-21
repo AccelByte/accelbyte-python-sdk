@@ -54,7 +54,7 @@ class ModelsAdminDeleteProfanityFilterRequest(Model):
         if hasattr(self, "filter_"):
             result["filter"] = str(self.filter_)
         elif include_empty:
-            result["filter"] = str()
+            result["filter"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsAdminDeleteProfanityFilterRequest(Model):
         if "filter" in dict_ and dict_["filter"] is not None:
             instance.filter_ = str(dict_["filter"])
         elif include_empty:
-            instance.filter_ = str()
+            instance.filter_ = ""
         return instance
 
     @classmethod

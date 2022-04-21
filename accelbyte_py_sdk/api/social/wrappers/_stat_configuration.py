@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -43,7 +44,7 @@ from ..operations.stat_configuration import ImportStats
 from ..operations.stat_configuration import QueryStats
 from ..operations.stat_configuration import UpdateStat
 from ..models import StatCreateSetByEnum
-from ..models import StatInfoStatusEnum, StatInfoSetByEnum
+from ..models import StatInfoSetByEnum, StatInfoStatusEnum
 
 
 @same_doc_as(CreateStat)

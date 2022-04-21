@@ -82,23 +82,23 @@ class HandlersUserPresence(Model):
         if hasattr(self, "activity"):
             result["activity"] = str(self.activity)
         elif include_empty:
-            result["activity"] = str()
+            result["activity"] = ""
         if hasattr(self, "availability"):
             result["availability"] = str(self.availability)
         elif include_empty:
-            result["availability"] = str()
+            result["availability"] = ""
         if hasattr(self, "last_seen_at"):
             result["lastSeenAt"] = str(self.last_seen_at)
         elif include_empty:
-            result["lastSeenAt"] = str()
+            result["lastSeenAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userID"] = ""
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class HandlersUserPresence(Model):
         if "activity" in dict_ and dict_["activity"] is not None:
             instance.activity = str(dict_["activity"])
         elif include_empty:
-            instance.activity = str()
+            instance.activity = ""
         if "availability" in dict_ and dict_["availability"] is not None:
             instance.availability = str(dict_["availability"])
         elif include_empty:
-            instance.availability = str()
+            instance.availability = ""
         if "lastSeenAt" in dict_ and dict_["lastSeenAt"] is not None:
             instance.last_seen_at = str(dict_["lastSeenAt"])
         elif include_empty:
-            instance.last_seen_at = str()
+            instance.last_seen_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

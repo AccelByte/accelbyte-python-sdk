@@ -68,15 +68,15 @@ class CreatePolicyVersionRequest(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "display_version"):
             result["displayVersion"] = str(self.display_version)
         elif include_empty:
-            result["displayVersion"] = str()
+            result["displayVersion"] = ""
         if hasattr(self, "is_committed"):
             result["isCommitted"] = bool(self.is_committed)
         elif include_empty:
-            result["isCommitted"] = bool()
+            result["isCommitted"] = False
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class CreatePolicyVersionRequest(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "displayVersion" in dict_ and dict_["displayVersion"] is not None:
             instance.display_version = str(dict_["displayVersion"])
         elif include_empty:
-            instance.display_version = str()
+            instance.display_version = ""
         if "isCommitted" in dict_ and dict_["isCommitted"] is not None:
             instance.is_committed = bool(dict_["isCommitted"])
         elif include_empty:
-            instance.is_committed = bool()
+            instance.is_committed = False
         return instance
 
     @classmethod

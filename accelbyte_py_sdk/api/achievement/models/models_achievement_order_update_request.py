@@ -54,7 +54,7 @@ class ModelsAchievementOrderUpdateRequest(Model):
         if hasattr(self, "target_order"):
             result["targetOrder"] = int(self.target_order)
         elif include_empty:
-            result["targetOrder"] = int()
+            result["targetOrder"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsAchievementOrderUpdateRequest(Model):
         if "targetOrder" in dict_ and dict_["targetOrder"] is not None:
             instance.target_order = int(dict_["targetOrder"])
         elif include_empty:
-            instance.target_order = int()
+            instance.target_order = 0
         return instance
 
     @classmethod

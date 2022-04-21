@@ -180,75 +180,75 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         if hasattr(self, "acsurl"):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
-            result["ACSURL"] = str()
+            result["ACSURL"] = ""
         if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
-            result["AppId"] = str()
+            result["AppId"] = ""
         if hasattr(self, "aws_cognito_region"):
             result["AWSCognitoRegion"] = str(self.aws_cognito_region)
         elif include_empty:
-            result["AWSCognitoRegion"] = str()
+            result["AWSCognitoRegion"] = ""
         if hasattr(self, "aws_cognito_user_pool"):
             result["AWSCognitoUserPool"] = str(self.aws_cognito_user_pool)
         elif include_empty:
-            result["AWSCognitoUserPool"] = str()
+            result["AWSCognitoUserPool"] = ""
         if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
-            result["ClientId"] = str()
+            result["ClientId"] = ""
         if hasattr(self, "environment"):
             result["Environment"] = str(self.environment)
         elif include_empty:
-            result["Environment"] = str()
+            result["Environment"] = ""
         if hasattr(self, "federation_metadata_url"):
             result["FederationMetadataURL"] = str(self.federation_metadata_url)
         elif include_empty:
-            result["FederationMetadataURL"] = str()
+            result["FederationMetadataURL"] = ""
         if hasattr(self, "generic_oauth_flow"):
             result["GenericOauthFlow"] = bool(self.generic_oauth_flow)
         elif include_empty:
-            result["GenericOauthFlow"] = bool()
+            result["GenericOauthFlow"] = False
         if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
-            result["IsActive"] = bool()
+            result["IsActive"] = False
         if hasattr(self, "issuer"):
             result["Issuer"] = str(self.issuer)
         elif include_empty:
-            result["Issuer"] = str()
+            result["Issuer"] = ""
         if hasattr(self, "jwks_endpoint"):
             result["JWKSEndpoint"] = str(self.jwks_endpoint)
         elif include_empty:
-            result["JWKSEndpoint"] = str()
+            result["JWKSEndpoint"] = ""
         if hasattr(self, "key_id"):
             result["KeyID"] = str(self.key_id)
         elif include_empty:
-            result["KeyID"] = str()
+            result["KeyID"] = ""
         if hasattr(self, "organization_id"):
             result["OrganizationId"] = str(self.organization_id)
         elif include_empty:
-            result["OrganizationId"] = str()
+            result["OrganizationId"] = ""
         if hasattr(self, "platform_name"):
             result["PlatformName"] = str(self.platform_name)
         elif include_empty:
-            result["PlatformName"] = str()
+            result["PlatformName"] = ""
         if hasattr(self, "redirect_uri"):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["RedirectUri"] = str()
+            result["RedirectUri"] = ""
         if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
-            result["Secret"] = str()
+            result["Secret"] = ""
         if hasattr(self, "team_id"):
             result["TeamID"] = str(self.team_id)
         elif include_empty:
-            result["TeamID"] = str()
+            result["TeamID"] = ""
         if hasattr(self, "token_authentication_type"):
             result["TokenAuthenticationType"] = str(self.token_authentication_type)
         elif include_empty:
-            result["TokenAuthenticationType"] = str()
+            result["TokenAuthenticationType"] = ""
         if hasattr(self, "token_claims_mapping"):
             result["TokenClaimsMapping"] = {str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()}
         elif include_empty:
@@ -312,75 +312,75 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         if "ACSURL" in dict_ and dict_["ACSURL"] is not None:
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
-            instance.acsurl = str()
+            instance.acsurl = ""
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "AWSCognitoRegion" in dict_ and dict_["AWSCognitoRegion"] is not None:
             instance.aws_cognito_region = str(dict_["AWSCognitoRegion"])
         elif include_empty:
-            instance.aws_cognito_region = str()
+            instance.aws_cognito_region = ""
         if "AWSCognitoUserPool" in dict_ and dict_["AWSCognitoUserPool"] is not None:
             instance.aws_cognito_user_pool = str(dict_["AWSCognitoUserPool"])
         elif include_empty:
-            instance.aws_cognito_user_pool = str()
+            instance.aws_cognito_user_pool = ""
         if "ClientId" in dict_ and dict_["ClientId"] is not None:
             instance.client_id = str(dict_["ClientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "Environment" in dict_ and dict_["Environment"] is not None:
             instance.environment = str(dict_["Environment"])
         elif include_empty:
-            instance.environment = str()
+            instance.environment = ""
         if "FederationMetadataURL" in dict_ and dict_["FederationMetadataURL"] is not None:
             instance.federation_metadata_url = str(dict_["FederationMetadataURL"])
         elif include_empty:
-            instance.federation_metadata_url = str()
+            instance.federation_metadata_url = ""
         if "GenericOauthFlow" in dict_ and dict_["GenericOauthFlow"] is not None:
             instance.generic_oauth_flow = bool(dict_["GenericOauthFlow"])
         elif include_empty:
-            instance.generic_oauth_flow = bool()
+            instance.generic_oauth_flow = False
         if "IsActive" in dict_ and dict_["IsActive"] is not None:
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
-            instance.is_active = bool()
+            instance.is_active = False
         if "Issuer" in dict_ and dict_["Issuer"] is not None:
             instance.issuer = str(dict_["Issuer"])
         elif include_empty:
-            instance.issuer = str()
+            instance.issuer = ""
         if "JWKSEndpoint" in dict_ and dict_["JWKSEndpoint"] is not None:
             instance.jwks_endpoint = str(dict_["JWKSEndpoint"])
         elif include_empty:
-            instance.jwks_endpoint = str()
+            instance.jwks_endpoint = ""
         if "KeyID" in dict_ and dict_["KeyID"] is not None:
             instance.key_id = str(dict_["KeyID"])
         elif include_empty:
-            instance.key_id = str()
+            instance.key_id = ""
         if "OrganizationId" in dict_ and dict_["OrganizationId"] is not None:
             instance.organization_id = str(dict_["OrganizationId"])
         elif include_empty:
-            instance.organization_id = str()
+            instance.organization_id = ""
         if "PlatformName" in dict_ and dict_["PlatformName"] is not None:
             instance.platform_name = str(dict_["PlatformName"])
         elif include_empty:
-            instance.platform_name = str()
+            instance.platform_name = ""
         if "RedirectUri" in dict_ and dict_["RedirectUri"] is not None:
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "Secret" in dict_ and dict_["Secret"] is not None:
             instance.secret = str(dict_["Secret"])
         elif include_empty:
-            instance.secret = str()
+            instance.secret = ""
         if "TeamID" in dict_ and dict_["TeamID"] is not None:
             instance.team_id = str(dict_["TeamID"])
         elif include_empty:
-            instance.team_id = str()
+            instance.team_id = ""
         if "TokenAuthenticationType" in dict_ and dict_["TokenAuthenticationType"] is not None:
             instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
         elif include_empty:
-            instance.token_authentication_type = str()
+            instance.token_authentication_type = ""
         if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
             instance.token_claims_mapping = {str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()}
         elif include_empty:

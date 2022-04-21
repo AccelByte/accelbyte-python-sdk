@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUpdateTemplateRequest
@@ -54,7 +55,7 @@ class UpdateLocalizationTemplate(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         body: (body) REQUIRED ModelUpdateTemplateRequest in body
 
@@ -82,7 +83,7 @@ class UpdateLocalizationTemplate(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     body: ModelUpdateTemplateRequest                                                               # REQUIRED in [body]
@@ -111,8 +112,8 @@ class UpdateLocalizationTemplate(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -121,13 +122,6 @@ class UpdateLocalizationTemplate(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -191,15 +185,15 @@ class UpdateLocalizationTemplate(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "template_language") and self.template_language:
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
-            result["templateLanguage"] = str()
+            result["templateLanguage"] = ""
         if hasattr(self, "template_slug") and self.template_slug:
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
-            result["templateSlug"] = str()
+            result["templateSlug"] = ""
         return result
 
     # endregion to methods
@@ -273,15 +267,15 @@ class UpdateLocalizationTemplate(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
             instance.template_language = str(dict_["templateLanguage"])
         elif include_empty:
-            instance.template_language = str()
+            instance.template_language = ""
         if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
             instance.template_slug = str(dict_["templateSlug"])
         elif include_empty:
-            instance.template_slug = str()
+            instance.template_slug = ""
         return instance
 
     @staticmethod

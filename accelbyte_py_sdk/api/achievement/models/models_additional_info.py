@@ -68,15 +68,15 @@ class ModelsAdditionalInfo(Model):
         if hasattr(self, "number_of_achievements"):
             result["numberOfAchievements"] = int(self.number_of_achievements)
         elif include_empty:
-            result["numberOfAchievements"] = int()
+            result["numberOfAchievements"] = 0
         if hasattr(self, "number_of_hidden_achievements"):
             result["numberOfHiddenAchievements"] = int(self.number_of_hidden_achievements)
         elif include_empty:
-            result["numberOfHiddenAchievements"] = int()
+            result["numberOfHiddenAchievements"] = 0
         if hasattr(self, "number_of_visible_achievements"):
             result["numberOfVisibleAchievements"] = int(self.number_of_visible_achievements)
         elif include_empty:
-            result["numberOfVisibleAchievements"] = int()
+            result["numberOfVisibleAchievements"] = 0
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsAdditionalInfo(Model):
         if "numberOfAchievements" in dict_ and dict_["numberOfAchievements"] is not None:
             instance.number_of_achievements = int(dict_["numberOfAchievements"])
         elif include_empty:
-            instance.number_of_achievements = int()
+            instance.number_of_achievements = 0
         if "numberOfHiddenAchievements" in dict_ and dict_["numberOfHiddenAchievements"] is not None:
             instance.number_of_hidden_achievements = int(dict_["numberOfHiddenAchievements"])
         elif include_empty:
-            instance.number_of_hidden_achievements = int()
+            instance.number_of_hidden_achievements = 0
         if "numberOfVisibleAchievements" in dict_ and dict_["numberOfVisibleAchievements"] is not None:
             instance.number_of_visible_achievements = int(dict_["numberOfVisibleAchievements"])
         elif include_empty:
-            instance.number_of_visible_achievements = int()
+            instance.number_of_visible_achievements = 0
         return instance
 
     @classmethod

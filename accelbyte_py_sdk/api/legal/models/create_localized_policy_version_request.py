@@ -68,15 +68,15 @@ class CreateLocalizedPolicyVersionRequest(Model):
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "locale_code"):
             result["localeCode"] = str(self.locale_code)
         elif include_empty:
-            result["localeCode"] = str()
+            result["localeCode"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class CreateLocalizedPolicyVersionRequest(Model):
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "localeCode" in dict_ and dict_["localeCode"] is not None:
             instance.locale_code = str(dict_["localeCode"])
         elif include_empty:
-            instance.locale_code = str()
+            instance.locale_code = ""
         return instance
 
     @classmethod

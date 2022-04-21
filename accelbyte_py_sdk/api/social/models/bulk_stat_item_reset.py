@@ -54,7 +54,7 @@ class BulkStatItemReset(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class BulkStatItemReset(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         return instance
 
     @classmethod

@@ -75,15 +75,15 @@ class ErrorEntity(Model):
         if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
-            result["errorCode"] = int()
+            result["errorCode"] = 0
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
-            result["errorMessage"] = str()
+            result["errorMessage"] = ""
         if hasattr(self, "dev_stack_trace"):
             result["devStackTrace"] = str(self.dev_stack_trace)
         elif include_empty:
-            result["devStackTrace"] = str()
+            result["devStackTrace"] = ""
         if hasattr(self, "message_variables"):
             result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
@@ -119,15 +119,15 @@ class ErrorEntity(Model):
         if "errorCode" in dict_ and dict_["errorCode"] is not None:
             instance.error_code = int(dict_["errorCode"])
         elif include_empty:
-            instance.error_code = int()
+            instance.error_code = 0
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
-            instance.error_message = str()
+            instance.error_message = ""
         if "devStackTrace" in dict_ and dict_["devStackTrace"] is not None:
             instance.dev_stack_trace = str(dict_["devStackTrace"])
         elif include_empty:
-            instance.dev_stack_trace = str()
+            instance.dev_stack_trace = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
         elif include_empty:

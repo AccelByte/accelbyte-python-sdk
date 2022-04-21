@@ -98,11 +98,11 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
-            result["configurationCode"] = str()
+            result["configurationCode"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "global_rules"):
             result["globalRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.global_rules]
         elif include_empty:
@@ -110,19 +110,19 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         if hasattr(self, "group_admin_role_id"):
             result["groupAdminRoleId"] = str(self.group_admin_role_id)
         elif include_empty:
-            result["groupAdminRoleId"] = str()
+            result["groupAdminRoleId"] = ""
         if hasattr(self, "group_max_member"):
             result["groupMaxMember"] = int(self.group_max_member)
         elif include_empty:
-            result["groupMaxMember"] = int()
+            result["groupMaxMember"] = 0
         if hasattr(self, "group_member_role_id"):
             result["groupMemberRoleId"] = str(self.group_member_role_id)
         elif include_empty:
-            result["groupMemberRoleId"] = str()
+            result["groupMemberRoleId"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         return result
 
     # endregion to methods
@@ -158,11 +158,11 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
-            instance.configuration_code = str()
+            instance.configuration_code = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "globalRules" in dict_ and dict_["globalRules"] is not None:
             instance.global_rules = [ModelsRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["globalRules"]]
         elif include_empty:
@@ -170,19 +170,19 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         if "groupAdminRoleId" in dict_ and dict_["groupAdminRoleId"] is not None:
             instance.group_admin_role_id = str(dict_["groupAdminRoleId"])
         elif include_empty:
-            instance.group_admin_role_id = str()
+            instance.group_admin_role_id = ""
         if "groupMaxMember" in dict_ and dict_["groupMaxMember"] is not None:
             instance.group_max_member = int(dict_["groupMaxMember"])
         elif include_empty:
-            instance.group_max_member = int()
+            instance.group_max_member = 0
         if "groupMemberRoleId" in dict_ and dict_["groupMemberRoleId"] is not None:
             instance.group_member_role_id = str(dict_["groupMemberRoleId"])
         elif include_empty:
-            instance.group_member_role_id = str()
+            instance.group_member_role_id = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         return instance
 
     @classmethod

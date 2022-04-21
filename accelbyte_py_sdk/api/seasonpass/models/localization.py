@@ -61,11 +61,11 @@ class Localization(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class Localization(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         return instance
 
     @classmethod

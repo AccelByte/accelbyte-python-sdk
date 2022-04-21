@@ -108,23 +108,23 @@ class FulfillmentItem(Model):
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "extra_subscription_days"):
             result["extraSubscriptionDays"] = int(self.extra_subscription_days)
         elif include_empty:
-            result["extraSubscriptionDays"] = int()
+            result["extraSubscriptionDays"] = 0
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_name"):
             result["itemName"] = str(self.item_name)
         elif include_empty:
-            result["itemName"] = str()
+            result["itemName"] = ""
         if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
-            result["itemSku"] = str()
+            result["itemSku"] = ""
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -132,7 +132,7 @@ class FulfillmentItem(Model):
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         return result
 
     # endregion to methods
@@ -174,23 +174,23 @@ class FulfillmentItem(Model):
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "extraSubscriptionDays" in dict_ and dict_["extraSubscriptionDays"] is not None:
             instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
         elif include_empty:
-            instance.extra_subscription_days = int()
+            instance.extra_subscription_days = 0
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemName" in dict_ and dict_["itemName"] is not None:
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
-            instance.item_name = str()
+            instance.item_name = ""
         if "itemSku" in dict_ and dict_["itemSku"] is not None:
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
-            instance.item_sku = str()
+            instance.item_sku = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -198,7 +198,7 @@ class FulfillmentItem(Model):
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         return instance
 
     @classmethod

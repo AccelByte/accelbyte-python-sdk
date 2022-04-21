@@ -54,7 +54,7 @@ class UserZipCodeUpdate(Model):
         if hasattr(self, "zip_code"):
             result["zipCode"] = str(self.zip_code)
         elif include_empty:
-            result["zipCode"] = str()
+            result["zipCode"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class UserZipCodeUpdate(Model):
         if "zipCode" in dict_ and dict_["zipCode"] is not None:
             instance.zip_code = str(dict_["zipCode"])
         elif include_empty:
-            instance.zip_code = str()
+            instance.zip_code = ""
         return instance
 
     @classmethod

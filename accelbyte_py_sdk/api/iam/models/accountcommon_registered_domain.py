@@ -79,7 +79,7 @@ class AccountcommonRegisteredDomain(Model):
         if hasattr(self, "domain"):
             result["domain"] = str(self.domain)
         elif include_empty:
-            result["domain"] = str()
+            result["domain"] = ""
         if hasattr(self, "namespaces"):
             result["namespaces"] = [str(i0) for i0 in self.namespaces]
         elif include_empty:
@@ -87,7 +87,7 @@ class AccountcommonRegisteredDomain(Model):
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
-            result["roleId"] = str()
+            result["roleId"] = ""
         return result
 
     # endregion to methods
@@ -121,7 +121,7 @@ class AccountcommonRegisteredDomain(Model):
         if "domain" in dict_ and dict_["domain"] is not None:
             instance.domain = str(dict_["domain"])
         elif include_empty:
-            instance.domain = str()
+            instance.domain = ""
         if "namespaces" in dict_ and dict_["namespaces"] is not None:
             instance.namespaces = [str(i0) for i0 in dict_["namespaces"]]
         elif include_empty:
@@ -129,7 +129,7 @@ class AccountcommonRegisteredDomain(Model):
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
-            instance.role_id = str()
+            instance.role_id = ""
         return instance
 
     @classmethod

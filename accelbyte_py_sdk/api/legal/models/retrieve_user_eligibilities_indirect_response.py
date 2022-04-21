@@ -54,7 +54,7 @@ class RetrieveUserEligibilitiesIndirectResponse(Model):
         if hasattr(self, "is_comply"):
             result["isComply"] = bool(self.is_comply)
         elif include_empty:
-            result["isComply"] = bool()
+            result["isComply"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class RetrieveUserEligibilitiesIndirectResponse(Model):
         if "isComply" in dict_ and dict_["isComply"] is not None:
             instance.is_comply = bool(dict_["isComply"])
         elif include_empty:
-            instance.is_comply = bool()
+            instance.is_comply = False
         return instance
 
     @classmethod

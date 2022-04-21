@@ -75,11 +75,11 @@ class Localization(Model):
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "local_ext"):
             result["localExt"] = {str(k0): v0 for k0, v0 in self.local_ext.items()}
         elif include_empty:
@@ -87,7 +87,7 @@ class Localization(Model):
         if hasattr(self, "long_description"):
             result["longDescription"] = str(self.long_description)
         elif include_empty:
-            result["longDescription"] = str()
+            result["longDescription"] = ""
         return result
 
     # endregion to methods
@@ -120,11 +120,11 @@ class Localization(Model):
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "localExt" in dict_ and dict_["localExt"] is not None:
             instance.local_ext = {str(k0): v0 for k0, v0 in dict_["localExt"].items()}
         elif include_empty:
@@ -132,7 +132,7 @@ class Localization(Model):
         if "longDescription" in dict_ and dict_["longDescription"] is not None:
             instance.long_description = str(dict_["longDescription"])
         elif include_empty:
-            instance.long_description = str()
+            instance.long_description = ""
         return instance
 
     @classmethod

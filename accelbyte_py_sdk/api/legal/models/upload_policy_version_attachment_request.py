@@ -61,11 +61,11 @@ class UploadPolicyVersionAttachmentRequest(Model):
         if hasattr(self, "content_md5"):
             result["contentMD5"] = str(self.content_md5)
         elif include_empty:
-            result["contentMD5"] = str()
+            result["contentMD5"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +93,11 @@ class UploadPolicyVersionAttachmentRequest(Model):
         if "contentMD5" in dict_ and dict_["contentMD5"] is not None:
             instance.content_md5 = str(dict_["contentMD5"])
         elif include_empty:
-            instance.content_md5 = str()
+            instance.content_md5 = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         return instance
 
     @classmethod

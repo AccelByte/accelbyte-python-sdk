@@ -65,7 +65,7 @@ class OrderStatistics(Model):
         if hasattr(self, "total"):
             result["total"] = int(self.total)
         elif include_empty:
-            result["total"] = int()
+            result["total"] = 0
         return result
 
     # endregion to methods
@@ -95,7 +95,7 @@ class OrderStatistics(Model):
         if "total" in dict_ and dict_["total"] is not None:
             instance.total = int(dict_["total"])
         elif include_empty:
-            instance.total = int()
+            instance.total = 0
         return instance
 
     @classmethod

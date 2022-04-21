@@ -61,11 +61,11 @@ class ModelsKickGroupMemberResponseV1(Model):
         if hasattr(self, "group_id"):
             result["groupId"] = str(self.group_id)
         elif include_empty:
-            result["groupId"] = str()
+            result["groupId"] = ""
         if hasattr(self, "kicked_user_id"):
             result["kickedUserId"] = str(self.kicked_user_id)
         elif include_empty:
-            result["kickedUserId"] = str()
+            result["kickedUserId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsKickGroupMemberResponseV1(Model):
         if "groupId" in dict_ and dict_["groupId"] is not None:
             instance.group_id = str(dict_["groupId"])
         elif include_empty:
-            instance.group_id = str()
+            instance.group_id = ""
         if "kickedUserId" in dict_ and dict_["kickedUserId"] is not None:
             instance.kicked_user_id = str(dict_["kickedUserId"])
         elif include_empty:
-            instance.kicked_user_id = str()
+            instance.kicked_user_id = ""
         return instance
 
     @classmethod

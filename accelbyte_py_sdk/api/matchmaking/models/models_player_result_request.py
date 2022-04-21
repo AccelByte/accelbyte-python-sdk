@@ -67,7 +67,7 @@ class ModelsPlayerResultRequest(Model):
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
-            result["user_id"] = str()
+            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -97,7 +97,7 @@ class ModelsPlayerResultRequest(Model):
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

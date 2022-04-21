@@ -61,11 +61,11 @@ class ModelsMemberRequestGroupResponseV1(Model):
         if hasattr(self, "group_id"):
             result["groupId"] = str(self.group_id)
         elif include_empty:
-            result["groupId"] = str()
+            result["groupId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsMemberRequestGroupResponseV1(Model):
         if "groupId" in dict_ and dict_["groupId"] is not None:
             instance.group_id = str(dict_["groupId"])
         elif include_empty:
-            instance.group_id = str()
+            instance.group_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

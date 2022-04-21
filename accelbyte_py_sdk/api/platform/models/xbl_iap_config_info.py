@@ -75,19 +75,19 @@ class XblIAPConfigInfo(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "business_partner_cert_file_name"):
             result["businessPartnerCertFileName"] = str(self.business_partner_cert_file_name)
         elif include_empty:
-            result["businessPartnerCertFileName"] = str()
+            result["businessPartnerCertFileName"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "relying_party_cert"):
             result["relyingPartyCert"] = str(self.relying_party_cert)
         elif include_empty:
-            result["relyingPartyCert"] = str()
+            result["relyingPartyCert"] = ""
         return result
 
     # endregion to methods
@@ -120,19 +120,19 @@ class XblIAPConfigInfo(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "businessPartnerCertFileName" in dict_ and dict_["businessPartnerCertFileName"] is not None:
             instance.business_partner_cert_file_name = str(dict_["businessPartnerCertFileName"])
         elif include_empty:
-            instance.business_partner_cert_file_name = str()
+            instance.business_partner_cert_file_name = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "relyingPartyCert" in dict_ and dict_["relyingPartyCert"] is not None:
             instance.relying_party_cert = str(dict_["relyingPartyCert"])
         elif include_empty:
-            instance.relying_party_cert = str()
+            instance.relying_party_cert = ""
         return instance
 
     @classmethod

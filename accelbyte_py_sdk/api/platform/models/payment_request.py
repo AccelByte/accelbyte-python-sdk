@@ -54,7 +54,7 @@ class PaymentRequest(Model):
         if hasattr(self, "amount"):
             result["amount"] = int(self.amount)
         elif include_empty:
-            result["amount"] = int()
+            result["amount"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class PaymentRequest(Model):
         if "amount" in dict_ and dict_["amount"] is not None:
             instance.amount = int(dict_["amount"])
         elif include_empty:
-            instance.amount = int()
+            instance.amount = 0
         return instance
 
     @classmethod

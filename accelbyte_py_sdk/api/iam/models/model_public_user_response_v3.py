@@ -177,7 +177,7 @@ class ModelPublicUserResponseV3(Model):
         if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
-            result["authType"] = str()
+            result["authType"] = ""
         if hasattr(self, "bans"):
             result["bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
@@ -185,35 +185,35 @@ class ModelPublicUserResponseV3(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "deletion_status"):
             result["deletionStatus"] = bool(self.deletion_status)
         elif include_empty:
-            result["deletionStatus"] = bool()
+            result["deletionStatus"] = False
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         if hasattr(self, "email_verified"):
             result["emailVerified"] = bool(self.email_verified)
         elif include_empty:
-            result["emailVerified"] = bool()
+            result["emailVerified"] = False
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         if hasattr(self, "last_date_of_birth_changed_time"):
             result["lastDateOfBirthChangedTime"] = str(self.last_date_of_birth_changed_time)
         elif include_empty:
-            result["lastDateOfBirthChangedTime"] = str()
+            result["lastDateOfBirthChangedTime"] = ""
         if hasattr(self, "last_enabled_changed_time"):
             result["lastEnabledChangedTime"] = str(self.last_enabled_changed_time)
         elif include_empty:
-            result["lastEnabledChangedTime"] = str()
+            result["lastEnabledChangedTime"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "namespace_roles"):
             result["namespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
@@ -225,7 +225,7 @@ class ModelPublicUserResponseV3(Model):
         if hasattr(self, "phone_verified"):
             result["phoneVerified"] = bool(self.phone_verified)
         elif include_empty:
-            result["phoneVerified"] = bool()
+            result["phoneVerified"] = False
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -233,19 +233,19 @@ class ModelPublicUserResponseV3(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
-            result["platformId"] = str()
+            result["platformId"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["platformUserId"] = str()
+            result["platformUserId"] = ""
         if hasattr(self, "user_name"):
             result["userName"] = str(self.user_name)
         elif include_empty:
-            result["userName"] = str()
+            result["userName"] = ""
         return result
 
     # endregion to methods
@@ -306,7 +306,7 @@ class ModelPublicUserResponseV3(Model):
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
-            instance.auth_type = str()
+            instance.auth_type = ""
         if "bans" in dict_ and dict_["bans"] is not None:
             instance.bans = [ModelUserActiveBanResponseV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
         elif include_empty:
@@ -314,35 +314,35 @@ class ModelPublicUserResponseV3(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "deletionStatus" in dict_ and dict_["deletionStatus"] is not None:
             instance.deletion_status = bool(dict_["deletionStatus"])
         elif include_empty:
-            instance.deletion_status = bool()
+            instance.deletion_status = False
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "emailVerified" in dict_ and dict_["emailVerified"] is not None:
             instance.email_verified = bool(dict_["emailVerified"])
         elif include_empty:
-            instance.email_verified = bool()
+            instance.email_verified = False
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         if "lastDateOfBirthChangedTime" in dict_ and dict_["lastDateOfBirthChangedTime"] is not None:
             instance.last_date_of_birth_changed_time = str(dict_["lastDateOfBirthChangedTime"])
         elif include_empty:
-            instance.last_date_of_birth_changed_time = str()
+            instance.last_date_of_birth_changed_time = ""
         if "lastEnabledChangedTime" in dict_ and dict_["lastEnabledChangedTime"] is not None:
             instance.last_enabled_changed_time = str(dict_["lastEnabledChangedTime"])
         elif include_empty:
-            instance.last_enabled_changed_time = str()
+            instance.last_enabled_changed_time = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "namespaceRoles" in dict_ and dict_["namespaceRoles"] is not None:
             instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["namespaceRoles"]]
         elif include_empty:
@@ -354,7 +354,7 @@ class ModelPublicUserResponseV3(Model):
         if "phoneVerified" in dict_ and dict_["phoneVerified"] is not None:
             instance.phone_verified = bool(dict_["phoneVerified"])
         elif include_empty:
-            instance.phone_verified = bool()
+            instance.phone_verified = False
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
@@ -362,19 +362,19 @@ class ModelPublicUserResponseV3(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.platform_user_id = str()
+            instance.platform_user_id = ""
         if "userName" in dict_ and dict_["userName"] is not None:
             instance.user_name = str(dict_["userName"])
         elif include_empty:
-            instance.user_name = str()
+            instance.user_name = ""
         return instance
 
     @classmethod

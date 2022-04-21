@@ -103,35 +103,35 @@ class ModelSSOPlatformCredentialRequest(Model):
         if hasattr(self, "acs_url"):
             result["acsUrl"] = str(self.acs_url)
         elif include_empty:
-            result["acsUrl"] = str()
+            result["acsUrl"] = ""
         if hasattr(self, "api_key"):
             result["apiKey"] = str(self.api_key)
         elif include_empty:
-            result["apiKey"] = str()
+            result["apiKey"] = ""
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "federation_metadata_url"):
             result["federationMetadataUrl"] = str(self.federation_metadata_url)
         elif include_empty:
-            result["federationMetadataUrl"] = str()
+            result["federationMetadataUrl"] = ""
         if hasattr(self, "is_active"):
             result["isActive"] = bool(self.is_active)
         elif include_empty:
-            result["isActive"] = bool()
+            result["isActive"] = False
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirectUri"] = str()
+            result["redirectUri"] = ""
         if hasattr(self, "secret"):
             result["secret"] = str(self.secret)
         elif include_empty:
-            result["secret"] = str()
+            result["secret"] = ""
         if hasattr(self, "sso_url"):
             result["ssoUrl"] = str(self.sso_url)
         elif include_empty:
-            result["ssoUrl"] = str()
+            result["ssoUrl"] = ""
         return result
 
     # endregion to methods
@@ -169,35 +169,35 @@ class ModelSSOPlatformCredentialRequest(Model):
         if "acsUrl" in dict_ and dict_["acsUrl"] is not None:
             instance.acs_url = str(dict_["acsUrl"])
         elif include_empty:
-            instance.acs_url = str()
+            instance.acs_url = ""
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
             instance.api_key = str(dict_["apiKey"])
         elif include_empty:
-            instance.api_key = str()
+            instance.api_key = ""
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "federationMetadataUrl" in dict_ and dict_["federationMetadataUrl"] is not None:
             instance.federation_metadata_url = str(dict_["federationMetadataUrl"])
         elif include_empty:
-            instance.federation_metadata_url = str()
+            instance.federation_metadata_url = ""
         if "isActive" in dict_ and dict_["isActive"] is not None:
             instance.is_active = bool(dict_["isActive"])
         elif include_empty:
-            instance.is_active = bool()
+            instance.is_active = False
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "secret" in dict_ and dict_["secret"] is not None:
             instance.secret = str(dict_["secret"])
         elif include_empty:
-            instance.secret = str()
+            instance.secret = ""
         if "ssoUrl" in dict_ and dict_["ssoUrl"] is not None:
             instance.sso_url = str(dict_["ssoUrl"])
         elif include_empty:
-            instance.sso_url = str()
+            instance.sso_url = ""
         return instance
 
     @classmethod

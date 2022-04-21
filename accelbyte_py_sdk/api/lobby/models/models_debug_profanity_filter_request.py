@@ -54,7 +54,7 @@ class ModelsDebugProfanityFilterRequest(Model):
         if hasattr(self, "text"):
             result["text"] = str(self.text)
         elif include_empty:
-            result["text"] = str()
+            result["text"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsDebugProfanityFilterRequest(Model):
         if "text" in dict_ and dict_["text"] is not None:
             instance.text = str(dict_["text"])
         elif include_empty:
-            instance.text = str()
+            instance.text = ""
         return instance
 
     @classmethod

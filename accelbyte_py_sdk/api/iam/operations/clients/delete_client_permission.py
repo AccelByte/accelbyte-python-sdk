@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 
@@ -46,7 +47,7 @@ class DeleteClientPermission(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         action: (action) REQUIRED int in path
 
@@ -72,7 +73,7 @@ class DeleteClientPermission(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     action: int                                                                                    # REQUIRED in [path]
@@ -100,8 +101,8 @@ class DeleteClientPermission(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -110,13 +111,6 @@ class DeleteClientPermission(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -166,15 +160,15 @@ class DeleteClientPermission(Operation):
         if hasattr(self, "action") and self.action:
             result["action"] = int(self.action)
         elif include_empty:
-            result["action"] = int()
+            result["action"] = 0
         if hasattr(self, "client_id") and self.client_id:
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "resource") and self.resource:
             result["resource"] = str(self.resource)
         elif include_empty:
-            result["resource"] = str()
+            result["resource"] = ""
         return result
 
     # endregion to methods
@@ -242,15 +236,15 @@ class DeleteClientPermission(Operation):
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])
         elif include_empty:
-            instance.action = int()
+            instance.action = 0
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "resource" in dict_ and dict_["resource"] is not None:
             instance.resource = str(dict_["resource"])
         elif include_empty:
-            instance.resource = str()
+            instance.resource = ""
         return instance
 
     @staticmethod

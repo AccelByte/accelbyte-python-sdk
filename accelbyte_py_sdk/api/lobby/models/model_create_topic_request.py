@@ -61,11 +61,11 @@ class ModelCreateTopicRequest(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "topic"):
             result["topic"] = str(self.topic)
         elif include_empty:
-            result["topic"] = str()
+            result["topic"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelCreateTopicRequest(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "topic" in dict_ and dict_["topic"] is not None:
             instance.topic = str(dict_["topic"])
         elif include_empty:
-            instance.topic = str()
+            instance.topic = ""
         return instance
 
     @classmethod

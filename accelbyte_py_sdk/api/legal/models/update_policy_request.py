@@ -89,27 +89,27 @@ class UpdatePolicyRequest(Model):
         if hasattr(self, "is_default_opted"):
             result["isDefaultOpted"] = bool(self.is_default_opted)
         elif include_empty:
-            result["isDefaultOpted"] = bool()
+            result["isDefaultOpted"] = False
         if hasattr(self, "is_mandatory"):
             result["isMandatory"] = bool(self.is_mandatory)
         elif include_empty:
-            result["isMandatory"] = bool()
+            result["isMandatory"] = False
         if hasattr(self, "policy_name"):
             result["policyName"] = str(self.policy_name)
         elif include_empty:
-            result["policyName"] = str()
+            result["policyName"] = ""
         if hasattr(self, "should_notify_on_update"):
             result["shouldNotifyOnUpdate"] = bool(self.should_notify_on_update)
         elif include_empty:
-            result["shouldNotifyOnUpdate"] = bool()
+            result["shouldNotifyOnUpdate"] = False
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "readable_id"):
             result["readableId"] = str(self.readable_id)
         elif include_empty:
-            result["readableId"] = str()
+            result["readableId"] = ""
         return result
 
     # endregion to methods
@@ -145,27 +145,27 @@ class UpdatePolicyRequest(Model):
         if "isDefaultOpted" in dict_ and dict_["isDefaultOpted"] is not None:
             instance.is_default_opted = bool(dict_["isDefaultOpted"])
         elif include_empty:
-            instance.is_default_opted = bool()
+            instance.is_default_opted = False
         if "isMandatory" in dict_ and dict_["isMandatory"] is not None:
             instance.is_mandatory = bool(dict_["isMandatory"])
         elif include_empty:
-            instance.is_mandatory = bool()
+            instance.is_mandatory = False
         if "policyName" in dict_ and dict_["policyName"] is not None:
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
-            instance.policy_name = str()
+            instance.policy_name = ""
         if "shouldNotifyOnUpdate" in dict_ and dict_["shouldNotifyOnUpdate"] is not None:
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
-            instance.should_notify_on_update = bool()
+            instance.should_notify_on_update = False
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "readableId" in dict_ and dict_["readableId"] is not None:
             instance.readable_id = str(dict_["readableId"])
         elif include_empty:
-            instance.readable_id = str()
+            instance.readable_id = ""
         return instance
 
     @classmethod

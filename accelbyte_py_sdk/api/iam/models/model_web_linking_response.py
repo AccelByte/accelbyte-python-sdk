@@ -54,7 +54,7 @@ class ModelWebLinkingResponse(Model):
         if hasattr(self, "third_party_url"):
             result["third_party_url"] = str(self.third_party_url)
         elif include_empty:
-            result["third_party_url"] = str()
+            result["third_party_url"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelWebLinkingResponse(Model):
         if "third_party_url" in dict_ and dict_["third_party_url"] is not None:
             instance.third_party_url = str(dict_["third_party_url"])
         elif include_empty:
-            instance.third_party_url = str()
+            instance.third_party_url = ""
         return instance
 
     @classmethod

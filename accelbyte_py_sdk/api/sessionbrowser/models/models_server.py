@@ -203,7 +203,7 @@ class ModelsServer(Model):
         if hasattr(self, "allocation_id"):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
-            result["allocation_id"] = str()
+            result["allocation_id"] = ""
         if hasattr(self, "alternate_ips"):
             result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
         elif include_empty:
@@ -211,59 +211,59 @@ class ModelsServer(Model):
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
-            result["cpu_limit"] = int()
+            result["cpu_limit"] = 0
         if hasattr(self, "cpu_request"):
             result["cpu_request"] = str(self.cpu_request)
         elif include_empty:
-            result["cpu_request"] = str()
+            result["cpu_request"] = ""
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
-            result["game_version"] = str()
+            result["game_version"] = ""
         if hasattr(self, "image_version"):
             result["image_version"] = str(self.image_version)
         elif include_empty:
-            result["image_version"] = str()
+            result["image_version"] = ""
         if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
-            result["ip"] = str()
+            result["ip"] = ""
         if hasattr(self, "is_override_game_version"):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
-            result["is_override_game_version"] = bool()
+            result["is_override_game_version"] = False
         if hasattr(self, "last_update"):
             result["last_update"] = str(self.last_update)
         elif include_empty:
-            result["last_update"] = str()
+            result["last_update"] = ""
         if hasattr(self, "mem_limit"):
             result["mem_limit"] = int(self.mem_limit)
         elif include_empty:
-            result["mem_limit"] = int()
+            result["mem_limit"] = 0
         if hasattr(self, "mem_request"):
             result["mem_request"] = str(self.mem_request)
         elif include_empty:
-            result["mem_request"] = str()
+            result["mem_request"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "params"):
             result["params"] = str(self.params)
         elif include_empty:
-            result["params"] = str()
+            result["params"] = ""
         if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
-            result["port"] = int()
+            result["port"] = 0
         if hasattr(self, "ports"):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
@@ -271,19 +271,19 @@ class ModelsServer(Model):
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
-            result["provider"] = str()
+            result["provider"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "session_id"):
             result["session_id"] = str(self.session_id)
         elif include_empty:
-            result["session_id"] = str()
+            result["session_id"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "status_history"):
             result["status_history"] = [i0.to_dict(include_empty=include_empty) for i0 in self.status_history]
         elif include_empty:
@@ -353,7 +353,7 @@ class ModelsServer(Model):
         if "allocation_id" in dict_ and dict_["allocation_id"] is not None:
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
-            instance.allocation_id = str()
+            instance.allocation_id = ""
         if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
             instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
         elif include_empty:
@@ -361,59 +361,59 @@ class ModelsServer(Model):
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
-            instance.cpu_limit = int()
+            instance.cpu_limit = 0
         if "cpu_request" in dict_ and dict_["cpu_request"] is not None:
             instance.cpu_request = str(dict_["cpu_request"])
         elif include_empty:
-            instance.cpu_request = str()
+            instance.cpu_request = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
-            instance.game_version = str()
+            instance.game_version = ""
         if "image_version" in dict_ and dict_["image_version"] is not None:
             instance.image_version = str(dict_["image_version"])
         elif include_empty:
-            instance.image_version = str()
+            instance.image_version = ""
         if "ip" in dict_ and dict_["ip"] is not None:
             instance.ip = str(dict_["ip"])
         elif include_empty:
-            instance.ip = str()
+            instance.ip = ""
         if "is_override_game_version" in dict_ and dict_["is_override_game_version"] is not None:
             instance.is_override_game_version = bool(dict_["is_override_game_version"])
         elif include_empty:
-            instance.is_override_game_version = bool()
+            instance.is_override_game_version = False
         if "last_update" in dict_ and dict_["last_update"] is not None:
             instance.last_update = str(dict_["last_update"])
         elif include_empty:
-            instance.last_update = str()
+            instance.last_update = ""
         if "mem_limit" in dict_ and dict_["mem_limit"] is not None:
             instance.mem_limit = int(dict_["mem_limit"])
         elif include_empty:
-            instance.mem_limit = int()
+            instance.mem_limit = 0
         if "mem_request" in dict_ and dict_["mem_request"] is not None:
             instance.mem_request = str(dict_["mem_request"])
         elif include_empty:
-            instance.mem_request = str()
+            instance.mem_request = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "params" in dict_ and dict_["params"] is not None:
             instance.params = str(dict_["params"])
         elif include_empty:
-            instance.params = str()
+            instance.params = ""
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:
-            instance.port = int()
+            instance.port = 0
         if "ports" in dict_ and dict_["ports"] is not None:
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
@@ -421,19 +421,19 @@ class ModelsServer(Model):
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
-            instance.provider = str()
+            instance.provider = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "session_id" in dict_ and dict_["session_id"] is not None:
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "status_history" in dict_ and dict_["status_history"] is not None:
             instance.status_history = [ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["status_history"]]
         elif include_empty:

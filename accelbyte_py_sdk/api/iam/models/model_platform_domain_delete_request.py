@@ -54,7 +54,7 @@ class ModelPlatformDomainDeleteRequest(Model):
         if hasattr(self, "domain"):
             result["domain"] = str(self.domain)
         elif include_empty:
-            result["domain"] = str()
+            result["domain"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelPlatformDomainDeleteRequest(Model):
         if "domain" in dict_ and dict_["domain"] is not None:
             instance.domain = str(dict_["domain"])
         elif include_empty:
-            instance.domain = str()
+            instance.domain = ""
         return instance
 
     @classmethod

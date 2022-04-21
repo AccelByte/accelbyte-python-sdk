@@ -54,7 +54,7 @@ class BulkOperationResult(Model):
         if hasattr(self, "affected"):
             result["affected"] = int(self.affected)
         elif include_empty:
-            result["affected"] = int()
+            result["affected"] = 0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class BulkOperationResult(Model):
         if "affected" in dict_ and dict_["affected"] is not None:
             instance.affected = int(dict_["affected"])
         elif include_empty:
-            instance.affected = int()
+            instance.affected = 0
         return instance
 
     @classmethod

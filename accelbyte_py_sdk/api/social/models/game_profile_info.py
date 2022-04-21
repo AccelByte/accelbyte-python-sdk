@@ -132,7 +132,7 @@ class GameProfileInfo(Model):
         if hasattr(self, "avatar_url"):
             result["avatarUrl"] = str(self.avatar_url)
         elif include_empty:
-            result["avatarUrl"] = str()
+            result["avatarUrl"] = ""
         if hasattr(self, "inventories"):
             result["inventories"] = [str(i0) for i0 in self.inventories]
         elif include_empty:
@@ -140,19 +140,19 @@ class GameProfileInfo(Model):
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "profile_id"):
             result["profileId"] = str(self.profile_id)
         elif include_empty:
-            result["profileId"] = str()
+            result["profileId"] = ""
         if hasattr(self, "profile_name"):
             result["profileName"] = str(self.profile_name)
         elif include_empty:
-            result["profileName"] = str()
+            result["profileName"] = ""
         if hasattr(self, "statistics"):
             result["statistics"] = [str(i0) for i0 in self.statistics]
         elif include_empty:
@@ -164,7 +164,7 @@ class GameProfileInfo(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -227,7 +227,7 @@ class GameProfileInfo(Model):
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
             instance.avatar_url = str(dict_["avatarUrl"])
         elif include_empty:
-            instance.avatar_url = str()
+            instance.avatar_url = ""
         if "inventories" in dict_ and dict_["inventories"] is not None:
             instance.inventories = [str(i0) for i0 in dict_["inventories"]]
         elif include_empty:
@@ -235,19 +235,19 @@ class GameProfileInfo(Model):
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "profileId" in dict_ and dict_["profileId"] is not None:
             instance.profile_id = str(dict_["profileId"])
         elif include_empty:
-            instance.profile_id = str()
+            instance.profile_id = ""
         if "profileName" in dict_ and dict_["profileName"] is not None:
             instance.profile_name = str(dict_["profileName"])
         elif include_empty:
-            instance.profile_name = str()
+            instance.profile_name = ""
         if "statistics" in dict_ and dict_["statistics"] is not None:
             instance.statistics = [str(i0) for i0 in dict_["statistics"]]
         elif include_empty:
@@ -259,7 +259,7 @@ class GameProfileInfo(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

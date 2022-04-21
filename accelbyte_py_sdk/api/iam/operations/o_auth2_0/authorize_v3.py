@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -141,7 +142,7 @@ class AuthorizeV3(Operation):
 
         produces: ["application/json"]
 
-        security_type: basic
+        securities: ["BASIC_AUTH", "BEARER_AUTH"]
 
         location query: request_id
 
@@ -171,7 +172,7 @@ class AuthorizeV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "basic"
+    _securities: List[str] = ["BASIC_AUTH", "BEARER_AUTH"]
     _location_query: str = "request_id"
 
     code_challenge: str                                                                            # OPTIONAL in [query]
@@ -204,8 +205,8 @@ class AuthorizeV3(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -214,13 +215,6 @@ class AuthorizeV3(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -308,7 +302,7 @@ class AuthorizeV3(Operation):
         if hasattr(self, "code_challenge") and self.code_challenge:
             result["code_challenge"] = str(self.code_challenge)
         elif include_empty:
-            result["code_challenge"] = str()
+            result["code_challenge"] = ""
         if hasattr(self, "code_challenge_method") and self.code_challenge_method:
             result["code_challenge_method"] = str(self.code_challenge_method)
         elif include_empty:
@@ -316,23 +310,23 @@ class AuthorizeV3(Operation):
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "scope") and self.scope:
             result["scope"] = str(self.scope)
         elif include_empty:
-            result["scope"] = str()
+            result["scope"] = ""
         if hasattr(self, "state") and self.state:
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         if hasattr(self, "target_auth_page") and self.target_auth_page:
             result["target_auth_page"] = str(self.target_auth_page)
         elif include_empty:
-            result["target_auth_page"] = str()
+            result["target_auth_page"] = ""
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "response_type") and self.response_type:
             result["response_type"] = str(self.response_type)
         elif include_empty:
@@ -404,7 +398,7 @@ class AuthorizeV3(Operation):
         if "code_challenge" in dict_ and dict_["code_challenge"] is not None:
             instance.code_challenge = str(dict_["code_challenge"])
         elif include_empty:
-            instance.code_challenge = str()
+            instance.code_challenge = ""
         if "code_challenge_method" in dict_ and dict_["code_challenge_method"] is not None:
             instance.code_challenge_method = str(dict_["code_challenge_method"])
         elif include_empty:
@@ -412,23 +406,23 @@ class AuthorizeV3(Operation):
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
-            instance.scope = str()
+            instance.scope = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         if "target_auth_page" in dict_ and dict_["target_auth_page"] is not None:
             instance.target_auth_page = str(dict_["target_auth_page"])
         elif include_empty:
-            instance.target_auth_page = str()
+            instance.target_auth_page = ""
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "response_type" in dict_ and dict_["response_type"] is not None:
             instance.response_type = str(dict_["response_type"])
         elif include_empty:

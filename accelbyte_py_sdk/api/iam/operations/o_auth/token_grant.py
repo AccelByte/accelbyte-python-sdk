@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
@@ -275,9 +276,9 @@ class TokenGrant(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
-        device_id: (Device-Id) OPTIONAL str in header
+        device_id: (Device-Id) OPTIONAL Union[str, HeaderStr] in header
 
         code: (code) OPTIONAL str in form_data
 
@@ -309,10 +310,10 @@ class TokenGrant(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
-    device_id: str                                                                                 # OPTIONAL in [header]
+    device_id: Union[str, HeaderStr]                                                               # OPTIONAL in [header]
     code: str                                                                                      # OPTIONAL in [form_data]
     extend_exp: bool                                                                               # OPTIONAL in [form_data]
     namespace: str                                                                                 # OPTIONAL in [form_data]
@@ -343,8 +344,8 @@ class TokenGrant(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -353,12 +354,6 @@ class TokenGrant(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -404,7 +399,7 @@ class TokenGrant(Operation):
 
     # region with_x methods
 
-    def with_device_id(self, value: str) -> TokenGrant:
+    def with_device_id(self, value: Union[str, HeaderStr]) -> TokenGrant:
         self.device_id = value
         return self
 
@@ -449,35 +444,35 @@ class TokenGrant(Operation):
         if hasattr(self, "device_id") and self.device_id:
             result["Device-Id"] = str(self.device_id)
         elif include_empty:
-            result["Device-Id"] = str()
+            result["Device-Id"] = ""
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "extend_exp") and self.extend_exp:
             result["extend_exp"] = bool(self.extend_exp)
         elif include_empty:
-            result["extend_exp"] = bool()
+            result["extend_exp"] = False
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "password") and self.password:
             result["password"] = str(self.password)
         elif include_empty:
-            result["password"] = str()
+            result["password"] = ""
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirect_uri"] = str()
+            result["redirect_uri"] = ""
         if hasattr(self, "refresh_token") and self.refresh_token:
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
-            result["refresh_token"] = str()
+            result["refresh_token"] = ""
         if hasattr(self, "username") and self.username:
             result["username"] = str(self.username)
         elif include_empty:
-            result["username"] = str()
+            result["username"] = ""
         if hasattr(self, "grant_type") and self.grant_type:
             result["grant_type"] = str(self.grant_type)
         elif include_empty:
@@ -526,7 +521,7 @@ class TokenGrant(Operation):
     def create(
         cls,
         grant_type: Union[str, GrantTypeEnum],
-        device_id: Optional[str] = None,
+        device_id: Optional[Union[str, HeaderStr]] = None,
         code: Optional[str] = None,
         extend_exp: Optional[bool] = None,
         namespace: Optional[str] = None,
@@ -561,35 +556,35 @@ class TokenGrant(Operation):
         if "Device-Id" in dict_ and dict_["Device-Id"] is not None:
             instance.device_id = str(dict_["Device-Id"])
         elif include_empty:
-            instance.device_id = str()
+            instance.device_id = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "extend_exp" in dict_ and dict_["extend_exp"] is not None:
             instance.extend_exp = bool(dict_["extend_exp"])
         elif include_empty:
-            instance.extend_exp = bool()
+            instance.extend_exp = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
-            instance.password = str()
+            instance.password = ""
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
-            instance.refresh_token = str()
+            instance.refresh_token = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
-            instance.username = str()
+            instance.username = ""
         if "grant_type" in dict_ and dict_["grant_type"] is not None:
             instance.grant_type = str(dict_["grant_type"])
         elif include_empty:

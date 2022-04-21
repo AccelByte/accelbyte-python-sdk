@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsGetImagePatchDetailResponse
@@ -56,7 +57,7 @@ class GetImagePatchDetail(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +81,7 @@ class GetImagePatchDetail(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -108,8 +109,8 @@ class GetImagePatchDetail(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -118,13 +119,6 @@ class GetImagePatchDetail(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -174,15 +168,15 @@ class GetImagePatchDetail(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "version") and self.version:
             result["version"] = str(self.version)
         elif include_empty:
-            result["version"] = str()
+            result["version"] = ""
         if hasattr(self, "version_patch") and self.version_patch:
             result["versionPatch"] = str(self.version_patch)
         elif include_empty:
-            result["versionPatch"] = str()
+            result["versionPatch"] = ""
         return result
 
     # endregion to methods
@@ -246,15 +240,15 @@ class GetImagePatchDetail(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
-            instance.version = str()
+            instance.version = ""
         if "versionPatch" in dict_ and dict_["versionPatch"] is not None:
             instance.version_patch = str(dict_["versionPatch"])
         elif include_empty:
-            instance.version_patch = str()
+            instance.version_patch = ""
         return instance
 
     @staticmethod

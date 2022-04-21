@@ -61,11 +61,11 @@ class ModelsResultAttributeRequest(Model):
         if hasattr(self, "attribute"):
             result["attribute"] = str(self.attribute)
         elif include_empty:
-            result["attribute"] = str()
+            result["attribute"] = ""
         if hasattr(self, "value"):
             result["value"] = float(self.value)
         elif include_empty:
-            result["value"] = float()
+            result["value"] = 0.0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsResultAttributeRequest(Model):
         if "attribute" in dict_ and dict_["attribute"] is not None:
             instance.attribute = str(dict_["attribute"])
         elif include_empty:
-            instance.attribute = str()
+            instance.attribute = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = float(dict_["value"])
         elif include_empty:
-            instance.value = float()
+            instance.value = 0.0
         return instance
 
     @classmethod

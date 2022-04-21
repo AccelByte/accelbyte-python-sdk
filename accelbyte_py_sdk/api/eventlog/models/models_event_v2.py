@@ -117,39 +117,39 @@ class ModelsEventV2(Model):
         if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "session_id"):
             result["sessionId"] = str(self.session_id)
         elif include_empty:
-            result["sessionId"] = str()
+            result["sessionId"] = ""
         if hasattr(self, "timestamp"):
             result["timestamp"] = str(self.timestamp)
         elif include_empty:
-            result["timestamp"] = str()
+            result["timestamp"] = ""
         if hasattr(self, "trace_id"):
             result["traceId"] = str(self.trace_id)
         elif include_empty:
-            result["traceId"] = str()
+            result["traceId"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
-            result["version"] = int()
+            result["version"] = 0
         if hasattr(self, "payload"):
             result["payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
@@ -196,39 +196,39 @@ class ModelsEventV2(Model):
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "sessionId" in dict_ and dict_["sessionId"] is not None:
             instance.session_id = str(dict_["sessionId"])
         elif include_empty:
-            instance.session_id = str()
+            instance.session_id = ""
         if "timestamp" in dict_ and dict_["timestamp"] is not None:
             instance.timestamp = str(dict_["timestamp"])
         elif include_empty:
-            instance.timestamp = str()
+            instance.timestamp = ""
         if "traceId" in dict_ and dict_["traceId"] is not None:
             instance.trace_id = str(dict_["traceId"])
         elif include_empty:
-            instance.trace_id = str()
+            instance.trace_id = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
-            instance.version = int()
+            instance.version = 0
         if "payload" in dict_ and dict_["payload"] is not None:
             instance.payload = {str(k0): v0 for k0, v0 in dict_["payload"].items()}
         elif include_empty:

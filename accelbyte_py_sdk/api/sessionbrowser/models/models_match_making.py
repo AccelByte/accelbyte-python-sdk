@@ -161,31 +161,31 @@ class ModelsMatchMaking(Model):
         if hasattr(self, "channel"):
             result["channel"] = str(self.channel)
         elif include_empty:
-            result["channel"] = str()
+            result["channel"] = ""
         if hasattr(self, "client_version"):
             result["client_version"] = str(self.client_version)
         elif include_empty:
-            result["client_version"] = str()
+            result["client_version"] = ""
         if hasattr(self, "created_at"):
             result["created_at"] = str(self.created_at)
         elif include_empty:
-            result["created_at"] = str()
+            result["created_at"] = ""
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
-            result["deployment"] = str()
+            result["deployment"] = ""
         if hasattr(self, "event"):
             result["event"] = str(self.event)
         elif include_empty:
-            result["event"] = str()
+            result["event"] = ""
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
-            result["game_mode"] = str()
+            result["game_mode"] = ""
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
-            result["match_id"] = str()
+            result["match_id"] = ""
         if hasattr(self, "matching_allies"):
             result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
@@ -193,7 +193,7 @@ class ModelsMatchMaking(Model):
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "party_attributes"):
             result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
@@ -201,27 +201,27 @@ class ModelsMatchMaking(Model):
         if hasattr(self, "queued_at"):
             result["queued_at"] = int(self.queued_at)
         elif include_empty:
-            result["queued_at"] = int()
+            result["queued_at"] = 0
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "server_name"):
             result["server_name"] = str(self.server_name)
         elif include_empty:
-            result["server_name"] = str()
+            result["server_name"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = str()
+            result["status"] = ""
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
-            result["joinable"] = bool()
+            result["joinable"] = False
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
-            result["party_id"] = str()
+            result["party_id"] = ""
         return result
 
     # endregion to methods
@@ -277,31 +277,31 @@ class ModelsMatchMaking(Model):
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
-            instance.channel = str()
+            instance.channel = ""
         if "client_version" in dict_ and dict_["client_version"] is not None:
             instance.client_version = str(dict_["client_version"])
         elif include_empty:
-            instance.client_version = str()
+            instance.client_version = ""
         if "created_at" in dict_ and dict_["created_at"] is not None:
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
-            instance.deployment = str()
+            instance.deployment = ""
         if "event" in dict_ and dict_["event"] is not None:
             instance.event = str(dict_["event"])
         elif include_empty:
-            instance.event = str()
+            instance.event = ""
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
-            instance.game_mode = str()
+            instance.game_mode = ""
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
             instance.matching_allies = [ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
@@ -309,7 +309,7 @@ class ModelsMatchMaking(Model):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
             instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
@@ -317,27 +317,27 @@ class ModelsMatchMaking(Model):
         if "queued_at" in dict_ and dict_["queued_at"] is not None:
             instance.queued_at = int(dict_["queued_at"])
         elif include_empty:
-            instance.queued_at = int()
+            instance.queued_at = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "server_name" in dict_ and dict_["server_name"] is not None:
             instance.server_name = str(dict_["server_name"])
         elif include_empty:
-            instance.server_name = str()
+            instance.server_name = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = str()
+            instance.status = ""
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
-            instance.joinable = bool()
+            instance.joinable = False
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         return instance
 
     @classmethod

@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ResponseError
@@ -55,7 +56,7 @@ class DeleteImage(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -83,7 +84,7 @@ class DeleteImage(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -111,8 +112,8 @@ class DeleteImage(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -121,14 +122,6 @@ class DeleteImage(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -183,15 +176,15 @@ class DeleteImage(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "image_uri") and self.image_uri:
             result["imageURI"] = str(self.image_uri)
         elif include_empty:
-            result["imageURI"] = str()
+            result["imageURI"] = ""
         if hasattr(self, "version") and self.version:
             result["version"] = str(self.version)
         elif include_empty:
-            result["version"] = str()
+            result["version"] = ""
         return result
 
     # endregion to methods
@@ -263,15 +256,15 @@ class DeleteImage(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "imageURI" in dict_ and dict_["imageURI"] is not None:
             instance.image_uri = str(dict_["imageURI"])
         elif include_empty:
-            instance.image_uri = str()
+            instance.image_uri = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
-            instance.version = str()
+            instance.version = ""
         return instance
 
     @staticmethod

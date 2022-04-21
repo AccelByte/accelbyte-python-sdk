@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import RestErrorResponse
@@ -50,7 +51,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         code: (code) OPTIONAL str in form_data
 
@@ -76,7 +77,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     code: str                                                                                      # OPTIONAL in [form_data]
@@ -102,8 +103,8 @@ class AdminEnableMyAuthenticatorV4(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -112,12 +113,6 @@ class AdminEnableMyAuthenticatorV4(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -155,7 +150,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         return result
 
     # endregion to methods
@@ -228,7 +223,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         return instance
 
     @staticmethod

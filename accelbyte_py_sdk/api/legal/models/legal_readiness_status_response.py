@@ -54,7 +54,7 @@ class LegalReadinessStatusResponse(Model):
         if hasattr(self, "is_ready"):
             result["isReady"] = bool(self.is_ready)
         elif include_empty:
-            result["isReady"] = bool()
+            result["isReady"] = False
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class LegalReadinessStatusResponse(Model):
         if "isReady" in dict_ and dict_["isReady"] is not None:
             instance.is_ready = bool(dict_["isReady"])
         elif include_empty:
-            instance.is_ready = bool()
+            instance.is_ready = False
         return instance
 
     @classmethod

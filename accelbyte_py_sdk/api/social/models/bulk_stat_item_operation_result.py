@@ -72,11 +72,11 @@ class BulkStatItemOperationResult(Model):
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         return result
 
     # endregion to methods
@@ -111,11 +111,11 @@ class BulkStatItemOperationResult(Model):
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         return instance
 
     @classmethod

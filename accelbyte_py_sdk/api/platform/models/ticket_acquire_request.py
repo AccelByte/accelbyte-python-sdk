@@ -61,11 +61,11 @@ class TicketAcquireRequest(Model):
         if hasattr(self, "count"):
             result["count"] = int(self.count)
         elif include_empty:
-            result["count"] = int()
+            result["count"] = 0
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class TicketAcquireRequest(Model):
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
-            instance.count = int()
+            instance.count = 0
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         return instance
 
     @classmethod

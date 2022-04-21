@@ -110,39 +110,39 @@ class ModelsImageRecord(Model):
         if hasattr(self, "artifact_path"):
             result["artifactPath"] = str(self.artifact_path)
         elif include_empty:
-            result["artifactPath"] = str()
+            result["artifactPath"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "docker_path"):
             result["dockerPath"] = str(self.docker_path)
         elif include_empty:
-            result["dockerPath"] = str()
+            result["dockerPath"] = ""
         if hasattr(self, "image"):
             result["image"] = str(self.image)
         elif include_empty:
-            result["image"] = str()
+            result["image"] = ""
         if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
-            result["modifiedBy"] = str()
+            result["modifiedBy"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "persistent"):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
-            result["persistent"] = bool()
+            result["persistent"] = False
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
-            result["version"] = str()
+            result["version"] = ""
         return result
 
     # endregion to methods
@@ -182,39 +182,39 @@ class ModelsImageRecord(Model):
         if "artifactPath" in dict_ and dict_["artifactPath"] is not None:
             instance.artifact_path = str(dict_["artifactPath"])
         elif include_empty:
-            instance.artifact_path = str()
+            instance.artifact_path = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "dockerPath" in dict_ and dict_["dockerPath"] is not None:
             instance.docker_path = str(dict_["dockerPath"])
         elif include_empty:
-            instance.docker_path = str()
+            instance.docker_path = ""
         if "image" in dict_ and dict_["image"] is not None:
             instance.image = str(dict_["image"])
         elif include_empty:
-            instance.image = str()
+            instance.image = ""
         if "modifiedBy" in dict_ and dict_["modifiedBy"] is not None:
             instance.modified_by = str(dict_["modifiedBy"])
         elif include_empty:
-            instance.modified_by = str()
+            instance.modified_by = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "persistent" in dict_ and dict_["persistent"] is not None:
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
-            instance.persistent = bool()
+            instance.persistent = False
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
-            instance.version = str()
+            instance.version = ""
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class PlayStationDLCSyncRequest(Model):
         if hasattr(self, "service_label"):
             result["serviceLabel"] = int(self.service_label)
         elif include_empty:
-            result["serviceLabel"] = int()
+            result["serviceLabel"] = 0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class PlayStationDLCSyncRequest(Model):
         if "serviceLabel" in dict_ and dict_["serviceLabel"] is not None:
             instance.service_label = int(dict_["serviceLabel"])
         elif include_empty:
-            instance.service_label = int()
+            instance.service_label = 0
         return instance
 
     @classmethod

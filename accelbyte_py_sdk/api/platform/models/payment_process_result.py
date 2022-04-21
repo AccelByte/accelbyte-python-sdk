@@ -75,19 +75,19 @@ class PaymentProcessResult(Model):
         if hasattr(self, "pending"):
             result["pending"] = bool(self.pending)
         elif include_empty:
-            result["pending"] = bool()
+            result["pending"] = False
         if hasattr(self, "success"):
             result["success"] = bool(self.success)
         elif include_empty:
-            result["success"] = bool()
+            result["success"] = False
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
-            result["reason"] = str()
+            result["reason"] = ""
         if hasattr(self, "redirect_url"):
             result["redirectUrl"] = str(self.redirect_url)
         elif include_empty:
-            result["redirectUrl"] = str()
+            result["redirectUrl"] = ""
         return result
 
     # endregion to methods
@@ -119,19 +119,19 @@ class PaymentProcessResult(Model):
         if "pending" in dict_ and dict_["pending"] is not None:
             instance.pending = bool(dict_["pending"])
         elif include_empty:
-            instance.pending = bool()
+            instance.pending = False
         if "success" in dict_ and dict_["success"] is not None:
             instance.success = bool(dict_["success"])
         elif include_empty:
-            instance.success = bool()
+            instance.success = False
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
-            instance.reason = str()
+            instance.reason = ""
         if "redirectUrl" in dict_ and dict_["redirectUrl"] is not None:
             instance.redirect_url = str(dict_["redirectUrl"])
         elif include_empty:
-            instance.redirect_url = str()
+            instance.redirect_url = ""
         return instance
 
     @classmethod

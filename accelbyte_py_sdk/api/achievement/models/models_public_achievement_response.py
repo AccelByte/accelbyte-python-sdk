@@ -147,27 +147,27 @@ class ModelsPublicAchievementResponse(Model):
         if hasattr(self, "achievement_code"):
             result["achievementCode"] = str(self.achievement_code)
         elif include_empty:
-            result["achievementCode"] = str()
+            result["achievementCode"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "hidden"):
             result["hidden"] = bool(self.hidden)
         elif include_empty:
-            result["hidden"] = bool()
+            result["hidden"] = False
         if hasattr(self, "incremental"):
             result["incremental"] = bool(self.incremental)
         elif include_empty:
-            result["incremental"] = bool()
+            result["incremental"] = False
         if hasattr(self, "list_order"):
             result["listOrder"] = int(self.list_order)
         elif include_empty:
-            result["listOrder"] = int()
+            result["listOrder"] = 0
         if hasattr(self, "locked_icons"):
             result["lockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons]
         elif include_empty:
@@ -175,11 +175,11 @@ class ModelsPublicAchievementResponse(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -191,15 +191,15 @@ class ModelsPublicAchievementResponse(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "goal_value"):
             result["goalValue"] = float(self.goal_value)
         elif include_empty:
-            result["goalValue"] = float()
+            result["goalValue"] = 0.0
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
-            result["statCode"] = str()
+            result["statCode"] = ""
         return result
 
     # endregion to methods
@@ -251,27 +251,27 @@ class ModelsPublicAchievementResponse(Model):
         if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
             instance.achievement_code = str(dict_["achievementCode"])
         elif include_empty:
-            instance.achievement_code = str()
+            instance.achievement_code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "hidden" in dict_ and dict_["hidden"] is not None:
             instance.hidden = bool(dict_["hidden"])
         elif include_empty:
-            instance.hidden = bool()
+            instance.hidden = False
         if "incremental" in dict_ and dict_["incremental"] is not None:
             instance.incremental = bool(dict_["incremental"])
         elif include_empty:
-            instance.incremental = bool()
+            instance.incremental = False
         if "listOrder" in dict_ and dict_["listOrder"] is not None:
             instance.list_order = int(dict_["listOrder"])
         elif include_empty:
-            instance.list_order = int()
+            instance.list_order = 0
         if "lockedIcons" in dict_ and dict_["lockedIcons"] is not None:
             instance.locked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["lockedIcons"]]
         elif include_empty:
@@ -279,11 +279,11 @@ class ModelsPublicAchievementResponse(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -295,15 +295,15 @@ class ModelsPublicAchievementResponse(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "goalValue" in dict_ and dict_["goalValue"] is not None:
             instance.goal_value = float(dict_["goalValue"])
         elif include_empty:
-            instance.goal_value = float()
+            instance.goal_value = 0.0
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
-            instance.stat_code = str()
+            instance.stat_code = ""
         return instance
 
     @classmethod

@@ -61,11 +61,11 @@ class ModelsUX(Model):
         if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
-            result["Description"] = str()
+            result["Description"] = ""
         if hasattr(self, "ux"):
             result["UX"] = int(self.ux)
         elif include_empty:
-            result["UX"] = int()
+            result["UX"] = 0
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsUX(Model):
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = str(dict_["Description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "UX" in dict_ and dict_["UX"] is not None:
             instance.ux = int(dict_["UX"])
         elif include_empty:
-            instance.ux = int()
+            instance.ux = 0
         return instance
 
     @classmethod

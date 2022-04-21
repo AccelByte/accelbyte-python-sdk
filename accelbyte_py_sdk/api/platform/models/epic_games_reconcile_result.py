@@ -89,15 +89,15 @@ class EpicGamesReconcileResult(Model):
         if hasattr(self, "epic_games_item_id"):
             result["epicGamesItemId"] = str(self.epic_games_item_id)
         elif include_empty:
-            result["epicGamesItemId"] = str()
+            result["epicGamesItemId"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -105,7 +105,7 @@ class EpicGamesReconcileResult(Model):
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["transactionId"] = str()
+            result["transactionId"] = ""
         return result
 
     # endregion to methods
@@ -142,15 +142,15 @@ class EpicGamesReconcileResult(Model):
         if "epicGamesItemId" in dict_ and dict_["epicGamesItemId"] is not None:
             instance.epic_games_item_id = str(dict_["epicGamesItemId"])
         elif include_empty:
-            instance.epic_games_item_id = str()
+            instance.epic_games_item_id = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -158,7 +158,7 @@ class EpicGamesReconcileResult(Model):
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.transaction_id = str()
+            instance.transaction_id = ""
         return instance
 
     @classmethod

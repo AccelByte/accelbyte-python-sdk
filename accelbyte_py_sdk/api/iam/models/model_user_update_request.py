@@ -75,19 +75,19 @@ class ModelUserUpdateRequest(Model):
         if hasattr(self, "country"):
             result["Country"] = str(self.country)
         elif include_empty:
-            result["Country"] = str()
+            result["Country"] = ""
         if hasattr(self, "date_of_birth"):
             result["DateOfBirth"] = str(self.date_of_birth)
         elif include_empty:
-            result["DateOfBirth"] = str()
+            result["DateOfBirth"] = ""
         if hasattr(self, "display_name"):
             result["DisplayName"] = str(self.display_name)
         elif include_empty:
-            result["DisplayName"] = str()
+            result["DisplayName"] = ""
         if hasattr(self, "language_tag"):
             result["LanguageTag"] = str(self.language_tag)
         elif include_empty:
-            result["LanguageTag"] = str()
+            result["LanguageTag"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class ModelUserUpdateRequest(Model):
         if "Country" in dict_ and dict_["Country"] is not None:
             instance.country = str(dict_["Country"])
         elif include_empty:
-            instance.country = str()
+            instance.country = ""
         if "DateOfBirth" in dict_ and dict_["DateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["DateOfBirth"])
         elif include_empty:
-            instance.date_of_birth = str()
+            instance.date_of_birth = ""
         if "DisplayName" in dict_ and dict_["DisplayName"] is not None:
             instance.display_name = str(dict_["DisplayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         if "LanguageTag" in dict_ and dict_["LanguageTag"] is not None:
             instance.language_tag = str(dict_["LanguageTag"])
         elif include_empty:
-            instance.language_tag = str()
+            instance.language_tag = ""
         return instance
 
     @classmethod

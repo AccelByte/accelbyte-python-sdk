@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
@@ -51,7 +52,7 @@ class RetrieveAllUsersByPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         keyword: (keyword) OPTIONAL str in query
 
@@ -73,7 +74,7 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     keyword: str                                                                                   # OPTIONAL in [query]
@@ -102,8 +103,8 @@ class RetrieveAllUsersByPolicyVersion(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -112,13 +113,6 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -174,19 +168,19 @@ class RetrieveAllUsersByPolicyVersion(Operation):
         if hasattr(self, "keyword") and self.keyword:
             result["keyword"] = str(self.keyword)
         elif include_empty:
-            result["keyword"] = str()
+            result["keyword"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         if hasattr(self, "policy_version_id") and self.policy_version_id:
             result["policyVersionId"] = str(self.policy_version_id)
         elif include_empty:
-            result["policyVersionId"] = str()
+            result["policyVersionId"] = ""
         return result
 
     # endregion to methods
@@ -247,19 +241,19 @@ class RetrieveAllUsersByPolicyVersion(Operation):
         if "keyword" in dict_ and dict_["keyword"] is not None:
             instance.keyword = str(dict_["keyword"])
         elif include_empty:
-            instance.keyword = str()
+            instance.keyword = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         if "policyVersionId" in dict_ and dict_["policyVersionId"] is not None:
             instance.policy_version_id = str(dict_["policyVersionId"])
         elif include_empty:
-            instance.policy_version_id = str()
+            instance.policy_version_id = ""
         return instance
 
     @staticmethod

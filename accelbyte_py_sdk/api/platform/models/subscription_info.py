@@ -379,31 +379,31 @@ class SubscriptionInfo(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "in_fixed_cycle_trial"):
             result["inFixedCycleTrial"] = bool(self.in_fixed_cycle_trial)
         elif include_empty:
-            result["inFixedCycleTrial"] = bool()
+            result["inFixedCycleTrial"] = False
         if hasattr(self, "in_fixed_free_days"):
             result["inFixedFreeDays"] = bool(self.in_fixed_free_days)
         elif include_empty:
-            result["inFixedFreeDays"] = bool()
+            result["inFixedFreeDays"] = False
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "payment_flow_required"):
             result["paymentFlowRequired"] = bool(self.payment_flow_required)
         elif include_empty:
-            result["paymentFlowRequired"] = bool()
+            result["paymentFlowRequired"] = False
         if hasattr(self, "recurring"):
             result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -415,11 +415,11 @@ class SubscriptionInfo(Model):
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "billing_account"):
             result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -427,7 +427,7 @@ class SubscriptionInfo(Model):
         if hasattr(self, "charged_cycles"):
             result["chargedCycles"] = int(self.charged_cycles)
         elif include_empty:
-            result["chargedCycles"] = int()
+            result["chargedCycles"] = 0
         if hasattr(self, "currency"):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -435,23 +435,23 @@ class SubscriptionInfo(Model):
         if hasattr(self, "current_cycle"):
             result["currentCycle"] = int(self.current_cycle)
         elif include_empty:
-            result["currentCycle"] = int()
+            result["currentCycle"] = 0
         if hasattr(self, "current_period_end"):
             result["currentPeriodEnd"] = str(self.current_period_end)
         elif include_empty:
-            result["currentPeriodEnd"] = str()
+            result["currentPeriodEnd"] = ""
         if hasattr(self, "current_period_start"):
             result["currentPeriodStart"] = str(self.current_period_start)
         elif include_empty:
-            result["currentPeriodStart"] = str()
+            result["currentPeriodStart"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "end"):
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "entitlements"):
             result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
         elif include_empty:
@@ -459,7 +459,7 @@ class SubscriptionInfo(Model):
         if hasattr(self, "first_subscribe"):
             result["firstSubscribe"] = bool(self.first_subscribe)
         elif include_empty:
-            result["firstSubscribe"] = bool()
+            result["firstSubscribe"] = False
         if hasattr(self, "item_snapshot"):
             result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -467,59 +467,59 @@ class SubscriptionInfo(Model):
         if hasattr(self, "language"):
             result["language"] = str(self.language)
         elif include_empty:
-            result["language"] = str()
+            result["language"] = ""
         if hasattr(self, "next_billing_date"):
             result["nextBillingDate"] = str(self.next_billing_date)
         elif include_empty:
-            result["nextBillingDate"] = str()
+            result["nextBillingDate"] = ""
         if hasattr(self, "paid"):
             result["paid"] = bool(self.paid)
         elif include_empty:
-            result["paid"] = bool()
+            result["paid"] = False
         if hasattr(self, "payment_order_no"):
             result["paymentOrderNo"] = str(self.payment_order_no)
         elif include_empty:
-            result["paymentOrderNo"] = str()
+            result["paymentOrderNo"] = ""
         if hasattr(self, "payment_station_url"):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
-            result["paymentStationUrl"] = str()
+            result["paymentStationUrl"] = ""
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
-            result["price"] = int()
+            result["price"] = 0
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "retry_attempted"):
             result["retryAttempted"] = int(self.retry_attempted)
         elif include_empty:
-            result["retryAttempted"] = int()
+            result["retryAttempted"] = 0
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         if hasattr(self, "sandbox"):
             result["sandbox"] = bool(self.sandbox)
         elif include_empty:
-            result["sandbox"] = bool()
+            result["sandbox"] = False
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = ""
         if hasattr(self, "start"):
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         if hasattr(self, "subscribed_at"):
             result["subscribedAt"] = str(self.subscribed_at)
         elif include_empty:
-            result["subscribedAt"] = str()
+            result["subscribedAt"] = ""
         if hasattr(self, "subscribed_by"):
             result["subscribedBy"] = str(self.subscribed_by)
         elif include_empty:
@@ -527,23 +527,23 @@ class SubscriptionInfo(Model):
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "trial_price"):
             result["trialPrice"] = int(self.trial_price)
         elif include_empty:
-            result["trialPrice"] = int()
+            result["trialPrice"] = 0
         if hasattr(self, "trialed_cycles"):
             result["trialedCycles"] = int(self.trialed_cycles)
         elif include_empty:
-            result["trialedCycles"] = int()
+            result["trialedCycles"] = 0
         if hasattr(self, "unsubscribe_reason"):
             result["unsubscribeReason"] = str(self.unsubscribe_reason)
         elif include_empty:
-            result["unsubscribeReason"] = str()
+            result["unsubscribeReason"] = ""
         if hasattr(self, "unsubscribed_at"):
             result["unsubscribedAt"] = str(self.unsubscribed_at)
         elif include_empty:
-            result["unsubscribedAt"] = str()
+            result["unsubscribedAt"] = ""
         return result
 
     # endregion to methods
@@ -686,31 +686,31 @@ class SubscriptionInfo(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "inFixedCycleTrial" in dict_ and dict_["inFixedCycleTrial"] is not None:
             instance.in_fixed_cycle_trial = bool(dict_["inFixedCycleTrial"])
         elif include_empty:
-            instance.in_fixed_cycle_trial = bool()
+            instance.in_fixed_cycle_trial = False
         if "inFixedFreeDays" in dict_ and dict_["inFixedFreeDays"] is not None:
             instance.in_fixed_free_days = bool(dict_["inFixedFreeDays"])
         elif include_empty:
-            instance.in_fixed_free_days = bool()
+            instance.in_fixed_free_days = False
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "paymentFlowRequired" in dict_ and dict_["paymentFlowRequired"] is not None:
             instance.payment_flow_required = bool(dict_["paymentFlowRequired"])
         elif include_empty:
-            instance.payment_flow_required = bool()
+            instance.payment_flow_required = False
         if "recurring" in dict_ and dict_["recurring"] is not None:
             instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
         elif include_empty:
@@ -722,11 +722,11 @@ class SubscriptionInfo(Model):
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "billingAccount" in dict_ and dict_["billingAccount"] is not None:
             instance.billing_account = BillingAccount.create_from_dict(dict_["billingAccount"], include_empty=include_empty)
         elif include_empty:
@@ -734,7 +734,7 @@ class SubscriptionInfo(Model):
         if "chargedCycles" in dict_ and dict_["chargedCycles"] is not None:
             instance.charged_cycles = int(dict_["chargedCycles"])
         elif include_empty:
-            instance.charged_cycles = int()
+            instance.charged_cycles = 0
         if "currency" in dict_ and dict_["currency"] is not None:
             instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
@@ -742,23 +742,23 @@ class SubscriptionInfo(Model):
         if "currentCycle" in dict_ and dict_["currentCycle"] is not None:
             instance.current_cycle = int(dict_["currentCycle"])
         elif include_empty:
-            instance.current_cycle = int()
+            instance.current_cycle = 0
         if "currentPeriodEnd" in dict_ and dict_["currentPeriodEnd"] is not None:
             instance.current_period_end = str(dict_["currentPeriodEnd"])
         elif include_empty:
-            instance.current_period_end = str()
+            instance.current_period_end = ""
         if "currentPeriodStart" in dict_ and dict_["currentPeriodStart"] is not None:
             instance.current_period_start = str(dict_["currentPeriodStart"])
         elif include_empty:
-            instance.current_period_start = str()
+            instance.current_period_start = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "entitlements" in dict_ and dict_["entitlements"] is not None:
             instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
         elif include_empty:
@@ -766,7 +766,7 @@ class SubscriptionInfo(Model):
         if "firstSubscribe" in dict_ and dict_["firstSubscribe"] is not None:
             instance.first_subscribe = bool(dict_["firstSubscribe"])
         elif include_empty:
-            instance.first_subscribe = bool()
+            instance.first_subscribe = False
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
             instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
         elif include_empty:
@@ -774,59 +774,59 @@ class SubscriptionInfo(Model):
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
-            instance.language = str()
+            instance.language = ""
         if "nextBillingDate" in dict_ and dict_["nextBillingDate"] is not None:
             instance.next_billing_date = str(dict_["nextBillingDate"])
         elif include_empty:
-            instance.next_billing_date = str()
+            instance.next_billing_date = ""
         if "paid" in dict_ and dict_["paid"] is not None:
             instance.paid = bool(dict_["paid"])
         elif include_empty:
-            instance.paid = bool()
+            instance.paid = False
         if "paymentOrderNo" in dict_ and dict_["paymentOrderNo"] is not None:
             instance.payment_order_no = str(dict_["paymentOrderNo"])
         elif include_empty:
-            instance.payment_order_no = str()
+            instance.payment_order_no = ""
         if "paymentStationUrl" in dict_ and dict_["paymentStationUrl"] is not None:
             instance.payment_station_url = str(dict_["paymentStationUrl"])
         elif include_empty:
-            instance.payment_station_url = str()
+            instance.payment_station_url = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
-            instance.price = int()
+            instance.price = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "retryAttempted" in dict_ and dict_["retryAttempted"] is not None:
             instance.retry_attempted = int(dict_["retryAttempted"])
         elif include_empty:
-            instance.retry_attempted = int()
+            instance.retry_attempted = 0
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         if "sandbox" in dict_ and dict_["sandbox"] is not None:
             instance.sandbox = bool(dict_["sandbox"])
         elif include_empty:
-            instance.sandbox = bool()
+            instance.sandbox = False
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         if "subscribedAt" in dict_ and dict_["subscribedAt"] is not None:
             instance.subscribed_at = str(dict_["subscribedAt"])
         elif include_empty:
-            instance.subscribed_at = str()
+            instance.subscribed_at = ""
         if "subscribedBy" in dict_ and dict_["subscribedBy"] is not None:
             instance.subscribed_by = str(dict_["subscribedBy"])
         elif include_empty:
@@ -834,23 +834,23 @@ class SubscriptionInfo(Model):
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "trialPrice" in dict_ and dict_["trialPrice"] is not None:
             instance.trial_price = int(dict_["trialPrice"])
         elif include_empty:
-            instance.trial_price = int()
+            instance.trial_price = 0
         if "trialedCycles" in dict_ and dict_["trialedCycles"] is not None:
             instance.trialed_cycles = int(dict_["trialedCycles"])
         elif include_empty:
-            instance.trialed_cycles = int()
+            instance.trialed_cycles = 0
         if "unsubscribeReason" in dict_ and dict_["unsubscribeReason"] is not None:
             instance.unsubscribe_reason = str(dict_["unsubscribeReason"])
         elif include_empty:
-            instance.unsubscribe_reason = str()
+            instance.unsubscribe_reason = ""
         if "unsubscribedAt" in dict_ and dict_["unsubscribedAt"] is not None:
             instance.unsubscribed_at = str(dict_["unsubscribedAt"])
         elif include_empty:
-            instance.unsubscribed_at = str()
+            instance.unsubscribed_at = ""
         return instance
 
     @classmethod

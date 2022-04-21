@@ -79,15 +79,15 @@ class StripeConfig(Model):
         if hasattr(self, "publishable_key"):
             result["publishableKey"] = str(self.publishable_key)
         elif include_empty:
-            result["publishableKey"] = str()
+            result["publishableKey"] = ""
         if hasattr(self, "secret_key"):
             result["secretKey"] = str(self.secret_key)
         elif include_empty:
-            result["secretKey"] = str()
+            result["secretKey"] = ""
         if hasattr(self, "webhook_secret"):
             result["webhookSecret"] = str(self.webhook_secret)
         elif include_empty:
-            result["webhookSecret"] = str()
+            result["webhookSecret"] = ""
         return result
 
     # endregion to methods
@@ -125,15 +125,15 @@ class StripeConfig(Model):
         if "publishableKey" in dict_ and dict_["publishableKey"] is not None:
             instance.publishable_key = str(dict_["publishableKey"])
         elif include_empty:
-            instance.publishable_key = str()
+            instance.publishable_key = ""
         if "secretKey" in dict_ and dict_["secretKey"] is not None:
             instance.secret_key = str(dict_["secretKey"])
         elif include_empty:
-            instance.secret_key = str()
+            instance.secret_key = ""
         if "webhookSecret" in dict_ and dict_["webhookSecret"] is not None:
             instance.webhook_secret = str(dict_["webhookSecret"])
         elif include_empty:
-            instance.webhook_secret = str()
+            instance.webhook_secret = ""
         return instance
 
     @classmethod

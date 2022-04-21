@@ -54,7 +54,7 @@ class ModelUserDeletionStatusResponse(Model):
         if hasattr(self, "deletion_status"):
             result["deletionStatus"] = bool(self.deletion_status)
         elif include_empty:
-            result["deletionStatus"] = bool()
+            result["deletionStatus"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelUserDeletionStatusResponse(Model):
         if "deletionStatus" in dict_ and dict_["deletionStatus"] is not None:
             instance.deletion_status = bool(dict_["deletionStatus"])
         elif include_empty:
-            instance.deletion_status = bool()
+            instance.deletion_status = False
         return instance
 
     @classmethod

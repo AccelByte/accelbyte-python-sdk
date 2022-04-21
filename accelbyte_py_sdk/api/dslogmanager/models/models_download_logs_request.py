@@ -68,15 +68,15 @@ class ModelsDownloadLogsRequest(Model):
         if hasattr(self, "alloc_id"):
             result["alloc_id"] = str(self.alloc_id)
         elif include_empty:
-            result["alloc_id"] = str()
+            result["alloc_id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "pod_name"):
             result["pod_name"] = str(self.pod_name)
         elif include_empty:
-            result["pod_name"] = str()
+            result["pod_name"] = ""
         return result
 
     # endregion to methods
@@ -104,15 +104,15 @@ class ModelsDownloadLogsRequest(Model):
         if "alloc_id" in dict_ and dict_["alloc_id"] is not None:
             instance.alloc_id = str(dict_["alloc_id"])
         elif include_empty:
-            instance.alloc_id = str()
+            instance.alloc_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "pod_name" in dict_ and dict_["pod_name"] is not None:
             instance.pod_name = str(dict_["pod_name"])
         elif include_empty:
-            instance.pod_name = str()
+            instance.pod_name = ""
         return instance
 
     @classmethod

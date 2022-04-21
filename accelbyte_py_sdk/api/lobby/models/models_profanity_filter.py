@@ -75,19 +75,19 @@ class ModelsProfanityFilter(Model):
         if hasattr(self, "filter_"):
             result["filter"] = str(self.filter_)
         elif include_empty:
-            result["filter"] = str()
+            result["filter"] = ""
         if hasattr(self, "list_name"):
             result["listName"] = str(self.list_name)
         elif include_empty:
-            result["listName"] = str()
+            result["listName"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "note"):
             result["note"] = str(self.note)
         elif include_empty:
-            result["note"] = str()
+            result["note"] = ""
         return result
 
     # endregion to methods
@@ -117,19 +117,19 @@ class ModelsProfanityFilter(Model):
         if "filter" in dict_ and dict_["filter"] is not None:
             instance.filter_ = str(dict_["filter"])
         elif include_empty:
-            instance.filter_ = str()
+            instance.filter_ = ""
         if "listName" in dict_ and dict_["listName"] is not None:
             instance.list_name = str(dict_["listName"])
         elif include_empty:
-            instance.list_name = str()
+            instance.list_name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "note" in dict_ and dict_["note"] is not None:
             instance.note = str(dict_["note"])
         elif include_empty:
-            instance.note = str()
+            instance.note = ""
         return instance
 
     @classmethod

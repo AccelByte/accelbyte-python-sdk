@@ -67,7 +67,7 @@ class ModelNotificationTemplateResponse(Model):
         if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
-            result["templateSlug"] = str()
+            result["templateSlug"] = ""
         return result
 
     # endregion to methods
@@ -97,7 +97,7 @@ class ModelNotificationTemplateResponse(Model):
         if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
             instance.template_slug = str(dict_["templateSlug"])
         elif include_empty:
-            instance.template_slug = str()
+            instance.template_slug = ""
         return instance
 
     @classmethod

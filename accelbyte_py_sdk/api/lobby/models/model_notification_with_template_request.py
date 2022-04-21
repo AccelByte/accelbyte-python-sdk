@@ -79,15 +79,15 @@ class ModelNotificationWithTemplateRequest(Model):
         if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
-            result["templateLanguage"] = str()
+            result["templateLanguage"] = ""
         if hasattr(self, "template_slug"):
             result["templateSlug"] = str(self.template_slug)
         elif include_empty:
-            result["templateSlug"] = str()
+            result["templateSlug"] = ""
         if hasattr(self, "topic"):
             result["topic"] = str(self.topic)
         elif include_empty:
-            result["topic"] = str()
+            result["topic"] = ""
         return result
 
     # endregion to methods
@@ -121,15 +121,15 @@ class ModelNotificationWithTemplateRequest(Model):
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
             instance.template_language = str(dict_["templateLanguage"])
         elif include_empty:
-            instance.template_language = str()
+            instance.template_language = ""
         if "templateSlug" in dict_ and dict_["templateSlug"] is not None:
             instance.template_slug = str(dict_["templateSlug"])
         elif include_empty:
-            instance.template_slug = str()
+            instance.template_slug = ""
         if "topic" in dict_ and dict_["topic"] is not None:
             instance.topic = str(dict_["topic"])
         elif include_empty:
-            instance.topic = str()
+            instance.topic = ""
         return instance
 
     @classmethod

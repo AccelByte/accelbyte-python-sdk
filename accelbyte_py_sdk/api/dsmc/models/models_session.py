@@ -84,19 +84,19 @@ class ModelsSession(Model):
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
-            result["provider"] = str()
+            result["provider"] = ""
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
-            result["region"] = str()
+            result["region"] = ""
         if hasattr(self, "server"):
             result["Server"] = self.server.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -132,19 +132,19 @@ class ModelsSession(Model):
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
-            instance.provider = str()
+            instance.provider = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
-            instance.region = str()
+            instance.region = ""
         if "Server" in dict_ and dict_["Server"] is not None:
             instance.server = ModelsServer.create_from_dict(dict_["Server"], include_empty=include_empty)
         elif include_empty:

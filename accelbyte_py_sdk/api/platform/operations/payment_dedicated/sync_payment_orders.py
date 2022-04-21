@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import PaymentOrderSyncResult
@@ -52,7 +53,7 @@ class SyncPaymentOrders(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 
@@ -70,7 +71,7 @@ class SyncPaymentOrders(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     next_evaluated_key: str                                                                        # OPTIONAL in [query]
@@ -98,8 +99,8 @@ class SyncPaymentOrders(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -108,13 +109,6 @@ class SyncPaymentOrders(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -164,15 +158,15 @@ class SyncPaymentOrders(Operation):
         if hasattr(self, "next_evaluated_key") and self.next_evaluated_key:
             result["nextEvaluatedKey"] = str(self.next_evaluated_key)
         elif include_empty:
-            result["nextEvaluatedKey"] = str()
+            result["nextEvaluatedKey"] = ""
         if hasattr(self, "end") and self.end:
             result["end"] = str(self.end)
         elif include_empty:
-            result["end"] = str()
+            result["end"] = ""
         if hasattr(self, "start") and self.start:
             result["start"] = str(self.start)
         elif include_empty:
-            result["start"] = str()
+            result["start"] = ""
         return result
 
     # endregion to methods
@@ -225,15 +219,15 @@ class SyncPaymentOrders(Operation):
         if "nextEvaluatedKey" in dict_ and dict_["nextEvaluatedKey"] is not None:
             instance.next_evaluated_key = str(dict_["nextEvaluatedKey"])
         elif include_empty:
-            instance.next_evaluated_key = str()
+            instance.next_evaluated_key = ""
         if "end" in dict_ and dict_["end"] is not None:
             instance.end = str(dict_["end"])
         elif include_empty:
-            instance.end = str()
+            instance.end = ""
         if "start" in dict_ and dict_["start"] is not None:
             instance.start = str(dict_["start"])
         elif include_empty:
-            instance.start = str()
+            instance.start = ""
         return instance
 
     @staticmethod

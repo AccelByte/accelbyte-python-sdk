@@ -68,15 +68,15 @@ class PlatformRewardItem(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
-            result["itemSku"] = str()
+            result["itemSku"] = ""
         if hasattr(self, "item_type"):
             result["itemType"] = str(self.item_type)
         elif include_empty:
-            result["itemType"] = str()
+            result["itemType"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class PlatformRewardItem(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "itemSku" in dict_ and dict_["itemSku"] is not None:
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
-            instance.item_sku = str()
+            instance.item_sku = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
-            instance.item_type = str()
+            instance.item_type = ""
         return instance
 
     @classmethod

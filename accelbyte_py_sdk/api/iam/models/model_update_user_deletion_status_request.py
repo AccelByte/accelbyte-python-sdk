@@ -54,7 +54,7 @@ class ModelUpdateUserDeletionStatusRequest(Model):
         if hasattr(self, "enabled"):
             result["enabled"] = bool(self.enabled)
         elif include_empty:
-            result["enabled"] = bool()
+            result["enabled"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelUpdateUserDeletionStatusRequest(Model):
         if "enabled" in dict_ and dict_["enabled"] is not None:
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
-            instance.enabled = bool()
+            instance.enabled = False
         return instance
 
     @classmethod

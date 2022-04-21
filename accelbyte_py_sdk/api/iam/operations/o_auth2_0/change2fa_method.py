@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import RestErrorResponse
@@ -64,7 +65,7 @@ class Change2faMethod(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         factor: (factor) REQUIRED str in form_data
 
@@ -82,7 +83,7 @@ class Change2faMethod(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     factor: str                                                                                    # REQUIRED in [form_data]
@@ -109,8 +110,8 @@ class Change2faMethod(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -119,12 +120,6 @@ class Change2faMethod(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -168,11 +163,11 @@ class Change2faMethod(Operation):
         if hasattr(self, "factor") and self.factor:
             result["factor"] = str(self.factor)
         elif include_empty:
-            result["factor"] = str()
+            result["factor"] = ""
         if hasattr(self, "mfa_token") and self.mfa_token:
             result["mfaToken"] = str(self.mfa_token)
         elif include_empty:
-            result["mfaToken"] = str()
+            result["mfaToken"] = ""
         return result
 
     # endregion to methods
@@ -226,11 +221,11 @@ class Change2faMethod(Operation):
         if "factor" in dict_ and dict_["factor"] is not None:
             instance.factor = str(dict_["factor"])
         elif include_empty:
-            instance.factor = str()
+            instance.factor = ""
         if "mfaToken" in dict_ and dict_["mfaToken"] is not None:
             instance.mfa_token = str(dict_["mfaToken"])
         elif include_empty:
-            instance.mfa_token = str()
+            instance.mfa_token = ""
         return instance
 
     @staticmethod

@@ -303,7 +303,7 @@ class ItemCreate(Model):
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
-            result["categoryPath"] = str()
+            result["categoryPath"] = ""
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
@@ -319,7 +319,7 @@ class ItemCreate(Model):
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "region_data"):
             result["regionData"] = {str(k0): [i1.to_dict(include_empty=include_empty) for i1 in v0] for k0, v0 in self.region_data.items()}
         elif include_empty:
@@ -331,7 +331,7 @@ class ItemCreate(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "app_type"):
             result["appType"] = str(self.app_type)
         elif include_empty:
@@ -339,19 +339,19 @@ class ItemCreate(Model):
         if hasattr(self, "base_app_id"):
             result["baseAppId"] = str(self.base_app_id)
         elif include_empty:
-            result["baseAppId"] = str()
+            result["baseAppId"] = ""
         if hasattr(self, "booth_name"):
             result["boothName"] = str(self.booth_name)
         elif include_empty:
-            result["boothName"] = str()
+            result["boothName"] = ""
         if hasattr(self, "clazz"):
             result["clazz"] = str(self.clazz)
         elif include_empty:
-            result["clazz"] = str()
+            result["clazz"] = ""
         if hasattr(self, "display_order"):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
-            result["displayOrder"] = int()
+            result["displayOrder"] = 0
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -375,19 +375,19 @@ class ItemCreate(Model):
         if hasattr(self, "listable"):
             result["listable"] = bool(self.listable)
         elif include_empty:
-            result["listable"] = bool()
+            result["listable"] = False
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
-            result["maxCount"] = int()
+            result["maxCount"] = 0
         if hasattr(self, "max_count_per_user"):
             result["maxCountPerUser"] = int(self.max_count_per_user)
         elif include_empty:
-            result["maxCountPerUser"] = int()
+            result["maxCountPerUser"] = 0
         if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
-            result["purchasable"] = bool()
+            result["purchasable"] = False
         if hasattr(self, "recurring"):
             result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -399,11 +399,11 @@ class ItemCreate(Model):
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
-            result["stackable"] = bool()
+            result["stackable"] = False
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -411,19 +411,19 @@ class ItemCreate(Model):
         if hasattr(self, "target_currency_code"):
             result["targetCurrencyCode"] = str(self.target_currency_code)
         elif include_empty:
-            result["targetCurrencyCode"] = str()
+            result["targetCurrencyCode"] = ""
         if hasattr(self, "target_namespace"):
             result["targetNamespace"] = str(self.target_namespace)
         elif include_empty:
-            result["targetNamespace"] = str()
+            result["targetNamespace"] = ""
         if hasattr(self, "thumbnail_url"):
             result["thumbnailUrl"] = str(self.thumbnail_url)
         elif include_empty:
-            result["thumbnailUrl"] = str()
+            result["thumbnailUrl"] = ""
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
-            result["useCount"] = int()
+            result["useCount"] = 0
         return result
 
     # endregion to methods
@@ -531,7 +531,7 @@ class ItemCreate(Model):
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
-            instance.category_path = str()
+            instance.category_path = ""
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
@@ -547,7 +547,7 @@ class ItemCreate(Model):
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "regionData" in dict_ and dict_["regionData"] is not None:
             instance.region_data = {str(k0): [RegionDataItem.create_from_dict(i1, include_empty=include_empty) for i1 in v0] for k0, v0 in dict_["regionData"].items()}
         elif include_empty:
@@ -559,7 +559,7 @@ class ItemCreate(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "appType" in dict_ and dict_["appType"] is not None:
             instance.app_type = str(dict_["appType"])
         elif include_empty:
@@ -567,19 +567,19 @@ class ItemCreate(Model):
         if "baseAppId" in dict_ and dict_["baseAppId"] is not None:
             instance.base_app_id = str(dict_["baseAppId"])
         elif include_empty:
-            instance.base_app_id = str()
+            instance.base_app_id = ""
         if "boothName" in dict_ and dict_["boothName"] is not None:
             instance.booth_name = str(dict_["boothName"])
         elif include_empty:
-            instance.booth_name = str()
+            instance.booth_name = ""
         if "clazz" in dict_ and dict_["clazz"] is not None:
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
-            instance.clazz = str()
+            instance.clazz = ""
         if "displayOrder" in dict_ and dict_["displayOrder"] is not None:
             instance.display_order = int(dict_["displayOrder"])
         elif include_empty:
-            instance.display_order = int()
+            instance.display_order = 0
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -603,19 +603,19 @@ class ItemCreate(Model):
         if "listable" in dict_ and dict_["listable"] is not None:
             instance.listable = bool(dict_["listable"])
         elif include_empty:
-            instance.listable = bool()
+            instance.listable = False
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
-            instance.max_count = int()
+            instance.max_count = 0
         if "maxCountPerUser" in dict_ and dict_["maxCountPerUser"] is not None:
             instance.max_count_per_user = int(dict_["maxCountPerUser"])
         elif include_empty:
-            instance.max_count_per_user = int()
+            instance.max_count_per_user = 0
         if "purchasable" in dict_ and dict_["purchasable"] is not None:
             instance.purchasable = bool(dict_["purchasable"])
         elif include_empty:
-            instance.purchasable = bool()
+            instance.purchasable = False
         if "recurring" in dict_ and dict_["recurring"] is not None:
             instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
         elif include_empty:
@@ -627,11 +627,11 @@ class ItemCreate(Model):
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
-            instance.stackable = bool()
+            instance.stackable = False
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -639,19 +639,19 @@ class ItemCreate(Model):
         if "targetCurrencyCode" in dict_ and dict_["targetCurrencyCode"] is not None:
             instance.target_currency_code = str(dict_["targetCurrencyCode"])
         elif include_empty:
-            instance.target_currency_code = str()
+            instance.target_currency_code = ""
         if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
             instance.target_namespace = str(dict_["targetNamespace"])
         elif include_empty:
-            instance.target_namespace = str()
+            instance.target_namespace = ""
         if "thumbnailUrl" in dict_ and dict_["thumbnailUrl"] is not None:
             instance.thumbnail_url = str(dict_["thumbnailUrl"])
         elif include_empty:
-            instance.thumbnail_url = str()
+            instance.thumbnail_url = ""
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
-            instance.use_count = int()
+            instance.use_count = 0
         return instance
 
     @classmethod

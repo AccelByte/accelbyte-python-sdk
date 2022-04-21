@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsCountActiveSessionResponse
@@ -54,7 +55,7 @@ class GetTotalActiveSession(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -74,7 +75,7 @@ class GetTotalActiveSession(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -101,8 +102,8 @@ class GetTotalActiveSession(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -111,14 +112,6 @@ class GetTotalActiveSession(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -167,11 +160,11 @@ class GetTotalActiveSession(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "session_type") and self.session_type:
             result["session_type"] = str(self.session_type)
         elif include_empty:
-            result["session_type"] = str()
+            result["session_type"] = ""
         return result
 
     # endregion to methods
@@ -230,11 +223,11 @@ class GetTotalActiveSession(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "session_type" in dict_ and dict_["session_type"] is not None:
             instance.session_type = str(dict_["session_type"])
         elif include_empty:
-            instance.session_type = str()
+            instance.session_type = ""
         return instance
 
     @staticmethod

@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ResponseError
@@ -58,7 +59,7 @@ class SearchSessionsV2(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -96,7 +97,7 @@ class SearchSessionsV2(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -129,8 +130,8 @@ class SearchSessionsV2(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -139,14 +140,6 @@ class SearchSessionsV2(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -231,35 +224,35 @@ class SearchSessionsV2(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "channel") and self.channel:
             result["channel"] = str(self.channel)
         elif include_empty:
-            result["channel"] = str()
+            result["channel"] = ""
         if hasattr(self, "deleted") and self.deleted:
             result["deleted"] = bool(self.deleted)
         elif include_empty:
-            result["deleted"] = bool()
+            result["deleted"] = False
         if hasattr(self, "match_id") and self.match_id:
             result["matchID"] = str(self.match_id)
         elif include_empty:
-            result["matchID"] = str()
+            result["matchID"] = ""
         if hasattr(self, "party_id") and self.party_id:
             result["partyID"] = str(self.party_id)
         elif include_empty:
-            result["partyID"] = str()
+            result["partyID"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userID"] = str(self.user_id)
         elif include_empty:
-            result["userID"] = str()
+            result["userID"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = int()
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = int()
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -346,35 +339,35 @@ class SearchSessionsV2(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "channel" in dict_ and dict_["channel"] is not None:
             instance.channel = str(dict_["channel"])
         elif include_empty:
-            instance.channel = str()
+            instance.channel = ""
         if "deleted" in dict_ and dict_["deleted"] is not None:
             instance.deleted = bool(dict_["deleted"])
         elif include_empty:
-            instance.deleted = bool()
+            instance.deleted = False
         if "matchID" in dict_ and dict_["matchID"] is not None:
             instance.match_id = str(dict_["matchID"])
         elif include_empty:
-            instance.match_id = str()
+            instance.match_id = ""
         if "partyID" in dict_ and dict_["partyID"] is not None:
             instance.party_id = str(dict_["partyID"])
         elif include_empty:
-            instance.party_id = str()
+            instance.party_id = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = int()
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = int()
+            instance.offset = 0
         return instance
 
     @staticmethod

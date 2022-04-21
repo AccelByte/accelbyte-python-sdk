@@ -131,27 +131,27 @@ class StoreInfo(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "default_language"):
             result["defaultLanguage"] = str(self.default_language)
         elif include_empty:
-            result["defaultLanguage"] = str()
+            result["defaultLanguage"] = ""
         if hasattr(self, "default_region"):
             result["defaultRegion"] = str(self.default_region)
         elif include_empty:
-            result["defaultRegion"] = str()
+            result["defaultRegion"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "published"):
             result["published"] = bool(self.published)
         elif include_empty:
-            result["published"] = bool()
+            result["published"] = False
         if hasattr(self, "store_id"):
             result["storeId"] = str(self.store_id)
         elif include_empty:
-            result["storeId"] = str()
+            result["storeId"] = ""
         if hasattr(self, "supported_languages"):
             result["supportedLanguages"] = [str(i0) for i0 in self.supported_languages]
         elif include_empty:
@@ -163,19 +163,19 @@ class StoreInfo(Model):
         if hasattr(self, "title"):
             result["title"] = str(self.title)
         elif include_empty:
-            result["title"] = str()
+            result["title"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "published_time"):
             result["publishedTime"] = str(self.published_time)
         elif include_empty:
-            result["publishedTime"] = str()
+            result["publishedTime"] = ""
         return result
 
     # endregion to methods
@@ -223,27 +223,27 @@ class StoreInfo(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "defaultLanguage" in dict_ and dict_["defaultLanguage"] is not None:
             instance.default_language = str(dict_["defaultLanguage"])
         elif include_empty:
-            instance.default_language = str()
+            instance.default_language = ""
         if "defaultRegion" in dict_ and dict_["defaultRegion"] is not None:
             instance.default_region = str(dict_["defaultRegion"])
         elif include_empty:
-            instance.default_region = str()
+            instance.default_region = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "published" in dict_ and dict_["published"] is not None:
             instance.published = bool(dict_["published"])
         elif include_empty:
-            instance.published = bool()
+            instance.published = False
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
-            instance.store_id = str()
+            instance.store_id = ""
         if "supportedLanguages" in dict_ and dict_["supportedLanguages"] is not None:
             instance.supported_languages = [str(i0) for i0 in dict_["supportedLanguages"]]
         elif include_empty:
@@ -255,19 +255,19 @@ class StoreInfo(Model):
         if "title" in dict_ and dict_["title"] is not None:
             instance.title = str(dict_["title"])
         elif include_empty:
-            instance.title = str()
+            instance.title = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "publishedTime" in dict_ and dict_["publishedTime"] is not None:
             instance.published_time = str(dict_["publishedTime"])
         elif include_empty:
-            instance.published_time = str()
+            instance.published_time = ""
         return instance
 
     @classmethod

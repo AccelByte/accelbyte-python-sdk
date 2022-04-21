@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
@@ -55,7 +56,7 @@ class RevokeToken(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         token: (token) REQUIRED str in form_data
 
@@ -73,7 +74,7 @@ class RevokeToken(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]
@@ -99,8 +100,8 @@ class RevokeToken(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -109,12 +110,6 @@ class RevokeToken(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-        )
 
     # endregion get methods
 
@@ -152,7 +147,7 @@ class RevokeToken(Operation):
         if hasattr(self, "token") and self.token:
             result["token"] = str(self.token)
         elif include_empty:
-            result["token"] = str()
+            result["token"] = ""
         return result
 
     # endregion to methods
@@ -208,7 +203,7 @@ class RevokeToken(Operation):
         if "token" in dict_ and dict_["token"] is not None:
             instance.token = str(dict_["token"])
         elif include_empty:
-            instance.token = str()
+            instance.token = ""
         return instance
 
     @staticmethod

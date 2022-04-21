@@ -75,19 +75,19 @@ class TaxResult(Model):
         if hasattr(self, "enable_tax"):
             result["enableTax"] = bool(self.enable_tax)
         elif include_empty:
-            result["enableTax"] = bool()
+            result["enableTax"] = False
         if hasattr(self, "formatted_tax"):
             result["formattedTax"] = str(self.formatted_tax)
         elif include_empty:
-            result["formattedTax"] = str()
+            result["formattedTax"] = ""
         if hasattr(self, "state"):
             result["state"] = str(self.state)
         elif include_empty:
-            result["state"] = str()
+            result["state"] = ""
         if hasattr(self, "tax"):
             result["tax"] = int(self.tax)
         elif include_empty:
-            result["tax"] = int()
+            result["tax"] = 0
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class TaxResult(Model):
         if "enableTax" in dict_ and dict_["enableTax"] is not None:
             instance.enable_tax = bool(dict_["enableTax"])
         elif include_empty:
-            instance.enable_tax = bool()
+            instance.enable_tax = False
         if "formattedTax" in dict_ and dict_["formattedTax"] is not None:
             instance.formatted_tax = str(dict_["formattedTax"])
         elif include_empty:
-            instance.formatted_tax = str()
+            instance.formatted_tax = ""
         if "state" in dict_ and dict_["state"] is not None:
             instance.state = str(dict_["state"])
         elif include_empty:
-            instance.state = str()
+            instance.state = ""
         if "tax" in dict_ and dict_["tax"] is not None:
             instance.tax = int(dict_["tax"])
         elif include_empty:
-            instance.tax = int()
+            instance.tax = 0
         return instance
 
     @classmethod

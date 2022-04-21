@@ -82,23 +82,23 @@ class WxPayConfigInfo(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "cert_path"):
             result["certPath"] = str(self.cert_path)
         elif include_empty:
-            result["certPath"] = str()
+            result["certPath"] = ""
         if hasattr(self, "key"):
             result["key"] = str(self.key)
         elif include_empty:
-            result["key"] = str()
+            result["key"] = ""
         if hasattr(self, "mchid"):
             result["mchid"] = str(self.mchid)
         elif include_empty:
-            result["mchid"] = str()
+            result["mchid"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         return result
 
     # endregion to methods
@@ -135,23 +135,23 @@ class WxPayConfigInfo(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "certPath" in dict_ and dict_["certPath"] is not None:
             instance.cert_path = str(dict_["certPath"])
         elif include_empty:
-            instance.cert_path = str()
+            instance.cert_path = ""
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])
         elif include_empty:
-            instance.key = str()
+            instance.key = ""
         if "mchid" in dict_ and dict_["mchid"] is not None:
             instance.mchid = str(dict_["mchid"])
         elif include_empty:
-            instance.mchid = str()
+            instance.mchid = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         return instance
 
     @classmethod

@@ -77,11 +77,11 @@ class ModelLocalization(Model):
         if hasattr(self, "last_draft_at"):
             result["lastDraftAt"] = str(self.last_draft_at)
         elif include_empty:
-            result["lastDraftAt"] = str()
+            result["lastDraftAt"] = ""
         if hasattr(self, "last_published_at"):
             result["lastPublishedAt"] = str(self.last_published_at)
         elif include_empty:
-            result["lastPublishedAt"] = str()
+            result["lastPublishedAt"] = ""
         if hasattr(self, "template_content"):
             result["templateContent"] = self.template_content.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -89,7 +89,7 @@ class ModelLocalization(Model):
         if hasattr(self, "template_language"):
             result["templateLanguage"] = str(self.template_language)
         elif include_empty:
-            result["templateLanguage"] = str()
+            result["templateLanguage"] = ""
         return result
 
     # endregion to methods
@@ -119,11 +119,11 @@ class ModelLocalization(Model):
         if "lastDraftAt" in dict_ and dict_["lastDraftAt"] is not None:
             instance.last_draft_at = str(dict_["lastDraftAt"])
         elif include_empty:
-            instance.last_draft_at = str()
+            instance.last_draft_at = ""
         if "lastPublishedAt" in dict_ and dict_["lastPublishedAt"] is not None:
             instance.last_published_at = str(dict_["lastPublishedAt"])
         elif include_empty:
-            instance.last_published_at = str()
+            instance.last_published_at = ""
         if "templateContent" in dict_ and dict_["templateContent"] is not None:
             instance.template_content = ModelTemplateContent.create_from_dict(dict_["templateContent"], include_empty=include_empty)
         elif include_empty:
@@ -131,7 +131,7 @@ class ModelLocalization(Model):
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
             instance.template_language = str(dict_["templateLanguage"])
         elif include_empty:
-            instance.template_language = str()
+            instance.template_language = ""
         return instance
 
     @classmethod

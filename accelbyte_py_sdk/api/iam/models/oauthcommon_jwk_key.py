@@ -89,27 +89,27 @@ class OauthcommonJWKKey(Model):
         if hasattr(self, "kty"):
             result["kty"] = str(self.kty)
         elif include_empty:
-            result["kty"] = str()
+            result["kty"] = ""
         if hasattr(self, "alg"):
             result["alg"] = str(self.alg)
         elif include_empty:
-            result["alg"] = str()
+            result["alg"] = ""
         if hasattr(self, "e"):
             result["e"] = str(self.e)
         elif include_empty:
-            result["e"] = str()
+            result["e"] = ""
         if hasattr(self, "kid"):
             result["kid"] = str(self.kid)
         elif include_empty:
-            result["kid"] = str()
+            result["kid"] = ""
         if hasattr(self, "n"):
             result["n"] = str(self.n)
         elif include_empty:
-            result["n"] = str()
+            result["n"] = ""
         if hasattr(self, "use"):
             result["use"] = str(self.use)
         elif include_empty:
-            result["use"] = str()
+            result["use"] = ""
         return result
 
     # endregion to methods
@@ -148,27 +148,27 @@ class OauthcommonJWKKey(Model):
         if "kty" in dict_ and dict_["kty"] is not None:
             instance.kty = str(dict_["kty"])
         elif include_empty:
-            instance.kty = str()
+            instance.kty = ""
         if "alg" in dict_ and dict_["alg"] is not None:
             instance.alg = str(dict_["alg"])
         elif include_empty:
-            instance.alg = str()
+            instance.alg = ""
         if "e" in dict_ and dict_["e"] is not None:
             instance.e = str(dict_["e"])
         elif include_empty:
-            instance.e = str()
+            instance.e = ""
         if "kid" in dict_ and dict_["kid"] is not None:
             instance.kid = str(dict_["kid"])
         elif include_empty:
-            instance.kid = str()
+            instance.kid = ""
         if "n" in dict_ and dict_["n"] is not None:
             instance.n = str(dict_["n"])
         elif include_empty:
-            instance.n = str()
+            instance.n = ""
         if "use" in dict_ and dict_["use"] is not None:
             instance.use = str(dict_["use"])
         elif include_empty:
-            instance.use = str()
+            instance.use = ""
         return instance
 
     @classmethod

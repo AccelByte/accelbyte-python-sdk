@@ -54,7 +54,7 @@ class CodeCreateResult(Model):
         if hasattr(self, "num_created"):
             result["numCreated"] = int(self.num_created)
         elif include_empty:
-            result["numCreated"] = int()
+            result["numCreated"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class CodeCreateResult(Model):
         if "numCreated" in dict_ and dict_["numCreated"] is not None:
             instance.num_created = int(dict_["numCreated"])
         elif include_empty:
-            instance.num_created = int()
+            instance.num_created = 0
         return instance
 
     @classmethod

@@ -54,7 +54,7 @@ class ModelsGetLobbyCcuResponse(Model):
         if hasattr(self, "count_current_users"):
             result["countCurrentUsers"] = int(self.count_current_users)
         elif include_empty:
-            result["countCurrentUsers"] = int()
+            result["countCurrentUsers"] = 0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsGetLobbyCcuResponse(Model):
         if "countCurrentUsers" in dict_ and dict_["countCurrentUsers"] is not None:
             instance.count_current_users = int(dict_["countCurrentUsers"])
         elif include_empty:
-            instance.count_current_users = int()
+            instance.count_current_users = 0
         return instance
 
     @classmethod

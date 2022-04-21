@@ -145,51 +145,51 @@ class SlotInfo(Model):
         if hasattr(self, "checksum"):
             result["checksum"] = str(self.checksum)
         elif include_empty:
-            result["checksum"] = str()
+            result["checksum"] = ""
         if hasattr(self, "custom_attribute"):
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
-            result["customAttribute"] = str()
+            result["customAttribute"] = ""
         if hasattr(self, "date_accessed"):
             result["dateAccessed"] = str(self.date_accessed)
         elif include_empty:
-            result["dateAccessed"] = str()
+            result["dateAccessed"] = ""
         if hasattr(self, "date_created"):
             result["dateCreated"] = str(self.date_created)
         elif include_empty:
-            result["dateCreated"] = str()
+            result["dateCreated"] = ""
         if hasattr(self, "date_modified"):
             result["dateModified"] = str(self.date_modified)
         elif include_empty:
-            result["dateModified"] = str()
+            result["dateModified"] = ""
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "mime_type"):
             result["mimeType"] = str(self.mime_type)
         elif include_empty:
-            result["mimeType"] = str()
+            result["mimeType"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "original_name"):
             result["originalName"] = str(self.original_name)
         elif include_empty:
-            result["originalName"] = str()
+            result["originalName"] = ""
         if hasattr(self, "size"):
             result["size"] = int(self.size)
         elif include_empty:
-            result["size"] = int()
+            result["size"] = 0
         if hasattr(self, "slot_id"):
             result["slotId"] = str(self.slot_id)
         elif include_empty:
-            result["slotId"] = str()
+            result["slotId"] = ""
         if hasattr(self, "stored_name"):
             result["storedName"] = str(self.stored_name)
         elif include_empty:
-            result["storedName"] = str()
+            result["storedName"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -197,7 +197,7 @@ class SlotInfo(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -261,51 +261,51 @@ class SlotInfo(Model):
         if "checksum" in dict_ and dict_["checksum"] is not None:
             instance.checksum = str(dict_["checksum"])
         elif include_empty:
-            instance.checksum = str()
+            instance.checksum = ""
         if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
             instance.custom_attribute = str(dict_["customAttribute"])
         elif include_empty:
-            instance.custom_attribute = str()
+            instance.custom_attribute = ""
         if "dateAccessed" in dict_ and dict_["dateAccessed"] is not None:
             instance.date_accessed = str(dict_["dateAccessed"])
         elif include_empty:
-            instance.date_accessed = str()
+            instance.date_accessed = ""
         if "dateCreated" in dict_ and dict_["dateCreated"] is not None:
             instance.date_created = str(dict_["dateCreated"])
         elif include_empty:
-            instance.date_created = str()
+            instance.date_created = ""
         if "dateModified" in dict_ and dict_["dateModified"] is not None:
             instance.date_modified = str(dict_["dateModified"])
         elif include_empty:
-            instance.date_modified = str()
+            instance.date_modified = ""
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "mimeType" in dict_ and dict_["mimeType"] is not None:
             instance.mime_type = str(dict_["mimeType"])
         elif include_empty:
-            instance.mime_type = str()
+            instance.mime_type = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "originalName" in dict_ and dict_["originalName"] is not None:
             instance.original_name = str(dict_["originalName"])
         elif include_empty:
-            instance.original_name = str()
+            instance.original_name = ""
         if "size" in dict_ and dict_["size"] is not None:
             instance.size = int(dict_["size"])
         elif include_empty:
-            instance.size = int()
+            instance.size = 0
         if "slotId" in dict_ and dict_["slotId"] is not None:
             instance.slot_id = str(dict_["slotId"])
         elif include_empty:
-            instance.slot_id = str()
+            instance.slot_id = ""
         if "storedName" in dict_ and dict_["storedName"] is not None:
             instance.stored_name = str(dict_["storedName"])
         elif include_empty:
-            instance.stored_name = str()
+            instance.stored_name = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -313,7 +313,7 @@ class SlotInfo(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @classmethod

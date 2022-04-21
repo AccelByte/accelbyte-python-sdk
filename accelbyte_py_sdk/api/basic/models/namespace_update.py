@@ -54,7 +54,7 @@ class NamespaceUpdate(Model):
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
-            result["displayName"] = str()
+            result["displayName"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class NamespaceUpdate(Model):
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
-            instance.display_name = str()
+            instance.display_name = ""
         return instance
 
     @classmethod

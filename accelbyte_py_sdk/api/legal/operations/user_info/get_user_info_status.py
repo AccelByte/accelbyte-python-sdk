@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import RetrieveUserInfoCacheStatusResponse
@@ -53,7 +54,7 @@ class GetUserInfoStatus(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         namespaces: (namespaces) OPTIONAL str in query
 
@@ -67,7 +68,7 @@ class GetUserInfoStatus(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     namespaces: str                                                                                # OPTIONAL in [query]
@@ -93,8 +94,8 @@ class GetUserInfoStatus(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -103,13 +104,6 @@ class GetUserInfoStatus(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -147,7 +141,7 @@ class GetUserInfoStatus(Operation):
         if hasattr(self, "namespaces") and self.namespaces:
             result["namespaces"] = str(self.namespaces)
         elif include_empty:
-            result["namespaces"] = str()
+            result["namespaces"] = ""
         return result
 
     # endregion to methods
@@ -196,7 +190,7 @@ class GetUserInfoStatus(Operation):
         if "namespaces" in dict_ and dict_["namespaces"] is not None:
             instance.namespaces = str(dict_["namespaces"])
         elif include_empty:
-            instance.namespaces = str()
+            instance.namespaces = ""
         return instance
 
     @staticmethod

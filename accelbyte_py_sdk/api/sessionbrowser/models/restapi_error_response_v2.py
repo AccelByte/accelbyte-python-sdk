@@ -86,19 +86,19 @@ class RestapiErrorResponseV2(Model):
         if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
-            result["errorCode"] = int()
+            result["errorCode"] = 0
         if hasattr(self, "error_message"):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
-            result["errorMessage"] = str()
+            result["errorMessage"] = ""
         if hasattr(self, "message"):
             result["message"] = str(self.message)
         elif include_empty:
-            result["message"] = str()
+            result["message"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         return result
 
     # endregion to methods
@@ -134,19 +134,19 @@ class RestapiErrorResponseV2(Model):
         if "errorCode" in dict_ and dict_["errorCode"] is not None:
             instance.error_code = int(dict_["errorCode"])
         elif include_empty:
-            instance.error_code = int()
+            instance.error_code = 0
         if "errorMessage" in dict_ and dict_["errorMessage"] is not None:
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
-            instance.error_message = str()
+            instance.error_message = ""
         if "message" in dict_ and dict_["message"] is not None:
             instance.message = str(dict_["message"])
         elif include_empty:
-            instance.message = str()
+            instance.message = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         return instance
 
     @classmethod

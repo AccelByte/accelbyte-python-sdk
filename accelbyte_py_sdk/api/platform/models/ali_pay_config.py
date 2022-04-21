@@ -75,19 +75,19 @@ class AliPayConfig(Model):
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
-            result["appId"] = str()
+            result["appId"] = ""
         if hasattr(self, "private_key"):
             result["privateKey"] = str(self.private_key)
         elif include_empty:
-            result["privateKey"] = str()
+            result["privateKey"] = ""
         if hasattr(self, "public_key"):
             result["publicKey"] = str(self.public_key)
         elif include_empty:
-            result["publicKey"] = str()
+            result["publicKey"] = ""
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
-            result["returnUrl"] = str()
+            result["returnUrl"] = ""
         return result
 
     # endregion to methods
@@ -121,19 +121,19 @@ class AliPayConfig(Model):
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "privateKey" in dict_ and dict_["privateKey"] is not None:
             instance.private_key = str(dict_["privateKey"])
         elif include_empty:
-            instance.private_key = str()
+            instance.private_key = ""
         if "publicKey" in dict_ and dict_["publicKey"] is not None:
             instance.public_key = str(dict_["publicKey"])
         elif include_empty:
-            instance.public_key = str()
+            instance.public_key = ""
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
-            instance.return_url = str()
+            instance.return_url = ""
         return instance
 
     @classmethod

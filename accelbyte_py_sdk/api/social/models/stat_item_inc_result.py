@@ -54,7 +54,7 @@ class StatItemIncResult(Model):
         if hasattr(self, "current_value"):
             result["currentValue"] = float(self.current_value)
         elif include_empty:
-            result["currentValue"] = float()
+            result["currentValue"] = 0.0
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class StatItemIncResult(Model):
         if "currentValue" in dict_ and dict_["currentValue"] is not None:
             instance.current_value = float(dict_["currentValue"])
         elif include_empty:
-            instance.current_value = float()
+            instance.current_value = 0.0
         return instance
 
     @classmethod

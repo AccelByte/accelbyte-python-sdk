@@ -54,7 +54,7 @@ class ModelsLogFileStatus(Model):
         if hasattr(self, "log_existence"):
             result["log_existence"] = bool(self.log_existence)
         elif include_empty:
-            result["log_existence"] = bool()
+            result["log_existence"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsLogFileStatus(Model):
         if "log_existence" in dict_ and dict_["log_existence"] is not None:
             instance.log_existence = bool(dict_["log_existence"])
         elif include_empty:
-            instance.log_existence = bool()
+            instance.log_existence = False
         return instance
 
     @classmethod

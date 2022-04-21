@@ -24,6 +24,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import CodeInfo
@@ -53,7 +54,7 @@ class GetCode(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: ["BEARER_AUTH"]
 
         code: (code) REQUIRED str in path
 
@@ -75,7 +76,7 @@ class GetCode(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[str] = ["BEARER_AUTH"]
     _location_query: str = None
 
     code: str                                                                                      # REQUIRED in [path]
@@ -103,8 +104,8 @@ class GetCode(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[str]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -113,14 +114,6 @@ class GetCode(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-            query_params=self.get_query_params(),
-        )
 
     # endregion get methods
 
@@ -175,15 +168,15 @@ class GetCode(Operation):
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "redeemable") and self.redeemable:
             result["redeemable"] = bool(self.redeemable)
         elif include_empty:
-            result["redeemable"] = bool()
+            result["redeemable"] = False
         return result
 
     # endregion to methods
@@ -244,15 +237,15 @@ class GetCode(Operation):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "redeemable" in dict_ and dict_["redeemable"] is not None:
             instance.redeemable = bool(dict_["redeemable"])
         elif include_empty:
-            instance.redeemable = bool()
+            instance.redeemable = False
         return instance
 
     @staticmethod

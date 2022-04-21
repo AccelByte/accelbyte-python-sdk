@@ -83,7 +83,7 @@ class NotificationProcessResult(Model):
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
-            result["code"] = str()
+            result["code"] = ""
         if hasattr(self, "custom_param"):
             result["customParam"] = {str(k0): v0 for k0, v0 in self.custom_param.items()}
         elif include_empty:
@@ -91,7 +91,7 @@ class NotificationProcessResult(Model):
         if hasattr(self, "severity"):
             result["severity"] = int(self.severity)
         elif include_empty:
-            result["severity"] = int()
+            result["severity"] = 0
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -129,7 +129,7 @@ class NotificationProcessResult(Model):
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
-            instance.code = str()
+            instance.code = ""
         if "customParam" in dict_ and dict_["customParam"] is not None:
             instance.custom_param = {str(k0): v0 for k0, v0 in dict_["customParam"].items()}
         elif include_empty:
@@ -137,7 +137,7 @@ class NotificationProcessResult(Model):
         if "severity" in dict_ and dict_["severity"] is not None:
             instance.severity = int(dict_["severity"])
         elif include_empty:
-            instance.severity = int()
+            instance.severity = 0
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:

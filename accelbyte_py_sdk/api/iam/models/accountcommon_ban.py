@@ -61,11 +61,11 @@ class AccountcommonBan(Model):
         if hasattr(self, "ban"):
             result["Ban"] = str(self.ban)
         elif include_empty:
-            result["Ban"] = str()
+            result["Ban"] = ""
         if hasattr(self, "description"):
             result["Description"] = str(self.description)
         elif include_empty:
-            result["Description"] = str()
+            result["Description"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class AccountcommonBan(Model):
         if "Ban" in dict_ and dict_["Ban"] is not None:
             instance.ban = str(dict_["Ban"])
         elif include_empty:
-            instance.ban = str()
+            instance.ban = ""
         if "Description" in dict_ and dict_["Description"] is not None:
             instance.description = str(dict_["Description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         return instance
 
     @classmethod

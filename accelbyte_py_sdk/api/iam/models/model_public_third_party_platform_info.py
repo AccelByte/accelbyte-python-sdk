@@ -82,23 +82,23 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
-            result["AppId"] = str()
+            result["AppId"] = ""
         if hasattr(self, "client_id"):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
-            result["ClientId"] = str()
+            result["ClientId"] = ""
         if hasattr(self, "environment"):
             result["Environment"] = str(self.environment)
         elif include_empty:
-            result["Environment"] = str()
+            result["Environment"] = ""
         if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
-            result["IsActive"] = bool()
+            result["IsActive"] = False
         if hasattr(self, "platform_id"):
             result["PlatformId"] = str(self.platform_id)
         elif include_empty:
-            result["PlatformId"] = str()
+            result["PlatformId"] = ""
         return result
 
     # endregion to methods
@@ -130,23 +130,23 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
-            instance.app_id = str()
+            instance.app_id = ""
         if "ClientId" in dict_ and dict_["ClientId"] is not None:
             instance.client_id = str(dict_["ClientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "Environment" in dict_ and dict_["Environment"] is not None:
             instance.environment = str(dict_["Environment"])
         elif include_empty:
-            instance.environment = str()
+            instance.environment = ""
         if "IsActive" in dict_ and dict_["IsActive"] is not None:
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
-            instance.is_active = bool()
+            instance.is_active = False
         if "PlatformId" in dict_ and dict_["PlatformId"] is not None:
             instance.platform_id = str(dict_["PlatformId"])
         elif include_empty:
-            instance.platform_id = str()
+            instance.platform_id = ""
         return instance
 
     @classmethod

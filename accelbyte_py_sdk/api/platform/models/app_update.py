@@ -185,11 +185,11 @@ class AppUpdate(Model):
         if hasattr(self, "developer"):
             result["developer"] = str(self.developer)
         elif include_empty:
-            result["developer"] = str()
+            result["developer"] = ""
         if hasattr(self, "forum_url"):
             result["forumUrl"] = str(self.forum_url)
         elif include_empty:
-            result["forumUrl"] = str()
+            result["forumUrl"] = ""
         if hasattr(self, "genres"):
             result["genres"] = [str(i0) for i0 in self.genres]
         elif include_empty:
@@ -217,15 +217,15 @@ class AppUpdate(Model):
         if hasattr(self, "publisher"):
             result["publisher"] = str(self.publisher)
         elif include_empty:
-            result["publisher"] = str()
+            result["publisher"] = ""
         if hasattr(self, "release_date"):
             result["releaseDate"] = str(self.release_date)
         elif include_empty:
-            result["releaseDate"] = str()
+            result["releaseDate"] = ""
         if hasattr(self, "website_url"):
             result["websiteUrl"] = str(self.website_url)
         elif include_empty:
-            result["websiteUrl"] = str()
+            result["websiteUrl"] = ""
         return result
 
     # endregion to methods
@@ -287,11 +287,11 @@ class AppUpdate(Model):
         if "developer" in dict_ and dict_["developer"] is not None:
             instance.developer = str(dict_["developer"])
         elif include_empty:
-            instance.developer = str()
+            instance.developer = ""
         if "forumUrl" in dict_ and dict_["forumUrl"] is not None:
             instance.forum_url = str(dict_["forumUrl"])
         elif include_empty:
-            instance.forum_url = str()
+            instance.forum_url = ""
         if "genres" in dict_ and dict_["genres"] is not None:
             instance.genres = [str(i0) for i0 in dict_["genres"]]
         elif include_empty:
@@ -319,15 +319,15 @@ class AppUpdate(Model):
         if "publisher" in dict_ and dict_["publisher"] is not None:
             instance.publisher = str(dict_["publisher"])
         elif include_empty:
-            instance.publisher = str()
+            instance.publisher = ""
         if "releaseDate" in dict_ and dict_["releaseDate"] is not None:
             instance.release_date = str(dict_["releaseDate"])
         elif include_empty:
-            instance.release_date = str()
+            instance.release_date = ""
         if "websiteUrl" in dict_ and dict_["websiteUrl"] is not None:
             instance.website_url = str(dict_["websiteUrl"])
         elif include_empty:
-            instance.website_url = str()
+            instance.website_url = ""
         return instance
 
     @classmethod

@@ -96,31 +96,31 @@ class OauthmodelTokenIntrospectResponse(Model):
         if hasattr(self, "active"):
             result["active"] = bool(self.active)
         elif include_empty:
-            result["active"] = bool()
+            result["active"] = False
         if hasattr(self, "aud"):
             result["aud"] = str(self.aud)
         elif include_empty:
-            result["aud"] = str()
+            result["aud"] = ""
         if hasattr(self, "client_id"):
             result["client_id"] = str(self.client_id)
         elif include_empty:
-            result["client_id"] = str()
+            result["client_id"] = ""
         if hasattr(self, "exp"):
             result["exp"] = int(self.exp)
         elif include_empty:
-            result["exp"] = int()
+            result["exp"] = 0
         if hasattr(self, "iat"):
             result["iat"] = int(self.iat)
         elif include_empty:
-            result["iat"] = int()
+            result["iat"] = 0
         if hasattr(self, "scope"):
             result["scope"] = str(self.scope)
         elif include_empty:
-            result["scope"] = str()
+            result["scope"] = ""
         if hasattr(self, "sub"):
             result["sub"] = str(self.sub)
         elif include_empty:
-            result["sub"] = str()
+            result["sub"] = ""
         return result
 
     # endregion to methods
@@ -162,31 +162,31 @@ class OauthmodelTokenIntrospectResponse(Model):
         if "active" in dict_ and dict_["active"] is not None:
             instance.active = bool(dict_["active"])
         elif include_empty:
-            instance.active = bool()
+            instance.active = False
         if "aud" in dict_ and dict_["aud"] is not None:
             instance.aud = str(dict_["aud"])
         elif include_empty:
-            instance.aud = str()
+            instance.aud = ""
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "exp" in dict_ and dict_["exp"] is not None:
             instance.exp = int(dict_["exp"])
         elif include_empty:
-            instance.exp = int()
+            instance.exp = 0
         if "iat" in dict_ and dict_["iat"] is not None:
             instance.iat = int(dict_["iat"])
         elif include_empty:
-            instance.iat = int()
+            instance.iat = 0
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
-            instance.scope = str()
+            instance.scope = ""
         if "sub" in dict_ and dict_["sub"] is not None:
             instance.sub = str(dict_["sub"])
         elif include_empty:
-            instance.sub = str()
+            instance.sub = ""
         return instance
 
     @classmethod

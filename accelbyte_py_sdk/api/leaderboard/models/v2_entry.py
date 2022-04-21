@@ -68,7 +68,7 @@ class V2Entry(Model):
         if hasattr(self, "point"):
             result["point"] = float(self.point)
         elif include_empty:
-            result["point"] = float()
+            result["point"] = 0.0
         if hasattr(self, "additional_data"):
             result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
@@ -76,7 +76,7 @@ class V2Entry(Model):
         if hasattr(self, "hidden"):
             result["hidden"] = bool(self.hidden)
         elif include_empty:
-            result["hidden"] = bool()
+            result["hidden"] = False
         return result
 
     # endregion to methods
@@ -106,7 +106,7 @@ class V2Entry(Model):
         if "point" in dict_ and dict_["point"] is not None:
             instance.point = float(dict_["point"])
         elif include_empty:
-            instance.point = float()
+            instance.point = 0.0
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:
@@ -114,7 +114,7 @@ class V2Entry(Model):
         if "hidden" in dict_ and dict_["hidden"] is not None:
             instance.hidden = bool(dict_["hidden"])
         elif include_empty:
-            instance.hidden = bool()
+            instance.hidden = False
         return instance
 
     @classmethod

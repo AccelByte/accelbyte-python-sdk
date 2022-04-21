@@ -61,11 +61,11 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
         if hasattr(self, "filtered_message"):
             result["filteredMessage"] = str(self.filtered_message)
         elif include_empty:
-            result["filteredMessage"] = str()
+            result["filteredMessage"] = ""
         if hasattr(self, "has_profanity"):
             result["hasProfanity"] = bool(self.has_profanity)
         elif include_empty:
-            result["hasProfanity"] = bool()
+            result["hasProfanity"] = False
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelsAdminVerifyMessageProfanityResponse(Model):
         if "filteredMessage" in dict_ and dict_["filteredMessage"] is not None:
             instance.filtered_message = str(dict_["filteredMessage"])
         elif include_empty:
-            instance.filtered_message = str()
+            instance.filtered_message = ""
         if "hasProfanity" in dict_ and dict_["hasProfanity"] is not None:
             instance.has_profanity = bool(dict_["hasProfanity"])
         elif include_empty:
-            instance.has_profanity = bool()
+            instance.has_profanity = False
         return instance
 
     @classmethod

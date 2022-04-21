@@ -89,27 +89,27 @@ class ModelsScreenshotResponse(Model):
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
-            result["fileExtension"] = str()
+            result["fileExtension"] = ""
         if hasattr(self, "screenshot_id"):
             result["screenshotId"] = str(self.screenshot_id)
         elif include_empty:
-            result["screenshotId"] = str()
+            result["screenshotId"] = ""
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = str()
+            result["source"] = ""
         if hasattr(self, "url"):
             result["url"] = str(self.url)
         elif include_empty:
-            result["url"] = str()
+            result["url"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         return result
 
     # endregion to methods
@@ -144,27 +144,27 @@ class ModelsScreenshotResponse(Model):
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
-            instance.file_extension = str()
+            instance.file_extension = ""
         if "screenshotId" in dict_ and dict_["screenshotId"] is not None:
             instance.screenshot_id = str(dict_["screenshotId"])
         elif include_empty:
-            instance.screenshot_id = str()
+            instance.screenshot_id = ""
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = str()
+            instance.source = ""
         if "url" in dict_ and dict_["url"] is not None:
             instance.url = str(dict_["url"])
         elif include_empty:
-            instance.url = str()
+            instance.url = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         return instance
 
     @classmethod

@@ -97,7 +97,7 @@ class XsollaPaywallConfigRequest(Model):
         if hasattr(self, "show_close_button"):
             result["showCloseButton"] = bool(self.show_close_button)
         elif include_empty:
-            result["showCloseButton"] = bool()
+            result["showCloseButton"] = False
         if hasattr(self, "size"):
             result["size"] = str(self.size)
         elif include_empty:
@@ -143,7 +143,7 @@ class XsollaPaywallConfigRequest(Model):
         if "showCloseButton" in dict_ and dict_["showCloseButton"] is not None:
             instance.show_close_button = bool(dict_["showCloseButton"])
         elif include_empty:
-            instance.show_close_button = bool()
+            instance.show_close_button = False
         if "size" in dict_ and dict_["size"] is not None:
             instance.size = str(dict_["size"])
         elif include_empty:

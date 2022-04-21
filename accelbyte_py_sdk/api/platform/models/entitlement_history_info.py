@@ -117,31 +117,31 @@ class EntitlementHistoryInfo(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "entitlement_id"):
             result["entitlementId"] = str(self.entitlement_id)
         elif include_empty:
-            result["entitlementId"] = str()
+            result["entitlementId"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "operator"):
             result["operator"] = str(self.operator)
         elif include_empty:
-            result["operator"] = str()
+            result["operator"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
-            result["updatedAt"] = str()
+            result["updatedAt"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
-            result["useCount"] = int()
+            result["useCount"] = 0
         return result
 
     # endregion to methods
@@ -184,31 +184,31 @@ class EntitlementHistoryInfo(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
             instance.entitlement_id = str(dict_["entitlementId"])
         elif include_empty:
-            instance.entitlement_id = str()
+            instance.entitlement_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "operator" in dict_ and dict_["operator"] is not None:
             instance.operator = str(dict_["operator"])
         elif include_empty:
-            instance.operator = str()
+            instance.operator = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
-            instance.updated_at = str()
+            instance.updated_at = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
-            instance.use_count = int()
+            instance.use_count = 0
         return instance
 
     @classmethod

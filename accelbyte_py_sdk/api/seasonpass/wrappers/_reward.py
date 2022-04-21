@@ -21,6 +21,7 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
@@ -42,7 +43,7 @@ from ..operations.reward import PublicClaimUserReward
 from ..operations.reward import QueryRewards
 from ..operations.reward import UpdateReward
 from ..models import RewardCreateTypeEnum
-from ..models import RewardInfoItemTypeEnum, RewardInfoTypeEnum
+from ..models import RewardInfoTypeEnum, RewardInfoItemTypeEnum
 from ..models import RewardUpdateTypeEnum
 
 

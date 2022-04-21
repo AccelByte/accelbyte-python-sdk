@@ -168,51 +168,51 @@ class ModelsCreateContentResponse(Model):
         if hasattr(self, "channel_id"):
             result["channelId"] = str(self.channel_id)
         elif include_empty:
-            result["channelId"] = str()
+            result["channelId"] = ""
         if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
-            result["createdTime"] = str()
+            result["createdTime"] = ""
         if hasattr(self, "creator_name"):
             result["creatorName"] = str(self.creator_name)
         elif include_empty:
-            result["creatorName"] = str()
+            result["creatorName"] = ""
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
-            result["fileExtension"] = str()
+            result["fileExtension"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
-            result["id"] = str()
+            result["id"] = ""
         if hasattr(self, "is_hidden"):
             result["isHidden"] = bool(self.is_hidden)
         elif include_empty:
-            result["isHidden"] = bool()
+            result["isHidden"] = False
         if hasattr(self, "is_official"):
             result["isOfficial"] = bool(self.is_official)
         elif include_empty:
-            result["isOfficial"] = bool()
+            result["isOfficial"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
-            result["name"] = str()
+            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "preview"):
             result["preview"] = str(self.preview)
         elif include_empty:
-            result["preview"] = str()
+            result["preview"] = ""
         if hasattr(self, "share_code"):
             result["shareCode"] = str(self.share_code)
         elif include_empty:
-            result["shareCode"] = str()
+            result["shareCode"] = ""
         if hasattr(self, "sub_type"):
             result["subType"] = str(self.sub_type)
         elif include_empty:
-            result["subType"] = str()
+            result["subType"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -220,15 +220,15 @@ class ModelsCreateContentResponse(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = str()
+            result["type"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
-            result["contentType"] = str()
+            result["contentType"] = ""
         if hasattr(self, "payload_url"):
             result["payloadURL"] = [i0.to_dict(include_empty=include_empty) for i0 in self.payload_url]
         elif include_empty:
@@ -290,51 +290,51 @@ class ModelsCreateContentResponse(Model):
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:
-            instance.channel_id = str()
+            instance.channel_id = ""
         if "createdTime" in dict_ and dict_["createdTime"] is not None:
             instance.created_time = str(dict_["createdTime"])
         elif include_empty:
-            instance.created_time = str()
+            instance.created_time = ""
         if "creatorName" in dict_ and dict_["creatorName"] is not None:
             instance.creator_name = str(dict_["creatorName"])
         elif include_empty:
-            instance.creator_name = str()
+            instance.creator_name = ""
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
-            instance.file_extension = str()
+            instance.file_extension = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
-            instance.id_ = str()
+            instance.id_ = ""
         if "isHidden" in dict_ and dict_["isHidden"] is not None:
             instance.is_hidden = bool(dict_["isHidden"])
         elif include_empty:
-            instance.is_hidden = bool()
+            instance.is_hidden = False
         if "isOfficial" in dict_ and dict_["isOfficial"] is not None:
             instance.is_official = bool(dict_["isOfficial"])
         elif include_empty:
-            instance.is_official = bool()
+            instance.is_official = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
-            instance.name = str()
+            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "preview" in dict_ and dict_["preview"] is not None:
             instance.preview = str(dict_["preview"])
         elif include_empty:
-            instance.preview = str()
+            instance.preview = ""
         if "shareCode" in dict_ and dict_["shareCode"] is not None:
             instance.share_code = str(dict_["shareCode"])
         elif include_empty:
-            instance.share_code = str()
+            instance.share_code = ""
         if "subType" in dict_ and dict_["subType"] is not None:
             instance.sub_type = str(dict_["subType"])
         elif include_empty:
-            instance.sub_type = str()
+            instance.sub_type = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -342,15 +342,15 @@ class ModelsCreateContentResponse(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = str()
+            instance.type_ = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
-            instance.content_type = str()
+            instance.content_type = ""
         if "payloadURL" in dict_ and dict_["payloadURL"] is not None:
             instance.payload_url = [ModelsPayloadURL.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["payloadURL"]]
         elif include_empty:

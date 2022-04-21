@@ -54,7 +54,7 @@ class ModelsAdminSetProfanityRuleForNamespaceRequest(Model):
         if hasattr(self, "rule"):
             result["rule"] = str(self.rule)
         elif include_empty:
-            result["rule"] = str()
+            result["rule"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsAdminSetProfanityRuleForNamespaceRequest(Model):
         if "rule" in dict_ and dict_["rule"] is not None:
             instance.rule = str(dict_["rule"])
         elif include_empty:
-            instance.rule = str()
+            instance.rule = ""
         return instance
 
     @classmethod

@@ -117,11 +117,11 @@ class ModelsUserLeaderboardRanking(Model):
         if hasattr(self, "leaderboard_code"):
             result["leaderboardCode"] = str(self.leaderboard_code)
         elif include_empty:
-            result["leaderboardCode"] = str()
+            result["leaderboardCode"] = ""
         if hasattr(self, "leaderboard_name"):
             result["leaderboardName"] = str(self.leaderboard_name)
         elif include_empty:
-            result["leaderboardName"] = str()
+            result["leaderboardName"] = ""
         if hasattr(self, "monthly"):
             result["monthly"] = self.monthly.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -129,7 +129,7 @@ class ModelsUserLeaderboardRanking(Model):
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         if hasattr(self, "weekly"):
             result["weekly"] = self.weekly.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -183,11 +183,11 @@ class ModelsUserLeaderboardRanking(Model):
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
             instance.leaderboard_code = str(dict_["leaderboardCode"])
         elif include_empty:
-            instance.leaderboard_code = str()
+            instance.leaderboard_code = ""
         if "leaderboardName" in dict_ and dict_["leaderboardName"] is not None:
             instance.leaderboard_name = str(dict_["leaderboardName"])
         elif include_empty:
-            instance.leaderboard_name = str()
+            instance.leaderboard_name = ""
         if "monthly" in dict_ and dict_["monthly"] is not None:
             instance.monthly = ModelsUserRankingResponseDetail.create_from_dict(dict_["monthly"], include_empty=include_empty)
         elif include_empty:
@@ -195,7 +195,7 @@ class ModelsUserLeaderboardRanking(Model):
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         if "weekly" in dict_ and dict_["weekly"] is not None:
             instance.weekly = ModelsUserRankingResponseDetail.create_from_dict(dict_["weekly"], include_empty=include_empty)
         elif include_empty:

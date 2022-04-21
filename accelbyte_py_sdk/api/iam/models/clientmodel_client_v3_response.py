@@ -130,15 +130,15 @@ class ClientmodelClientV3Response(Model):
         if hasattr(self, "base_uri"):
             result["baseUri"] = str(self.base_uri)
         elif include_empty:
-            result["baseUri"] = str()
+            result["baseUri"] = ""
         if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "client_name"):
             result["clientName"] = str(self.client_name)
         elif include_empty:
-            result["clientName"] = str()
+            result["clientName"] = ""
         if hasattr(self, "client_permissions"):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
@@ -146,23 +146,23 @@ class ClientmodelClientV3Response(Model):
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
-            result["createdAt"] = str()
+            result["createdAt"] = ""
         if hasattr(self, "modified_at"):
             result["modifiedAt"] = str(self.modified_at)
         elif include_empty:
-            result["modifiedAt"] = str()
+            result["modifiedAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "oauth_client_type"):
             result["oauthClientType"] = str(self.oauth_client_type)
         elif include_empty:
-            result["oauthClientType"] = str()
+            result["oauthClientType"] = ""
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
-            result["redirectUri"] = str()
+            result["redirectUri"] = ""
         if hasattr(self, "scopes"):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
@@ -214,15 +214,15 @@ class ClientmodelClientV3Response(Model):
         if "baseUri" in dict_ and dict_["baseUri"] is not None:
             instance.base_uri = str(dict_["baseUri"])
         elif include_empty:
-            instance.base_uri = str()
+            instance.base_uri = ""
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "clientName" in dict_ and dict_["clientName"] is not None:
             instance.client_name = str(dict_["clientName"])
         elif include_empty:
-            instance.client_name = str()
+            instance.client_name = ""
         if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
             instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
@@ -230,23 +230,23 @@ class ClientmodelClientV3Response(Model):
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
-            instance.created_at = str()
+            instance.created_at = ""
         if "modifiedAt" in dict_ and dict_["modifiedAt"] is not None:
             instance.modified_at = str(dict_["modifiedAt"])
         elif include_empty:
-            instance.modified_at = str()
+            instance.modified_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "oauthClientType" in dict_ and dict_["oauthClientType"] is not None:
             instance.oauth_client_type = str(dict_["oauthClientType"])
         elif include_empty:
-            instance.oauth_client_type = str()
+            instance.oauth_client_type = ""
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
-            instance.redirect_uri = str()
+            instance.redirect_uri = ""
         if "scopes" in dict_ and dict_["scopes"] is not None:
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:

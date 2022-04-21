@@ -61,11 +61,11 @@ class ModelAuthenticatorKeyResponseV4(Model):
         if hasattr(self, "secret_key"):
             result["secretKey"] = str(self.secret_key)
         elif include_empty:
-            result["secretKey"] = str()
+            result["secretKey"] = ""
         if hasattr(self, "uri"):
             result["uri"] = str(self.uri)
         elif include_empty:
-            result["uri"] = str()
+            result["uri"] = ""
         return result
 
     # endregion to methods
@@ -91,11 +91,11 @@ class ModelAuthenticatorKeyResponseV4(Model):
         if "secretKey" in dict_ and dict_["secretKey"] is not None:
             instance.secret_key = str(dict_["secretKey"])
         elif include_empty:
-            instance.secret_key = str()
+            instance.secret_key = ""
         if "uri" in dict_ and dict_["uri"] is not None:
             instance.uri = str(dict_["uri"])
         elif include_empty:
-            instance.uri = str()
+            instance.uri = ""
         return instance
 
     @classmethod

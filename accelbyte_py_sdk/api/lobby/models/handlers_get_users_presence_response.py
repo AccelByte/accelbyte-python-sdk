@@ -84,7 +84,7 @@ class HandlersGetUsersPresenceResponse(Model):
         if hasattr(self, "busy"):
             result["busy"] = int(self.busy)
         elif include_empty:
-            result["busy"] = int()
+            result["busy"] = 0
         if hasattr(self, "data"):
             result["data"] = [i0.to_dict(include_empty=include_empty) for i0 in self.data]
         elif include_empty:
@@ -92,15 +92,15 @@ class HandlersGetUsersPresenceResponse(Model):
         if hasattr(self, "invisible"):
             result["invisible"] = int(self.invisible)
         elif include_empty:
-            result["invisible"] = int()
+            result["invisible"] = 0
         if hasattr(self, "offline"):
             result["offline"] = int(self.offline)
         elif include_empty:
-            result["offline"] = int()
+            result["offline"] = 0
         if hasattr(self, "online"):
             result["online"] = int(self.online)
         elif include_empty:
-            result["online"] = int()
+            result["online"] = 0
         return result
 
     # endregion to methods
@@ -132,7 +132,7 @@ class HandlersGetUsersPresenceResponse(Model):
         if "busy" in dict_ and dict_["busy"] is not None:
             instance.busy = int(dict_["busy"])
         elif include_empty:
-            instance.busy = int()
+            instance.busy = 0
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [HandlersUserPresence.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["data"]]
         elif include_empty:
@@ -140,15 +140,15 @@ class HandlersGetUsersPresenceResponse(Model):
         if "invisible" in dict_ and dict_["invisible"] is not None:
             instance.invisible = int(dict_["invisible"])
         elif include_empty:
-            instance.invisible = int()
+            instance.invisible = 0
         if "offline" in dict_ and dict_["offline"] is not None:
             instance.offline = int(dict_["offline"])
         elif include_empty:
-            instance.offline = int()
+            instance.offline = 0
         if "online" in dict_ and dict_["online"] is not None:
             instance.online = int(dict_["online"])
         elif include_empty:
-            instance.online = int()
+            instance.online = 0
         return instance
 
     @classmethod

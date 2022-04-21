@@ -106,7 +106,7 @@ class RewardUpdate(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "null_fields"):
             result["nullFields"] = [str(i0) for i0 in self.null_fields]
         elif include_empty:
@@ -114,7 +114,7 @@ class RewardUpdate(Model):
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
-            result["quantity"] = int()
+            result["quantity"] = 0
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -166,7 +166,7 @@ class RewardUpdate(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "nullFields" in dict_ and dict_["nullFields"] is not None:
             instance.null_fields = [str(i0) for i0 in dict_["nullFields"]]
         elif include_empty:
@@ -174,7 +174,7 @@ class RewardUpdate(Model):
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
-            instance.quantity = int()
+            instance.quantity = 0
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:

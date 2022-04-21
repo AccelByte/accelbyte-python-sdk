@@ -54,7 +54,7 @@ class Customization(Model):
         if hasattr(self, "settings"):
             result["settings"] = str(self.settings)
         elif include_empty:
-            result["settings"] = str()
+            result["settings"] = ""
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class Customization(Model):
         if "settings" in dict_ and dict_["settings"] is not None:
             instance.settings = str(dict_["settings"])
         elif include_empty:
-            instance.settings = str()
+            instance.settings = ""
         return instance
 
     @classmethod

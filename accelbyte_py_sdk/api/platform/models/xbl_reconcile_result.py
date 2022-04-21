@@ -93,19 +93,19 @@ class XblReconcileResult(Model):
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
-            result["itemId"] = str()
+            result["itemId"] = ""
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
-            result["sku"] = str()
+            result["sku"] = ""
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
-            result["transactionId"] = str()
+            result["transactionId"] = ""
         if hasattr(self, "xbox_product_id"):
             result["xboxProductId"] = str(self.xbox_product_id)
         elif include_empty:
-            result["xboxProductId"] = str()
+            result["xboxProductId"] = ""
         return result
 
     # endregion to methods
@@ -146,19 +146,19 @@ class XblReconcileResult(Model):
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
-            instance.item_id = str()
+            instance.item_id = ""
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
-            instance.sku = str()
+            instance.sku = ""
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
-            instance.transaction_id = str()
+            instance.transaction_id = ""
         if "xboxProductId" in dict_ and dict_["xboxProductId"] is not None:
             instance.xbox_product_id = str(dict_["xboxProductId"])
         elif include_empty:
-            instance.xbox_product_id = str()
+            instance.xbox_product_id = ""
         return instance
 
     @classmethod

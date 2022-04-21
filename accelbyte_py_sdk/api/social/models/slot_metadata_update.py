@@ -68,11 +68,11 @@ class SlotMetadataUpdate(Model):
         if hasattr(self, "custom_attribute"):
             result["customAttribute"] = str(self.custom_attribute)
         elif include_empty:
-            result["customAttribute"] = str()
+            result["customAttribute"] = ""
         if hasattr(self, "label"):
             result["label"] = str(self.label)
         elif include_empty:
-            result["label"] = str()
+            result["label"] = ""
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -107,11 +107,11 @@ class SlotMetadataUpdate(Model):
         if "customAttribute" in dict_ and dict_["customAttribute"] is not None:
             instance.custom_attribute = str(dict_["customAttribute"])
         elif include_empty:
-            instance.custom_attribute = str()
+            instance.custom_attribute = ""
         if "label" in dict_ and dict_["label"] is not None:
             instance.label = str(dict_["label"])
         elif include_empty:
-            instance.label = str()
+            instance.label = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

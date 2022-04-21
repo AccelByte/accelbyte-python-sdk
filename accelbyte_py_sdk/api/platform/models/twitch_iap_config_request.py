@@ -68,15 +68,15 @@ class TwitchIAPConfigRequest(Model):
         if hasattr(self, "client_id"):
             result["clientId"] = str(self.client_id)
         elif include_empty:
-            result["clientId"] = str()
+            result["clientId"] = ""
         if hasattr(self, "client_secret"):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
-            result["clientSecret"] = str()
+            result["clientSecret"] = ""
         if hasattr(self, "organization_id"):
             result["organizationId"] = str(self.organization_id)
         elif include_empty:
-            result["organizationId"] = str()
+            result["organizationId"] = ""
         return result
 
     # endregion to methods
@@ -107,15 +107,15 @@ class TwitchIAPConfigRequest(Model):
         if "clientId" in dict_ and dict_["clientId"] is not None:
             instance.client_id = str(dict_["clientId"])
         elif include_empty:
-            instance.client_id = str()
+            instance.client_id = ""
         if "clientSecret" in dict_ and dict_["clientSecret"] is not None:
             instance.client_secret = str(dict_["clientSecret"])
         elif include_empty:
-            instance.client_secret = str()
+            instance.client_secret = ""
         if "organizationId" in dict_ and dict_["organizationId"] is not None:
             instance.organization_id = str(dict_["organizationId"])
         elif include_empty:
-            instance.organization_id = str()
+            instance.organization_id = ""
         return instance
 
     @classmethod

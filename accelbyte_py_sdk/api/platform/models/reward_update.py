@@ -105,27 +105,27 @@ class RewardUpdate(Model):
         if hasattr(self, "event_topic"):
             result["eventTopic"] = str(self.event_topic)
         elif include_empty:
-            result["eventTopic"] = str()
+            result["eventTopic"] = ""
         if hasattr(self, "reward_code"):
             result["rewardCode"] = str(self.reward_code)
         elif include_empty:
-            result["rewardCode"] = str()
+            result["rewardCode"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
-            result["description"] = str()
+            result["description"] = ""
         if hasattr(self, "max_awarded"):
             result["maxAwarded"] = int(self.max_awarded)
         elif include_empty:
-            result["maxAwarded"] = int()
+            result["maxAwarded"] = 0
         if hasattr(self, "max_awarded_per_user"):
             result["maxAwardedPerUser"] = int(self.max_awarded_per_user)
         elif include_empty:
-            result["maxAwardedPerUser"] = int()
+            result["maxAwardedPerUser"] = 0
         if hasattr(self, "namespace_expression"):
             result["namespaceExpression"] = str(self.namespace_expression)
         elif include_empty:
-            result["namespaceExpression"] = str()
+            result["namespaceExpression"] = ""
         if hasattr(self, "reward_conditions"):
             result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
         elif include_empty:
@@ -133,7 +133,7 @@ class RewardUpdate(Model):
         if hasattr(self, "user_id_expression"):
             result["userIdExpression"] = str(self.user_id_expression)
         elif include_empty:
-            result["userIdExpression"] = str()
+            result["userIdExpression"] = ""
         return result
 
     # endregion to methods
@@ -177,27 +177,27 @@ class RewardUpdate(Model):
         if "eventTopic" in dict_ and dict_["eventTopic"] is not None:
             instance.event_topic = str(dict_["eventTopic"])
         elif include_empty:
-            instance.event_topic = str()
+            instance.event_topic = ""
         if "rewardCode" in dict_ and dict_["rewardCode"] is not None:
             instance.reward_code = str(dict_["rewardCode"])
         elif include_empty:
-            instance.reward_code = str()
+            instance.reward_code = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
-            instance.description = str()
+            instance.description = ""
         if "maxAwarded" in dict_ and dict_["maxAwarded"] is not None:
             instance.max_awarded = int(dict_["maxAwarded"])
         elif include_empty:
-            instance.max_awarded = int()
+            instance.max_awarded = 0
         if "maxAwardedPerUser" in dict_ and dict_["maxAwardedPerUser"] is not None:
             instance.max_awarded_per_user = int(dict_["maxAwardedPerUser"])
         elif include_empty:
-            instance.max_awarded_per_user = int()
+            instance.max_awarded_per_user = 0
         if "namespaceExpression" in dict_ and dict_["namespaceExpression"] is not None:
             instance.namespace_expression = str(dict_["namespaceExpression"])
         elif include_empty:
-            instance.namespace_expression = str()
+            instance.namespace_expression = ""
         if "rewardConditions" in dict_ and dict_["rewardConditions"] is not None:
             instance.reward_conditions = [RewardCondition.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewardConditions"]]
         elif include_empty:
@@ -205,7 +205,7 @@ class RewardUpdate(Model):
         if "userIdExpression" in dict_ and dict_["userIdExpression"] is not None:
             instance.user_id_expression = str(dict_["userIdExpression"])
         elif include_empty:
-            instance.user_id_expression = str()
+            instance.user_id_expression = ""
         return instance
 
     @classmethod

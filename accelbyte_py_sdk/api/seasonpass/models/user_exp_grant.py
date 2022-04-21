@@ -54,7 +54,7 @@ class UserExpGrant(Model):
         if hasattr(self, "exp"):
             result["exp"] = int(self.exp)
         elif include_empty:
-            result["exp"] = int()
+            result["exp"] = 0
         return result
 
     # endregion to methods
@@ -79,7 +79,7 @@ class UserExpGrant(Model):
         if "exp" in dict_ and dict_["exp"] is not None:
             instance.exp = int(dict_["exp"])
         elif include_empty:
-            instance.exp = int()
+            instance.exp = 0
         return instance
 
     @classmethod

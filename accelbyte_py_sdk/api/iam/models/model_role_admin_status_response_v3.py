@@ -54,7 +54,7 @@ class ModelRoleAdminStatusResponseV3(Model):
         if hasattr(self, "admin_role"):
             result["adminRole"] = bool(self.admin_role)
         elif include_empty:
-            result["adminRole"] = bool()
+            result["adminRole"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelRoleAdminStatusResponseV3(Model):
         if "adminRole" in dict_ and dict_["adminRole"] is not None:
             instance.admin_role = bool(dict_["adminRole"])
         elif include_empty:
-            instance.admin_role = bool()
+            instance.admin_role = False
         return instance
 
     @classmethod

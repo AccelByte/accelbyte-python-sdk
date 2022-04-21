@@ -75,7 +75,7 @@ class ModelsRuleInformation(Model):
         if hasattr(self, "rule_attribute"):
             result["ruleAttribute"] = str(self.rule_attribute)
         elif include_empty:
-            result["ruleAttribute"] = str()
+            result["ruleAttribute"] = ""
         if hasattr(self, "rule_criteria"):
             result["ruleCriteria"] = str(self.rule_criteria)
         elif include_empty:
@@ -83,7 +83,7 @@ class ModelsRuleInformation(Model):
         if hasattr(self, "rule_value"):
             result["ruleValue"] = float(self.rule_value)
         elif include_empty:
-            result["ruleValue"] = float()
+            result["ruleValue"] = 0.0
         return result
 
     # endregion to methods
@@ -111,7 +111,7 @@ class ModelsRuleInformation(Model):
         if "ruleAttribute" in dict_ and dict_["ruleAttribute"] is not None:
             instance.rule_attribute = str(dict_["ruleAttribute"])
         elif include_empty:
-            instance.rule_attribute = str()
+            instance.rule_attribute = ""
         if "ruleCriteria" in dict_ and dict_["ruleCriteria"] is not None:
             instance.rule_criteria = str(dict_["ruleCriteria"])
         elif include_empty:
@@ -119,7 +119,7 @@ class ModelsRuleInformation(Model):
         if "ruleValue" in dict_ and dict_["ruleValue"] is not None:
             instance.rule_value = float(dict_["ruleValue"])
         elif include_empty:
-            instance.rule_value = float()
+            instance.rule_value = 0.0
         return instance
 
     @classmethod

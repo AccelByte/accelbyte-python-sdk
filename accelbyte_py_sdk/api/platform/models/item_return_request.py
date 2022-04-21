@@ -54,7 +54,7 @@ class ItemReturnRequest(Model):
         if hasattr(self, "order_no"):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
-            result["orderNo"] = str()
+            result["orderNo"] = ""
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ItemReturnRequest(Model):
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
-            instance.order_no = str()
+            instance.order_no = ""
         return instance
 
     @classmethod

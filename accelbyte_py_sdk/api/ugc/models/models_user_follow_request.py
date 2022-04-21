@@ -54,7 +54,7 @@ class ModelsUserFollowRequest(Model):
         if hasattr(self, "follow_status"):
             result["followStatus"] = bool(self.follow_status)
         elif include_empty:
-            result["followStatus"] = bool()
+            result["followStatus"] = False
         return result
 
     # endregion to methods
@@ -78,7 +78,7 @@ class ModelsUserFollowRequest(Model):
         if "followStatus" in dict_ and dict_["followStatus"] is not None:
             instance.follow_status = bool(dict_["followStatus"])
         elif include_empty:
-            instance.follow_status = bool()
+            instance.follow_status = False
         return instance
 
     @classmethod
