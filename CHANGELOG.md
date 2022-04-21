@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.13.0
+- Add `ProtoHttpRequest` dataclass
+- Add Cookie header-related utility methods
+- ! Change method signature of `run_request` and `run_request_async`
+    ```diff
+    def run_request(
+            operation: Operation,
+    -       base_url: Union[None, str] = None,
+    +       base_url: Optional[str] = "",
+    -       additional_headers: Union[None, Dict[str, str]] = None,
+    +       additional_headers: Optional[Dict[str, str]] = None,
+            additional_headers_override: bool = True,
+    +       config_repo: Optional[ConfigRepository] = None,
+    +       token_repo: Optional[TokenRepository] = None,
+    +       http_client: Optional[HttpClient] = None,
+            **kwargs
+    ) -> Tuple[Any, Any]:
+    ```
+- ! Changed method signature of `HttpClient.create_request`
+    ```diff
+    def create_request(
+            self,
+    -       operation: Operation,
+    +       proto: ProtoHttpRequest,
+    -       base_url: Union[None, str] = None,
+    -       headers: Union[None, Header] = None,
+    -       **kwargs
+    -) -> Tuple[Any, Union[None, HttpResponse]]:
+    +) -> Any:
+    ```
+
 ## v0.12.0
 - Add enum classes for parameters / definitions with an `enum` property
 - Fix integration tests
