@@ -18,6 +18,7 @@ from accelbyte_py_sdk.core import RequestsHttpClient
 from accelbyte_py_sdk.core import StrEnum
 from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import create_proto_from_operation
+from accelbyte_py_sdk.core import create_url
 from accelbyte_py_sdk.core import get_access_token
 from accelbyte_py_sdk.core import get_app_name
 from accelbyte_py_sdk.core import get_app_version
@@ -35,10 +36,7 @@ from accelbyte_py_sdk.core import remove_token
 
 class TestHttpClient(HttpClient):
 
-    def create_request_from_proto(self, proto: ProtoHttpRequest) -> Any:
-        return None, HttpResponse.create_unhandled_error()
-
-    def create_request(self, operation: Operation, base_url: Union[None, str] = None, headers: Union[None, Header] = None, **kwargs) -> Tuple[Any, Union[None, HttpResponse]]:
+    def create_request(self, proto: ProtoHttpRequest) -> Any:
         return None, HttpResponse.create_unhandled_error()
 
     def send_request(self, request: Any, **kwargs) -> Tuple[Any, Union[None, HttpResponse]]:
@@ -550,31 +548,31 @@ class CoreTestCase(TestCase):
         self.assertEqual("false_token=False", headers.get("Cookie"))
 
     def test_url_creation_with_path_params(self):
-        full_url = Operation.create_full_url(
-            url="/test/namespaces/{namespace}/items/{item}",
-            base_url="http://0.0.0.0:8080",
+        url = create_url(
+            path="/test/namespaces/{namespace}/items/{item}",
+            base="http://0.0.0.0:8080",
             path_params={
                 "namespace": "foo",
                 "item": "bar"
             }
         )
-        self.assertEqual("http://0.0.0.0:8080/test/namespaces/foo/items/bar", full_url)
+        self.assertEqual("http://0.0.0.0:8080/test/namespaces/foo/items/bar", url)
 
     def test_url_creation_with_query_params(self):
-        full_url = Operation.create_full_url(
-            url="/test",
-            base_url="http://0.0.0.0:8080",
+        url = create_url(
+            path="/test",
+            base="http://0.0.0.0:8080",
             query_params={
                 "status": "active",
                 "query": ["a", "b"]
             }
         )
-        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a,b", full_url)
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a,b", url)
 
     def test_url_creation_with_query_params_with_collection_format_map(self):
-        full_url = Operation.create_full_url(
-            url="/test",
-            base_url="http://0.0.0.0:8080",
+        url = create_url(
+            path="/test",
+            base="http://0.0.0.0:8080",
             query_params={
                 "status": "active",
                 "query": ["a", "b"]
@@ -583,7 +581,7 @@ class CoreTestCase(TestCase):
                 "query": "multi"
             }
         )
-        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a&query=b", full_url)
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a&query=b", url)
 
     def test_model_is_valid(self):
         invalid_model = TestModel().with_date_of_birth("01-01-2000")
