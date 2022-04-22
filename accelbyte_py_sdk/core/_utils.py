@@ -24,6 +24,8 @@ QUERY_DELIMITER_MAP = {
     "pipes": "|",
 }
 
+SENTINEL = object()
+
 
 def add_buffered_file_handler_to_logger(
         filename: Union[str, os.PathLike[str]],

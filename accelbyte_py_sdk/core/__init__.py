@@ -39,6 +39,7 @@ from ._model import Model
 from ._operation import Operation
 from ._strenum import StrEnum
 
+from ._utils import SENTINEL
 from ._utils import add_buffered_file_handler_to_logger
 from ._utils import add_stream_handler_to_logger
 from ._utils import clean_content_type
