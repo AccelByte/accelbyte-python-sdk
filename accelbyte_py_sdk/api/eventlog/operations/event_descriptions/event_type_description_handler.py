@@ -46,7 +46,7 @@ class EventTypeDescriptionHandler(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - ModelsMultipleEventType (OK)
@@ -58,7 +58,7 @@ class EventTypeDescriptionHandler(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     # endregion fields
@@ -82,7 +82,7 @@ class EventTypeDescriptionHandler(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

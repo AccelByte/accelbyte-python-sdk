@@ -53,7 +53,7 @@ class UpdateStadiaJsonConfigFile(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -69,7 +69,7 @@ class UpdateStadiaJsonConfigFile(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any                                                                                      # OPTIONAL in [form_data]
@@ -96,7 +96,7 @@ class UpdateStadiaJsonConfigFile(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

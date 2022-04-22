@@ -276,7 +276,7 @@ class TokenGrant(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         device_id: (Device-Id) OPTIONAL Union[str, HeaderStr] in header
 
@@ -310,7 +310,7 @@ class TokenGrant(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     device_id: Union[str, HeaderStr]                                                               # OPTIONAL in [header]
@@ -344,7 +344,7 @@ class TokenGrant(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

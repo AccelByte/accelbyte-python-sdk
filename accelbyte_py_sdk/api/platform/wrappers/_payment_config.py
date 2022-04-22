@@ -79,7 +79,7 @@ from ..operations.payment_config import UpdateWxPayConfig
 from ..operations.payment_config import UpdateWxPayConfigCert
 from ..operations.payment_config import UpdateXsollaConfig
 from ..operations.payment_config import UpdateXsollaUIConfig
-from ..models import PaymentProviderConfigEditAggregateEnum, PaymentProviderConfigEditSpecialsEnum
+from ..models import PaymentProviderConfigEditSpecialsEnum, PaymentProviderConfigEditAggregateEnum
 from ..models import PaymentProviderConfigInfoSpecialsEnum, PaymentProviderConfigInfoAggregateEnum
 from ..models import XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestThemeEnum
 

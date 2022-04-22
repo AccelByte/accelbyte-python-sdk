@@ -58,7 +58,7 @@ class AdminRevokeUserFromRoleV4(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ModelRevokeUserV4Request in body
 
@@ -82,7 +82,7 @@ class AdminRevokeUserFromRoleV4(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ModelRevokeUserV4Request                                                                 # REQUIRED in [body]
@@ -109,7 +109,7 @@ class AdminRevokeUserFromRoleV4(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

@@ -52,7 +52,7 @@ class PublicGetNamespaces(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         active_only: (activeOnly) OPTIONAL bool in query
 
@@ -68,7 +68,7 @@ class PublicGetNamespaces(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     active_only: bool                                                                              # OPTIONAL in [query]
@@ -94,7 +94,7 @@ class PublicGetNamespaces(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

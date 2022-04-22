@@ -67,7 +67,7 @@ class RemoveRoleMembers(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ModelRoleMembersRequest in body
 
@@ -91,7 +91,7 @@ class RemoveRoleMembers(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ModelRoleMembersRequest                                                                  # REQUIRED in [body]
@@ -118,7 +118,7 @@ class RemoveRoleMembers(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

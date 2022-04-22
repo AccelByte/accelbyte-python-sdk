@@ -53,7 +53,7 @@ class AdminGetRoleV3(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         role_id: (roleId) REQUIRED str in path
 
@@ -75,7 +75,7 @@ class AdminGetRoleV3(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     role_id: str                                                                                   # REQUIRED in [path]
@@ -101,7 +101,7 @@ class AdminGetRoleV3(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

@@ -58,7 +58,7 @@ class AddPort(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ModelsCreatePortRequest in body
 
@@ -86,7 +86,7 @@ class AddPort(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ModelsCreatePortRequest                                                                  # REQUIRED in [body]
@@ -114,7 +114,7 @@ class AddPort(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

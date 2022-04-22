@@ -51,7 +51,7 @@ class Download(Operation):
 
         produces: ["text/csv"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -69,7 +69,7 @@ class Download(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["text/csv"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     campaign_id: str                                                                               # REQUIRED in [path]
@@ -97,7 +97,7 @@ class Download(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

@@ -54,7 +54,7 @@ class UpdateFulfillmentScript(Operation):
 
         produces: []
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptUpdate in body
 
@@ -72,7 +72,7 @@ class UpdateFulfillmentScript(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: FulfillmentScriptUpdate                                                                  # OPTIONAL in [body]
@@ -99,7 +99,7 @@ class UpdateFulfillmentScript(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

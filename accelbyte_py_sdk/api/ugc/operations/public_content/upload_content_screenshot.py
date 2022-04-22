@@ -58,7 +58,7 @@ class UploadContentScreenshot(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ModelsCreateScreenshotRequest in body
 
@@ -84,7 +84,7 @@ class UploadContentScreenshot(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json", "application/octet-stream"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ModelsCreateScreenshotRequest                                                            # REQUIRED in [body]
@@ -113,7 +113,7 @@ class UploadContentScreenshot(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

@@ -53,7 +53,7 @@ class PublicDownloadUserOrderReceipt(Operation):
 
         produces: ["application/pdf"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +75,7 @@ class PublicDownloadUserOrderReceipt(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/pdf"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -103,7 +103,7 @@ class PublicDownloadUserOrderReceipt(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

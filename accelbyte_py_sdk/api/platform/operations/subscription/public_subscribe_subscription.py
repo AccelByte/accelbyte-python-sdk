@@ -60,7 +60,7 @@ class PublicSubscribeSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         body: (body) OPTIONAL SubscribeRequest in body
 
@@ -88,7 +88,7 @@ class PublicSubscribeSubscription(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: SubscribeRequest                                                                         # OPTIONAL in [body]
@@ -116,7 +116,7 @@ class PublicSubscribeSubscription(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

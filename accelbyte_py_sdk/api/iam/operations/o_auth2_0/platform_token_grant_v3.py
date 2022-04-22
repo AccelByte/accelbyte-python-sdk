@@ -295,7 +295,7 @@ class PlatformTokenGrantV3(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BASIC_AUTH", "BEARER_AUTH"]
+        securities: [BASIC_AUTH]
 
         client_id: (client_id) OPTIONAL str in form_data
 
@@ -319,7 +319,7 @@ class PlatformTokenGrantV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BASIC_AUTH", "BEARER_AUTH"]
+    _securities: List[List[str]] = [["BASIC_AUTH"]]
     _location_query: str = None
 
     client_id: str                                                                                 # OPTIONAL in [form_data]
@@ -348,7 +348,7 @@ class PlatformTokenGrantV3(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

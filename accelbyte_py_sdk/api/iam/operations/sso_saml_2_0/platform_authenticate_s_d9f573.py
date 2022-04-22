@@ -55,7 +55,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
 
         produces: []
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         location query: PLACEHOLDER
 
@@ -77,7 +77,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = []
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = "PLACEHOLDER"
 
     platform_id: str                                                                               # REQUIRED in [path]
@@ -106,7 +106,7 @@ class PlatformAuthenticateSAMLV3Handler(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

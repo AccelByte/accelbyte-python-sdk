@@ -63,7 +63,7 @@ class AddSSOLoginPlatformCredential(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) REQUIRED ModelSSOPlatformCredentialRequest in body
 
@@ -89,7 +89,7 @@ class AddSSOLoginPlatformCredential(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ModelSSOPlatformCredentialRequest                                                        # REQUIRED in [body]
@@ -117,7 +117,7 @@ class AddSSOLoginPlatformCredential(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

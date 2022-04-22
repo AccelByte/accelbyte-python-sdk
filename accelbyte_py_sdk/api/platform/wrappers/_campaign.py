@@ -58,10 +58,10 @@ from ..operations.campaign import QueryCampaigns
 from ..operations.campaign import QueryCodes
 from ..operations.campaign import QueryRedeemHistory
 from ..operations.campaign import UpdateCampaign
-from ..models import CampaignCreateTypeEnum, CampaignCreateRedeemTypeEnum, CampaignCreateStatusEnum
-from ..models import CampaignInfoRedeemTypeEnum, CampaignInfoTypeEnum, CampaignInfoStatusEnum
+from ..models import CampaignCreateRedeemTypeEnum, CampaignCreateTypeEnum, CampaignCreateStatusEnum
+from ..models import CampaignInfoStatusEnum, CampaignInfoRedeemTypeEnum, CampaignInfoTypeEnum
 from ..models import CampaignUpdateStatusEnum, CampaignUpdateRedeemTypeEnum
-from ..models import CodeInfoRedeemTypeEnum, CodeInfoStatusEnum, CodeInfoTypeEnum
+from ..models import CodeInfoRedeemTypeEnum, CodeInfoTypeEnum, CodeInfoStatusEnum
 
 
 @same_doc_as(ApplyUserRedemption)

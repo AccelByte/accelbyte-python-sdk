@@ -50,7 +50,7 @@ class BulkAcceptVersionedPolicy(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -64,7 +64,7 @@ class BulkAcceptVersionedPolicy(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[AcceptAgreementRequest]                                                             # OPTIONAL in [body]
@@ -90,7 +90,7 @@ class BulkAcceptVersionedPolicy(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

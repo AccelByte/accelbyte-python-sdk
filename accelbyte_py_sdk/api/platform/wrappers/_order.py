@@ -64,7 +64,7 @@ from ..operations.order import QueryUserOrdersStatusEnum
 from ..operations.order import RefundOrder
 from ..operations.order import UpdateUserOrderStatus
 from ..models import OrderHistoryInfoActionEnum
-from ..models import OrderInfoStatusEnum, OrderInfoPaymentProviderEnum
+from ..models import OrderInfoPaymentProviderEnum, OrderInfoStatusEnum
 from ..models import OrderUpdateStatusEnum
 from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
 

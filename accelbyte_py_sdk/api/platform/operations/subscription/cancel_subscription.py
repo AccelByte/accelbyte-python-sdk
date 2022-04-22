@@ -57,7 +57,7 @@ class CancelSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         body: (body) OPTIONAL CancelRequest in body
 
@@ -83,7 +83,7 @@ class CancelSubscription(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CancelRequest                                                                            # OPTIONAL in [body]
@@ -113,7 +113,7 @@ class CancelSubscription(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

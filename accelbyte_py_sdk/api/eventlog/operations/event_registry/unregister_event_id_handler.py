@@ -52,7 +52,7 @@ class UnregisterEventIDHandler(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         event_id: (eventId) REQUIRED str in path
 
@@ -74,7 +74,7 @@ class UnregisterEventIDHandler(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     event_id: str                                                                                  # REQUIRED in [path]
@@ -100,7 +100,7 @@ class UnregisterEventIDHandler(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

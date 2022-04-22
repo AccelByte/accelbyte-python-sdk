@@ -50,7 +50,7 @@ class SingleAdminGetGroupContents(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         group_id: (groupId) REQUIRED str in path
 
@@ -76,7 +76,7 @@ class SingleAdminGetGroupContents(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     group_id: str                                                                                  # REQUIRED in [path]
@@ -105,7 +105,7 @@ class SingleAdminGetGroupContents(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

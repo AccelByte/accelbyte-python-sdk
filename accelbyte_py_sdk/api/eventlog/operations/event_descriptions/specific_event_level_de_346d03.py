@@ -46,7 +46,7 @@ class SpecificEventLevelDescriptionHandler(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         event_levels: (eventLevels) OPTIONAL str in query
 
@@ -64,7 +64,7 @@ class SpecificEventLevelDescriptionHandler(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     event_levels: str                                                                              # OPTIONAL in [query]
@@ -90,7 +90,7 @@ class SpecificEventLevelDescriptionHandler(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

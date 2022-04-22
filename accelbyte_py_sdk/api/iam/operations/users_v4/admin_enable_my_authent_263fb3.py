@@ -51,7 +51,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         code: (code) OPTIONAL str in form_data
 
@@ -77,7 +77,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     code: str                                                                                      # OPTIONAL in [form_data]
@@ -103,7 +103,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

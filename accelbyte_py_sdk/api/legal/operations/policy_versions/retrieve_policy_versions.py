@@ -54,7 +54,7 @@ class RetrievePolicyVersions(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) OPTIONAL str in query
 
@@ -74,7 +74,7 @@ class RetrievePolicyVersions(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     base_policy_id: str                                                                            # OPTIONAL in [query]
@@ -102,7 +102,7 @@ class RetrievePolicyVersions(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

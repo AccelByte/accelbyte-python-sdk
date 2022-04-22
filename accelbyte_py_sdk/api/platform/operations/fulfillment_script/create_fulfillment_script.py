@@ -58,7 +58,7 @@ class CreateFulfillmentScript(Operation):
 
         produces: []
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptCreate in body
 
@@ -76,7 +76,7 @@ class CreateFulfillmentScript(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: FulfillmentScriptCreate                                                                  # OPTIONAL in [body]
@@ -103,7 +103,7 @@ class CreateFulfillmentScript(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

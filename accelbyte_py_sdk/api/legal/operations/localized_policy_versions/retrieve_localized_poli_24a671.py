@@ -52,7 +52,7 @@ class RetrieveLocalizedPolicyVersions(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         policy_version_id: (policyVersionId) REQUIRED str in path
 
@@ -66,7 +66,7 @@ class RetrieveLocalizedPolicyVersions(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     policy_version_id: str                                                                         # REQUIRED in [path]
@@ -92,7 +92,7 @@ class RetrieveLocalizedPolicyVersions(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property

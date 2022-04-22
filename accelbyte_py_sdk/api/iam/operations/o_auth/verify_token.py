@@ -46,7 +46,7 @@ class VerifyToken(Operation):
 
         produces: ["application/json"]
 
-        securities: ["BEARER_AUTH"]
+        securities: [BEARER_AUTH]
 
         token: (token) REQUIRED str in form_data
 
@@ -62,7 +62,7 @@ class VerifyToken(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _securities: List[str] = ["BEARER_AUTH"]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]
@@ -88,7 +88,7 @@ class VerifyToken(Operation):
         return self._produces
 
     @property
-    def securities(self) -> List[str]:
+    def securities(self) -> List[List[str]]:
         return self._securities
 
     @property
