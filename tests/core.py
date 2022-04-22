@@ -4,6 +4,7 @@ from typing import Any, Tuple, List, Union, Dict, Optional
 from unittest import TestCase
 
 import accelbyte_py_sdk
+from accelbyte_py_sdk.core import DictConfigRepository
 from accelbyte_py_sdk.core import Header
 from accelbyte_py_sdk.core import HeaderStr
 from accelbyte_py_sdk.core import HttpClient
@@ -32,6 +33,18 @@ from accelbyte_py_sdk.core import get_namespace
 from accelbyte_py_sdk.core import get_query_from_http_redirect_response
 from accelbyte_py_sdk.core import get_token_repository
 from accelbyte_py_sdk.core import remove_token
+
+
+class TestConfigRepository(DictConfigRepository):
+
+    def __init__(self):
+        super().__init__({})
+
+
+class TestTokenRepository(MyTokenRepository):
+
+    def __init__(self):
+        super().__init__({})
 
 
 class TestHttpClient(HttpClient):
@@ -85,13 +98,6 @@ class TestOperation(Operation):
     cookie: Union[str, HeaderStr]
     namespace: str
     statuses: List[str]
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params()
-        )
 
     def get_all_params(self) -> dict:
         return {
@@ -491,14 +497,14 @@ class CoreTestCase(TestCase):
 
     def test_headerstr_in_operation_with_zero_values(self):
         valid_operation = TestOperation()
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_with_one_value(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
@@ -507,7 +513,7 @@ class CoreTestCase(TestCase):
     def test_headerstr_in_operation_with_two_or_more_values(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
         valid_operation.cookie["other_token"] = "hello"
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
@@ -515,7 +521,7 @@ class CoreTestCase(TestCase):
 
     def test_headerstr_in_operation_as_empty_string(self):
         valid_operation = TestOperation().with_cookie("")
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -523,7 +529,7 @@ class CoreTestCase(TestCase):
     def test_headerstr_in_operation_as_empty_headerstr(self):
         empty_headerstr = HeaderStr()
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -532,7 +538,7 @@ class CoreTestCase(TestCase):
         empty_headerstr = HeaderStr()
         empty_headerstr["empty_token"] = ""
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -541,7 +547,7 @@ class CoreTestCase(TestCase):
         empty_headerstr = HeaderStr()
         empty_headerstr["false_token"] = False
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation)
+        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
