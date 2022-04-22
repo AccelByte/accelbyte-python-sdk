@@ -73,8 +73,8 @@ def clean_content_type(content_type: Optional[str]) -> Optional[str]:
     return content_type
 
 
-def create_basic_authentication(username: str, password: str) -> str:
-    return f'Basic {b64encode(f"{username}:{password}".encode("utf-8")).decode("utf-8")}'
+def create_basic_authentication(username: str, password: str, prefix: str = "Basic ") -> str:
+    return f'{prefix}{b64encode(f"{username}:{password}".encode("utf-8")).decode("utf-8")}'
 
 
 def create_buffered_file_handler(
