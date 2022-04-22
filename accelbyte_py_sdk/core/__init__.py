@@ -22,6 +22,7 @@ from ._http_client import HttpxHttpClient
 from ._http_client import RequestsHttpClient
 
 from ._proto_http_request import ProtoHttpRequest
+from ._proto_http_request import SecuritiesResolver
 from ._proto_http_request import create_proto_from_operation
 
 from ._http_response import HttpResponse

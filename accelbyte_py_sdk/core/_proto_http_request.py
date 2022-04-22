@@ -4,7 +4,7 @@
 
 import json
 from dataclasses import dataclass
-from typing import Any, Dict, IO, Optional, Tuple, Union
+from typing import Any, Dict, IO, List, Optional, Tuple, Union
 from pathlib import Path
 
 from ._config_repository import ConfigRepository
@@ -13,6 +13,8 @@ from ._header import Header
 from ._headerstr import HeaderStr
 from ._http_response import HttpResponse
 from ._operation import Operation
+from ._utils import SENTINEL
+from ._utils import create_basic_authentication
 from ._utils import create_url
 from ._utils import is_file
 from ._utils import is_json_mime_type
@@ -38,52 +40,105 @@ class ProtoHttpRequest:
         self.json_ = json_
 
 
-def add_basic_auth_to_proto_http_request(
-        proto: ProtoHttpRequest,
-        config_repo: ConfigRepository
-) -> Optional[HttpResponse]:
-    if proto.headers.has_authorization():
-        return None
-    if config_repo is None:
-        return HttpResponse.create_config_repo_not_found_error()
-    else:
-        client_id = config_repo.get_client_id()
-        if not client_id:
-            return HttpResponse.create_client_not_registered_error()
-        client_secret = config_repo.get_client_secret() or ""
-        proto.headers.add_basic_authorization(client_id, client_secret)
-        return None
+class SecuritiesResolver:
 
+    def __init__(
+            self,
+            config_repo: ConfigRepository,
+            token_repo: TokenRepository,
+            replace_existing: bool = False,
+    ):
+        if config_repo is None:
+            raise ValueError(config_repo)
+        if token_repo is None:
+            raise ValueError(token_repo)
 
-def add_bearer_auth_to_proto_http_request(
-        proto: ProtoHttpRequest,
-        token_repo: TokenRepository
-) -> Optional[HttpResponse]:
-    if proto.headers.has_authorization():
-        return None
-    if token_repo is None:
-        return HttpResponse.create_token_repo_not_found_error()
-    else:
-        access_token = token_repo.get_access_token()
-        if not access_token:
-            return HttpResponse.create_token_not_found_error()
-        proto.headers.add_bearer_authorization(access_token)
+        self.config_repo = config_repo
+        self.token_repo = token_repo
+        self.replace_existing = replace_existing
 
+        self.basic_auth = SENTINEL
+        self.access_token = SENTINEL
 
-def add_cookie_auth_to_proto_http_request(
-        proto: ProtoHttpRequest,
-        token_repo: TokenRepository,
-        key: str = "access_token",
-) -> Optional[HttpResponse]:
-    if proto.headers.has_cookie_key(key):
-        return None
-    if token_repo is None:
-        return HttpResponse.create_token_repo_not_found_error()
-    else:
-        access_token = token_repo.get_access_token()
-        if not access_token:
-            return HttpResponse.create_token_not_found_error()
-        proto.headers.add_cookie(key=key, value=access_token, replace_existing=False)
+    def _resolve_basic_auth(self, proto: ProtoHttpRequest):
+        result = False
+        if proto.headers.has_authorization():
+            if not self.replace_existing:
+                return True
+            else:
+                result = True
+        if self.basic_auth is not None and self.basic_auth is not SENTINEL:
+            proto.headers.add_authorization(self.basic_auth)
+            return True
+        if self.basic_auth is SENTINEL:
+            client_id = self.config_repo.get_client_id()
+            if not client_id:
+                return result
+            client_secret = self.config_repo.get_client_secret() or ""
+            self.basic_auth = create_basic_authentication(username=client_id, password=client_secret)
+            proto.headers.add_authorization(self.basic_auth)
+            return True
+        return result
+
+    def _resolve_bearer_auth(self, proto: ProtoHttpRequest):
+        result = False
+        if proto.headers.has_authorization():
+            if not self.replace_existing:
+                return True
+            else:
+                result = True
+        if self.access_token is not None and self.access_token is not SENTINEL:
+            proto.headers.add_bearer_authorization(self.access_token)
+            return True
+        if self.access_token is SENTINEL:
+            self.access_token = self.token_repo.get_access_token()
+            if self.access_token is None:
+                return result
+            proto.headers.add_bearer_authorization(self.access_token)
+            return True
+        return result
+
+    def _resolve_cookie_auth(self, proto: ProtoHttpRequest, cookie_auth_key: str = "access_token"):
+        result = False
+        if proto.headers.has_cookie_key(cookie_auth_key):
+            if not self.replace_existing:
+                return True
+            else:
+                result = True
+        if self.access_token is not None and self.access_token is not SENTINEL:
+            proto.headers.add_cookie(key=cookie_auth_key, value=self.access_token, replace_existing=True)
+            return True
+        if self.access_token is SENTINEL:
+            self.access_token = self.token_repo.get_access_token()
+            if self.access_token is None:
+                return result
+            proto.headers.add_cookie(key=cookie_auth_key, value=self.access_token, replace_existing=True)
+            return True
+        return result
+
+    def resolve(self, proto: ProtoHttpRequest, securities: List[List[str]] = None) -> bool:
+        if not securities:
+            return True
+        for security in securities:
+            fulfilled = True
+            for requirement in security:
+                if requirement == "BASIC_AUTH":
+                    if not self._resolve_basic_auth(proto=proto):
+                        fulfilled = False
+                        break
+                elif requirement == "BEARER_AUTH":
+                    if not self._resolve_bearer_auth(proto=proto):
+                        fulfilled = False
+                        break
+                elif requirement == "COOKIE_AUTH":
+                    if not self._resolve_cookie_auth(proto=proto):
+                        fulfilled = False
+                        break
+                else:
+                    raise NotImplementedError()
+            if fulfilled:
+                return True
+        return False
 
 
 def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, IO]:
@@ -130,11 +185,11 @@ def create_headers(
 
 def create_proto_from_operation(
         operation: Operation,
+        config_repo: ConfigRepository,
+        token_repo: TokenRepository,
         base_url: str = "",
         additional_headers: Optional[Dict[str, str]] = None,
         additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
         **kwargs
 ) -> Tuple[Optional[ProtoHttpRequest], Optional[HttpResponse]]:
     base_url = base_url if base_url is not None else ""
@@ -178,18 +233,9 @@ def create_proto_from_operation(
         json_=json_,
     )
 
-    if "BASIC_AUTH" in operation.securities:
-        error = add_basic_auth_to_proto_http_request(proto, config_repo=config_repo)
-        if error:
-            return None, error
-    if "BEARER_AUTH" in operation.securities:
-        error = add_bearer_auth_to_proto_http_request(proto, token_repo=token_repo)
-        if error:
-            return None, error
-    if "COOKIE_AUTH" in operation.securities:
-        error = add_cookie_auth_to_proto_http_request(proto, token_repo=token_repo)
-        if error:
-            return None, error
+    success = SecuritiesResolver(config_repo=config_repo, token_repo=token_repo).resolve(proto=proto, securities=operation.securities)
+    if not success:
+        return None, HttpResponse.create_failed_to_resolve_security_error()
 
     return proto, None
 
