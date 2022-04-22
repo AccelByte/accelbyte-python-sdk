@@ -116,7 +116,7 @@ class Operation:
     method: str = ""
     consumes: List[str] = []
     produces: List[str] = []
-    securities: List[str] = []
+    securities: List[List[str]] = []
     location_query: Optional[str] = None
     authorization_override: Optional[str] = None
 
