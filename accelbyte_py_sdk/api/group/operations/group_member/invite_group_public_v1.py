@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -60,6 +60,28 @@ class InviteGroupPublicV1(Operation):
 
 
     Action Code: 73406
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:INVITE"
+
+
+
+
+    The invited user will have a permission to invite another user to the group
 
     Required Permission(s):
         - GROUP:INVITE [CREATE]

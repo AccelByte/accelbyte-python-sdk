@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -51,7 +51,7 @@ class GetRevocationList(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH]
 
     Responses:
         200: OK - OauthapiRevocationList (revocation list returned)
@@ -65,7 +65,7 @@ class GetRevocationList(Operation):
     _method: str = "GET"
     _consumes: List[str] = [""]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BASIC_AUTH"]]
     _location_query: str = None
 
     # endregion fields

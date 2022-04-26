@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -63,6 +63,8 @@ class OauthmodelTokenResponse(Model):
         platform_id: (platform_id) OPTIONAL str
 
         platform_user_id: (platform_user_id) OPTIONAL str
+
+        refresh_expires_in: (refresh_expires_in) OPTIONAL int
     """
 
     # region fields
@@ -82,6 +84,7 @@ class OauthmodelTokenResponse(Model):
     jflgs: int                                                                                     # OPTIONAL
     platform_id: str                                                                               # OPTIONAL
     platform_user_id: str                                                                          # OPTIONAL
+    refresh_expires_in: int                                                                        # OPTIONAL
 
     # endregion fields
 
@@ -145,6 +148,10 @@ class OauthmodelTokenResponse(Model):
 
     def with_platform_user_id(self, value: str) -> OauthmodelTokenResponse:
         self.platform_user_id = value
+        return self
+
+    def with_refresh_expires_in(self, value: int) -> OauthmodelTokenResponse:
+        self.refresh_expires_in = value
         return self
 
     # endregion with_x methods
@@ -213,6 +220,10 @@ class OauthmodelTokenResponse(Model):
             result["platform_user_id"] = str(self.platform_user_id)
         elif include_empty:
             result["platform_user_id"] = ""
+        if hasattr(self, "refresh_expires_in"):
+            result["refresh_expires_in"] = int(self.refresh_expires_in)
+        elif include_empty:
+            result["refresh_expires_in"] = 0
         return result
 
     # endregion to methods
@@ -237,6 +248,7 @@ class OauthmodelTokenResponse(Model):
         jflgs: Optional[int] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
+        refresh_expires_in: Optional[int] = None,
     ) -> OauthmodelTokenResponse:
         instance = cls()
         instance.access_token = access_token
@@ -258,6 +270,8 @@ class OauthmodelTokenResponse(Model):
             instance.platform_id = platform_id
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if refresh_expires_in is not None:
+            instance.refresh_expires_in = refresh_expires_in
         return instance
 
     @classmethod
@@ -325,6 +339,10 @@ class OauthmodelTokenResponse(Model):
             instance.platform_user_id = str(dict_["platform_user_id"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "refresh_expires_in" in dict_ and dict_["refresh_expires_in"] is not None:
+            instance.refresh_expires_in = int(dict_["refresh_expires_in"])
+        elif include_empty:
+            instance.refresh_expires_in = 0
         return instance
 
     @classmethod
@@ -365,6 +383,7 @@ class OauthmodelTokenResponse(Model):
             "jflgs": "jflgs",
             "platform_id": "platform_id",
             "platform_user_id": "platform_user_id",
+            "refresh_expires_in": "refresh_expires_in",
         }
 
     @staticmethod
@@ -385,6 +404,7 @@ class OauthmodelTokenResponse(Model):
             "jflgs": False,
             "platform_id": False,
             "platform_user_id": False,
+            "refresh_expires_in": False,
         }
 
     # endregion static methods

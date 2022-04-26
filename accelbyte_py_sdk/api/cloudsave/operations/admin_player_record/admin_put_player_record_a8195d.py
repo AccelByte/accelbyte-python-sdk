@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,14 +74,15 @@ class AdminPutPlayerRecordHandlerV1(Operation):
 
 
 
+
     ## Record Metadata
 
 
 
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name META.
-    When creating record, if META field is not defined, the metadata value will use the default value.
-    When updating record, if META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
 
      Metadata List:
     1. set_by (default: CLIENT, type: string)
@@ -97,25 +98,12 @@ class AdminPutPlayerRecordHandlerV1(Operation):
 
 
             {
-                "META": {
+                "__META": {
                     "set_by": "SERVER",
                     "is_public": true
                 }
                 ...
             }
-
-
-
-
-
-
-    ## Warning: Current Behaviour when Updating Public Record
-
-
-
-    When updating existing "Public Record" and metadata is_public is not defined in the request body,
-    this endpoint will always convert the "Public Record" into "Private Record".
-    This behaviour might be deprecated sooner, please don't rely with that behaviour.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]

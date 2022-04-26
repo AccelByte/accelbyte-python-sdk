@@ -792,24 +792,26 @@ async def public_make_factor_my_default_v4_async(factor: str, namespace: Optiona
 
 
 @same_doc_as(PublicRemoveTrustedDeviceV4)
-def public_remove_trusted_device_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_remove_trusted_device_v4(cookie: Optional[Union[str, HeaderStr]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicRemoveTrustedDeviceV4.create(
+        cookie=cookie,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicRemoveTrustedDeviceV4)
-async def public_remove_trusted_device_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_remove_trusted_device_v4_async(cookie: Optional[Union[str, HeaderStr]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicRemoveTrustedDeviceV4.create(
+        cookie=cookie,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

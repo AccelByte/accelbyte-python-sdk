@@ -64,13 +64,9 @@ class AdminGetAllPlayerSessionAttribute(Operation):
     Responses:
         200: OK - ModelsGetAllPlayerSessionAttributeResponse (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
-
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
-
-        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -178,13 +174,9 @@ class AdminGetAllPlayerSessionAttribute(Operation):
 
         200: OK - ModelsGetAllPlayerSessionAttributeResponse (OK)
 
-        400: Bad Request - RestapiErrorResponseBody (Bad Request)
-
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
-
-        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
 
@@ -201,13 +193,9 @@ class AdminGetAllPlayerSessionAttribute(Operation):
 
         if code == 200:
             return ModelsGetAllPlayerSessionAttributeResponse.create_from_dict(content), None
-        if code == 400:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 401:
             return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponseBody.create_from_dict(content)
-        if code == 404:
             return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 500:
             return None, RestapiErrorResponseBody.create_from_dict(content)

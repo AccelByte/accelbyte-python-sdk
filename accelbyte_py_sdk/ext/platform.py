@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.5.1)
+# justice-platform-service (4.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,8 @@ from ..api.platform.models import CampaignInfo
 from ..api.platform.models import CampaignPagingSlicedResult
 from ..api.platform.models import CampaignUpdate
 from ..api.platform.models import CancelRequest
+from ..api.platform.models import CatalogChangeInfo
+from ..api.platform.models import CatalogChangePagingSlicedResult
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
@@ -599,6 +601,32 @@ def create_cancel_request_example() -> CancelRequest:
     instance = CancelRequest()
     instance.immediate = randomize("bool")
     instance.reason = randomize()
+    return instance
+
+
+def create_catalog_change_info_example() -> CatalogChangeInfo:
+    instance = CatalogChangeInfo()
+    instance.action = randomize()
+    instance.change_id = randomize()
+    instance.created_at = randomize("date")
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.store_id = randomize()
+    instance.updated_at = randomize("date")
+    instance.category_path = randomize()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.published_at = randomize("date")
+    instance.sku = randomize("slug")
+    instance.title = randomize()
+    instance.type_ = randomize()
+    return instance
+
+
+def create_catalog_change_paging_sliced_result_example() -> CatalogChangePagingSlicedResult:
+    instance = CatalogChangePagingSlicedResult()
+    instance.data = [create_catalog_change_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 

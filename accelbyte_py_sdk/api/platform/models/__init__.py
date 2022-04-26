@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.5.1"
+__version__ = "4.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -46,6 +46,9 @@ from .campaign_paging_sliced_result import CampaignPagingSlicedResult
 from .campaign_update import CampaignUpdate
 from .campaign_update import RedeemTypeEnum as CampaignUpdateRedeemTypeEnum, StatusEnum as CampaignUpdateStatusEnum
 from .cancel_request import CancelRequest
+from .catalog_change_info import CatalogChangeInfo
+from .catalog_change_info import ActionEnum as CatalogChangeInfoActionEnum, ItemTypeEnum as CatalogChangeInfoItemTypeEnum, StatusEnum as CatalogChangeInfoStatusEnum, TypeEnum as CatalogChangeInfoTypeEnum
+from .catalog_change_paging_sliced_result import CatalogChangePagingSlicedResult
 from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate

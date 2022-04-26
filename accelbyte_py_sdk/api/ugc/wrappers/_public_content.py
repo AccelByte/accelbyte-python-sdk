@@ -36,6 +36,7 @@ from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
 from ..models import ModelsGetContentPreviewResponse
 from ..models import ModelsPaginatedContentDownloadResponse
+from ..models import ModelsPublicGetContentBulkRequest
 from ..models import ModelsUpdateScreenshotRequest
 from ..models import ModelsUpdateScreenshotResponse
 from ..models import ResponseError
@@ -47,6 +48,7 @@ from ..operations.public_content import DeleteContentScreenshot
 from ..operations.public_content import DownloadContentByShareCode
 from ..operations.public_content import PublicDownloadContentByContentID
 from ..operations.public_content import PublicDownloadContentPreview
+from ..operations.public_content import PublicGetContentBulk
 from ..operations.public_content import PublicGetUserContent
 from ..operations.public_content import PublicSearchContent
 from ..operations.public_content import SearchChannelSpecificContent
@@ -251,6 +253,32 @@ async def public_download_content_preview_async(content_id: str, namespace: Opti
             return None, error
     request = PublicDownloadContentPreview.create(
         content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetContentBulk)
+def public_get_content_bulk(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetContentBulk.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicGetContentBulk)
+async def public_get_content_bulk_async(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetContentBulk.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

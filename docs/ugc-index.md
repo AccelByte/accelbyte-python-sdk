@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-ugc-service Index (1.15.1)
+# justice-ugc-service Index (1.17.0)
 
 
 ## Operations
@@ -99,6 +99,7 @@
 | /ugc/v1/public/namespaces/{namespace}/contents/sharecodes/{shareCode} | GET | DownloadContentByShareCode | [DownloadContentByShareCode](../accelbyte_py_sdk/api/ugc/operations/public_content/download_content_by_share_code.py) | [download_content_by_share_code](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-download-content-by-share-code](../samples/cli/accelbyte_py_sdk_cli/ugc/_download_content_by_share_code.py) |
 | /ugc/v1/public/namespaces/{namespace}/contents/{contentId} | GET | PublicDownloadContentByContentID | [PublicDownloadContentByContentID](../accelbyte_py_sdk/api/ugc/operations/public_content/public_download_content_511956.py) | [public_download_content_by_content_id](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-public-download-content-by-content-id](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_download_content_511956.py) |
 | /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/preview | GET | PublicDownloadContentPreview | [PublicDownloadContentPreview](../accelbyte_py_sdk/api/ugc/operations/public_content/public_download_content_32df1f.py) | [public_download_content_preview](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-public-download-content-preview](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_download_content_32df1f.py) |
+| /ugc/v1/public/namespaces/{namespace}/contents/bulk | POST | PublicGetContentBulk | [PublicGetContentBulk](../accelbyte_py_sdk/api/ugc/operations/public_content/public_get_content_bulk.py) | [public_get_content_bulk](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-public-get-content-bulk](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_get_content_bulk.py) |
 | /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents | GET | PublicGetUserContent | [PublicGetUserContent](../accelbyte_py_sdk/api/ugc/operations/public_content/public_get_user_content.py) | [public_get_user_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-public-get-user-content](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_get_user_content.py) |
 | /ugc/v1/public/namespaces/{namespace}/contents | GET | PublicSearchContent | [PublicSearchContent](../accelbyte_py_sdk/api/ugc/operations/public_content/public_search_content.py) | [public_search_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-public-search-content](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_search_content.py) |
 | /ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents | GET | SearchChannelSpecificContent | [SearchChannelSpecificContent](../accelbyte_py_sdk/api/ugc/operations/public_content/search_channel_specific_10d5e8.py) | [search_channel_specific_content](../accelbyte_py_sdk/api/ugc/wrappers/_public_content.py) | [accelbyte_py_sdk_cli ugc-search-channel-specific-content](../samples/cli/accelbyte_py_sdk_cli/ugc/_search_channel_specific_10d5e8.py) |
@@ -187,6 +188,7 @@
 | models.PaginatedGroupResponse | [ModelsPaginatedGroupResponse](../accelbyte_py_sdk/api/ugc/models/models_paginated_group_response.py) |
 | models.PagingCursor | [ModelsPagingCursor](../accelbyte_py_sdk/api/ugc/models/models_paging_cursor.py) |
 | models.PayloadURL | [ModelsPayloadURL](../accelbyte_py_sdk/api/ugc/models/models_payload_url.py) |
+| models.PublicGetContentBulkRequest | [ModelsPublicGetContentBulkRequest](../accelbyte_py_sdk/api/ugc/models/models_public_get_content_bulk_request.py) |
 | models.ScreenshotResponse | [ModelsScreenshotResponse](../accelbyte_py_sdk/api/ugc/models/models_screenshot_response.py) |
 | models.updateScreenshot | [ModelsUpdateScreenshot](../accelbyte_py_sdk/api/ugc/models/models_update_screenshot.py) |
 | models.UpdateScreenshotRequest | [ModelsUpdateScreenshotRequest](../accelbyte_py_sdk/api/ugc/models/models_update_screenshot_request.py) |

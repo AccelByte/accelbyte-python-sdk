@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ugc-service (1.15.1)
+# justice-ugc-service (1.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,10 +34,10 @@ from ...models import ResponseError
 class AdminSearchChannelSpecificContent(Operation):
     """Search contents specific to a channel (AdminSearchChannelSpecificContent)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]
+    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/search

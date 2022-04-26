@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,7 @@ class DeleteGroupConfigurationV1(Operation):
 
 
 
-    This endpoint is used to delete group configuration. This Configuration is used to be the main rule of the service. Each namespace will have its own configuration
+    This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
 
 

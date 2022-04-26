@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -79,12 +79,17 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
 
 
 
-    ## Warning: Current Behaviour when Updating Private Record
+
+    ## Warning: This endpoint is going to deprecate
 
 
 
-    When updating existing "Private Record", this endpoint will always convert the "Private Record" into "Public Record".
-    This behaviour might be deprecated sooner, please don't rely with that behaviour.
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]

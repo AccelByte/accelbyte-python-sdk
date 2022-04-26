@@ -58,9 +58,9 @@ from ..operations.campaign import QueryCampaigns
 from ..operations.campaign import QueryCodes
 from ..operations.campaign import QueryRedeemHistory
 from ..operations.campaign import UpdateCampaign
-from ..models import CampaignCreateRedeemTypeEnum, CampaignCreateTypeEnum, CampaignCreateStatusEnum
-from ..models import CampaignInfoStatusEnum, CampaignInfoRedeemTypeEnum, CampaignInfoTypeEnum
-from ..models import CampaignUpdateStatusEnum, CampaignUpdateRedeemTypeEnum
+from ..models import CampaignCreateTypeEnum, CampaignCreateStatusEnum, CampaignCreateRedeemTypeEnum
+from ..models import CampaignInfoTypeEnum, CampaignInfoStatusEnum, CampaignInfoRedeemTypeEnum
+from ..models import CampaignUpdateRedeemTypeEnum, CampaignUpdateStatusEnum
 from ..models import CodeInfoRedeemTypeEnum, CodeInfoTypeEnum, CodeInfoStatusEnum
 
 

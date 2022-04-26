@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,8 @@ class PublicRemoveTrustedDeviceV4(Operation):
 
         securities: [BEARER_AUTH]
 
+        cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
+
         namespace: (namespace) REQUIRED str in path
 
     Responses:
@@ -84,6 +86,7 @@ class PublicRemoveTrustedDeviceV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
     namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
@@ -124,8 +127,15 @@ class PublicRemoveTrustedDeviceV4(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "header": self.get_header_params(),
             "path": self.get_path_params(),
         }
+
+    def get_header_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cookie"):
+            result["Cookie"] = self.cookie
+        return result
 
     def get_path_params(self) -> dict:
         result = {}
@@ -141,6 +151,16 @@ class PublicRemoveTrustedDeviceV4(Operation):
 
     # region with_x methods
 
+    def with_cookie(self, value: Union[str, HeaderStr]) -> PublicRemoveTrustedDeviceV4:
+        self.cookie = value
+        return self
+
+    def with_cookie_device_token(self, value: str) -> PublicRemoveTrustedDeviceV4:
+        if not hasattr(self, "cookie"):
+            self.cookie = HeaderStr()
+        self.cookie["device_token"] = value
+        return self
+
     def with_namespace(self, value: str) -> PublicRemoveTrustedDeviceV4:
         self.namespace = value
         return self
@@ -151,6 +171,10 @@ class PublicRemoveTrustedDeviceV4(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cookie") and self.cookie:
+            result["Cookie"] = str(self.cookie)
+        elif include_empty:
+            result["Cookie"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -211,14 +235,21 @@ class PublicRemoveTrustedDeviceV4(Operation):
     def create(
         cls,
         namespace: str,
+        cookie: Optional[Union[str, HeaderStr]] = None,
     ) -> PublicRemoveTrustedDeviceV4:
         instance = cls()
         instance.namespace = namespace
+        if cookie is not None:
+            instance.cookie = cookie
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicRemoveTrustedDeviceV4:
         instance = cls()
+        if "Cookie" in dict_ and dict_["Cookie"] is not None:
+            instance.cookie = str(dict_["Cookie"])
+        elif include_empty:
+            instance.cookie = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -228,12 +259,14 @@ class PublicRemoveTrustedDeviceV4(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "Cookie": "cookie",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "Cookie": False,
             "namespace": True,
         }
 

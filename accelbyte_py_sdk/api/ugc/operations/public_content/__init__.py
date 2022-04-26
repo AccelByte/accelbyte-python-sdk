@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-ugc-service."""
 
-__version__ = "1.15.1"
+__version__ = "1.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .delete_content_screenshot import DeleteContentScreenshot
 from .download_content_by_share_code import DownloadContentByShareCode
 from .public_download_content_511956 import PublicDownloadContentByContentID
 from .public_download_content_32df1f import PublicDownloadContentPreview
+from .public_get_content_bulk import PublicGetContentBulk
 from .public_get_user_content import PublicGetUserContent
 from .public_search_content import PublicSearchContent
 from .search_channel_specific_10d5e8 import SearchChannelSpecificContent

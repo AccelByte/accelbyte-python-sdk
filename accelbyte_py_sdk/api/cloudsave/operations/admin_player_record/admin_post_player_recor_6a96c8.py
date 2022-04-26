@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -101,9 +101,9 @@ class AdminPostPlayerRecordHandlerV1(Operation):
 
 
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name META.
-    When creating record, if META field is not defined, the metadata value will use the default value.
-    When updating record, if META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name __META.
+    When creating record, if __META field is not defined, the metadata value will use the default value.
+    When updating record, if __META field is not defined, the existing metadata value will stay as is.
 
      Metadata List:
     1. set_by (default: CLIENT, type: string)
@@ -119,7 +119,7 @@ class AdminPostPlayerRecordHandlerV1(Operation):
 
 
             {
-                "META": {
+                "__META": {
                     "set_by": "SERVER",
                     "is_public": true
                 }

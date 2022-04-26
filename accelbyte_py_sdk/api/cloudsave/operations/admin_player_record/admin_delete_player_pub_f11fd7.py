@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,11 +33,27 @@ from ...models import ModelsResponseError
 class AdminDeletePlayerPublicRecordHandlerV1(Operation):
     """Delete player public record (adminDeletePlayerPublicRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
+    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
+    --------------------|------------------------------------------------------------------------------
+    Required Scope      | `social`
 
-    Required scope: `social`
 
-    Delete a public record (arbitrary JSON data) in user-level with given key.
+
+    Delete player public record.
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]

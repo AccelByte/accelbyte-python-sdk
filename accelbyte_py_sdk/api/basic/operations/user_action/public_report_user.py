@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.35.0)
+# justice-basic-service (1.36.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,6 +64,8 @@ class PublicReportUser(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
+        204: No Content - (no content)
+
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -185,6 +187,8 @@ class PublicReportUser(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
+        204: No Content - (no content)
+
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -200,6 +204,8 @@ class PublicReportUser(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:

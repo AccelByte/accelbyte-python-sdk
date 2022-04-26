@@ -1,6 +1,6 @@
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (4.5.1)
+# justice-platform-service Index (4.7.0)
 
 
 ## Operations
@@ -35,6 +35,12 @@
 | /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId} | GET | queryCodes | [QueryCodes](../accelbyte_py_sdk/api/platform/operations/campaign/query_codes.py) | [query_codes](../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-codes](../samples/cli/accelbyte_py_sdk_cli/platform/_query_codes.py) |
 | /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history | GET | queryRedeemHistory | [QueryRedeemHistory](../accelbyte_py_sdk/api/platform/operations/campaign/query_redeem_history.py) | [query_redeem_history](../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-redeem-history](../samples/cli/accelbyte_py_sdk_cli/platform/_query_redeem_history.py) |
 | /platform/admin/namespaces/{namespace}/campaigns/{campaignId} | PUT | updateCampaign | [UpdateCampaign](../accelbyte_py_sdk/api/platform/operations/campaign/update_campaign.py) | [update_campaign](../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-update-campaign](../samples/cli/accelbyte_py_sdk_cli/platform/_update_campaign.py) |
+
+### CatalogChanges
+| Endpoint | Method | ID | Class | Wrapper | Example |
+|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll | PUT | publishAll | [PublishAll](../accelbyte_py_sdk/api/platform/operations/catalog_changes/publish_all.py) | [publish_all](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-publish-all](../samples/cli/accelbyte_py_sdk_cli/platform/_publish_all.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria | GET | queryChanges | [QueryChanges](../accelbyte_py_sdk/api/platform/operations/catalog_changes/query_changes.py) | [query_changes](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-query-changes](../samples/cli/accelbyte_py_sdk_cli/platform/_query_changes.py) |
 
 ### Category
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -449,6 +455,8 @@
 | CampaignPagingSlicedResult | [CampaignPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/campaign_paging_sliced_result.py) |
 | CampaignUpdate | [CampaignUpdate](../accelbyte_py_sdk/api/platform/models/campaign_update.py) |
 | CancelRequest | [CancelRequest](../accelbyte_py_sdk/api/platform/models/cancel_request.py) |
+| CatalogChangeInfo | [CatalogChangeInfo](../accelbyte_py_sdk/api/platform/models/catalog_change_info.py) |
+| CatalogChangePagingSlicedResult | [CatalogChangePagingSlicedResult](../accelbyte_py_sdk/api/platform/models/catalog_change_paging_sliced_result.py) |
 | CategoryCreate | [CategoryCreate](../accelbyte_py_sdk/api/platform/models/category_create.py) |
 | CategoryInfo | [CategoryInfo](../accelbyte_py_sdk/api/platform/models/category_info.py) |
 | CategoryUpdate | [CategoryUpdate](../accelbyte_py_sdk/api/platform/models/category_update.py) |

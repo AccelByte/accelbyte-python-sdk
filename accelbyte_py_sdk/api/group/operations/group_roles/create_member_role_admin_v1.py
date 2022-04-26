@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -46,6 +46,28 @@ class CreateMemberRoleAdminV1(Operation):
 
 
     Action Code: 73202
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 1
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will give user with that role have a permission to create a role for new group member
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]

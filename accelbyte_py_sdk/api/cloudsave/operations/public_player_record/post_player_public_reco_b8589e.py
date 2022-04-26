@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -106,10 +106,25 @@ class PostPlayerPublicRecordHandlerV1(Operation):
 
 
 
-    Reserved Word List: META
+    Reserved Word List: __META
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
+
+
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [WRITE]

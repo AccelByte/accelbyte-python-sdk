@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,7 +57,7 @@ class TokenIntrospectionV3(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH] or [BEARER_AUTH]
 
         token: (token) REQUIRED str in form_data
 
@@ -75,7 +75,7 @@ class TokenIntrospectionV3(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BASIC_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     token: str                                                                                     # REQUIRED in [form_data]

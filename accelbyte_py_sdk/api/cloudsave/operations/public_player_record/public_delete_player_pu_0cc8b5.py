@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,11 +33,24 @@ from ...models import ModelsResponseError
 class PublicDeletePlayerPublicRecordHandlerV1(Operation):
     """Delete player public record (publicDeletePlayerPublicRecordHandlerV1)
 
+    Required valid user authorization
     Required scope: `social`
 
-    Required valid user authorization
+    Delete player public record.
 
-    Delete player public record (arbitrary JSON data) in user-level with given key.
+
+
+
+    ## Warning: This endpoint is going to deprecate
+
+
+
+    This endpoint is going to deprecate in the future please don't use it.
+
+    For alternative, please use these endpoints:
+    - POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
+    - DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
 
     Required Scope(s):
         - social

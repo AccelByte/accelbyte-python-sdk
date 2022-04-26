@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,7 +44,7 @@ class GetGroupInvitationRequestPublicV1(Operation):
 
 
 
-    Get Group Invitation Request List for specific group. It will check any group invitation for this user
+    Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
 
 
 

@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,7 +61,7 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
 
       * `TokenClaimsMapping` is used to extract user info from idToken claims.
-    Its a JSON format with key should be `name`, `email` and `avatarURL`
+    Its a JSON format with key should be `name`, `email` and `avatarUrl`
     since IAM will look up for these key when extracting user info.
 
     Required Permission(s):

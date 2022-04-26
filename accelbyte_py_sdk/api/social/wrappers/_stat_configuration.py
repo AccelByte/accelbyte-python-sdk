@@ -44,7 +44,7 @@ from ..operations.stat_configuration import ImportStats
 from ..operations.stat_configuration import QueryStats
 from ..operations.stat_configuration import UpdateStat
 from ..models import StatCreateSetByEnum
-from ..models import StatInfoSetByEnum, StatInfoStatusEnum
+from ..models import StatInfoStatusEnum, StatInfoSetByEnum
 
 
 @same_doc_as(CreateStat)

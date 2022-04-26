@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2139,6 +2139,7 @@ def create_oauthmodel_token_response_example() -> OauthmodelTokenResponse:
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

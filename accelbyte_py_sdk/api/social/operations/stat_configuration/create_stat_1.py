@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-social-service (1.27.1)
+# justice-social-service (1.28.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,8 @@ class CreateStat1(Operation):
 
       *  Required permission : resource="NAMESPACE:{namespace}:STAT", action=1 (CREATE)
       *  Returns : created stat template
+      * default minimum value is 0
+      * default maximum value is 1.7976931348623157e+308
 
     Required Permission(s):
         - NAMESPACE:{namespace}:STAT [CREATE]

@@ -66,7 +66,7 @@ from ..operations.order import UpdateUserOrderStatus
 from ..models import OrderHistoryInfoActionEnum
 from ..models import OrderInfoPaymentProviderEnum, OrderInfoStatusEnum
 from ..models import OrderUpdateStatusEnum
-from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
+from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStatusEnum
 
 
 @same_doc_as(CountOfPurchasedItem)

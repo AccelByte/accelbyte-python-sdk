@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-cloudsave-service (2.4.0)
+# justice-cloudsave-service (2.5.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -85,20 +85,11 @@ class PutPlayerPublicRecordConcurrentHandlerV1(Operation):
 
 
 
-    Reserved Word List: META
+    Reserved Word List: __META
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
 
-
-
-
-    ## Warning: Current Behaviour when Updating Private Record
-
-
-
-    When updating existing "Private Record", this endpoint will always convert the "Private Record" into "Public Record".
-    This behaviour might be deprecated sooner, please don't rely with that behaviour.
 
 
 

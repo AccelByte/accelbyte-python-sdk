@@ -4,7 +4,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (1.15.1)
+# justice-ugc-service (1.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,7 @@ from ..api.ugc.models import ModelsPaginatedGetTypeResponse
 from ..api.ugc.models import ModelsPaginatedGroupResponse
 from ..api.ugc.models import ModelsPagingCursor
 from ..api.ugc.models import ModelsPayloadURL
+from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
 from ..api.ugc.models import ModelsUpdateScreenshot
 from ..api.ugc.models import ModelsUpdateScreenshotRequest
@@ -327,6 +328,12 @@ def create_models_payload_url_example() -> ModelsPayloadURL:
     instance = ModelsPayloadURL()
     instance.source = randomize()
     instance.url = randomize("url")
+    return instance
+
+
+def create_models_public_get_content_bulk_request_example() -> ModelsPublicGetContentBulkRequest:
+    instance = ModelsPublicGetContentBulkRequest()
+    instance.content_ids = [randomize()]
     return instance
 
 

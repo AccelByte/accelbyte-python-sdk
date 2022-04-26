@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,7 +40,7 @@ class UpdateMemberRoleAdminV1(Operation):
 
 
 
-    This endpoint is used to get member role
+    This endpoint is used to update member role
 
 
 

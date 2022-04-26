@@ -6,7 +6,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.5.1"
+__version__ = "4.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -61,6 +61,12 @@ from .wrappers import query_redeem_history
 from .wrappers import query_redeem_history_async
 from .wrappers import update_campaign
 from .wrappers import update_campaign_async
+
+# catalog_changes
+from .wrappers import publish_all
+from .wrappers import publish_all_async
+from .wrappers import query_changes
+from .wrappers import query_changes_async
 
 # category
 from .wrappers import create_category

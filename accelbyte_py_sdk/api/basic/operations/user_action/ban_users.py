@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.35.0)
+# justice-basic-service (1.36.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,6 +61,8 @@ class BanUsers(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
+        204: No Content - (no content)
+
         400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
 
         404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
@@ -175,6 +177,8 @@ class BanUsers(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
+        204: No Content - (no content)
+
         400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
 
         404: Not Found - ErrorEntity (11041: Equ8 config not found in namespace [{namespace}])
@@ -194,6 +198,8 @@ class BanUsers(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:

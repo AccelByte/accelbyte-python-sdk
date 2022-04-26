@@ -63,8 +63,8 @@ from ..operations.subscription import QuerySubscriptionsChargeStatusEnum, QueryS
 from ..operations.subscription import QueryUserSubscriptions
 from ..operations.subscription import QueryUserSubscriptionsChargeStatusEnum, QueryUserSubscriptionsStatusEnum, QueryUserSubscriptionsSubscribedByEnum
 from ..operations.subscription import RecurringChargeSubscription
-from ..models import SubscriptionInfoSubscribedByEnum, SubscriptionInfoStatusEnum, SubscriptionInfoChargeStatusEnum
-from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
+from ..models import SubscriptionInfoSubscribedByEnum, SubscriptionInfoChargeStatusEnum, SubscriptionInfoStatusEnum
+from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStatusEnum
 
 
 @same_doc_as(CancelSubscription)

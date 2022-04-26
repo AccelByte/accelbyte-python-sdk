@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.20.0)
+# justice-legal-service (1.22.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,7 +53,7 @@ class ChangePreferenceConsent(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (successful operation)
+        200: OK - (successful operation)
     """
 
     # region fields
@@ -169,10 +169,10 @@ class ChangePreferenceConsent(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (successful operation)
+        200: OK - (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -185,8 +185,8 @@ class ChangePreferenceConsent(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

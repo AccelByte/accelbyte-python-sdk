@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,7 +44,7 @@ class LeaveGroupPublicV1(Operation):
 
 
 
-    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user is not belong to any group.
+    leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
 
 
 

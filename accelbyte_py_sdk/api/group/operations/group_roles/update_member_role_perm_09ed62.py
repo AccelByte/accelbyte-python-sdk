@@ -18,7 +18,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-group-service (2.11.1)
+# justice-group-service (2.11.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -46,6 +46,28 @@ class UpdateMemberRolePermissionAdminV1(Operation):
 
 
     Action Code: 73205
+
+
+
+
+
+
+    memberRolePermissions example value :
+
+
+
+
+    "action": 2
+
+
+
+
+    "resourceName": "GROUP:ROLE"
+
+
+
+
+    The changes will update user role to be able to read a role of other member
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
