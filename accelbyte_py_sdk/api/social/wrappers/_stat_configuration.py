@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -44,7 +46,7 @@ from ..operations.stat_configuration import ImportStats
 from ..operations.stat_configuration import QueryStats
 from ..operations.stat_configuration import UpdateStat
 from ..models import StatCreateSetByEnum
-from ..models import StatInfoStatusEnum, StatInfoSetByEnum
+from ..models import StatInfoSetByEnum, StatInfoStatusEnum
 
 
 @same_doc_as(CreateStat)

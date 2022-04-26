@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -54,7 +56,7 @@ from ..models import NotificationProcessResultStatusEnum
 from ..models import PaymentOrderChargeRequestPaymentProviderEnum
 from ..models import PaymentOrderChargeStatusStatusEnum
 from ..models import PaymentOrderCreateItemTypeEnum
-from ..models import PaymentOrderInfoChannelEnum, PaymentOrderInfoItemTypeEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum
+from ..models import PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoItemTypeEnum, PaymentOrderInfoChannelEnum
 from ..models import PaymentOrderNotifySimulationPaymentProviderEnum, PaymentOrderNotifySimulationNotifyTypeEnum
 
 

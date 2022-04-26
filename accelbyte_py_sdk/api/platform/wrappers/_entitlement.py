@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -95,12 +97,12 @@ from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import UpdateUserEntitlement
-from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
+from ..models import AppEntitlementInfoStatusEnum, AppEntitlementInfoAppTypeEnum
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
-from ..models import EntitlementInfoTypeEnum, EntitlementInfoAppTypeEnum, EntitlementInfoStatusEnum, EntitlementInfoSourceEnum, EntitlementInfoClazzEnum
+from ..models import EntitlementInfoClazzEnum, EntitlementInfoSourceEnum, EntitlementInfoAppTypeEnum, EntitlementInfoTypeEnum, EntitlementInfoStatusEnum
 from ..models import EntitlementUpdateStatusEnum
-from ..models import StackableEntitlementInfoClazzEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoStatusEnum, StackableEntitlementInfoSourceEnum
+from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoStatusEnum
 
 
 @same_doc_as(ConsumeUserEntitlement)

@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -61,7 +63,7 @@ from ..operations.campaign import UpdateCampaign
 from ..models import CampaignCreateTypeEnum, CampaignCreateStatusEnum, CampaignCreateRedeemTypeEnum
 from ..models import CampaignInfoTypeEnum, CampaignInfoStatusEnum, CampaignInfoRedeemTypeEnum
 from ..models import CampaignUpdateRedeemTypeEnum, CampaignUpdateStatusEnum
-from ..models import CodeInfoRedeemTypeEnum, CodeInfoTypeEnum, CodeInfoStatusEnum
+from ..models import CodeInfoTypeEnum, CodeInfoRedeemTypeEnum, CodeInfoStatusEnum
 
 
 @same_doc_as(ApplyUserRedemption)

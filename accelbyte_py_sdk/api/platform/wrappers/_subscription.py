@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -64,7 +66,7 @@ from ..operations.subscription import QueryUserSubscriptions
 from ..operations.subscription import QueryUserSubscriptionsChargeStatusEnum, QueryUserSubscriptionsStatusEnum, QueryUserSubscriptionsSubscribedByEnum
 from ..operations.subscription import RecurringChargeSubscription
 from ..models import SubscriptionInfoSubscribedByEnum, SubscriptionInfoChargeStatusEnum, SubscriptionInfoStatusEnum
-from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStatusEnum
+from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
 
 
 @same_doc_as(CancelSubscription)

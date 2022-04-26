@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -81,7 +83,7 @@ from ..operations.payment_config import UpdateXsollaConfig
 from ..operations.payment_config import UpdateXsollaUIConfig
 from ..models import PaymentProviderConfigEditAggregateEnum, PaymentProviderConfigEditSpecialsEnum
 from ..models import PaymentProviderConfigInfoAggregateEnum, PaymentProviderConfigInfoSpecialsEnum
-from ..models import XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestThemeEnum
+from ..models import XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestThemeEnum, XsollaPaywallConfigRequestSizeEnum
 
 
 @same_doc_as(CreatePaymentProviderConfig)

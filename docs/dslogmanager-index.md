@@ -1,3 +1,5 @@
+[//]: # (<< Code generated. DO NOT EDIT!)
+
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
 # justice-ds-log-manager-service Index (2.3.0)

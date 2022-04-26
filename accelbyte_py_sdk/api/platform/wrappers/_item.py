@@ -1,6 +1,8 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -81,15 +83,15 @@ from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
-from ..models import AppInfoPlayersEnum, AppInfoPlatformsEnum, AppInfoPrimaryGenreEnum, AppInfoGenresEnum
-from ..models import AppUpdatePlatformsEnum, AppUpdatePrimaryGenreEnum, AppUpdateGenresEnum, AppUpdatePlayersEnum
-from ..models import BasicItemItemTypeEnum, BasicItemSeasonTypeEnum, BasicItemEntitlementTypeEnum, BasicItemStatusEnum, BasicItemAppTypeEnum
-from ..models import FullAppInfoPlatformsEnum, FullAppInfoPlayersEnum, FullAppInfoGenresEnum, FullAppInfoPrimaryGenreEnum
-from ..models import FullItemInfoStatusEnum, FullItemInfoSeasonTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoEntitlementTypeEnum
-from ..models import ItemCreateStatusEnum, ItemCreateItemTypeEnum, ItemCreateEntitlementTypeEnum, ItemCreateAppTypeEnum, ItemCreateSeasonTypeEnum
-from ..models import ItemInfoItemTypeEnum, ItemInfoSeasonTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoAppTypeEnum, ItemInfoStatusEnum
-from ..models import ItemUpdateSeasonTypeEnum, ItemUpdateAppTypeEnum, ItemUpdateStatusEnum, ItemUpdateItemTypeEnum, ItemUpdateEntitlementTypeEnum
-from ..models import PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoStatusEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoAppTypeEnum, PopulatedItemInfoItemTypeEnum
+from ..models import AppInfoPrimaryGenreEnum, AppInfoGenresEnum, AppInfoPlatformsEnum, AppInfoPlayersEnum
+from ..models import AppUpdateGenresEnum, AppUpdatePlatformsEnum, AppUpdatePrimaryGenreEnum, AppUpdatePlayersEnum
+from ..models import BasicItemAppTypeEnum, BasicItemStatusEnum, BasicItemEntitlementTypeEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum
+from ..models import FullAppInfoPrimaryGenreEnum, FullAppInfoPlayersEnum, FullAppInfoGenresEnum, FullAppInfoPlatformsEnum
+from ..models import FullItemInfoEntitlementTypeEnum, FullItemInfoSeasonTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoStatusEnum
+from ..models import ItemCreateEntitlementTypeEnum, ItemCreateStatusEnum, ItemCreateAppTypeEnum, ItemCreateSeasonTypeEnum, ItemCreateItemTypeEnum
+from ..models import ItemInfoStatusEnum, ItemInfoItemTypeEnum, ItemInfoAppTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoSeasonTypeEnum
+from ..models import ItemUpdateStatusEnum, ItemUpdateEntitlementTypeEnum, ItemUpdateAppTypeEnum, ItemUpdateSeasonTypeEnum, ItemUpdateItemTypeEnum
+from ..models import PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoAppTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoStatusEnum
 
 
 @same_doc_as(AcquireItem)
