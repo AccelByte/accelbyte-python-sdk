@@ -30,6 +30,51 @@
     -) -> Tuple[Any, Union[None, HttpResponse]]:
     +) -> Any:
     ```
+- Update APIs
+    - basic
+        - version bump
+        - add 204s responses
+    - cloudsave
+        - version bump
+        - update operation descriptions
+    - dslogmanager
+        - version bump only
+    - dsmc
+        - version bump only
+    - gametelemetry
+        - add Cookie header parameters
+    - gdpr
+        - version bump only
+    - group
+        - version bump
+        - update operation descriptions
+    - iam
+        - version bump
+        - add basic auth alternative to some endpoints
+        - add Cookie header parameters
+        - update operation descriptions
+    - leaderboard
+        - version bump only
+    - legal
+        - version bump
+        - update responses
+    - lobby
+        - update responses
+    - matchmaking
+        - version bump only
+    - platform
+        - version bump
+        - new endpoints
+    - seasonpass
+        - version bump only
+    - social
+        - version bump
+        - update operation descriptions
+    - ugc
+        - version bump
+        - new endpoints
+        - new models
+        - update operation descriptions
 
 ## v0.12.0
 - Add enum classes for parameters / definitions with an `enum` property
