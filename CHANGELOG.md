@@ -3,6 +3,8 @@
 ## v0.13.0
 - Add `ProtoHttpRequest` dataclass
 - Add Cookie header-related utility methods
+- Add HeaderStr class
+- Add link to the sample app commands in the `/doc/*-index.md` files
 - ! Change method signature of `run_request` and `run_request_async`
     ```diff
     def run_request(
@@ -30,6 +32,7 @@
     -) -> Tuple[Any, Union[None, HttpResponse]]:
     +) -> Any:
     ```
+- Fix security resolving
 - Update APIs
     - basic
         - version bump
