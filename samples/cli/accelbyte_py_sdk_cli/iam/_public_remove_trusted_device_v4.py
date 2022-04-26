@@ -4,7 +4,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,13 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.option("--cookie", "cookie", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_remove_trusted_device_v4(
+        cookie: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -54,6 +56,7 @@ def public_remove_trusted_device_v4(
     else:
         login_as_internal(login_as)
     result, error = public_remove_trusted_device_v4_internal(
+        cookie=cookie,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

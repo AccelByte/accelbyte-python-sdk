@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (1.15.1)
+# justice-ugc-service (1.17.0)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel
@@ -56,6 +56,7 @@ from ._admin_get_group_contents import admin_get_group_contents
 from ._admin_delete_all_user_states import admin_delete_all_user_states
 from ._search_channel_specific_content import search_channel_specific_content
 from ._public_search_content import public_search_content
+from ._public_get_content_bulk import public_get_content_bulk
 from ._get_followed_content import get_followed_content
 from ._get_liked_content import get_liked_content
 from ._download_content_by_share_code import download_content_by_share_code
@@ -146,6 +147,7 @@ commands = [
     admin_delete_all_user_states,
     search_channel_specific_content,
     public_search_content,
+    public_get_content_bulk,
     get_followed_content,
     get_liked_content,
     download_content_by_share_code,

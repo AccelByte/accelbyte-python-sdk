@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.5.1)
+# justice-platform-service (4.7.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -142,6 +142,8 @@ from ._rollback_published_store import rollback_published_store
 from ._get_store import get_store
 from ._update_store import update_store
 from ._delete_store import delete_store
+from ._query_changes import query_changes
+from ._publish_all import publish_all
 from ._clone_store import clone_store
 from ._export_store import export_store
 from ._query_subscriptions import query_subscriptions
@@ -465,6 +467,8 @@ commands = [
     get_store,
     update_store,
     delete_store,
+    query_changes,
+    publish_all,
     clone_store,
     export_store,
     query_subscriptions,

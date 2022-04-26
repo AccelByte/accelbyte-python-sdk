@@ -35,11 +35,13 @@ from accelbyte_py_sdk.api.gametelemetry.models import TelemetryBody
 
 @click.command()
 @click.argument("body", type=str)
+@click.option("--cookie", "cookie", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def protected_save_events_game_telemetry_v1_protected_events_post(
         body: str,
+        cookie: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -62,6 +64,7 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = protected_save_events_game_telemetry_v1_protected_events_post_internal(
         body=body,
+        cookie=cookie,
         x_additional_headers=x_additional_headers,
     )
     if error:

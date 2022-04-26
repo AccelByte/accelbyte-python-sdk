@@ -4,7 +4,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.6.0)
+# justice-iam-service (5.8.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason

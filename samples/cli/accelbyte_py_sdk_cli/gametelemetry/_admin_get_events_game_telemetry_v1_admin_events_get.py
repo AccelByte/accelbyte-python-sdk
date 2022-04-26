@@ -33,11 +33,13 @@ from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 
 
 @click.command()
+@click.option("--cookie", "cookie", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_events_game_telemetry_v1_admin_events_get(
+        cookie: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -54,6 +56,7 @@ def admin_get_events_game_telemetry_v1_admin_events_get(
     else:
         login_as_internal(login_as)
     result, error = admin_get_events_game_telemetry_v1_admin_events_get_internal(
+        cookie=cookie,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

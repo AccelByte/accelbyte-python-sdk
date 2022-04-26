@@ -35,12 +35,14 @@ from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 @click.command()
 @click.argument("playtime", type=str)
 @click.argument("steam_id", type=str)
+@click.option("--cookie", "cookie", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(
         playtime: str,
         steam_id: str,
+        cookie: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
         doc: Optional[bool] = None,
@@ -58,6 +60,7 @@ def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_pla
     result, error = protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_internal(
         playtime=playtime,
         steam_id=steam_id,
+        cookie=cookie,
         x_additional_headers=x_additional_headers,
     )
     if error:
