@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.14.0-alpha
+- Add `Code generated. DO NOT EDIT!` notice on generated files.
+
 ## v0.13.0
 - Add `ProtoHttpRequest` dataclass
 - Add Cookie header-related utility methods
