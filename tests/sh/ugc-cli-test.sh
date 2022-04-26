@@ -36,7 +36,7 @@ MODULE_PATH='../samples/cli'
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
 echo "TAP version 13"
-echo "1..88"
+echo "1..89"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -405,276 +405,283 @@ $PYTHON -m $MODULE 'ugc-public-search-content' \
     > test.out 2>&1
 eval_tap $? 51 'PublicSearchContent' test.out
 
-#- 52 GetFollowedContent
+#- 52 PublicGetContentBulk
+$PYTHON -m $MODULE 'ugc-public-get-content-bulk' \
+    '{"contentIds": ["eMwSl9ML"]}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 52 'PublicGetContentBulk' test.out
+
+#- 53 GetFollowedContent
 $PYTHON -m $MODULE 'ugc-get-followed-content' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 52 'GetFollowedContent' test.out
+eval_tap $? 53 'GetFollowedContent' test.out
 
-#- 53 GetLikedContent
+#- 54 GetLikedContent
 $PYTHON -m $MODULE 'ugc-get-liked-content' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 53 'GetLikedContent' test.out
+eval_tap $? 54 'GetLikedContent' test.out
 
-#- 54 DownloadContentByShareCode
+#- 55 DownloadContentByShareCode
 $PYTHON -m $MODULE 'ugc-download-content-by-share-code' \
-    'eMwSl9ML' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 54 'DownloadContentByShareCode' test.out
-
-#- 55 PublicDownloadContentByContentID
-$PYTHON -m $MODULE 'ugc-public-download-content-by-content-id' \
     'H0NnTJ2u' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 55 'PublicDownloadContentByContentID' test.out
+eval_tap $? 55 'DownloadContentByShareCode' test.out
 
-#- 56 AddDownloadCount
-$PYTHON -m $MODULE 'ugc-add-download-count' \
+#- 56 PublicDownloadContentByContentID
+$PYTHON -m $MODULE 'ugc-public-download-content-by-content-id' \
     'lNzBvwJa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'AddDownloadCount' test.out
+eval_tap $? 56 'PublicDownloadContentByContentID' test.out
 
-#- 57 UpdateContentLikeStatus
+#- 57 AddDownloadCount
+$PYTHON -m $MODULE 'ugc-add-download-count' \
+    'Qa547Jll' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 57 'AddDownloadCount' test.out
+
+#- 58 UpdateContentLikeStatus
 $PYTHON -m $MODULE 'ugc-update-content-like-status' \
-    '{"likeStatus": false}' \
-    '547JllvA' \
+    '{"likeStatus": true}' \
+    'A8RWSpab' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'UpdateContentLikeStatus' test.out
+eval_tap $? 58 'UpdateContentLikeStatus' test.out
 
-#- 58 PublicDownloadContentPreview
+#- 59 PublicDownloadContentPreview
 $PYTHON -m $MODULE 'ugc-public-download-content-preview' \
-    '8RWSpabU' \
+    'Ut7xk6Qx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'PublicDownloadContentPreview' test.out
+eval_tap $? 59 'PublicDownloadContentPreview' test.out
 
-#- 59 GetTag
+#- 60 GetTag
 $PYTHON -m $MODULE 'ugc-get-tag' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'GetTag' test.out
+eval_tap $? 60 'GetTag' test.out
 
-#- 60 GetType
+#- 61 GetType
 $PYTHON -m $MODULE 'ugc-get-type' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'GetType' test.out
+eval_tap $? 61 'GetType' test.out
 
-#- 61 GetFollowedUsers
+#- 62 GetFollowedUsers
 $PYTHON -m $MODULE 'ugc-get-followed-users' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'GetFollowedUsers' test.out
+eval_tap $? 62 'GetFollowedUsers' test.out
 
-#- 62 GetCreator
+#- 63 GetCreator
 $PYTHON -m $MODULE 'ugc-get-creator' \
-    't7xk6Qxy' \
+    'yWhfqoWf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'GetCreator' test.out
+eval_tap $? 63 'GetCreator' test.out
 
-#- 63 GetChannels
+#- 64 GetChannels
 $PYTHON -m $MODULE 'ugc-get-channels' \
-    'WhfqoWfJ' \
+    'Jw2o8oWU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'GetChannels' test.out
+eval_tap $? 64 'GetChannels' test.out
 
-#- 64 CreateChannel
+#- 65 CreateChannel
 $PYTHON -m $MODULE 'ugc-create-channel' \
-    '{"name": "w2o8oWUq"}' \
-    'vPCZ2HzT' \
+    '{"name": "qvPCZ2Hz"}' \
+    'T7NXmWDl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'CreateChannel' test.out
+eval_tap $? 65 'CreateChannel' test.out
 
-#- 65 DeleteAllUserChannel
+#- 66 DeleteAllUserChannel
 $PYTHON -m $MODULE 'ugc-delete-all-user-channel' \
-    '7NXmWDlX' \
+    'XsuNIdQJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 65 'DeleteAllUserChannel' test.out
+eval_tap $? 66 'DeleteAllUserChannel' test.out
 
-#- 66 UpdateChannel
+#- 67 UpdateChannel
 $PYTHON -m $MODULE 'ugc-update-channel' \
-    '{"name": "suNIdQJR"}' \
-    '5lsNOlvk' \
-    'fwaSbnsu' \
+    '{"name": "R5lsNOlv"}' \
+    'kfwaSbns' \
+    'uLCgToxu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 66 'UpdateChannel' test.out
+eval_tap $? 67 'UpdateChannel' test.out
 
-#- 67 DeleteChannel
+#- 68 DeleteChannel
 $PYTHON -m $MODULE 'ugc-delete-channel' \
-    'LCgToxuV' \
-    'TekJgvg6' \
+    'VTekJgvg' \
+    '6h5HIpH0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 67 'DeleteChannel' test.out
+eval_tap $? 68 'DeleteChannel' test.out
 
-#- 68 CreateContentDirect
-eval_tap 0 68 'CreateContentDirect # SKIP deprecated' test.out
+#- 69 CreateContentDirect
+eval_tap 0 69 'CreateContentDirect # SKIP deprecated' test.out
 
-#- 69 CreateContentS3
+#- 70 CreateContentS3
 $PYTHON -m $MODULE 'ugc-create-content-s3' \
-    '{"contentType": "h5HIpH0D", "fileExtension": "viplEk4v", "name": "j3LDp4yq", "preview": "Dt8QUZDp", "subType": "xlHasinG", "tags": ["cjrkmRMt"], "type": "tgjDSaIV"}' \
-    'Bmft3Udg' \
-    '7p9PGmY2' \
+    '{"contentType": "DviplEk4", "fileExtension": "vj3LDp4y", "name": "qDt8QUZD", "preview": "pxlHasin", "subType": "GcjrkmRM", "tags": ["ttgjDSaI"], "type": "VBmft3Ud"}' \
+    'g7p9PGmY' \
+    '2H5kX4Ms' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 69 'CreateContentS3' test.out
+eval_tap $? 70 'CreateContentS3' test.out
 
-#- 70 UpdateContentS3
+#- 71 UpdateContentS3
 $PYTHON -m $MODULE 'ugc-update-content-s3' \
-    '{"contentType": "H5kX4Msi", "fileExtension": "sSX28nAR", "name": "xWRpv5ou", "preview": "5xtvd28O", "subType": "UfCt8UJC", "tags": ["5flNyj6H"], "type": "sTtX8P3l"}' \
-    'lnaaS9lq' \
-    'yygPcfkJ' \
-    'IxfQZza8' \
+    '{"contentType": "isSX28nA", "fileExtension": "RxWRpv5o", "name": "u5xtvd28", "preview": "OUfCt8UJ", "subType": "C5flNyj6", "tags": ["HsTtX8P3"], "type": "llnaaS9l"}' \
+    'qyygPcfk' \
+    'JIxfQZza' \
+    '8kNVbDxV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 70 'UpdateContentS3' test.out
+eval_tap $? 71 'UpdateContentS3' test.out
 
-#- 71 UpdateContentDirect
-eval_tap 0 71 'UpdateContentDirect # SKIP deprecated' test.out
+#- 72 UpdateContentDirect
+eval_tap 0 72 'UpdateContentDirect # SKIP deprecated' test.out
 
-#- 72 DeleteContent
+#- 73 DeleteContent
 $PYTHON -m $MODULE 'ugc-delete-content' \
-    'kNVbDxVM' \
-    'q7HJk0F8' \
-    '9xAc3YVf' \
+    'Mq7HJk0F' \
+    '89xAc3YV' \
+    'faENtrl0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 72 'DeleteContent' test.out
+eval_tap $? 73 'DeleteContent' test.out
 
-#- 73 PublicGetUserContent
+#- 74 PublicGetUserContent
 $PYTHON -m $MODULE 'ugc-public-get-user-content' \
-    'aENtrl0p' \
+    'pTKZTXqz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 73 'PublicGetUserContent' test.out
+eval_tap $? 74 'PublicGetUserContent' test.out
 
-#- 74 DeleteAllUserContents
+#- 75 DeleteAllUserContents
 $PYTHON -m $MODULE 'ugc-delete-all-user-contents' \
-    'TKZTXqzH' \
+    'HuBMYQSA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 74 'DeleteAllUserContents' test.out
+eval_tap $? 75 'DeleteAllUserContents' test.out
 
-#- 75 UpdateScreenshots
+#- 76 UpdateScreenshots
 $PYTHON -m $MODULE 'ugc-update-screenshots' \
-    '{"screenshots": [{"description": "uBMYQSA2", "screenshotId": "jz1ZOpdO"}]}' \
-    'jSyMddB4' \
-    '1JuMf7RU' \
+    '{"screenshots": [{"description": "2jz1ZOpd", "screenshotId": "OjSyMddB"}]}' \
+    '41JuMf7R' \
+    'UyBHRj8I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 75 'UpdateScreenshots' test.out
+eval_tap $? 76 'UpdateScreenshots' test.out
 
-#- 76 UploadContentScreenshot
+#- 77 UploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "yBHRj8Ii", "description": "RimRllHT", "fileExtension": "jfif"}]}' \
-    'c40vFFA6' \
-    'gpU7EW3x' \
+    '{"screenshots": [{"contentType": "iRimRllH", "description": "T6Dc40vF", "fileExtension": "jfif"}]}' \
+    'A6gpU7EW' \
+    '3x1dCpm5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 76 'UploadContentScreenshot' test.out
+eval_tap $? 77 'UploadContentScreenshot' test.out
 
-#- 77 DeleteContentScreenshot
+#- 78 DeleteContentScreenshot
 $PYTHON -m $MODULE 'ugc-delete-content-screenshot' \
-    '1dCpm55g' \
-    'OeqQIqcJ' \
-    'VKmBM1J1' \
+    '5gOeqQIq' \
+    'cJVKmBM1' \
+    'J1IbuTrr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 77 'DeleteContentScreenshot' test.out
+eval_tap $? 78 'DeleteContentScreenshot' test.out
 
-#- 78 UpdateUserFollowStatus
+#- 79 UpdateUserFollowStatus
 $PYTHON -m $MODULE 'ugc-update-user-follow-status' \
     '{"followStatus": false}' \
-    'uTrrkbmu' \
+    'bmuT1whO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 78 'UpdateUserFollowStatus' test.out
+eval_tap $? 79 'UpdateUserFollowStatus' test.out
 
-#- 79 GetPublicFollowers
+#- 80 GetPublicFollowers
 $PYTHON -m $MODULE 'ugc-get-public-followers' \
-    'T1whOqmE' \
+    'qmEnDXIW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 79 'GetPublicFollowers' test.out
+eval_tap $? 80 'GetPublicFollowers' test.out
 
-#- 80 GetPublicFollowing
+#- 81 GetPublicFollowing
 $PYTHON -m $MODULE 'ugc-get-public-following' \
-    'nDXIWrBP' \
+    'rBPlSay4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 80 'GetPublicFollowing' test.out
+eval_tap $? 81 'GetPublicFollowing' test.out
 
-#- 81 GetGroups
+#- 82 GetGroups
 $PYTHON -m $MODULE 'ugc-get-groups' \
-    'lSay46mv' \
+    '6mv71BAZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 81 'GetGroups' test.out
+eval_tap $? 82 'GetGroups' test.out
 
-#- 82 CreateGroup
+#- 83 CreateGroup
 $PYTHON -m $MODULE 'ugc-create-group' \
-    '{"contents": ["71BAZAOj"], "name": "tFJ2vmTj"}' \
-    '7tT7TZHW' \
+    '{"contents": ["AOjtFJ2v"], "name": "mTj7tT7T"}' \
+    'ZHWDdCkI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 82 'CreateGroup' test.out
+eval_tap $? 83 'CreateGroup' test.out
 
-#- 83 DeleteAllUserGroup
+#- 84 DeleteAllUserGroup
 $PYTHON -m $MODULE 'ugc-delete-all-user-group' \
-    'DdCkIsZo' \
+    'sZoArWwP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 83 'DeleteAllUserGroup' test.out
+eval_tap $? 84 'DeleteAllUserGroup' test.out
 
-#- 84 GetGroup
+#- 85 GetGroup
 $PYTHON -m $MODULE 'ugc-get-group' \
-    'ArWwPHcy' \
-    'FAdAtYci' \
+    'HcyFAdAt' \
+    'YciLIgRw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 84 'GetGroup' test.out
+eval_tap $? 85 'GetGroup' test.out
 
-#- 85 UpdateGroup
+#- 86 UpdateGroup
 $PYTHON -m $MODULE 'ugc-update-group' \
-    '{"contents": ["LIgRwFRr"], "name": "0gwB9tz3"}' \
-    'vp99XVlV' \
-    '8rK3tE6n' \
+    '{"contents": ["FRr0gwB9"], "name": "tz3vp99X"}' \
+    'VlV8rK3t' \
+    'E6n0smip' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 85 'UpdateGroup' test.out
+eval_tap $? 86 'UpdateGroup' test.out
 
-#- 86 DeleteGroup
+#- 87 DeleteGroup
 $PYTHON -m $MODULE 'ugc-delete-group' \
-    '0smip1tw' \
-    '3L7cUd9p' \
+    '1tw3L7cU' \
+    'd9pqtv6J' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 86 'DeleteGroup' test.out
+eval_tap $? 87 'DeleteGroup' test.out
 
-#- 87 GetGroupContent
+#- 88 GetGroupContent
 $PYTHON -m $MODULE 'ugc-get-group-content' \
-    'qtv6JfPZ' \
-    'wcCVOXcV' \
+    'fPZwcCVO' \
+    'XcVa80Tm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 87 'GetGroupContent' test.out
+eval_tap $? 88 'GetGroupContent' test.out
 
-#- 88 DeleteAllUserStates
+#- 89 DeleteAllUserStates
 $PYTHON -m $MODULE 'ugc-delete-all-user-states' \
-    'a80TmCwt' \
+    'CwtD2lAH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 88 'DeleteAllUserStates' test.out
+eval_tap $? 89 'DeleteAllUserStates' test.out
 
 
 rm -f "tmp.dat"

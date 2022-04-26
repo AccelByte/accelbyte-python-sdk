@@ -36,7 +36,7 @@ MODULE_PATH='../samples/cli'
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
 echo "TAP version 13"
-echo "1..321"
+echo "1..323"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -983,1392 +983,1406 @@ $PYTHON -m $MODULE 'platform-delete-store' \
     > test.out 2>&1
 eval_tap $? 137 'DeleteStore' test.out
 
-#- 138 CloneStore
-$PYTHON -m $MODULE 'platform-clone-store' \
+#- 138 QueryChanges
+$PYTHON -m $MODULE 'platform-query-changes' \
     '9LfGeegJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 138 'CloneStore' test.out
+eval_tap $? 138 'QueryChanges' test.out
 
-#- 139 ExportStore
-$PYTHON -m $MODULE 'platform-export-store' \
+#- 139 PublishAll
+$PYTHON -m $MODULE 'platform-publish-all' \
     'MaBGR6D1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 139 'ExportStore' test.out
+eval_tap $? 139 'PublishAll' test.out
 
-#- 140 QuerySubscriptions
-$PYTHON -m $MODULE 'platform-query-subscriptions' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 140 'QuerySubscriptions' test.out
-
-#- 141 RecurringChargeSubscription
-$PYTHON -m $MODULE 'platform-recurring-charge-subscription' \
+#- 140 CloneStore
+$PYTHON -m $MODULE 'platform-clone-store' \
     'ZoZEZQkJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 141 'RecurringChargeSubscription' test.out
+eval_tap $? 140 'CloneStore' test.out
 
-#- 142 GetTicketDynamic
-$PYTHON -m $MODULE 'platform-get-ticket-dynamic' \
+#- 141 ExportStore
+$PYTHON -m $MODULE 'platform-export-store' \
     '8DSqFnhd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 142 'GetTicketDynamic' test.out
+eval_tap $? 141 'ExportStore' test.out
 
-#- 143 DecreaseTicketSale
-$PYTHON -m $MODULE 'platform-decrease-ticket-sale' \
+#- 142 QuerySubscriptions
+$PYTHON -m $MODULE 'platform-query-subscriptions' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 142 'QuerySubscriptions' test.out
+
+#- 143 RecurringChargeSubscription
+$PYTHON -m $MODULE 'platform-recurring-charge-subscription' \
     'KvjFCFbS' \
-    --body '{"orderNo": "FlEWoMPd"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 143 'DecreaseTicketSale' test.out
+eval_tap $? 143 'RecurringChargeSubscription' test.out
 
-#- 144 GetTicketBoothID
-$PYTHON -m $MODULE 'platform-get-ticket-booth-id' \
+#- 144 GetTicketDynamic
+$PYTHON -m $MODULE 'platform-get-ticket-dynamic' \
+    'FlEWoMPd' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 144 'GetTicketDynamic' test.out
+
+#- 145 DecreaseTicketSale
+$PYTHON -m $MODULE 'platform-decrease-ticket-sale' \
     'gK5zn62m' \
+    --body '{"orderNo": "hnFSpCTl"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 144 'GetTicketBoothID' test.out
+eval_tap $? 145 'DecreaseTicketSale' test.out
 
-#- 145 IncreaseTicketSale
+#- 146 GetTicketBoothID
+$PYTHON -m $MODULE 'platform-get-ticket-booth-id' \
+    'DNBOcygv' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 146 'GetTicketBoothID' test.out
+
+#- 147 IncreaseTicketSale
 $PYTHON -m $MODULE 'platform-increase-ticket-sale' \
-    'hnFSpCTl' \
-    --body '{"count": 58, "orderNo": "NBOcygvv"}' \
+    'v2LAgfBG' \
+    --body '{"count": 94, "orderNo": "zanbKYsB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 145 'IncreaseTicketSale' test.out
+eval_tap $? 147 'IncreaseTicketSale' test.out
 
-#- 146 AnonymizeCampaign
+#- 148 AnonymizeCampaign
 $PYTHON -m $MODULE 'platform-anonymize-campaign' \
-    '2LAgfBGV' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 146 'AnonymizeCampaign' test.out
-
-#- 147 AnonymizeEntitlement
-$PYTHON -m $MODULE 'platform-anonymize-entitlement' \
-    'zanbKYsB' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 147 'AnonymizeEntitlement' test.out
-
-#- 148 AnonymizeFulfillment
-$PYTHON -m $MODULE 'platform-anonymize-fulfillment' \
     '0gqJ8VhY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 148 'AnonymizeFulfillment' test.out
+eval_tap $? 148 'AnonymizeCampaign' test.out
 
-#- 149 AnonymizeIntegration
-$PYTHON -m $MODULE 'platform-anonymize-integration' \
+#- 149 AnonymizeEntitlement
+$PYTHON -m $MODULE 'platform-anonymize-entitlement' \
     'SikJl2p9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 149 'AnonymizeIntegration' test.out
+eval_tap $? 149 'AnonymizeEntitlement' test.out
 
-#- 150 AnonymizeOrder
-$PYTHON -m $MODULE 'platform-anonymize-order' \
+#- 150 AnonymizeFulfillment
+$PYTHON -m $MODULE 'platform-anonymize-fulfillment' \
     'rBx8N5eg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 150 'AnonymizeOrder' test.out
+eval_tap $? 150 'AnonymizeFulfillment' test.out
 
-#- 151 AnonymizePayment
-$PYTHON -m $MODULE 'platform-anonymize-payment' \
+#- 151 AnonymizeIntegration
+$PYTHON -m $MODULE 'platform-anonymize-integration' \
     'apqxDy4c' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 151 'AnonymizePayment' test.out
+eval_tap $? 151 'AnonymizeIntegration' test.out
 
-#- 152 AnonymizeSubscription
-$PYTHON -m $MODULE 'platform-anonymize-subscription' \
+#- 152 AnonymizeOrder
+$PYTHON -m $MODULE 'platform-anonymize-order' \
     'LfNjzzEZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 152 'AnonymizeSubscription' test.out
+eval_tap $? 152 'AnonymizeOrder' test.out
 
-#- 153 AnonymizeWallet
-$PYTHON -m $MODULE 'platform-anonymize-wallet' \
+#- 153 AnonymizePayment
+$PYTHON -m $MODULE 'platform-anonymize-payment' \
     'YA8jIkMJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 153 'AnonymizeWallet' test.out
+eval_tap $? 153 'AnonymizePayment' test.out
 
-#- 154 QueryUserEntitlements
-$PYTHON -m $MODULE 'platform-query-user-entitlements' \
+#- 154 AnonymizeSubscription
+$PYTHON -m $MODULE 'platform-anonymize-subscription' \
     'b7cZ2bPs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 154 'QueryUserEntitlements' test.out
+eval_tap $? 154 'AnonymizeSubscription' test.out
 
-#- 155 GrantUserEntitlement
-$PYTHON -m $MODULE 'platform-grant-user-entitlement' \
+#- 155 AnonymizeWallet
+$PYTHON -m $MODULE 'platform-anonymize-wallet' \
     'aLLpEBVE' \
-    --body '[{"endDate": "1990-03-23T00:00:00Z", "grantedCode": "5AsKaF2P", "itemId": "44lXkI3z", "itemNamespace": "diRiC5Ib", "language": "ITjw_dF", "quantity": 83, "region": "u5V6QSYx", "source": "GIFT", "startDate": "1994-11-19T00:00:00Z", "storeId": "ryVuZYmg"}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 155 'GrantUserEntitlement' test.out
+eval_tap $? 155 'AnonymizeWallet' test.out
 
-#- 156 GetUserAppEntitlementByAppId
+#- 156 QueryUserEntitlements
+$PYTHON -m $MODULE 'platform-query-user-entitlements' \
+    'Mk5AsKaF' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 156 'QueryUserEntitlements' test.out
+
+#- 157 GrantUserEntitlement
+$PYTHON -m $MODULE 'platform-grant-user-entitlement' \
+    '2P44lXkI' \
+    --body '[{"endDate": "1998-07-21T00:00:00Z", "grantedCode": "diRiC5Ib", "itemId": "Pit71JWl", "itemNamespace": "YCoi4nDf", "language": "Uvqs-YvUz", "quantity": 13, "region": "UeEPB5AG", "source": "IAP", "startDate": "1981-03-25T00:00:00Z", "storeId": "0Zthaj0E"}]' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 157 'GrantUserEntitlement' test.out
+
+#- 158 GetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-by-app-id' \
-    'UeEPB5AG' \
-    'Pgvk0Zth' \
+    'BA4azRz0' \
+    'd56smobo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 156 'GetUserAppEntitlementByAppId' test.out
+eval_tap $? 158 'GetUserAppEntitlementByAppId' test.out
 
-#- 157 QueryUserEntitlementsByAppType
+#- 159 QueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-query-user-entitlements-by-app-type' \
-    'aj0EBA4a' \
+    'r4p1PlgQ' \
     'SOFTWARE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 157 'QueryUserEntitlementsByAppType' test.out
+eval_tap $? 159 'QueryUserEntitlementsByAppType' test.out
 
-#- 158 GetUserEntitlementByItemId
+#- 160 GetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-item-id' \
-    'Rz0d56sm' \
-    'obor4p1P' \
+    '9EcNGOeB' \
+    'RY6G5ae0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 158 'GetUserEntitlementByItemId' test.out
+eval_tap $? 160 'GetUserEntitlementByItemId' test.out
 
-#- 159 GetUserEntitlementBySku
+#- 161 GetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-sku' \
-    'lgQB9EcN' \
-    'GOeBRY6G' \
+    '7deDLaZ8' \
+    'JCvbeTfW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 159 'GetUserEntitlementBySku' test.out
+eval_tap $? 161 'GetUserEntitlementBySku' test.out
 
-#- 160 ExistsAnyUserActiveEntitlement
+#- 162 ExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement' \
-    '5ae07deD' \
+    '0hgzrabL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 160 'ExistsAnyUserActiveEntitlement' test.out
+eval_tap $? 162 'ExistsAnyUserActiveEntitlement' test.out
 
-#- 161 ExistsAnyUserActiveEntitlementByItemIds
+#- 163 ExistsAnyUserActiveEntitlementByItemIds
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement-by-item-ids' \
-    'LaZ8JCvb' \
-    '["eTfW0hgz"]' \
+    'JxEwJrEB' \
+    '["mQ64haNO"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 161 'ExistsAnyUserActiveEntitlementByItemIds' test.out
+eval_tap $? 163 'ExistsAnyUserActiveEntitlementByItemIds' test.out
 
-#- 162 GetUserAppEntitlementOwnershipByAppId
+#- 164 GetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-ownership-by-app-id' \
-    'rabLJxEw' \
-    'JrEBmQ64' \
+    'zlGu68UY' \
+    'yupjdDet' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 162 'GetUserAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 164 'GetUserAppEntitlementOwnershipByAppId' test.out
 
-#- 163 GetUserEntitlementOwnershipByItemId
+#- 165 GetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-item-id' \
-    'haNOzlGu' \
-    '68UYyupj' \
+    'noT0rfWt' \
+    'VPwQfq6V' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 163 'GetUserEntitlementOwnershipByItemId' test.out
+eval_tap $? 165 'GetUserEntitlementOwnershipByItemId' test.out
 
-#- 164 GetUserEntitlementOwnershipBySku
+#- 166 GetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-sku' \
-    'dDetnoT0' \
-    'rfWtVPwQ' \
+    '92gbfPou' \
+    'NdmP7fck' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 164 'GetUserEntitlementOwnershipBySku' test.out
+eval_tap $? 166 'GetUserEntitlementOwnershipBySku' test.out
 
-#- 165 RevokeUserEntitlements
+#- 167 RevokeUserEntitlements
 $PYTHON -m $MODULE 'platform-revoke-user-entitlements' \
-    'fq6V92gb' \
-    'fPouNdmP' \
+    'VnuDGvYI' \
+    'b1p5tcR5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 165 'RevokeUserEntitlements' test.out
+eval_tap $? 167 'RevokeUserEntitlements' test.out
 
-#- 166 GetUserEntitlement
+#- 168 GetUserEntitlement
 $PYTHON -m $MODULE 'platform-get-user-entitlement' \
-    '7fckVnuD' \
-    'GvYIb1p5' \
+    'z8ZJLjSH' \
+    'caR3X4tZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 166 'GetUserEntitlement' test.out
+eval_tap $? 168 'GetUserEntitlement' test.out
 
-#- 167 UpdateUserEntitlement
+#- 169 UpdateUserEntitlement
 $PYTHON -m $MODULE 'platform-update-user-entitlement' \
-    'tcR5z8ZJ' \
-    'LjSHcaR3' \
-    --body '{"endDate": "1995-06-01T00:00:00Z", "nullFieldList": ["Zmwr0QmO"], "startDate": "1977-05-30T00:00:00Z", "status": "REVOKED", "useCount": 13}' \
+    'mwr0QmOn' \
+    'sEg49eXp' \
+    --body '{"endDate": "1997-07-05T00:00:00Z", "nullFieldList": ["QkZ2Jjuw"], "startDate": "1995-07-10T00:00:00Z", "status": "CONSUMED", "useCount": 93}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 167 'UpdateUserEntitlement' test.out
+eval_tap $? 169 'UpdateUserEntitlement' test.out
 
-#- 168 ConsumeUserEntitlement
+#- 170 ConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-consume-user-entitlement' \
-    '49eXp0xQ' \
-    'kZ2JjuwW' \
-    --body '{"useCount": 96}' \
+    '11PCeSrv' \
+    'ejUKwVfF' \
+    --body '{"useCount": 94}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 168 'ConsumeUserEntitlement' test.out
+eval_tap $? 170 'ConsumeUserEntitlement' test.out
 
-#- 169 DisableUserEntitlement
+#- 171 DisableUserEntitlement
 $PYTHON -m $MODULE 'platform-disable-user-entitlement' \
-    'y0tU11PC' \
-    'eSrvejUK' \
+    'r7mkDzFB' \
+    'I1VwhkVS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 169 'DisableUserEntitlement' test.out
+eval_tap $? 171 'DisableUserEntitlement' test.out
 
-#- 170 EnableUserEntitlement
+#- 172 EnableUserEntitlement
 $PYTHON -m $MODULE 'platform-enable-user-entitlement' \
-    'wVfF37Vr' \
-    '7mkDzFBI' \
+    'KDlNFOUH' \
+    'BJsvTsqk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 170 'EnableUserEntitlement' test.out
+eval_tap $? 172 'EnableUserEntitlement' test.out
 
-#- 171 GetUserEntitlementHistories
+#- 173 GetUserEntitlementHistories
 $PYTHON -m $MODULE 'platform-get-user-entitlement-histories' \
-    '1VwhkVSK' \
-    'DlNFOUHB' \
+    '9hg4hj6n' \
+    'UdebW6Us' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 171 'GetUserEntitlementHistories' test.out
+eval_tap $? 173 'GetUserEntitlementHistories' test.out
 
-#- 172 RevokeUserEntitlement
+#- 174 RevokeUserEntitlement
 $PYTHON -m $MODULE 'platform-revoke-user-entitlement' \
-    'JsvTsqk9' \
-    'hg4hj6nU' \
+    'kbPkkZAk' \
+    '01f1KxCt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 172 'RevokeUserEntitlement' test.out
+eval_tap $? 174 'RevokeUserEntitlement' test.out
 
-#- 173 FulfillItem
+#- 175 FulfillItem
 $PYTHON -m $MODULE 'platform-fulfill-item' \
-    'debW6Usk' \
-    --body '{"duration": 3, "endDate": "1991-03-24T00:00:00Z", "itemId": "kZAk01f1", "itemSku": "KxCtWADU", "language": "2guN6U9w", "order": {"currency": {"currencyCode": "13W1K9TZ", "currencySymbol": "Q4qRLEi5", "currencyType": "VIRTUAL", "decimals": 29, "namespace": "wE36rfmM"}, "ext": {"0CCs35TP": {}}, "free": false}, "orderNo": "sY8WgwSx", "quantity": 58, "region": "I5GH9bv9", "source": "ACHIEVEMENT", "startDate": "1998-09-19T00:00:00Z", "storeId": "pA6pzjHp"}' \
+    'WADU2guN' \
+    --body '{"duration": 93, "endDate": "1982-10-18T00:00:00Z", "itemId": "9TZQ4qRL", "itemSku": "Ei5wowE3", "language": "6rfmM0CC", "order": {"currency": {"currencyCode": "s35TPUPL", "currencySymbol": "msY8WgwS", "currencyType": "VIRTUAL", "decimals": 58, "namespace": "I5GH9bv9"}, "ext": {"ZTo2HpA6": {}}, "free": false}, "orderNo": "zjHpZO0E", "quantity": 17, "region": "LgRPJK3n", "source": "REWARD", "startDate": "1971-02-10T00:00:00Z", "storeId": "3GOgbQrq"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 173 'FulfillItem' test.out
+eval_tap $? 175 'FulfillItem' test.out
 
-#- 174 RedeemCode
+#- 176 RedeemCode
 $PYTHON -m $MODULE 'platform-redeem-code' \
-    'ZO0E9iLg' \
-    --body '{"code": "RPJK3nBa", "language": "go", "region": "Qrqra0Pt"}' \
+    'ra0Ptkfv' \
+    --body '{"code": "OpY2ramp", "language": "Nb_194", "region": "C66hFq0k"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 174 'RedeemCode' test.out
+eval_tap $? 176 'RedeemCode' test.out
 
-#- 175 FulfillRewards
+#- 177 FulfillRewards
 $PYTHON -m $MODULE 'platform-fulfill-rewards' \
-    'kfvOpY2r' \
-    --body '{"rewards": [{"currency": {"currencyCode": "amp5lnBn", "namespace": "6xmBkfMt"}, "item": {"itemId": "C66hFq0k", "itemSku": "POkORm2X", "itemType": "jlNEE5ec"}, "quantity": 83, "type": "CURRENCY"}], "source": "REWARD"}' \
+    'POkORm2X' \
+    --body '{"rewards": [{"currency": {"currencyCode": "jlNEE5ec", "namespace": "PzAmi0yS"}, "item": {"itemId": "JHfPloP1", "itemSku": "XkYK4MgI", "itemType": "sDSFMPyM"}, "quantity": 15, "type": "CURRENCY"}], "source": "REDEEM_CODE"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 175 'FulfillRewards' test.out
+eval_tap $? 177 'FulfillRewards' test.out
 
-#- 176 QueryUserIAPOrders
+#- 178 QueryUserIAPOrders
 $PYTHON -m $MODULE 'platform-query-user-iap-orders' \
-    'mi0ySJHf' \
+    '1OLZPVww' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 176 'QueryUserIAPOrders' test.out
+eval_tap $? 178 'QueryUserIAPOrders' test.out
 
-#- 177 QueryAllUserIAPOrders
+#- 179 QueryAllUserIAPOrders
 $PYTHON -m $MODULE 'platform-query-all-user-iap-orders' \
-    'PloP1XkY' \
+    'xH4BIDJu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 177 'QueryAllUserIAPOrders' test.out
+eval_tap $? 179 'QueryAllUserIAPOrders' test.out
 
-#- 178 MockFulfillIAPItem
+#- 180 MockFulfillIAPItem
 $PYTHON -m $MODULE 'platform-mock-fulfill-iap-item' \
-    'K4MgIsDS' \
-    --body '{"itemIdentityType": "ITEM_SKU", "language": "pYmH-WXhb-199", "productId": "ftll8N0V", "region": "vChHz9ur", "type": "STEAM"}' \
+    'DoShMMft' \
+    --body '{"itemIdentityType": "ITEM_ID", "language": "nv-hZUR", "productId": "t7QWvE8s", "region": "6Uz8BRuY", "type": "TWITCH"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 178 'MockFulfillIAPItem' test.out
+eval_tap $? 180 'MockFulfillIAPItem' test.out
 
-#- 179 QueryUserOrders
+#- 181 QueryUserOrders
 $PYTHON -m $MODULE 'platform-query-user-orders' \
-    't7QWvE8s' \
+    'TtL6MTTR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 179 'QueryUserOrders' test.out
+eval_tap $? 181 'QueryUserOrders' test.out
 
-#- 180 CountOfPurchasedItem
+#- 182 CountOfPurchasedItem
 $PYTHON -m $MODULE 'platform-count-of-purchased-item' \
-    '6Uz8BRuY' \
-    'WDTtL6MT' \
+    'kCbb9S5Q' \
+    '1IVHGT88' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 180 'CountOfPurchasedItem' test.out
+eval_tap $? 182 'CountOfPurchasedItem' test.out
 
-#- 181 GetUserOrder
+#- 183 GetUserOrder
 $PYTHON -m $MODULE 'platform-get-user-order' \
-    'TRkCbb9S' \
-    '5Q1IVHGT' \
+    'prREBgYO' \
+    'WdHJ9Jum' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 181 'GetUserOrder' test.out
+eval_tap $? 183 'GetUserOrder' test.out
 
-#- 182 UpdateUserOrderStatus
+#- 184 UpdateUserOrderStatus
 $PYTHON -m $MODULE 'platform-update-user-order-status' \
-    '88prREBg' \
-    'YOWdHJ9J' \
-    --body '{"status": "FULFILL_FAILED", "statusReason": "mohtU13g"}' \
+    'ohtU13gf' \
+    '7TRigNZj' \
+    --body '{"status": "FULFILL_FAILED", "statusReason": "5y3HmK8Q"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 182 'UpdateUserOrderStatus' test.out
+eval_tap $? 184 'UpdateUserOrderStatus' test.out
 
-#- 183 FulfillUserOrder
+#- 185 FulfillUserOrder
 $PYTHON -m $MODULE 'platform-fulfill-user-order' \
-    'f7TRigNZ' \
-    'j5w5y3Hm' \
+    'VOa62eQZ' \
+    'tbLLcF67' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 183 'FulfillUserOrder' test.out
+eval_tap $? 185 'FulfillUserOrder' test.out
 
-#- 184 GetUserOrderGrant
+#- 186 GetUserOrderGrant
 $PYTHON -m $MODULE 'platform-get-user-order-grant' \
-    'K8QVOa62' \
-    'eQZtbLLc' \
+    '1WLtv38H' \
+    'ecczopFm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 184 'GetUserOrderGrant' test.out
+eval_tap $? 186 'GetUserOrderGrant' test.out
 
-#- 185 GetUserOrderHistories
+#- 187 GetUserOrderHistories
 $PYTHON -m $MODULE 'platform-get-user-order-histories' \
-    'F671WLtv' \
-    '38Hecczo' \
+    'eRwpcJBZ' \
+    'yi3mLC4K' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 185 'GetUserOrderHistories' test.out
+eval_tap $? 187 'GetUserOrderHistories' test.out
 
-#- 186 ProcessUserOrderNotification
+#- 188 ProcessUserOrderNotification
 $PYTHON -m $MODULE 'platform-process-user-order-notification' \
-    'pFmeRwpc' \
-    'JBZyi3mL' \
-    --body '{"additionalData": {"cardSummary": "C4KzekiS"}, "authorisedTime": "1983-02-02T00:00:00Z", "chargebackReversedTime": "1983-04-23T00:00:00Z", "chargebackTime": "1976-04-14T00:00:00Z", "chargedTime": "1991-12-05T00:00:00Z", "createdTime": "1980-03-18T00:00:00Z", "currency": {"currencyCode": "oVHgCytC", "currencySymbol": "6lRG98Yx", "currencyType": "REAL", "decimals": 66, "namespace": "bRdoTKKe"}, "customParameters": {"uSjfZe9i": {}}, "extOrderNo": "1osghF1h", "extTxId": "zi1Nl47s", "extUserId": "yJ5ibzSH", "issuedAt": "1996-01-28T00:00:00Z", "metadata": {"CLIvWPVR": "sdEqA61y"}, "namespace": "TrMgsycT", "nonceStr": "gmPzc20E", "paymentMethod": "uO5dMqGD", "paymentMethodFee": 22, "paymentOrderNo": "SZPY07rE", "paymentProvider": "ADYEN", "paymentProviderFee": 51, "paymentStationUrl": "HjL6ZbXj", "price": 64, "refundedTime": "1985-12-22T00:00:00Z", "salesTax": 25, "sandbox": false, "sku": "p3op8hta", "status": "REFUNDED", "statusReason": "LxtW4PvF", "subscriptionId": "kESTULat", "subtotalPrice": 62, "targetNamespace": "1Le7cR7q", "targetUserId": "6PWhZmmK", "tax": 50, "totalPrice": 17, "totalTax": 91, "txEndTime": "1978-09-11T00:00:00Z", "type": "ipJHahVi", "userId": "JvLYW0kd", "vat": 25}' \
+    'zekiSzey' \
+    'olnOQt0j' \
+    --body '{"additionalData": {"cardSummary": "oVHgCytC"}, "authorisedTime": "1976-12-12T00:00:00Z", "chargebackReversedTime": "1987-07-06T00:00:00Z", "chargebackTime": "1977-09-21T00:00:00Z", "chargedTime": "1971-12-14T00:00:00Z", "createdTime": "1972-04-30T00:00:00Z", "currency": {"currencyCode": "TKKeuSjf", "currencySymbol": "Ze9i1osg", "currencyType": "REAL", "decimals": 62, "namespace": "1hzi1Nl4"}, "customParameters": {"7syJ5ibz": {}}, "extOrderNo": "SHZeCLIv", "extTxId": "WPVRsdEq", "extUserId": "A61yTrMg", "issuedAt": "1980-07-10T00:00:00Z", "metadata": {"cTgmPzc2": "0EuO5dMq"}, "namespace": "GDlSZPY0", "nonceStr": "7rEVSjzH", "paymentMethod": "jL6ZbXjG", "paymentMethodFee": 58, "paymentOrderNo": "Smpp3op8", "paymentProvider": "XSOLLA", "paymentProviderFee": 38, "paymentStationUrl": "aRLxtW4P", "price": 42, "refundedTime": "1986-03-20T00:00:00Z", "salesTax": 61, "sandbox": false, "sku": "t5F1Le7c", "status": "REFUNDED", "statusReason": "7q6PWhZm", "subscriptionId": "mKz41i1T", "subtotalPrice": 31, "targetNamespace": "78FipJHa", "targetUserId": "hViJvLYW", "tax": 20, "totalPrice": 6, "totalTax": 25, "txEndTime": "1976-03-26T00:00:00Z", "type": "2luqSOOA", "userId": "2VOZBoNb", "vat": 54}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 186 'ProcessUserOrderNotification' test.out
+eval_tap $? 188 'ProcessUserOrderNotification' test.out
 
-#- 187 DownloadUserOrderReceipt
+#- 189 DownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-download-user-order-receipt' \
-    'lk2luqSO' \
-    'OA2VOZBo' \
+    '98PuSGyk' \
+    'qFzPwSMX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 187 'DownloadUserOrderReceipt' test.out
+eval_tap $? 189 'DownloadUserOrderReceipt' test.out
 
-#- 188 CreateUserPaymentOrder
+#- 190 CreateUserPaymentOrder
 $PYTHON -m $MODULE 'platform-create-user-payment-order' \
-    'NbB98PuS' \
-    --body '{"currencyCode": "GykqFzPw", "currencyNamespace": "SMXT53bB", "customParameters": {"uL38beOY": {}}, "description": "DVuHZQ9L", "extOrderNo": "Yt6w23Wf", "extUserId": "8iEQo72s", "itemType": "APP", "language": "DCdL-SFiU-jP", "metadata": {"K1AyRlzs": "rRXEFZiv"}, "notifyUrl": "QOHG6wVi", "omitNotification": false, "price": 78, "recurringPaymentOrderNo": "ratsvvHL", "region": "mIohfNIS", "returnUrl": "LXMDWDdm", "sandbox": true, "sku": "E4lliQMn", "subscriptionId": "utJbpEo4", "title": "mUNHFtdm"}' \
+    'T53bBuL3' \
+    --body '{"currencyCode": "8beOYDVu", "currencyNamespace": "HZQ9LYt6", "customParameters": {"w23Wf8iE": {}}, "description": "Qo72sH0a", "extOrderNo": "RdcDlDyG", "extUserId": "csfIuI4D", "itemType": "SUBSCRIPTION", "language": "ej-SR", "metadata": {"RXEFZivQ": "OHG6wVic"}, "notifyUrl": "NratsvvH", "omitNotification": false, "price": 69, "recurringPaymentOrderNo": "ohfNISLX", "region": "MDWDdm5F", "returnUrl": "E4lliQMn", "sandbox": true, "sku": "tJbpEo4m", "subscriptionId": "UNHFtdml", "title": "2xNviWac"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 188 'CreateUserPaymentOrder' test.out
+eval_tap $? 190 'CreateUserPaymentOrder' test.out
 
-#- 189 RefundUserPaymentOrder
+#- 191 RefundUserPaymentOrder
 $PYTHON -m $MODULE 'platform-refund-user-payment-order' \
-    'l2xNviWa' \
-    'cJc3Fm7Z' \
-    --body '{"description": "548uuKgo"}' \
+    'Jc3Fm7Z5' \
+    '48uuKgoC' \
+    --body '{"description": "BqS5uIdC"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 189 'RefundUserPaymentOrder' test.out
+eval_tap $? 191 'RefundUserPaymentOrder' test.out
 
-#- 190 ApplyUserRedemption
+#- 192 ApplyUserRedemption
 $PYTHON -m $MODULE 'platform-apply-user-redemption' \
-    'CBqS5uId' \
-    --body '{"code": "CbwCeeq9", "orderNo": "ouEdDtjO"}' \
+    'bwCeeq9o' \
+    --body '{"code": "uEdDtjOg", "orderNo": "sypLkm2Z"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 190 'ApplyUserRedemption' test.out
+eval_tap $? 192 'ApplyUserRedemption' test.out
 
-#- 191 QueryUserSubscriptions
+#- 193 QueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-query-user-subscriptions' \
-    'gsypLkm2' \
+    'Yew5H7Zm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 191 'QueryUserSubscriptions' test.out
+eval_tap $? 193 'QueryUserSubscriptions' test.out
 
-#- 192 GetUserSubscriptionActivities
+#- 194 GetUserSubscriptionActivities
 $PYTHON -m $MODULE 'platform-get-user-subscription-activities' \
-    'ZYew5H7Z' \
+    '0gnYyj6M' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 192 'GetUserSubscriptionActivities' test.out
+eval_tap $? 194 'GetUserSubscriptionActivities' test.out
 
-#- 193 PlatformSubscribeSubscription
+#- 195 PlatformSubscribeSubscription
 $PYTHON -m $MODULE 'platform-platform-subscribe-subscription' \
-    'm0gnYyj6' \
-    --body '{"grantDays": 76, "itemId": "Xf9G1nty", "language": "ebvoeHen", "reason": "AALKt7Ef", "region": "xIH446oU", "source": "nP2S74un"}' \
+    'Xf9G1nty' \
+    --body '{"grantDays": 9, "itemId": "bvoeHenA", "language": "ALKt7Efx", "reason": "IH446oUn", "region": "P2S74unX", "source": "wg0JKqVW"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 193 'PlatformSubscribeSubscription' test.out
+eval_tap $? 195 'PlatformSubscribeSubscription' test.out
 
-#- 194 CheckUserSubscriptionSubscribableByItemId
+#- 196 CheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-check-user-subscription-subscribable-by-item-id' \
-    'Xwg0JKqV' \
-    'WW1rjK1e' \
+    'W1rjK1ep' \
+    'wkAvcsYv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 194 'CheckUserSubscriptionSubscribableByItemId' test.out
+eval_tap $? 196 'CheckUserSubscriptionSubscribableByItemId' test.out
 
-#- 195 GetUserSubscription
+#- 197 GetUserSubscription
 $PYTHON -m $MODULE 'platform-get-user-subscription' \
-    'pwkAvcsY' \
-    'vbgfBVPp' \
+    'bgfBVPpT' \
+    'a8Yuq7TK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 195 'GetUserSubscription' test.out
+eval_tap $? 197 'GetUserSubscription' test.out
 
-#- 196 DeleteUserSubscription
+#- 198 DeleteUserSubscription
 $PYTHON -m $MODULE 'platform-delete-user-subscription' \
-    'Ta8Yuq7T' \
-    'KiNXmz7e' \
+    'iNXmz7eM' \
+    'rMD5TbaU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 196 'DeleteUserSubscription' test.out
+eval_tap $? 198 'DeleteUserSubscription' test.out
 
-#- 197 CancelSubscription
+#- 199 CancelSubscription
 $PYTHON -m $MODULE 'platform-cancel-subscription' \
-    'MrMD5Tba' \
-    'UxTCTng0' \
-    --body '{"immediate": true, "reason": "jtdBrjs3"}' \
+    'xTCTng0x' \
+    'jtdBrjs3' \
+    --body '{"immediate": false, "reason": "ykt2Ck2g"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 197 'CancelSubscription' test.out
+eval_tap $? 199 'CancelSubscription' test.out
 
-#- 198 GrantDaysToSubscription
+#- 200 GrantDaysToSubscription
 $PYTHON -m $MODULE 'platform-grant-days-to-subscription' \
-    'Kiykt2Ck' \
-    '2gOlSatE' \
-    --body '{"grantDays": 56, "reason": "Z2UgwQLq"}' \
+    'OlSatECZ' \
+    '2UgwQLqD' \
+    --body '{"grantDays": 33, "reason": "YSxTPuVl"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 198 'GrantDaysToSubscription' test.out
+eval_tap $? 200 'GrantDaysToSubscription' test.out
 
-#- 199 GetUserSubscriptionBillingHistories
+#- 201 GetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-get-user-subscription-billing-histories' \
-    'DqYSxTPu' \
-    'VlBqirdp' \
+    'Bqirdp3y' \
+    'xnsETl1S' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 199 'GetUserSubscriptionBillingHistories' test.out
+eval_tap $? 201 'GetUserSubscriptionBillingHistories' test.out
 
-#- 200 ProcessUserSubscriptionNotification
+#- 202 ProcessUserSubscriptionNotification
 $PYTHON -m $MODULE 'platform-process-user-subscription-notification' \
-    '3yxnsETl' \
-    '1SvhQuds' \
-    --body '{"additionalData": {"cardSummary": "jIhXdxiS"}, "authorisedTime": "1978-05-06T00:00:00Z", "chargebackReversedTime": "1977-04-20T00:00:00Z", "chargebackTime": "1982-02-20T00:00:00Z", "chargedTime": "1995-08-07T00:00:00Z", "createdTime": "1985-11-28T00:00:00Z", "currency": {"currencyCode": "MqzQIxib", "currencySymbol": "hpNYsHtd", "currencyType": "VIRTUAL", "decimals": 69, "namespace": "kjuaZqhJ"}, "customParameters": {"ilrZkSSK": {}}, "extOrderNo": "gP5rxCR7", "extTxId": "7G9d5CA1", "extUserId": "GORSbL9n", "issuedAt": "1997-01-20T00:00:00Z", "metadata": {"bWDEupmd": "LQzPnNfB"}, "namespace": "AcWArbkC", "nonceStr": "fdHIZb03", "paymentMethod": "otqmBuS9", "paymentMethodFee": 95, "paymentOrderNo": "2pCZ23UH", "paymentProvider": "STRIPE", "paymentProviderFee": 20, "paymentStationUrl": "0lpJ4JLl", "price": 32, "refundedTime": "1975-10-25T00:00:00Z", "salesTax": 29, "sandbox": true, "sku": "UoVRUb39", "status": "AUTHORISE_FAILED", "statusReason": "22P4Sp09", "subscriptionId": "cKmjRUbZ", "subtotalPrice": 94, "targetNamespace": "BVS7OK2Z", "targetUserId": "rdcsckMe", "tax": 20, "totalPrice": 87, "totalTax": 80, "txEndTime": "1995-10-17T00:00:00Z", "type": "UTqkK2eF", "userId": "aGLoSmEE", "vat": 82}' \
+    'vhQudsjI' \
+    'hXdxiSoW' \
+    --body '{"additionalData": {"cardSummary": "pnnxgX7B"}, "authorisedTime": "1985-11-28T00:00:00Z", "chargebackReversedTime": "1990-05-12T00:00:00Z", "chargebackTime": "1983-12-03T00:00:00Z", "chargedTime": "1988-07-03T00:00:00Z", "createdTime": "1975-01-12T00:00:00Z", "currency": {"currencyCode": "hpNYsHtd", "currencySymbol": "B3IkjuaZ", "currencyType": "VIRTUAL", "decimals": 14, "namespace": "JilrZkSS"}, "customParameters": {"KgP5rxCR": {}}, "extOrderNo": "77G9d5CA", "extTxId": "1GORSbL9", "extUserId": "n0dbWDEu", "issuedAt": "1978-04-12T00:00:00Z", "metadata": {"dLQzPnNf": "BAcWArbk"}, "namespace": "CfdHIZb0", "nonceStr": "3otqmBuS", "paymentMethod": "9V2pCZ23", "paymentMethodFee": 92, "paymentOrderNo": "Hmk0lpJ4", "paymentProvider": "ADYEN", "paymentProviderFee": 32, "paymentStationUrl": "i7L2oDUo", "price": 94, "refundedTime": "1992-01-12T00:00:00Z", "salesTax": 19, "sandbox": false, "sku": "09cKmjRU", "status": "INIT", "statusReason": "ZVBVS7OK", "subscriptionId": "2Zrdcsck", "subtotalPrice": 77, "targetNamespace": "ekROWZ2K", "targetUserId": "UTqkK2eF", "tax": 0, "totalPrice": 64, "totalTax": 74, "txEndTime": "1978-12-19T00:00:00Z", "type": "mEEPbLyw", "userId": "JsyUie6f", "vat": 12}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 200 'ProcessUserSubscriptionNotification' test.out
+eval_tap $? 202 'ProcessUserSubscriptionNotification' test.out
 
-#- 201 AcquireUserTicket
+#- 203 AcquireUserTicket
 $PYTHON -m $MODULE 'platform-acquire-user-ticket' \
-    'bLywJsyU' \
-    'ie6fZgLl' \
-    --body '{"count": 23, "orderNo": "UPsO8lg4"}' \
+    'LllUPsO8' \
+    'lg46Si70' \
+    --body '{"count": 42, "orderNo": "L2w4aajD"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 201 'AcquireUserTicket' test.out
+eval_tap $? 203 'AcquireUserTicket' test.out
 
-#- 202 CheckWallet
+#- 204 CheckWallet
 $PYTHON -m $MODULE 'platform-check-wallet' \
-    '6Si7006v' \
-    'L2w4aajD' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 202 'CheckWallet' test.out
-
-#- 203 CreditUserWallet
-$PYTHON -m $MODULE 'platform-credit-user-wallet' \
     'AOx0iJjY' \
     'leaktqv2' \
-    --body '{"amount": 96, "reason": "kljQuD5m", "source": "ACHIEVEMENT"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 203 'CreditUserWallet' test.out
+eval_tap $? 204 'CheckWallet' test.out
 
-#- 204 PayWithUserWallet
+#- 205 CreditUserWallet
+$PYTHON -m $MODULE 'platform-credit-user-wallet' \
+    'WkljQuD5' \
+    'mnJONqHG' \
+    --body '{"amount": 33, "reason": "8mB7mF2l", "source": "OTHER"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 205 'CreditUserWallet' test.out
+
+#- 206 PayWithUserWallet
 $PYTHON -m $MODULE 'platform-pay-with-user-wallet' \
-    'JONqHGq8' \
-    'mB7mF2lM' \
-    --body '{"amount": 62}' \
+    'FcaghFXJ' \
+    'IJflRHFc' \
+    --body '{"amount": 37}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 204 'PayWithUserWallet' test.out
+eval_tap $? 206 'PayWithUserWallet' test.out
 
-#- 205 GetUserWallet
+#- 207 GetUserWallet
 $PYTHON -m $MODULE 'platform-get-user-wallet' \
-    'caghFXJI' \
-    'JflRHFcs' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 205 'GetUserWallet' test.out
-
-#- 206 DebitUserWallet
-$PYTHON -m $MODULE 'platform-debit-user-wallet' \
     'IqCy4xDi' \
     'fSSQ5On2' \
-    --body '{"amount": 4, "reason": "cEcl3xei"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 206 'DebitUserWallet' test.out
+eval_tap $? 207 'GetUserWallet' test.out
 
-#- 207 DisableUserWallet
+#- 208 DebitUserWallet
+$PYTHON -m $MODULE 'platform-debit-user-wallet' \
+    'ccEcl3xe' \
+    'iO4bwF5J' \
+    --body '{"amount": 80, "reason": "jGoGxKM3"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 208 'DebitUserWallet' test.out
+
+#- 209 DisableUserWallet
 $PYTHON -m $MODULE 'platform-disable-user-wallet' \
-    'O4bwF5JO' \
-    'jGoGxKM3' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 207 'DisableUserWallet' test.out
-
-#- 208 EnableUserWallet
-$PYTHON -m $MODULE 'platform-enable-user-wallet' \
     'qMce5tfL' \
     'cpjFZMKC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 208 'EnableUserWallet' test.out
+eval_tap $? 209 'DisableUserWallet' test.out
 
-#- 209 ListUserWalletTransactions
-$PYTHON -m $MODULE 'platform-list-user-wallet-transactions' \
+#- 210 EnableUserWallet
+$PYTHON -m $MODULE 'platform-enable-user-wallet' \
     'bp0pEbLC' \
     'LFpHxMYF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 209 'ListUserWalletTransactions' test.out
+eval_tap $? 210 'EnableUserWallet' test.out
 
-#- 210 QueryWallets
+#- 211 ListUserWalletTransactions
+$PYTHON -m $MODULE 'platform-list-user-wallet-transactions' \
+    '836075xE' \
+    'pzdnYtpj' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 211 'ListUserWalletTransactions' test.out
+
+#- 212 QueryWallets
 $PYTHON -m $MODULE 'platform-query-wallets' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 210 'QueryWallets' test.out
+eval_tap $? 212 'QueryWallets' test.out
 
-#- 211 GetWallet
+#- 213 GetWallet
 $PYTHON -m $MODULE 'platform-get-wallet' \
-    '836075xE' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 211 'GetWallet' test.out
-
-#- 212 SyncOrders
-$PYTHON -m $MODULE 'platform-sync-orders' \
-    'pzdnYtpj' \
     'a5ig2isQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 212 'SyncOrders' test.out
+eval_tap $? 213 'GetWallet' test.out
 
-#- 213 TestAdyenConfig
+#- 214 SyncOrders
+$PYTHON -m $MODULE 'platform-sync-orders' \
+    'Zga6Vy76' \
+    'izPiQRjY' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 214 'SyncOrders' test.out
+
+#- 215 TestAdyenConfig
 $PYTHON -m $MODULE 'platform-test-adyen-config' \
-    --body '{"allowedPaymentMethods": ["Zga6Vy76"], "apiKey": "izPiQRjY", "authoriseAsCapture": false, "blockedPaymentMethods": ["8fv5fIt2"], "clientKey": "2tIZhjhg", "dropInSettings": "kigW22zX", "liveEndpointUrlPrefix": "MWXfbcM0", "merchantAccount": "GIALIbFC", "notificationHmacKey": "QgBcLNT6", "notificationPassword": "iOQVYx5r", "notificationUsername": "W2gMsI1a", "returnUrl": "YBitSn3U", "settings": "DeKj97I4"}' \
+    --body '{"allowedPaymentMethods": ["a8fv5fIt"], "apiKey": "22tIZhjh", "authoriseAsCapture": false, "blockedPaymentMethods": ["kigW22zX"], "clientKey": "MWXfbcM0", "dropInSettings": "GIALIbFC", "liveEndpointUrlPrefix": "QgBcLNT6", "merchantAccount": "iOQVYx5r", "notificationHmacKey": "W2gMsI1a", "notificationPassword": "YBitSn3U", "notificationUsername": "DeKj97I4", "returnUrl": "WYXLqjN7", "settings": "ktOBTraB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 213 'TestAdyenConfig' test.out
+eval_tap $? 215 'TestAdyenConfig' test.out
 
-#- 214 TestAliPayConfig
+#- 216 TestAliPayConfig
 $PYTHON -m $MODULE 'platform-test-ali-pay-config' \
-    --body '{"appId": "WYXLqjN7", "privateKey": "ktOBTraB", "publicKey": "xWRTVuYE", "returnUrl": "qGlKDwTK"}' \
+    --body '{"appId": "xWRTVuYE", "privateKey": "qGlKDwTK", "publicKey": "XBrXiQcd", "returnUrl": "9IW8kiCK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 214 'TestAliPayConfig' test.out
+eval_tap $? 216 'TestAliPayConfig' test.out
 
-#- 215 TestCheckoutConfig
+#- 217 TestCheckoutConfig
 $PYTHON -m $MODULE 'platform-test-checkout-config' \
-    --body '{"publicKey": "XBrXiQcd", "secretKey": "9IW8kiCK"}' \
+    --body '{"publicKey": "eQJWZBvc", "secretKey": "q1ETvWBx"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 215 'TestCheckoutConfig' test.out
+eval_tap $? 217 'TestCheckoutConfig' test.out
 
-#- 216 DebugMatchedPaymentMerchantConfig
+#- 218 DebugMatchedPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-merchant-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 216 'DebugMatchedPaymentMerchantConfig' test.out
+eval_tap $? 218 'DebugMatchedPaymentMerchantConfig' test.out
 
-#- 217 TestPayPalConfig
+#- 219 TestPayPalConfig
 $PYTHON -m $MODULE 'platform-test-pay-pal-config' \
-    --body '{"clientID": "eQJWZBvc", "clientSecret": "q1ETvWBx", "returnUrl": "YZJh7B8g", "webHookId": "bnSu9M2O"}' \
+    --body '{"clientID": "YZJh7B8g", "clientSecret": "bnSu9M2O", "returnUrl": "xD2udaeY", "webHookId": "pCXYSMiy"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 217 'TestPayPalConfig' test.out
+eval_tap $? 219 'TestPayPalConfig' test.out
 
-#- 218 TestStripeConfig
+#- 220 TestStripeConfig
 $PYTHON -m $MODULE 'platform-test-stripe-config' \
-    --body '{"allowedPaymentMethodTypes": ["xD2udaeY"], "publishableKey": "pCXYSMiy", "secretKey": "87CTqEQB", "webhookSecret": "g36my3sY"}' \
+    --body '{"allowedPaymentMethodTypes": ["87CTqEQB"], "publishableKey": "g36my3sY", "secretKey": "2clrDcai", "webhookSecret": "n0cOVF1z"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 218 'TestStripeConfig' test.out
+eval_tap $? 220 'TestStripeConfig' test.out
 
-#- 219 TestWxPayConfig
+#- 221 TestWxPayConfig
 $PYTHON -m $MODULE 'platform-test-wx-pay-config' \
-    --body '{"appId": "2clrDcai", "key": "n0cOVF1z", "mchid": "HwDTI0sJ", "returnUrl": "1Q0kphMT"}' \
+    --body '{"appId": "HwDTI0sJ", "key": "1Q0kphMT", "mchid": "ggSP2SLc", "returnUrl": "uAP7vU97"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 219 'TestWxPayConfig' test.out
+eval_tap $? 221 'TestWxPayConfig' test.out
 
-#- 220 TestXsollaConfig
+#- 222 TestXsollaConfig
 $PYTHON -m $MODULE 'platform-test-xsolla-config' \
-    --body '{"apiKey": "ggSP2SLc", "flowCompletionUrl": "uAP7vU97", "merchantId": 56, "projectId": 50, "projectSecretKey": "w2nbg8C7"}' \
+    --body '{"apiKey": "1Czw2nbg", "flowCompletionUrl": "8C7Mvywh", "merchantId": 41, "projectId": 76, "projectSecretKey": "jOjuGzo1"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 220 'TestXsollaConfig' test.out
+eval_tap $? 222 'TestXsollaConfig' test.out
 
-#- 221 GetPaymentMerchantConfig
+#- 223 GetPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-get-payment-merchant-config' \
-    'Mvywhu6M' \
+    'Fz4tU0aS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 221 'GetPaymentMerchantConfig' test.out
+eval_tap $? 223 'GetPaymentMerchantConfig' test.out
 
-#- 222 UpdateAdyenConfig
+#- 224 UpdateAdyenConfig
 $PYTHON -m $MODULE 'platform-update-adyen-config' \
-    'jOjuGzo1' \
-    --body '{"allowedPaymentMethods": ["Fz4tU0aS"], "apiKey": "n98N8qOU", "authoriseAsCapture": true, "blockedPaymentMethods": ["0z92RaDe"], "clientKey": "8ngT8LRQ", "dropInSettings": "kMnG1LZy", "liveEndpointUrlPrefix": "F2mdYY6Z", "merchantAccount": "MfuTYTKs", "notificationHmacKey": "ue48qBEB", "notificationPassword": "NAV5BTe6", "notificationUsername": "ec1zA92U", "returnUrl": "RCLSGPmR", "settings": "BZWunHW7"}' \
+    'n98N8qOU' \
+    --body '{"allowedPaymentMethods": ["A0z92RaD"], "apiKey": "e8ngT8LR", "authoriseAsCapture": false, "blockedPaymentMethods": ["MnG1LZyF"], "clientKey": "2mdYY6ZM", "dropInSettings": "fuTYTKsu", "liveEndpointUrlPrefix": "e48qBEBN", "merchantAccount": "AV5BTe6e", "notificationHmacKey": "c1zA92UR", "notificationPassword": "CLSGPmRB", "notificationUsername": "ZWunHW7M", "returnUrl": "Yvr6QA7P", "settings": "pepc92HA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 222 'UpdateAdyenConfig' test.out
+eval_tap $? 224 'UpdateAdyenConfig' test.out
 
-#- 223 TestAdyenConfigById
+#- 225 TestAdyenConfigById
 $PYTHON -m $MODULE 'platform-test-adyen-config-by-id' \
-    'MYvr6QA7' \
+    '94eACdey' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 223 'TestAdyenConfigById' test.out
+eval_tap $? 225 'TestAdyenConfigById' test.out
 
-#- 224 UpdateAliPayConfig
+#- 226 UpdateAliPayConfig
 $PYTHON -m $MODULE 'platform-update-ali-pay-config' \
-    'Ppepc92H' \
-    --body '{"appId": "A94eACde", "privateKey": "yfUpgiPp", "publicKey": "f8nxKJ3d", "returnUrl": "nmtPwa64"}' \
+    'fUpgiPpf' \
+    --body '{"appId": "8nxKJ3dn", "privateKey": "mtPwa64Y", "publicKey": "4gPEKMhh", "returnUrl": "u9a6f3xJ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 224 'UpdateAliPayConfig' test.out
+eval_tap $? 226 'UpdateAliPayConfig' test.out
 
-#- 225 TestAliPayConfigById
+#- 227 TestAliPayConfigById
 $PYTHON -m $MODULE 'platform-test-ali-pay-config-by-id' \
-    'Y4gPEKMh' \
+    'NtUlKLlI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 225 'TestAliPayConfigById' test.out
+eval_tap $? 227 'TestAliPayConfigById' test.out
 
-#- 226 UpdateCheckoutConfig
+#- 228 UpdateCheckoutConfig
 $PYTHON -m $MODULE 'platform-update-checkout-config' \
-    'hu9a6f3x' \
-    --body '{"publicKey": "JNtUlKLl", "secretKey": "IIAeHbm5"}' \
+    'IAeHbm5M' \
+    --body '{"publicKey": "6LsY1VMu", "secretKey": "IEcRls68"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 226 'UpdateCheckoutConfig' test.out
+eval_tap $? 228 'UpdateCheckoutConfig' test.out
 
-#- 227 TestCheckoutConfigById
+#- 229 TestCheckoutConfigById
 $PYTHON -m $MODULE 'platform-test-checkout-config-by-id' \
-    'M6LsY1VM' \
+    'M3MPMRPB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 227 'TestCheckoutConfigById' test.out
+eval_tap $? 229 'TestCheckoutConfigById' test.out
 
-#- 228 UpdatePayPalConfig
+#- 230 UpdatePayPalConfig
 $PYTHON -m $MODULE 'platform-update-pay-pal-config' \
-    'uIEcRls6' \
-    --body '{"clientID": "8M3MPMRP", "clientSecret": "BepyyMz6", "returnUrl": "zfR1pvTY", "webHookId": "YtDOiEi4"}' \
+    'epyyMz6z' \
+    --body '{"clientID": "fR1pvTYY", "clientSecret": "tDOiEi4R", "returnUrl": "uEcHCSGh", "webHookId": "pOZQFlwO"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 228 'UpdatePayPalConfig' test.out
+eval_tap $? 230 'UpdatePayPalConfig' test.out
 
-#- 229 TestPayPalConfigById
+#- 231 TestPayPalConfigById
 $PYTHON -m $MODULE 'platform-test-pay-pal-config-by-id' \
-    'RuEcHCSG' \
+    'iuKGDFgK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 229 'TestPayPalConfigById' test.out
+eval_tap $? 231 'TestPayPalConfigById' test.out
 
-#- 230 UpdateStripeConfig
+#- 232 UpdateStripeConfig
 $PYTHON -m $MODULE 'platform-update-stripe-config' \
-    'hpOZQFlw' \
-    --body '{"allowedPaymentMethodTypes": ["OiuKGDFg"], "publishableKey": "K49YuKnX", "secretKey": "ks0m8ANr", "webhookSecret": "cRal7ta3"}' \
+    '49YuKnXk' \
+    --body '{"allowedPaymentMethodTypes": ["s0m8ANrc"], "publishableKey": "Ral7ta3f", "secretKey": "ojA3h4MM", "webhookSecret": "W3AJ5zls"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 230 'UpdateStripeConfig' test.out
+eval_tap $? 232 'UpdateStripeConfig' test.out
 
-#- 231 TestStripeConfigById
+#- 233 TestStripeConfigById
 $PYTHON -m $MODULE 'platform-test-stripe-config-by-id' \
-    'fojA3h4M' \
+    'FBwjvLYv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 231 'TestStripeConfigById' test.out
+eval_tap $? 233 'TestStripeConfigById' test.out
 
-#- 232 UpdateWxPayConfig
+#- 234 UpdateWxPayConfig
 $PYTHON -m $MODULE 'platform-update-wx-pay-config' \
-    'MW3AJ5zl' \
-    --body '{"appId": "sFBwjvLY", "key": "vmg6avud", "mchid": "QFF1CPNY", "returnUrl": "9u2dVYdg"}' \
+    'mg6avudQ' \
+    --body '{"appId": "FF1CPNY9", "key": "u2dVYdgl", "mchid": "OOoCeK0k", "returnUrl": "PKmBqVux"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 232 'UpdateWxPayConfig' test.out
+eval_tap $? 234 'UpdateWxPayConfig' test.out
 
-#- 233 UpdateWxPayConfigCert
+#- 235 UpdateWxPayConfigCert
 $PYTHON -m $MODULE 'platform-update-wx-pay-config-cert' \
-    'lOOoCeK0' \
+    '3lXcD8ae' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 233 'UpdateWxPayConfigCert' test.out
+eval_tap $? 235 'UpdateWxPayConfigCert' test.out
 
-#- 234 TestWxPayConfigById
+#- 236 TestWxPayConfigById
 $PYTHON -m $MODULE 'platform-test-wx-pay-config-by-id' \
-    'kPKmBqVu' \
+    'rtAVCqs8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 234 'TestWxPayConfigById' test.out
+eval_tap $? 236 'TestWxPayConfigById' test.out
 
-#- 235 UpdateXsollaConfig
+#- 237 UpdateXsollaConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-config' \
-    'x3lXcD8a' \
-    --body '{"apiKey": "ertAVCqs", "flowCompletionUrl": "8XT8xy3n", "merchantId": 71, "projectId": 73, "projectSecretKey": "kseA0ARj"}' \
+    'XT8xy3nJ' \
+    --body '{"apiKey": "06KkseA0", "flowCompletionUrl": "ARj9ricf", "merchantId": 0, "projectId": 49, "projectSecretKey": "vnhi8MDd"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 235 'UpdateXsollaConfig' test.out
+eval_tap $? 237 'UpdateXsollaConfig' test.out
 
-#- 236 TestXsollaConfigById
+#- 238 TestXsollaConfigById
 $PYTHON -m $MODULE 'platform-test-xsolla-config-by-id' \
-    '9ricfayv' \
+    'Y4WLHoaU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 236 'TestXsollaConfigById' test.out
+eval_tap $? 238 'TestXsollaConfigById' test.out
 
-#- 237 UpdateXsollaUIConfig
+#- 239 UpdateXsollaUIConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-ui-config' \
-    'nhi8MDdY' \
-    --body '{"device": "DESKTOP", "showCloseButton": false, "size": "LARGE", "theme": "DEFAULT"}' \
+    'kYnQp5eg' \
+    --body '{"device": "DESKTOP", "showCloseButton": false, "size": "LARGE", "theme": "DARK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 237 'UpdateXsollaUIConfig' test.out
+eval_tap $? 239 'UpdateXsollaUIConfig' test.out
 
-#- 238 QueryPaymentProviderConfig
+#- 240 QueryPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-query-payment-provider-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 238 'QueryPaymentProviderConfig' test.out
+eval_tap $? 240 'QueryPaymentProviderConfig' test.out
 
-#- 239 CreatePaymentProviderConfig
+#- 241 CreatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-create-payment-provider-config' \
-    --body '{"aggregate": "XSOLLA", "namespace": "Qp5egdmV", "region": "E8ImivNt", "sandboxTaxJarApiToken": "QxqWRKHo", "specials": ["XSOLLA"], "taxJarApiToken": "ODoWOr98", "taxJarEnabled": false, "useGlobalTaxJarApiToken": false}' \
+    --body '{"aggregate": "XSOLLA", "namespace": "ivNtQxqW", "region": "RKHohODo", "sandboxTaxJarApiToken": "WOr98kjB", "specials": ["WALLET"], "taxJarApiToken": "s9jjz2Fr", "taxJarEnabled": false, "useGlobalTaxJarApiToken": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 239 'CreatePaymentProviderConfig' test.out
+eval_tap $? 241 'CreatePaymentProviderConfig' test.out
 
-#- 240 GetAggregatePaymentProviders
+#- 242 GetAggregatePaymentProviders
 $PYTHON -m $MODULE 'platform-get-aggregate-payment-providers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 240 'GetAggregatePaymentProviders' test.out
+eval_tap $? 242 'GetAggregatePaymentProviders' test.out
 
-#- 241 DebugMatchedPaymentProviderConfig
+#- 243 DebugMatchedPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-provider-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 241 'DebugMatchedPaymentProviderConfig' test.out
+eval_tap $? 243 'DebugMatchedPaymentProviderConfig' test.out
 
-#- 242 GetSpecialPaymentProviders
+#- 244 GetSpecialPaymentProviders
 $PYTHON -m $MODULE 'platform-get-special-payment-providers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 242 'GetSpecialPaymentProviders' test.out
+eval_tap $? 244 'GetSpecialPaymentProviders' test.out
 
-#- 243 UpdatePaymentProviderConfig
+#- 245 UpdatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-update-payment-provider-config' \
-    'BUas9jjz' \
-    --body '{"aggregate": "ADYEN", "namespace": "rgiaGrcB", "region": "7dIOVKIP", "sandboxTaxJarApiToken": "SJJHo5W8", "specials": ["CHECKOUT"], "taxJarApiToken": "KH8ou9Sd", "taxJarEnabled": false, "useGlobalTaxJarApiToken": true}' \
+    'aGrcB7dI' \
+    --body '{"aggregate": "XSOLLA", "namespace": "5W8tKH8o", "region": "u9SdbxSX", "sandboxTaxJarApiToken": "crEFCwqe", "specials": ["WALLET"], "taxJarApiToken": "IBRdliFQ", "taxJarEnabled": true, "useGlobalTaxJarApiToken": true}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 243 'UpdatePaymentProviderConfig' test.out
+eval_tap $? 245 'UpdatePaymentProviderConfig' test.out
 
-#- 244 DeletePaymentProviderConfig
+#- 246 DeletePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-delete-payment-provider-config' \
-    'SXcrEFCw' \
+    'VUWlUWDs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 244 'DeletePaymentProviderConfig' test.out
+eval_tap $? 246 'DeletePaymentProviderConfig' test.out
 
-#- 245 GetPaymentTaxConfig
+#- 247 GetPaymentTaxConfig
 $PYTHON -m $MODULE 'platform-get-payment-tax-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 245 'GetPaymentTaxConfig' test.out
+eval_tap $? 247 'GetPaymentTaxConfig' test.out
 
-#- 246 UpdatePaymentTaxConfig
+#- 248 UpdatePaymentTaxConfig
 $PYTHON -m $MODULE 'platform-update-payment-tax-config' \
-    --body '{"sandboxTaxJarApiToken": "qeGNLdIB", "taxJarApiToken": "RdliFQVM", "taxJarEnabled": true, "taxJarProductCodesMapping": {"zVUWlUWD": "s2x1EQU0"}}' \
+    --body '{"sandboxTaxJarApiToken": "2x1EQU0o", "taxJarApiToken": "epEvcjaS", "taxJarEnabled": false, "taxJarProductCodesMapping": {"Eh6jJnFx": "inIHJ1o7"}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 246 'UpdatePaymentTaxConfig' test.out
+eval_tap $? 248 'UpdatePaymentTaxConfig' test.out
 
-#- 247 SyncPaymentOrders
+#- 249 SyncPaymentOrders
 $PYTHON -m $MODULE 'platform-sync-payment-orders' \
-    'oepEvcja' \
-    'SgEh6jJn' \
+    'aq5Zznd5' \
+    'eacobTsu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 247 'SyncPaymentOrders' test.out
+eval_tap $? 249 'SyncPaymentOrders' test.out
 
-#- 248 PublicGetRootCategories
+#- 250 PublicGetRootCategories
 $PYTHON -m $MODULE 'platform-public-get-root-categories' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 248 'PublicGetRootCategories' test.out
+eval_tap $? 250 'PublicGetRootCategories' test.out
 
-#- 249 DownloadCategories
+#- 251 DownloadCategories
 $PYTHON -m $MODULE 'platform-download-categories' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 249 'DownloadCategories' test.out
+eval_tap $? 251 'DownloadCategories' test.out
 
-#- 250 PublicGetCategory
+#- 252 PublicGetCategory
 $PYTHON -m $MODULE 'platform-public-get-category' \
-    'FxinIHJ1' \
+    'RlhreQVF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 250 'PublicGetCategory' test.out
+eval_tap $? 252 'PublicGetCategory' test.out
 
-#- 251 PublicGetChildCategories
+#- 253 PublicGetChildCategories
 $PYTHON -m $MODULE 'platform-public-get-child-categories' \
-    'o7aq5Zzn' \
+    'ID3o8hJW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 251 'PublicGetChildCategories' test.out
+eval_tap $? 253 'PublicGetChildCategories' test.out
 
-#- 252 PublicGetDescendantCategories
+#- 254 PublicGetDescendantCategories
 $PYTHON -m $MODULE 'platform-public-get-descendant-categories' \
-    'd5eacobT' \
+    'VjKIOAw7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 252 'PublicGetDescendantCategories' test.out
+eval_tap $? 254 'PublicGetDescendantCategories' test.out
 
-#- 253 PublicListCurrencies
+#- 255 PublicListCurrencies
 $PYTHON -m $MODULE 'platform-public-list-currencies' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 253 'PublicListCurrencies' test.out
+eval_tap $? 255 'PublicListCurrencies' test.out
 
-#- 254 PublicGetItemByAppId
+#- 256 PublicGetItemByAppId
 $PYTHON -m $MODULE 'platform-public-get-item-by-app-id' \
-    'suRlhreQ' \
+    '0DvAHhSG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 254 'PublicGetItemByAppId' test.out
+eval_tap $? 256 'PublicGetItemByAppId' test.out
 
-#- 255 PublicQueryItems
+#- 257 PublicQueryItems
 $PYTHON -m $MODULE 'platform-public-query-items' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 255 'PublicQueryItems' test.out
+eval_tap $? 257 'PublicQueryItems' test.out
 
-#- 256 PublicGetItemBySku
+#- 258 PublicGetItemBySku
 $PYTHON -m $MODULE 'platform-public-get-item-by-sku' \
-    'VFID3o8h' \
+    'WUvzq1Za' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 256 'PublicGetItemBySku' test.out
+eval_tap $? 258 'PublicGetItemBySku' test.out
 
-#- 257 PublicBulkGetItems
+#- 259 PublicBulkGetItems
 $PYTHON -m $MODULE 'platform-public-bulk-get-items' \
-    'JWVjKIOA' \
+    '3IBC4vQF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 257 'PublicBulkGetItems' test.out
+eval_tap $? 259 'PublicBulkGetItems' test.out
 
-#- 258 PublicSearchItems
+#- 260 PublicSearchItems
 $PYTHON -m $MODULE 'platform-public-search-items' \
-    'w70DvAHh' \
-    'SGWUvzq1' \
+    'sUJPfiaJ' \
+    'p1rt7OBg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 258 'PublicSearchItems' test.out
+eval_tap $? 260 'PublicSearchItems' test.out
 
-#- 259 PublicGetApp
+#- 261 PublicGetApp
 $PYTHON -m $MODULE 'platform-public-get-app' \
-    'Za3IBC4v' \
+    'BCe6N0eI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 259 'PublicGetApp' test.out
+eval_tap $? 261 'PublicGetApp' test.out
 
-#- 260 PublicGetItemDynamicData
+#- 262 PublicGetItemDynamicData
 $PYTHON -m $MODULE 'platform-public-get-item-dynamic-data' \
-    'QFsUJPfi' \
+    '65Mn5tng' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 260 'PublicGetItemDynamicData' test.out
+eval_tap $? 262 'PublicGetItemDynamicData' test.out
 
-#- 261 PublicGetItem
+#- 263 PublicGetItem
 $PYTHON -m $MODULE 'platform-public-get-item' \
-    'aJp1rt7O' \
+    'EYXgPVT5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 261 'PublicGetItem' test.out
+eval_tap $? 263 'PublicGetItem' test.out
 
-#- 262 GetPaymentCustomization
-eval_tap 0 262 'GetPaymentCustomization # SKIP deprecated' test.out
+#- 264 GetPaymentCustomization
+eval_tap 0 264 'GetPaymentCustomization # SKIP deprecated' test.out
 
-#- 263 PublicGetPaymentUrl
+#- 265 PublicGetPaymentUrl
 $PYTHON -m $MODULE 'platform-public-get-payment-url' \
-    --body '{"paymentOrderNo": "BgBCe6N0", "paymentProvider": "XSOLLA", "returnUrl": "I65Mn5tn", "ui": "gEYXgPVT", "zipCode": "5CqXDZBV"}' \
+    --body '{"paymentOrderNo": "CqXDZBVM", "paymentProvider": "WXPAY", "returnUrl": "JeKFO92Y", "ui": "DtaZvJoK", "zipCode": "S0OxyipZ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 263 'PublicGetPaymentUrl' test.out
+eval_tap $? 265 'PublicGetPaymentUrl' test.out
 
-#- 264 PublicGetPaymentMethods
+#- 266 PublicGetPaymentMethods
 $PYTHON -m $MODULE 'platform-public-get-payment-methods' \
-    'MJyJeKFO' \
+    'uO4N9S2Y' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 264 'PublicGetPaymentMethods' test.out
+eval_tap $? 266 'PublicGetPaymentMethods' test.out
 
-#- 265 PublicGetUnpaidPaymentOrder
+#- 267 PublicGetUnpaidPaymentOrder
 $PYTHON -m $MODULE 'platform-public-get-unpaid-payment-order' \
-    '92YDtaZv' \
+    'CgHa6XBc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 265 'PublicGetUnpaidPaymentOrder' test.out
+eval_tap $? 267 'PublicGetUnpaidPaymentOrder' test.out
 
-#- 266 Pay
+#- 268 Pay
 $PYTHON -m $MODULE 'platform-pay' \
-    'JoKS0Oxy' \
-    --body '{"token": "ipZuO4N9"}' \
+    'vGRYk5rU' \
+    --body '{"token": "tWHCnhmz"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 266 'Pay' test.out
+eval_tap $? 268 'Pay' test.out
 
-#- 267 PublicCheckPaymentOrderPaidStatus
+#- 269 PublicCheckPaymentOrderPaidStatus
 $PYTHON -m $MODULE 'platform-public-check-payment-order-paid-status' \
-    'S2YCgHa6' \
+    'zppV7tKN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 267 'PublicCheckPaymentOrderPaidStatus' test.out
+eval_tap $? 269 'PublicCheckPaymentOrderPaidStatus' test.out
 
-#- 268 GetPaymentPublicConfig
+#- 270 GetPaymentPublicConfig
 $PYTHON -m $MODULE 'platform-get-payment-public-config' \
     'WXPAY' \
-    'cvGRYk5r' \
+    'XymWcNlH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 268 'GetPaymentPublicConfig' test.out
+eval_tap $? 270 'GetPaymentPublicConfig' test.out
 
-#- 269 PublicGetQRCode
+#- 271 PublicGetQRCode
 $PYTHON -m $MODULE 'platform-public-get-qr-code' \
-    'UtWHCnhm' \
+    'aFxYaGHU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 269 'PublicGetQRCode' test.out
+eval_tap $? 271 'PublicGetQRCode' test.out
 
-#- 270 PublicNormalizePaymentReturnUrl
+#- 272 PublicNormalizePaymentReturnUrl
 $PYTHON -m $MODULE 'platform-public-normalize-payment-return-url' \
-    'zzppV7tK' \
-    'NKYUQVBX' \
-    'WXPAY' \
-    'mWcNlHaF' \
+    'pmBFyOrF' \
+    'KtxGNAi0' \
+    'ALIPAY' \
+    'q4xChPLd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 270 'PublicNormalizePaymentReturnUrl' test.out
+eval_tap $? 272 'PublicNormalizePaymentReturnUrl' test.out
 
-#- 271 GetPaymentTaxValue
+#- 273 GetPaymentTaxValue
 $PYTHON -m $MODULE 'platform-get-payment-tax-value' \
-    'xYaGHUpm' \
-    'WXPAY' \
+    '2lOopc7X' \
+    'PAYPAL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 271 'GetPaymentTaxValue' test.out
+eval_tap $? 273 'GetPaymentTaxValue' test.out
 
-#- 272 GetRewardByCode
+#- 274 GetRewardByCode
 $PYTHON -m $MODULE 'platform-get-reward-by-code' \
-    'FyOrFKtx' \
+    'Vpdd6rCp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 272 'GetRewardByCode' test.out
+eval_tap $? 274 'GetRewardByCode' test.out
 
-#- 273 QueryRewards1
+#- 275 QueryRewards1
 $PYTHON -m $MODULE 'platform-query-rewards-1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 273 'QueryRewards1' test.out
+eval_tap $? 275 'QueryRewards1' test.out
 
-#- 274 GetReward1
+#- 276 GetReward1
 $PYTHON -m $MODULE 'platform-get-reward-1' \
-    'GNAi0fq4' \
+    'yMrnH9YH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 274 'GetReward1' test.out
+eval_tap $? 276 'GetReward1' test.out
 
-#- 275 PublicListStores
+#- 277 PublicListStores
 $PYTHON -m $MODULE 'platform-public-list-stores' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 275 'PublicListStores' test.out
+eval_tap $? 277 'PublicListStores' test.out
 
-#- 276 PublicExistsAnyMyActiveEntitlement
+#- 278 PublicExistsAnyMyActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-my-active-entitlement' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 276 'PublicExistsAnyMyActiveEntitlement' test.out
+eval_tap $? 278 'PublicExistsAnyMyActiveEntitlement' test.out
 
-#- 277 PublicGetMyAppEntitlementOwnershipByAppId
+#- 279 PublicGetMyAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-my-app-entitlement-ownership-by-app-id' \
-    'xChPLd2l' \
+    'Xh7KnCVO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 277 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 279 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
 
-#- 278 PublicGetMyEntitlementOwnershipByItemId
+#- 280 PublicGetMyEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-item-id' \
-    'Oopc7XoV' \
+    'KY2zsBRG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 278 'PublicGetMyEntitlementOwnershipByItemId' test.out
+eval_tap $? 280 'PublicGetMyEntitlementOwnershipByItemId' test.out
 
-#- 279 PublicGetMyEntitlementOwnershipBySku
+#- 281 PublicGetMyEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-sku' \
-    'pdd6rCpy' \
+    'td8QY2OL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 279 'PublicGetMyEntitlementOwnershipBySku' test.out
+eval_tap $? 281 'PublicGetMyEntitlementOwnershipBySku' test.out
 
-#- 280 PublicGetEntitlementOwnershipToken
+#- 282 PublicGetEntitlementOwnershipToken
 $PYTHON -m $MODULE 'platform-public-get-entitlement-ownership-token' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 280 'PublicGetEntitlementOwnershipToken' test.out
+eval_tap $? 282 'PublicGetEntitlementOwnershipToken' test.out
 
-#- 281 PublicGetMyWallet
+#- 283 PublicGetMyWallet
 $PYTHON -m $MODULE 'platform-public-get-my-wallet' \
-    'MrnH9YHX' \
+    'bijrvfr8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 281 'PublicGetMyWallet' test.out
+eval_tap $? 283 'PublicGetMyWallet' test.out
 
-#- 282 PublicSyncPsnDlcInventory
+#- 284 PublicSyncPsnDlcInventory
 $PYTHON -m $MODULE 'platform-public-sync-psn-dlc-inventory' \
-    'h7KnCVOK' \
-    --body '{"serviceLabel": 51}' \
+    'hknjWUWd' \
+    --body '{"serviceLabel": 76}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 282 'PublicSyncPsnDlcInventory' test.out
+eval_tap $? 284 'PublicSyncPsnDlcInventory' test.out
 
-#- 283 SyncSteamDLC
+#- 285 SyncSteamDLC
 $PYTHON -m $MODULE 'platform-sync-steam-dlc' \
-    'sBRGtd8Q' \
-    --body '{"appId": "Y2OLbijr", "steamId": "vfr8hknj"}' \
+    'UXHvw4pN' \
+    --body '{"appId": "lGLjdBxL", "steamId": "M079pDAb"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 283 'SyncSteamDLC' test.out
+eval_tap $? 285 'SyncSteamDLC' test.out
 
-#- 284 SyncXboxDLC
+#- 286 SyncXboxDLC
 $PYTHON -m $MODULE 'platform-sync-xbox-dlc' \
-    'WUWdMUXH' \
-    --body '{"xstsToken": "vw4pNlGL"}' \
+    'TgmsEYEq' \
+    --body '{"xstsToken": "2GkYK1vY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 284 'SyncXboxDLC' test.out
+eval_tap $? 286 'SyncXboxDLC' test.out
 
-#- 285 PublicQueryUserEntitlements
+#- 287 PublicQueryUserEntitlements
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements' \
-    'jdBxLM07' \
+    'm9flXQ7C' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 285 'PublicQueryUserEntitlements' test.out
+eval_tap $? 287 'PublicQueryUserEntitlements' test.out
 
-#- 286 PublicGetUserAppEntitlementByAppId
+#- 288 PublicGetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-by-app-id' \
-    '9pDAbTgm' \
-    'sEYEq2Gk' \
+    'QoemnQG0' \
+    'dH0NVM9V' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 286 'PublicGetUserAppEntitlementByAppId' test.out
+eval_tap $? 288 'PublicGetUserAppEntitlementByAppId' test.out
 
-#- 287 PublicQueryUserEntitlementsByAppType
+#- 289 PublicQueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
-    'YK1vYm9f' \
-    'DLC' \
+    'EHTPqDhk' \
+    'DEMO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 287 'PublicQueryUserEntitlementsByAppType' test.out
+eval_tap $? 289 'PublicQueryUserEntitlementsByAppType' test.out
 
-#- 288 PublicGetUserEntitlementByItemId
+#- 290 PublicGetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
-    'XQ7CQoem' \
-    'nQG0dH0N' \
+    'u5vnz6Gi' \
+    'NMboBJHm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 288 'PublicGetUserEntitlementByItemId' test.out
+eval_tap $? 290 'PublicGetUserEntitlementByItemId' test.out
 
-#- 289 PublicGetUserEntitlementBySku
+#- 291 PublicGetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-sku' \
-    'VM9VEHTP' \
-    'qDhkcu5v' \
+    'l0LJmpPi' \
+    '4mqhruiC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 289 'PublicGetUserEntitlementBySku' test.out
+eval_tap $? 291 'PublicGetUserEntitlementBySku' test.out
 
-#- 290 PublicExistsAnyUserActiveEntitlement
+#- 292 PublicExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-user-active-entitlement' \
-    'nz6GiNMb' \
+    'ZLGGP5UX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 290 'PublicExistsAnyUserActiveEntitlement' test.out
+eval_tap $? 292 'PublicExistsAnyUserActiveEntitlement' test.out
 
-#- 291 PublicGetUserAppEntitlementOwnershipByAppId
+#- 293 PublicGetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-ownership-by-app-id' \
-    'oBJHml0L' \
-    'JmpPi4mq' \
+    'kHNTMapp' \
+    '5SbonsUJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 291 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 293 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
 
-#- 292 PublicGetUserEntitlementOwnershipByItemId
+#- 294 PublicGetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-id' \
-    'hruiCZLG' \
-    'GP5UXkHN' \
+    'KADr60Ek' \
+    'dFrpLsGt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 292 'PublicGetUserEntitlementOwnershipByItemId' test.out
+eval_tap $? 294 'PublicGetUserEntitlementOwnershipByItemId' test.out
 
-#- 293 PublicGetUserEntitlementOwnershipBySku
+#- 295 PublicGetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-sku' \
-    'TMapp5Sb' \
-    'onsUJKAD' \
+    '9yTXWUSC' \
+    'QcMsHN7r' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 293 'PublicGetUserEntitlementOwnershipBySku' test.out
+eval_tap $? 295 'PublicGetUserEntitlementOwnershipBySku' test.out
 
-#- 294 PublicGetUserEntitlement
+#- 296 PublicGetUserEntitlement
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement' \
-    'r60EkdFr' \
-    'pLsGt9yT' \
+    'eI22ks7I' \
+    '12tAZc8s' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 294 'PublicGetUserEntitlement' test.out
+eval_tap $? 296 'PublicGetUserEntitlement' test.out
 
-#- 295 PublicConsumeUserEntitlement
+#- 297 PublicConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-public-consume-user-entitlement' \
-    'XWUSCQcM' \
-    'sHN7reI2' \
-    --body '{"useCount": 21}' \
+    'xxLx9XQe' \
+    'qNWLm8cN' \
+    --body '{"useCount": 70}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 295 'PublicConsumeUserEntitlement' test.out
+eval_tap $? 297 'PublicConsumeUserEntitlement' test.out
 
-#- 296 PublicRedeemCode
+#- 298 PublicRedeemCode
 $PYTHON -m $MODULE 'platform-public-redeem-code' \
-    's7I12tAZ' \
-    --body '{"code": "c8sxxLx9", "language": "EQnw", "region": "NJbYH5J4"}' \
+    'bYH5J4Wi' \
+    --body '{"code": "JLv9NvHw", "language": "WmJ-339", "region": "WZeUKJJN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 296 'PublicRedeemCode' test.out
+eval_tap $? 298 'PublicRedeemCode' test.out
 
-#- 297 PublicFulfillAppleIAPItem
+#- 299 PublicFulfillAppleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-apple-iap-item' \
-    'WiJLv9Nv' \
-    --body '{"excludeOldTransactions": true, "language": "WmJ-339", "productId": "WZeUKJJN", "receiptData": "ftRpGgk1", "region": "iseREzzR", "transactionId": "G6z9wmuH"}' \
+    'ftRpGgk1' \
+    --body '{"excludeOldTransactions": false, "language": "Ere-WMUh", "productId": "dyOdibI1", "receiptData": "LVyqbdY8", "region": "DGZKAuoI", "transactionId": "Kz3Pp3zL"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 297 'PublicFulfillAppleIAPItem' test.out
+eval_tap $? 299 'PublicFulfillAppleIAPItem' test.out
 
-#- 298 SyncEpicGamesInventory
+#- 300 SyncEpicGamesInventory
 $PYTHON -m $MODULE 'platform-sync-epic-games-inventory' \
-    'ddyOdibI' \
-    --body '{"epicGamesJwtToken": "1LVyqbdY"}' \
+    'WUxMzMtS' \
+    --body '{"epicGamesJwtToken": "mMmZP8nG"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 298 'SyncEpicGamesInventory' test.out
+eval_tap $? 300 'SyncEpicGamesInventory' test.out
 
-#- 299 PublicFulfillGoogleIAPItem
+#- 301 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
-    '8DGZKAuo' \
-    --body '{"autoAck": true, "language": "PZlw-sMmM", "orderId": "G0FoQP8q", "packageName": "7aSsb85g", "productId": "Ah9RD3Zz", "purchaseTime": 78, "purchaseToken": "6N1iJ8lt", "region": "t9IRqCfl"}' \
+    '0FoQP8q7' \
+    --body '{"autoAck": false, "language": "SBGa-TT", "orderId": "9IRqCflg", "packageName": "ln6r5f0s", "productId": "5H6lCf3Q", "purchaseTime": 67, "purchaseToken": "a11hLLCg", "region": "w5av4LEx"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 299 'PublicFulfillGoogleIAPItem' test.out
+eval_tap $? 301 'PublicFulfillGoogleIAPItem' test.out
 
-#- 300 PublicReconcilePlayStationStore
+#- 302 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
-    'gln6r5f0' \
-    --body '{"currencyCode": "s5H6lCf3", "price": 0.6656623819884346, "productId": "a11hLLCg", "serviceLabel": 45}' \
+    'dabD8g2c' \
+    --body '{"currencyCode": "vHfMRupD", "price": 0.4144751720364458, "productId": "xbjs3XRd", "serviceLabel": 66}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 300 'PublicReconcilePlayStationStore' test.out
+eval_tap $? 302 'PublicReconcilePlayStationStore' test.out
 
-#- 301 SyncStadiaEntitlement
+#- 303 SyncStadiaEntitlement
 $PYTHON -m $MODULE 'platform-sync-stadia-entitlement' \
-    '5av4LExd' \
-    --body '{"appId": "abD8g2cv", "language": "FmrU-240", "region": "HUJ0GCmf", "stadiaPlayerId": "lIXkgJ6z"}' \
+    'UJ0GCmfl' \
+    --body '{"appId": "IXkgJ6zk", "language": "WOAK-EJfz_484", "region": "zIsfrlzK", "stadiaPlayerId": "pQdd58dZ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 301 'SyncStadiaEntitlement' test.out
+eval_tap $? 303 'SyncStadiaEntitlement' test.out
 
-#- 302 SyncSteamInventory
+#- 304 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
-    'kTwoakq7' \
-    --body '{"appId": "sEejFZ1N", "currencyCode": "tONXb9w9", "language": "Sq-FRLZ", "price": 0.6565137658214307, "productId": "d58dZP5R", "region": "vrinNtvB", "steamId": "tqFSkA68"}' \
+    'P5RvrinN' \
+    --body '{"appId": "tvBtqFSk", "currencyCode": "A68mIVYJ", "language": "sv-lHTY", "price": 0.07190610455309188, "productId": "cToXA4M1", "region": "oUFPhgo7", "steamId": "Z6mwNC4F"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 302 'SyncSteamInventory' test.out
+eval_tap $? 304 'SyncSteamInventory' test.out
 
-#- 303 SyncTwitchDropsEntitlement
+#- 305 SyncTwitchDropsEntitlement
 $PYTHON -m $MODULE 'platform-sync-twitch-drops-entitlement' \
-    'mIVYJ5pS' \
-    --body '{"gameId": "VxBsLhty", "language": "EC_133", "region": "wNC4FY69"}' \
+    'Y69mM87j' \
+    --body '{"gameId": "oJNOGB83", "language": "ShLp", "region": "b6lKoVqN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 303 'SyncTwitchDropsEntitlement' test.out
+eval_tap $? 305 'SyncTwitchDropsEntitlement' test.out
 
-#- 304 SyncXboxInventory
+#- 306 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
-    'mM87joJN' \
-    --body '{"currencyCode": "OGB83Ns6", "price": 0.5299632339050114, "productId": "5Poab6lK", "xstsToken": "oVqNBUzI"}' \
+    'BUzIxOfg' \
+    --body '{"currencyCode": "lquS2q2D", "price": 0.21949705302146127, "productId": "r9zvFtKa", "xstsToken": "2mOAqOok"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 304 'SyncXboxInventory' test.out
+eval_tap $? 306 'SyncXboxInventory' test.out
 
-#- 305 PublicQueryUserOrders
+#- 307 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
-    'xOfglquS' \
+    'V1plxQ2Y' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 305 'PublicQueryUserOrders' test.out
+eval_tap $? 307 'PublicQueryUserOrders' test.out
 
-#- 306 PublicCreateUserOrder
+#- 308 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
-    '2q2DoWr9' \
-    --body '{"currencyCode": "zvFtKa2m", "discountedPrice": 80, "ext": {"AqOokV1p": {}}, "itemId": "lxQ2YriT", "language": "FIPd", "price": 17, "quantity": 21, "region": "rtLnh2U1", "returnUrl": "RQlMxkfN"}' \
+    'riTPfipD' \
+    --body '{"currencyCode": "67jI2hiZ", "discountedPrice": 21, "ext": {"rtLnh2U1": {}}, "itemId": "RQlMxkfN", "language": "pnTQ-sNZK", "price": 21, "quantity": 68, "region": "gm1wkSWs", "returnUrl": "YvAsu18o"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 306 'PublicCreateUserOrder' test.out
+eval_tap $? 308 'PublicCreateUserOrder' test.out
 
-#- 307 PublicGetUserOrder
+#- 309 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
-    'MPNtqv2T' \
-    'Mz1b7Snz' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 307 'PublicGetUserOrder' test.out
-
-#- 308 PublicCancelUserOrder
-$PYTHON -m $MODULE 'platform-public-cancel-user-order' \
-    'kXOek83I' \
-    'gm1wkSWs' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 308 'PublicCancelUserOrder' test.out
-
-#- 309 PublicGetUserOrderHistories
-$PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
-    'YvAsu18o' \
     'bUdc8mbv' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 309 'PublicGetUserOrderHistories' test.out
-
-#- 310 PublicDownloadUserOrderReceipt
-$PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
     'XcwcgMqO' \
-    'XMziXrVd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 310 'PublicDownloadUserOrderReceipt' test.out
+eval_tap $? 309 'PublicGetUserOrder' test.out
 
-#- 311 PublicGetPaymentAccounts
-$PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
+#- 310 PublicCancelUserOrder
+$PYTHON -m $MODULE 'platform-public-cancel-user-order' \
+    'XMziXrVd' \
     'sEc3ClFP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 311 'PublicGetPaymentAccounts' test.out
+eval_tap $? 310 'PublicCancelUserOrder' test.out
 
-#- 312 PublicDeletePaymentAccount
-$PYTHON -m $MODULE 'platform-public-delete-payment-account' \
+#- 311 PublicGetUserOrderHistories
+$PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
     '3mJwusCB' \
-    'card' \
-    '4kLcuqL4' \
+    'Te4kLcuq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 312 'PublicDeletePaymentAccount' test.out
+eval_tap $? 311 'PublicGetUserOrderHistories' test.out
 
-#- 313 PublicQueryUserSubscriptions
+#- 312 PublicDownloadUserOrderReceipt
+$PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
+    'L40NYgek' \
+    'RavpaGTA' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 312 'PublicDownloadUserOrderReceipt' test.out
+
+#- 313 PublicGetPaymentAccounts
+$PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
+    '9BTyCCyN' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 313 'PublicGetPaymentAccounts' test.out
+
+#- 314 PublicDeletePaymentAccount
+$PYTHON -m $MODULE 'platform-public-delete-payment-account' \
+    '4Fw9i6mI' \
+    'paypal' \
+    'jjCqPVyY' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 314 'PublicDeletePaymentAccount' test.out
+
+#- 315 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
-    '0NYgekRa' \
+    's01hEYzW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 313 'PublicQueryUserSubscriptions' test.out
+eval_tap $? 315 'PublicQueryUserSubscriptions' test.out
 
-#- 314 PublicSubscribeSubscription
+#- 316 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
-    'vpaGTA9B' \
-    --body '{"currencyCode": "TyCCyN4F", "itemId": "w9i6mI2W", "language": "JJc-HeyZ-597", "region": "PAXQBNMP", "returnUrl": "7j3xfPao", "source": "ZaWFspkU"}' \
+    'w3qrcxM0' \
+    --body '{"currencyCode": "DPAXQBNM", "itemId": "P7j3xfPa", "language": "zA-KuKN", "region": "PqD4Agfa", "returnUrl": "sBfclBhZ", "source": "jZbLnmgh"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 314 'PublicSubscribeSubscription' test.out
+eval_tap $? 316 'PublicSubscribeSubscription' test.out
 
-#- 315 PublicCheckUserSubscriptionSubscribableByItemId
+#- 317 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
-    '5kn6PlPq' \
-    'D4AgfasB' \
+    'KwPyVIn3' \
+    'qaHP7KNu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 315 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
+eval_tap $? 317 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
 
-#- 316 PublicGetUserSubscription
+#- 318 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
-    'fclBhZjZ' \
-    'bLnmghKw' \
+    'lyfrENVQ' \
+    'kpcaWHf6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 316 'PublicGetUserSubscription' test.out
+eval_tap $? 318 'PublicGetUserSubscription' test.out
 
-#- 317 PublicChangeSubscriptionBillingAccount
+#- 319 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
-    'PyVIn3qa' \
-    'HP7KNuly' \
+    'T2xOOljn' \
+    '7c6c9efJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 317 'PublicChangeSubscriptionBillingAccount' test.out
+eval_tap $? 319 'PublicChangeSubscriptionBillingAccount' test.out
 
-#- 318 PublicCancelSubscription
+#- 320 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
-    'frENVQkp' \
-    'caWHf6T2' \
-    --body '{"immediate": true, "reason": "OOljn7c6"}' \
+    'I02TZxrg' \
+    'LBFJEkph' \
+    --body '{"immediate": true, "reason": "z0h6WpoV"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 318 'PublicCancelSubscription' test.out
+eval_tap $? 320 'PublicCancelSubscription' test.out
 
-#- 319 PublicGetUserSubscriptionBillingHistories
+#- 321 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
-    'c9efJI02' \
-    'TZxrgLBF' \
+    'pVc2HBBm' \
+    'j6cEi02h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 319 'PublicGetUserSubscriptionBillingHistories' test.out
+eval_tap $? 321 'PublicGetUserSubscriptionBillingHistories' test.out
 
-#- 320 PublicGetWallet
+#- 322 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
-    'JEkphFz0' \
-    'h6WpoVpV' \
+    'Xl42ubCR' \
+    'fy4GjKn5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 320 'PublicGetWallet' test.out
+eval_tap $? 322 'PublicGetWallet' test.out
 
-#- 321 PublicListUserWalletTransactions
+#- 323 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
-    'c2HBBmj6' \
-    'cEi02hXl' \
+    'ItHXLDZq' \
+    'pRhqnR74' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 321 'PublicListUserWalletTransactions' test.out
+eval_tap $? 323 'PublicListUserWalletTransactions' test.out
 
 
 rm -f "tmp.dat"

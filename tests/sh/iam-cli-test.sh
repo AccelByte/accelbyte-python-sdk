@@ -168,7 +168,7 @@ eval_tap $? 19 'GetUserByPlatformUserID' test.out
 #- 20 ForgotPassword
 $PYTHON -m $MODULE 'iam-forgot-password' \
     '{"Context": "jpkVZk3I", "LanguageTag": "aQYEmqGo", "LoginID": "dOEGt9gP"}' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 20 'ForgotPassword' test.out
 
@@ -181,7 +181,7 @@ eval_tap $? 21 'GetUsersByLoginIds' test.out
 #- 22 ResetPassword
 $PYTHON -m $MODULE 'iam-reset-password' \
     '{"Code": "Oj0c6i0J", "LoginID": "kvIas73u", "NewPassword": "cYnFAJ3D"}' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 22 'ResetPassword' test.out
 
@@ -426,7 +426,7 @@ eval_tap $? 57 'RevokeUser' test.out
 
 #- 58 GetRevocationList
 $PYTHON -m $MODULE 'iam-get-revocation-list' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 58 'GetRevocationList' test.out
 
@@ -446,7 +446,7 @@ eval_tap $? 61 'TokenGrant' test.out
 #- 62 VerifyToken
 $PYTHON -m $MODULE 'iam-verify-token' \
     'uNIdQJR5' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 62 'VerifyToken' test.out
 
@@ -1472,7 +1472,7 @@ eval_tap $? 200 'AuthorizeV3' test.out
 #- 201 TokenIntrospectionV3
 $PYTHON -m $MODULE 'iam-token-introspection-v3' \
     'CLIvWPVR' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 201 'TokenIntrospectionV3' test.out
 
@@ -1532,7 +1532,7 @@ eval_tap $? 208 'GetRevocationListV3' test.out
 #- 209 TokenRevocationV3
 $PYTHON -m $MODULE 'iam-token-revocation-v3' \
     'Lat5F1Le' \
-    --login_with_auth "Bearer foo" \
+    --login_with_auth "Basic YWRtaW46YWRtaW4=" \
     > test.out 2>&1
 eval_tap $? 209 'TokenRevocationV3' test.out
 
