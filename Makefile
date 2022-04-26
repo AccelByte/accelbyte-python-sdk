@@ -42,9 +42,9 @@ test_cli:
 					(cd samples/cli && /tmp/client/bin/pip install -r requirements.txt) && \
 					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
 					(for i in $$(seq 1 10); do bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; exit 1) && \
-					sed -i "s/\r//" tests/sh/* && \
-					rm -f tests/sh/*.tap && \
-					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/tests/sh/*.sh); do \
+					sed -i "s/\r//" samples/cli/tests/* && \
+					rm -f samples/cli/tests/*.tap && \
+					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/samples/cli/tests/*.sh); do \
 							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test.err; \
 					done)'
 	[ ! -f test.err ]
