@@ -1,0 +1,18 @@
+error: AdminDeleteAchievement failed: {}
+[401] {
+  "detail": "Invalid token.",
+  "status": 401,
+  "title": "Unauthorized",
+  "type": "about:blank"
+}
+
+error: AdminUnlockAchievement failed: {}
+[401] {
+  "detail": "Invalid token.",
+  "status": 401,
+  "title": "Unauthorized",
+  "type": "about:blank"
+}
+
+
+Aborted!
