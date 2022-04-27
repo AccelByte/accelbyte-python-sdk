@@ -1,33 +1,35 @@
 import asyncio
-from typing import Optional
+import shlex
+from typing import Any, IO, Optional
 
 import click
+import websockets
 from aioconsole import ainput
 
 from accelbyte_py_sdk import initialize
 from accelbyte_py_sdk.core import get_base_url
 from accelbyte_py_sdk.core import WebsocketsWSClient
 
-from .iam import commands as iam_commands
-from .achievement import commands as achievement_commands
-from .basic import commands as basic_commands
-from .cloudsave import commands as cloudsave_commands
-from .dslogmanager import commands as dslogmanager_commands
-from .dsmc import commands as dsmc_commands
-from .eventlog import commands as eventlog_commands
-from .gametelemetry import commands as gametelemetry_commands
-from .gdpr import commands as gdpr_commands
-from .group import commands as group_commands
-from .leaderboard import commands as leaderboard_commands
-from .legal import commands as legal_commands
-from .lobby import commands as lobby_commands
-from .matchmaking import commands as matchmaking_commands
-from .platform import commands as platform_commands
-from .qosm import commands as qosm_commands
-from .seasonpass import commands as seasonpass_commands
-from .sessionbrowser import commands as sessionbrowser_commands
-from .social import commands as social_commands
-from .ugc import commands as ugc_commands
+from accelbyte_py_sdk_cli.iam import commands as iam_commands
+from accelbyte_py_sdk_cli.achievement import commands as achievement_commands
+from accelbyte_py_sdk_cli.basic import commands as basic_commands
+from accelbyte_py_sdk_cli.cloudsave import commands as cloudsave_commands
+from accelbyte_py_sdk_cli.dslogmanager import commands as dslogmanager_commands
+from accelbyte_py_sdk_cli.dsmc import commands as dsmc_commands
+from accelbyte_py_sdk_cli.eventlog import commands as eventlog_commands
+from accelbyte_py_sdk_cli.gametelemetry import commands as gametelemetry_commands
+from accelbyte_py_sdk_cli.gdpr import commands as gdpr_commands
+from accelbyte_py_sdk_cli.group import commands as group_commands
+from accelbyte_py_sdk_cli.leaderboard import commands as leaderboard_commands
+from accelbyte_py_sdk_cli.legal import commands as legal_commands
+from accelbyte_py_sdk_cli.lobby import commands as lobby_commands
+from accelbyte_py_sdk_cli.matchmaking import commands as matchmaking_commands
+from accelbyte_py_sdk_cli.platform import commands as platform_commands
+from accelbyte_py_sdk_cli.qosm import commands as qosm_commands
+from accelbyte_py_sdk_cli.seasonpass import commands as seasonpass_commands
+from accelbyte_py_sdk_cli.sessionbrowser import commands as sessionbrowser_commands
+from accelbyte_py_sdk_cli.social import commands as social_commands
+from accelbyte_py_sdk_cli.ugc import commands as ugc_commands
 
 
 @click.group()
@@ -209,6 +211,101 @@ async def websocket_listener(message: str):
     click.echo(f"[RECV]: {message}")
 
 
+@click.command()
+@click.pass_context
+def start_interactive_session(ctx):
+    click.echo = echo_intercept(ctx)
+
+    while True:
+        message = input()
+
+        if message == "exit()":
+            break
+
+        # noinspection PyBroadException
+        # pylint: disable=broad-except
+        try:
+            args = shlex.split(message)
+            cmd_name, cmd, args = entry_point.resolve_command(ctx, args)
+            sub_ctx = cmd.make_context(cmd_name, list(args), parent=ctx)
+        except Exception as e:
+            print(f"error: unable to resolve command")
+            continue
+
+        # noinspection PyBroadException
+        # pylint: disable=broad-except
+        try:
+            sub_ctx.command.invoke(sub_ctx)
+        except Exception as e:
+            print(f"error: {str(e)}")
+            exit(1)
+
+        if ctx.echo:
+            print(f"success:\n{str(ctx.echo)}")
+            ctx.echo = None
+        else:
+            print("success")
+
+
+@click.command()
+@click.pass_context
+def start_interactive_ws_session(ctx):
+    asyncio.run(start_interactive_ws_session_async(ctx))
+
+
+def echo_intercept(ctx):
+    def echo_intercept_internal(
+        message: Optional[Any] = None,
+        file: Optional[IO] = None,
+        nl: bool = True,
+        err: bool = False,
+        color: Optional[bool] = None,
+    ) -> None:
+        ctx.echo = message
+    return echo_intercept_internal
+
+
+def process_cmd(ctx):
+    click.echo = echo_intercept(ctx)
+
+    async def process_cmd_async(websocket, path):
+        async for message in websocket:
+            if message == "exit()":
+                await websocket.close()
+                break
+
+            # noinspection PyBroadException
+            # pylint: disable=broad-except
+            try:
+                args = shlex.split(message)
+                cmd_name, cmd, args = entry_point.resolve_command(ctx, args)
+                sub_ctx = cmd.make_context(cmd_name, list(args), parent=ctx)
+            except Exception as e:
+                await websocket.send("error: unable to resolve command")
+                continue
+
+            # noinspection PyBroadException
+            # pylint: disable=broad-except
+            try:
+                sub_ctx.command.invoke(sub_ctx)
+            except Exception as e:
+                await websocket.send(f"error: {str(e)}")
+                continue
+
+            if ctx.echo:
+                await websocket.send(f"success:\n{str(ctx.echo)}")
+                ctx.echo = None
+            else:
+                await websocket.send("success")
+
+    return process_cmd_async
+
+
+async def start_interactive_ws_session_async(ctx):
+    async with websockets.serve(process_cmd(ctx), "localhost", 8765):
+        await asyncio.Future()
+
+
 def add_commands(grp, cmds, prefix: str = None):
     for cmd in cmds:
         grp.add_command(cmd, name=f"{f'{prefix}-' if prefix is not None else ''}{cmd.name}")
@@ -237,6 +334,8 @@ add_commands(entry_point, ugc_commands, prefix="ugc")
 
 entry_point.add_command(enter_websocket_mode)
 entry_point.add_command(one_shot_websocket)
+entry_point.add_command(start_interactive_session)
+entry_point.add_command(start_interactive_ws_session)
 
 
 if __name__ == "__main__":
