@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import shlex
 from typing import Any, IO, Optional
 
@@ -212,9 +213,18 @@ async def websocket_listener(message: str):
 
 
 @click.command()
+@click.option("--continue_on_error", is_flag=True)
+@click.option("--print_success", is_flag=True)
+@click.option("--verbose", is_flag=True)
 @click.pass_context
-def start_interactive_session(ctx):
+def start_interactive_session(
+        ctx,
+        continue_on_error: bool = False,
+        print_success: bool = False,
+        verbose: bool = False
+):
     click.echo = echo_intercept(ctx)
+    logging.getLogger("accelbyte_py_sdk.http").error = log_intercept(ctx)
 
     while True:
         message = input()
@@ -230,27 +240,53 @@ def start_interactive_session(ctx):
             sub_ctx = cmd.make_context(cmd_name, list(args), parent=ctx)
         except Exception as e:
             print(f"error: unable to resolve command")
-            continue
+            if continue_on_error:
+                continue
+            else:
+                exit(1)
+                return
 
         # noinspection PyBroadException
         # pylint: disable=broad-except
         try:
             sub_ctx.command.invoke(sub_ctx)
         except Exception as e:
-            print(f"error: {str(e)}")
-            exit(1)
+            error = str(e)
+            if ctx.log:
+                error += "\n" + ctx.log
+                ctx.log = None
+            print(f"error: {error}")
+            if continue_on_error:
+                continue
+            else:
+                exit(1)
+                return
 
-        if ctx.echo:
-            print(f"success:\n{str(ctx.echo)}")
-            ctx.echo = None
-        else:
-            print("success")
+        if print_success:
+            if verbose and ctx.echo:
+                print(f"success:\n{str(ctx.echo)}")
+                ctx.echo = None
+            else:
+                print("success")
 
 
 @click.command()
+@click.option("--continue_on_error", is_flag=True)
+@click.option("--print_success", is_flag=True)
+@click.option("--verbose", is_flag=True)
 @click.pass_context
-def start_interactive_ws_session(ctx):
-    asyncio.run(start_interactive_ws_session_async(ctx))
+def start_interactive_ws_session(
+        ctx,
+        continue_on_error: bool = False,
+        print_success: bool = False,
+        verbose: bool = False
+):
+    options = {
+        "continue_on_error": continue_on_error,
+        "print_success": print_success,
+        "verbose": verbose,
+    }
+    asyncio.run(start_interactive_ws_session_async(ctx, options))
 
 
 def echo_intercept(ctx):
@@ -265,8 +301,23 @@ def echo_intercept(ctx):
     return echo_intercept_internal
 
 
-def process_cmd(ctx):
+def log_intercept(ctx):
+    def log_intercept_internal(
+        message: Optional[Any] = None,
+        *args,
+        **kwargs
+    ) -> None:
+        ctx.log = message
+    return log_intercept_internal
+
+
+def process_cmd(ctx, options):
     click.echo = echo_intercept(ctx)
+    logging.getLogger("accelbyte_py_sdk.http").error = log_intercept(ctx)
+
+    verbose = options.get("verbose", False)
+    print_success = options.get("print_success", False)
+    continue_on_error = options.get("continue_on_error", False)
 
     async def process_cmd_async(websocket, path):
         async for message in websocket:
@@ -282,27 +333,40 @@ def process_cmd(ctx):
                 sub_ctx = cmd.make_context(cmd_name, list(args), parent=ctx)
             except Exception as e:
                 await websocket.send("error: unable to resolve command")
-                continue
+                if continue_on_error:
+                    continue
+                else:
+                    await websocket.close()
+                    break
 
             # noinspection PyBroadException
             # pylint: disable=broad-except
             try:
                 sub_ctx.command.invoke(sub_ctx)
             except Exception as e:
-                await websocket.send(f"error: {str(e)}")
-                continue
+                error = str(e)
+                if ctx.log:
+                    error += "\n" + ctx.log
+                    ctx.log = None
+                await websocket.send(f"error: {error}")
+                if continue_on_error:
+                    continue
+                else:
+                    await websocket.close()
+                    break
 
-            if ctx.echo:
-                await websocket.send(f"success:\n{str(ctx.echo)}")
-                ctx.echo = None
-            else:
-                await websocket.send("success")
+            if print_success:
+                if verbose and ctx.echo:
+                    await websocket.send(f"success:\n{str(ctx.echo)}")
+                    ctx.echo = None
+                else:
+                    await websocket.send("success")
 
     return process_cmd_async
 
 
-async def start_interactive_ws_session_async(ctx):
-    async with websockets.serve(process_cmd(ctx), "localhost", 8765):
+async def start_interactive_ws_session_async(ctx, options: dict):
+    async with websockets.serve(process_cmd(ctx, options), "localhost", 8765):
         await asyncio.Future()
 
 
