@@ -4,7 +4,7 @@
 
 SHELL := /bin/bash
 
-INTEGRATION_TEST_ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/how_to.env
+#ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/how_to.env
 
 lint:
 	rm -f lint.err
@@ -27,7 +27,8 @@ test_core:
 				PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core Y'
 
 test_integration:
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env-file $(INTEGRATION_TEST_ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
 			-c 'python -m venv /tmp && \
 				/tmp/bin/pip install -r requirements.txt && \
 				PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core N --test_integration Y'
