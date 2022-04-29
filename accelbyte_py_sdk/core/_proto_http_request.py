@@ -224,6 +224,14 @@ def create_proto_from_operation(
     if files and "Content-Type" in headers:
         headers.pop("Content-Type")
 
+    if not headers.has_amazon_xray_trace_id() and config_repo.auto_add_amazon_trace_id():
+        headers.add_amazon_xray_trace_id()
+
+    if not headers.has_user_agent() and config_repo.auto_add_user_agent():
+        app_name = config_repo.get_app_name()
+        app_version = config_repo.get_app_version()
+        headers.add_user_agent(app_info=(app_name, app_version))
+
     proto = ProtoHttpRequest(
         url=url,
         method=operation.method,
