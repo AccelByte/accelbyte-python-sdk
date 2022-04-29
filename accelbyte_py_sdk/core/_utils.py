@@ -13,6 +13,7 @@ import os
 from base64 import b64encode
 from time import time
 from typing import Any, Dict, List, Optional, Tuple, Union
+from urllib.parse import quote
 from uuid import uuid4
 
 from ._http_response import HttpResponse
@@ -171,6 +172,9 @@ def flatten_query_params(
         query_params: Optional[Dict[str, Union[Any, List[Any]]]] = None,
         collection_format_map: Optional[Dict[str, Optional[str]]] = None,
 ) -> str:
+    def str_quote(o):
+        return quote(str(o), safe="")
+
     if not query_params:
         return ""
     if collection_format_map is None:
@@ -183,13 +187,13 @@ def flatten_query_params(
             collection_format = collection_format_map.get(key, "csv")
             if collection_format == "multi":
                 for v in value:
-                    flattened_query_params.append((key, str(v)))
+                    flattened_query_params.append((key, str_quote(v)))
             else:
                 delimiter = QUERY_DELIMITER_MAP.get(collection_format, ",")
-                flattened_query_value = delimiter.join([str(v) for v in value])
+                flattened_query_value = delimiter.join([str_quote(v) for v in value])
                 flattened_query_params.append((key, flattened_query_value))
         else:
-            flattened_query_params.append((key, str(value)))
+            flattened_query_params.append((key, str_quote(value)))
     return "?" + "&".join(f"{k}={v}" for k, v in flattened_query_params)
 
 

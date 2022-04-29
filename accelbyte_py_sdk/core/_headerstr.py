@@ -1,5 +1,6 @@
 from io import StringIO
 from collections import UserDict
+from urllib.parse import quote
 
 
 class HeaderStr(UserDict):
@@ -14,7 +15,8 @@ class HeaderStr(UserDict):
             if not v:
                 continue
             first = False
-            sio.write(f"{k}={self[k]}")
+            v = quote(v)
+            sio.write(f"{k}={v}")
         return sio.getvalue()
 
     @classmethod
