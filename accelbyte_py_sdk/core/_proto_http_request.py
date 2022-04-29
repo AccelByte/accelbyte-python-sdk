@@ -4,6 +4,7 @@
 
 import json
 from dataclasses import dataclass
+from io import IOBase
 from typing import Any, Dict, IO, List, Optional, Tuple, Union
 from pathlib import Path
 
@@ -141,8 +142,8 @@ class SecuritiesResolver:
         return False
 
 
-def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, IO]:
-    if isinstance(file, IO):
+def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, Union[IO, IOBase]]:
+    if isinstance(file, IOBase):
         return name, file
 
     if isinstance(file, str):
