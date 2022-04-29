@@ -117,7 +117,7 @@ class RequestsHttpClient(HttpClient):
         http_raw_response, http_response = process_response(
             status_code=raw_response.status_code,
             content_json=lambda: raw_response.json(),
-            content_raw=lambda: raw_response.raw.data,
+            content_raw=lambda: raw_response.content,
             content_text=lambda: raw_response.text,
             headers=raw_response.headers,
             is_redirect=raw_response.is_redirect,
