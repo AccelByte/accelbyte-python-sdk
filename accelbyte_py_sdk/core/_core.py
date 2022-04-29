@@ -390,7 +390,7 @@ def set_http_client(http_client: HttpClient) -> None:
     _HTTP_CLIENT = http_client
 
 
-def __pre_run_request(
+def _pre_run_request(
         operation: Operation,
         base_url: Optional[str] = "",
         additional_headers: Optional[Dict[str, str]] = None,
@@ -422,7 +422,7 @@ def __pre_run_request(
     return proto, error
 
 
-def __post_run_request(
+def _post_run_request(
         operation: Operation,
         response: Any,
         error: Any
@@ -502,7 +502,7 @@ def run_request(
         http_client: Optional[HttpClient] = None,
         **kwargs
 ) -> Tuple[Any, Any]:
-    proto, error = __pre_run_request(
+    proto, error = _pre_run_request(
         operation=operation,
         base_url=base_url,
         additional_headers=additional_headers,
@@ -523,7 +523,7 @@ def run_request(
     if error:
         return None, error
 
-    result, error = __post_run_request(
+    result, error = _post_run_request(
         operation=operation,
         response=response,
         error=error
@@ -541,7 +541,7 @@ async def run_request_async(
         http_client: Optional[HttpClient] = None,
         **kwargs
 ) -> Tuple[Any, Any]:
-    proto, error = __pre_run_request(
+    proto, error = _pre_run_request(
         operation=operation,
         base_url=base_url,
         additional_headers=additional_headers,
@@ -562,7 +562,7 @@ async def run_request_async(
     if error:
         return None, error
 
-    result, error = __post_run_request(
+    result, error = _post_run_request(
         operation=operation,
         response=response,
         error=error
