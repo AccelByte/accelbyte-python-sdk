@@ -62,7 +62,17 @@ def main(*args, **kwargs) -> None:
 
     if kwargs.get("test_core", False):
         import tests.core
-        results_core = runner.run(loader.loadTestsFromModule(tests.core))
+        import tests.sdk.core
+
+        set_logger_level(logging.CRITICAL)
+
+        suite = unittest.TestSuite(
+            [
+                loader.loadTestsFromModule(tests.core),
+                loader.loadTestsFromModule(tests.sdk.core),
+            ]
+        )
+        results_core = runner.run(suite)
         results["test_core"] = results_core.wasSuccessful()
 
     if kwargs.get("test_integration", False):
