@@ -43,7 +43,8 @@ sessionbrowser-join-session '{"password": "17M7DJZa"}' 'MSxECbZb' --login_with_a
 sessionbrowser-delete-session-local-ds 'ygyoarOR' --login_with_auth "Bearer foo"
 sessionbrowser-add-player-to-session '{"as_spectator": false, "user_id": "eNHSb8Rh"}' '3kgs9qqJ' --login_with_auth "Bearer foo"
 sessionbrowser-remove-player-from-session 'bnQsoBgi' 'VpP8Cm3y' --login_with_auth "Bearer foo"
-sessionbrowser-get-recent-player 'vASUoxdx' --login_with_auth "Bearer foo"
+sessionbrowser-update-settings '{}' 'vASUoxdx' --login_with_auth "Bearer foo"
+sessionbrowser-get-recent-player 'xFqmAGTJ' --login_with_auth "Bearer foo"
 exit()
 END
 
