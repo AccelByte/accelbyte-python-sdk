@@ -1,7 +1,13 @@
 # Changelog
 
-## v0.14.0-alpha
+## v0.14.0
 - Add `Code generated. DO NOT EDIT!` notice on generated files.
+- Add interactive mode in cli.
+- Fix missing URL escape in HeaderStr class.
+- Fix missing headers (X-Amzn-Trace-Id, User-Agent).
+- Fix missing type hint in `convert_any_to_file_tuple(...)`.
+- Fix missing raw content data when receiving file.
+- Updated spec for Justice 3.22.
 
 ## v0.13.0
 - Add `ProtoHttpRequest` dataclass
