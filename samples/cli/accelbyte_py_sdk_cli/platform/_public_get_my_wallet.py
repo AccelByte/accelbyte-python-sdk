@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_get_my_wallet as public_get_my_wallet_internal
-from accelbyte_py_sdk.api.platform.models import WalletInfo
+from accelbyte_py_sdk.api.platform.models import PlatformWallet
 
 
 @click.command()

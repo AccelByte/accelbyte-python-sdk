@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import pay_with_user_wallet as pay_with_user_wallet_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PaymentRequest
+from accelbyte_py_sdk.api.platform.models import PlatformWallet
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
-from accelbyte_py_sdk.api.platform.models import WalletInfo
 
 
 @click.command()

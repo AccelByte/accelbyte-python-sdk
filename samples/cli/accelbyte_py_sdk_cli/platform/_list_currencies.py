@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,11 +35,13 @@ from accelbyte_py_sdk.api.platform.models import CurrencyInfo
 
 
 @click.command()
+@click.option("--currency_type", "currency_type", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_currencies(
+        currency_type: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -56,6 +58,7 @@ def list_currencies(
     else:
         login_as_internal(login_as)
     result, error = list_currencies_internal(
+        currency_type=currency_type,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

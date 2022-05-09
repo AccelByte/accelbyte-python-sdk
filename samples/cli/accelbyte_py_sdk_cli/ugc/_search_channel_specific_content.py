@@ -80,6 +80,12 @@ def search_channel_specific_content(
         }
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = search_channel_specific_content_internal(
         channel_id=channel_id,
         creator=creator,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -88,6 +88,7 @@ from ._list_basic_items_by_features import list_basic_items_by_features
 from ._get_item_by_sku import get_item_by_sku
 from ._get_locale_item_by_sku import get_locale_item_by_sku
 from ._get_item_id_by_sku import get_item_id_by_sku
+from ._get_bulk_item_id_by_skus import get_bulk_item_id_by_skus
 from ._bulk_get_locale_items import bulk_get_locale_items
 from ._search_items import search_items
 from ._query_uncategorized_items import query_uncategorized_items
@@ -126,6 +127,9 @@ from ._charge_payment_order import charge_payment_order
 from ._refund_payment_order_by_dedicated import refund_payment_order_by_dedicated
 from ._simulate_payment_order_notification import simulate_payment_order_notification
 from ._get_payment_order_charge_status import get_payment_order_charge_status
+from ._get_platform_wallet_config import get_platform_wallet_config
+from ._update_platform_wallet_config import update_platform_wallet_config
+from ._reset_platform_wallet_config import reset_platform_wallet_config
 from ._create_reward import create_reward
 from ._query_rewards import query_rewards
 from ._export_rewards import export_rewards
@@ -188,6 +192,7 @@ from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
 from ._query_user_orders import query_user_orders
+from ._admin_create_user_order import admin_create_user_order
 from ._count_of_purchased_item import count_of_purchased_item
 from ._get_user_order import get_user_order
 from ._update_user_order_status import update_user_order_status
@@ -210,6 +215,8 @@ from ._grant_days_to_subscription import grant_days_to_subscription
 from ._get_user_subscription_billing_histories import get_user_subscription_billing_histories
 from ._process_user_subscription_notification import process_user_subscription_notification
 from ._acquire_user_ticket import acquire_user_ticket
+from ._query_user_currency_wallets import query_user_currency_wallets
+from ._list_user_currency_transactions import list_user_currency_transactions
 from ._check_wallet import check_wallet
 from ._credit_user_wallet import credit_user_wallet
 from ._pay_with_user_wallet import pay_with_user_wallet
@@ -413,6 +420,7 @@ commands = [
     get_item_by_sku,
     get_locale_item_by_sku,
     get_item_id_by_sku,
+    get_bulk_item_id_by_skus,
     bulk_get_locale_items,
     search_items,
     query_uncategorized_items,
@@ -451,6 +459,9 @@ commands = [
     refund_payment_order_by_dedicated,
     simulate_payment_order_notification,
     get_payment_order_charge_status,
+    get_platform_wallet_config,
+    update_platform_wallet_config,
+    reset_platform_wallet_config,
     create_reward,
     query_rewards,
     export_rewards,
@@ -513,6 +524,7 @@ commands = [
     query_all_user_iap_orders,
     mock_fulfill_iap_item,
     query_user_orders,
+    admin_create_user_order,
     count_of_purchased_item,
     get_user_order,
     update_user_order_status,
@@ -535,6 +547,8 @@ commands = [
     get_user_subscription_billing_histories,
     process_user_subscription_notification,
     acquire_user_ticket,
+    query_user_currency_wallets,
+    list_user_currency_transactions,
     check_wallet,
     credit_user_wallet,
     pay_with_user_wallet,

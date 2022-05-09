@@ -36,6 +36,7 @@ from ._get_global_stat_items import get_global_stat_items
 from ._bulk_fetch_stat_items import bulk_fetch_stat_items
 from ._bulk_inc_user_stat_item import bulk_inc_user_stat_item
 from ._bulk_inc_user_stat_item_value import bulk_inc_user_stat_item_value
+from ._bulk_fetch_or_default_stat_items import bulk_fetch_or_default_stat_items
 from ._bulk_reset_user_stat_item import bulk_reset_user_stat_item
 from ._get_stats import get_stats
 from ._create_stat import create_stat
@@ -61,6 +62,7 @@ from ._bulk_reset_user_stat_item_2 import bulk_reset_user_stat_item_2
 from ._create_stat_1 import create_stat_1
 from ._public_query_user_stat_items import public_query_user_stat_items
 from ._public_bulk_create_user_stat_items import public_bulk_create_user_stat_items
+from ._public_query_user_stat_items_1 import public_query_user_stat_items_1
 from ._public_bulk_inc_user_stat_item_1 import public_bulk_inc_user_stat_item_1
 from ._bulk_inc_user_stat_item_value_2 import bulk_inc_user_stat_item_value_2
 from ._bulk_reset_user_stat_item_3 import bulk_reset_user_stat_item_3
@@ -70,11 +72,13 @@ from ._public_inc_user_stat_item import public_inc_user_stat_item
 from ._public_inc_user_stat_item_value import public_inc_user_stat_item_value
 from ._reset_user_stat_item_value_1 import reset_user_stat_item_value_1
 from ._bulk_update_user_stat_item_v2 import bulk_update_user_stat_item_v2
+from ._bulk_fetch_or_default_stat_items_1 import bulk_fetch_or_default_stat_items_1
 from ._bulk_update_user_stat_item import bulk_update_user_stat_item
 from ._bulk_reset_user_stat_item_values import bulk_reset_user_stat_item_values
 from ._delete_user_stat_items_2 import delete_user_stat_items_2
 from ._update_user_stat_item_value import update_user_stat_item_value
 from ._bulk_update_user_stat_item_1 import bulk_update_user_stat_item_1
+from ._public_query_user_stat_items_2 import public_query_user_stat_items_2
 from ._bulk_update_user_stat_item_2 import bulk_update_user_stat_item_2
 from ._update_user_stat_item_value_1 import update_user_stat_item_value_1
 
@@ -108,6 +112,7 @@ commands = [
     bulk_fetch_stat_items,
     bulk_inc_user_stat_item,
     bulk_inc_user_stat_item_value,
+    bulk_fetch_or_default_stat_items,
     bulk_reset_user_stat_item,
     get_stats,
     create_stat,
@@ -133,6 +138,7 @@ commands = [
     create_stat_1,
     public_query_user_stat_items,
     public_bulk_create_user_stat_items,
+    public_query_user_stat_items_1,
     public_bulk_inc_user_stat_item_1,
     bulk_inc_user_stat_item_value_2,
     bulk_reset_user_stat_item_3,
@@ -142,11 +148,13 @@ commands = [
     public_inc_user_stat_item_value,
     reset_user_stat_item_value_1,
     bulk_update_user_stat_item_v2,
+    bulk_fetch_or_default_stat_items_1,
     bulk_update_user_stat_item,
     bulk_reset_user_stat_item_values,
     delete_user_stat_items_2,
     update_user_stat_item_value,
     bulk_update_user_stat_item_1,
+    public_query_user_stat_items_2,
     bulk_update_user_stat_item_2,
     update_user_stat_item_value_1,
 ]

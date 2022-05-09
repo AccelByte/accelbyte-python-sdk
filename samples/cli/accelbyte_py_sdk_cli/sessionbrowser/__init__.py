@@ -22,6 +22,7 @@ from ._join_session import join_session
 from ._delete_session_local_ds import delete_session_local_ds
 from ._add_player_to_session import add_player_to_session
 from ._remove_player_from_session import remove_player_from_session
+from ._update_settings import update_settings
 from ._get_recent_player import get_recent_player
 
 
@@ -40,5 +41,6 @@ commands = [
     delete_session_local_ds,
     add_player_to_session,
     remove_player_from_session,
+    update_settings,
     get_recent_player,
 ]

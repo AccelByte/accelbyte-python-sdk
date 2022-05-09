@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.command()
 @click.argument("currency_code", type=str)
 @click.argument("user_id", type=str)
+@click.argument("origin", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,6 +46,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 def check_wallet(
         currency_code: str,
         user_id: str,
+        origin: str,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def check_wallet(
     result, error = check_wallet_internal(
         currency_code=currency_code,
         user_id=user_id,
+        origin=origin,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
