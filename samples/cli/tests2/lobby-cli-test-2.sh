@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 lobby-get-user-friends-updated --login_with_auth "Bearer foo"
 lobby-get-user-incoming-friends --login_with_auth "Bearer foo"
 lobby-get-user-outgoing-friends --login_with_auth "Bearer foo"
@@ -117,6 +119,11 @@ lobby-update-topic-by-topic-name '{"description": "OjSyMddB"}' '41JuMf7R' --logi
 lobby-delete-topic-by-topic-name 'UyBHRj8I' --login_with_auth "Bearer foo"
 lobby-free-form-notification-by-user-id '{"message": "iRimRllH", "topic": "T6Dc40vF"}' 'FA6gpU7E' --login_with_auth "Bearer foo"
 lobby-notification-with-template-by-user-id '{"templateContext": {"W3x1dCpm": "55gOeqQI"}, "templateLanguage": "qcJVKmBM", "templateSlug": "1J1IbuTr", "topic": "rkbmuT1w"}' 'hOqmEnDX' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

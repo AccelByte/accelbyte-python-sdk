@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 matchmaking-get-healthcheck-info --login_with_auth "Bearer foo"
 matchmaking-handler-v3-healthz --login_with_auth "Bearer foo"
 matchmaking-get-all-channels-handler --login_with_auth "Bearer foo"
@@ -55,6 +57,11 @@ matchmaking-public-get-all-matchmaking-channel --login_with_auth "Bearer foo"
 matchmaking-public-get-single-matchmaking-channel 'ercZdpMc' --login_with_auth "Bearer foo"
 matchmaking-search-sessions-v2 '17' '58' --login_with_auth "Bearer foo"
 matchmaking-version-check-handler --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

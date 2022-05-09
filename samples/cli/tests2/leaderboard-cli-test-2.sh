@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 leaderboard-get-leaderboard-configurations-admin-v1 --login_with_auth "Bearer foo"
 leaderboard-create-leaderboard-configuration-admin-v1 '{"daily": {"resetTime": "FtBxyZcD"}, "descending": true, "iconURL": "pGlsQuJu", "leaderboardCode": "8vMf0IsJ", "monthly": {"resetDate": 20, "resetTime": "Trd8IDcV"}, "name": "2zXnTKjX", "seasonPeriod": 3, "startTime": "PqamiBxx", "statCode": "9Cs18EY8", "weekly": {"resetDay": 9, "resetTime": "kItqRzHU"}}' --login_with_auth "Bearer foo"
 leaderboard-admin-get-archived-leaderboard-ranking-data-v1-handler '1oh570KQ' --login_with_auth "Bearer foo"
@@ -61,6 +63,11 @@ leaderboard-set-user-leaderboard-visibility-status-v2 '{"visibility": true}' 'lA
 leaderboard-set-user-visibility-status-v2 '{"visibility": false}' 'BBpdsJLh' --login_with_auth "Bearer foo"
 leaderboard-get-leaderboard-configurations-public-v2 --login_with_auth "Bearer foo"
 leaderboard-get-all-time-leaderboard-ranking-public-v2 'sVyExrkx' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

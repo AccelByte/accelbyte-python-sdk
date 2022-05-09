@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 achievement-admin-list-achievements --login_with_auth "Bearer foo"
 achievement-admin-create-new-achievement '{"achievementCode": "FtBxyZcD", "defaultLanguage": "XBpGlsQu", "description": {"Ju8vMf0I": "sJkTrd8I"}, "goalValue": 0.46848625686278056, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "XnTKjXY1", "url": "bPqamiBx"}], "name": {"x9Cs18EY": "84ekItqR"}, "statCode": "zHU1oh57", "tags": ["0KQBVaew"], "unlockedIcons": [{"slug": "c72krSha", "url": "68n3Ynoz"}]}' --login_with_auth "Bearer foo"
 achievement-export-achievements --login_with_auth "Bearer foo"
@@ -41,6 +43,11 @@ achievement-public-list-achievements 'qGodOEGt' --login_with_auth "Bearer foo"
 achievement-public-get-achievement '9gPOj0c6' 'i0JkvIas' --login_with_auth "Bearer foo"
 achievement-public-list-user-achievements '73ucYnFA' --login_with_auth "Bearer foo"
 achievement-public-unlock-achievement 'J3DK5T4E' 'ogg0Y39U' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

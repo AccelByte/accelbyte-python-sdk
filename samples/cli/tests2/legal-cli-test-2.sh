@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 legal-change-preference-consent 'FtBxyZcD' --body '[{"isAccepted": true, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "GlsQuJu8", "policyId": "vMf0IsJk", "policyVersionId": "Trd8IDcV"}]' --login_with_auth "Bearer foo"
 legal-retrieve-accepted-agreements '2zXnTKjX' --login_with_auth "Bearer foo"
 legal-retrieve-all-users-by-policy-version 'Y1bPqami' --login_with_auth "Bearer foo"
@@ -69,6 +71,11 @@ legal-retrieve-latest-policies 'dSXRDSvg' --login_with_auth "Bearer foo"
 legal-retrieve-latest-policies-public --login_with_auth "Bearer foo"
 legal-retrieve-latest-policies-by-namespace-and-country-public 'uauw1xT7' --login_with_auth "Bearer foo"
 legal-check-readiness --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

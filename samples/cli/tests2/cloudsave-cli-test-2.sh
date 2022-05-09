@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 cloudsave-admin-put-game-record-concurrent-handler-v1 '{"set_by": "FtBxyZcD", "updatedAt": "XBpGlsQu", "value": {"Ju8vMf0I": {}}}' 'sJkTrd8I' --login_with_auth "Bearer foo"
 cloudsave-list-game-records-handler-v1 '59' '4' --login_with_auth "Bearer foo"
 cloudsave-admin-get-game-record-handler-v1 'V2zXnTKj' --login_with_auth "Bearer foo"
@@ -58,6 +60,11 @@ cloudsave-delete-player-record-handler-v1 'u23REZ8h' 'RVX7LGOv' --login_with_aut
 cloudsave-get-player-public-record-handler-v1 'DdYiQS9i' '7mV1C91p' --login_with_auth "Bearer foo"
 cloudsave-put-player-public-record-handler-v1 '{}' 'jG9gpxL6' 'ycTQdvln' --login_with_auth "Bearer foo"
 cloudsave-post-player-public-record-handler-v1 '{}' '2LAuSQWE' 'XL6LFE1Y' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

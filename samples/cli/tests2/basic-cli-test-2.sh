@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 basic-get-namespaces --login_with_auth "Bearer foo"
 basic-create-namespace --body '{"displayName": "FtBxyZcD", "namespace": "XBpGlsQu"}' --login_with_auth "Bearer foo"
 basic-get-namespace --login_with_auth "Bearer foo"
@@ -84,6 +86,11 @@ basic-public-get-custom-attributes-info 'pv5ou5xt' --login_with_auth "Bearer foo
 basic-public-update-custom-attributes-partially 'vd28OUfC' --body '{"t8UJC5fl": {}}' --login_with_auth "Bearer foo"
 basic-public-get-user-profile-public-info 'Nyj6HsTt' --login_with_auth "Bearer foo"
 basic-public-update-user-profile-status 'X8P3llna' --body '{"status": "ACTIVE"}' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

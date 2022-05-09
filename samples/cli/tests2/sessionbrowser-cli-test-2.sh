@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 sessionbrowser-get-total-active-session --login_with_auth "Bearer foo"
 sessionbrowser-get-active-custom-game-sessions --login_with_auth "Bearer foo"
 sessionbrowser-get-active-matchmaking-game-sessions --login_with_auth "Bearer foo"
@@ -42,6 +44,11 @@ sessionbrowser-delete-session-local-ds 'ygyoarOR' --login_with_auth "Bearer foo"
 sessionbrowser-add-player-to-session '{"as_spectator": false, "user_id": "eNHSb8Rh"}' '3kgs9qqJ' --login_with_auth "Bearer foo"
 sessionbrowser-remove-player-from-session 'bnQsoBgi' 'VpP8Cm3y' --login_with_auth "Bearer foo"
 sessionbrowser-get-recent-player 'vASUoxdx' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

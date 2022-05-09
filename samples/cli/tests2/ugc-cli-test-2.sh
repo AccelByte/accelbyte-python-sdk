@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 ugc-single-admin-get-channel --login_with_auth "Bearer foo"
 ugc-admin-create-channel '{"name": "FtBxyZcD"}' --login_with_auth "Bearer foo"
 ugc-single-admin-update-channel '{"name": "XBpGlsQu"}' 'Ju8vMf0I' --login_with_auth "Bearer foo"
@@ -110,6 +112,11 @@ ugc-update-group '{"contents": ["FRr0gwB9"], "name": "tz3vp99X"}' 'VlV8rK3t' 'E6
 ugc-delete-group '1tw3L7cU' 'd9pqtv6J' --login_with_auth "Bearer foo"
 ugc-get-group-content 'fPZwcCVO' 'XcVa80Tm' --login_with_auth "Bearer foo"
 ugc-delete-all-user-states 'CwtD2lAH' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE

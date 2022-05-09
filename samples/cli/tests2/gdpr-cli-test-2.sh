@@ -24,9 +24,11 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='samples/cli'
 
+touch "tmp.dat"
+
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error > test.out 2>&1 << END
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 gdpr-admin-get-list-deletion-data-request --login_with_auth "Bearer foo"
 gdpr-get-admin-email-configuration --login_with_auth "Bearer foo"
 gdpr-update-admin-email-configuration '["FtBxyZcD"]' --login_with_auth "Bearer foo"
@@ -47,6 +49,11 @@ gdpr-public-get-user-personal-data-requests 'bZbygyoa' --login_with_auth "Bearer
 gdpr-public-request-data-retrieval 'rORoeNHS' 'b8Rh3kgs' --login_with_auth "Bearer foo"
 gdpr-public-cancel-user-personal-data-request '9qqJbnQs' 'oBgiVpP8' --login_with_auth "Bearer foo"
 gdpr-public-generate-personal-data-url 'Cm3yvASU' 'oxdxxFqm' 'AGTJ8IEd' --login_with_auth "Bearer foo"
+exit()
 END
+
+rm -f "tmp.dat"
+
+EXIT_CODE=$?
 
 exit $EXIT_CODE
