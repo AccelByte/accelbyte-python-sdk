@@ -77,3 +77,7 @@ def process_user_order_notification(
     if error:
         raise Exception(f"processUserOrderNotification failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+process_user_order_notification.operation_id = "processUserOrderNotification"
+process_user_order_notification.is_deprecated = False

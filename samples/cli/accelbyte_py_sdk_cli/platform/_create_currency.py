@@ -74,3 +74,7 @@ def create_currency(
     if error:
         raise Exception(f"createCurrency failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_currency.operation_id = "createCurrency"
+create_currency.is_deprecated = False

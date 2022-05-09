@@ -75,3 +75,7 @@ def update_private_custom_attributes_partially(
     if error:
         raise Exception(f"updatePrivateCustomAttributesPartially failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_private_custom_attributes_partially.operation_id = "updatePrivateCustomAttributesPartially"
+update_private_custom_attributes_partially.is_deprecated = False

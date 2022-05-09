@@ -73,3 +73,7 @@ def register_local_server(
     if error:
         raise Exception(f"RegisterLocalServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+register_local_server.operation_id = "RegisterLocalServer"
+register_local_server.is_deprecated = False

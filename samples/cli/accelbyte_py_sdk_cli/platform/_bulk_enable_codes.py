@@ -68,3 +68,7 @@ def bulk_enable_codes(
     if error:
         raise Exception(f"bulkEnableCodes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_enable_codes.operation_id = "bulkEnableCodes"
+bulk_enable_codes.is_deprecated = False

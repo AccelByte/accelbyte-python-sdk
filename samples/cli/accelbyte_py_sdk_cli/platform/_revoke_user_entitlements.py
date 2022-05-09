@@ -68,3 +68,7 @@ def revoke_user_entitlements(
     if error:
         raise Exception(f"revokeUserEntitlements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+revoke_user_entitlements.operation_id = "revokeUserEntitlements"
+revoke_user_entitlements.is_deprecated = False

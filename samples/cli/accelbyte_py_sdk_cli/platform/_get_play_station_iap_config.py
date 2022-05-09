@@ -62,3 +62,7 @@ def get_play_station_iap_config(
     if error:
         raise Exception(f"getPlayStationIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_play_station_iap_config.operation_id = "getPlayStationIAPConfig"
+get_play_station_iap_config.is_deprecated = False

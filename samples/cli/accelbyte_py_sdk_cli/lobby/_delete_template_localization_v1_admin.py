@@ -68,3 +68,7 @@ def delete_template_localization_v1_admin(
     if error:
         raise Exception(f"deleteTemplateLocalizationV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_template_localization_v1_admin.operation_id = "deleteTemplateLocalizationV1Admin"
+delete_template_localization_v1_admin.is_deprecated = False

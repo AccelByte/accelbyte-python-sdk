@@ -69,3 +69,7 @@ def retire_season(
     if error:
         raise Exception(f"retireSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retire_season.operation_id = "retireSeason"
+retire_season.is_deprecated = False

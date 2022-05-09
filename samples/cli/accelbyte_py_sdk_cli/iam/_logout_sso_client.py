@@ -62,3 +62,7 @@ def logout_sso_client(
     if error:
         raise Exception(f"LogoutSSOClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+logout_sso_client.operation_id = "LogoutSSOClient"
+logout_sso_client.is_deprecated = False

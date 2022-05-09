@@ -62,3 +62,7 @@ def delete_config(
     if error:
         raise Exception(f"DeleteConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_config.operation_id = "DeleteConfig"
+delete_config.is_deprecated = False

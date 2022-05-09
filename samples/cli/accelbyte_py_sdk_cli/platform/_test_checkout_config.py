@@ -72,3 +72,7 @@ def test_checkout_config(
     if error:
         raise Exception(f"testCheckoutConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_checkout_config.operation_id = "testCheckoutConfig"
+test_checkout_config.is_deprecated = False

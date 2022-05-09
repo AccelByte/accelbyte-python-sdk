@@ -68,3 +68,7 @@ def public_get_user_ban(
     if error:
         raise Exception(f"PublicGetUserBan failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_ban.operation_id = "PublicGetUserBan"
+public_get_user_ban.is_deprecated = False

@@ -80,3 +80,7 @@ def update_item(
     if error:
         raise Exception(f"updateItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_item.operation_id = "updateItem"
+update_item.is_deprecated = False

@@ -77,3 +77,7 @@ def update_currency(
     if error:
         raise Exception(f"updateCurrency failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_currency.operation_id = "updateCurrency"
+update_currency.is_deprecated = False

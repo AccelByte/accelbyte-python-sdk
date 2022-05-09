@@ -67,3 +67,7 @@ def get_country_groups(
     if error:
         raise Exception(f"getCountryGroups failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_country_groups.operation_id = "getCountryGroups"
+get_country_groups.is_deprecated = False

@@ -65,3 +65,7 @@ def delete_notification_topic_v1_admin(
     if error:
         raise Exception(f"deleteNotificationTopicV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_notification_topic_v1_admin.operation_id = "deleteNotificationTopicV1Admin"
+delete_notification_topic_v1_admin.is_deprecated = False

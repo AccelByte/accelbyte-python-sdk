@@ -77,3 +77,7 @@ def create_item(
     if error:
         raise Exception(f"createItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_item.operation_id = "createItem"
+create_item.is_deprecated = False

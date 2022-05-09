@@ -66,3 +66,7 @@ def public_download_content_by_content_id(
     if error:
         raise Exception(f"PublicDownloadContentByContentID failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_download_content_by_content_id.operation_id = "PublicDownloadContentByContentID"
+public_download_content_by_content_id.is_deprecated = False

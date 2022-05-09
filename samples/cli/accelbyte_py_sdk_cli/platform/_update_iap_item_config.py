@@ -73,3 +73,7 @@ def update_iap_item_config(
     if error:
         raise Exception(f"updateIAPItemConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_iap_item_config.operation_id = "updateIAPItemConfig"
+update_iap_item_config.is_deprecated = False

@@ -75,3 +75,7 @@ def admin_bulk_block_players_v1(
     if error:
         raise Exception(f"adminBulkBlockPlayersV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_bulk_block_players_v1.operation_id = "adminBulkBlockPlayersV1"
+admin_bulk_block_players_v1.is_deprecated = False

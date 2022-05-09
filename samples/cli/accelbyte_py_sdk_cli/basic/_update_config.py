@@ -73,3 +73,7 @@ def update_config(
     if error:
         raise Exception(f"updateConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_config.operation_id = "updateConfig"
+update_config.is_deprecated = False

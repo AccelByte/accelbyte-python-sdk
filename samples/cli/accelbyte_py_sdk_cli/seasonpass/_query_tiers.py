@@ -72,3 +72,7 @@ def query_tiers(
     if error:
         raise Exception(f"queryTiers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_tiers.operation_id = "queryTiers"
+query_tiers.is_deprecated = False

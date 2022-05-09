@@ -71,3 +71,7 @@ def public_get_user_entitlement_ownership_by_item_id(
     if error:
         raise Exception(f"publicGetUserEntitlementOwnershipByItemId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_entitlement_ownership_by_item_id.operation_id = "publicGetUserEntitlementOwnershipByItemId"
+public_get_user_entitlement_ownership_by_item_id.is_deprecated = False

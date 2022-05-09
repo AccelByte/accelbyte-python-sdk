@@ -76,3 +76,7 @@ def update_single_group_v1(
     if error:
         raise Exception(f"updateSingleGroupV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_single_group_v1.operation_id = "updateSingleGroupV1"
+update_single_group_v1.is_deprecated = False

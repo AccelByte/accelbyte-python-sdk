@@ -96,3 +96,7 @@ def admin_search_content(
     if error:
         raise Exception(f"AdminSearchContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_search_content.operation_id = "AdminSearchContent"
+admin_search_content.is_deprecated = False

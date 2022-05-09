@@ -75,3 +75,7 @@ def admin_list_user_achievements(
     if error:
         raise Exception(f"AdminListUserAchievements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_list_user_achievements.operation_id = "AdminListUserAchievements"
+admin_list_user_achievements.is_deprecated = False

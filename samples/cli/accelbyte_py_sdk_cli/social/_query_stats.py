@@ -71,3 +71,7 @@ def query_stats(
     if error:
         raise Exception(f"queryStats failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_stats.operation_id = "queryStats"
+query_stats.is_deprecated = False

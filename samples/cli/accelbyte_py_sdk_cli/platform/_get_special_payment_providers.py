@@ -58,3 +58,7 @@ def get_special_payment_providers(
     if error:
         raise Exception(f"getSpecialPaymentProviders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_special_payment_providers.operation_id = "getSpecialPaymentProviders"
+get_special_payment_providers.is_deprecated = False

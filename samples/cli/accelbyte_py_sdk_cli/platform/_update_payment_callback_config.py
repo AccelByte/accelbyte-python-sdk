@@ -72,3 +72,7 @@ def update_payment_callback_config(
     if error:
         raise Exception(f"updatePaymentCallbackConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_payment_callback_config.operation_id = "updatePaymentCallbackConfig"
+update_payment_callback_config.is_deprecated = False

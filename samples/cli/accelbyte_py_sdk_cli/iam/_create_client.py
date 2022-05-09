@@ -69,3 +69,7 @@ def create_client(
     if error:
         raise Exception(f"CreateClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_client.operation_id = "CreateClient"
+create_client.is_deprecated = True

@@ -78,3 +78,7 @@ def admin_get_user_ban_v3(
     if error:
         raise Exception(f"AdminGetUserBanV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_user_ban_v3.operation_id = "AdminGetUserBanV3"
+admin_get_user_ban_v3.is_deprecated = False

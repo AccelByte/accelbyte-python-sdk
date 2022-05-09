@@ -69,3 +69,7 @@ def download_categories(
     if error:
         raise Exception(f"downloadCategories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+download_categories.operation_id = "downloadCategories"
+download_categories.is_deprecated = False

@@ -63,3 +63,7 @@ def get_payment_callback_config(
     if error:
         raise Exception(f"getPaymentCallbackConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_callback_config.operation_id = "getPaymentCallbackConfig"
+get_payment_callback_config.is_deprecated = False

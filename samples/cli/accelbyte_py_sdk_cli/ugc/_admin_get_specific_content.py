@@ -66,3 +66,7 @@ def admin_get_specific_content(
     if error:
         raise Exception(f"AdminGetSpecificContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_specific_content.operation_id = "AdminGetSpecificContent"
+admin_get_specific_content.is_deprecated = False

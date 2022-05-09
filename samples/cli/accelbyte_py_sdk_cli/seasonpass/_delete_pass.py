@@ -68,3 +68,7 @@ def delete_pass(
     if error:
         raise Exception(f"deletePass failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_pass.operation_id = "deletePass"
+delete_pass.is_deprecated = False

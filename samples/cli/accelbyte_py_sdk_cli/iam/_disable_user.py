@@ -74,3 +74,7 @@ def disable_user(
     if error:
         raise Exception(f"DisableUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+disable_user.operation_id = "DisableUser"
+disable_user.is_deprecated = True

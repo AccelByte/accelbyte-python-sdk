@@ -78,3 +78,7 @@ def put_player_public_record_handler_v1(
     if error:
         raise Exception(f"putPlayerPublicRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+put_player_public_record_handler_v1.operation_id = "putPlayerPublicRecordHandlerV1"
+put_player_public_record_handler_v1.is_deprecated = False

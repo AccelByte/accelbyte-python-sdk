@@ -61,3 +61,7 @@ def revoke_a_user(
     if error:
         raise Exception(f"RevokeAUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+revoke_a_user.operation_id = "RevokeAUser"
+revoke_a_user.is_deprecated = True

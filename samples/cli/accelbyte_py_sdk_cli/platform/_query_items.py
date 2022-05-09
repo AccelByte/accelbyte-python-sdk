@@ -106,3 +106,7 @@ def query_items(
     if error:
         raise Exception(f"queryItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_items.operation_id = "queryItems"
+query_items.is_deprecated = False

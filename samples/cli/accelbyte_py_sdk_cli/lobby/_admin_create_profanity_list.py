@@ -72,3 +72,7 @@ def admin_create_profanity_list(
     if error:
         raise Exception(f"adminCreateProfanityList failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_create_profanity_list.operation_id = "adminCreateProfanityList"
+admin_create_profanity_list.is_deprecated = False

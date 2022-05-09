@@ -75,3 +75,7 @@ def admin_update_user_deletion_status_v3(
     if error:
         raise Exception(f"AdminUpdateUserDeletionStatusV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_user_deletion_status_v3.operation_id = "AdminUpdateUserDeletionStatusV3"
+admin_update_user_deletion_status_v3.is_deprecated = False

@@ -65,3 +65,7 @@ def delete_group_admin_v1(
     if error:
         raise Exception(f"deleteGroupAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_group_admin_v1.operation_id = "deleteGroupAdminV1"
+delete_group_admin_v1.is_deprecated = False

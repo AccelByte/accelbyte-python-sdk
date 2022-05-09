@@ -63,3 +63,7 @@ def get_iap_item_config(
     if error:
         raise Exception(f"getIAPItemConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_iap_item_config.operation_id = "getIAPItemConfig"
+get_iap_item_config.is_deprecated = False

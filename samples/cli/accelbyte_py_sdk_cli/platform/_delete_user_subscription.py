@@ -67,3 +67,7 @@ def delete_user_subscription(
     if error:
         raise Exception(f"deleteUserSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_subscription.operation_id = "deleteUserSubscription"
+delete_user_subscription.is_deprecated = False

@@ -77,3 +77,7 @@ def create_category(
     if error:
         raise Exception(f"createCategory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_category.operation_id = "createCategory"
+create_category.is_deprecated = False

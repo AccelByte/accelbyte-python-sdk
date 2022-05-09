@@ -66,3 +66,7 @@ def delete_session_local_ds(
     if error:
         raise Exception(f"DeleteSessionLocalDS failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_session_local_ds.operation_id = "DeleteSessionLocalDS"
+delete_session_local_ds.is_deprecated = False

@@ -59,3 +59,7 @@ def get_payment_tax_config(
     if error:
         raise Exception(f"getPaymentTaxConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_tax_config.operation_id = "getPaymentTaxConfig"
+get_payment_tax_config.is_deprecated = False

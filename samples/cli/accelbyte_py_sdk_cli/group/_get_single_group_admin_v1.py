@@ -66,3 +66,7 @@ def get_single_group_admin_v1(
     if error:
         raise Exception(f"getSingleGroupAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_single_group_admin_v1.operation_id = "getSingleGroupAdminV1"
+get_single_group_admin_v1.is_deprecated = False

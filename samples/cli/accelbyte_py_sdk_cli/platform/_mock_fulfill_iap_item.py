@@ -75,3 +75,7 @@ def mock_fulfill_iap_item(
     if error:
         raise Exception(f"mockFulfillIAPItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+mock_fulfill_iap_item.operation_id = "mockFulfillIAPItem"
+mock_fulfill_iap_item.is_deprecated = False

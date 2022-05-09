@@ -66,3 +66,7 @@ def count_session(
     if error:
         raise Exception(f"CountSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+count_session.operation_id = "CountSession"
+count_session.is_deprecated = False

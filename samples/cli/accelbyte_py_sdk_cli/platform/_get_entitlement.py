@@ -66,3 +66,7 @@ def get_entitlement(
     if error:
         raise Exception(f"getEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_entitlement.operation_id = "getEntitlement"
+get_entitlement.is_deprecated = False

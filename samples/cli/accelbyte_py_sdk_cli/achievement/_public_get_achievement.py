@@ -69,3 +69,7 @@ def public_get_achievement(
     if error:
         raise Exception(f"PublicGetAchievement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_achievement.operation_id = "PublicGetAchievement"
+public_get_achievement.is_deprecated = False

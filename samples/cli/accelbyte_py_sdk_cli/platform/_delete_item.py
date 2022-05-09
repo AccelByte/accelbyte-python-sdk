@@ -68,3 +68,7 @@ def delete_item(
     if error:
         raise Exception(f"deleteItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_item.operation_id = "deleteItem"
+delete_item.is_deprecated = False

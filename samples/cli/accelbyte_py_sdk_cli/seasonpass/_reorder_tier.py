@@ -80,3 +80,7 @@ def reorder_tier(
     if error:
         raise Exception(f"reorderTier failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+reorder_tier.operation_id = "reorderTier"
+reorder_tier.is_deprecated = False

@@ -69,3 +69,7 @@ def import_channels(
     if error:
         raise Exception(f"ImportChannels failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_channels.operation_id = "ImportChannels"
+import_channels.is_deprecated = False

@@ -63,3 +63,7 @@ def admin_get_profanity_lists(
     if error:
         raise Exception(f"adminGetProfanityLists failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_profanity_lists.operation_id = "adminGetProfanityLists"
+admin_get_profanity_lists.is_deprecated = False

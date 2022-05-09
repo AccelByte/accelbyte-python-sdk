@@ -69,3 +69,7 @@ def admin_request_data_retrieval(
     if error:
         raise Exception(f"AdminRequestDataRetrieval failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_request_data_retrieval.operation_id = "AdminRequestDataRetrieval"
+admin_request_data_retrieval.is_deprecated = False

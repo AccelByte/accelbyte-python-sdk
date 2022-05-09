@@ -80,3 +80,7 @@ def credit_user_wallet(
     if error:
         raise Exception(f"creditUserWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+credit_user_wallet.operation_id = "creditUserWallet"
+credit_user_wallet.is_deprecated = False

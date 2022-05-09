@@ -80,3 +80,7 @@ def update_pass(
     if error:
         raise Exception(f"updatePass failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_pass.operation_id = "updatePass"
+update_pass.is_deprecated = False

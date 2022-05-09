@@ -64,3 +64,7 @@ def anonymize_fulfillment(
     if error:
         raise Exception(f"anonymizeFulfillment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_fulfillment.operation_id = "anonymizeFulfillment"
+anonymize_fulfillment.is_deprecated = False

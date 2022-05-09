@@ -71,3 +71,7 @@ def update_policy(
     if error:
         raise Exception(f"updatePolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_policy.operation_id = "updatePolicy"
+update_policy.is_deprecated = False

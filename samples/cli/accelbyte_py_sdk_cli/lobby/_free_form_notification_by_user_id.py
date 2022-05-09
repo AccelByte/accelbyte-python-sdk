@@ -75,3 +75,7 @@ def free_form_notification_by_user_id(
     if error:
         raise Exception(f"freeFormNotificationByUserID failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+free_form_notification_by_user_id.operation_id = "freeFormNotificationByUserID"
+free_form_notification_by_user_id.is_deprecated = False

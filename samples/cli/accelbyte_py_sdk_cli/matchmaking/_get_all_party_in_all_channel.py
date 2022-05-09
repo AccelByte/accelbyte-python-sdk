@@ -63,3 +63,7 @@ def get_all_party_in_all_channel(
     if error:
         raise Exception(f"GetAllPartyInAllChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_all_party_in_all_channel.operation_id = "GetAllPartyInAllChannel"
+get_all_party_in_all_channel.is_deprecated = False

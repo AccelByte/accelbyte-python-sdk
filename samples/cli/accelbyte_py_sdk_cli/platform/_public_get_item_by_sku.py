@@ -75,3 +75,7 @@ def public_get_item_by_sku(
     if error:
         raise Exception(f"publicGetItemBySku failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_item_by_sku.operation_id = "publicGetItemBySku"
+public_get_item_by_sku.is_deprecated = False

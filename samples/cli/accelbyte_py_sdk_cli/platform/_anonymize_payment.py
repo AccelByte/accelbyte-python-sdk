@@ -64,3 +64,7 @@ def anonymize_payment(
     if error:
         raise Exception(f"anonymizePayment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_payment.operation_id = "anonymizePayment"
+anonymize_payment.is_deprecated = False

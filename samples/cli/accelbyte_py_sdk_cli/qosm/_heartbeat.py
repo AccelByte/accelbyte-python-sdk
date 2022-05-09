@@ -69,3 +69,7 @@ def heartbeat(
     if error:
         raise Exception(f"Heartbeat failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+heartbeat.operation_id = "Heartbeat"
+heartbeat.is_deprecated = False

@@ -72,3 +72,7 @@ def public_get_user_entitlement_by_item_id(
     if error:
         raise Exception(f"publicGetUserEntitlementByItemId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_entitlement_by_item_id.operation_id = "publicGetUserEntitlementByItemId"
+public_get_user_entitlement_by_item_id.is_deprecated = False

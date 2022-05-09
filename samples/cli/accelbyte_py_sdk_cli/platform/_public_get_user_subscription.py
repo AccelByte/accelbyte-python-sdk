@@ -69,3 +69,7 @@ def public_get_user_subscription(
     if error:
         raise Exception(f"publicGetUserSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_subscription.operation_id = "publicGetUserSubscription"
+public_get_user_subscription.is_deprecated = False

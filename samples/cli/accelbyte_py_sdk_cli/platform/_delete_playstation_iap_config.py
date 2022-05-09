@@ -61,3 +61,7 @@ def delete_playstation_iap_config(
     if error:
         raise Exception(f"deletePlaystationIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_playstation_iap_config.operation_id = "deletePlaystationIAPConfig"
+delete_playstation_iap_config.is_deprecated = False

@@ -78,3 +78,7 @@ def bulk_get_locale_items(
     if error:
         raise Exception(f"bulkGetLocaleItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_get_locale_items.operation_id = "bulkGetLocaleItems"
+bulk_get_locale_items.is_deprecated = False

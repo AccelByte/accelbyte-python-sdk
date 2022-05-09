@@ -78,3 +78,7 @@ def query_seasons(
     if error:
         raise Exception(f"querySeasons failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_seasons.operation_id = "querySeasons"
+query_seasons.is_deprecated = False

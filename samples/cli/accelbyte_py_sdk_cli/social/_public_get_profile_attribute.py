@@ -72,3 +72,7 @@ def public_get_profile_attribute(
     if error:
         raise Exception(f"publicGetProfileAttribute failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_profile_attribute.operation_id = "publicGetProfileAttribute"
+public_get_profile_attribute.is_deprecated = False

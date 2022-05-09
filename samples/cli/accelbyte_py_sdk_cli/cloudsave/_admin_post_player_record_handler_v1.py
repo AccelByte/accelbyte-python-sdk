@@ -78,3 +78,7 @@ def admin_post_player_record_handler_v1(
     if error:
         raise Exception(f"adminPostPlayerRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_post_player_record_handler_v1.operation_id = "adminPostPlayerRecordHandlerV1"
+admin_post_player_record_handler_v1.is_deprecated = False

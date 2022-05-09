@@ -69,3 +69,7 @@ def test_fulfillment_script_eval(
     if error:
         raise Exception(f"testFulfillmentScriptEval failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_fulfillment_script_eval.operation_id = "testFulfillmentScriptEval"
+test_fulfillment_script_eval.is_deprecated = False

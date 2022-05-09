@@ -72,3 +72,7 @@ def update_role(
     if error:
         raise Exception(f"UpdateRole failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_role.operation_id = "UpdateRole"
+update_role.is_deprecated = False

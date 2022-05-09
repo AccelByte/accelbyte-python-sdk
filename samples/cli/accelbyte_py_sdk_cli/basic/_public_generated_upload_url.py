@@ -70,3 +70,7 @@ def public_generated_upload_url(
     if error:
         raise Exception(f"publicGeneratedUploadUrl failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_generated_upload_url.operation_id = "publicGeneratedUploadUrl"
+public_generated_upload_url.is_deprecated = False

@@ -69,3 +69,7 @@ def get_followed_users(
     if error:
         raise Exception(f"GetFollowedUsers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_followed_users.operation_id = "GetFollowedUsers"
+get_followed_users.is_deprecated = False

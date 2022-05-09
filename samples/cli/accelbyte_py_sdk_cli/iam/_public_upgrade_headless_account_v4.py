@@ -73,3 +73,7 @@ def public_upgrade_headless_account_v4(
     if error:
         raise Exception(f"PublicUpgradeHeadlessAccountV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_upgrade_headless_account_v4.operation_id = "PublicUpgradeHeadlessAccountV4"
+public_upgrade_headless_account_v4.is_deprecated = False

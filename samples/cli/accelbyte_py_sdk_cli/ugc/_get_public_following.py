@@ -72,3 +72,7 @@ def get_public_following(
     if error:
         raise Exception(f"GetPublicFollowing failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_public_following.operation_id = "GetPublicFollowing"
+get_public_following.is_deprecated = False

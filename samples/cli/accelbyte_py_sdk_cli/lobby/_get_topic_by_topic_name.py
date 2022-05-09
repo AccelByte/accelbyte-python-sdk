@@ -66,3 +66,7 @@ def get_topic_by_topic_name(
     if error:
         raise Exception(f"getTopicByTopicName failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_topic_by_topic_name.operation_id = "getTopicByTopicName"
+get_topic_by_topic_name.is_deprecated = False

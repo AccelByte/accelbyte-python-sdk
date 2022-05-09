@@ -76,3 +76,7 @@ def update_group_custom_attributes_public_v1(
     if error:
         raise Exception(f"updateGroupCustomAttributesPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_group_custom_attributes_public_v1.operation_id = "updateGroupCustomAttributesPublicV1"
+update_group_custom_attributes_public_v1.is_deprecated = False

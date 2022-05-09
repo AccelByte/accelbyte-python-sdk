@@ -73,3 +73,7 @@ def public_create_test_user_v4(
     if error:
         raise Exception(f"PublicCreateTestUserV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_create_test_user_v4.operation_id = "PublicCreateTestUserV4"
+public_create_test_user_v4.is_deprecated = False

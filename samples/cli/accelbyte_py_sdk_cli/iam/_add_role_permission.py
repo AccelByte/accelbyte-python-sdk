@@ -77,3 +77,7 @@ def add_role_permission(
     if error:
         raise Exception(f"AddRolePermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_role_permission.operation_id = "AddRolePermission"
+add_role_permission.is_deprecated = False

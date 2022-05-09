@@ -79,3 +79,7 @@ def update_checkout_config(
     if error:
         raise Exception(f"updateCheckoutConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_checkout_config.operation_id = "updateCheckoutConfig"
+update_checkout_config.is_deprecated = False

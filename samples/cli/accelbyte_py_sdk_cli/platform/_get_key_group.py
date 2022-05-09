@@ -66,3 +66,7 @@ def get_key_group(
     if error:
         raise Exception(f"getKeyGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_key_group.operation_id = "getKeyGroup"
+get_key_group.is_deprecated = False

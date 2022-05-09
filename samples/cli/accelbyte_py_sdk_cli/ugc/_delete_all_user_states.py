@@ -65,3 +65,7 @@ def delete_all_user_states(
     if error:
         raise Exception(f"DeleteAllUserStates failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_all_user_states.operation_id = "DeleteAllUserStates"
+delete_all_user_states.is_deprecated = False

@@ -74,3 +74,7 @@ def list_basic_items_by_features(
     if error:
         raise Exception(f"listBasicItemsByFeatures failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_basic_items_by_features.operation_id = "listBasicItemsByFeatures"
+list_basic_items_by_features.is_deprecated = False

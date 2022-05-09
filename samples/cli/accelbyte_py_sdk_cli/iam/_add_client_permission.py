@@ -67,3 +67,7 @@ def add_client_permission(
     if error:
         raise Exception(f"AddClientPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_client_permission.operation_id = "AddClientPermission"
+add_client_permission.is_deprecated = False

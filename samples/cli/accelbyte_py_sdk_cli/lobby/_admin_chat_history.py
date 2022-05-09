@@ -69,3 +69,7 @@ def admin_chat_history(
     if error:
         raise Exception(f"adminChatHistory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_chat_history.operation_id = "adminChatHistory"
+admin_chat_history.is_deprecated = False

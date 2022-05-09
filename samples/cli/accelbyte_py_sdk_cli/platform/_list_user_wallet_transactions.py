@@ -75,3 +75,7 @@ def list_user_wallet_transactions(
     if error:
         raise Exception(f"listUserWalletTransactions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_user_wallet_transactions.operation_id = "listUserWalletTransactions"
+list_user_wallet_transactions.is_deprecated = False

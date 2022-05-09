@@ -65,3 +65,7 @@ def delete_leaderboard_configuration_admin_v1(
     if error:
         raise Exception(f"deleteLeaderboardConfigurationAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_leaderboard_configuration_admin_v1.operation_id = "deleteLeaderboardConfigurationAdminV1"
+delete_leaderboard_configuration_admin_v1.is_deprecated = False

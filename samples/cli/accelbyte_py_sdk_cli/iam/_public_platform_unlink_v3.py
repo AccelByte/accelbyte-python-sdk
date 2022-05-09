@@ -75,3 +75,7 @@ def public_platform_unlink_v3(
     if error:
         raise Exception(f"PublicPlatformUnlinkV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_platform_unlink_v3.operation_id = "PublicPlatformUnlinkV3"
+public_platform_unlink_v3.is_deprecated = False

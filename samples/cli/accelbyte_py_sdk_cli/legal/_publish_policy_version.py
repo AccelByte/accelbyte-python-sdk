@@ -65,3 +65,7 @@ def publish_policy_version(
     if error:
         raise Exception(f"publishPolicyVersion failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+publish_policy_version.operation_id = "publishPolicyVersion"
+publish_policy_version.is_deprecated = False

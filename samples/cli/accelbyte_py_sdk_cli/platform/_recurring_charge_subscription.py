@@ -65,3 +65,7 @@ def recurring_charge_subscription(
     if error:
         raise Exception(f"recurringChargeSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+recurring_charge_subscription.operation_id = "recurringChargeSubscription"
+recurring_charge_subscription.is_deprecated = False

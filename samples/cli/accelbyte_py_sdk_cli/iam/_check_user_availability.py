@@ -68,3 +68,7 @@ def check_user_availability(
     if error:
         raise Exception(f"CheckUserAvailability failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+check_user_availability.operation_id = "CheckUserAvailability"
+check_user_availability.is_deprecated = False

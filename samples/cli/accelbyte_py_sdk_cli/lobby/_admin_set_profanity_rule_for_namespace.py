@@ -72,3 +72,7 @@ def admin_set_profanity_rule_for_namespace(
     if error:
         raise Exception(f"adminSetProfanityRuleForNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_set_profanity_rule_for_namespace.operation_id = "adminSetProfanityRuleForNamespace"
+admin_set_profanity_rule_for_namespace.is_deprecated = False

@@ -69,3 +69,7 @@ def admin_get_user_by_platform_user_idv3(
     if error:
         raise Exception(f"AdminGetUserByPlatformUserIDV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_user_by_platform_user_idv3.operation_id = "AdminGetUserByPlatformUserIDV3"
+admin_get_user_by_platform_user_idv3.is_deprecated = False

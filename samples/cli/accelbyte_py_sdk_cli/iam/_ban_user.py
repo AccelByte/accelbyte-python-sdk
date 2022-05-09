@@ -75,3 +75,7 @@ def ban_user(
     if error:
         raise Exception(f"BanUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+ban_user.operation_id = "BanUser"
+ban_user.is_deprecated = False

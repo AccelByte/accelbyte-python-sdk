@@ -72,3 +72,7 @@ def list_player_record_handler_v1(
     if error:
         raise Exception(f"listPlayerRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_player_record_handler_v1.operation_id = "listPlayerRecordHandlerV1"
+list_player_record_handler_v1.is_deprecated = True

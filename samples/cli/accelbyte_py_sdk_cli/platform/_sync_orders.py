@@ -68,3 +68,7 @@ def sync_orders(
     if error:
         raise Exception(f"syncOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_orders.operation_id = "syncOrders"
+sync_orders.is_deprecated = False

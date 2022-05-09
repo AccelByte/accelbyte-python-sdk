@@ -76,3 +76,7 @@ def public_redeem_code(
     if error:
         raise Exception(f"publicRedeemCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_redeem_code.operation_id = "publicRedeemCode"
+public_redeem_code.is_deprecated = False

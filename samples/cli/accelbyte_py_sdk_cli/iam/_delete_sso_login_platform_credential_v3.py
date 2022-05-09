@@ -65,3 +65,7 @@ def delete_sso_login_platform_credential_v3(
     if error:
         raise Exception(f"DeleteSSOLoginPlatformCredentialV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_sso_login_platform_credential_v3.operation_id = "DeleteSSOLoginPlatformCredentialV3"
+delete_sso_login_platform_credential_v3.is_deprecated = False

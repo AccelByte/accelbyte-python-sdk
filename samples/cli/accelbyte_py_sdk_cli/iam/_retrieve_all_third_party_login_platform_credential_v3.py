@@ -63,3 +63,7 @@ def retrieve_all_third_party_login_platform_credential_v3(
     if error:
         raise Exception(f"RetrieveAllThirdPartyLoginPlatformCredentialV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_all_third_party_login_platform_credential_v3.operation_id = "RetrieveAllThirdPartyLoginPlatformCredentialV3"
+retrieve_all_third_party_login_platform_credential_v3.is_deprecated = False

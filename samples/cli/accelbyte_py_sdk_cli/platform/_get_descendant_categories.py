@@ -68,3 +68,7 @@ def get_descendant_categories(
     if error:
         raise Exception(f"getDescendantCategories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_descendant_categories.operation_id = "getDescendantCategories"
+get_descendant_categories.is_deprecated = False

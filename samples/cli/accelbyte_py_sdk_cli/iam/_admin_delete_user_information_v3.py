@@ -64,3 +64,7 @@ def admin_delete_user_information_v3(
     if error:
         raise Exception(f"AdminDeleteUserInformationV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_user_information_v3.operation_id = "AdminDeleteUserInformationV3"
+admin_delete_user_information_v3.is_deprecated = False

@@ -76,3 +76,7 @@ def create_user_from_invitation_v4(
     if error:
         raise Exception(f"CreateUserFromInvitationV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_user_from_invitation_v4.operation_id = "CreateUserFromInvitationV4"
+create_user_from_invitation_v4.is_deprecated = False

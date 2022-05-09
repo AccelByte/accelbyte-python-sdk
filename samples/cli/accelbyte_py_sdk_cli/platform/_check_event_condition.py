@@ -76,3 +76,7 @@ def check_event_condition(
     if error:
         raise Exception(f"checkEventCondition failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+check_event_condition.operation_id = "checkEventCondition"
+check_event_condition.is_deprecated = False

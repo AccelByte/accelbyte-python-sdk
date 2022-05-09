@@ -80,3 +80,7 @@ def update_category(
     if error:
         raise Exception(f"updateCategory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_category.operation_id = "updateCategory"
+update_category.is_deprecated = False

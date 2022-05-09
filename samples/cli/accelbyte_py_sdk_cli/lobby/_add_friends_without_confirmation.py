@@ -75,3 +75,7 @@ def add_friends_without_confirmation(
     if error:
         raise Exception(f"addFriendsWithoutConfirmation failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_friends_without_confirmation.operation_id = "addFriendsWithoutConfirmation"
+add_friends_without_confirmation.is_deprecated = False

@@ -81,3 +81,7 @@ def public_search_items(
     if error:
         raise Exception(f"publicSearchItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_search_items.operation_id = "publicSearchItems"
+public_search_items.is_deprecated = False

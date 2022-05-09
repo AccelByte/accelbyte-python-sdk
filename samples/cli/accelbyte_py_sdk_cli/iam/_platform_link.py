@@ -70,3 +70,7 @@ def platform_link(
     if error:
         raise Exception(f"PlatformLink failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+platform_link.operation_id = "PlatformLink"
+platform_link.is_deprecated = False

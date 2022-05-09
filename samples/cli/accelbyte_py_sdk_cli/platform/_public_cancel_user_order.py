@@ -69,3 +69,7 @@ def public_cancel_user_order(
     if error:
         raise Exception(f"publicCancelUserOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_cancel_user_order.operation_id = "publicCancelUserOrder"
+public_cancel_user_order.is_deprecated = False

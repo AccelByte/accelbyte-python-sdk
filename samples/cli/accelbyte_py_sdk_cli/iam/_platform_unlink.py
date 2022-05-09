@@ -70,3 +70,7 @@ def platform_unlink(
     if error:
         raise Exception(f"PlatformUnlink failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+platform_unlink.operation_id = "PlatformUnlink"
+platform_unlink.is_deprecated = False

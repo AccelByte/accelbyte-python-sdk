@@ -66,3 +66,7 @@ def public_check_payment_order_paid_status(
     if error:
         raise Exception(f"publicCheckPaymentOrderPaidStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_check_payment_order_paid_status.operation_id = "publicCheckPaymentOrderPaidStatus"
+public_check_payment_order_paid_status.is_deprecated = False

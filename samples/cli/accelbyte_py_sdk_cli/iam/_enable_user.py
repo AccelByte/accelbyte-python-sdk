@@ -64,3 +64,7 @@ def enable_user(
     if error:
         raise Exception(f"EnableUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+enable_user.operation_id = "EnableUser"
+enable_user.is_deprecated = True

@@ -76,3 +76,7 @@ def redeem_code(
     if error:
         raise Exception(f"redeemCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+redeem_code.operation_id = "redeemCode"
+redeem_code.is_deprecated = False

@@ -63,3 +63,7 @@ def get_game_template(
     if error:
         raise Exception(f"getGameTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_game_template.operation_id = "getGameTemplate"
+get_game_template.is_deprecated = False

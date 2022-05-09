@@ -61,3 +61,7 @@ def delete_dlc_item_config(
     if error:
         raise Exception(f"deleteDLCItemConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_dlc_item_config.operation_id = "deleteDLCItemConfig"
+delete_dlc_item_config.is_deprecated = False

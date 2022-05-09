@@ -75,3 +75,7 @@ def admin_update_profanity_list(
     if error:
         raise Exception(f"adminUpdateProfanityList failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_profanity_list.operation_id = "adminUpdateProfanityList"
+admin_update_profanity_list.is_deprecated = False

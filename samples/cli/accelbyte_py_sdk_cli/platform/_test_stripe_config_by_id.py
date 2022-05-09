@@ -66,3 +66,7 @@ def test_stripe_config_by_id(
     if error:
         raise Exception(f"testStripeConfigById failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_stripe_config_by_id.operation_id = "testStripeConfigById"
+test_stripe_config_by_id.is_deprecated = False

@@ -61,3 +61,7 @@ def unregister_event_id_handler(
     if error:
         raise Exception(f"UnregisterEventIDHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+unregister_event_id_handler.operation_id = "UnregisterEventIDHandler"
+unregister_event_id_handler.is_deprecated = True

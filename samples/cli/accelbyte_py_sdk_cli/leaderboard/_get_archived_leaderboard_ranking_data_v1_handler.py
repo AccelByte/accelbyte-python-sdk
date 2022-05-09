@@ -72,3 +72,7 @@ def get_archived_leaderboard_ranking_data_v1_handler(
     if error:
         raise Exception(f"GetArchivedLeaderboardRankingDataV1Handler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_archived_leaderboard_ranking_data_v1_handler.operation_id = "GetArchivedLeaderboardRankingDataV1Handler"
+get_archived_leaderboard_ranking_data_v1_handler.is_deprecated = False

@@ -62,3 +62,7 @@ def get_list_country_age_restriction(
     if error:
         raise Exception(f"GetListCountryAgeRestriction failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_list_country_age_restriction.operation_id = "GetListCountryAgeRestriction"
+get_list_country_age_restriction.is_deprecated = False

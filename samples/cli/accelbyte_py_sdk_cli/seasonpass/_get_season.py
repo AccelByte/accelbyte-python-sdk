@@ -66,3 +66,7 @@ def get_season(
     if error:
         raise Exception(f"getSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_season.operation_id = "getSeason"
+get_season.is_deprecated = False

@@ -66,3 +66,7 @@ def public_bulk_claim_user_rewards(
     if error:
         raise Exception(f"publicBulkClaimUserRewards failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_bulk_claim_user_rewards.operation_id = "publicBulkClaimUserRewards"
+public_bulk_claim_user_rewards.is_deprecated = False

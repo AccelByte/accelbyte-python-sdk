@@ -66,3 +66,7 @@ def admin_get_achievement(
     if error:
         raise Exception(f"AdminGetAchievement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_achievement.operation_id = "AdminGetAchievement"
+admin_get_achievement.is_deprecated = False

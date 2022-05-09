@@ -66,3 +66,7 @@ def count_server_detailed(
     if error:
         raise Exception(f"CountServerDetailed failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+count_server_detailed.operation_id = "CountServerDetailed"
+count_server_detailed.is_deprecated = False

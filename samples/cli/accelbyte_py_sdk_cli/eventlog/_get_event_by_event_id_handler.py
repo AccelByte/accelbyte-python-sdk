@@ -77,3 +77,7 @@ def get_event_by_event_id_handler(
     if error:
         raise Exception(f"GetEventByEventIDHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_event_by_event_id_handler.operation_id = "GetEventByEventIDHandler"
+get_event_by_event_id_handler.is_deprecated = True

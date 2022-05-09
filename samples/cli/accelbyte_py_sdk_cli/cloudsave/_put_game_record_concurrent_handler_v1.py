@@ -75,3 +75,7 @@ def put_game_record_concurrent_handler_v1(
     if error:
         raise Exception(f"putGameRecordConcurrentHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+put_game_record_concurrent_handler_v1.operation_id = "putGameRecordConcurrentHandlerV1"
+put_game_record_concurrent_handler_v1.is_deprecated = False

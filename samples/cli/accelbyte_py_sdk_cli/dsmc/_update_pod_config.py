@@ -76,3 +76,7 @@ def update_pod_config(
     if error:
         raise Exception(f"UpdatePodConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_pod_config.operation_id = "UpdatePodConfig"
+update_pod_config.is_deprecated = False

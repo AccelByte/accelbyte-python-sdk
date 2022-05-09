@@ -71,3 +71,7 @@ def admin_delete_content(
     if error:
         raise Exception(f"AdminDeleteContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_content.operation_id = "AdminDeleteContent"
+admin_delete_content.is_deprecated = False

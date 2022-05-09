@@ -60,3 +60,7 @@ def list_server(
     if error:
         raise Exception(f"ListServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_server.operation_id = "ListServer"
+list_server.is_deprecated = False

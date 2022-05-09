@@ -60,3 +60,7 @@ def get_revocation_list_v3(
     if error:
         raise Exception(f"GetRevocationListV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_revocation_list_v3.operation_id = "GetRevocationListV3"
+get_revocation_list_v3.is_deprecated = False

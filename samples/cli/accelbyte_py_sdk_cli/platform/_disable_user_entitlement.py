@@ -69,3 +69,7 @@ def disable_user_entitlement(
     if error:
         raise Exception(f"disableUserEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+disable_user_entitlement.operation_id = "disableUserEntitlement"
+disable_user_entitlement.is_deprecated = False

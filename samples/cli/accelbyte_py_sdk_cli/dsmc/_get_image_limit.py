@@ -63,3 +63,7 @@ def get_image_limit(
     if error:
         raise Exception(f"GetImageLimit failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_image_limit.operation_id = "GetImageLimit"
+get_image_limit.is_deprecated = False

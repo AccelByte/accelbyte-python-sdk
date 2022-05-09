@@ -74,3 +74,7 @@ def create_campaign(
     if error:
         raise Exception(f"createCampaign failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_campaign.operation_id = "createCampaign"
+create_campaign.is_deprecated = False

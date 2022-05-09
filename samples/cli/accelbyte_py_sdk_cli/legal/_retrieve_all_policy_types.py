@@ -65,3 +65,7 @@ def retrieve_all_policy_types(
     if error:
         raise Exception(f"retrieveAllPolicyTypes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_all_policy_types.operation_id = "retrieveAllPolicyTypes"
+retrieve_all_policy_types.is_deprecated = False

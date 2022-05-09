@@ -67,3 +67,7 @@ def delete_client_permission(
     if error:
         raise Exception(f"DeleteClientPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_client_permission.operation_id = "DeleteClientPermission"
+delete_client_permission.is_deprecated = False

@@ -65,3 +65,7 @@ def public_get_user_by_user_idv2(
     if error:
         raise Exception(f"PublicGetUserByUserIDV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_by_user_idv2.operation_id = "PublicGetUserByUserIDV2"
+public_get_user_by_user_idv2.is_deprecated = False

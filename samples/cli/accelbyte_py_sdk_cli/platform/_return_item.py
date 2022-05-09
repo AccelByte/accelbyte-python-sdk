@@ -76,3 +76,7 @@ def return_item(
     if error:
         raise Exception(f"returnItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+return_item.operation_id = "returnItem"
+return_item.is_deprecated = False

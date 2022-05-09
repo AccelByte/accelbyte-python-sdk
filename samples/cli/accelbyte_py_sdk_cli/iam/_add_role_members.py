@@ -71,3 +71,7 @@ def add_role_members(
     if error:
         raise Exception(f"AddRoleMembers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_role_members.operation_id = "AddRoleMembers"
+add_role_members.is_deprecated = False

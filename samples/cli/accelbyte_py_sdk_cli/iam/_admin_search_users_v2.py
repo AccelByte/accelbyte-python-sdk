@@ -89,3 +89,7 @@ def admin_search_users_v2(
     if error:
         raise Exception(f"AdminSearchUsersV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_search_users_v2.operation_id = "AdminSearchUsersV2"
+admin_search_users_v2.is_deprecated = False

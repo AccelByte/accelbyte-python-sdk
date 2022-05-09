@@ -66,3 +66,7 @@ def retrieve_single_policy_version(
     if error:
         raise Exception(f"retrieveSinglePolicyVersion failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_single_policy_version.operation_id = "retrieveSinglePolicyVersion"
+retrieve_single_policy_version.is_deprecated = False

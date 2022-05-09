@@ -59,3 +59,7 @@ def get_bans_type(
     if error:
         raise Exception(f"GetBansType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_bans_type.operation_id = "GetBansType"
+get_bans_type.is_deprecated = False

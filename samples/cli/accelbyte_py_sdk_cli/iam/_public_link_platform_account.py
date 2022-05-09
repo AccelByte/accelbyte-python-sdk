@@ -75,3 +75,7 @@ def public_link_platform_account(
     if error:
         raise Exception(f"PublicLinkPlatformAccount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_link_platform_account.operation_id = "PublicLinkPlatformAccount"
+public_link_platform_account.is_deprecated = False

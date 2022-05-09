@@ -79,3 +79,7 @@ def bulk_reset_user_stat_item_values(
     if error:
         raise Exception(f"bulkResetUserStatItemValues failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_reset_user_stat_item_values.operation_id = "bulkResetUserStatItemValues"
+bulk_reset_user_stat_item_values.is_deprecated = False

@@ -79,3 +79,7 @@ def admin_update_user_ban_v3(
     if error:
         raise Exception(f"AdminUpdateUserBanV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_user_ban_v3.operation_id = "AdminUpdateUserBanV3"
+admin_update_user_ban_v3.is_deprecated = False

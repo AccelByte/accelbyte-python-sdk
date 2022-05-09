@@ -62,3 +62,7 @@ def admin_reset_input_validations(
     if error:
         raise Exception(f"AdminResetInputValidations failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_reset_input_validations.operation_id = "AdminResetInputValidations"
+admin_reset_input_validations.is_deprecated = False

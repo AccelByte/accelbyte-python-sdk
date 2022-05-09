@@ -59,3 +59,7 @@ def admin_disable_my_authenticator_v4(
     if error:
         raise Exception(f"AdminDisableMyAuthenticatorV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_disable_my_authenticator_v4.operation_id = "AdminDisableMyAuthenticatorV4"
+admin_disable_my_authenticator_v4.is_deprecated = False

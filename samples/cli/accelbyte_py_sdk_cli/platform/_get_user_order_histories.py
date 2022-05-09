@@ -68,3 +68,7 @@ def get_user_order_histories(
     if error:
         raise Exception(f"getUserOrderHistories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_order_histories.operation_id = "getUserOrderHistories"
+get_user_order_histories.is_deprecated = False

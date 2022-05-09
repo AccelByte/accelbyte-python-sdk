@@ -76,3 +76,7 @@ def add_sso_login_platform_credential(
     if error:
         raise Exception(f"AddSSOLoginPlatformCredential failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_sso_login_platform_credential.operation_id = "AddSSOLoginPlatformCredential"
+add_sso_login_platform_credential.is_deprecated = False

@@ -76,3 +76,7 @@ def decrease_ticket_sale(
     if error:
         raise Exception(f"decreaseTicketSale failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+decrease_ticket_sale.operation_id = "decreaseTicketSale"
+decrease_ticket_sale.is_deprecated = False

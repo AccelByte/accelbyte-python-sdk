@@ -68,3 +68,7 @@ def public_unlock_achievement(
     if error:
         raise Exception(f"PublicUnlockAchievement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_unlock_achievement.operation_id = "PublicUnlockAchievement"
+public_unlock_achievement.is_deprecated = False

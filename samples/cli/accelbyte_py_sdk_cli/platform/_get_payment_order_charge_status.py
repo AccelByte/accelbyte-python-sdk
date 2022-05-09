@@ -66,3 +66,7 @@ def get_payment_order_charge_status(
     if error:
         raise Exception(f"getPaymentOrderChargeStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_order_charge_status.operation_id = "getPaymentOrderChargeStatus"
+get_payment_order_charge_status.is_deprecated = False

@@ -66,3 +66,7 @@ def add_download_count(
     if error:
         raise Exception(f"AddDownloadCount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_download_count.operation_id = "AddDownloadCount"
+add_download_count.is_deprecated = False

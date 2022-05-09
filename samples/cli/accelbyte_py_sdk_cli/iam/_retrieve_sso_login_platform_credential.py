@@ -66,3 +66,7 @@ def retrieve_sso_login_platform_credential(
     if error:
         raise Exception(f"RetrieveSSOLoginPlatformCredential failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_sso_login_platform_credential.operation_id = "RetrieveSSOLoginPlatformCredential"
+retrieve_sso_login_platform_credential.is_deprecated = False

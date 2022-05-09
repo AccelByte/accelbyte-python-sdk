@@ -63,3 +63,7 @@ def export_config_v1(
     if error:
         raise Exception(f"exportConfigV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_config_v1.operation_id = "exportConfigV1"
+export_config_v1.is_deprecated = False

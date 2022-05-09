@@ -66,3 +66,7 @@ def delete_port(
     if error:
         raise Exception(f"DeletePort failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_port.operation_id = "DeletePort"
+delete_port.is_deprecated = False

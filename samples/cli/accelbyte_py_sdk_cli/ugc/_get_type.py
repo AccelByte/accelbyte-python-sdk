@@ -69,3 +69,7 @@ def get_type(
     if error:
         raise Exception(f"GetType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_type.operation_id = "GetType"
+get_type.is_deprecated = False

@@ -79,3 +79,7 @@ def update_channel(
     if error:
         raise Exception(f"UpdateChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_channel.operation_id = "UpdateChannel"
+update_channel.is_deprecated = False

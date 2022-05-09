@@ -59,3 +59,7 @@ def get_country_location_v3(
     if error:
         raise Exception(f"GetCountryLocationV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_country_location_v3.operation_id = "GetCountryLocationV3"
+get_country_location_v3.is_deprecated = False

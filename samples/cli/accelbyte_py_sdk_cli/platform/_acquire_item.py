@@ -76,3 +76,7 @@ def acquire_item(
     if error:
         raise Exception(f"acquireItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+acquire_item.operation_id = "acquireItem"
+acquire_item.is_deprecated = False

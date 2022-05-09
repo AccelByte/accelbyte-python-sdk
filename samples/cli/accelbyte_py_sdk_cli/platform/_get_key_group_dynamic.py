@@ -66,3 +66,7 @@ def get_key_group_dynamic(
     if error:
         raise Exception(f"getKeyGroupDynamic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_key_group_dynamic.operation_id = "getKeyGroupDynamic"
+get_key_group_dynamic.is_deprecated = False

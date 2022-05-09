@@ -65,3 +65,7 @@ def admin_delete_all_user_contents(
     if error:
         raise Exception(f"AdminDeleteAllUserContents failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_all_user_contents.operation_id = "AdminDeleteAllUserContents"
+admin_delete_all_user_contents.is_deprecated = False

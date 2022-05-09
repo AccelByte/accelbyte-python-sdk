@@ -72,3 +72,7 @@ def create_template(
     if error:
         raise Exception(f"createTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_template.operation_id = "createTemplate"
+create_template.is_deprecated = False

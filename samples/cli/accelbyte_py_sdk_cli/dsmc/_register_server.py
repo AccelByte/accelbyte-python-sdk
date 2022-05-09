@@ -73,3 +73,7 @@ def register_server(
     if error:
         raise Exception(f"RegisterServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+register_server.operation_id = "RegisterServer"
+register_server.is_deprecated = False

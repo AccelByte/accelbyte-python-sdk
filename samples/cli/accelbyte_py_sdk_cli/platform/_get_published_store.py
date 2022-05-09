@@ -63,3 +63,7 @@ def get_published_store(
     if error:
         raise Exception(f"getPublishedStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_published_store.operation_id = "getPublishedStore"
+get_published_store.is_deprecated = False

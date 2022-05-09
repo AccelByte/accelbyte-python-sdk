@@ -68,3 +68,7 @@ def delete_tier(
     if error:
         raise Exception(f"deleteTier failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_tier.operation_id = "deleteTier"
+delete_tier.is_deprecated = False

@@ -80,3 +80,7 @@ def get_public_edit_history(
     if error:
         raise Exception(f"GetPublicEditHistory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_public_edit_history.operation_id = "GetPublicEditHistory"
+get_public_edit_history.is_deprecated = False

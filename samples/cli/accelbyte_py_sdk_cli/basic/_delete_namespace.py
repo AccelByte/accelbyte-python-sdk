@@ -64,3 +64,7 @@ def delete_namespace(
     if error:
         raise Exception(f"deleteNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_namespace.operation_id = "deleteNamespace"
+delete_namespace.is_deprecated = False

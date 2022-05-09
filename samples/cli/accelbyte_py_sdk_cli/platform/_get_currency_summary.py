@@ -66,3 +66,7 @@ def get_currency_summary(
     if error:
         raise Exception(f"getCurrencySummary failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_currency_summary.operation_id = "getCurrencySummary"
+get_currency_summary.is_deprecated = False

@@ -65,3 +65,7 @@ def last_user_activity_time_handler(
     if error:
         raise Exception(f"LastUserActivityTimeHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+last_user_activity_time_handler.operation_id = "LastUserActivityTimeHandler"
+last_user_activity_time_handler.is_deprecated = True

@@ -63,3 +63,7 @@ def get_xbl_iap_config(
     if error:
         raise Exception(f"getXblIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_xbl_iap_config.operation_id = "getXblIAPConfig"
+get_xbl_iap_config.is_deprecated = False

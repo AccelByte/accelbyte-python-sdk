@@ -73,3 +73,7 @@ def public_bulk_get_users(
     if error:
         raise Exception(f"PublicBulkGetUsers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_bulk_get_users.operation_id = "PublicBulkGetUsers"
+public_bulk_get_users.is_deprecated = False

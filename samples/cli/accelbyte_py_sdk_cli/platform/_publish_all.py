@@ -66,3 +66,7 @@ def publish_all(
     if error:
         raise Exception(f"publishAll failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+publish_all.operation_id = "publishAll"
+publish_all.is_deprecated = False

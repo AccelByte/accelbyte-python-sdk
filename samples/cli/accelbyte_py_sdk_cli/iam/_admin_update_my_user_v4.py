@@ -70,3 +70,7 @@ def admin_update_my_user_v4(
     if error:
         raise Exception(f"AdminUpdateMyUserV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_my_user_v4.operation_id = "AdminUpdateMyUserV4"
+admin_update_my_user_v4.is_deprecated = False

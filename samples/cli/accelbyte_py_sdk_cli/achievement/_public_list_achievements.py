@@ -75,3 +75,7 @@ def public_list_achievements(
     if error:
         raise Exception(f"PublicListAchievements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_list_achievements.operation_id = "PublicListAchievements"
+public_list_achievements.is_deprecated = False

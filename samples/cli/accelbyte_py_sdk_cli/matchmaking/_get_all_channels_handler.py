@@ -69,3 +69,7 @@ def get_all_channels_handler(
     if error:
         raise Exception(f"GetAllChannelsHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_all_channels_handler.operation_id = "GetAllChannelsHandler"
+get_all_channels_handler.is_deprecated = False

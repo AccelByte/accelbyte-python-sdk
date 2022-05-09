@@ -75,3 +75,7 @@ def admin_link_platform_account(
     if error:
         raise Exception(f"AdminLinkPlatformAccount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_link_platform_account.operation_id = "AdminLinkPlatformAccount"
+admin_link_platform_account.is_deprecated = False

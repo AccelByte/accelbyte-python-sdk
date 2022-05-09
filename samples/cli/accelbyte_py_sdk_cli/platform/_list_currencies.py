@@ -62,3 +62,7 @@ def list_currencies(
     if error:
         raise Exception(f"listCurrencies failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_currencies.operation_id = "listCurrencies"
+list_currencies.is_deprecated = False

@@ -66,3 +66,7 @@ def test_pay_pal_config_by_id(
     if error:
         raise Exception(f"testPayPalConfigById failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_pay_pal_config_by_id.operation_id = "testPayPalConfigById"
+test_pay_pal_config_by_id.is_deprecated = False

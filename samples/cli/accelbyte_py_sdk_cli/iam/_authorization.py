@@ -79,3 +79,7 @@ def authorization(
     if error:
         raise Exception(f"Authorization failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+authorization.operation_id = "Authorization"
+authorization.is_deprecated = False

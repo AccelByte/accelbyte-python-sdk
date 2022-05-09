@@ -58,3 +58,7 @@ def get_aggregate_payment_providers(
     if error:
         raise Exception(f"getAggregatePaymentProviders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_aggregate_payment_providers.operation_id = "getAggregatePaymentProviders"
+get_aggregate_payment_providers.is_deprecated = False

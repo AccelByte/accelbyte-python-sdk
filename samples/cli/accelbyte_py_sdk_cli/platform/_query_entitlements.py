@@ -92,3 +92,7 @@ def query_entitlements(
     if error:
         raise Exception(f"queryEntitlements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_entitlements.operation_id = "queryEntitlements"
+query_entitlements.is_deprecated = False

@@ -70,3 +70,7 @@ def admin_platform_link_v3(
     if error:
         raise Exception(f"AdminPlatformLinkV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_platform_link_v3.operation_id = "AdminPlatformLinkV3"
+admin_platform_link_v3.is_deprecated = False

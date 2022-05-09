@@ -71,3 +71,7 @@ def create_payment_provider_config(
     if error:
         raise Exception(f"createPaymentProviderConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_payment_provider_config.operation_id = "createPaymentProviderConfig"
+create_payment_provider_config.is_deprecated = False

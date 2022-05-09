@@ -74,3 +74,7 @@ def save_user_permission(
     if error:
         raise Exception(f"SaveUserPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+save_user_permission.operation_id = "SaveUserPermission"
+save_user_permission.is_deprecated = False

@@ -65,3 +65,7 @@ def delete_season(
     if error:
         raise Exception(f"deleteSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_season.operation_id = "deleteSeason"
+delete_season.is_deprecated = False

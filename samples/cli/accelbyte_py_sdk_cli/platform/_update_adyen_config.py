@@ -79,3 +79,7 @@ def update_adyen_config(
     if error:
         raise Exception(f"updateAdyenConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_adyen_config.operation_id = "updateAdyenConfig"
+update_adyen_config.is_deprecated = False

@@ -61,3 +61,7 @@ def accept_versioned_policy(
     if error:
         raise Exception(f"acceptVersionedPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+accept_versioned_policy.operation_id = "acceptVersionedPolicy"
+accept_versioned_policy.is_deprecated = False

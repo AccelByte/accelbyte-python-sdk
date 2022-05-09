@@ -69,3 +69,7 @@ def delete_session_in_channel(
     if error:
         raise Exception(f"DeleteSessionInChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_session_in_channel.operation_id = "DeleteSessionInChannel"
+delete_session_in_channel.is_deprecated = False

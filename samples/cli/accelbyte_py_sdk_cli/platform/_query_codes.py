@@ -80,3 +80,7 @@ def query_codes(
     if error:
         raise Exception(f"queryCodes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_codes.operation_id = "queryCodes"
+query_codes.is_deprecated = False

@@ -76,3 +76,7 @@ def admin_update_country_age_restriction_v3(
     if error:
         raise Exception(f"AdminUpdateCountryAgeRestrictionV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_country_age_restriction_v3.operation_id = "AdminUpdateCountryAgeRestrictionV3"
+admin_update_country_age_restriction_v3.is_deprecated = False

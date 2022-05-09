@@ -72,3 +72,7 @@ def notification_with_template(
     if error:
         raise Exception(f"notificationWithTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+notification_with_template.operation_id = "notificationWithTemplate"
+notification_with_template.is_deprecated = False

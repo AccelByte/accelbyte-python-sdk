@@ -79,3 +79,7 @@ def update_screenshots(
     if error:
         raise Exception(f"UpdateScreenshots failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_screenshots.operation_id = "UpdateScreenshots"
+update_screenshots.is_deprecated = False

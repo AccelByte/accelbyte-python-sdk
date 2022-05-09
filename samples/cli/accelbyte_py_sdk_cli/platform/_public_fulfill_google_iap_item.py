@@ -76,3 +76,7 @@ def public_fulfill_google_iap_item(
     if error:
         raise Exception(f"publicFulfillGoogleIAPItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_fulfill_google_iap_item.operation_id = "publicFulfillGoogleIAPItem"
+public_fulfill_google_iap_item.is_deprecated = False

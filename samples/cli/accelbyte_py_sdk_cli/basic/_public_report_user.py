@@ -76,3 +76,7 @@ def public_report_user(
     if error:
         raise Exception(f"publicReportUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_report_user.operation_id = "publicReportUser"
+public_report_user.is_deprecated = False

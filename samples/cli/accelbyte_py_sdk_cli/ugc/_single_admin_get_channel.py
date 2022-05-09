@@ -69,3 +69,7 @@ def single_admin_get_channel(
     if error:
         raise Exception(f"SingleAdminGetChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+single_admin_get_channel.operation_id = "SingleAdminGetChannel"
+single_admin_get_channel.is_deprecated = False

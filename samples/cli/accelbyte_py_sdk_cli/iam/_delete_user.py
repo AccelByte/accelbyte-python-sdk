@@ -64,3 +64,7 @@ def delete_user(
     if error:
         raise Exception(f"DeleteUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user.operation_id = "DeleteUser"
+delete_user.is_deprecated = False

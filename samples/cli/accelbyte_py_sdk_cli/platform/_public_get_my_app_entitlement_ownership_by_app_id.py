@@ -65,3 +65,7 @@ def public_get_my_app_entitlement_ownership_by_app_id(
     if error:
         raise Exception(f"publicGetMyAppEntitlementOwnershipByAppId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_my_app_entitlement_ownership_by_app_id.operation_id = "publicGetMyAppEntitlementOwnershipByAppId"
+public_get_my_app_entitlement_ownership_by_app_id.is_deprecated = False

@@ -63,3 +63,7 @@ def token_introspection_v3(
     if error:
         raise Exception(f"TokenIntrospectionV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+token_introspection_v3.operation_id = "TokenIntrospectionV3"
+token_introspection_v3.is_deprecated = False

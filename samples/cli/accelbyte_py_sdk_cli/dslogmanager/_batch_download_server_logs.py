@@ -69,3 +69,7 @@ def batch_download_server_logs(
     if error:
         raise Exception(f"batchDownloadServerLogs failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+batch_download_server_logs.operation_id = "batchDownloadServerLogs"
+batch_download_server_logs.is_deprecated = False

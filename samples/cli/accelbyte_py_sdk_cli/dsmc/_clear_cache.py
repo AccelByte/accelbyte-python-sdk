@@ -62,3 +62,7 @@ def clear_cache(
     if error:
         raise Exception(f"ClearCache failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+clear_cache.operation_id = "ClearCache"
+clear_cache.is_deprecated = False

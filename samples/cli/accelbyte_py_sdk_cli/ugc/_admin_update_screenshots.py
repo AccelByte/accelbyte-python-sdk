@@ -76,3 +76,7 @@ def admin_update_screenshots(
     if error:
         raise Exception(f"AdminUpdateScreenshots failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_screenshots.operation_id = "AdminUpdateScreenshots"
+admin_update_screenshots.is_deprecated = False

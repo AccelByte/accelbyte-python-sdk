@@ -72,3 +72,7 @@ def retrieve_all_users_by_policy_version(
     if error:
         raise Exception(f"retrieveAllUsersByPolicyVersion failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_all_users_by_policy_version.operation_id = "retrieveAllUsersByPolicyVersion"
+retrieve_all_users_by_policy_version.is_deprecated = False

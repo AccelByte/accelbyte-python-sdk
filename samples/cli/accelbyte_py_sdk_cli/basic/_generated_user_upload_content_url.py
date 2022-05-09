@@ -70,3 +70,7 @@ def generated_user_upload_content_url(
     if error:
         raise Exception(f"generatedUserUploadContentUrl failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+generated_user_upload_content_url.operation_id = "generatedUserUploadContentUrl"
+generated_user_upload_content_url.is_deprecated = False

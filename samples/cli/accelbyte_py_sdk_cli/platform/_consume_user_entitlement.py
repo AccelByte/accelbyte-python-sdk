@@ -79,3 +79,7 @@ def consume_user_entitlement(
     if error:
         raise Exception(f"consumeUserEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+consume_user_entitlement.operation_id = "consumeUserEntitlement"
+consume_user_entitlement.is_deprecated = False

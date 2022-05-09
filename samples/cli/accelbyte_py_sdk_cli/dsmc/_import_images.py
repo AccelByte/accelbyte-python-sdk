@@ -63,3 +63,7 @@ def import_images(
     if error:
         raise Exception(f"ImportImages failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_images.operation_id = "ImportImages"
+import_images.is_deprecated = False

@@ -80,3 +80,7 @@ def get_event_by_user_id_and_event_type_handler(
     if error:
         raise Exception(f"GetEventByUserIDAndEventTypeHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_event_by_user_id_and_event_type_handler.operation_id = "GetEventByUserIDAndEventTypeHandler"
+get_event_by_user_id_and_event_type_handler.is_deprecated = True

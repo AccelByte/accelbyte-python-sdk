@@ -73,3 +73,7 @@ def create_session(
     if error:
         raise Exception(f"CreateSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_session.operation_id = "CreateSession"
+create_session.is_deprecated = False

@@ -61,3 +61,7 @@ def admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get(
     if error:
         raise Exception(f"admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get.operation_id = "admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get"
+admin_get_namespace_game_telemetry_v1_admin_telemetrynamespace_get.is_deprecated = False

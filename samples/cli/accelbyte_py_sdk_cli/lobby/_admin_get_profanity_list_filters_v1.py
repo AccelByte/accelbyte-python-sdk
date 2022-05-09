@@ -66,3 +66,7 @@ def admin_get_profanity_list_filters_v1(
     if error:
         raise Exception(f"adminGetProfanityListFiltersV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_profanity_list_filters_v1.operation_id = "adminGetProfanityListFiltersV1"
+admin_get_profanity_list_filters_v1.is_deprecated = False

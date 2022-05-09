@@ -65,3 +65,7 @@ def search_user(
     if error:
         raise Exception(f"SearchUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+search_user.operation_id = "SearchUser"
+search_user.is_deprecated = True

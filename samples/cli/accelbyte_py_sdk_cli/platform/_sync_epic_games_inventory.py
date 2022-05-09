@@ -75,3 +75,7 @@ def sync_epic_games_inventory(
     if error:
         raise Exception(f"syncEpicGamesInventory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_epic_games_inventory.operation_id = "syncEpicGamesInventory"
+sync_epic_games_inventory.is_deprecated = False

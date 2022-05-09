@@ -70,3 +70,7 @@ def public_delete_payment_account(
     if error:
         raise Exception(f"publicDeletePaymentAccount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_delete_payment_account.operation_id = "publicDeletePaymentAccount"
+public_delete_payment_account.is_deprecated = False

@@ -82,3 +82,7 @@ def authorize_v3(
     if error:
         raise Exception(f"AuthorizeV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+authorize_v3.operation_id = "AuthorizeV3"
+authorize_v3.is_deprecated = False

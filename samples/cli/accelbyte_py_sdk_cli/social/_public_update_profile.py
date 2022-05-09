@@ -80,3 +80,7 @@ def public_update_profile(
     if error:
         raise Exception(f"publicUpdateProfile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_update_profile.operation_id = "publicUpdateProfile"
+public_update_profile.is_deprecated = False

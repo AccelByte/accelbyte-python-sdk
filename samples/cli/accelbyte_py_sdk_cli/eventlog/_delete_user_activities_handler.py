@@ -64,3 +64,7 @@ def delete_user_activities_handler(
     if error:
         raise Exception(f"DeleteUserActivitiesHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_activities_handler.operation_id = "DeleteUserActivitiesHandler"
+delete_user_activities_handler.is_deprecated = True

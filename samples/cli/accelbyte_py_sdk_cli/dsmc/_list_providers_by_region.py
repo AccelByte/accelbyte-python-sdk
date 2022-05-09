@@ -62,3 +62,7 @@ def list_providers_by_region(
     if error:
         raise Exception(f"ListProvidersByRegion failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_providers_by_region.operation_id = "ListProvidersByRegion"
+list_providers_by_region.is_deprecated = False

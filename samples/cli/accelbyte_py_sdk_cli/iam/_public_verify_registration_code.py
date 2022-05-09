@@ -72,3 +72,7 @@ def public_verify_registration_code(
     if error:
         raise Exception(f"PublicVerifyRegistrationCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_verify_registration_code.operation_id = "PublicVerifyRegistrationCode"
+public_verify_registration_code.is_deprecated = False

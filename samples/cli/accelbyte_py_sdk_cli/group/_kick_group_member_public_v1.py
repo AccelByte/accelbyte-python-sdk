@@ -66,3 +66,7 @@ def kick_group_member_public_v1(
     if error:
         raise Exception(f"kickGroupMemberPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+kick_group_member_public_v1.operation_id = "kickGroupMemberPublicV1"
+kick_group_member_public_v1.is_deprecated = False

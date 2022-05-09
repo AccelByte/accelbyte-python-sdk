@@ -76,3 +76,7 @@ def grant_user_tier(
     if error:
         raise Exception(f"grantUserTier failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+grant_user_tier.operation_id = "grantUserTier"
+grant_user_tier.is_deprecated = False

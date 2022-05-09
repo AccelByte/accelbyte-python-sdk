@@ -68,3 +68,7 @@ def public_delete_user_namespace_slot(
     if error:
         raise Exception(f"publicDeleteUserNamespaceSlot failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_delete_user_namespace_slot.operation_id = "publicDeleteUserNamespaceSlot"
+public_delete_user_namespace_slot.is_deprecated = False

@@ -73,3 +73,7 @@ def admin_create_new_achievement(
     if error:
         raise Exception(f"AdminCreateNewAchievement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_create_new_achievement.operation_id = "AdminCreateNewAchievement"
+admin_create_new_achievement.is_deprecated = False

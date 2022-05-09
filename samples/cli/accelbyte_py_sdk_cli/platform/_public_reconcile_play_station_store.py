@@ -76,3 +76,7 @@ def public_reconcile_play_station_store(
     if error:
         raise Exception(f"publicReconcilePlayStationStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_reconcile_play_station_store.operation_id = "publicReconcilePlayStationStore"
+public_reconcile_play_station_store.is_deprecated = False

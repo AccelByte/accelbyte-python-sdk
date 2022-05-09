@@ -77,3 +77,7 @@ def query_user_entitlements_by_app_type(
     if error:
         raise Exception(f"queryUserEntitlementsByAppType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_user_entitlements_by_app_type.operation_id = "queryUserEntitlementsByAppType"
+query_user_entitlements_by_app_type.is_deprecated = False

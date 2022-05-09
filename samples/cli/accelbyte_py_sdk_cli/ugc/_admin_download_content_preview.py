@@ -66,3 +66,7 @@ def admin_download_content_preview(
     if error:
         raise Exception(f"AdminDownloadContentPreview failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_download_content_preview.operation_id = "AdminDownloadContentPreview"
+admin_download_content_preview.is_deprecated = False

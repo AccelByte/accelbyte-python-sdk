@@ -61,3 +61,7 @@ def delete_xbl_ap_config(
     if error:
         raise Exception(f"deleteXblAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_xbl_ap_config.operation_id = "deleteXblAPConfig"
+delete_xbl_ap_config.is_deprecated = False

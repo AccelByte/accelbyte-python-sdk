@@ -63,3 +63,7 @@ def get_platform_dlc_config(
     if error:
         raise Exception(f"getPlatformDLCConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_platform_dlc_config.operation_id = "getPlatformDLCConfig"
+get_platform_dlc_config.is_deprecated = False

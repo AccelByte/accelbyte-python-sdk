@@ -73,3 +73,7 @@ def update_xsolla_ui_config(
     if error:
         raise Exception(f"updateXsollaUIConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_xsolla_ui_config.operation_id = "updateXsollaUIConfig"
+update_xsolla_ui_config.is_deprecated = False

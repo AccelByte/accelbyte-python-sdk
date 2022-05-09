@@ -69,3 +69,7 @@ def import_achievements(
     if error:
         raise Exception(f"ImportAchievements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_achievements.operation_id = "ImportAchievements"
+import_achievements.is_deprecated = False

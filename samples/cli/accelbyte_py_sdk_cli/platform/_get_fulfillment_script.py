@@ -63,3 +63,7 @@ def get_fulfillment_script(
     if error:
         raise Exception(f"getFulfillmentScript failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_fulfillment_script.operation_id = "getFulfillmentScript"
+get_fulfillment_script.is_deprecated = False

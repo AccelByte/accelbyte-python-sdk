@@ -66,3 +66,7 @@ def get_personal_chat_history_v1_public(
     if error:
         raise Exception(f"getPersonalChatHistoryV1Public failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_personal_chat_history_v1_public.operation_id = "getPersonalChatHistoryV1Public"
+get_personal_chat_history_v1_public.is_deprecated = False

@@ -89,3 +89,7 @@ def public_exists_any_my_active_entitlement(
     if error:
         raise Exception(f"publicExistsAnyMyActiveEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_exists_any_my_active_entitlement.operation_id = "publicExistsAnyMyActiveEntitlement"
+public_exists_any_my_active_entitlement.is_deprecated = False

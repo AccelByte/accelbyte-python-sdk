@@ -67,3 +67,7 @@ def delete_role_permission(
     if error:
         raise Exception(f"DeleteRolePermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_role_permission.operation_id = "DeleteRolePermission"
+delete_role_permission.is_deprecated = False

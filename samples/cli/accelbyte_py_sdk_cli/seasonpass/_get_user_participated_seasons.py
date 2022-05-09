@@ -72,3 +72,7 @@ def get_user_participated_seasons(
     if error:
         raise Exception(f"getUserParticipatedSeasons failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_participated_seasons.operation_id = "getUserParticipatedSeasons"
+get_user_participated_seasons.is_deprecated = False

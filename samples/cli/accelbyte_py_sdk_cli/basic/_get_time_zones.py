@@ -63,3 +63,7 @@ def get_time_zones(
     if error:
         raise Exception(f"getTimeZones failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_time_zones.operation_id = "getTimeZones"
+get_time_zones.is_deprecated = False

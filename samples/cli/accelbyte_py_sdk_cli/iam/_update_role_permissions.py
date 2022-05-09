@@ -71,3 +71,7 @@ def update_role_permissions(
     if error:
         raise Exception(f"UpdateRolePermissions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_role_permissions.operation_id = "UpdateRolePermissions"
+update_role_permissions.is_deprecated = False

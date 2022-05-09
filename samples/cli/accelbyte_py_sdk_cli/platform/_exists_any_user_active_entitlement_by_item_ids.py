@@ -74,3 +74,7 @@ def exists_any_user_active_entitlement_by_item_ids(
     if error:
         raise Exception(f"existsAnyUserActiveEntitlementByItemIds failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+exists_any_user_active_entitlement_by_item_ids.operation_id = "existsAnyUserActiveEntitlementByItemIds"
+exists_any_user_active_entitlement_by_item_ids.is_deprecated = False

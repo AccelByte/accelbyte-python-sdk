@@ -68,3 +68,7 @@ def delete_template_localization(
     if error:
         raise Exception(f"deleteTemplateLocalization failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_template_localization.operation_id = "deleteTemplateLocalization"
+delete_template_localization.is_deprecated = False

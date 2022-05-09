@@ -69,3 +69,7 @@ def get_user_wallet(
     if error:
         raise Exception(f"getUserWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_wallet.operation_id = "getUserWallet"
+get_user_wallet.is_deprecated = False

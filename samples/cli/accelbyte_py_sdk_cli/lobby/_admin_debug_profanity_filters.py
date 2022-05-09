@@ -73,3 +73,7 @@ def admin_debug_profanity_filters(
     if error:
         raise Exception(f"adminDebugProfanityFilters failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_debug_profanity_filters.operation_id = "adminDebugProfanityFilters"
+admin_debug_profanity_filters.is_deprecated = False

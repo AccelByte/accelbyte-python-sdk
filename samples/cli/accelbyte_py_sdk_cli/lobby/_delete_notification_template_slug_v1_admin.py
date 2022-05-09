@@ -65,3 +65,7 @@ def delete_notification_template_slug_v1_admin(
     if error:
         raise Exception(f"deleteNotificationTemplateSlugV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_notification_template_slug_v1_admin.operation_id = "deleteNotificationTemplateSlugV1Admin"
+delete_notification_template_slug_v1_admin.is_deprecated = False

@@ -82,3 +82,7 @@ def pay(
     if error:
         raise Exception(f"pay failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+pay.operation_id = "pay"
+pay.is_deprecated = False

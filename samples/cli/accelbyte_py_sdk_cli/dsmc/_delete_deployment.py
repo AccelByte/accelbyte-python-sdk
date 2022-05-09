@@ -65,3 +65,7 @@ def delete_deployment(
     if error:
         raise Exception(f"DeleteDeployment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_deployment.operation_id = "DeleteDeployment"
+delete_deployment.is_deprecated = False

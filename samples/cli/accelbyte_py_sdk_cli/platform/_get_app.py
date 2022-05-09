@@ -71,3 +71,7 @@ def get_app(
     if error:
         raise Exception(f"getApp failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_app.operation_id = "getApp"
+get_app.is_deprecated = False

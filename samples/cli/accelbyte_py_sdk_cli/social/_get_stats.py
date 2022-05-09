@@ -68,3 +68,7 @@ def get_stats(
     if error:
         raise Exception(f"getStats failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_stats.operation_id = "getStats"
+get_stats.is_deprecated = False

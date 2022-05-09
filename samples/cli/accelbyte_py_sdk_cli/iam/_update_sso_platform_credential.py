@@ -76,3 +76,7 @@ def update_sso_platform_credential(
     if error:
         raise Exception(f"UpdateSSOPlatformCredential failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_sso_platform_credential.operation_id = "UpdateSSOPlatformCredential"
+update_sso_platform_credential.is_deprecated = False

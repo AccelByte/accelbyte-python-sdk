@@ -76,3 +76,7 @@ def simulate_payment_order_notification(
     if error:
         raise Exception(f"simulatePaymentOrderNotification failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+simulate_payment_order_notification.operation_id = "simulatePaymentOrderNotification"
+simulate_payment_order_notification.is_deprecated = False

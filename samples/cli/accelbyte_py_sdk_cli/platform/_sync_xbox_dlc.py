@@ -74,3 +74,7 @@ def sync_xbox_dlc(
     if error:
         raise Exception(f"syncXboxDLC failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_xbox_dlc.operation_id = "syncXboxDLC"
+sync_xbox_dlc.is_deprecated = False

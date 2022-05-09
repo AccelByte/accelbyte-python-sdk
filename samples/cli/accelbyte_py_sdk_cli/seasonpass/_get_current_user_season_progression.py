@@ -66,3 +66,7 @@ def get_current_user_season_progression(
     if error:
         raise Exception(f"getCurrentUserSeasonProgression failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_current_user_season_progression.operation_id = "getCurrentUserSeasonProgression"
+get_current_user_season_progression.is_deprecated = False

@@ -72,3 +72,7 @@ def verify2fa_code(
     if error:
         raise Exception(f"Verify2FACode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+verify2fa_code.operation_id = "Verify2FACode"
+verify2fa_code.is_deprecated = False

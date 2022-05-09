@@ -62,3 +62,7 @@ def retrieve_accepted_agreements(
     if error:
         raise Exception(f"retrieveAcceptedAgreements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_accepted_agreements.operation_id = "retrieveAcceptedAgreements"
+retrieve_accepted_agreements.is_deprecated = False

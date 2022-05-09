@@ -99,3 +99,7 @@ def admin_search_channel_specific_content(
     if error:
         raise Exception(f"AdminSearchChannelSpecificContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_search_channel_specific_content.operation_id = "AdminSearchChannelSpecificContent"
+admin_search_channel_specific_content.is_deprecated = False

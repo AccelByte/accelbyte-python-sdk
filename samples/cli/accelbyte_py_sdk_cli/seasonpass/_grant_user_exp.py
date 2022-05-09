@@ -76,3 +76,7 @@ def grant_user_exp(
     if error:
         raise Exception(f"grantUserExp failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+grant_user_exp.operation_id = "grantUserExp"
+grant_user_exp.is_deprecated = False

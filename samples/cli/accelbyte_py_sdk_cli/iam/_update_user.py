@@ -75,3 +75,7 @@ def update_user(
     if error:
         raise Exception(f"UpdateUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user.operation_id = "UpdateUser"
+update_user.is_deprecated = False

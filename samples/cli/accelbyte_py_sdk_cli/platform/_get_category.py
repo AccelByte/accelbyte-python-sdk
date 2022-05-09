@@ -69,3 +69,7 @@ def get_category(
     if error:
         raise Exception(f"getCategory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_category.operation_id = "getCategory"
+get_category.is_deprecated = False

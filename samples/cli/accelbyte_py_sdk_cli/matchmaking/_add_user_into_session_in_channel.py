@@ -79,3 +79,7 @@ def add_user_into_session_in_channel(
     if error:
         raise Exception(f"AddUserIntoSessionInChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_user_into_session_in_channel.operation_id = "AddUserIntoSessionInChannel"
+add_user_into_session_in_channel.is_deprecated = False

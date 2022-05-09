@@ -74,3 +74,7 @@ def query_wallets(
     if error:
         raise Exception(f"queryWallets failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_wallets.operation_id = "queryWallets"
+query_wallets.is_deprecated = False

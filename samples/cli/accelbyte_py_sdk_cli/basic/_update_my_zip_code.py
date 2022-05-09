@@ -74,3 +74,7 @@ def update_my_zip_code(
     if error:
         raise Exception(f"updateMyZipCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_my_zip_code.operation_id = "updateMyZipCode"
+update_my_zip_code.is_deprecated = False

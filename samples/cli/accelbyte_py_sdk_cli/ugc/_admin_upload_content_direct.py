@@ -76,3 +76,7 @@ def admin_upload_content_direct(
     if error:
         raise Exception(f"AdminUploadContentDirect failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_upload_content_direct.operation_id = "AdminUploadContentDirect"
+admin_upload_content_direct.is_deprecated = True

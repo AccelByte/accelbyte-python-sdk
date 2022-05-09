@@ -73,3 +73,7 @@ def admin_verify_message_profanity_response(
     if error:
         raise Exception(f"adminVerifyMessageProfanityResponse failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_verify_message_profanity_response.operation_id = "adminVerifyMessageProfanityResponse"
+admin_verify_message_profanity_response.is_deprecated = False

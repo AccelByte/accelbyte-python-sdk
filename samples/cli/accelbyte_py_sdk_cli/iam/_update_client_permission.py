@@ -71,3 +71,7 @@ def update_client_permission(
     if error:
         raise Exception(f"UpdateClientPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_client_permission.operation_id = "UpdateClientPermission"
+update_client_permission.is_deprecated = False

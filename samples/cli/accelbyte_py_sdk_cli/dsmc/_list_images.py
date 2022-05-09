@@ -78,3 +78,7 @@ def list_images(
     if error:
         raise Exception(f"ListImages failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_images.operation_id = "ListImages"
+list_images.is_deprecated = False

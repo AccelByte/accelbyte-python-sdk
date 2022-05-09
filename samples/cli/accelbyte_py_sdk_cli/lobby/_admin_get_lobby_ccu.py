@@ -63,3 +63,7 @@ def admin_get_lobby_ccu(
     if error:
         raise Exception(f"adminGetLobbyCCU failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_lobby_ccu.operation_id = "adminGetLobbyCCU"
+admin_get_lobby_ccu.is_deprecated = False

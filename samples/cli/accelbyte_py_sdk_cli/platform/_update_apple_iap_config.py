@@ -72,3 +72,7 @@ def update_apple_iap_config(
     if error:
         raise Exception(f"updateAppleIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_apple_iap_config.operation_id = "updateAppleIAPConfig"
+update_apple_iap_config.is_deprecated = False

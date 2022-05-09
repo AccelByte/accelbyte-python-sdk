@@ -65,3 +65,7 @@ def update_stadia_json_config_file(
     if error:
         raise Exception(f"updateStadiaJsonConfigFile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_stadia_json_config_file.operation_id = "updateStadiaJsonConfigFile"
+update_stadia_json_config_file.is_deprecated = False

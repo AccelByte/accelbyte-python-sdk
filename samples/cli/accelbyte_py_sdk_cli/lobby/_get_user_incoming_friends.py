@@ -63,3 +63,7 @@ def get_user_incoming_friends(
     if error:
         raise Exception(f"getUserIncomingFriends failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_incoming_friends.operation_id = "getUserIncomingFriends"
+get_user_incoming_friends.is_deprecated = False

@@ -69,3 +69,7 @@ def public_change_subscription_billing_account(
     if error:
         raise Exception(f"publicChangeSubscriptionBillingAccount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_change_subscription_billing_account.operation_id = "publicChangeSubscriptionBillingAccount"
+public_change_subscription_billing_account.is_deprecated = False

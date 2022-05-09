@@ -77,3 +77,7 @@ def update_season(
     if error:
         raise Exception(f"updateSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_season.operation_id = "updateSeason"
+update_season.is_deprecated = False

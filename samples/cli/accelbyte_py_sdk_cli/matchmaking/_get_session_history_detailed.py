@@ -67,3 +67,7 @@ def get_session_history_detailed(
     if error:
         raise Exception(f"GetSessionHistoryDetailed failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_session_history_detailed.operation_id = "GetSessionHistoryDetailed"
+get_session_history_detailed.is_deprecated = False

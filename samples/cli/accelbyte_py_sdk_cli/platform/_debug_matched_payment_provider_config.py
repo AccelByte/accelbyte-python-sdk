@@ -66,3 +66,7 @@ def debug_matched_payment_provider_config(
     if error:
         raise Exception(f"debugMatchedPaymentProviderConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+debug_matched_payment_provider_config.operation_id = "debugMatchedPaymentProviderConfig"
+debug_matched_payment_provider_config.is_deprecated = False

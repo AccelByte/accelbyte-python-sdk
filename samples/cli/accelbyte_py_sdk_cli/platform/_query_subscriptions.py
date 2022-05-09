@@ -86,3 +86,7 @@ def query_subscriptions(
     if error:
         raise Exception(f"querySubscriptions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_subscriptions.operation_id = "querySubscriptions"
+query_subscriptions.is_deprecated = False

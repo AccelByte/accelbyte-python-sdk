@@ -62,3 +62,7 @@ def delete_payment_provider_config(
     if error:
         raise Exception(f"deletePaymentProviderConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_payment_provider_config.operation_id = "deletePaymentProviderConfig"
+delete_payment_provider_config.is_deprecated = False

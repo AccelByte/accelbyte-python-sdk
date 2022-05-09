@@ -68,3 +68,7 @@ def get_global_stat_items(
     if error:
         raise Exception(f"getGlobalStatItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_global_stat_items.operation_id = "getGlobalStatItems"
+get_global_stat_items.is_deprecated = False

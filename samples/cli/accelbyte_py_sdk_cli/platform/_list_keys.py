@@ -74,3 +74,7 @@ def list_keys(
     if error:
         raise Exception(f"listKeys failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_keys.operation_id = "listKeys"
+list_keys.is_deprecated = False

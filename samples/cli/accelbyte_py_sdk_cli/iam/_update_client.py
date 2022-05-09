@@ -72,3 +72,7 @@ def update_client(
     if error:
         raise Exception(f"UpdateClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_client.operation_id = "UpdateClient"
+update_client.is_deprecated = False

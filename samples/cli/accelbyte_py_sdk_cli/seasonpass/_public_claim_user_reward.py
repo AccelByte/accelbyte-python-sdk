@@ -76,3 +76,7 @@ def public_claim_user_reward(
     if error:
         raise Exception(f"publicClaimUserReward failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_claim_user_reward.operation_id = "publicClaimUserReward"
+public_claim_user_reward.is_deprecated = False

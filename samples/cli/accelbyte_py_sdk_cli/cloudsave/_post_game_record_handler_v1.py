@@ -75,3 +75,7 @@ def post_game_record_handler_v1(
     if error:
         raise Exception(f"postGameRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+post_game_record_handler_v1.operation_id = "postGameRecordHandlerV1"
+post_game_record_handler_v1.is_deprecated = False

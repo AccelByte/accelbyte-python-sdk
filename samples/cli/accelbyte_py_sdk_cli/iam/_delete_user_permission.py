@@ -70,3 +70,7 @@ def delete_user_permission(
     if error:
         raise Exception(f"DeleteUserPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_permission.operation_id = "DeleteUserPermission"
+delete_user_permission.is_deprecated = False

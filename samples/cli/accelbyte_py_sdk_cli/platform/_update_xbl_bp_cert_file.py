@@ -68,3 +68,7 @@ def update_xbl_bp_cert_file(
     if error:
         raise Exception(f"updateXblBPCertFile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_xbl_bp_cert_file.operation_id = "updateXblBPCertFile"
+update_xbl_bp_cert_file.is_deprecated = False

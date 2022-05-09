@@ -69,3 +69,7 @@ def public_get_user_app_entitlement_by_app_id(
     if error:
         raise Exception(f"publicGetUserAppEntitlementByAppId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_app_entitlement_by_app_id.operation_id = "publicGetUserAppEntitlementByAppId"
+public_get_user_app_entitlement_by_app_id.is_deprecated = False

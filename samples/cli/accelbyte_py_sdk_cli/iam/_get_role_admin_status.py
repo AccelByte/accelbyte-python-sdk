@@ -62,3 +62,7 @@ def get_role_admin_status(
     if error:
         raise Exception(f"GetRoleAdminStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_role_admin_status.operation_id = "GetRoleAdminStatus"
+get_role_admin_status.is_deprecated = False

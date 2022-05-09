@@ -66,3 +66,7 @@ def accept_group_invitation_public_v1(
     if error:
         raise Exception(f"acceptGroupInvitationPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+accept_group_invitation_public_v1.operation_id = "acceptGroupInvitationPublicV1"
+accept_group_invitation_public_v1.is_deprecated = False

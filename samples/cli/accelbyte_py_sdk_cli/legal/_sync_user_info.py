@@ -61,3 +61,7 @@ def sync_user_info(
     if error:
         raise Exception(f"syncUserInfo failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_user_info.operation_id = "syncUserInfo"
+sync_user_info.is_deprecated = False

@@ -77,3 +77,7 @@ def create_reward(
     if error:
         raise Exception(f"createReward failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_reward.operation_id = "createReward"
+create_reward.is_deprecated = False

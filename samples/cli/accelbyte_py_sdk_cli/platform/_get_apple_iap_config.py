@@ -62,3 +62,7 @@ def get_apple_iap_config(
     if error:
         raise Exception(f"getAppleIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_apple_iap_config.operation_id = "getAppleIAPConfig"
+get_apple_iap_config.is_deprecated = False

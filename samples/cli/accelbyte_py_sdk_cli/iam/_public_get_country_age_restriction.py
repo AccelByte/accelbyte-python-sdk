@@ -65,3 +65,7 @@ def public_get_country_age_restriction(
     if error:
         raise Exception(f"PublicGetCountryAgeRestriction failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_country_age_restriction.operation_id = "PublicGetCountryAgeRestriction"
+public_get_country_age_restriction.is_deprecated = False

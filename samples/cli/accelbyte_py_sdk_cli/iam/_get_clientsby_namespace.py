@@ -62,3 +62,7 @@ def get_clientsby_namespace(
     if error:
         raise Exception(f"GetClientsbyNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_clientsby_namespace.operation_id = "GetClientsbyNamespace"
+get_clientsby_namespace.is_deprecated = False

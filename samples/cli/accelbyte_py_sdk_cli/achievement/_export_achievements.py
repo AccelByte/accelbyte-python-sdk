@@ -63,3 +63,7 @@ def export_achievements(
     if error:
         raise Exception(f"ExportAchievements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_achievements.operation_id = "ExportAchievements"
+export_achievements.is_deprecated = False

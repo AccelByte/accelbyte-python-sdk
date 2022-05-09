@@ -71,3 +71,7 @@ def forgot_password(
     if error:
         raise Exception(f"ForgotPassword failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+forgot_password.operation_id = "ForgotPassword"
+forgot_password.is_deprecated = False

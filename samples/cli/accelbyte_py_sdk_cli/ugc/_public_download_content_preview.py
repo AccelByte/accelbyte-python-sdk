@@ -66,3 +66,7 @@ def public_download_content_preview(
     if error:
         raise Exception(f"PublicDownloadContentPreview failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_download_content_preview.operation_id = "PublicDownloadContentPreview"
+public_download_content_preview.is_deprecated = False

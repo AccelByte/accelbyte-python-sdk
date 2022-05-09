@@ -76,3 +76,7 @@ def bulk_get_player_public_record_handler_v1(
     if error:
         raise Exception(f"bulkGetPlayerPublicRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_get_player_public_record_handler_v1.operation_id = "bulkGetPlayerPublicRecordHandlerV1"
+bulk_get_player_public_record_handler_v1.is_deprecated = False

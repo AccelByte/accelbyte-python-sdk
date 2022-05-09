@@ -68,3 +68,7 @@ def sync_payment_orders(
     if error:
         raise Exception(f"syncPaymentOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_payment_orders.operation_id = "syncPaymentOrders"
+sync_payment_orders.is_deprecated = False

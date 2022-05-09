@@ -76,3 +76,7 @@ def admin_delete_profanity_filter(
     if error:
         raise Exception(f"adminDeleteProfanityFilter failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_profanity_filter.operation_id = "adminDeleteProfanityFilter"
+admin_delete_profanity_filter.is_deprecated = False

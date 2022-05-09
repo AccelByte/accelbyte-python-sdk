@@ -72,3 +72,7 @@ def admin_get_content(
     if error:
         raise Exception(f"AdminGetContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_content.operation_id = "AdminGetContent"
+admin_get_content.is_deprecated = False

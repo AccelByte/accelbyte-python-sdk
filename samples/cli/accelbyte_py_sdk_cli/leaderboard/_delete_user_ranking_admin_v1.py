@@ -68,3 +68,7 @@ def delete_user_ranking_admin_v1(
     if error:
         raise Exception(f"deleteUserRankingAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_ranking_admin_v1.operation_id = "deleteUserRankingAdminV1"
+delete_user_ranking_admin_v1.is_deprecated = False

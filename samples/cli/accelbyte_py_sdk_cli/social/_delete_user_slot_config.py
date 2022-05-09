@@ -64,3 +64,7 @@ def delete_user_slot_config(
     if error:
         raise Exception(f"deleteUserSlotConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_slot_config.operation_id = "deleteUserSlotConfig"
+delete_user_slot_config.is_deprecated = False

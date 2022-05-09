@@ -65,3 +65,7 @@ def download_server_logs(
     if error:
         raise Exception(f"downloadServerLogs failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+download_server_logs.operation_id = "downloadServerLogs"
+download_server_logs.is_deprecated = False

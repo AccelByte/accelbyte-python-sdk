@@ -58,3 +58,7 @@ def logout(
     if error:
         raise Exception(f"Logout failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+logout.operation_id = "Logout"
+logout.is_deprecated = False

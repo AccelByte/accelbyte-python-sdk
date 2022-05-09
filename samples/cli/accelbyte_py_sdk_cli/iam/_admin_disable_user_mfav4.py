@@ -65,3 +65,7 @@ def admin_disable_user_mfav4(
     if error:
         raise Exception(f"AdminDisableUserMFAV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_disable_user_mfav4.operation_id = "AdminDisableUserMFAV4"
+admin_disable_user_mfav4.is_deprecated = False

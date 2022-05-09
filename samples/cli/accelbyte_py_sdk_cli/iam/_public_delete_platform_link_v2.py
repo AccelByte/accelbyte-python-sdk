@@ -70,3 +70,7 @@ def public_delete_platform_link_v2(
     if error:
         raise Exception(f"PublicDeletePlatformLinkV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_delete_platform_link_v2.operation_id = "PublicDeletePlatformLinkV2"
+public_delete_platform_link_v2.is_deprecated = False

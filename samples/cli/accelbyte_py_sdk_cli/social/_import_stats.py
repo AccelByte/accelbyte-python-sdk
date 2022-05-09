@@ -69,3 +69,7 @@ def import_stats(
     if error:
         raise Exception(f"importStats failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_stats.operation_id = "importStats"
+import_stats.is_deprecated = False

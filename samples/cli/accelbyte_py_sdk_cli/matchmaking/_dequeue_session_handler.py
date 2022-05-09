@@ -72,3 +72,7 @@ def dequeue_session_handler(
     if error:
         raise Exception(f"DequeueSessionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+dequeue_session_handler.operation_id = "DequeueSessionHandler"
+dequeue_session_handler.is_deprecated = False

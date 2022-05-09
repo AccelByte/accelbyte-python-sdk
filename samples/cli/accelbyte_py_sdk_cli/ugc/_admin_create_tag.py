@@ -73,3 +73,7 @@ def admin_create_tag(
     if error:
         raise Exception(f"AdminCreateTag failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_create_tag.operation_id = "AdminCreateTag"
+admin_create_tag.is_deprecated = False

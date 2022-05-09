@@ -65,3 +65,7 @@ def change2fa_method(
     if error:
         raise Exception(f"Change2FAMethod failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+change2fa_method.operation_id = "Change2FAMethod"
+change2fa_method.is_deprecated = False

@@ -67,3 +67,7 @@ def get_user_profile_info(
     if error:
         raise Exception(f"getUserProfileInfo failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_profile_info.operation_id = "getUserProfileInfo"
+get_user_profile_info.is_deprecated = False

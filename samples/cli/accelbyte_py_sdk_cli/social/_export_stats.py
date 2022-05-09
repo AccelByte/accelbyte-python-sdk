@@ -61,3 +61,7 @@ def export_stats(
     if error:
         raise Exception(f"exportStats failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_stats.operation_id = "exportStats"
+export_stats.is_deprecated = False

@@ -72,3 +72,7 @@ def get_channels(
     if error:
         raise Exception(f"GetChannels failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_channels.operation_id = "GetChannels"
+get_channels.is_deprecated = False

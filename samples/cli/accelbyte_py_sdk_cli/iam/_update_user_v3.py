@@ -73,3 +73,7 @@ def update_user_v3(
     if error:
         raise Exception(f"UpdateUserV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_v3.operation_id = "UpdateUserV3"
+update_user_v3.is_deprecated = False

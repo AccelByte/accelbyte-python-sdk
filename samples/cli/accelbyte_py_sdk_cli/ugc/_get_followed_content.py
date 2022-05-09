@@ -69,3 +69,7 @@ def get_followed_content(
     if error:
         raise Exception(f"GetFollowedContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_followed_content.operation_id = "GetFollowedContent"
+get_followed_content.is_deprecated = False

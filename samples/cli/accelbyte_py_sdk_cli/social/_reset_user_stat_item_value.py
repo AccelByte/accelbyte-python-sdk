@@ -82,3 +82,7 @@ def reset_user_stat_item_value(
     if error:
         raise Exception(f"resetUserStatItemValue failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+reset_user_stat_item_value.operation_id = "resetUserStatItemValue"
+reset_user_stat_item_value.is_deprecated = False

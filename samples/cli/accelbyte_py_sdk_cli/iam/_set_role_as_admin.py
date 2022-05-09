@@ -61,3 +61,7 @@ def set_role_as_admin(
     if error:
         raise Exception(f"SetRoleAsAdmin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+set_role_as_admin.operation_id = "SetRoleAsAdmin"
+set_role_as_admin.is_deprecated = False

@@ -62,3 +62,7 @@ def get_order_statistics(
     if error:
         raise Exception(f"getOrderStatistics failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_order_statistics.operation_id = "getOrderStatistics"
+get_order_statistics.is_deprecated = False

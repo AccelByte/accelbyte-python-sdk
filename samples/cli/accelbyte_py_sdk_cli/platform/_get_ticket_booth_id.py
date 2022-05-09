@@ -66,3 +66,7 @@ def get_ticket_booth_id(
     if error:
         raise Exception(f"getTicketBoothID failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_ticket_booth_id.operation_id = "getTicketBoothID"
+get_ticket_booth_id.is_deprecated = False

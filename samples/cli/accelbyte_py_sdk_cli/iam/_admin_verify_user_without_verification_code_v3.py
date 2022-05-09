@@ -65,3 +65,7 @@ def admin_verify_user_without_verification_code_v3(
     if error:
         raise Exception(f"AdminVerifyUserWithoutVerificationCodeV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_verify_user_without_verification_code_v3.operation_id = "AdminVerifyUserWithoutVerificationCodeV3"
+admin_verify_user_without_verification_code_v3.is_deprecated = False

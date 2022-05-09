@@ -77,3 +77,7 @@ def platform_subscribe_subscription(
     if error:
         raise Exception(f"platformSubscribeSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+platform_subscribe_subscription.operation_id = "platformSubscribeSubscription"
+platform_subscribe_subscription.is_deprecated = False

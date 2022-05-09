@@ -61,3 +61,7 @@ def delete_apple_iap_config(
     if error:
         raise Exception(f"deleteAppleIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_apple_iap_config.operation_id = "deleteAppleIAPConfig"
+delete_apple_iap_config.is_deprecated = False

@@ -63,3 +63,7 @@ def public_get_all_matchmaking_channel(
     if error:
         raise Exception(f"PublicGetAllMatchmakingChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_all_matchmaking_channel.operation_id = "PublicGetAllMatchmakingChannel"
+public_get_all_matchmaking_channel.is_deprecated = False

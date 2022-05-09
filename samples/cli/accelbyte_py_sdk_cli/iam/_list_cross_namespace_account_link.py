@@ -70,3 +70,7 @@ def list_cross_namespace_account_link(
     if error:
         raise Exception(f"ListCrossNamespaceAccountLink failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_cross_namespace_account_link.operation_id = "ListCrossNamespaceAccountLink"
+list_cross_namespace_account_link.is_deprecated = True

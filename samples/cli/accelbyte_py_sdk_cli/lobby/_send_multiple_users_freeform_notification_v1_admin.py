@@ -72,3 +72,7 @@ def send_multiple_users_freeform_notification_v1_admin(
     if error:
         raise Exception(f"sendMultipleUsersFreeformNotificationV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+send_multiple_users_freeform_notification_v1_admin.operation_id = "sendMultipleUsersFreeformNotificationV1Admin"
+send_multiple_users_freeform_notification_v1_admin.is_deprecated = False

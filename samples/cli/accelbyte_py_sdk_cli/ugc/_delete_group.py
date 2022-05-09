@@ -68,3 +68,7 @@ def delete_group(
     if error:
         raise Exception(f"DeleteGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_group.operation_id = "DeleteGroup"
+delete_group.is_deprecated = False

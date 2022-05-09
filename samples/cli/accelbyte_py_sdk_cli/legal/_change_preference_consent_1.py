@@ -69,3 +69,7 @@ def change_preference_consent_1(
     if error:
         raise Exception(f"changePreferenceConsent_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+change_preference_consent_1.operation_id = "changePreferenceConsent_1"
+change_preference_consent_1.is_deprecated = False

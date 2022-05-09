@@ -61,3 +61,7 @@ def delete_client(
     if error:
         raise Exception(f"DeleteClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_client.operation_id = "DeleteClient"
+delete_client.is_deprecated = True

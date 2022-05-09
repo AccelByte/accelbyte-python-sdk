@@ -76,3 +76,7 @@ def update_third_party_login_platform_domain_v3(
     if error:
         raise Exception(f"UpdateThirdPartyLoginPlatformDomainV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_third_party_login_platform_domain_v3.operation_id = "UpdateThirdPartyLoginPlatformDomainV3"
+update_third_party_login_platform_domain_v3.is_deprecated = False

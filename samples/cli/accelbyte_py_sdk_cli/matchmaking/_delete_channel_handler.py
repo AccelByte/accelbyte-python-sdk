@@ -65,3 +65,7 @@ def delete_channel_handler(
     if error:
         raise Exception(f"DeleteChannelHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_channel_handler.operation_id = "DeleteChannelHandler"
+delete_channel_handler.is_deprecated = False

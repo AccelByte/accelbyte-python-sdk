@@ -64,3 +64,7 @@ def get_my_profile_info(
     if error:
         raise Exception(f"getMyProfileInfo failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_my_profile_info.operation_id = "getMyProfileInfo"
+get_my_profile_info.is_deprecated = False

@@ -72,3 +72,7 @@ def admin_update_config_v1(
     if error:
         raise Exception(f"adminUpdateConfigV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_config_v1.operation_id = "adminUpdateConfigV1"
+admin_update_config_v1.is_deprecated = False

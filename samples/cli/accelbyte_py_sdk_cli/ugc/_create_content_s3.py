@@ -79,3 +79,7 @@ def create_content_s3(
     if error:
         raise Exception(f"CreateContentS3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_content_s3.operation_id = "CreateContentS3"
+create_content_s3.is_deprecated = False

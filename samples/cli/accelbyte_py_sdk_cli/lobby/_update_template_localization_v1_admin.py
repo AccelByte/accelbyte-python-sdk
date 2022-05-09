@@ -78,3 +78,7 @@ def update_template_localization_v1_admin(
     if error:
         raise Exception(f"updateTemplateLocalizationV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_template_localization_v1_admin.operation_id = "updateTemplateLocalizationV1Admin"
+update_template_localization_v1_admin.is_deprecated = False

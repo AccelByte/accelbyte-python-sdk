@@ -84,3 +84,7 @@ def query_event_stream_handler(
     if error:
         raise Exception(f"QueryEventStreamHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_event_stream_handler.operation_id = "QueryEventStreamHandler"
+query_event_stream_handler.is_deprecated = False

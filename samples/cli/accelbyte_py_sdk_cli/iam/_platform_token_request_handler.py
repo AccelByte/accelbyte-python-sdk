@@ -72,3 +72,7 @@ def platform_token_request_handler(
     if error:
         raise Exception(f"PlatformTokenRequestHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+platform_token_request_handler.operation_id = "PlatformTokenRequestHandler"
+platform_token_request_handler.is_deprecated = True

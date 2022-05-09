@@ -100,3 +100,7 @@ def public_query_items(
     if error:
         raise Exception(f"publicQueryItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_items.operation_id = "publicQueryItems"
+public_query_items.is_deprecated = False

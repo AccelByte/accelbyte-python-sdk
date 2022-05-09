@@ -73,3 +73,7 @@ def admin_list_user_id_by_user_i_ds_v3(
     if error:
         raise Exception(f"AdminListUserIDByUserIDsV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_list_user_id_by_user_i_ds_v3.operation_id = "AdminListUserIDByUserIDsV3"
+admin_list_user_id_by_user_i_ds_v3.is_deprecated = False

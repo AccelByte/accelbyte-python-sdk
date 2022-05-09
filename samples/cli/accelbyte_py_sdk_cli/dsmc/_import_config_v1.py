@@ -66,3 +66,7 @@ def import_config_v1(
     if error:
         raise Exception(f"importConfigV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_config_v1.operation_id = "importConfigV1"
+import_config_v1.is_deprecated = False

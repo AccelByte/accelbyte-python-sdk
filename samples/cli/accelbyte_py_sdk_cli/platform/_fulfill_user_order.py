@@ -69,3 +69,7 @@ def fulfill_user_order(
     if error:
         raise Exception(f"fulfillUserOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+fulfill_user_order.operation_id = "fulfillUserOrder"
+fulfill_user_order.is_deprecated = False

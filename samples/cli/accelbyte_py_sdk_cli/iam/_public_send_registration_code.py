@@ -72,3 +72,7 @@ def public_send_registration_code(
     if error:
         raise Exception(f"PublicSendRegistrationCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_send_registration_code.operation_id = "PublicSendRegistrationCode"
+public_send_registration_code.is_deprecated = False

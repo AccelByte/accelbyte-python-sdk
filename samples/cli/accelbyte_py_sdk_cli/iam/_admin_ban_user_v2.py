@@ -75,3 +75,7 @@ def admin_ban_user_v2(
     if error:
         raise Exception(f"AdminBanUserV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_ban_user_v2.operation_id = "AdminBanUserV2"
+admin_ban_user_v2.is_deprecated = False

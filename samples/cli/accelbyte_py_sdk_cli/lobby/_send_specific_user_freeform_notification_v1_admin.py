@@ -75,3 +75,7 @@ def send_specific_user_freeform_notification_v1_admin(
     if error:
         raise Exception(f"sendSpecificUserFreeformNotificationV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+send_specific_user_freeform_notification_v1_admin.operation_id = "sendSpecificUserFreeformNotificationV1Admin"
+send_specific_user_freeform_notification_v1_admin.is_deprecated = False

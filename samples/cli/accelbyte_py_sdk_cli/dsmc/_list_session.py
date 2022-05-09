@@ -75,3 +75,7 @@ def list_session(
     if error:
         raise Exception(f"ListSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_session.operation_id = "ListSession"
+list_session.is_deprecated = False

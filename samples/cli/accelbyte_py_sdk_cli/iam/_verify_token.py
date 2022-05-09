@@ -62,3 +62,7 @@ def verify_token(
     if error:
         raise Exception(f"VerifyToken failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+verify_token.operation_id = "VerifyToken"
+verify_token.is_deprecated = False

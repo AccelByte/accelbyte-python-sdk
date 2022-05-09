@@ -75,3 +75,7 @@ def admin_get_group_contents(
     if error:
         raise Exception(f"AdminGetGroupContents failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_group_contents.operation_id = "AdminGetGroupContents"
+admin_get_group_contents.is_deprecated = False

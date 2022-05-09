@@ -65,3 +65,7 @@ def list_categories_basic(
     if error:
         raise Exception(f"listCategoriesBasic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_categories_basic.operation_id = "listCategoriesBasic"
+list_categories_basic.is_deprecated = False

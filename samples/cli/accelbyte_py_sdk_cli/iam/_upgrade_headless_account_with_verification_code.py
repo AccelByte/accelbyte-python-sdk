@@ -75,3 +75,7 @@ def upgrade_headless_account_with_verification_code(
     if error:
         raise Exception(f"UpgradeHeadlessAccountWithVerificationCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+upgrade_headless_account_with_verification_code.operation_id = "UpgradeHeadlessAccountWithVerificationCode"
+upgrade_headless_account_with_verification_code.is_deprecated = False

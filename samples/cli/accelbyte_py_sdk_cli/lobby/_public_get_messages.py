@@ -60,3 +60,7 @@ def public_get_messages(
     if error:
         raise Exception(f"publicGetMessages failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_messages.operation_id = "publicGetMessages"
+public_get_messages.is_deprecated = False

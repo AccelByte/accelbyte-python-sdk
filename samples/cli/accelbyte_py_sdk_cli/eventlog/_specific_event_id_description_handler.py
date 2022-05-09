@@ -62,3 +62,7 @@ def specific_event_id_description_handler(
     if error:
         raise Exception(f"SpecificEventIDDescriptionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+specific_event_id_description_handler.operation_id = "SpecificEventIDDescriptionHandler"
+specific_event_id_description_handler.is_deprecated = True

@@ -69,3 +69,7 @@ def delete_category(
     if error:
         raise Exception(f"deleteCategory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_category.operation_id = "deleteCategory"
+delete_category.is_deprecated = False

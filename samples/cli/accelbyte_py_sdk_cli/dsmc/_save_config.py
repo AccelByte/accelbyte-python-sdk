@@ -69,3 +69,7 @@ def save_config(
     if error:
         raise Exception(f"SaveConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+save_config.operation_id = "SaveConfig"
+save_config.is_deprecated = True

@@ -82,3 +82,7 @@ def update_content_direct(
     if error:
         raise Exception(f"UpdateContentDirect failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_content_direct.operation_id = "UpdateContentDirect"
+update_content_direct.is_deprecated = True

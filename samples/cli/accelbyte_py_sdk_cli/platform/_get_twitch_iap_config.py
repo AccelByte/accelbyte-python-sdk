@@ -62,3 +62,7 @@ def get_twitch_iap_config(
     if error:
         raise Exception(f"getTwitchIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_twitch_iap_config.operation_id = "getTwitchIAPConfig"
+get_twitch_iap_config.is_deprecated = False

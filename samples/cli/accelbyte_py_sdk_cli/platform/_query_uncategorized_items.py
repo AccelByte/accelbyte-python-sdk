@@ -79,3 +79,7 @@ def query_uncategorized_items(
     if error:
         raise Exception(f"queryUncategorizedItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_uncategorized_items.operation_id = "queryUncategorizedItems"
+query_uncategorized_items.is_deprecated = False

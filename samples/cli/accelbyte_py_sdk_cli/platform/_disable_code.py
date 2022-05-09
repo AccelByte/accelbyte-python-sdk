@@ -66,3 +66,7 @@ def disable_code(
     if error:
         raise Exception(f"disableCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+disable_code.operation_id = "disableCode"
+disable_code.is_deprecated = False

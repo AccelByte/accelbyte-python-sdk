@@ -92,3 +92,7 @@ def query_changes(
     if error:
         raise Exception(f"queryChanges failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_changes.operation_id = "queryChanges"
+query_changes.is_deprecated = False

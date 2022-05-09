@@ -62,3 +62,7 @@ def specific_ux_description_handler(
     if error:
         raise Exception(f"SpecificUXDescriptionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+specific_ux_description_handler.operation_id = "SpecificUXDescriptionHandler"
+specific_ux_description_handler.is_deprecated = True

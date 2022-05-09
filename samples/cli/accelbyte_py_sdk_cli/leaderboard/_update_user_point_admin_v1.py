@@ -79,3 +79,7 @@ def update_user_point_admin_v1(
     if error:
         raise Exception(f"updateUserPointAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_point_admin_v1.operation_id = "updateUserPointAdminV1"
+update_user_point_admin_v1.is_deprecated = False

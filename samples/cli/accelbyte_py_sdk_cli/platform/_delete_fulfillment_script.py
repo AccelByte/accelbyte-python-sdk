@@ -61,3 +61,7 @@ def delete_fulfillment_script(
     if error:
         raise Exception(f"deleteFulfillmentScript failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_fulfillment_script.operation_id = "deleteFulfillmentScript"
+delete_fulfillment_script.is_deprecated = False

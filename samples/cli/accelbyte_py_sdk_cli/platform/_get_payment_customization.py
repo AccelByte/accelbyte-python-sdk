@@ -71,3 +71,7 @@ def get_payment_customization(
     if error:
         raise Exception(f"getPaymentCustomization failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_customization.operation_id = "getPaymentCustomization"
+get_payment_customization.is_deprecated = True

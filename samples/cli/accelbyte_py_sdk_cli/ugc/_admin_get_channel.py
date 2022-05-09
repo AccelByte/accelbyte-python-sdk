@@ -72,3 +72,7 @@ def admin_get_channel(
     if error:
         raise Exception(f"AdminGetChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_channel.operation_id = "AdminGetChannel"
+admin_get_channel.is_deprecated = False

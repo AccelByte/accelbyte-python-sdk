@@ -66,3 +66,7 @@ def get_deployment(
     if error:
         raise Exception(f"GetDeployment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_deployment.operation_id = "GetDeployment"
+get_deployment.is_deprecated = False

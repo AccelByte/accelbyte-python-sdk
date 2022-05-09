@@ -68,3 +68,7 @@ def public_download_user_order_receipt(
     if error:
         raise Exception(f"publicDownloadUserOrderReceipt failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_download_user_order_receipt.operation_id = "publicDownloadUserOrderReceipt"
+public_download_user_order_receipt.is_deprecated = False

@@ -67,3 +67,7 @@ def public_validate_user_by_user_id_and_password_v3(
     if error:
         raise Exception(f"PublicValidateUserByUserIDAndPasswordV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_validate_user_by_user_id_and_password_v3.operation_id = "PublicValidateUserByUserIDAndPasswordV3"
+public_validate_user_by_user_id_and_password_v3.is_deprecated = False

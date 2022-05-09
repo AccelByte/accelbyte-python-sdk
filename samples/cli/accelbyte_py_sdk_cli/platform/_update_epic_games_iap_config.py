@@ -72,3 +72,7 @@ def update_epic_games_iap_config(
     if error:
         raise Exception(f"updateEpicGamesIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_epic_games_iap_config.operation_id = "updateEpicGamesIAPConfig"
+update_epic_games_iap_config.is_deprecated = False

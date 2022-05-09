@@ -77,3 +77,7 @@ def public_create_user_order(
     if error:
         raise Exception(f"publicCreateUserOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_create_user_order.operation_id = "publicCreateUserOrder"
+public_create_user_order.is_deprecated = False

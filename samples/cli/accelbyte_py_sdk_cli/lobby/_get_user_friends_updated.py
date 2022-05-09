@@ -69,3 +69,7 @@ def get_user_friends_updated(
     if error:
         raise Exception(f"getUserFriendsUpdated failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_friends_updated.operation_id = "getUserFriendsUpdated"
+get_user_friends_updated.is_deprecated = False

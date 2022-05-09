@@ -68,3 +68,7 @@ def get_child_categories(
     if error:
         raise Exception(f"getChildCategories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_child_categories.operation_id = "getChildCategories"
+get_child_categories.is_deprecated = False

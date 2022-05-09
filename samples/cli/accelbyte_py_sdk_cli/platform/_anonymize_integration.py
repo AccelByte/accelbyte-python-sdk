@@ -64,3 +64,7 @@ def anonymize_integration(
     if error:
         raise Exception(f"anonymizeIntegration failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_integration.operation_id = "anonymizeIntegration"
+anonymize_integration.is_deprecated = False

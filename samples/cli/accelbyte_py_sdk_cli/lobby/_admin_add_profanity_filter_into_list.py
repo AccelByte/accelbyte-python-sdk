@@ -75,3 +75,7 @@ def admin_add_profanity_filter_into_list(
     if error:
         raise Exception(f"adminAddProfanityFilterIntoList failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_add_profanity_filter_into_list.operation_id = "adminAddProfanityFilterIntoList"
+admin_add_profanity_filter_into_list.is_deprecated = False

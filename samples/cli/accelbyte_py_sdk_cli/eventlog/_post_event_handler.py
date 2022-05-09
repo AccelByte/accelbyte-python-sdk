@@ -71,3 +71,7 @@ def post_event_handler(
     if error:
         raise Exception(f"PostEventHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+post_event_handler.operation_id = "PostEventHandler"
+post_event_handler.is_deprecated = True

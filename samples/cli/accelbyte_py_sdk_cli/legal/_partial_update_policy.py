@@ -73,3 +73,7 @@ def partial_update_policy(
     if error:
         raise Exception(f"partialUpdatePolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+partial_update_policy.operation_id = "partialUpdatePolicy"
+partial_update_policy.is_deprecated = False

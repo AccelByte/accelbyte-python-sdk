@@ -72,3 +72,7 @@ def deregister_local_server(
     if error:
         raise Exception(f"DeregisterLocalServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+deregister_local_server.operation_id = "DeregisterLocalServer"
+deregister_local_server.is_deprecated = False

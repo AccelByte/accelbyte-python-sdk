@@ -72,3 +72,7 @@ def get_all_time_leaderboard_ranking_public_v1(
     if error:
         raise Exception(f"GetAllTimeLeaderboardRankingPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_all_time_leaderboard_ranking_public_v1.operation_id = "GetAllTimeLeaderboardRankingPublicV1"
+get_all_time_leaderboard_ranking_public_v1.is_deprecated = False

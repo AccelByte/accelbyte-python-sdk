@@ -64,3 +64,7 @@ def anonymize_subscription(
     if error:
         raise Exception(f"anonymizeSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_subscription.operation_id = "anonymizeSubscription"
+anonymize_subscription.is_deprecated = False

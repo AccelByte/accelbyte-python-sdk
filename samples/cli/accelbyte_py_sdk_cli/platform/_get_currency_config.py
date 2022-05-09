@@ -66,3 +66,7 @@ def get_currency_config(
     if error:
         raise Exception(f"getCurrencyConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_currency_config.operation_id = "getCurrencyConfig"
+get_currency_config.is_deprecated = False

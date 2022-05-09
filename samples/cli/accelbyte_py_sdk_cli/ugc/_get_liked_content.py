@@ -69,3 +69,7 @@ def get_liked_content(
     if error:
         raise Exception(f"GetLikedContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_liked_content.operation_id = "GetLikedContent"
+get_liked_content.is_deprecated = False

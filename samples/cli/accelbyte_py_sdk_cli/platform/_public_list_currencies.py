@@ -62,3 +62,7 @@ def public_list_currencies(
     if error:
         raise Exception(f"publicListCurrencies failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_list_currencies.operation_id = "publicListCurrencies"
+public_list_currencies.is_deprecated = False

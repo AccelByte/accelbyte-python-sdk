@@ -59,3 +59,7 @@ def get_list_ban_reason(
     if error:
         raise Exception(f"GetListBanReason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_list_ban_reason.operation_id = "GetListBanReason"
+get_list_ban_reason.is_deprecated = False

@@ -66,3 +66,7 @@ def retrieve_policy_country(
     if error:
         raise Exception(f"retrievePolicyCountry failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_policy_country.operation_id = "retrievePolicyCountry"
+retrieve_policy_country.is_deprecated = False

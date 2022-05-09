@@ -72,3 +72,7 @@ def create_topic(
     if error:
         raise Exception(f"createTopic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_topic.operation_id = "createTopic"
+create_topic.is_deprecated = False

@@ -78,3 +78,7 @@ def admin_put_player_record_handler_v1(
     if error:
         raise Exception(f"adminPutPlayerRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_put_player_record_handler_v1.operation_id = "adminPutPlayerRecordHandlerV1"
+admin_put_player_record_handler_v1.is_deprecated = False

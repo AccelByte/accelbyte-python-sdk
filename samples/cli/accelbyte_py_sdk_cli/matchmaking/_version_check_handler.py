@@ -58,3 +58,7 @@ def version_check_handler(
     if error:
         raise Exception(f"versionCheckHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+version_check_handler.operation_id = "versionCheckHandler"
+version_check_handler.is_deprecated = False

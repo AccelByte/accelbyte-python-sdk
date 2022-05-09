@@ -63,3 +63,7 @@ def public_generate_my_backup_codes_v4(
     if error:
         raise Exception(f"PublicGenerateMyBackupCodesV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_generate_my_backup_codes_v4.operation_id = "PublicGenerateMyBackupCodesV4"
+public_generate_my_backup_codes_v4.is_deprecated = False

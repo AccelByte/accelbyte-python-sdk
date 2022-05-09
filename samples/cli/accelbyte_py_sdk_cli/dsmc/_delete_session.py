@@ -65,3 +65,7 @@ def delete_session(
     if error:
         raise Exception(f"DeleteSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_session.operation_id = "DeleteSession"
+delete_session.is_deprecated = False

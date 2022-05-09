@@ -76,3 +76,7 @@ def create_channel(
     if error:
         raise Exception(f"CreateChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_channel.operation_id = "CreateChannel"
+create_channel.is_deprecated = False

@@ -66,3 +66,7 @@ def user_get_friendship_status(
     if error:
         raise Exception(f"userGetFriendshipStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+user_get_friendship_status.operation_id = "userGetFriendshipStatus"
+user_get_friendship_status.is_deprecated = False

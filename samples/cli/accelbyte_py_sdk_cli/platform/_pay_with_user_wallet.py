@@ -80,3 +80,7 @@ def pay_with_user_wallet(
     if error:
         raise Exception(f"payWithUserWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+pay_with_user_wallet.operation_id = "payWithUserWallet"
+pay_with_user_wallet.is_deprecated = False

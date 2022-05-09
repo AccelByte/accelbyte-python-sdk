@@ -72,3 +72,7 @@ def user_request_friend(
     if error:
         raise Exception(f"userRequestFriend failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+user_request_friend.operation_id = "userRequestFriend"
+user_request_friend.is_deprecated = False

@@ -79,3 +79,7 @@ def update_stripe_config(
     if error:
         raise Exception(f"updateStripeConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_stripe_config.operation_id = "updateStripeConfig"
+update_stripe_config.is_deprecated = False

@@ -71,3 +71,7 @@ def query_payment_provider_config(
     if error:
         raise Exception(f"queryPaymentProviderConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_payment_provider_config.operation_id = "queryPaymentProviderConfig"
+query_payment_provider_config.is_deprecated = False

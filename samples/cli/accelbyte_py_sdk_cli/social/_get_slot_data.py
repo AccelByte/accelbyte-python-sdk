@@ -68,3 +68,7 @@ def get_slot_data(
     if error:
         raise Exception(f"getSlotData failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_slot_data.operation_id = "getSlotData"
+get_slot_data.is_deprecated = False

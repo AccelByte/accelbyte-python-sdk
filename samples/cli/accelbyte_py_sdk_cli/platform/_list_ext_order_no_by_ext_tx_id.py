@@ -64,3 +64,7 @@ def list_ext_order_no_by_ext_tx_id(
     if error:
         raise Exception(f"listExtOrderNoByExtTxId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_ext_order_no_by_ext_tx_id.operation_id = "listExtOrderNoByExtTxId"
+list_ext_order_no_by_ext_tx_id.is_deprecated = False

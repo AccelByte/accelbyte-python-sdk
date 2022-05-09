@@ -90,3 +90,7 @@ def public_update_user_namespace_slot(
     if error:
         raise Exception(f"publicUpdateUserNamespaceSlot failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_update_user_namespace_slot.operation_id = "publicUpdateUserNamespaceSlot"
+public_update_user_namespace_slot.is_deprecated = False

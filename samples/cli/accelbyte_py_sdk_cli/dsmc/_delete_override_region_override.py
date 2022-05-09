@@ -72,3 +72,7 @@ def delete_override_region_override(
     if error:
         raise Exception(f"DeleteOverrideRegionOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_override_region_override.operation_id = "DeleteOverrideRegionOverride"
+delete_override_region_override.is_deprecated = False

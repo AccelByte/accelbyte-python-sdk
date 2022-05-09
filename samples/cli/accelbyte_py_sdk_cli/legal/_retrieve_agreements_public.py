@@ -59,3 +59,7 @@ def retrieve_agreements_public(
     if error:
         raise Exception(f"retrieveAgreementsPublic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_agreements_public.operation_id = "retrieveAgreementsPublic"
+retrieve_agreements_public.is_deprecated = False

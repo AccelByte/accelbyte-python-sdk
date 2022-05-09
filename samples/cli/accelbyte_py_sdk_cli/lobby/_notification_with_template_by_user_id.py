@@ -75,3 +75,7 @@ def notification_with_template_by_user_id(
     if error:
         raise Exception(f"notificationWithTemplateByUserID failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+notification_with_template_by_user_id.operation_id = "notificationWithTemplateByUserID"
+notification_with_template_by_user_id.is_deprecated = False

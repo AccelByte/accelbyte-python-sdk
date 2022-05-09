@@ -69,3 +69,7 @@ def update_image(
     if error:
         raise Exception(f"UpdateImage failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_image.operation_id = "UpdateImage"
+update_image.is_deprecated = False

@@ -85,3 +85,7 @@ def search_sessions_v2(
     if error:
         raise Exception(f"SearchSessionsV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+search_sessions_v2.operation_id = "SearchSessionsV2"
+search_sessions_v2.is_deprecated = False

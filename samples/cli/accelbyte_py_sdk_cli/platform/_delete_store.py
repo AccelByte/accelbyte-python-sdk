@@ -66,3 +66,7 @@ def delete_store(
     if error:
         raise Exception(f"deleteStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_store.operation_id = "deleteStore"
+delete_store.is_deprecated = False

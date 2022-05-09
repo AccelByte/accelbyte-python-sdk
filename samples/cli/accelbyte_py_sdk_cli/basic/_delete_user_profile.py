@@ -67,3 +67,7 @@ def delete_user_profile(
     if error:
         raise Exception(f"deleteUserProfile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_profile.operation_id = "deleteUserProfile"
+delete_user_profile.is_deprecated = False

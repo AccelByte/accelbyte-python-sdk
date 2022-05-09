@@ -72,3 +72,7 @@ def update_playstation_iap_config(
     if error:
         raise Exception(f"updatePlaystationIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_playstation_iap_config.operation_id = "updatePlaystationIAPConfig"
+update_playstation_iap_config.is_deprecated = False

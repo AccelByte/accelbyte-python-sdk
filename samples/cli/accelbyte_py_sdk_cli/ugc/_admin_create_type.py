@@ -73,3 +73,7 @@ def admin_create_type(
     if error:
         raise Exception(f"AdminCreateType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_create_type.operation_id = "AdminCreateType"
+admin_create_type.is_deprecated = False

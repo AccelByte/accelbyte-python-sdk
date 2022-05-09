@@ -76,3 +76,7 @@ def update_leaderboard_configuration_admin_v1(
     if error:
         raise Exception(f"updateLeaderboardConfigurationAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_leaderboard_configuration_admin_v1.operation_id = "updateLeaderboardConfigurationAdminV1"
+update_leaderboard_configuration_admin_v1.is_deprecated = False

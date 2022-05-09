@@ -72,3 +72,7 @@ def create_client_by_namespace(
     if error:
         raise Exception(f"CreateClientByNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_client_by_namespace.operation_id = "CreateClientByNamespace"
+create_client_by_namespace.is_deprecated = False

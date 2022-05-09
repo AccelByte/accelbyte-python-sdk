@@ -79,3 +79,7 @@ def grant_days_to_subscription(
     if error:
         raise Exception(f"grantDaysToSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+grant_days_to_subscription.operation_id = "grantDaysToSubscription"
+grant_days_to_subscription.is_deprecated = False

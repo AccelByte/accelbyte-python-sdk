@@ -62,3 +62,7 @@ def retrieve_eligibilities_public(
     if error:
         raise Exception(f"retrieveEligibilitiesPublic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_eligibilities_public.operation_id = "retrieveEligibilitiesPublic"
+retrieve_eligibilities_public.is_deprecated = False

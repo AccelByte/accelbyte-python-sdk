@@ -67,3 +67,7 @@ def public_web_link_platform_establish(
     if error:
         raise Exception(f"PublicWebLinkPlatformEstablish failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_web_link_platform_establish.operation_id = "PublicWebLinkPlatformEstablish"
+public_web_link_platform_establish.is_deprecated = False

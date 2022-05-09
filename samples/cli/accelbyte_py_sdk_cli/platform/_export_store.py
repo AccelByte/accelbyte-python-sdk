@@ -65,3 +65,7 @@ def export_store(
     if error:
         raise Exception(f"exportStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_store.operation_id = "exportStore"
+export_store.is_deprecated = False

@@ -68,3 +68,7 @@ def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_pla
     if error:
         raise Exception(f"protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put.operation_id = "protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put"
+protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put.is_deprecated = False

@@ -71,3 +71,7 @@ def public_reset_password_v2(
     if error:
         raise Exception(f"PublicResetPasswordV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_reset_password_v2.operation_id = "PublicResetPasswordV2"
+public_reset_password_v2.is_deprecated = False

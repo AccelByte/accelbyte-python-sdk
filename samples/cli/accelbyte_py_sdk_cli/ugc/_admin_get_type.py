@@ -69,3 +69,7 @@ def admin_get_type(
     if error:
         raise Exception(f"AdminGetType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_type.operation_id = "AdminGetType"
+admin_get_type.is_deprecated = False

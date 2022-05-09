@@ -76,3 +76,7 @@ def create_deployment(
     if error:
         raise Exception(f"CreateDeployment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_deployment.operation_id = "CreateDeployment"
+create_deployment.is_deprecated = False

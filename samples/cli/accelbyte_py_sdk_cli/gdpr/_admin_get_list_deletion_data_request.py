@@ -78,3 +78,7 @@ def admin_get_list_deletion_data_request(
     if error:
         raise Exception(f"AdminGetListDeletionDataRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_list_deletion_data_request.operation_id = "AdminGetListDeletionDataRequest"
+admin_get_list_deletion_data_request.is_deprecated = False

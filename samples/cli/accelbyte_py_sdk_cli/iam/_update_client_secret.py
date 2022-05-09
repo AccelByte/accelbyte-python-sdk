@@ -71,3 +71,7 @@ def update_client_secret(
     if error:
         raise Exception(f"UpdateClientSecret failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_client_secret.operation_id = "UpdateClientSecret"
+update_client_secret.is_deprecated = False

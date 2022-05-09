@@ -69,3 +69,7 @@ def import_store(
     if error:
         raise Exception(f"importStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_store.operation_id = "importStore"
+import_store.is_deprecated = False

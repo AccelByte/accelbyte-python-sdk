@@ -76,3 +76,7 @@ def update_group_custom_rule_public_v1(
     if error:
         raise Exception(f"updateGroupCustomRulePublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_group_custom_rule_public_v1.operation_id = "updateGroupCustomRulePublicV1"
+update_group_custom_rule_public_v1.is_deprecated = False

@@ -62,3 +62,7 @@ def list_stores(
     if error:
         raise Exception(f"listStores failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_stores.operation_id = "listStores"
+list_stores.is_deprecated = False

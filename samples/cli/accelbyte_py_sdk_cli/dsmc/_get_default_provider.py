@@ -59,3 +59,7 @@ def get_default_provider(
     if error:
         raise Exception(f"GetDefaultProvider failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_default_provider.operation_id = "GetDefaultProvider"
+get_default_provider.is_deprecated = False

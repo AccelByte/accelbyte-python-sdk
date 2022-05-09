@@ -79,3 +79,7 @@ def upload_content_screenshot(
     if error:
         raise Exception(f"UploadContentScreenshot failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+upload_content_screenshot.operation_id = "UploadContentScreenshot"
+upload_content_screenshot.is_deprecated = False

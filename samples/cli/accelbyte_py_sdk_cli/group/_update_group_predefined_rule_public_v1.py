@@ -79,3 +79,7 @@ def update_group_predefined_rule_public_v1(
     if error:
         raise Exception(f"updateGroupPredefinedRulePublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_group_predefined_rule_public_v1.operation_id = "updateGroupPredefinedRulePublicV1"
+update_group_predefined_rule_public_v1.is_deprecated = False

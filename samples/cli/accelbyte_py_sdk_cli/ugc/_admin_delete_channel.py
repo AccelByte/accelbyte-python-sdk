@@ -68,3 +68,7 @@ def admin_delete_channel(
     if error:
         raise Exception(f"AdminDeleteChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_channel.operation_id = "AdminDeleteChannel"
+admin_delete_channel.is_deprecated = False

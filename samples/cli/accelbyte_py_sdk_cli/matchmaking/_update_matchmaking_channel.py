@@ -76,3 +76,7 @@ def update_matchmaking_channel(
     if error:
         raise Exception(f"UpdateMatchmakingChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_matchmaking_channel.operation_id = "UpdateMatchmakingChannel"
+update_matchmaking_channel.is_deprecated = False

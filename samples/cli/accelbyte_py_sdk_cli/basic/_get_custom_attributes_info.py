@@ -65,3 +65,7 @@ def get_custom_attributes_info(
     if error:
         raise Exception(f"getCustomAttributesInfo failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_custom_attributes_info.operation_id = "getCustomAttributesInfo"
+get_custom_attributes_info.is_deprecated = False

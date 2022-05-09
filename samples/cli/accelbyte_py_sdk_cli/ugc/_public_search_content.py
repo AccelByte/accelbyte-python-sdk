@@ -96,3 +96,7 @@ def public_search_content(
     if error:
         raise Exception(f"PublicSearchContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_search_content.operation_id = "PublicSearchContent"
+public_search_content.is_deprecated = False

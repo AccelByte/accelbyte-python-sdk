@@ -69,3 +69,7 @@ def single_admin_get_all_groups(
     if error:
         raise Exception(f"SingleAdminGetAllGroups failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+single_admin_get_all_groups.operation_id = "SingleAdminGetAllGroups"
+single_admin_get_all_groups.is_deprecated = False

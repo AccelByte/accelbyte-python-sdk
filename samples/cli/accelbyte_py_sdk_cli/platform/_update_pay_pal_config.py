@@ -79,3 +79,7 @@ def update_pay_pal_config(
     if error:
         raise Exception(f"updatePayPalConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_pay_pal_config.operation_id = "updatePayPalConfig"
+update_pay_pal_config.is_deprecated = False

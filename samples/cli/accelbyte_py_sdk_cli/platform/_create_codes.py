@@ -77,3 +77,7 @@ def create_codes(
     if error:
         raise Exception(f"createCodes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_codes.operation_id = "createCodes"
+create_codes.is_deprecated = False

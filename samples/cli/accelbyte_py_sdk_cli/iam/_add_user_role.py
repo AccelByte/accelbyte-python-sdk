@@ -67,3 +67,7 @@ def add_user_role(
     if error:
         raise Exception(f"AddUserRole failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_user_role.operation_id = "AddUserRole"
+add_user_role.is_deprecated = False

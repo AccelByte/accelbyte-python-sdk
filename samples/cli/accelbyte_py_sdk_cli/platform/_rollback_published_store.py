@@ -63,3 +63,7 @@ def rollback_published_store(
     if error:
         raise Exception(f"rollbackPublishedStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+rollback_published_store.operation_id = "rollbackPublishedStore"
+rollback_published_store.is_deprecated = False

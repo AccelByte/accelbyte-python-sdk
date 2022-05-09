@@ -68,3 +68,7 @@ def public_create_user_stat_item(
     if error:
         raise Exception(f"publicCreateUserStatItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_create_user_stat_item.operation_id = "publicCreateUserStatItem"
+public_create_user_stat_item.is_deprecated = False

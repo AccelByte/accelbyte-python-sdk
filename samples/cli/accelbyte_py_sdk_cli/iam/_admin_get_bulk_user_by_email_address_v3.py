@@ -73,3 +73,7 @@ def admin_get_bulk_user_by_email_address_v3(
     if error:
         raise Exception(f"AdminGetBulkUserByEmailAddressV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_bulk_user_by_email_address_v3.operation_id = "AdminGetBulkUserByEmailAddressV3"
+admin_get_bulk_user_by_email_address_v3.is_deprecated = False

@@ -66,3 +66,7 @@ def image_detail_client(
     if error:
         raise Exception(f"ImageDetailClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+image_detail_client.operation_id = "ImageDetailClient"
+image_detail_client.is_deprecated = False

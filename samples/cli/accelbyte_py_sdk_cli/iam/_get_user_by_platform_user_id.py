@@ -68,3 +68,7 @@ def get_user_by_platform_user_id(
     if error:
         raise Exception(f"GetUserByPlatformUserID failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_by_platform_user_id.operation_id = "GetUserByPlatformUserID"
+get_user_by_platform_user_id.is_deprecated = False

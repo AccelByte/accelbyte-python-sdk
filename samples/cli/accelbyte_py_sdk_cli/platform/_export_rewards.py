@@ -61,3 +61,7 @@ def export_rewards(
     if error:
         raise Exception(f"exportRewards failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_rewards.operation_id = "exportRewards"
+export_rewards.is_deprecated = False

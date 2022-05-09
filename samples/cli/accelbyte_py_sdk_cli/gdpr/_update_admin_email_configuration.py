@@ -71,3 +71,7 @@ def update_admin_email_configuration(
     if error:
         raise Exception(f"UpdateAdminEmailConfiguration failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_admin_email_configuration.operation_id = "UpdateAdminEmailConfiguration"
+update_admin_email_configuration.is_deprecated = False

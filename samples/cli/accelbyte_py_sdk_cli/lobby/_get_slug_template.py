@@ -75,3 +75,7 @@ def get_slug_template(
     if error:
         raise Exception(f"getSlugTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_slug_template.operation_id = "getSlugTemplate"
+get_slug_template.is_deprecated = False

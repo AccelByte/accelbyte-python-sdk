@@ -66,3 +66,7 @@ def get_store(
     if error:
         raise Exception(f"getStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_store.operation_id = "getStore"
+get_store.is_deprecated = False

@@ -66,3 +66,7 @@ def join_group_v1(
     if error:
         raise Exception(f"JoinGroupV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+join_group_v1.operation_id = "JoinGroupV1"
+join_group_v1.is_deprecated = False

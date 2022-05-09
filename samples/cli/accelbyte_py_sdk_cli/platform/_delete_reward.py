@@ -66,3 +66,7 @@ def delete_reward(
     if error:
         raise Exception(f"deleteReward failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_reward.operation_id = "deleteReward"
+delete_reward.is_deprecated = False

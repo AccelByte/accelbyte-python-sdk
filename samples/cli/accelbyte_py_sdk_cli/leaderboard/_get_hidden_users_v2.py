@@ -72,3 +72,7 @@ def get_hidden_users_v2(
     if error:
         raise Exception(f"GetHiddenUsersV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_hidden_users_v2.operation_id = "GetHiddenUsersV2"
+get_hidden_users_v2.is_deprecated = False

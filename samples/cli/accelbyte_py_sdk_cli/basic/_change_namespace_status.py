@@ -74,3 +74,7 @@ def change_namespace_status(
     if error:
         raise Exception(f"changeNamespaceStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+change_namespace_status.operation_id = "changeNamespaceStatus"
+change_namespace_status.is_deprecated = False

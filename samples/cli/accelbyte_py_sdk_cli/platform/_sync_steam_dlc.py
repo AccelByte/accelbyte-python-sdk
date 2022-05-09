@@ -74,3 +74,7 @@ def sync_steam_dlc(
     if error:
         raise Exception(f"syncSteamDLC failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_steam_dlc.operation_id = "syncSteamDLC"
+sync_steam_dlc.is_deprecated = False

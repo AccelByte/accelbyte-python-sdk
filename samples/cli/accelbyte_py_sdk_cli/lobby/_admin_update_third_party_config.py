@@ -73,3 +73,7 @@ def admin_update_third_party_config(
     if error:
         raise Exception(f"adminUpdateThirdPartyConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_third_party_config.operation_id = "adminUpdateThirdPartyConfig"
+admin_update_third_party_config.is_deprecated = False

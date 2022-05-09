@@ -65,3 +65,7 @@ def get_user_information(
     if error:
         raise Exception(f"GetUserInformation failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_information.operation_id = "GetUserInformation"
+get_user_information.is_deprecated = False

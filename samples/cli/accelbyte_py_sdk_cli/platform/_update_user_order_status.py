@@ -80,3 +80,7 @@ def update_user_order_status(
     if error:
         raise Exception(f"updateUserOrderStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_order_status.operation_id = "updateUserOrderStatus"
+update_user_order_status.is_deprecated = False

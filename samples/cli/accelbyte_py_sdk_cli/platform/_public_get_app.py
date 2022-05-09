@@ -75,3 +75,7 @@ def public_get_app(
     if error:
         raise Exception(f"publicGetApp failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_app.operation_id = "publicGetApp"
+public_get_app.is_deprecated = False

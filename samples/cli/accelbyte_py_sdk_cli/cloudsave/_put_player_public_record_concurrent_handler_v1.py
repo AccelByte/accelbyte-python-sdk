@@ -78,3 +78,7 @@ def put_player_public_record_concurrent_handler_v1(
     if error:
         raise Exception(f"putPlayerPublicRecordConcurrentHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+put_player_public_record_concurrent_handler_v1.operation_id = "putPlayerPublicRecordConcurrentHandlerV1"
+put_player_public_record_concurrent_handler_v1.is_deprecated = False

@@ -79,3 +79,7 @@ def update_group_configuration_global_rule_admin_v1(
     if error:
         raise Exception(f"updateGroupConfigurationGlobalRuleAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_group_configuration_global_rule_admin_v1.operation_id = "updateGroupConfigurationGlobalRuleAdminV1"
+update_group_configuration_global_rule_admin_v1.is_deprecated = False

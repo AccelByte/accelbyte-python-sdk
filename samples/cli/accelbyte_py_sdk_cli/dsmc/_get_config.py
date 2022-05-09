@@ -63,3 +63,7 @@ def get_config(
     if error:
         raise Exception(f"GetConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_config.operation_id = "GetConfig"
+get_config.is_deprecated = False

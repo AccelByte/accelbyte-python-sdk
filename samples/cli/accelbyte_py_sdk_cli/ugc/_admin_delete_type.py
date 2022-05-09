@@ -65,3 +65,7 @@ def admin_delete_type(
     if error:
         raise Exception(f"AdminDeleteType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_type.operation_id = "AdminDeleteType"
+admin_delete_type.is_deprecated = False

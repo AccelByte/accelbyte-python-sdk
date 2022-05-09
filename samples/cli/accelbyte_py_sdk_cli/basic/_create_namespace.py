@@ -71,3 +71,7 @@ def create_namespace(
     if error:
         raise Exception(f"createNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_namespace.operation_id = "createNamespace"
+create_namespace.is_deprecated = False

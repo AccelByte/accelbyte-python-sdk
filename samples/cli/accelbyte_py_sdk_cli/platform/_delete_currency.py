@@ -66,3 +66,7 @@ def delete_currency(
     if error:
         raise Exception(f"deleteCurrency failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_currency.operation_id = "deleteCurrency"
+delete_currency.is_deprecated = False

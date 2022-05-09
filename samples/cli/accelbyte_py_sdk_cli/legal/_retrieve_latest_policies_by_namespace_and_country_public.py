@@ -77,3 +77,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
     if error:
         raise Exception(f"retrieveLatestPoliciesByNamespaceAndCountryPublic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_latest_policies_by_namespace_and_country_public.operation_id = "retrieveLatestPoliciesByNamespaceAndCountryPublic"
+retrieve_latest_policies_by_namespace_and_country_public.is_deprecated = False

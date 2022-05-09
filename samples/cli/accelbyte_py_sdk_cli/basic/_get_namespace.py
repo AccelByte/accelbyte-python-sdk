@@ -67,3 +67,7 @@ def get_namespace(
     if error:
         raise Exception(f"getNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_namespace.operation_id = "getNamespace"
+get_namespace.is_deprecated = False

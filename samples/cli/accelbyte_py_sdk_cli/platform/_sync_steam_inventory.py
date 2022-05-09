@@ -74,3 +74,7 @@ def sync_steam_inventory(
     if error:
         raise Exception(f"syncSteamInventory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_steam_inventory.operation_id = "syncSteamInventory"
+sync_steam_inventory.is_deprecated = False

@@ -66,3 +66,7 @@ def public_get_user_profile_public_info_by_ids(
     if error:
         raise Exception(f"publicGetUserProfilePublicInfoByIds failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_profile_public_info_by_ids.operation_id = "publicGetUserProfilePublicInfoByIds"
+public_get_user_profile_public_info_by_ids.is_deprecated = False

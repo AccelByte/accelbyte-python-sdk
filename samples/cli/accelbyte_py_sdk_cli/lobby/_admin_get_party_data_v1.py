@@ -66,3 +66,7 @@ def admin_get_party_data_v1(
     if error:
         raise Exception(f"adminGetPartyDataV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_party_data_v1.operation_id = "adminGetPartyDataV1"
+admin_get_party_data_v1.is_deprecated = False

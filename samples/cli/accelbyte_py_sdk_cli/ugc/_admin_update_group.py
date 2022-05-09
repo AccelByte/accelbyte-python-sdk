@@ -79,3 +79,7 @@ def admin_update_group(
     if error:
         raise Exception(f"AdminUpdateGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_group.operation_id = "AdminUpdateGroup"
+admin_update_group.is_deprecated = False

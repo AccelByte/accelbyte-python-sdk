@@ -74,3 +74,7 @@ def sync_twitch_drops_entitlement(
     if error:
         raise Exception(f"syncTwitchDropsEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_twitch_drops_entitlement.operation_id = "syncTwitchDropsEntitlement"
+sync_twitch_drops_entitlement.is_deprecated = False

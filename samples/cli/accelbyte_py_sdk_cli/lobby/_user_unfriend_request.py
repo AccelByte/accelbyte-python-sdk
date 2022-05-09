@@ -72,3 +72,7 @@ def user_unfriend_request(
     if error:
         raise Exception(f"userUnfriendRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+user_unfriend_request.operation_id = "userUnfriendRequest"
+user_unfriend_request.is_deprecated = False

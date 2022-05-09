@@ -71,3 +71,7 @@ def retrieve_eligibilities_public_indirect(
     if error:
         raise Exception(f"retrieveEligibilitiesPublicIndirect failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_eligibilities_public_indirect.operation_id = "retrieveEligibilitiesPublicIndirect"
+retrieve_eligibilities_public_indirect.is_deprecated = False

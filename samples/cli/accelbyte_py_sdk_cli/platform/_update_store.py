@@ -77,3 +77,7 @@ def update_store(
     if error:
         raise Exception(f"updateStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_store.operation_id = "updateStore"
+update_store.is_deprecated = False

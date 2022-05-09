@@ -63,3 +63,7 @@ def get_languages(
     if error:
         raise Exception(f"getLanguages failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_languages.operation_id = "getLanguages"
+get_languages.is_deprecated = False

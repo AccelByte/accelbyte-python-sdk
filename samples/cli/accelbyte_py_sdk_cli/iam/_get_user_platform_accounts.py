@@ -65,3 +65,7 @@ def get_user_platform_accounts(
     if error:
         raise Exception(f"GetUserPlatformAccounts failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_platform_accounts.operation_id = "GetUserPlatformAccounts"
+get_user_platform_accounts.is_deprecated = False

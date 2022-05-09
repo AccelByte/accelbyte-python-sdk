@@ -74,3 +74,7 @@ def update_play_time_weight(
     if error:
         raise Exception(f"UpdatePlayTimeWeight failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_play_time_weight.operation_id = "UpdatePlayTimeWeight"
+update_play_time_weight.is_deprecated = False

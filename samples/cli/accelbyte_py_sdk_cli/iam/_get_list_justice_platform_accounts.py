@@ -65,3 +65,7 @@ def get_list_justice_platform_accounts(
     if error:
         raise Exception(f"GetListJusticePlatformAccounts failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_list_justice_platform_accounts.operation_id = "GetListJusticePlatformAccounts"
+get_list_justice_platform_accounts.is_deprecated = False

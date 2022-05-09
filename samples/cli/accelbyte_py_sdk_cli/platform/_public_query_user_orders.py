@@ -77,3 +77,7 @@ def public_query_user_orders(
     if error:
         raise Exception(f"publicQueryUserOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_user_orders.operation_id = "publicQueryUserOrders"
+public_query_user_orders.is_deprecated = False

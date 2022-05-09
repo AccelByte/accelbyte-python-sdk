@@ -74,3 +74,7 @@ def create_payment_order_by_dedicated(
     if error:
         raise Exception(f"createPaymentOrderByDedicated failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_payment_order_by_dedicated.operation_id = "createPaymentOrderByDedicated"
+create_payment_order_by_dedicated.is_deprecated = False

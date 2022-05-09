@@ -79,3 +79,7 @@ def admin_hide_user_content(
     if error:
         raise Exception(f"AdminHideUserContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_hide_user_content.operation_id = "AdminHideUserContent"
+admin_hide_user_content.is_deprecated = False

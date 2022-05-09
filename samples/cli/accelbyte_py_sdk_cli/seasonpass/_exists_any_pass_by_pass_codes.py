@@ -75,3 +75,7 @@ def exists_any_pass_by_pass_codes(
     if error:
         raise Exception(f"existsAnyPassByPassCodes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+exists_any_pass_by_pass_codes.operation_id = "existsAnyPassByPassCodes"
+exists_any_pass_by_pass_codes.is_deprecated = False

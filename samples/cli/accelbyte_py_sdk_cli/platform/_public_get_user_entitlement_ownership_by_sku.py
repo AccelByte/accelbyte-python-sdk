@@ -71,3 +71,7 @@ def public_get_user_entitlement_ownership_by_sku(
     if error:
         raise Exception(f"publicGetUserEntitlementOwnershipBySku failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_entitlement_ownership_by_sku.operation_id = "publicGetUserEntitlementOwnershipBySku"
+public_get_user_entitlement_ownership_by_sku.is_deprecated = False

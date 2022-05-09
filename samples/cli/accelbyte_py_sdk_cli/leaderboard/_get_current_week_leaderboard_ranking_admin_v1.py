@@ -72,3 +72,7 @@ def get_current_week_leaderboard_ranking_admin_v1(
     if error:
         raise Exception(f"GetCurrentWeekLeaderboardRankingAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_current_week_leaderboard_ranking_admin_v1.operation_id = "GetCurrentWeekLeaderboardRankingAdminV1"
+get_current_week_leaderboard_ranking_admin_v1.is_deprecated = False

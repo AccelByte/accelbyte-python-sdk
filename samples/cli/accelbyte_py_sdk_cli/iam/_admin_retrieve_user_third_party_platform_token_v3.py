@@ -69,3 +69,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
     if error:
         raise Exception(f"AdminRetrieveUserThirdPartyPlatformTokenV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_retrieve_user_third_party_platform_token_v3.operation_id = "AdminRetrieveUserThirdPartyPlatformTokenV3"
+admin_retrieve_user_third_party_platform_token_v3.is_deprecated = False

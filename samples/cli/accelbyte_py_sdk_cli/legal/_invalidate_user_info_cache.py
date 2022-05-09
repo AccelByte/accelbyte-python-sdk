@@ -61,3 +61,7 @@ def invalidate_user_info_cache(
     if error:
         raise Exception(f"invalidateUserInfoCache failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+invalidate_user_info_cache.operation_id = "invalidateUserInfoCache"
+invalidate_user_info_cache.is_deprecated = False

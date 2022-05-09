@@ -75,3 +75,7 @@ def public_bulk_get_items(
     if error:
         raise Exception(f"publicBulkGetItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_bulk_get_items.operation_id = "publicBulkGetItems"
+public_bulk_get_items.is_deprecated = False

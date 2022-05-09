@@ -70,3 +70,7 @@ def admin_delete_role_permissions_v4(
     if error:
         raise Exception(f"AdminDeleteRolePermissionsV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_role_permissions_v4.operation_id = "AdminDeleteRolePermissionsV4"
+admin_delete_role_permissions_v4.is_deprecated = False

@@ -75,3 +75,7 @@ def get_admin_users_by_role_id_v3(
     if error:
         raise Exception(f"GetAdminUsersByRoleIdV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_admin_users_by_role_id_v3.operation_id = "GetAdminUsersByRoleIdV3"
+get_admin_users_by_role_id_v3.is_deprecated = False

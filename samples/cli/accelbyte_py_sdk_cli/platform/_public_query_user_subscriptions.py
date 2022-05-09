@@ -86,3 +86,7 @@ def public_query_user_subscriptions(
     if error:
         raise Exception(f"publicQueryUserSubscriptions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_user_subscriptions.operation_id = "publicQueryUserSubscriptions"
+public_query_user_subscriptions.is_deprecated = False

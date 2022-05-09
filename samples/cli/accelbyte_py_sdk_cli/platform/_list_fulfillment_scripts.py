@@ -59,3 +59,7 @@ def list_fulfillment_scripts(
     if error:
         raise Exception(f"listFulfillmentScripts failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_fulfillment_scripts.operation_id = "listFulfillmentScripts"
+list_fulfillment_scripts.is_deprecated = False

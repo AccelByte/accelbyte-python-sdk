@@ -65,3 +65,7 @@ def update_google_p12_file(
     if error:
         raise Exception(f"updateGoogleP12File failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_google_p12_file.operation_id = "updateGoogleP12File"
+update_google_p12_file.is_deprecated = False

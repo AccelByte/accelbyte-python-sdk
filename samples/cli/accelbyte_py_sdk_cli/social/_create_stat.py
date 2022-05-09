@@ -73,3 +73,7 @@ def create_stat(
     if error:
         raise Exception(f"createStat failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_stat.operation_id = "createStat"
+create_stat.is_deprecated = False

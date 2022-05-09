@@ -75,3 +75,7 @@ def check_season_purchasable(
     if error:
         raise Exception(f"checkSeasonPurchasable failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+check_season_purchasable.operation_id = "checkSeasonPurchasable"
+check_season_purchasable.is_deprecated = False

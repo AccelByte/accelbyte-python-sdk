@@ -69,3 +69,7 @@ def bulk_accept_versioned_policy(
     if error:
         raise Exception(f"bulkAcceptVersionedPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_accept_versioned_policy.operation_id = "bulkAcceptVersionedPolicy"
+bulk_accept_versioned_policy.is_deprecated = False

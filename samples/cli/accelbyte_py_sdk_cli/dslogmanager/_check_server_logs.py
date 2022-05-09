@@ -66,3 +66,7 @@ def check_server_logs(
     if error:
         raise Exception(f"checkServerLogs failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+check_server_logs.operation_id = "checkServerLogs"
+check_server_logs.is_deprecated = False

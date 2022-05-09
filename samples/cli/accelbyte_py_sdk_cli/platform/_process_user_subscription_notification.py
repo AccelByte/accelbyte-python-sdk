@@ -77,3 +77,7 @@ def process_user_subscription_notification(
     if error:
         raise Exception(f"processUserSubscriptionNotification failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+process_user_subscription_notification.operation_id = "processUserSubscriptionNotification"
+process_user_subscription_notification.is_deprecated = False

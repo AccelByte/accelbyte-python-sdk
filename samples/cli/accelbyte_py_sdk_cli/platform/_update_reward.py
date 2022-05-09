@@ -76,3 +76,7 @@ def update_reward(
     if error:
         raise Exception(f"updateReward failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_reward.operation_id = "updateReward"
+update_reward.is_deprecated = False

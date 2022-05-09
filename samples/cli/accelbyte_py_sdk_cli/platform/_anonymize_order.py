@@ -64,3 +64,7 @@ def anonymize_order(
     if error:
         raise Exception(f"anonymizeOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_order.operation_id = "anonymizeOrder"
+anonymize_order.is_deprecated = False

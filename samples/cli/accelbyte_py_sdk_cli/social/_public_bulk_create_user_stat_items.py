@@ -76,3 +76,7 @@ def public_bulk_create_user_stat_items(
     if error:
         raise Exception(f"publicBulkCreateUserStatItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_bulk_create_user_stat_items.operation_id = "publicBulkCreateUserStatItems"
+public_bulk_create_user_stat_items.is_deprecated = False

@@ -63,3 +63,7 @@ def admin_get_profanity_rule(
     if error:
         raise Exception(f"adminGetProfanityRule failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_profanity_rule.operation_id = "adminGetProfanityRule"
+admin_get_profanity_rule.is_deprecated = False

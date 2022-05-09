@@ -59,3 +59,7 @@ def ux_name_description_handler(
     if error:
         raise Exception(f"UXNameDescriptionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+ux_name_description_handler.operation_id = "UXNameDescriptionHandler"
+ux_name_description_handler.is_deprecated = True

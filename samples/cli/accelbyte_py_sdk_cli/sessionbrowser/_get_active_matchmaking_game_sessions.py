@@ -72,3 +72,7 @@ def get_active_matchmaking_game_sessions(
     if error:
         raise Exception(f"GetActiveMatchmakingGameSessions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_active_matchmaking_game_sessions.operation_id = "GetActiveMatchmakingGameSessions"
+get_active_matchmaking_game_sessions.is_deprecated = False

@@ -72,3 +72,7 @@ def admin_get_all_groups(
     if error:
         raise Exception(f"AdminGetAllGroups failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_all_groups.operation_id = "AdminGetAllGroups"
+admin_get_all_groups.is_deprecated = False

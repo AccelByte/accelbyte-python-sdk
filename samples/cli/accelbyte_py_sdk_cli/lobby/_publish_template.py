@@ -68,3 +68,7 @@ def publish_template(
     if error:
         raise Exception(f"publishTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+publish_template.operation_id = "publishTemplate"
+publish_template.is_deprecated = False

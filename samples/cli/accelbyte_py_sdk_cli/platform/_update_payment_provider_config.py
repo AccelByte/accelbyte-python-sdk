@@ -74,3 +74,7 @@ def update_payment_provider_config(
     if error:
         raise Exception(f"updatePaymentProviderConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_payment_provider_config.operation_id = "updatePaymentProviderConfig"
+update_payment_provider_config.is_deprecated = False

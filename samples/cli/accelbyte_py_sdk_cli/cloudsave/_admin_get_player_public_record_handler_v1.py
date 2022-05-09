@@ -69,3 +69,7 @@ def admin_get_player_public_record_handler_v1(
     if error:
         raise Exception(f"adminGetPlayerPublicRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_player_public_record_handler_v1.operation_id = "adminGetPlayerPublicRecordHandlerV1"
+admin_get_player_public_record_handler_v1.is_deprecated = False

@@ -66,3 +66,7 @@ def get_publisher_user(
     if error:
         raise Exception(f"GetPublisherUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_publisher_user.operation_id = "GetPublisherUser"
+get_publisher_user.is_deprecated = False

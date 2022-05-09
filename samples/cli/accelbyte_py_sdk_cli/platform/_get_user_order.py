@@ -69,3 +69,7 @@ def get_user_order(
     if error:
         raise Exception(f"getUserOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_order.operation_id = "getUserOrder"
+get_user_order.is_deprecated = False

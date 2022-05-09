@@ -71,3 +71,7 @@ def delete_content(
     if error:
         raise Exception(f"DeleteContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_content.operation_id = "DeleteContent"
+delete_content.is_deprecated = False

@@ -66,3 +66,7 @@ def public_get_countries(
     if error:
         raise Exception(f"publicGetCountries failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_countries.operation_id = "publicGetCountries"
+public_get_countries.is_deprecated = False

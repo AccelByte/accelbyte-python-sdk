@@ -63,3 +63,7 @@ def admin_get_bans_type_with_namespace_v3(
     if error:
         raise Exception(f"AdminGetBansTypeWithNamespaceV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_bans_type_with_namespace_v3.operation_id = "AdminGetBansTypeWithNamespaceV3"
+admin_get_bans_type_with_namespace_v3.is_deprecated = False

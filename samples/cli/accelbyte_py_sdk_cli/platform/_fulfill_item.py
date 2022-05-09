@@ -76,3 +76,7 @@ def fulfill_item(
     if error:
         raise Exception(f"fulfillItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+fulfill_item.operation_id = "fulfillItem"
+fulfill_item.is_deprecated = False

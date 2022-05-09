@@ -58,3 +58,7 @@ def handler_v3_healthz(
     if error:
         raise Exception(f"handlerV3Healthz failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+handler_v3_healthz.operation_id = "handlerV3Healthz"
+handler_v3_healthz.is_deprecated = False

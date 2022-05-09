@@ -72,3 +72,7 @@ def admin_retrieve_player_records(
     if error:
         raise Exception(f"AdminRetrievePlayerRecords failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_retrieve_player_records.operation_id = "AdminRetrievePlayerRecords"
+admin_retrieve_player_records.is_deprecated = False

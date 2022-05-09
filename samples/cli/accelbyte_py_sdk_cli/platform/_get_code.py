@@ -69,3 +69,7 @@ def get_code(
     if error:
         raise Exception(f"getCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_code.operation_id = "getCode"
+get_code.is_deprecated = False

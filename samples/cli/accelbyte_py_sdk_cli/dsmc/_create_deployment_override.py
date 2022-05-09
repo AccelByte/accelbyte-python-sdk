@@ -79,3 +79,7 @@ def create_deployment_override(
     if error:
         raise Exception(f"CreateDeploymentOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_deployment_override.operation_id = "CreateDeploymentOverride"
+create_deployment_override.is_deprecated = False

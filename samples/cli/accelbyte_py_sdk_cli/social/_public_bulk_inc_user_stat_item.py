@@ -73,3 +73,7 @@ def public_bulk_inc_user_stat_item(
     if error:
         raise Exception(f"publicBulkIncUserStatItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_bulk_inc_user_stat_item.operation_id = "publicBulkIncUserStatItem"
+public_bulk_inc_user_stat_item.is_deprecated = False

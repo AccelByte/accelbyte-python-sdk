@@ -72,3 +72,7 @@ def admin_get_user_personal_data_requests(
     if error:
         raise Exception(f"AdminGetUserPersonalDataRequests failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_user_personal_data_requests.operation_id = "AdminGetUserPersonalDataRequests"
+admin_get_user_personal_data_requests.is_deprecated = False

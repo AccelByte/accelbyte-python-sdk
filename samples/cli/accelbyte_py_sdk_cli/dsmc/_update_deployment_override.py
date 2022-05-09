@@ -79,3 +79,7 @@ def update_deployment_override(
     if error:
         raise Exception(f"UpdateDeploymentOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_deployment_override.operation_id = "UpdateDeploymentOverride"
+update_deployment_override.is_deprecated = False

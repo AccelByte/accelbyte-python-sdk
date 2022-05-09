@@ -81,3 +81,7 @@ def get_locale_item(
     if error:
         raise Exception(f"getLocaleItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_locale_item.operation_id = "getLocaleItem"
+get_locale_item.is_deprecated = False

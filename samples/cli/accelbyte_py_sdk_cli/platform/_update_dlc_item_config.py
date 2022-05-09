@@ -73,3 +73,7 @@ def update_dlc_item_config(
     if error:
         raise Exception(f"updateDLCItemConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_dlc_item_config.operation_id = "updateDLCItemConfig"
+update_dlc_item_config.is_deprecated = False

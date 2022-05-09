@@ -76,3 +76,7 @@ def update_session(
     if error:
         raise Exception(f"UpdateSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_session.operation_id = "UpdateSession"
+update_session.is_deprecated = False

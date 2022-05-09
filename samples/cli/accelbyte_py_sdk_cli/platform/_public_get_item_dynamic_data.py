@@ -66,3 +66,7 @@ def public_get_item_dynamic_data(
     if error:
         raise Exception(f"publicGetItemDynamicData failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_item_dynamic_data.operation_id = "publicGetItemDynamicData"
+public_get_item_dynamic_data.is_deprecated = False

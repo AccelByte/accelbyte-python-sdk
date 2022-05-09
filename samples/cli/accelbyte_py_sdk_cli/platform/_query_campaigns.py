@@ -74,3 +74,7 @@ def query_campaigns(
     if error:
         raise Exception(f"queryCampaigns failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_campaigns.operation_id = "queryCampaigns"
+query_campaigns.is_deprecated = False

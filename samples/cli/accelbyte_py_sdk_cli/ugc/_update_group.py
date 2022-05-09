@@ -79,3 +79,7 @@ def update_group(
     if error:
         raise Exception(f"UpdateGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_group.operation_id = "UpdateGroup"
+update_group.is_deprecated = False

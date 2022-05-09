@@ -76,3 +76,7 @@ def create_group(
     if error:
         raise Exception(f"CreateGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_group.operation_id = "CreateGroup"
+create_group.is_deprecated = False

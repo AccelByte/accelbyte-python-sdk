@@ -69,3 +69,7 @@ def get_group(
     if error:
         raise Exception(f"GetGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_group.operation_id = "GetGroup"
+get_group.is_deprecated = False

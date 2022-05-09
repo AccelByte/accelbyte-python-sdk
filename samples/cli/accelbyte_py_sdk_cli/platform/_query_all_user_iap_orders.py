@@ -65,3 +65,7 @@ def query_all_user_iap_orders(
     if error:
         raise Exception(f"queryAllUserIAPOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_all_user_iap_orders.operation_id = "queryAllUserIAPOrders"
+query_all_user_iap_orders.is_deprecated = False

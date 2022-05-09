@@ -72,3 +72,7 @@ def feature_item(
     if error:
         raise Exception(f"featureItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+feature_item.operation_id = "featureItem"
+feature_item.is_deprecated = False

@@ -61,3 +61,7 @@ def delete_epic_games_iap_config(
     if error:
         raise Exception(f"deleteEpicGamesIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_epic_games_iap_config.operation_id = "deleteEpicGamesIAPConfig"
+delete_epic_games_iap_config.is_deprecated = False

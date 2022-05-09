@@ -66,3 +66,7 @@ def publish_season(
     if error:
         raise Exception(f"publishSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+publish_season.operation_id = "publishSeason"
+publish_season.is_deprecated = False

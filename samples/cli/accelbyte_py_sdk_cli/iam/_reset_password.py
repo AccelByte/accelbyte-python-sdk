@@ -71,3 +71,7 @@ def reset_password(
     if error:
         raise Exception(f"ResetPassword failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+reset_password.operation_id = "ResetPassword"
+reset_password.is_deprecated = False

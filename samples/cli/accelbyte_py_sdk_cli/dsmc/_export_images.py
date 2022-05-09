@@ -63,3 +63,7 @@ def export_images(
     if error:
         raise Exception(f"ExportImages failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_images.operation_id = "ExportImages"
+export_images.is_deprecated = False

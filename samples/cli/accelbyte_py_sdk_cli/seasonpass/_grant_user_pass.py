@@ -76,3 +76,7 @@ def grant_user_pass(
     if error:
         raise Exception(f"grantUserPass failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+grant_user_pass.operation_id = "grantUserPass"
+grant_user_pass.is_deprecated = False

@@ -63,3 +63,7 @@ def get_actions(
     if error:
         raise Exception(f"getActions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_actions.operation_id = "getActions"
+get_actions.is_deprecated = False

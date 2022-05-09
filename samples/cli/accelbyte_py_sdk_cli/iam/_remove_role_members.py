@@ -71,3 +71,7 @@ def remove_role_members(
     if error:
         raise Exception(f"RemoveRoleMembers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+remove_role_members.operation_id = "RemoveRoleMembers"
+remove_role_members.is_deprecated = False

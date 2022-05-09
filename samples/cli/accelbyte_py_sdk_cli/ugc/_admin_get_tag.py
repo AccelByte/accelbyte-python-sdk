@@ -69,3 +69,7 @@ def admin_get_tag(
     if error:
         raise Exception(f"AdminGetTag failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_tag.operation_id = "AdminGetTag"
+admin_get_tag.is_deprecated = False

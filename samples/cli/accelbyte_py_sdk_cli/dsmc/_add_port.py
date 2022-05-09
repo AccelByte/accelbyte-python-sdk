@@ -76,3 +76,7 @@ def add_port(
     if error:
         raise Exception(f"AddPort failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_port.operation_id = "AddPort"
+add_port.is_deprecated = False

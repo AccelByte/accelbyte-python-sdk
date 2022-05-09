@@ -69,3 +69,7 @@ def test_xsolla_config(
     if error:
         raise Exception(f"testXsollaConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_xsolla_config.operation_id = "testXsollaConfig"
+test_xsolla_config.is_deprecated = False

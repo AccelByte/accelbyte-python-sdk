@@ -68,3 +68,7 @@ def delete_player_record_handler_v1(
     if error:
         raise Exception(f"deletePlayerRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_player_record_handler_v1.operation_id = "deletePlayerRecordHandlerV1"
+delete_player_record_handler_v1.is_deprecated = False

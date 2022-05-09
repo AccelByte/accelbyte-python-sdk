@@ -65,3 +65,7 @@ def get_users_by_login_ids(
     if error:
         raise Exception(f"GetUsersByLoginIds failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_users_by_login_ids.operation_id = "GetUsersByLoginIds"
+get_users_by_login_ids.is_deprecated = False

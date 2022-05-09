@@ -75,3 +75,7 @@ def get_template_slug_localizations_template_v1_admin(
     if error:
         raise Exception(f"getTemplateSlugLocalizationsTemplateV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_template_slug_localizations_template_v1_admin.operation_id = "getTemplateSlugLocalizationsTemplateV1Admin"
+get_template_slug_localizations_template_v1_admin.is_deprecated = False

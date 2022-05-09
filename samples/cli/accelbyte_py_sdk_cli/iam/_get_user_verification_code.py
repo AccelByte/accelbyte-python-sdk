@@ -65,3 +65,7 @@ def get_user_verification_code(
     if error:
         raise Exception(f"getUserVerificationCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_verification_code.operation_id = "getUserVerificationCode"
+get_user_verification_code.is_deprecated = False

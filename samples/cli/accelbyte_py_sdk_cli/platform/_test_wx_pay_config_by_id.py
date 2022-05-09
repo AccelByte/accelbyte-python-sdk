@@ -63,3 +63,7 @@ def test_wx_pay_config_by_id(
     if error:
         raise Exception(f"testWxPayConfigById failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_wx_pay_config_by_id.operation_id = "testWxPayConfigById"
+test_wx_pay_config_by_id.is_deprecated = False

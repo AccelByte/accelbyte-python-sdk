@@ -72,3 +72,7 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
     if error:
         raise Exception(f"protected_save_events_game_telemetry_v1_protected_events_post failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+protected_save_events_game_telemetry_v1_protected_events_post.operation_id = "protected_save_events_game_telemetry_v1_protected_events_post"
+protected_save_events_game_telemetry_v1_protected_events_post.is_deprecated = False

@@ -76,3 +76,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     if error:
         raise Exception(f"PublicListUserIDByPlatformUserIDsV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_list_user_id_by_platform_user_i_ds_v3.operation_id = "PublicListUserIDByPlatformUserIDsV3"
+public_list_user_id_by_platform_user_i_ds_v3.is_deprecated = False

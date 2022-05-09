@@ -76,3 +76,7 @@ def update_deployment(
     if error:
         raise Exception(f"UpdateDeployment failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_deployment.operation_id = "UpdateDeployment"
+update_deployment.is_deprecated = False

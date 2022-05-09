@@ -67,3 +67,7 @@ def get_all_sessions_in_channel(
     if error:
         raise Exception(f"GetAllSessionsInChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_all_sessions_in_channel.operation_id = "GetAllSessionsInChannel"
+get_all_sessions_in_channel.is_deprecated = False

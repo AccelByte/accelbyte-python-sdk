@@ -66,3 +66,7 @@ def single_admin_get_group(
     if error:
         raise Exception(f"SingleAdminGetGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+single_admin_get_group.operation_id = "SingleAdminGetGroup"
+single_admin_get_group.is_deprecated = False

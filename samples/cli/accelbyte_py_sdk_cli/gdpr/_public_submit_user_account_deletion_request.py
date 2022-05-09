@@ -69,3 +69,7 @@ def public_submit_user_account_deletion_request(
     if error:
         raise Exception(f"PublicSubmitUserAccountDeletionRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_submit_user_account_deletion_request.operation_id = "PublicSubmitUserAccountDeletionRequest"
+public_submit_user_account_deletion_request.is_deprecated = False

@@ -69,3 +69,7 @@ def get_localization_template(
     if error:
         raise Exception(f"getLocalizationTemplate failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_localization_template.operation_id = "getLocalizationTemplate"
+get_localization_template.is_deprecated = False

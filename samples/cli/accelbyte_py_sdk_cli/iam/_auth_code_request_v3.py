@@ -70,3 +70,7 @@ def auth_code_request_v3(
     if error:
         raise Exception(f"AuthCodeRequestV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+auth_code_request_v3.operation_id = "AuthCodeRequestV3"
+auth_code_request_v3.is_deprecated = False

@@ -76,3 +76,7 @@ def join_session(
     if error:
         raise Exception(f"JoinSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+join_session.operation_id = "JoinSession"
+join_session.is_deprecated = False

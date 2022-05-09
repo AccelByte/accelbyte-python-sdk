@@ -68,3 +68,7 @@ def admin_cancel_user_personal_data_request(
     if error:
         raise Exception(f"AdminCancelUserPersonalDataRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_cancel_user_personal_data_request.operation_id = "AdminCancelUserPersonalDataRequest"
+admin_cancel_user_personal_data_request.is_deprecated = False

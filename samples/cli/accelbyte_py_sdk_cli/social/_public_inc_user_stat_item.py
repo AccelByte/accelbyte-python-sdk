@@ -79,3 +79,7 @@ def public_inc_user_stat_item(
     if error:
         raise Exception(f"publicIncUserStatItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_inc_user_stat_item.operation_id = "publicIncUserStatItem"
+public_inc_user_stat_item.is_deprecated = False

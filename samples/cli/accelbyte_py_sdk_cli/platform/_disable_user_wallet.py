@@ -68,3 +68,7 @@ def disable_user_wallet(
     if error:
         raise Exception(f"disableUserWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+disable_user_wallet.operation_id = "disableUserWallet"
+disable_user_wallet.is_deprecated = False

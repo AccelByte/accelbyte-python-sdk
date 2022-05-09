@@ -65,3 +65,7 @@ def public_get_my_wallet(
     if error:
         raise Exception(f"publicGetMyWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_my_wallet.operation_id = "publicGetMyWallet"
+public_get_my_wallet.is_deprecated = False

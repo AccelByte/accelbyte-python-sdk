@@ -80,3 +80,7 @@ def get_user_events_v2_public(
     if error:
         raise Exception(f"GetUserEventsV2Public failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_events_v2_public.operation_id = "GetUserEventsV2Public"
+get_user_events_v2_public.is_deprecated = False

@@ -68,3 +68,7 @@ def public_get_root_categories(
     if error:
         raise Exception(f"publicGetRootCategories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_root_categories.operation_id = "publicGetRootCategories"
+public_get_root_categories.is_deprecated = False

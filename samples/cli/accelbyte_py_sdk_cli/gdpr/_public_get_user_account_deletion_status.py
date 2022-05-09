@@ -66,3 +66,7 @@ def public_get_user_account_deletion_status(
     if error:
         raise Exception(f"PublicGetUserAccountDeletionStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_account_deletion_status.operation_id = "PublicGetUserAccountDeletionStatus"
+public_get_user_account_deletion_status.is_deprecated = False

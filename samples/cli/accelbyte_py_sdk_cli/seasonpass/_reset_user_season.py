@@ -65,3 +65,7 @@ def reset_user_season(
     if error:
         raise Exception(f"resetUserSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+reset_user_season.operation_id = "resetUserSeason"
+reset_user_season.is_deprecated = False

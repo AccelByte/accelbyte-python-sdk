@@ -68,3 +68,7 @@ def delete_group_predefined_rule_public_v1(
     if error:
         raise Exception(f"deleteGroupPredefinedRulePublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_group_predefined_rule_public_v1.operation_id = "deleteGroupPredefinedRulePublicV1"
+delete_group_predefined_rule_public_v1.is_deprecated = False

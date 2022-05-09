@@ -72,3 +72,7 @@ def single_admin_get_group_contents(
     if error:
         raise Exception(f"SingleAdminGetGroupContents failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+single_admin_get_group_contents.operation_id = "SingleAdminGetGroupContents"
+single_admin_get_group_contents.is_deprecated = False

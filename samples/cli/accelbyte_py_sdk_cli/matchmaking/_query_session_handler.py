@@ -66,3 +66,7 @@ def query_session_handler(
     if error:
         raise Exception(f"QuerySessionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_session_handler.operation_id = "QuerySessionHandler"
+query_session_handler.is_deprecated = False

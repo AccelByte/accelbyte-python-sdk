@@ -62,3 +62,7 @@ def public_disable_my_backup_codes_v4(
     if error:
         raise Exception(f"PublicDisableMyBackupCodesV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_disable_my_backup_codes_v4.operation_id = "PublicDisableMyBackupCodesV4"
+public_disable_my_backup_codes_v4.is_deprecated = False

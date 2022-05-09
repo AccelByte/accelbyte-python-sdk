@@ -76,3 +76,7 @@ def admin_upload_content_screenshot(
     if error:
         raise Exception(f"AdminUploadContentScreenshot failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_upload_content_screenshot.operation_id = "AdminUploadContentScreenshot"
+admin_upload_content_screenshot.is_deprecated = False

@@ -62,3 +62,7 @@ def get_client(
     if error:
         raise Exception(f"GetClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_client.operation_id = "GetClient"
+get_client.is_deprecated = False

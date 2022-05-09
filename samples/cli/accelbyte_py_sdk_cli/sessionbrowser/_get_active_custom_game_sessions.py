@@ -69,3 +69,7 @@ def get_active_custom_game_sessions(
     if error:
         raise Exception(f"GetActiveCustomGameSessions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_active_custom_game_sessions.operation_id = "GetActiveCustomGameSessions"
+get_active_custom_game_sessions.is_deprecated = False

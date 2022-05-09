@@ -76,3 +76,7 @@ def admin_update_client_v3(
     if error:
         raise Exception(f"AdminUpdateClientV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_client_v3.operation_id = "AdminUpdateClientV3"
+admin_update_client_v3.is_deprecated = False

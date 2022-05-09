@@ -58,3 +58,7 @@ def get_healthcheck_info(
     if error:
         raise Exception(f"GetHealthcheckInfo failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_healthcheck_info.operation_id = "GetHealthcheckInfo"
+get_healthcheck_info.is_deprecated = False

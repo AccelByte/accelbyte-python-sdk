@@ -81,3 +81,7 @@ def get_locale_item_by_sku(
     if error:
         raise Exception(f"getLocaleItemBySku failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_locale_item_by_sku.operation_id = "getLocaleItemBySku"
+get_locale_item_by_sku.is_deprecated = False

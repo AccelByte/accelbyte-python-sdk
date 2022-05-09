@@ -73,3 +73,7 @@ def request_presigned_url(
     if error:
         raise Exception(f"requestPresignedURL failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+request_presigned_url.operation_id = "requestPresignedURL"
+request_presigned_url.is_deprecated = False

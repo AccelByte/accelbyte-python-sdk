@@ -69,3 +69,7 @@ def bulk_fetch_stat_items_1(
     if error:
         raise Exception(f"bulkFetchStatItems_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_fetch_stat_items_1.operation_id = "bulkFetchStatItems_1"
+bulk_fetch_stat_items_1.is_deprecated = False

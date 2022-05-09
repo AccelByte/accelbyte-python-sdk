@@ -71,3 +71,7 @@ def public_forgot_password_v2(
     if error:
         raise Exception(f"PublicForgotPasswordV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_forgot_password_v2.operation_id = "PublicForgotPasswordV2"
+public_forgot_password_v2.is_deprecated = False

@@ -66,3 +66,7 @@ def get_creator(
     if error:
         raise Exception(f"GetCreator failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_creator.operation_id = "GetCreator"
+get_creator.is_deprecated = False

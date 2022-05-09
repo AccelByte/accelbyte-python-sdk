@@ -69,3 +69,7 @@ def upload_keys(
     if error:
         raise Exception(f"uploadKeys failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+upload_keys.operation_id = "uploadKeys"
+upload_keys.is_deprecated = False

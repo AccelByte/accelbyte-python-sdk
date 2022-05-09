@@ -74,3 +74,7 @@ def create_store(
     if error:
         raise Exception(f"createStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_store.operation_id = "createStore"
+create_store.is_deprecated = False

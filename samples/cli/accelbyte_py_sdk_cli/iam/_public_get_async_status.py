@@ -66,3 +66,7 @@ def public_get_async_status(
     if error:
         raise Exception(f"PublicGetAsyncStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_async_status.operation_id = "PublicGetAsyncStatus"
+public_get_async_status.is_deprecated = False

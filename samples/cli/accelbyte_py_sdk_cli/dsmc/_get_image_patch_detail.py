@@ -69,3 +69,7 @@ def get_image_patch_detail(
     if error:
         raise Exception(f"GetImagePatchDetail failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_image_patch_detail.operation_id = "GetImagePatchDetail"
+get_image_patch_detail.is_deprecated = False

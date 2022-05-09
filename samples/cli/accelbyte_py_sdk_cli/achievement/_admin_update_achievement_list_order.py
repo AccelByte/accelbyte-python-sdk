@@ -75,3 +75,7 @@ def admin_update_achievement_list_order(
     if error:
         raise Exception(f"AdminUpdateAchievementListOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_achievement_list_order.operation_id = "AdminUpdateAchievementListOrder"
+admin_update_achievement_list_order.is_deprecated = False

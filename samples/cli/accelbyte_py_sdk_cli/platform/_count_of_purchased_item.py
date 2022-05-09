@@ -68,3 +68,7 @@ def count_of_purchased_item(
     if error:
         raise Exception(f"countOfPurchasedItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+count_of_purchased_item.operation_id = "countOfPurchasedItem"
+count_of_purchased_item.is_deprecated = False

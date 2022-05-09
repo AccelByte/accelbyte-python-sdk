@@ -82,3 +82,7 @@ def cancel_subscription(
     if error:
         raise Exception(f"cancelSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+cancel_subscription.operation_id = "cancelSubscription"
+cancel_subscription.is_deprecated = False

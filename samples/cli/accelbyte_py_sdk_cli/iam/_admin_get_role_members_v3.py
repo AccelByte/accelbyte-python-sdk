@@ -72,3 +72,7 @@ def admin_get_role_members_v3(
     if error:
         raise Exception(f"AdminGetRoleMembersV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_role_members_v3.operation_id = "AdminGetRoleMembersV3"
+admin_get_role_members_v3.is_deprecated = False

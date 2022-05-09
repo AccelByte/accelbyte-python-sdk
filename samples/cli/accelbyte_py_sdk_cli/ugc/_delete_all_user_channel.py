@@ -65,3 +65,7 @@ def delete_all_user_channel(
     if error:
         raise Exception(f"DeleteAllUserChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_all_user_channel.operation_id = "DeleteAllUserChannel"
+delete_all_user_channel.is_deprecated = False

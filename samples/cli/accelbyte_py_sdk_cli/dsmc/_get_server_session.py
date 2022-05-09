@@ -66,3 +66,7 @@ def get_server_session(
     if error:
         raise Exception(f"GetServerSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_server_session.operation_id = "GetServerSession"
+get_server_session.is_deprecated = False

@@ -69,3 +69,7 @@ def get_single_template_localization_v1_admin(
     if error:
         raise Exception(f"getSingleTemplateLocalizationV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_single_template_localization_v1_admin.operation_id = "getSingleTemplateLocalizationV1Admin"
+get_single_template_localization_v1_admin.is_deprecated = False

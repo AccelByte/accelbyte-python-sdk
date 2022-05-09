@@ -69,3 +69,7 @@ def query_rewards(
     if error:
         raise Exception(f"queryRewards failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_rewards.operation_id = "queryRewards"
+query_rewards.is_deprecated = False

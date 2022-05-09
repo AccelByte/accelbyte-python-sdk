@@ -69,3 +69,7 @@ def get_pass(
     if error:
         raise Exception(f"getPass failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_pass.operation_id = "getPass"
+get_pass.is_deprecated = False

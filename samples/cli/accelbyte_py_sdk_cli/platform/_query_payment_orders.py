@@ -77,3 +77,7 @@ def query_payment_orders(
     if error:
         raise Exception(f"queryPaymentOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_payment_orders.operation_id = "queryPaymentOrders"
+query_payment_orders.is_deprecated = False

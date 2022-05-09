@@ -76,3 +76,7 @@ def update_patch_single_group_public_v1(
     if error:
         raise Exception(f"updatePatchSingleGroupPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_patch_single_group_public_v1.operation_id = "updatePatchSingleGroupPublicV1"
+update_patch_single_group_public_v1.is_deprecated = False

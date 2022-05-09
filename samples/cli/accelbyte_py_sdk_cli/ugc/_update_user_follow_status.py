@@ -76,3 +76,7 @@ def update_user_follow_status(
     if error:
         raise Exception(f"UpdateUserFollowStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_follow_status.operation_id = "UpdateUserFollowStatus"
+update_user_follow_status.is_deprecated = False

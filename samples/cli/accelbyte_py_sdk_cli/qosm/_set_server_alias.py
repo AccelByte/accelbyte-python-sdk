@@ -72,3 +72,7 @@ def set_server_alias(
     if error:
         raise Exception(f"SetServerAlias failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+set_server_alias.operation_id = "SetServerAlias"
+set_server_alias.is_deprecated = False

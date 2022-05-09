@@ -75,3 +75,7 @@ def get_group_content(
     if error:
         raise Exception(f"GetGroupContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_group_content.operation_id = "GetGroupContent"
+get_group_content.is_deprecated = False

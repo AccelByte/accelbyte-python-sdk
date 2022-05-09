@@ -66,3 +66,7 @@ def get_reward_by_code(
     if error:
         raise Exception(f"getRewardByCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_reward_by_code.operation_id = "getRewardByCode"
+get_reward_by_code.is_deprecated = False

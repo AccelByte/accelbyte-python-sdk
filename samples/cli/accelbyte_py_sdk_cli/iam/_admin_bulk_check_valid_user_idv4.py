@@ -73,3 +73,7 @@ def admin_bulk_check_valid_user_idv4(
     if error:
         raise Exception(f"AdminBulkCheckValidUserIDV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_bulk_check_valid_user_idv4.operation_id = "AdminBulkCheckValidUserIDV4"
+admin_bulk_check_valid_user_idv4.is_deprecated = False

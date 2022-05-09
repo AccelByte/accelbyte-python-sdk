@@ -72,3 +72,7 @@ def queue_session_handler(
     if error:
         raise Exception(f"QueueSessionHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+queue_session_handler.operation_id = "QueueSessionHandler"
+queue_session_handler.is_deprecated = False

@@ -68,3 +68,7 @@ def admin_delete_content_screenshot(
     if error:
         raise Exception(f"AdminDeleteContentScreenshot failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_content_screenshot.operation_id = "AdminDeleteContentScreenshot"
+admin_delete_content_screenshot.is_deprecated = False

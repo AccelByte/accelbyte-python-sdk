@@ -76,3 +76,7 @@ def admin_update_tag(
     if error:
         raise Exception(f"AdminUpdateTag failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_tag.operation_id = "AdminUpdateTag"
+admin_update_tag.is_deprecated = False

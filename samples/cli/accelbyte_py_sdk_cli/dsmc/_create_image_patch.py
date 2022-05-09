@@ -69,3 +69,7 @@ def create_image_patch(
     if error:
         raise Exception(f"CreateImagePatch failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_image_patch.operation_id = "CreateImagePatch"
+create_image_patch.is_deprecated = False

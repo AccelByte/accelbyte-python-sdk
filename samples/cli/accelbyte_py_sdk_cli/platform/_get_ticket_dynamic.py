@@ -66,3 +66,7 @@ def get_ticket_dynamic(
     if error:
         raise Exception(f"getTicketDynamic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_ticket_dynamic.operation_id = "getTicketDynamic"
+get_ticket_dynamic.is_deprecated = False

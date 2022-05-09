@@ -73,3 +73,7 @@ def admin_assign_user_to_role_v4(
     if error:
         raise Exception(f"AdminAssignUserToRoleV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_assign_user_to_role_v4.operation_id = "AdminAssignUserToRoleV4"
+admin_assign_user_to_role_v4.is_deprecated = False

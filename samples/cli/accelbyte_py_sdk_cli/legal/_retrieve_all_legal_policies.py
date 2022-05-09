@@ -59,3 +59,7 @@ def retrieve_all_legal_policies(
     if error:
         raise Exception(f"retrieveAllLegalPolicies failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_all_legal_policies.operation_id = "retrieveAllLegalPolicies"
+retrieve_all_legal_policies.is_deprecated = False

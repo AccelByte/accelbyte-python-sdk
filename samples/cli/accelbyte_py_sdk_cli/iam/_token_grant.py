@@ -87,3 +87,7 @@ def token_grant(
     if error:
         raise Exception(f"TokenGrant failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+token_grant.operation_id = "TokenGrant"
+token_grant.is_deprecated = False

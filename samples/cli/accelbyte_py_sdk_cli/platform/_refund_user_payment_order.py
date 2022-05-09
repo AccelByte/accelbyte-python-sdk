@@ -80,3 +80,7 @@ def refund_user_payment_order(
     if error:
         raise Exception(f"refundUserPaymentOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+refund_user_payment_order.operation_id = "refundUserPaymentOrder"
+refund_user_payment_order.is_deprecated = False

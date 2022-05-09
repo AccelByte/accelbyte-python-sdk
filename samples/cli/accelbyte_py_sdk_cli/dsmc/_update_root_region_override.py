@@ -79,3 +79,7 @@ def update_root_region_override(
     if error:
         raise Exception(f"UpdateRootRegionOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_root_region_override.operation_id = "UpdateRootRegionOverride"
+update_root_region_override.is_deprecated = False

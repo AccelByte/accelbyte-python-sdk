@@ -65,3 +65,7 @@ def admin_delete_all_user_group(
     if error:
         raise Exception(f"AdminDeleteAllUserGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_all_user_group.operation_id = "AdminDeleteAllUserGroup"
+admin_delete_all_user_group.is_deprecated = False

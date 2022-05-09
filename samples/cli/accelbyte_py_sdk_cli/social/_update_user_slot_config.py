@@ -75,3 +75,7 @@ def update_user_slot_config(
     if error:
         raise Exception(f"updateUserSlotConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_slot_config.operation_id = "updateUserSlotConfig"
+update_user_slot_config.is_deprecated = False

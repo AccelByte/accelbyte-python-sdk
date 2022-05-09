@@ -66,3 +66,7 @@ def download_content_by_share_code(
     if error:
         raise Exception(f"DownloadContentByShareCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+download_content_by_share_code.operation_id = "DownloadContentByShareCode"
+download_content_by_share_code.is_deprecated = False

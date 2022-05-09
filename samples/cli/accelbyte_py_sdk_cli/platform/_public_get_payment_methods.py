@@ -66,3 +66,7 @@ def public_get_payment_methods(
     if error:
         raise Exception(f"publicGetPaymentMethods failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_payment_methods.operation_id = "publicGetPaymentMethods"
+public_get_payment_methods.is_deprecated = False

@@ -81,3 +81,7 @@ def search_items(
     if error:
         raise Exception(f"searchItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+search_items.operation_id = "searchItems"
+search_items.is_deprecated = False

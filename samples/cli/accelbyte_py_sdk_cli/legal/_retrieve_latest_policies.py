@@ -71,3 +71,7 @@ def retrieve_latest_policies(
     if error:
         raise Exception(f"retrieveLatestPolicies failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_latest_policies.operation_id = "retrieveLatestPolicies"
+retrieve_latest_policies.is_deprecated = False

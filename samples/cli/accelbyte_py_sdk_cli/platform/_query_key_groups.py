@@ -74,3 +74,7 @@ def query_key_groups(
     if error:
         raise Exception(f"queryKeyGroups failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_key_groups.operation_id = "queryKeyGroups"
+query_key_groups.is_deprecated = False

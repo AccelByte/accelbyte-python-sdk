@@ -74,3 +74,7 @@ def query_fulfillment_histories(
     if error:
         raise Exception(f"queryFulfillmentHistories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_fulfillment_histories.operation_id = "queryFulfillmentHistories"
+query_fulfillment_histories.is_deprecated = False

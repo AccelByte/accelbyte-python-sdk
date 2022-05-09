@@ -68,3 +68,7 @@ def public_delete_profile(
     if error:
         raise Exception(f"publicDeleteProfile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_delete_profile.operation_id = "publicDeleteProfile"
+public_delete_profile.is_deprecated = False

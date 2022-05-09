@@ -64,3 +64,7 @@ def public_get_namespace_publisher(
     if error:
         raise Exception(f"publicGetNamespacePublisher failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_namespace_publisher.operation_id = "publicGetNamespacePublisher"
+public_get_namespace_publisher.is_deprecated = False

@@ -79,3 +79,7 @@ def bulk_update_user_stat_item(
     if error:
         raise Exception(f"bulkUpdateUserStatItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_update_user_stat_item.operation_id = "bulkUpdateUserStatItem"
+bulk_update_user_stat_item.is_deprecated = False

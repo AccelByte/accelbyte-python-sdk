@@ -63,3 +63,7 @@ def retrieve_single_localized_policy_version_1(
     if error:
         raise Exception(f"retrieveSingleLocalizedPolicyVersion_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+retrieve_single_localized_policy_version_1.operation_id = "retrieveSingleLocalizedPolicyVersion_1"
+retrieve_single_localized_policy_version_1.is_deprecated = False

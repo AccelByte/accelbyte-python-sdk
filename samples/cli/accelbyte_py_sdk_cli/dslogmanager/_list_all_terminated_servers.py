@@ -102,3 +102,7 @@ def list_all_terminated_servers(
     if error:
         raise Exception(f"listAllTerminatedServers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_all_terminated_servers.operation_id = "listAllTerminatedServers"
+list_all_terminated_servers.is_deprecated = False

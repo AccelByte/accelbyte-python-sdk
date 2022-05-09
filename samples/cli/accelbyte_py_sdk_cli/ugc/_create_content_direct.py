@@ -79,3 +79,7 @@ def create_content_direct(
     if error:
         raise Exception(f"CreateContentDirect failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_content_direct.operation_id = "CreateContentDirect"
+create_content_direct.is_deprecated = True

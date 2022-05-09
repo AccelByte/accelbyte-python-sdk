@@ -72,3 +72,7 @@ def get_item_id_by_sku(
     if error:
         raise Exception(f"getItemIdBySku failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_item_id_by_sku.operation_id = "getItemIdBySku"
+get_item_id_by_sku.is_deprecated = False

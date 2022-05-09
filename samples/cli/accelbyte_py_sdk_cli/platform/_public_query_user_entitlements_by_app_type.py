@@ -74,3 +74,7 @@ def public_query_user_entitlements_by_app_type(
     if error:
         raise Exception(f"publicQueryUserEntitlementsByAppType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_user_entitlements_by_app_type.operation_id = "publicQueryUserEntitlementsByAppType"
+public_query_user_entitlements_by_app_type.is_deprecated = False

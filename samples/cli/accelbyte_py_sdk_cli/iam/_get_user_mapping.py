@@ -68,3 +68,7 @@ def get_user_mapping(
     if error:
         raise Exception(f"GetUserMapping failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_mapping.operation_id = "GetUserMapping"
+get_user_mapping.is_deprecated = False

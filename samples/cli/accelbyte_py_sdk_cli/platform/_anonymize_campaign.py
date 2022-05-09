@@ -64,3 +64,7 @@ def anonymize_campaign(
     if error:
         raise Exception(f"anonymizeCampaign failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_campaign.operation_id = "anonymizeCampaign"
+anonymize_campaign.is_deprecated = False

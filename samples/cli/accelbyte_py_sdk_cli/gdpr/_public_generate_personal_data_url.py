@@ -72,3 +72,7 @@ def public_generate_personal_data_url(
     if error:
         raise Exception(f"PublicGeneratePersonalDataURL failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_generate_personal_data_url.operation_id = "PublicGeneratePersonalDataURL"
+public_generate_personal_data_url.is_deprecated = False

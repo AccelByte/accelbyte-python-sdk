@@ -73,3 +73,7 @@ def create_config(
     if error:
         raise Exception(f"CreateConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_config.operation_id = "CreateConfig"
+create_config.is_deprecated = False

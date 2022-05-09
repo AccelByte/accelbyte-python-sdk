@@ -66,3 +66,7 @@ def get_campaign_dynamic(
     if error:
         raise Exception(f"getCampaignDynamic failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_campaign_dynamic.operation_id = "getCampaignDynamic"
+get_campaign_dynamic.is_deprecated = False

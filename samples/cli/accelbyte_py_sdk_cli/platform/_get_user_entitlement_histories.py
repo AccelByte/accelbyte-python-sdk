@@ -68,3 +68,7 @@ def get_user_entitlement_histories(
     if error:
         raise Exception(f"getUserEntitlementHistories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_entitlement_histories.operation_id = "getUserEntitlementHistories"
+get_user_entitlement_histories.is_deprecated = False

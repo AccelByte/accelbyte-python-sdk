@@ -69,3 +69,7 @@ def clone_store(
     if error:
         raise Exception(f"cloneStore failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+clone_store.operation_id = "cloneStore"
+clone_store.is_deprecated = False

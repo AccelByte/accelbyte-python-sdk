@@ -60,3 +60,7 @@ def list_config(
     if error:
         raise Exception(f"ListConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_config.operation_id = "ListConfig"
+list_config.is_deprecated = False

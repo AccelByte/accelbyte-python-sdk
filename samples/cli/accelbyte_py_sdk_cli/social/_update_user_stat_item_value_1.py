@@ -83,3 +83,7 @@ def update_user_stat_item_value_1(
     if error:
         raise Exception(f"updateUserStatItemValue_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_user_stat_item_value_1.operation_id = "updateUserStatItemValue_1"
+update_user_stat_item_value_1.is_deprecated = False

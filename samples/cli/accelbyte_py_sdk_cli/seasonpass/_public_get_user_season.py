@@ -69,3 +69,7 @@ def public_get_user_season(
     if error:
         raise Exception(f"publicGetUserSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_season.operation_id = "publicGetUserSeason"
+public_get_user_season.is_deprecated = False

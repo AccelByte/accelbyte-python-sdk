@@ -65,3 +65,7 @@ def public_get_user_namespace_slots(
     if error:
         raise Exception(f"publicGetUserNamespaceSlots failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_namespace_slots.operation_id = "publicGetUserNamespaceSlots"
+public_get_user_namespace_slots.is_deprecated = False

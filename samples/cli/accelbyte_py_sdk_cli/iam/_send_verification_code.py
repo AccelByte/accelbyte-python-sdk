@@ -74,3 +74,7 @@ def send_verification_code(
     if error:
         raise Exception(f"SendVerificationCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+send_verification_code.operation_id = "SendVerificationCode"
+send_verification_code.is_deprecated = False

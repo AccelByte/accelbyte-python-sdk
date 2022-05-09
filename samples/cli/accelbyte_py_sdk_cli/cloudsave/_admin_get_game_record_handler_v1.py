@@ -66,3 +66,7 @@ def admin_get_game_record_handler_v1(
     if error:
         raise Exception(f"adminGetGameRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_game_record_handler_v1.operation_id = "adminGetGameRecordHandlerV1"
+admin_get_game_record_handler_v1.is_deprecated = False

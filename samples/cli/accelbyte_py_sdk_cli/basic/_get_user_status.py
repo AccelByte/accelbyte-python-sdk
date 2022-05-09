@@ -67,3 +67,7 @@ def get_user_status(
     if error:
         raise Exception(f"getUserStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_status.operation_id = "getUserStatus"
+get_user_status.is_deprecated = False

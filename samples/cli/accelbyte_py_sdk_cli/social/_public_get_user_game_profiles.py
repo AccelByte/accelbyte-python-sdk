@@ -72,3 +72,7 @@ def public_get_user_game_profiles(
     if error:
         raise Exception(f"publicGetUserGameProfiles failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_game_profiles.operation_id = "publicGetUserGameProfiles"
+public_get_user_game_profiles.is_deprecated = False

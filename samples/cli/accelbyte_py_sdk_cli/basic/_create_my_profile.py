@@ -74,3 +74,7 @@ def create_my_profile(
     if error:
         raise Exception(f"createMyProfile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_my_profile.operation_id = "createMyProfile"
+create_my_profile.is_deprecated = False

@@ -75,3 +75,7 @@ def public_fulfill_apple_iap_item(
     if error:
         raise Exception(f"publicFulfillAppleIAPItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_fulfill_apple_iap_item.operation_id = "publicFulfillAppleIAPItem"
+public_fulfill_apple_iap_item.is_deprecated = False

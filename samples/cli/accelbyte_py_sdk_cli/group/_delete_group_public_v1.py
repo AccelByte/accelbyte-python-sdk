@@ -65,3 +65,7 @@ def delete_group_public_v1(
     if error:
         raise Exception(f"deleteGroupPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_group_public_v1.operation_id = "deleteGroupPublicV1"
+delete_group_public_v1.is_deprecated = False

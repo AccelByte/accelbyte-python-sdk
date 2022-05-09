@@ -73,3 +73,7 @@ def public_get_payment_url(
     if error:
         raise Exception(f"publicGetPaymentUrl failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_payment_url.operation_id = "publicGetPaymentUrl"
+public_get_payment_url.is_deprecated = False

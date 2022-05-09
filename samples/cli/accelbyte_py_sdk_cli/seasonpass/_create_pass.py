@@ -77,3 +77,7 @@ def create_pass(
     if error:
         raise Exception(f"createPass failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_pass.operation_id = "createPass"
+create_pass.is_deprecated = False

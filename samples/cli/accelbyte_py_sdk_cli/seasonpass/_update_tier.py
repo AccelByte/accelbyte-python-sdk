@@ -80,3 +80,7 @@ def update_tier(
     if error:
         raise Exception(f"updateTier failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_tier.operation_id = "updateTier"
+update_tier.is_deprecated = False

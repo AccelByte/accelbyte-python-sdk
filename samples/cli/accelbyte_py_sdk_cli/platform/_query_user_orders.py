@@ -77,3 +77,7 @@ def query_user_orders(
     if error:
         raise Exception(f"queryUserOrders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_user_orders.operation_id = "queryUserOrders"
+query_user_orders.is_deprecated = False

@@ -66,3 +66,7 @@ def get_recent_player(
     if error:
         raise Exception(f"GetRecentPlayer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_recent_player.operation_id = "GetRecentPlayer"
+get_recent_player.is_deprecated = False

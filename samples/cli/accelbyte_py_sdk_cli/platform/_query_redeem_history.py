@@ -77,3 +77,7 @@ def query_redeem_history(
     if error:
         raise Exception(f"queryRedeemHistory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_redeem_history.operation_id = "queryRedeemHistory"
+query_redeem_history.is_deprecated = False

@@ -76,3 +76,7 @@ def update_port(
     if error:
         raise Exception(f"UpdatePort failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_port.operation_id = "UpdatePort"
+update_port.is_deprecated = False

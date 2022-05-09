@@ -72,3 +72,7 @@ def public_get_user_content(
     if error:
         raise Exception(f"PublicGetUserContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_user_content.operation_id = "PublicGetUserContent"
+public_get_user_content.is_deprecated = False

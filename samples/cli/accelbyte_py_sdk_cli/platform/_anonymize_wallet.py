@@ -64,3 +64,7 @@ def anonymize_wallet(
     if error:
         raise Exception(f"anonymizeWallet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_wallet.operation_id = "anonymizeWallet"
+anonymize_wallet.is_deprecated = False

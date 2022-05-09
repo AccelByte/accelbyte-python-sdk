@@ -74,3 +74,7 @@ def user_verification(
     if error:
         raise Exception(f"UserVerification failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+user_verification.operation_id = "UserVerification"
+user_verification.is_deprecated = False

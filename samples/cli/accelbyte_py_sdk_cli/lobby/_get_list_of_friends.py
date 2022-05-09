@@ -72,3 +72,7 @@ def get_list_of_friends(
     if error:
         raise Exception(f"get list of friends failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_list_of_friends.operation_id = "get list of friends"
+get_list_of_friends.is_deprecated = False

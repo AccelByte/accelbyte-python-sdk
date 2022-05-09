@@ -62,3 +62,7 @@ def admin_update_admin_role_status_v3(
     if error:
         raise Exception(f"AdminUpdateAdminRoleStatusV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_admin_role_status_v3.operation_id = "AdminUpdateAdminRoleStatusV3"
+admin_update_admin_role_status_v3.is_deprecated = False

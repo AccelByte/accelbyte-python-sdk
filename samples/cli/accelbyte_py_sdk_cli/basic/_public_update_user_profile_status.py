@@ -77,3 +77,7 @@ def public_update_user_profile_status(
     if error:
         raise Exception(f"publicUpdateUserProfileStatus failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_update_user_profile_status.operation_id = "publicUpdateUserProfileStatus"
+public_update_user_profile_status.is_deprecated = False

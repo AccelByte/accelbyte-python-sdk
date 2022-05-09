@@ -70,3 +70,7 @@ def platform_authenticate_samlv3_handler(
     if error:
         raise Exception(f"platformAuthenticateSAMLV3Handler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+platform_authenticate_samlv3_handler.operation_id = "platformAuthenticateSAMLV3Handler"
+platform_authenticate_samlv3_handler.is_deprecated = False

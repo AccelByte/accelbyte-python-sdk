@@ -69,3 +69,7 @@ def get_leaderboard_configurations_public_v2(
     if error:
         raise Exception(f"GetLeaderboardConfigurationsPublicV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_leaderboard_configurations_public_v2.operation_id = "GetLeaderboardConfigurationsPublicV2"
+get_leaderboard_configurations_public_v2.is_deprecated = False

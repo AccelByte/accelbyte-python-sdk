@@ -71,3 +71,7 @@ def update_event_registry_handler(
     if error:
         raise Exception(f"UpdateEventRegistryHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_event_registry_handler.operation_id = "UpdateEventRegistryHandler"
+update_event_registry_handler.is_deprecated = True

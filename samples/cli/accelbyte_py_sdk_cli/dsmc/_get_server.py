@@ -66,3 +66,7 @@ def get_server(
     if error:
         raise Exception(f"GetServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_server.operation_id = "GetServer"
+get_server.is_deprecated = False

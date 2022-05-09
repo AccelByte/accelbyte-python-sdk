@@ -66,3 +66,7 @@ def get_single_matchmaking_channel(
     if error:
         raise Exception(f"GetSingleMatchmakingChannel failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_single_matchmaking_channel.operation_id = "GetSingleMatchmakingChannel"
+get_single_matchmaking_channel.is_deprecated = False

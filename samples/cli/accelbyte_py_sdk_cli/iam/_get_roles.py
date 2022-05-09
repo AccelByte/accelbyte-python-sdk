@@ -62,3 +62,7 @@ def get_roles(
     if error:
         raise Exception(f"GetRoles failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_roles.operation_id = "GetRoles"
+get_roles.is_deprecated = False

@@ -66,3 +66,7 @@ def admin_list_user_roles_v4(
     if error:
         raise Exception(f"AdminListUserRolesV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_list_user_roles_v4.operation_id = "AdminListUserRolesV4"
+admin_list_user_roles_v4.is_deprecated = False

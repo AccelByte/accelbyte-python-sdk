@@ -77,3 +77,7 @@ def refund_payment_order_by_dedicated(
     if error:
         raise Exception(f"refundPaymentOrderByDedicated failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+refund_payment_order_by_dedicated.operation_id = "refundPaymentOrderByDedicated"
+refund_payment_order_by_dedicated.is_deprecated = False

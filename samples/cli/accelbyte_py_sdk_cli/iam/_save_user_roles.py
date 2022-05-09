@@ -73,3 +73,7 @@ def save_user_roles(
     if error:
         raise Exception(f"SaveUserRoles failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+save_user_roles.operation_id = "SaveUserRoles"
+save_user_roles.is_deprecated = False

@@ -68,3 +68,7 @@ def single_admin_delete_content(
     if error:
         raise Exception(f"SingleAdminDeleteContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+single_admin_delete_content.operation_id = "SingleAdminDeleteContent"
+single_admin_delete_content.is_deprecated = False

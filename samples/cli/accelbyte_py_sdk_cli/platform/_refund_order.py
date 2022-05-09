@@ -77,3 +77,7 @@ def refund_order(
     if error:
         raise Exception(f"refundOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+refund_order.operation_id = "refundOrder"
+refund_order.is_deprecated = False

@@ -89,3 +89,7 @@ def query_payment_notifications(
     if error:
         raise Exception(f"queryPaymentNotifications failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_payment_notifications.operation_id = "queryPaymentNotifications"
+query_payment_notifications.is_deprecated = False

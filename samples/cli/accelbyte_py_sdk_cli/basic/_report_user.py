@@ -72,3 +72,7 @@ def report_user(
     if error:
         raise Exception(f"reportUser failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+report_user.operation_id = "reportUser"
+report_user.is_deprecated = False

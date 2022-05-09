@@ -80,3 +80,7 @@ def acquire_user_ticket(
     if error:
         raise Exception(f"acquireUserTicket failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+acquire_user_ticket.operation_id = "acquireUserTicket"
+acquire_user_ticket.is_deprecated = False

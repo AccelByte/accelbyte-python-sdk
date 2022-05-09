@@ -69,3 +69,7 @@ def admin_update_input_validations(
     if error:
         raise Exception(f"AdminUpdateInputValidations failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_input_validations.operation_id = "AdminUpdateInputValidations"
+admin_update_input_validations.is_deprecated = False

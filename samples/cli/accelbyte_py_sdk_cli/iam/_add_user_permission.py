@@ -80,3 +80,7 @@ def add_user_permission(
     if error:
         raise Exception(f"AddUserPermission failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_user_permission.operation_id = "AddUserPermission"
+add_user_permission.is_deprecated = False

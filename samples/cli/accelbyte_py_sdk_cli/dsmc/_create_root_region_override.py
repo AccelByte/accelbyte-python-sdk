@@ -79,3 +79,7 @@ def create_root_region_override(
     if error:
         raise Exception(f"CreateRootRegionOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_root_region_override.operation_id = "CreateRootRegionOverride"
+create_root_region_override.is_deprecated = False

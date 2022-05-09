@@ -70,3 +70,7 @@ def get_payment_public_config(
     if error:
         raise Exception(f"getPaymentPublicConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_public_config.operation_id = "getPaymentPublicConfig"
+get_payment_public_config.is_deprecated = False

@@ -69,3 +69,7 @@ def create_role(
     if error:
         raise Exception(f"CreateRole failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_role.operation_id = "CreateRole"
+create_role.is_deprecated = False

@@ -64,3 +64,7 @@ def login_sso_client(
     if error:
         raise Exception(f"LoginSSOClient failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+login_sso_client.operation_id = "LoginSSOClient"
+login_sso_client.is_deprecated = False

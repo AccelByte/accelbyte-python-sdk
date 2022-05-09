@@ -72,3 +72,7 @@ def update_google_iap_config(
     if error:
         raise Exception(f"updateGoogleIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_google_iap_config.operation_id = "updateGoogleIAPConfig"
+update_google_iap_config.is_deprecated = False

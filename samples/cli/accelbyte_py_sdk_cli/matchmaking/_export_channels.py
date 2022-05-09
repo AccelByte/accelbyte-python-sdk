@@ -63,3 +63,7 @@ def export_channels(
     if error:
         raise Exception(f"ExportChannels failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+export_channels.operation_id = "ExportChannels"
+export_channels.is_deprecated = False

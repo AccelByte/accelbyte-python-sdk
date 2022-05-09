@@ -77,3 +77,7 @@ def update_key_group(
     if error:
         raise Exception(f"updateKeyGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_key_group.operation_id = "updateKeyGroup"
+update_key_group.is_deprecated = False

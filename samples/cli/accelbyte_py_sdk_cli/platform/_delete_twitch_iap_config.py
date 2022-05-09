@@ -61,3 +61,7 @@ def delete_twitch_iap_config(
     if error:
         raise Exception(f"deleteTwitchIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_twitch_iap_config.operation_id = "deleteTwitchIAPConfig"
+delete_twitch_iap_config.is_deprecated = False

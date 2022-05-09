@@ -74,3 +74,7 @@ def update_password(
     if error:
         raise Exception(f"UpdatePassword failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_password.operation_id = "UpdatePassword"
+update_password.is_deprecated = True

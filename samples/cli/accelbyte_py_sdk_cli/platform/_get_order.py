@@ -66,3 +66,7 @@ def get_order(
     if error:
         raise Exception(f"getOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_order.operation_id = "getOrder"
+get_order.is_deprecated = False

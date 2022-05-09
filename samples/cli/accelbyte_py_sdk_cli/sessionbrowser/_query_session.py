@@ -93,3 +93,7 @@ def query_session(
     if error:
         raise Exception(f"QuerySession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+query_session.operation_id = "QuerySession"
+query_session.is_deprecated = False

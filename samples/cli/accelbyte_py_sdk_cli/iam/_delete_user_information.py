@@ -64,3 +64,7 @@ def delete_user_information(
     if error:
         raise Exception(f"DeleteUserInformation failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_information.operation_id = "DeleteUserInformation"
+delete_user_information.is_deprecated = False

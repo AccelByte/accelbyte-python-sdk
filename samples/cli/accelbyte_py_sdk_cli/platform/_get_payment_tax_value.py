@@ -72,3 +72,7 @@ def get_payment_tax_value(
     if error:
         raise Exception(f"getPaymentTaxValue failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_tax_value.operation_id = "getPaymentTaxValue"
+get_payment_tax_value.is_deprecated = False

@@ -69,3 +69,7 @@ def remove_player_from_session(
     if error:
         raise Exception(f"RemovePlayerFromSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+remove_player_from_session.operation_id = "RemovePlayerFromSession"
+remove_player_from_session.is_deprecated = False

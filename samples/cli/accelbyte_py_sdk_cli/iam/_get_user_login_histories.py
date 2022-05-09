@@ -74,3 +74,7 @@ def get_user_login_histories(
     if error:
         raise Exception(f"GetUserLoginHistories failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_login_histories.operation_id = "GetUserLoginHistories"
+get_user_login_histories.is_deprecated = False

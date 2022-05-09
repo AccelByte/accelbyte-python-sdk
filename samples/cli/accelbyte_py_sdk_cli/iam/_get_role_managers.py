@@ -62,3 +62,7 @@ def get_role_managers(
     if error:
         raise Exception(f"GetRoleManagers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_role_managers.operation_id = "GetRoleManagers"
+get_role_managers.is_deprecated = False

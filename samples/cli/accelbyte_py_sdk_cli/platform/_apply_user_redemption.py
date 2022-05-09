@@ -77,3 +77,7 @@ def apply_user_redemption(
     if error:
         raise Exception(f"applyUserRedemption failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+apply_user_redemption.operation_id = "applyUserRedemption"
+apply_user_redemption.is_deprecated = False

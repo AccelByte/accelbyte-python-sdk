@@ -67,3 +67,7 @@ def bulk_get_sessions(
     if error:
         raise Exception(f"BulkGetSessions failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+bulk_get_sessions.operation_id = "BulkGetSessions"
+bulk_get_sessions.is_deprecated = False

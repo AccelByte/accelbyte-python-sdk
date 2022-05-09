@@ -74,3 +74,7 @@ def admin_verify_account_v3(
     if error:
         raise Exception(f"AdminVerifyAccountV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_verify_account_v3.operation_id = "AdminVerifyAccountV3"
+admin_verify_account_v3.is_deprecated = False

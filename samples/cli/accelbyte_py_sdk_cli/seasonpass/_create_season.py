@@ -74,3 +74,7 @@ def create_season(
     if error:
         raise Exception(f"createSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_season.operation_id = "createSeason"
+create_season.is_deprecated = False

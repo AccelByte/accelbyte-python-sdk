@@ -76,3 +76,7 @@ def update_wx_pay_config(
     if error:
         raise Exception(f"updateWxPayConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_wx_pay_config.operation_id = "updateWxPayConfig"
+update_wx_pay_config.is_deprecated = False

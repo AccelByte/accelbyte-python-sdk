@@ -61,3 +61,7 @@ def set_default_policy(
     if error:
         raise Exception(f"setDefaultPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+set_default_policy.operation_id = "setDefaultPolicy"
+set_default_policy.is_deprecated = False

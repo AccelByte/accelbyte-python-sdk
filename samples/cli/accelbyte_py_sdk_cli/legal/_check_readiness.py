@@ -59,3 +59,7 @@ def check_readiness(
     if error:
         raise Exception(f"checkReadiness failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+check_readiness.operation_id = "checkReadiness"
+check_readiness.is_deprecated = False

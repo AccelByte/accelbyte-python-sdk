@@ -72,3 +72,7 @@ def user_cancel_friend_request(
     if error:
         raise Exception(f"userCancelFriendRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+user_cancel_friend_request.operation_id = "userCancelFriendRequest"
+user_cancel_friend_request.is_deprecated = False

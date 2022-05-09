@@ -66,3 +66,7 @@ def admin_get_all_player_session_attribute(
     if error:
         raise Exception(f"adminGetAllPlayerSessionAttribute failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_all_player_session_attribute.operation_id = "adminGetAllPlayerSessionAttribute"
+admin_get_all_player_session_attribute.is_deprecated = False

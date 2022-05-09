@@ -62,3 +62,7 @@ def get_role_members(
     if error:
         raise Exception(f"GetRoleMembers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_role_members.operation_id = "GetRoleMembers"
+get_role_members.is_deprecated = False

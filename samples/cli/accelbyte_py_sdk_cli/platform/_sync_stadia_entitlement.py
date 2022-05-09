@@ -74,3 +74,7 @@ def sync_stadia_entitlement(
     if error:
         raise Exception(f"syncStadiaEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_stadia_entitlement.operation_id = "syncStadiaEntitlement"
+sync_stadia_entitlement.is_deprecated = False

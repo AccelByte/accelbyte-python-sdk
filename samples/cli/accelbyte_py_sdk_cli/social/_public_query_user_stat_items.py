@@ -77,3 +77,7 @@ def public_query_user_stat_items(
     if error:
         raise Exception(f"publicQueryUserStatItems failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_user_stat_items.operation_id = "publicQueryUserStatItems"
+public_query_user_stat_items.is_deprecated = False

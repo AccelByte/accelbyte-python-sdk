@@ -74,3 +74,7 @@ def get_event_by_namespace_handler(
     if error:
         raise Exception(f"GetEventByNamespaceHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_event_by_namespace_handler.operation_id = "GetEventByNamespaceHandler"
+get_event_by_namespace_handler.is_deprecated = True

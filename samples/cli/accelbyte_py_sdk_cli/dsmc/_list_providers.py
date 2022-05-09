@@ -58,3 +58,7 @@ def list_providers(
     if error:
         raise Exception(f"ListProviders failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+list_providers.operation_id = "ListProviders"
+list_providers.is_deprecated = False

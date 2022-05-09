@@ -76,3 +76,7 @@ def admin_update_type(
     if error:
         raise Exception(f"AdminUpdateType failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_type.operation_id = "AdminUpdateType"
+admin_update_type.is_deprecated = False

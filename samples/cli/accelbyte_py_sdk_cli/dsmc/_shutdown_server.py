@@ -72,3 +72,7 @@ def shutdown_server(
     if error:
         raise Exception(f"ShutdownServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+shutdown_server.operation_id = "ShutdownServer"
+shutdown_server.is_deprecated = False

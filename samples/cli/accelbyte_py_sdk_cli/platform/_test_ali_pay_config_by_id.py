@@ -66,3 +66,7 @@ def test_ali_pay_config_by_id(
     if error:
         raise Exception(f"testAliPayConfigById failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+test_ali_pay_config_by_id.operation_id = "testAliPayConfigById"
+test_ali_pay_config_by_id.is_deprecated = False

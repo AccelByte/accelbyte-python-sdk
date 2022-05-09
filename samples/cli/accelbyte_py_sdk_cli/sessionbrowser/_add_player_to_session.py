@@ -76,3 +76,7 @@ def add_player_to_session(
     if error:
         raise Exception(f"AddPlayerToSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+add_player_to_session.operation_id = "AddPlayerToSession"
+add_player_to_session.is_deprecated = False

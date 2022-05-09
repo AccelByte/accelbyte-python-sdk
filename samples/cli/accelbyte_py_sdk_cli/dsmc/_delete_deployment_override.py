@@ -69,3 +69,7 @@ def delete_deployment_override(
     if error:
         raise Exception(f"DeleteDeploymentOverride failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_deployment_override.operation_id = "DeleteDeploymentOverride"
+delete_deployment_override.is_deprecated = False

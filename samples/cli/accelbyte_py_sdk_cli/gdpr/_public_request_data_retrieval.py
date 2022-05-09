@@ -69,3 +69,7 @@ def public_request_data_retrieval(
     if error:
         raise Exception(f"PublicRequestDataRetrieval failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_request_data_retrieval.operation_id = "PublicRequestDataRetrieval"
+public_request_data_retrieval.is_deprecated = False

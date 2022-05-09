@@ -73,3 +73,7 @@ def admin_update_age_restriction_config_v3(
     if error:
         raise Exception(f"AdminUpdateAgeRestrictionConfigV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_update_age_restriction_config_v3.operation_id = "AdminUpdateAgeRestrictionConfigV3"
+admin_update_age_restriction_config_v3.is_deprecated = False

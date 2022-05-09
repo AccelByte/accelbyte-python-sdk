@@ -73,3 +73,7 @@ def store_match_results(
     if error:
         raise Exception(f"StoreMatchResults failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+store_match_results.operation_id = "StoreMatchResults"
+store_match_results.is_deprecated = False

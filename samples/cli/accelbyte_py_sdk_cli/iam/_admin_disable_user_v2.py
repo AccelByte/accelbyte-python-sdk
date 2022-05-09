@@ -74,3 +74,7 @@ def admin_disable_user_v2(
     if error:
         raise Exception(f"AdminDisableUserV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_disable_user_v2.operation_id = "AdminDisableUserV2"
+admin_disable_user_v2.is_deprecated = False

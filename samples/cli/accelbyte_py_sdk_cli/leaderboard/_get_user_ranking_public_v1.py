@@ -69,3 +69,7 @@ def get_user_ranking_public_v1(
     if error:
         raise Exception(f"getUserRankingPublicV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_ranking_public_v1.operation_id = "getUserRankingPublicV1"
+get_user_ranking_public_v1.is_deprecated = False

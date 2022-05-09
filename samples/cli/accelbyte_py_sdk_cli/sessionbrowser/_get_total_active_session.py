@@ -66,3 +66,7 @@ def get_total_active_session(
     if error:
         raise Exception(f"GetTotalActiveSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_total_active_session.operation_id = "GetTotalActiveSession"
+get_total_active_session.is_deprecated = False

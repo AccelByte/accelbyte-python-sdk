@@ -72,3 +72,7 @@ def create_archived_leaderboard_ranking_data_v1_handler(
     if error:
         raise Exception(f"CreateArchivedLeaderboardRankingDataV1Handler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_archived_leaderboard_ranking_data_v1_handler.operation_id = "CreateArchivedLeaderboardRankingDataV1Handler"
+create_archived_leaderboard_ranking_data_v1_handler.is_deprecated = False

@@ -80,3 +80,7 @@ def get_event_specific_user_v2_handler(
     if error:
         raise Exception(f"GetEventSpecificUserV2Handler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_event_specific_user_v2_handler.operation_id = "GetEventSpecificUserV2Handler"
+get_event_specific_user_v2_handler.is_deprecated = False

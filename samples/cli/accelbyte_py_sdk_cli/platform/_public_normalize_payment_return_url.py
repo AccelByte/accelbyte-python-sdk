@@ -106,3 +106,7 @@ def public_normalize_payment_return_url(
     if error:
         raise Exception(f"publicNormalizePaymentReturnUrl failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_normalize_payment_return_url.operation_id = "publicNormalizePaymentReturnUrl"
+public_normalize_payment_return_url.is_deprecated = False

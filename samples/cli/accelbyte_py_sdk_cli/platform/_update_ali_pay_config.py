@@ -79,3 +79,7 @@ def update_ali_pay_config(
     if error:
         raise Exception(f"updateAliPayConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_ali_pay_config.operation_id = "updateAliPayConfig"
+update_ali_pay_config.is_deprecated = False

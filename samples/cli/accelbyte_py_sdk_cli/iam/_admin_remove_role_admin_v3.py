@@ -62,3 +62,7 @@ def admin_remove_role_admin_v3(
     if error:
         raise Exception(f"AdminRemoveRoleAdminV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_remove_role_admin_v3.operation_id = "AdminRemoveRoleAdminV3"
+admin_remove_role_admin_v3.is_deprecated = False

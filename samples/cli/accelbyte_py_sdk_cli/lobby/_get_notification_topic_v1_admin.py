@@ -66,3 +66,7 @@ def get_notification_topic_v1_admin(
     if error:
         raise Exception(f"getNotificationTopicV1Admin failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_notification_topic_v1_admin.operation_id = "getNotificationTopicV1Admin"
+get_notification_topic_v1_admin.is_deprecated = False

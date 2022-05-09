@@ -64,3 +64,7 @@ def delete_client_by_namespace(
     if error:
         raise Exception(f"DeleteClientByNamespace failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_client_by_namespace.operation_id = "DeleteClientByNamespace"
+delete_client_by_namespace.is_deprecated = False

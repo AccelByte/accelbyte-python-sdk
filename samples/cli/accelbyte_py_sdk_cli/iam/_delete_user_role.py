@@ -67,3 +67,7 @@ def delete_user_role(
     if error:
         raise Exception(f"DeleteUserRole failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_role.operation_id = "DeleteUserRole"
+delete_user_role.is_deprecated = False

@@ -65,3 +65,7 @@ def delete_member_role_admin_v1(
     if error:
         raise Exception(f"deleteMemberRoleAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_member_role_admin_v1.operation_id = "deleteMemberRoleAdminV1"
+delete_member_role_admin_v1.is_deprecated = False

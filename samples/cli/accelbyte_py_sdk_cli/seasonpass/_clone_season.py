@@ -77,3 +77,7 @@ def clone_season(
     if error:
         raise Exception(f"cloneSeason failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+clone_season.operation_id = "cloneSeason"
+clone_season.is_deprecated = False

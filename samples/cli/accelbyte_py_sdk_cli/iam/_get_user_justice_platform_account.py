@@ -68,3 +68,7 @@ def get_user_justice_platform_account(
     if error:
         raise Exception(f"GetUserJusticePlatformAccount failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_justice_platform_account.operation_id = "GetUserJusticePlatformAccount"
+get_user_justice_platform_account.is_deprecated = True

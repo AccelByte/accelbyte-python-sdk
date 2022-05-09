@@ -61,3 +61,7 @@ def delete_iap_item_config(
     if error:
         raise Exception(f"deleteIAPItemConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_iap_item_config.operation_id = "deleteIAPItemConfig"
+delete_iap_item_config.is_deprecated = False

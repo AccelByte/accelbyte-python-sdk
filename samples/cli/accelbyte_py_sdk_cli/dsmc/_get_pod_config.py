@@ -66,3 +66,7 @@ def get_pod_config(
     if error:
         raise Exception(f"GetPodConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_pod_config.operation_id = "GetPodConfig"
+get_pod_config.is_deprecated = False

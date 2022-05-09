@@ -79,3 +79,7 @@ def public_cancel_subscription(
     if error:
         raise Exception(f"publicCancelSubscription failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_cancel_subscription.operation_id = "publicCancelSubscription"
+public_cancel_subscription.is_deprecated = False

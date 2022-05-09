@@ -69,3 +69,7 @@ def public_get_profile(
     if error:
         raise Exception(f"publicGetProfile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_profile.operation_id = "publicGetProfile"
+public_get_profile.is_deprecated = False

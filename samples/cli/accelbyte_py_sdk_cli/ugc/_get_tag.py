@@ -69,3 +69,7 @@ def get_tag(
     if error:
         raise Exception(f"GetTag failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_tag.operation_id = "GetTag"
+get_tag.is_deprecated = False

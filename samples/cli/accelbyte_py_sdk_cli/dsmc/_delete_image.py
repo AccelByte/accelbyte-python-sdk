@@ -68,3 +68,7 @@ def delete_image(
     if error:
         raise Exception(f"DeleteImage failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_image.operation_id = "DeleteImage"
+delete_image.is_deprecated = False

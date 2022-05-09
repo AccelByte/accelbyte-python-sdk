@@ -72,3 +72,7 @@ def defeature_item(
     if error:
         raise Exception(f"defeatureItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+defeature_item.operation_id = "defeatureItem"
+defeature_item.is_deprecated = False

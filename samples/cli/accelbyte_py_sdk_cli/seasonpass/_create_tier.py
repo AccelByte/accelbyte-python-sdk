@@ -77,3 +77,7 @@ def create_tier(
     if error:
         raise Exception(f"createTier failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_tier.operation_id = "createTier"
+create_tier.is_deprecated = False

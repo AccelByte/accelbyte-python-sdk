@@ -71,3 +71,7 @@ def delete_image_patch(
     if error:
         raise Exception(f"DeleteImagePatch failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_image_patch.operation_id = "DeleteImagePatch"
+delete_image_patch.is_deprecated = False

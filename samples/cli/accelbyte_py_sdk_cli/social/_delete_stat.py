@@ -65,3 +65,7 @@ def delete_stat(
     if error:
         raise Exception(f"deleteStat failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_stat.operation_id = "deleteStat"
+delete_stat.is_deprecated = False

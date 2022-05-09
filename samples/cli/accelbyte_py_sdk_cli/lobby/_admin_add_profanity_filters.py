@@ -75,3 +75,7 @@ def admin_add_profanity_filters(
     if error:
         raise Exception(f"adminAddProfanityFilters failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_add_profanity_filters.operation_id = "adminAddProfanityFilters"
+admin_add_profanity_filters.is_deprecated = False

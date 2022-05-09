@@ -64,3 +64,7 @@ def anonymize_entitlement(
     if error:
         raise Exception(f"anonymizeEntitlement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_entitlement.operation_id = "anonymizeEntitlement"
+anonymize_entitlement.is_deprecated = False

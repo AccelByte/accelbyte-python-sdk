@@ -76,3 +76,7 @@ def admin_upgrade_headless_account_v3(
     if error:
         raise Exception(f"AdminUpgradeHeadlessAccountV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_upgrade_headless_account_v3.operation_id = "AdminUpgradeHeadlessAccountV3"
+admin_upgrade_headless_account_v3.is_deprecated = False

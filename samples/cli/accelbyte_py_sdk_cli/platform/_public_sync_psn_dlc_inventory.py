@@ -75,3 +75,7 @@ def public_sync_psn_dlc_inventory(
     if error:
         raise Exception(f"publicSyncPsnDlcInventory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_sync_psn_dlc_inventory.operation_id = "publicSyncPsnDlcInventory"
+public_sync_psn_dlc_inventory.is_deprecated = False

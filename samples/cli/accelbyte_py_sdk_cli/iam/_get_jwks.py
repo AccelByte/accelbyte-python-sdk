@@ -59,3 +59,7 @@ def get_jwks(
     if error:
         raise Exception(f"GetJWKS failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_jwks.operation_id = "GetJWKS"
+get_jwks.is_deprecated = False

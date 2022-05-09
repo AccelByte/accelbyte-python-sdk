@@ -71,3 +71,7 @@ def get_user_activities_handler(
     if error:
         raise Exception(f"GetUserActivitiesHandler failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_activities_handler.operation_id = "GetUserActivitiesHandler"
+get_user_activities_handler.is_deprecated = True

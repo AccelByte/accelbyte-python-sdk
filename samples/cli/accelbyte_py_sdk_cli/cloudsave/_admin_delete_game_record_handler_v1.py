@@ -65,3 +65,7 @@ def admin_delete_game_record_handler_v1(
     if error:
         raise Exception(f"adminDeleteGameRecordHandlerV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_game_record_handler_v1.operation_id = "adminDeleteGameRecordHandlerV1"
+admin_delete_game_record_handler_v1.is_deprecated = False

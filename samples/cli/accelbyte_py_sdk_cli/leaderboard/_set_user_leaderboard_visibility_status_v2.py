@@ -79,3 +79,7 @@ def set_user_leaderboard_visibility_status_v2(
     if error:
         raise Exception(f"SetUserLeaderboardVisibilityStatusV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+set_user_leaderboard_visibility_status_v2.operation_id = "SetUserLeaderboardVisibilityStatusV2"
+set_user_leaderboard_visibility_status_v2.is_deprecated = False

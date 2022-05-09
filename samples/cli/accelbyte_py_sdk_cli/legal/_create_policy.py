@@ -71,3 +71,7 @@ def create_policy(
     if error:
         raise Exception(f"createPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_policy.operation_id = "createPolicy"
+create_policy.is_deprecated = False

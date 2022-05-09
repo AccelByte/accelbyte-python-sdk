@@ -74,3 +74,7 @@ def admin_import_profanity_filters_from_file(
     if error:
         raise Exception(f"adminImportProfanityFiltersFromFile failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_import_profanity_filters_from_file.operation_id = "adminImportProfanityFiltersFromFile"
+admin_import_profanity_filters_from_file.is_deprecated = False

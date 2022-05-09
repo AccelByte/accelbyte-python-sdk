@@ -68,3 +68,7 @@ def delete_user_stat_items_1(
     if error:
         raise Exception(f"deleteUserStatItems_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_user_stat_items_1.operation_id = "deleteUserStatItems_1"
+delete_user_stat_items_1.is_deprecated = False

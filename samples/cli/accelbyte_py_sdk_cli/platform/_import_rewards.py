@@ -68,3 +68,7 @@ def import_rewards(
     if error:
         raise Exception(f"importRewards failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+import_rewards.operation_id = "importRewards"
+import_rewards.is_deprecated = False

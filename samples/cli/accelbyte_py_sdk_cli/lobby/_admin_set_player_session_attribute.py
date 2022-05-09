@@ -75,3 +75,7 @@ def admin_set_player_session_attribute(
     if error:
         raise Exception(f"adminSetPlayerSessionAttribute failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_set_player_session_attribute.operation_id = "adminSetPlayerSessionAttribute"
+admin_set_player_session_attribute.is_deprecated = False

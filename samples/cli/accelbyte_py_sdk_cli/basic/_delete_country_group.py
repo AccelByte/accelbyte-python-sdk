@@ -66,3 +66,7 @@ def delete_country_group(
     if error:
         raise Exception(f"deleteCountryGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_country_group.operation_id = "deleteCountryGroup"
+delete_country_group.is_deprecated = False

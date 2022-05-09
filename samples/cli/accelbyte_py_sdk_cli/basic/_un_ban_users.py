@@ -73,3 +73,7 @@ def un_ban_users(
     if error:
         raise Exception(f"unBanUsers failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+un_ban_users.operation_id = "unBanUsers"
+un_ban_users.is_deprecated = False

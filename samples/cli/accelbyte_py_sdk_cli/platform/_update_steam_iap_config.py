@@ -72,3 +72,7 @@ def update_steam_iap_config(
     if error:
         raise Exception(f"updateSteamIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_steam_iap_config.operation_id = "updateSteamIAPConfig"
+update_steam_iap_config.is_deprecated = False

@@ -72,3 +72,7 @@ def admin_generate_personal_data_url(
     if error:
         raise Exception(f"AdminGeneratePersonalDataURL failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_generate_personal_data_url.operation_id = "AdminGeneratePersonalDataURL"
+admin_generate_personal_data_url.is_deprecated = False

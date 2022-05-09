@@ -70,3 +70,7 @@ def admin_invite_user_v4(
     if error:
         raise Exception(f"AdminInviteUserV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_invite_user_v4.operation_id = "AdminInviteUserV4"
+admin_invite_user_v4.is_deprecated = False

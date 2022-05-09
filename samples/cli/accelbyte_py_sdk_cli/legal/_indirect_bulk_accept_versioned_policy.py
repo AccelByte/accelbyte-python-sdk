@@ -84,3 +84,7 @@ def indirect_bulk_accept_versioned_policy(
     if error:
         raise Exception(f"indirectBulkAcceptVersionedPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+indirect_bulk_accept_versioned_policy.operation_id = "indirectBulkAcceptVersionedPolicy"
+indirect_bulk_accept_versioned_policy.is_deprecated = False

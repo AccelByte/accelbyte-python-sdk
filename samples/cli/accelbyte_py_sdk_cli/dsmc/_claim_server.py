@@ -72,3 +72,7 @@ def claim_server(
     if error:
         raise Exception(f"ClaimServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+claim_server.operation_id = "ClaimServer"
+claim_server.is_deprecated = False

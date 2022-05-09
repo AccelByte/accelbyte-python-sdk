@@ -62,3 +62,7 @@ def get_admin_email_configuration(
     if error:
         raise Exception(f"GetAdminEmailConfiguration failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_admin_email_configuration.operation_id = "GetAdminEmailConfiguration"
+get_admin_email_configuration.is_deprecated = False

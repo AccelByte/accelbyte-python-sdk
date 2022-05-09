@@ -63,3 +63,7 @@ def get_payment_merchant_config(
     if error:
         raise Exception(f"getPaymentMerchantConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_payment_merchant_config.operation_id = "getPaymentMerchantConfig"
+get_payment_merchant_config.is_deprecated = False

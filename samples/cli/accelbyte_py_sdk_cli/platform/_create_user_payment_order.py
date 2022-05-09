@@ -77,3 +77,7 @@ def create_user_payment_order(
     if error:
         raise Exception(f"createUserPaymentOrder failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_user_payment_order.operation_id = "createUserPaymentOrder"
+create_user_payment_order.is_deprecated = False

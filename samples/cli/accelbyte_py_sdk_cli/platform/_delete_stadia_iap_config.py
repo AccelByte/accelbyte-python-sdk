@@ -61,3 +61,7 @@ def delete_stadia_iap_config(
     if error:
         raise Exception(f"deleteStadiaIAPConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_stadia_iap_config.operation_id = "deleteStadiaIAPConfig"
+delete_stadia_iap_config.is_deprecated = False

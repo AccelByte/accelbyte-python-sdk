@@ -62,3 +62,7 @@ def delete_server(
     if error:
         raise Exception(f"DeleteServer failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+delete_server.operation_id = "DeleteServer"
+delete_server.is_deprecated = False

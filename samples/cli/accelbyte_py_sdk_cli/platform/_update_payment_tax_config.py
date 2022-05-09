@@ -71,3 +71,7 @@ def update_payment_tax_config(
     if error:
         raise Exception(f"updatePaymentTaxConfig failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_payment_tax_config.operation_id = "updatePaymentTaxConfig"
+update_payment_tax_config.is_deprecated = False

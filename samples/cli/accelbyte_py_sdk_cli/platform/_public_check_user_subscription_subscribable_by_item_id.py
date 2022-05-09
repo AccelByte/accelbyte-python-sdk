@@ -68,3 +68,7 @@ def public_check_user_subscription_subscribable_by_item_id(
     if error:
         raise Exception(f"publicCheckUserSubscriptionSubscribableByItemId failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_check_user_subscription_subscribable_by_item_id.operation_id = "publicCheckUserSubscriptionSubscribableByItemId"
+public_check_user_subscription_subscribable_by_item_id.is_deprecated = False

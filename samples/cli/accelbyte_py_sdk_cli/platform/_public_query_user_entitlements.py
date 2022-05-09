@@ -89,3 +89,7 @@ def public_query_user_entitlements(
     if error:
         raise Exception(f"publicQueryUserEntitlements failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_query_user_entitlements.operation_id = "publicQueryUserEntitlements"
+public_query_user_entitlements.is_deprecated = False

@@ -77,3 +77,7 @@ def sync_in_game_item(
     if error:
         raise Exception(f"syncInGameItem failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_in_game_item.operation_id = "syncInGameItem"
+sync_in_game_item.is_deprecated = False

@@ -68,3 +68,7 @@ def get_user_order_grant(
     if error:
         raise Exception(f"getUserOrderGrant failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+get_user_order_grant.operation_id = "getUserOrderGrant"
+get_user_order_grant.is_deprecated = False

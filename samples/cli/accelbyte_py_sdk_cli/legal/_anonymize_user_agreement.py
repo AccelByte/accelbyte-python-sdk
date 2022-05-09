@@ -62,3 +62,7 @@ def anonymize_user_agreement(
     if error:
         raise Exception(f"anonymizeUserAgreement failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+anonymize_user_agreement.operation_id = "anonymizeUserAgreement"
+anonymize_user_agreement.is_deprecated = False

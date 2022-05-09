@@ -65,3 +65,7 @@ def admin_delete_profanity_list(
     if error:
         raise Exception(f"adminDeleteProfanityList failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_profanity_list.operation_id = "adminDeleteProfanityList"
+admin_delete_profanity_list.is_deprecated = False

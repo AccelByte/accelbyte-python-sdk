@@ -63,3 +63,7 @@ def initiate_group_configuration_admin_v1(
     if error:
         raise Exception(f"initiateGroupConfigurationAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+initiate_group_configuration_admin_v1.operation_id = "initiateGroupConfigurationAdminV1"
+initiate_group_configuration_admin_v1.is_deprecated = False

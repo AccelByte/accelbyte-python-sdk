@@ -66,3 +66,7 @@ def admin_get_session(
     if error:
         raise Exception(f"AdminGetSession failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_get_session.operation_id = "AdminGetSession"
+admin_get_session.is_deprecated = False

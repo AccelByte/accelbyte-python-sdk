@@ -69,3 +69,7 @@ def create_image(
     if error:
         raise Exception(f"CreateImage failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+create_image.operation_id = "CreateImage"
+create_image.is_deprecated = False

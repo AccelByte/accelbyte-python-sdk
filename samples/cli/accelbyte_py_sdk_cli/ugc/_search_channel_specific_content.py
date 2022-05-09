@@ -99,3 +99,7 @@ def search_channel_specific_content(
     if error:
         raise Exception(f"SearchChannelSpecificContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+search_channel_specific_content.operation_id = "SearchChannelSpecificContent"
+search_channel_specific_content.is_deprecated = False

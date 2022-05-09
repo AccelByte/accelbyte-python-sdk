@@ -65,3 +65,7 @@ def admin_delete_tag(
     if error:
         raise Exception(f"AdminDeleteTag failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+admin_delete_tag.operation_id = "AdminDeleteTag"
+admin_delete_tag.is_deprecated = False

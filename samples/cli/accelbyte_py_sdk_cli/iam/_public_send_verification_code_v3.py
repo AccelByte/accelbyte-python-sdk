@@ -72,3 +72,7 @@ def public_send_verification_code_v3(
     if error:
         raise Exception(f"PublicSendVerificationCodeV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_send_verification_code_v3.operation_id = "PublicSendVerificationCodeV3"
+public_send_verification_code_v3.is_deprecated = False

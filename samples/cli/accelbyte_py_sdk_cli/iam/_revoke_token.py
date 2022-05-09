@@ -61,3 +61,7 @@ def revoke_token(
     if error:
         raise Exception(f"RevokeToken failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+revoke_token.operation_id = "RevokeToken"
+revoke_token.is_deprecated = True

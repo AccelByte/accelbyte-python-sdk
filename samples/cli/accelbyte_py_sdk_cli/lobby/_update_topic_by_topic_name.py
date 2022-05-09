@@ -75,3 +75,7 @@ def update_topic_by_topic_name(
     if error:
         raise Exception(f"updateTopicByTopicName failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_topic_by_topic_name.operation_id = "updateTopicByTopicName"
+update_topic_by_topic_name.is_deprecated = False

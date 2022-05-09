@@ -63,3 +63,7 @@ def public_get_namespaces(
     if error:
         raise Exception(f"publicGetNamespaces failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+public_get_namespaces.operation_id = "publicGetNamespaces"
+public_get_namespaces.is_deprecated = False

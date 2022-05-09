@@ -77,3 +77,7 @@ def update_country_group(
     if error:
         raise Exception(f"updateCountryGroup failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+update_country_group.operation_id = "updateCountryGroup"
+update_country_group.is_deprecated = False

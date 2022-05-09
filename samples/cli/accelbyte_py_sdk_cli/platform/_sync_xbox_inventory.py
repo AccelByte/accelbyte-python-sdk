@@ -75,3 +75,7 @@ def sync_xbox_inventory(
     if error:
         raise Exception(f"syncXboxInventory failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
+
+
+sync_xbox_inventory.operation_id = "syncXboxInventory"
+sync_xbox_inventory.is_deprecated = False
