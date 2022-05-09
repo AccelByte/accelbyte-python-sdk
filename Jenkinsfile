@@ -64,7 +64,7 @@ pipeline {
         }
         stage('Lint Code') {
           steps {
-            //sh "[ -s codegen.txt ]"  // Make sure codegen.txt file is present in spec directory
+            sh "[ -s codegen.txt ]"  // Make sure codegen.txt file is present in spec directory
             sh "make lint"
           }
         }
