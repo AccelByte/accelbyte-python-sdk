@@ -29,7 +29,7 @@ class BlockPlayerResponse(WebSocketMessage):
     # region fields
 
     block_user_id: str
-    code: str
+    code: int
     id_: str
     namespace: str
 

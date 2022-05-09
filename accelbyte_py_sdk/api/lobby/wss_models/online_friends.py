@@ -28,7 +28,7 @@ class OnlineFriends(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     online_friend_ids: List[str]
 

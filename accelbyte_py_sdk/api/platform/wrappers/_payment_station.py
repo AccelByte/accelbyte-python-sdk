@@ -57,7 +57,7 @@ from ..operations.payment_station import PublicGetUnpaidPaymentOrder
 from ..operations.payment_station import PublicNormalizePaymentReturnUrl
 from ..operations.payment_station import PublicNormalizePaymentReturnUrlPaymentProviderEnum
 from ..models import PaymentMethodPaymentProviderEnum
-from ..models import PaymentUrlPaymentProviderEnum, PaymentUrlPaymentTypeEnum
+from ..models import PaymentUrlPaymentTypeEnum, PaymentUrlPaymentProviderEnum
 from ..models import PaymentUrlCreatePaymentProviderEnum
 
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,15 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import ValidationErrorEntity
 
 
-class CheckWallet(Operation):
-    """Check wallet (checkWallet)
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STADIA = "Stadia"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
-    [SERVICE COMMUNICATION ONLY] Check wallet whether it's inactive.
+
+class CheckWallet(Operation):
+    """Check wallet by balance origin and currency code (checkWallet)
+
+    [SERVICE COMMUNICATION ONLY] Check wallet by balance origin and currency code whether it's inactive.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
@@ -63,6 +78,8 @@ class CheckWallet(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        origin: (origin) REQUIRED Union[str, OriginEnum] in query
+
     Responses:
         204: No Content - (check successfully)
 
@@ -85,6 +102,7 @@ class CheckWallet(Operation):
     currency_code: str                                                                             # REQUIRED in [path]
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
+    origin: Union[str, OriginEnum]                                                                 # REQUIRED in [query]
 
     # endregion fields
 
@@ -125,6 +143,7 @@ class CheckWallet(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -135,6 +154,12 @@ class CheckWallet(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "origin"):
+            result["origin"] = self.origin
         return result
 
     # endregion get_x_params methods
@@ -157,6 +182,10 @@ class CheckWallet(Operation):
         self.user_id = value
         return self
 
+    def with_origin(self, value: Union[str, OriginEnum]) -> CheckWallet:
+        self.origin = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -175,6 +204,10 @@ class CheckWallet(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "origin") and self.origin:
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         return result
 
     # endregion to methods
@@ -225,11 +258,13 @@ class CheckWallet(Operation):
         currency_code: str,
         namespace: str,
         user_id: str,
+        origin: Union[str, OriginEnum],
     ) -> CheckWallet:
         instance = cls()
         instance.currency_code = currency_code
         instance.namespace = namespace
         instance.user_id = user_id
+        instance.origin = origin
         return instance
 
     @classmethod
@@ -247,6 +282,10 @@ class CheckWallet(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         return instance
 
     @staticmethod
@@ -255,6 +294,7 @@ class CheckWallet(Operation):
             "currencyCode": "currency_code",
             "namespace": "namespace",
             "userId": "user_id",
+            "origin": "origin",
         }
 
     @staticmethod
@@ -263,6 +303,13 @@ class CheckWallet(Operation):
             "currencyCode": True,
             "namespace": True,
             "userId": True,
+            "origin": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "origin": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],# in query
         }
 
     # endregion static methods

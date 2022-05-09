@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (4.7.0)
+# justice-platform-service Index (4.7.1)
 
 
 ## Operations
@@ -201,6 +201,7 @@
 | /platform/admin/namespaces/{namespace}/items/{itemId}/enable | PUT | enableItem | [EnableItem](../accelbyte_py_sdk/api/platform/operations/item/enable_item.py) | [enable_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-enable-item](../samples/cli/accelbyte_py_sdk_cli/platform/_enable_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature} | PUT | featureItem | [FeatureItem](../accelbyte_py_sdk/api/platform/operations/item/feature_item.py) | [feature_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-feature-item](../samples/cli/accelbyte_py_sdk_cli/platform/_feature_item.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId}/app | GET | getApp | [GetApp](../accelbyte_py_sdk/api/platform/operations/item/get_app.py) | [get_app](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-app](../samples/cli/accelbyte_py_sdk_cli/platform/_get_app.py) |
+| /platform/admin/namespaces/{namespace}/items/itemId/bySkus | GET | getBulkItemIdBySkus | [GetBulkItemIdBySkus](../accelbyte_py_sdk/api/platform/operations/item/get_bulk_item_id_by_skus.py) | [get_bulk_item_id_by_skus](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-bulk-item-id-by-skus](../samples/cli/accelbyte_py_sdk_cli/platform/_get_bulk_item_id_by_skus.py) |
 | /platform/admin/namespaces/{namespace}/items/{itemId} | GET | getItem | [GetItem](../accelbyte_py_sdk/api/platform/operations/item/get_item.py) | [get_item](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item](../samples/cli/accelbyte_py_sdk_cli/platform/_get_item.py) |
 | /platform/admin/namespaces/{namespace}/items/byAppId | GET | getItemByAppId | [GetItemByAppId](../accelbyte_py_sdk/api/platform/operations/item/get_item_by_app_id.py) | [get_item_by_app_id](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-by-app-id](../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_by_app_id.py) |
 | /platform/admin/namespaces/{namespace}/items/bySku | GET | getItemBySku | [GetItemBySku](../accelbyte_py_sdk/api/platform/operations/item/get_item_by_sku.py) | [get_item_by_sku](../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-get-item-by-sku](../samples/cli/accelbyte_py_sdk_cli/platform/_get_item_by_sku.py) |
@@ -239,6 +240,7 @@
 ### Order
 | Endpoint | Method | ID | Class | Wrapper | Example |
 |---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/orders | POST | adminCreateUserOrder | [AdminCreateUserOrder](../accelbyte_py_sdk/api/platform/operations/order/admin_create_user_order.py) | [admin_create_user_order](../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-admin-create-user-order](../samples/cli/accelbyte_py_sdk_cli/platform/_admin_create_user_order.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/countOfItem | GET | countOfPurchasedItem | [CountOfPurchasedItem](../accelbyte_py_sdk/api/platform/operations/order/count_of_purchased_item.py) | [count_of_purchased_item](../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-count-of-purchased-item](../samples/cli/accelbyte_py_sdk_cli/platform/_count_of_purchased_item.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf | GET | downloadUserOrderReceipt | [DownloadUserOrderReceipt](../accelbyte_py_sdk/api/platform/operations/order/download_user_order_receipt.py) | [download_user_order_receipt](../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-download-user-order-receipt](../samples/cli/accelbyte_py_sdk_cli/platform/_download_user_order_receipt.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill | PUT | fulfillUserOrder | [FulfillUserOrder](../accelbyte_py_sdk/api/platform/operations/order/fulfill_user_order.py) | [fulfill_user_order](../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-fulfill-user-order](../samples/cli/accelbyte_py_sdk_cli/platform/_fulfill_user_order.py) |
@@ -420,20 +422,26 @@
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/debit | PUT | debitUserWallet | [DebitUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/debit_user_wallet.py) | [debit_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-debit-user-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_debit_user_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/disable | PUT | disableUserWallet | [DisableUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/disable_user_wallet.py) | [disable_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-disable-user-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_disable_user_wallet.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/enable | PUT | enableUserWallet | [EnableUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/enable_user_wallet.py) | [enable_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-enable-user-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_enable_user_wallet.py) |
+| /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config | GET | getPlatformWalletConfig | [GetPlatformWalletConfig](../accelbyte_py_sdk/api/platform/operations/wallet/get_platform_wallet_config.py) | [get_platform_wallet_config](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-get-platform-wallet-config](../samples/cli/accelbyte_py_sdk_cli/platform/_get_platform_wallet_config.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId} | GET | getUserWallet | [GetUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/get_user_wallet.py) | [get_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-get-user-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_wallet.py) |
 | /platform/admin/namespaces/{namespace}/wallets/{walletId} | GET | getWallet | [GetWallet](../accelbyte_py_sdk/api/platform/operations/wallet/get_wallet.py) | [get_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-get-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_get_wallet.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/{currencyCode}/transactions | GET | listUserCurrencyTransactions | [ListUserCurrencyTransactions](../accelbyte_py_sdk/api/platform/operations/wallet/list_user_currency_tran_bb67cf.py) | [list_user_currency_transactions](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-list-user-currency-transactions](../samples/cli/accelbyte_py_sdk_cli/platform/_list_user_currency_tran_bb67cf.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/transactions | GET | listUserWalletTransactions | [ListUserWalletTransactions](../accelbyte_py_sdk/api/platform/operations/wallet/list_user_wallet_transactions.py) | [list_user_wallet_transactions](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-list-user-wallet-transactions](../samples/cli/accelbyte_py_sdk_cli/platform/_list_user_wallet_transactions.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/payment | PUT | payWithUserWallet | [PayWithUserWallet](../accelbyte_py_sdk/api/platform/operations/wallet/pay_with_user_wallet.py) | [pay_with_user_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-pay-with-user-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_pay_with_user_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode} | GET | publicGetMyWallet | [PublicGetMyWallet](../accelbyte_py_sdk/api/platform/operations/wallet/public_get_my_wallet.py) | [public_get_my_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-public-get-my-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_my_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode} | GET | publicGetWallet | [PublicGetWallet](../accelbyte_py_sdk/api/platform/operations/wallet/public_get_wallet.py) | [public_get_wallet](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-public-get-wallet](../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_wallet.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/transactions | GET | publicListUserWalletTransactions | [PublicListUserWalletTransactions](../accelbyte_py_sdk/api/platform/operations/wallet/public_list_user_wallet_ed4de4.py) | [public_list_user_wallet_transactions](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-public-list-user-wallet-transactions](../samples/cli/accelbyte_py_sdk_cli/platform/_public_list_user_wallet_ed4de4.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/wallets/currencies/summary | GET | queryUserCurrencyWallets | [QueryUserCurrencyWallets](../accelbyte_py_sdk/api/platform/operations/wallet/query_user_currency_wallets.py) | [query_user_currency_wallets](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-query-user-currency-wallets](../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_currency_wallets.py) |
 | /platform/admin/namespaces/{namespace}/wallets | GET | queryWallets | [QueryWallets](../accelbyte_py_sdk/api/platform/operations/wallet/query_wallets.py) | [query_wallets](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-query-wallets](../samples/cli/accelbyte_py_sdk_cli/platform/_query_wallets.py) |
+| /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset | PUT | resetPlatformWalletConfig | [ResetPlatformWalletConfig](../accelbyte_py_sdk/api/platform/operations/wallet/reset_platform_wallet_config.py) | [reset_platform_wallet_config](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-reset-platform-wallet-config](../samples/cli/accelbyte_py_sdk_cli/platform/_reset_platform_wallet_config.py) |
+| /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config | PUT | updatePlatformWalletConfig | [UpdatePlatformWalletConfig](../accelbyte_py_sdk/api/platform/operations/wallet/update_platform_wallet_config.py) | [update_platform_wallet_config](../accelbyte_py_sdk/api/platform/wrappers/_wallet.py) | [accelbyte_py_sdk_cli platform-update-platform-wallet-config](../samples/cli/accelbyte_py_sdk_cli/platform/_update_platform_wallet_config.py) |
 
 
 ## Models
 | Model | Class |
 |---|---|
 | AdditionalData | [AdditionalData](../accelbyte_py_sdk/api/platform/models/additional_data.py) |
+| AdminOrderCreate | [AdminOrderCreate](../accelbyte_py_sdk/api/platform/models/admin_order_create.py) |
 | AdyenConfig | [AdyenConfig](../accelbyte_py_sdk/api/platform/models/adyen_config.py) |
 | AliPayConfig | [AliPayConfig](../accelbyte_py_sdk/api/platform/models/ali_pay_config.py) |
 | AppEntitlementInfo | [AppEntitlementInfo](../accelbyte_py_sdk/api/platform/models/app_entitlement_info.py) |
@@ -475,8 +483,11 @@
 | CurrencyInfo | [CurrencyInfo](../accelbyte_py_sdk/api/platform/models/currency_info.py) |
 | CurrencySummary | [CurrencySummary](../accelbyte_py_sdk/api/platform/models/currency_summary.py) |
 | CurrencyUpdate | [CurrencyUpdate](../accelbyte_py_sdk/api/platform/models/currency_update.py) |
+| CurrencyWallet | [CurrencyWallet](../accelbyte_py_sdk/api/platform/models/currency_wallet.py) |
 | Customization | [Customization](../accelbyte_py_sdk/api/platform/models/customization.py) |
 | DebitRequest | [DebitRequest](../accelbyte_py_sdk/api/platform/models/debit_request.py) |
+| DetailedWalletTransactionInfo | [DetailedWalletTransactionInfo](../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_info.py) |
+| DetailedWalletTransactionPagingSlicedResult | [DetailedWalletTransactionPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_paging_sliced_result.py) |
 | DLCItem | [DLCItem](../accelbyte_py_sdk/api/platform/models/dlc_item.py) |
 | DLCItemConfigInfo | [DLCItemConfigInfo](../accelbyte_py_sdk/api/platform/models/dlc_item_config_info.py) |
 | DLCItemConfigUpdate | [DLCItemConfigUpdate](../accelbyte_py_sdk/api/platform/models/dlc_item_config_update.py) |
@@ -598,6 +609,9 @@
 | PlatformRewardCurrency | [PlatformRewardCurrency](../accelbyte_py_sdk/api/platform/models/platform_reward_currency.py) |
 | PlatformRewardItem | [PlatformRewardItem](../accelbyte_py_sdk/api/platform/models/platform_reward_item.py) |
 | PlatformSubscribeRequest | [PlatformSubscribeRequest](../accelbyte_py_sdk/api/platform/models/platform_subscribe_request.py) |
+| PlatformWallet | [PlatformWallet](../accelbyte_py_sdk/api/platform/models/platform_wallet.py) |
+| PlatformWalletConfigInfo | [PlatformWalletConfigInfo](../accelbyte_py_sdk/api/platform/models/platform_wallet_config_info.py) |
+| PlatformWalletConfigUpdate | [PlatformWalletConfigUpdate](../accelbyte_py_sdk/api/platform/models/platform_wallet_config_update.py) |
 | PlayStationDLCSyncRequest | [PlayStationDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/play_station_dlc_sync_request.py) |
 | PlayStationIAPConfigInfo | [PlayStationIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/play_station_iap_config_info.py) |
 | PlayStationReconcileRequest | [PlayStationReconcileRequest](../accelbyte_py_sdk/api/platform/models/play_station_reconcile_request.py) |
@@ -651,9 +665,11 @@
 | TicketSaleDecrementRequest | [TicketSaleDecrementRequest](../accelbyte_py_sdk/api/platform/models/ticket_sale_decrement_request.py) |
 | TicketSaleIncrementRequest | [TicketSaleIncrementRequest](../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_request.py) |
 | TicketSaleIncrementResult | [TicketSaleIncrementResult](../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_result.py) |
+| Time-limited balance | [TimeLimitedBalance](../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
 | TimedOwnership | [TimedOwnership](../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
 | TradeNotification | [TradeNotification](../accelbyte_py_sdk/api/platform/models/trade_notification.py) |
 | Transaction | [Transaction](../accelbyte_py_sdk/api/platform/models/transaction.py) |
+| TransactionAmountDetails | [TransactionAmountDetails](../accelbyte_py_sdk/api/platform/models/transaction_amount_details.py) |
 | TwitchIAPConfigInfo | [TwitchIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/twitch_iap_config_info.py) |
 | TwitchIAPConfigRequest | [TwitchIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/twitch_iap_config_request.py) |
 | TwitchSyncRequest | [TwitchSyncRequest](../accelbyte_py_sdk/api/platform/models/twitch_sync_request.py) |

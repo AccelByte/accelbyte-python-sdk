@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,6 +23,7 @@ from .disable_item import DisableItem
 from .enable_item import EnableItem
 from .feature_item import FeatureItem
 from .get_app import GetApp
+from .get_bulk_item_id_by_skus import GetBulkItemIdBySkus
 from .get_item import GetItem
 from .get_item_by_app_id import GetItemByAppId
 from .get_item_by_sku import GetItemBySku

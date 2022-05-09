@@ -29,7 +29,7 @@ class PersonalChatHistoryResponse(WebSocketMessage):
     # region fields
 
     chat: str
-    code: str
+    code: int
     friend_id: str
     id_: str
 

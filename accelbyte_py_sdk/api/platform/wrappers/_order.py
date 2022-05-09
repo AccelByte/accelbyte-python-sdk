@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import AdminOrderCreate
 from ..models import ErrorEntity
 from ..models import OrderCreate
 from ..models import OrderGrantInfo
@@ -43,6 +44,7 @@ from ..models import PurchasedItemCount
 from ..models import TradeNotification
 from ..models import ValidationErrorEntity
 
+from ..operations.order import AdminCreateUserOrder
 from ..operations.order import CountOfPurchasedItem
 from ..operations.order import DownloadUserOrderReceipt
 from ..operations.order import FulfillUserOrder
@@ -65,10 +67,39 @@ from ..operations.order import QueryUserOrders
 from ..operations.order import QueryUserOrdersStatusEnum
 from ..operations.order import RefundOrder
 from ..operations.order import UpdateUserOrderStatus
+from ..models import AdminOrderCreatePlatformEnum
 from ..models import OrderHistoryInfoActionEnum
 from ..models import OrderInfoPaymentProviderEnum, OrderInfoStatusEnum
 from ..models import OrderUpdateStatusEnum
-from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
+from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStatusEnum
+
+
+@same_doc_as(AdminCreateUserOrder)
+def admin_create_user_order(user_id: str, body: Optional[AdminOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateUserOrder.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(AdminCreateUserOrder)
+async def admin_create_user_order_async(user_id: str, body: Optional[AdminOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateUserOrder.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(CountOfPurchasedItem)

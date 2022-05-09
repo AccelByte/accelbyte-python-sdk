@@ -95,6 +95,10 @@ from .wrappers import update_stat_async
 # user_statistic
 from .wrappers import bulk_create_user_stat_items
 from .wrappers import bulk_create_user_stat_items_async
+from .wrappers import bulk_fetch_or_default_stat_items
+from .wrappers import bulk_fetch_or_default_stat_items_async
+from .wrappers import bulk_fetch_or_default_stat_items_1
+from .wrappers import bulk_fetch_or_default_stat_items_1_async
 from .wrappers import bulk_fetch_stat_items
 from .wrappers import bulk_fetch_stat_items_async
 from .wrappers import bulk_fetch_stat_items_1
@@ -155,6 +159,10 @@ from .wrappers import public_inc_user_stat_item_value
 from .wrappers import public_inc_user_stat_item_value_async
 from .wrappers import public_query_user_stat_items
 from .wrappers import public_query_user_stat_items_async
+from .wrappers import public_query_user_stat_items_1
+from .wrappers import public_query_user_stat_items_1_async
+from .wrappers import public_query_user_stat_items_2
+from .wrappers import public_query_user_stat_items_2_async
 from .wrappers import reset_user_stat_item_value
 from .wrappers import reset_user_stat_item_value_async
 from .wrappers import reset_user_stat_item_value_1

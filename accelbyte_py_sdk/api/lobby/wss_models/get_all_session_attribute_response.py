@@ -29,7 +29,7 @@ class GetAllSessionAttributeResponse(WebSocketMessage):
     # region fields
 
     attributes: Dict[str, str]
-    code: str
+    code: int
     id_: str
 
     # endregion fields

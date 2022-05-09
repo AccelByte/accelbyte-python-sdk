@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.time_limited_balance import TimeLimitedBalance
+
 
 class StatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
@@ -39,6 +41,8 @@ class WalletInfo(Model):
 
     Properties:
         balance: (balance) REQUIRED int
+
+        balance_origin: (balanceOrigin) REQUIRED str
 
         created_at: (createdAt) REQUIRED str
 
@@ -55,11 +59,18 @@ class WalletInfo(Model):
         updated_at: (updatedAt) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        time_limited_balances: (timeLimitedBalances) OPTIONAL List[TimeLimitedBalance]
+
+        total_permanent_balance: (totalPermanentBalance) OPTIONAL int
+
+        total_time_limited_balance: (totalTimeLimitedBalance) OPTIONAL int
     """
 
     # region fields
 
     balance: int                                                                                   # REQUIRED
+    balance_origin: str                                                                            # REQUIRED
     created_at: str                                                                                # REQUIRED
     currency_code: str                                                                             # REQUIRED
     currency_symbol: str                                                                           # REQUIRED
@@ -68,6 +79,9 @@ class WalletInfo(Model):
     status: Union[str, StatusEnum]                                                                 # REQUIRED
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    time_limited_balances: List[TimeLimitedBalance]                                                # OPTIONAL
+    total_permanent_balance: int                                                                   # OPTIONAL
+    total_time_limited_balance: int                                                                # OPTIONAL
 
     # endregion fields
 
@@ -75,6 +89,10 @@ class WalletInfo(Model):
 
     def with_balance(self, value: int) -> WalletInfo:
         self.balance = value
+        return self
+
+    def with_balance_origin(self, value: str) -> WalletInfo:
+        self.balance_origin = value
         return self
 
     def with_created_at(self, value: str) -> WalletInfo:
@@ -109,6 +127,18 @@ class WalletInfo(Model):
         self.user_id = value
         return self
 
+    def with_time_limited_balances(self, value: List[TimeLimitedBalance]) -> WalletInfo:
+        self.time_limited_balances = value
+        return self
+
+    def with_total_permanent_balance(self, value: int) -> WalletInfo:
+        self.total_permanent_balance = value
+        return self
+
+    def with_total_time_limited_balance(self, value: int) -> WalletInfo:
+        self.total_time_limited_balance = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -119,6 +149,10 @@ class WalletInfo(Model):
             result["balance"] = int(self.balance)
         elif include_empty:
             result["balance"] = 0
+        if hasattr(self, "balance_origin"):
+            result["balanceOrigin"] = str(self.balance_origin)
+        elif include_empty:
+            result["balanceOrigin"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -151,6 +185,18 @@ class WalletInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "time_limited_balances"):
+            result["timeLimitedBalances"] = [i0.to_dict(include_empty=include_empty) for i0 in self.time_limited_balances]
+        elif include_empty:
+            result["timeLimitedBalances"] = []
+        if hasattr(self, "total_permanent_balance"):
+            result["totalPermanentBalance"] = int(self.total_permanent_balance)
+        elif include_empty:
+            result["totalPermanentBalance"] = 0
+        if hasattr(self, "total_time_limited_balance"):
+            result["totalTimeLimitedBalance"] = int(self.total_time_limited_balance)
+        elif include_empty:
+            result["totalTimeLimitedBalance"] = 0
         return result
 
     # endregion to methods
@@ -161,6 +207,7 @@ class WalletInfo(Model):
     def create(
         cls,
         balance: int,
+        balance_origin: str,
         created_at: str,
         currency_code: str,
         currency_symbol: str,
@@ -169,9 +216,13 @@ class WalletInfo(Model):
         status: Union[str, StatusEnum],
         updated_at: str,
         user_id: str,
+        time_limited_balances: Optional[List[TimeLimitedBalance]] = None,
+        total_permanent_balance: Optional[int] = None,
+        total_time_limited_balance: Optional[int] = None,
     ) -> WalletInfo:
         instance = cls()
         instance.balance = balance
+        instance.balance_origin = balance_origin
         instance.created_at = created_at
         instance.currency_code = currency_code
         instance.currency_symbol = currency_symbol
@@ -180,6 +231,12 @@ class WalletInfo(Model):
         instance.status = status
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if time_limited_balances is not None:
+            instance.time_limited_balances = time_limited_balances
+        if total_permanent_balance is not None:
+            instance.total_permanent_balance = total_permanent_balance
+        if total_time_limited_balance is not None:
+            instance.total_time_limited_balance = total_time_limited_balance
         return instance
 
     @classmethod
@@ -191,6 +248,10 @@ class WalletInfo(Model):
             instance.balance = int(dict_["balance"])
         elif include_empty:
             instance.balance = 0
+        if "balanceOrigin" in dict_ and dict_["balanceOrigin"] is not None:
+            instance.balance_origin = str(dict_["balanceOrigin"])
+        elif include_empty:
+            instance.balance_origin = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -223,6 +284,18 @@ class WalletInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "timeLimitedBalances" in dict_ and dict_["timeLimitedBalances"] is not None:
+            instance.time_limited_balances = [TimeLimitedBalance.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["timeLimitedBalances"]]
+        elif include_empty:
+            instance.time_limited_balances = []
+        if "totalPermanentBalance" in dict_ and dict_["totalPermanentBalance"] is not None:
+            instance.total_permanent_balance = int(dict_["totalPermanentBalance"])
+        elif include_empty:
+            instance.total_permanent_balance = 0
+        if "totalTimeLimitedBalance" in dict_ and dict_["totalTimeLimitedBalance"] is not None:
+            instance.total_time_limited_balance = int(dict_["totalTimeLimitedBalance"])
+        elif include_empty:
+            instance.total_time_limited_balance = 0
         return instance
 
     @classmethod
@@ -249,6 +322,7 @@ class WalletInfo(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "balance": "balance",
+            "balanceOrigin": "balance_origin",
             "createdAt": "created_at",
             "currencyCode": "currency_code",
             "currencySymbol": "currency_symbol",
@@ -257,12 +331,16 @@ class WalletInfo(Model):
             "status": "status",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "timeLimitedBalances": "time_limited_balances",
+            "totalPermanentBalance": "total_permanent_balance",
+            "totalTimeLimitedBalance": "total_time_limited_balance",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "balance": True,
+            "balanceOrigin": True,
             "createdAt": True,
             "currencyCode": True,
             "currencySymbol": True,
@@ -271,6 +349,9 @@ class WalletInfo(Model):
             "status": True,
             "updatedAt": True,
             "userId": True,
+            "timeLimitedBalances": False,
+            "totalPermanentBalance": False,
+            "totalTimeLimitedBalance": False,
         }
 
     @staticmethod

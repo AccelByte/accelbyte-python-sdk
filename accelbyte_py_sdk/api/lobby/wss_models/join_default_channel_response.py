@@ -29,7 +29,7 @@ class JoinDefaultChannelResponse(WebSocketMessage):
     # region fields
 
     channel_slug: str
-    code: str
+    code: int
     id_: str
 
     # endregion fields

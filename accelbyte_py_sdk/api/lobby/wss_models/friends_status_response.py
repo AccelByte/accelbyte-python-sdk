@@ -30,7 +30,7 @@ class FriendsStatusResponse(WebSocketMessage):
 
     activity: List[str]
     availability: List[int]
-    code: str
+    code: int
     friend_ids: List[str]
     id_: str
     last_seen_at: List[str]

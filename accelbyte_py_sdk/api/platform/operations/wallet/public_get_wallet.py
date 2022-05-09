@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import WalletInfo
+from ...models import PlatformWallet
 
 
 class PublicGetWallet(Operation):
@@ -64,7 +64,7 @@ class PublicGetWallet(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - WalletInfo (successful operation)
+        200: OK - PlatformWallet (successful operation)
     """
 
     # region fields
@@ -176,10 +176,10 @@ class PublicGetWallet(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, WalletInfo], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PlatformWallet], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - WalletInfo (successful operation)
+        200: OK - PlatformWallet (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -193,7 +193,7 @@ class PublicGetWallet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return WalletInfo.create_from_dict(content), None
+            return PlatformWallet.create_from_dict(content), None
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

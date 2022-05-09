@@ -28,7 +28,7 @@ class PartyCreateResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     invitation_token: str
     invitees: str

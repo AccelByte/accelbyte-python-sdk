@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -337,6 +337,8 @@ from .wrappers import feature_item
 from .wrappers import feature_item_async
 from .wrappers import get_app
 from .wrappers import get_app_async
+from .wrappers import get_bulk_item_id_by_skus
+from .wrappers import get_bulk_item_id_by_skus_async
 from .wrappers import get_item
 from .wrappers import get_item_async
 from .wrappers import get_item_by_app_id
@@ -401,6 +403,8 @@ from .wrappers import upload_keys
 from .wrappers import upload_keys_async
 
 # order
+from .wrappers import admin_create_user_order
+from .wrappers import admin_create_user_order_async
 from .wrappers import count_of_purchased_item
 from .wrappers import count_of_purchased_item_async
 from .wrappers import download_user_order_receipt
@@ -691,10 +695,14 @@ from .wrappers import disable_user_wallet
 from .wrappers import disable_user_wallet_async
 from .wrappers import enable_user_wallet
 from .wrappers import enable_user_wallet_async
+from .wrappers import get_platform_wallet_config
+from .wrappers import get_platform_wallet_config_async
 from .wrappers import get_user_wallet
 from .wrappers import get_user_wallet_async
 from .wrappers import get_wallet
 from .wrappers import get_wallet_async
+from .wrappers import list_user_currency_transactions
+from .wrappers import list_user_currency_transactions_async
 from .wrappers import list_user_wallet_transactions
 from .wrappers import list_user_wallet_transactions_async
 from .wrappers import pay_with_user_wallet
@@ -705,5 +713,11 @@ from .wrappers import public_get_wallet
 from .wrappers import public_get_wallet_async
 from .wrappers import public_list_user_wallet_transactions
 from .wrappers import public_list_user_wallet_transactions_async
+from .wrappers import query_user_currency_wallets
+from .wrappers import query_user_currency_wallets_async
 from .wrappers import query_wallets
 from .wrappers import query_wallets_async
+from .wrappers import reset_platform_wallet_config
+from .wrappers import reset_platform_wallet_config_async
+from .wrappers import update_platform_wallet_config
+from .wrappers import update_platform_wallet_config_async

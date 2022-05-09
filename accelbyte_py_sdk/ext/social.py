@@ -25,6 +25,7 @@
 from .utils import randomize
 
 from ..api.social.models import ADTOObjectForResettingUserStatItems
+from ..api.social.models import ADTOObjectForUserStatItemValue
 from ..api.social.models import Attribute
 from ..api.social.models import BulkStatItemCreate
 from ..api.social.models import BulkStatItemInc
@@ -67,6 +68,14 @@ def create_a_dto_object_for_resetting_user_stat_items_example() -> ADTOObjectFor
     instance = ADTOObjectForResettingUserStatItems()
     instance.stat_code = randomize()
     instance.additional_data = {randomize(): randomize()}
+    return instance
+
+
+def create_a_dto_object_for_user_stat_item_value_example() -> ADTOObjectForUserStatItemValue:
+    instance = ADTOObjectForUserStatItemValue()
+    instance.profile_id = randomize()
+    instance.stat_code = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

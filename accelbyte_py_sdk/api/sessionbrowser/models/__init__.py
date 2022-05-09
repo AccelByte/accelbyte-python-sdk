@@ -38,5 +38,6 @@ from .models_session_query_response import ModelsSessionQueryResponse
 from .models_session_response import ModelsSessionResponse
 from .models_status_history import ModelsStatusHistory
 from .models_update_session_request import ModelsUpdateSessionRequest
+from .models_update_settings_request import ModelsUpdateSettingsRequest
 from .response_error import ResponseError
 from .restapi_error_response_v2 import RestapiErrorResponseV2

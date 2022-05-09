@@ -69,6 +69,30 @@ class AdminUpdateClientV3(Operation):
 
       * deletable : The flag to identify whether client is deletable (optional). e.g. true
 
+
+      * clientPlatform : available client platform (optional). default value: "".
+
+
+        * Playstation
+
+
+        * Xbox
+
+
+        * Steam
+
+
+        * Epic
+
+
+        * IOS
+
+
+        * GooglePlay
+
+
+        * Nintendo
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [UPDATE]
 

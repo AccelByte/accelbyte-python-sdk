@@ -28,7 +28,7 @@ class ListIncomingFriendsResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     user_ids: List[str]
 

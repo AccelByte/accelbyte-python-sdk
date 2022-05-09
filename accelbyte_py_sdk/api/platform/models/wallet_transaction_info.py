@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 from ....core import StrEnum
+
+from ..models.transaction_amount_details import TransactionAmountDetails
 
 
 class WalletActionEnum(StrEnum):
@@ -55,11 +57,11 @@ class WalletTransactionInfo(Model):
 
         wallet_action: (walletAction) REQUIRED Union[str, WalletActionEnum]
 
-        wallet_id: (walletId) REQUIRED str
-
         balance_source: (balanceSource) OPTIONAL str
 
         reason: (reason) OPTIONAL str
+
+        transaction_amount_details: (transactionAmountDetails) OPTIONAL List[TransactionAmountDetails]
     """
 
     # region fields
@@ -72,9 +74,9 @@ class WalletTransactionInfo(Model):
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     wallet_action: Union[str, WalletActionEnum]                                                    # REQUIRED
-    wallet_id: str                                                                                 # REQUIRED
     balance_source: str                                                                            # OPTIONAL
     reason: str                                                                                    # OPTIONAL
+    transaction_amount_details: List[TransactionAmountDetails]                                     # OPTIONAL
 
     # endregion fields
 
@@ -112,16 +114,16 @@ class WalletTransactionInfo(Model):
         self.wallet_action = value
         return self
 
-    def with_wallet_id(self, value: str) -> WalletTransactionInfo:
-        self.wallet_id = value
-        return self
-
     def with_balance_source(self, value: str) -> WalletTransactionInfo:
         self.balance_source = value
         return self
 
     def with_reason(self, value: str) -> WalletTransactionInfo:
         self.reason = value
+        return self
+
+    def with_transaction_amount_details(self, value: List[TransactionAmountDetails]) -> WalletTransactionInfo:
+        self.transaction_amount_details = value
         return self
 
     # endregion with_x methods
@@ -162,10 +164,6 @@ class WalletTransactionInfo(Model):
             result["walletAction"] = str(self.wallet_action)
         elif include_empty:
             result["walletAction"] = Union[str, WalletActionEnum]()
-        if hasattr(self, "wallet_id"):
-            result["walletId"] = str(self.wallet_id)
-        elif include_empty:
-            result["walletId"] = ""
         if hasattr(self, "balance_source"):
             result["balanceSource"] = str(self.balance_source)
         elif include_empty:
@@ -174,6 +172,10 @@ class WalletTransactionInfo(Model):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = ""
+        if hasattr(self, "transaction_amount_details"):
+            result["transactionAmountDetails"] = [i0.to_dict(include_empty=include_empty) for i0 in self.transaction_amount_details]
+        elif include_empty:
+            result["transactionAmountDetails"] = []
         return result
 
     # endregion to methods
@@ -191,9 +193,9 @@ class WalletTransactionInfo(Model):
         updated_at: str,
         user_id: str,
         wallet_action: Union[str, WalletActionEnum],
-        wallet_id: str,
         balance_source: Optional[str] = None,
         reason: Optional[str] = None,
+        transaction_amount_details: Optional[List[TransactionAmountDetails]] = None,
     ) -> WalletTransactionInfo:
         instance = cls()
         instance.amount = amount
@@ -204,11 +206,12 @@ class WalletTransactionInfo(Model):
         instance.updated_at = updated_at
         instance.user_id = user_id
         instance.wallet_action = wallet_action
-        instance.wallet_id = wallet_id
         if balance_source is not None:
             instance.balance_source = balance_source
         if reason is not None:
             instance.reason = reason
+        if transaction_amount_details is not None:
+            instance.transaction_amount_details = transaction_amount_details
         return instance
 
     @classmethod
@@ -248,10 +251,6 @@ class WalletTransactionInfo(Model):
             instance.wallet_action = str(dict_["walletAction"])
         elif include_empty:
             instance.wallet_action = Union[str, WalletActionEnum]()
-        if "walletId" in dict_ and dict_["walletId"] is not None:
-            instance.wallet_id = str(dict_["walletId"])
-        elif include_empty:
-            instance.wallet_id = ""
         if "balanceSource" in dict_ and dict_["balanceSource"] is not None:
             instance.balance_source = str(dict_["balanceSource"])
         elif include_empty:
@@ -260,6 +259,10 @@ class WalletTransactionInfo(Model):
             instance.reason = str(dict_["reason"])
         elif include_empty:
             instance.reason = ""
+        if "transactionAmountDetails" in dict_ and dict_["transactionAmountDetails"] is not None:
+            instance.transaction_amount_details = [TransactionAmountDetails.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["transactionAmountDetails"]]
+        elif include_empty:
+            instance.transaction_amount_details = []
         return instance
 
     @classmethod
@@ -293,9 +296,9 @@ class WalletTransactionInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "walletAction": "wallet_action",
-            "walletId": "wallet_id",
             "balanceSource": "balance_source",
             "reason": "reason",
+            "transactionAmountDetails": "transaction_amount_details",
         }
 
     @staticmethod
@@ -309,9 +312,9 @@ class WalletTransactionInfo(Model):
             "updatedAt": True,
             "userId": True,
             "walletAction": True,
-            "walletId": True,
             "balanceSource": False,
             "reason": False,
+            "transactionAmountDetails": False,
         }
 
     @staticmethod

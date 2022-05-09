@@ -48,6 +48,7 @@ from ..api.sessionbrowser.models import ModelsSessionQueryResponse
 from ..api.sessionbrowser.models import ModelsSessionResponse
 from ..api.sessionbrowser.models import ModelsStatusHistory
 from ..api.sessionbrowser.models import ModelsUpdateSessionRequest
+from ..api.sessionbrowser.models import ModelsUpdateSettingsRequest
 from ..api.sessionbrowser.models import ResponseError
 from ..api.sessionbrowser.models import RestapiErrorResponseV2
 
@@ -307,6 +308,11 @@ def create_models_update_session_request_example() -> ModelsUpdateSessionRequest
     instance = ModelsUpdateSessionRequest()
     instance.game_current_player = randomize("int", min_val=1, max_val=1000)
     instance.game_max_player = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_update_settings_request_example() -> ModelsUpdateSettingsRequest:
+    instance = ModelsUpdateSettingsRequest()
     return instance
 
 

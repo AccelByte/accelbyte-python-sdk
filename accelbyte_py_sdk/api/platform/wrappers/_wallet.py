@@ -30,39 +30,58 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import CreditRequest
+from ..models import CurrencyWallet
 from ..models import DebitRequest
+from ..models import DetailedWalletTransactionPagingSlicedResult
 from ..models import ErrorEntity
 from ..models import PaymentRequest
+from ..models import PlatformWallet
+from ..models import PlatformWalletConfigInfo
+from ..models import PlatformWalletConfigUpdate
 from ..models import ValidationErrorEntity
 from ..models import WalletInfo
 from ..models import WalletPagingSlicedResult
 from ..models import WalletTransactionPagingSlicedResult
 
 from ..operations.wallet import CheckWallet
+from ..operations.wallet import CheckWalletOriginEnum
 from ..operations.wallet import CreditUserWallet
 from ..operations.wallet import DebitUserWallet
 from ..operations.wallet import DisableUserWallet
 from ..operations.wallet import EnableUserWallet
+from ..operations.wallet import GetPlatformWalletConfig
+from ..operations.wallet import GetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import GetUserWallet
 from ..operations.wallet import GetWallet
+from ..operations.wallet import ListUserCurrencyTransactions
 from ..operations.wallet import ListUserWalletTransactions
 from ..operations.wallet import PayWithUserWallet
 from ..operations.wallet import PublicGetMyWallet
 from ..operations.wallet import PublicGetWallet
 from ..operations.wallet import PublicListUserWalletTransactions
+from ..operations.wallet import QueryUserCurrencyWallets
 from ..operations.wallet import QueryWallets
-from ..models import CreditRequestSourceEnum
+from ..operations.wallet import QueryWalletsOriginEnum
+from ..operations.wallet import ResetPlatformWalletConfig
+from ..operations.wallet import ResetPlatformWalletConfigPlatformEnum
+from ..operations.wallet import UpdatePlatformWalletConfig
+from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
+from ..models import CreditRequestSourceEnum, CreditRequestOriginEnum
+from ..models import PaymentRequestWalletPlatformEnum
+from ..models import PlatformWalletWalletStatusEnum
+from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
 from ..models import WalletInfoStatusEnum
 
 
 @same_doc_as(CheckWallet)
-def check_wallet(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def check_wallet(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CheckWallet.create(
         currency_code=currency_code,
+        origin=origin,
         user_id=user_id,
         namespace=namespace,
     )
@@ -70,13 +89,14 @@ def check_wallet(currency_code: str, user_id: str, namespace: Optional[str] = No
 
 
 @same_doc_as(CheckWallet)
-async def check_wallet_async(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def check_wallet_async(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = CheckWallet.create(
         currency_code=currency_code,
+        origin=origin,
         user_id=user_id,
         namespace=namespace,
     )
@@ -199,6 +219,32 @@ async def enable_user_wallet_async(user_id: str, wallet_id: str, namespace: Opti
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(GetPlatformWalletConfig)
+def get_platform_wallet_config(platform: Union[str, GetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlatformWalletConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetPlatformWalletConfig)
+async def get_platform_wallet_config_async(platform: Union[str, GetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlatformWalletConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(GetUserWallet)
 def get_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -248,6 +294,38 @@ async def get_wallet_async(wallet_id: str, namespace: Optional[str] = None, x_ad
             return None, error
     request = GetWallet.create(
         wallet_id=wallet_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListUserCurrencyTransactions)
+def list_user_currency_transactions(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListUserCurrencyTransactions.create(
+        currency_code=currency_code,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ListUserCurrencyTransactions)
+async def list_user_currency_transactions_async(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListUserCurrencyTransactions.create(
+        currency_code=currency_code,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -401,8 +479,34 @@ async def public_list_user_wallet_transactions_async(currency_code: str, user_id
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@same_doc_as(QueryUserCurrencyWallets)
+def query_user_currency_wallets(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserCurrencyWallets.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(QueryUserCurrencyWallets)
+async def query_user_currency_wallets_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserCurrencyWallets.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
 @same_doc_as(QueryWallets)
-def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,6 +515,7 @@ def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = No
         currency_code=currency_code,
         limit=limit,
         offset=offset,
+        origin=origin,
         user_id=user_id,
         namespace=namespace,
     )
@@ -418,7 +523,7 @@ def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = No
 
 
 @same_doc_as(QueryWallets)
-async def query_wallets_async(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_wallets_async(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -427,7 +532,62 @@ async def query_wallets_async(currency_code: Optional[str] = None, limit: Option
         currency_code=currency_code,
         limit=limit,
         offset=offset,
+        origin=origin,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ResetPlatformWalletConfig)
+def reset_platform_wallet_config(platform: Union[str, ResetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ResetPlatformWalletConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(ResetPlatformWalletConfig)
+async def reset_platform_wallet_config_async(platform: Union[str, ResetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ResetPlatformWalletConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdatePlatformWalletConfig)
+def update_platform_wallet_config(platform: Union[str, UpdatePlatformWalletConfigPlatformEnum], body: Optional[PlatformWalletConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePlatformWalletConfig.create(
+        platform=platform,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdatePlatformWalletConfig)
+async def update_platform_wallet_config_async(platform: Union[str, UpdatePlatformWalletConfigPlatformEnum], body: Optional[PlatformWalletConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePlatformWalletConfig.create(
+        platform=platform,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

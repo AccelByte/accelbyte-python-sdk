@@ -69,7 +69,7 @@ class PublicSearchContent(Operation):
 
         subtype: (subtype) OPTIONAL str in query
 
-        tags: (tags) OPTIONAL str in query
+        tags: (tags) OPTIONAL List[str] in query
 
         type_: (type) OPTIONAL str in query
 
@@ -103,7 +103,7 @@ class PublicSearchContent(Operation):
     orderby: str                                                                                   # OPTIONAL in [query]
     sortby: str                                                                                    # OPTIONAL in [query]
     subtype: str                                                                                   # OPTIONAL in [query]
-    tags: str                                                                                      # OPTIONAL in [query]
+    tags: List[str]                                                                                # OPTIONAL in [query]
     type_: str                                                                                     # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
@@ -225,7 +225,7 @@ class PublicSearchContent(Operation):
         self.subtype = value
         return self
 
-    def with_tags(self, value: str) -> PublicSearchContent:
+    def with_tags(self, value: List[str]) -> PublicSearchContent:
         self.tags = value
         return self
 
@@ -280,9 +280,9 @@ class PublicSearchContent(Operation):
         elif include_empty:
             result["subtype"] = ""
         if hasattr(self, "tags") and self.tags:
-            result["tags"] = str(self.tags)
+            result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
-            result["tags"] = ""
+            result["tags"] = []
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
@@ -347,7 +347,7 @@ class PublicSearchContent(Operation):
         orderby: Optional[str] = None,
         sortby: Optional[str] = None,
         subtype: Optional[str] = None,
-        tags: Optional[str] = None,
+        tags: Optional[List[str]] = None,
         type_: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> PublicSearchContent:
@@ -417,9 +417,9 @@ class PublicSearchContent(Operation):
         elif include_empty:
             instance.subtype = ""
         if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = str(dict_["tags"])
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
-            instance.tags = ""
+            instance.tags = []
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -462,6 +462,12 @@ class PublicSearchContent(Operation):
             "tags": False,
             "type": False,
             "userId": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "csv",                                                                         # in query
         }
 
     # endregion static methods

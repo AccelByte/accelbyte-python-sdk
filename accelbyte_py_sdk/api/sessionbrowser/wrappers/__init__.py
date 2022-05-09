@@ -44,3 +44,5 @@ from ._session import remove_player_from_session
 from ._session import remove_player_from_session_async
 from ._session import update_session
 from ._session import update_session_async
+from ._session import update_settings
+from ._session import update_settings_async

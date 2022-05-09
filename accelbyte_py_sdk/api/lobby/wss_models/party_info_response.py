@@ -28,7 +28,7 @@ class PartyInfoResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     custom_attributes: Dict[str, Any]
     id_: str
     invitation_token: str

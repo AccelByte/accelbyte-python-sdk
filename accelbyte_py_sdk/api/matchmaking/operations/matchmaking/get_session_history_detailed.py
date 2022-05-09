@@ -43,6 +43,8 @@ class GetSessionHistoryDetailed(Operation):
 
     Get session history detailed.
 
+    if party_id value empty/null, field will not show in response body.
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
 

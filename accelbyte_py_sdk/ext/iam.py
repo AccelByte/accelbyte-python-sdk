@@ -746,6 +746,7 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.client_id = randomize("uid")
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
+    instance.client_platform = randomize()
     instance.namespace = randomize("slug")
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
@@ -780,6 +781,7 @@ def create_clientmodel_client_update_secret_request_example() -> ClientmodelClie
 
 def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUpdateV3Request:
     instance = ClientmodelClientUpdateV3Request()
+    instance.client_platform = randomize()
     instance.audiences = [randomize()]
     instance.base_uri = randomize()
     instance.client_name = randomize()
@@ -797,6 +799,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.client_id = randomize("uid")
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
+    instance.client_platform = randomize()
     instance.created_at = randomize("date")
     instance.modified_at = randomize("date")
     instance.namespace = randomize("slug")

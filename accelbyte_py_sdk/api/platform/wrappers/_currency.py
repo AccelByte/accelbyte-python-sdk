@@ -42,7 +42,9 @@ from ..operations.currency import DeleteCurrency
 from ..operations.currency import GetCurrencyConfig
 from ..operations.currency import GetCurrencySummary
 from ..operations.currency import ListCurrencies
+from ..operations.currency import ListCurrenciesCurrencyTypeEnum
 from ..operations.currency import PublicListCurrencies
+from ..operations.currency import PublicListCurrenciesCurrencyTypeEnum
 from ..operations.currency import UpdateCurrency
 from ..models import CurrencyCreateCurrencyTypeEnum
 from ..models import CurrencyInfoCurrencyTypeEnum
@@ -154,48 +156,52 @@ async def get_currency_summary_async(currency_code: str, namespace: Optional[str
 
 
 @same_doc_as(ListCurrencies)
-def list_currencies(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_currencies(currency_type: Optional[Union[str, ListCurrenciesCurrencyTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListCurrencies.create(
+        currency_type=currency_type,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(ListCurrencies)
-async def list_currencies_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_currencies_async(currency_type: Optional[Union[str, ListCurrenciesCurrencyTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = ListCurrencies.create(
+        currency_type=currency_type,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListCurrencies)
-def public_list_currencies(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_list_currencies(currency_type: Optional[Union[str, PublicListCurrenciesCurrencyTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicListCurrencies.create(
+        currency_type=currency_type,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers)
 
 
 @same_doc_as(PublicListCurrencies)
-async def public_list_currencies_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_list_currencies_async(currency_type: Optional[Union[str, PublicListCurrenciesCurrencyTypeEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicListCurrencies.create(
+        currency_type=currency_type,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)

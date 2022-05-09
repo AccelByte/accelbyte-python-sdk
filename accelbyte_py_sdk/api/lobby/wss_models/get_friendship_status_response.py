@@ -28,7 +28,7 @@ class GetFriendshipStatusResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     friendship_status: str
     id_: str
 

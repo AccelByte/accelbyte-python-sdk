@@ -15,6 +15,7 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .a_dto_object_for_resetting_user_stat_items import ADTOObjectForResettingUserStatItems
+from .a_dto_object_for_user_stat_item_value import ADTOObjectForUserStatItemValue
 from .attribute import Attribute
 from .bulk_stat_item_create import BulkStatItemCreate
 from .bulk_stat_item_inc import BulkStatItemInc

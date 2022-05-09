@@ -133,6 +133,7 @@ def create_models_server_example() -> ModelsServer:
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
+    instance.job_id = randomize()
     instance.last_update = randomize("date")
     instance.match_id = randomize()
     instance.mem_limit = randomize("int", min_val=1, max_val=1000)

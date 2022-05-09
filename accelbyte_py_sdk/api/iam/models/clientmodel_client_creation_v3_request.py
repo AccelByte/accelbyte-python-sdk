@@ -44,6 +44,8 @@ class ClientmodelClientCreationV3Request(Model):
 
         client_permissions: (clientPermissions) REQUIRED List[AccountcommonPermissionV3]
 
+        client_platform: (clientPlatform) REQUIRED str
+
         namespace: (namespace) REQUIRED str
 
         oauth_client_type: (oauthClientType) REQUIRED str
@@ -62,6 +64,7 @@ class ClientmodelClientCreationV3Request(Model):
     client_id: str                                                                                 # REQUIRED
     client_name: str                                                                               # REQUIRED
     client_permissions: List[AccountcommonPermissionV3]                                            # REQUIRED
+    client_platform: str                                                                           # REQUIRED
     namespace: str                                                                                 # REQUIRED
     oauth_client_type: str                                                                         # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
@@ -90,6 +93,10 @@ class ClientmodelClientCreationV3Request(Model):
 
     def with_client_permissions(self, value: List[AccountcommonPermissionV3]) -> ClientmodelClientCreationV3Request:
         self.client_permissions = value
+        return self
+
+    def with_client_platform(self, value: str) -> ClientmodelClientCreationV3Request:
+        self.client_platform = value
         return self
 
     def with_namespace(self, value: str) -> ClientmodelClientCreationV3Request:
@@ -138,6 +145,10 @@ class ClientmodelClientCreationV3Request(Model):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
+        if hasattr(self, "client_platform"):
+            result["clientPlatform"] = str(self.client_platform)
+        elif include_empty:
+            result["clientPlatform"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -172,6 +183,7 @@ class ClientmodelClientCreationV3Request(Model):
         client_id: str,
         client_name: str,
         client_permissions: List[AccountcommonPermissionV3],
+        client_platform: str,
         namespace: str,
         oauth_client_type: str,
         redirect_uri: str,
@@ -184,6 +196,7 @@ class ClientmodelClientCreationV3Request(Model):
         instance.client_id = client_id
         instance.client_name = client_name
         instance.client_permissions = client_permissions
+        instance.client_platform = client_platform
         instance.namespace = namespace
         instance.oauth_client_type = oauth_client_type
         instance.redirect_uri = redirect_uri
@@ -217,6 +230,10 @@ class ClientmodelClientCreationV3Request(Model):
             instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
             instance.client_permissions = []
+        if "clientPlatform" in dict_ and dict_["clientPlatform"] is not None:
+            instance.client_platform = str(dict_["clientPlatform"])
+        elif include_empty:
+            instance.client_platform = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -267,6 +284,7 @@ class ClientmodelClientCreationV3Request(Model):
             "clientId": "client_id",
             "clientName": "client_name",
             "clientPermissions": "client_permissions",
+            "clientPlatform": "client_platform",
             "namespace": "namespace",
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
@@ -282,6 +300,7 @@ class ClientmodelClientCreationV3Request(Model):
             "clientId": True,
             "clientName": True,
             "clientPermissions": True,
+            "clientPlatform": True,
             "namespace": True,
             "oauthClientType": True,
             "redirectUri": True,

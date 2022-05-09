@@ -42,6 +42,7 @@ from ..models import ModelsSessionByUserIDsResponse
 from ..models import ModelsSessionQueryResponse
 from ..models import ModelsSessionResponse
 from ..models import ModelsUpdateSessionRequest
+from ..models import ModelsUpdateSettingsRequest
 from ..models import ResponseError
 from ..models import RestapiErrorResponseV2
 
@@ -60,6 +61,7 @@ from ..operations.session import JoinSession
 from ..operations.session import QuerySession
 from ..operations.session import RemovePlayerFromSession
 from ..operations.session import UpdateSession
+from ..operations.session import UpdateSettings
 
 
 @same_doc_as(AddPlayerToSession)
@@ -477,6 +479,34 @@ async def update_session_async(body: ModelsUpdateSessionRequest, session_id: str
         if error:
             return None, error
     request = UpdateSession.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateSettings)
+def update_settings(body: ModelsUpdateSettingsRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateSettings.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(UpdateSettings)
+async def update_settings_async(body: ModelsUpdateSettingsRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateSettings.create(
         body=body,
         session_id=session_id,
         namespace=namespace,

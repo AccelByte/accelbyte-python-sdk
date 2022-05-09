@@ -25,6 +25,7 @@
 | /sessionbrowser/namespaces/{namespace}/gamesession | GET | QuerySession | [QuerySession](../accelbyte_py_sdk/api/sessionbrowser/operations/session/query_session.py) | [query_session](../accelbyte_py_sdk/api/sessionbrowser/wrappers/_session.py) | [accelbyte_py_sdk_cli sessionbrowser-query-session](../samples/cli/accelbyte_py_sdk_cli/sessionbrowser/_query_session.py) |
 | /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player/{userID} | DELETE | RemovePlayerFromSession | [RemovePlayerFromSession](../accelbyte_py_sdk/api/sessionbrowser/operations/session/remove_player_from_session.py) | [remove_player_from_session](../accelbyte_py_sdk/api/sessionbrowser/wrappers/_session.py) | [accelbyte_py_sdk_cli sessionbrowser-remove-player-from-session](../samples/cli/accelbyte_py_sdk_cli/sessionbrowser/_remove_player_from_session.py) |
 | /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID} | PUT | UpdateSession | [UpdateSession](../accelbyte_py_sdk/api/sessionbrowser/operations/session/update_session.py) | [update_session](../accelbyte_py_sdk/api/sessionbrowser/wrappers/_session.py) | [accelbyte_py_sdk_cli sessionbrowser-update-session](../samples/cli/accelbyte_py_sdk_cli/sessionbrowser/_update_session.py) |
+| /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/settings | PUT | UpdateSettings | [UpdateSettings](../accelbyte_py_sdk/api/sessionbrowser/operations/session/update_settings.py) | [update_settings](../accelbyte_py_sdk/api/sessionbrowser/wrappers/_session.py) | [accelbyte_py_sdk_cli sessionbrowser-update-settings](../samples/cli/accelbyte_py_sdk_cli/sessionbrowser/_update_settings.py) |
 
 
 ## Models
@@ -54,5 +55,6 @@
 | models.SessionResponse | [ModelsSessionResponse](../accelbyte_py_sdk/api/sessionbrowser/models/models_session_response.py) |
 | models.StatusHistory | [ModelsStatusHistory](../accelbyte_py_sdk/api/sessionbrowser/models/models_status_history.py) |
 | models.UpdateSessionRequest | [ModelsUpdateSessionRequest](../accelbyte_py_sdk/api/sessionbrowser/models/models_update_session_request.py) |
+| models.UpdateSettingsRequest | [ModelsUpdateSettingsRequest](../accelbyte_py_sdk/api/sessionbrowser/models/models_update_settings_request.py) |
 | response.Error | [ResponseError](../accelbyte_py_sdk/api/sessionbrowser/models/response_error.py) |
 | restapi.ErrorResponseV2 | [RestapiErrorResponseV2](../accelbyte_py_sdk/api/sessionbrowser/models/restapi_error_response_v2.py) |

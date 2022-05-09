@@ -44,6 +44,8 @@ class ClientmodelClientV3Response(Model):
 
         client_permissions: (clientPermissions) REQUIRED List[AccountcommonPermissionV3]
 
+        client_platform: (clientPlatform) REQUIRED str
+
         created_at: (createdAt) REQUIRED str
 
         modified_at: (modifiedAt) REQUIRED str
@@ -64,6 +66,7 @@ class ClientmodelClientV3Response(Model):
     client_id: str                                                                                 # REQUIRED
     client_name: str                                                                               # REQUIRED
     client_permissions: List[AccountcommonPermissionV3]                                            # REQUIRED
+    client_platform: str                                                                           # REQUIRED
     created_at: str                                                                                # REQUIRED
     modified_at: str                                                                               # REQUIRED
     namespace: str                                                                                 # REQUIRED
@@ -93,6 +96,10 @@ class ClientmodelClientV3Response(Model):
 
     def with_client_permissions(self, value: List[AccountcommonPermissionV3]) -> ClientmodelClientV3Response:
         self.client_permissions = value
+        return self
+
+    def with_client_platform(self, value: str) -> ClientmodelClientV3Response:
+        self.client_platform = value
         return self
 
     def with_created_at(self, value: str) -> ClientmodelClientV3Response:
@@ -145,6 +152,10 @@ class ClientmodelClientV3Response(Model):
             result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
+        if hasattr(self, "client_platform"):
+            result["clientPlatform"] = str(self.client_platform)
+        elif include_empty:
+            result["clientPlatform"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -183,6 +194,7 @@ class ClientmodelClientV3Response(Model):
         client_id: str,
         client_name: str,
         client_permissions: List[AccountcommonPermissionV3],
+        client_platform: str,
         created_at: str,
         modified_at: str,
         namespace: str,
@@ -196,6 +208,7 @@ class ClientmodelClientV3Response(Model):
         instance.client_id = client_id
         instance.client_name = client_name
         instance.client_permissions = client_permissions
+        instance.client_platform = client_platform
         instance.created_at = created_at
         instance.modified_at = modified_at
         instance.namespace = namespace
@@ -229,6 +242,10 @@ class ClientmodelClientV3Response(Model):
             instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
             instance.client_permissions = []
+        if "clientPlatform" in dict_ and dict_["clientPlatform"] is not None:
+            instance.client_platform = str(dict_["clientPlatform"])
+        elif include_empty:
+            instance.client_platform = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -283,6 +300,7 @@ class ClientmodelClientV3Response(Model):
             "clientId": "client_id",
             "clientName": "client_name",
             "clientPermissions": "client_permissions",
+            "clientPlatform": "client_platform",
             "createdAt": "created_at",
             "modifiedAt": "modified_at",
             "namespace": "namespace",
@@ -299,6 +317,7 @@ class ClientmodelClientV3Response(Model):
             "clientId": True,
             "clientName": True,
             "clientPermissions": True,
+            "clientPlatform": True,
             "createdAt": True,
             "modifiedAt": True,
             "namespace": True,

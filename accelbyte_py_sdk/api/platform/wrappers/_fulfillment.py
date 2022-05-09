@@ -42,8 +42,8 @@ from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import RedeemCode
-from ..models import FulfillmentRequestSourceEnum
-from ..models import RewardsRequestSourceEnum
+from ..models import FulfillmentRequestSourceEnum, FulfillmentRequestOriginEnum
+from ..models import RewardsRequestOriginEnum, RewardsRequestSourceEnum
 
 
 @same_doc_as(FulfillItem)

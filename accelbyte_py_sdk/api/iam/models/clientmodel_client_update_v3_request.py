@@ -34,6 +34,8 @@ class ClientmodelClientUpdateV3Request(Model):
     """Clientmodel client update V3 request (clientmodel.ClientUpdateV3Request)
 
     Properties:
+        client_platform: (clientPlatform) REQUIRED str
+
         audiences: (audiences) OPTIONAL List[str]
 
         base_uri: (baseUri) OPTIONAL str
@@ -51,6 +53,7 @@ class ClientmodelClientUpdateV3Request(Model):
 
     # region fields
 
+    client_platform: str                                                                           # REQUIRED
     audiences: List[str]                                                                           # OPTIONAL
     base_uri: str                                                                                  # OPTIONAL
     client_name: str                                                                               # OPTIONAL
@@ -62,6 +65,10 @@ class ClientmodelClientUpdateV3Request(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_client_platform(self, value: str) -> ClientmodelClientUpdateV3Request:
+        self.client_platform = value
+        return self
 
     def with_audiences(self, value: List[str]) -> ClientmodelClientUpdateV3Request:
         self.audiences = value
@@ -97,6 +104,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "client_platform"):
+            result["clientPlatform"] = str(self.client_platform)
+        elif include_empty:
+            result["clientPlatform"] = ""
         if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
@@ -134,6 +145,7 @@ class ClientmodelClientUpdateV3Request(Model):
     @classmethod
     def create(
         cls,
+        client_platform: str,
         audiences: Optional[List[str]] = None,
         base_uri: Optional[str] = None,
         client_name: Optional[str] = None,
@@ -143,6 +155,7 @@ class ClientmodelClientUpdateV3Request(Model):
         redirect_uri: Optional[str] = None,
     ) -> ClientmodelClientUpdateV3Request:
         instance = cls()
+        instance.client_platform = client_platform
         if audiences is not None:
             instance.audiences = audiences
         if base_uri is not None:
@@ -164,6 +177,10 @@ class ClientmodelClientUpdateV3Request(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "clientPlatform" in dict_ and dict_["clientPlatform"] is not None:
+            instance.client_platform = str(dict_["clientPlatform"])
+        elif include_empty:
+            instance.client_platform = ""
         if "audiences" in dict_ and dict_["audiences"] is not None:
             instance.audiences = [str(i0) for i0 in dict_["audiences"]]
         elif include_empty:
@@ -217,6 +234,7 @@ class ClientmodelClientUpdateV3Request(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "clientPlatform": "client_platform",
             "audiences": "audiences",
             "baseUri": "base_uri",
             "clientName": "client_name",
@@ -229,6 +247,7 @@ class ClientmodelClientUpdateV3Request(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "clientPlatform": True,
             "audiences": False,
             "baseUri": False,
             "clientName": False,

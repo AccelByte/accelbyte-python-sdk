@@ -89,6 +89,10 @@ from ._stat_configuration import update_stat_async
 
 from ._user_statistic import bulk_create_user_stat_items
 from ._user_statistic import bulk_create_user_stat_items_async
+from ._user_statistic import bulk_fetch_or_default_stat_items
+from ._user_statistic import bulk_fetch_or_default_stat_items_async
+from ._user_statistic import bulk_fetch_or_default_stat_items_1
+from ._user_statistic import bulk_fetch_or_default_stat_items_1_async
 from ._user_statistic import bulk_fetch_stat_items
 from ._user_statistic import bulk_fetch_stat_items_async
 from ._user_statistic import bulk_fetch_stat_items_1
@@ -149,6 +153,10 @@ from ._user_statistic import public_inc_user_stat_item_value
 from ._user_statistic import public_inc_user_stat_item_value_async
 from ._user_statistic import public_query_user_stat_items
 from ._user_statistic import public_query_user_stat_items_async
+from ._user_statistic import public_query_user_stat_items_1
+from ._user_statistic import public_query_user_stat_items_1_async
+from ._user_statistic import public_query_user_stat_items_2
+from ._user_statistic import public_query_user_stat_items_2_async
 from ._user_statistic import reset_user_stat_item_value
 from ._user_statistic import reset_user_stat_item_value_async
 from ._user_statistic import reset_user_stat_item_value_1

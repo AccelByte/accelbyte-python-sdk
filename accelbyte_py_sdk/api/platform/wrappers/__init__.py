@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -326,6 +326,8 @@ from ._item import feature_item
 from ._item import feature_item_async
 from ._item import get_app
 from ._item import get_app_async
+from ._item import get_bulk_item_id_by_skus
+from ._item import get_bulk_item_id_by_skus_async
 from ._item import get_item
 from ._item import get_item_async
 from ._item import get_item_by_app_id
@@ -388,6 +390,8 @@ from ._key_group import update_key_group_async
 from ._key_group import upload_keys
 from ._key_group import upload_keys_async
 
+from ._order import admin_create_user_order
+from ._order import admin_create_user_order_async
 from ._order import count_of_purchased_item
 from ._order import count_of_purchased_item_async
 from ._order import download_user_order_receipt
@@ -666,10 +670,14 @@ from ._wallet import disable_user_wallet
 from ._wallet import disable_user_wallet_async
 from ._wallet import enable_user_wallet
 from ._wallet import enable_user_wallet_async
+from ._wallet import get_platform_wallet_config
+from ._wallet import get_platform_wallet_config_async
 from ._wallet import get_user_wallet
 from ._wallet import get_user_wallet_async
 from ._wallet import get_wallet
 from ._wallet import get_wallet_async
+from ._wallet import list_user_currency_transactions
+from ._wallet import list_user_currency_transactions_async
 from ._wallet import list_user_wallet_transactions
 from ._wallet import list_user_wallet_transactions_async
 from ._wallet import pay_with_user_wallet
@@ -680,5 +688,11 @@ from ._wallet import public_get_wallet
 from ._wallet import public_get_wallet_async
 from ._wallet import public_list_user_wallet_transactions
 from ._wallet import public_list_user_wallet_transactions_async
+from ._wallet import query_user_currency_wallets
+from ._wallet import query_user_currency_wallets_async
 from ._wallet import query_wallets
 from ._wallet import query_wallets_async
+from ._wallet import reset_platform_wallet_config
+from ._wallet import reset_platform_wallet_config_async
+from ._wallet import update_platform_wallet_config
+from ._wallet import update_platform_wallet_config_async

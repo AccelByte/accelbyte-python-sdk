@@ -15,6 +15,8 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .bulk_create_user_stat_items import BulkCreateUserStatItems
+from .bulk_fetch_or_default_s_50dfdc import BulkFetchOrDefaultStatItems
+from .bulk_fetch_or_default_s_d6fcc5 import BulkFetchOrDefaultStatItems1
 from .bulk_fetch_stat_items import BulkFetchStatItems
 from .bulk_fetch_stat_items_1 import BulkFetchStatItems1
 from .bulk_inc_user_stat_item import BulkIncUserStatItem
@@ -45,6 +47,8 @@ from .public_create_user_stat_item import PublicCreateUserStatItem
 from .public_inc_user_stat_item import PublicIncUserStatItem
 from .public_inc_user_stat_it_1d89c5 import PublicIncUserStatItemValue
 from .public_query_user_stat_items import PublicQueryUserStatItems
+from .public_query_user_stat_items_1 import PublicQueryUserStatItems1
+from .public_query_user_stat_items_2 import PublicQueryUserStatItems2
 from .reset_user_stat_item_value import ResetUserStatItemValue
 from .reset_user_stat_item_value_1 import ResetUserStatItemValue1
 from .update_user_stat_item_value import UpdateUserStatItemValue

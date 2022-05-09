@@ -97,12 +97,12 @@ from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import UpdateUserEntitlement
-from ..models import AppEntitlementInfoStatusEnum, AppEntitlementInfoAppTypeEnum
+from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
-from ..models import EntitlementInfoClazzEnum, EntitlementInfoSourceEnum, EntitlementInfoAppTypeEnum, EntitlementInfoTypeEnum, EntitlementInfoStatusEnum
+from ..models import EntitlementInfoTypeEnum, EntitlementInfoSourceEnum, EntitlementInfoClazzEnum, EntitlementInfoAppTypeEnum, EntitlementInfoStatusEnum
 from ..models import EntitlementUpdateStatusEnum
-from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoStatusEnum
+from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoStatusEnum
 
 
 @same_doc_as(ConsumeUserEntitlement)

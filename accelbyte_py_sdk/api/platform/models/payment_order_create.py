@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,6 +71,8 @@ class PaymentOrderCreate(Model):
 
         omit_notification: (omitNotification) OPTIONAL bool
 
+        platform: (platform) OPTIONAL str
+
         recurring_payment_order_no: (recurringPaymentOrderNo) OPTIONAL str
 
         region: (region) OPTIONAL str
@@ -99,6 +101,7 @@ class PaymentOrderCreate(Model):
     metadata: Dict[str, str]                                                                       # OPTIONAL
     notify_url: str                                                                                # OPTIONAL
     omit_notification: bool                                                                        # OPTIONAL
+    platform: str                                                                                  # OPTIONAL
     recurring_payment_order_no: str                                                                # OPTIONAL
     region: str                                                                                    # OPTIONAL
     return_url: str                                                                                # OPTIONAL
@@ -160,6 +163,10 @@ class PaymentOrderCreate(Model):
 
     def with_omit_notification(self, value: bool) -> PaymentOrderCreate:
         self.omit_notification = value
+        return self
+
+    def with_platform(self, value: str) -> PaymentOrderCreate:
+        self.platform = value
         return self
 
     def with_recurring_payment_order_no(self, value: str) -> PaymentOrderCreate:
@@ -244,6 +251,10 @@ class PaymentOrderCreate(Model):
             result["omitNotification"] = bool(self.omit_notification)
         elif include_empty:
             result["omitNotification"] = False
+        if hasattr(self, "platform"):
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "recurring_payment_order_no"):
             result["recurringPaymentOrderNo"] = str(self.recurring_payment_order_no)
         elif include_empty:
@@ -290,6 +301,7 @@ class PaymentOrderCreate(Model):
         metadata: Optional[Dict[str, str]] = None,
         notify_url: Optional[str] = None,
         omit_notification: Optional[bool] = None,
+        platform: Optional[str] = None,
         recurring_payment_order_no: Optional[str] = None,
         region: Optional[str] = None,
         return_url: Optional[str] = None,
@@ -320,6 +332,8 @@ class PaymentOrderCreate(Model):
             instance.notify_url = notify_url
         if omit_notification is not None:
             instance.omit_notification = omit_notification
+        if platform is not None:
+            instance.platform = platform
         if recurring_payment_order_no is not None:
             instance.recurring_payment_order_no = recurring_payment_order_no
         if region is not None:
@@ -391,6 +405,10 @@ class PaymentOrderCreate(Model):
             instance.omit_notification = bool(dict_["omitNotification"])
         elif include_empty:
             instance.omit_notification = False
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
             instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
         elif include_empty:
@@ -453,6 +471,7 @@ class PaymentOrderCreate(Model):
             "metadata": "metadata",
             "notifyUrl": "notify_url",
             "omitNotification": "omit_notification",
+            "platform": "platform",
             "recurringPaymentOrderNo": "recurring_payment_order_no",
             "region": "region",
             "returnUrl": "return_url",
@@ -477,6 +496,7 @@ class PaymentOrderCreate(Model):
             "metadata": False,
             "notifyUrl": False,
             "omitNotification": False,
+            "platform": False,
             "recurringPaymentOrderNo": False,
             "region": False,
             "returnUrl": False,

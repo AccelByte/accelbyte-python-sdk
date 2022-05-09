@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,20 @@ from ....core import StrEnum
 from ..models.platform_reward import PlatformReward
 
 
+class OriginEnum(StrEnum):
+    PLAYSTATION = "Playstation"
+    XBOX = "Xbox"
+    STEAM = "Steam"
+    EPIC = "Epic"
+    STADIA = "Stadia"
+    IOS = "IOS"
+    GOOGLEPLAY = "GooglePlay"
+    TWITCH = "Twitch"
+    NINTENDO = "Nintendo"
+    SYSTEM = "System"
+    OTHER = "Other"
+
+
 class SourceEnum(StrEnum):
     PURCHASE = "PURCHASE"
     IAP = "IAP"
@@ -50,12 +64,15 @@ class RewardsRequest(Model):
     Properties:
         rewards: (rewards) REQUIRED List[PlatformReward]
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         source: (source) OPTIONAL Union[str, SourceEnum]
     """
 
     # region fields
 
     rewards: List[PlatformReward]                                                                  # REQUIRED
+    origin: Union[str, OriginEnum]                                                                 # OPTIONAL
     source: Union[str, SourceEnum]                                                                 # OPTIONAL
 
     # endregion fields
@@ -64,6 +81,10 @@ class RewardsRequest(Model):
 
     def with_rewards(self, value: List[PlatformReward]) -> RewardsRequest:
         self.rewards = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> RewardsRequest:
+        self.origin = value
         return self
 
     def with_source(self, value: Union[str, SourceEnum]) -> RewardsRequest:
@@ -80,6 +101,10 @@ class RewardsRequest(Model):
             result["rewards"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rewards]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -94,10 +119,13 @@ class RewardsRequest(Model):
     def create(
         cls,
         rewards: List[PlatformReward],
+        origin: Optional[Union[str, OriginEnum]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards
+        if origin is not None:
+            instance.origin = origin
         if source is not None:
             instance.source = source
         return instance
@@ -111,6 +139,10 @@ class RewardsRequest(Model):
             instance.rewards = [PlatformReward.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewards"]]
         elif include_empty:
             instance.rewards = []
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -141,6 +173,7 @@ class RewardsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "rewards": "rewards",
+            "origin": "origin",
             "source": "source",
         }
 
@@ -148,12 +181,14 @@ class RewardsRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "rewards": True,
+            "origin": False,
             "source": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "origin": ["Playstation", "Xbox", "Steam", "Epic", "Stadia", "IOS", "GooglePlay", "Twitch", "Nintendo", "System", "Other"],
             "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }
 

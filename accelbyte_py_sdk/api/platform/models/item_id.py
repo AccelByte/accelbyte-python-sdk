@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,14 @@ class ItemId(Model):
 
     Properties:
         item_id: (itemId) REQUIRED str
+
+        sku: (sku) OPTIONAL str
     """
 
     # region fields
 
     item_id: str                                                                                   # REQUIRED
+    sku: str                                                                                       # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ItemId(Model):
 
     def with_item_id(self, value: str) -> ItemId:
         self.item_id = value
+        return self
+
+    def with_sku(self, value: str) -> ItemId:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ItemId(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = ""
         return result
 
     # endregion to methods
@@ -67,9 +78,12 @@ class ItemId(Model):
     def create(
         cls,
         item_id: str,
+        sku: Optional[str] = None,
     ) -> ItemId:
         instance = cls()
         instance.item_id = item_id
+        if sku is not None:
+            instance.sku = sku
         return instance
 
     @classmethod
@@ -81,6 +95,10 @@ class ItemId(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = ""
         return instance
 
     @classmethod
@@ -107,12 +125,14 @@ class ItemId(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "itemId": "item_id",
+            "sku": "sku",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "itemId": True,
+            "sku": False,
         }
 
     # endregion static methods

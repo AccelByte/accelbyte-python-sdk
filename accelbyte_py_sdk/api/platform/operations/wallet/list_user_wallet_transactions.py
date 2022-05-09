@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import DetailedWalletTransactionPagingSlicedResult
 from ...models import ErrorEntity
-from ...models import WalletTransactionPagingSlicedResult
 
 
 class ListUserWalletTransactions(Operation):
@@ -69,7 +69,7 @@ class ListUserWalletTransactions(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+        200: OK - DetailedWalletTransactionPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
@@ -210,10 +210,10 @@ class ListUserWalletTransactions(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, WalletTransactionPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, DetailedWalletTransactionPagingSlicedResult], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - WalletTransactionPagingSlicedResult (successful operation)
+        200: OK - DetailedWalletTransactionPagingSlicedResult (successful operation)
 
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
 
@@ -229,7 +229,7 @@ class ListUserWalletTransactions(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return WalletTransactionPagingSlicedResult.create_from_dict(content), None
+            return DetailedWalletTransactionPagingSlicedResult.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

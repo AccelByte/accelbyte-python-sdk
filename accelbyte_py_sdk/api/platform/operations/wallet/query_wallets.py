@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,8 +28,23 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import WalletPagingSlicedResult
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STADIA = "Stadia"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class QueryWallets(Operation):
@@ -65,6 +80,8 @@ class QueryWallets(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
         user_id: (userId) OPTIONAL str in query
 
     Responses:
@@ -84,6 +101,7 @@ class QueryWallets(Operation):
     currency_code: str                                                                             # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
+    origin: Union[str, OriginEnum]                                                                 # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -142,6 +160,8 @@ class QueryWallets(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "origin"):
+            result["origin"] = self.origin
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
         return result
@@ -170,6 +190,10 @@ class QueryWallets(Operation):
         self.offset = value
         return self
 
+    def with_origin(self, value: Union[str, OriginEnum]) -> QueryWallets:
+        self.origin = value
+        return self
+
     def with_user_id(self, value: str) -> QueryWallets:
         self.user_id = value
         return self
@@ -196,6 +220,10 @@ class QueryWallets(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "origin") and self.origin:
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -239,6 +267,7 @@ class QueryWallets(Operation):
         currency_code: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         user_id: Optional[str] = None,
     ) -> QueryWallets:
         instance = cls()
@@ -249,6 +278,8 @@ class QueryWallets(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if origin is not None:
+            instance.origin = origin
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -272,6 +303,10 @@ class QueryWallets(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -285,6 +320,7 @@ class QueryWallets(Operation):
             "currencyCode": "currency_code",
             "limit": "limit",
             "offset": "offset",
+            "origin": "origin",
             "userId": "user_id",
         }
 
@@ -295,7 +331,14 @@ class QueryWallets(Operation):
             "currencyCode": False,
             "limit": False,
             "offset": False,
+            "origin": False,
             "userId": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "origin": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],# in query
         }
 
     # endregion static methods

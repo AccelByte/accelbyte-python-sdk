@@ -58,6 +58,7 @@ from ..operations.item import DisableItem
 from ..operations.item import EnableItem
 from ..operations.item import FeatureItem
 from ..operations.item import GetApp
+from ..operations.item import GetBulkItemIdBySkus
 from ..operations.item import GetItem
 from ..operations.item import GetItemByAppId
 from ..operations.item import GetItemBySku
@@ -83,15 +84,15 @@ from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
-from ..models import AppInfoPrimaryGenreEnum, AppInfoGenresEnum, AppInfoPlatformsEnum, AppInfoPlayersEnum
-from ..models import AppUpdateGenresEnum, AppUpdatePlatformsEnum, AppUpdatePrimaryGenreEnum, AppUpdatePlayersEnum
-from ..models import BasicItemAppTypeEnum, BasicItemStatusEnum, BasicItemEntitlementTypeEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum
-from ..models import FullAppInfoPrimaryGenreEnum, FullAppInfoPlayersEnum, FullAppInfoGenresEnum, FullAppInfoPlatformsEnum
-from ..models import FullItemInfoEntitlementTypeEnum, FullItemInfoSeasonTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoStatusEnum
-from ..models import ItemCreateEntitlementTypeEnum, ItemCreateStatusEnum, ItemCreateAppTypeEnum, ItemCreateSeasonTypeEnum, ItemCreateItemTypeEnum
-from ..models import ItemInfoStatusEnum, ItemInfoItemTypeEnum, ItemInfoAppTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoSeasonTypeEnum
-from ..models import ItemUpdateStatusEnum, ItemUpdateEntitlementTypeEnum, ItemUpdateAppTypeEnum, ItemUpdateSeasonTypeEnum, ItemUpdateItemTypeEnum
-from ..models import PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoAppTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoStatusEnum
+from ..models import AppInfoGenresEnum, AppInfoPlatformsEnum, AppInfoPlayersEnum, AppInfoPrimaryGenreEnum
+from ..models import AppUpdatePlatformsEnum, AppUpdateGenresEnum, AppUpdatePrimaryGenreEnum, AppUpdatePlayersEnum
+from ..models import BasicItemSeasonTypeEnum, BasicItemEntitlementTypeEnum, BasicItemAppTypeEnum, BasicItemItemTypeEnum, BasicItemStatusEnum
+from ..models import FullAppInfoPlatformsEnum, FullAppInfoPrimaryGenreEnum, FullAppInfoGenresEnum, FullAppInfoPlayersEnum
+from ..models import FullItemInfoSeasonTypeEnum, FullItemInfoAppTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoEntitlementTypeEnum, FullItemInfoStatusEnum
+from ..models import ItemCreateSeasonTypeEnum, ItemCreateAppTypeEnum, ItemCreateItemTypeEnum, ItemCreateEntitlementTypeEnum, ItemCreateStatusEnum
+from ..models import ItemInfoStatusEnum, ItemInfoAppTypeEnum, ItemInfoSeasonTypeEnum, ItemInfoItemTypeEnum, ItemInfoEntitlementTypeEnum
+from ..models import ItemUpdateItemTypeEnum, ItemUpdateSeasonTypeEnum, ItemUpdateAppTypeEnum, ItemUpdateStatusEnum, ItemUpdateEntitlementTypeEnum
+from ..models import PopulatedItemInfoStatusEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoAppTypeEnum
 
 
 @same_doc_as(AcquireItem)
@@ -352,6 +353,34 @@ async def get_app_async(item_id: str, active_only: Optional[bool] = None, store_
     request = GetApp.create(
         item_id=item_id,
         active_only=active_only,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetBulkItemIdBySkus)
+def get_bulk_item_id_by_skus(sku: Optional[List[str]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBulkItemIdBySkus.create(
+        sku=sku,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(GetBulkItemIdBySkus)
+async def get_bulk_item_id_by_skus_async(sku: Optional[List[str]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBulkItemIdBySkus.create(
+        sku=sku,
         store_id=store_id,
         namespace=namespace,
     )

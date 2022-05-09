@@ -46,6 +46,8 @@ class QuerySessionHandler(Operation):
 
     Possible session statuses are "sessionInQueue", "sessionFull", and "sessionTimeout".
 
+    if party_id value empty/null, field will not show in response body.
+
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSION [READ]
 

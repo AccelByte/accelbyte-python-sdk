@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,8 +28,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import CurrencyInfo
+
+
+class CurrencyTypeEnum(StrEnum):
+    REAL = "REAL"
+    VIRTUAL = "VIRTUAL"
 
 
 class PublicListCurrencies(Operation):
@@ -55,6 +61,8 @@ class PublicListCurrencies(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        currency_type: (currencyType) OPTIONAL Union[str, CurrencyTypeEnum] in query
+
     Responses:
         200: OK - List[CurrencyInfo] (successful operation)
     """
@@ -69,6 +77,7 @@ class PublicListCurrencies(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
+    currency_type: Union[str, CurrencyTypeEnum]                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -109,12 +118,19 @@ class PublicListCurrencies(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "currency_type"):
+            result["currencyType"] = self.currency_type
         return result
 
     # endregion get_x_params methods
@@ -129,6 +145,10 @@ class PublicListCurrencies(Operation):
         self.namespace = value
         return self
 
+    def with_currency_type(self, value: Union[str, CurrencyTypeEnum]) -> PublicListCurrencies:
+        self.currency_type = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -139,6 +159,10 @@ class PublicListCurrencies(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "currency_type") and self.currency_type:
+            result["currencyType"] = str(self.currency_type)
+        elif include_empty:
+            result["currencyType"] = Union[str, CurrencyTypeEnum]()
         return result
 
     # endregion to methods
@@ -175,9 +199,12 @@ class PublicListCurrencies(Operation):
     def create(
         cls,
         namespace: str,
+        currency_type: Optional[Union[str, CurrencyTypeEnum]] = None,
     ) -> PublicListCurrencies:
         instance = cls()
         instance.namespace = namespace
+        if currency_type is not None:
+            instance.currency_type = currency_type
         return instance
 
     @classmethod
@@ -187,18 +214,30 @@ class PublicListCurrencies(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "currencyType" in dict_ and dict_["currencyType"] is not None:
+            instance.currency_type = str(dict_["currencyType"])
+        elif include_empty:
+            instance.currency_type = Union[str, CurrencyTypeEnum]()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "currencyType": "currency_type",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "currencyType": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "currencyType": ["REAL", "VIRTUAL"],                                                   # in query
         }
 
     # endregion static methods

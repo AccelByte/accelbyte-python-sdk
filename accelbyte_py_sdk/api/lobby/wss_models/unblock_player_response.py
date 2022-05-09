@@ -28,7 +28,7 @@ class UnblockPlayerResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     namespace: str
     unblocked_user_id: str

@@ -28,7 +28,7 @@ class SendChannelChatResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
 
     # endregion fields

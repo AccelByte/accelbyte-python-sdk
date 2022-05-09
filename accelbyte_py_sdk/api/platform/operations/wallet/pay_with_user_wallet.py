@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,14 +31,14 @@ from .....core import HttpResponse
 
 from ...models import ErrorEntity
 from ...models import PaymentRequest
+from ...models import PlatformWallet
 from ...models import ValidationErrorEntity
-from ...models import WalletInfo
 
 
 class PayWithUserWallet(Operation):
-    """Pay with user wallet by currency code (payWithUserWallet)
+    """Pay with user wallet by currency code and client platform (payWithUserWallet)
 
-    Pay with user wallet by currency code.
+    Pay with user wallet by currency code and client platform.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=4 (UPDATE)
@@ -68,7 +68,7 @@ class PayWithUserWallet(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - WalletInfo (successful operation)
+        200: OK - PlatformWallet (successful operation)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
@@ -199,10 +199,10 @@ class PayWithUserWallet(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, WalletInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PlatformWallet], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
-        200: OK - WalletInfo (successful operation)
+        200: OK - PlatformWallet (successful operation)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
@@ -220,7 +220,7 @@ class PayWithUserWallet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return WalletInfo.create_from_dict(content), None
+            return PlatformWallet.create_from_dict(content), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:

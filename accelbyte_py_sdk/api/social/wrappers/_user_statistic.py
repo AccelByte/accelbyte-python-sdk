@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ADTOObjectForResettingUserStatItems
+from ..models import ADTOObjectForUserStatItemValue
 from ..models import BulkStatItemCreate
 from ..models import BulkStatItemInc
 from ..models import BulkStatItemOperationResult
@@ -48,6 +49,8 @@ from ..models import UserStatItemPagingSlicedResult
 from ..models import ValidationErrorEntity
 
 from ..operations.user_statistic import BulkCreateUserStatItems
+from ..operations.user_statistic import BulkFetchOrDefaultStatItems
+from ..operations.user_statistic import BulkFetchOrDefaultStatItems1
 from ..operations.user_statistic import BulkFetchStatItems
 from ..operations.user_statistic import BulkFetchStatItems1
 from ..operations.user_statistic import BulkIncUserStatItem
@@ -78,6 +81,8 @@ from ..operations.user_statistic import PublicCreateUserStatItem
 from ..operations.user_statistic import PublicIncUserStatItem
 from ..operations.user_statistic import PublicIncUserStatItemValue
 from ..operations.user_statistic import PublicQueryUserStatItems
+from ..operations.user_statistic import PublicQueryUserStatItems1
+from ..operations.user_statistic import PublicQueryUserStatItems2
 from ..operations.user_statistic import ResetUserStatItemValue
 from ..operations.user_statistic import ResetUserStatItemValue1
 from ..operations.user_statistic import UpdateUserStatItemValue
@@ -110,6 +115,64 @@ async def bulk_create_user_stat_items_async(user_id: str, body: Optional[List[Bu
     request = BulkCreateUserStatItems.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkFetchOrDefaultStatItems)
+def bulk_fetch_or_default_stat_items(stat_code: str, user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkFetchOrDefaultStatItems.create(
+        stat_code=stat_code,
+        user_ids=user_ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkFetchOrDefaultStatItems)
+async def bulk_fetch_or_default_stat_items_async(stat_code: str, user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkFetchOrDefaultStatItems.create(
+        stat_code=stat_code,
+        user_ids=user_ids,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkFetchOrDefaultStatItems1)
+def bulk_fetch_or_default_stat_items_1(stat_code: str, user_ids: List[str], additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkFetchOrDefaultStatItems1.create(
+        stat_code=stat_code,
+        user_ids=user_ids,
+        additional_key=additional_key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(BulkFetchOrDefaultStatItems1)
+async def bulk_fetch_or_default_stat_items_1_async(stat_code: str, user_ids: List[str], additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkFetchOrDefaultStatItems1.create(
+        stat_code=stat_code,
+        user_ids=user_ids,
+        additional_key=additional_key,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers)
@@ -958,6 +1021,68 @@ async def public_query_user_stat_items_async(user_id: str, limit: Optional[int] 
         user_id=user_id,
         limit=limit,
         offset=offset,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicQueryUserStatItems1)
+def public_query_user_stat_items_1(user_id: str, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryUserStatItems1.create(
+        user_id=user_id,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicQueryUserStatItems1)
+async def public_query_user_stat_items_1_async(user_id: str, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryUserStatItems1.create(
+        user_id=user_id,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicQueryUserStatItems2)
+def public_query_user_stat_items_2(user_id: str, additional_key: Optional[str] = None, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryUserStatItems2.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        stat_codes=stat_codes,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers)
+
+
+@same_doc_as(PublicQueryUserStatItems2)
+async def public_query_user_stat_items_2_async(user_id: str, additional_key: Optional[str] = None, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryUserStatItems2.create(
+        user_id=user_id,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

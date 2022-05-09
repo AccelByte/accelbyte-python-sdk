@@ -28,7 +28,7 @@ class GetSessionAttributeResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     value: str
 

@@ -8,13 +8,15 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .additional_data import AdditionalData
+from .admin_order_create import AdminOrderCreate
+from .admin_order_create import PlatformEnum as AdminOrderCreatePlatformEnum
 from .adyen_config import AdyenConfig
 from .ali_pay_config import AliPayConfig
 from .app_entitlement_info import AppEntitlementInfo
@@ -62,7 +64,7 @@ from .code_info import RedeemTypeEnum as CodeInfoRedeemTypeEnum, StatusEnum as C
 from .code_info_paging_sliced_result import CodeInfoPagingSlicedResult
 from .condition_match_result import ConditionMatchResult
 from .credit_request import CreditRequest
-from .credit_request import SourceEnum as CreditRequestSourceEnum
+from .credit_request import OriginEnum as CreditRequestOriginEnum, SourceEnum as CreditRequestSourceEnum
 from .credit_summary import CreditSummary
 from .currency_config import CurrencyConfig
 from .currency_create import CurrencyCreate
@@ -72,8 +74,12 @@ from .currency_info import CurrencyTypeEnum as CurrencyInfoCurrencyTypeEnum
 from .currency_summary import CurrencySummary
 from .currency_summary import CurrencyTypeEnum as CurrencySummaryCurrencyTypeEnum
 from .currency_update import CurrencyUpdate
+from .currency_wallet import CurrencyWallet
 from .customization import Customization
 from .debit_request import DebitRequest
+from .detailed_wallet_transaction_info import DetailedWalletTransactionInfo
+from .detailed_wallet_transaction_info import WalletActionEnum as DetailedWalletTransactionInfoWalletActionEnum
+from .detailed_wallet_transaction_paging_sliced_result import DetailedWalletTransactionPagingSlicedResult
 from .dlc_item import DLCItem
 from .dlc_item_config_info import DLCItemConfigInfo
 from .dlc_item_config_update import DLCItemConfigUpdate
@@ -107,7 +113,7 @@ from .fulfillment_history_paging_sliced_result import FulfillmentHistoryPagingSl
 from .fulfillment_item import FulfillmentItem
 from .fulfillment_item import ItemTypeEnum as FulfillmentItemItemTypeEnum
 from .fulfillment_request import FulfillmentRequest
-from .fulfillment_request import SourceEnum as FulfillmentRequestSourceEnum
+from .fulfillment_request import OriginEnum as FulfillmentRequestOriginEnum, SourceEnum as FulfillmentRequestSourceEnum
 from .fulfillment_result import FulfillmentResult
 from .fulfillment_script_context import FulfillmentScriptContext
 from .fulfillment_script_context import SourceEnum as FulfillmentScriptContextSourceEnum
@@ -226,6 +232,7 @@ from .payment_provider_config_info import PaymentProviderConfigInfo
 from .payment_provider_config_info import AggregateEnum as PaymentProviderConfigInfoAggregateEnum, SpecialsEnum as PaymentProviderConfigInfoSpecialsEnum
 from .payment_provider_config_paging_sliced_result import PaymentProviderConfigPagingSlicedResult
 from .payment_request import PaymentRequest
+from .payment_request import WalletPlatformEnum as PaymentRequestWalletPlatformEnum
 from .payment_tax_config_edit import PaymentTaxConfigEdit
 from .payment_tax_config_info import PaymentTaxConfigInfo
 from .payment_token import PaymentToken
@@ -242,6 +249,11 @@ from .platform_reward import TypeEnum as PlatformRewardTypeEnum
 from .platform_reward_currency import PlatformRewardCurrency
 from .platform_reward_item import PlatformRewardItem
 from .platform_subscribe_request import PlatformSubscribeRequest
+from .platform_wallet import PlatformWallet
+from .platform_wallet import WalletStatusEnum as PlatformWalletWalletStatusEnum
+from .platform_wallet_config_info import PlatformWalletConfigInfo
+from .platform_wallet_config_update import PlatformWalletConfigUpdate
+from .platform_wallet_config_update import AllowedBalanceOriginsEnum as PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
 from .play_station_dlc_sync_request import PlayStationDLCSyncRequest
 from .play_station_iap_config_info import PlayStationIAPConfigInfo
 from .play_station_reconcile_request import PlayStationReconcileRequest
@@ -269,7 +281,7 @@ from .reward_item import RewardItem
 from .reward_paging_sliced_result import RewardPagingSlicedResult
 from .reward_update import RewardUpdate
 from .rewards_request import RewardsRequest
-from .rewards_request import SourceEnum as RewardsRequestSourceEnum
+from .rewards_request import OriginEnum as RewardsRequestOriginEnum, SourceEnum as RewardsRequestSourceEnum
 from .slide import Slide
 from .slide import TypeEnum as SlideTypeEnum, VideoSourceEnum as SlideVideoSourceEnum
 from .stackable_entitlement_info import StackableEntitlementInfo
@@ -306,11 +318,13 @@ from .ticket_dynamic_info import TicketDynamicInfo
 from .ticket_sale_decrement_request import TicketSaleDecrementRequest
 from .ticket_sale_increment_request import TicketSaleIncrementRequest
 from .ticket_sale_increment_result import TicketSaleIncrementResult
+from .time_limited_balance import TimeLimitedBalance
 from .timed_ownership import TimedOwnership
 from .trade_notification import TradeNotification
 from .trade_notification import PaymentProviderEnum as TradeNotificationPaymentProviderEnum, StatusEnum as TradeNotificationStatusEnum
 from .transaction import Transaction
 from .transaction import ProviderEnum as TransactionProviderEnum, StatusEnum as TransactionStatusEnum, TypeEnum as TransactionTypeEnum
+from .transaction_amount_details import TransactionAmountDetails
 from .twitch_iap_config_info import TwitchIAPConfigInfo
 from .twitch_iap_config_request import TwitchIAPConfigRequest
 from .twitch_sync_request import TwitchSyncRequest

@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.0"
+__version__ = "4.7.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_create_user_order import AdminCreateUserOrder
 from .count_of_purchased_item import CountOfPurchasedItem
 from .download_user_order_receipt import DownloadUserOrderReceipt
 from .fulfill_user_order import FulfillUserOrder

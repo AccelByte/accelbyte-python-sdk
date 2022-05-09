@@ -50,6 +50,8 @@ class ModelsServer(Model):
 
         is_override_game_version: (is_override_game_version) REQUIRED bool
 
+        job_id: (job_id) REQUIRED str
+
         last_update: (last_update) REQUIRED str
 
         match_id: (match_id) REQUIRED str
@@ -89,6 +91,7 @@ class ModelsServer(Model):
     image_version: str                                                                             # REQUIRED
     ip: str                                                                                        # REQUIRED
     is_override_game_version: bool                                                                 # REQUIRED
+    job_id: str                                                                                    # REQUIRED
     last_update: str                                                                               # REQUIRED
     match_id: str                                                                                  # REQUIRED
     mem_limit: int                                                                                 # REQUIRED
@@ -138,6 +141,10 @@ class ModelsServer(Model):
 
     def with_is_override_game_version(self, value: bool) -> ModelsServer:
         self.is_override_game_version = value
+        return self
+
+    def with_job_id(self, value: str) -> ModelsServer:
+        self.job_id = value
         return self
 
     def with_last_update(self, value: str) -> ModelsServer:
@@ -234,6 +241,10 @@ class ModelsServer(Model):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
             result["is_override_game_version"] = False
+        if hasattr(self, "job_id"):
+            result["job_id"] = str(self.job_id)
+        elif include_empty:
+            result["job_id"] = ""
         if hasattr(self, "last_update"):
             result["last_update"] = str(self.last_update)
         elif include_empty:
@@ -307,6 +318,7 @@ class ModelsServer(Model):
         image_version: str,
         ip: str,
         is_override_game_version: bool,
+        job_id: str,
         last_update: str,
         match_id: str,
         mem_limit: int,
@@ -331,6 +343,7 @@ class ModelsServer(Model):
         instance.image_version = image_version
         instance.ip = ip
         instance.is_override_game_version = is_override_game_version
+        instance.job_id = job_id
         instance.last_update = last_update
         instance.match_id = match_id
         instance.mem_limit = mem_limit
@@ -384,6 +397,10 @@ class ModelsServer(Model):
             instance.is_override_game_version = bool(dict_["is_override_game_version"])
         elif include_empty:
             instance.is_override_game_version = False
+        if "job_id" in dict_ and dict_["job_id"] is not None:
+            instance.job_id = str(dict_["job_id"])
+        elif include_empty:
+            instance.job_id = ""
         if "last_update" in dict_ and dict_["last_update"] is not None:
             instance.last_update = str(dict_["last_update"])
         elif include_empty:
@@ -473,6 +490,7 @@ class ModelsServer(Model):
             "image_version": "image_version",
             "ip": "ip",
             "is_override_game_version": "is_override_game_version",
+            "job_id": "job_id",
             "last_update": "last_update",
             "match_id": "match_id",
             "mem_limit": "mem_limit",
@@ -500,6 +518,7 @@ class ModelsServer(Model):
             "image_version": True,
             "ip": True,
             "is_override_game_version": True,
+            "job_id": True,
             "last_update": True,
             "match_id": True,
             "mem_limit": True,

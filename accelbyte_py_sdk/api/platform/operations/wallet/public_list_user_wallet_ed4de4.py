@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,7 +39,7 @@ class PublicListUserWalletTransactions(Operation):
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
-      *  Returns : wallet transaction info
+      *  Returns : currency transaction info
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]

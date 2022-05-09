@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,7 @@
 from .utils import randomize
 
 from ..api.platform.models import AdditionalData
+from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
 from ..api.platform.models import AliPayConfig
 from ..api.platform.models import AppEntitlementInfo
@@ -66,11 +67,14 @@ from ..api.platform.models import CurrencyCreate
 from ..api.platform.models import CurrencyInfo
 from ..api.platform.models import CurrencySummary
 from ..api.platform.models import CurrencyUpdate
+from ..api.platform.models import CurrencyWallet
 from ..api.platform.models import Customization
 from ..api.platform.models import DLCItem
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DebitRequest
+from ..api.platform.models import DetailedWalletTransactionInfo
+from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
 from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementHistoryInfo
@@ -189,6 +193,9 @@ from ..api.platform.models import PlatformReward
 from ..api.platform.models import PlatformRewardCurrency
 from ..api.platform.models import PlatformRewardItem
 from ..api.platform.models import PlatformSubscribeRequest
+from ..api.platform.models import PlatformWallet
+from ..api.platform.models import PlatformWalletConfigInfo
+from ..api.platform.models import PlatformWalletConfigUpdate
 from ..api.platform.models import PlayStationDLCSyncRequest
 from ..api.platform.models import PlayStationIAPConfigInfo
 from ..api.platform.models import PlayStationReconcileRequest
@@ -242,9 +249,11 @@ from ..api.platform.models import TicketDynamicInfo
 from ..api.platform.models import TicketSaleDecrementRequest
 from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
+from ..api.platform.models import TimeLimitedBalance
 from ..api.platform.models import TimedOwnership
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
+from ..api.platform.models import TransactionAmountDetails
 from ..api.platform.models import TwitchIAPConfigInfo
 from ..api.platform.models import TwitchIAPConfigRequest
 from ..api.platform.models import TwitchSyncRequest
@@ -268,6 +277,22 @@ from ..api.platform.models import XsollaPaywallConfigRequest
 def create_additional_data_example() -> AdditionalData:
     instance = AdditionalData()
     instance.card_summary = randomize()
+    return instance
+
+
+def create_admin_order_create_example() -> AdminOrderCreate:
+    instance = AdminOrderCreate()
+    instance.currency_code = randomize()
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.region = randomize()
+    instance.ext = {randomize(): randomize()}
+    instance.language = randomize()
+    instance.platform = randomize()
+    instance.return_url = randomize("url")
+    instance.sandbox = randomize("bool")
     return instance
 
 
@@ -719,6 +744,8 @@ def create_condition_match_result_example() -> ConditionMatchResult:
 def create_credit_request_example() -> CreditRequest:
     instance = CreditRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.expire_at = randomize("date")
+    instance.origin = randomize()
     instance.reason = randomize()
     instance.source = randomize()
     return instance
@@ -778,6 +805,19 @@ def create_currency_update_example() -> CurrencyUpdate:
     return instance
 
 
+def create_currency_wallet_example() -> CurrencyWallet:
+    instance = CurrencyWallet()
+    instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.currency_code = randomize()
+    instance.currency_symbol = randomize()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    instance.total_permanent_balance = randomize("int", min_val=1, max_val=1000)
+    instance.total_time_limited_balance = randomize("int", min_val=1, max_val=1000)
+    instance.wallet_infos = [create_wallet_info_example()]
+    return instance
+
+
 def create_customization_example() -> Customization:
     instance = Customization()
     instance.settings = randomize()
@@ -788,6 +828,29 @@ def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
+    return instance
+
+
+def create_detailed_wallet_transaction_info_example() -> DetailedWalletTransactionInfo:
+    instance = DetailedWalletTransactionInfo()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.currency_code = randomize()
+    instance.namespace = randomize("slug")
+    instance.operator = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.wallet_action = randomize()
+    instance.wallet_id = randomize()
+    instance.balance_source = randomize()
+    instance.reason = randomize()
+    return instance
+
+
+def create_detailed_wallet_transaction_paging_sliced_result_example() -> DetailedWalletTransactionPagingSlicedResult:
+    instance = DetailedWalletTransactionPagingSlicedResult()
+    instance.data = [create_detailed_wallet_transaction_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 
@@ -970,6 +1033,7 @@ def create_external_payment_order_create_example() -> ExternalPaymentOrderCreate
     instance.metadata = {randomize(): randomize()}
     instance.notify_url = randomize("url")
     instance.omit_notification = randomize("bool")
+    instance.platform = randomize()
     instance.recurring_payment_order_no = randomize()
     instance.region = randomize()
     instance.return_url = randomize("url")
@@ -1052,6 +1116,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.language = randomize()
     instance.order = create_order_summary_example()
     instance.order_no = randomize()
+    instance.origin = randomize()
     instance.region = randomize()
     instance.source = randomize()
     instance.start_date = randomize("date")
@@ -1382,6 +1447,7 @@ def create_item_dynamic_data_info_example() -> ItemDynamicDataInfo:
 def create_item_id_example() -> ItemId:
     instance = ItemId()
     instance.item_id = randomize()
+    instance.sku = randomize("slug")
     return instance
 
 
@@ -1921,6 +1987,7 @@ def create_payment_order_example() -> PaymentOrder:
     instance.payment_provider = randomize()
     instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_station_url = randomize("url")
+    instance.platform = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
     instance.recurring_payment_order_no = randomize()
     instance.refunded_time = randomize("date")
@@ -1979,6 +2046,7 @@ def create_payment_order_create_example() -> PaymentOrderCreate:
     instance.metadata = {randomize(): randomize()}
     instance.notify_url = randomize("url")
     instance.omit_notification = randomize("bool")
+    instance.platform = randomize()
     instance.recurring_payment_order_no = randomize()
     instance.region = randomize()
     instance.return_url = randomize("url")
@@ -2163,6 +2231,7 @@ def create_payment_provider_config_paging_sliced_result_example() -> PaymentProv
 def create_payment_request_example() -> PaymentRequest:
     instance = PaymentRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.wallet_platform = randomize()
     return instance
 
 
@@ -2262,6 +2331,36 @@ def create_platform_subscribe_request_example() -> PlatformSubscribeRequest:
     instance.reason = randomize()
     instance.region = randomize()
     instance.source = randomize()
+    return instance
+
+
+def create_platform_wallet_example() -> PlatformWallet:
+    instance = PlatformWallet()
+    instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.currency_code = randomize()
+    instance.currency_symbol = randomize()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    instance.id_ = randomize()
+    instance.wallet_infos = [create_wallet_info_example()]
+    instance.wallet_status = randomize()
+    return instance
+
+
+def create_platform_wallet_config_info_example() -> PlatformWalletConfigInfo:
+    instance = PlatformWalletConfigInfo()
+    instance.allowed_balance_origins = [randomize()]
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_platform_wallet_config_update_example() -> PlatformWalletConfigUpdate:
+    instance = PlatformWalletConfigUpdate()
+    instance.allowed_balance_origins = [randomize()]
     return instance
 
 
@@ -2518,6 +2617,7 @@ def create_reward_update_example() -> RewardUpdate:
 def create_rewards_request_example() -> RewardsRequest:
     instance = RewardsRequest()
     instance.rewards = [create_platform_reward_example()]
+    instance.origin = randomize()
     instance.source = randomize()
     return instance
 
@@ -2855,6 +2955,14 @@ def create_ticket_sale_increment_result_example() -> TicketSaleIncrementResult:
     return instance
 
 
+def create_time_limited_balance_example() -> TimeLimitedBalance:
+    instance = TimeLimitedBalance()
+    instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.balance_source = randomize()
+    instance.expire_at = randomize("date")
+    return instance
+
+
 def create_timed_ownership_example() -> TimedOwnership:
     instance = TimedOwnership()
     instance.owned = randomize("bool")
@@ -2930,6 +3038,14 @@ def create_transaction_example() -> Transaction:
     return instance
 
 
+def create_transaction_amount_details_example() -> TransactionAmountDetails:
+    instance = TransactionAmountDetails()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.origin = randomize()
+    instance.wallet_id = randomize()
+    return instance
+
+
 def create_twitch_iap_config_info_example() -> TwitchIAPConfigInfo:
     instance = TwitchIAPConfigInfo()
     instance.namespace = randomize("slug")
@@ -2966,6 +3082,7 @@ def create_validation_error_entity_example() -> ValidationErrorEntity:
 def create_wallet_info_example() -> WalletInfo:
     instance = WalletInfo()
     instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.balance_origin = randomize()
     instance.created_at = randomize("date")
     instance.currency_code = randomize()
     instance.currency_symbol = randomize()
@@ -2974,6 +3091,9 @@ def create_wallet_info_example() -> WalletInfo:
     instance.status = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.time_limited_balances = [create_time_limited_balance_example()]
+    instance.total_permanent_balance = randomize("int", min_val=1, max_val=1000)
+    instance.total_time_limited_balance = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2994,9 +3114,9 @@ def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.wallet_action = randomize()
-    instance.wallet_id = randomize()
     instance.balance_source = randomize()
     instance.reason = randomize()
+    instance.transaction_amount_details = [create_transaction_amount_details_example()]
     return instance
 
 

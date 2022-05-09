@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,20 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.order_summary import OrderSummary
+
+
+class OriginEnum(StrEnum):
+    PLAYSTATION = "Playstation"
+    XBOX = "Xbox"
+    STEAM = "Steam"
+    EPIC = "Epic"
+    STADIA = "Stadia"
+    IOS = "IOS"
+    GOOGLEPLAY = "GooglePlay"
+    TWITCH = "Twitch"
+    NINTENDO = "Nintendo"
+    SYSTEM = "System"
+    OTHER = "Other"
 
 
 class SourceEnum(StrEnum):
@@ -64,6 +78,8 @@ class FulfillmentRequest(Model):
 
         order_no: (orderNo) OPTIONAL str
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         region: (region) OPTIONAL str
 
         source: (source) OPTIONAL Union[str, SourceEnum]
@@ -83,6 +99,7 @@ class FulfillmentRequest(Model):
     language: str                                                                                  # OPTIONAL
     order: OrderSummary                                                                            # OPTIONAL
     order_no: str                                                                                  # OPTIONAL
+    origin: Union[str, OriginEnum]                                                                 # OPTIONAL
     region: str                                                                                    # OPTIONAL
     source: Union[str, SourceEnum]                                                                 # OPTIONAL
     start_date: str                                                                                # OPTIONAL
@@ -122,6 +139,10 @@ class FulfillmentRequest(Model):
 
     def with_order_no(self, value: str) -> FulfillmentRequest:
         self.order_no = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> FulfillmentRequest:
+        self.origin = value
         return self
 
     def with_region(self, value: str) -> FulfillmentRequest:
@@ -178,6 +199,10 @@ class FulfillmentRequest(Model):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = ""
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -211,6 +236,7 @@ class FulfillmentRequest(Model):
         language: Optional[str] = None,
         order: Optional[OrderSummary] = None,
         order_no: Optional[str] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         region: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         start_date: Optional[str] = None,
@@ -232,6 +258,8 @@ class FulfillmentRequest(Model):
             instance.order = order
         if order_no is not None:
             instance.order_no = order_no
+        if origin is not None:
+            instance.origin = origin
         if region is not None:
             instance.region = region
         if source is not None:
@@ -279,6 +307,10 @@ class FulfillmentRequest(Model):
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
             instance.order_no = ""
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -328,6 +360,7 @@ class FulfillmentRequest(Model):
             "language": "language",
             "order": "order",
             "orderNo": "order_no",
+            "origin": "origin",
             "region": "region",
             "source": "source",
             "startDate": "start_date",
@@ -345,6 +378,7 @@ class FulfillmentRequest(Model):
             "language": False,
             "order": False,
             "orderNo": False,
+            "origin": False,
             "region": False,
             "source": False,
             "startDate": False,
@@ -354,6 +388,7 @@ class FulfillmentRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "origin": ["Playstation", "Xbox", "Steam", "Epic", "Stadia", "IOS", "GooglePlay", "Twitch", "Nintendo", "System", "Other"],
             "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
         }
 

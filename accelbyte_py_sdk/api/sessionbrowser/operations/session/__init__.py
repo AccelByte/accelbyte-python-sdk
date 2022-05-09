@@ -29,3 +29,4 @@ from .join_session import JoinSession
 from .query_session import QuerySession
 from .remove_player_from_session import RemovePlayerFromSession
 from .update_session import UpdateSession
+from .update_settings import UpdateSettings

@@ -28,7 +28,7 @@ class PartyRejectResponse(WebSocketMessage):
 
     # region fields
 
-    code: str
+    code: int
     id_: str
     party_id: str
 

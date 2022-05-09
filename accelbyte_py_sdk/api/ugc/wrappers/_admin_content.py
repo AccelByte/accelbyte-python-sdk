@@ -234,7 +234,7 @@ async def admin_hide_user_content_async(body: ModelsHideContentRequest, content_
 
 
 @same_doc_as(AdminSearchChannelSpecificContent)
-def admin_search_channel_specific_content(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_search_channel_specific_content(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -258,7 +258,7 @@ def admin_search_channel_specific_content(channel_id: str, creator: Optional[str
 
 
 @same_doc_as(AdminSearchChannelSpecificContent)
-async def admin_search_channel_specific_content_async(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_search_channel_specific_content_async(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -282,7 +282,7 @@ async def admin_search_channel_specific_content_async(channel_id: str, creator: 
 
 
 @same_doc_as(AdminSearchContent)
-def admin_search_content(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_search_content(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,7 +305,7 @@ def admin_search_content(creator: Optional[str] = None, isofficial: Optional[str
 
 
 @same_doc_as(AdminSearchContent)
-async def admin_search_content_async(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[str] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_search_content_async(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

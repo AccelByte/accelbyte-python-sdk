@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -129,6 +129,8 @@ class PaymentOrder(Model):
 
         payment_station_url: (paymentStationUrl) OPTIONAL str
 
+        platform: (platform) OPTIONAL str
+
         price: (price) OPTIONAL int
 
         recurring_payment_order_no: (recurringPaymentOrderNo) OPTIONAL str
@@ -207,6 +209,7 @@ class PaymentOrder(Model):
     payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
     payment_provider_fee: int                                                                      # OPTIONAL
     payment_station_url: str                                                                       # OPTIONAL
+    platform: str                                                                                  # OPTIONAL
     price: int                                                                                     # OPTIONAL
     recurring_payment_order_no: str                                                                # OPTIONAL
     refunded_time: str                                                                             # OPTIONAL
@@ -335,6 +338,10 @@ class PaymentOrder(Model):
 
     def with_payment_station_url(self, value: str) -> PaymentOrder:
         self.payment_station_url = value
+        return self
+
+    def with_platform(self, value: str) -> PaymentOrder:
+        self.platform = value
         return self
 
     def with_price(self, value: int) -> PaymentOrder:
@@ -543,6 +550,10 @@ class PaymentOrder(Model):
             result["paymentStationUrl"] = str(self.payment_station_url)
         elif include_empty:
             result["paymentStationUrl"] = ""
+        if hasattr(self, "platform"):
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "price"):
             result["price"] = int(self.price)
         elif include_empty:
@@ -677,6 +688,7 @@ class PaymentOrder(Model):
         payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         payment_provider_fee: Optional[int] = None,
         payment_station_url: Optional[str] = None,
+        platform: Optional[str] = None,
         price: Optional[int] = None,
         recurring_payment_order_no: Optional[str] = None,
         refunded_time: Optional[str] = None,
@@ -754,6 +766,8 @@ class PaymentOrder(Model):
             instance.payment_provider_fee = payment_provider_fee
         if payment_station_url is not None:
             instance.payment_station_url = payment_station_url
+        if platform is not None:
+            instance.platform = platform
         if price is not None:
             instance.price = price
         if recurring_payment_order_no is not None:
@@ -911,6 +925,10 @@ class PaymentOrder(Model):
             instance.payment_station_url = str(dict_["paymentStationUrl"])
         elif include_empty:
             instance.payment_station_url = ""
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "price" in dict_ and dict_["price"] is not None:
             instance.price = int(dict_["price"])
         elif include_empty:
@@ -1061,6 +1079,7 @@ class PaymentOrder(Model):
             "paymentProvider": "payment_provider",
             "paymentProviderFee": "payment_provider_fee",
             "paymentStationUrl": "payment_station_url",
+            "platform": "platform",
             "price": "price",
             "recurringPaymentOrderNo": "recurring_payment_order_no",
             "refundedTime": "refunded_time",
@@ -1116,6 +1135,7 @@ class PaymentOrder(Model):
             "paymentProvider": False,
             "paymentProviderFee": False,
             "paymentStationUrl": False,
+            "platform": False,
             "price": False,
             "recurringPaymentOrderNo": False,
             "refundedTime": False,

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.0)
+# justice-platform-service (4.7.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,18 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class WalletPlatformEnum(StrEnum):
+    PLAYSTATION = "Playstation"
+    XBOX = "Xbox"
+    STEAM = "Steam"
+    EPIC = "Epic"
+    IOS = "IOS"
+    GOOGLEPLAY = "GooglePlay"
+    NINTENDO = "Nintendo"
+    OTHER = "Other"
 
 
 class PaymentRequest(Model):
@@ -33,11 +45,14 @@ class PaymentRequest(Model):
 
     Properties:
         amount: (amount) REQUIRED int
+
+        wallet_platform: (walletPlatform) OPTIONAL Union[str, WalletPlatformEnum]
     """
 
     # region fields
 
     amount: int                                                                                    # REQUIRED
+    wallet_platform: Union[str, WalletPlatformEnum]                                                # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +60,10 @@ class PaymentRequest(Model):
 
     def with_amount(self, value: int) -> PaymentRequest:
         self.amount = value
+        return self
+
+    def with_wallet_platform(self, value: Union[str, WalletPlatformEnum]) -> PaymentRequest:
+        self.wallet_platform = value
         return self
 
     # endregion with_x methods
@@ -57,6 +76,10 @@ class PaymentRequest(Model):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = 0
+        if hasattr(self, "wallet_platform"):
+            result["walletPlatform"] = str(self.wallet_platform)
+        elif include_empty:
+            result["walletPlatform"] = Union[str, WalletPlatformEnum]()
         return result
 
     # endregion to methods
@@ -67,9 +90,12 @@ class PaymentRequest(Model):
     def create(
         cls,
         amount: int,
+        wallet_platform: Optional[Union[str, WalletPlatformEnum]] = None,
     ) -> PaymentRequest:
         instance = cls()
         instance.amount = amount
+        if wallet_platform is not None:
+            instance.wallet_platform = wallet_platform
         return instance
 
     @classmethod
@@ -81,6 +107,10 @@ class PaymentRequest(Model):
             instance.amount = int(dict_["amount"])
         elif include_empty:
             instance.amount = 0
+        if "walletPlatform" in dict_ and dict_["walletPlatform"] is not None:
+            instance.wallet_platform = str(dict_["walletPlatform"])
+        elif include_empty:
+            instance.wallet_platform = Union[str, WalletPlatformEnum]()
         return instance
 
     @classmethod
@@ -107,12 +137,20 @@ class PaymentRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "amount": "amount",
+            "walletPlatform": "wallet_platform",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "amount": True,
+            "walletPlatform": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "walletPlatform": ["Playstation", "Xbox", "Steam", "Epic", "IOS", "GooglePlay", "Nintendo", "Other"],
         }
 
     # endregion static methods
