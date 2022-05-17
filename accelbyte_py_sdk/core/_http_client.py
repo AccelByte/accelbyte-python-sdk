@@ -112,6 +112,7 @@ class RequestsHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Optional[HttpResponse]]:
+        # pylint: disable=not-callable
         attempts = 0
         elapsed = timedelta(0)
         should_retry = True
@@ -266,6 +267,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Optional[HttpResponse]]:
+        # pylint: disable=not-callable
         attempts = 0
         elapsed = timedelta(0)
         should_retry = True
@@ -306,6 +308,7 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Optional[HttpResponse]]:
+        # pylint: disable=not-callable
         attempts = 0
         elapsed = timedelta(0)
         should_retry = True
