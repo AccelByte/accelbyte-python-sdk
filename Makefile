@@ -21,10 +21,15 @@ lint:
 	[ ! -f lint.err ]
 
 test_core:
-	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
-			-c 'python -m venv /tmp && \
-				/tmp/bin/pip install -r requirements.txt && \
-				PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core Y'
+	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
+	docker run -e PIP_CACHE_DIR=/tmp/pip -t -u $$(id -u):$$(id -g) -w /data -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data --rm --entrypoint /bin/bash python:3.9-slim \
+			-c 'python -m venv /tmp/server && \
+					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
+					python -m venv /tmp/client && \
+					(cd /data && /tmp/client/bin/pip install -r requirements.txt) && \
+					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
+					(for i in $$(seq 1 10); do bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; exit 1) && \
+					PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y'
 
 test_integration:
 	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)

@@ -3,6 +3,7 @@ certifi==2021.10.8
 charset-normalizer==2.0.7
 click==8.0.3
 h11==0.12.0
+h2==4.1.0
 httpcore==0.13.7
 httpx==0.20.0
 idna==3.3
