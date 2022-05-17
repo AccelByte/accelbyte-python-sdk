@@ -1,16 +1,26 @@
 from __future__ import annotations
 
+import asyncio
+import time
+from datetime import timedelta
 from typing import Any, Dict, List, Optional
-from unittest import TestCase
+from unittest import TestCase, IsolatedAsyncioTestCase
+
+import requests
 
 from accelbyte_py_sdk import initialize
+from accelbyte_py_sdk import is_initialized
+from accelbyte_py_sdk import reset
+
 from accelbyte_py_sdk.core import DictConfigRepository
+from accelbyte_py_sdk.core import MyTokenRepository
+
 from accelbyte_py_sdk.core import HttpResponse
 from accelbyte_py_sdk.core import Model
-from accelbyte_py_sdk.core import MyTokenRepository
 from accelbyte_py_sdk.core import Operation
-from accelbyte_py_sdk.core import get_http_client
+
 from accelbyte_py_sdk.core import create_proto_from_operation
+from accelbyte_py_sdk.core import get_http_client
 
 
 class TestConfigRepository(DictConfigRepository):
@@ -98,6 +108,9 @@ class RequestTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
+        if is_initialized():
+            reset()
+
         initialize()
 
     def test_body_params_serialization(self):
@@ -517,6 +530,9 @@ class HttpBinRequestTestCase(TestCase):
                 cls.reachable = False
         except:
             cls.reachable = False
+
+        if is_initialized():
+            reset()
 
         if cls.reachable:
             initialize()
@@ -1315,3 +1331,504 @@ class HttpBinRequestTestCase(TestCase):
         self.assertIsNotNone(error)
         self.assertIsInstance(error, HttpResponse)
         self.assertEqual("error", error.content_type)
+
+
+class MockServerRequestTestCase(TestCase):
+
+    reachable: bool = True
+    base_url: str = "http://0.0.0.0:8080"
+    ready_endpoint: str = f"{base_url}/ready"
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        import requests
+
+        cls.reachable = True
+
+        # noinspection PyBroadException
+        # pylint: disable=broad-except
+        try:
+            response = requests.get(cls.ready_endpoint)
+            if not response.ok:
+                cls.reachable = False
+        except:
+            cls.reachable = False
+
+        if is_initialized():
+            reset()
+
+    def setUp(self) -> None:
+        if not self.reachable:
+            self.skipTest(reason=f"'{self.base_url}' unreachable.")
+        self.assertFalse(is_initialized())
+        initialize(
+            options={
+                "config": "MyConfigRepository",
+                "config_params": (["http://0.0.0.0:8080", "admin", "admin"], {"namespace": "test"}),
+                "http": "RequestsHttpClient"
+            }
+        )
+
+    def tearDown(self) -> None:
+        if is_initialized():
+            reset()
+
+    def configure_overwrite_response(self, config: dict):
+        response = requests.post(f"{self.base_url}/configure-overwrite-response", json=config)
+        self.assertTrue(response.ok)
+
+    def reset_overwrite_response(self):
+        response = requests.post(f"{self.base_url}/reset-overwrite-response")
+        self.assertTrue(response.ok)
+
+    def test_http_backoff_policy_constant(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 0:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(0, n_retries)
+        self.assertAlmostEqual(0.5, duration, delta=0.1)
+        self.assertIsNone(error)
+
+    def test_http_backoff_policy_exponential(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertAlmostEqual(0.25 + 0.5 + 1.0, duration, delta=0.5)
+        self.assertIsNone(error)
+
+    def test_http_retry_policy_n_retries(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertIsNone(error)
+
+    def test_http_retry_policy_status_codes(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import StatusCodesHttpRetryPolicy
+
+        status_codes = []
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            status_codes.append(response.status_code)
+            if response.status_code == 500:
+                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+            elif response.status_code == 400:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+
+        # act
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual([500, 400], status_codes)
+        self.assertIsNone(error)
+
+
+class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
+
+    reachable: bool = True
+    base_url: str = "http://0.0.0.0:8080"
+    ready_endpoint: str = f"{base_url}/ready"
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        import requests
+
+        cls.reachable = True
+
+        # noinspection PyBroadException
+        # pylint: disable=broad-except
+        try:
+            response = requests.get(cls.ready_endpoint)
+            if not response.ok:
+                cls.reachable = False
+        except:
+            cls.reachable = False
+
+        if is_initialized():
+            reset()
+
+    async def asyncSetUp(self) -> None:
+        if not self.reachable:
+            self.skipTest(reason=f"'{self.base_url}' unreachable.")
+        initialize(
+            options={
+                "config": "MyConfigRepository",
+                "config_params": (["http://0.0.0.0:8080", "admin", "admin"], {"namespace": "test"}),
+                "http": "HttpxHttpClient"
+            }
+        )
+
+    async def asyncTearDown(self) -> None:
+        if is_initialized():
+            reset()
+
+    def configure_overwrite_response(self, config: dict):
+        response = requests.post(f"{self.base_url}/configure-overwrite-response", json=config)
+        self.assertTrue(response.ok)
+
+    def reset_overwrite_response(self):
+        response = requests.post(f"{self.base_url}/reset-overwrite-response")
+        self.assertTrue(response.ok)
+
+    def test_http_backoff_policy_constant(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 0:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(0, n_retries)
+        self.assertAlmostEqual(0.5, duration, places=1)
+        self.assertIsNone(error)
+
+    async def test_http_backoff_policy_constant_async(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated_async
+        from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 0:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = await get_user_friends_updated_async(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(0, n_retries)
+        self.assertAlmostEqual(0.5, duration, delta=0.1)
+        self.assertIsNone(error)
+
+    def test_http_backoff_policy_exponential(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertAlmostEqual(0.25 + 0.5 + 1.0, duration, delta=0.5)
+        self.assertIsNone(error)
+
+    async def test_http_backoff_policy_exponential_async(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated_async
+        from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        start = time.perf_counter()
+        result, error = await get_user_friends_updated_async(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+        duration = time.perf_counter() - start
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertAlmostEqual(0.25 + 0.5 + 1.0, duration, delta=0.5)
+        self.assertIsNone(error)
+
+    def test_http_retry_policy_n_retries(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertIsNone(error)
+
+    async def test_http_retry_policy_n_retries_async(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated_async
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        result, error = await get_user_friends_updated_async(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertIsNone(error)
+
+    def test_http_retry_policy_status_codes(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import StatusCodesHttpRetryPolicy
+
+        status_codes = []
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            status_codes.append(response.status_code)
+            if response.status_code == 500:
+                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+            elif response.status_code == 400:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+
+        # act
+        result, error = get_user_friends_updated(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual([500, 400], status_codes)
+        self.assertIsNone(error)
+
+    async def test_http_retry_policy_status_codes_async(self):
+        from accelbyte_py_sdk.api.lobby import get_user_friends_updated_async
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import StatusCodesHttpRetryPolicy
+
+        status_codes = []
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            status_codes.append(response.status_code)
+            if response.status_code == 500:
+                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+            elif response.status_code == 400:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+
+        # act
+        result, error = await get_user_friends_updated_async(
+            x_additional_headers={"Authorization": "Bearer foo"}
+        )
+
+        # assert
+        self.assertEqual([500, 400], status_codes)
+        self.assertIsNone(error)
+
+    # noinspection PyUnresolvedReferences
+    def _setupAsyncioLoop(self):
+        assert self._asyncioTestLoop is None, 'asyncio test loop already initialized'
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.set_debug(False)  # overrode to disable this log
+        self._asyncioTestLoop = loop
+        fut = loop.create_future()
+        self._asyncioCallsTask = loop.create_task(self._asyncioLoopRunner(fut))
+        loop.run_until_complete(fut)
