@@ -16,6 +16,18 @@ from ._token_repository import TokenRepository
 from ._token_repository import InMemoryTokenRepository
 from ._token_repository import MyTokenRepository
 
+from ._http_backoff_policy import HttpBackoffPolicy
+from ._http_backoff_policy import ExponentialHttpBackoffPolicy
+from ._http_backoff_policy import ConstantHttpBackoffPolicy
+from ._http_backoff_policy import NoHttpBackoffPolicy
+
+from ._http_retry_policy import HttpRetryPolicy
+from ._http_retry_policy import CompositeHttpRetryPolicy
+from ._http_retry_policy import MaxElapsedHttpRetryPolicy
+from ._http_retry_policy import MaxRetriesHttpRetryPolicy
+from ._http_retry_policy import NoHttpRetryPolicy
+from ._http_retry_policy import StatusCodesHttpRetryPolicy
+
 from ._http_client import HttpClient
 from ._http_client import HttpRawResponse
 from ._http_client import HttpxHttpClient

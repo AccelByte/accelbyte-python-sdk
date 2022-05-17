@@ -5,12 +5,15 @@ import asyncio
 import logging
 import time
 from abc import ABC, abstractmethod
+from datetime import timedelta
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import httpx
 import requests
 
+from ._http_backoff_policy import HttpBackoffPolicy
 from ._http_response import HttpResponse
+from ._http_retry_policy import HttpRetryPolicy
 from ._proto_http_request import ProtoHttpRequest
 from ._proto_http_request import is_json_mime_type
 from ._utils import create_curl_request
@@ -23,8 +26,10 @@ HttpRawResponse = Tuple[int, str, Any]  # code, content-type, content
 
 class HttpClient(ABC):
 
+    backoff_policy: Optional[HttpBackoffPolicy] = None
     request_log_formatter: Optional[Callable[[dict], str]] = None
     response_log_formatter: Optional[Callable[[dict], str]] = None
+    retry_policy: Optional[HttpRetryPolicy] = None
 
     # noinspection PyMethodMayBeStatic
     def close(self) -> None:
@@ -72,7 +77,6 @@ class HttpClient(ABC):
         _LOGGER.debug(res_fmt(response_dict))
 
 
-# TODO(elmer): move to a separate file once it gets too big
 class RequestsHttpClient(HttpClient):
 
     def __init__(self, allow_redirects: bool = True):
@@ -101,13 +105,41 @@ class RequestsHttpClient(HttpClient):
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
-        self.log_request(request)
-        try:
-            raw_response = self.session.send(request, **kwargs)
-        except requests.exceptions.ConnectionError as e:
-            _LOGGER.error(str(e))
-            return None, HttpResponse.create_connection_error()
-        return raw_response, None
+        return self._send_request_internal(request, **kwargs)
+
+    def _send_request_internal(
+            self,
+            request: Any,
+            **kwargs
+    ) -> Tuple[Any, Optional[HttpResponse]]:
+        attempts = 0
+        elapsed = timedelta(0)
+        should_retry = True
+        raw_response = None
+        error = None
+        while True:
+            try:
+                self.log_request(request)
+                raw_response = self.session.send(request, **kwargs)
+            except requests.exceptions.ConnectionError as e:
+                _LOGGER.error(str(e))
+                error = HttpResponse.create_connection_error()
+            if raw_response is not None and raw_response.ok:
+                error = None
+                break
+            if self.retry_policy is None:
+                should_retry = False
+                break
+            attempts += 1
+            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
+            should_retry = self.retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+            if not should_retry:
+                break
+            if self.backoff_policy:
+                sleep_duration = self.backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                time.sleep(sleep_duration)
+                elapsed += timedelta(seconds=sleep_duration)
+        return raw_response, error
 
     def handle_response(
             self,
@@ -227,16 +259,80 @@ class HttpxHttpClient(HttpClient):
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        self.log_request(request)
-        return self.client.send(request), None
+        return self._send_request_internal(request, **kwargs)
+
+    def _send_request_internal(
+            self,
+            request: Any,
+            **kwargs
+    ) -> Tuple[Any, Optional[HttpResponse]]:
+        attempts = 0
+        elapsed = timedelta(0)
+        should_retry = True
+        raw_response = None
+        error = None
+        while True:
+            self.log_request(request)
+            raw_response = self.client.send(request)
+            ok = self.__ok(raw_response)
+            if raw_response is not None:
+                setattr(raw_response, "ok", ok)
+            if ok:
+                error = None
+                break
+            if self.retry_policy is None:
+                should_retry = False
+                break
+            attempts += 1
+            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
+            should_retry = self.retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+            if not should_retry:
+                break
+            if self.backoff_policy:
+                sleep_duration = self.backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                time.sleep(sleep_duration)
+                elapsed += timedelta(seconds=sleep_duration)
+        return raw_response, error
 
     async def send_request_async(
             self,
             request: Any,
             **kwargs
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        self.log_request(request)
-        return await self.client_async.send(request), None
+        return await self._send_request_internal_async(request, **kwargs)
+
+    async def _send_request_internal_async(
+            self,
+            request: Any,
+            **kwargs
+    ) -> Tuple[Any, Optional[HttpResponse]]:
+        attempts = 0
+        elapsed = timedelta(0)
+        should_retry = True
+        raw_response = None
+        error = None
+        while True:
+            self.log_request(request)
+            raw_response = await self.client_async.send(request)
+            ok = self.__ok(raw_response)
+            if raw_response is not None:
+                setattr(raw_response, "ok", ok)
+            if ok:
+                error = None
+                break
+            if self.retry_policy is None:
+                should_retry = False
+                break
+            attempts += 1
+            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
+            should_retry = self.retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed)
+            if not should_retry:
+                break
+            if self.backoff_policy:
+                sleep_duration = self.backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                await asyncio.sleep(sleep_duration)
+                elapsed += timedelta(seconds=sleep_duration)
+        return raw_response, error
 
     def handle_response(
             self,
@@ -294,6 +390,14 @@ class HttpxHttpClient(HttpClient):
             "headers": {k: v for k, v in httpx_response.headers.items()},
             "body": httpx_response.content,
         }
+
+    @staticmethod
+    def __ok(response) -> bool:
+        try:
+            response.raise_for_status()
+        except (RuntimeError, httpx.HTTPStatusError):
+            return False
+        return True
 
 
 def format_request_log(request_dict: dict) -> str:
