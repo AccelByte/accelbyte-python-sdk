@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.15.0
+- Add HTTP Retry feature
+    - HttpRetryPolicy
+    - HttpBackoffPolicy
+- Updated spec for Justice 3.23.
+
 ## v0.14.0
 - Add `Code generated. DO NOT EDIT!` notice on generated files.
 - Add interactive mode in cli.
