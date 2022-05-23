@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,4 +75,4 @@ def check_wallet(
 
 
 check_wallet.operation_id = "checkWallet"
-check_wallet.is_deprecated = False
+check_wallet.is_deprecated = True

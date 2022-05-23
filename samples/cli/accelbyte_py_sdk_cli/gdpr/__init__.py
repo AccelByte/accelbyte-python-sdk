@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-gdpr-service (1.14.3)
+# justice-gdpr-service (1.14.4)
 
 from ._admin_get_list_deletion_data_request import admin_get_list_deletion_data_request
 from ._get_admin_email_configuration import get_admin_email_configuration

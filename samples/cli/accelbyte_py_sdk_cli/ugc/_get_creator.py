@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-ugc-service (1.17.0)
+# justice-ugc-service (1.18.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ugc import get_creator as get_creator_internal
-from accelbyte_py_sdk.api.ugc.models import ModelsCreatorOverviewResponse
+from accelbyte_py_sdk.api.ugc.models import ModelsCreatorResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 

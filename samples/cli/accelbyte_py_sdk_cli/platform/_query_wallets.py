@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,4 +80,4 @@ def query_wallets(
 
 
 query_wallets.operation_id = "queryWallets"
-query_wallets.is_deprecated = False
+query_wallets.is_deprecated = True

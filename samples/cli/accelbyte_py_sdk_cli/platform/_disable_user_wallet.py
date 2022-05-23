@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,4 +71,4 @@ def disable_user_wallet(
 
 
 disable_user_wallet.operation_id = "disableUserWallet"
-disable_user_wallet.is_deprecated = False
+disable_user_wallet.is_deprecated = True
