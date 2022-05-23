@@ -348,6 +348,61 @@ if __name__ == "__main__":
 
 ---
 
+## Configuring HTTP Retry
+
+To use the `HTTP Retry` feature, set the `HttpClient`'s `retry_policy` and `backoff_policy`.
+
+```python
+import accelbyte_py_sdk
+from accelbyte_py_sdk.core import get_http_client
+
+# 1 Initialize the SDK
+accelbyte_py_sdk.initialize()
+
+# 2 Get the HTTP Client
+http_client = get_http_client()
+
+# 3 Configure the `retry_policy` and `backoff_policy`
+
+# 3a. Retry 3 times with 0.5 seconds delay in between
+from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+http_client.retry_policy = MaxRetriesHttpRetryPolicy(3)
+
+# 3b. Retry when total elapsed time is less than 15 seconds, with an exponential backoff duration.
+from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+from accelbyte_py_sdk.core import MaxElapsedHttpRetryPolicy
+
+http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=1.0, multiplier=2.0)
+http_client.retry_policy = MaxElapsedHttpRetryPolicy(15)
+
+# 3c. Use custom retry and backoff policies.
+from datetime import timedelta
+from typing import Optional
+
+def my_custom_retry_policy(request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> float:
+    return "Retry-After" in response.headers and retries == 1  # Retry if the 'Retry-After' header exists and we are on the 1st retry (2nd attempt).
+
+def my_custom_backoff_policy(request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> float:
+    return response.headers.get("Retry-After", 1)  # Use the value of the 'Retry-After' response header, default to 1.0s.
+
+http_client.backoff_policy = my_custom_backoff_policy
+http_client.retry_policy = my_custom_retry_policy
+
+# 3d. Combining multiple retry policies.
+from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+from accelbyte_py_sdk.core import StatusCodesHttpRetryPolicy
+
+http_client.retry_policy = CompositeHttpRetryPolicy(
+    StatusCodesHttpRetryPolicy(401, (501, 503)),  # Retry when response status code is 401, 501 to 503 (501, 502, or 503) -- AND
+    MaxRetriesHttpRetryPolicy(3)                  #       when number of retries is less than or equal to 3.
+)
+```
+
+See [tests](tests/sdk/core/_request.py) for more usage.
+
 ## Samples
 
 Sample apps are available in the [samples](samples) directory
@@ -723,6 +778,8 @@ same with the models there are also a number of utility functions generated with
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
@@ -740,12 +797,13 @@ same with the models there are also a number of utility functions generated with
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.35.0)
+# justice-basic-service (1.36.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
+from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
@@ -777,7 +835,7 @@ class GetUserProfileInfo(Operation):
 
         produces: ["application/json"]
 
-        security_type: bearer
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -801,7 +859,7 @@ class GetUserProfileInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _security_type: Optional[str] = "bearer"
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
@@ -828,8 +886,8 @@ class GetUserProfileInfo(Operation):
         return self._produces
 
     @property
-    def security_type(self) -> Optional[str]:
-        return self._security_type
+    def securities(self) -> List[List[str]]:
+        return self._securities
 
     @property
     def location_query(self) -> str:
@@ -838,13 +896,6 @@ class GetUserProfileInfo(Operation):
     # endregion properties
 
     # region get methods
-
-    def get_full_url(self, base_url: Union[None, str] = None, collection_format_map: Optional[Dict[str, Optional[str]]] = None) -> str:
-        return self.create_full_url(
-            url=self.url,
-            base_url=base_url,
-            path_params=self.get_path_params(),
-        )
 
     # endregion get methods
 
@@ -888,11 +939,11 @@ class GetUserProfileInfo(Operation):
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["namespace"] = str()
+            result["namespace"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
-            result["userId"] = str()
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -958,11 +1009,11 @@ class GetUserProfileInfo(Operation):
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.namespace = str()
+            instance.namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
-            instance.user_id = str()
+            instance.user_id = ""
         return instance
 
     @staticmethod

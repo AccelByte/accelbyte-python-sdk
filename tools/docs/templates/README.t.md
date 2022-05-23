@@ -348,6 +348,61 @@ if __name__ == "__main__":
 
 ---
 
+## Configuring HTTP Retry
+
+To use the `HTTP Retry` feature, set the `HttpClient`'s `retry_policy` and `backoff_policy`.
+
+```python
+import accelbyte_py_sdk
+from accelbyte_py_sdk.core import get_http_client
+
+# 1 Initialize the SDK
+accelbyte_py_sdk.initialize()
+
+# 2 Get the HTTP Client
+http_client = get_http_client()
+
+# 3 Configure the `retry_policy` and `backoff_policy`
+
+# 3a. Retry 3 times with 0.5 seconds delay in between
+from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+http_client.retry_policy = MaxRetriesHttpRetryPolicy(3)
+
+# 3b. Retry when total elapsed time is less than 15 seconds, with an exponential backoff duration.
+from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+from accelbyte_py_sdk.core import MaxElapsedHttpRetryPolicy
+
+http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=1.0, multiplier=2.0)
+http_client.retry_policy = MaxElapsedHttpRetryPolicy(15)
+
+# 3c. Use custom retry and backoff policies.
+from datetime import timedelta
+from typing import Optional
+
+def my_custom_retry_policy(request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> float:
+    return "Retry-After" in response.headers and retries == 1  # Retry if the 'Retry-After' header exists and we are on the 1st retry (2nd attempt).
+
+def my_custom_backoff_policy(request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> float:
+    return response.headers.get("Retry-After", 1)  # Use the value of the 'Retry-After' response header, default to 1.0s.
+
+http_client.backoff_policy = my_custom_backoff_policy
+http_client.retry_policy = my_custom_retry_policy
+
+# 3d. Combining multiple retry policies.
+from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+from accelbyte_py_sdk.core import StatusCodesHttpRetryPolicy
+
+http_client.retry_policy = CompositeHttpRetryPolicy(
+    StatusCodesHttpRetryPolicy(401, (501, 503)),  # Retry when response status code is 401, 501 to 503 (501, 502, or 503) -- AND
+    MaxRetriesHttpRetryPolicy(3)                  #       when number of retries is less than or equal to 3.
+)
+```
+
+See [tests](tests/sdk/core/_request.py) for more usage.
+
 ## Samples
 
 Sample apps are available in the [samples](samples) directory
