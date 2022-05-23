@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.8.0)
+# justice-iam-service (5.8.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelUserBaseInfo(Model):
 
         display_name: (displayName) REQUIRED str
 
+        platform_user_ids: (platformUserIds) REQUIRED Dict[str, str]
+
         user_id: (userId) REQUIRED str
     """
 
@@ -43,6 +45,7 @@ class ModelUserBaseInfo(Model):
 
     avatar_url: str                                                                                # REQUIRED
     display_name: str                                                                              # REQUIRED
+    platform_user_ids: Dict[str, str]                                                              # REQUIRED
     user_id: str                                                                                   # REQUIRED
 
     # endregion fields
@@ -55,6 +58,10 @@ class ModelUserBaseInfo(Model):
 
     def with_display_name(self, value: str) -> ModelUserBaseInfo:
         self.display_name = value
+        return self
+
+    def with_platform_user_ids(self, value: Dict[str, str]) -> ModelUserBaseInfo:
+        self.platform_user_ids = value
         return self
 
     def with_user_id(self, value: str) -> ModelUserBaseInfo:
@@ -75,6 +82,10 @@ class ModelUserBaseInfo(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "platform_user_ids"):
+            result["platformUserIds"] = {str(k0): str(v0) for k0, v0 in self.platform_user_ids.items()}
+        elif include_empty:
+            result["platformUserIds"] = {}
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -90,11 +101,13 @@ class ModelUserBaseInfo(Model):
         cls,
         avatar_url: str,
         display_name: str,
+        platform_user_ids: Dict[str, str],
         user_id: str,
     ) -> ModelUserBaseInfo:
         instance = cls()
         instance.avatar_url = avatar_url
         instance.display_name = display_name
+        instance.platform_user_ids = platform_user_ids
         instance.user_id = user_id
         return instance
 
@@ -111,6 +124,10 @@ class ModelUserBaseInfo(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "platformUserIds" in dict_ and dict_["platformUserIds"] is not None:
+            instance.platform_user_ids = {str(k0): str(v0) for k0, v0 in dict_["platformUserIds"].items()}
+        elif include_empty:
+            instance.platform_user_ids = {}
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -142,6 +159,7 @@ class ModelUserBaseInfo(Model):
         return {
             "avatarUrl": "avatar_url",
             "displayName": "display_name",
+            "platformUserIds": "platform_user_ids",
             "userId": "user_id",
         }
 
@@ -150,6 +168,7 @@ class ModelUserBaseInfo(Model):
         return {
             "avatarUrl": True,
             "displayName": True,
+            "platformUserIds": True,
             "userId": True,
         }
 

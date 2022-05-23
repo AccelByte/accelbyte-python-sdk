@@ -56,8 +56,8 @@ from ..models import NotificationProcessResultStatusEnum
 from ..models import PaymentOrderChargeRequestPaymentProviderEnum
 from ..models import PaymentOrderChargeStatusStatusEnum
 from ..models import PaymentOrderCreateItemTypeEnum
-from ..models import PaymentOrderInfoStatusEnum, PaymentOrderInfoItemTypeEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoChannelEnum
-from ..models import PaymentOrderNotifySimulationPaymentProviderEnum, PaymentOrderNotifySimulationNotifyTypeEnum
+from ..models import PaymentOrderInfoChannelEnum, PaymentOrderInfoStatusEnum, PaymentOrderInfoPaymentProviderEnum, PaymentOrderInfoItemTypeEnum
+from ..models import PaymentOrderNotifySimulationNotifyTypeEnum, PaymentOrderNotifySimulationPaymentProviderEnum
 
 
 @same_doc_as(ChargePaymentOrder)

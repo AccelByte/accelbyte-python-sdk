@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,10 +29,12 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
+from .....core import deprecated
 
 from ...models import WalletPagingSlicedResult
 
 
+@deprecated
 class OriginEnum(StrEnum):
     EPIC = "Epic"
     GOOGLEPLAY = "GooglePlay"
@@ -47,6 +49,7 @@ class OriginEnum(StrEnum):
     XBOX = "Xbox"
 
 
+@deprecated
 class QueryWallets(Operation):
     """Query wallets (queryWallets)
 

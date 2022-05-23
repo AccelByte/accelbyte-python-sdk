@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-social-service Index (1.28.0)
+# justice-social-service Index (1.29.0)
 
 
 ## Operations

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2681,8 +2681,8 @@ def create_stadia_sync_request_example() -> StadiaSyncRequest:
 
 def create_steam_dlc_sync_request_example() -> SteamDLCSyncRequest:
     instance = SteamDLCSyncRequest()
-    instance.app_id = randomize("uid")
     instance.steam_id = randomize()
+    instance.app_id = randomize("uid")
     return instance
 
 

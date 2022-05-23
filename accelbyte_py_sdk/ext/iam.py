@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.8.0)
+# justice-iam-service (5.8.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -1729,6 +1729,7 @@ def create_model_user_base_info_example() -> ModelUserBaseInfo:
     instance = ModelUserBaseInfo()
     instance.avatar_url = randomize("url")
     instance.display_name = randomize("slug")
+    instance.platform_user_ids = {randomize(): randomize()}
     instance.user_id = randomize("uid")
     return instance
 

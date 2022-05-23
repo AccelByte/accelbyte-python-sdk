@@ -29,7 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelsCreatorOverviewResponse
+from ..models import ModelsCreatorResponse
 from ..models import ResponseError
 
 from ..operations.public_creator import GetCreator

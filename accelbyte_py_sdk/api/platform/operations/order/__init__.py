@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.7.1"
+__version__ = "4.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

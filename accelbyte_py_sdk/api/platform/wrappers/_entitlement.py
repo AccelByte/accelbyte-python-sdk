@@ -100,9 +100,9 @@ from ..operations.entitlement import UpdateUserEntitlement
 from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
-from ..models import EntitlementInfoTypeEnum, EntitlementInfoSourceEnum, EntitlementInfoClazzEnum, EntitlementInfoAppTypeEnum, EntitlementInfoStatusEnum
+from ..models import EntitlementInfoTypeEnum, EntitlementInfoAppTypeEnum, EntitlementInfoSourceEnum, EntitlementInfoClazzEnum, EntitlementInfoStatusEnum
 from ..models import EntitlementUpdateStatusEnum
-from ..models import StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoSourceEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoStatusEnum
+from ..models import StackableEntitlementInfoStatusEnum, StackableEntitlementInfoClazzEnum, StackableEntitlementInfoAppTypeEnum, StackableEntitlementInfoTypeEnum, StackableEntitlementInfoSourceEnum
 
 
 @same_doc_as(ConsumeUserEntitlement)

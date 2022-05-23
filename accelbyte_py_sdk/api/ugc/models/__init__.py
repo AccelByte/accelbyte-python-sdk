@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-ugc-service."""
 
-__version__ = "1.17.0"
+__version__ = "1.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,7 @@ from .models_create_type_request import ModelsCreateTypeRequest
 from .models_create_type_response import ModelsCreateTypeResponse
 from .models_creator_follow_state import ModelsCreatorFollowState
 from .models_creator_overview_response import ModelsCreatorOverviewResponse
+from .models_creator_response import ModelsCreatorResponse
 from .models_get_content_preview_response import ModelsGetContentPreviewResponse
 from .models_hide_content_request import ModelsHideContentRequest
 from .models_like_state import ModelsLikeState

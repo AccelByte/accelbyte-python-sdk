@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import CreditRequest
@@ -66,13 +67,14 @@ from ..operations.wallet import ResetPlatformWalletConfig
 from ..operations.wallet import ResetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import UpdatePlatformWalletConfig
 from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
-from ..models import CreditRequestSourceEnum, CreditRequestOriginEnum
+from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
 from ..models import PaymentRequestWalletPlatformEnum
 from ..models import PlatformWalletWalletStatusEnum
 from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
 from ..models import WalletInfoStatusEnum
 
 
+@deprecated
 @same_doc_as(CheckWallet)
 def check_wallet(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -88,6 +90,7 @@ def check_wallet(currency_code: str, origin: Union[str, CheckWalletOriginEnum], 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(CheckWallet)
 async def check_wallet_async(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -133,6 +136,7 @@ async def credit_user_wallet_async(currency_code: str, user_id: str, body: Optio
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(DebitUserWallet)
 def debit_user_wallet(user_id: str, wallet_id: str, body: Optional[DebitRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -148,6 +152,7 @@ def debit_user_wallet(user_id: str, wallet_id: str, body: Optional[DebitRequest]
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(DebitUserWallet)
 async def debit_user_wallet_async(user_id: str, wallet_id: str, body: Optional[DebitRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -163,6 +168,7 @@ async def debit_user_wallet_async(user_id: str, wallet_id: str, body: Optional[D
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(DisableUserWallet)
 def disable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -177,6 +183,7 @@ def disable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] =
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(DisableUserWallet)
 async def disable_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -191,6 +198,7 @@ async def disable_user_wallet_async(user_id: str, wallet_id: str, namespace: Opt
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(EnableUserWallet)
 def enable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -205,6 +213,7 @@ def enable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = 
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(EnableUserWallet)
 async def enable_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -245,6 +254,7 @@ async def get_platform_wallet_config_async(platform: Union[str, GetPlatformWalle
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(GetUserWallet)
 def get_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -259,6 +269,7 @@ def get_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = Non
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(GetUserWallet)
 async def get_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -273,6 +284,7 @@ async def get_user_wallet_async(user_id: str, wallet_id: str, namespace: Optiona
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(GetWallet)
 def get_wallet(wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -286,6 +298,7 @@ def get_wallet(wallet_id: str, namespace: Optional[str] = None, x_additional_hea
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(GetWallet)
 async def get_wallet_async(wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -331,6 +344,7 @@ async def list_user_currency_transactions_async(currency_code: str, user_id: str
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(ListUserWalletTransactions)
 def list_user_wallet_transactions(user_id: str, wallet_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -347,6 +361,7 @@ def list_user_wallet_transactions(user_id: str, wallet_id: str, limit: Optional[
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(ListUserWalletTransactions)
 async def list_user_wallet_transactions_async(user_id: str, wallet_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -505,6 +520,7 @@ async def query_user_currency_wallets_async(user_id: str, namespace: Optional[st
     return await run_request_async(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(QueryWallets)
 def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:
@@ -522,6 +538,7 @@ def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = No
     return run_request(request, additional_headers=x_additional_headers)
 
 
+@deprecated
 @same_doc_as(QueryWallets)
 async def query_wallets_async(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
     if namespace is None:

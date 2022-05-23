@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-ugc-service Index (1.17.0)
+# justice-ugc-service Index (1.18.1)
 
 
 ## Operations
@@ -179,6 +179,7 @@
 | models.CreateTypeResponse | [ModelsCreateTypeResponse](../accelbyte_py_sdk/api/ugc/models/models_create_type_response.py) |
 | models.CreatorFollowState | [ModelsCreatorFollowState](../accelbyte_py_sdk/api/ugc/models/models_creator_follow_state.py) |
 | models.CreatorOverviewResponse | [ModelsCreatorOverviewResponse](../accelbyte_py_sdk/api/ugc/models/models_creator_overview_response.py) |
+| models.CreatorResponse | [ModelsCreatorResponse](../accelbyte_py_sdk/api/ugc/models/models_creator_response.py) |
 | models.GetContentPreviewResponse | [ModelsGetContentPreviewResponse](../accelbyte_py_sdk/api/ugc/models/models_get_content_preview_response.py) |
 | models.HideContentRequest | [ModelsHideContentRequest](../accelbyte_py_sdk/api/ugc/models/models_hide_content_request.py) |
 | models.LikeState | [ModelsLikeState](../accelbyte_py_sdk/api/ugc/models/models_like_state.py) |

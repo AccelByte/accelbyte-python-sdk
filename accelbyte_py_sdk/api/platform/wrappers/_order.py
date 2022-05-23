@@ -69,9 +69,9 @@ from ..operations.order import RefundOrder
 from ..operations.order import UpdateUserOrderStatus
 from ..models import AdminOrderCreatePlatformEnum
 from ..models import OrderHistoryInfoActionEnum
-from ..models import OrderInfoPaymentProviderEnum, OrderInfoStatusEnum
+from ..models import OrderInfoStatusEnum, OrderInfoPaymentProviderEnum
 from ..models import OrderUpdateStatusEnum
-from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStatusEnum
+from ..models import TradeNotificationStatusEnum, TradeNotificationPaymentProviderEnum
 
 
 @same_doc_as(AdminCreateUserOrder)

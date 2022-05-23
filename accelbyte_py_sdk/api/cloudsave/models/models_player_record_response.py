@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-cloudsave-service (2.5.1)
+# justice-cloudsave-service (2.5.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

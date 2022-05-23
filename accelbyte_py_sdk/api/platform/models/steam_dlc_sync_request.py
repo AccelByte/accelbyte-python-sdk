@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,26 +32,26 @@ class SteamDLCSyncRequest(Model):
     """Steam DLC sync request (SteamDLCSyncRequest)
 
     Properties:
-        app_id: (appId) REQUIRED str
-
         steam_id: (steamId) REQUIRED str
+
+        app_id: (appId) OPTIONAL str
     """
 
     # region fields
 
-    app_id: str                                                                                    # REQUIRED
     steam_id: str                                                                                  # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_app_id(self, value: str) -> SteamDLCSyncRequest:
-        self.app_id = value
-        return self
-
     def with_steam_id(self, value: str) -> SteamDLCSyncRequest:
         self.steam_id = value
+        return self
+
+    def with_app_id(self, value: str) -> SteamDLCSyncRequest:
+        self.app_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +60,14 @@ class SteamDLCSyncRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "app_id"):
-            result["appId"] = str(self.app_id)
-        elif include_empty:
-            result["appId"] = ""
         if hasattr(self, "steam_id"):
             result["steamId"] = str(self.steam_id)
         elif include_empty:
             result["steamId"] = ""
+        if hasattr(self, "app_id"):
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = ""
         return result
 
     # endregion to methods
@@ -77,12 +77,13 @@ class SteamDLCSyncRequest(Model):
     @classmethod
     def create(
         cls,
-        app_id: str,
         steam_id: str,
+        app_id: Optional[str] = None,
     ) -> SteamDLCSyncRequest:
         instance = cls()
-        instance.app_id = app_id
         instance.steam_id = steam_id
+        if app_id is not None:
+            instance.app_id = app_id
         return instance
 
     @classmethod
@@ -90,14 +91,14 @@ class SteamDLCSyncRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "appId" in dict_ and dict_["appId"] is not None:
-            instance.app_id = str(dict_["appId"])
-        elif include_empty:
-            instance.app_id = ""
         if "steamId" in dict_ and dict_["steamId"] is not None:
             instance.steam_id = str(dict_["steamId"])
         elif include_empty:
             instance.steam_id = ""
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = ""
         return instance
 
     @classmethod
@@ -123,15 +124,15 @@ class SteamDLCSyncRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "appId": "app_id",
             "steamId": "steam_id",
+            "appId": "app_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "appId": True,
             "steamId": True,
+            "appId": False,
         }
 
     # endregion static methods

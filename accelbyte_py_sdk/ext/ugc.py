@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (1.17.0)
+# justice-ugc-service (1.18.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,7 @@ from ..api.ugc.models import ModelsCreateTypeRequest
 from ..api.ugc.models import ModelsCreateTypeResponse
 from ..api.ugc.models import ModelsCreatorFollowState
 from ..api.ugc.models import ModelsCreatorOverviewResponse
+from ..api.ugc.models import ModelsCreatorResponse
 from ..api.ugc.models import ModelsGetContentPreviewResponse
 from ..api.ugc.models import ModelsHideContentRequest
 from ..api.ugc.models import ModelsLikeState
@@ -248,6 +249,17 @@ def create_models_creator_follow_state_example() -> ModelsCreatorFollowState:
 
 def create_models_creator_overview_response_example() -> ModelsCreatorOverviewResponse:
     instance = ModelsCreatorOverviewResponse()
+    instance.follow_count = randomize("int", min_val=1, max_val=1000)
+    instance.following_count = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.total_liked_content = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_creator_response_example() -> ModelsCreatorResponse:
+    instance = ModelsCreatorResponse()
+    instance.creator_follow_state = create_models_creator_follow_state_example()
     instance.follow_count = randomize("int", min_val=1, max_val=1000)
     instance.following_count = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ugc-service (1.17.0)
+# justice-ugc-service (1.18.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,12 +29,14 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsCreatorOverviewResponse
+from ...models import ModelsCreatorResponse
 from ...models import ResponseError
 
 
 class GetCreator(Operation):
     """Get creator stats: number of total like by other user, number of total following and follower user (GetCreator)
+
+    Public user can access without token or if token specified, requires valid user token
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}
@@ -54,7 +56,7 @@ class GetCreator(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCreatorOverviewResponse (OK)
+        200: OK - ModelsCreatorResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -161,10 +163,10 @@ class GetCreator(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsCreatorOverviewResponse], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsCreatorResponse], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsCreatorOverviewResponse (OK)
+        200: OK - ModelsCreatorResponse (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -184,7 +186,7 @@ class GetCreator(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsCreatorOverviewResponse.create_from_dict(content), None
+            return ModelsCreatorResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

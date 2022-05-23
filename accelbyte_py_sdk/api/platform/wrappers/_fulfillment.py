@@ -42,7 +42,7 @@ from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import RedeemCode
-from ..models import FulfillmentRequestSourceEnum, FulfillmentRequestOriginEnum
+from ..models import FulfillmentRequestOriginEnum, FulfillmentRequestSourceEnum
 from ..models import RewardsRequestOriginEnum, RewardsRequestSourceEnum
 
 

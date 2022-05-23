@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.7.1)
+# justice-platform-service (4.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,6 +53,7 @@ class SourceEnum(StrEnum):
     REWARD = "REWARD"
     GIFT = "GIFT"
     REFUND = "REFUND"
+    DLC = "DLC"
     OTHER = "OTHER"
 
 
@@ -227,7 +228,7 @@ class CreditRequest(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "origin": ["Playstation", "Xbox", "Steam", "Epic", "Stadia", "IOS", "GooglePlay", "Twitch", "Nintendo", "System", "Other"],
-            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "REFUND", "OTHER"],
+            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "REFUND", "DLC", "OTHER"],
         }
 
     # endregion static methods

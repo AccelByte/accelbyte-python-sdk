@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-cloudsave-service Index (2.5.1)
+# justice-cloudsave-service Index (2.5.2)
 
 
 ## Operations

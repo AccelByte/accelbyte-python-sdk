@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.0.0)
+# justice-dsm-controller-service (3.0.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,12 +35,15 @@ class ModelsGetImageLimitResponseData(Model):
         image_count: (image_count) REQUIRED int
 
         image_limit: (image_limit) REQUIRED int
+
+        non_persistent_image_number: (non_persistent_image_number) REQUIRED int
     """
 
     # region fields
 
     image_count: int                                                                               # REQUIRED
     image_limit: int                                                                               # REQUIRED
+    non_persistent_image_number: int                                                               # REQUIRED
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ModelsGetImageLimitResponseData(Model):
 
     def with_image_limit(self, value: int) -> ModelsGetImageLimitResponseData:
         self.image_limit = value
+        return self
+
+    def with_non_persistent_image_number(self, value: int) -> ModelsGetImageLimitResponseData:
+        self.non_persistent_image_number = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ModelsGetImageLimitResponseData(Model):
             result["image_limit"] = int(self.image_limit)
         elif include_empty:
             result["image_limit"] = 0
+        if hasattr(self, "non_persistent_image_number"):
+            result["non_persistent_image_number"] = int(self.non_persistent_image_number)
+        elif include_empty:
+            result["non_persistent_image_number"] = 0
         return result
 
     # endregion to methods
@@ -79,10 +90,12 @@ class ModelsGetImageLimitResponseData(Model):
         cls,
         image_count: int,
         image_limit: int,
+        non_persistent_image_number: int,
     ) -> ModelsGetImageLimitResponseData:
         instance = cls()
         instance.image_count = image_count
         instance.image_limit = image_limit
+        instance.non_persistent_image_number = non_persistent_image_number
         return instance
 
     @classmethod
@@ -98,6 +111,10 @@ class ModelsGetImageLimitResponseData(Model):
             instance.image_limit = int(dict_["image_limit"])
         elif include_empty:
             instance.image_limit = 0
+        if "non_persistent_image_number" in dict_ and dict_["non_persistent_image_number"] is not None:
+            instance.non_persistent_image_number = int(dict_["non_persistent_image_number"])
+        elif include_empty:
+            instance.non_persistent_image_number = 0
         return instance
 
     @classmethod
@@ -125,6 +142,7 @@ class ModelsGetImageLimitResponseData(Model):
         return {
             "image_count": "image_count",
             "image_limit": "image_limit",
+            "non_persistent_image_number": "non_persistent_image_number",
         }
 
     @staticmethod
@@ -132,6 +150,7 @@ class ModelsGetImageLimitResponseData(Model):
         return {
             "image_count": True,
             "image_limit": True,
+            "non_persistent_image_number": True,
         }
 
     # endregion static methods
