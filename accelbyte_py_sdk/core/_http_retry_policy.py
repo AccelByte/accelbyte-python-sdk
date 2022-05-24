@@ -24,7 +24,9 @@ class CompositeHttpRetryPolicy:
 
 class MaxElapsedHttpRetryPolicy:
 
-    def __init__(self, max_elapsed: timedelta):
+    def __init__(self, max_elapsed: Union[int, float, timedelta]):
+        if isinstance(max_elapsed, (int, float)):
+            max_elapsed = timedelta(seconds=max_elapsed)
         self.max_elapsed = max_elapsed
 
     def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
