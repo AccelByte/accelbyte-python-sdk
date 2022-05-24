@@ -84,6 +84,18 @@ class DSMCTestCase(IntegrationTestCase):
         self.session_id = session_id
         self.models_create_session_request.session_id = self.session_id
 
+    def afterSetUp(self) -> None:
+        from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
+        from accelbyte_py_sdk.core import MaxElapsedHttpRetryPolicy
+
+        self.set_http_client_policies(
+            retry=MaxElapsedHttpRetryPolicy(60.0),
+            backoff=ExponentialHttpBackoffPolicy()
+        )
+
+    def beforeTearDown(self) -> None:
+        self.set_http_client_policies(retry=None, backoff=None)
+
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.dsmc import delete_session as dsmc_delete_session
         from accelbyte_py_sdk.api.sessionbrowser import delete_session as sb_delete_session

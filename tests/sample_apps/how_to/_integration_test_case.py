@@ -121,6 +121,15 @@ class SDKTestCaseUtils:
     def log_warning(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
         self.log(msg=msg, level=logging.WARNING, condition=condition)
 
+    # noinspection PyMethodMayBeStatic
+    def set_http_client_policies(self, /, *, retry=None, backoff=None):
+        # pylint: disable=no-self-use
+        from accelbyte_py_sdk.core import get_http_client
+
+        http_client = get_http_client()
+        http_client.retry_policy = retry
+        http_client.backoff_policy = backoff
+
 
 class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
 
@@ -131,10 +140,26 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
         cls.do_setup_class()
 
     def setUp(self) -> None:
+        self.beforeSetup()
         self.do_setup(self)
+        self.afterSetUp()
+
+    def beforeSetup(self) -> None:
+        pass
+
+    def afterSetUp(self) -> None:
+        pass
 
     def tearDown(self) -> None:
+        self.beforeTearDown()
         self.do_teardown(self)
+        self.afterTearDown()
+
+    def beforeTearDown(self) -> None:
+        pass
+
+    def afterTearDown(self) -> None:
+        pass
 
 
 class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
@@ -148,7 +173,29 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
     def setUpClass(cls) -> None:
         cls.do_setup_class()
 
-    async def do_setup_async(self) -> None:
+    async def asyncSetUp(self) -> None:
+        await self.beforeAsyncSetUp()
+        self.do_setup(self)
+        await self.afterAsyncSetUp()
+
+    async def beforeAsyncSetUp(self) -> None:
+        pass
+
+    async def afterAsyncSetUp(self) -> None:
+        await self.connect()
+
+    async def asyncTearDown(self) -> None:
+        await self.beforeAsyncTearDown()
+        self.do_teardown(self)
+        await self.afterAsyncTearDown()
+
+    async def beforeAsyncTearDown(self) -> None:
+        await self.disconnect()
+
+    async def afterAsyncTearDown(self) -> None:
+        pass
+
+    async def connect(self):
         from accelbyte_py_sdk.core import get_access_token
         from accelbyte_py_sdk.core import get_base_url
 
@@ -164,19 +211,15 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
         await self.ws_client.connect()
 
-    async def asyncSetUp(self) -> None:
-        self.do_setup(self)
-        await self.do_setup_async()
-
-    async def asyncTearDown(self) -> None:
+    async def disconnect(self):
         if self.ws_client is not None:
             await self.ws_client.disconnect()
             self.ws_client = None
-        self.do_teardown(self)
 
     async def on_receive(self, message: str):
         self.messages.put(message)
 
+    # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):
         assert self._asyncioTestLoop is None, 'asyncio test loop already initialized'
         loop = asyncio.new_event_loop()
