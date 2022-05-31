@@ -15,7 +15,10 @@ class DocsTestCase(IntegrationTestCase):
             DotEnvFileConfigRepository(dotenv_file=dotenv_file, set_env_var=True)
 
     def setUp(self) -> None:
-        pass
+        import accelbyte_py_sdk
+
+        if accelbyte_py_sdk.is_initialized():
+            accelbyte_py_sdk.reset()
 
     def test_initialize_sdk_and_call_token_grant_v3(self):
         from accelbyte_py_sdk.core import get_env_config
