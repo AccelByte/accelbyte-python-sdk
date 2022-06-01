@@ -11,6 +11,9 @@ from ...core import get_client_auth
 from ...core import get_client_id
 from ...core import remove_token
 
+from ...core import set_token_refresher
+from ...core import TokenRefresher
+
 from ...core import create_pkce_verifier_and_challenge_s256
 from ...core import create_basic_authentication
 
@@ -59,15 +62,23 @@ def convert_bearer_auth_token_to_oauth_token_dict(
 def login_client(
         client_id: Union[None, str] = None,
         client_secret: Union[None, str] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
 ):
+    kwargs["try_refresh"] = False
+
     if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
         x_additional_headers["Authorization"] \
             = create_basic_authentication(client_id, client_secret)
-    token, error = token_grant_v3("client_credentials")
+    token, error = token_grant_v3(
+        "client_credentials",
+        **kwargs
+    )
     if error:
         return None, error
+
+    set_token_refresher(TokenRefresher(login_client, client_id, client_secret, x_additional_headers=x_additional_headers, **kwargs))
 
     return token, None
 
@@ -75,15 +86,23 @@ def login_client(
 async def login_client_async(
         client_id: Union[None, str] = None,
         client_secret: Union[None, str] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
 ):
+    kwargs["try_refresh"] = False
+
     if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
         x_additional_headers["Authorization"] \
             = create_basic_authentication(client_id, client_secret)
-    token, error = await token_grant_v3_async("client_credentials")
+    token, error = await token_grant_v3_async(
+        "client_credentials",
+        **kwargs
+    )
     if error:
         return None, error
+
+    set_token_refresher(TokenRefresher(login_client_async, client_id, client_secret, x_additional_headers=x_additional_headers, **kwargs))
 
     return token, None
 
@@ -92,8 +111,11 @@ def login_user(
         username: str,
         password: str,
         scope: Union[None, str, List[str]] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
 ):
+    kwargs["try_refresh"] = False
+
     code_verifier, code_challenge, code_challenge_method \
         = create_pkce_verifier_and_challenge_s256()
 
@@ -112,7 +134,8 @@ def login_user(
         scope=scope,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -122,7 +145,8 @@ def login_user(
         password=password,
         request_id=request_id,
         client_id=client_id,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -132,10 +156,13 @@ def login_user(
         code=code,
         code_verifier=code_verifier,
         redirect_uri="",
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
+
+    set_token_refresher(TokenRefresher(login_user, username, password, scope=scope, x_additional_headers=x_additional_headers, **kwargs))
 
     return token, None
 
@@ -144,8 +171,11 @@ async def login_user_async(
         username: str,
         password: str,
         scope: Union[None, str, List[str]] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
 ):
+    kwargs["try_refresh"] = False
+
     code_verifier, code_challenge, code_challenge_method \
         = create_pkce_verifier_and_challenge_s256()
 
@@ -164,7 +194,8 @@ async def login_user_async(
         scope=scope,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -174,7 +205,8 @@ async def login_user_async(
         password=password,
         request_id=request_id,
         client_id=client_id,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -184,15 +216,23 @@ async def login_user_async(
         code=code,
         code_verifier=code_verifier,
         redirect_uri="",
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
 
+    set_token_refresher(TokenRefresher(login_user_async, username, password, scope=scope, x_additional_headers=x_additional_headers, **kwargs))
+
     return token, None
 
 
-def logout(x_additional_headers: Union[None, Dict[str, str]] = None):
+def logout(
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
+):
+    kwargs["try_refresh"] = False
+
     access_token, error = get_access_token()
     if error:
         return None, error
@@ -207,7 +247,8 @@ def logout(x_additional_headers: Union[None, Dict[str, str]] = None):
 
     _, error = token_revocation_v3(
         token=access_token,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -216,17 +257,25 @@ def logout(x_additional_headers: Union[None, Dict[str, str]] = None):
     if error:
         return None, error
 
+    set_token_refresher(None)
+
     return None, None
 
 
-async def logout_async(x_additional_headers: Union[None, Dict[str, str]] = None):
+async def logout_async(
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
+):
+    kwargs["try_refresh"] = False
+
     access_token, error = get_access_token()
     if error:
         return None, error
 
     _, error = await token_revocation_v3_async(
         token=access_token,
-        x_additional_headers=x_additional_headers
+        x_additional_headers=x_additional_headers,
+        **kwargs
     )
     if error:
         return None, error
@@ -234,6 +283,8 @@ async def logout_async(x_additional_headers: Union[None, Dict[str, str]] = None)
     _, error = remove_token()
     if error:
         return None, error
+
+    set_token_refresher(None)
 
     return None, None
 

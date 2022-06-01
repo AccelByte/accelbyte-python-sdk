@@ -12,6 +12,7 @@ from ._http_client import HttpClient, HTTP_CLIENTS, DEFAULT_HTTP_CLIENT
 from ._http_response import HttpResponse
 from ._operation import Operation
 from ._proto_http_request import ProtoHttpRequest, create_proto_from_operation
+from ._token_refresher import TokenRefresher
 from ._token_repository import TokenRepository, TOKEN_REPOS, DEFAULT_TOKEN_REPO
 from ._utils import add_buffered_file_handler_to_logger, get_query_from_http_redirect_response
 
@@ -27,6 +28,8 @@ class AccelByteSDK:
         self._config_repository: Optional[ConfigRepository] = None
         self._token_repository: Optional[TokenRepository] = None
         self._http_client: Optional[HttpClient] = None
+
+        self._token_refresher: Optional[TokenRefresher] = None
 
         self.logger = logging.getLogger(AccelByteSDK.LOGGER_NAME)
 
@@ -150,6 +153,8 @@ class AccelByteSDK:
         self._token_repository = None
         self._http_client = None
 
+        self._token_refresher = None
+
     # endregion Lifecycle
 
     # region Accessors
@@ -183,6 +188,19 @@ class AccelByteSDK:
         if not isinstance(http_client, HttpClient):
             raise TypeError(f"HTTP client '{type(http_client).__name__}' not valid.")
         self._http_client = http_client
+
+    def get_token_refresher(self, raise_when_none: bool = True) -> Optional[TokenRefresher]:
+        if raise_when_none and self._token_refresher is None:
+            raise ValueError("Token refresher not set.")
+        return self._token_refresher
+
+    def set_token_refresher(self, token_refresher: TokenRefresher) -> None:
+        if token_refresher is None:
+            self._token_refresher = None
+            return
+        if not isinstance(token_refresher, TokenRefresher):
+            raise TypeError(f"Token refresher '{type(token_refresher).__name__}' not valid.")
+        self._token_refresher = token_refresher
 
     # endregion Accessors
 
@@ -296,6 +314,9 @@ class AccelByteSDK:
 
         self._pre_run_request(**kwargs)
 
+        if try_refresh and self._token_refresher:
+            self._token_refresher.try_refresh(token_repo=token_repo or self.get_token_repository(raise_when_none=False))
+
         response, error = self.run_proto_request(
             proto=proto,
             has_redirects=operation.has_redirects(),
@@ -337,6 +358,9 @@ class AccelByteSDK:
             return None, error
 
         await self._pre_run_request_async(**kwargs)
+
+        if try_refresh and self._token_refresher:
+            await self._token_refresher.try_refresh_async(token_repo=token_repo or self.get_token_repository(raise_when_none=False))
 
         response, error = await self.run_proto_request_async(
             proto=proto,

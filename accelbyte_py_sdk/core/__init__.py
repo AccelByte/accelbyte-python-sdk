@@ -39,6 +39,8 @@ from ._proto_http_request import ProtoHttpRequest
 from ._proto_http_request import SecuritiesResolver
 from ._proto_http_request import create_proto_from_operation
 
+from ._token_refresher import TokenRefresher
+
 from ._ws_client import WebsocketsWSClient
 
 from ._wsm import WebSocketMessage
@@ -88,6 +90,8 @@ get_token_repository = SDK.get_token_repository
 set_token_repository = SDK.set_token_repository
 get_http_client = SDK.get_http_client
 set_http_client = SDK.set_http_client
+get_token_refresher = SDK.get_token_refresher
+set_token_refresher = SDK.set_token_refresher
 
 get_app_name = SDK.get_app_name
 get_app_version = SDK.get_app_version
