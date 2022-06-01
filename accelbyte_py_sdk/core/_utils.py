@@ -225,6 +225,17 @@ def get_logger(additional_scope: Union[None, str] = None) -> logging.Logger:
     return logger
 
 
+def get_member(obj: Any, member_name: str, default: Any = None) -> Any:
+    if obj is None:
+        return default
+    if hasattr(obj, member_name):
+        return getattr(obj, member_name)
+    elif hasattr(obj, "__iter__") and member_name in obj:
+        return obj[member_name]
+    else:
+        return default
+
+
 def get_query_from_http_redirect_response(
         http_response: HttpResponse,
         query_key: str
