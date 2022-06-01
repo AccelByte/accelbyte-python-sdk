@@ -70,3 +70,11 @@ class InMemoryTokenRepository(TokenRepository):
     def store_token(self, token: Any) -> bool:
         self._token = token
         return True
+
+
+TOKEN_REPOS = [
+    MyTokenRepository,
+    InMemoryTokenRepository
+]
+
+DEFAULT_TOKEN_REPO = InMemoryTokenRepository

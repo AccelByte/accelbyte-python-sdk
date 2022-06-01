@@ -16,9 +16,14 @@ from ._token_repository import TokenRepository
 from ._token_repository import InMemoryTokenRepository
 from ._token_repository import MyTokenRepository
 
+from ._http_client import HttpClient
+from ._http_client import HttpRawResponse
+from ._http_client import HttpxHttpClient
+from ._http_client import RequestsHttpClient
+
 from ._http_backoff_policy import HttpBackoffPolicy
-from ._http_backoff_policy import ExponentialHttpBackoffPolicy
 from ._http_backoff_policy import ConstantHttpBackoffPolicy
+from ._http_backoff_policy import ExponentialHttpBackoffPolicy
 from ._http_backoff_policy import NoHttpBackoffPolicy
 
 from ._http_retry_policy import HttpRetryPolicy
@@ -28,16 +33,11 @@ from ._http_retry_policy import MaxRetriesHttpRetryPolicy
 from ._http_retry_policy import NoHttpRetryPolicy
 from ._http_retry_policy import StatusCodesHttpRetryPolicy
 
-from ._http_client import HttpClient
-from ._http_client import HttpRawResponse
-from ._http_client import HttpxHttpClient
-from ._http_client import RequestsHttpClient
+from ._http_response import HttpResponse
 
 from ._proto_http_request import ProtoHttpRequest
 from ._proto_http_request import SecuritiesResolver
 from ._proto_http_request import create_proto_from_operation
-
-from ._http_response import HttpResponse
 
 from ._ws_client import WebsocketsWSClient
 
@@ -46,6 +46,8 @@ from ._wsm import WebSocketMessageParserError
 from ._wsm import WebSocketMessageParserException
 from ._wsm import parse_wsm
 
+from ._decorators import deprecated
+from ._decorators import same_doc_as
 from ._header import Header
 from ._headerstr import HeaderStr
 from ._model import Model
@@ -73,33 +75,32 @@ from ._utils import set_env_user_credentials
 from ._utils import set_logger_level
 from ._utils import try_convert_content_type
 
-from ._core import is_initialized
-from ._core import initialize
-from ._core import reset
+from ._sdk import SDK
+from ._sdk import AccelByteSDK
 
-from ._core import get_app_name
-from ._core import get_app_version
+is_initialized = SDK.is_initialized
+initialize = SDK.initialize
+reset = SDK.reset
 
-from ._core import get_config_repository
-from ._core import set_config_repository
-from ._core import get_base_url
-from ._core import get_client_auth
-from ._core import get_client_id
-from ._core import get_client_secret
-from ._core import get_namespace
+get_config_repository = SDK.get_config_repository
+set_config_repository = SDK.set_config_repository
+get_token_repository = SDK.get_token_repository
+set_token_repository = SDK.set_token_repository
+get_http_client = SDK.get_http_client
+set_http_client = SDK.set_http_client
 
-from ._core import get_token_repository
-from ._core import set_token_repository
-from ._core import get_access_token
-from ._core import remove_token
-from ._core import set_token
+get_app_name = SDK.get_app_name
+get_app_version = SDK.get_app_version
+get_base_url = SDK.get_base_url
+get_client_auth = SDK.get_client_auth
+get_client_id = SDK.get_client_id
+get_client_secret = SDK.get_client_secret
+get_namespace = SDK.get_namespace
+get_access_token = SDK.get_access_token
+remove_token = SDK.remove_token
+set_token = SDK.set_token
 
-from ._core import get_http_client
-from ._core import set_http_client
-from ._core import run_proto_request
-from ._core import run_proto_request_async
-from ._core import run_request
-from ._core import run_request_async
-
-from ._decorators import deprecated
-from ._decorators import same_doc_as
+run_request = SDK.run_request
+run_request_async = SDK.run_request_async
+run_proto_request = SDK.run_proto_request
+run_proto_request_async = SDK.run_proto_request_async

@@ -471,3 +471,11 @@ def process_response(
         content = None
 
     return (status_code, content_type, content), None
+
+
+HTTP_CLIENTS = [
+    RequestsHttpClient,
+    HttpxHttpClient,
+]
+
+DEFAULT_HTTP_CLIENT = RequestsHttpClient

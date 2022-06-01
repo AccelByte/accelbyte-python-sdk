@@ -234,3 +234,17 @@ class YamlFileConfigRepository(YamlConfigRepository):
             raise FileNotFoundError(str(yaml_file.resolve()))
         yaml_ = yaml_file.read_text()
         super().__init__(yaml_)
+
+
+CONFIG_REPOS = [
+    DictConfigRepository,
+    DotEnvFileConfigRepository,
+    EnvironmentConfigRepository,
+    JsonConfigRepository,
+    JsonFileConfigRepository,
+    MyConfigRepository,
+    YamlConfigRepository,
+    YamlFileConfigRepository,
+]
+
+DEFAULT_CONFIG_REPO = EnvironmentConfigRepository
