@@ -23,5 +23,7 @@ from .get_reward_1 import GetReward1
 from .get_reward_by_code import GetRewardByCode
 from .import_rewards import ImportRewards
 from .query_rewards import QueryRewards
+from .query_rewards import SortByEnum as QueryRewardsSortByEnum
 from .query_rewards_1 import QueryRewards1
+from .query_rewards_1 import SortByEnum as QueryRewards1SortByEnum
 from .update_reward import UpdateReward

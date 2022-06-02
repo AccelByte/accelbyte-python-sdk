@@ -28,10 +28,26 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import FullItemPagingSlicedResult
 from ...models import ValidationErrorEntity
+
+
+class SortByEnum(StrEnum):
+    NAME = "name"
+    NAME_ASC = "name:asc"
+    NAME_DESC = "name:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
+    DISPLAYORDER = "displayOrder"
+    DISPLAYORDER_ASC = "displayOrder:asc"
+    DISPLAYORDER_DESC = "displayOrder:desc"
 
 
 class QueryUncategorizedItems(Operation):
@@ -68,7 +84,7 @@ class QueryUncategorizedItems(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         store_id: (storeId) OPTIONAL str in query
 
@@ -93,7 +109,7 @@ class QueryUncategorizedItems(Operation):
     active_only: bool                                                                              # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
     store_id: str                                                                                  # OPTIONAL in [query]
 
     # endregion fields
@@ -182,7 +198,7 @@ class QueryUncategorizedItems(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> QueryUncategorizedItems:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryUncategorizedItems:
         self.sort_by = value
         return self
 
@@ -213,9 +229,9 @@ class QueryUncategorizedItems(Operation):
         elif include_empty:
             result["offset"] = 0
         if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
+            result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = []
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -267,7 +283,7 @@ class QueryUncategorizedItems(Operation):
         active_only: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         store_id: Optional[str] = None,
     ) -> QueryUncategorizedItems:
         instance = cls()
@@ -304,9 +320,9 @@ class QueryUncategorizedItems(Operation):
         elif include_empty:
             instance.offset = 0
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
+            instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = []
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -333,6 +349,18 @@ class QueryUncategorizedItems(Operation):
             "offset": False,
             "sortBy": False,
             "storeId": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "sortBy": "csv",                                                                       # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": ["name", "name:asc", "name:desc", "createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc", "displayOrder", "displayOrder:asc", "displayOrder:desc"],# in query
         }
 
     # endregion static methods

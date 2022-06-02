@@ -28,9 +28,19 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import RewardPagingSlicedResult
 from ...models import ValidationErrorEntity
+
+
+class SortByEnum(StrEnum):
+    NAMESPACE = "namespace"
+    NAMESPACE_ASC = "namespace:asc"
+    NAMESPACE_DESC = "namespace:desc"
+    REWARDCODE = "rewardCode"
+    REWARDCODE_ASC = "rewardCode:asc"
+    REWARDCODE_DESC = "rewardCode:desc"
 
 
 class QueryRewards1(Operation):
@@ -67,7 +77,7 @@ class QueryRewards1(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
     Responses:
         200: OK - RewardPagingSlicedResult (successful operation)
@@ -88,7 +98,7 @@ class QueryRewards1(Operation):
     event_topic: str                                                                               # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
 
     # endregion fields
 
@@ -174,7 +184,7 @@ class QueryRewards1(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> QueryRewards1:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryRewards1:
         self.sort_by = value
         return self
 
@@ -201,9 +211,9 @@ class QueryRewards1(Operation):
         elif include_empty:
             result["offset"] = 0
         if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
+            result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = []
         return result
 
     # endregion to methods
@@ -247,7 +257,7 @@ class QueryRewards1(Operation):
         event_topic: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[List[Union[str, SortByEnum]]] = None,
     ) -> QueryRewards1:
         instance = cls()
         instance.namespace = namespace
@@ -281,9 +291,9 @@ class QueryRewards1(Operation):
         elif include_empty:
             instance.offset = 0
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
+            instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = []
         return instance
 
     @staticmethod
@@ -304,6 +314,18 @@ class QueryRewards1(Operation):
             "limit": False,
             "offset": False,
             "sortBy": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "sortBy": "csv",                                                                       # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": ["namespace", "namespace:asc", "namespace:desc", "rewardCode", "rewardCode:asc", "rewardCode:desc"],# in query
         }
 
     # endregion static methods

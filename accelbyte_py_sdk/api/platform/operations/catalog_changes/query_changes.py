@@ -50,6 +50,15 @@ class ItemTypeEnum(StrEnum):
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
+class SortByEnum(StrEnum):
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
+
+
 class StatusEnum(StrEnum):
     PUBLISHED = "PUBLISHED"
     UNPUBLISHED = "UNPUBLISHED"
@@ -99,7 +108,7 @@ class QueryChanges(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -128,7 +137,7 @@ class QueryChanges(Operation):
     item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
     status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
     type_: Union[str, TypeEnum]                                                                    # OPTIONAL in [query]
     updated_at_end: str                                                                            # OPTIONAL in [query]
@@ -238,7 +247,7 @@ class QueryChanges(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> QueryChanges:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryChanges:
         self.sort_by = value
         return self
 
@@ -289,9 +298,9 @@ class QueryChanges(Operation):
         elif include_empty:
             result["offset"] = 0
         if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
+            result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = []
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -349,7 +358,7 @@ class QueryChanges(Operation):
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
         updated_at_end: Optional[str] = None,
@@ -406,9 +415,9 @@ class QueryChanges(Operation):
         elif include_empty:
             instance.offset = 0
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
+            instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = []
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -460,10 +469,17 @@ class QueryChanges(Operation):
         }
 
     @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "sortBy": "csv",                                                                       # in query
+        }
+
+    @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "action": ["CREATE", "DELETE", "UPDATE"],                                              # in query
             "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],# in query
+            "sortBy": ["createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc"],# in query
             "status": ["PUBLISHED", "UNPUBLISHED"],                                                # in query
             "type": ["CATEGORY", "ITEM", "STORE"],                                                 # in query
         }

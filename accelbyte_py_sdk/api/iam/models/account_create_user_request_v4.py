@@ -26,15 +26,20 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.legal_accepted_policies_request import LegalAcceptedPoliciesRequest
+
+
+class AuthTypeEnum(StrEnum):
+    EMAILPASSWD = "EMAILPASSWD"
 
 
 class AccountCreateUserRequestV4(Model):
     """Account create user request V4 (account.createUserRequestV4)
 
     Properties:
-        auth_type: (authType) REQUIRED str
+        auth_type: (authType) REQUIRED Union[str, AuthTypeEnum]
 
         code: (code) REQUIRED str
 
@@ -59,7 +64,7 @@ class AccountCreateUserRequestV4(Model):
 
     # region fields
 
-    auth_type: str                                                                                 # REQUIRED
+    auth_type: Union[str, AuthTypeEnum]                                                            # REQUIRED
     code: str                                                                                      # REQUIRED
     country: str                                                                                   # REQUIRED
     display_name: str                                                                              # REQUIRED
@@ -75,7 +80,7 @@ class AccountCreateUserRequestV4(Model):
 
     # region with_x methods
 
-    def with_auth_type(self, value: str) -> AccountCreateUserRequestV4:
+    def with_auth_type(self, value: Union[str, AuthTypeEnum]) -> AccountCreateUserRequestV4:
         self.auth_type = value
         return self
 
@@ -128,7 +133,7 @@ class AccountCreateUserRequestV4(Model):
         if hasattr(self, "auth_type"):
             result["authType"] = str(self.auth_type)
         elif include_empty:
-            result["authType"] = ""
+            result["authType"] = Union[str, AuthTypeEnum]()
         if hasattr(self, "code"):
             result["code"] = str(self.code)
         elif include_empty:
@@ -178,7 +183,7 @@ class AccountCreateUserRequestV4(Model):
     @classmethod
     def create(
         cls,
-        auth_type: str,
+        auth_type: Union[str, AuthTypeEnum],
         code: str,
         country: str,
         display_name: str,
@@ -214,7 +219,7 @@ class AccountCreateUserRequestV4(Model):
         if "authType" in dict_ and dict_["authType"] is not None:
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
-            instance.auth_type = ""
+            instance.auth_type = Union[str, AuthTypeEnum]()
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -307,6 +312,12 @@ class AccountCreateUserRequestV4(Model):
             "username": True,
             "acceptedPolicies": False,
             "dateOfBirth": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "authType": ["EMAILPASSWD"],
         }
 
     # endregion static methods

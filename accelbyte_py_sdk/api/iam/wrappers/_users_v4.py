@@ -89,6 +89,9 @@ from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountWithVerificationCodeV4
+from ..models import AccountCreateTestUserRequestV4AuthTypeEnum
+from ..models import AccountCreateUserRequestV4AuthTypeEnum
+from ..models import ModelUserCreateFromInvitationRequestV4AuthTypeEnum
 
 
 @same_doc_as(AdminAddUserRoleV4)

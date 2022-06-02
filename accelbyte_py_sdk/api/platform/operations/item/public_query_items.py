@@ -53,6 +53,21 @@ class ItemTypeEnum(StrEnum):
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
+class SortByEnum(StrEnum):
+    NAME = "name"
+    NAME_ASC = "name:asc"
+    NAME_DESC = "name:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
+    DISPLAYORDER = "displayOrder"
+    DISPLAYORDER_ASC = "displayOrder:asc"
+    DISPLAYORDER_DESC = "displayOrder:desc"
+
+
 class PublicQueryItems(Operation):
     """Query items by criteria (publicQueryItems)
 
@@ -97,7 +112,7 @@ class PublicQueryItems(Operation):
 
         region: (region) OPTIONAL str in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         store_id: (storeId) OPTIONAL str in query
 
@@ -130,7 +145,7 @@ class PublicQueryItems(Operation):
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
     store_id: str                                                                                  # OPTIONAL in [query]
     tags: str                                                                                      # OPTIONAL in [query]
 
@@ -258,7 +273,7 @@ class PublicQueryItems(Operation):
         self.region = value
         return self
 
-    def with_sort_by(self, value: str) -> PublicQueryItems:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> PublicQueryItems:
         self.sort_by = value
         return self
 
@@ -317,9 +332,9 @@ class PublicQueryItems(Operation):
         elif include_empty:
             result["region"] = ""
         if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
+            result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = []
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -381,7 +396,7 @@ class PublicQueryItems(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         store_id: Optional[str] = None,
         tags: Optional[str] = None,
     ) -> PublicQueryItems:
@@ -457,9 +472,9 @@ class PublicQueryItems(Operation):
         elif include_empty:
             instance.region = ""
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
+            instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = []
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -507,10 +522,17 @@ class PublicQueryItems(Operation):
         }
 
     @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "sortBy": "csv",                                                                       # in query
+        }
+
+    @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
             "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],# in query
+            "sortBy": ["name", "name:asc", "name:desc", "createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc", "displayOrder", "displayOrder:asc", "displayOrder:desc"],# in query
         }
 
     # endregion static methods

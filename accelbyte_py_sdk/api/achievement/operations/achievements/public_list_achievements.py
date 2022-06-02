@@ -28,9 +28,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsPublicAchievementsResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    LISTORDER = "listOrder"
+    LISTORDER_ASC = "listOrder:asc"
+    LISTORDER_DESC = "listOrder:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
 
 
 class PublicListAchievements(Operation):
@@ -64,7 +77,7 @@ class PublicListAchievements(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         language: (language) REQUIRED str in query
 
@@ -92,7 +105,7 @@ class PublicListAchievements(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]                                                                # OPTIONAL in [query]
     language: str                                                                                  # REQUIRED in [query]
 
     # endregion fields
@@ -175,7 +188,7 @@ class PublicListAchievements(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> PublicListAchievements:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> PublicListAchievements:
         self.sort_by = value
         return self
 
@@ -204,7 +217,7 @@ class PublicListAchievements(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -264,7 +277,7 @@ class PublicListAchievements(Operation):
         language: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
     ) -> PublicListAchievements:
         instance = cls()
         instance.namespace = namespace
@@ -295,7 +308,7 @@ class PublicListAchievements(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -320,6 +333,12 @@ class PublicListAchievements(Operation):
             "offset": False,
             "sortBy": False,
             "language": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": ["listOrder", "listOrder:asc", "listOrder:desc", "createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc"],# in query
         }
 
     # endregion static methods

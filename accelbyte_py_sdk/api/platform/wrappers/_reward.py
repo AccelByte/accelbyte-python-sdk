@@ -47,7 +47,9 @@ from ..operations.reward import GetReward1
 from ..operations.reward import GetRewardByCode
 from ..operations.reward import ImportRewards
 from ..operations.reward import QueryRewards
+from ..operations.reward import QueryRewardsSortByEnum
 from ..operations.reward import QueryRewards1
+from ..operations.reward import QueryRewards1SortByEnum
 from ..operations.reward import UpdateReward
 
 
@@ -262,7 +264,7 @@ async def import_rewards_async(replace_existing: bool, file: Optional[Any] = Non
 
 
 @same_doc_as(QueryRewards)
-def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -278,7 +280,7 @@ def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None
 
 
 @same_doc_as(QueryRewards)
-async def query_rewards_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_rewards_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,7 +296,7 @@ async def query_rewards_async(event_topic: Optional[str] = None, limit: Optional
 
 
 @same_doc_as(QueryRewards1)
-def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -310,7 +312,7 @@ def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = No
 
 
 @same_doc_as(QueryRewards1)
-async def query_rewards_1_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_rewards_1_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

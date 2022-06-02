@@ -45,6 +45,7 @@ from ..operations.achievements import AdminCreateNewAchievement
 from ..operations.achievements import AdminDeleteAchievement
 from ..operations.achievements import AdminGetAchievement
 from ..operations.achievements import AdminListAchievements
+from ..operations.achievements import AdminListAchievementsSortByEnum
 from ..operations.achievements import AdminListUserAchievements
 from ..operations.achievements import AdminUnlockAchievement
 from ..operations.achievements import AdminUpdateAchievement
@@ -53,6 +54,7 @@ from ..operations.achievements import ExportAchievements
 from ..operations.achievements import ImportAchievements
 from ..operations.achievements import PublicGetAchievement
 from ..operations.achievements import PublicListAchievements
+from ..operations.achievements import PublicListAchievementsSortByEnum
 from ..operations.achievements import PublicListUserAchievements
 from ..operations.achievements import PublicUnlockAchievement
 
@@ -136,7 +138,7 @@ async def admin_get_achievement_async(achievement_code: str, namespace: Optional
 
 
 @same_doc_as(AdminListAchievements)
-def admin_list_achievements(limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_list_achievements(limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,7 +153,7 @@ def admin_list_achievements(limit: Optional[int] = None, offset: Optional[int] =
 
 
 @same_doc_as(AdminListAchievements)
-async def admin_list_achievements_async(limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_list_achievements_async(limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -362,7 +364,7 @@ async def public_get_achievement_async(achievement_code: str, language: str, nam
 
 
 @same_doc_as(PublicListAchievements)
-def public_list_achievements(language: str, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_list_achievements(language: str, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,7 +380,7 @@ def public_list_achievements(language: str, limit: Optional[int] = None, offset:
 
 
 @same_doc_as(PublicListAchievements)
-async def public_list_achievements_async(language: str, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_list_achievements_async(language: str, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

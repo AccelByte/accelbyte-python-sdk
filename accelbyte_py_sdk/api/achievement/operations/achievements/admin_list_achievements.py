@@ -28,9 +28,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsPaginatedAchievementResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    LISTORDER = "listOrder"
+    LISTORDER_ASC = "listOrder:asc"
+    LISTORDER_DESC = "listOrder:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
 
 
 class AdminListAchievements(Operation):
@@ -64,7 +77,7 @@ class AdminListAchievements(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedAchievementResponse (OK)
@@ -90,7 +103,7 @@ class AdminListAchievements(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
-    sort_by: str                                                                                   # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]                                                                # OPTIONAL in [query]
 
     # endregion fields
 
@@ -170,7 +183,7 @@ class AdminListAchievements(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> AdminListAchievements:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> AdminListAchievements:
         self.sort_by = value
         return self
 
@@ -195,7 +208,7 @@ class AdminListAchievements(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         return result
 
     # endregion to methods
@@ -250,7 +263,7 @@ class AdminListAchievements(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
     ) -> AdminListAchievements:
         instance = cls()
         instance.namespace = namespace
@@ -280,7 +293,7 @@ class AdminListAchievements(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         return instance
 
     @staticmethod
@@ -299,6 +312,12 @@ class AdminListAchievements(Operation):
             "limit": False,
             "offset": False,
             "sortBy": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": ["listOrder", "listOrder:asc", "listOrder:desc", "createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc"],# in query
         }
 
     # endregion static methods

@@ -74,11 +74,12 @@ from ..operations.item import PublicGetItemByAppId
 from ..operations.item import PublicGetItemBySku
 from ..operations.item import PublicGetItemDynamicData
 from ..operations.item import PublicQueryItems
-from ..operations.item import PublicQueryItemsAppTypeEnum, PublicQueryItemsItemTypeEnum
+from ..operations.item import PublicQueryItemsAppTypeEnum, PublicQueryItemsItemTypeEnum, PublicQueryItemsSortByEnum
 from ..operations.item import PublicSearchItems
 from ..operations.item import QueryItems
-from ..operations.item import QueryItemsAppTypeEnum, QueryItemsItemTypeEnum
+from ..operations.item import QueryItemsAppTypeEnum, QueryItemsItemTypeEnum, QueryItemsSortByEnum
 from ..operations.item import QueryUncategorizedItems
+from ..operations.item import QueryUncategorizedItemsSortByEnum
 from ..operations.item import ReturnItem
 from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
@@ -822,7 +823,7 @@ async def public_get_item_dynamic_data_async(item_id: str, namespace: Optional[s
 
 
 @same_doc_as(PublicQueryItems)
-def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -846,7 +847,7 @@ def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum
 
 
 @same_doc_as(PublicQueryItems)
-async def public_query_items_async(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_query_items_async(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -906,7 +907,7 @@ async def public_search_items_async(keyword: str, language: str, limit: Optional
 
 
 @same_doc_as(QueryItems)
-def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -932,7 +933,7 @@ def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str
 
 
 @same_doc_as(QueryItems)
-async def query_items_async(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_items_async(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -958,7 +959,7 @@ async def query_items_async(active_only: Optional[bool] = None, app_type: Option
 
 
 @same_doc_as(QueryUncategorizedItems)
-def query_uncategorized_items(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_uncategorized_items(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -975,7 +976,7 @@ def query_uncategorized_items(active_only: Optional[bool] = None, limit: Optiona
 
 
 @same_doc_as(QueryUncategorizedItems)
-async def query_uncategorized_items_async(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_uncategorized_items_async(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

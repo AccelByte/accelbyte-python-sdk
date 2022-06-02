@@ -16,4 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .publish_all import PublishAll
 from .query_changes import QueryChanges
-from .query_changes import ActionEnum as QueryChangesActionEnum, ItemTypeEnum as QueryChangesItemTypeEnum, StatusEnum as QueryChangesStatusEnum, TypeEnum as QueryChangesTypeEnum
+from .query_changes import ActionEnum as QueryChangesActionEnum, ItemTypeEnum as QueryChangesItemTypeEnum, SortByEnum as QueryChangesSortByEnum, StatusEnum as QueryChangesStatusEnum, TypeEnum as QueryChangesTypeEnum

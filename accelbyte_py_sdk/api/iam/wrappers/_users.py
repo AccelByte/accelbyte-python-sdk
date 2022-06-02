@@ -251,6 +251,7 @@ from ..operations.users import UpdateUserV3
 from ..operations.users import UpgradeHeadlessAccount
 from ..operations.users import UpgradeHeadlessAccountWithVerificationCode
 from ..operations.users import UserVerification
+from ..models import ModelUserCreateFromInvitationRequestV3AuthTypeEnum
 
 
 @same_doc_as(AddUserPermission)

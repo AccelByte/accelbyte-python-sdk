@@ -35,7 +35,7 @@ from ..models import StoreInfo
 
 from ..operations.catalog_changes import PublishAll
 from ..operations.catalog_changes import QueryChanges
-from ..operations.catalog_changes import QueryChangesActionEnum, QueryChangesItemTypeEnum, QueryChangesStatusEnum, QueryChangesTypeEnum
+from ..operations.catalog_changes import QueryChangesActionEnum, QueryChangesItemTypeEnum, QueryChangesSortByEnum, QueryChangesStatusEnum, QueryChangesTypeEnum
 
 
 @same_doc_as(PublishAll)
@@ -65,7 +65,7 @@ async def publish_all_async(store_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(QueryChanges)
-def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryChangesSortByEnum]]] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,7 +87,7 @@ def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionE
 
 
 @same_doc_as(QueryChanges)
-async def query_changes_async(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_changes_async(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryChangesSortByEnum]]] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
