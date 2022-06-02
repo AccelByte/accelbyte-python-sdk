@@ -1512,6 +1512,126 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual([500, 400], status_codes)
         self.assertIsNone(error)
 
+    def test_auto_refreh_token_login_client(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = auth.login_client()
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh = token_refresher.refresh
+
+        n_refreshes: int = 0
+
+        def new_refresh(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            old_refresh(kwargs.get("token_repo"))
+
+        token_refresher.refresh = new_refresh
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
+
+    def test_auto_refreh_token_login_user(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = auth.login_user("admin", "admin")
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh = token_refresher.refresh
+
+        n_refreshes: int = 0
+
+        def new_refresh(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            old_refresh(kwargs.get("token_repo"))
+
+        token_refresher.refresh = new_refresh
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
+
 
 class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
@@ -1821,6 +1941,246 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         # assert
         self.assertEqual([500, 400], status_codes)
         self.assertIsNone(error)
+
+    def test_auto_refreh_token_login_client(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = auth.login_client()
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh = token_refresher.refresh
+
+        n_refreshes: int = 0
+
+        def new_refresh(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            old_refresh(kwargs.get("token_repo"))
+
+        token_refresher.refresh = new_refresh
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
+
+    async def test_auto_refreh_token_login_client_async(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = await auth.login_client_async()
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh_async = token_refresher.refresh_async
+
+        n_refreshes: int = 0
+
+        async def new_refresh_async(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            await old_refresh_async(kwargs.get("token_repo"))
+
+        token_refresher.refresh_async = new_refresh_async
+
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
+
+    def test_auto_refreh_token_login_user(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = auth.login_user("admin", "admin")
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh = token_refresher.refresh
+
+        n_refreshes: int = 0
+
+        def new_refresh(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            old_refresh(kwargs.get("token_repo"))
+
+        token_refresher.refresh = new_refresh
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = iam.get_bans_type()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
+
+    async def test_auto_refreh_token_login_user_async(self):
+        import accelbyte_py_sdk.core as core
+        import accelbyte_py_sdk.services.auth as auth
+        import accelbyte_py_sdk.api.iam as iam
+
+        # arrange
+        result, error = await auth.login_user_async("admin", "admin")
+        self.assertIsNone(error)
+
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertFalse(token_repo.has_token_expired())
+
+        token_refresher = core.get_token_refresher()
+        old_refresh_async = token_refresher.refresh_async
+
+        n_refreshes: int = 0
+
+        async def new_refresh_async(*args, **kwargs):
+            nonlocal n_refreshes
+            n_refreshes += 1
+            await old_refresh_async(kwargs.get("token_repo"))
+
+        token_refresher.refresh_async = new_refresh_async
+
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, n_refreshes)
+
+        # act & assert
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(1, n_refreshes)
+
+        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(2, n_refreshes)
+
+        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        self.assertFalse(token_repo.has_token_expired())
+        time.sleep(3)
+        self.assertTrue(token_repo.has_token_expired())
+        result, error = await iam.get_bans_type_async()
+        self.assertIsNone(error)
+        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(3, n_refreshes)
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):
