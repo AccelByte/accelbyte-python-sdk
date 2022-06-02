@@ -4599,12 +4599,33 @@
             "type": "integer"
           },
           {
-            "default": "name:asc,displayOrder:asc",
+            "default": [
+              "name:asc",
+              "displayOrder:asc"
+            ],
             "description": "default is name:asc,displayOrder:asc, allow values: [name, name:asc, name:desc, createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc, displayOrder, displayOrder:asc, displayOrder:desc],and support sort group, eg: sortBy=name:asc,createdAt:desc. Make sure to always use more than one sort if the first sort is not an unique valuefor example, if you wish to sort by displayOrder, make sure to include other sort such as name or createdAt after the first sort, eg: displayOrder:asc,name:asc",
             "in": "query",
+            "items": {
+              "enum": [
+                "name",
+                "name:asc",
+                "name:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+                "displayOrder",
+                "displayOrder:asc",
+                "displayOrder:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [
@@ -5246,12 +5267,32 @@
             "type": "integer"
           },
           {
-            "default": "name:asc",
+            "default": [
+              "name:asc"
+            ],
             "description": "default is name:asc, allow values: [name, name:asc, name:desc, createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc, displayOrder, displayOrder:asc, displayOrder:desc],and support sort group, eg: sortBy=name:asc,createdAt:desc Make sure to always use more than one sort if the first sort is not an unique valuefor example, if you wish to sort by displayOrder, make sure to include other sort such as name or createdAt after the first sort, eg: displayOrder:asc,name:asc",
             "in": "query",
+            "items": {
+              "enum": [
+                "name",
+                "name:asc",
+                "name:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+                "displayOrder",
+                "displayOrder:asc",
+                "displayOrder:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [
@@ -8131,12 +8172,27 @@
             "type": "integer"
           },
           {
-            "default": "namespace:asc,rewardCode:asc",
+            "default": [
+              "namespace:asc",
+              "rewardCode:asc"
+            ],
             "description": "default is namespace:asc,rewardCode:asc, allow values: [namespace, namespace:asc, namespace:desc, rewardCode, rewardCode:asc, rewardCode:desc],and support sort group, eg: sortBy=namespace:asc,rewardCode:asc",
             "in": "query",
+            "items": {
+              "enum": [
+                "namespace",
+                "namespace:asc",
+                "namespace:desc",
+                "rewardCode",
+                "rewardCode:asc",
+                "rewardCode:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [
@@ -9218,12 +9274,26 @@
             "type": "integer"
           },
           {
-            "default": "updatedAt:desc",
+            "default": [
+              "updatedAt:desc"
+            ],
             "description": "default is updatedAt:desc, allow values: [createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc],and support sort group, eg: sortBy=title:asc,createdAt:desc. Make sure to always use more than one sort if the first sort is not an unique valuefor example, if you wish to sort by title, make sure to include other sort such as sku or createdAt after the first sort, eg: title:asc,updatedAt:desc",
             "in": "query",
+            "items": {
+              "enum": [
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [
@@ -17542,12 +17612,33 @@
             "type": "integer"
           },
           {
-            "default": "name:asc,displayOrder:asc",
+            "default": [
+              "name:asc",
+              "displayOrder:asc"
+            ],
             "description": "default is name:asc,displayOrder:asc, allow values: [name, name:asc, name:desc, createdAt, createdAt:asc, createdAt:desc, updatedAt, updatedAt:asc, updatedAt:desc, displayOrder, displayOrder:asc, displayOrder:desc],and support sort group, eg: sortBy=name:asc,createdAt:desc. Make sure to always use more than one sort if the first sort is not an unique value for example, if you wish to sort by displayOrder, make sure to include other sort such as name or createdAt after the first sort, eg: displayOrder:asc,name:asc",
             "in": "query",
+            "items": {
+              "enum": [
+                "name",
+                "name:asc",
+                "name:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+                "displayOrder",
+                "displayOrder:asc",
+                "displayOrder:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [
@@ -18713,12 +18804,27 @@
             "type": "integer"
           },
           {
-            "default": "namespace:asc,rewardCode:asc",
+            "default": [
+              "namespace:asc",
+              "rewardCode:asc"
+            ],
             "description": "default is namespace:asc,rewardCode:asc, allow values: [namespace, namespace:asc, namespace:desc, rewardCode, rewardCode:asc, rewardCode:desc],and support sort group, eg: sortBy=namespace:asc,rewardCode:asc",
             "in": "query",
+            "items": {
+              "enum": [
+                "namespace",
+                "namespace:asc",
+                "namespace:desc",
+                "rewardCode",
+                "rewardCode:asc",
+                "rewardCode:desc"
+              ],
+              "type": "string"
+            },
             "name": "sortBy",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
           }
         ],
         "produces": [

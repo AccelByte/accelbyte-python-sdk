@@ -19866,6 +19866,9 @@
         },
         "authType": {
           "default": "EMAILPASSWD",
+          "enum": [
+            "EMAILPASSWD"
+          ],
           "type": "string"
         },
         "country": {
@@ -19916,6 +19919,9 @@
         },
         "authType": {
           "default": "EMAILPASSWD",
+          "enum": [
+            "EMAILPASSWD"
+          ],
           "type": "string"
         },
         "code": {
@@ -23728,6 +23734,9 @@
         },
         "authType": {
           "default": "EMAILPASSWD",
+          "enum": [
+            "EMAILPASSWD"
+          ],
           "type": "string"
         },
         "country": {
@@ -23766,6 +23775,9 @@
         },
         "authType": {
           "default": "EMAILPASSWD",
+          "enum": [
+            "EMAILPASSWD"
+          ],
           "type": "string"
         },
         "country": {
