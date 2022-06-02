@@ -575,6 +575,34 @@ class CoreTestCase(TestCase):
         )
         self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a,b", url)
 
+        url = create_url(
+            path="/test",
+            base="http://0.0.0.0:8080",
+            query_params={
+                "status": "active",
+                "query": [TestEnum.ACTIVE, TestEnum.INACTIVE]
+            }
+        )
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=ACTIVE,INACTIVE", url)
+
+        class TestSortByEnum(StrEnum):
+            LISTORDER_ASC = "listOrder:asc"
+            LISTORDER_DESC = "listOrder:desc"
+            CREATEDAT_ASC = "createdAt:asc"
+            CREATEDAT_DESC = "createdAt:desc"
+            UPDATEDAT_ASC = "updatedAt:asc"
+            UPDATEDAT_DESC = "updatedAt:desc"
+
+        url = create_url(
+            path="/test",
+            base="http://0.0.0.0:8080",
+            query_params={
+                "status": "active",
+                "query": [TestSortByEnum.LISTORDER_ASC, TestSortByEnum.CREATEDAT_DESC]
+            }
+        )
+        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=listOrder%3Aasc,createdAt%3Adesc", url)
+
     def test_url_creation_with_query_params_with_collection_format_map(self):
         url = create_url(
             path="/test",
