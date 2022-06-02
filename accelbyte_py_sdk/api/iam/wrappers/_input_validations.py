@@ -41,62 +41,62 @@ from ..operations.input_validations import PublicGetInputValidations
 
 
 @same_doc_as(AdminGetInputValidations)
-def admin_get_input_validations(x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_input_validations(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetInputValidations.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetInputValidations)
-async def admin_get_input_validations_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_input_validations_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetInputValidations.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminResetInputValidations)
-def admin_reset_input_validations(field: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_reset_input_validations(field: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminResetInputValidations.create(
         field=field,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminResetInputValidations)
-async def admin_reset_input_validations_async(field: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_reset_input_validations_async(field: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminResetInputValidations.create(
         field=field,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateInputValidations)
-def admin_update_input_validations(body: List[ModelInputValidationUpdatePayload], x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_update_input_validations(body: List[ModelInputValidationUpdatePayload], x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminUpdateInputValidations.create(
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateInputValidations)
-async def admin_update_input_validations_async(body: List[ModelInputValidationUpdatePayload], x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_update_input_validations_async(body: List[ModelInputValidationUpdatePayload], x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminUpdateInputValidations.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetInputValidations)
-def public_get_input_validations(default_on_empty: Optional[bool] = None, language_code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_input_validations(default_on_empty: Optional[bool] = None, language_code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetInputValidations.create(
         default_on_empty=default_on_empty,
         language_code=language_code,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetInputValidations)
-async def public_get_input_validations_async(default_on_empty: Optional[bool] = None, language_code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_input_validations_async(default_on_empty: Optional[bool] = None, language_code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetInputValidations.create(
         default_on_empty=default_on_empty,
         language_code=language_code,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

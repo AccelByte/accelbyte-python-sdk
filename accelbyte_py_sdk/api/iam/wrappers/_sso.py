@@ -36,34 +36,34 @@ from ..operations.sso import LogoutSSOClient
 
 
 @same_doc_as(LoginSSOClient)
-def login_sso_client(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def login_sso_client(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(LoginSSOClient)
-async def login_sso_client_async(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def login_sso_client_async(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(LogoutSSOClient)
-def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(LogoutSSOClient)
-async def logout_sso_client_async(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def logout_sso_client_async(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

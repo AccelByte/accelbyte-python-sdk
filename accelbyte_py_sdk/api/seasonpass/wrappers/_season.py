@@ -70,7 +70,7 @@ from ..models import SeasonSummaryStatusEnum
 
 
 @same_doc_as(CheckSeasonPurchasable)
-def check_season_purchasable(user_id: str, body: Optional[UserPurchasable] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def check_season_purchasable(user_id: str, body: Optional[UserPurchasable] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,11 +80,11 @@ def check_season_purchasable(user_id: str, body: Optional[UserPurchasable] = Non
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CheckSeasonPurchasable)
-async def check_season_purchasable_async(user_id: str, body: Optional[UserPurchasable] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def check_season_purchasable_async(user_id: str, body: Optional[UserPurchasable] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,11 +94,11 @@ async def check_season_purchasable_async(user_id: str, body: Optional[UserPurcha
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CloneSeason)
-def clone_season(season_id: str, body: Optional[SeasonCloneRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def clone_season(season_id: str, body: Optional[SeasonCloneRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,11 +108,11 @@ def clone_season(season_id: str, body: Optional[SeasonCloneRequest] = None, name
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CloneSeason)
-async def clone_season_async(season_id: str, body: Optional[SeasonCloneRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def clone_season_async(season_id: str, body: Optional[SeasonCloneRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,11 +122,11 @@ async def clone_season_async(season_id: str, body: Optional[SeasonCloneRequest] 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateSeason)
-def create_season(body: Optional[SeasonCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_season(body: Optional[SeasonCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,11 +135,11 @@ def create_season(body: Optional[SeasonCreate] = None, namespace: Optional[str] 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateSeason)
-async def create_season_async(body: Optional[SeasonCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_season_async(body: Optional[SeasonCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,11 +148,11 @@ async def create_season_async(body: Optional[SeasonCreate] = None, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteSeason)
-def delete_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,11 +161,11 @@ def delete_season(season_id: str, namespace: Optional[str] = None, x_additional_
         season_id=season_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteSeason)
-async def delete_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,11 +174,11 @@ async def delete_season_async(season_id: str, namespace: Optional[str] = None, x
         season_id=season_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ExistsAnyPassByPassCodes)
-def exists_any_pass_by_pass_codes(user_id: str, pass_codes: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def exists_any_pass_by_pass_codes(user_id: str, pass_codes: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -188,11 +188,11 @@ def exists_any_pass_by_pass_codes(user_id: str, pass_codes: Optional[List[str]] 
         pass_codes=pass_codes,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ExistsAnyPassByPassCodes)
-async def exists_any_pass_by_pass_codes_async(user_id: str, pass_codes: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def exists_any_pass_by_pass_codes_async(user_id: str, pass_codes: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,11 +202,11 @@ async def exists_any_pass_by_pass_codes_async(user_id: str, pass_codes: Optional
         pass_codes=pass_codes,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentSeason)
-def get_current_season(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_current_season(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -214,11 +214,11 @@ def get_current_season(namespace: Optional[str] = None, x_additional_headers: Op
     request = GetCurrentSeason.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentSeason)
-async def get_current_season_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_current_season_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,11 +226,11 @@ async def get_current_season_async(namespace: Optional[str] = None, x_additional
     request = GetCurrentSeason.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentUserSeasonProgression)
-def get_current_user_season_progression(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_current_user_season_progression(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,11 +239,11 @@ def get_current_user_season_progression(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentUserSeasonProgression)
-async def get_current_user_season_progression_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_current_user_season_progression_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -252,11 +252,11 @@ async def get_current_user_season_progression_async(user_id: str, namespace: Opt
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSeason)
-def get_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,11 +265,11 @@ def get_season(season_id: str, namespace: Optional[str] = None, x_additional_hea
         season_id=season_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSeason)
-async def get_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -278,11 +278,11 @@ async def get_season_async(season_id: str, namespace: Optional[str] = None, x_ad
         season_id=season_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserParticipatedSeasons)
-def get_user_participated_seasons(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_participated_seasons(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -293,11 +293,11 @@ def get_user_participated_seasons(user_id: str, limit: Optional[int] = None, off
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserParticipatedSeasons)
-async def get_user_participated_seasons_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_participated_seasons_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -308,11 +308,11 @@ async def get_user_participated_seasons_async(user_id: str, limit: Optional[int]
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserSeason)
-def get_user_season(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_season(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -322,11 +322,11 @@ def get_user_season(season_id: str, user_id: str, namespace: Optional[str] = Non
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserSeason)
-async def get_user_season_async(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_season_async(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,11 +336,11 @@ async def get_user_season_async(season_id: str, user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetCurrentSeason)
-def public_get_current_season(language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_current_season(language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -349,11 +349,11 @@ def public_get_current_season(language: Optional[str] = None, namespace: Optiona
         language=language,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetCurrentSeason)
-async def public_get_current_season_async(language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_current_season_async(language: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -362,11 +362,11 @@ async def public_get_current_season_async(language: Optional[str] = None, namesp
         language=language,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetCurrentUserSeason)
-def public_get_current_user_season(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_current_user_season(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -375,11 +375,11 @@ def public_get_current_user_season(user_id: str, namespace: Optional[str] = None
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetCurrentUserSeason)
-async def public_get_current_user_season_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_current_user_season_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -388,11 +388,11 @@ async def public_get_current_user_season_async(user_id: str, namespace: Optional
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserSeason)
-def public_get_user_season(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_season(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -402,11 +402,11 @@ def public_get_user_season(season_id: str, user_id: str, namespace: Optional[str
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserSeason)
-async def public_get_user_season_async(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_user_season_async(season_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -416,11 +416,11 @@ async def public_get_user_season_async(season_id: str, user_id: str, namespace: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublishSeason)
-def publish_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def publish_season(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -429,11 +429,11 @@ def publish_season(season_id: str, namespace: Optional[str] = None, x_additional
         season_id=season_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublishSeason)
-async def publish_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def publish_season_async(season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -442,11 +442,11 @@ async def publish_season_async(season_id: str, namespace: Optional[str] = None, 
         season_id=season_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QuerySeasons)
-def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -457,11 +457,11 @@ def query_seasons(limit: Optional[int] = None, offset: Optional[int] = None, sta
         status=status,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QuerySeasons)
-async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[List[Union[str, QuerySeasonsStatusEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -472,11 +472,11 @@ async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int]
         status=status,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ResetUserSeason)
-def reset_user_season(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def reset_user_season(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -485,11 +485,11 @@ def reset_user_season(user_id: str, namespace: Optional[str] = None, x_additiona
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ResetUserSeason)
-async def reset_user_season_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def reset_user_season_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -498,11 +498,11 @@ async def reset_user_season_async(user_id: str, namespace: Optional[str] = None,
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetireSeason)
-def retire_season(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retire_season(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -512,11 +512,11 @@ def retire_season(season_id: str, force: Optional[bool] = None, namespace: Optio
         force=force,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetireSeason)
-async def retire_season_async(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retire_season_async(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -526,11 +526,11 @@ async def retire_season_async(season_id: str, force: Optional[bool] = None, name
         force=force,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UnpublishSeason)
-def unpublish_season(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def unpublish_season(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -540,11 +540,11 @@ def unpublish_season(season_id: str, force: Optional[bool] = None, namespace: Op
         force=force,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UnpublishSeason)
-async def unpublish_season_async(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def unpublish_season_async(season_id: str, force: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -554,11 +554,11 @@ async def unpublish_season_async(season_id: str, force: Optional[bool] = None, n
         force=force,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateSeason)
-def update_season(season_id: str, body: Optional[SeasonUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_season(season_id: str, body: Optional[SeasonUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -568,11 +568,11 @@ def update_season(season_id: str, body: Optional[SeasonUpdate] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateSeason)
-async def update_season_async(season_id: str, body: Optional[SeasonUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_season_async(season_id: str, body: Optional[SeasonUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -582,4 +582,4 @@ async def update_season_async(season_id: str, body: Optional[SeasonUpdate] = Non
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -45,7 +45,7 @@ from ..operations.server import ShutdownServer
 
 
 @same_doc_as(DeregisterLocalServer)
-def deregister_local_server(body: ModelsDeregisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def deregister_local_server(body: ModelsDeregisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,11 +54,11 @@ def deregister_local_server(body: ModelsDeregisterLocalServerRequest, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeregisterLocalServer)
-async def deregister_local_server_async(body: ModelsDeregisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def deregister_local_server_async(body: ModelsDeregisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,11 +67,11 @@ async def deregister_local_server_async(body: ModelsDeregisterLocalServerRequest
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetServerSession)
-def get_server_session(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_server_session(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,11 +80,11 @@ def get_server_session(pod_name: str, namespace: Optional[str] = None, x_additio
         pod_name=pod_name,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetServerSession)
-async def get_server_session_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_server_session_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,11 +93,11 @@ async def get_server_session_async(pod_name: str, namespace: Optional[str] = Non
         pod_name=pod_name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RegisterLocalServer)
-def register_local_server(body: ModelsRegisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def register_local_server(body: ModelsRegisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,11 +106,11 @@ def register_local_server(body: ModelsRegisterLocalServerRequest, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RegisterLocalServer)
-async def register_local_server_async(body: ModelsRegisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def register_local_server_async(body: ModelsRegisterLocalServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,11 +119,11 @@ async def register_local_server_async(body: ModelsRegisterLocalServerRequest, na
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RegisterServer)
-def register_server(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def register_server(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -132,11 +132,11 @@ def register_server(body: ModelsRegisterServerRequest, namespace: Optional[str] 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RegisterServer)
-async def register_server_async(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def register_server_async(body: ModelsRegisterServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,11 +145,11 @@ async def register_server_async(body: ModelsRegisterServerRequest, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ShutdownServer)
-def shutdown_server(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def shutdown_server(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,11 +158,11 @@ def shutdown_server(body: ModelsShutdownServerRequest, namespace: Optional[str] 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ShutdownServer)
-async def shutdown_server_async(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def shutdown_server_async(body: ModelsShutdownServerRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,4 +171,4 @@ async def shutdown_server_async(body: ModelsShutdownServerRequest, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

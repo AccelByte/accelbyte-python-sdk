@@ -39,7 +39,7 @@ from ..operations.catalog_changes import QueryChangesActionEnum, QueryChangesIte
 
 
 @same_doc_as(PublishAll)
-def publish_all(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def publish_all(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -48,11 +48,11 @@ def publish_all(store_id: str, namespace: Optional[str] = None, x_additional_hea
         store_id=store_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublishAll)
-async def publish_all_async(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def publish_all_async(store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,11 +61,11 @@ async def publish_all_async(store_id: str, namespace: Optional[str] = None, x_ad
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryChanges)
-def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,11 +83,11 @@ def query_changes(store_id: str, action: Optional[Union[str, QueryChangesActionE
         updated_at_start=updated_at_start,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryChanges)
-async def query_changes_async(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_changes_async(store_id: str, action: Optional[Union[str, QueryChangesActionEnum]] = None, item_type: Optional[Union[str, QueryChangesItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[str] = None, status: Optional[Union[str, QueryChangesStatusEnum]] = None, type_: Optional[Union[str, QueryChangesTypeEnum]] = None, updated_at_end: Optional[str] = None, updated_at_start: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,4 +105,4 @@ async def query_changes_async(store_id: str, action: Optional[Union[str, QueryCh
         updated_at_start=updated_at_start,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

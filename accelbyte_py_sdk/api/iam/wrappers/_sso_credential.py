@@ -41,7 +41,7 @@ from ..operations.sso_credential import UpdateSSOPlatformCredential
 
 
 @same_doc_as(AddSSOLoginPlatformCredential)
-def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -51,11 +51,11 @@ def add_sso_login_platform_credential(body: ModelSSOPlatformCredentialRequest, p
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AddSSOLoginPlatformCredential)
-async def add_sso_login_platform_credential_async(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def add_sso_login_platform_credential_async(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,11 +65,11 @@ async def add_sso_login_platform_credential_async(body: ModelSSOPlatformCredenti
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteSSOLoginPlatformCredentialV3)
-def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,11 +78,11 @@ def delete_sso_login_platform_credential_v3(platform_id: str, namespace: Optiona
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteSSOLoginPlatformCredentialV3)
-async def delete_sso_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_sso_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,11 +91,11 @@ async def delete_sso_login_platform_credential_v3_async(platform_id: str, namesp
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllSSOLoginPlatformCredentialV3)
-def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,11 +105,11 @@ def retrieve_all_sso_login_platform_credential_v3(limit: Optional[int] = None, o
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllSSOLoginPlatformCredentialV3)
-async def retrieve_all_sso_login_platform_credential_v3_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_all_sso_login_platform_credential_v3_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,11 +119,11 @@ async def retrieve_all_sso_login_platform_credential_v3_async(limit: Optional[in
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveSSOLoginPlatformCredential)
-def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -132,11 +132,11 @@ def retrieve_sso_login_platform_credential(platform_id: str, namespace: Optional
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveSSOLoginPlatformCredential)
-async def retrieve_sso_login_platform_credential_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_sso_login_platform_credential_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,11 +145,11 @@ async def retrieve_sso_login_platform_credential_async(platform_id: str, namespa
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateSSOPlatformCredential)
-def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,11 +159,11 @@ def update_sso_platform_credential(body: ModelSSOPlatformCredentialRequest, plat
         platform_id=platform_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateSSOPlatformCredential)
-async def update_sso_platform_credential_async(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_sso_platform_credential_async(body: ModelSSOPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,4 +173,4 @@ async def update_sso_platform_credential_async(body: ModelSSOPlatformCredentialR
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

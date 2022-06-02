@@ -35,20 +35,20 @@ from ..operations.order_dedicated import SyncOrders
 
 
 @same_doc_as(SyncOrders)
-def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SyncOrders.create(
         end=end,
         start=start,
         next_evaluated_key=next_evaluated_key,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SyncOrders)
-async def sync_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def sync_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SyncOrders.create(
         end=end,
         start=start,
         next_evaluated_key=next_evaluated_key,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -46,29 +46,29 @@ from ..operations.policies import UpdatePolicy
 
 
 @same_doc_as(RetrieveLatestPolicies)
-def retrieve_latest_policies(country_code: str, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None, tags: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_latest_policies(country_code: str, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None, tags: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveLatestPolicies.create(
         country_code=country_code,
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveLatestPolicies)
-async def retrieve_latest_policies_async(country_code: str, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None, tags: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_latest_policies_async(country_code: str, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None, tags: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveLatestPolicies.create(
         country_code=country_code,
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
-def retrieve_latest_policies_by_namespace_and_country_public(country_code: str, always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_latest_policies_by_namespace_and_country_public(country_code: str, always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,11 +81,11 @@ def retrieve_latest_policies_by_namespace_and_country_public(country_code: str, 
         tags=tags,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
-async def retrieve_latest_policies_by_namespace_and_country_public_async(country_code: str, always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_latest_policies_by_namespace_and_country_public_async(country_code: str, always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,11 +98,11 @@ async def retrieve_latest_policies_by_namespace_and_country_public_async(country
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveLatestPoliciesPublic)
-def retrieve_latest_policies_public(always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_latest_policies_public(always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,11 +114,11 @@ def retrieve_latest_policies_public(always_include_default: Optional[bool] = Non
         tags=tags,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveLatestPoliciesPublic)
-async def retrieve_latest_policies_public_async(always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_latest_policies_public_async(always_include_default: Optional[bool] = None, default_on_empty: Optional[bool] = None, policy_type: Optional[Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,54 +130,54 @@ async def retrieve_latest_policies_public_async(always_include_default: Optional
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrievePolicies)
-def retrieve_policies(country_code: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_policies(country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrievePolicies.create(
         country_code=country_code,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrievePolicies)
-async def retrieve_policies_async(country_code: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_policies_async(country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrievePolicies.create(
         country_code=country_code,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetDefaultPolicy1)
-def set_default_policy_1(policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def set_default_policy_1(policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SetDefaultPolicy1.create(
         policy_id=policy_id,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetDefaultPolicy1)
-async def set_default_policy_1_async(policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def set_default_policy_1_async(policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SetDefaultPolicy1.create(
         policy_id=policy_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePolicy)
-def update_policy(policy_id: str, body: Optional[UpdatePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_policy(policy_id: str, body: Optional[UpdatePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdatePolicy.create(
         policy_id=policy_id,
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePolicy)
-async def update_policy_async(policy_id: str, body: Optional[UpdatePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_policy_async(policy_id: str, body: Optional[UpdatePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdatePolicy.create(
         policy_id=policy_id,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

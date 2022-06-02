@@ -38,7 +38,7 @@ from ..operations.social_matchmaking import UpdatePlayTimeWeight
 
 
 @same_doc_as(UpdatePlayTimeWeight)
-def update_play_time_weight(body: ModelsUpdatePlayTimeWeightRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_play_time_weight(body: ModelsUpdatePlayTimeWeightRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -47,11 +47,11 @@ def update_play_time_weight(body: ModelsUpdatePlayTimeWeightRequest, namespace: 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePlayTimeWeight)
-async def update_play_time_weight_async(body: ModelsUpdatePlayTimeWeightRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_play_time_weight_async(body: ModelsUpdatePlayTimeWeightRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,4 +60,4 @@ async def update_play_time_weight_async(body: ModelsUpdatePlayTimeWeightRequest,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

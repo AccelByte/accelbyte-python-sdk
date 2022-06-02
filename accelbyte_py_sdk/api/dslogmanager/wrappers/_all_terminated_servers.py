@@ -38,23 +38,23 @@ from ..operations.all_terminated_servers import ListAllTerminatedServers
 
 
 @same_doc_as(BatchDownloadServerLogs)
-def batch_download_server_logs(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+def batch_download_server_logs(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = BatchDownloadServerLogs.create(
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BatchDownloadServerLogs)
-async def batch_download_server_logs_async(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+async def batch_download_server_logs_async(body: ModelsBatchDownloadLogsRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = BatchDownloadServerLogs.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListAllTerminatedServers)
-def list_all_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def list_all_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ListAllTerminatedServers.create(
         deployment=deployment,
         end_date=end_date,
@@ -71,11 +71,11 @@ def list_all_terminated_servers(deployment: Optional[str] = None, end_date: Opti
         start_date=start_date,
         user_id=user_id,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListAllTerminatedServers)
-async def list_all_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_all_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, namespace: Optional[str] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ListAllTerminatedServers.create(
         deployment=deployment,
         end_date=end_date,
@@ -92,4 +92,4 @@ async def list_all_terminated_servers_async(deployment: Optional[str] = None, en
         start_date=start_date,
         user_id=user_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

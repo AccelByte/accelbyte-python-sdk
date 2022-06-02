@@ -36,16 +36,16 @@ from ..operations.server import Heartbeat
 
 
 @same_doc_as(Heartbeat)
-def heartbeat(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+def heartbeat(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Heartbeat.create(
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Heartbeat)
-async def heartbeat_async(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None):
+async def heartbeat_async(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Heartbeat.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

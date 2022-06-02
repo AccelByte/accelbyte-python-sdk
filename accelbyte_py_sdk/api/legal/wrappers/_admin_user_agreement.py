@@ -36,7 +36,7 @@ from ..operations.admin_user_agreement import IndirectBulkAcceptVersionedPolicy
 
 
 @same_doc_as(IndirectBulkAcceptVersionedPolicy)
-def indirect_bulk_accept_versioned_policy(client_id: str, country_code: str, user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def indirect_bulk_accept_versioned_policy(client_id: str, country_code: str, user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -49,11 +49,11 @@ def indirect_bulk_accept_versioned_policy(client_id: str, country_code: str, use
         publisher_user_id=publisher_user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(IndirectBulkAcceptVersionedPolicy)
-async def indirect_bulk_accept_versioned_policy_async(client_id: str, country_code: str, user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def indirect_bulk_accept_versioned_policy_async(client_id: str, country_code: str, user_id: str, body: Optional[List[AcceptAgreementRequest]] = None, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,4 +66,4 @@ async def indirect_bulk_accept_versioned_policy_async(client_id: str, country_co
         publisher_user_id=publisher_user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

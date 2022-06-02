@@ -36,7 +36,7 @@ from ..operations.anonymization import AnonymizeUserProfile
 
 
 @same_doc_as(AnonymizeUserProfile)
-def anonymize_user_profile(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def anonymize_user_profile(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -45,11 +45,11 @@ def anonymize_user_profile(user_id: str, namespace: Optional[str] = None, x_addi
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AnonymizeUserProfile)
-async def anonymize_user_profile_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def anonymize_user_profile_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -58,4 +58,4 @@ async def anonymize_user_profile_async(user_id: str, namespace: Optional[str] = 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

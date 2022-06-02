@@ -51,7 +51,7 @@ from ..operations.leaderboard_configuration import UpdateLeaderboardConfiguratio
 
 
 @same_doc_as(CreateLeaderboardConfigurationAdminV1)
-def create_leaderboard_configuration_admin_v1(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_leaderboard_configuration_admin_v1(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,11 +60,11 @@ def create_leaderboard_configuration_admin_v1(body: ModelsLeaderboardConfigReq, 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateLeaderboardConfigurationAdminV1)
-async def create_leaderboard_configuration_admin_v1_async(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_leaderboard_configuration_admin_v1_async(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,11 +73,11 @@ async def create_leaderboard_configuration_admin_v1_async(body: ModelsLeaderboar
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateLeaderboardConfigurationPublicV1)
-def create_leaderboard_configuration_public_v1(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_leaderboard_configuration_public_v1(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,11 +86,11 @@ def create_leaderboard_configuration_public_v1(body: ModelsLeaderboardConfigReq,
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateLeaderboardConfigurationPublicV1)
-async def create_leaderboard_configuration_public_v1_async(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_leaderboard_configuration_public_v1_async(body: ModelsLeaderboardConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,11 +99,11 @@ async def create_leaderboard_configuration_public_v1_async(body: ModelsLeaderboa
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteBulkLeaderboardConfigurationAdminV1)
-def delete_bulk_leaderboard_configuration_admin_v1(body: ModelsDeleteBulkLeaderboardsReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_bulk_leaderboard_configuration_admin_v1(body: ModelsDeleteBulkLeaderboardsReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,11 +112,11 @@ def delete_bulk_leaderboard_configuration_admin_v1(body: ModelsDeleteBulkLeaderb
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteBulkLeaderboardConfigurationAdminV1)
-async def delete_bulk_leaderboard_configuration_admin_v1_async(body: ModelsDeleteBulkLeaderboardsReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_bulk_leaderboard_configuration_admin_v1_async(body: ModelsDeleteBulkLeaderboardsReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,11 +125,11 @@ async def delete_bulk_leaderboard_configuration_admin_v1_async(body: ModelsDelet
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteLeaderboardConfigurationAdminV1)
-def delete_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,11 +138,11 @@ def delete_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: 
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteLeaderboardConfigurationAdminV1)
-async def delete_leaderboard_configuration_admin_v1_async(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_leaderboard_configuration_admin_v1_async(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,11 +151,11 @@ async def delete_leaderboard_configuration_admin_v1_async(leaderboard_code: str,
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationAdminV1)
-def get_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,11 +164,11 @@ def get_leaderboard_configuration_admin_v1(leaderboard_code: str, namespace: Opt
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationAdminV1)
-async def get_leaderboard_configuration_admin_v1_async(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_leaderboard_configuration_admin_v1_async(leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -177,11 +177,11 @@ async def get_leaderboard_configuration_admin_v1_async(leaderboard_code: str, na
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsAdminV1)
-def get_leaderboard_configurations_admin_v1(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_leaderboard_configurations_admin_v1(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,11 +193,11 @@ def get_leaderboard_configurations_admin_v1(is_archived: Optional[bool] = None, 
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsAdminV1)
-async def get_leaderboard_configurations_admin_v1_async(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_leaderboard_configurations_admin_v1_async(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -209,11 +209,11 @@ async def get_leaderboard_configurations_admin_v1_async(is_archived: Optional[bo
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsPublicV1)
-def get_leaderboard_configurations_public_v1(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_leaderboard_configurations_public_v1(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,11 +225,11 @@ def get_leaderboard_configurations_public_v1(is_archived: Optional[bool] = None,
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsPublicV1)
-async def get_leaderboard_configurations_public_v1_async(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_leaderboard_configurations_public_v1_async(is_archived: Optional[bool] = None, is_deleted: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,11 +241,11 @@ async def get_leaderboard_configurations_public_v1_async(is_archived: Optional[b
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsPublicV2)
-def get_leaderboard_configurations_public_v2(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_leaderboard_configurations_public_v2(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -255,11 +255,11 @@ def get_leaderboard_configurations_public_v2(limit: Optional[int] = None, offset
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLeaderboardConfigurationsPublicV2)
-async def get_leaderboard_configurations_public_v2_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_leaderboard_configurations_public_v2_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -269,11 +269,11 @@ async def get_leaderboard_configurations_public_v2_async(limit: Optional[int] = 
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateLeaderboardConfigurationAdminV1)
-def update_leaderboard_configuration_admin_v1(body: ModelsUpdateLeaderboardConfigReq, leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_leaderboard_configuration_admin_v1(body: ModelsUpdateLeaderboardConfigReq, leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,11 +283,11 @@ def update_leaderboard_configuration_admin_v1(body: ModelsUpdateLeaderboardConfi
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateLeaderboardConfigurationAdminV1)
-async def update_leaderboard_configuration_admin_v1_async(body: ModelsUpdateLeaderboardConfigReq, leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_leaderboard_configuration_admin_v1_async(body: ModelsUpdateLeaderboardConfigReq, leaderboard_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -297,4 +297,4 @@ async def update_leaderboard_configuration_admin_v1_async(body: ModelsUpdateLead
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

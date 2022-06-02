@@ -38,56 +38,56 @@ from ..operations.gametelemetry_operations import ProtectedUpdatePlaytimeGameTel
 
 
 @same_doc_as(ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet)
-def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
         steam_id=steam_id,
         cookie=cookie,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet)
-async def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_async(steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_async(steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
         steam_id=steam_id,
         cookie=cookie,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost)
-def protected_save_events_game_telemetry_v1_protected_events_post(body: List[TelemetryBody], cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def protected_save_events_game_telemetry_v1_protected_events_post(body: List[TelemetryBody], cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
         cookie=cookie,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost)
-async def protected_save_events_game_telemetry_v1_protected_events_post_async(body: List[TelemetryBody], cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def protected_save_events_game_telemetry_v1_protected_events_post_async(body: List[TelemetryBody], cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
         cookie=cookie,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut)
-def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(playtime: str, steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put(playtime: str, steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,
         steam_id=steam_id,
         cookie=cookie,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut)
-async def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_async(playtime: str, steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_async(playtime: str, steam_id: str, cookie: Optional[Union[str, HeaderStr]] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,
         steam_id=steam_id,
         cookie=cookie,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

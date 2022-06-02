@@ -35,16 +35,16 @@ from ..operations.anonymization import AnonymizeUserAgreement
 
 
 @same_doc_as(AnonymizeUserAgreement)
-def anonymize_user_agreement(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def anonymize_user_agreement(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AnonymizeUserAgreement)
-async def anonymize_user_agreement_async(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def anonymize_user_agreement_async(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

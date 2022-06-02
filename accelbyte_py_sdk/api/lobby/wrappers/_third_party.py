@@ -43,7 +43,7 @@ from ..operations.third_party import AdminUpdateThirdPartyConfig
 
 
 @same_doc_as(AdminCreateThirdPartyConfig)
-def admin_create_third_party_config(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_create_third_party_config(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,11 +52,11 @@ def admin_create_third_party_config(body: ModelsCreateConfigRequest, namespace: 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminCreateThirdPartyConfig)
-async def admin_create_third_party_config_async(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_create_third_party_config_async(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,11 +65,11 @@ async def admin_create_third_party_config_async(body: ModelsCreateConfigRequest,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDeleteThirdPartyConfig)
-def admin_delete_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_delete_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,11 +77,11 @@ def admin_delete_third_party_config(namespace: Optional[str] = None, x_additiona
     request = AdminDeleteThirdPartyConfig.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDeleteThirdPartyConfig)
-async def admin_delete_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_delete_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +89,11 @@ async def admin_delete_third_party_config_async(namespace: Optional[str] = None,
     request = AdminDeleteThirdPartyConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetThirdPartyConfig)
-def admin_get_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,11 +101,11 @@ def admin_get_third_party_config(namespace: Optional[str] = None, x_additional_h
     request = AdminGetThirdPartyConfig.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetThirdPartyConfig)
-async def admin_get_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,11 +113,11 @@ async def admin_get_third_party_config_async(namespace: Optional[str] = None, x_
     request = AdminGetThirdPartyConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateThirdPartyConfig)
-def admin_update_third_party_config(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_update_third_party_config(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -126,11 +126,11 @@ def admin_update_third_party_config(body: ModelsUpdateConfigRequest, namespace: 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateThirdPartyConfig)
-async def admin_update_third_party_config_async(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_update_third_party_config_async(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,4 +139,4 @@ async def admin_update_third_party_config_async(body: ModelsUpdateConfigRequest,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

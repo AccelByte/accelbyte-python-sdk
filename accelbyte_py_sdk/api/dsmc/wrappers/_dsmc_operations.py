@@ -36,12 +36,12 @@ from ..operations.dsmc_operations import PublicGetMessages
 
 
 @same_doc_as(PublicGetMessages)
-def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetMessages.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetMessages)
-async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetMessages.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -38,7 +38,7 @@ from ..operations.payment_callback_config import UpdatePaymentCallbackConfig
 
 
 @same_doc_as(GetPaymentCallbackConfig)
-def get_payment_callback_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_payment_callback_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -46,11 +46,11 @@ def get_payment_callback_config(namespace: Optional[str] = None, x_additional_he
     request = GetPaymentCallbackConfig.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPaymentCallbackConfig)
-async def get_payment_callback_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_payment_callback_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -58,11 +58,11 @@ async def get_payment_callback_config_async(namespace: Optional[str] = None, x_a
     request = GetPaymentCallbackConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePaymentCallbackConfig)
-def update_payment_callback_config(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_payment_callback_config(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,11 +71,11 @@ def update_payment_callback_config(body: Optional[PaymentCallbackConfigUpdate] =
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePaymentCallbackConfig)
-async def update_payment_callback_config_async(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_payment_callback_config_async(body: Optional[PaymentCallbackConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,4 +84,4 @@ async def update_payment_callback_config_async(body: Optional[PaymentCallbackCon
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -37,39 +37,39 @@ from ..operations.user_info import SyncUserInfo
 
 
 @same_doc_as(GetUserInfoStatus)
-def get_user_info_status(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_user_info_status(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserInfoStatus)
-async def get_user_info_status_async(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_user_info_status_async(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(InvalidateUserInfoCache)
-def invalidate_user_info_cache(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def invalidate_user_info_cache(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(InvalidateUserInfoCache)
-async def invalidate_user_info_cache_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def invalidate_user_info_cache_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SyncUserInfo)
-def sync_user_info(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def sync_user_info(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,11 +77,11 @@ def sync_user_info(namespace: Optional[str] = None, x_additional_headers: Option
     request = SyncUserInfo.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SyncUserInfo)
-async def sync_user_info_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def sync_user_info_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,4 +89,4 @@ async def sync_user_info_async(namespace: Optional[str] = None, x_additional_hea
     request = SyncUserInfo.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -44,7 +44,7 @@ from ..operations.config import AdminUpdateConfigV1
 
 
 @same_doc_as(AdminExportConfigV1)
-def admin_export_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_export_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,11 +52,11 @@ def admin_export_config_v1(namespace: Optional[str] = None, x_additional_headers
     request = AdminExportConfigV1.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminExportConfigV1)
-async def admin_export_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_export_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,23 +64,23 @@ async def admin_export_config_v1_async(namespace: Optional[str] = None, x_additi
     request = AdminExportConfigV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetAllConfigV1)
-def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_all_config_v1(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetAllConfigV1.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetAllConfigV1)
-async def admin_get_all_config_v1_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_all_config_v1_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetAllConfigV1.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetConfigV1)
-def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +88,11 @@ def admin_get_config_v1(namespace: Optional[str] = None, x_additional_headers: O
     request = AdminGetConfigV1.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetConfigV1)
-async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +100,11 @@ async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additiona
     request = AdminGetConfigV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminImportConfigV1)
-def admin_import_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_import_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -112,11 +112,11 @@ def admin_import_config_v1(namespace: Optional[str] = None, x_additional_headers
     request = AdminImportConfigV1.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminImportConfigV1)
-async def admin_import_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_import_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,11 +124,11 @@ async def admin_import_config_v1_async(namespace: Optional[str] = None, x_additi
     request = AdminImportConfigV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateConfigV1)
-def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,11 +137,11 @@ def admin_update_config_v1(body: ModelsConfigReq, namespace: Optional[str] = Non
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateConfigV1)
-async def admin_update_config_v1_async(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_update_config_v1_async(body: ModelsConfigReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,4 +150,4 @@ async def admin_update_config_v1_async(body: ModelsConfigReq, namespace: Optiona
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

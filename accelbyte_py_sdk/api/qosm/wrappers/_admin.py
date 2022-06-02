@@ -37,34 +37,34 @@ from ..operations.admin import SetServerAlias
 
 
 @same_doc_as(DeleteServer)
-def delete_server(region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_server(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = DeleteServer.create(
         region=region,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteServer)
-async def delete_server_async(region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_server_async(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = DeleteServer.create(
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetServerAlias)
-def set_server_alias(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def set_server_alias(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SetServerAlias.create(
         body=body,
         region=region,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetServerAlias)
-async def set_server_alias_async(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def set_server_alias_async(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SetServerAlias.create(
         body=body,
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -34,22 +34,22 @@ from ..operations.sso_saml_2_0 import PlatformAuthenticateSAMLV3Handler
 
 
 @same_doc_as(PlatformAuthenticateSAMLV3Handler)
-def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
         code=code,
         error=error,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PlatformAuthenticateSAMLV3Handler)
-async def platform_authenticate_samlv3_handler_async(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def platform_authenticate_samlv3_handler_async(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
         code=code,
         error=error,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

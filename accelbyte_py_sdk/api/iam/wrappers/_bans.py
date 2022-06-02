@@ -45,7 +45,7 @@ from ..operations.bans import GetListBanReason
 
 
 @same_doc_as(AdminGetBannedUsersV3)
-def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -57,11 +57,11 @@ def admin_get_banned_users_v3(active_only: Optional[bool] = None, ban_type: Opti
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBannedUsersV3)
-async def admin_get_banned_users_v3_async(active_only: Optional[bool] = None, ban_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_banned_users_v3_async(active_only: Optional[bool] = None, ban_type: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,23 +73,23 @@ async def admin_get_banned_users_v3_async(active_only: Optional[bool] = None, ba
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBansTypeV3)
-def admin_get_bans_type_v3(x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_bans_type_v3(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetBansTypeV3.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBansTypeV3)
-async def admin_get_bans_type_v3_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_bans_type_v3_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetBansTypeV3.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBansTypeWithNamespaceV3)
-def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,11 +97,11 @@ def admin_get_bans_type_with_namespace_v3(namespace: Optional[str] = None, x_add
     request = AdminGetBansTypeWithNamespaceV3.create(
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBansTypeWithNamespaceV3)
-async def admin_get_bans_type_with_namespace_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_bans_type_with_namespace_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,40 +109,40 @@ async def admin_get_bans_type_with_namespace_v3_async(namespace: Optional[str] =
     request = AdminGetBansTypeWithNamespaceV3.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetListBanReasonV3)
-def admin_get_list_ban_reason_v3(x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_get_list_ban_reason_v3(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetListBanReasonV3.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetListBanReasonV3)
-async def admin_get_list_ban_reason_v3_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_get_list_ban_reason_v3_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AdminGetListBanReasonV3.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetBansType)
-def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None):
+def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetBansType.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetBansType)
-async def get_bans_type_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_bans_type_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetBansType.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetListBanReason)
-def get_list_ban_reason(x_additional_headers: Optional[Dict[str, str]] = None):
+def get_list_ban_reason(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetListBanReason.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetListBanReason)
-async def get_list_ban_reason_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_list_ban_reason_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetListBanReason.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

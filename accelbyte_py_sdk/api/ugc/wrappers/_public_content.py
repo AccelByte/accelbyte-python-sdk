@@ -62,7 +62,7 @@ from ..operations.public_content import UploadContentScreenshot
 
 @deprecated
 @same_doc_as(CreateContentDirect)
-def create_content_direct(body: ModelsCreateContentRequest, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_content_direct(body: ModelsCreateContentRequest, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,12 +73,12 @@ def create_content_direct(body: ModelsCreateContentRequest, channel_id: str, use
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(CreateContentDirect)
-async def create_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +89,11 @@ async def create_content_direct_async(body: ModelsCreateContentRequest, channel_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateContentS3)
-def create_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,11 +104,11 @@ def create_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, user_
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateContentS3)
-async def create_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,11 +119,11 @@ async def create_content_s3_async(body: ModelsCreateContentRequestS3, channel_id
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteContent)
-def delete_content(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_content(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,11 +134,11 @@ def delete_content(channel_id: str, content_id: str, user_id: str, namespace: Op
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteContent)
-async def delete_content_async(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_content_async(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,11 +149,11 @@ async def delete_content_async(channel_id: str, content_id: str, user_id: str, n
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteContentScreenshot)
-def delete_content_screenshot(content_id: str, screenshot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def delete_content_screenshot(content_id: str, screenshot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,11 +164,11 @@ def delete_content_screenshot(content_id: str, screenshot_id: str, user_id: str,
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteContentScreenshot)
-async def delete_content_screenshot_async(content_id: str, screenshot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def delete_content_screenshot_async(content_id: str, screenshot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,11 +179,11 @@ async def delete_content_screenshot_async(content_id: str, screenshot_id: str, u
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DownloadContentByShareCode)
-def download_content_by_share_code(share_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def download_content_by_share_code(share_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,11 +192,11 @@ def download_content_by_share_code(share_code: str, namespace: Optional[str] = N
         share_code=share_code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DownloadContentByShareCode)
-async def download_content_by_share_code_async(share_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def download_content_by_share_code_async(share_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,11 +205,11 @@ async def download_content_by_share_code_async(share_code: str, namespace: Optio
         share_code=share_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDownloadContentByContentID)
-def public_download_content_by_content_id(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_download_content_by_content_id(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,11 +218,11 @@ def public_download_content_by_content_id(content_id: str, namespace: Optional[s
         content_id=content_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDownloadContentByContentID)
-async def public_download_content_by_content_id_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_download_content_by_content_id_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,11 +231,11 @@ async def public_download_content_by_content_id_async(content_id: str, namespace
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDownloadContentPreview)
-def public_download_content_preview(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_download_content_preview(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,11 +244,11 @@ def public_download_content_preview(content_id: str, namespace: Optional[str] = 
         content_id=content_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDownloadContentPreview)
-async def public_download_content_preview_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_download_content_preview_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,11 +257,11 @@ async def public_download_content_preview_async(content_id: str, namespace: Opti
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetContentBulk)
-def public_get_content_bulk(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_content_bulk(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -270,11 +270,11 @@ def public_get_content_bulk(body: ModelsPublicGetContentBulkRequest, namespace: 
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetContentBulk)
-async def public_get_content_bulk_async(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_content_bulk_async(body: ModelsPublicGetContentBulkRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,11 +283,11 @@ async def public_get_content_bulk_async(body: ModelsPublicGetContentBulkRequest,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserContent)
-def public_get_user_content(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_user_content(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,11 +298,11 @@ def public_get_user_content(user_id: str, limit: Optional[int] = None, offset: O
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserContent)
-async def public_get_user_content_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_user_content_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,11 +313,11 @@ async def public_get_user_content_async(user_id: str, limit: Optional[int] = Non
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicSearchContent)
-def public_search_content(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_search_content(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -336,11 +336,11 @@ def public_search_content(creator: Optional[str] = None, isofficial: Optional[st
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicSearchContent)
-async def public_search_content_async(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_search_content_async(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -359,11 +359,11 @@ async def public_search_content_async(creator: Optional[str] = None, isofficial:
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SearchChannelSpecificContent)
-def search_channel_specific_content(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def search_channel_specific_content(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -383,11 +383,11 @@ def search_channel_specific_content(channel_id: str, creator: Optional[str] = No
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SearchChannelSpecificContent)
-async def search_channel_specific_content_async(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def search_channel_specific_content_async(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -407,12 +407,12 @@ async def search_channel_specific_content_async(channel_id: str, creator: Option
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(UpdateContentDirect)
-def update_content_direct(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_content_direct(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -424,12 +424,12 @@ def update_content_direct(body: ModelsCreateContentRequest, channel_id: str, con
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(UpdateContentDirect)
-async def update_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -441,11 +441,11 @@ async def update_content_direct_async(body: ModelsCreateContentRequest, channel_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateContentS3)
-def update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -457,11 +457,11 @@ def update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, conte
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateContentS3)
-async def update_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -473,11 +473,11 @@ async def update_content_s3_async(body: ModelsCreateContentRequestS3, channel_id
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateScreenshots)
-def update_screenshots(body: ModelsUpdateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_screenshots(body: ModelsUpdateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -488,11 +488,11 @@ def update_screenshots(body: ModelsUpdateScreenshotRequest, content_id: str, use
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateScreenshots)
-async def update_screenshots_async(body: ModelsUpdateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_screenshots_async(body: ModelsUpdateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -503,11 +503,11 @@ async def update_screenshots_async(body: ModelsUpdateScreenshotRequest, content_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UploadContentScreenshot)
-def upload_content_screenshot(body: ModelsCreateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def upload_content_screenshot(body: ModelsCreateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -518,11 +518,11 @@ def upload_content_screenshot(body: ModelsCreateScreenshotRequest, content_id: s
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UploadContentScreenshot)
-async def upload_content_screenshot_async(body: ModelsCreateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def upload_content_screenshot_async(body: ModelsCreateScreenshotRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -533,4 +533,4 @@ async def upload_content_screenshot_async(body: ModelsCreateScreenshotRequest, c
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

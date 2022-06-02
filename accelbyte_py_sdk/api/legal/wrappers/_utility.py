@@ -35,12 +35,12 @@ from ..operations.utility import CheckReadiness
 
 
 @same_doc_as(CheckReadiness)
-def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None):
+def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CheckReadiness.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CheckReadiness)
-async def check_readiness_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def check_readiness_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CheckReadiness.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

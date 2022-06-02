@@ -36,12 +36,12 @@ from ..operations.public import ListServer
 
 
 @same_doc_as(ListServer)
-def list_server(x_additional_headers: Optional[Dict[str, str]] = None):
+def list_server(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ListServer.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListServer)
-async def list_server_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def list_server_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ListServer.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

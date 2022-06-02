@@ -35,7 +35,7 @@ from ..operations.admin_user_eligibilities import AdminRetrieveEligibilities
 
 
 @same_doc_as(AdminRetrieveEligibilities)
-def admin_retrieve_eligibilities(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_retrieve_eligibilities(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -47,11 +47,11 @@ def admin_retrieve_eligibilities(client_id: str, country_code: str, user_id: str
         publisher_user_id=publisher_user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminRetrieveEligibilities)
-async def admin_retrieve_eligibilities_async(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_retrieve_eligibilities_async(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,4 +63,4 @@ async def admin_retrieve_eligibilities_async(client_id: str, country_code: str, 
         publisher_user_id=publisher_user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

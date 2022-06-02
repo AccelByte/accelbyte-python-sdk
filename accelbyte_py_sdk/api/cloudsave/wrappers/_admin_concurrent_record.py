@@ -37,7 +37,7 @@ from ..operations.admin_concurrent_record import AdminPutPlayerPublicRecordConcu
 
 
 @same_doc_as(AdminPutGameRecordConcurrentHandlerV1)
-def admin_put_game_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_put_game_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -47,11 +47,11 @@ def admin_put_game_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecor
         key=key,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminPutGameRecordConcurrentHandlerV1)
-async def admin_put_game_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_put_game_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,11 +61,11 @@ async def admin_put_game_record_concurrent_handler_v1_async(body: ModelsAdminCon
         key=key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminPutPlayerPublicRecordConcurrentHandlerV1)
-def admin_put_player_public_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def admin_put_player_public_record_concurrent_handler_v1(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,11 +76,11 @@ def admin_put_player_public_record_concurrent_handler_v1(body: ModelsAdminConcur
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminPutPlayerPublicRecordConcurrentHandlerV1)
-async def admin_put_player_public_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def admin_put_player_public_record_concurrent_handler_v1_async(body: ModelsAdminConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,4 +91,4 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(body: Model
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

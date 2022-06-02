@@ -36,7 +36,7 @@ from ..operations.presence import UsersPresenceHandlerV1
 
 
 @same_doc_as(UsersPresenceHandlerV1)
-def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -46,11 +46,11 @@ def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, 
         count_only=count_only,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UsersPresenceHandlerV1)
-async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,4 +60,4 @@ async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bo
         count_only=count_only,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

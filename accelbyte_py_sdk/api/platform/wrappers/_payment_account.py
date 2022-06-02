@@ -38,7 +38,7 @@ from ..models import PaymentAccountTypeEnum
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-def public_delete_payment_account(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_delete_payment_account(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -49,11 +49,11 @@ def public_delete_payment_account(id_: str, type_: Union[str, PublicDeletePaymen
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDeletePaymentAccount)
-async def public_delete_payment_account_async(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_delete_payment_account_async(id_: str, type_: Union[str, PublicDeletePaymentAccountTypeEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,11 +64,11 @@ async def public_delete_payment_account_async(id_: str, type_: Union[str, Public
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetPaymentAccounts)
-def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,11 +77,11 @@ def public_get_payment_accounts(user_id: str, namespace: Optional[str] = None, x
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetPaymentAccounts)
-async def public_get_payment_accounts_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def public_get_payment_accounts_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,4 +90,4 @@ async def public_get_payment_accounts_async(user_id: str, namespace: Optional[st
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

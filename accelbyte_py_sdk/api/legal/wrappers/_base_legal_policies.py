@@ -48,98 +48,98 @@ from ..operations.base_legal_policies import RetrieveSinglePolicy
 
 
 @same_doc_as(CreatePolicy)
-def create_policy(body: Optional[CreateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_policy(body: Optional[CreateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreatePolicy.create(
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreatePolicy)
-async def create_policy_async(body: Optional[CreateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_policy_async(body: Optional[CreateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreatePolicy.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PartialUpdatePolicy)
-def partial_update_policy(base_policy_id: str, body: Optional[UpdateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def partial_update_policy(base_policy_id: str, body: Optional[UpdateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PartialUpdatePolicy)
-async def partial_update_policy_async(base_policy_id: str, body: Optional[UpdateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def partial_update_policy_async(base_policy_id: str, body: Optional[UpdateBasePolicyRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllLegalPolicies)
-def retrieve_all_legal_policies(x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_all_legal_policies(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveAllLegalPolicies.create()
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllLegalPolicies)
-async def retrieve_all_legal_policies_async(x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_all_legal_policies_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveAllLegalPolicies.create()
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllPolicyTypes)
-def retrieve_all_policy_types(limit: int, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_all_policy_types(limit: int, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllPolicyTypes)
-async def retrieve_all_policy_types_async(limit: int, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_all_policy_types_async(limit: int, offset: Optional[int] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrievePolicyCountry)
-def retrieve_policy_country(base_policy_id: str, country_code: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_policy_country(base_policy_id: str, country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrievePolicyCountry)
-async def retrieve_policy_country_async(base_policy_id: str, country_code: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_policy_country_async(base_policy_id: str, country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveSinglePolicy)
-def retrieve_single_policy(base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+def retrieve_single_policy(base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveSinglePolicy)
-async def retrieve_single_policy_async(base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None):
+async def retrieve_single_policy_async(base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

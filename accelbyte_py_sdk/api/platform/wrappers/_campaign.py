@@ -60,14 +60,14 @@ from ..operations.campaign import QueryCampaigns
 from ..operations.campaign import QueryCodes
 from ..operations.campaign import QueryRedeemHistory
 from ..operations.campaign import UpdateCampaign
-from ..models import CampaignCreateTypeEnum, CampaignCreateRedeemTypeEnum, CampaignCreateStatusEnum
+from ..models import CampaignCreateRedeemTypeEnum, CampaignCreateStatusEnum, CampaignCreateTypeEnum
 from ..models import CampaignInfoRedeemTypeEnum, CampaignInfoStatusEnum, CampaignInfoTypeEnum
-from ..models import CampaignUpdateStatusEnum, CampaignUpdateRedeemTypeEnum
-from ..models import CodeInfoStatusEnum, CodeInfoRedeemTypeEnum, CodeInfoTypeEnum
+from ..models import CampaignUpdateRedeemTypeEnum, CampaignUpdateStatusEnum
+from ..models import CodeInfoRedeemTypeEnum, CodeInfoStatusEnum, CodeInfoTypeEnum
 
 
 @same_doc_as(ApplyUserRedemption)
-def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -77,11 +77,11 @@ def apply_user_redemption(user_id: str, body: Optional[RedeemRequest] = None, na
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ApplyUserRedemption)
-async def apply_user_redemption_async(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def apply_user_redemption_async(user_id: str, body: Optional[RedeemRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,11 +91,11 @@ async def apply_user_redemption_async(user_id: str, body: Optional[RedeemRequest
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BulkDisableCodes)
-def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,11 +105,11 @@ def bulk_disable_codes(campaign_id: str, batch_no: Optional[int] = None, namespa
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BulkDisableCodes)
-async def bulk_disable_codes_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def bulk_disable_codes_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,11 +119,11 @@ async def bulk_disable_codes_async(campaign_id: str, batch_no: Optional[int] = N
         batch_no=batch_no,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BulkEnableCodes)
-def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -133,11 +133,11 @@ def bulk_enable_codes(campaign_id: str, batch_no: Optional[int] = None, namespac
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BulkEnableCodes)
-async def bulk_enable_codes_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def bulk_enable_codes_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,11 +147,11 @@ async def bulk_enable_codes_async(campaign_id: str, batch_no: Optional[int] = No
         batch_no=batch_no,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateCampaign)
-def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,11 +160,11 @@ def create_campaign(body: Optional[CampaignCreate] = None, namespace: Optional[s
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateCampaign)
-async def create_campaign_async(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_campaign_async(body: Optional[CampaignCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,11 +173,11 @@ async def create_campaign_async(body: Optional[CampaignCreate] = None, namespace
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateCodes)
-def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,11 +187,11 @@ def create_codes(campaign_id: str, body: Optional[CodeCreate] = None, namespace:
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateCodes)
-async def create_codes_async(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def create_codes_async(campaign_id: str, body: Optional[CodeCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -201,11 +201,11 @@ async def create_codes_async(campaign_id: str, body: Optional[CodeCreate] = None
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DisableCode)
-def disable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def disable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -214,11 +214,11 @@ def disable_code(code: str, namespace: Optional[str] = None, x_additional_header
         code=code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DisableCode)
-async def disable_code_async(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def disable_code_async(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,11 +227,11 @@ async def disable_code_async(code: str, namespace: Optional[str] = None, x_addit
         code=code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Download)
-def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,11 +241,11 @@ def download(campaign_id: str, batch_no: Optional[int] = None, namespace: Option
         batch_no=batch_no,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Download)
-async def download_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def download_async(campaign_id: str, batch_no: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -255,11 +255,11 @@ async def download_async(campaign_id: str, batch_no: Optional[int] = None, names
         batch_no=batch_no,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(EnableCode)
-def enable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def enable_code(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,11 +268,11 @@ def enable_code(code: str, namespace: Optional[str] = None, x_additional_headers
         code=code,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(EnableCode)
-async def enable_code_async(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def enable_code_async(code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -281,11 +281,11 @@ async def enable_code_async(code: str, namespace: Optional[str] = None, x_additi
         code=code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCampaign)
-def get_campaign(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_campaign(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,11 +294,11 @@ def get_campaign(campaign_id: str, namespace: Optional[str] = None, x_additional
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCampaign)
-async def get_campaign_async(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_campaign_async(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -307,11 +307,11 @@ async def get_campaign_async(campaign_id: str, namespace: Optional[str] = None, 
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCampaignDynamic)
-def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -320,11 +320,11 @@ def get_campaign_dynamic(campaign_id: str, namespace: Optional[str] = None, x_ad
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCampaignDynamic)
-async def get_campaign_dynamic_async(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_campaign_dynamic_async(campaign_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -333,11 +333,11 @@ async def get_campaign_dynamic_async(campaign_id: str, namespace: Optional[str] 
         campaign_id=campaign_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCode)
-def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -347,11 +347,11 @@ def get_code(code: str, redeemable: Optional[bool] = None, namespace: Optional[s
         redeemable=redeemable,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCode)
-async def get_code_async(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_code_async(code: str, redeemable: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -361,11 +361,11 @@ async def get_code_async(code: str, redeemable: Optional[bool] = None, namespace
         redeemable=redeemable,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryCampaigns)
-def query_campaigns(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_campaigns(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -377,11 +377,11 @@ def query_campaigns(limit: Optional[int] = None, name: Optional[str] = None, off
         tag=tag,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryCampaigns)
-async def query_campaigns_async(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_campaigns_async(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,11 +393,11 @@ async def query_campaigns_async(limit: Optional[int] = None, name: Optional[str]
         tag=tag,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryCodes)
-def query_codes(campaign_id: str, active_only: Optional[bool] = None, batch_no: Optional[int] = None, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_codes(campaign_id: str, active_only: Optional[bool] = None, batch_no: Optional[int] = None, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,11 +411,11 @@ def query_codes(campaign_id: str, active_only: Optional[bool] = None, batch_no: 
         offset=offset,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryCodes)
-async def query_codes_async(campaign_id: str, active_only: Optional[bool] = None, batch_no: Optional[int] = None, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_codes_async(campaign_id: str, active_only: Optional[bool] = None, batch_no: Optional[int] = None, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -429,11 +429,11 @@ async def query_codes_async(campaign_id: str, active_only: Optional[bool] = None
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryRedeemHistory)
-def query_redeem_history(campaign_id: str, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def query_redeem_history(campaign_id: str, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -446,11 +446,11 @@ def query_redeem_history(campaign_id: str, code: Optional[str] = None, limit: Op
         user_id=user_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryRedeemHistory)
-async def query_redeem_history_async(campaign_id: str, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def query_redeem_history_async(campaign_id: str, code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -463,11 +463,11 @@ async def query_redeem_history_async(campaign_id: str, code: Optional[str] = Non
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateCampaign)
-def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -477,11 +477,11 @@ def update_campaign(campaign_id: str, body: Optional[CampaignUpdate] = None, nam
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateCampaign)
-async def update_campaign_async(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def update_campaign_async(campaign_id: str, body: Optional[CampaignUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -491,4 +491,4 @@ async def update_campaign_async(campaign_id: str, body: Optional[CampaignUpdate]
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

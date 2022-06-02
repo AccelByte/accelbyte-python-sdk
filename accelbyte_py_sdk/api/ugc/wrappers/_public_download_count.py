@@ -36,7 +36,7 @@ from ..operations.public_download_count import AddDownloadCount
 
 
 @same_doc_as(AddDownloadCount)
-def add_download_count(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def add_download_count(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -45,11 +45,11 @@ def add_download_count(content_id: str, namespace: Optional[str] = None, x_addit
         content_id=content_id,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AddDownloadCount)
-async def add_download_count_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def add_download_count_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -58,4 +58,4 @@ async def add_download_count_async(content_id: str, namespace: Optional[str] = N
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

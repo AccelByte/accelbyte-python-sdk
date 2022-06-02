@@ -48,7 +48,7 @@ from ..models import TicketBoothIDTypeEnum
 
 
 @same_doc_as(AcquireUserTicket)
-def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,11 +59,11 @@ def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcqu
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AcquireUserTicket)
-async def acquire_user_ticket_async(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def acquire_user_ticket_async(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,11 +74,11 @@ async def acquire_user_ticket_async(booth_name: str, user_id: str, body: Optiona
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DecreaseTicketSale)
-def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +88,11 @@ def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequ
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DecreaseTicketSale)
-async def decrease_ticket_sale_async(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def decrease_ticket_sale_async(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,11 +102,11 @@ async def decrease_ticket_sale_async(booth_name: str, body: Optional[TicketSaleD
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketBoothID)
-def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +115,11 @@ def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_addi
         booth_name=booth_name,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketBoothID)
-async def get_ticket_booth_id_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_ticket_booth_id_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,11 +128,11 @@ async def get_ticket_booth_id_async(booth_name: str, namespace: Optional[str] = 
         booth_name=booth_name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketDynamic)
-def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,11 +141,11 @@ def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_addit
         booth_name=booth_name,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketDynamic)
-async def get_ticket_dynamic_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def get_ticket_dynamic_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,11 +154,11 @@ async def get_ticket_dynamic_async(booth_name: str, namespace: Optional[str] = N
         booth_name=booth_name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(IncreaseTicketSale)
-def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -168,11 +168,11 @@ def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequ
         body=body,
         namespace=namespace,
     )
-    return run_request(request, additional_headers=x_additional_headers)
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(IncreaseTicketSale)
-async def increase_ticket_sale_async(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None):
+async def increase_ticket_sale_async(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,4 +182,4 @@ async def increase_ticket_sale_async(booth_name: str, body: Optional[TicketSaleI
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers)
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
