@@ -27,6 +27,10 @@ from ...api.iam import token_revocation_v3
 from ...api.iam import token_revocation_v3_async
 
 
+DEFAULT_AUTO_REFRESH: bool = True
+DEFAULT_REFRESH_RATE: float = 0.8
+
+
 def convert_bearer_auth_token_to_oauth_token_dict(
         bearer_auth_token: str,
         jwt_decode_options: Union[None, dict] = None,
@@ -65,6 +69,8 @@ def login_client(
         x_additional_headers: Union[None, Dict[str, str]] = None,
         **kwargs
 ):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
     if client_id is not None and client_secret is not None:
@@ -78,7 +84,17 @@ def login_client(
     if error:
         return None, error
 
-    set_token_refresher(TokenRefresher(login_client, client_id, client_secret, x_additional_headers=x_additional_headers, **kwargs))
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_client,
+                client_id,
+                client_secret,
+                x_additional_headers=x_additional_headers,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
 
     return token, None
 
@@ -89,6 +105,8 @@ async def login_client_async(
         x_additional_headers: Union[None, Dict[str, str]] = None,
         **kwargs
 ):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
     if client_id is not None and client_secret is not None:
@@ -102,7 +120,17 @@ async def login_client_async(
     if error:
         return None, error
 
-    set_token_refresher(TokenRefresher(login_client_async, client_id, client_secret, x_additional_headers=x_additional_headers, **kwargs))
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_client_async,
+                client_id,
+                client_secret,
+                x_additional_headers=x_additional_headers,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
 
     return token, None
 
@@ -114,6 +142,8 @@ def login_user(
         x_additional_headers: Union[None, Dict[str, str]] = None,
         **kwargs
 ):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
     code_verifier, code_challenge, code_challenge_method \
@@ -162,7 +192,18 @@ def login_user(
     if error:
         return None, error
 
-    set_token_refresher(TokenRefresher(login_user, username, password, scope=scope, x_additional_headers=x_additional_headers, **kwargs))
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_user,
+                username,
+                password,
+                scope=scope,
+                x_additional_headers=x_additional_headers,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
 
     return token, None
 
@@ -174,6 +215,8 @@ async def login_user_async(
         x_additional_headers: Union[None, Dict[str, str]] = None,
         **kwargs
 ):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
     code_verifier, code_challenge, code_challenge_method \
@@ -222,7 +265,18 @@ async def login_user_async(
     if error:
         return None, error
 
-    set_token_refresher(TokenRefresher(login_user_async, username, password, scope=scope, x_additional_headers=x_additional_headers, **kwargs))
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_user_async,
+                username,
+                password,
+                scope=scope,
+                x_additional_headers=x_additional_headers,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
 
     return token, None
 

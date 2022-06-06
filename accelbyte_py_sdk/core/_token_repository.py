@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from typing import Any, Optional
 
 from ._utils import get_member
+from ._utils import clamp
 
 
 class TokenRepository(ABC):
@@ -55,8 +56,9 @@ class TokenRepository(ABC):
     def has_token(self) -> bool:
         return self.get_token() is not None
 
-    def has_token_expired(self) -> bool:
-        return self.get_seconds_till_expiry() <= 0
+    def has_token_expired(self, multiplier: float = 1.0) -> bool:
+        seconds_till_expiry = self.get_seconds_till_expiry() * clamp(multiplier, 0.0, 1.0)
+        return seconds_till_expiry <= 0
 
 
 class MyTokenRepository(TokenRepository):

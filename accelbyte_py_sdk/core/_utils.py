@@ -61,6 +61,10 @@ def add_stream_handler_to_logger(
     return stream_handler
 
 
+def clamp(value, minimum, maximum):
+    return max(minimum, min(value, maximum))
+
+
 def clean_content_type(content_type: Optional[str]) -> Optional[str]:
     if content_type is None:
         return None
