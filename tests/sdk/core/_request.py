@@ -1565,7 +1565,7 @@ class MockServerRequestTestCase(TestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
@@ -1625,7 +1625,7 @@ class MockServerRequestTestCase(TestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
@@ -1995,7 +1995,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
@@ -2055,7 +2055,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
@@ -2115,7 +2115,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
@@ -2175,7 +2175,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
         self.assertFalse(token_repo.has_token_expired())
-        time.sleep(3)
+        time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
