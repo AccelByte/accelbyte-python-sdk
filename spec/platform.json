@@ -8,7 +8,7 @@
     },
     "description": "Justice Platform Service",
     "title": "justice-platform-service",
-    "version": "4.8.0"
+    "version": "4.9.0"
   },
   "schemes": [
     "https"
@@ -19366,12 +19366,6 @@
         "responses": {
           "204": {
             "description": "Successful operation"
-          },
-          "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39123\u003c/td\u003e\u003ctd\u003ePSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}]\u003c/td\u003e\u003c/tr\u003e",
-            "schema": {
-              "$ref": "#/definitions/ErrorEntity"
-            }
           }
         },
         "security": [
@@ -19424,6 +19418,12 @@
         "responses": {
           "204": {
             "description": "Successful operation"
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39124\u003c/td\u003e\u003ctd\u003eIAP request platform [{platformId}] user id is not linked with current user\u003c/td\u003e\u003c/tr\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
           }
         },
         "security": [
@@ -20644,12 +20644,6 @@
               },
               "type": "array"
             }
-          },
-          "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39123\u003c/td\u003e\u003ctd\u003ePSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}]\u003c/td\u003e\u003c/tr\u003e",
-            "schema": {
-              "$ref": "#/definitions/ErrorEntity"
-            }
           }
         },
         "security": [
@@ -20766,6 +20760,12 @@
         "responses": {
           "204": {
             "description": "Successful operation"
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39123\u003c/td\u003e\u003ctd\u003eIAP request is not in valid application\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39124\u003c/td\u003e\u003ctd\u003eIAP request platform [{platformId}] user id is not linked with current user\u003c/td\u003e\u003c/tr\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
           }
         },
         "security": [
@@ -31678,6 +31678,9 @@
     },
     "SteamIAPConfig": {
       "properties": {
+        "appId": {
+          "type": "string"
+        },
         "createdAt": {
           "format": "date-time",
           "type": "string",
@@ -31703,6 +31706,10 @@
     },
     "SteamIAPConfigInfo": {
       "properties": {
+        "appId": {
+          "description": "steam app id",
+          "type": "string"
+        },
         "namespace": {
           "description": "namespace",
           "type": "string"
@@ -31720,14 +31727,15 @@
     },
     "SteamIAPConfigRequest": {
       "properties": {
+        "appId": {
+          "description": "appId",
+          "type": "string"
+        },
         "publisherAuthenticationKey": {
           "description": "publisherAuthenticationKey",
           "type": "string"
         }
       },
-      "required": [
-        "publisherAuthenticationKey"
-      ],
       "type": "object"
     },
     "SteamSyncRequest": {
@@ -33001,6 +33009,11 @@
         "amount": {
           "format": "int64",
           "type": "integer"
+        },
+        "expireAt": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
         },
         "origin": {
           "type": "string"

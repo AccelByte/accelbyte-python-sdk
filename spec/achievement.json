@@ -85,7 +85,7 @@
           },
           {
             "default": 0,
-            "description": "offset default 0",
+            "description": "offset",
             "in": "query",
             "name": "offset",
             "type": "integer"
@@ -685,7 +685,7 @@
           },
           {
             "default": 0,
-            "description": "offset default 0",
+            "description": "offset",
             "in": "query",
             "name": "offset",
             "type": "integer"
@@ -873,7 +873,7 @@
           },
           {
             "default": 0,
-            "description": "offset default 0",
+            "description": "offset",
             "in": "query",
             "name": "offset",
             "type": "integer"
@@ -1044,7 +1044,7 @@
           },
           {
             "default": 0,
-            "description": "offset default 0",
+            "description": "offset",
             "in": "query",
             "name": "offset",
             "type": "integer"
