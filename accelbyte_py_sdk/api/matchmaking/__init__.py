@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.14.4"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -53,6 +53,8 @@ from .wrappers import query_session_handler
 from .wrappers import query_session_handler_async
 from .wrappers import queue_session_handler
 from .wrappers import queue_session_handler_async
+from .wrappers import rebalance
+from .wrappers import rebalance_async
 from .wrappers import search_sessions
 from .wrappers import search_sessions_async
 from .wrappers import search_sessions_v2

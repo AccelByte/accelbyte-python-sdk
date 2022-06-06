@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
 from ...models import PlayStationReconcileRequest
 from ...models import PlayStationReconcileResult
 
@@ -68,8 +67,6 @@ class PublicReconcilePlayStationStore(Operation):
 
     Responses:
         200: OK - List[PlayStationReconcileResult] (successful operation)
-
-        400: Bad Request - ErrorEntity (39123: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
     """
 
     # region fields
@@ -185,12 +182,10 @@ class PublicReconcilePlayStationStore(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[PlayStationReconcileResult]], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[PlayStationReconcileResult]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - List[PlayStationReconcileResult] (successful operation)
-
-        400: Bad Request - ErrorEntity (39123: PSN Sync failed with status code [{statusCode}] and psnAuthCode is [{psnAuthCode}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -205,8 +200,6 @@ class PublicReconcilePlayStationStore(Operation):
 
         if code == 200:
             return [PlayStationReconcileResult.create_from_dict(i) for i in content], None
-        if code == 400:
-            return None, ErrorEntity.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-basic-service (1.36.1)
+# justice-basic-service (1.36.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class UserProfilePrivateInfo(Model):
 
         private_custom_attributes: (privateCustomAttributes) OPTIONAL Dict[str, Any]
 
+        public_id: (publicId) OPTIONAL str
+
         status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
@@ -79,6 +81,7 @@ class UserProfilePrivateInfo(Model):
     last_name: str                                                                                 # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     private_custom_attributes: Dict[str, Any]                                                      # OPTIONAL
+    public_id: str                                                                                 # OPTIONAL
     status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
@@ -126,6 +129,10 @@ class UserProfilePrivateInfo(Model):
 
     def with_private_custom_attributes(self, value: Dict[str, Any]) -> UserProfilePrivateInfo:
         self.private_custom_attributes = value
+        return self
+
+    def with_public_id(self, value: str) -> UserProfilePrivateInfo:
+        self.public_id = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> UserProfilePrivateInfo:
@@ -190,6 +197,10 @@ class UserProfilePrivateInfo(Model):
             result["privateCustomAttributes"] = {str(k0): v0 for k0, v0 in self.private_custom_attributes.items()}
         elif include_empty:
             result["privateCustomAttributes"] = {}
+        if hasattr(self, "public_id"):
+            result["publicId"] = str(self.public_id)
+        elif include_empty:
+            result["publicId"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -225,6 +236,7 @@ class UserProfilePrivateInfo(Model):
         last_name: Optional[str] = None,
         namespace: Optional[str] = None,
         private_custom_attributes: Optional[Dict[str, Any]] = None,
+        public_id: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
@@ -251,6 +263,8 @@ class UserProfilePrivateInfo(Model):
             instance.namespace = namespace
         if private_custom_attributes is not None:
             instance.private_custom_attributes = private_custom_attributes
+        if public_id is not None:
+            instance.public_id = public_id
         if status is not None:
             instance.status = status
         if time_zone is not None:
@@ -306,6 +320,10 @@ class UserProfilePrivateInfo(Model):
             instance.private_custom_attributes = {str(k0): v0 for k0, v0 in dict_["privateCustomAttributes"].items()}
         elif include_empty:
             instance.private_custom_attributes = {}
+        if "publicId" in dict_ and dict_["publicId"] is not None:
+            instance.public_id = str(dict_["publicId"])
+        elif include_empty:
+            instance.public_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -357,6 +375,7 @@ class UserProfilePrivateInfo(Model):
             "lastName": "last_name",
             "namespace": "namespace",
             "privateCustomAttributes": "private_custom_attributes",
+            "publicId": "public_id",
             "status": "status",
             "timeZone": "time_zone",
             "userId": "user_id",
@@ -376,6 +395,7 @@ class UserProfilePrivateInfo(Model):
             "lastName": False,
             "namespace": False,
             "privateCustomAttributes": False,
+            "publicId": False,
             "status": False,
             "timeZone": False,
             "userId": False,

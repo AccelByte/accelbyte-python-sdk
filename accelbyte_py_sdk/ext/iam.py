@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,8 @@ from ..api.iam.models import AccountcommonClientPermissionsV3
 from ..api.iam.models import AccountcommonConflictedUserPlatformAccounts
 from ..api.iam.models import AccountcommonCountryAgeRestriction
 from ..api.iam.models import AccountcommonDescription
+from ..api.iam.models import AccountcommonDistinctLinkedPlatformV3
+from ..api.iam.models import AccountcommonDistinctPlatformResponseV3
 from ..api.iam.models import AccountcommonInputValidationDescription
 from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
@@ -66,6 +68,7 @@ from ..api.iam.models import AccountcommonRoleManagerV3
 from ..api.iam.models import AccountcommonRoleMember
 from ..api.iam.models import AccountcommonRoleMemberV3
 from ..api.iam.models import AccountcommonRoleV3
+from ..api.iam.models import AccountcommonSimpleUserPlatformInfoV3
 from ..api.iam.models import AccountcommonUserLinkedPlatform
 from ..api.iam.models import AccountcommonUserLinkedPlatformV3
 from ..api.iam.models import AccountcommonUserLinkedPlatformsResponseV3
@@ -123,6 +126,7 @@ from ..api.iam.models import ModelInviteUserRequestV3
 from ..api.iam.models import ModelInviteUserRequestV4
 from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkPlatformAccountRequest
+from ..api.iam.models import ModelLinkPlatformAccountWithProgressionRequest
 from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelListAssignedUsersV4Response
 from ..api.iam.models import ModelListBulkUserResponse
@@ -461,6 +465,21 @@ def create_accountcommon_description_example() -> AccountcommonDescription:
     return instance
 
 
+def create_accountcommon_distinct_linked_platform_v3_example() -> AccountcommonDistinctLinkedPlatformV3:
+    instance = AccountcommonDistinctLinkedPlatformV3()
+    instance.details = [create_accountcommon_simple_user_platform_info_v3_example()]
+    instance.linked_at = randomize()
+    instance.platform_name = randomize()
+    instance.platform_user_id = randomize()
+    return instance
+
+
+def create_accountcommon_distinct_platform_response_v3_example() -> AccountcommonDistinctPlatformResponseV3:
+    instance = AccountcommonDistinctPlatformResponseV3()
+    instance.platforms = [create_accountcommon_distinct_linked_platform_v3_example()]
+    return instance
+
+
 def create_accountcommon_input_validation_description_example() -> AccountcommonInputValidationDescription:
     instance = AccountcommonInputValidationDescription()
     instance.language = randomize()
@@ -613,6 +632,16 @@ def create_accountcommon_role_v3_example() -> AccountcommonRoleV3:
     instance.permissions = [create_accountcommon_permission_v3_example()]
     instance.role_id = randomize("uid")
     instance.role_name = randomize()
+    return instance
+
+
+def create_accountcommon_simple_user_platform_info_v3_example() -> AccountcommonSimpleUserPlatformInfoV3:
+    instance = AccountcommonSimpleUserPlatformInfoV3()
+    instance.linked_at = randomize()
+    instance.namespace = randomize("slug")
+    instance.origin_namespace = randomize("slug")
+    instance.display_name = randomize("slug")
+    instance.platform_id = randomize()
     return instance
 
 
@@ -1087,6 +1116,13 @@ def create_model_link_platform_account_request_example() -> ModelLinkPlatformAcc
     return instance
 
 
+def create_model_link_platform_account_with_progression_request_example() -> ModelLinkPlatformAccountWithProgressionRequest:
+    instance = ModelLinkPlatformAccountWithProgressionRequest()
+    instance.chosen_namespaces = [randomize()]
+    instance.request_id = randomize()
+    return instance
+
+
 def create_model_link_request_example() -> ModelLinkRequest:
     instance = ModelLinkRequest()
     instance.client_id = randomize("uid")
@@ -1096,8 +1132,14 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.redirect_uri = randomize()
     instance.request_id = randomize()
     instance.status = randomize()
+    instance.conflict_publisher_user_id = randomize()
+    instance.conflict_user_linked_games = [randomize()]
+    instance.current_user_linked_games = [randomize()]
     instance.error = create_rest_error_response_example()
     instance.expiration = randomize("int", min_val=1, max_val=1000)
+    instance.platform_display_name = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
     return instance
 
 
@@ -2108,11 +2150,14 @@ def create_oauthmodel_country_location_response_example() -> OauthmodelCountryLo
 def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance = OauthmodelErrorResponse()
     instance.error = randomize()
+    instance.client_id = randomize("uid")
     instance.default_factor = randomize()
     instance.error_description = randomize()
     instance.error_uri = randomize()
     instance.factors = [randomize()]
+    instance.linking_token = randomize()
     instance.mfa_token = randomize()
+    instance.platform_id = randomize()
     return instance
 
 

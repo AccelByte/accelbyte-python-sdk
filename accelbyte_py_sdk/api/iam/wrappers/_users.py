@@ -31,6 +31,7 @@ from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AccountcommonCountryAgeRestriction
+from ..models import AccountcommonDistinctPlatformResponseV3
 from ..models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..models import AccountcommonPermissions
 from ..models import AccountcommonUserLinkedPlatform
@@ -58,6 +59,7 @@ from ..models import ModelGetUsersResponseWithPaginationV3
 from ..models import ModelInviteUserRequestV3
 from ..models import ModelInviteUserResponseV3
 from ..models import ModelLinkPlatformAccountRequest
+from ..models import ModelLinkPlatformAccountWithProgressionRequest
 from ..models import ModelLinkRequest
 from ..models import ModelListBulkUserResponse
 from ..models import ModelListEmailAddressRequest
@@ -206,6 +208,7 @@ from ..operations.users import PublicCreateJusticeUser
 from ..operations.users import PublicCreateUserV2
 from ..operations.users import PublicCreateUserV3
 from ..operations.users import PublicDeletePlatformLinkV2
+from ..operations.users import PublicForceLinkPlatformWithProgression
 from ..operations.users import PublicForgotPasswordV2
 from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
@@ -219,9 +222,11 @@ from ..operations.users import PublicGetUserByUserIDV2
 from ..operations.users import PublicGetUserLoginHistoriesV3
 from ..operations.users import PublicGetUserPlatformAccountsV3
 from ..operations.users import PublicLinkPlatformAccount
+from ..operations.users import PublicListUserAllPlatformAccountsDistinctV3
 from ..operations.users import PublicListUserIDByPlatformUserIDsV3
 from ..operations.users import PublicPlatformLinkV2
 from ..operations.users import PublicPlatformLinkV3
+from ..operations.users import PublicPlatformUnlinkAllV3
 from ..operations.users import PublicPlatformUnlinkV3
 from ..operations.users import PublicResetPasswordV2
 from ..operations.users import PublicSearchUserV3
@@ -2876,6 +2881,34 @@ async def public_delete_platform_link_v2_async(platform_id: str, user_id: str, p
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@same_doc_as(PublicForceLinkPlatformWithProgression)
+def public_force_link_platform_with_progression(body: ModelLinkPlatformAccountWithProgressionRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicForceLinkPlatformWithProgression.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicForceLinkPlatformWithProgression)
+async def public_force_link_platform_with_progression_async(body: ModelLinkPlatformAccountWithProgressionRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicForceLinkPlatformWithProgression.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
 @same_doc_as(PublicForgotPasswordV2)
 def public_forgot_password_v2(body: ModelSendVerificationCodeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
@@ -3226,6 +3259,32 @@ async def public_link_platform_account_async(body: ModelLinkPlatformAccountReque
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@same_doc_as(PublicListUserAllPlatformAccountsDistinctV3)
+def public_list_user_all_platform_accounts_distinct_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListUserAllPlatformAccountsDistinctV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicListUserAllPlatformAccountsDistinctV3)
+async def public_list_user_all_platform_accounts_distinct_v3_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListUserAllPlatformAccountsDistinctV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
 @same_doc_as(PublicListUserIDByPlatformUserIDsV3)
 def public_list_user_id_by_platform_user_i_ds_v3(body: ModelPlatformUserIDRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
@@ -3314,6 +3373,32 @@ async def public_platform_link_v3_async(platform_id: str, ticket: str, redirect_
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@same_doc_as(PublicPlatformUnlinkAllV3)
+def public_platform_unlink_all_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPlatformUnlinkAllV3.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicPlatformUnlinkAllV3)
+async def public_platform_unlink_all_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPlatformUnlinkAllV3.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
 @same_doc_as(PublicPlatformUnlinkV3)
 def public_platform_unlink_v3(body: ModelUnlinkUserPlatformRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
@@ -3369,13 +3454,15 @@ async def public_reset_password_v2_async(body: ModelResetPasswordRequest, namesp
 
 
 @same_doc_as(PublicSearchUserV3)
-def public_search_user_v3(by: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_search_user_v3(by: Optional[str] = None, limit: Optional[str] = None, offset: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicSearchUserV3.create(
         by=by,
+        limit=limit,
+        offset=offset,
         query=query,
         namespace=namespace,
     )
@@ -3383,13 +3470,15 @@ def public_search_user_v3(by: Optional[str] = None, query: Optional[str] = None,
 
 
 @same_doc_as(PublicSearchUserV3)
-async def public_search_user_v3_async(by: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_search_user_v3_async(by: Optional[str] = None, limit: Optional[str] = None, offset: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = PublicSearchUserV3.create(
         by=by,
+        limit=limit,
+        offset=offset,
         query=query,
         namespace=namespace,
     )

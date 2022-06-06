@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,6 +36,7 @@ from ...models import RestErrorResponse
 class PublicLinkPlatformAccount(Operation):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
+    It is going to be DEPRECATED for security purpose.
     Update Platform Account relation to current User Account.
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
     transferred. If the data is tight to game user ID, the user will have the game progression data.

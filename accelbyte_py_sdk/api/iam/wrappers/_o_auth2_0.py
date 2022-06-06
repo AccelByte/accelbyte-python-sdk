@@ -106,12 +106,13 @@ async def auth_code_request_v3_async(platform_id: str, request_id: str, client_i
 
 
 @same_doc_as(AuthorizeV3)
-def authorize_v3(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def authorize_v3(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, create_headless: Optional[bool] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
+        create_headless=create_headless,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,
@@ -121,12 +122,13 @@ def authorize_v3(client_id: str, response_type: Union[str, AuthorizeV3ResponseTy
 
 
 @same_doc_as(AuthorizeV3)
-async def authorize_v3_async(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def authorize_v3_async(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, create_headless: Optional[bool] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
+        create_headless=create_headless,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,
@@ -178,10 +180,11 @@ async def get_revocation_list_v3_async(x_additional_headers: Optional[Dict[str, 
 
 
 @same_doc_as(PlatformTokenGrantV3)
-def platform_token_grant_v3(platform_id: str, client_id: Optional[str] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def platform_token_grant_v3(platform_id: str, client_id: Optional[str] = None, create_headless: Optional[bool] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
         client_id=client_id,
+        create_headless=create_headless,
         device_id=device_id,
         platform_token=platform_token,
     )
@@ -189,10 +192,11 @@ def platform_token_grant_v3(platform_id: str, client_id: Optional[str] = None, d
 
 
 @same_doc_as(PlatformTokenGrantV3)
-async def platform_token_grant_v3_async(platform_id: str, client_id: Optional[str] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def platform_token_grant_v3_async(platform_id: str, client_id: Optional[str] = None, create_headless: Optional[bool] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
         client_id=client_id,
+        create_headless=create_headless,
         device_id=device_id,
         platform_token=platform_token,
     )

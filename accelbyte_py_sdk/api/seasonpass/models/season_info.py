@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-seasonpass-service (1.12.1)
+# justice-seasonpass-service (1.12.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

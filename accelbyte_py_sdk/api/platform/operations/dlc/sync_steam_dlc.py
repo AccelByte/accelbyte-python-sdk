@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import SteamDLCSyncRequest
 
 
@@ -63,6 +64,8 @@ class SyncSteamDLC(Operation):
 
     Responses:
         204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
     """
 
     # region fields
@@ -178,10 +181,12 @@ class SyncSteamDLC(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -196,6 +201,8 @@ class SyncSteamDLC(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

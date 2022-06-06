@@ -28,23 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ModelRequestFriendsRequest(Model):
-    """Model request friends request (model.RequestFriendsRequest)
+class ModelUserRequestFriendRequest(Model):
+    """Model user request friend request (model.UserRequestFriendRequest)
 
     Properties:
         friend_id: (friendId) REQUIRED str
+
+        friend_public_id: (friendPublicId) REQUIRED str
     """
 
     # region fields
 
     friend_id: str                                                                                 # REQUIRED
+    friend_public_id: str                                                                          # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_friend_id(self, value: str) -> ModelRequestFriendsRequest:
+    def with_friend_id(self, value: str) -> ModelUserRequestFriendRequest:
         self.friend_id = value
+        return self
+
+    def with_friend_public_id(self, value: str) -> ModelUserRequestFriendRequest:
+        self.friend_public_id = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ModelRequestFriendsRequest(Model):
             result["friendId"] = str(self.friend_id)
         elif include_empty:
             result["friendId"] = ""
+        if hasattr(self, "friend_public_id"):
+            result["friendPublicId"] = str(self.friend_public_id)
+        elif include_empty:
+            result["friendPublicId"] = ""
         return result
 
     # endregion to methods
@@ -67,13 +78,15 @@ class ModelRequestFriendsRequest(Model):
     def create(
         cls,
         friend_id: str,
-    ) -> ModelRequestFriendsRequest:
+        friend_public_id: str,
+    ) -> ModelUserRequestFriendRequest:
         instance = cls()
         instance.friend_id = friend_id
+        instance.friend_public_id = friend_public_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRequestFriendsRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserRequestFriendRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -81,18 +94,22 @@ class ModelRequestFriendsRequest(Model):
             instance.friend_id = str(dict_["friendId"])
         elif include_empty:
             instance.friend_id = ""
+        if "friendPublicId" in dict_ and dict_["friendPublicId"] is not None:
+            instance.friend_public_id = str(dict_["friendPublicId"])
+        elif include_empty:
+            instance.friend_public_id = ""
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelRequestFriendsRequest]:
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserRequestFriendRequest]:
         return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelRequestFriendsRequest]:
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserRequestFriendRequest]:
         return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelRequestFriendsRequest, List[ModelRequestFriendsRequest], Dict[Any, ModelRequestFriendsRequest]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserRequestFriendRequest, List[ModelUserRequestFriendRequest], Dict[Any, ModelUserRequestFriendRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -107,12 +124,14 @@ class ModelRequestFriendsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "friendId": "friend_id",
+            "friendPublicId": "friend_public_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "friendId": True,
+            "friendPublicId": True,
         }
 
     # endregion static methods

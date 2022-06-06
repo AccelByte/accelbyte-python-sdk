@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-basic-service (1.36.1)
+# justice-basic-service (1.36.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,8 @@ class UserProfilePublicInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        public_id: (publicId) OPTIONAL str
+
         time_zone: (timeZone) OPTIONAL str
 
         user_id: (userId) OPTIONAL str
@@ -54,6 +56,7 @@ class UserProfilePublicInfo(Model):
     avatar_url: str                                                                                # OPTIONAL
     custom_attributes: Dict[str, Any]                                                              # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
+    public_id: str                                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
 
@@ -79,6 +82,10 @@ class UserProfilePublicInfo(Model):
 
     def with_namespace(self, value: str) -> UserProfilePublicInfo:
         self.namespace = value
+        return self
+
+    def with_public_id(self, value: str) -> UserProfilePublicInfo:
+        self.public_id = value
         return self
 
     def with_time_zone(self, value: str) -> UserProfilePublicInfo:
@@ -115,6 +122,10 @@ class UserProfilePublicInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "public_id"):
+            result["publicId"] = str(self.public_id)
+        elif include_empty:
+            result["publicId"] = ""
         if hasattr(self, "time_zone"):
             result["timeZone"] = str(self.time_zone)
         elif include_empty:
@@ -137,6 +148,7 @@ class UserProfilePublicInfo(Model):
         avatar_url: Optional[str] = None,
         custom_attributes: Optional[Dict[str, Any]] = None,
         namespace: Optional[str] = None,
+        public_id: Optional[str] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> UserProfilePublicInfo:
@@ -151,6 +163,8 @@ class UserProfilePublicInfo(Model):
             instance.custom_attributes = custom_attributes
         if namespace is not None:
             instance.namespace = namespace
+        if public_id is not None:
+            instance.public_id = public_id
         if time_zone is not None:
             instance.time_zone = time_zone
         if user_id is not None:
@@ -182,6 +196,10 @@ class UserProfilePublicInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "publicId" in dict_ and dict_["publicId"] is not None:
+            instance.public_id = str(dict_["publicId"])
+        elif include_empty:
+            instance.public_id = ""
         if "timeZone" in dict_ and dict_["timeZone"] is not None:
             instance.time_zone = str(dict_["timeZone"])
         elif include_empty:
@@ -220,6 +238,7 @@ class UserProfilePublicInfo(Model):
             "avatarUrl": "avatar_url",
             "customAttributes": "custom_attributes",
             "namespace": "namespace",
+            "publicId": "public_id",
             "timeZone": "time_zone",
             "userId": "user_id",
         }
@@ -232,6 +251,7 @@ class UserProfilePublicInfo(Model):
             "avatarUrl": False,
             "customAttributes": False,
             "namespace": False,
+            "publicId": False,
             "timeZone": False,
             "userId": False,
         }

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -47,7 +47,7 @@ class PublicCreateUserV3(Operation):
 
 
 
-      1.  EMAILPASSWD : an authentication type used for new user registration through email.
+      1. EMAILPASSWD : an authentication type used for new user registration through email.
 
 
 

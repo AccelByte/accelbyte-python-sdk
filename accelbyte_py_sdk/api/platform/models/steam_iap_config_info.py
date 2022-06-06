@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,12 +35,15 @@ class SteamIAPConfigInfo(Model):
         namespace: (namespace) REQUIRED str
 
         publisher_authentication_key: (publisherAuthenticationKey) REQUIRED str
+
+        app_id: (appId) OPTIONAL str
     """
 
     # region fields
 
     namespace: str                                                                                 # REQUIRED
     publisher_authentication_key: str                                                              # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class SteamIAPConfigInfo(Model):
 
     def with_publisher_authentication_key(self, value: str) -> SteamIAPConfigInfo:
         self.publisher_authentication_key = value
+        return self
+
+    def with_app_id(self, value: str) -> SteamIAPConfigInfo:
+        self.app_id = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class SteamIAPConfigInfo(Model):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
             result["publisherAuthenticationKey"] = ""
+        if hasattr(self, "app_id"):
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = ""
         return result
 
     # endregion to methods
@@ -79,10 +90,13 @@ class SteamIAPConfigInfo(Model):
         cls,
         namespace: str,
         publisher_authentication_key: str,
+        app_id: Optional[str] = None,
     ) -> SteamIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace
         instance.publisher_authentication_key = publisher_authentication_key
+        if app_id is not None:
+            instance.app_id = app_id
         return instance
 
     @classmethod
@@ -98,6 +112,10 @@ class SteamIAPConfigInfo(Model):
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
             instance.publisher_authentication_key = ""
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = ""
         return instance
 
     @classmethod
@@ -125,6 +143,7 @@ class SteamIAPConfigInfo(Model):
         return {
             "namespace": "namespace",
             "publisherAuthenticationKey": "publisher_authentication_key",
+            "appId": "app_id",
         }
 
     @staticmethod
@@ -132,6 +151,7 @@ class SteamIAPConfigInfo(Model):
         return {
             "namespace": True,
             "publisherAuthenticationKey": True,
+            "appId": False,
         }
 
     # endregion static methods

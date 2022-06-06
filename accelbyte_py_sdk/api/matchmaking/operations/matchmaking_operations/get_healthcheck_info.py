@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Justice Matchmaking Service (2.14.4)
+# Justice Matchmaking Service (2.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

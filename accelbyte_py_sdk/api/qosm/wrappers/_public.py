@@ -33,6 +33,7 @@ from ..models import ModelsListServerResponse
 from ..models import ResponseError
 
 from ..operations.public import ListServer
+from ..operations.public import ListServerPerNamespace
 
 
 @same_doc_as(ListServer)
@@ -44,4 +45,30 @@ def list_server(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 @same_doc_as(ListServer)
 async def list_server_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ListServer.create()
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListServerPerNamespace)
+def list_server_per_namespace(status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListServerPerNamespace.create(
+        status=status,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListServerPerNamespace)
+async def list_server_per_namespace_async(status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ListServerPerNamespace.create(
+        status=status,
+        namespace=namespace,
+    )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

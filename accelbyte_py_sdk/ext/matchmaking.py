@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.14.4)
+# Justice Matchmaking Service (2.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,8 @@ from ..api.matchmaking.models import ModelsPagination
 from ..api.matchmaking.models import ModelsPartyMember
 from ..api.matchmaking.models import ModelsPlayerResultRequest
 from ..api.matchmaking.models import ModelsPlayerResultResponse
+from ..api.matchmaking.models import ModelsRebalanceRequest
+from ..api.matchmaking.models import ModelsRebalanceResponse
 from ..api.matchmaking.models import ModelsResultAttributeRequest
 from ..api.matchmaking.models import ModelsResultAttributeResponse
 from ..api.matchmaking.models import ModelsRuleSet
@@ -313,6 +315,19 @@ def create_models_player_result_response_example() -> ModelsPlayerResultResponse
     instance = ModelsPlayerResultResponse()
     instance.current_score = [create_models_result_attribute_response_example()]
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_rebalance_request_example() -> ModelsRebalanceRequest:
+    instance = ModelsRebalanceRequest()
+    instance.match_id = randomize()
+    return instance
+
+
+def create_models_rebalance_response_example() -> ModelsRebalanceResponse:
+    instance = ModelsRebalanceResponse()
+    instance.match_id = randomize()
+    instance.matching_allies = [create_models_matching_ally_example()]
     return instance
 
 

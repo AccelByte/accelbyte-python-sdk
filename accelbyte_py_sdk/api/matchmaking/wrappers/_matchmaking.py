@@ -40,6 +40,8 @@ from ..models import ModelsMatchResultRequest
 from ..models import ModelsMatchResultResponse
 from ..models import ModelsMatchingParty
 from ..models import ModelsMatchmakingResult
+from ..models import ModelsRebalanceRequest
+from ..models import ModelsRebalanceResponse
 from ..models import ModelsUpdateChannelRequest
 from ..models import ResponseError
 from ..models import ResponseErrorV1
@@ -66,6 +68,7 @@ from ..operations.matchmaking import PublicGetAllMatchmakingChannel
 from ..operations.matchmaking import PublicGetSingleMatchmakingChannel
 from ..operations.matchmaking import QuerySessionHandler
 from ..operations.matchmaking import QueueSessionHandler
+from ..operations.matchmaking import Rebalance
 from ..operations.matchmaking import SearchSessions
 from ..operations.matchmaking import SearchSessionsV2
 from ..operations.matchmaking import StoreMatchResults
@@ -568,6 +571,32 @@ async def queue_session_handler_async(body: ModelsMatchmakingResult, namespace: 
         if error:
             return None, error
     request = QueueSessionHandler.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(Rebalance)
+def rebalance(body: ModelsRebalanceRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = Rebalance.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(Rebalance)
+async def rebalance_async(body: ModelsRebalanceRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = Rebalance.create(
         body=body,
         namespace=namespace,
     )

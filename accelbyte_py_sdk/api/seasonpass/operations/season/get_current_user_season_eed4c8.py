@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-seasonpass-service (1.12.1)
+# justice-seasonpass-service (1.12.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

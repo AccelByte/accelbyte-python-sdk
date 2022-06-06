@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class OauthmodelErrorResponse(Model):
     Properties:
         error: (error) REQUIRED str
 
+        client_id: (clientId) OPTIONAL str
+
         default_factor: (default_factor) OPTIONAL str
 
         error_description: (error_description) OPTIONAL str
@@ -42,17 +44,24 @@ class OauthmodelErrorResponse(Model):
 
         factors: (factors) OPTIONAL List[str]
 
+        linking_token: (linkingToken) OPTIONAL str
+
         mfa_token: (mfa_token) OPTIONAL str
+
+        platform_id: (platformId) OPTIONAL str
     """
 
     # region fields
 
     error: str                                                                                     # REQUIRED
+    client_id: str                                                                                 # OPTIONAL
     default_factor: str                                                                            # OPTIONAL
     error_description: str                                                                         # OPTIONAL
     error_uri: str                                                                                 # OPTIONAL
     factors: List[str]                                                                             # OPTIONAL
+    linking_token: str                                                                             # OPTIONAL
     mfa_token: str                                                                                 # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
 
     # endregion fields
 
@@ -60,6 +69,10 @@ class OauthmodelErrorResponse(Model):
 
     def with_error(self, value: str) -> OauthmodelErrorResponse:
         self.error = value
+        return self
+
+    def with_client_id(self, value: str) -> OauthmodelErrorResponse:
+        self.client_id = value
         return self
 
     def with_default_factor(self, value: str) -> OauthmodelErrorResponse:
@@ -78,8 +91,16 @@ class OauthmodelErrorResponse(Model):
         self.factors = value
         return self
 
+    def with_linking_token(self, value: str) -> OauthmodelErrorResponse:
+        self.linking_token = value
+        return self
+
     def with_mfa_token(self, value: str) -> OauthmodelErrorResponse:
         self.mfa_token = value
+        return self
+
+    def with_platform_id(self, value: str) -> OauthmodelErrorResponse:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -92,6 +113,10 @@ class OauthmodelErrorResponse(Model):
             result["error"] = str(self.error)
         elif include_empty:
             result["error"] = ""
+        if hasattr(self, "client_id"):
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
         if hasattr(self, "default_factor"):
             result["default_factor"] = str(self.default_factor)
         elif include_empty:
@@ -108,10 +133,18 @@ class OauthmodelErrorResponse(Model):
             result["factors"] = [str(i0) for i0 in self.factors]
         elif include_empty:
             result["factors"] = []
+        if hasattr(self, "linking_token"):
+            result["linkingToken"] = str(self.linking_token)
+        elif include_empty:
+            result["linkingToken"] = ""
         if hasattr(self, "mfa_token"):
             result["mfa_token"] = str(self.mfa_token)
         elif include_empty:
             result["mfa_token"] = ""
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -122,14 +155,19 @@ class OauthmodelErrorResponse(Model):
     def create(
         cls,
         error: str,
+        client_id: Optional[str] = None,
         default_factor: Optional[str] = None,
         error_description: Optional[str] = None,
         error_uri: Optional[str] = None,
         factors: Optional[List[str]] = None,
+        linking_token: Optional[str] = None,
         mfa_token: Optional[str] = None,
+        platform_id: Optional[str] = None,
     ) -> OauthmodelErrorResponse:
         instance = cls()
         instance.error = error
+        if client_id is not None:
+            instance.client_id = client_id
         if default_factor is not None:
             instance.default_factor = default_factor
         if error_description is not None:
@@ -138,8 +176,12 @@ class OauthmodelErrorResponse(Model):
             instance.error_uri = error_uri
         if factors is not None:
             instance.factors = factors
+        if linking_token is not None:
+            instance.linking_token = linking_token
         if mfa_token is not None:
             instance.mfa_token = mfa_token
+        if platform_id is not None:
+            instance.platform_id = platform_id
         return instance
 
     @classmethod
@@ -151,6 +193,10 @@ class OauthmodelErrorResponse(Model):
             instance.error = str(dict_["error"])
         elif include_empty:
             instance.error = ""
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
         if "default_factor" in dict_ and dict_["default_factor"] is not None:
             instance.default_factor = str(dict_["default_factor"])
         elif include_empty:
@@ -167,10 +213,18 @@ class OauthmodelErrorResponse(Model):
             instance.factors = [str(i0) for i0 in dict_["factors"]]
         elif include_empty:
             instance.factors = []
+        if "linkingToken" in dict_ and dict_["linkingToken"] is not None:
+            instance.linking_token = str(dict_["linkingToken"])
+        elif include_empty:
+            instance.linking_token = ""
         if "mfa_token" in dict_ and dict_["mfa_token"] is not None:
             instance.mfa_token = str(dict_["mfa_token"])
         elif include_empty:
             instance.mfa_token = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @classmethod
@@ -197,22 +251,28 @@ class OauthmodelErrorResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "error": "error",
+            "clientId": "client_id",
             "default_factor": "default_factor",
             "error_description": "error_description",
             "error_uri": "error_uri",
             "factors": "factors",
+            "linkingToken": "linking_token",
             "mfa_token": "mfa_token",
+            "platformId": "platform_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "error": True,
+            "clientId": False,
             "default_factor": False,
             "error_description": False,
             "error_uri": False,
             "factors": False,
+            "linkingToken": False,
             "mfa_token": False,
+            "platformId": False,
         }
 
     # endregion static methods

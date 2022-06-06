@@ -34,11 +34,11 @@ from ..models import ModelGetFriendsResponse
 from ..models import ModelGetUserFriendsResponse
 from ..models import ModelGetUserIncomingFriendsResponse
 from ..models import ModelGetUserOutgoingFriendsResponse
-from ..models import ModelRequestFriendsRequest
 from ..models import ModelUserAcceptFriendRequest
 from ..models import ModelUserCancelFriendRequest
 from ..models import ModelUserGetFriendshipStatusResponse
 from ..models import ModelUserRejectFriendRequest
+from ..models import ModelUserRequestFriendRequest
 from ..models import ModelUserUnfriendRequest
 from ..models import RestapiErrorResponseBody
 from ..models import RestapiErrorResponseV1
@@ -295,7 +295,7 @@ async def user_reject_friend_request_async(body: ModelUserRejectFriendRequest, n
 
 
 @same_doc_as(UserRequestFriend)
-def user_request_friend(body: ModelRequestFriendsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_request_friend(body: ModelUserRequestFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -308,7 +308,7 @@ def user_request_friend(body: ModelRequestFriendsRequest, namespace: Optional[st
 
 
 @same_doc_as(UserRequestFriend)
-async def user_request_friend_async(body: ModelRequestFriendsRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_request_friend_async(body: ModelUserRequestFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

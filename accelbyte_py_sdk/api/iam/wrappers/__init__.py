@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.8.3"
+__version__ = "5.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -123,6 +123,10 @@ from ._o_auth2_0 import token_revocation_v3_async
 from ._o_auth2_0 import verify2fa_code
 from ._o_auth2_0 import verify2fa_code_async
 
+from ._o_auth2_0_extension import authentication_with_platform_link_v3
+from ._o_auth2_0_extension import authentication_with_platform_link_v3_async
+from ._o_auth2_0_extension import generate_token_by_new_headless_account_v3
+from ._o_auth2_0_extension import generate_token_by_new_headless_account_v3_async
 from ._o_auth2_0_extension import get_country_location_v3
 from ._o_auth2_0_extension import get_country_location_v3_async
 from ._o_auth2_0_extension import logout
@@ -455,6 +459,8 @@ from ._users import public_create_user_v3
 from ._users import public_create_user_v3_async
 from ._users import public_delete_platform_link_v2
 from ._users import public_delete_platform_link_v2_async
+from ._users import public_force_link_platform_with_progression
+from ._users import public_force_link_platform_with_progression_async
 from ._users import public_forgot_password_v2
 from ._users import public_forgot_password_v2_async
 from ._users import public_forgot_password_v3
@@ -481,12 +487,16 @@ from ._users import public_get_user_platform_accounts_v3
 from ._users import public_get_user_platform_accounts_v3_async
 from ._users import public_link_platform_account
 from ._users import public_link_platform_account_async
+from ._users import public_list_user_all_platform_accounts_distinct_v3
+from ._users import public_list_user_all_platform_accounts_distinct_v3_async
 from ._users import public_list_user_id_by_platform_user_i_ds_v3
 from ._users import public_list_user_id_by_platform_user_i_ds_v3_async
 from ._users import public_platform_link_v2
 from ._users import public_platform_link_v2_async
 from ._users import public_platform_link_v3
 from ._users import public_platform_link_v3_async
+from ._users import public_platform_unlink_all_v3
+from ._users import public_platform_unlink_all_v3_async
 from ._users import public_platform_unlink_v3
 from ._users import public_platform_unlink_v3_async
 from ._users import public_reset_password_v2

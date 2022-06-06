@@ -63,6 +63,8 @@ class AdminImportConfigV1(Operation):
 
         securities: [BEARER_AUTH]
 
+        file: (file) OPTIONAL Any in form_data
+
         namespace: (namespace) REQUIRED str in path
 
     Responses:
@@ -84,6 +86,7 @@ class AdminImportConfigV1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    file: Any                                                                                      # OPTIONAL in [form_data]
     namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
@@ -124,8 +127,15 @@ class AdminImportConfigV1(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "form_data": self.get_form_data_params(),
             "path": self.get_path_params(),
         }
+
+    def get_form_data_params(self) -> dict:
+        result = {}
+        if hasattr(self, "file"):
+            result["file"] = self.file
+        return result
 
     def get_path_params(self) -> dict:
         result = {}
@@ -141,6 +151,10 @@ class AdminImportConfigV1(Operation):
 
     # region with_x methods
 
+    def with_file(self, value: Any) -> AdminImportConfigV1:
+        self.file = value
+        return self
+
     def with_namespace(self, value: str) -> AdminImportConfigV1:
         self.namespace = value
         return self
@@ -151,6 +165,10 @@ class AdminImportConfigV1(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "file") and self.file:
+            result["file"] = Any(self.file)
+        elif include_empty:
+            result["file"] = Any()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -203,14 +221,21 @@ class AdminImportConfigV1(Operation):
     def create(
         cls,
         namespace: str,
+        file: Optional[Any] = None,
     ) -> AdminImportConfigV1:
         instance = cls()
         instance.namespace = namespace
+        if file is not None:
+            instance.file = file
         return instance
 
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminImportConfigV1:
         instance = cls()
+        if "file" in dict_ and dict_["file"] is not None:
+            instance.file = Any(dict_["file"])
+        elif include_empty:
+            instance.file = Any()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -220,12 +245,14 @@ class AdminImportConfigV1(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "file": "file",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "file": False,
             "namespace": True,
         }
 

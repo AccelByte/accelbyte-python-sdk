@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,16 +32,23 @@ class SteamIAPConfigRequest(Model):
     """Steam IAP config request (SteamIAPConfigRequest)
 
     Properties:
-        publisher_authentication_key: (publisherAuthenticationKey) REQUIRED str
+        app_id: (appId) OPTIONAL str
+
+        publisher_authentication_key: (publisherAuthenticationKey) OPTIONAL str
     """
 
     # region fields
 
-    publisher_authentication_key: str                                                              # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
+    publisher_authentication_key: str                                                              # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_app_id(self, value: str) -> SteamIAPConfigRequest:
+        self.app_id = value
+        return self
 
     def with_publisher_authentication_key(self, value: str) -> SteamIAPConfigRequest:
         self.publisher_authentication_key = value
@@ -53,6 +60,10 @@ class SteamIAPConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "app_id"):
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = ""
         if hasattr(self, "publisher_authentication_key"):
             result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
@@ -66,10 +77,14 @@ class SteamIAPConfigRequest(Model):
     @classmethod
     def create(
         cls,
-        publisher_authentication_key: str,
+        app_id: Optional[str] = None,
+        publisher_authentication_key: Optional[str] = None,
     ) -> SteamIAPConfigRequest:
         instance = cls()
-        instance.publisher_authentication_key = publisher_authentication_key
+        if app_id is not None:
+            instance.app_id = app_id
+        if publisher_authentication_key is not None:
+            instance.publisher_authentication_key = publisher_authentication_key
         return instance
 
     @classmethod
@@ -77,6 +92,10 @@ class SteamIAPConfigRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = ""
         if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
             instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
@@ -106,13 +125,15 @@ class SteamIAPConfigRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "appId": "app_id",
             "publisherAuthenticationKey": "publisher_authentication_key",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "publisherAuthenticationKey": True,
+            "appId": False,
+            "publisherAuthenticationKey": False,
         }
 
     # endregion static methods

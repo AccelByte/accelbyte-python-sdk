@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -301,6 +301,8 @@ class PlatformTokenGrantV3(Operation):
 
         client_id: (client_id) OPTIONAL str in form_data
 
+        create_headless: (createHeadless) OPTIONAL bool in form_data
+
         device_id: (device_id) OPTIONAL str in form_data
 
         platform_token: (platform_token) OPTIONAL str in form_data
@@ -325,6 +327,7 @@ class PlatformTokenGrantV3(Operation):
     _location_query: str = None
 
     client_id: str                                                                                 # OPTIONAL in [form_data]
+    create_headless: bool                                                                          # OPTIONAL in [form_data]
     device_id: str                                                                                 # OPTIONAL in [form_data]
     platform_token: str                                                                            # OPTIONAL in [form_data]
     platform_id: str                                                                               # REQUIRED in [path]
@@ -375,6 +378,8 @@ class PlatformTokenGrantV3(Operation):
         result = {}
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
+        if hasattr(self, "create_headless"):
+            result["createHeadless"] = self.create_headless
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
         if hasattr(self, "platform_token"):
@@ -399,6 +404,10 @@ class PlatformTokenGrantV3(Operation):
         self.client_id = value
         return self
 
+    def with_create_headless(self, value: bool) -> PlatformTokenGrantV3:
+        self.create_headless = value
+        return self
+
     def with_device_id(self, value: str) -> PlatformTokenGrantV3:
         self.device_id = value
         return self
@@ -421,6 +430,10 @@ class PlatformTokenGrantV3(Operation):
             result["client_id"] = str(self.client_id)
         elif include_empty:
             result["client_id"] = ""
+        if hasattr(self, "create_headless") and self.create_headless:
+            result["createHeadless"] = bool(self.create_headless)
+        elif include_empty:
+            result["createHeadless"] = False
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:
@@ -478,6 +491,7 @@ class PlatformTokenGrantV3(Operation):
         cls,
         platform_id: str,
         client_id: Optional[str] = None,
+        create_headless: Optional[bool] = None,
         device_id: Optional[str] = None,
         platform_token: Optional[str] = None,
     ) -> PlatformTokenGrantV3:
@@ -485,6 +499,8 @@ class PlatformTokenGrantV3(Operation):
         instance.platform_id = platform_id
         if client_id is not None:
             instance.client_id = client_id
+        if create_headless is not None:
+            instance.create_headless = create_headless
         if device_id is not None:
             instance.device_id = device_id
         if platform_token is not None:
@@ -498,6 +514,10 @@ class PlatformTokenGrantV3(Operation):
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
             instance.client_id = ""
+        if "createHeadless" in dict_ and dict_["createHeadless"] is not None:
+            instance.create_headless = bool(dict_["createHeadless"])
+        elif include_empty:
+            instance.create_headless = False
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
@@ -516,6 +536,7 @@ class PlatformTokenGrantV3(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "client_id": "client_id",
+            "createHeadless": "create_headless",
             "device_id": "device_id",
             "platform_token": "platform_token",
             "platformId": "platform_id",
@@ -525,6 +546,7 @@ class PlatformTokenGrantV3(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "client_id": False,
+            "createHeadless": False,
             "device_id": False,
             "platform_token": False,
             "platformId": True,

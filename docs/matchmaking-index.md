@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# Justice Matchmaking Service Index (2.14.4)
+# Justice Matchmaking Service Index (2.15.0)
 
 
 ## Operations
@@ -29,6 +29,7 @@
 | /matchmaking/v1/public/namespaces/{namespace}/channels/{channelName} | GET | PublicGetSingleMatchmakingChannel | [PublicGetSingleMatchmakingChannel](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/public_get_single_match_188a61.py) | [public_get_single_matchmaking_channel](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-public-get-single-matchmaking-channel](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_public_get_single_match_188a61.py) |
 | /matchmaking/namespaces/{namespace}/sessions/{matchID}/status | GET | QuerySessionHandler | [QuerySessionHandler](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/query_session_handler.py) | [query_session_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-query-session-handler](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_query_session_handler.py) |
 | /matchmaking/namespaces/{namespace}/sessions | POST | QueueSessionHandler | [QueueSessionHandler](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/queue_session_handler.py) | [queue_session_handler](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-queue-session-handler](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_queue_session_handler.py) |
+| /matchmaking/namespaces/{namespace}/rebalance | POST | Rebalance | [Rebalance](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/rebalance.py) | [rebalance](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-rebalance](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_rebalance.py) |
 | /matchmaking/v1/admin/namespaces/{namespace}/sessions/history/search | GET | SearchSessions | [SearchSessions](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/search_sessions.py) | [search_sessions](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-search-sessions](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_search_sessions.py) |
 | /matchmaking/v2/admin/namespaces/{namespace}/sessions/history/search | GET | SearchSessionsV2 | [SearchSessionsV2](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/search_sessions_v2.py) | [search_sessions_v2](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-search-sessions-v2](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_search_sessions_v2.py) |
 | /matchmaking/namespaces/{namespace}/matchresult | POST | StoreMatchResults | [StoreMatchResults](../accelbyte_py_sdk/api/matchmaking/operations/matchmaking/store_match_results.py) | [store_match_results](../accelbyte_py_sdk/api/matchmaking/wrappers/_matchmaking.py) | [accelbyte_py_sdk_cli matchmaking-store-match-results](../samples/cli/accelbyte_py_sdk_cli/matchmaking/_store_match_results.py) |
@@ -76,6 +77,8 @@
 | models.PartyMember | [ModelsPartyMember](../accelbyte_py_sdk/api/matchmaking/models/models_party_member.py) |
 | models.PlayerResultRequest | [ModelsPlayerResultRequest](../accelbyte_py_sdk/api/matchmaking/models/models_player_result_request.py) |
 | models.PlayerResultResponse | [ModelsPlayerResultResponse](../accelbyte_py_sdk/api/matchmaking/models/models_player_result_response.py) |
+| models.RebalanceRequest | [ModelsRebalanceRequest](../accelbyte_py_sdk/api/matchmaking/models/models_rebalance_request.py) |
+| models.RebalanceResponse | [ModelsRebalanceResponse](../accelbyte_py_sdk/api/matchmaking/models/models_rebalance_response.py) |
 | models.ResultAttributeRequest | [ModelsResultAttributeRequest](../accelbyte_py_sdk/api/matchmaking/models/models_result_attribute_request.py) |
 | models.ResultAttributeResponse | [ModelsResultAttributeResponse](../accelbyte_py_sdk/api/matchmaking/models/models_result_attribute_response.py) |
 | models.RuleSet | [ModelsRuleSet](../accelbyte_py_sdk/api/matchmaking/models/models_rule_set.py) |

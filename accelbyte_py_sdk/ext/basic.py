@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-basic-service (1.36.1)
+# justice-basic-service (1.36.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -282,6 +282,7 @@ def create_user_profile_info_example() -> UserProfileInfo:
     instance.language = randomize()
     instance.last_name = randomize("last_name")
     instance.namespace = randomize("slug")
+    instance.public_id = randomize()
     instance.status = randomize()
     instance.time_zone = randomize()
     instance.user_id = randomize("uid")
@@ -316,6 +317,7 @@ def create_user_profile_private_info_example() -> UserProfilePrivateInfo:
     instance.last_name = randomize("last_name")
     instance.namespace = randomize("slug")
     instance.private_custom_attributes = {randomize(): randomize()}
+    instance.public_id = randomize()
     instance.status = randomize()
     instance.time_zone = randomize()
     instance.user_id = randomize("uid")
@@ -346,6 +348,7 @@ def create_user_profile_public_info_example() -> UserProfilePublicInfo:
     instance.avatar_url = randomize("url")
     instance.custom_attributes = {randomize(): randomize()}
     instance.namespace = randomize("slug")
+    instance.public_id = randomize()
     instance.time_zone = randomize()
     instance.user_id = randomize("uid")
     return instance

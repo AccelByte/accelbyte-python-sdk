@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.14.4"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -33,6 +33,7 @@ from .public_get_all_matchmak_cd6d3e import PublicGetAllMatchmakingChannel
 from .public_get_single_match_188a61 import PublicGetSingleMatchmakingChannel
 from .query_session_handler import QuerySessionHandler
 from .queue_session_handler import QueueSessionHandler
+from .rebalance import Rebalance
 from .search_sessions import SearchSessions
 from .search_sessions_v2 import SearchSessionsV2
 from .store_match_results import StoreMatchResults

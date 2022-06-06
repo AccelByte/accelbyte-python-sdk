@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-legal-service Index (1.22.1)
+# justice-legal-service Index (1.22.2)
 
 
 ## Operations

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.14.4"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,8 @@ from .models_pagination import ModelsPagination
 from .models_party_member import ModelsPartyMember
 from .models_player_result_request import ModelsPlayerResultRequest
 from .models_player_result_response import ModelsPlayerResultResponse
+from .models_rebalance_request import ModelsRebalanceRequest
+from .models_rebalance_response import ModelsRebalanceResponse
 from .models_result_attribute_request import ModelsResultAttributeRequest
 from .models_result_attribute_response import ModelsResultAttributeResponse
 from .models_rule_set import ModelsRuleSet

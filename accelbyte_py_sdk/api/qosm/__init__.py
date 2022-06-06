@@ -19,10 +19,14 @@ from .wrappers import delete_server
 from .wrappers import delete_server_async
 from .wrappers import set_server_alias
 from .wrappers import set_server_alias_async
+from .wrappers import update_server_config
+from .wrappers import update_server_config_async
 
 # public
 from .wrappers import list_server
 from .wrappers import list_server_async
+from .wrappers import list_server_per_namespace
+from .wrappers import list_server_per_namespace_async
 
 # server
 from .wrappers import heartbeat

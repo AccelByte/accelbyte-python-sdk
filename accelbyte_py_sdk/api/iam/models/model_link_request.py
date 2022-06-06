@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,9 +48,21 @@ class ModelLinkRequest(Model):
 
         status: (status) REQUIRED str
 
+        conflict_publisher_user_id: (conflict_publisher_user_id) OPTIONAL str
+
+        conflict_user_linked_games: (conflict_user_linked_games) OPTIONAL List[str]
+
+        current_user_linked_games: (current_user_linked_games) OPTIONAL List[str]
+
         error: (error) OPTIONAL RestErrorResponse
 
         expiration: (expiration) OPTIONAL int
+
+        platform_display_name: (platformDisplayName) OPTIONAL str
+
+        platform_id: (platformID) OPTIONAL str
+
+        platform_user_id: (platform_user_id) OPTIONAL str
     """
 
     # region fields
@@ -62,8 +74,14 @@ class ModelLinkRequest(Model):
     redirect_uri: str                                                                              # REQUIRED
     request_id: str                                                                                # REQUIRED
     status: str                                                                                    # REQUIRED
+    conflict_publisher_user_id: str                                                                # OPTIONAL
+    conflict_user_linked_games: List[str]                                                          # OPTIONAL
+    current_user_linked_games: List[str]                                                           # OPTIONAL
     error: RestErrorResponse                                                                       # OPTIONAL
     expiration: int                                                                                # OPTIONAL
+    platform_display_name: str                                                                     # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
 
     # endregion fields
 
@@ -97,12 +115,36 @@ class ModelLinkRequest(Model):
         self.status = value
         return self
 
+    def with_conflict_publisher_user_id(self, value: str) -> ModelLinkRequest:
+        self.conflict_publisher_user_id = value
+        return self
+
+    def with_conflict_user_linked_games(self, value: List[str]) -> ModelLinkRequest:
+        self.conflict_user_linked_games = value
+        return self
+
+    def with_current_user_linked_games(self, value: List[str]) -> ModelLinkRequest:
+        self.current_user_linked_games = value
+        return self
+
     def with_error(self, value: RestErrorResponse) -> ModelLinkRequest:
         self.error = value
         return self
 
     def with_expiration(self, value: int) -> ModelLinkRequest:
         self.expiration = value
+        return self
+
+    def with_platform_display_name(self, value: str) -> ModelLinkRequest:
+        self.platform_display_name = value
+        return self
+
+    def with_platform_id(self, value: str) -> ModelLinkRequest:
+        self.platform_id = value
+        return self
+
+    def with_platform_user_id(self, value: str) -> ModelLinkRequest:
+        self.platform_user_id = value
         return self
 
     # endregion with_x methods
@@ -139,6 +181,18 @@ class ModelLinkRequest(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "conflict_publisher_user_id"):
+            result["conflict_publisher_user_id"] = str(self.conflict_publisher_user_id)
+        elif include_empty:
+            result["conflict_publisher_user_id"] = ""
+        if hasattr(self, "conflict_user_linked_games"):
+            result["conflict_user_linked_games"] = [str(i0) for i0 in self.conflict_user_linked_games]
+        elif include_empty:
+            result["conflict_user_linked_games"] = []
+        if hasattr(self, "current_user_linked_games"):
+            result["current_user_linked_games"] = [str(i0) for i0 in self.current_user_linked_games]
+        elif include_empty:
+            result["current_user_linked_games"] = []
         if hasattr(self, "error"):
             result["error"] = self.error.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -147,6 +201,18 @@ class ModelLinkRequest(Model):
             result["expiration"] = int(self.expiration)
         elif include_empty:
             result["expiration"] = 0
+        if hasattr(self, "platform_display_name"):
+            result["platformDisplayName"] = str(self.platform_display_name)
+        elif include_empty:
+            result["platformDisplayName"] = ""
+        if hasattr(self, "platform_id"):
+            result["platformID"] = str(self.platform_id)
+        elif include_empty:
+            result["platformID"] = ""
+        if hasattr(self, "platform_user_id"):
+            result["platform_user_id"] = str(self.platform_user_id)
+        elif include_empty:
+            result["platform_user_id"] = ""
         return result
 
     # endregion to methods
@@ -163,8 +229,14 @@ class ModelLinkRequest(Model):
         redirect_uri: str,
         request_id: str,
         status: str,
+        conflict_publisher_user_id: Optional[str] = None,
+        conflict_user_linked_games: Optional[List[str]] = None,
+        current_user_linked_games: Optional[List[str]] = None,
         error: Optional[RestErrorResponse] = None,
         expiration: Optional[int] = None,
+        platform_display_name: Optional[str] = None,
+        platform_id: Optional[str] = None,
+        platform_user_id: Optional[str] = None,
     ) -> ModelLinkRequest:
         instance = cls()
         instance.client_id = client_id
@@ -174,10 +246,22 @@ class ModelLinkRequest(Model):
         instance.redirect_uri = redirect_uri
         instance.request_id = request_id
         instance.status = status
+        if conflict_publisher_user_id is not None:
+            instance.conflict_publisher_user_id = conflict_publisher_user_id
+        if conflict_user_linked_games is not None:
+            instance.conflict_user_linked_games = conflict_user_linked_games
+        if current_user_linked_games is not None:
+            instance.current_user_linked_games = current_user_linked_games
         if error is not None:
             instance.error = error
         if expiration is not None:
             instance.expiration = expiration
+        if platform_display_name is not None:
+            instance.platform_display_name = platform_display_name
+        if platform_id is not None:
+            instance.platform_id = platform_id
+        if platform_user_id is not None:
+            instance.platform_user_id = platform_user_id
         return instance
 
     @classmethod
@@ -213,6 +297,18 @@ class ModelLinkRequest(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "conflict_publisher_user_id" in dict_ and dict_["conflict_publisher_user_id"] is not None:
+            instance.conflict_publisher_user_id = str(dict_["conflict_publisher_user_id"])
+        elif include_empty:
+            instance.conflict_publisher_user_id = ""
+        if "conflict_user_linked_games" in dict_ and dict_["conflict_user_linked_games"] is not None:
+            instance.conflict_user_linked_games = [str(i0) for i0 in dict_["conflict_user_linked_games"]]
+        elif include_empty:
+            instance.conflict_user_linked_games = []
+        if "current_user_linked_games" in dict_ and dict_["current_user_linked_games"] is not None:
+            instance.current_user_linked_games = [str(i0) for i0 in dict_["current_user_linked_games"]]
+        elif include_empty:
+            instance.current_user_linked_games = []
         if "error" in dict_ and dict_["error"] is not None:
             instance.error = RestErrorResponse.create_from_dict(dict_["error"], include_empty=include_empty)
         elif include_empty:
@@ -221,6 +317,18 @@ class ModelLinkRequest(Model):
             instance.expiration = int(dict_["expiration"])
         elif include_empty:
             instance.expiration = 0
+        if "platformDisplayName" in dict_ and dict_["platformDisplayName"] is not None:
+            instance.platform_display_name = str(dict_["platformDisplayName"])
+        elif include_empty:
+            instance.platform_display_name = ""
+        if "platformID" in dict_ and dict_["platformID"] is not None:
+            instance.platform_id = str(dict_["platformID"])
+        elif include_empty:
+            instance.platform_id = ""
+        if "platform_user_id" in dict_ and dict_["platform_user_id"] is not None:
+            instance.platform_user_id = str(dict_["platform_user_id"])
+        elif include_empty:
+            instance.platform_user_id = ""
         return instance
 
     @classmethod
@@ -253,8 +361,14 @@ class ModelLinkRequest(Model):
             "redirect_uri": "redirect_uri",
             "request_id": "request_id",
             "status": "status",
+            "conflict_publisher_user_id": "conflict_publisher_user_id",
+            "conflict_user_linked_games": "conflict_user_linked_games",
+            "current_user_linked_games": "current_user_linked_games",
             "error": "error",
             "expiration": "expiration",
+            "platformDisplayName": "platform_display_name",
+            "platformID": "platform_id",
+            "platform_user_id": "platform_user_id",
         }
 
     @staticmethod
@@ -267,8 +381,14 @@ class ModelLinkRequest(Model):
             "redirect_uri": True,
             "request_id": True,
             "status": True,
+            "conflict_publisher_user_id": False,
+            "conflict_user_linked_games": False,
+            "current_user_linked_games": False,
             "error": False,
             "expiration": False,
+            "platformDisplayName": False,
+            "platformID": False,
+            "platform_user_id": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-group-service (2.11.3)
+# justice-group-service (2.11.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

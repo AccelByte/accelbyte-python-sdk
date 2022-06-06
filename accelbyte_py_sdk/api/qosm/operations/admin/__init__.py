@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .delete_server import DeleteServer
 from .set_server_alias import SetServerAlias
+from .update_server_config import UpdateServerConfig

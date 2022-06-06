@@ -52,9 +52,11 @@ from ..operations.user_profile import GetMyProfileInfo
 from ..operations.user_profile import GetMyZipCode
 from ..operations.user_profile import GetPrivateCustomAttributesInfo
 from ..operations.user_profile import GetUserProfileInfo
+from ..operations.user_profile import GetUserProfileInfoByPublicId
 from ..operations.user_profile import PublicCreateUserProfile
 from ..operations.user_profile import PublicGetCustomAttributesInfo
 from ..operations.user_profile import PublicGetUserProfileInfo
+from ..operations.user_profile import PublicGetUserProfileInfoByPublicId
 from ..operations.user_profile import PublicGetUserProfilePublicInfo
 from ..operations.user_profile import PublicGetUserProfilePublicInfoByIds
 from ..operations.user_profile import PublicUpdateCustomAttributesPartially
@@ -276,6 +278,32 @@ async def get_user_profile_info_async(user_id: str, namespace: Optional[str] = N
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@same_doc_as(GetUserProfileInfoByPublicId)
+def get_user_profile_info_by_public_id(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserProfileInfoByPublicId.create(
+        public_id=public_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserProfileInfoByPublicId)
+async def get_user_profile_info_by_public_id_async(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserProfileInfoByPublicId.create(
+        public_id=public_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
 @same_doc_as(PublicCreateUserProfile)
 def public_create_user_profile(user_id: str, body: Optional[UserProfileCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
@@ -351,6 +379,32 @@ async def public_get_user_profile_info_async(user_id: str, namespace: Optional[s
             return None, error
     request = PublicGetUserProfileInfo.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserProfileInfoByPublicId)
+def public_get_user_profile_info_by_public_id(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserProfileInfoByPublicId.create(
+        public_id=public_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserProfileInfoByPublicId)
+async def public_get_user_profile_info_by_public_id_async(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserProfileInfoByPublicId.create(
+        public_id=public_id,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

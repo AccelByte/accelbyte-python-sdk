@@ -30,11 +30,58 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import OauthmodelCountryLocationResponse
+from ..models import OauthmodelErrorResponse
+from ..models import OauthmodelTokenResponseV3
+from ..models import RestErrorResponse
 
+from ..operations.o_auth2_0_extension import AuthenticationWithPlatformLinkV3
+from ..operations.o_auth2_0_extension import GenerateTokenByNewHeadlessAccountV3
 from ..operations.o_auth2_0_extension import GetCountryLocationV3
 from ..operations.o_auth2_0_extension import Logout
 from ..operations.o_auth2_0_extension import PlatformAuthenticationV3
 from ..operations.o_auth2_0_extension import UserAuthenticationV3
+
+
+@same_doc_as(AuthenticationWithPlatformLinkV3)
+def authentication_with_platform_link_v3(client_id: str, linking_token: str, password: str, username: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    request = AuthenticationWithPlatformLinkV3.create(
+        client_id=client_id,
+        linking_token=linking_token,
+        password=password,
+        username=username,
+        extend_exp=extend_exp,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AuthenticationWithPlatformLinkV3)
+async def authentication_with_platform_link_v3_async(client_id: str, linking_token: str, password: str, username: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    request = AuthenticationWithPlatformLinkV3.create(
+        client_id=client_id,
+        linking_token=linking_token,
+        password=password,
+        username=username,
+        extend_exp=extend_exp,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GenerateTokenByNewHeadlessAccountV3)
+def generate_token_by_new_headless_account_v3(linking_token: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    request = GenerateTokenByNewHeadlessAccountV3.create(
+        linking_token=linking_token,
+        extend_exp=extend_exp,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GenerateTokenByNewHeadlessAccountV3)
+async def generate_token_by_new_headless_account_v3_async(linking_token: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    request = GenerateTokenByNewHeadlessAccountV3.create(
+        linking_token=linking_token,
+        extend_exp=extend_exp,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCountryLocationV3)

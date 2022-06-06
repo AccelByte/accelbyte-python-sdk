@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,16 @@ class PlatformAuthenticationV3(Operation):
 
     This endpoint authenticates user platform. It validates user to its
     respective platforms. Deactivated or login-banned users are unable to login.
+
+
+
+    If already linked with justice account or match SSO condition, will redirect to client's redirect url with code. then invoke '/iam/v3/oauth/token' with grant_type=authorization_code
+
+
+
+
+    If already not linked with justice account and not match SSO condition, will redirect to client's account linking page
+
 
 
 

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class SteamIAPConfig(Model):
     """Steam IAP config (SteamIAPConfig)
 
     Properties:
+        app_id: (appId) OPTIONAL str
+
         created_at: (createdAt) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
@@ -45,6 +47,7 @@ class SteamIAPConfig(Model):
 
     # region fields
 
+    app_id: str                                                                                    # OPTIONAL
     created_at: str                                                                                # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
     publisher_authentication_key: str                                                              # OPTIONAL
@@ -54,6 +57,10 @@ class SteamIAPConfig(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_app_id(self, value: str) -> SteamIAPConfig:
+        self.app_id = value
+        return self
 
     def with_created_at(self, value: str) -> SteamIAPConfig:
         self.created_at = value
@@ -81,6 +88,10 @@ class SteamIAPConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "app_id"):
+            result["appId"] = str(self.app_id)
+        elif include_empty:
+            result["appId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -110,6 +121,7 @@ class SteamIAPConfig(Model):
     @classmethod
     def create(
         cls,
+        app_id: Optional[str] = None,
         created_at: Optional[str] = None,
         namespace: Optional[str] = None,
         publisher_authentication_key: Optional[str] = None,
@@ -117,6 +129,8 @@ class SteamIAPConfig(Model):
         updated_at: Optional[str] = None,
     ) -> SteamIAPConfig:
         instance = cls()
+        if app_id is not None:
+            instance.app_id = app_id
         if created_at is not None:
             instance.created_at = created_at
         if namespace is not None:
@@ -134,6 +148,10 @@ class SteamIAPConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "appId" in dict_ and dict_["appId"] is not None:
+            instance.app_id = str(dict_["appId"])
+        elif include_empty:
+            instance.app_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -179,6 +197,7 @@ class SteamIAPConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "appId": "app_id",
             "createdAt": "created_at",
             "namespace": "namespace",
             "publisherAuthenticationKey": "publisher_authentication_key",
@@ -189,6 +208,7 @@ class SteamIAPConfig(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "appId": False,
             "createdAt": False,
             "namespace": False,
             "publisherAuthenticationKey": False,

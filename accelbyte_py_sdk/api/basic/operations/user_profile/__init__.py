@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-basic-service."""
 
-__version__ = "1.36.1"
+__version__ = "1.36.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,9 +22,11 @@ from .get_my_profile_info import GetMyProfileInfo
 from .get_my_zip_code import GetMyZipCode
 from .get_private_custom_attr_322032 import GetPrivateCustomAttributesInfo
 from .get_user_profile_info import GetUserProfileInfo
+from .get_user_profile_info_b_5dfc7f import GetUserProfileInfoByPublicId
 from .public_create_user_profile import PublicCreateUserProfile
 from .public_get_custom_attri_5323c2 import PublicGetCustomAttributesInfo
 from .public_get_user_profile_info import PublicGetUserProfileInfo
+from .public_get_user_profile_0d683e import PublicGetUserProfileInfoByPublicId
 from .public_get_user_profile_64cc50 import PublicGetUserProfilePublicInfo
 from .public_get_user_profile_cdd77a import PublicGetUserProfilePublicInfoByIds
 from .public_update_custom_at_7dcf23 import PublicUpdateCustomAttributesPartially

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class TransactionAmountDetails(Model):
     Properties:
         amount: (amount) OPTIONAL int
 
+        expire_at: (expireAt) OPTIONAL str
+
         origin: (origin) OPTIONAL str
 
         wallet_id: (walletId) OPTIONAL str
@@ -42,6 +44,7 @@ class TransactionAmountDetails(Model):
     # region fields
 
     amount: int                                                                                    # OPTIONAL
+    expire_at: str                                                                                 # OPTIONAL
     origin: str                                                                                    # OPTIONAL
     wallet_id: str                                                                                 # OPTIONAL
 
@@ -51,6 +54,10 @@ class TransactionAmountDetails(Model):
 
     def with_amount(self, value: int) -> TransactionAmountDetails:
         self.amount = value
+        return self
+
+    def with_expire_at(self, value: str) -> TransactionAmountDetails:
+        self.expire_at = value
         return self
 
     def with_origin(self, value: str) -> TransactionAmountDetails:
@@ -71,6 +78,10 @@ class TransactionAmountDetails(Model):
             result["amount"] = int(self.amount)
         elif include_empty:
             result["amount"] = 0
+        if hasattr(self, "expire_at"):
+            result["expireAt"] = str(self.expire_at)
+        elif include_empty:
+            result["expireAt"] = ""
         if hasattr(self, "origin"):
             result["origin"] = str(self.origin)
         elif include_empty:
@@ -89,12 +100,15 @@ class TransactionAmountDetails(Model):
     def create(
         cls,
         amount: Optional[int] = None,
+        expire_at: Optional[str] = None,
         origin: Optional[str] = None,
         wallet_id: Optional[str] = None,
     ) -> TransactionAmountDetails:
         instance = cls()
         if amount is not None:
             instance.amount = amount
+        if expire_at is not None:
+            instance.expire_at = expire_at
         if origin is not None:
             instance.origin = origin
         if wallet_id is not None:
@@ -110,6 +124,10 @@ class TransactionAmountDetails(Model):
             instance.amount = int(dict_["amount"])
         elif include_empty:
             instance.amount = 0
+        if "expireAt" in dict_ and dict_["expireAt"] is not None:
+            instance.expire_at = str(dict_["expireAt"])
+        elif include_empty:
+            instance.expire_at = ""
         if "origin" in dict_ and dict_["origin"] is not None:
             instance.origin = str(dict_["origin"])
         elif include_empty:
@@ -144,6 +162,7 @@ class TransactionAmountDetails(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "amount": "amount",
+            "expireAt": "expire_at",
             "origin": "origin",
             "walletId": "wallet_id",
         }
@@ -152,6 +171,7 @@ class TransactionAmountDetails(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "amount": False,
+            "expireAt": False,
             "origin": False,
             "walletId": False,
         }

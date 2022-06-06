@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-gdpr-service (1.14.4)
+# justice-gdpr-service (1.14.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -18,4 +18,5 @@ from .models_heartbeat_request import ModelsHeartbeatRequest
 from .models_list_server_response import ModelsListServerResponse
 from .models_server import ModelsServer
 from .models_set_alias_request import ModelsSetAliasRequest
+from .models_update_server_request import ModelsUpdateServerRequest
 from .response_error import ResponseError

@@ -165,7 +165,6 @@
 | model.NotificationWithTemplateRequest | [ModelNotificationWithTemplateRequest](../accelbyte_py_sdk/api/lobby/models/model_notification_with_template_request.py) |
 | model.NotificationWithTemplateRequestV1 | [ModelNotificationWithTemplateRequestV1](../accelbyte_py_sdk/api/lobby/models/model_notification_with_template_request_v1.py) |
 | model.Pagination | [ModelPagination](../accelbyte_py_sdk/api/lobby/models/model_pagination.py) |
-| model.RequestFriendsRequest | [ModelRequestFriendsRequest](../accelbyte_py_sdk/api/lobby/models/model_request_friends_request.py) |
 | model.TemplateContent | [ModelTemplateContent](../accelbyte_py_sdk/api/lobby/models/model_template_content.py) |
 | model.TemplateLocalization | [ModelTemplateLocalization](../accelbyte_py_sdk/api/lobby/models/model_template_localization.py) |
 | model.TemplateLocalizationResponse | [ModelTemplateLocalizationResponse](../accelbyte_py_sdk/api/lobby/models/model_template_localization_response.py) |
@@ -177,6 +176,7 @@
 | model.UserCancelFriendRequest | [ModelUserCancelFriendRequest](../accelbyte_py_sdk/api/lobby/models/model_user_cancel_friend_request.py) |
 | model.UserGetFriendshipStatusResponse | [ModelUserGetFriendshipStatusResponse](../accelbyte_py_sdk/api/lobby/models/model_user_get_friendship_status_response.py) |
 | model.UserRejectFriendRequest | [ModelUserRejectFriendRequest](../accelbyte_py_sdk/api/lobby/models/model_user_reject_friend_request.py) |
+| model.UserRequestFriendRequest | [ModelUserRequestFriendRequest](../accelbyte_py_sdk/api/lobby/models/model_user_request_friend_request.py) |
 | model.UserUnfriendRequest | [ModelUserUnfriendRequest](../accelbyte_py_sdk/api/lobby/models/model_user_unfriend_request.py) |
 | models.AdminAddProfanityFilterIntoListRequest | [ModelsAdminAddProfanityFilterIntoListRequest](../accelbyte_py_sdk/api/lobby/models/models_admin_add_profanity_filter_into_list_request.py) |
 | models.AdminAddProfanityFiltersFilterRequest | [ModelsAdminAddProfanityFiltersFilterRequest](../accelbyte_py_sdk/api/lobby/models/models_admin_add_profanity_filters_filter_request.py) |

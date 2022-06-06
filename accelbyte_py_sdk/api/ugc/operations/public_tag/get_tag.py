@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ugc-service (1.18.1)
+# justice-ugc-service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import ResponseError
 class GetTag(Operation):
     """Get tags (GetTag)
 
-    Requires valid user token
+    Publicly accessible
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/tags

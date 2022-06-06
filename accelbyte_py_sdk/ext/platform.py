@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2688,6 +2688,7 @@ def create_steam_dlc_sync_request_example() -> SteamDLCSyncRequest:
 
 def create_steam_iap_config_example() -> SteamIAPConfig:
     instance = SteamIAPConfig()
+    instance.app_id = randomize("uid")
     instance.created_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.publisher_authentication_key = randomize()
@@ -2700,11 +2701,13 @@ def create_steam_iap_config_info_example() -> SteamIAPConfigInfo:
     instance = SteamIAPConfigInfo()
     instance.namespace = randomize("slug")
     instance.publisher_authentication_key = randomize()
+    instance.app_id = randomize("uid")
     return instance
 
 
 def create_steam_iap_config_request_example() -> SteamIAPConfigRequest:
     instance = SteamIAPConfigRequest()
+    instance.app_id = randomize("uid")
     instance.publisher_authentication_key = randomize()
     return instance
 
@@ -3041,6 +3044,7 @@ def create_transaction_example() -> Transaction:
 def create_transaction_amount_details_example() -> TransactionAmountDetails:
     instance = TransactionAmountDetails()
     instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.expire_at = randomize("date")
     instance.origin = randomize()
     instance.wallet_id = randomize()
     return instance

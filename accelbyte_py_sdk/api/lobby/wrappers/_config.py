@@ -104,24 +104,26 @@ async def admin_get_config_v1_async(namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(AdminImportConfigV1)
-def admin_import_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminImportConfigV1.create(
+        file=file,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminImportConfigV1)
-async def admin_import_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_import_config_v1_async(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = AdminImportConfigV1.create(
+        file=file,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -28,6 +28,7 @@ from ..api.qosm.models import ModelsHeartbeatRequest
 from ..api.qosm.models import ModelsListServerResponse
 from ..api.qosm.models import ModelsServer
 from ..api.qosm.models import ModelsSetAliasRequest
+from ..api.qosm.models import ModelsUpdateServerRequest
 from ..api.qosm.models import ResponseError
 
 
@@ -59,6 +60,12 @@ def create_models_server_example() -> ModelsServer:
 def create_models_set_alias_request_example() -> ModelsSetAliasRequest:
     instance = ModelsSetAliasRequest()
     instance.alias = randomize()
+    return instance
+
+
+def create_models_update_server_request_example() -> ModelsUpdateServerRequest:
+    instance = ModelsUpdateServerRequest()
+    instance.status = randomize()
     return instance
 
 

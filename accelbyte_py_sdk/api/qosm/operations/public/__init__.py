@@ -15,3 +15,4 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .list_server import ListServer
+from .list_server_per_namespace import ListServerPerNamespace

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -152,6 +152,8 @@ class AuthorizeV3(Operation):
 
         code_challenge_method: (code_challenge_method) OPTIONAL Union[str, CodeChallengeMethodEnum] in query
 
+        create_headless: (createHeadless) OPTIONAL bool in query
+
         redirect_uri: (redirect_uri) OPTIONAL str in query
 
         scope: (scope) OPTIONAL str in query
@@ -179,6 +181,7 @@ class AuthorizeV3(Operation):
 
     code_challenge: str                                                                            # OPTIONAL in [query]
     code_challenge_method: Union[str, CodeChallengeMethodEnum]                                     # OPTIONAL in [query]
+    create_headless: bool                                                                          # OPTIONAL in [query]
     redirect_uri: str                                                                              # OPTIONAL in [query]
     scope: str                                                                                     # OPTIONAL in [query]
     state: str                                                                                     # OPTIONAL in [query]
@@ -233,6 +236,8 @@ class AuthorizeV3(Operation):
             result["code_challenge"] = self.code_challenge
         if hasattr(self, "code_challenge_method"):
             result["code_challenge_method"] = self.code_challenge_method
+        if hasattr(self, "create_headless"):
+            result["createHeadless"] = self.create_headless
         if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = self.redirect_uri
         if hasattr(self, "scope"):
@@ -269,6 +274,10 @@ class AuthorizeV3(Operation):
 
     def with_code_challenge_method(self, value: Union[str, CodeChallengeMethodEnum]) -> AuthorizeV3:
         self.code_challenge_method = value
+        return self
+
+    def with_create_headless(self, value: bool) -> AuthorizeV3:
+        self.create_headless = value
         return self
 
     def with_redirect_uri(self, value: str) -> AuthorizeV3:
@@ -309,6 +318,10 @@ class AuthorizeV3(Operation):
             result["code_challenge_method"] = str(self.code_challenge_method)
         elif include_empty:
             result["code_challenge_method"] = Union[str, CodeChallengeMethodEnum]()
+        if hasattr(self, "create_headless") and self.create_headless:
+            result["createHeadless"] = bool(self.create_headless)
+        elif include_empty:
+            result["createHeadless"] = False
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
@@ -372,6 +385,7 @@ class AuthorizeV3(Operation):
         response_type: Union[str, ResponseTypeEnum],
         code_challenge: Optional[str] = None,
         code_challenge_method: Optional[Union[str, CodeChallengeMethodEnum]] = None,
+        create_headless: Optional[bool] = None,
         redirect_uri: Optional[str] = None,
         scope: Optional[str] = None,
         state: Optional[str] = None,
@@ -384,6 +398,8 @@ class AuthorizeV3(Operation):
             instance.code_challenge = code_challenge
         if code_challenge_method is not None:
             instance.code_challenge_method = code_challenge_method
+        if create_headless is not None:
+            instance.create_headless = create_headless
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
         if scope is not None:
@@ -405,6 +421,10 @@ class AuthorizeV3(Operation):
             instance.code_challenge_method = str(dict_["code_challenge_method"])
         elif include_empty:
             instance.code_challenge_method = Union[str, CodeChallengeMethodEnum]()
+        if "createHeadless" in dict_ and dict_["createHeadless"] is not None:
+            instance.create_headless = bool(dict_["createHeadless"])
+        elif include_empty:
+            instance.create_headless = False
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
@@ -436,6 +456,7 @@ class AuthorizeV3(Operation):
         return {
             "code_challenge": "code_challenge",
             "code_challenge_method": "code_challenge_method",
+            "createHeadless": "create_headless",
             "redirect_uri": "redirect_uri",
             "scope": "scope",
             "state": "state",
@@ -449,6 +470,7 @@ class AuthorizeV3(Operation):
         return {
             "code_challenge": False,
             "code_challenge_method": False,
+            "createHeadless": False,
             "redirect_uri": False,
             "scope": False,
             "state": False,

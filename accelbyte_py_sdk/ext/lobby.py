@@ -48,7 +48,6 @@ from ..api.lobby.models import ModelNotificationTopicResponseV1
 from ..api.lobby.models import ModelNotificationWithTemplateRequest
 from ..api.lobby.models import ModelNotificationWithTemplateRequestV1
 from ..api.lobby.models import ModelPagination
-from ..api.lobby.models import ModelRequestFriendsRequest
 from ..api.lobby.models import ModelTemplateContent
 from ..api.lobby.models import ModelTemplateLocalization
 from ..api.lobby.models import ModelTemplateLocalizationResponse
@@ -60,6 +59,7 @@ from ..api.lobby.models import ModelUserAcceptFriendRequest
 from ..api.lobby.models import ModelUserCancelFriendRequest
 from ..api.lobby.models import ModelUserGetFriendshipStatusResponse
 from ..api.lobby.models import ModelUserRejectFriendRequest
+from ..api.lobby.models import ModelUserRequestFriendRequest
 from ..api.lobby.models import ModelUserUnfriendRequest
 from ..api.lobby.models import ModelsAdminAddProfanityFilterIntoListRequest
 from ..api.lobby.models import ModelsAdminAddProfanityFiltersFilterRequest
@@ -295,12 +295,6 @@ def create_model_pagination_example() -> ModelPagination:
     return instance
 
 
-def create_model_request_friends_request_example() -> ModelRequestFriendsRequest:
-    instance = ModelRequestFriendsRequest()
-    instance.friend_id = randomize()
-    return instance
-
-
 def create_model_template_content_example() -> ModelTemplateContent:
     instance = ModelTemplateContent()
     instance.draft = randomize()
@@ -379,6 +373,13 @@ def create_model_user_get_friendship_status_response_example() -> ModelUserGetFr
 def create_model_user_reject_friend_request_example() -> ModelUserRejectFriendRequest:
     instance = ModelUserRejectFriendRequest()
     instance.friend_id = randomize()
+    return instance
+
+
+def create_model_user_request_friend_request_example() -> ModelUserRequestFriendRequest:
+    instance = ModelUserRequestFriendRequest()
+    instance.friend_id = randomize()
+    instance.friend_public_id = randomize()
     return instance
 
 

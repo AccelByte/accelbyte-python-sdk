@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-basic-service (1.36.1)
+# justice-basic-service (1.36.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,8 @@ class UserProfileInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        public_id: (publicId) OPTIONAL str
+
         status: (status) OPTIONAL Union[str, StatusEnum]
 
         time_zone: (timeZone) OPTIONAL str
@@ -76,6 +78,7 @@ class UserProfileInfo(Model):
     language: str                                                                                  # OPTIONAL
     last_name: str                                                                                 # OPTIONAL
     namespace: str                                                                                 # OPTIONAL
+    public_id: str                                                                                 # OPTIONAL
     status: Union[str, StatusEnum]                                                                 # OPTIONAL
     time_zone: str                                                                                 # OPTIONAL
     user_id: str                                                                                   # OPTIONAL
@@ -119,6 +122,10 @@ class UserProfileInfo(Model):
 
     def with_namespace(self, value: str) -> UserProfileInfo:
         self.namespace = value
+        return self
+
+    def with_public_id(self, value: str) -> UserProfileInfo:
+        self.public_id = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> UserProfileInfo:
@@ -179,6 +186,10 @@ class UserProfileInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "public_id"):
+            result["publicId"] = str(self.public_id)
+        elif include_empty:
+            result["publicId"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -213,6 +224,7 @@ class UserProfileInfo(Model):
         language: Optional[str] = None,
         last_name: Optional[str] = None,
         namespace: Optional[str] = None,
+        public_id: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         time_zone: Optional[str] = None,
         user_id: Optional[str] = None,
@@ -237,6 +249,8 @@ class UserProfileInfo(Model):
             instance.last_name = last_name
         if namespace is not None:
             instance.namespace = namespace
+        if public_id is not None:
+            instance.public_id = public_id
         if status is not None:
             instance.status = status
         if time_zone is not None:
@@ -288,6 +302,10 @@ class UserProfileInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "publicId" in dict_ and dict_["publicId"] is not None:
+            instance.public_id = str(dict_["publicId"])
+        elif include_empty:
+            instance.public_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -338,6 +356,7 @@ class UserProfileInfo(Model):
             "language": "language",
             "lastName": "last_name",
             "namespace": "namespace",
+            "publicId": "public_id",
             "status": "status",
             "timeZone": "time_zone",
             "userId": "user_id",
@@ -356,6 +375,7 @@ class UserProfileInfo(Model):
             "language": False,
             "lastName": False,
             "namespace": False,
+            "publicId": False,
             "status": False,
             "timeZone": False,
             "userId": False,

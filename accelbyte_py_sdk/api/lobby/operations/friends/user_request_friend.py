@@ -29,12 +29,14 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelRequestFriendsRequest
+from ...models import ModelUserRequestFriendRequest
 from ...models import RestapiErrorResponseV1
 
 
 class UserRequestFriend(Operation):
     """user add friend (userRequestFriend)
+
+    Client should provide either friendID or friendPublicID. If both are provided, friendID will be chosen to be used.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request
@@ -49,7 +51,7 @@ class UserRequestFriend(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelRequestFriendsRequest in body
+        body: (body) REQUIRED ModelUserRequestFriendRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +80,7 @@ class UserRequestFriend(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelRequestFriendsRequest                                                               # REQUIRED in [body]
+    body: ModelUserRequestFriendRequest                                                            # REQUIRED in [body]
     namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
@@ -142,7 +144,7 @@ class UserRequestFriend(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelRequestFriendsRequest) -> UserRequestFriend:
+    def with_body(self, value: ModelUserRequestFriendRequest) -> UserRequestFriend:
         self.body = value
         return self
 
@@ -159,7 +161,7 @@ class UserRequestFriend(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelRequestFriendsRequest()
+            result["body"] = ModelUserRequestFriendRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -223,7 +225,7 @@ class UserRequestFriend(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelRequestFriendsRequest,
+        body: ModelUserRequestFriendRequest,
         namespace: str,
     ) -> UserRequestFriend:
         instance = cls()
@@ -235,9 +237,9 @@ class UserRequestFriend(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserRequestFriend:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelRequestFriendsRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelUserRequestFriendRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
-            instance.body = ModelRequestFriendsRequest()
+            instance.body = ModelUserRequestFriendRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

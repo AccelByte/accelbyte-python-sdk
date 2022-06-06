@@ -30,10 +30,12 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsSetAliasRequest
+from ..models import ModelsUpdateServerRequest
 from ..models import ResponseError
 
 from ..operations.admin import DeleteServer
 from ..operations.admin import SetServerAlias
+from ..operations.admin import UpdateServerConfig
 
 
 @same_doc_as(DeleteServer)
@@ -66,5 +68,33 @@ async def set_server_alias_async(body: ModelsSetAliasRequest, region: str, x_add
     request = SetServerAlias.create(
         body=body,
         region=region,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateServerConfig)
+def update_server_config(body: ModelsUpdateServerRequest, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateServerConfig.create(
+        body=body,
+        region=region,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateServerConfig)
+async def update_server_config_async(body: ModelsUpdateServerRequest, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateServerConfig.create(
+        body=body,
+        region=region,
+        namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

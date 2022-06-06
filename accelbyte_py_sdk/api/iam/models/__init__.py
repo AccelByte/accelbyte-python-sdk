@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.8.3"
+__version__ = "5.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -40,6 +40,8 @@ from .accountcommon_client_permissions_v3 import AccountcommonClientPermissionsV
 from .accountcommon_conflicted_user_platform_accounts import AccountcommonConflictedUserPlatformAccounts
 from .accountcommon_country_age_restriction import AccountcommonCountryAgeRestriction
 from .accountcommon_description import AccountcommonDescription
+from .accountcommon_distinct_linked_platform_v3 import AccountcommonDistinctLinkedPlatformV3
+from .accountcommon_distinct_platform_response_v3 import AccountcommonDistinctPlatformResponseV3
 from .accountcommon_input_validation_description import AccountcommonInputValidationDescription
 from .accountcommon_jwt_ban_v3 import AccountcommonJWTBanV3
 from .accountcommon_list_users_with_platform_accounts_response import AccountcommonListUsersWithPlatformAccountsResponse
@@ -58,6 +60,7 @@ from .accountcommon_role_manager_v3 import AccountcommonRoleManagerV3
 from .accountcommon_role_member import AccountcommonRoleMember
 from .accountcommon_role_member_v3 import AccountcommonRoleMemberV3
 from .accountcommon_role_v3 import AccountcommonRoleV3
+from .accountcommon_simple_user_platform_info_v3 import AccountcommonSimpleUserPlatformInfoV3
 from .accountcommon_user_linked_platform import AccountcommonUserLinkedPlatform
 from .accountcommon_user_linked_platform_v3 import AccountcommonUserLinkedPlatformV3
 from .accountcommon_user_linked_platforms_response_v3 import AccountcommonUserLinkedPlatformsResponseV3
@@ -115,6 +118,7 @@ from .model_invite_user_request_v3 import ModelInviteUserRequestV3
 from .model_invite_user_request_v4 import ModelInviteUserRequestV4
 from .model_invite_user_response_v3 import ModelInviteUserResponseV3
 from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
+from .model_link_platform_account_with_progression_request import ModelLinkPlatformAccountWithProgressionRequest
 from .model_link_request import ModelLinkRequest
 from .model_list_assigned_users_v4_response import ModelListAssignedUsersV4Response
 from .model_list_bulk_user_response import ModelListBulkUserResponse

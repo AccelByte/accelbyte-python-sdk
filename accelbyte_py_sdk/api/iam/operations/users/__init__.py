@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.8.3"
+__version__ = "5.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -108,6 +108,7 @@ from .public_create_justice_user import PublicCreateJusticeUser
 from .public_create_user_v2 import PublicCreateUserV2
 from .public_create_user_v3 import PublicCreateUserV3
 from .public_delete_platform_link_v2 import PublicDeletePlatformLinkV2
+from .public_force_link_platf_1f3822 import PublicForceLinkPlatformWithProgression
 from .public_forgot_password_v2 import PublicForgotPasswordV2
 from .public_forgot_password_v3 import PublicForgotPasswordV3
 from .public_get_async_status import PublicGetAsyncStatus
@@ -121,9 +122,11 @@ from .public_get_user_by_user_idv2 import PublicGetUserByUserIDV2
 from .public_get_user_login_h_60bd12 import PublicGetUserLoginHistoriesV3
 from .public_get_user_platfor_890bc0 import PublicGetUserPlatformAccountsV3
 from .public_link_platform_account import PublicLinkPlatformAccount
+from .public_list_user_all_pl_0f3031 import PublicListUserAllPlatformAccountsDistinctV3
 from .public_list_user_id_by__d6f348 import PublicListUserIDByPlatformUserIDsV3
 from .public_platform_link_v2 import PublicPlatformLinkV2
 from .public_platform_link_v3 import PublicPlatformLinkV3
+from .public_platform_unlink_all_v3 import PublicPlatformUnlinkAllV3
 from .public_platform_unlink_v3 import PublicPlatformUnlinkV3
 from .public_reset_password_v2 import PublicResetPasswordV2
 from .public_search_user_v3 import PublicSearchUserV3
