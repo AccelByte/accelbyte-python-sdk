@@ -29,10 +29,12 @@ touch "tmp.dat"
 export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
-qosm-delete-server 'FtBxyZcD' --login_with_auth "Bearer foo"
-qosm-set-server-alias '{"alias": "XBpGlsQu"}' 'Ju8vMf0I' --login_with_auth "Bearer foo"
+qosm-update-server-config '{"status": "FtBxyZcD"}' 'XBpGlsQu' --login_with_auth "Bearer foo"
+qosm-delete-server 'Ju8vMf0I' --login_with_auth "Bearer foo"
+qosm-set-server-alias '{"alias": "sJkTrd8I"}' 'DcV2zXnT' --login_with_auth "Bearer foo"
+qosm-list-server-per-namespace --login_with_auth "Bearer foo"
 qosm-list-server --login_with_auth "Bearer foo"
-qosm-heartbeat '{"ip": "sJkTrd8I", "port": 59, "region": "cV2zXnTK"}' --login_with_auth "Bearer foo"
+qosm-heartbeat '{"ip": "KjXY1bPq", "port": 1, "region": "miBxx9Cs"}' --login_with_auth "Bearer foo"
 exit()
 END
 
