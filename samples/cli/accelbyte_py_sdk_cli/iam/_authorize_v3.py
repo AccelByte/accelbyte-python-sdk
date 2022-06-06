@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 @click.argument("response_type", type=str)
 @click.option("--code_challenge", "code_challenge", type=str)
 @click.option("--code_challenge_method", "code_challenge_method", type=str)
+@click.option("--create_headless", "create_headless", type=bool)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--scope", "scope", type=str)
 @click.option("--state", "state", type=str)
@@ -50,6 +51,7 @@ def authorize_v3(
         response_type: str,
         code_challenge: Optional[str] = None,
         code_challenge_method: Optional[str] = None,
+        create_headless: Optional[bool] = None,
         redirect_uri: Optional[str] = None,
         scope: Optional[str] = None,
         state: Optional[str] = None,
@@ -73,6 +75,7 @@ def authorize_v3(
         response_type=response_type,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
+        create_headless=create_headless,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,

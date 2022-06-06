@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -202,6 +202,8 @@ from ._admin_delete_role_permissions_v3 import admin_delete_role_permissions_v3
 from ._admin_delete_role_permission_v3 import admin_delete_role_permission_v3
 from ._admin_get_my_user_v3 import admin_get_my_user_v3
 from ._user_authentication_v3 import user_authentication_v3
+from ._authentication_with_platform_link_v3 import authentication_with_platform_link_v3
+from ._generate_token_by_new_headless_account_v3 import generate_token_by_new_headless_account_v3
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
 from ._admin_retrieve_user_third_party_platform_token_v3 import admin_retrieve_user_third_party_platform_token_v3
@@ -242,14 +244,17 @@ from ._public_update_password_v3 import public_update_password_v3
 from ._public_create_justice_user import public_create_justice_user
 from ._public_platform_link_v3 import public_platform_link_v3
 from ._public_platform_unlink_v3 import public_platform_unlink_v3
+from ._public_platform_unlink_all_v3 import public_platform_unlink_all_v3
 from ._public_web_link_platform import public_web_link_platform
 from ._public_web_link_platform_establish import public_web_link_platform_establish
 from ._reset_password_v3 import reset_password_v3
 from ._public_get_user_by_user_id_v3 import public_get_user_by_user_id_v3
 from ._public_get_user_ban_history_v3 import public_get_user_ban_history_v3
+from ._public_list_user_all_platform_accounts_distinct_v3 import public_list_user_all_platform_accounts_distinct_v3
 from ._public_get_user_login_histories_v3 import public_get_user_login_histories_v3
 from ._public_get_user_platform_accounts_v3 import public_get_user_platform_accounts_v3
 from ._public_link_platform_account import public_link_platform_account
+from ._public_force_link_platform_with_progression import public_force_link_platform_with_progression
 from ._public_validate_user_by_user_id_and_password_v3 import public_validate_user_by_user_id_and_password_v3
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
@@ -503,6 +508,8 @@ commands = [
     admin_delete_role_permission_v3,
     admin_get_my_user_v3,
     user_authentication_v3,
+    authentication_with_platform_link_v3,
+    generate_token_by_new_headless_account_v3,
     get_country_location_v3,
     logout,
     admin_retrieve_user_third_party_platform_token_v3,
@@ -543,14 +550,17 @@ commands = [
     public_create_justice_user,
     public_platform_link_v3,
     public_platform_unlink_v3,
+    public_platform_unlink_all_v3,
     public_web_link_platform,
     public_web_link_platform_establish,
     reset_password_v3,
     public_get_user_by_user_id_v3,
     public_get_user_ban_history_v3,
+    public_list_user_all_platform_accounts_distinct_v3,
     public_get_user_login_histories_v3,
     public_get_user_platform_accounts_v3,
     public_link_platform_account,
+    public_force_link_platform_with_progression,
     public_validate_user_by_user_id_and_password_v3,
     public_get_roles_v3,
     public_get_role_v3,

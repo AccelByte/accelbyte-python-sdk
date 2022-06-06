@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,8 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.option("--by", "by", type=str)
+@click.option("--limit", "limit", type=str)
+@click.option("--offset", "offset", type=str)
 @click.option("--query", "query", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -44,6 +46,8 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--doc", type=bool)
 def public_search_user_v3(
         by: Optional[str] = None,
+        limit: Optional[str] = None,
+        offset: Optional[str] = None,
         query: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -62,6 +66,8 @@ def public_search_user_v3(
         login_as_internal(login_as)
     result, error = public_search_user_v3_internal(
         by=by,
+        limit=limit,
+        offset=offset,
         query=query,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

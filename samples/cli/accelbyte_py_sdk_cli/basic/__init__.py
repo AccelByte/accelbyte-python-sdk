@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (1.36.1)
+# justice-basic-service (1.36.2)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -30,6 +30,7 @@ from ._update_country_group import update_country_group
 from ._delete_country_group import delete_country_group
 from ._get_languages import get_languages
 from ._get_time_zones import get_time_zones
+from ._get_user_profile_info_by_public_id import get_user_profile_info_by_public_id
 from ._admin_get_user_profile_public_info_by_ids import admin_get_user_profile_public_info_by_ids
 from ._get_namespace_publisher import get_namespace_publisher
 from ._change_namespace_status import change_namespace_status
@@ -50,6 +51,7 @@ from ._public_get_countries import public_get_countries
 from ._public_get_languages import public_get_languages
 from ._public_get_time_zones import public_get_time_zones
 from ._public_get_user_profile_public_info_by_ids import public_get_user_profile_public_info_by_ids
+from ._public_get_user_profile_info_by_public_id import public_get_user_profile_info_by_public_id
 from ._public_get_namespace_publisher import public_get_namespace_publisher
 from ._get_my_profile_info import get_my_profile_info
 from ._update_my_profile import update_my_profile
@@ -90,6 +92,7 @@ commands = [
     delete_country_group,
     get_languages,
     get_time_zones,
+    get_user_profile_info_by_public_id,
     admin_get_user_profile_public_info_by_ids,
     get_namespace_publisher,
     change_namespace_status,
@@ -110,6 +113,7 @@ commands = [
     public_get_languages,
     public_get_time_zones,
     public_get_user_profile_public_info_by_ids,
+    public_get_user_profile_info_by_public_id,
     public_get_namespace_publisher,
     get_my_profile_info,
     update_my_profile,

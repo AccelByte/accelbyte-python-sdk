@@ -36,11 +36,13 @@ from accelbyte_py_sdk.api.lobby.models import ResponseError
 
 
 @click.command()
+@click.option("--file", "file", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_import_config_v1(
+        file: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -57,6 +59,7 @@ def admin_import_config_v1(
     else:
         login_as_internal(login_as)
     result, error = admin_import_config_v1_internal(
+        file=file,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

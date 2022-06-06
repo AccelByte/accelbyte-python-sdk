@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-gdpr-service (1.14.4)
+# justice-gdpr-service (1.14.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

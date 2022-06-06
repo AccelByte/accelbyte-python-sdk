@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,6 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import public_sync_psn_dlc_inventory as public_sync_psn_dlc_inventory_internal
-from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PlayStationDLCSyncRequest
 
 

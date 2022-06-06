@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-leaderboard-service (2.15.3)
+# justice-leaderboard-service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

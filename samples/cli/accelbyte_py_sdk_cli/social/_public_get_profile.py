@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-social-service (1.29.0)
+# justice-social-service (1.29.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ds-log-manager-service (2.3.1)
+# justice-ds-log-manager-service (2.3.2)
 
 from ._list_terminated_servers import list_terminated_servers
 from ._download_server_logs import download_server_logs

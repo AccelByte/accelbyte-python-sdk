@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.8.3)
+# justice-iam-service (5.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.command()
 @click.argument("platform_id", type=str)
 @click.option("--client_id", "client_id", type=str)
+@click.option("--create_headless", "create_headless", type=bool)
 @click.option("--device_id", "device_id", type=str)
 @click.option("--platform_token", "platform_token", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -46,6 +47,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 def platform_token_grant_v3(
         platform_id: str,
         client_id: Optional[str] = None,
+        create_headless: Optional[bool] = None,
         device_id: Optional[str] = None,
         platform_token: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -65,6 +67,7 @@ def platform_token_grant_v3(
     result, error = platform_token_grant_v3_internal(
         platform_id=platform_id,
         client_id=client_id,
+        create_headless=create_headless,
         device_id=device_id,
         platform_token=platform_token,
         x_additional_headers=x_additional_headers,

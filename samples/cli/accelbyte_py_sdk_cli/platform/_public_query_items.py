@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.8.0)
+# justice-platform-service (4.9.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -81,6 +81,12 @@ def public_query_items(
         }
     else:
         login_as_internal(login_as)
+    if sort_by is not None:
+        try:
+            sort_by_json = json.loads(sort_by)
+            sort_by = [str(i0) for i0 in sort_by_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'sortBy'. {str(e)}") from e
     result, error = public_query_items_internal(
         app_type=app_type,
         base_app_id=base_app_id,
