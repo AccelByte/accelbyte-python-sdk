@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.16.0
+- ! Add Auto Refresh Token feature
+    ```python
+    import accelbyte_py_sdk.services.auth as auth
+
+    result, error = auth.login_user(
+        "username",
+        "password",
+        # auto refresh login session when token is close to expiring, if token is set to expire in 60 mins putting a 'refresh_rate' of 0.8,
+        # the SDK will try to refresh the token on your next request when it's 48 mins past the issued time.
+        auto_refresh=True,  # default: True
+        refresh_rate=0.8,   # default: 0.8
+    )
+    ```
+- Fix some issues in test scripts
+- Refactor AccelByteSDK class
+- Update spec for Justice 3.24.
+
 ## v0.15.0
 - Add HTTP Retry feature
     - HttpRetryPolicy
