@@ -1364,7 +1364,7 @@ class MockServerRequestTestCase(TestCase):
         initialize(
             options={
                 "config": "MyConfigRepository",
-                "config_params": (["http://0.0.0.0:8080", "admin", "admin"], {"namespace": "test"}),
+                "config_params": ([self.base_url, "admin", "admin"], {"namespace": "test"}),
                 "http": "RequestsHttpClient"
             }
         )
@@ -1512,7 +1512,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual([500, 400], status_codes)
         self.assertIsNone(error)
 
-    def test_auto_refreh_token_login_client(self):
+    def test_auto_refresh_token_login_client(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
@@ -1521,7 +1521,8 @@ class MockServerRequestTestCase(TestCase):
         result, error = auth.login_client()
         self.assertIsNone(error)
 
-        token_repo = core.get_token_repository()
+        self.repository = core.get_token_repository()
+        token_repo = self.repository
         self.assertIsNotNone(token_repo)
         self.assertFalse(token_repo.has_token_expired())
 
@@ -1572,7 +1573,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(3, n_refreshes)
 
-    def test_auto_refreh_token_login_user(self):
+    def test_auto_refresh_token_login_user(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
@@ -1942,7 +1943,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual([500, 400], status_codes)
         self.assertIsNone(error)
 
-    def test_auto_refreh_token_login_client(self):
+    def test_auto_refresh_token_login_client(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
@@ -2002,7 +2003,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(3, n_refreshes)
 
-    async def test_auto_refreh_token_login_client_async(self):
+    async def test_auto_refresh_token_login_client_async(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
@@ -2062,7 +2063,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(3, n_refreshes)
 
-    def test_auto_refreh_token_login_user(self):
+    def test_auto_refresh_token_login_user(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
@@ -2122,7 +2123,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(3, n_refreshes)
 
-    async def test_auto_refreh_token_login_user_async(self):
+    async def test_auto_refresh_token_login_user_async(self):
         import accelbyte_py_sdk.core as core
         import accelbyte_py_sdk.services.auth as auth
         import accelbyte_py_sdk.api.iam as iam
