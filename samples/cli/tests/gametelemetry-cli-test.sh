@@ -13,12 +13,31 @@
 # Instructions:
 # - Run the Justice SDK Mock Server first before running this script.
 
+EXIT_CODE=0
+PYTHON='python3'
+MODULE='accelbyte_py_sdk_cli'
+MODULE_PATH='../samples/cli'
+
 export AB_BASE_URL="http://127.0.0.1:8080"
 export AB_CLIENT_ID="admin"
 export AB_CLIENT_SECRET="admin"
 export AB_NAMESPACE="test"
+export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
 
-EXIT_CODE=0
+touch "tmp.dat"
+
+if [ "$BATCH" = true ] ; then
+
+$PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
+gametelemetry-protected-save-events-game-telemetry-v1-protected-events-post '[{"EventId": "FtBxyZcD", "EventName": "XBpGlsQu", "EventNamespace": "Ju8vMf0I", "EventTimestamp": "1980-10-10T00:00:00Z", "Payload": {"kTrd8IDc": {}}}]' --login_with_auth "Bearer foo"
+gametelemetry-protected-get-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-get 'V2zXnTKj' --login_with_auth "Bearer foo"
+gametelemetry-protected-update-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-playtime-put 'XY1bPqam' 'iBxx9Cs1' --login_with_auth "Bearer foo"
+exit()
+END
+
+EXIT_CODE=$?
+
+else
 
 eval_tap() {
   if [ $1 -eq 0 ]; then
@@ -31,59 +50,40 @@ eval_tap() {
   rm -f $4
 }
 
-PYTHON='python3'
-MODULE='accelbyte_py_sdk_cli'
-MODULE_PATH='../samples/cli'
-
-export PYTHONPATH=$MODULE_PATH:$PYTHONPATH
-
 echo "TAP version 13"
-echo "1..6"
+echo "1..4"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
-
 if [ $EXIT_CODE -ne 0 ]; then
   echo "Bail out! Login failed."
   exit $EXIT_CODE
 fi
 
-touch "tmp.dat"
-
-#- 2 AdminGetEventsGameTelemetryV1AdminEventsGet
-$PYTHON -m $MODULE 'gametelemetry-admin-get-events-game-telemetry-v1-admin-events-get' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 2 'AdminGetEventsGameTelemetryV1AdminEventsGet' test.out
-
-#- 3 AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet
-$PYTHON -m $MODULE 'gametelemetry-admin-get-namespace-game-telemetry-v1-admin-telemetrynamespace-get' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 3 'AdminGetNamespaceGameTelemetryV1AdminTelemetrynamespaceGet' test.out
-
-#- 4 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
+#- 2 ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost
 $PYTHON -m $MODULE 'gametelemetry-protected-save-events-game-telemetry-v1-protected-events-post' \
-    '[{"EventId": "FtBxyZcD", "EventName": "XBpGlsQu", "EventNamespace": "Ju8vMf0I", "EventTimestamp": "1980-10-10T00:00:00Z", "Payload": {"kTrd8IDc": {}}}]' \
+    '[{"EventId": "8EY84ekI", "EventName": "tqRzHU1o", "EventNamespace": "h570KQBV", "EventTimestamp": "1971-02-03T00:00:00Z", "Payload": {"wc72krSh": {}}}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 4 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost' test.out
+eval_tap $? 2 'ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost' test.out
 
-#- 5 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
+#- 3 ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet
 $PYTHON -m $MODULE 'gametelemetry-protected-get-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-get' \
-    'V2zXnTKj' \
+    'a68n3Yno' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 5 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet' test.out
+eval_tap $? 3 'ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet' test.out
 
-#- 6 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
+#- 4 ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut
 $PYTHON -m $MODULE 'gametelemetry-protected-update-playtime-game-telemetry-v1-protected-steam-ids-steam-id-playtime-playtime-put' \
-    'XY1bPqam' \
-    'iBxx9Cs1' \
+    'zp1C2KmI' \
+    'QTuBdNEU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 6 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut' test.out
+eval_tap $? 4 'ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut' test.out
 
+
+fi
 
 rm -f "tmp.dat"
 
