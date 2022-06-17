@@ -25,6 +25,7 @@ from ...api.iam import token_grant_v3
 from ...api.iam import token_grant_v3_async
 from ...api.iam import token_revocation_v3
 from ...api.iam import token_revocation_v3_async
+from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 
 
 DEFAULT_AUTO_REFRESH: bool = True
@@ -341,6 +342,44 @@ async def logout_async(
     set_token_refresher(None)
 
     return None, None
+
+
+def refresh_login(
+        refresh_token,
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
+):
+    kwargs["try_refresh"] = False
+
+    token, error = token_grant_v3(
+        grant_type=TokenGrantV3GrantTypeEnum.REFRESH_TOKEN,
+        refresh_token=refresh_token,
+        x_additional_headers=x_additional_headers,
+        **kwargs
+    )
+    if error:
+        return None, error
+
+    return token, None
+
+
+async def refresh_login_async(
+        refresh_token,
+        x_additional_headers: Union[None, Dict[str, str]] = None,
+        **kwargs
+):
+    kwargs["try_refresh"] = False
+
+    token, error = await token_grant_v3_async(
+        grant_type=TokenGrantV3GrantTypeEnum.REFRESH_TOKEN,
+        refresh_token=refresh_token,
+        x_additional_headers=x_additional_headers,
+        **kwargs
+    )
+    if error:
+        return None, error
+
+    return token, None
 
 
 login = login_user

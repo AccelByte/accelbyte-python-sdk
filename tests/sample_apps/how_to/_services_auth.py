@@ -50,3 +50,17 @@ class AuthServicesTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         _, error = login_user(username=username, password=password)
         self.assertIsNone(error, error)
+
+    def test_refresh_login(self):
+        from accelbyte_py_sdk.core import get_token_repository
+        from accelbyte_py_sdk.services.auth import refresh_login
+
+        # arrange
+        token_repo = get_token_repository()
+        curr_refresh_token = token_repo.get_refresh_token()
+
+        # act
+        token, error = refresh_login(refresh_token=curr_refresh_token)
+
+        # assert
+        self.assertIsNone(error, error)
