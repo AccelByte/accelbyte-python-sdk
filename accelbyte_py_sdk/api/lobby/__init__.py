@@ -149,6 +149,8 @@ from .wrappers import admin_get_user_party_v1
 from .wrappers import admin_get_user_party_v1_async
 from .wrappers import public_get_party_data_v1
 from .wrappers import public_get_party_data_v1_async
+from .wrappers import public_set_party_limit_v1
+from .wrappers import public_set_party_limit_v1_async
 from .wrappers import public_update_party_attributes_v1
 from .wrappers import public_update_party_attributes_v1_async
 

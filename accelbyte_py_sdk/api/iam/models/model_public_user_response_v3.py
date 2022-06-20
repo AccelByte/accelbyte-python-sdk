@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ModelPublicUserResponseV3(Model):
 
         user_id: (userId) REQUIRED str
 
+        avatar_url: (avatarUrl) OPTIONAL str
+
         platform_id: (platformId) OPTIONAL str
 
         platform_user_id: (platformUserId) OPTIONAL str
@@ -90,6 +92,7 @@ class ModelPublicUserResponseV3(Model):
     phone_verified: bool                                                                           # REQUIRED
     roles: List[str]                                                                               # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    avatar_url: str                                                                                # OPTIONAL
     platform_id: str                                                                               # OPTIONAL
     platform_user_id: str                                                                          # OPTIONAL
     user_name: str                                                                                 # OPTIONAL
@@ -156,6 +159,10 @@ class ModelPublicUserResponseV3(Model):
 
     def with_user_id(self, value: str) -> ModelPublicUserResponseV3:
         self.user_id = value
+        return self
+
+    def with_avatar_url(self, value: str) -> ModelPublicUserResponseV3:
+        self.avatar_url = value
         return self
 
     def with_platform_id(self, value: str) -> ModelPublicUserResponseV3:
@@ -236,6 +243,10 @@ class ModelPublicUserResponseV3(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "avatar_url"):
+            result["avatarUrl"] = str(self.avatar_url)
+        elif include_empty:
+            result["avatarUrl"] = ""
         if hasattr(self, "platform_id"):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -272,6 +283,7 @@ class ModelPublicUserResponseV3(Model):
         phone_verified: bool,
         roles: List[str],
         user_id: str,
+        avatar_url: Optional[str] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         user_name: Optional[str] = None,
@@ -292,6 +304,8 @@ class ModelPublicUserResponseV3(Model):
         instance.phone_verified = phone_verified
         instance.roles = roles
         instance.user_id = user_id
+        if avatar_url is not None:
+            instance.avatar_url = avatar_url
         if platform_id is not None:
             instance.platform_id = platform_id
         if platform_user_id is not None:
@@ -365,6 +379,10 @@ class ModelPublicUserResponseV3(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
+            instance.avatar_url = str(dict_["avatarUrl"])
+        elif include_empty:
+            instance.avatar_url = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -417,6 +435,7 @@ class ModelPublicUserResponseV3(Model):
             "phoneVerified": "phone_verified",
             "roles": "roles",
             "userId": "user_id",
+            "avatarUrl": "avatar_url",
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
             "userName": "user_name",
@@ -440,6 +459,7 @@ class ModelPublicUserResponseV3(Model):
             "phoneVerified": True,
             "roles": True,
             "userId": True,
+            "avatarUrl": False,
             "platformId": False,
             "platformUserId": False,
             "userName": False,

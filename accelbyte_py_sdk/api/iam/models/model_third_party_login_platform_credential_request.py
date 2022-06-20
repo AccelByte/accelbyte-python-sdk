@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.accountcommon_netflix_certificates import AccountcommonNetflixCertificates
 
 
 class ModelThirdPartyLoginPlatformCredentialRequest(Model):
@@ -56,6 +58,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         key_id: (KeyID) REQUIRED str
 
+        netflix_certificates: (NetflixCertificates) REQUIRED AccountcommonNetflixCertificates
+
         organization_id: (OrganizationId) REQUIRED str
 
         platform_name: (PlatformName) REQUIRED str
@@ -85,6 +89,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     issuer: str                                                                                    # REQUIRED
     jwks_endpoint: str                                                                             # REQUIRED
     key_id: str                                                                                    # REQUIRED
+    netflix_certificates: AccountcommonNetflixCertificates                                         # REQUIRED
     organization_id: str                                                                           # REQUIRED
     platform_name: str                                                                             # REQUIRED
     redirect_uri: str                                                                              # REQUIRED
@@ -143,6 +148,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
     def with_key_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.key_id = value
+        return self
+
+    def with_netflix_certificates(self, value: AccountcommonNetflixCertificates) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.netflix_certificates = value
         return self
 
     def with_organization_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -227,6 +236,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["KeyID"] = str(self.key_id)
         elif include_empty:
             result["KeyID"] = ""
+        if hasattr(self, "netflix_certificates"):
+            result["NetflixCertificates"] = self.netflix_certificates.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["NetflixCertificates"] = AccountcommonNetflixCertificates()
         if hasattr(self, "organization_id"):
             result["OrganizationId"] = str(self.organization_id)
         elif include_empty:
@@ -276,6 +289,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         issuer: str,
         jwks_endpoint: str,
         key_id: str,
+        netflix_certificates: AccountcommonNetflixCertificates,
         organization_id: str,
         platform_name: str,
         redirect_uri: str,
@@ -297,6 +311,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.issuer = issuer
         instance.jwks_endpoint = jwks_endpoint
         instance.key_id = key_id
+        instance.netflix_certificates = netflix_certificates
         instance.organization_id = organization_id
         instance.platform_name = platform_name
         instance.redirect_uri = redirect_uri
@@ -359,6 +374,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.key_id = str(dict_["KeyID"])
         elif include_empty:
             instance.key_id = ""
+        if "NetflixCertificates" in dict_ and dict_["NetflixCertificates"] is not None:
+            instance.netflix_certificates = AccountcommonNetflixCertificates.create_from_dict(dict_["NetflixCertificates"], include_empty=include_empty)
+        elif include_empty:
+            instance.netflix_certificates = AccountcommonNetflixCertificates()
         if "OrganizationId" in dict_ and dict_["OrganizationId"] is not None:
             instance.organization_id = str(dict_["OrganizationId"])
         elif include_empty:
@@ -424,6 +443,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Issuer": "issuer",
             "JWKSEndpoint": "jwks_endpoint",
             "KeyID": "key_id",
+            "NetflixCertificates": "netflix_certificates",
             "OrganizationId": "organization_id",
             "PlatformName": "platform_name",
             "RedirectUri": "redirect_uri",
@@ -448,6 +468,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Issuer": True,
             "JWKSEndpoint": True,
             "KeyID": True,
+            "NetflixCertificates": True,
             "OrganizationId": True,
             "PlatformName": True,
             "RedirectUri": True,

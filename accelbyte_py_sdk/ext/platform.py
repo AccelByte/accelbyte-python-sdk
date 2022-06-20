@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.9.0)
+# justice-platform-service (4.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -641,6 +641,7 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     instance.store_id = randomize()
     instance.updated_at = randomize("date")
     instance.category_path = randomize()
+    instance.description = randomize()
     instance.item_id = randomize()
     instance.item_type = randomize()
     instance.published_at = randomize("date")

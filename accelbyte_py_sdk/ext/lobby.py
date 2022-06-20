@@ -91,6 +91,7 @@ from ..api.lobby.models import ModelsImportConfigResponse
 from ..api.lobby.models import ModelsListBlockedPlayerRequest
 from ..api.lobby.models import ModelsPartyData
 from ..api.lobby.models import ModelsPartyPUTCustomAttributesRequest
+from ..api.lobby.models import ModelsPartyPUTLimitSizeRequest
 from ..api.lobby.models import ModelsProfanityFilter
 from ..api.lobby.models import ModelsProfanityRule
 from ..api.lobby.models import ModelsSetPlayerSessionAttributeRequest
@@ -644,6 +645,12 @@ def create_models_party_put_custom_attributes_request_example() -> ModelsPartyPU
     instance = ModelsPartyPUTCustomAttributesRequest()
     instance.custom_attribute = {randomize(): randomize()}
     instance.updated_at = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_party_put_limit_size_request_example() -> ModelsPartyPUTLimitSizeRequest:
+    instance = ModelsPartyPUTLimitSizeRequest()
+    instance.limit = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

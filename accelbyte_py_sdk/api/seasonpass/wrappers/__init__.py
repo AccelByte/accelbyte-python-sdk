@@ -72,6 +72,10 @@ from ._season import publish_season
 from ._season import publish_season_async
 from ._season import query_seasons
 from ._season import query_seasons_async
+from ._season import query_user_exp_grant_history
+from ._season import query_user_exp_grant_history_async
+from ._season import query_user_exp_grant_history_tag
+from ._season import query_user_exp_grant_history_tag_async
 from ._season import reset_user_season
 from ._season import reset_user_season_async
 from ._season import retire_season

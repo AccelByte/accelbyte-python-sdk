@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.9.0)
+# justice-platform-service (4.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -77,6 +77,8 @@ class CatalogChangeInfo(Model):
 
         category_path: (categoryPath) OPTIONAL str
 
+        description: (description) OPTIONAL str
+
         item_id: (itemId) OPTIONAL str
 
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum]
@@ -100,6 +102,7 @@ class CatalogChangeInfo(Model):
     store_id: str                                                                                  # REQUIRED
     updated_at: str                                                                                # REQUIRED
     category_path: str                                                                             # OPTIONAL
+    description: str                                                                               # OPTIONAL
     item_id: str                                                                                   # OPTIONAL
     item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
     published_at: str                                                                              # OPTIONAL
@@ -141,6 +144,10 @@ class CatalogChangeInfo(Model):
 
     def with_category_path(self, value: str) -> CatalogChangeInfo:
         self.category_path = value
+        return self
+
+    def with_description(self, value: str) -> CatalogChangeInfo:
+        self.description = value
         return self
 
     def with_item_id(self, value: str) -> CatalogChangeInfo:
@@ -205,6 +212,10 @@ class CatalogChangeInfo(Model):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
             result["categoryPath"] = ""
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = ""
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -246,6 +257,7 @@ class CatalogChangeInfo(Model):
         store_id: str,
         updated_at: str,
         category_path: Optional[str] = None,
+        description: Optional[str] = None,
         item_id: Optional[str] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         published_at: Optional[str] = None,
@@ -263,6 +275,8 @@ class CatalogChangeInfo(Model):
         instance.updated_at = updated_at
         if category_path is not None:
             instance.category_path = category_path
+        if description is not None:
+            instance.description = description
         if item_id is not None:
             instance.item_id = item_id
         if item_type is not None:
@@ -314,6 +328,10 @@ class CatalogChangeInfo(Model):
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
             instance.category_path = ""
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -371,6 +389,7 @@ class CatalogChangeInfo(Model):
             "storeId": "store_id",
             "updatedAt": "updated_at",
             "categoryPath": "category_path",
+            "description": "description",
             "itemId": "item_id",
             "itemType": "item_type",
             "publishedAt": "published_at",
@@ -390,6 +409,7 @@ class CatalogChangeInfo(Model):
             "storeId": True,
             "updatedAt": True,
             "categoryPath": False,
+            "description": False,
             "itemId": False,
             "itemType": False,
             "publishedAt": False,

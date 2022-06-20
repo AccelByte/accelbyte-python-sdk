@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-social-service (1.29.1)
+# justice-social-service (1.29.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

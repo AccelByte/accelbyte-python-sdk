@@ -65,6 +65,12 @@ class ClaimableUserSeasonInfo(Model):
         user_id: (userId) REQUIRED str
 
         season: (season) OPTIONAL SeasonSummary
+
+        total_exp: (totalExp) OPTIONAL int
+
+        total_paid_for_exp: (totalPaidForExp) OPTIONAL int
+
+        total_sweat_exp: (totalSweatExp) OPTIONAL int
     """
 
     # region fields
@@ -85,6 +91,9 @@ class ClaimableUserSeasonInfo(Model):
     updated_at: str                                                                                # REQUIRED
     user_id: str                                                                                   # REQUIRED
     season: SeasonSummary                                                                          # OPTIONAL
+    total_exp: int                                                                                 # OPTIONAL
+    total_paid_for_exp: int                                                                        # OPTIONAL
+    total_sweat_exp: int                                                                           # OPTIONAL
 
     # endregion fields
 
@@ -152,6 +161,18 @@ class ClaimableUserSeasonInfo(Model):
 
     def with_season(self, value: SeasonSummary) -> ClaimableUserSeasonInfo:
         self.season = value
+        return self
+
+    def with_total_exp(self, value: int) -> ClaimableUserSeasonInfo:
+        self.total_exp = value
+        return self
+
+    def with_total_paid_for_exp(self, value: int) -> ClaimableUserSeasonInfo:
+        self.total_paid_for_exp = value
+        return self
+
+    def with_total_sweat_exp(self, value: int) -> ClaimableUserSeasonInfo:
+        self.total_sweat_exp = value
         return self
 
     # endregion with_x methods
@@ -224,6 +245,18 @@ class ClaimableUserSeasonInfo(Model):
             result["season"] = self.season.to_dict(include_empty=include_empty)
         elif include_empty:
             result["season"] = SeasonSummary()
+        if hasattr(self, "total_exp"):
+            result["totalExp"] = int(self.total_exp)
+        elif include_empty:
+            result["totalExp"] = 0
+        if hasattr(self, "total_paid_for_exp"):
+            result["totalPaidForExp"] = int(self.total_paid_for_exp)
+        elif include_empty:
+            result["totalPaidForExp"] = 0
+        if hasattr(self, "total_sweat_exp"):
+            result["totalSweatExp"] = int(self.total_sweat_exp)
+        elif include_empty:
+            result["totalSweatExp"] = 0
         return result
 
     # endregion to methods
@@ -249,6 +282,9 @@ class ClaimableUserSeasonInfo(Model):
         updated_at: str,
         user_id: str,
         season: Optional[SeasonSummary] = None,
+        total_exp: Optional[int] = None,
+        total_paid_for_exp: Optional[int] = None,
+        total_sweat_exp: Optional[int] = None,
     ) -> ClaimableUserSeasonInfo:
         instance = cls()
         instance.claiming_rewards = claiming_rewards
@@ -268,6 +304,12 @@ class ClaimableUserSeasonInfo(Model):
         instance.user_id = user_id
         if season is not None:
             instance.season = season
+        if total_exp is not None:
+            instance.total_exp = total_exp
+        if total_paid_for_exp is not None:
+            instance.total_paid_for_exp = total_paid_for_exp
+        if total_sweat_exp is not None:
+            instance.total_sweat_exp = total_sweat_exp
         return instance
 
     @classmethod
@@ -339,6 +381,18 @@ class ClaimableUserSeasonInfo(Model):
             instance.season = SeasonSummary.create_from_dict(dict_["season"], include_empty=include_empty)
         elif include_empty:
             instance.season = SeasonSummary()
+        if "totalExp" in dict_ and dict_["totalExp"] is not None:
+            instance.total_exp = int(dict_["totalExp"])
+        elif include_empty:
+            instance.total_exp = 0
+        if "totalPaidForExp" in dict_ and dict_["totalPaidForExp"] is not None:
+            instance.total_paid_for_exp = int(dict_["totalPaidForExp"])
+        elif include_empty:
+            instance.total_paid_for_exp = 0
+        if "totalSweatExp" in dict_ and dict_["totalSweatExp"] is not None:
+            instance.total_sweat_exp = int(dict_["totalSweatExp"])
+        elif include_empty:
+            instance.total_sweat_exp = 0
         return instance
 
     @classmethod
@@ -380,6 +434,9 @@ class ClaimableUserSeasonInfo(Model):
             "updatedAt": "updated_at",
             "userId": "user_id",
             "season": "season",
+            "totalExp": "total_exp",
+            "totalPaidForExp": "total_paid_for_exp",
+            "totalSweatExp": "total_sweat_exp",
         }
 
     @staticmethod
@@ -401,6 +458,9 @@ class ClaimableUserSeasonInfo(Model):
             "updatedAt": True,
             "userId": True,
             "season": False,
+            "totalExp": False,
+            "totalPaidForExp": False,
+            "totalSweatExp": False,
         }
 
     # endregion static methods

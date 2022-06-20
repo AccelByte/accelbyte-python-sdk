@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.9.0)
+# justice-platform-service (4.10.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,7 +30,6 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import EpicGamesIAPConfigInfo
-from ...models import ErrorEntity
 
 
 class GetEpicGamesIAPConfig(Operation):
@@ -62,8 +61,6 @@ class GetEpicGamesIAPConfig(Operation):
 
     Responses:
         200: OK - EpicGamesIAPConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (39243: EpicGames config does not exist)
     """
 
     # region fields
@@ -153,12 +150,10 @@ class GetEpicGamesIAPConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, EpicGamesIAPConfigInfo], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, EpicGamesIAPConfigInfo], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - EpicGamesIAPConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (39243: EpicGames config does not exist)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -173,8 +168,6 @@ class GetEpicGamesIAPConfig(Operation):
 
         if code == 200:
             return EpicGamesIAPConfigInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 

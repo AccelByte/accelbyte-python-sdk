@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-iam-service Index (5.9.0)
+# justice-iam-service Index (5.10.1)
 
 
 ## Operations
@@ -396,6 +396,7 @@
 | accountcommon.JWTBanV3 | [AccountcommonJWTBanV3](../accelbyte_py_sdk/api/iam/models/accountcommon_jwt_ban_v3.py) |
 | accountcommon.ListUsersWithPlatformAccountsResponse | [AccountcommonListUsersWithPlatformAccountsResponse](../accelbyte_py_sdk/api/iam/models/accountcommon_list_users_with_platform_accounts_response.py) |
 | accountcommon.NamespaceRole | [AccountcommonNamespaceRole](../accelbyte_py_sdk/api/iam/models/accountcommon_namespace_role.py) |
+| accountcommon.NetflixCertificates | [AccountcommonNetflixCertificates](../accelbyte_py_sdk/api/iam/models/accountcommon_netflix_certificates.py) |
 | accountcommon.Pagination | [AccountcommonPagination](../accelbyte_py_sdk/api/iam/models/accountcommon_pagination.py) |
 | accountcommon.PaginationV3 | [AccountcommonPaginationV3](../accelbyte_py_sdk/api/iam/models/accountcommon_pagination_v3.py) |
 | accountcommon.Permission | [AccountcommonPermission](../accelbyte_py_sdk/api/iam/models/accountcommon_permission.py) |

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class ModelUserUpdateRequestV3(Model):
     """Model user update request V3 (model.UserUpdateRequestV3)
 
     Properties:
+        avatar_url: (avatarUrl) OPTIONAL str
+
         country: (country) OPTIONAL str
 
         date_of_birth: (dateOfBirth) OPTIONAL str
@@ -45,6 +47,7 @@ class ModelUserUpdateRequestV3(Model):
 
     # region fields
 
+    avatar_url: str                                                                                # OPTIONAL
     country: str                                                                                   # OPTIONAL
     date_of_birth: str                                                                             # OPTIONAL
     display_name: str                                                                              # OPTIONAL
@@ -54,6 +57,10 @@ class ModelUserUpdateRequestV3(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_avatar_url(self, value: str) -> ModelUserUpdateRequestV3:
+        self.avatar_url = value
+        return self
 
     def with_country(self, value: str) -> ModelUserUpdateRequestV3:
         self.country = value
@@ -81,6 +88,10 @@ class ModelUserUpdateRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "avatar_url"):
+            result["avatarUrl"] = str(self.avatar_url)
+        elif include_empty:
+            result["avatarUrl"] = ""
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
@@ -110,6 +121,7 @@ class ModelUserUpdateRequestV3(Model):
     @classmethod
     def create(
         cls,
+        avatar_url: Optional[str] = None,
         country: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
@@ -117,6 +129,8 @@ class ModelUserUpdateRequestV3(Model):
         user_name: Optional[str] = None,
     ) -> ModelUserUpdateRequestV3:
         instance = cls()
+        if avatar_url is not None:
+            instance.avatar_url = avatar_url
         if country is not None:
             instance.country = country
         if date_of_birth is not None:
@@ -134,6 +148,10 @@ class ModelUserUpdateRequestV3(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
+            instance.avatar_url = str(dict_["avatarUrl"])
+        elif include_empty:
+            instance.avatar_url = ""
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
@@ -179,6 +197,7 @@ class ModelUserUpdateRequestV3(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "avatarUrl": "avatar_url",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
@@ -189,6 +208,7 @@ class ModelUserUpdateRequestV3(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "avatarUrl": False,
             "country": False,
             "dateOfBirth": False,
             "displayName": False,

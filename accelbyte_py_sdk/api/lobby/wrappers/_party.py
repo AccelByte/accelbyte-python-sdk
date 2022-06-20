@@ -31,11 +31,13 @@ from ....core import same_doc_as
 
 from ..models import ModelsPartyData
 from ..models import ModelsPartyPUTCustomAttributesRequest
+from ..models import ModelsPartyPUTLimitSizeRequest
 from ..models import RestapiErrorResponseBody
 
 from ..operations.party import AdminGetPartyDataV1
 from ..operations.party import AdminGetUserPartyV1
 from ..operations.party import PublicGetPartyDataV1
+from ..operations.party import PublicSetPartyLimitV1
 from ..operations.party import PublicUpdatePartyAttributesV1
 
 
@@ -111,6 +113,34 @@ async def public_get_party_data_v1_async(party_id: str, namespace: Optional[str]
         if error:
             return None, error
     request = PublicGetPartyDataV1.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSetPartyLimitV1)
+def public_set_party_limit_v1(body: ModelsPartyPUTLimitSizeRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSetPartyLimitV1.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSetPartyLimitV1)
+async def public_set_party_limit_v1_async(body: ModelsPartyPUTLimitSizeRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSetPartyLimitV1.create(
+        body=body,
         party_id=party_id,
         namespace=namespace,
     )

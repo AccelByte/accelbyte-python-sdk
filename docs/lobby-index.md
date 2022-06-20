@@ -92,6 +92,7 @@
 | /lobby/v1/admin/party/namespaces/{namespace}/parties/{partyId} | GET | adminGetPartyDataV1 | [AdminGetPartyDataV1](../accelbyte_py_sdk/api/lobby/operations/party/admin_get_party_data_v1.py) | [admin_get_party_data_v1](../accelbyte_py_sdk/api/lobby/wrappers/_party.py) | [accelbyte_py_sdk_cli lobby-admin-get-party-data-v1](../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_party_data_v1.py) |
 | /lobby/v1/admin/party/namespaces/{namespace}/users/{userId}/party | GET | adminGetUserPartyV1 | [AdminGetUserPartyV1](../accelbyte_py_sdk/api/lobby/operations/party/admin_get_user_party_v1.py) | [admin_get_user_party_v1](../accelbyte_py_sdk/api/lobby/wrappers/_party.py) | [accelbyte_py_sdk_cli lobby-admin-get-user-party-v1](../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_user_party_v1.py) |
 | /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId} | GET | publicGetPartyDataV1 | [PublicGetPartyDataV1](../accelbyte_py_sdk/api/lobby/operations/party/public_get_party_data_v1.py) | [public_get_party_data_v1](../accelbyte_py_sdk/api/lobby/wrappers/_party.py) | [accelbyte_py_sdk_cli lobby-public-get-party-data-v1](../samples/cli/accelbyte_py_sdk_cli/lobby/_public_get_party_data_v1.py) |
+| /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}/limit | PUT | publicSetPartyLimitV1 | [PublicSetPartyLimitV1](../accelbyte_py_sdk/api/lobby/operations/party/public_set_party_limit_v1.py) | [public_set_party_limit_v1](../accelbyte_py_sdk/api/lobby/wrappers/_party.py) | [accelbyte_py_sdk_cli lobby-public-set-party-limit-v1](../samples/cli/accelbyte_py_sdk_cli/lobby/_public_set_party_limit_v1.py) |
 | /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}/attributes | PUT | publicUpdatePartyAttributesV1 | [PublicUpdatePartyAttributesV1](../accelbyte_py_sdk/api/lobby/operations/party/public_update_party_att_aeeff0.py) | [public_update_party_attributes_v1](../accelbyte_py_sdk/api/lobby/wrappers/_party.py) | [accelbyte_py_sdk_cli lobby-public-update-party-attributes-v1](../samples/cli/accelbyte_py_sdk_cli/lobby/_public_update_party_att_aeeff0.py) |
 
 ### player
@@ -208,6 +209,7 @@
 | models.ListBlockedPlayerRequest | [ModelsListBlockedPlayerRequest](../accelbyte_py_sdk/api/lobby/models/models_list_blocked_player_request.py) |
 | models.PartyData | [ModelsPartyData](../accelbyte_py_sdk/api/lobby/models/models_party_data.py) |
 | models.PartyPUTCustomAttributesRequest | [ModelsPartyPUTCustomAttributesRequest](../accelbyte_py_sdk/api/lobby/models/models_party_put_custom_attributes_request.py) |
+| models.PartyPUTLimitSizeRequest | [ModelsPartyPUTLimitSizeRequest](../accelbyte_py_sdk/api/lobby/models/models_party_put_limit_size_request.py) |
 | models.ProfanityFilter | [ModelsProfanityFilter](../accelbyte_py_sdk/api/lobby/models/models_profanity_filter.py) |
 | models.ProfanityRule | [ModelsProfanityRule](../accelbyte_py_sdk/api/lobby/models/models_profanity_rule.py) |
 | models.SetPlayerSessionAttributeRequest | [ModelsSetPlayerSessionAttributeRequest](../accelbyte_py_sdk/api/lobby/models/models_set_player_session_attribute_request.py) |

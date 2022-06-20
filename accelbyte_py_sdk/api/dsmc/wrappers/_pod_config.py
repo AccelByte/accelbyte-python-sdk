@@ -97,7 +97,7 @@ async def delete_pod_config_async(name: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(GetAllPodConfig)
-def get_all_pod_config(count: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_all_pod_config(count: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,7 +111,7 @@ def get_all_pod_config(count: Optional[int] = None, offset: Optional[int] = None
 
 
 @same_doc_as(GetAllPodConfig)
-async def get_all_pod_config_async(count: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_all_pod_config_async(count: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

@@ -28,6 +28,8 @@ from ..api.seasonpass.models import ClaimableRewards
 from ..api.seasonpass.models import ClaimableUserSeasonInfo
 from ..api.seasonpass.models import ErrorEntity
 from ..api.seasonpass.models import ExcessStrategy
+from ..api.seasonpass.models import ExpGrantHistoryInfo
+from ..api.seasonpass.models import ExpGrantHistoryPagingSlicedResult
 from ..api.seasonpass.models import FieldValidationError
 from ..api.seasonpass.models import Image
 from ..api.seasonpass.models import ListSeasonInfo
@@ -42,6 +44,7 @@ from ..api.seasonpass.models import Paging
 from ..api.seasonpass.models import PassCreate
 from ..api.seasonpass.models import PassInfo
 from ..api.seasonpass.models import PassUpdate
+from ..api.seasonpass.models import ReasonTagsResult
 from ..api.seasonpass.models import RewardCreate
 from ..api.seasonpass.models import RewardCurrency
 from ..api.seasonpass.models import RewardInfo
@@ -90,6 +93,9 @@ def create_claimable_user_season_info_example() -> ClaimableUserSeasonInfo:
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.season = create_season_summary_example()
+    instance.total_exp = randomize("int", min_val=1, max_val=1000)
+    instance.total_paid_for_exp = randomize("int", min_val=1, max_val=1000)
+    instance.total_sweat_exp = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -107,6 +113,27 @@ def create_excess_strategy_example() -> ExcessStrategy:
     instance.method = randomize()
     instance.currency = randomize()
     instance.percent_per_exp = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_exp_grant_history_info_example() -> ExpGrantHistoryInfo:
+    instance = ExpGrantHistoryInfo()
+    instance.created_at = randomize("date")
+    instance.grant_exp = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.season_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.source = randomize()
+    instance.tags = [randomize()]
+    return instance
+
+
+def create_exp_grant_history_paging_sliced_result_example() -> ExpGrantHistoryPagingSlicedResult:
+    instance = ExpGrantHistoryPagingSlicedResult()
+    instance.data = [create_exp_grant_history_info_example()]
+    instance.paging = create_paging_example()
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -274,6 +301,12 @@ def create_pass_update_example() -> PassUpdate:
     return instance
 
 
+def create_reason_tags_result_example() -> ReasonTagsResult:
+    instance = ReasonTagsResult()
+    instance.tags = [randomize()]
+    return instance
+
+
 def create_reward_create_example() -> RewardCreate:
     instance = RewardCreate()
     instance.code = randomize()
@@ -437,6 +470,8 @@ def create_tier_reorder_example() -> TierReorder:
 def create_user_exp_grant_example() -> UserExpGrant:
     instance = UserExpGrant()
     instance.exp = randomize("int", min_val=1, max_val=1000)
+    instance.source = randomize()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -484,6 +519,8 @@ def create_user_season_summary_example() -> UserSeasonSummary:
 def create_user_tier_grant_example() -> UserTierGrant:
     instance = UserTierGrant()
     instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.source = randomize()
+    instance.tags = [randomize()]
     return instance
 
 

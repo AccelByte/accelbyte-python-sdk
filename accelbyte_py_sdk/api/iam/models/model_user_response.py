@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -74,6 +74,8 @@ class ModelUserResponse(Model):
 
         user_id: (UserId) REQUIRED str
 
+        avatar_url: (AvatarUrl) OPTIONAL str
+
         email_address: (EmailAddress) OPTIONAL str
 
         new_email_address: (NewEmailAddress) OPTIONAL str
@@ -110,6 +112,7 @@ class ModelUserResponse(Model):
     phone_verified: bool                                                                           # REQUIRED
     roles: List[str]                                                                               # REQUIRED
     user_id: str                                                                                   # REQUIRED
+    avatar_url: str                                                                                # OPTIONAL
     email_address: str                                                                             # OPTIONAL
     new_email_address: str                                                                         # OPTIONAL
     phone_number: str                                                                              # OPTIONAL
@@ -196,6 +199,10 @@ class ModelUserResponse(Model):
 
     def with_user_id(self, value: str) -> ModelUserResponse:
         self.user_id = value
+        return self
+
+    def with_avatar_url(self, value: str) -> ModelUserResponse:
+        self.avatar_url = value
         return self
 
     def with_email_address(self, value: str) -> ModelUserResponse:
@@ -308,6 +315,10 @@ class ModelUserResponse(Model):
             result["UserId"] = str(self.user_id)
         elif include_empty:
             result["UserId"] = ""
+        if hasattr(self, "avatar_url"):
+            result["AvatarUrl"] = str(self.avatar_url)
+        elif include_empty:
+            result["AvatarUrl"] = ""
         if hasattr(self, "email_address"):
             result["EmailAddress"] = str(self.email_address)
         elif include_empty:
@@ -364,6 +375,7 @@ class ModelUserResponse(Model):
         phone_verified: bool,
         roles: List[str],
         user_id: str,
+        avatar_url: Optional[str] = None,
         email_address: Optional[str] = None,
         new_email_address: Optional[str] = None,
         phone_number: Optional[str] = None,
@@ -392,6 +404,8 @@ class ModelUserResponse(Model):
         instance.phone_verified = phone_verified
         instance.roles = roles
         instance.user_id = user_id
+        if avatar_url is not None:
+            instance.avatar_url = avatar_url
         if email_address is not None:
             instance.email_address = email_address
         if new_email_address is not None:
@@ -489,6 +503,10 @@ class ModelUserResponse(Model):
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
             instance.user_id = ""
+        if "AvatarUrl" in dict_ and dict_["AvatarUrl"] is not None:
+            instance.avatar_url = str(dict_["AvatarUrl"])
+        elif include_empty:
+            instance.avatar_url = ""
         if "EmailAddress" in dict_ and dict_["EmailAddress"] is not None:
             instance.email_address = str(dict_["EmailAddress"])
         elif include_empty:
@@ -561,6 +579,7 @@ class ModelUserResponse(Model):
             "PhoneVerified": "phone_verified",
             "Roles": "roles",
             "UserId": "user_id",
+            "AvatarUrl": "avatar_url",
             "EmailAddress": "email_address",
             "NewEmailAddress": "new_email_address",
             "PhoneNumber": "phone_number",
@@ -592,6 +611,7 @@ class ModelUserResponse(Model):
             "PhoneVerified": True,
             "Roles": True,
             "UserId": True,
+            "AvatarUrl": False,
             "EmailAddress": False,
             "NewEmailAddress": False,
             "PhoneNumber": False,

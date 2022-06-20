@@ -1,0 +1,156 @@
+# Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
+# This is licensed software from AccelByte Inc, for limitations
+# and restrictions contact your company contract manager.
+# 
+# Code generated. DO NOT EDIT!
+
+# template file: justice_py_sdk_codegen/__main__.py
+
+# justice-iam-service (5.10.1)
+
+# pylint: disable=duplicate-code
+# pylint: disable=line-too-long
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-module-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-return-statements
+# pylint: disable=too-many-statements
+# pylint: disable=unused-import
+
+from __future__ import annotations
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+from ....core import Model
+
+
+class AccountcommonNetflixCertificates(Model):
+    """Accountcommon netflix certificates (accountcommon.NetflixCertificates)
+
+    Properties:
+        encrypted_private_key: (encryptedPrivateKey) REQUIRED str
+
+        public_certificate: (publicCertificate) REQUIRED str
+
+        root_certificate: (rootCertificate) REQUIRED str
+    """
+
+    # region fields
+
+    encrypted_private_key: str                                                                     # REQUIRED
+    public_certificate: str                                                                        # REQUIRED
+    root_certificate: str                                                                          # REQUIRED
+
+    # endregion fields
+
+    # region with_x methods
+
+    def with_encrypted_private_key(self, value: str) -> AccountcommonNetflixCertificates:
+        self.encrypted_private_key = value
+        return self
+
+    def with_public_certificate(self, value: str) -> AccountcommonNetflixCertificates:
+        self.public_certificate = value
+        return self
+
+    def with_root_certificate(self, value: str) -> AccountcommonNetflixCertificates:
+        self.root_certificate = value
+        return self
+
+    # endregion with_x methods
+
+    # region to methods
+
+    def to_dict(self, include_empty: bool = False) -> dict:
+        result: dict = {}
+        if hasattr(self, "encrypted_private_key"):
+            result["encryptedPrivateKey"] = str(self.encrypted_private_key)
+        elif include_empty:
+            result["encryptedPrivateKey"] = ""
+        if hasattr(self, "public_certificate"):
+            result["publicCertificate"] = str(self.public_certificate)
+        elif include_empty:
+            result["publicCertificate"] = ""
+        if hasattr(self, "root_certificate"):
+            result["rootCertificate"] = str(self.root_certificate)
+        elif include_empty:
+            result["rootCertificate"] = ""
+        return result
+
+    # endregion to methods
+
+    # region static methods
+
+    @classmethod
+    def create(
+        cls,
+        encrypted_private_key: str,
+        public_certificate: str,
+        root_certificate: str,
+    ) -> AccountcommonNetflixCertificates:
+        instance = cls()
+        instance.encrypted_private_key = encrypted_private_key
+        instance.public_certificate = public_certificate
+        instance.root_certificate = root_certificate
+        return instance
+
+    @classmethod
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonNetflixCertificates:
+        instance = cls()
+        if not dict_:
+            return instance
+        if "encryptedPrivateKey" in dict_ and dict_["encryptedPrivateKey"] is not None:
+            instance.encrypted_private_key = str(dict_["encryptedPrivateKey"])
+        elif include_empty:
+            instance.encrypted_private_key = ""
+        if "publicCertificate" in dict_ and dict_["publicCertificate"] is not None:
+            instance.public_certificate = str(dict_["publicCertificate"])
+        elif include_empty:
+            instance.public_certificate = ""
+        if "rootCertificate" in dict_ and dict_["rootCertificate"] is not None:
+            instance.root_certificate = str(dict_["rootCertificate"])
+        elif include_empty:
+            instance.root_certificate = ""
+        return instance
+
+    @classmethod
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonNetflixCertificates]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+
+    @classmethod
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonNetflixCertificates]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+
+    @classmethod
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonNetflixCertificates, List[AccountcommonNetflixCertificates], Dict[Any, AccountcommonNetflixCertificates]]:
+        if many:
+            if isinstance(any_, dict):
+                return cls.create_many_from_dict(any_, include_empty=include_empty)
+            elif isinstance(any_, list):
+                return cls.create_many_from_list(any_, include_empty=include_empty)
+            else:
+                raise ValueError()
+        else:
+            return cls.create_from_dict(any_, include_empty=include_empty)
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {
+            "encryptedPrivateKey": "encrypted_private_key",
+            "publicCertificate": "public_certificate",
+            "rootCertificate": "root_certificate",
+        }
+
+    @staticmethod
+    def get_required_map() -> Dict[str, bool]:
+        return {
+            "encryptedPrivateKey": True,
+            "publicCertificate": True,
+            "rootCertificate": True,
+        }
+
+    # endregion static methods

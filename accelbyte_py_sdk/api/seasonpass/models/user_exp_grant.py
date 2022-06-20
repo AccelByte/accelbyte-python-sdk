@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SourceEnum(StrEnum):
+    PAID_FOR = "PAID_FOR"
+    SWEAT = "SWEAT"
 
 
 class UserExpGrant(Model):
@@ -33,11 +39,17 @@ class UserExpGrant(Model):
 
     Properties:
         exp: (exp) OPTIONAL int
+
+        source: (source) OPTIONAL Union[str, SourceEnum]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
     exp: int                                                                                       # OPTIONAL
+    source: Union[str, SourceEnum]                                                                 # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +57,14 @@ class UserExpGrant(Model):
 
     def with_exp(self, value: int) -> UserExpGrant:
         self.exp = value
+        return self
+
+    def with_source(self, value: Union[str, SourceEnum]) -> UserExpGrant:
+        self.source = value
+        return self
+
+    def with_tags(self, value: List[str]) -> UserExpGrant:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -57,6 +77,14 @@ class UserExpGrant(Model):
             result["exp"] = int(self.exp)
         elif include_empty:
             result["exp"] = 0
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = Union[str, SourceEnum]()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -67,10 +95,16 @@ class UserExpGrant(Model):
     def create(
         cls,
         exp: Optional[int] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
+        tags: Optional[List[str]] = None,
     ) -> UserExpGrant:
         instance = cls()
         if exp is not None:
             instance.exp = exp
+        if source is not None:
+            instance.source = source
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -82,6 +116,14 @@ class UserExpGrant(Model):
             instance.exp = int(dict_["exp"])
         elif include_empty:
             instance.exp = 0
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = Union[str, SourceEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -108,12 +150,22 @@ class UserExpGrant(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "exp": "exp",
+            "source": "source",
+            "tags": "tags",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "exp": False,
+            "source": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "source": ["PAID_FOR", "SWEAT"],
         }
 
     # endregion static methods

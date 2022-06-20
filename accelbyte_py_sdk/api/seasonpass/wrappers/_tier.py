@@ -47,6 +47,8 @@ from ..operations.tier import GrantUserTier
 from ..operations.tier import QueryTiers
 from ..operations.tier import ReorderTier
 from ..operations.tier import UpdateTier
+from ..models import UserExpGrantSourceEnum
+from ..models import UserTierGrantSourceEnum
 
 
 @same_doc_as(CreateTier)

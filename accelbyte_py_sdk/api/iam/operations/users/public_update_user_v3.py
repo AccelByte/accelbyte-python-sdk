@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -48,7 +48,7 @@ class PublicUpdateUserV3(Operation):
 
 
 
-    Supported field {country, displayName, languageTag, dateOfBirth}
+    Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl}
 
 
 

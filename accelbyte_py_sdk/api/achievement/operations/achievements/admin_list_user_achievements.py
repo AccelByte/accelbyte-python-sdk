@@ -39,6 +39,13 @@ class AdminListUserAchievements(Operation):
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
 
+
+
+
+    Note: user achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)
+
+    `
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -110,6 +110,9 @@ class PlatformTokenGrantV3(Operation):
 
 
       * xblweb : The platform_tokenâs value is code returned by xbox after login
+
+
+      * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
 
 
 

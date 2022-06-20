@@ -46,6 +46,8 @@
 | /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data | GET | publicGetUserSeason | [PublicGetUserSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/public_get_user_season.py) | [public_get_user_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-public-get-user-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_public_get_user_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish | PUT | publishSeason | [PublishSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/publish_season.py) | [publish_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-publish-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_publish_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons | GET | querySeasons | [QuerySeasons](../accelbyte_py_sdk/api/seasonpass/operations/season/query_seasons.py) | [query_seasons](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-query-seasons](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_query_seasons.py) |
+| /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history | GET | queryUserExpGrantHistory | [QueryUserExpGrantHistory](../accelbyte_py_sdk/api/seasonpass/operations/season/query_user_exp_grant_history.py) | [query_user_exp_grant_history](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-query-user-exp-grant-history](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_query_user_exp_grant_history.py) |
+| /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags | GET | queryUserExpGrantHistoryTag | [QueryUserExpGrantHistoryTag](../accelbyte_py_sdk/api/seasonpass/operations/season/query_user_exp_grant_hi_12346c.py) | [query_user_exp_grant_history_tag](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-query-user-exp-grant-history-tag](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_query_user_exp_grant_hi_12346c.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset | DELETE | resetUserSeason | [ResetUserSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/reset_user_season.py) | [reset_user_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-reset-user-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_reset_user_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/retire | PUT | retireSeason | [RetireSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/retire_season.py) | [retire_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-retire-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_retire_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/unpublish | PUT | unpublishSeason | [UnpublishSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/unpublish_season.py) | [unpublish_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-unpublish-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_unpublish_season.py) |
@@ -70,6 +72,8 @@
 | ClaimableUserSeasonInfo | [ClaimableUserSeasonInfo](../accelbyte_py_sdk/api/seasonpass/models/claimable_user_season_info.py) |
 | ErrorEntity | [ErrorEntity](../accelbyte_py_sdk/api/seasonpass/models/error_entity.py) |
 | ExcessStrategy | [ExcessStrategy](../accelbyte_py_sdk/api/seasonpass/models/excess_strategy.py) |
+| ExpGrantHistoryInfo | [ExpGrantHistoryInfo](../accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_info.py) |
+| ExpGrantHistoryPagingSlicedResult | [ExpGrantHistoryPagingSlicedResult](../accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_paging_sliced_result.py) |
 | FieldValidationError | [FieldValidationError](../accelbyte_py_sdk/api/seasonpass/models/field_validation_error.py) |
 | Image | [Image](../accelbyte_py_sdk/api/seasonpass/models/image.py) |
 | ListSeasonInfo | [ListSeasonInfo](../accelbyte_py_sdk/api/seasonpass/models/list_season_info.py) |
@@ -84,6 +88,7 @@
 | PassCreate | [PassCreate](../accelbyte_py_sdk/api/seasonpass/models/pass_create.py) |
 | PassInfo | [PassInfo](../accelbyte_py_sdk/api/seasonpass/models/pass_info.py) |
 | PassUpdate | [PassUpdate](../accelbyte_py_sdk/api/seasonpass/models/pass_update.py) |
+| ReasonTagsResult | [ReasonTagsResult](../accelbyte_py_sdk/api/seasonpass/models/reason_tags_result.py) |
 | RewardCreate | [RewardCreate](../accelbyte_py_sdk/api/seasonpass/models/reward_create.py) |
 | RewardCurrency | [RewardCurrency](../accelbyte_py_sdk/api/seasonpass/models/reward_currency.py) |
 | RewardInfo | [RewardInfo](../accelbyte_py_sdk/api/seasonpass/models/reward_info.py) |

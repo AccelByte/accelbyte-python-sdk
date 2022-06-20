@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.9.0"
+__version__ = "5.10.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -46,6 +46,7 @@ from .accountcommon_input_validation_description import AccountcommonInputValida
 from .accountcommon_jwt_ban_v3 import AccountcommonJWTBanV3
 from .accountcommon_list_users_with_platform_accounts_response import AccountcommonListUsersWithPlatformAccountsResponse
 from .accountcommon_namespace_role import AccountcommonNamespaceRole
+from .accountcommon_netflix_certificates import AccountcommonNetflixCertificates
 from .accountcommon_pagination import AccountcommonPagination
 from .accountcommon_pagination_v3 import AccountcommonPaginationV3
 from .accountcommon_permission import AccountcommonPermission

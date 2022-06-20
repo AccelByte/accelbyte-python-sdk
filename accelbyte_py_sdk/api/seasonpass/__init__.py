@@ -75,6 +75,10 @@ from .wrappers import publish_season
 from .wrappers import publish_season_async
 from .wrappers import query_seasons
 from .wrappers import query_seasons_async
+from .wrappers import query_user_exp_grant_history
+from .wrappers import query_user_exp_grant_history_async
+from .wrappers import query_user_exp_grant_history_tag
+from .wrappers import query_user_exp_grant_history_tag_async
 from .wrappers import reset_user_season
 from .wrappers import reset_user_season_async
 from .wrappers import retire_season

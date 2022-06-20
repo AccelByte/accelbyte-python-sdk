@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_netflix_certificates import AccountcommonNetflixCertificates
 from ..models.accountcommon_registered_domain import AccountcommonRegisteredDomain
 
 
@@ -77,6 +78,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         token_authentication_type: (TokenAuthenticationType) REQUIRED str
 
         token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
+
+        netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
     """
 
     # region fields
@@ -103,6 +106,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     team_id: str                                                                                   # REQUIRED
     token_authentication_type: str                                                                 # REQUIRED
     token_claims_mapping: Dict[str, str]                                                           # REQUIRED
+    netflix_certificates: AccountcommonNetflixCertificates                                         # OPTIONAL
 
     # endregion fields
 
@@ -194,6 +198,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
     def with_token_claims_mapping(self, value: Dict[str, str]) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.token_claims_mapping = value
+        return self
+
+    def with_netflix_certificates(self, value: AccountcommonNetflixCertificates) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.netflix_certificates = value
         return self
 
     # endregion with_x methods
@@ -290,6 +298,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["TokenClaimsMapping"] = {str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()}
         elif include_empty:
             result["TokenClaimsMapping"] = {}
+        if hasattr(self, "netflix_certificates"):
+            result["NetflixCertificates"] = self.netflix_certificates.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["NetflixCertificates"] = AccountcommonNetflixCertificates()
         return result
 
     # endregion to methods
@@ -321,6 +333,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         team_id: str,
         token_authentication_type: str,
         token_claims_mapping: Dict[str, str],
+        netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
         instance.acsurl = acsurl
@@ -345,6 +358,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
         instance.token_claims_mapping = token_claims_mapping
+        if netflix_certificates is not None:
+            instance.netflix_certificates = netflix_certificates
         return instance
 
     @classmethod
@@ -440,6 +455,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.token_claims_mapping = {str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()}
         elif include_empty:
             instance.token_claims_mapping = {}
+        if "NetflixCertificates" in dict_ and dict_["NetflixCertificates"] is not None:
+            instance.netflix_certificates = AccountcommonNetflixCertificates.create_from_dict(dict_["NetflixCertificates"], include_empty=include_empty)
+        elif include_empty:
+            instance.netflix_certificates = AccountcommonNetflixCertificates()
         return instance
 
     @classmethod
@@ -487,6 +506,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
             "TokenClaimsMapping": "token_claims_mapping",
+            "NetflixCertificates": "netflix_certificates",
         }
 
     @staticmethod
@@ -514,6 +534,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TeamID": True,
             "TokenAuthenticationType": True,
             "TokenClaimsMapping": True,
+            "NetflixCertificates": False,
         }
 
     # endregion static methods

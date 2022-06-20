@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.1.1)
+# justice-dsm-controller-service (3.2.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,8 @@ class GetAllPodConfig(Operation):
     Required scope: social
 
     This endpoint get a all pod configs in a namespace
+
+    Parameter Offset and Count is Required
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
@@ -63,9 +65,9 @@ class GetAllPodConfig(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL int in query
+        count: (count) REQUIRED int in query
 
-        offset: (offset) OPTIONAL int in query
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ModelsListPodConfigResponse (ok)
@@ -87,8 +89,8 @@ class GetAllPodConfig(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    count: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
+    count: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -232,15 +234,13 @@ class GetAllPodConfig(Operation):
     def create(
         cls,
         namespace: str,
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
     ) -> GetAllPodConfig:
         instance = cls()
         instance.namespace = namespace
-        if count is not None:
-            instance.count = count
-        if offset is not None:
-            instance.offset = offset
+        instance.count = count
+        instance.offset = offset
         return instance
 
     @classmethod
@@ -272,8 +272,8 @@ class GetAllPodConfig(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "count": False,
-            "offset": False,
+            "count": True,
+            "offset": True,
         }
 
     # endregion static methods

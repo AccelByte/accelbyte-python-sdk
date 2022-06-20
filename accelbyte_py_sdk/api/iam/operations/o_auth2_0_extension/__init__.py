@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.9.0"
+__version__ = "5.10.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

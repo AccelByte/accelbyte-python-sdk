@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-cloudsave-service."""
 
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,8 @@ from .wrappers import admin_put_game_record_concurrent_handler_v1
 from .wrappers import admin_put_game_record_concurrent_handler_v1_async
 from .wrappers import admin_put_player_public_record_concurrent_handler_v1
 from .wrappers import admin_put_player_public_record_concurrent_handler_v1_async
+from .wrappers import admin_put_player_record_concurrent_handler_v1
+from .wrappers import admin_put_player_record_concurrent_handler_v1_async
 
 # admin_game_record
 from .wrappers import admin_delete_game_record_handler_v1
@@ -59,6 +61,8 @@ from .wrappers import put_game_record_concurrent_handler_v1
 from .wrappers import put_game_record_concurrent_handler_v1_async
 from .wrappers import put_player_public_record_concurrent_handler_v1
 from .wrappers import put_player_public_record_concurrent_handler_v1_async
+from .wrappers import put_player_record_concurrent_handler_v1
+from .wrappers import put_player_record_concurrent_handler_v1_async
 
 # public_game_record
 from .wrappers import delete_game_record_handler_v1

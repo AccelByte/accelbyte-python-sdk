@@ -30,6 +30,9 @@ from .public_get_user_season import PublicGetUserSeason
 from .publish_season import PublishSeason
 from .query_seasons import QuerySeasons
 from .query_seasons import StatusEnum as QuerySeasonsStatusEnum
+from .query_user_exp_grant_history import QueryUserExpGrantHistory
+from .query_user_exp_grant_history import SourceEnum as QueryUserExpGrantHistorySourceEnum
+from .query_user_exp_grant_hi_12346c import QueryUserExpGrantHistoryTag
 from .reset_user_season import ResetUserSeason
 from .retire_season import RetireSeason
 from .unpublish_season import UnpublishSeason

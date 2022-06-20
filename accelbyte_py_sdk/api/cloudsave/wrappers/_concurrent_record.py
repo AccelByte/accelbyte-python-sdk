@@ -34,6 +34,7 @@ from ..models import ModelsResponseError
 
 from ..operations.concurrent_record import PutGameRecordConcurrentHandlerV1
 from ..operations.concurrent_record import PutPlayerPublicRecordConcurrentHandlerV1
+from ..operations.concurrent_record import PutPlayerRecordConcurrentHandlerV1
 
 
 @same_doc_as(PutGameRecordConcurrentHandlerV1)
@@ -86,6 +87,36 @@ async def put_player_public_record_concurrent_handler_v1_async(body: ModelsConcu
         if error:
             return None, error
     request = PutPlayerPublicRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PutPlayerRecordConcurrentHandlerV1)
+def put_player_record_concurrent_handler_v1(body: ModelsConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PutPlayerRecordConcurrentHandlerV1.create(
+        body=body,
+        key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PutPlayerRecordConcurrentHandlerV1)
+async def put_player_record_concurrent_handler_v1_async(body: ModelsConcurrentRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PutPlayerRecordConcurrentHandlerV1.create(
         body=body,
         key=key,
         user_id=user_id,

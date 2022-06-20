@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-cloudsave-service."""
 
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,8 @@ from ._admin_concurrent_record import admin_put_game_record_concurrent_handler_v
 from ._admin_concurrent_record import admin_put_game_record_concurrent_handler_v1_async
 from ._admin_concurrent_record import admin_put_player_public_record_concurrent_handler_v1
 from ._admin_concurrent_record import admin_put_player_public_record_concurrent_handler_v1_async
+from ._admin_concurrent_record import admin_put_player_record_concurrent_handler_v1
+from ._admin_concurrent_record import admin_put_player_record_concurrent_handler_v1_async
 
 from ._admin_game_record import admin_delete_game_record_handler_v1
 from ._admin_game_record import admin_delete_game_record_handler_v1_async
@@ -55,6 +57,8 @@ from ._concurrent_record import put_game_record_concurrent_handler_v1
 from ._concurrent_record import put_game_record_concurrent_handler_v1_async
 from ._concurrent_record import put_player_public_record_concurrent_handler_v1
 from ._concurrent_record import put_player_public_record_concurrent_handler_v1_async
+from ._concurrent_record import put_player_record_concurrent_handler_v1
+from ._concurrent_record import put_player_record_concurrent_handler_v1_async
 
 from ._public_game_record import delete_game_record_handler_v1
 from ._public_game_record import delete_game_record_handler_v1_async

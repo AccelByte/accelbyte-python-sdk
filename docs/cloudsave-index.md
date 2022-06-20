@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-cloudsave-service Index (3.0.0)
+# justice-cloudsave-service Index (3.0.1)
 
 
 ## Operations
@@ -12,6 +12,7 @@
 |---|---|---|---|---|---|
 | /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key} | PUT | adminPutGameRecordConcurrentHandlerV1 | [AdminPutGameRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_concurrent_record/admin_put_game_record_c_886b02.py) | [admin_put_game_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-put-game-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_put_game_record_c_886b02.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public | PUT | adminPutPlayerPublicRecordConcurrentHandlerV1 | [AdminPutPlayerPublicRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_concurrent_record/admin_put_player_public_1624a9.py) | [admin_put_player_public_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-put-player-public-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_put_player_public_1624a9.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key} | PUT | adminPutPlayerRecordConcurrentHandlerV1 | [AdminPutPlayerRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/admin_concurrent_record/admin_put_player_record_233704.py) | [admin_put_player_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-put-player-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_put_player_record_233704.py) |
 
 ### AdminGameRecord
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -41,6 +42,7 @@
 |---|---|---|---|---|---|
 | /cloudsave/v1/namespaces/{namespace}/concurrent/records/{key} | PUT | putGameRecordConcurrentHandlerV1 | [PutGameRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_game_record_concurr_33e39a.py) | [put_game_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-put-game-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_game_record_concurr_33e39a.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public | PUT | putPlayerPublicRecordConcurrentHandlerV1 | [PutPlayerPublicRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_public_recor_3f1a7f.py) | [put_player_public_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-public-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_public_recor_3f1a7f.py) |
+| /cloudsave/v1/namespaces/{namespace}/users/{userId}/concurrent/records/{key} | PUT | putPlayerRecordConcurrentHandlerV1 | [PutPlayerRecordConcurrentHandlerV1](../accelbyte_py_sdk/api/cloudsave/operations/concurrent_record/put_player_record_concu_385e05.py) | [put_player_record_concurrent_handler_v1](../accelbyte_py_sdk/api/cloudsave/wrappers/_concurrent_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-record-concurrent-handler-v1](../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_record_concu_385e05.py) |
 
 ### PublicGameRecord
 | Endpoint | Method | ID | Class | Wrapper | Example |

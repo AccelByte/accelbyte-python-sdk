@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.9.0)
+# justice-iam-service (5.10.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -54,6 +54,7 @@ from ..api.iam.models import AccountcommonInputValidationDescription
 from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..api.iam.models import AccountcommonNamespaceRole
+from ..api.iam.models import AccountcommonNetflixCertificates
 from ..api.iam.models import AccountcommonPagination
 from ..api.iam.models import AccountcommonPaginationV3
 from ..api.iam.models import AccountcommonPermission
@@ -509,6 +510,14 @@ def create_accountcommon_namespace_role_example() -> AccountcommonNamespaceRole:
     instance = AccountcommonNamespaceRole()
     instance.namespace = randomize("slug")
     instance.role_id = randomize("uid")
+    return instance
+
+
+def create_accountcommon_netflix_certificates_example() -> AccountcommonNetflixCertificates:
+    instance = AccountcommonNetflixCertificates()
+    instance.encrypted_private_key = randomize()
+    instance.public_certificate = randomize()
+    instance.root_certificate = randomize()
     return instance
 
 
@@ -1322,6 +1331,7 @@ def create_model_public_user_response_v3_example() -> ModelPublicUserResponseV3:
     instance.phone_verified = randomize("bool")
     instance.roles = [randomize()]
     instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.user_name = randomize("slug")
@@ -1621,6 +1631,7 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.issuer = randomize()
     instance.jwks_endpoint = randomize()
     instance.key_id = randomize()
+    instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
     instance.organization_id = randomize()
     instance.platform_name = randomize()
     instance.redirect_uri = randomize()
@@ -1655,6 +1666,7 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
     instance.token_claims_mapping = {randomize(): randomize()}
+    instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
     return instance
 
 
@@ -1952,6 +1964,7 @@ def create_model_user_response_example() -> ModelUserResponse:
     instance.phone_verified = randomize("bool")
     instance.roles = [randomize()]
     instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
     instance.email_address = randomize("email")
     instance.new_email_address = randomize()
     instance.phone_number = randomize()
@@ -1983,6 +1996,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.phone_verified = randomize("bool")
     instance.roles = [randomize()]
     instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
     instance.new_email_address = randomize()
     instance.phone_number = randomize()
     instance.platform_avatar_url = randomize("url")
@@ -2012,6 +2026,7 @@ def create_model_user_update_request_example() -> ModelUserUpdateRequest:
 
 def create_model_user_update_request_v3_example() -> ModelUserUpdateRequestV3:
     instance = ModelUserUpdateRequestV3()
+    instance.avatar_url = randomize("url")
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")

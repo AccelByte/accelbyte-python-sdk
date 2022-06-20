@@ -31,10 +31,12 @@ from ....core import same_doc_as
 
 from ..models import ClaimableUserSeasonInfo
 from ..models import ErrorEntity
+from ..models import ExpGrantHistoryPagingSlicedResult
 from ..models import ListSeasonInfoPagingSlicedResult
 from ..models import ListUserSeasonInfoPagingSlicedResult
 from ..models import LocalizedSeasonInfo
 from ..models import Ownership
+from ..models import ReasonTagsResult
 from ..models import SeasonCloneRequest
 from ..models import SeasonCreate
 from ..models import SeasonInfo
@@ -60,6 +62,9 @@ from ..operations.season import PublicGetUserSeason
 from ..operations.season import PublishSeason
 from ..operations.season import QuerySeasons
 from ..operations.season import QuerySeasonsStatusEnum
+from ..operations.season import QueryUserExpGrantHistory
+from ..operations.season import QueryUserExpGrantHistorySourceEnum
+from ..operations.season import QueryUserExpGrantHistoryTag
 from ..operations.season import ResetUserSeason
 from ..operations.season import RetireSeason
 from ..operations.season import UnpublishSeason
@@ -470,6 +475,74 @@ async def query_seasons_async(limit: Optional[int] = None, offset: Optional[int]
         limit=limit,
         offset=offset,
         status=status,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryUserExpGrantHistory)
+def query_user_exp_grant_history(user_id: str, from_: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, season_id: Optional[str] = None, source: Optional[Union[str, QueryUserExpGrantHistorySourceEnum]] = None, tags: Optional[List[str]] = None, to: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserExpGrantHistory.create(
+        user_id=user_id,
+        from_=from_,
+        limit=limit,
+        offset=offset,
+        season_id=season_id,
+        source=source,
+        tags=tags,
+        to=to,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryUserExpGrantHistory)
+async def query_user_exp_grant_history_async(user_id: str, from_: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, season_id: Optional[str] = None, source: Optional[Union[str, QueryUserExpGrantHistorySourceEnum]] = None, tags: Optional[List[str]] = None, to: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserExpGrantHistory.create(
+        user_id=user_id,
+        from_=from_,
+        limit=limit,
+        offset=offset,
+        season_id=season_id,
+        source=source,
+        tags=tags,
+        to=to,
+        namespace=namespace,
+    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryUserExpGrantHistoryTag)
+def query_user_exp_grant_history_tag(user_id: str, season_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserExpGrantHistoryTag.create(
+        user_id=user_id,
+        season_id=season_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryUserExpGrantHistoryTag)
+async def query_user_exp_grant_history_tag_async(user_id: str, season_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserExpGrantHistoryTag.create(
+        user_id=user_id,
+        season_id=season_id,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

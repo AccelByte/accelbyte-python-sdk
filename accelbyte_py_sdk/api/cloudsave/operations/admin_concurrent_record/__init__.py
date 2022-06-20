@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-cloudsave-service."""
 
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_put_game_record_c_886b02 import AdminPutGameRecordConcurrentHandlerV1
 from .admin_put_player_public_1624a9 import AdminPutPlayerPublicRecordConcurrentHandlerV1
+from .admin_put_player_record_233704 import AdminPutPlayerRecordConcurrentHandlerV1
