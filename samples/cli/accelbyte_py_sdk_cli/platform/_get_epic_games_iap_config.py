@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.9.0)
+# justice-platform-service (4.10.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,7 +32,6 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import get_epic_games_iap_config as get_epic_games_iap_config_internal
 from accelbyte_py_sdk.api.platform.models import EpicGamesIAPConfigInfo
-from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

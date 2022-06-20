@@ -41,6 +41,8 @@ from ._get_current_user_season_progression import get_current_user_season_progre
 from ._check_season_purchasable import check_season_purchasable
 from ._reset_user_season import reset_user_season
 from ._grant_user_tier import grant_user_tier
+from ._query_user_exp_grant_history import query_user_exp_grant_history
+from ._query_user_exp_grant_history_tag import query_user_exp_grant_history_tag
 from ._get_user_season import get_user_season
 from ._public_get_current_season import public_get_current_season
 from ._public_get_current_user_season import public_get_current_user_season
@@ -83,6 +85,8 @@ commands = [
     check_season_purchasable,
     reset_user_season,
     grant_user_tier,
+    query_user_exp_grant_history,
+    query_user_exp_grant_history_tag,
     get_user_season,
     public_get_current_season,
     public_get_current_user_season,

@@ -78,6 +78,7 @@ from ._public_get_messages import public_get_messages
 from ._get_personal_chat_history_v1_public import get_personal_chat_history_v1_public
 from ._public_get_party_data_v1 import public_get_party_data_v1
 from ._public_update_party_attributes_v1 import public_update_party_attributes_v1
+from ._public_set_party_limit_v1 import public_set_party_limit_v1
 from ._public_get_player_blocked_players_v1 import public_get_player_blocked_players_v1
 from ._public_get_player_blocked_by_players_v1 import public_get_player_blocked_by_players_v1
 from ._users_presence_handler_v1 import users_presence_handler_v1
@@ -171,6 +172,7 @@ commands = [
     get_personal_chat_history_v1_public,
     public_get_party_data_v1,
     public_update_party_attributes_v1,
+    public_set_party_limit_v1,
     public_get_player_blocked_players_v1,
     public_get_player_blocked_by_players_v1,
     users_presence_handler_v1,

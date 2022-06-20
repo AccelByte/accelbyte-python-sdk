@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (3.1.1)
+# justice-dsm-controller-service (3.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,15 +36,15 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--count", "count", type=int)
-@click.option("--offset", "offset", type=int)
+@click.argument("count", type=int)
+@click.argument("offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_all_pod_config(
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
