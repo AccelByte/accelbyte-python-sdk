@@ -53,47 +53,47 @@ dsmc-update-deployment-override '{"buffer_count": 17, "buffer_percent": 58, "con
 dsmc-create-override-region-override '{"buffer_count": 90, "buffer_percent": 6, "max_count": 29, "min_count": 91, "use_buffer_percent": true}' 'pBIcuC1d' 'QY93OJnJ' '6Te9vD8l' --login_with_auth "Bearer foo"
 dsmc-delete-override-region-override 'dz7Hu8AD' '79kdWunv' 'izU0q1pH' --login_with_auth "Bearer foo"
 dsmc-update-override-region-override '{"buffer_count": 49, "buffer_percent": 15, "max_count": 15, "min_count": 61, "use_buffer_percent": false}' 'GgdrysMi' 'zBGSRdP2' 'l7DNSZ8A' --login_with_auth "Bearer foo"
-dsmc-get-all-pod-config --login_with_auth "Bearer foo"
-dsmc-get-pod-config 'q0XiPLQX' --login_with_auth "Bearer foo"
-dsmc-create-pod-config '{"cpu_limit": 89, "mem_limit": 9, "params": "07ZddOGT"}' 'MlJjBwj9' --login_with_auth "Bearer foo"
-dsmc-delete-pod-config 'HJHQKseE' --login_with_auth "Bearer foo"
-dsmc-update-pod-config '{"cpu_limit": 6, "mem_limit": 88, "name": "XRDSvgua", "params": "uw1xT7eM"}' 'wSl9MLH0' --login_with_auth "Bearer foo"
-dsmc-add-port '{"port": 79}' 'nTJ2ulNz' --login_with_auth "Bearer foo"
-dsmc-delete-port 'BvwJaQa5' --login_with_auth "Bearer foo"
-dsmc-update-port '{"name": "47JllvA8", "port": 86}' 'WSpabUt7' --login_with_auth "Bearer foo"
+dsmc-get-all-pod-config '33' '98' --login_with_auth "Bearer foo"
+dsmc-get-pod-config 'iPLQXSe0' --login_with_auth "Bearer foo"
+dsmc-create-pod-config '{"cpu_limit": 7, "mem_limit": 6, "params": "OGTMlJjB"}' 'wj9HJHQK' --login_with_auth "Bearer foo"
+dsmc-delete-pod-config 'seEdSXRD' --login_with_auth "Bearer foo"
+dsmc-update-pod-config '{"cpu_limit": 89, "mem_limit": 43, "name": "guauw1xT", "params": "7eMwSl9M"}' 'LH0NnTJ2' --login_with_auth "Bearer foo"
+dsmc-add-port '{"port": 41}' 'lNzBvwJa' --login_with_auth "Bearer foo"
+dsmc-delete-port 'Qa547Jll' --login_with_auth "Bearer foo"
+dsmc-update-port '{"name": "vA8RWSpa", "port": 2}' 'Ut7xk6Qx' --login_with_auth "Bearer foo"
 dsmc-list-images --login_with_auth "Bearer foo"
-dsmc-delete-image 'xk6QxyWh' 'fqoWfJw2' --login_with_auth "Bearer foo"
+dsmc-delete-image 'yWhfqoWf' 'Jw2o8oWU' --login_with_auth "Bearer foo"
 dsmc-export-images --login_with_auth "Bearer foo"
 dsmc-get-image-limit --login_with_auth "Bearer foo"
-dsmc-delete-image-patch 'o8oWUqvP' 'CZ2HzT7N' 'XmWDlXsu' --login_with_auth "Bearer foo"
-dsmc-get-image-detail 'NIdQJR5l' --login_with_auth "Bearer foo"
-dsmc-get-image-patches 'sNOlvkfw' --login_with_auth "Bearer foo"
-dsmc-get-image-patch-detail 'aSbnsuLC' 'gToxuVTe' --login_with_auth "Bearer foo"
+dsmc-delete-image-patch 'qvPCZ2Hz' 'T7NXmWDl' 'XsuNIdQJ' --login_with_auth "Bearer foo"
+dsmc-get-image-detail 'R5lsNOlv' --login_with_auth "Bearer foo"
+dsmc-get-image-patches 'kfwaSbns' --login_with_auth "Bearer foo"
+dsmc-get-image-patch-detail 'uLCgToxu' 'VTekJgvg' --login_with_auth "Bearer foo"
 dsmc-list-server --login_with_auth "Bearer foo"
 dsmc-count-server --login_with_auth "Bearer foo"
 dsmc-count-server-detailed --login_with_auth "Bearer foo"
 dsmc-list-local-server --login_with_auth "Bearer foo"
-dsmc-delete-local-server 'kJgvg6h5' --login_with_auth "Bearer foo"
-dsmc-get-server 'HIpH0Dvi' --login_with_auth "Bearer foo"
-dsmc-delete-server 'plEk4vj3' --login_with_auth "Bearer foo"
-dsmc-get-server-logs 'LDp4yqDt' --login_with_auth "Bearer foo"
+dsmc-delete-local-server '6h5HIpH0' --login_with_auth "Bearer foo"
+dsmc-get-server 'DviplEk4' --login_with_auth "Bearer foo"
+dsmc-delete-server 'vj3LDp4y' --login_with_auth "Bearer foo"
+dsmc-get-server-logs 'qDt8QUZD' --login_with_auth "Bearer foo"
 dsmc-list-session --login_with_auth "Bearer foo"
 dsmc-count-session --login_with_auth "Bearer foo"
-dsmc-delete-session '8QUZDpxl' --login_with_auth "Bearer foo"
+dsmc-delete-session 'pxlHasin' --login_with_auth "Bearer foo"
 dsmc-export-config-v1 --login_with_auth "Bearer foo"
 dsmc-import-config-v1 --login_with_auth "Bearer foo"
-dsmc-image-detail-client 'HasinGcj' --login_with_auth "Bearer foo"
-dsmc-deregister-local-server '{"name": "rkmRMttg"}' --login_with_auth "Bearer foo"
-dsmc-register-local-server '{"custom_attribute": "jDSaIVBm", "ip": "ft3Udg7p", "name": "9PGmY2H5", "port": 20}' --login_with_auth "Bearer foo"
-dsmc-register-server '{"custom_attribute": "X4MsisSX", "pod_name": "28nARxWR"}' --login_with_auth "Bearer foo"
-dsmc-shutdown-server '{"kill_me": false, "pod_name": "v5ou5xtv"}' --login_with_auth "Bearer foo"
-dsmc-get-server-session 'd28OUfCt' --login_with_auth "Bearer foo"
-dsmc-create-session '{"client_version": "8UJC5flN", "configuration": "yj6HsTtX", "deployment": "8P3llnaa", "game_mode": "S9lqyygP", "matching_allies": [{"matching_parties": [{"party_attributes": {"cfkJIxfQ": {}}, "party_id": "Zza8kNVb", "party_members": [{"user_id": "DxVMq7HJ"}]}]}], "namespace": "k0F89xAc", "notification_payload": {}, "pod_name": "3YVfaENt", "region": "rl0pTKZT", "session_id": "XqzHuBMY"}' --login_with_auth "Bearer foo"
-dsmc-claim-server '{"session_id": "QSA2jz1Z"}' --login_with_auth "Bearer foo"
-dsmc-get-session 'OpdOjSyM' --login_with_auth "Bearer foo"
+dsmc-image-detail-client 'GcjrkmRM' --login_with_auth "Bearer foo"
+dsmc-deregister-local-server '{"name": "ttgjDSaI"}' --login_with_auth "Bearer foo"
+dsmc-register-local-server '{"custom_attribute": "VBmft3Ud", "ip": "g7p9PGmY", "name": "2H5kX4Ms", "port": 17}' --login_with_auth "Bearer foo"
+dsmc-register-server '{"custom_attribute": "sSX28nAR", "pod_name": "xWRpv5ou"}' --login_with_auth "Bearer foo"
+dsmc-shutdown-server '{"kill_me": true, "pod_name": "tvd28OUf"}' --login_with_auth "Bearer foo"
+dsmc-get-server-session 'Ct8UJC5f' --login_with_auth "Bearer foo"
+dsmc-create-session '{"client_version": "lNyj6HsT", "configuration": "tX8P3lln", "deployment": "aaS9lqyy", "game_mode": "gPcfkJIx", "matching_allies": [{"matching_parties": [{"party_attributes": {"fQZza8kN": {}}, "party_id": "VbDxVMq7", "party_members": [{"user_id": "HJk0F89x"}]}]}], "namespace": "Ac3YVfaE", "notification_payload": {}, "pod_name": "Ntrl0pTK", "region": "ZTXqzHuB", "session_id": "MYQSA2jz"}' --login_with_auth "Bearer foo"
+dsmc-claim-server '{"session_id": "1ZOpdOjS"}' --login_with_auth "Bearer foo"
+dsmc-get-session 'yMddB41J' --login_with_auth "Bearer foo"
 dsmc-get-default-provider --login_with_auth "Bearer foo"
 dsmc-list-providers --login_with_auth "Bearer foo"
-dsmc-list-providers-by-region 'ddB41JuM' --login_with_auth "Bearer foo"
+dsmc-list-providers-by-region 'uMf7RUyB' --login_with_auth "Bearer foo"
 dsmc-public-get-messages --login_with_auth "Bearer foo"
 exit()
 END
@@ -134,14 +134,14 @@ eval_tap 0 3 'SaveConfig # SKIP deprecated' test.out
 
 #- 4 UpdateImage
 $PYTHON -m $MODULE 'dsmc-update-image' \
-    '{"artifactPath": "f7RUyBHR", "image": "j8IiRimR", "namespace": "llHT6Dc4", "persistent": true, "version": "FFA6gpU7"}' \
+    '{"artifactPath": "HRj8IiRi", "image": "mRllHT6D", "namespace": "c40vFFA6", "persistent": false, "version": "pU7EW3x1"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'UpdateImage' test.out
 
 #- 5 CreateImage
 $PYTHON -m $MODULE 'dsmc-create-image' \
-    '{"artifactPath": "EW3x1dCp", "dockerPath": "m55gOeqQ", "image": "IqcJVKmB", "namespace": "M1J1IbuT", "persistent": true, "version": "rkbmuT1w"}' \
+    '{"artifactPath": "dCpm55gO", "dockerPath": "eqQIqcJV", "image": "KmBM1J1I", "namespace": "buTrrkbm", "persistent": true, "version": "T1whOqmE"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'CreateImage' test.out
@@ -155,7 +155,7 @@ eval_tap $? 6 'ImportImages' test.out
 
 #- 7 CreateImagePatch
 $PYTHON -m $MODULE 'dsmc-create-image-patch' \
-    '{"artifactPath": "hOqmEnDX", "dockerPath": "IWrBPlSa", "image": "y46mv71B", "namespace": "AZAOjtFJ", "patchVersion": "2vmTj7tT", "persistent": true, "version": "dCkIsZoA"}' \
+    '{"artifactPath": "nDXIWrBP", "dockerPath": "lSay46mv", "image": "71BAZAOj", "namespace": "tFJ2vmTj", "patchVersion": "7tT7TZHW", "persistent": true, "version": "dCkIsZoA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'CreateImagePatch' test.out
@@ -311,59 +311,61 @@ eval_tap $? 26 'UpdateOverrideRegionOverride' test.out
 
 #- 27 GetAllPodConfig
 $PYTHON -m $MODULE 'dsmc-get-all-pod-config' \
+    '86' \
+    '100' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'GetAllPodConfig' test.out
 
 #- 28 GetPodConfig
 $PYTHON -m $MODULE 'dsmc-get-pod-config' \
-    '4RYuEbgU' \
+    'uEbgUDEc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'GetPodConfig' test.out
 
 #- 29 CreatePodConfig
 $PYTHON -m $MODULE 'dsmc-create-pod-config' \
-    '{"cpu_limit": 58, "mem_limit": 61, "params": "cJyIvsPw"}' \
-    'Or0BmV5i' \
+    '{"cpu_limit": 71, "mem_limit": 49, "params": "IvsPwOr0"}' \
+    'BmV5iFvf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'CreatePodConfig' test.out
 
 #- 30 DeletePodConfig
 $PYTHON -m $MODULE 'dsmc-delete-pod-config' \
-    'FvfwFjTS' \
+    'wFjTSmIE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'DeletePodConfig' test.out
 
 #- 31 UpdatePodConfig
 $PYTHON -m $MODULE 'dsmc-update-pod-config' \
-    '{"cpu_limit": 25, "mem_limit": 69, "name": "EqoLyLeU", "params": "GmomGX9s"}' \
-    'XTZ0v8pq' \
+    '{"cpu_limit": 32, "mem_limit": 28, "name": "LyLeUGmo", "params": "mGX9sXTZ"}' \
+    '0v8pqLfc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'UpdatePodConfig' test.out
 
 #- 32 AddPort
 $PYTHON -m $MODULE 'dsmc-add-port' \
-    '{"port": 74}' \
-    'fc5SwGnR' \
+    '{"port": 89}' \
+    'wGnReUUL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'AddPort' test.out
 
 #- 33 DeletePort
 $PYTHON -m $MODULE 'dsmc-delete-port' \
-    'eUULDX4Q' \
+    'DX4QUIbb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'DeletePort' test.out
 
 #- 34 UpdatePort
 $PYTHON -m $MODULE 'dsmc-update-port' \
-    '{"name": "UIbb5nh6", "port": 26}' \
-    'yUtRvW9h' \
+    '{"name": "5nh68Zny", "port": 92}' \
+    'tRvW9hNB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 34 'UpdatePort' test.out
@@ -376,8 +378,8 @@ eval_tap $? 35 'ListImages' test.out
 
 #- 36 DeleteImage
 $PYTHON -m $MODULE 'dsmc-delete-image' \
-    'NBSFTtFr' \
-    'OmjkFrFV' \
+    'SFTtFrOm' \
+    'jkFrFVA8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 36 'DeleteImage' test.out
@@ -396,31 +398,31 @@ eval_tap $? 38 'GetImageLimit' test.out
 
 #- 39 DeleteImagePatch
 $PYTHON -m $MODULE 'dsmc-delete-image-patch' \
-    'A8t0xF34' \
-    'Xpt6ZlTT' \
-    'ic0kr2a0' \
+    't0xF34Xp' \
+    't6ZlTTic' \
+    '0kr2a0nI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 39 'DeleteImagePatch' test.out
 
 #- 40 GetImageDetail
 $PYTHON -m $MODULE 'dsmc-get-image-detail' \
-    'nI2oo7UH' \
+    '2oo7UHCJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 40 'GetImageDetail' test.out
 
 #- 41 GetImagePatches
 $PYTHON -m $MODULE 'dsmc-get-image-patches' \
-    'CJK5sp0a' \
+    'K5sp0aCv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'GetImagePatches' test.out
 
 #- 42 GetImagePatchDetail
 $PYTHON -m $MODULE 'dsmc-get-image-patch-detail' \
-    'CvIq3aHV' \
-    'YIlewLRu' \
+    'Iq3aHVYI' \
+    'lewLRuHY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'GetImagePatchDetail' test.out
@@ -451,28 +453,28 @@ eval_tap $? 46 'ListLocalServer' test.out
 
 #- 47 DeleteLocalServer
 $PYTHON -m $MODULE 'dsmc-delete-local-server' \
-    'HY83bGj0' \
+    '83bGj0HT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 47 'DeleteLocalServer' test.out
 
 #- 48 GetServer
 $PYTHON -m $MODULE 'dsmc-get-server' \
-    'HTeeWXlI' \
+    'eeWXlIcR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 48 'GetServer' test.out
 
 #- 49 DeleteServer
 $PYTHON -m $MODULE 'dsmc-delete-server' \
-    'cRidqctD' \
+    'idqctDpy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 49 'DeleteServer' test.out
 
 #- 50 GetServerLogs
 $PYTHON -m $MODULE 'dsmc-get-server-logs' \
-    'pygY0ax4' \
+    'gY0ax476' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'GetServerLogs' test.out
@@ -491,7 +493,7 @@ eval_tap $? 52 'CountSession' test.out
 
 #- 53 DeleteSession
 $PYTHON -m $MODULE 'dsmc-delete-session' \
-    '76ED4MMO' \
+    'ED4MMO9T' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 53 'DeleteSession' test.out
@@ -510,63 +512,63 @@ eval_tap $? 55 'ImportConfigV1' test.out
 
 #- 56 ImageDetailClient
 $PYTHON -m $MODULE 'dsmc-image-detail-client' \
-    '9Tw2JH0q' \
+    'w2JH0qhW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 56 'ImageDetailClient' test.out
 
 #- 57 DeregisterLocalServer
 $PYTHON -m $MODULE 'dsmc-deregister-local-server' \
-    '{"name": "hWIwHWTg"}' \
+    '{"name": "IwHWTgzJ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 57 'DeregisterLocalServer' test.out
 
 #- 58 RegisterLocalServer
 $PYTHON -m $MODULE 'dsmc-register-local-server' \
-    '{"custom_attribute": "zJFRYw6t", "ip": "1IKZLO6V", "name": "4Ode46Qm", "port": 57}' \
+    '{"custom_attribute": "FRYw6t1I", "ip": "KZLO6V4O", "name": "de46QmCi", "port": 7}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 58 'RegisterLocalServer' test.out
 
 #- 59 RegisterServer
 $PYTHON -m $MODULE 'dsmc-register-server' \
-    '{"custom_attribute": "idgdpP7R", "pod_name": "TC587lmU"}' \
+    '{"custom_attribute": "gdpP7RTC", "pod_name": "587lmUmB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 59 'RegisterServer' test.out
 
 #- 60 ShutdownServer
 $PYTHON -m $MODULE 'dsmc-shutdown-server' \
-    '{"kill_me": false, "pod_name": "BziPZBnp"}' \
+    '{"kill_me": true, "pod_name": "iPZBnpOf"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 60 'ShutdownServer' test.out
 
 #- 61 GetServerSession
 $PYTHON -m $MODULE 'dsmc-get-server-session' \
-    'Ofkllxfq' \
+    'kllxfq0N' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 61 'GetServerSession' test.out
 
 #- 62 CreateSession
 $PYTHON -m $MODULE 'dsmc-create-session' \
-    '{"client_version": "0NsrSjw5", "configuration": "Hog0blM1", "deployment": "d5MStYGc", "game_mode": "zLINlEC0", "matching_allies": [{"matching_parties": [{"party_attributes": {"OEsE3yzI": {}}, "party_id": "sUP0Njlu", "party_members": [{"user_id": "OrGZTzsL"}]}]}], "namespace": "W7Fjfs9n", "notification_payload": {}, "pod_name": "IkcZ38fU", "region": "EanjKHbX", "session_id": "fk1zxdzx"}' \
+    '{"client_version": "srSjw5Ho", "configuration": "g0blM1d5", "deployment": "MStYGczL", "game_mode": "INlEC0OE", "matching_allies": [{"matching_parties": [{"party_attributes": {"sE3yzIsU": {}}, "party_id": "P0NjluOr", "party_members": [{"user_id": "GZTzsLW7"}]}]}], "namespace": "Fjfs9nIk", "notification_payload": {}, "pod_name": "cZ38fUEa", "region": "njKHbXfk", "session_id": "1zxdzxg0"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 62 'CreateSession' test.out
 
 #- 63 ClaimServer
 $PYTHON -m $MODULE 'dsmc-claim-server' \
-    '{"session_id": "g0UXcRyH"}' \
+    '{"session_id": "UXcRyHi3"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 63 'ClaimServer' test.out
 
 #- 64 GetSession
 $PYTHON -m $MODULE 'dsmc-get-session' \
-    'i3u8BzVW' \
+    'u8BzVWu1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 64 'GetSession' test.out
@@ -585,7 +587,7 @@ eval_tap $? 66 'ListProviders' test.out
 
 #- 67 ListProvidersByRegion
 $PYTHON -m $MODULE 'dsmc-list-providers-by-region' \
-    'u1tOmhUt' \
+    'tOmhUtCg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 67 'ListProvidersByRegion' test.out
