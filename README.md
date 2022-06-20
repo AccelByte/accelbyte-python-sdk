@@ -151,6 +151,40 @@ if __name__ == "__main__":
 
 ```
 
+:bulb: Using `login_client(...)` and `login_user(...)` automatically refreshes the token once the expiration draws near. To disable auto refreshing or to set the refresh rate.
+
+```python
+# disable token auto refresh with 'login_client'
+res, err = login_client(client_id, client_secret, auto_refresh=False)
+```
+```python
+# disable token auto refresh with 'login_user'
+res, err = login_user(username, password, auto_refresh=False)
+```
+```python
+# set the refresh rate for 'login_client'
+# 0.5 means refresh when we 50% of the expiration duration has passed
+res, err = login_client(client_id, client_secret, refresh_rate=0.5)
+```
+```python
+# set the refresh rate for 'login_user'
+# 0.5 means refresh when we 50% of the expiration duration has passed
+res, err = login_user(username, username, refresh_rate=0.5)
+```
+
+To manually refresh the token:
+
+```python
+from accelbyte_py_sdk.core import get_token_repository
+from accelbyte_py_sdk.services.auth import refresh_login
+
+token_repo = get_token_repository()
+refresh_token = token_repo.get_refresh_token()
+
+token, error = refresh_login(refresh_token)
+assert error is None
+```
+
 ## Interacting with a Service Endpoint
 
 ### Example A
