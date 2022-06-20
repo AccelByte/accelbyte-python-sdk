@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.17.0
+- Consolidate cli_test 1 and 2
+- Fix unit tests
+- Updated spec for Justice 3.25.
+
 ## v0.16.0
 - ! Add Auto Refresh Token feature
     ```python
