@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import time
 from datetime import timedelta
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 from unittest import TestCase, IsolatedAsyncioTestCase
 
@@ -1510,6 +1512,56 @@ class MockServerRequestTestCase(TestCase):
 
         # assert
         self.assertEqual([500, 400], status_codes)
+        self.assertIsNone(error)
+
+    def test_http_retry_policy_files_read_once(self):
+        from accelbyte_py_sdk.api.lobby import admin_import_config_v1
+        from accelbyte_py_sdk.core import CompositeHttpRetryPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        n_reads: int = 0
+        n_retries: int = 0
+
+        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+            nonlocal n_retries
+            n_retries = retries
+            if retries == 2:
+                self.reset_overwrite_response()
+            return True
+
+        # arrange
+        http_client = get_http_client()
+        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        self.assertTrue(is_initialized())
+
+        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+
+        # act
+        tmp_file = Path("test.dat")
+        try:
+            size = 1024 * 1024 * 1024
+            with tmp_file.open("wb") as tmp_handle:
+                tmp_handle.write(os.urandom(size))
+            with tmp_file.open("rb") as tmp_handle:
+                old_read = tmp_handle.read
+
+                def new_read(*args, **kwargs):
+                    nonlocal n_reads
+                    n_reads += 1
+                    return old_read(*args, **kwargs)
+
+                tmp_handle.read = new_read  # monkey-patch, to count how many reads we are doing
+
+                _, error = admin_import_config_v1(
+                    file=tmp_handle,
+                    x_additional_headers={"Authorization": "Bearer foo"}
+                )
+        finally:
+            tmp_file.unlink(missing_ok=True)
+
+        # assert
+        self.assertEqual(2, n_retries)
+        self.assertEqual(1, n_reads)
         self.assertIsNone(error)
 
     def test_auto_refresh_token_login_client(self):
