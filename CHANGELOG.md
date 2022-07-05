@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.18.0
+- Add and fix unit test(s)
+- Updated spec for Justice 3.26.
+
 ## v0.17.0
 - Consolidate cli_test 1 and 2
 - Fix unit tests
