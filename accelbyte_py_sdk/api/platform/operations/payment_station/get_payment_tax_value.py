@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -91,10 +91,10 @@ class GetPaymentTaxValue(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    zip_code: str                                                                                  # OPTIONAL in [query]
-    payment_order_no: str                                                                          # REQUIRED in [query]
-    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    zip_code: str  # OPTIONAL in [query]
+    payment_order_no: str  # REQUIRED in [query]
+    payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED in [query]
 
     # endregion fields
 
@@ -174,7 +174,9 @@ class GetPaymentTaxValue(Operation):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> GetPaymentTaxValue:
+    def with_payment_provider(
+        self, value: Union[str, PaymentProviderEnum]
+    ) -> GetPaymentTaxValue:
         self.payment_provider = value
         return self
 
@@ -207,7 +209,9 @@ class GetPaymentTaxValue(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, TaxResult], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, TaxResult], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - TaxResult (successful operation)
@@ -222,7 +226,9 @@ class GetPaymentTaxValue(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -234,7 +240,9 @@ class GetPaymentTaxValue(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -257,7 +265,9 @@ class GetPaymentTaxValue(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetPaymentTaxValue:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetPaymentTaxValue:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -298,7 +308,16 @@ class GetPaymentTaxValue(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],  # in query
         }
 
     # endregion static methods

@@ -14,19 +14,39 @@ from ._update_admin_email_configuration import update_admin_email_configuration
 from ._save_admin_email_configuration import save_admin_email_configuration
 from ._delete_admin_email_configuration import delete_admin_email_configuration
 from ._admin_get_list_personal_data_request import admin_get_list_personal_data_request
-from ._admin_get_user_account_deletion_request import admin_get_user_account_deletion_request
-from ._admin_submit_user_account_deletion_request import admin_submit_user_account_deletion_request
-from ._admin_cancel_user_account_deletion_request import admin_cancel_user_account_deletion_request
-from ._admin_get_user_personal_data_requests import admin_get_user_personal_data_requests
+from ._admin_get_user_account_deletion_request import (
+    admin_get_user_account_deletion_request,
+)
+from ._admin_submit_user_account_deletion_request import (
+    admin_submit_user_account_deletion_request,
+)
+from ._admin_cancel_user_account_deletion_request import (
+    admin_cancel_user_account_deletion_request,
+)
+from ._admin_get_user_personal_data_requests import (
+    admin_get_user_personal_data_requests,
+)
 from ._admin_request_data_retrieval import admin_request_data_retrieval
-from ._admin_cancel_user_personal_data_request import admin_cancel_user_personal_data_request
+from ._admin_cancel_user_personal_data_request import (
+    admin_cancel_user_personal_data_request,
+)
 from ._admin_generate_personal_data_url import admin_generate_personal_data_url
-from ._public_submit_user_account_deletion_request import public_submit_user_account_deletion_request
-from ._public_cancel_user_account_deletion_request import public_cancel_user_account_deletion_request
-from ._public_get_user_account_deletion_status import public_get_user_account_deletion_status
-from ._public_get_user_personal_data_requests import public_get_user_personal_data_requests
+from ._public_submit_user_account_deletion_request import (
+    public_submit_user_account_deletion_request,
+)
+from ._public_cancel_user_account_deletion_request import (
+    public_cancel_user_account_deletion_request,
+)
+from ._public_get_user_account_deletion_status import (
+    public_get_user_account_deletion_status,
+)
+from ._public_get_user_personal_data_requests import (
+    public_get_user_personal_data_requests,
+)
 from ._public_request_data_retrieval import public_request_data_retrieval
-from ._public_cancel_user_personal_data_request import public_cancel_user_personal_data_request
+from ._public_cancel_user_personal_data_request import (
+    public_cancel_user_personal_data_request,
+)
 from ._public_generate_personal_data_url import public_generate_personal_data_url
 
 

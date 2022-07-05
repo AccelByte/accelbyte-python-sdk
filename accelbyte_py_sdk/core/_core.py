@@ -51,7 +51,7 @@ _CONFIG_REPOSITORY_IMPL = [
     JsonFileConfigRepository,
     MyConfigRepository,
     YamlConfigRepository,
-    YamlFileConfigRepository
+    YamlFileConfigRepository,
 ]
 
 _TOKEN_REPOSITORY_IMPL = [
@@ -69,9 +69,7 @@ def is_initialized() -> bool:
     return _IS_INITIALIZED
 
 
-def initialize(
-        options: Union[None, Dict[str, Any]] = None
-) -> None:
+def initialize(options: Union[None, Dict[str, Any]] = None) -> None:
     """Initializes the AccelByte Python SDK.
 
     Args:
@@ -93,6 +91,7 @@ def initialize(
          ValueError: If 'options.http' is not recognized.
          ValueError: If 'options.log_files' is not Dict[str], Tuple[str, PathLike[str], dict].
     """
+
     def is_valid_params(params) -> Tuple[bool, list, dict]:
         if params is None:
             return True, [], {}
@@ -119,7 +118,9 @@ def initialize(
     if "log_files" in options:
         log_files = options["log_files"]
         if not isinstance(log_files, dict):
-            raise ValueError(f"Log files must be a Dict[str], Tuple[str, PathLike[str], dict].")
+            raise ValueError(
+                f"Log files must be a Dict[str], Tuple[str, PathLike[str], dict]."
+            )
         for additional_scope, log_file_options in log_files.items():
             log_file_kwargs = {}
             if isinstance(log_file_options, dict):
@@ -143,12 +144,25 @@ def initialize(
         config_repository = options["config"]
         if isinstance(config_repository, str):
             config_params = options.get("config_params")
-            is_valid_config_params, config_args, config_kwargs = is_valid_params(config_params)
+            is_valid_config_params, config_args, config_kwargs = is_valid_params(
+                config_params
+            )
             if not is_valid_config_params:
-                raise ValueError(f"Config params must be a Tuple[List[Any], Dict[str, Any]].")
-            implementation = next((impl for impl in _CONFIG_REPOSITORY_IMPL if impl.__name__ == config_repository), None)
+                raise ValueError(
+                    f"Config params must be a Tuple[List[Any], Dict[str, Any]]."
+                )
+            implementation = next(
+                (
+                    impl
+                    for impl in _CONFIG_REPOSITORY_IMPL
+                    if impl.__name__ == config_repository
+                ),
+                None,
+            )
             if implementation is None:
-                raise ValueError(f"Config repository '{config_repository}' not recognized.")
+                raise ValueError(
+                    f"Config repository '{config_repository}' not recognized."
+                )
             config_repository = implementation(*config_args, **config_kwargs)
     else:
         config_repository = _CONFIG_REPOSITORY_IMPL[0]()
@@ -163,12 +177,25 @@ def initialize(
         token_repository = options["token"]
         if isinstance(token_repository, str):
             token_params = options.get("token_params")
-            is_valid_token_params, token_args, token_kwargs = is_valid_params(token_params)
+            is_valid_token_params, token_args, token_kwargs = is_valid_params(
+                token_params
+            )
             if not is_valid_token_params:
-                raise ValueError(f"Token params must be a Tuple[List[Any], Dict[str, Any]].")
-            implementation = next((impl for impl in _TOKEN_REPOSITORY_IMPL if impl.__name__ == token_repository), None)
+                raise ValueError(
+                    f"Token params must be a Tuple[List[Any], Dict[str, Any]]."
+                )
+            implementation = next(
+                (
+                    impl
+                    for impl in _TOKEN_REPOSITORY_IMPL
+                    if impl.__name__ == token_repository
+                ),
+                None,
+            )
             if implementation is None:
-                raise ValueError(f"Token repository '{token_repository}' not recognized.")
+                raise ValueError(
+                    f"Token repository '{token_repository}' not recognized."
+                )
             token_repository = implementation(*token_args, **token_kwargs)
     else:
         token_repository = _TOKEN_REPOSITORY_IMPL[0]()
@@ -185,8 +212,13 @@ def initialize(
             http_params = options.get("http_params")
             is_valid_http_params, http_args, http_kwargs = is_valid_params(http_params)
             if not is_valid_http_params:
-                raise ValueError(f"HTTP params must be a Tuple[List[Any], Dict[str, Any]].")
-            implementation = next((impl for impl in _HTTP_CLIENT_IMPL if impl.__name__ == http_client), None)
+                raise ValueError(
+                    f"HTTP params must be a Tuple[List[Any], Dict[str, Any]]."
+                )
+            implementation = next(
+                (impl for impl in _HTTP_CLIENT_IMPL if impl.__name__ == http_client),
+                None,
+            )
             if implementation is None:
                 raise ValueError(f"HTTP Client '{http_client}' not recognized.")
             http_client = implementation(*http_args, **http_kwargs)
@@ -218,6 +250,7 @@ def reset() -> None:
 
 # region ConfigRepository
 
+
 def get_config_repository() -> ConfigRepository:
     if _CONFIG_REPOSITORY is None:
         raise ValueError("Config repository not set.")
@@ -226,7 +259,9 @@ def get_config_repository() -> ConfigRepository:
 
 def set_config_repository(config_repository: ConfigRepository) -> None:
     if not isinstance(config_repository, ConfigRepository):
-        raise TypeError(f"Config repository '{type(config_repository).__name__}' not valid.")
+        raise TypeError(
+            f"Config repository '{type(config_repository).__name__}' not valid."
+        )
     global _CONFIG_REPOSITORY
     _CONFIG_REPOSITORY = config_repository
 
@@ -300,10 +335,12 @@ def get_app_version() -> Tuple[Union[None, str], Union[None, HttpResponse]]:
         return None, HttpResponse.create_error(400, "App version not found.")
     return app_version, None
 
+
 # endregion ConfigRepository
 
 
 # region TokenRepository
+
 
 def get_token_repository() -> TokenRepository:
     if _TOKEN_REPOSITORY is None:
@@ -313,7 +350,9 @@ def get_token_repository() -> TokenRepository:
 
 def set_token_repository(token_repository: TokenRepository) -> None:
     if not isinstance(token_repository, TokenRepository):
-        raise TypeError(f"Token repository '{type(token_repository).__name__}' not valid.")
+        raise TypeError(
+            f"Token repository '{type(token_repository).__name__}' not valid."
+        )
     global _TOKEN_REPOSITORY
     _TOKEN_REPOSITORY = token_repository
 
@@ -368,16 +407,20 @@ def _try_set_token(token: Any) -> Tuple[bool, Union[None, HttpResponse]]:
     if token is None:
         return False, HttpResponse.create_error(400, "Empty token.")
     if not _is_valid_token(token):
-        return False, HttpResponse.create_error(400, "Failed to set token. The token is not valid.")
+        return False, HttpResponse.create_error(
+            400, "Failed to set token. The token is not valid."
+        )
     _, error = set_token(token)
     if error:
         return True, error
     return True, None
 
+
 # endregion TokenRepository
 
 
 # region HttpClient
+
 
 def get_http_client() -> HttpClient:
     if _HTTP_CLIENT is None:
@@ -393,13 +436,13 @@ def set_http_client(http_client: HttpClient) -> None:
 
 
 def _pre_run_request(
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        **kwargs
+    operation: Operation,
+    base_url: Optional[str] = "",
+    additional_headers: Optional[Dict[str, str]] = None,
+    additional_headers_override: bool = True,
+    config_repo: Optional[ConfigRepository] = None,
+    token_repo: Optional[TokenRepository] = None,
+    **kwargs,
 ) -> Tuple[Any, Any]:
     if not config_repo:
         if not _CONFIG_REPOSITORY:
@@ -419,22 +462,22 @@ def _pre_run_request(
         additional_headers_override=additional_headers_override,
         config_repo=config_repo,
         token_repo=token_repo,
-        **kwargs
+        **kwargs,
     )
     return proto, error
 
 
 def _post_run_request(
-        operation: Operation,
-        response: Any,
-        error: Any
+    operation: Operation, response: Any, error: Any
 ) -> Tuple[Any, Any]:
     success, error = operation.parse_response(*response)
     if error:
         return None, error
 
     if operation.has_redirects() and operation.location_query:
-        query, error = get_query_from_http_redirect_response(success, operation.location_query)
+        query, error = get_query_from_http_redirect_response(
+            success, operation.location_query
+        )
         if error:
             return None, error
         else:
@@ -449,10 +492,10 @@ def _post_run_request(
 
 
 def run_proto_request(
-        proto: ProtoHttpRequest,
-        has_redirects: bool = False,
-        http_client: Optional[HttpClient] = None,
-        **kwargs
+    proto: ProtoHttpRequest,
+    has_redirects: bool = False,
+    http_client: Optional[HttpClient] = None,
+    **kwargs,
 ) -> Tuple[Any, Any]:
     if has_redirects and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
@@ -472,10 +515,10 @@ def run_proto_request(
 
 
 async def run_proto_request_async(
-        proto: ProtoHttpRequest,
-        has_redirects: bool = False,
-        http_client: Optional[HttpClient] = None,
-        **kwargs
+    proto: ProtoHttpRequest,
+    has_redirects: bool = False,
+    http_client: Optional[HttpClient] = None,
+    **kwargs,
 ) -> Tuple[Any, Any]:
     if has_redirects and "allow_redirects" not in kwargs:
         kwargs["allow_redirects"] = False
@@ -495,14 +538,14 @@ async def run_proto_request_async(
 
 
 def run_request(
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        http_client: Optional[HttpClient] = None,
-        **kwargs
+    operation: Operation,
+    base_url: Optional[str] = "",
+    additional_headers: Optional[Dict[str, str]] = None,
+    additional_headers_override: bool = True,
+    config_repo: Optional[ConfigRepository] = None,
+    token_repo: Optional[TokenRepository] = None,
+    http_client: Optional[HttpClient] = None,
+    **kwargs,
 ) -> Tuple[Any, Any]:
     proto, error = _pre_run_request(
         operation=operation,
@@ -512,7 +555,7 @@ def run_request(
         config_repo=config_repo,
         token_repo=token_repo,
         http_client=http_client,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -526,22 +569,20 @@ def run_request(
         return None, error
 
     result, error = _post_run_request(
-        operation=operation,
-        response=response,
-        error=error
+        operation=operation, response=response, error=error
     )
     return result, error
 
 
 async def run_request_async(
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        http_client: Optional[HttpClient] = None,
-        **kwargs
+    operation: Operation,
+    base_url: Optional[str] = "",
+    additional_headers: Optional[Dict[str, str]] = None,
+    additional_headers_override: bool = True,
+    config_repo: Optional[ConfigRepository] = None,
+    token_repo: Optional[TokenRepository] = None,
+    http_client: Optional[HttpClient] = None,
+    **kwargs,
 ) -> Tuple[Any, Any]:
     proto, error = _pre_run_request(
         operation=operation,
@@ -551,7 +592,7 @@ async def run_request_async(
         config_repo=config_repo,
         token_repo=token_repo,
         http_client=http_client,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -565,10 +606,9 @@ async def run_request_async(
         return None, error
 
     result, error = _post_run_request(
-        operation=operation,
-        response=response,
-        error=error
+        operation=operation, response=response, error=error
     )
     return result, error
+
 
 # endregion HttpClient

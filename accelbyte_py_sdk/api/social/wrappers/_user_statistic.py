@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -93,7 +93,13 @@ from ..models import StatItemUpdateUpdateStrategyEnum
 
 
 @same_doc_as(BulkCreateUserStatItems)
-def bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_create_user_stat_items(
+    user_id: str,
+    body: Optional[List[BulkStatItemCreate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,7 +113,13 @@ def bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCr
 
 
 @same_doc_as(BulkCreateUserStatItems)
-async def bulk_create_user_stat_items_async(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_create_user_stat_items_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemCreate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,11 +129,19 @@ async def bulk_create_user_stat_items_async(user_id: str, body: Optional[List[Bu
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkFetchOrDefaultStatItems)
-def bulk_fetch_or_default_stat_items(stat_code: str, user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_fetch_or_default_stat_items(
+    stat_code: str,
+    user_ids: List[str],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,7 +155,13 @@ def bulk_fetch_or_default_stat_items(stat_code: str, user_ids: List[str], namesp
 
 
 @same_doc_as(BulkFetchOrDefaultStatItems)
-async def bulk_fetch_or_default_stat_items_async(stat_code: str, user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_fetch_or_default_stat_items_async(
+    stat_code: str,
+    user_ids: List[str],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,11 +171,20 @@ async def bulk_fetch_or_default_stat_items_async(stat_code: str, user_ids: List[
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkFetchOrDefaultStatItems1)
-def bulk_fetch_or_default_stat_items_1(stat_code: str, user_ids: List[str], additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_fetch_or_default_stat_items_1(
+    stat_code: str,
+    user_ids: List[str],
+    additional_key: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,7 +199,14 @@ def bulk_fetch_or_default_stat_items_1(stat_code: str, user_ids: List[str], addi
 
 
 @same_doc_as(BulkFetchOrDefaultStatItems1)
-async def bulk_fetch_or_default_stat_items_1_async(stat_code: str, user_ids: List[str], additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_fetch_or_default_stat_items_1_async(
+    stat_code: str,
+    user_ids: List[str],
+    additional_key: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -175,11 +217,19 @@ async def bulk_fetch_or_default_stat_items_1_async(stat_code: str, user_ids: Lis
         additional_key=additional_key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkFetchStatItems)
-def bulk_fetch_stat_items(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_fetch_stat_items(
+    stat_code: str,
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,7 +243,13 @@ def bulk_fetch_stat_items(stat_code: str, user_ids: str, namespace: Optional[str
 
 
 @same_doc_as(BulkFetchStatItems)
-async def bulk_fetch_stat_items_async(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_fetch_stat_items_async(
+    stat_code: str,
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,11 +259,19 @@ async def bulk_fetch_stat_items_async(stat_code: str, user_ids: str, namespace: 
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkFetchStatItems1)
-def bulk_fetch_stat_items_1(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_fetch_stat_items_1(
+    stat_code: str,
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,7 +285,13 @@ def bulk_fetch_stat_items_1(stat_code: str, user_ids: str, namespace: Optional[s
 
 
 @same_doc_as(BulkFetchStatItems1)
-async def bulk_fetch_stat_items_1_async(stat_code: str, user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_fetch_stat_items_1_async(
+    stat_code: str,
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,11 +301,18 @@ async def bulk_fetch_stat_items_1_async(stat_code: str, user_ids: str, namespace
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkIncUserStatItem)
-def bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_inc_user_stat_item(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,7 +325,12 @@ def bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, na
 
 
 @same_doc_as(BulkIncUserStatItem)
-async def bulk_inc_user_stat_item_async(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_inc_user_stat_item_async(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,11 +339,19 @@ async def bulk_inc_user_stat_item_async(body: Optional[List[BulkUserStatItemInc]
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkIncUserStatItem1)
-def bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_inc_user_stat_item_1(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,7 +365,13 @@ def bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]
 
 
 @same_doc_as(BulkIncUserStatItem1)
-async def bulk_inc_user_stat_item_1_async(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_inc_user_stat_item_1_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -285,11 +381,18 @@ async def bulk_inc_user_stat_item_1_async(user_id: str, body: Optional[List[Bulk
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkIncUserStatItemValue)
-def bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_inc_user_stat_item_value(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -302,7 +405,12 @@ def bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = No
 
 
 @same_doc_as(BulkIncUserStatItemValue)
-async def bulk_inc_user_stat_item_value_async(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_inc_user_stat_item_value_async(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -311,11 +419,19 @@ async def bulk_inc_user_stat_item_value_async(body: Optional[List[BulkUserStatIt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkIncUserStatItemValue1)
-def bulk_inc_user_stat_item_value_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_inc_user_stat_item_value_1(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -329,7 +445,13 @@ def bulk_inc_user_stat_item_value_1(user_id: str, body: Optional[List[BulkStatIt
 
 
 @same_doc_as(BulkIncUserStatItemValue1)
-async def bulk_inc_user_stat_item_value_1_async(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_inc_user_stat_item_value_1_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -339,11 +461,19 @@ async def bulk_inc_user_stat_item_value_1_async(user_id: str, body: Optional[Lis
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkIncUserStatItemValue2)
-def bulk_inc_user_stat_item_value_2(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_inc_user_stat_item_value_2(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -357,7 +487,13 @@ def bulk_inc_user_stat_item_value_2(user_id: str, body: Optional[List[BulkStatIt
 
 
 @same_doc_as(BulkIncUserStatItemValue2)
-async def bulk_inc_user_stat_item_value_2_async(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_inc_user_stat_item_value_2_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -367,11 +503,18 @@ async def bulk_inc_user_stat_item_value_2_async(user_id: str, body: Optional[Lis
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkResetUserStatItem)
-def bulk_reset_user_stat_item(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_reset_user_stat_item(
+    body: Optional[List[BulkUserStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -384,7 +527,12 @@ def bulk_reset_user_stat_item(body: Optional[List[BulkUserStatItemReset]] = None
 
 
 @same_doc_as(BulkResetUserStatItem)
-async def bulk_reset_user_stat_item_async(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_reset_user_stat_item_async(
+    body: Optional[List[BulkUserStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,11 +541,19 @@ async def bulk_reset_user_stat_item_async(body: Optional[List[BulkUserStatItemRe
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkResetUserStatItem1)
-def bulk_reset_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_reset_user_stat_item_1(
+    user_id: str,
+    body: Optional[List[BulkStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -411,7 +567,13 @@ def bulk_reset_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemRe
 
 
 @same_doc_as(BulkResetUserStatItem1)
-async def bulk_reset_user_stat_item_1_async(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_reset_user_stat_item_1_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -421,11 +583,18 @@ async def bulk_reset_user_stat_item_1_async(user_id: str, body: Optional[List[Bu
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkResetUserStatItem2)
-def bulk_reset_user_stat_item_2(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_reset_user_stat_item_2(
+    body: Optional[List[BulkUserStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -438,7 +607,12 @@ def bulk_reset_user_stat_item_2(body: Optional[List[BulkUserStatItemReset]] = No
 
 
 @same_doc_as(BulkResetUserStatItem2)
-async def bulk_reset_user_stat_item_2_async(body: Optional[List[BulkUserStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_reset_user_stat_item_2_async(
+    body: Optional[List[BulkUserStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -447,11 +621,19 @@ async def bulk_reset_user_stat_item_2_async(body: Optional[List[BulkUserStatItem
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkResetUserStatItem3)
-def bulk_reset_user_stat_item_3(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_reset_user_stat_item_3(
+    user_id: str,
+    body: Optional[List[BulkStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -465,7 +647,13 @@ def bulk_reset_user_stat_item_3(user_id: str, body: Optional[List[BulkStatItemRe
 
 
 @same_doc_as(BulkResetUserStatItem3)
-async def bulk_reset_user_stat_item_3_async(user_id: str, body: Optional[List[BulkStatItemReset]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_reset_user_stat_item_3_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemReset]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -475,11 +663,20 @@ async def bulk_reset_user_stat_item_3_async(user_id: str, body: Optional[List[Bu
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkResetUserStatItemValues)
-def bulk_reset_user_stat_item_values(user_id: str, additional_key: Optional[str] = None, body: Optional[List[ADTOObjectForResettingUserStatItems]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_reset_user_stat_item_values(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[ADTOObjectForResettingUserStatItems]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -494,7 +691,14 @@ def bulk_reset_user_stat_item_values(user_id: str, additional_key: Optional[str]
 
 
 @same_doc_as(BulkResetUserStatItemValues)
-async def bulk_reset_user_stat_item_values_async(user_id: str, additional_key: Optional[str] = None, body: Optional[List[ADTOObjectForResettingUserStatItems]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_reset_user_stat_item_values_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[ADTOObjectForResettingUserStatItems]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -505,11 +709,20 @@ async def bulk_reset_user_stat_item_values_async(user_id: str, additional_key: O
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkUpdateUserStatItem)
-def bulk_update_user_stat_item(user_id: str, additional_key: Optional[str] = None, body: Optional[List[BulkStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_update_user_stat_item(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[BulkStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -524,7 +737,14 @@ def bulk_update_user_stat_item(user_id: str, additional_key: Optional[str] = Non
 
 
 @same_doc_as(BulkUpdateUserStatItem)
-async def bulk_update_user_stat_item_async(user_id: str, additional_key: Optional[str] = None, body: Optional[List[BulkStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_update_user_stat_item_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[BulkStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -535,11 +755,18 @@ async def bulk_update_user_stat_item_async(user_id: str, additional_key: Optiona
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkUpdateUserStatItem1)
-def bulk_update_user_stat_item_1(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_update_user_stat_item_1(
+    body: Optional[List[BulkUserStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -552,7 +779,12 @@ def bulk_update_user_stat_item_1(body: Optional[List[BulkUserStatItemUpdate]] = 
 
 
 @same_doc_as(BulkUpdateUserStatItem1)
-async def bulk_update_user_stat_item_1_async(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_update_user_stat_item_1_async(
+    body: Optional[List[BulkUserStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -561,11 +793,20 @@ async def bulk_update_user_stat_item_1_async(body: Optional[List[BulkUserStatIte
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkUpdateUserStatItem2)
-def bulk_update_user_stat_item_2(user_id: str, additional_key: Optional[str] = None, body: Optional[List[BulkStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_update_user_stat_item_2(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[BulkStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -580,7 +821,14 @@ def bulk_update_user_stat_item_2(user_id: str, additional_key: Optional[str] = N
 
 
 @same_doc_as(BulkUpdateUserStatItem2)
-async def bulk_update_user_stat_item_2_async(user_id: str, additional_key: Optional[str] = None, body: Optional[List[BulkStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_update_user_stat_item_2_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[List[BulkStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -591,11 +839,18 @@ async def bulk_update_user_stat_item_2_async(user_id: str, additional_key: Optio
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkUpdateUserStatItemV2)
-def bulk_update_user_stat_item_v2(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_update_user_stat_item_v2(
+    body: Optional[List[BulkUserStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -608,7 +863,12 @@ def bulk_update_user_stat_item_v2(body: Optional[List[BulkUserStatItemUpdate]] =
 
 
 @same_doc_as(BulkUpdateUserStatItemV2)
-async def bulk_update_user_stat_item_v2_async(body: Optional[List[BulkUserStatItemUpdate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_update_user_stat_item_v2_async(
+    body: Optional[List[BulkUserStatItemUpdate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -617,11 +877,19 @@ async def bulk_update_user_stat_item_v2_async(body: Optional[List[BulkUserStatIt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateUserStatItem)
-def create_user_stat_item(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_user_stat_item(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -635,7 +903,13 @@ def create_user_stat_item(stat_code: str, user_id: str, namespace: Optional[str]
 
 
 @same_doc_as(CreateUserStatItem)
-async def create_user_stat_item_async(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_user_stat_item_async(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -645,11 +919,19 @@ async def create_user_stat_item_async(stat_code: str, user_id: str, namespace: O
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteUserStatItems)
-def delete_user_stat_items(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_user_stat_items(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -663,7 +945,13 @@ def delete_user_stat_items(stat_code: str, user_id: str, namespace: Optional[str
 
 
 @same_doc_as(DeleteUserStatItems)
-async def delete_user_stat_items_async(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_user_stat_items_async(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -673,11 +961,19 @@ async def delete_user_stat_items_async(stat_code: str, user_id: str, namespace: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteUserStatItems1)
-def delete_user_stat_items_1(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_user_stat_items_1(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -691,7 +987,13 @@ def delete_user_stat_items_1(stat_code: str, user_id: str, namespace: Optional[s
 
 
 @same_doc_as(DeleteUserStatItems1)
-async def delete_user_stat_items_1_async(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_user_stat_items_1_async(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -701,11 +1003,20 @@ async def delete_user_stat_items_1_async(stat_code: str, user_id: str, namespace
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteUserStatItems2)
-def delete_user_stat_items_2(stat_code: str, user_id: str, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_user_stat_items_2(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -720,7 +1031,14 @@ def delete_user_stat_items_2(stat_code: str, user_id: str, additional_key: Optio
 
 
 @same_doc_as(DeleteUserStatItems2)
-async def delete_user_stat_items_2_async(stat_code: str, user_id: str, additional_key: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_user_stat_items_2_async(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -731,11 +1049,22 @@ async def delete_user_stat_items_2_async(stat_code: str, user_id: str, additiona
         additional_key=additional_key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetUserStatItems)
-def get_user_stat_items(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, stat_codes: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_stat_items(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -752,7 +1081,16 @@ def get_user_stat_items(user_id: str, limit: Optional[int] = None, offset: Optio
 
 
 @same_doc_as(GetUserStatItems)
-async def get_user_stat_items_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, stat_codes: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_stat_items_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -765,11 +1103,20 @@ async def get_user_stat_items_async(user_id: str, limit: Optional[int] = None, o
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(IncUserStatItemValue)
-def inc_user_stat_item_value(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def inc_user_stat_item_value(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -784,7 +1131,14 @@ def inc_user_stat_item_value(stat_code: str, user_id: str, body: Optional[StatIt
 
 
 @same_doc_as(IncUserStatItemValue)
-async def inc_user_stat_item_value_async(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def inc_user_stat_item_value_async(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -795,11 +1149,19 @@ async def inc_user_stat_item_value_async(stat_code: str, user_id: str, body: Opt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBulkCreateUserStatItems)
-def public_bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_bulk_create_user_stat_items(
+    user_id: str,
+    body: Optional[List[BulkStatItemCreate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -813,7 +1175,13 @@ def public_bulk_create_user_stat_items(user_id: str, body: Optional[List[BulkSta
 
 
 @same_doc_as(PublicBulkCreateUserStatItems)
-async def public_bulk_create_user_stat_items_async(user_id: str, body: Optional[List[BulkStatItemCreate]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_bulk_create_user_stat_items_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemCreate]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -823,11 +1191,18 @@ async def public_bulk_create_user_stat_items_async(user_id: str, body: Optional[
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBulkIncUserStatItem)
-def public_bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_bulk_inc_user_stat_item(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -840,7 +1215,12 @@ def public_bulk_inc_user_stat_item(body: Optional[List[BulkUserStatItemInc]] = N
 
 
 @same_doc_as(PublicBulkIncUserStatItem)
-async def public_bulk_inc_user_stat_item_async(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_bulk_inc_user_stat_item_async(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -849,11 +1229,19 @@ async def public_bulk_inc_user_stat_item_async(body: Optional[List[BulkUserStatI
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBulkIncUserStatItem1)
-def public_bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_bulk_inc_user_stat_item_1(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -867,7 +1255,13 @@ def public_bulk_inc_user_stat_item_1(user_id: str, body: Optional[List[BulkStatI
 
 
 @same_doc_as(PublicBulkIncUserStatItem1)
-async def public_bulk_inc_user_stat_item_1_async(user_id: str, body: Optional[List[BulkStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_bulk_inc_user_stat_item_1_async(
+    user_id: str,
+    body: Optional[List[BulkStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -877,11 +1271,18 @@ async def public_bulk_inc_user_stat_item_1_async(user_id: str, body: Optional[Li
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBulkIncUserStatItemValue)
-def public_bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_bulk_inc_user_stat_item_value(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -894,7 +1295,12 @@ def public_bulk_inc_user_stat_item_value(body: Optional[List[BulkUserStatItemInc
 
 
 @same_doc_as(PublicBulkIncUserStatItemValue)
-async def public_bulk_inc_user_stat_item_value_async(body: Optional[List[BulkUserStatItemInc]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_bulk_inc_user_stat_item_value_async(
+    body: Optional[List[BulkUserStatItemInc]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -903,11 +1309,19 @@ async def public_bulk_inc_user_stat_item_value_async(body: Optional[List[BulkUse
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicCreateUserStatItem)
-def public_create_user_stat_item(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_create_user_stat_item(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -921,7 +1335,13 @@ def public_create_user_stat_item(stat_code: str, user_id: str, namespace: Option
 
 
 @same_doc_as(PublicCreateUserStatItem)
-async def public_create_user_stat_item_async(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_create_user_stat_item_async(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -931,11 +1351,20 @@ async def public_create_user_stat_item_async(stat_code: str, user_id: str, names
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicIncUserStatItem)
-def public_inc_user_stat_item(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_inc_user_stat_item(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -950,7 +1379,14 @@ def public_inc_user_stat_item(stat_code: str, user_id: str, body: Optional[StatI
 
 
 @same_doc_as(PublicIncUserStatItem)
-async def public_inc_user_stat_item_async(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_inc_user_stat_item_async(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -961,11 +1397,20 @@ async def public_inc_user_stat_item_async(stat_code: str, user_id: str, body: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicIncUserStatItemValue)
-def public_inc_user_stat_item_value(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_inc_user_stat_item_value(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -980,7 +1425,14 @@ def public_inc_user_stat_item_value(stat_code: str, user_id: str, body: Optional
 
 
 @same_doc_as(PublicIncUserStatItemValue)
-async def public_inc_user_stat_item_value_async(stat_code: str, user_id: str, body: Optional[StatItemInc] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_inc_user_stat_item_value_async(
+    stat_code: str,
+    user_id: str,
+    body: Optional[StatItemInc] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -991,11 +1443,22 @@ async def public_inc_user_stat_item_value_async(stat_code: str, user_id: str, bo
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicQueryUserStatItems)
-def public_query_user_stat_items(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, stat_codes: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_query_user_stat_items(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1012,7 +1475,16 @@ def public_query_user_stat_items(user_id: str, limit: Optional[int] = None, offs
 
 
 @same_doc_as(PublicQueryUserStatItems)
-async def public_query_user_stat_items_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, stat_codes: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_query_user_stat_items_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1025,11 +1497,20 @@ async def public_query_user_stat_items_async(user_id: str, limit: Optional[int] 
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicQueryUserStatItems1)
-def public_query_user_stat_items_1(user_id: str, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_query_user_stat_items_1(
+    user_id: str,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1044,7 +1525,14 @@ def public_query_user_stat_items_1(user_id: str, stat_codes: Optional[List[str]]
 
 
 @same_doc_as(PublicQueryUserStatItems1)
-async def public_query_user_stat_items_1_async(user_id: str, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_query_user_stat_items_1_async(
+    user_id: str,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1055,11 +1543,21 @@ async def public_query_user_stat_items_1_async(user_id: str, stat_codes: Optiona
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicQueryUserStatItems2)
-def public_query_user_stat_items_2(user_id: str, additional_key: Optional[str] = None, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_query_user_stat_items_2(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1075,7 +1573,15 @@ def public_query_user_stat_items_2(user_id: str, additional_key: Optional[str] =
 
 
 @same_doc_as(PublicQueryUserStatItems2)
-async def public_query_user_stat_items_2_async(user_id: str, additional_key: Optional[str] = None, stat_codes: Optional[List[str]] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_query_user_stat_items_2_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1087,11 +1593,21 @@ async def public_query_user_stat_items_2_async(user_id: str, additional_key: Opt
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ResetUserStatItemValue)
-def reset_user_stat_item_value(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatResetInfo] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def reset_user_stat_item_value(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatResetInfo] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1107,7 +1623,15 @@ def reset_user_stat_item_value(stat_code: str, user_id: str, additional_key: Opt
 
 
 @same_doc_as(ResetUserStatItemValue)
-async def reset_user_stat_item_value_async(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatResetInfo] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def reset_user_stat_item_value_async(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatResetInfo] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1119,11 +1643,19 @@ async def reset_user_stat_item_value_async(stat_code: str, user_id: str, additio
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ResetUserStatItemValue1)
-def reset_user_stat_item_value_1(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def reset_user_stat_item_value_1(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1137,7 +1669,13 @@ def reset_user_stat_item_value_1(stat_code: str, user_id: str, namespace: Option
 
 
 @same_doc_as(ResetUserStatItemValue1)
-async def reset_user_stat_item_value_1_async(stat_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def reset_user_stat_item_value_1_async(
+    stat_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1147,11 +1685,21 @@ async def reset_user_stat_item_value_1_async(stat_code: str, user_id: str, names
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateUserStatItemValue)
-def update_user_stat_item_value(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_user_stat_item_value(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1167,7 +1715,15 @@ def update_user_stat_item_value(stat_code: str, user_id: str, additional_key: Op
 
 
 @same_doc_as(UpdateUserStatItemValue)
-async def update_user_stat_item_value_async(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_user_stat_item_value_async(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1179,11 +1735,21 @@ async def update_user_stat_item_value_async(stat_code: str, user_id: str, additi
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateUserStatItemValue1)
-def update_user_stat_item_value_1(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_user_stat_item_value_1(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1199,7 +1765,15 @@ def update_user_stat_item_value_1(stat_code: str, user_id: str, additional_key: 
 
 
 @same_doc_as(UpdateUserStatItemValue1)
-async def update_user_stat_item_value_1_async(stat_code: str, user_id: str, additional_key: Optional[str] = None, body: Optional[StatItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_user_stat_item_value_1_async(
+    stat_code: str,
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[StatItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1211,4 +1785,6 @@ async def update_user_stat_item_value_1_async(stat_code: str, user_id: str, addi
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

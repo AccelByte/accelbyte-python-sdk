@@ -45,30 +45,30 @@ class HttpClient(ABC):
 
     @abstractmethod
     def send_request(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         pass
 
     async def send_request_async(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if not self.is_async_compatible():
-            return None, HttpResponse.create_error(400, "HTTP client is not async compatible.")
+            return None, HttpResponse.create_error(
+                400, "HTTP client is not async compatible."
+            )
         raise NotImplementedError
 
     @abstractmethod
     def handle_response(
-            self,
-            raw_response: Any,
-            **kwargs
+        self, raw_response: Any, **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         pass
 
@@ -82,7 +82,6 @@ class HttpClient(ABC):
 
 
 class RequestsHttpClient(HttpClient):
-
     def __init__(self, allow_redirects: bool = True):
         self.allow_redirects = allow_redirects
         self.session = requests.Session()
@@ -103,26 +102,30 @@ class RequestsHttpClient(HttpClient):
         return prepared_request
 
     def send_request(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Union[None, HttpResponse]]:
         if "allow_redirects" not in kwargs:
             kwargs["allow_redirects"] = self.allow_redirects
-        return self._send_request_internal(request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs)
+        return self._send_request_internal(
+            request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs
+        )
 
     def _send_request_internal(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Optional[HttpResponse]]:
         # pylint: disable=not-callable
         retry_policy = retry_policy if retry_policy is not None else self.retry_policy
-        backoff_policy = backoff_policy if backoff_policy is not None else self.backoff_policy
+        backoff_policy = (
+            backoff_policy if backoff_policy is not None else self.backoff_policy
+        )
 
         attempts = 0
         elapsed = timedelta(0)
@@ -143,20 +146,28 @@ class RequestsHttpClient(HttpClient):
                 should_retry = False
                 break
             attempts += 1
-            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
-            should_retry = retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+            elapsed += (
+                raw_response.elapsed if raw_response is not None else timedelta(0)
+            )
+            should_retry = retry_policy(
+                request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs
+            )
             if not should_retry:
                 break
             if backoff_policy:
-                sleep_duration = backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                sleep_duration = backoff_policy(
+                    request,
+                    raw_response,
+                    retries=attempts - 1,
+                    elapsed=elapsed,
+                    **kwargs,
+                )
                 time.sleep(sleep_duration)
                 elapsed += timedelta(seconds=sleep_duration)
         return raw_response, error
 
     def handle_response(
-            self,
-            raw_response: requests.Response,
-            **kwargs
+        self, raw_response: requests.Response, **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         http_raw_response, http_response = process_response(
             status_code=raw_response.status_code,
@@ -188,7 +199,7 @@ class RequestsHttpClient(HttpClient):
             uri=prepared_request.url,
             method=prepared_request.method,
             headers={k: v for k, v in prepared_request.headers.items()},
-            data=prepared_request.body
+            data=prepared_request.body,
         )
 
     @staticmethod
@@ -197,7 +208,7 @@ class RequestsHttpClient(HttpClient):
             "url": prepared_request.url,
             "method": prepared_request.method,
             "headers": {k: v for k, v in prepared_request.headers.items()},
-            "data": prepared_request.body
+            "data": prepared_request.body,
         }
 
     @staticmethod
@@ -212,11 +223,10 @@ class RequestsHttpClient(HttpClient):
 
 
 class HttpxHttpClient(HttpClient):
-
     def __init__(
-            self,
-            max_connections: int = 100,
-            max_keepalive_connections: int = 20,
+        self,
+        max_connections: int = 100,
+        max_keepalive_connections: int = 20,
     ):
         limits = httpx.Limits(
             max_connections=max_connections,
@@ -267,24 +277,28 @@ class HttpxHttpClient(HttpClient):
         return httpx_request
 
     def send_request(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        return self._send_request_internal(request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs)
+        return self._send_request_internal(
+            request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs
+        )
 
     def _send_request_internal(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Optional[HttpResponse]]:
         # pylint: disable=not-callable
         retry_policy = retry_policy if retry_policy is not None else self.retry_policy
-        backoff_policy = backoff_policy if backoff_policy is not None else self.backoff_policy
+        backoff_policy = (
+            backoff_policy if backoff_policy is not None else self.backoff_policy
+        )
 
         attempts = 0
         elapsed = timedelta(0)
@@ -304,35 +318,49 @@ class HttpxHttpClient(HttpClient):
                 should_retry = False
                 break
             attempts += 1
-            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
-            should_retry = retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+            elapsed += (
+                raw_response.elapsed if raw_response is not None else timedelta(0)
+            )
+            should_retry = retry_policy(
+                request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs
+            )
             if not should_retry:
                 break
             if backoff_policy:
-                sleep_duration = backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                sleep_duration = backoff_policy(
+                    request,
+                    raw_response,
+                    retries=attempts - 1,
+                    elapsed=elapsed,
+                    **kwargs,
+                )
                 time.sleep(sleep_duration)
                 elapsed += timedelta(seconds=sleep_duration)
         return raw_response, error
 
     async def send_request_async(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Union[None, HttpResponse]]:
-        return await self._send_request_internal_async(request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs)
+        return await self._send_request_internal_async(
+            request, retry_policy=retry_policy, backoff_policy=backoff_policy, **kwargs
+        )
 
     async def _send_request_internal_async(
-            self,
-            request: Any,
-            retry_policy: Optional[HttpRetryPolicy] = None,
-            backoff_policy: Optional[HttpBackoffPolicy] = None,
-            **kwargs
+        self,
+        request: Any,
+        retry_policy: Optional[HttpRetryPolicy] = None,
+        backoff_policy: Optional[HttpBackoffPolicy] = None,
+        **kwargs,
     ) -> Tuple[Any, Optional[HttpResponse]]:
         # pylint: disable=not-callable
         retry_policy = retry_policy if retry_policy is not None else self.retry_policy
-        backoff_policy = backoff_policy if backoff_policy is not None else self.backoff_policy
+        backoff_policy = (
+            backoff_policy if backoff_policy is not None else self.backoff_policy
+        )
 
         attempts = 0
         elapsed = timedelta(0)
@@ -352,20 +380,28 @@ class HttpxHttpClient(HttpClient):
                 should_retry = False
                 break
             attempts += 1
-            elapsed += raw_response.elapsed if raw_response is not None else timedelta(0)
-            should_retry = retry_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed)
+            elapsed += (
+                raw_response.elapsed if raw_response is not None else timedelta(0)
+            )
+            should_retry = retry_policy(
+                request, raw_response, retries=attempts - 1, elapsed=elapsed
+            )
             if not should_retry:
                 break
             if backoff_policy:
-                sleep_duration = backoff_policy(request, raw_response, retries=attempts - 1, elapsed=elapsed, **kwargs)
+                sleep_duration = backoff_policy(
+                    request,
+                    raw_response,
+                    retries=attempts - 1,
+                    elapsed=elapsed,
+                    **kwargs,
+                )
                 await asyncio.sleep(sleep_duration)
                 elapsed += timedelta(seconds=sleep_duration)
         return raw_response, error
 
     def handle_response(
-            self,
-            raw_response: httpx.Response,
-            **kwargs
+        self, raw_response: httpx.Response, **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         http_raw_response, http_response = process_response(
             status_code=raw_response.status_code,
@@ -397,7 +433,7 @@ class HttpxHttpClient(HttpClient):
             uri=httpx_request.url,
             method=httpx_request.method,
             headers={k: v for k, v in httpx_request.headers.items()},
-            data=httpx_request.content
+            data=httpx_request.content,
         )
 
     @staticmethod
@@ -437,13 +473,13 @@ def format_response_log(response_dict: dict) -> str:
 
 
 def process_response(
-        status_code: int,
-        content_json: Callable[[], Any],
-        content_raw: Callable[[], Any],
-        content_text: Callable[[], Optional[str]],
-        headers: Dict[str, str],
-        is_redirect: Optional[bool] = None,
-        history: Optional[List[Any]] = None,
+    status_code: int,
+    content_json: Callable[[], Any],
+    content_raw: Callable[[], Any],
+    content_text: Callable[[], Optional[str]],
+    headers: Dict[str, str],
+    is_redirect: Optional[bool] = None,
+    history: Optional[List[Any]] = None,
 ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
     is_redirect = is_redirect if is_redirect is not None else False
     history = history if history is not None else []
@@ -465,7 +501,11 @@ def process_response(
                 continue
             if "Location" not in h_headers:
                 continue
-            temp_status_code = h.status_code if hasattr(h, "status_code") and isinstance(h.status_code, int) else status_code
+            temp_status_code = (
+                h.status_code
+                if hasattr(h, "status_code") and isinstance(h.status_code, int)
+                else status_code
+            )
             temp_content = h_headers["Location"]
             break
         if temp_content is None:
@@ -477,7 +517,9 @@ def process_response(
             try:
                 content = content_json()
                 if content is None:
-                    _LOGGER.warning("Expecting 'application/json' content received null.")
+                    _LOGGER.warning(
+                        "Expecting 'application/json' content received null."
+                    )
                     content = ""
             except ValueError:
                 content = ""

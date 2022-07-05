@@ -57,7 +57,9 @@ from ._save_user_roles import save_user_roles
 from ._add_user_role import add_user_role
 from ._delete_user_role import delete_user_role
 from ._upgrade_headless_account import upgrade_headless_account
-from ._upgrade_headless_account_with_verification_code import upgrade_headless_account_with_verification_code
+from ._upgrade_headless_account_with_verification_code import (
+    upgrade_headless_account_with_verification_code,
+)
 from ._user_verification import user_verification
 from ._send_verification_code import send_verification_code
 from ._authorization import authorization
@@ -87,7 +89,9 @@ from ._update_role_permissions import update_role_permissions
 from ._add_role_permission import add_role_permission
 from ._delete_role_permission import delete_role_permission
 from ._admin_get_age_restriction_status_v2 import admin_get_age_restriction_status_v2
-from ._admin_update_age_restriction_config_v2 import admin_update_age_restriction_config_v2
+from ._admin_update_age_restriction_config_v2 import (
+    admin_update_age_restriction_config_v2,
+)
 from ._get_list_country_age_restriction import get_list_country_age_restriction
 from ._update_country_age_restriction import update_country_age_restriction
 from ._admin_search_users_v2 import admin_search_users_v2
@@ -119,11 +123,19 @@ from ._admin_update_input_validations import admin_update_input_validations
 from ._admin_reset_input_validations import admin_reset_input_validations
 from ._list_admins_v3 import list_admins_v3
 from ._admin_get_age_restriction_status_v3 import admin_get_age_restriction_status_v3
-from ._admin_update_age_restriction_config_v3 import admin_update_age_restriction_config_v3
-from ._admin_get_list_country_age_restriction_v3 import admin_get_list_country_age_restriction_v3
-from ._admin_update_country_age_restriction_v3 import admin_update_country_age_restriction_v3
+from ._admin_update_age_restriction_config_v3 import (
+    admin_update_age_restriction_config_v3,
+)
+from ._admin_get_list_country_age_restriction_v3 import (
+    admin_get_list_country_age_restriction_v3,
+)
+from ._admin_update_country_age_restriction_v3 import (
+    admin_update_country_age_restriction_v3,
+)
 from ._admin_get_banned_users_v3 import admin_get_banned_users_v3
-from ._admin_get_bans_type_with_namespace_v3 import admin_get_bans_type_with_namespace_v3
+from ._admin_get_bans_type_with_namespace_v3 import (
+    admin_get_bans_type_with_namespace_v3,
+)
 from ._admin_get_clients_by_namespace_v3 import admin_get_clients_by_namespace_v3
 from ._admin_create_client_v3 import admin_create_client_v3
 from ._admin_get_clientsby_namespaceby_idv3 import admin_get_clientsby_namespaceby_idv3
@@ -132,18 +144,40 @@ from ._admin_update_client_v3 import admin_update_client_v3
 from ._admin_update_client_permission_v3 import admin_update_client_permission_v3
 from ._admin_add_client_permissions_v3 import admin_add_client_permissions_v3
 from ._admin_delete_client_permission_v3 import admin_delete_client_permission_v3
-from ._retrieve_all_third_party_login_platform_credential_v3 import retrieve_all_third_party_login_platform_credential_v3
-from ._retrieve_all_active_third_party_login_platform_credential_v3 import retrieve_all_active_third_party_login_platform_credential_v3
-from ._retrieve_all_sso_login_platform_credential_v3 import retrieve_all_sso_login_platform_credential_v3
-from ._retrieve_third_party_login_platform_credential_v3 import retrieve_third_party_login_platform_credential_v3
-from ._add_third_party_login_platform_credential_v3 import add_third_party_login_platform_credential_v3
-from ._delete_third_party_login_platform_credential_v3 import delete_third_party_login_platform_credential_v3
-from ._update_third_party_login_platform_credential_v3 import update_third_party_login_platform_credential_v3
-from ._update_third_party_login_platform_domain_v3 import update_third_party_login_platform_domain_v3
-from ._delete_third_party_login_platform_domain_v3 import delete_third_party_login_platform_domain_v3
-from ._retrieve_sso_login_platform_credential import retrieve_sso_login_platform_credential
+from ._retrieve_all_third_party_login_platform_credential_v3 import (
+    retrieve_all_third_party_login_platform_credential_v3,
+)
+from ._retrieve_all_active_third_party_login_platform_credential_v3 import (
+    retrieve_all_active_third_party_login_platform_credential_v3,
+)
+from ._retrieve_all_sso_login_platform_credential_v3 import (
+    retrieve_all_sso_login_platform_credential_v3,
+)
+from ._retrieve_third_party_login_platform_credential_v3 import (
+    retrieve_third_party_login_platform_credential_v3,
+)
+from ._add_third_party_login_platform_credential_v3 import (
+    add_third_party_login_platform_credential_v3,
+)
+from ._delete_third_party_login_platform_credential_v3 import (
+    delete_third_party_login_platform_credential_v3,
+)
+from ._update_third_party_login_platform_credential_v3 import (
+    update_third_party_login_platform_credential_v3,
+)
+from ._update_third_party_login_platform_domain_v3 import (
+    update_third_party_login_platform_domain_v3,
+)
+from ._delete_third_party_login_platform_domain_v3 import (
+    delete_third_party_login_platform_domain_v3,
+)
+from ._retrieve_sso_login_platform_credential import (
+    retrieve_sso_login_platform_credential,
+)
 from ._add_sso_login_platform_credential import add_sso_login_platform_credential
-from ._delete_sso_login_platform_credential_v3 import delete_sso_login_platform_credential_v3
+from ._delete_sso_login_platform_credential_v3 import (
+    delete_sso_login_platform_credential_v3,
+)
 from ._update_sso_platform_credential import update_sso_platform_credential
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
@@ -152,7 +186,9 @@ from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds
 from ._admin_invite_user_v3 import admin_invite_user_v3
 from ._admin_list_users_v3 import admin_list_users_v3
 from ._admin_search_user_v3 import admin_search_user_v3
-from ._admin_get_bulk_user_by_email_address_v3 import admin_get_bulk_user_by_email_address_v3
+from ._admin_get_bulk_user_by_email_address_v3 import (
+    admin_get_bulk_user_by_email_address_v3,
+)
 from ._admin_get_user_by_user_id_v3 import admin_get_user_by_user_id_v3
 from ._admin_update_user_v3 import admin_update_user_v3
 from ._admin_get_user_ban_v3 import admin_get_user_ban_v3
@@ -171,7 +207,9 @@ from ._admin_add_user_permissions_v3 import admin_add_user_permissions_v3
 from ._admin_delete_user_permission_bulk_v3 import admin_delete_user_permission_bulk_v3
 from ._admin_delete_user_permission_v3 import admin_delete_user_permission_v3
 from ._admin_get_user_platform_accounts_v3 import admin_get_user_platform_accounts_v3
-from ._admin_get_list_justice_platform_accounts import admin_get_list_justice_platform_accounts
+from ._admin_get_list_justice_platform_accounts import (
+    admin_get_list_justice_platform_accounts,
+)
 from ._admin_create_justice_user import admin_create_justice_user
 from ._admin_link_platform_account import admin_link_platform_account
 from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
@@ -181,7 +219,9 @@ from ._admin_save_user_role_v3 import admin_save_user_role_v3
 from ._admin_add_user_role_v3 import admin_add_user_role_v3
 from ._admin_delete_user_role_v3 import admin_delete_user_role_v3
 from ._admin_update_user_status_v3 import admin_update_user_status_v3
-from ._admin_verify_user_without_verification_code_v3 import admin_verify_user_without_verification_code_v3
+from ._admin_verify_user_without_verification_code_v3 import (
+    admin_verify_user_without_verification_code_v3,
+)
 from ._admin_get_roles_v3 import admin_get_roles_v3
 from ._admin_create_role_v3 import admin_create_role_v3
 from ._admin_get_role_v3 import admin_get_role_v3
@@ -203,17 +243,23 @@ from ._admin_delete_role_permission_v3 import admin_delete_role_permission_v3
 from ._admin_get_my_user_v3 import admin_get_my_user_v3
 from ._user_authentication_v3 import user_authentication_v3
 from ._authentication_with_platform_link_v3 import authentication_with_platform_link_v3
-from ._generate_token_by_new_headless_account_v3 import generate_token_by_new_headless_account_v3
+from ._generate_token_by_new_headless_account_v3 import (
+    generate_token_by_new_headless_account_v3,
+)
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
-from ._admin_retrieve_user_third_party_platform_token_v3 import admin_retrieve_user_third_party_platform_token_v3
+from ._admin_retrieve_user_third_party_platform_token_v3 import (
+    admin_retrieve_user_third_party_platform_token_v3,
+)
 from ._revoke_user_v3 import revoke_user_v3
 from ._authorize_v3 import authorize_v3
 from ._token_introspection_v3 import token_introspection_v3
 from ._get_jwksv3 import get_jwksv3
 from ._change2fa_method import change2fa_method
 from ._verify2fa_code import verify2fa_code
-from ._retrieve_user_third_party_platform_token_v3 import retrieve_user_third_party_platform_token_v3
+from ._retrieve_user_third_party_platform_token_v3 import (
+    retrieve_user_third_party_platform_token_v3,
+)
 from ._auth_code_request_v3 import auth_code_request_v3
 from ._platform_token_grant_v3 import platform_token_grant_v3
 from ._get_revocation_list_v3 import get_revocation_list_v3
@@ -221,9 +267,15 @@ from ._token_revocation_v3 import token_revocation_v3
 from ._token_grant_v3 import token_grant_v3
 from ._platform_authentication_v3 import platform_authentication_v3
 from ._public_get_input_validations import public_get_input_validations
-from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import retrieve_all_active_third_party_login_platform_credential_public_v3
-from ._public_list_user_id_by_platform_user_i_ds_v3 import public_list_user_id_by_platform_user_i_ds_v3
-from ._public_get_user_by_platform_user_idv3 import public_get_user_by_platform_user_idv3
+from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
+    retrieve_all_active_third_party_login_platform_credential_public_v3,
+)
+from ._public_list_user_id_by_platform_user_i_ds_v3 import (
+    public_list_user_id_by_platform_user_i_ds_v3,
+)
+from ._public_get_user_by_platform_user_idv3 import (
+    public_get_user_by_platform_user_idv3,
+)
 from ._public_get_async_status import public_get_async_status
 from ._public_search_user_v3 import public_search_user_v3
 from ._public_create_user_v3 import public_create_user_v3
@@ -250,12 +302,18 @@ from ._public_web_link_platform_establish import public_web_link_platform_establ
 from ._reset_password_v3 import reset_password_v3
 from ._public_get_user_by_user_id_v3 import public_get_user_by_user_id_v3
 from ._public_get_user_ban_history_v3 import public_get_user_ban_history_v3
-from ._public_list_user_all_platform_accounts_distinct_v3 import public_list_user_all_platform_accounts_distinct_v3
+from ._public_list_user_all_platform_accounts_distinct_v3 import (
+    public_list_user_all_platform_accounts_distinct_v3,
+)
 from ._public_get_user_login_histories_v3 import public_get_user_login_histories_v3
 from ._public_get_user_platform_accounts_v3 import public_get_user_platform_accounts_v3
 from ._public_link_platform_account import public_link_platform_account
-from ._public_force_link_platform_with_progression import public_force_link_platform_with_progression
-from ._public_validate_user_by_user_id_and_password_v3 import public_validate_user_by_user_id_and_password_v3
+from ._public_force_link_platform_with_progression import (
+    public_force_link_platform_with_progression,
+)
+from ._public_validate_user_by_user_id_and_password_v3 import (
+    public_validate_user_by_user_id_and_password_v3,
+)
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
 from ._public_get_my_user_v3 import public_get_my_user_v3
@@ -284,7 +342,9 @@ from ._admin_revoke_user_from_role_v4 import admin_revoke_user_from_role_v4
 from ._admin_update_my_user_v4 import admin_update_my_user_v4
 from ._admin_disable_my_authenticator_v4 import admin_disable_my_authenticator_v4
 from ._admin_enable_my_authenticator_v4 import admin_enable_my_authenticator_v4
-from ._admin_generate_my_authenticator_key_v4 import admin_generate_my_authenticator_key_v4
+from ._admin_generate_my_authenticator_key_v4 import (
+    admin_generate_my_authenticator_key_v4,
+)
 from ._admin_get_my_backup_codes_v4 import admin_get_my_backup_codes_v4
 from ._admin_generate_my_backup_codes_v4 import admin_generate_my_backup_codes_v4
 from ._admin_disable_my_backup_codes_v4 import admin_disable_my_backup_codes_v4
@@ -298,11 +358,15 @@ from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
 from ._public_update_user_v4 import public_update_user_v4
 from ._public_update_user_email_address_v4 import public_update_user_email_address_v4
-from ._public_upgrade_headless_account_with_verification_code_v4 import public_upgrade_headless_account_with_verification_code_v4
+from ._public_upgrade_headless_account_with_verification_code_v4 import (
+    public_upgrade_headless_account_with_verification_code_v4,
+)
 from ._public_upgrade_headless_account_v4 import public_upgrade_headless_account_v4
 from ._public_disable_my_authenticator_v4 import public_disable_my_authenticator_v4
 from ._public_enable_my_authenticator_v4 import public_enable_my_authenticator_v4
-from ._public_generate_my_authenticator_key_v4 import public_generate_my_authenticator_key_v4
+from ._public_generate_my_authenticator_key_v4 import (
+    public_generate_my_authenticator_key_v4,
+)
 from ._public_get_my_backup_codes_v4 import public_get_my_backup_codes_v4
 from ._public_generate_my_backup_codes_v4 import public_generate_my_backup_codes_v4
 from ._public_disable_my_backup_codes_v4 import public_disable_my_backup_codes_v4

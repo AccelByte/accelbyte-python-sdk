@@ -2,6 +2,7 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+
 class Singleton(type):
     _instances = {}
 

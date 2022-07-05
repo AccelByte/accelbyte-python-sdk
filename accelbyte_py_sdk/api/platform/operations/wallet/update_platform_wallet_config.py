@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -82,16 +82,18 @@ class UpdatePlatformWalletConfig(Operation):
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config"
+    _url: str = (
+        "/platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config"
+    )
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PlatformWalletConfigUpdate                                                               # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
-    platform: Union[str, PlatformEnum]                                                             # REQUIRED in [path]
+    body: PlatformWalletConfigUpdate  # OPTIONAL in [body]
+    namespace: str  # REQUIRED in [path]
+    platform: Union[str, PlatformEnum]  # REQUIRED in [path]
 
     # endregion fields
 
@@ -156,7 +158,9 @@ class UpdatePlatformWalletConfig(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: PlatformWalletConfigUpdate) -> UpdatePlatformWalletConfig:
+    def with_body(
+        self, value: PlatformWalletConfigUpdate
+    ) -> UpdatePlatformWalletConfig:
         self.body = value
         return self
 
@@ -164,7 +168,9 @@ class UpdatePlatformWalletConfig(Operation):
         self.namespace = value
         return self
 
-    def with_platform(self, value: Union[str, PlatformEnum]) -> UpdatePlatformWalletConfig:
+    def with_platform(
+        self, value: Union[str, PlatformEnum]
+    ) -> UpdatePlatformWalletConfig:
         self.platform = value
         return self
 
@@ -193,7 +199,9 @@ class UpdatePlatformWalletConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PlatformWalletConfigInfo], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, PlatformWalletConfigInfo], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - PlatformWalletConfigInfo (successful operation)
@@ -204,7 +212,9 @@ class UpdatePlatformWalletConfig(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -212,7 +222,9 @@ class UpdatePlatformWalletConfig(Operation):
         if code == 200:
             return PlatformWalletConfigInfo.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -233,10 +245,14 @@ class UpdatePlatformWalletConfig(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdatePlatformWalletConfig:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdatePlatformWalletConfig:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = PlatformWalletConfigUpdate.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = PlatformWalletConfigUpdate.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = PlatformWalletConfigUpdate()
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -268,7 +284,16 @@ class UpdatePlatformWalletConfig(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Steam", "Xbox"],# in path
+            "platform": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Other",
+                "Playstation",
+                "Steam",
+                "Xbox",
+            ],  # in path
         }
 
     # endregion static methods

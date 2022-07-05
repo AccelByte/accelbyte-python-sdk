@@ -4,13 +4,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 
 def validate_field(
-        obj: Any,
-        name: str,
-        alias_map: Optional[Dict[str, str]] = None,
-        required_map: Optional[Dict[str, bool]] = None,
-        enum_map: Optional[Dict[str, List[Any]]] = None,
-        pattern_map: Optional[Dict[str, re.Pattern]] = None,
-        **kwargs
+    obj: Any,
+    name: str,
+    alias_map: Optional[Dict[str, str]] = None,
+    required_map: Optional[Dict[str, bool]] = None,
+    enum_map: Optional[Dict[str, List[Any]]] = None,
+    pattern_map: Optional[Dict[str, re.Pattern]] = None,
+    **kwargs,
 ) -> Tuple[bool, Optional[str]]:
     if alias_map is not None:
         alias = alias_map.get(name)
@@ -35,11 +35,17 @@ def validate_field(
                 if is_value_list:
                     is_valid = all(x in enum_values for x in value)
                     if not is_valid:
-                        return False, f"Some values in '{value}' are not part of the enum set '{enum_values}'."
+                        return (
+                            False,
+                            f"Some values in '{value}' are not part of the enum set '{enum_values}'.",
+                        )
                 else:
                     is_valid = value in enum_values
                     if not is_valid:
-                        return False, f"Value '{value}' is not part of the enum set '{enum_values}'."
+                        return (
+                            False,
+                            f"Value '{value}' is not part of the enum set '{enum_values}'.",
+                        )
 
         if pattern_map is not None:
             pattern = pattern_map.get(name, None)
@@ -47,10 +53,16 @@ def validate_field(
                 if is_value_list:
                     is_valid = all(pattern.match(x) for x in value)
                     if not is_valid:
-                        return False, f"Some values in '{value}' do not match the pattern '{pattern.pattern}'."
+                        return (
+                            False,
+                            f"Some values in '{value}' do not match the pattern '{pattern.pattern}'.",
+                        )
                 else:
                     is_valid = pattern.match(value)
                     if not is_valid:
-                        return False, f"Value '{value}' do not match the pattern '{pattern.pattern}'."
+                        return (
+                            False,
+                            f"Value '{value}' do not match the pattern '{pattern.pattern}'.",
+                        )
 
     return True, None

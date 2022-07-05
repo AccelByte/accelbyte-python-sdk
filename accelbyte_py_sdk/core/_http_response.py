@@ -91,9 +91,9 @@ class HttpResponse(Model):
 
     @classmethod
     def create_unexpected_content_type_error(
-            cls,
-            actual: Optional[str] = None,
-            expected: Optional[Union[str, List[str]]] = None,
+        cls,
+        actual: Optional[str] = None,
+        expected: Optional[Union[str, List[str]]] = None,
     ):
         content = "Unexpected Content-Type Error"
         if actual is not None and expected is not None:

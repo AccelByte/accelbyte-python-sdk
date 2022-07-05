@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import admin_add_user_role_v4 as admin_add_user_role_v4_internal
+from accelbyte_py_sdk.api.iam import (
+    admin_add_user_role_v4 as admin_add_user_role_v4_internal,
+)
 from accelbyte_py_sdk.api.iam.models import ModelAddUserRoleV4Request
 from accelbyte_py_sdk.api.iam.models import ModelListUserRolesV4Response
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -44,21 +46,19 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_add_user_role_v4(
-        body: str,
-        user_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    body: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_add_user_role_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

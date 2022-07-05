@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -80,9 +80,9 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    slug: str                                                                                      # OPTIONAL in [query]
-    leaderboard_codes: str                                                                         # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    slug: str  # OPTIONAL in [query]
+    leaderboard_codes: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -148,7 +148,9 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
+    def with_namespace(
+        self, value: str
+    ) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
         self.namespace = value
         return self
 
@@ -156,7 +158,9 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
         self.slug = value
         return self
 
-    def with_leaderboard_codes(self, value: str) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
+    def with_leaderboard_codes(
+        self, value: str
+    ) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
         self.leaderboard_codes = value
         return self
 
@@ -185,7 +189,12 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ModelsArchiveLeaderboardSignedURLResponse]], Union[None, HttpResponse, ResponseErrorResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, List[ModelsArchiveLeaderboardSignedURLResponse]],
+        Union[None, HttpResponse, ResponseErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
@@ -206,13 +215,18 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelsArchiveLeaderboardSignedURLResponse.create_from_dict(i) for i in content], None
+            return [
+                ModelsArchiveLeaderboardSignedURLResponse.create_from_dict(i)
+                for i in content
+            ], None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
@@ -224,7 +238,9 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -245,7 +261,9 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminGetArchivedLeaderboardRankingDataV1Handler:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -37,7 +37,11 @@ from ..operations.user_info import SyncUserInfo
 
 
 @same_doc_as(GetUserInfoStatus)
-def get_user_info_status(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_info_status(
+    namespaces: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
@@ -45,15 +49,25 @@ def get_user_info_status(namespaces: Optional[str] = None, x_additional_headers:
 
 
 @same_doc_as(GetUserInfoStatus)
-async def get_user_info_status_async(namespaces: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_info_status_async(
+    namespaces: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = GetUserInfoStatus.create(
         namespaces=namespaces,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(InvalidateUserInfoCache)
-def invalidate_user_info_cache(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def invalidate_user_info_cache(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
@@ -61,15 +75,25 @@ def invalidate_user_info_cache(namespace: Optional[str] = None, x_additional_hea
 
 
 @same_doc_as(InvalidateUserInfoCache)
-async def invalidate_user_info_cache_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def invalidate_user_info_cache_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = InvalidateUserInfoCache.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SyncUserInfo)
-def sync_user_info(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_user_info(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,7 +105,11 @@ def sync_user_info(namespace: Optional[str] = None, x_additional_headers: Option
 
 
 @same_doc_as(SyncUserInfo)
-async def sync_user_info_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_user_info_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,4 +117,6 @@ async def sync_user_info_async(namespace: Optional[str] = None, x_additional_hea
     request = SyncUserInfo.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

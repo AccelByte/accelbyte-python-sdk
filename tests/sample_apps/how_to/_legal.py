@@ -15,7 +15,7 @@ class LegalTestCase(IntegrationTestCase):
         country="US",
         display_name="testPythonServerSDKUser",
         login_id="",
-        password="q!w@e#r$azsxdcfv"
+        password="q!w@e#r$azsxdcfv",
     )
 
     # noinspection PyMethodMayBeStatic
@@ -40,7 +40,10 @@ class LegalTestCase(IntegrationTestCase):
 
         if self.user_id is not None:
             _, error = delete_user(user_id=self.user_id)
-            self.log_warning(msg=f"Failed to tear down user. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down user. {str(error)}",
+                condition=error is not None,
+            )
             self.user_id = None
         super().tearDown()
 
@@ -65,7 +68,9 @@ class LegalTestCase(IntegrationTestCase):
         policy_id: str = accepted_agreement.policy_id
         self.assertIsNotNone(policy_id)
 
-        localized_policy_version: LocalizedPolicyVersionObject = accepted_agreement.localized_policy_version
+        localized_policy_version: LocalizedPolicyVersionObject = (
+            accepted_agreement.localized_policy_version
+        )
         self.assertIsNotNone(localized_policy_version)
 
         localized_policy_version_id: str = localized_policy_version.id_
@@ -75,7 +80,7 @@ class LegalTestCase(IntegrationTestCase):
             is_accepted=True,
             localized_policy_version_id=localized_policy_version_id,
             policy_id=policy_id,
-            policy_version_id=policy_id
+            policy_version_id=policy_id,
         )
 
         # act
@@ -99,8 +104,13 @@ class LegalTestCase(IntegrationTestCase):
         if len(result) == 0:
             self.skipTest(reason="No policy with 'Marketing Preference' type found.")
         accepted_agreement: RetrieveAcceptedAgreementResponse = next(
-            (agreement for agreement in result if isinstance(agreement, RetrieveAcceptedAgreementResponse) and agreement.policy_type == "Marketing Preference"),
-            None
+            (
+                agreement
+                for agreement in result
+                if isinstance(agreement, RetrieveAcceptedAgreementResponse)
+                and agreement.policy_type == "Marketing Preference"
+            ),
+            None,
         )
         if accepted_agreement is None:
             self.skipTest(reason="No policy with 'Marketing Preference' type found.")
@@ -108,7 +118,9 @@ class LegalTestCase(IntegrationTestCase):
         policy_id: str = accepted_agreement.policy_id
         self.assertIsNotNone(policy_id)
 
-        localized_policy_version: LocalizedPolicyVersionObject = accepted_agreement.localized_policy_version
+        localized_policy_version: LocalizedPolicyVersionObject = (
+            accepted_agreement.localized_policy_version
+        )
         self.assertIsNotNone(localized_policy_version)
 
         localized_policy_version_id: str = localized_policy_version.id_
@@ -118,17 +130,18 @@ class LegalTestCase(IntegrationTestCase):
             is_accepted=True,
             localized_policy_version_id=localized_policy_version_id,
             policy_id=policy_id,
-            policy_version_id=policy_id
+            policy_version_id=policy_id,
         )
 
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
-        self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user. {str(error)}", condition=error is not None
+        )
         self.user_id = user_id
 
         # act
         _, error = change_preference_consent(
-            user_id=self.user_id,
-            body=[accept_agreement_request]
+            user_id=self.user_id, body=[accept_agreement_request]
         )
 
         # assert

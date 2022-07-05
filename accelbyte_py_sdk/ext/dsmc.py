@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -217,7 +217,9 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
     instance.pod_name = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
-    instance.notification_payload = create_models_match_result_notification_payload_example()
+    instance.notification_payload = (
+        create_models_match_result_notification_payload_example()
+    )
     return instance
 
 

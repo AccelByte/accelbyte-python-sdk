@@ -4,7 +4,6 @@ from urllib.parse import quote
 
 
 class HeaderStr(UserDict):
-
     def __str__(self):
         sio = StringIO()
         first = True

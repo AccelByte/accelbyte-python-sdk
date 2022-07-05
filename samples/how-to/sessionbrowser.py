@@ -20,12 +20,12 @@ def example_create_session():
                 mode="<mode>",
                 num_bot=0,
                 password="",
-                settings={}
+                settings={},
             ),
             game_version="<game-version>",
             namespace="<namespace>",
             session_type="<session-type>",
-            username="<username>"
+            username="<username>",
         )
     )
     if error:
@@ -35,9 +35,7 @@ def example_create_session():
 def example_delete_session():
     from accelbyte_py_sdk.api.sessionbrowser import delete_session
 
-    result, error = delete_session(
-        session_id="<session-id>"
-    )
+    result, error = delete_session(session_id="<session-id>")
     if error:
         print(error)
 
@@ -45,9 +43,7 @@ def example_delete_session():
 def example_get_session():
     from accelbyte_py_sdk.api.sessionbrowser import get_session
 
-    result, error = get_session(
-        session_id="<session-id>"
-    )
+    result, error = get_session(session_id="<session-id>")
     if error:
         print(error)
 
@@ -58,10 +54,9 @@ def example_update_session():
 
     result, error = update_session(
         body=ModelsUpdateSessionRequest.create(
-            game_current_player=10,
-            game_max_player=20
+            game_current_player=10, game_max_player=20
         ),
-        session_id="<session-id>"
+        session_id="<session-id>",
     )
     if error:
         print(error)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -70,16 +70,18 @@ class GetChildCategories(Operation):
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/categories/{categoryPath}/children"
+    _url: str = (
+        "/platform/admin/namespaces/{namespace}/categories/{categoryPath}/children"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    category_path: str                                                                             # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    store_id: str                                                                                  # OPTIONAL in [query]
+    category_path: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    store_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -182,7 +184,9 @@ class GetChildCategories(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[FullCategoryInfo]], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, List[FullCategoryInfo]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - List[FullCategoryInfo] (successful operation)
@@ -193,7 +197,9 @@ class GetChildCategories(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -201,7 +207,9 @@ class GetChildCategories(Operation):
         if code == 200:
             return [FullCategoryInfo.create_from_dict(i) for i in content], None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -222,7 +230,9 @@ class GetChildCategories(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetChildCategories:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetChildCategories:
         instance = cls()
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])

@@ -7,10 +7,7 @@ class SocialTestCase(IntegrationTestCase):
 
     exist: bool = False
     stat_create: StatCreate = StatCreate.create(
-        default_value=0,
-        name="STAT",
-        set_by="SERVER",
-        stat_code="stat"
+        default_value=0, name="STAT", set_by="SERVER", stat_code="stat"
     )
 
     def tearDown(self) -> None:
@@ -18,7 +15,10 @@ class SocialTestCase(IntegrationTestCase):
 
         if self.exist:
             _, error = delete_stat(stat_code=self.stat_create.stat_code)
-            self.log_warning(msg=f"Failed to tear down stat. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down stat. {str(error)}",
+                condition=error is not None,
+            )
             self.exist = error is not None
         super().tearDown()
 
@@ -43,7 +43,9 @@ class SocialTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_stat(body=self.stat_create)
-        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up stat. {str(error)}", condition=error is not None
+        )
         self.exist = error is None
 
         # act
@@ -59,7 +61,9 @@ class SocialTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_stat(body=self.stat_create)
-        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up stat. {str(error)}", condition=error is not None
+        )
         self.exist = error is None
 
         # act
@@ -76,15 +80,15 @@ class SocialTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_stat(body=self.stat_create)
-        self.log_warning(msg=f"Failed to set up stat. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up stat. {str(error)}", condition=error is not None
+        )
         self.exist = error is None
 
         # act
         result, error = update_stat(
             stat_code=self.stat_create.stat_code,
-            body=StatUpdate.create(
-                name="KODE_STATUS"
-            )
+            body=StatUpdate.create(name="KODE_STATUS"),
         )
 
         # assert

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -177,13 +177,13 @@ class Authorization(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = "PLACEHOLDER"
 
-    login: str                                                                                     # OPTIONAL in [form_data]
-    password: str                                                                                  # OPTIONAL in [form_data]
-    scope: str                                                                                     # OPTIONAL in [form_data]
-    state: str                                                                                     # OPTIONAL in [form_data]
-    client_id: str                                                                                 # REQUIRED in [form_data]
-    redirect_uri: str                                                                              # REQUIRED in [form_data]
-    response_type: Union[str, ResponseTypeEnum]                                                    # REQUIRED in [form_data]
+    login: str  # OPTIONAL in [form_data]
+    password: str  # OPTIONAL in [form_data]
+    scope: str  # OPTIONAL in [form_data]
+    state: str  # OPTIONAL in [form_data]
+    client_id: str  # REQUIRED in [form_data]
+    redirect_uri: str  # REQUIRED in [form_data]
+    response_type: Union[str, ResponseTypeEnum]  # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -329,7 +329,9 @@ class Authorization(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         302: Found - (Found)
@@ -340,7 +342,9 @@ class Authorization(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -348,7 +352,9 @@ class Authorization(Operation):
         if code == 302:
             return HttpResponse.create_redirect(code, content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -380,7 +386,9 @@ class Authorization(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> Authorization:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Authorization:
         instance = cls()
         if "login" in dict_ and dict_["login"] is not None:
             instance.login = str(dict_["login"])
@@ -439,7 +447,7 @@ class Authorization(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "response_type": ["code", "token"],                                                    # in form_data
+            "response_type": ["code", "token"],  # in form_data
         }
 
     # endregion static methods

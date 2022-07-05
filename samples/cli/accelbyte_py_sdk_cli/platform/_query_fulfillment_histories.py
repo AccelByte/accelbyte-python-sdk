@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import query_fulfillment_histories as query_fulfillment_histories_internal
+from accelbyte_py_sdk.api.platform import (
+    query_fulfillment_histories as query_fulfillment_histories_internal,
+)
 from accelbyte_py_sdk.api.platform.models import FulfillmentHistoryPagingSlicedResult
 
 
@@ -44,23 +46,21 @@ from accelbyte_py_sdk.api.platform.models import FulfillmentHistoryPagingSlicedR
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_fulfillment_histories(
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        status: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(query_fulfillment_histories_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = query_fulfillment_histories_internal(

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -67,21 +67,21 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
 
     # region fields
 
-    channel: str                                                                                   # REQUIRED
-    client_version: str                                                                            # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    event_description: str                                                                         # REQUIRED
-    event_name: str                                                                                # REQUIRED
-    game_mode: str                                                                                 # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    joinable: bool                                                                                 # REQUIRED
-    match_id: str                                                                                  # REQUIRED
-    matching_allies: List[ModelsMatchingAlly]                                                      # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    region: str                                                                                    # REQUIRED
-    server_name: str                                                                               # REQUIRED
-    status: str                                                                                    # REQUIRED
-    party_id: str                                                                                  # OPTIONAL
+    channel: str  # REQUIRED
+    client_version: str  # REQUIRED
+    created_at: str  # REQUIRED
+    event_description: str  # REQUIRED
+    event_name: str  # REQUIRED
+    game_mode: str  # REQUIRED
+    id_: str  # REQUIRED
+    joinable: bool  # REQUIRED
+    match_id: str  # REQUIRED
+    matching_allies: List[ModelsMatchingAlly]  # REQUIRED
+    namespace: str  # REQUIRED
+    region: str  # REQUIRED
+    server_name: str  # REQUIRED
+    status: str  # REQUIRED
+    party_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -91,23 +91,33 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         self.channel = value
         return self
 
-    def with_client_version(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_client_version(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.client_version = value
         return self
 
-    def with_created_at(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_created_at(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.created_at = value
         return self
 
-    def with_event_description(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_event_description(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.event_description = value
         return self
 
-    def with_event_name(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_event_name(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.event_name = value
         return self
 
-    def with_game_mode(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_game_mode(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.game_mode = value
         return self
 
@@ -115,7 +125,9 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         self.id_ = value
         return self
 
-    def with_joinable(self, value: bool) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_joinable(
+        self, value: bool
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.joinable = value
         return self
 
@@ -123,11 +135,15 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         self.match_id = value
         return self
 
-    def with_matching_allies(self, value: List[ModelsMatchingAlly]) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_matching_allies(
+        self, value: List[ModelsMatchingAlly]
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.matching_allies = value
         return self
 
-    def with_namespace(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_namespace(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.namespace = value
         return self
 
@@ -135,7 +151,9 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         self.region = value
         return self
 
-    def with_server_name(self, value: str) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def with_server_name(
+        self, value: str
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         self.server_name = value
         return self
 
@@ -190,7 +208,9 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         elif include_empty:
             result["match_id"] = ""
         if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
+            result["matching_allies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
+            ]
         elif include_empty:
             result["matching_allies"] = []
         if hasattr(self, "namespace"):
@@ -258,7 +278,9 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ServiceGetSessionHistoryDetailedResponseItem:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ServiceGetSessionHistoryDetailedResponseItem:
         instance = cls()
         if not dict_:
             return instance
@@ -299,7 +321,10 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         elif include_empty:
             instance.match_id = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
+            instance.matching_allies = [
+                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["matching_allies"]
+            ]
         elif include_empty:
             instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -325,15 +350,33 @@ class ServiceGetSessionHistoryDetailedResponseItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ServiceGetSessionHistoryDetailedResponseItem]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ServiceGetSessionHistoryDetailedResponseItem]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ServiceGetSessionHistoryDetailedResponseItem]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ServiceGetSessionHistoryDetailedResponseItem]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ServiceGetSessionHistoryDetailedResponseItem, List[ServiceGetSessionHistoryDetailedResponseItem], Dict[Any, ServiceGetSessionHistoryDetailedResponseItem]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ServiceGetSessionHistoryDetailedResponseItem,
+        List[ServiceGetSessionHistoryDetailedResponseItem],
+        Dict[Any, ServiceGetSessionHistoryDetailedResponseItem],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

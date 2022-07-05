@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -346,7 +346,9 @@ def create_models_update_group_predefined_rule_request_v1_example() -> ModelsUpd
 
 def create_models_update_group_request_v1_example() -> ModelsUpdateGroupRequestV1:
     instance = ModelsUpdateGroupRequestV1()
-    instance.custom_attributes = create_models_update_group_request_v1_custom_attributes_example()
+    instance.custom_attributes = (
+        create_models_update_group_request_v1_custom_attributes_example()
+    )
     instance.group_description = randomize()
     instance.group_icon = randomize()
     instance.group_name = randomize()

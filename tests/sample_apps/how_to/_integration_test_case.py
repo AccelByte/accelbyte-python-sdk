@@ -34,7 +34,10 @@ def get_init_options() -> dict:
     dotenv_file = Path(DOTENV_FILE).resolve()
     if dotenv_file.exists():
         options["config"] = "DotEnvFileConfigRepository"
-        options["config_params"] = ([], {"dotenv_file": str(dotenv_file), "set_env_var": True})
+        options["config_params"] = (
+            [],
+            {"dotenv_file": str(dotenv_file), "set_env_var": True},
+        )
 
     return options
 
@@ -100,25 +103,37 @@ class SDKTestCaseUtils:
         # pylint: disable=no-self-use
         time.sleep(0.5)
 
-    def log(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         if condition is not None and condition is False:
             return
         level = level if level is not None else logging.INFO
         self.logger.log(level=level, msg=msg)
 
-    def log_critical(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log_critical(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         self.log(msg=msg, level=logging.CRITICAL, condition=condition)
 
-    def log_debug(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log_debug(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         self.log(msg=msg, level=logging.DEBUG, condition=condition)
 
-    def log_error(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log_error(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         self.log(msg=msg, level=logging.ERROR, condition=condition)
 
-    def log_info(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log_info(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         self.log(msg=msg, level=logging.INFO, condition=condition)
 
-    def log_warning(self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None):
+    def log_warning(
+        self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
+    ):
         self.log(msg=msg, level=logging.WARNING, condition=condition)
 
     # noinspection PyMethodMayBeStatic
@@ -221,7 +236,7 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):
-        assert self._asyncioTestLoop is None, 'asyncio test loop already initialized'
+        assert self._asyncioTestLoop is None, "asyncio test loop already initialized"
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.set_debug(False)  # overrode to disable this log

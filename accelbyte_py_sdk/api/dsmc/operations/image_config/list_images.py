@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -106,12 +106,12 @@ class ListImages(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    q: str                                                                                         # OPTIONAL in [query]
-    sort_by: Union[str, SortByEnum]                                                                # OPTIONAL in [query]
-    sort_direction: Union[str, SortDirectionEnum]                                                  # OPTIONAL in [query]
-    count: int                                                                                     # REQUIRED in [query]
-    offset: int                                                                                    # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    q: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
+    sort_direction: Union[str, SortDirectionEnum]  # OPTIONAL in [query]
+    count: int  # REQUIRED in [query]
+    offset: int  # REQUIRED in [query]
 
     # endregion fields
 
@@ -244,7 +244,11 @@ class ListImages(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsListImageResponse], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsListImageResponse], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
         200: OK - ModelsListImageResponse (configs listed)
@@ -261,7 +265,9 @@ class ListImages(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -275,7 +281,9 @@ class ListImages(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -357,8 +365,8 @@ class ListImages(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "sortBy": ["createdAt", "updatedAt", "version"],                                       # in query
-            "sortDirection": ["asc", "desc"],                                                      # in query
+            "sortBy": ["createdAt", "updatedAt", "version"],  # in query
+            "sortDirection": ["asc", "desc"],  # in query
         }
 
     # endregion static methods

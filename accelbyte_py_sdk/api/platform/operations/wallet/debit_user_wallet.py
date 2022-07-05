@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -83,17 +83,19 @@ class DebitUserWallet(Operation):
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/debit"
+    _url: str = (
+        "/platform/admin/namespaces/{namespace}/users/{userId}/wallets/{walletId}/debit"
+    )
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: DebitRequest                                                                             # OPTIONAL in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
-    wallet_id: str                                                                                 # REQUIRED in [path]
+    body: DebitRequest  # OPTIONAL in [body]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
+    wallet_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -205,7 +207,12 @@ class DebitUserWallet(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, WalletInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, WalletInfo],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - WalletInfo (successful operation)
@@ -224,7 +231,9 @@ class DebitUserWallet(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -240,7 +249,9 @@ class DebitUserWallet(Operation):
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -263,10 +274,14 @@ class DebitUserWallet(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DebitUserWallet:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> DebitUserWallet:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = DebitRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = DebitRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = DebitRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:

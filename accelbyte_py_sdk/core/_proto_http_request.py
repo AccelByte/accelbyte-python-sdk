@@ -23,15 +23,14 @@ from ._utils import is_json_mime_type
 
 @dataclass
 class ProtoHttpRequest:
-
     def __init__(
-            self,
-            url: str,
-            method: str,
-            headers: Optional[Header] = None,
-            data: Any = None,
-            files: Any = None,
-            json_: Any = None,
+        self,
+        url: str,
+        method: str,
+        headers: Optional[Header] = None,
+        data: Any = None,
+        files: Any = None,
+        json_: Any = None,
     ):
         self.url = url
         self.method = method
@@ -42,12 +41,11 @@ class ProtoHttpRequest:
 
 
 class SecuritiesResolver:
-
     def __init__(
-            self,
-            config_repo: ConfigRepository,
-            token_repo: TokenRepository,
-            replace_existing: bool = False,
+        self,
+        config_repo: ConfigRepository,
+        token_repo: TokenRepository,
+        replace_existing: bool = False,
     ):
         if config_repo is None:
             raise ValueError(config_repo)
@@ -76,7 +74,9 @@ class SecuritiesResolver:
             if not client_id:
                 return result
             client_secret = self.config_repo.get_client_secret() or ""
-            self.basic_auth = create_basic_authentication(username=client_id, password=client_secret)
+            self.basic_auth = create_basic_authentication(
+                username=client_id, password=client_secret
+            )
             proto.headers.add_authorization(self.basic_auth)
             return True
         return result
@@ -99,7 +99,9 @@ class SecuritiesResolver:
             return True
         return result
 
-    def _resolve_cookie_auth(self, proto: ProtoHttpRequest, cookie_auth_key: str = "access_token"):
+    def _resolve_cookie_auth(
+        self, proto: ProtoHttpRequest, cookie_auth_key: str = "access_token"
+    ):
         result = False
         if proto.headers.has_cookie_key(cookie_auth_key):
             if not self.replace_existing:
@@ -107,17 +109,23 @@ class SecuritiesResolver:
             else:
                 result = True
         if self.access_token is not None and self.access_token is not SENTINEL:
-            proto.headers.add_cookie(key=cookie_auth_key, value=self.access_token, replace_existing=True)
+            proto.headers.add_cookie(
+                key=cookie_auth_key, value=self.access_token, replace_existing=True
+            )
             return True
         if self.access_token is SENTINEL:
             self.access_token = self.token_repo.get_access_token()
             if self.access_token is None:
                 return result
-            proto.headers.add_cookie(key=cookie_auth_key, value=self.access_token, replace_existing=True)
+            proto.headers.add_cookie(
+                key=cookie_auth_key, value=self.access_token, replace_existing=True
+            )
             return True
         return result
 
-    def resolve(self, proto: ProtoHttpRequest, securities: List[List[str]] = None) -> bool:
+    def resolve(
+        self, proto: ProtoHttpRequest, securities: List[List[str]] = None
+    ) -> bool:
         if not securities:
             return True
         for security in securities:
@@ -157,11 +165,11 @@ def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, Union[IO, IOBa
 
 
 def create_headers(
-        header_params: Optional[Dict[str, Union[str, HeaderStr]]] = None,
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        authorization_override: Optional[str] = None,
-        **kwargs
+    header_params: Optional[Dict[str, Union[str, HeaderStr]]] = None,
+    additional_headers: Optional[Dict[str, str]] = None,
+    additional_headers_override: bool = True,
+    authorization_override: Optional[str] = None,
+    **kwargs
 ) -> Header:
     headers = Header()
 
@@ -185,13 +193,13 @@ def create_headers(
 
 
 def create_proto_from_operation(
-        operation: Operation,
-        config_repo: ConfigRepository,
-        token_repo: TokenRepository,
-        base_url: str = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        **kwargs
+    operation: Operation,
+    config_repo: ConfigRepository,
+    token_repo: TokenRepository,
+    base_url: str = "",
+    additional_headers: Optional[Dict[str, str]] = None,
+    additional_headers_override: bool = True,
+    **kwargs
 ) -> Tuple[Optional[ProtoHttpRequest], Optional[HttpResponse]]:
     base_url = base_url if base_url is not None else ""
 
@@ -215,7 +223,7 @@ def create_proto_from_operation(
         header_params=operation.get_header_params(),
         additional_headers=additional_headers,
         additional_headers_override=additional_headers_override,
-        authorization_override=getattr(operation, "authorization_override", None)
+        authorization_override=getattr(operation, "authorization_override", None),
     )
 
     data, files, json_ = extract_payload_from_operation(operation, headers=headers)
@@ -225,7 +233,10 @@ def create_proto_from_operation(
     if files and "Content-Type" in headers:
         headers.pop("Content-Type")
 
-    if not headers.has_amazon_xray_trace_id() and config_repo.auto_add_amazon_trace_id():
+    if (
+        not headers.has_amazon_xray_trace_id()
+        and config_repo.auto_add_amazon_trace_id()
+    ):
         headers.add_amazon_xray_trace_id()
 
     if not headers.has_user_agent() and config_repo.auto_add_user_agent():
@@ -242,7 +253,9 @@ def create_proto_from_operation(
         json_=json_,
     )
 
-    success = SecuritiesResolver(config_repo=config_repo, token_repo=token_repo).resolve(proto=proto, securities=operation.securities)
+    success = SecuritiesResolver(
+        config_repo=config_repo, token_repo=token_repo
+    ).resolve(proto=proto, securities=operation.securities)
     if not success:
         return None, HttpResponse.create_failed_to_resolve_security_error()
 
@@ -250,8 +263,7 @@ def create_proto_from_operation(
 
 
 def extract_payload_from_operation(
-        operation: Operation,
-        headers: Optional[Header] = None
+    operation: Operation, headers: Optional[Header] = None
 ) -> Tuple[Any, Any, Any]:
     content_type = headers.get("Content-Type") if headers else None
 
@@ -280,7 +292,9 @@ def extract_payload_from_operation(
     return data, files, json_
 
 
-def infer_content_type_from_params(params: Dict[str, Any], default: str = "application/octet-stream") -> str:
+def infer_content_type_from_params(
+    params: Dict[str, Any], default: str = "application/octet-stream"
+) -> str:
     if "body" in params:
         return "application/json"
     elif "form_data" in params or "formData" in params:
@@ -294,7 +308,11 @@ def infer_headers_from_operation(operation: Operation) -> Dict[str, str]:
     accept = operation.produces[0] if operation.produces else "application/json"
     inferred_headers["Accept"] = accept
 
-    content_type = operation.consumes[0] if operation.consumes else infer_content_type_from_params(operation.get_all_params())
+    content_type = (
+        operation.consumes[0]
+        if operation.consumes
+        else infer_content_type_from_params(operation.get_all_params())
+    )
     inferred_headers["Content-Type"] = content_type
 
     return inferred_headers

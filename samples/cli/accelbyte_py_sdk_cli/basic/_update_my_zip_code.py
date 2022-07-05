@@ -44,26 +44,26 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_my_zip_code(
-        user_zip_code_update: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_zip_code_update: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_my_zip_code_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if user_zip_code_update is not None:
         try:
             user_zip_code_update_json = json.loads(user_zip_code_update)
-            user_zip_code_update = UserZipCodeUpdate.create_from_dict(user_zip_code_update_json)
+            user_zip_code_update = UserZipCodeUpdate.create_from_dict(
+                user_zip_code_update_json
+            )
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'userZipCodeUpdate'. {str(e)}") from e
     result, error = update_my_zip_code_internal(

@@ -2,7 +2,6 @@ from ._integration_test_case import IntegrationTestCase
 
 
 class AuthServicesTestCase(IntegrationTestCase):
-
     def test_login_client(self):
         from accelbyte_py_sdk.core import get_client_auth
         from accelbyte_py_sdk.services.auth import login_client

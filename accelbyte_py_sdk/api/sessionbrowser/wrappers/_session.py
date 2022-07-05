@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -65,7 +65,13 @@ from ..operations.session import UpdateSettings
 
 
 @same_doc_as(AddPlayerToSession)
-def add_player_to_session(body: ModelsAddPlayerRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def add_player_to_session(
+    body: ModelsAddPlayerRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +85,13 @@ def add_player_to_session(body: ModelsAddPlayerRequest, session_id: str, namespa
 
 
 @same_doc_as(AddPlayerToSession)
-async def add_player_to_session_async(body: ModelsAddPlayerRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def add_player_to_session_async(
+    body: ModelsAddPlayerRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +101,18 @@ async def add_player_to_session_async(body: ModelsAddPlayerRequest, session_id: 
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetSession)
-def admin_get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,7 +125,12 @@ def admin_get_session(session_id: str, namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(AdminGetSession)
-async def admin_get_session_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,11 +139,18 @@ async def admin_get_session_async(session_id: str, namespace: Optional[str] = No
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateSession)
-def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_session(
+    body: ModelsCreateSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -132,7 +163,12 @@ def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = 
 
 
 @same_doc_as(CreateSession)
-async def create_session_async(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_session_async(
+    body: ModelsCreateSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -141,11 +177,18 @@ async def create_session_async(body: ModelsCreateSessionRequest, namespace: Opti
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteSession)
-def delete_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,7 +201,12 @@ def delete_session(session_id: str, namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(DeleteSession)
-async def delete_session_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,11 +215,18 @@ async def delete_session_async(session_id: str, namespace: Optional[str] = None,
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteSessionLocalDS)
-def delete_session_local_ds(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_session_local_ds(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,7 +239,12 @@ def delete_session_local_ds(session_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(DeleteSessionLocalDS)
-async def delete_session_local_ds_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_session_local_ds_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,11 +253,19 @@ async def delete_session_local_ds_async(session_id: str, namespace: Optional[str
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetActiveCustomGameSessions)
-def get_active_custom_game_sessions(server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_active_custom_game_sessions(
+    server_region: Optional[str] = None,
+    session_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -211,7 +279,13 @@ def get_active_custom_game_sessions(server_region: Optional[str] = None, session
 
 
 @same_doc_as(GetActiveCustomGameSessions)
-async def get_active_custom_game_sessions_async(server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_active_custom_game_sessions_async(
+    server_region: Optional[str] = None,
+    session_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,11 +295,20 @@ async def get_active_custom_game_sessions_async(server_region: Optional[str] = N
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
-def get_active_matchmaking_game_sessions(match_id: Optional[str] = None, server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_active_matchmaking_game_sessions(
+    match_id: Optional[str] = None,
+    server_region: Optional[str] = None,
+    session_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -240,7 +323,14 @@ def get_active_matchmaking_game_sessions(match_id: Optional[str] = None, server_
 
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
-async def get_active_matchmaking_game_sessions_async(match_id: Optional[str] = None, server_region: Optional[str] = None, session_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_active_matchmaking_game_sessions_async(
+    match_id: Optional[str] = None,
+    server_region: Optional[str] = None,
+    session_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -251,11 +341,18 @@ async def get_active_matchmaking_game_sessions_async(match_id: Optional[str] = N
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetRecentPlayer)
-def get_recent_player(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_recent_player(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -268,7 +365,12 @@ def get_recent_player(user_id: str, namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(GetRecentPlayer)
-async def get_recent_player_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_recent_player_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,11 +379,18 @@ async def get_recent_player_async(user_id: str, namespace: Optional[str] = None,
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSession)
-def get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,7 +403,12 @@ def get_session(session_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(GetSession)
-async def get_session_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -303,11 +417,18 @@ async def get_session_async(session_id: str, namespace: Optional[str] = None, x_
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSessionByUserIDs)
-def get_session_by_user_i_ds(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_session_by_user_i_ds(
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -320,7 +441,12 @@ def get_session_by_user_i_ds(user_ids: str, namespace: Optional[str] = None, x_a
 
 
 @same_doc_as(GetSessionByUserIDs)
-async def get_session_by_user_i_ds_async(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_session_by_user_i_ds_async(
+    user_ids: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -329,11 +455,18 @@ async def get_session_by_user_i_ds_async(user_ids: str, namespace: Optional[str]
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetTotalActiveSession)
-def get_total_active_session(session_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_total_active_session(
+    session_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,7 +479,12 @@ def get_total_active_session(session_type: Optional[str] = None, namespace: Opti
 
 
 @same_doc_as(GetTotalActiveSession)
-async def get_total_active_session_async(session_type: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_total_active_session_async(
+    session_type: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,11 +493,19 @@ async def get_total_active_session_async(session_type: Optional[str] = None, nam
         session_type=session_type,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(JoinSession)
-def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def join_session(
+    body: ModelsJoinGameSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -373,7 +519,13 @@ def join_session(body: ModelsJoinGameSessionRequest, session_id: str, namespace:
 
 
 @same_doc_as(JoinSession)
-async def join_session_async(body: ModelsJoinGameSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def join_session_async(
+    body: ModelsJoinGameSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -383,11 +535,27 @@ async def join_session_async(body: ModelsJoinGameSessionRequest, session_id: str
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QuerySession)
-def query_session(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[int] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[int] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_session(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -409,7 +577,21 @@ def query_session(session_type: str, game_mode: Optional[str] = None, game_versi
 
 
 @same_doc_as(QuerySession)
-async def query_session_async(session_type: str, game_mode: Optional[str] = None, game_version: Optional[str] = None, joinable: Optional[str] = None, limit: Optional[int] = None, match_exist: Optional[str] = None, match_id: Optional[str] = None, offset: Optional[int] = None, server_status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_session_async(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -427,11 +609,19 @@ async def query_session_async(session_type: str, game_mode: Optional[str] = None
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RemovePlayerFromSession)
-def remove_player_from_session(session_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def remove_player_from_session(
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -445,7 +635,13 @@ def remove_player_from_session(session_id: str, user_id: str, namespace: Optiona
 
 
 @same_doc_as(RemovePlayerFromSession)
-async def remove_player_from_session_async(session_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def remove_player_from_session_async(
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -455,11 +651,19 @@ async def remove_player_from_session_async(session_id: str, user_id: str, namesp
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateSession)
-def update_session(body: ModelsUpdateSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_session(
+    body: ModelsUpdateSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -473,7 +677,13 @@ def update_session(body: ModelsUpdateSessionRequest, session_id: str, namespace:
 
 
 @same_doc_as(UpdateSession)
-async def update_session_async(body: ModelsUpdateSessionRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_session_async(
+    body: ModelsUpdateSessionRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -483,11 +693,19 @@ async def update_session_async(body: ModelsUpdateSessionRequest, session_id: str
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateSettings)
-def update_settings(body: ModelsUpdateSettingsRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_settings(
+    body: ModelsUpdateSettingsRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -501,7 +719,13 @@ def update_settings(body: ModelsUpdateSettingsRequest, session_id: str, namespac
 
 
 @same_doc_as(UpdateSettings)
-async def update_settings_async(body: ModelsUpdateSettingsRequest, session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_settings_async(
+    body: ModelsUpdateSettingsRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -511,4 +735,6 @@ async def update_settings_async(body: ModelsUpdateSettingsRequest, session_id: s
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

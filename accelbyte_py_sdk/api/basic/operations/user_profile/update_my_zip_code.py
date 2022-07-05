@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -84,8 +84,8 @@ class UpdateMyZipCode(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    user_zip_code_update: UserZipCodeUpdate                                                        # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
+    user_zip_code_update: UserZipCodeUpdate  # REQUIRED in [body]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -130,7 +130,10 @@ class UpdateMyZipCode(Operation):
         }
 
     def get_body_params(self) -> Any:
-        if not hasattr(self, "user_zip_code_update") or self.user_zip_code_update is None:
+        if (
+            not hasattr(self, "user_zip_code_update")
+            or self.user_zip_code_update is None
+        ):
             return None
         return self.user_zip_code_update.to_dict()
 
@@ -163,7 +166,9 @@ class UpdateMyZipCode(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "user_zip_code_update") and self.user_zip_code_update:
-            result["userZipCodeUpdate"] = self.user_zip_code_update.to_dict(include_empty=include_empty)
+            result["userZipCodeUpdate"] = self.user_zip_code_update.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["userZipCodeUpdate"] = UserZipCodeUpdate()
         if hasattr(self, "namespace") and self.namespace:
@@ -177,7 +182,12 @@ class UpdateMyZipCode(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UserZipCode], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, UserZipCode],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - UserZipCode (Successful operation)
@@ -194,7 +204,9 @@ class UpdateMyZipCode(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -208,7 +220,9 @@ class UpdateMyZipCode(Operation):
         if code == 403:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -226,10 +240,14 @@ class UpdateMyZipCode(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateMyZipCode:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdateMyZipCode:
         instance = cls()
         if "userZipCodeUpdate" in dict_ and dict_["userZipCodeUpdate"] is not None:
-            instance.user_zip_code_update = UserZipCodeUpdate.create_from_dict(dict_["userZipCodeUpdate"], include_empty=include_empty)
+            instance.user_zip_code_update = UserZipCodeUpdate.create_from_dict(
+                dict_["userZipCodeUpdate"], include_empty=include_empty
+            )
         elif include_empty:
             instance.user_zip_code_update = UserZipCodeUpdate()
         if "namespace" in dict_ and dict_["namespace"] is not None:

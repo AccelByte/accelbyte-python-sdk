@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -87,16 +87,18 @@ class UpdateGroupConfigurationAdminV1(Operation):
 
     # region fields
 
-    _url: str = "/group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}"
+    _url: str = (
+        "/group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}"
+    )
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsUpdateGroupConfigurationRequestV1                                                  # REQUIRED in [body]
-    configuration_code: str                                                                        # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
+    body: ModelsUpdateGroupConfigurationRequestV1  # REQUIRED in [body]
+    configuration_code: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -161,7 +163,9 @@ class UpdateGroupConfigurationAdminV1(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsUpdateGroupConfigurationRequestV1) -> UpdateGroupConfigurationAdminV1:
+    def with_body(
+        self, value: ModelsUpdateGroupConfigurationRequestV1
+    ) -> UpdateGroupConfigurationAdminV1:
         self.body = value
         return self
 
@@ -198,7 +202,12 @@ class UpdateGroupConfigurationAdminV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsUpdateGroupConfigurationResponseV1], Union[None, HttpResponse, ResponseErrorResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsUpdateGroupConfigurationResponseV1],
+        Union[None, HttpResponse, ResponseErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsUpdateGroupConfigurationResponseV1 (OK)
@@ -219,13 +228,18 @@ class UpdateGroupConfigurationAdminV1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsUpdateGroupConfigurationResponseV1.create_from_dict(content), None
+            return (
+                ModelsUpdateGroupConfigurationResponseV1.create_from_dict(content),
+                None,
+            )
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
@@ -237,7 +251,9 @@ class UpdateGroupConfigurationAdminV1(Operation):
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -257,10 +273,14 @@ class UpdateGroupConfigurationAdminV1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateGroupConfigurationAdminV1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdateGroupConfigurationAdminV1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsUpdateGroupConfigurationRequestV1.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsUpdateGroupConfigurationRequestV1.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = ModelsUpdateGroupConfigurationRequestV1()
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:

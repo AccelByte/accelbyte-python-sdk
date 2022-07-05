@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -69,7 +69,7 @@ class SetDefaultPolicy1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    policy_id: str                                                                                 # REQUIRED in [path]
+    policy_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -147,7 +147,9 @@ class SetDefaultPolicy1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - (successful operation)
@@ -158,7 +160,9 @@ class SetDefaultPolicy1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -166,7 +170,9 @@ class SetDefaultPolicy1(Operation):
         if code == 200:
             return HttpResponse.create(code, "OK"), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -182,7 +188,9 @@ class SetDefaultPolicy1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SetDefaultPolicy1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> SetDefaultPolicy1:
         instance = cls()
         if "policyId" in dict_ and dict_["policyId"] is not None:
             instance.policy_id = str(dict_["policyId"])

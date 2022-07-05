@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -52,7 +52,13 @@ from ..models import UserTierGrantSourceEnum
 
 
 @same_doc_as(CreateTier)
-def create_tier(season_id: str, body: Optional[TierCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_tier(
+    season_id: str,
+    body: Optional[TierCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -66,7 +72,13 @@ def create_tier(season_id: str, body: Optional[TierCreate] = None, namespace: Op
 
 
 @same_doc_as(CreateTier)
-async def create_tier_async(season_id: str, body: Optional[TierCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_tier_async(
+    season_id: str,
+    body: Optional[TierCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,11 +88,19 @@ async def create_tier_async(season_id: str, body: Optional[TierCreate] = None, n
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteTier)
-def delete_tier(id_: str, season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_tier(
+    id_: str,
+    season_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,7 +114,13 @@ def delete_tier(id_: str, season_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(DeleteTier)
-async def delete_tier_async(id_: str, season_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_tier_async(
+    id_: str,
+    season_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,11 +130,19 @@ async def delete_tier_async(id_: str, season_id: str, namespace: Optional[str] =
         season_id=season_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GrantUserExp)
-def grant_user_exp(user_id: str, body: Optional[UserExpGrant] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def grant_user_exp(
+    user_id: str,
+    body: Optional[UserExpGrant] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -122,7 +156,13 @@ def grant_user_exp(user_id: str, body: Optional[UserExpGrant] = None, namespace:
 
 
 @same_doc_as(GrantUserExp)
-async def grant_user_exp_async(user_id: str, body: Optional[UserExpGrant] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def grant_user_exp_async(
+    user_id: str,
+    body: Optional[UserExpGrant] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -132,11 +172,19 @@ async def grant_user_exp_async(user_id: str, body: Optional[UserExpGrant] = None
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GrantUserTier)
-def grant_user_tier(user_id: str, body: Optional[UserTierGrant] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def grant_user_tier(
+    user_id: str,
+    body: Optional[UserTierGrant] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -150,7 +198,13 @@ def grant_user_tier(user_id: str, body: Optional[UserTierGrant] = None, namespac
 
 
 @same_doc_as(GrantUserTier)
-async def grant_user_tier_async(user_id: str, body: Optional[UserTierGrant] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def grant_user_tier_async(
+    user_id: str,
+    body: Optional[UserTierGrant] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -160,11 +214,20 @@ async def grant_user_tier_async(user_id: str, body: Optional[UserTierGrant] = No
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryTiers)
-def query_tiers(season_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_tiers(
+    season_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,7 +242,14 @@ def query_tiers(season_id: str, limit: Optional[int] = None, offset: Optional[in
 
 
 @same_doc_as(QueryTiers)
-async def query_tiers_async(season_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_tiers_async(
+    season_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -190,11 +260,20 @@ async def query_tiers_async(season_id: str, limit: Optional[int] = None, offset:
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ReorderTier)
-def reorder_tier(id_: str, season_id: str, body: Optional[TierReorder] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def reorder_tier(
+    id_: str,
+    season_id: str,
+    body: Optional[TierReorder] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -209,7 +288,14 @@ def reorder_tier(id_: str, season_id: str, body: Optional[TierReorder] = None, n
 
 
 @same_doc_as(ReorderTier)
-async def reorder_tier_async(id_: str, season_id: str, body: Optional[TierReorder] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def reorder_tier_async(
+    id_: str,
+    season_id: str,
+    body: Optional[TierReorder] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -220,11 +306,20 @@ async def reorder_tier_async(id_: str, season_id: str, body: Optional[TierReorde
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateTier)
-def update_tier(id_: str, season_id: str, body: Optional[TierInput] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_tier(
+    id_: str,
+    season_id: str,
+    body: Optional[TierInput] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,7 +334,14 @@ def update_tier(id_: str, season_id: str, body: Optional[TierInput] = None, name
 
 
 @same_doc_as(UpdateTier)
-async def update_tier_async(id_: str, season_id: str, body: Optional[TierInput] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_tier_async(
+    id_: str,
+    season_id: str,
+    body: Optional[TierInput] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,4 +352,6 @@ async def update_tier_async(id_: str, season_id: str, body: Optional[TierInput] 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

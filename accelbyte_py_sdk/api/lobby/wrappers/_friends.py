@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,7 +57,13 @@ from ..operations.friends import UserUnfriendRequest
 
 
 @same_doc_as(AddFriendsWithoutConfirmation)
-def add_friends_without_confirmation(body: ModelBulkAddFriendsRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def add_friends_without_confirmation(
+    body: ModelBulkAddFriendsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,7 +77,13 @@ def add_friends_without_confirmation(body: ModelBulkAddFriendsRequest, user_id: 
 
 
 @same_doc_as(AddFriendsWithoutConfirmation)
-async def add_friends_without_confirmation_async(body: ModelBulkAddFriendsRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def add_friends_without_confirmation_async(
+    body: ModelBulkAddFriendsRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,11 +93,20 @@ async def add_friends_without_confirmation_async(body: ModelBulkAddFriendsReques
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetListOfFriends)
-def get_list_of_friends(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_list_of_friends(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,7 +121,14 @@ def get_list_of_friends(user_id: str, limit: Optional[int] = None, offset: Optio
 
 
 @same_doc_as(GetListOfFriends)
-async def get_list_of_friends_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_list_of_friends_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,11 +139,19 @@ async def get_list_of_friends_async(user_id: str, limit: Optional[int] = None, o
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetUserFriendsUpdated)
-def get_user_friends_updated(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_friends_updated(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,7 +165,13 @@ def get_user_friends_updated(limit: Optional[int] = None, offset: Optional[int] 
 
 
 @same_doc_as(GetUserFriendsUpdated)
-async def get_user_friends_updated_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_friends_updated_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -139,11 +181,17 @@ async def get_user_friends_updated_async(limit: Optional[int] = None, offset: Op
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetUserIncomingFriends)
-def get_user_incoming_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_incoming_friends(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,7 +203,11 @@ def get_user_incoming_friends(namespace: Optional[str] = None, x_additional_head
 
 
 @same_doc_as(GetUserIncomingFriends)
-async def get_user_incoming_friends_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_incoming_friends_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,11 +215,17 @@ async def get_user_incoming_friends_async(namespace: Optional[str] = None, x_add
     request = GetUserIncomingFriends.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetUserOutgoingFriends)
-def get_user_outgoing_friends(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_outgoing_friends(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,7 +237,11 @@ def get_user_outgoing_friends(namespace: Optional[str] = None, x_additional_head
 
 
 @same_doc_as(GetUserOutgoingFriends)
-async def get_user_outgoing_friends_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_outgoing_friends_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -187,11 +249,18 @@ async def get_user_outgoing_friends_async(namespace: Optional[str] = None, x_add
     request = GetUserOutgoingFriends.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserAcceptFriendRequest)
-def user_accept_friend_request(body: ModelUserAcceptFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_accept_friend_request(
+    body: ModelUserAcceptFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -204,7 +273,12 @@ def user_accept_friend_request(body: ModelUserAcceptFriendRequest, namespace: Op
 
 
 @same_doc_as(UserAcceptFriendRequest)
-async def user_accept_friend_request_async(body: ModelUserAcceptFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_accept_friend_request_async(
+    body: ModelUserAcceptFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,11 +287,18 @@ async def user_accept_friend_request_async(body: ModelUserAcceptFriendRequest, n
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserCancelFriendRequest)
-def user_cancel_friend_request(body: ModelUserCancelFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_cancel_friend_request(
+    body: ModelUserCancelFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,7 +311,12 @@ def user_cancel_friend_request(body: ModelUserCancelFriendRequest, namespace: Op
 
 
 @same_doc_as(UserCancelFriendRequest)
-async def user_cancel_friend_request_async(body: ModelUserCancelFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_cancel_friend_request_async(
+    body: ModelUserCancelFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,11 +325,18 @@ async def user_cancel_friend_request_async(body: ModelUserCancelFriendRequest, n
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserGetFriendshipStatus)
-def user_get_friendship_status(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_get_friendship_status(
+    friend_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,7 +349,12 @@ def user_get_friendship_status(friend_id: str, namespace: Optional[str] = None, 
 
 
 @same_doc_as(UserGetFriendshipStatus)
-async def user_get_friendship_status_async(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_get_friendship_status_async(
+    friend_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,11 +363,18 @@ async def user_get_friendship_status_async(friend_id: str, namespace: Optional[s
         friend_id=friend_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserRejectFriendRequest)
-def user_reject_friend_request(body: ModelUserRejectFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_reject_friend_request(
+    body: ModelUserRejectFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -282,7 +387,12 @@ def user_reject_friend_request(body: ModelUserRejectFriendRequest, namespace: Op
 
 
 @same_doc_as(UserRejectFriendRequest)
-async def user_reject_friend_request_async(body: ModelUserRejectFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_reject_friend_request_async(
+    body: ModelUserRejectFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -291,11 +401,18 @@ async def user_reject_friend_request_async(body: ModelUserRejectFriendRequest, n
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserRequestFriend)
-def user_request_friend(body: ModelUserRequestFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_request_friend(
+    body: ModelUserRequestFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -308,7 +425,12 @@ def user_request_friend(body: ModelUserRequestFriendRequest, namespace: Optional
 
 
 @same_doc_as(UserRequestFriend)
-async def user_request_friend_async(body: ModelUserRequestFriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_request_friend_async(
+    body: ModelUserRequestFriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -317,11 +439,18 @@ async def user_request_friend_async(body: ModelUserRequestFriendRequest, namespa
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UserUnfriendRequest)
-def user_unfriend_request(body: ModelUserUnfriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def user_unfriend_request(
+    body: ModelUserUnfriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -334,7 +463,12 @@ def user_unfriend_request(body: ModelUserUnfriendRequest, namespace: Optional[st
 
 
 @same_doc_as(UserUnfriendRequest)
-async def user_unfriend_request_async(body: ModelUserUnfriendRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def user_unfriend_request_async(
+    body: ModelUserUnfriendRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -343,4 +477,6 @@ async def user_unfriend_request_async(body: ModelUserUnfriendRequest, namespace:
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -6,26 +6,33 @@ from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 class AchievementTestCase(IntegrationTestCase):
 
     exist: bool = False
-    models_achievement_request: ModelsAchievementRequest = ModelsAchievementRequest.create(
-        achievement_code="CODE",
-        default_language="EN",
-        description={"EN": "DESCRIPTION"},
-        goal_value=1,
-        hidden=False,
-        incremental=False,
-        locked_icons=[],
-        name={"EN": "NAME"},
-        stat_code="STAT_CODE",
-        tags=["TAG"],
-        unlocked_icons=[]
+    models_achievement_request: ModelsAchievementRequest = (
+        ModelsAchievementRequest.create(
+            achievement_code="CODE",
+            default_language="EN",
+            description={"EN": "DESCRIPTION"},
+            goal_value=1,
+            hidden=False,
+            incremental=False,
+            locked_icons=[],
+            name={"EN": "NAME"},
+            stat_code="STAT_CODE",
+            tags=["TAG"],
+            unlocked_icons=[],
+        )
     )
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.achievement import admin_delete_achievement
 
         if self.exist:
-            _, error = admin_delete_achievement(achievement_code=self.models_achievement_request.achievement_code)
-            self.log_warning(msg=f"Failed to tear down achievement. {str(error)}", condition=error is not None)
+            _, error = admin_delete_achievement(
+                achievement_code=self.models_achievement_request.achievement_code
+            )
+            self.log_warning(
+                msg=f"Failed to tear down achievement. {str(error)}",
+                condition=error is not None,
+            )
             self.exist = error is not None
         super().tearDown()
 
@@ -34,11 +41,15 @@ class AchievementTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.achievement import admin_delete_achievement
 
         # arrange
-        _, error = admin_delete_achievement(achievement_code=self.models_achievement_request.achievement_code)
+        _, error = admin_delete_achievement(
+            achievement_code=self.models_achievement_request.achievement_code
+        )
         self.exist = error is not None
 
         # act
-        result, error = admin_create_new_achievement(body=self.models_achievement_request)
+        result, error = admin_create_new_achievement(
+            body=self.models_achievement_request
+        )
         self.exist = error is None
 
         # assert
@@ -50,11 +61,16 @@ class AchievementTestCase(IntegrationTestCase):
 
         # arrange
         _, error = admin_create_new_achievement(body=self.models_achievement_request)
-        self.log_warning(msg=f"Failed to set up achievement. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up achievement. {str(error)}",
+            condition=error is not None,
+        )
         self.exist = error is None
 
         # act
-        result, error = admin_delete_achievement(achievement_code=self.models_achievement_request.achievement_code)
+        result, error = admin_delete_achievement(
+            achievement_code=self.models_achievement_request.achievement_code
+        )
         self.exist = error is not None
 
         # assert
@@ -66,11 +82,16 @@ class AchievementTestCase(IntegrationTestCase):
 
         # arrange
         _, error = admin_create_new_achievement(body=self.models_achievement_request)
-        self.log_warning(msg=f"Failed to set up achievement. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up achievement. {str(error)}",
+            condition=error is not None,
+        )
         self.exist = error is None
 
         # act
-        _, error = admin_get_achievement(achievement_code=self.models_achievement_request.achievement_code)
+        _, error = admin_get_achievement(
+            achievement_code=self.models_achievement_request.achievement_code
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -81,7 +102,10 @@ class AchievementTestCase(IntegrationTestCase):
 
         # arrange
         _, error = admin_create_new_achievement(body=self.models_achievement_request)
-        self.log_warning(msg=f"Failed to set up achievement. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up achievement. {str(error)}",
+            condition=error is not None,
+        )
         self.exist = error is None
 
         # act
@@ -93,11 +117,16 @@ class AchievementTestCase(IntegrationTestCase):
     def test_admin_update_achievement(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
         from accelbyte_py_sdk.api.achievement import admin_update_achievement
-        from accelbyte_py_sdk.api.achievement.models import ModelsAchievementUpdateRequest
+        from accelbyte_py_sdk.api.achievement.models import (
+            ModelsAchievementUpdateRequest,
+        )
 
         # arrange
         _, error = admin_create_new_achievement(body=self.models_achievement_request)
-        self.log_warning(msg=f"Failed to set up achievement. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up achievement. {str(error)}",
+            condition=error is not None,
+        )
         self.exist = error is None
 
         # act
@@ -113,8 +142,8 @@ class AchievementTestCase(IntegrationTestCase):
                 name={"ID": "NAMA"},
                 stat_code="KODE_STATUS",
                 tags=["MENANDAI"],
-                unlocked_icons=[]
-            )
+                unlocked_icons=[],
+            ),
         )
 
         # assert

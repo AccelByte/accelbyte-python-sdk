@@ -30,8 +30,12 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import retrieve_third_party_login_platform_credential_v3 as retrieve_third_party_login_platform_credential_v3_internal
-from accelbyte_py_sdk.api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
+from accelbyte_py_sdk.api.iam import (
+    retrieve_third_party_login_platform_credential_v3 as retrieve_third_party_login_platform_credential_v3_internal,
+)
+from accelbyte_py_sdk.api.iam.models import (
+    ModelThirdPartyLoginPlatformCredentialResponse,
+)
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -42,20 +46,18 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_third_party_login_platform_credential_v3(
-        platform_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_third_party_login_platform_credential_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = retrieve_third_party_login_platform_credential_v3_internal(
@@ -64,9 +66,13 @@ def retrieve_third_party_login_platform_credential_v3(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"RetrieveThirdPartyLoginPlatformCredentialV3 failed: {str(error)}")
+        raise Exception(
+            f"RetrieveThirdPartyLoginPlatformCredentialV3 failed: {str(error)}"
+        )
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-retrieve_third_party_login_platform_credential_v3.operation_id = "RetrieveThirdPartyLoginPlatformCredentialV3"
+retrieve_third_party_login_platform_credential_v3.operation_id = (
+    "RetrieveThirdPartyLoginPlatformCredentialV3"
+)
 retrieve_third_party_login_platform_credential_v3.is_deprecated = False

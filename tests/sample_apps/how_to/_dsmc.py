@@ -17,7 +17,9 @@ class DSMCTestCase(IntegrationTestCase):
     session_namespace: str = "armadademotestqa"
     session_party_id = "PARTY_ID"
     session_user_id = "USER_ID"
-    models_create_session_request: Optional[ModelsCreateSessionRequest] = ModelsCreateSessionRequest.create(
+    models_create_session_request: Optional[
+        ModelsCreateSessionRequest
+    ] = ModelsCreateSessionRequest.create(
         client_version="",
         configuration="",
         deployment=deployment,
@@ -28,7 +30,9 @@ class DSMCTestCase(IntegrationTestCase):
                     ModelsRequestMatchParty.create(
                         party_attributes={},
                         party_id=session_party_id,
-                        party_members=[ModelsRequestMatchMember.create(user_id=session_user_id)]
+                        party_members=[
+                            ModelsRequestMatchMember.create(user_id=session_user_id)
+                        ],
                     )
                 ]
             )
@@ -36,14 +40,16 @@ class DSMCTestCase(IntegrationTestCase):
         namespace=session_namespace,
         pod_name="",
         region="",
-        session_id=""
+        session_id="",
     )
 
     # noinspection PyMethodMayBeStatic
     def do_session_browser_create_session(self):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.sessionbrowser import create_session
-        from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest
+        from accelbyte_py_sdk.api.sessionbrowser.models import (
+            ModelsCreateSessionRequest,
+        )
         from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting
 
         current_player: int = 0
@@ -59,12 +65,12 @@ class DSMCTestCase(IntegrationTestCase):
                 mode="mode",
                 num_bot=0,
                 password="password",
-                settings={}
+                settings={},
             ),
             game_version="0.1.0",
             namespace=self.namespace,
             session_type="p2p",
-            username="username"
+            username="username",
         )
 
         result, error = create_session(body=models_create_session_request)
@@ -80,7 +86,9 @@ class DSMCTestCase(IntegrationTestCase):
         super().setUp()
         _, error, session_id = self.do_session_browser_create_session()
         if error is not None:
-            self.skipTest(reason=f"Failed to set up SessionBrowser session. {str(error)}")
+            self.skipTest(
+                reason=f"Failed to set up SessionBrowser session. {str(error)}"
+            )
         self.session_id = session_id
         self.models_create_session_request.session_id = self.session_id
 
@@ -90,7 +98,7 @@ class DSMCTestCase(IntegrationTestCase):
 
         self.set_http_client_policies(
             retry=MaxElapsedHttpRetryPolicy(60.0),
-            backoff=ExponentialHttpBackoffPolicy()
+            backoff=ExponentialHttpBackoffPolicy(),
         )
 
     def beforeTearDown(self) -> None:
@@ -98,13 +106,21 @@ class DSMCTestCase(IntegrationTestCase):
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.dsmc import delete_session as dsmc_delete_session
-        from accelbyte_py_sdk.api.sessionbrowser import delete_session as sb_delete_session
+        from accelbyte_py_sdk.api.sessionbrowser import (
+            delete_session as sb_delete_session,
+        )
 
         if self.session_id is not None:
             _, error = dsmc_delete_session(session_id=self.session_id)
-            self.log_warning(msg=f"Failed to tear down DSMC session. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down DSMC session. {str(error)}",
+                condition=error is not None,
+            )
             _, error = sb_delete_session(session_id=self.session_id)
-            self.log_warning(msg=f"Failed to tear down SessionBrowser session. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down SessionBrowser session. {str(error)}",
+                condition=error is not None,
+            )
             self.session_id = None
         super().tearDown()
 
@@ -117,9 +133,12 @@ class DSMCTestCase(IntegrationTestCase):
         # arrange
         _, error = create_session(
             body=self.models_create_session_request,
-            namespace=self.models_create_session_request.namespace
+            namespace=self.models_create_session_request.namespace,
         )
-        self.log_warning(msg=f"Failed to set up DSMC session. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up DSMC session. {str(error)}",
+            condition=error is not None,
+        )
 
         time.sleep(5)
 
@@ -132,9 +151,9 @@ class DSMCTestCase(IntegrationTestCase):
 
         # assert
         if (
-            error is not None and
-            isinstance(error, ResponseError) and
-            "server is not ready" in error.error_message.lower()
+            error is not None
+            and isinstance(error, ResponseError)
+            and "server is not ready" in error.error_message.lower()
         ):
             self.skipTest(reason=f"Server is not ready yet.")
         else:
@@ -151,7 +170,7 @@ class DSMCTestCase(IntegrationTestCase):
         # act
         _, error = create_session(
             body=self.models_create_session_request,
-            namespace=self.models_create_session_request.namespace
+            namespace=self.models_create_session_request.namespace,
         )
 
         # assert
@@ -164,9 +183,12 @@ class DSMCTestCase(IntegrationTestCase):
         # arrange
         _, error = create_session(
             body=self.models_create_session_request,
-            namespace=self.models_create_session_request.namespace
+            namespace=self.models_create_session_request.namespace,
         )
-        self.log_warning(msg=f"Failed to set up DSMC session. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up DSMC session. {str(error)}",
+            condition=error is not None,
+        )
 
         # act
         _, error = get_session(session_id=self.models_create_session_request.session_id)

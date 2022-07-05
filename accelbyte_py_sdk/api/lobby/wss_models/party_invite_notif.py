@@ -56,20 +56,30 @@ class PartyInviteNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldFormatInvalid
+                )
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "inviteeId".casefold()) or (name == "inviteeId"):
+            if (not is_strict and name.casefold() == "inviteeId".casefold()) or (
+                name == "inviteeId"
+            ):
                 instance.invitee_id = value
                 continue
-            if (not is_strict and name.casefold() == "inviterId".casefold()) or (name == "inviterId"):
+            if (not is_strict and name.casefold() == "inviterId".casefold()) or (
+                name == "inviterId"
+            ):
                 instance.inviter_id = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldTypeNotSupported
+                )
         return instance
 
     @staticmethod

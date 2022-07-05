@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -128,22 +128,22 @@ class PublicNormalizePaymentReturnUrl(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    payer_id: str                                                                                  # OPTIONAL in [query]
-    foreinginvoice: str                                                                            # OPTIONAL in [query]
-    invoice_id: str                                                                                # OPTIONAL in [query]
-    payload: str                                                                                   # OPTIONAL in [query]
-    redirect_result: str                                                                           # OPTIONAL in [query]
-    result_code: str                                                                               # OPTIONAL in [query]
-    session_id: str                                                                                # OPTIONAL in [query]
-    status: str                                                                                    # OPTIONAL in [query]
-    token: str                                                                                     # OPTIONAL in [query]
-    type_: str                                                                                     # OPTIONAL in [query]
-    user_id: str                                                                                   # OPTIONAL in [query]
-    order_no: str                                                                                  # REQUIRED in [query]
-    payment_order_no: str                                                                          # REQUIRED in [query]
-    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED in [query]
-    return_url: str                                                                                # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    payer_id: str  # OPTIONAL in [query]
+    foreinginvoice: str  # OPTIONAL in [query]
+    invoice_id: str  # OPTIONAL in [query]
+    payload: str  # OPTIONAL in [query]
+    redirect_result: str  # OPTIONAL in [query]
+    result_code: str  # OPTIONAL in [query]
+    session_id: str  # OPTIONAL in [query]
+    status: str  # OPTIONAL in [query]
+    token: str  # OPTIONAL in [query]
+    type_: str  # OPTIONAL in [query]
+    user_id: str  # OPTIONAL in [query]
+    order_no: str  # REQUIRED in [query]
+    payment_order_no: str  # REQUIRED in [query]
+    payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED in [query]
+    return_url: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -299,7 +299,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PublicNormalizePaymentReturnUrl:
+    def with_payment_provider(
+        self, value: Union[str, PaymentProviderEnum]
+    ) -> PublicNormalizePaymentReturnUrl:
         self.payment_provider = value
         return self
 
@@ -384,7 +386,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (no content)
@@ -397,7 +401,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -407,7 +413,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         if code == 307:
             return HttpResponse.create_redirect(code, content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -464,7 +472,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicNormalizePaymentReturnUrl:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PublicNormalizePaymentReturnUrl:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -577,7 +587,16 @@ class PublicNormalizePaymentReturnUrl(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],  # in query
         }
 
     # endregion static methods

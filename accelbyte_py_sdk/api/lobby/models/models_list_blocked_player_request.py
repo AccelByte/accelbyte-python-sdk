@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -37,13 +37,15 @@ class ModelsListBlockedPlayerRequest(Model):
 
     # region fields
 
-    list_blocked_user_id: List[str]                                                                # REQUIRED
+    list_blocked_user_id: List[str]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_list_blocked_user_id(self, value: List[str]) -> ModelsListBlockedPlayerRequest:
+    def with_list_blocked_user_id(
+        self, value: List[str]
+    ) -> ModelsListBlockedPlayerRequest:
         self.list_blocked_user_id = value
         return self
 
@@ -73,26 +75,48 @@ class ModelsListBlockedPlayerRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsListBlockedPlayerRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsListBlockedPlayerRequest:
         instance = cls()
         if not dict_:
             return instance
         if "listBlockedUserId" in dict_ and dict_["listBlockedUserId"] is not None:
-            instance.list_blocked_user_id = [str(i0) for i0 in dict_["listBlockedUserId"]]
+            instance.list_blocked_user_id = [
+                str(i0) for i0 in dict_["listBlockedUserId"]
+            ]
         elif include_empty:
             instance.list_blocked_user_id = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsListBlockedPlayerRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsListBlockedPlayerRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsListBlockedPlayerRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsListBlockedPlayerRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsListBlockedPlayerRequest, List[ModelsListBlockedPlayerRequest], Dict[Any, ModelsListBlockedPlayerRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsListBlockedPlayerRequest,
+        List[ModelsListBlockedPlayerRequest],
+        Dict[Any, ModelsListBlockedPlayerRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

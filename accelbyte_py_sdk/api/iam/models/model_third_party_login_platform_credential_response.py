@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -84,29 +84,29 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
     # region fields
 
-    acsurl: str                                                                                    # REQUIRED
-    app_id: str                                                                                    # REQUIRED
-    aws_cognito_region: str                                                                        # REQUIRED
-    aws_cognito_user_pool: str                                                                     # REQUIRED
-    client_id: str                                                                                 # REQUIRED
-    environment: str                                                                               # REQUIRED
-    federation_metadata_url: str                                                                   # REQUIRED
-    generic_oauth_flow: bool                                                                       # REQUIRED
-    is_active: bool                                                                                # REQUIRED
-    issuer: str                                                                                    # REQUIRED
-    jwks_endpoint: str                                                                             # REQUIRED
-    key_id: str                                                                                    # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    organization_id: str                                                                           # REQUIRED
-    platform_id: str                                                                               # REQUIRED
-    platform_name: str                                                                             # REQUIRED
-    redirect_uri: str                                                                              # REQUIRED
-    registered_domains: List[AccountcommonRegisteredDomain]                                        # REQUIRED
-    secret: str                                                                                    # REQUIRED
-    team_id: str                                                                                   # REQUIRED
-    token_authentication_type: str                                                                 # REQUIRED
-    token_claims_mapping: Dict[str, str]                                                           # REQUIRED
-    netflix_certificates: AccountcommonNetflixCertificates                                         # OPTIONAL
+    acsurl: str  # REQUIRED
+    app_id: str  # REQUIRED
+    aws_cognito_region: str  # REQUIRED
+    aws_cognito_user_pool: str  # REQUIRED
+    client_id: str  # REQUIRED
+    environment: str  # REQUIRED
+    federation_metadata_url: str  # REQUIRED
+    generic_oauth_flow: bool  # REQUIRED
+    is_active: bool  # REQUIRED
+    issuer: str  # REQUIRED
+    jwks_endpoint: str  # REQUIRED
+    key_id: str  # REQUIRED
+    namespace: str  # REQUIRED
+    organization_id: str  # REQUIRED
+    platform_id: str  # REQUIRED
+    platform_name: str  # REQUIRED
+    redirect_uri: str  # REQUIRED
+    registered_domains: List[AccountcommonRegisteredDomain]  # REQUIRED
+    secret: str  # REQUIRED
+    team_id: str  # REQUIRED
+    token_authentication_type: str  # REQUIRED
+    token_claims_mapping: Dict[str, str]  # REQUIRED
+    netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
 
     # endregion fields
 
@@ -120,31 +120,45 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.app_id = value
         return self
 
-    def with_aws_cognito_region(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_aws_cognito_region(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.aws_cognito_region = value
         return self
 
-    def with_aws_cognito_user_pool(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_aws_cognito_user_pool(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.aws_cognito_user_pool = value
         return self
 
-    def with_client_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_client_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.client_id = value
         return self
 
-    def with_environment(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_environment(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.environment = value
         return self
 
-    def with_federation_metadata_url(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_federation_metadata_url(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.federation_metadata_url = value
         return self
 
-    def with_generic_oauth_flow(self, value: bool) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_generic_oauth_flow(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.generic_oauth_flow = value
         return self
 
-    def with_is_active(self, value: bool) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_is_active(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.is_active = value
         return self
 
@@ -152,7 +166,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.issuer = value
         return self
 
-    def with_jwks_endpoint(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_jwks_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.jwks_endpoint = value
         return self
 
@@ -160,27 +176,39 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.key_id = value
         return self
 
-    def with_namespace(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_namespace(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.namespace = value
         return self
 
-    def with_organization_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_organization_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.organization_id = value
         return self
 
-    def with_platform_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_platform_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.platform_id = value
         return self
 
-    def with_platform_name(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_platform_name(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.platform_name = value
         return self
 
-    def with_redirect_uri(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_redirect_uri(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.redirect_uri = value
         return self
 
-    def with_registered_domains(self, value: List[AccountcommonRegisteredDomain]) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_registered_domains(
+        self, value: List[AccountcommonRegisteredDomain]
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.registered_domains = value
         return self
 
@@ -188,19 +216,27 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.secret = value
         return self
 
-    def with_team_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_team_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.team_id = value
         return self
 
-    def with_token_authentication_type(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_token_authentication_type(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.token_authentication_type = value
         return self
 
-    def with_token_claims_mapping(self, value: Dict[str, str]) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_token_claims_mapping(
+        self, value: Dict[str, str]
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.token_claims_mapping = value
         return self
 
-    def with_netflix_certificates(self, value: AccountcommonNetflixCertificates) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def with_netflix_certificates(
+        self, value: AccountcommonNetflixCertificates
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.netflix_certificates = value
         return self
 
@@ -279,7 +315,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         elif include_empty:
             result["RedirectUri"] = ""
         if hasattr(self, "registered_domains"):
-            result["registeredDomains"] = [i0.to_dict(include_empty=include_empty) for i0 in self.registered_domains]
+            result["registeredDomains"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.registered_domains
+            ]
         elif include_empty:
             result["registeredDomains"] = []
         if hasattr(self, "secret"):
@@ -295,11 +334,15 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         elif include_empty:
             result["TokenAuthenticationType"] = ""
         if hasattr(self, "token_claims_mapping"):
-            result["TokenClaimsMapping"] = {str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()}
+            result["TokenClaimsMapping"] = {
+                str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()
+            }
         elif include_empty:
             result["TokenClaimsMapping"] = {}
         if hasattr(self, "netflix_certificates"):
-            result["NetflixCertificates"] = self.netflix_certificates.to_dict(include_empty=include_empty)
+            result["NetflixCertificates"] = self.netflix_certificates.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["NetflixCertificates"] = AccountcommonNetflixCertificates()
         return result
@@ -363,7 +406,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelThirdPartyLoginPlatformCredentialResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -391,7 +436,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.environment = str(dict_["Environment"])
         elif include_empty:
             instance.environment = ""
-        if "FederationMetadataURL" in dict_ and dict_["FederationMetadataURL"] is not None:
+        if (
+            "FederationMetadataURL" in dict_
+            and dict_["FederationMetadataURL"] is not None
+        ):
             instance.federation_metadata_url = str(dict_["FederationMetadataURL"])
         elif include_empty:
             instance.federation_metadata_url = ""
@@ -436,7 +484,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         elif include_empty:
             instance.redirect_uri = ""
         if "registeredDomains" in dict_ and dict_["registeredDomains"] is not None:
-            instance.registered_domains = [AccountcommonRegisteredDomain.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["registeredDomains"]]
+            instance.registered_domains = [
+                AccountcommonRegisteredDomain.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["registeredDomains"]
+            ]
         elif include_empty:
             instance.registered_domains = []
         if "Secret" in dict_ and dict_["Secret"] is not None:
@@ -447,30 +500,57 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.team_id = str(dict_["TeamID"])
         elif include_empty:
             instance.team_id = ""
-        if "TokenAuthenticationType" in dict_ and dict_["TokenAuthenticationType"] is not None:
+        if (
+            "TokenAuthenticationType" in dict_
+            and dict_["TokenAuthenticationType"] is not None
+        ):
             instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
         elif include_empty:
             instance.token_authentication_type = ""
         if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
-            instance.token_claims_mapping = {str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()}
+            instance.token_claims_mapping = {
+                str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()
+            }
         elif include_empty:
             instance.token_claims_mapping = {}
         if "NetflixCertificates" in dict_ and dict_["NetflixCertificates"] is not None:
-            instance.netflix_certificates = AccountcommonNetflixCertificates.create_from_dict(dict_["NetflixCertificates"], include_empty=include_empty)
+            instance.netflix_certificates = (
+                AccountcommonNetflixCertificates.create_from_dict(
+                    dict_["NetflixCertificates"], include_empty=include_empty
+                )
+            )
         elif include_empty:
             instance.netflix_certificates = AccountcommonNetflixCertificates()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelThirdPartyLoginPlatformCredentialResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelThirdPartyLoginPlatformCredentialResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelThirdPartyLoginPlatformCredentialResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelThirdPartyLoginPlatformCredentialResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelThirdPartyLoginPlatformCredentialResponse, List[ModelThirdPartyLoginPlatformCredentialResponse], Dict[Any, ModelThirdPartyLoginPlatformCredentialResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelThirdPartyLoginPlatformCredentialResponse,
+        List[ModelThirdPartyLoginPlatformCredentialResponse],
+        Dict[Any, ModelThirdPartyLoginPlatformCredentialResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

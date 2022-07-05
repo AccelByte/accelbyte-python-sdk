@@ -47,11 +47,11 @@ class PartyDataUpdateNotif(WebSocketMessage):
         if hasattr(self, "custom_attributes") and self.custom_attributes:
             wsm.append(f"customAttributes: {json.dumps(self.custom_attributes)}")
         if hasattr(self, "invitees") and self.invitees:
-            wsm.append(f"invitees: [" + ','.join([str(i) for i in self.invitees]) + "]")
+            wsm.append(f"invitees: [" + ",".join([str(i) for i in self.invitees]) + "]")
         if hasattr(self, "leader") and self.leader:
             wsm.append(f"leader: {self.leader}")
         if hasattr(self, "members") and self.members:
-            wsm.append(f"members: [" + ','.join([str(i) for i in self.members]) + "]")
+            wsm.append(f"members: [" + ",".join([str(i) for i in self.members]) + "]")
         if hasattr(self, "namespace") and self.namespace:
             wsm.append(f"namespace: {self.namespace}")
         if hasattr(self, "party_id") and self.party_id:
@@ -71,35 +71,59 @@ class PartyDataUpdateNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldFormatInvalid
+                )
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "customAttributes".casefold()) or (name == "customAttributes"):
+            if (not is_strict and name.casefold() == "customAttributes".casefold()) or (
+                name == "customAttributes"
+            ):
                 instance.custom_attributes = json.loads(value)
                 continue
-            if (not is_strict and name.casefold() == "invitees".casefold()) or (name == "invitees"):
-                instance.invitees = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (not is_strict and name.casefold() == "invitees".casefold()) or (
+                name == "invitees"
+            ):
+                instance.invitees = [
+                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
+                ]
                 continue
-            if (not is_strict and name.casefold() == "leader".casefold()) or (name == "leader"):
+            if (not is_strict and name.casefold() == "leader".casefold()) or (
+                name == "leader"
+            ):
                 instance.leader = value
                 continue
-            if (not is_strict and name.casefold() == "members".casefold()) or (name == "members"):
-                instance.members = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (not is_strict and name.casefold() == "members".casefold()) or (
+                name == "members"
+            ):
+                instance.members = [
+                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
+                ]
                 continue
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (
+                name == "namespace"
+            ):
                 instance.namespace = value
                 continue
-            if (not is_strict and name.casefold() == "partyId".casefold()) or (name == "partyId"):
+            if (not is_strict and name.casefold() == "partyId".casefold()) or (
+                name == "partyId"
+            ):
                 instance.party_id = value
                 continue
-            if (not is_strict and name.casefold() == "updatedAt".casefold()) or (name == "updatedAt"):
+            if (not is_strict and name.casefold() == "updatedAt".casefold()) or (
+                name == "updatedAt"
+            ):
                 instance.updated_at = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldTypeNotSupported
+                )
         return instance
 
     @staticmethod

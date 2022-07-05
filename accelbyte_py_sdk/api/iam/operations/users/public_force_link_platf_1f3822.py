@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -81,9 +81,9 @@ class PublicForceLinkPlatformWithProgression(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelLinkPlatformAccountWithProgressionRequest                                           # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: ModelLinkPlatformAccountWithProgressionRequest  # REQUIRED in [body]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -148,7 +148,9 @@ class PublicForceLinkPlatformWithProgression(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelLinkPlatformAccountWithProgressionRequest) -> PublicForceLinkPlatformWithProgression:
+    def with_body(
+        self, value: ModelLinkPlatformAccountWithProgressionRequest
+    ) -> PublicForceLinkPlatformWithProgression:
         self.body = value
         return self
 
@@ -185,7 +187,9 @@ class PublicForceLinkPlatformWithProgression(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -204,7 +208,9 @@ class PublicForceLinkPlatformWithProgression(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -220,7 +226,9 @@ class PublicForceLinkPlatformWithProgression(Operation):
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -240,10 +248,16 @@ class PublicForceLinkPlatformWithProgression(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicForceLinkPlatformWithProgression:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PublicForceLinkPlatformWithProgression:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelLinkPlatformAccountWithProgressionRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = (
+                ModelLinkPlatformAccountWithProgressionRequest.create_from_dict(
+                    dict_["body"], include_empty=include_empty
+                )
+            )
         elif include_empty:
             instance.body = ModelLinkPlatformAccountWithProgressionRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:

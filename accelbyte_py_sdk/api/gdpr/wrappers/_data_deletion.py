@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -45,7 +45,12 @@ from ..operations.data_deletion import PublicSubmitUserAccountDeletionRequest
 
 
 @same_doc_as(AdminCancelUserAccountDeletionRequest)
-def admin_cancel_user_account_deletion_request(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_cancel_user_account_deletion_request(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -58,7 +63,12 @@ def admin_cancel_user_account_deletion_request(user_id: str, namespace: Optional
 
 
 @same_doc_as(AdminCancelUserAccountDeletionRequest)
-async def admin_cancel_user_account_deletion_request_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_cancel_user_account_deletion_request_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,11 +77,22 @@ async def admin_cancel_user_account_deletion_request_async(user_id: str, namespa
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetListDeletionDataRequest)
-def admin_get_list_deletion_data_request(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, request_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_list_deletion_data_request(
+    after: Optional[str] = None,
+    before: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    request_date: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,7 +109,16 @@ def admin_get_list_deletion_data_request(after: Optional[str] = None, before: Op
 
 
 @same_doc_as(AdminGetListDeletionDataRequest)
-async def admin_get_list_deletion_data_request_async(after: Optional[str] = None, before: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, request_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_list_deletion_data_request_async(
+    after: Optional[str] = None,
+    before: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    request_date: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,11 +131,18 @@ async def admin_get_list_deletion_data_request_async(after: Optional[str] = None
         request_date=request_date,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetUserAccountDeletionRequest)
-def admin_get_user_account_deletion_request(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_user_account_deletion_request(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,7 +155,12 @@ def admin_get_user_account_deletion_request(user_id: str, namespace: Optional[st
 
 
 @same_doc_as(AdminGetUserAccountDeletionRequest)
-async def admin_get_user_account_deletion_request_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_user_account_deletion_request_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +169,18 @@ async def admin_get_user_account_deletion_request_async(user_id: str, namespace:
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminSubmitUserAccountDeletionRequest)
-def admin_submit_user_account_deletion_request(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_submit_user_account_deletion_request(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,7 +193,12 @@ def admin_submit_user_account_deletion_request(user_id: str, namespace: Optional
 
 
 @same_doc_as(AdminSubmitUserAccountDeletionRequest)
-async def admin_submit_user_account_deletion_request_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_submit_user_account_deletion_request_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,11 +207,18 @@ async def admin_submit_user_account_deletion_request_async(user_id: str, namespa
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicCancelUserAccountDeletionRequest)
-def public_cancel_user_account_deletion_request(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_cancel_user_account_deletion_request(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,7 +231,12 @@ def public_cancel_user_account_deletion_request(user_id: str, namespace: Optiona
 
 
 @same_doc_as(PublicCancelUserAccountDeletionRequest)
-async def public_cancel_user_account_deletion_request_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_cancel_user_account_deletion_request_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,11 +245,18 @@ async def public_cancel_user_account_deletion_request_async(user_id: str, namesp
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetUserAccountDeletionStatus)
-def public_get_user_account_deletion_status(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_user_account_deletion_status(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -196,7 +269,12 @@ def public_get_user_account_deletion_status(user_id: str, namespace: Optional[st
 
 
 @same_doc_as(PublicGetUserAccountDeletionStatus)
-async def public_get_user_account_deletion_status_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_user_account_deletion_status_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,11 +283,19 @@ async def public_get_user_account_deletion_status_async(user_id: str, namespace:
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicSubmitUserAccountDeletionRequest)
-def public_submit_user_account_deletion_request(password: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_submit_user_account_deletion_request(
+    password: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,7 +309,13 @@ def public_submit_user_account_deletion_request(password: str, user_id: str, nam
 
 
 @same_doc_as(PublicSubmitUserAccountDeletionRequest)
-async def public_submit_user_account_deletion_request_async(password: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_submit_user_account_deletion_request_async(
+    password: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,4 +325,6 @@ async def public_submit_user_account_deletion_request_async(password: str, user_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

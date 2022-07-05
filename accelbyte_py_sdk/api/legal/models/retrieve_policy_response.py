@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -63,19 +63,19 @@ class RetrievePolicyResponse(Model):
 
     # region fields
 
-    country_code: str                                                                              # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    is_default_opted: bool                                                                         # REQUIRED
-    is_default_selection: bool                                                                     # REQUIRED
-    is_mandatory: bool                                                                             # REQUIRED
-    policy_name: str                                                                               # REQUIRED
-    should_notify_on_update: bool                                                                  # REQUIRED
-    country_group_code: str                                                                        # OPTIONAL
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    policy_versions: List[PolicyVersionObject]                                                     # OPTIONAL
-    readable_id: str                                                                               # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
+    country_code: str  # REQUIRED
+    id_: str  # REQUIRED
+    is_default_opted: bool  # REQUIRED
+    is_default_selection: bool  # REQUIRED
+    is_mandatory: bool  # REQUIRED
+    policy_name: str  # REQUIRED
+    should_notify_on_update: bool  # REQUIRED
+    country_group_code: str  # OPTIONAL
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    policy_versions: List[PolicyVersionObject]  # OPTIONAL
+    readable_id: str  # OPTIONAL
+    updated_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -121,7 +121,9 @@ class RetrievePolicyResponse(Model):
         self.description = value
         return self
 
-    def with_policy_versions(self, value: List[PolicyVersionObject]) -> RetrievePolicyResponse:
+    def with_policy_versions(
+        self, value: List[PolicyVersionObject]
+    ) -> RetrievePolicyResponse:
         self.policy_versions = value
         return self
 
@@ -180,7 +182,9 @@ class RetrievePolicyResponse(Model):
         elif include_empty:
             result["description"] = ""
         if hasattr(self, "policy_versions"):
-            result["policyVersions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions]
+            result["policyVersions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions
+            ]
         elif include_empty:
             result["policyVersions"] = []
         if hasattr(self, "readable_id"):
@@ -237,7 +241,9 @@ class RetrievePolicyResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrievePolicyResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RetrievePolicyResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -265,7 +271,10 @@ class RetrievePolicyResponse(Model):
             instance.policy_name = str(dict_["policyName"])
         elif include_empty:
             instance.policy_name = ""
-        if "shouldNotifyOnUpdate" in dict_ and dict_["shouldNotifyOnUpdate"] is not None:
+        if (
+            "shouldNotifyOnUpdate" in dict_
+            and dict_["shouldNotifyOnUpdate"] is not None
+        ):
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
             instance.should_notify_on_update = False
@@ -282,7 +291,10 @@ class RetrievePolicyResponse(Model):
         elif include_empty:
             instance.description = ""
         if "policyVersions" in dict_ and dict_["policyVersions"] is not None:
-            instance.policy_versions = [PolicyVersionObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["policyVersions"]]
+            instance.policy_versions = [
+                PolicyVersionObject.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["policyVersions"]
+            ]
         elif include_empty:
             instance.policy_versions = []
         if "readableId" in dict_ and dict_["readableId"] is not None:
@@ -296,15 +308,33 @@ class RetrievePolicyResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RetrievePolicyResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, RetrievePolicyResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RetrievePolicyResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[RetrievePolicyResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RetrievePolicyResponse, List[RetrievePolicyResponse], Dict[Any, RetrievePolicyResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        RetrievePolicyResponse,
+        List[RetrievePolicyResponse],
+        Dict[Any, RetrievePolicyResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

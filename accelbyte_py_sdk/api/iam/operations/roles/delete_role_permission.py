@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -84,9 +84,9 @@ class DeleteRolePermission(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    action: int                                                                                    # REQUIRED in [path]
-    resource: str                                                                                  # REQUIRED in [path]
-    role_id: str                                                                                   # REQUIRED in [path]
+    action: int  # REQUIRED in [path]
+    resource: str  # REQUIRED in [path]
+    role_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -184,7 +184,9 @@ class DeleteRolePermission(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -203,7 +205,9 @@ class DeleteRolePermission(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -219,7 +223,9 @@ class DeleteRolePermission(Operation):
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -239,7 +245,9 @@ class DeleteRolePermission(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteRolePermission:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> DeleteRolePermission:
         instance = cls()
         if "action" in dict_ and dict_["action"] is not None:
             instance.action = int(dict_["action"])

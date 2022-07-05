@@ -15,12 +15,14 @@ class DSLogManagerTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.dsmc.models import ModelsPodConfigRecord
 
         result, error = get_all_pod_config(count=1, offset=0)
-        if error is None and \
-                isinstance(result, ModelsListPodConfigResponse) and \
-                len(result.pod_configs) > 0 and \
-                result.pod_configs[0] is not None and \
-                isinstance(result.pod_configs[0], ModelsPodConfigRecord) and \
-                result.pod_configs[0].name is not None:
+        if (
+            error is None
+            and isinstance(result, ModelsListPodConfigResponse)
+            and len(result.pod_configs) > 0
+            and result.pod_configs[0] is not None
+            and isinstance(result.pod_configs[0], ModelsPodConfigRecord)
+            and result.pod_configs[0].name is not None
+        ):
             return result.pod_configs[0].name
         else:
             return None
@@ -29,12 +31,16 @@ class DSLogManagerTestCase(IntegrationTestCase):
     def pre_fetch_terminated_servers(self):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers
-        from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
+        from accelbyte_py_sdk.api.dslogmanager.models import (
+            ModelsListTerminatedServersResponse,
+        )
 
         result, error = list_terminated_servers(limit=1)
-        if error is not None and \
-                isinstance(result, ModelsListTerminatedServersResponse) and \
-                len(result.data) > 0:
+        if (
+            error is not None
+            and isinstance(result, ModelsListTerminatedServersResponse)
+            and len(result.data) > 0
+        ):
             return result.data
         else:
             return []

@@ -26,7 +26,6 @@ from accelbyte_py_sdk.core import get_http_client
 
 
 class TestConfigRepository(DictConfigRepository):
-
     def __init__(self, data: Optional[Dict[Any, Any]] = None):
         if data is None:
             data = {}
@@ -34,7 +33,6 @@ class TestConfigRepository(DictConfigRepository):
 
 
 class TestTokenRepository(MyTokenRepository):
-
     def __init__(self, token: Any = None):
         if token is None:
             token = {}
@@ -42,15 +40,7 @@ class TestTokenRepository(MyTokenRepository):
 
 
 class TestModel(Model):
-
-    def __init__(
-            self,
-            *,
-            a: Any = None,
-            b: Any = None,
-            c: Any = None,
-            **kwargs
-    ):
+    def __init__(self, *, a: Any = None, b: Any = None, c: Any = None, **kwargs):
         self.a = a
         self.b = b
         self.c = c
@@ -107,7 +97,6 @@ class TestModel(Model):
 
 
 class RequestTestCase(TestCase):
-
     @classmethod
     def setUpClass(cls) -> None:
         if is_initialized():
@@ -117,7 +106,6 @@ class RequestTestCase(TestCase):
 
     def test_body_params_serialization(self):
         class TestOperation(Operation):
-
             def __init__(self, body: TestModel):
                 self.url = "/foo"
                 self.body = body
@@ -157,13 +145,12 @@ class RequestTestCase(TestCase):
 
         # assert
         self.assertEqual("http://0.0.0.0:8080/foo", request.url)
-        self.assertEqual(b"{\"greeting\": \"Hello World!\"}", request.body)
+        self.assertEqual(b'{"greeting": "Hello World!"}', request.body)
 
     def test_form_data_file_upload(self):
         from io import BytesIO
 
         class TestOperation(Operation):
-
             def __init__(self, file: Any):
                 self.url = "/foo"
                 self.file = file
@@ -209,11 +196,10 @@ class RequestTestCase(TestCase):
 
         request_body_str = str(request.body)
         self.assertIn('filename="file"', request_body_str)
-        self.assertIn('foomanchoo', request_body_str)
+        self.assertIn("foomanchoo", request_body_str)
 
     def test_form_data_params_are_url_escaped(self):
         class TestOperation(Operation):
-
             def __init__(self, status: str):
                 self.url = "/foo"
                 self.status = status
@@ -260,7 +246,6 @@ class RequestTestCase(TestCase):
         from accelbyte_py_sdk.core import HeaderStr
 
         class TestOperation(Operation):
-
             def __init__(self):
                 self.url = "/foo"
                 self.cookie = HeaderStr()
@@ -311,7 +296,6 @@ class RequestTestCase(TestCase):
         from accelbyte_py_sdk import __version__ as sdk_version
 
         class TestOperation(Operation):
-
             def __init__(self):
                 self.url = "/foo"
 
@@ -328,7 +312,9 @@ class RequestTestCase(TestCase):
         # arrange
         proto, error = create_proto_from_operation(
             operation=TestOperation(),
-            config_repo=TestConfigRepository({"appName": "Test", "appVersion": "1.0.0", "autoAddAmazonTraceId": True}),
+            config_repo=TestConfigRepository(
+                {"appName": "Test", "appVersion": "1.0.0", "autoAddAmazonTraceId": True}
+            ),
             token_repo=TestTokenRepository(),
             base_url="http://0.0.0.0:8080",
         )
@@ -339,11 +325,13 @@ class RequestTestCase(TestCase):
 
         # assert
         self.assertEqual("http://0.0.0.0:8080/foo", request.url)
-        self.assertEqual(f"AccelBytePythonSDK/{sdk_version} (Test/1.0.0)", request.headers.get("User-Agent"))
+        self.assertEqual(
+            f"AccelBytePythonSDK/{sdk_version} (Test/1.0.0)",
+            request.headers.get("User-Agent"),
+        )
 
     def test_header_x_amazon_trace_id_are_added(self):
         class TestOperation(Operation):
-
             def __init__(self):
                 self.url = "/foo"
 
@@ -377,7 +365,6 @@ class RequestTestCase(TestCase):
         import json
 
         class TestOperation(Operation):
-
             def __init__(self):
                 self.url = "/foo"
 
@@ -404,7 +391,9 @@ class RequestTestCase(TestCase):
         json_obj = json.loads(json_str)
 
         # act
-        result, error = TestOperation().parse_response(200, content_type="application/json", content=json_obj)
+        result, error = TestOperation().parse_response(
+            200, content_type="application/json", content=json_obj
+        )
 
         # assert
         self.assertIsInstance(result, TestModel)
@@ -416,7 +405,6 @@ class RequestTestCase(TestCase):
 
     def test_path_params_are_url_escaped(self):
         class TestOperation(Operation):
-
             def __init__(self, namespace: str, user_id: str):
                 self.url = "/admin/namespaces/{namespace}/user/{userId}"
                 self.namespace = namespace
@@ -448,8 +436,7 @@ class RequestTestCase(TestCase):
         # arrange
         proto, error = create_proto_from_operation(
             operation=TestOperation(
-                namespace="abc!@#$%^&*()",
-                user_id="{}[]<>:;,.?|\\\"'"
+                namespace="abc!@#$%^&*()", user_id="{}[]<>:;,.?|\\\"'"
             ),
             config_repo=TestConfigRepository(),
             token_repo=TestTokenRepository(),
@@ -461,11 +448,13 @@ class RequestTestCase(TestCase):
         request = get_http_client().create_request(proto=proto)
 
         # assert
-        self.assertEqual("http://0.0.0.0:8080/admin/namespaces/abc!@#$%25%5E&*()/user/%7B%7D%5B%5D%3C%3E:;,.?%7C%5C%22'", request.url)
+        self.assertEqual(
+            "http://0.0.0.0:8080/admin/namespaces/abc!@#$%25%5E&*()/user/%7B%7D%5B%5D%3C%3E:;,.?%7C%5C%22'",
+            request.url,
+        )
 
     def test_query_params_are_url_escaped(self):
         class TestOperation(Operation):
-
             def __init__(self, filter_: List[str], status: str):
                 self.url = "/foo"
                 self.filter_ = filter_
@@ -510,7 +499,10 @@ class RequestTestCase(TestCase):
         request = get_http_client().create_request(proto=proto)
 
         # assert
-        self.assertEqual("http://0.0.0.0:8080/foo?filter=a%40t,p%25PCent&status=%23ABC%21", request.url)
+        self.assertEqual(
+            "http://0.0.0.0:8080/foo?filter=a%40t,p%25PCent&status=%23ABC%21",
+            request.url,
+        )
 
 
 class HttpBinRequestTestCase(TestCase):
@@ -547,7 +539,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
             def __init__(self, redirect_url: str):
                 self.url = "/redirect-to"
                 self.method = "GET"
@@ -597,17 +588,20 @@ class HttpBinRequestTestCase(TestCase):
         self.assertIsNone(error)
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
-        self.assertEqual("https://httpbin.org/redirect-to?url=http%3A%2F%2F0.0.0.0%3A8080%3Fdata%3Dfoo", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        self.assertEqual(
+            "https://httpbin.org/redirect-to?url=http%3A%2F%2F0.0.0.0%3A8080%3Fdata%3Dfoo",
+            request.url,
+        )
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         response, error = http_client.handle_response(raw_response)
         self.assertIsNone(error)
 
         # act
         data, error = _post_run_request(
-            operation=operation,
-            response=response,
-            error=error
+            operation=operation, response=response, error=error
         )
 
         # assert
@@ -619,12 +613,13 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
             def get_all_params(self) -> dict:
                 return {}
 
             def parse_response(self, code: int, content_type: str, content: Any):
-                pre_processed_response, err = self.pre_process_response(code=code, content_type=content_type, content=content)
+                pre_processed_response, err = self.pre_process_response(
+                    code=code, content_type=content_type, content=content
+                )
                 if err is not None:
                     return None, None if err.is_no_content() else err
                 code, content_type, content = pre_processed_response
@@ -632,7 +627,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return content, None
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -648,9 +645,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -665,7 +660,9 @@ class HttpBinRequestTestCase(TestCase):
             slideshow: Dict[str, Any]
 
             @classmethod
-            def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HttpBinJsonModel:
+            def create_from_dict(
+                cls, dict_: dict, include_empty: bool = False
+            ) -> HttpBinJsonModel:
                 instance = cls()
                 if not dict_:
                     return instance
@@ -682,8 +679,9 @@ class HttpBinRequestTestCase(TestCase):
                 }
 
         class TestOperation(Operation):
-
-            def __init__(self,):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -694,7 +692,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return HttpBinJsonModel.create_from_dict(content), None
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -712,16 +712,16 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         response, error = http_client.handle_response(raw_response)
         self.assertIsNone(error)
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -737,7 +737,9 @@ class HttpBinRequestTestCase(TestCase):
             slideshow: Dict[str, Any]
 
             @classmethod
-            def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HttpBinJsonModel:
+            def create_from_dict(
+                cls, dict_: dict, include_empty: bool = False
+            ) -> HttpBinJsonModel:
                 instance = cls()
                 if not dict_:
                     return instance
@@ -754,8 +756,9 @@ class HttpBinRequestTestCase(TestCase):
                 }
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -766,7 +769,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 201:
                     return HttpBinJsonModel.create_from_dict(content), None
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -784,7 +789,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 201  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -792,9 +799,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -806,8 +811,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -818,7 +824,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 204:
                     return None, None
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -836,19 +844,21 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
-        raw_response.status_code = 204                                     # monkey-patch
-        raw_response.headers["Content-Type"] = "text/html; charset=utf-8"  # monkey-patch
-        raw_response.json = lambda: None                                   # monkey-patch
+        raw_response.status_code = 204  # monkey-patch
+        raw_response.headers[
+            "Content-Type"
+        ] = "text/html; charset=utf-8"  # monkey-patch
+        raw_response.json = lambda: None  # monkey-patch
         response, error = http_client.handle_response(raw_response)
         self.assertIsNone(error)
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -859,8 +869,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self,):
+            def __init__(
+                self,
+            ):
                 self.url = "/image/jpeg"
                 self.method = "GET"
 
@@ -871,7 +882,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return content, None
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -889,16 +902,16 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/image/jpeg", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         response, error = http_client.handle_response(raw_response)
         self.assertIsNone(error)
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -914,7 +927,9 @@ class HttpBinRequestTestCase(TestCase):
             slideshow: Dict[str, Any]
 
             @classmethod
-            def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HttpBinJsonModel:
+            def create_from_dict(
+                cls, dict_: dict, include_empty: bool = False
+            ) -> HttpBinJsonModel:
                 instance = cls()
                 if not dict_:
                     return instance
@@ -931,8 +946,9 @@ class HttpBinRequestTestCase(TestCase):
                 }
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -943,7 +959,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 403:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -961,7 +979,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 403  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -969,9 +989,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -988,7 +1006,9 @@ class HttpBinRequestTestCase(TestCase):
             slideshow: Dict[str, Any]
 
             @classmethod
-            def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HttpBinJsonModel:
+            def create_from_dict(
+                cls, dict_: dict, include_empty: bool = False
+            ) -> HttpBinJsonModel:
                 instance = cls()
                 if not dict_:
                     return instance
@@ -1005,8 +1025,9 @@ class HttpBinRequestTestCase(TestCase):
                 }
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -1017,7 +1038,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 404:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1035,7 +1058,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 404  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -1043,9 +1068,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1062,7 +1085,9 @@ class HttpBinRequestTestCase(TestCase):
             slideshow: Dict[str, Any]
 
             @classmethod
-            def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HttpBinJsonModel:
+            def create_from_dict(
+                cls, dict_: dict, include_empty: bool = False
+            ) -> HttpBinJsonModel:
                 instance = cls()
                 if not dict_:
                     return instance
@@ -1079,8 +1104,9 @@ class HttpBinRequestTestCase(TestCase):
                 }
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -1091,7 +1117,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 503:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1109,7 +1137,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 503  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -1117,9 +1147,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1132,8 +1160,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/html"
                 self.method = "GET"
 
@@ -1144,7 +1173,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 403:
                     return None, content
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1162,7 +1193,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/html", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 403  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -1170,9 +1203,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1184,8 +1215,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/html"
                 self.method = "GET"
 
@@ -1196,7 +1228,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 404:
                     return None, content
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1214,7 +1248,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/html", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 404  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -1222,9 +1258,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1236,8 +1270,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/html"
                 self.method = "GET"
 
@@ -1248,7 +1283,9 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 503:
                     return None, content
 
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1266,7 +1303,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/html", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 503  # monkey-patch
         response, error = http_client.handle_response(raw_response)
@@ -1274,9 +1313,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1288,8 +1325,9 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class TestOperation(Operation):
-
-            def __init__(self, ):
+            def __init__(
+                self,
+            ):
                 self.url = "/json"
                 self.method = "GET"
 
@@ -1297,7 +1335,9 @@ class HttpBinRequestTestCase(TestCase):
                 return {}
 
             def parse_response(self, code: int, content_type: str, content: Any):
-                return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+                return None, self.handle_undocumented_response(
+                    code=code, content_type=content_type, content=content
+                )
 
             @staticmethod
             def get_field_info() -> Dict[str, str]:
@@ -1315,7 +1355,9 @@ class HttpBinRequestTestCase(TestCase):
         http_client = get_http_client()
         request = http_client.create_request(proto=proto)
         self.assertEqual("https://httpbin.org/json", request.url)
-        raw_response, error = http_client.send_request(request, allow_redirects=not operation.has_redirects())
+        raw_response, error = http_client.send_request(
+            request, allow_redirects=not operation.has_redirects()
+        )
         self.assertIsNone(error)
         raw_response.status_code = 200
         response, error = http_client.handle_response(raw_response)
@@ -1323,9 +1365,7 @@ class HttpBinRequestTestCase(TestCase):
 
         # act
         result, error = _post_run_request(
-            operation=TestOperation(),
-            response=response,
-            error=error
+            operation=TestOperation(), response=response, error=error
         )
 
         # assert
@@ -1366,8 +1406,11 @@ class MockServerRequestTestCase(TestCase):
         initialize(
             options={
                 "config": "MyConfigRepository",
-                "config_params": ([self.base_url, "admin", "admin"], {"namespace": "test"}),
-                "http": "RequestsHttpClient"
+                "config_params": (
+                    [self.base_url, "admin", "admin"],
+                    {"namespace": "test"},
+                ),
+                "http": "RequestsHttpClient",
             }
         )
 
@@ -1376,7 +1419,9 @@ class MockServerRequestTestCase(TestCase):
             reset()
 
     def configure_overwrite_response(self, config: dict):
-        response = requests.post(f"{self.base_url}/configure-overwrite-response", json=config)
+        response = requests.post(
+            f"{self.base_url}/configure-overwrite-response", json=config
+        )
         self.assertTrue(response.ok)
 
     def reset_overwrite_response(self):
@@ -1391,7 +1436,15 @@ class MockServerRequestTestCase(TestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 0:
@@ -1401,10 +1454,14 @@ class MockServerRequestTestCase(TestCase):
         # arrange
         http_client = get_http_client()
         http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(1)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1426,7 +1483,15 @@ class MockServerRequestTestCase(TestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1435,11 +1500,17 @@ class MockServerRequestTestCase(TestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(
+            initial=0.25, multiplier=2.0
+        )
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(5)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1460,7 +1531,15 @@ class MockServerRequestTestCase(TestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1469,10 +1548,14 @@ class MockServerRequestTestCase(TestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(3)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         result, error = get_user_friends_updated(
@@ -1490,20 +1573,34 @@ class MockServerRequestTestCase(TestCase):
 
         status_codes = []
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             status_codes.append(response.status_code)
             if response.status_code == 500:
-                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+                self.configure_overwrite_response(
+                    {"enabled": True, "overwrite": True, "status": 400}
+                )
             elif response.status_code == 400:
                 self.reset_overwrite_response()
             return True
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 500}
+        )
 
         # act
         result, error = get_user_friends_updated(
@@ -1522,7 +1619,15 @@ class MockServerRequestTestCase(TestCase):
         n_reads: int = 0
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1531,10 +1636,14 @@ class MockServerRequestTestCase(TestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(3)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         tmp_file = Path("test.dat")
@@ -1550,11 +1659,13 @@ class MockServerRequestTestCase(TestCase):
                     n_reads += 1
                     return old_read(*args, **kwargs)
 
-                tmp_handle.read = new_read  # monkey-patch, to count how many reads we are doing
+                tmp_handle.read = (
+                    new_read  # monkey-patch, to count how many reads we are doing
+                )
 
                 _, error = admin_import_config_v1(
                     file=tmp_handle,
-                    x_additional_headers={"Authorization": "Bearer foo"}
+                    x_additional_headers={"Authorization": "Bearer foo"},
                 )
         finally:
             tmp_file.unlink(missing_ok=True)
@@ -1616,7 +1727,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -1676,7 +1789,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -1716,8 +1831,11 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         initialize(
             options={
                 "config": "MyConfigRepository",
-                "config_params": (["http://0.0.0.0:8080", "admin", "admin"], {"namespace": "test"}),
-                "http": "HttpxHttpClient"
+                "config_params": (
+                    ["http://0.0.0.0:8080", "admin", "admin"],
+                    {"namespace": "test"},
+                ),
+                "http": "HttpxHttpClient",
             }
         )
 
@@ -1726,7 +1844,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
             reset()
 
     def configure_overwrite_response(self, config: dict):
-        response = requests.post(f"{self.base_url}/configure-overwrite-response", json=config)
+        response = requests.post(
+            f"{self.base_url}/configure-overwrite-response", json=config
+        )
         self.assertTrue(response.ok)
 
     def reset_overwrite_response(self):
@@ -1741,7 +1861,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 0:
@@ -1751,10 +1879,14 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         # arrange
         http_client = get_http_client()
         http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(1)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1776,7 +1908,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 0:
@@ -1786,10 +1926,14 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         # arrange
         http_client = get_http_client()
         http_client.backoff_policy = ConstantHttpBackoffPolicy(0.5)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(1))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(1)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1811,7 +1955,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1820,11 +1972,17 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(
+            initial=0.25, multiplier=2.0
+        )
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(5)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1846,7 +2004,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1855,11 +2021,17 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.backoff_policy = ExponentialHttpBackoffPolicy(initial=0.25, multiplier=2.0)
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(5))
+        http_client.backoff_policy = ExponentialHttpBackoffPolicy(
+            initial=0.25, multiplier=2.0
+        )
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(5)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         start = time.perf_counter()
@@ -1880,7 +2052,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1889,10 +2069,14 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(3)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         result, error = get_user_friends_updated(
@@ -1910,7 +2094,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         n_retries: int = 0
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             nonlocal n_retries
             n_retries = retries
             if retries == 2:
@@ -1919,10 +2111,14 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, MaxRetriesHttpRetryPolicy(3))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, MaxRetriesHttpRetryPolicy(3)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 400}
+        )
 
         # act
         result, error = await get_user_friends_updated_async(
@@ -1940,20 +2136,34 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         status_codes = []
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             status_codes.append(response.status_code)
             if response.status_code == 500:
-                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+                self.configure_overwrite_response(
+                    {"enabled": True, "overwrite": True, "status": 400}
+                )
             elif response.status_code == 400:
                 self.reset_overwrite_response()
             return True
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 500}
+        )
 
         # act
         result, error = get_user_friends_updated(
@@ -1971,20 +2181,34 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         status_codes = []
 
-        def watcher_retry_policy(request, response, /, *, retries: int = 0, elapse: Optional[timedelta] = None, **kwargs) -> bool:
+        def watcher_retry_policy(
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapse: Optional[timedelta] = None,
+            **kwargs,
+        ) -> bool:
             status_codes.append(response.status_code)
             if response.status_code == 500:
-                self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 400})
+                self.configure_overwrite_response(
+                    {"enabled": True, "overwrite": True, "status": 400}
+                )
             elif response.status_code == 400:
                 self.reset_overwrite_response()
             return True
 
         # arrange
         http_client = get_http_client()
-        http_client.retry_policy = CompositeHttpRetryPolicy(watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500))
+        http_client.retry_policy = CompositeHttpRetryPolicy(
+            watcher_retry_policy, StatusCodesHttpRetryPolicy(400, 500)
+        )
         self.assertTrue(is_initialized())
 
-        self.configure_overwrite_response({"enabled": True, "overwrite": True, "status": 500})
+        self.configure_overwrite_response(
+            {"enabled": True, "overwrite": True, "status": 500}
+        )
 
         # act
         result, error = await get_user_friends_updated_async(
@@ -2046,7 +2270,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -2106,7 +2332,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         await asyncio.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -2166,7 +2394,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         time.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -2226,7 +2456,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertFalse(token_repo.has_token_expired())
         self.assertEqual(2, n_refreshes)
 
-        token_repo.get_token().expires_in = 3  # monkey-patch, force expiry in the future
+        token_repo.get_token().expires_in = (
+            3  # monkey-patch, force expiry in the future
+        )
         self.assertFalse(token_repo.has_token_expired())
         await asyncio.sleep(4)
         self.assertTrue(token_repo.has_token_expired())
@@ -2237,7 +2469,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):
-        assert self._asyncioTestLoop is None, 'asyncio test loop already initialized'
+        assert self._asyncioTestLoop is None, "asyncio test loop already initialized"
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.set_debug(False)  # overrode to disable this log

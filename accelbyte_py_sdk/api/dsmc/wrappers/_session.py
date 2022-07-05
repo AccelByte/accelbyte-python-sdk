@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -40,7 +40,12 @@ from ..operations.session import GetSession
 
 
 @same_doc_as(ClaimServer)
-def claim_server(body: ModelsClaimSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def claim_server(
+    body: ModelsClaimSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,7 +58,12 @@ def claim_server(body: ModelsClaimSessionRequest, namespace: Optional[str] = Non
 
 
 @same_doc_as(ClaimServer)
-async def claim_server_async(body: ModelsClaimSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def claim_server_async(
+    body: ModelsClaimSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,11 +72,18 @@ async def claim_server_async(body: ModelsClaimSessionRequest, namespace: Optiona
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateSession)
-def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_session(
+    body: ModelsCreateSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +96,12 @@ def create_session(body: ModelsCreateSessionRequest, namespace: Optional[str] = 
 
 
 @same_doc_as(CreateSession)
-async def create_session_async(body: ModelsCreateSessionRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_session_async(
+    body: ModelsCreateSessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +110,18 @@ async def create_session_async(body: ModelsCreateSessionRequest, namespace: Opti
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSession)
-def get_session(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -105,7 +134,12 @@ def get_session(session_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(GetSession)
-async def get_session_async(session_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,4 +148,6 @@ async def get_session_async(session_id: str, namespace: Optional[str] = None, x_
         session_id=session_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

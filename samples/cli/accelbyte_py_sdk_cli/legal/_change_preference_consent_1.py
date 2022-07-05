@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import change_preference_consent_1 as change_preference_consent_1_internal
+from accelbyte_py_sdk.api.legal import (
+    change_preference_consent_1 as change_preference_consent_1_internal,
+)
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
@@ -41,19 +43,17 @@ from accelbyte_py_sdk.api.legal.models import ErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def change_preference_consent_1(
-        body: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    body: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(change_preference_consent_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

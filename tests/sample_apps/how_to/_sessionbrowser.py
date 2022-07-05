@@ -21,23 +21,25 @@ class SessionBrowserTestCase(IntegrationTestCase):
     password: str = "password"
     session_type: str = "p2p"
     username: str = "username"
-    models_create_session_request: ModelsCreateSessionRequest = ModelsCreateSessionRequest.create(
-        game_session_setting=ModelsGameSessionSetting.create(
-            allow_join_in_progress=allow_join_in_progress,
-            current_internal_player=current_player,
-            current_player=current_player,
-            map_name=map_name,
-            max_internal_player=max_player,
-            max_player=max_player,
-            mode=mode,
-            num_bot=num_bot,
-            password=password,
-            settings={}
-        ),
-        game_version=game_version,
-        namespace="",
-        session_type=session_type,
-        username=username
+    models_create_session_request: ModelsCreateSessionRequest = (
+        ModelsCreateSessionRequest.create(
+            game_session_setting=ModelsGameSessionSetting.create(
+                allow_join_in_progress=allow_join_in_progress,
+                current_internal_player=current_player,
+                current_player=current_player,
+                map_name=map_name,
+                max_internal_player=max_player,
+                max_player=max_player,
+                mode=mode,
+                num_bot=num_bot,
+                password=password,
+                settings={},
+            ),
+            game_version=game_version,
+            namespace="",
+            session_type=session_type,
+            username=username,
+        )
     )
 
     # noinspection PyMethodMayBeStatic
@@ -62,7 +64,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
 
         if self.session_id is not None:
             _, error = delete_session(session_id=self.session_id)
-            self.log_warning(msg=f"Failed to tear down session. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down session. {str(error)}",
+                condition=error is not None,
+            )
             self.session_id = None
         super().tearDown()
 
@@ -71,7 +76,9 @@ class SessionBrowserTestCase(IntegrationTestCase):
         # NOTE(elmer): can't delete, need session id
 
         # act
-        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
+        _, error, session_id = self.do_create_session(
+            body=self.models_create_session_request
+        )
         self.session_id = session_id
 
         # assert
@@ -81,8 +88,12 @@ class SessionBrowserTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.sessionbrowser import delete_session
 
         # arrange
-        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
-        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        _, error, session_id = self.do_create_session(
+            body=self.models_create_session_request
+        )
+        self.log_warning(
+            msg=f"Failed to set up session. {str(error)}", condition=error is not None
+        )
         self.session_id = session_id
 
         # act
@@ -96,8 +107,12 @@ class SessionBrowserTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.sessionbrowser import get_session
 
         # arrange
-        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
-        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        _, error, session_id = self.do_create_session(
+            body=self.models_create_session_request
+        )
+        self.log_warning(
+            msg=f"Failed to set up session. {str(error)}", condition=error is not None
+        )
         self.session_id = session_id
 
         # act
@@ -108,18 +123,23 @@ class SessionBrowserTestCase(IntegrationTestCase):
 
     def test_update_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import update_session
-        from accelbyte_py_sdk.api.sessionbrowser.models import ModelsUpdateSessionRequest
+        from accelbyte_py_sdk.api.sessionbrowser.models import (
+            ModelsUpdateSessionRequest,
+        )
 
         # arrange
-        _, error, session_id = self.do_create_session(body=self.models_create_session_request)
-        self.log_warning(msg=f"Failed to set up session. {str(error)}", condition=error is not None)
+        _, error, session_id = self.do_create_session(
+            body=self.models_create_session_request
+        )
+        self.log_warning(
+            msg=f"Failed to set up session. {str(error)}", condition=error is not None
+        )
         self.session_id = session_id
 
         # act
         result, error = update_session(
             body=ModelsUpdateSessionRequest.create(
-                game_current_player=1,
-                game_max_player=1
+                game_current_player=1, game_max_player=1
             ),
             session_id=self.session_id,
         )

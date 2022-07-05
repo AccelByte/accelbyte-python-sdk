@@ -45,23 +45,21 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_rewards(
-        event_topic: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    event_topic: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(query_rewards_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if sort_by is not None:

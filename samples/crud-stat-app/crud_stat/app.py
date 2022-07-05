@@ -7,22 +7,21 @@ import accelbyte_py_sdk
 
 # region constants
 
-ENVIRONMENT_KEYS = [
-    "APP_BASE_URL", "APP_CLIENT_ID", "APP_CLIENT_SECRET"
-]
+ENVIRONMENT_KEYS = ["APP_BASE_URL", "APP_CLIENT_ID", "APP_CLIENT_SECRET"]
 
 # endregion constants
 
 
 # region classes
 
-class Environment(object):
 
+class Environment(object):
     def __init__(self, keys):
         for key in keys:
             if key not in os.environ:
                 raise EnvironmentError
             setattr(self, key, os.environ[key])
+
 
 # endregion classes
 
@@ -51,14 +50,15 @@ def shared_lambda_handler_process(event):
             "config": "MyConfigRepository",
             "config_params": (
                 [],  # args
-                {"base_url": env.APP_BASE_URL, "client_id": env.APP_CLIENT_ID, "client_secret": env.APP_CLIENT_SECRET}  # kwargs
+                {
+                    "base_url": env.APP_BASE_URL,
+                    "client_id": env.APP_CLIENT_ID,
+                    "client_secret": env.APP_CLIENT_SECRET,
+                },  # kwargs
             ),
             "token": "MyTokenRepository",
-            "token_params": (
-                [],  # args
-                {"token": oauth_token}  # kwargs
-            ),
-            "http": "RequestsHttpClient"
+            "token_params": ([], {"token": oauth_token}),  # args  # kwargs
+            "http": "RequestsHttpClient",
         }
     )
     log_done("initialize SDK")
@@ -92,21 +92,29 @@ def delete_user_stat_lambda_handler(event, context):
     # 05. Extract request query parameters and convert it into parameters for the DeleteUserStatItems request.
     from accelbyte_py_sdk.core import HttpResponse
     from accelbyte_py_sdk.api.social import delete_user_stat_items
+
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId", "statCode"]
     for required_query_param in required_query_param:
-        if required_query_param not in query_params or not query_params[required_query_param]:
-            return create_response(400, HttpResponse.create_error(400, f"Missing required query param '{required_query_param}'."))
+        if (
+            required_query_param not in query_params
+            or not query_params[required_query_param]
+        ):
+            return create_response(
+                400,
+                HttpResponse.create_error(
+                    400, f"Missing required query param '{required_query_param}'."
+                ),
+            )
     _, error = delete_user_stat_items(
         stat_code=query_params["statCode"],
         user_id=query_params["userId"],
-        namespace=query_params.get("namespace", None)
+        namespace=query_params.get("namespace", None),
     )
     log_done("request finished")
 
     return create_response(
-        status_code=400 if error else 200,
-        body=error if error else ""
+        status_code=400 if error else 200, body=error if error else ""
     )
 
 
@@ -138,24 +146,32 @@ def get_user_stat_lambda_handler(event, context):
     # 05. Extract request query parameters and convert it into parameters for the GetUserStatItems request.
     from accelbyte_py_sdk.core import HttpResponse
     from accelbyte_py_sdk.api.social import get_user_stat_items
+
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId"]
     for required_query_param in required_query_param:
-        if required_query_param not in query_params or not query_params[required_query_param]:
-            return create_response(400, HttpResponse.create_error(400, f"Missing required query param '{required_query_param}'."))
+        if (
+            required_query_param not in query_params
+            or not query_params[required_query_param]
+        ):
+            return create_response(
+                400,
+                HttpResponse.create_error(
+                    400, f"Missing required query param '{required_query_param}'."
+                ),
+            )
     result, error = get_user_stat_items(
         user_id=query_params["userId"],
         limit=query_params.get("limit", None),
         offset=query_params.get("offset", None),
         stat_codes=query_params.get("statCodes", None),
         tags=query_params.get("tags", None),
-        namespace=query_params.get("namespace", None)
+        namespace=query_params.get("namespace", None),
     )
     log_done("request finished")
 
     return create_response(
-        status_code=400 if error else 200,
-        body=error if error else result.to_dict()
+        status_code=400 if error else 200, body=error if error else result.to_dict()
     )
 
 
@@ -187,21 +203,29 @@ def post_user_stat_lambda_handler(event, context):
     # 05. Extract request query parameters and convert it into parameters for the CreateUserStatItem request.
     from accelbyte_py_sdk.core import HttpResponse
     from accelbyte_py_sdk.api.social import create_user_stat_item
+
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId", "statCode"]
     for required_query_param in required_query_param:
-        if required_query_param not in query_params or not query_params[required_query_param]:
-            return create_response(400, HttpResponse.create_error(400, f"Missing required query param '{required_query_param}'."))
+        if (
+            required_query_param not in query_params
+            or not query_params[required_query_param]
+        ):
+            return create_response(
+                400,
+                HttpResponse.create_error(
+                    400, f"Missing required query param '{required_query_param}'."
+                ),
+            )
     result, error = create_user_stat_item(
         stat_code=query_params["statCode"],
         user_id=query_params["userId"],
-        namespace=query_params.get("namespace", None)
+        namespace=query_params.get("namespace", None),
     )
     log_done("request finished")
 
     return create_response(
-        status_code=400 if error else 200,
-        body=error if error else result.to_dict()
+        status_code=400 if error else 200, body=error if error else result.to_dict()
     )
 
 
@@ -234,11 +258,20 @@ def put_user_stat_lambda_handler(event, context):
     from accelbyte_py_sdk.core import HttpResponse
     from accelbyte_py_sdk.api.social import inc_user_stat_item_value
     from accelbyte_py_sdk.api.social.models import StatItemInc
+
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId", "statCode"]
     for required_query_param in required_query_param:
-        if required_query_param not in query_params or not query_params[required_query_param]:
-            return create_response(400, HttpResponse.create_error(400, f"Missing required query param '{required_query_param}'."))
+        if (
+            required_query_param not in query_params
+            or not query_params[required_query_param]
+        ):
+            return create_response(
+                400,
+                HttpResponse.create_error(
+                    400, f"Missing required query param '{required_query_param}'."
+                ),
+            )
 
     # 05a. Bonus Round: We can either take in an 'inc' value from the query string or take a JSON body that matches StatItemInc ex: '{"inc":1}'.
     inc = query_params.get("inc", None)
@@ -248,17 +281,23 @@ def put_user_stat_lambda_handler(event, context):
             try:
                 inc = float(inc)
             except:
-                return create_response(400, HttpResponse.create_error(400, f"Invalid 'inc' value."))
+                return create_response(
+                    400, HttpResponse.create_error(400, f"Invalid 'inc' value.")
+                )
         body = StatItemInc().with_inc(value=inc)
     else:
         raw_body = event.get("body", None)
         if raw_body is None:
-            return create_response(400, HttpResponse.create_error(400, f"Missing required body."))
+            return create_response(
+                400, HttpResponse.create_error(400, f"Missing required body.")
+            )
         if isinstance(raw_body, str):
             try:
                 raw_body = json.loads(raw_body)
             except json.JSONDecodeError as e:
-                return create_response(400, HttpResponse.create_error(400, f"Invalid body."))
+                return create_response(
+                    400, HttpResponse.create_error(400, f"Invalid body.")
+                )
         body = StatItemInc.create_from_dict(dict_=raw_body)
     if body is None or not hasattr(body, "inc") or not isinstance(body.inc, float):
         return create_response(400, HttpResponse.create_error(400, f"Invalid body."))
@@ -266,13 +305,12 @@ def put_user_stat_lambda_handler(event, context):
         stat_code=query_params["statCode"],
         user_id=query_params["userId"],
         body=body,
-        namespace=query_params.get("namespace", None)
+        namespace=query_params.get("namespace", None),
     )
     log_done("request finished")
 
     return create_response(
-        status_code=400 if error else 200,
-        body=error if error else result.to_dict()
+        status_code=400 if error else 200, body=error if error else result.to_dict()
     )
 
 
@@ -282,7 +320,9 @@ def main(args):
 
     if "token" in args and args["token"]:
         token = args["token"]
-        oauth_token, error = convert_bearer_auth_token_to_oauth_token(bearer_auth_token=token)
+        oauth_token, error = convert_bearer_auth_token_to_oauth_token(
+            bearer_auth_token=token
+        )
         if error:
             print(str(error))
             exit(1)
@@ -295,9 +335,13 @@ def main(args):
             options={
                 "config": "MyConfigRepository",
                 "config_params": (
-                    [],                                                                                                     # args
-                    {"base_url": env.APP_BASE_URL, "client_id": env.APP_CLIENT_ID, "client_secret": env.APP_CLIENT_SECRET}  # kwargs
-                )
+                    [],  # args
+                    {
+                        "base_url": env.APP_BASE_URL,
+                        "client_id": env.APP_CLIENT_ID,
+                        "client_secret": env.APP_CLIENT_SECRET,
+                    },  # kwargs
+                ),
             }
         )
 
@@ -320,10 +364,7 @@ def main(args):
     context = None
     event = {
         "headers": {"Authorization": f"Bearer {token}"},
-        "queryStringParameters": {
-            "statCode": stat_code_default,
-            "userId": user_id
-        }
+        "queryStringParameters": {"statCode": stat_code_default, "userId": user_id},
     }
     event["queryStringParameters"]["namespace"] = "accelbyte"
 
@@ -345,6 +386,7 @@ def main(args):
 
 # region log
 
+
 def log(message, tag=None):
     if tag is None:
         print(message)
@@ -363,10 +405,12 @@ def log_wait(message):
 def log_warn(message):
     log(message, "warn")
 
+
 # endregion log
 
 
 # region response
+
 
 def create_response(status_code, body):
     from accelbyte_py_sdk.core import HttpResponse
@@ -383,15 +427,14 @@ def create_response(status_code, body):
         body = body.to_dict()
     if not isinstance(body, dict):
         raise NotImplementedError
-    return {
-        "statusCode": status_code,
-        "body": json.dumps(body)
-    }
+    return {"statusCode": status_code, "body": json.dumps(body)}
+
 
 # endregion response
 
 
 # region token
+
 
 def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
     import jwt
@@ -412,7 +455,9 @@ def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
     try:
         web_token = jwt.decode(bearer_auth_token, options={"verify_signature": False})
         patch_web_token(web_token)
-        oauth_token = OauthmodelTokenResponseV3.create_from_dict(web_token, include_empty=True)
+        oauth_token = OauthmodelTokenResponseV3.create_from_dict(
+            web_token, include_empty=True
+        )
         oauth_token.access_token = bearer_auth_token
         return oauth_token, None
     except ValueError as e:
@@ -421,26 +466,46 @@ def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
 
 def extract_bearer_auth_token(authorization):
     if authorization is None:
-        return None, create_response(status_code=403, body="Authorization header is missing.")
+        return None, create_response(
+            status_code=403, body="Authorization header is missing."
+        )
     if not authorization.startswith("Bearer "):
-        return None, create_response(status_code=400, body=f"Invalid Authorization. Expecting Bearer Auth Token. {authorization}")
+        return None, create_response(
+            status_code=400,
+            body=f"Invalid Authorization. Expecting Bearer Auth Token. {authorization}",
+        )
     bearer_auth_token = authorization.removeprefix("Bearer ")
     return bearer_auth_token, None
+
 
 # endregion token
 
 
 # region utils
 
+
 def parse_args():
     parser = ArgumentParser()
 
-    parser.add_argument("-t", "--token", type=str, required=False, help="sets the token")
+    parser.add_argument(
+        "-t", "--token", type=str, required=False, help="sets the token"
+    )
 
-    parser.add_argument("-u", "--username", type=str, required=False, help="sets the username")
-    parser.add_argument("-p", "--password", type=str, required=False, help="sets the password")
+    parser.add_argument(
+        "-u", "--username", type=str, required=False, help="sets the username"
+    )
+    parser.add_argument(
+        "-p", "--password", type=str, required=False, help="sets the password"
+    )
 
-    parser.add_argument("-m", "--mode", default="get", type=str, required=False, help="sets the mode, choose from delete, get, post, put (default: get)")
+    parser.add_argument(
+        "-m",
+        "--mode",
+        default="get",
+        type=str,
+        required=False,
+        help="sets the mode, choose from delete, get, post, put (default: get)",
+    )
 
     return vars(parser.parse_args())
 

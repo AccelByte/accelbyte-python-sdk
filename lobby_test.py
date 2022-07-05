@@ -6,6 +6,7 @@ try:
     from aioconsole import ainput
 except ImportError:
     import pip
+
     pip.main(["install", "--user", "aioconsole"])
     from aioconsole import ainput
 

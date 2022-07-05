@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -315,15 +315,15 @@ class TokenGrant(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    device_id: Union[str, HeaderStr]                                                               # OPTIONAL in [header]
-    code: str                                                                                      # OPTIONAL in [form_data]
-    extend_exp: bool                                                                               # OPTIONAL in [form_data]
-    namespace: str                                                                                 # OPTIONAL in [form_data]
-    password: str                                                                                  # OPTIONAL in [form_data]
-    redirect_uri: str                                                                              # OPTIONAL in [form_data]
-    refresh_token: str                                                                             # OPTIONAL in [form_data]
-    username: str                                                                                  # OPTIONAL in [form_data]
-    grant_type: Union[str, GrantTypeEnum]                                                          # REQUIRED in [form_data]
+    device_id: Union[str, HeaderStr]  # OPTIONAL in [header]
+    code: str  # OPTIONAL in [form_data]
+    extend_exp: bool  # OPTIONAL in [form_data]
+    namespace: str  # OPTIONAL in [form_data]
+    password: str  # OPTIONAL in [form_data]
+    redirect_uri: str  # OPTIONAL in [form_data]
+    refresh_token: str  # OPTIONAL in [form_data]
+    username: str  # OPTIONAL in [form_data]
+    grant_type: Union[str, GrantTypeEnum]  # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -486,7 +486,12 @@ class TokenGrant(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, OauthmodelTokenResponse], Union[None, HttpResponse, OauthmodelErrorResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, OauthmodelTokenResponse],
+        Union[None, HttpResponse, OauthmodelErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - OauthmodelTokenResponse (Token returned)
@@ -501,7 +506,9 @@ class TokenGrant(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -513,7 +520,9 @@ class TokenGrant(Operation):
         if code == 401:
             return None, OauthmodelErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -624,7 +633,12 @@ class TokenGrant(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "grant_type": ["authorization_code", "client_credentials", "password", "refresh_token"],# in form_data
+            "grant_type": [
+                "authorization_code",
+                "client_credentials",
+                "password",
+                "refresh_token",
+            ],  # in form_data
         }
 
     # endregion static methods

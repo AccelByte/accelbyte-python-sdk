@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -98,10 +98,10 @@ class UpdateUserPointAdminV1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsUpdateUserPointAdminV1Request                                                      # REQUIRED in [body]
-    leaderboard_code: str                                                                          # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: ModelsUpdateUserPointAdminV1Request  # REQUIRED in [body]
+    leaderboard_code: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -168,7 +168,9 @@ class UpdateUserPointAdminV1(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsUpdateUserPointAdminV1Request) -> UpdateUserPointAdminV1:
+    def with_body(
+        self, value: ModelsUpdateUserPointAdminV1Request
+    ) -> UpdateUserPointAdminV1:
         self.body = value
         return self
 
@@ -213,7 +215,12 @@ class UpdateUserPointAdminV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsUpdateUserPointAdminV1Response], Union[None, HttpResponse, ResponseErrorResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsUpdateUserPointAdminV1Response],
+        Union[None, HttpResponse, ResponseErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsUpdateUserPointAdminV1Response (OK)
@@ -234,7 +241,9 @@ class UpdateUserPointAdminV1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -252,7 +261,9 @@ class UpdateUserPointAdminV1(Operation):
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -274,10 +285,14 @@ class UpdateUserPointAdminV1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateUserPointAdminV1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdateUserPointAdminV1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsUpdateUserPointAdminV1Request.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsUpdateUserPointAdminV1Request.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = ModelsUpdateUserPointAdminV1Request()
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:

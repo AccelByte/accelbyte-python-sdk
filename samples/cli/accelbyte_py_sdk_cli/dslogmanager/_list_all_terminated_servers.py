@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dslogmanager import list_all_terminated_servers as list_all_terminated_servers_internal
+from accelbyte_py_sdk.api.dslogmanager import (
+    list_all_terminated_servers as list_all_terminated_servers_internal,
+)
 from accelbyte_py_sdk.api.dslogmanager.models import ModelsListTerminatedServersResponse
 from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 
@@ -55,33 +57,31 @@ from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_all_terminated_servers(
-        deployment: Optional[str] = None,
-        end_date: Optional[str] = None,
-        game_mode: Optional[str] = None,
-        limit: Optional[int] = None,
-        next_: Optional[str] = None,
-        party_id: Optional[str] = None,
-        pod_name: Optional[str] = None,
-        previous: Optional[str] = None,
-        provider: Optional[str] = None,
-        region: Optional[str] = None,
-        session_id: Optional[str] = None,
-        start_date: Optional[str] = None,
-        status: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    deployment: Optional[str] = None,
+    end_date: Optional[str] = None,
+    game_mode: Optional[str] = None,
+    limit: Optional[int] = None,
+    next_: Optional[str] = None,
+    party_id: Optional[str] = None,
+    pod_name: Optional[str] = None,
+    previous: Optional[str] = None,
+    provider: Optional[str] = None,
+    region: Optional[str] = None,
+    session_id: Optional[str] = None,
+    start_date: Optional[str] = None,
+    status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(list_all_terminated_servers_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = list_all_terminated_servers_internal(

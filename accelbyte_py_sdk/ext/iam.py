@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -446,7 +446,9 @@ def create_accountcommon_client_permissions_v3_example() -> AccountcommonClientP
 def create_accountcommon_conflicted_user_platform_accounts_example() -> AccountcommonConflictedUserPlatformAccounts:
     instance = AccountcommonConflictedUserPlatformAccounts()
     instance.platform_user_id = randomize()
-    instance.publisher_accounts = [create_accountcommon_user_with_linked_platform_accounts_example()]
+    instance.publisher_accounts = [
+        create_accountcommon_user_with_linked_platform_accounts_example()
+    ]
     return instance
 
 
@@ -1892,7 +1894,9 @@ def create_model_user_information_example() -> ModelUserInformation:
     instance.country = randomize("country")
     instance.display_name = randomize("slug")
     instance.email_addresses = [randomize()]
-    instance.linked_platform_accounts = [create_model_platform_user_information_example()]
+    instance.linked_platform_accounts = [
+        create_model_platform_user_information_example()
+    ]
     instance.phone_number = randomize()
     instance.username = randomize("slug")
     instance.xuid = randomize()
@@ -2246,7 +2250,9 @@ def create_rest_error_response_example() -> RestErrorResponse:
     instance = RestErrorResponse()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
-    instance.message_variables = create_accountcommon_conflicted_user_platform_accounts_example()
+    instance.message_variables = (
+        create_accountcommon_conflicted_user_platform_accounts_example()
+    )
     return instance
 
 

@@ -5,7 +5,6 @@ from ._integration_test_case import AsyncIntegrationTestCase
 
 
 class LobbyTestCase(IntegrationTestCase):
-
     def test_free_form_notification(self):
         from accelbyte_py_sdk.api.lobby import free_form_notification
         from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
@@ -15,8 +14,7 @@ class LobbyTestCase(IntegrationTestCase):
         # act
         _, error = free_form_notification(
             body=ModelFreeFormNotificationRequest.create(
-                message="MESSAGE",
-                topic="TOPIC"
+                message="MESSAGE", topic="TOPIC"
             )
         )
 
@@ -25,7 +23,6 @@ class LobbyTestCase(IntegrationTestCase):
 
 
 class AsyncLobbyTestCase(AsyncIntegrationTestCase):
-
     async def test_send_and_receive_notifications(self):
         from accelbyte_py_sdk.api.lobby.wss_models import PartyCreateRequest
         from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm

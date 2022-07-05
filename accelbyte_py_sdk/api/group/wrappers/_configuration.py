@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,7 +49,12 @@ from ..operations.configuration import UpdateGroupConfigurationGlobalRuleAdminV1
 
 
 @same_doc_as(CreateGroupConfigurationAdminV1)
-def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_group_configuration_admin_v1(
+    body: ModelsCreateGroupConfigurationRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,7 +67,12 @@ def create_group_configuration_admin_v1(body: ModelsCreateGroupConfigurationRequ
 
 
 @same_doc_as(CreateGroupConfigurationAdminV1)
-async def create_group_configuration_admin_v1_async(body: ModelsCreateGroupConfigurationRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_group_configuration_admin_v1_async(
+    body: ModelsCreateGroupConfigurationRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,11 +81,19 @@ async def create_group_configuration_admin_v1_async(body: ModelsCreateGroupConfi
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGroupConfigurationGlobalRuleAdminV1)
-def delete_group_configuration_global_rule_admin_v1(allowed_action: str, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_group_configuration_global_rule_admin_v1(
+    allowed_action: str,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,7 +107,13 @@ def delete_group_configuration_global_rule_admin_v1(allowed_action: str, configu
 
 
 @same_doc_as(DeleteGroupConfigurationGlobalRuleAdminV1)
-async def delete_group_configuration_global_rule_admin_v1_async(allowed_action: str, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_group_configuration_global_rule_admin_v1_async(
+    allowed_action: str,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,11 +123,18 @@ async def delete_group_configuration_global_rule_admin_v1_async(allowed_action: 
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGroupConfigurationV1)
-def delete_group_configuration_v1(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_group_configuration_v1(
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,7 +147,12 @@ def delete_group_configuration_v1(configuration_code: str, namespace: Optional[s
 
 
 @same_doc_as(DeleteGroupConfigurationV1)
-async def delete_group_configuration_v1_async(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_group_configuration_v1_async(
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,11 +161,18 @@ async def delete_group_configuration_v1_async(configuration_code: str, namespace
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetGroupConfigurationAdminV1)
-def get_group_configuration_admin_v1(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_group_configuration_admin_v1(
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,7 +185,12 @@ def get_group_configuration_admin_v1(configuration_code: str, namespace: Optiona
 
 
 @same_doc_as(GetGroupConfigurationAdminV1)
-async def get_group_configuration_admin_v1_async(configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_group_configuration_admin_v1_async(
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,11 +199,17 @@ async def get_group_configuration_admin_v1_async(configuration_code: str, namesp
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(InitiateGroupConfigurationAdminV1)
-def initiate_group_configuration_admin_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def initiate_group_configuration_admin_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,7 +221,11 @@ def initiate_group_configuration_admin_v1(namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(InitiateGroupConfigurationAdminV1)
-async def initiate_group_configuration_admin_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def initiate_group_configuration_admin_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -175,11 +233,19 @@ async def initiate_group_configuration_admin_v1_async(namespace: Optional[str] =
     request = InitiateGroupConfigurationAdminV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListGroupConfigurationAdminV1)
-def list_group_configuration_admin_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_group_configuration_admin_v1(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,7 +259,13 @@ def list_group_configuration_admin_v1(limit: Optional[int] = None, offset: Optio
 
 
 @same_doc_as(ListGroupConfigurationAdminV1)
-async def list_group_configuration_admin_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_group_configuration_admin_v1_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,11 +275,19 @@ async def list_group_configuration_admin_v1_async(limit: Optional[int] = None, o
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateGroupConfigurationAdminV1)
-def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_group_configuration_admin_v1(
+    body: ModelsUpdateGroupConfigurationRequestV1,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,7 +301,13 @@ def update_group_configuration_admin_v1(body: ModelsUpdateGroupConfigurationRequ
 
 
 @same_doc_as(UpdateGroupConfigurationAdminV1)
-async def update_group_configuration_admin_v1_async(body: ModelsUpdateGroupConfigurationRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_group_configuration_admin_v1_async(
+    body: ModelsUpdateGroupConfigurationRequestV1,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,11 +317,20 @@ async def update_group_configuration_admin_v1_async(body: ModelsUpdateGroupConfi
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateGroupConfigurationGlobalRuleAdminV1)
-def update_group_configuration_global_rule_admin_v1(allowed_action: str, body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_group_configuration_global_rule_admin_v1(
+    allowed_action: str,
+    body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,7 +345,14 @@ def update_group_configuration_global_rule_admin_v1(allowed_action: str, body: M
 
 
 @same_doc_as(UpdateGroupConfigurationGlobalRuleAdminV1)
-async def update_group_configuration_global_rule_admin_v1_async(allowed_action: str, body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1, configuration_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_group_configuration_global_rule_admin_v1_async(
+    allowed_action: str,
+    body: ModelsUpdateGroupConfigurationGlobalRulesRequestV1,
+    configuration_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,4 +363,6 @@ async def update_group_configuration_global_rule_admin_v1_async(allowed_action: 
         configuration_code=configuration_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

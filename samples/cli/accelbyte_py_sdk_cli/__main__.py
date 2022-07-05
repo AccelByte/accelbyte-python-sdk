@@ -42,13 +42,13 @@ def entry_point():
 @click.command()
 @click.option("--continue_on_error", is_flag=True)
 @click.option("--verbose", is_flag=True)
-@click.option("--writer", type=click.Choice(['default', 'tap'], case_sensitive=False))
+@click.option("--writer", type=click.Choice(["default", "tap"], case_sensitive=False))
 @click.pass_context
 def start_interactive_session(
-        ctx,
-        continue_on_error: bool = False,
-        verbose: bool = False,
-        writer: str = "default",
+    ctx,
+    continue_on_error: bool = False,
+    verbose: bool = False,
+    writer: str = "default",
 ):
     writer = TapSessionWriter() if writer == "tap" else SessionWriter()
 
@@ -130,7 +130,9 @@ def start_interactive_session(
             if echo:
                 indent = "  "
                 success += f"\n{indent}---\n"
-                success += "".join(f"{indent}{line}" for line in echo.splitlines(keepends=True)).rstrip()
+                success += "".join(
+                    f"{indent}{line}" for line in echo.splitlines(keepends=True)
+                ).rstrip()
             ctx.echo = None
         writer.write_log(success)
 
@@ -142,16 +144,15 @@ def start_interactive_session(
 
 def add_commands(grp, cmds, prefix: str = None):
     for cmd in cmds:
-        grp.add_command(cmd, name=f"{f'{prefix}-' if prefix is not None else ''}{cmd.name}")
+        grp.add_command(
+            cmd, name=f"{f'{prefix}-' if prefix is not None else ''}{cmd.name}"
+        )
 
 
 def __intercept(obj, attr: str):
-    def __intercept_impl(
-            message: Optional[Any] = None,
-            *args,
-            **kwargs
-    ):
+    def __intercept_impl(message: Optional[Any] = None, *args, **kwargs):
         setattr(obj, "attr", message)
+
     return __intercept_impl
 
 

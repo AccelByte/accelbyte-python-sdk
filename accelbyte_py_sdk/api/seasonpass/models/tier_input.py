@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,8 +39,8 @@ class TierInput(Model):
 
     # region fields
 
-    required_exp: int                                                                              # OPTIONAL
-    rewards: Dict[str, List[str]]                                                                  # OPTIONAL
+    required_exp: int  # OPTIONAL
+    rewards: Dict[str, List[str]]  # OPTIONAL
 
     # endregion fields
 
@@ -65,7 +65,9 @@ class TierInput(Model):
         elif include_empty:
             result["requiredExp"] = 0
         if hasattr(self, "rewards"):
-            result["rewards"] = {str(k0): [str(i1) for i1 in v0] for k0, v0 in self.rewards.items()}
+            result["rewards"] = {
+                str(k0): [str(i1) for i1 in v0] for k0, v0 in self.rewards.items()
+            }
         elif include_empty:
             result["rewards"] = {}
         return result
@@ -97,21 +99,37 @@ class TierInput(Model):
         elif include_empty:
             instance.required_exp = 0
         if "rewards" in dict_ and dict_["rewards"] is not None:
-            instance.rewards = {str(k0): [str(i1) for i1 in v0] for k0, v0 in dict_["rewards"].items()}
+            instance.rewards = {
+                str(k0): [str(i1) for i1 in v0] for k0, v0 in dict_["rewards"].items()
+            }
         elif include_empty:
             instance.rewards = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, TierInput]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, TierInput]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[TierInput]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[TierInput]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[TierInput, List[TierInput], Dict[Any, TierInput]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[TierInput, List[TierInput], Dict[Any, TierInput]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

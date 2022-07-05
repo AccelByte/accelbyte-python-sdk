@@ -5,14 +5,14 @@
 
 def example_add_user_into_session_in_channel():
     from accelbyte_py_sdk.api.matchmaking import add_user_into_session_in_channel
-    from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchAddUserIntoSessionRequest
+    from accelbyte_py_sdk.api.matchmaking.models import (
+        ModelsMatchAddUserIntoSessionRequest,
+    )
 
     result, error = add_user_into_session_in_channel(
-        body=ModelsMatchAddUserIntoSessionRequest.create(
-            user_id="<user-id>"
-        ),
+        body=ModelsMatchAddUserIntoSessionRequest.create(user_id="<user-id>"),
         channel_name="<channel-name>",
-        match_id="<match_id>"
+        match_id="<match_id>",
     )
     if error:
         print(error)
@@ -22,9 +22,7 @@ def example_delete_user_into_session_in_channel():
     from accelbyte_py_sdk.api.matchmaking import delete_user_from_session_in_channel
 
     result, error = delete_user_from_session_in_channel(
-        channel_name="<channel-name>",
-        match_id="<match_id>",
-        user_id="<user-id>"
+        channel_name="<channel-name>", match_id="<match_id>", user_id="<user-id>"
     )
     if error:
         print(error)
@@ -51,10 +49,7 @@ def example_create_matchmaking():
             max_delay_ms=300,
             rule_set=ModelsRuleSet.create(
                 alliance=ModelsAllianceRule.create(
-                    max_number=2,
-                    min_number=2,
-                    player_max_number=2,
-                    player_min_number=2
+                    max_number=2, min_number=2, player_max_number=2, player_min_number=2
                 ),
                 alliance_flexing_rule=[
                     ModelsAllianceFlexingRule.create(
@@ -62,7 +57,7 @@ def example_create_matchmaking():
                         max_number=2,
                         min_number=2,
                         player_max_number=2,
-                        player_min_number=2
+                        player_min_number=2,
                     )
                 ],
                 flexing_rule=[
@@ -70,22 +65,15 @@ def example_create_matchmaking():
                         attribute="<attribute>",
                         criteria="<criteria>",
                         duration=300,
-                        reference=10
+                        reference=10,
                     )
                 ],
                 match_options=ModelsMatchOptionRule.create(
-                    options=[
-                        ModelsMatchOption.create(
-                            name="<name>",
-                            type_="<type>"
-                        )
-                    ]
+                    options=[ModelsMatchOption.create(name="<name>", type_="<type>")]
                 ),
                 matching_rule=[
                     ModelsMatchingRule.create(
-                        attribute="<attribute>",
-                        criteria="<criteria>",
-                        reference=10
+                        attribute="<attribute>", criteria="<criteria>", reference=10
                     )
                 ],
                 sub_game_modes={
@@ -94,7 +82,7 @@ def example_create_matchmaking():
                             max_number=2,
                             min_number=2,
                             player_max_number=2,
-                            player_min_number=2
+                            player_min_number=2,
                         ),
                         alliance_flexing_rule=[
                             ModelsAllianceFlexingRule.create(
@@ -102,14 +90,14 @@ def example_create_matchmaking():
                                 max_number=2,
                                 min_number=2,
                                 player_max_number=2,
-                                player_min_number=2
+                                player_min_number=2,
                             )
                         ],
-                        name="<game_mode>"
+                        name="<game_mode>",
                     )
-                }
+                },
             ),
-            session_queue_timeout_seconds=10000
+            session_queue_timeout_seconds=10000,
         )
     )
     if error:
@@ -119,9 +107,7 @@ def example_create_matchmaking():
 def example_delete_matchmaking():
     from accelbyte_py_sdk.api.matchmaking import delete_channel_handler
 
-    result, error = delete_channel_handler(
-        channel="<channel>"
-    )
+    result, error = delete_channel_handler(channel="<channel>")
     if error:
         print(error)
 
@@ -129,9 +115,7 @@ def example_delete_matchmaking():
 def example_get_matchmaking():
     from accelbyte_py_sdk.api.matchmaking import get_single_matchmaking_channel
 
-    result, error = get_single_matchmaking_channel(
-        channel_name="<channel_name>"
-    )
+    result, error = get_single_matchmaking_channel(channel_name="<channel_name>")
     if error:
         print(error)
 
@@ -151,24 +135,22 @@ def example_update_matchmaking():
             joinable=False,
             max_delay_ms=300,
             rule_set=ModelsUpdateRuleset.create(
-                alliance=ModelsUpdateAllianceRule.create(
-                    max_number=2
-                ),
+                alliance=ModelsUpdateAllianceRule.create(max_number=2),
                 alliance_flexing_rule=[
                     ModelsAllianceFlexingRule.create(
                         duration=300,
                         max_number=2,
                         min_number=2,
                         player_max_number=2,
-                        player_min_number=2
+                        player_min_number=2,
                     )
-                ]
+                ],
             ),
             session_queue_timeout_seconds=10000,
             social_matchmaking=False,
-            use_sub_gamemode=False
+            use_sub_gamemode=False,
         ),
-        channel_name="<channel_name>"
+        channel_name="<channel_name>",
     )
     if error:
         print(error)

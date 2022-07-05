@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -92,8 +92,8 @@ class UpdatePlayTimeWeight(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsUpdatePlayTimeWeightRequest                                                        # REQUIRED in [body]
-    namespace: str                                                                                 # REQUIRED in [path]
+    body: ModelsUpdatePlayTimeWeightRequest  # REQUIRED in [body]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -156,7 +156,9 @@ class UpdatePlayTimeWeight(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelsUpdatePlayTimeWeightRequest) -> UpdatePlayTimeWeight:
+    def with_body(
+        self, value: ModelsUpdatePlayTimeWeightRequest
+    ) -> UpdatePlayTimeWeight:
         self.body = value
         return self
 
@@ -185,7 +187,12 @@ class UpdatePlayTimeWeight(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsUpdatePlayerPlaytimeWeightResponse], Union[None, HttpResponse, ResponseError, ResponseErrorV1]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsUpdatePlayerPlaytimeWeightResponse],
+        Union[None, HttpResponse, ResponseError, ResponseErrorV1],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsUpdatePlayerPlaytimeWeightResponse (Operation succeeded)
@@ -206,13 +213,18 @@ class UpdatePlayTimeWeight(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsUpdatePlayerPlaytimeWeightResponse.create_from_dict(content), None
+            return (
+                ModelsUpdatePlayerPlaytimeWeightResponse.create_from_dict(content),
+                None,
+            )
         if code == 400:
             return None, ResponseErrorV1.create_from_dict(content)
         if code == 401:
@@ -224,7 +236,9 @@ class UpdatePlayTimeWeight(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -242,10 +256,14 @@ class UpdatePlayTimeWeight(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdatePlayTimeWeight:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdatePlayTimeWeight:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsUpdatePlayTimeWeightRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsUpdatePlayTimeWeightRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = ModelsUpdatePlayTimeWeightRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:

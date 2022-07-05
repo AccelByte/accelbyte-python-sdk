@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,7 +39,13 @@ from ..operations.achievement_platform import UpdateXblUserAchievement
 
 
 @same_doc_as(UnlockSteamUserAchievement)
-def unlock_steam_user_achievement(user_id: str, body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def unlock_steam_user_achievement(
+    user_id: str,
+    body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,7 +59,13 @@ def unlock_steam_user_achievement(user_id: str, body: Optional[ADTOObjectForUnlo
 
 
 @same_doc_as(UnlockSteamUserAchievement)
-async def unlock_steam_user_achievement_async(user_id: str, body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def unlock_steam_user_achievement_async(
+    user_id: str,
+    body: Optional[ADTOObjectForUnlockSteamAchievementAPI] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,11 +75,19 @@ async def unlock_steam_user_achievement_async(user_id: str, body: Optional[ADTOO
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateXblUserAchievement)
-def update_xbl_user_achievement(user_id: str, body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_xbl_user_achievement(
+    user_id: str,
+    body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,7 +101,13 @@ def update_xbl_user_achievement(user_id: str, body: Optional[ADTOObjectForUpdate
 
 
 @same_doc_as(UpdateXblUserAchievement)
-async def update_xbl_user_achievement_async(user_id: str, body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_xbl_user_achievement_async(
+    user_id: str,
+    body: Optional[ADTOObjectForUpdateXboxAchievementCompletePercentageAPI] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,4 +117,6 @@ async def update_xbl_user_achievement_async(user_id: str, body: Optional[ADTOObj
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

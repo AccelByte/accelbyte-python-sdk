@@ -58,7 +58,11 @@ class DsNotif(WebSocketMessage):
         # pylint: disable=no-self-use
         wsm = [f"type: {DsNotif.get_type()}"]
         if hasattr(self, "alternate_ips") and self.alternate_ips:
-            wsm.append(f"alternateIps: [" + ','.join([str(i) for i in self.alternate_ips]) + "]")
+            wsm.append(
+                f"alternateIps: ["
+                + ",".join([str(i) for i in self.alternate_ips])
+                + "]"
+            )
         if hasattr(self, "custom_attribute") and self.custom_attribute:
             wsm.append(f"customAttribute: {self.custom_attribute}")
         if hasattr(self, "deployment") and self.deployment:
@@ -110,74 +114,120 @@ class DsNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldFormatInvalid
+                )
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "alternateIps".casefold()) or (name == "alternateIps"):
-                instance.alternate_ips = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (not is_strict and name.casefold() == "alternateIps".casefold()) or (
+                name == "alternateIps"
+            ):
+                instance.alternate_ips = [
+                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
+                ]
                 continue
-            if (not is_strict and name.casefold() == "customAttribute".casefold()) or (name == "customAttribute"):
+            if (not is_strict and name.casefold() == "customAttribute".casefold()) or (
+                name == "customAttribute"
+            ):
                 instance.custom_attribute = value
                 continue
-            if (not is_strict and name.casefold() == "deployment".casefold()) or (name == "deployment"):
+            if (not is_strict and name.casefold() == "deployment".casefold()) or (
+                name == "deployment"
+            ):
                 instance.deployment = value
                 continue
-            if (not is_strict and name.casefold() == "gameVersion".casefold()) or (name == "gameVersion"):
+            if (not is_strict and name.casefold() == "gameVersion".casefold()) or (
+                name == "gameVersion"
+            ):
                 instance.game_version = value
                 continue
-            if (not is_strict and name.casefold() == "imageVersion".casefold()) or (name == "imageVersion"):
+            if (not is_strict and name.casefold() == "imageVersion".casefold()) or (
+                name == "imageVersion"
+            ):
                 instance.image_version = value
                 continue
             if (not is_strict and name.casefold() == "ip".casefold()) or (name == "ip"):
                 instance.ip = value
                 continue
-            if (not is_strict and name.casefold() == "isOK".casefold()) or (name == "isOK"):
+            if (not is_strict and name.casefold() == "isOK".casefold()) or (
+                name == "isOK"
+            ):
                 instance.is_ok = value
                 continue
-            if (not is_strict and name.casefold() == "isOverrideGameVersion".casefold()) or (name == "isOverrideGameVersion"):
+            if (
+                not is_strict and name.casefold() == "isOverrideGameVersion".casefold()
+            ) or (name == "isOverrideGameVersion"):
                 instance.is_override_game_version = value
                 continue
-            if (not is_strict and name.casefold() == "lastUpdate".casefold()) or (name == "lastUpdate"):
+            if (not is_strict and name.casefold() == "lastUpdate".casefold()) or (
+                name == "lastUpdate"
+            ):
                 instance.last_update = value
                 continue
-            if (not is_strict and name.casefold() == "matchId".casefold()) or (name == "matchId"):
+            if (not is_strict and name.casefold() == "matchId".casefold()) or (
+                name == "matchId"
+            ):
                 instance.match_id = value
                 continue
-            if (not is_strict and name.casefold() == "message".casefold()) or (name == "message"):
+            if (not is_strict and name.casefold() == "message".casefold()) or (
+                name == "message"
+            ):
                 instance.message = value
                 continue
-            if (not is_strict and name.casefold() == "namespace".casefold()) or (name == "namespace"):
+            if (not is_strict and name.casefold() == "namespace".casefold()) or (
+                name == "namespace"
+            ):
                 instance.namespace = value
                 continue
-            if (not is_strict and name.casefold() == "podName".casefold()) or (name == "podName"):
+            if (not is_strict and name.casefold() == "podName".casefold()) or (
+                name == "podName"
+            ):
                 instance.pod_name = value
                 continue
-            if (not is_strict and name.casefold() == "port".casefold()) or (name == "port"):
+            if (not is_strict and name.casefold() == "port".casefold()) or (
+                name == "port"
+            ):
                 instance.port = value
                 continue
-            if (not is_strict and name.casefold() == "ports".casefold()) or (name == "ports"):
+            if (not is_strict and name.casefold() == "ports".casefold()) or (
+                name == "ports"
+            ):
                 instance.ports = json.loads(value)
                 continue
-            if (not is_strict and name.casefold() == "protocol".casefold()) or (name == "protocol"):
+            if (not is_strict and name.casefold() == "protocol".casefold()) or (
+                name == "protocol"
+            ):
                 instance.protocol = value
                 continue
-            if (not is_strict and name.casefold() == "provider".casefold()) or (name == "provider"):
+            if (not is_strict and name.casefold() == "provider".casefold()) or (
+                name == "provider"
+            ):
                 instance.provider = value
                 continue
-            if (not is_strict and name.casefold() == "region".casefold()) or (name == "region"):
+            if (not is_strict and name.casefold() == "region".casefold()) or (
+                name == "region"
+            ):
                 instance.region = value
                 continue
-            if (not is_strict and name.casefold() == "sessionId".casefold()) or (name == "sessionId"):
+            if (not is_strict and name.casefold() == "sessionId".casefold()) or (
+                name == "sessionId"
+            ):
                 instance.session_id = value
                 continue
-            if (not is_strict and name.casefold() == "status".casefold()) or (name == "status"):
+            if (not is_strict and name.casefold() == "status".casefold()) or (
+                name == "status"
+            ):
                 instance.status = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldTypeNotSupported
+                )
         return instance
 
     @staticmethod

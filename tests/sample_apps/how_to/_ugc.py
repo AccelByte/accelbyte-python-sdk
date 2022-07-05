@@ -8,7 +8,9 @@ from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagRequest
 class UGCTestCase(IntegrationTestCase):
 
     tag_id: Optional[str] = None
-    models_create_tag_request: ModelsCreateTagRequest = ModelsCreateTagRequest.create(tag="TAG")
+    models_create_tag_request: ModelsCreateTagRequest = ModelsCreateTagRequest.create(
+        tag="TAG"
+    )
 
     # noinspection PyMethodMayBeStatic
     def do_admin_create_tag(self, body: ModelsCreateTagRequest):
@@ -31,7 +33,9 @@ class UGCTestCase(IntegrationTestCase):
 
         if self.tag_id is not None:
             _, error = admin_delete_tag(tag_id=self.tag_id)
-            self.log_warning(msg=f"Failed to tear tag. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear tag. {str(error)}", condition=error is not None
+            )
             self.tag_id = None
         super().tearDown()
 
@@ -51,7 +55,9 @@ class UGCTestCase(IntegrationTestCase):
 
         # arrange
         _, error, tag_id = self.do_admin_create_tag(body=self.models_create_tag_request)
-        self.log_warning(msg=f"Failed to set up tag. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up tag. {str(error)}", condition=error is not None
+        )
         self.tag_id = tag_id
 
         # act
@@ -66,7 +72,9 @@ class UGCTestCase(IntegrationTestCase):
 
         # arrange
         _, error, tag_id = self.do_admin_create_tag(body=self.models_create_tag_request)
-        self.log_warning(msg=f"Failed to set up tag. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up tag. {str(error)}", condition=error is not None
+        )
         self.tag_id = tag_id
 
         # act
@@ -81,13 +89,14 @@ class UGCTestCase(IntegrationTestCase):
 
         # arrange
         _, error, tag_id = self.do_admin_create_tag(body=self.models_create_tag_request)
-        self.log_warning(msg=f"Failed to set up tag. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up tag. {str(error)}", condition=error is not None
+        )
         self.tag_id = tag_id
 
         # act
         result, error = admin_update_tag(
-            body=ModelsCreateTagRequest.create(tag="MENANDAI"),
-            tag_id=self.tag_id
+            body=ModelsCreateTagRequest.create(tag="MENANDAI"), tag_id=self.tag_id
         )
 
         # assert

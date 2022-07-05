@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,13 +49,13 @@ class ModelsPersonalData(Model):
 
     # region fields
 
-    data_expiration_date: str                                                                      # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    request_date: str                                                                              # REQUIRED
-    service_errors: Dict[str, str]                                                                 # REQUIRED
-    service_statuses: Dict[str, str]                                                               # REQUIRED
-    status: str                                                                                    # REQUIRED
-    user_id: str                                                                                   # REQUIRED
+    data_expiration_date: str  # REQUIRED
+    display_name: str  # REQUIRED
+    request_date: str  # REQUIRED
+    service_errors: Dict[str, str]  # REQUIRED
+    service_statuses: Dict[str, str]  # REQUIRED
+    status: str  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
@@ -108,11 +108,15 @@ class ModelsPersonalData(Model):
         elif include_empty:
             result["RequestDate"] = ""
         if hasattr(self, "service_errors"):
-            result["ServiceErrors"] = {str(k0): str(v0) for k0, v0 in self.service_errors.items()}
+            result["ServiceErrors"] = {
+                str(k0): str(v0) for k0, v0 in self.service_errors.items()
+            }
         elif include_empty:
             result["ServiceErrors"] = {}
         if hasattr(self, "service_statuses"):
-            result["ServiceStatuses"] = {str(k0): str(v0) for k0, v0 in self.service_statuses.items()}
+            result["ServiceStatuses"] = {
+                str(k0): str(v0) for k0, v0 in self.service_statuses.items()
+            }
         elif include_empty:
             result["ServiceStatuses"] = {}
         if hasattr(self, "status"):
@@ -151,7 +155,9 @@ class ModelsPersonalData(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPersonalData:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsPersonalData:
         instance = cls()
         if not dict_:
             return instance
@@ -168,11 +174,15 @@ class ModelsPersonalData(Model):
         elif include_empty:
             instance.request_date = ""
         if "ServiceErrors" in dict_ and dict_["ServiceErrors"] is not None:
-            instance.service_errors = {str(k0): str(v0) for k0, v0 in dict_["ServiceErrors"].items()}
+            instance.service_errors = {
+                str(k0): str(v0) for k0, v0 in dict_["ServiceErrors"].items()
+            }
         elif include_empty:
             instance.service_errors = {}
         if "ServiceStatuses" in dict_ and dict_["ServiceStatuses"] is not None:
-            instance.service_statuses = {str(k0): str(v0) for k0, v0 in dict_["ServiceStatuses"].items()}
+            instance.service_statuses = {
+                str(k0): str(v0) for k0, v0 in dict_["ServiceStatuses"].items()
+            }
         elif include_empty:
             instance.service_statuses = {}
         if "Status" in dict_ and dict_["Status"] is not None:
@@ -186,15 +196,31 @@ class ModelsPersonalData(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPersonalData]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsPersonalData]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPersonalData]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsPersonalData]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPersonalData, List[ModelsPersonalData], Dict[Any, ModelsPersonalData]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsPersonalData, List[ModelsPersonalData], Dict[Any, ModelsPersonalData]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

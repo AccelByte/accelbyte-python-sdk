@@ -43,7 +43,10 @@ class IAMTestCase(IntegrationTestCase):
 
         if self.user_id is not None:
             _, error = delete_user(user_id=self.user_id)
-            self.log_warning(msg=f"Failed to tear down user. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down user. {str(error)}",
+                condition=error is not None,
+            )
             self.user_id = None
         super().tearDown()
 
@@ -63,7 +66,9 @@ class IAMTestCase(IntegrationTestCase):
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
-        self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user. {str(error)}", condition=error is not None
+        )
         self.user_id = user_id
 
         # act
@@ -78,7 +83,9 @@ class IAMTestCase(IntegrationTestCase):
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
-        self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user. {str(error)}", condition=error is not None
+        )
         self.user_id = user_id
 
         # act
@@ -94,13 +101,14 @@ class IAMTestCase(IntegrationTestCase):
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
-        self.log_warning(msg=f"Failed to set up user. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user. {str(error)}", condition=error is not None
+        )
         self.user_id = user_id
 
         # act
         result, error = update_user(
-            body=ModelUserUpdateRequest.create(country="ID"),
-            user_id=self.user_id
+            body=ModelUserUpdateRequest.create(country="ID"), user_id=self.user_id
         )
 
         # assert
@@ -121,14 +129,18 @@ class IAMTestCase(IntegrationTestCase):
         client_id, error = get_client_id()
         self.assertIsNone(error, error)
 
-        code_verifier, code_challenge, code_challenge_method = create_pkce_verifier_and_challenge_s256()
+        (
+            code_verifier,
+            code_challenge,
+            code_challenge_method,
+        ) = create_pkce_verifier_and_challenge_s256()
 
         request_id, error = authorize_v3(
             response_type="code",
             client_id=client_id,
             scope=self.scope,
             code_challenge=code_challenge,
-            code_challenge_method=code_challenge_method
+            code_challenge_method=code_challenge_method,
         )
         self.assertIsNone(error, error)
         self.assertIsNotNone(request_id)
@@ -139,7 +151,7 @@ class IAMTestCase(IntegrationTestCase):
             user_name=username,
             password=password,
             request_id=request_id,
-            client_id=client_id
+            client_id=client_id,
         )
         self.assertIsNone(error, error)
         self.assertIsNotNone(code)
@@ -149,7 +161,7 @@ class IAMTestCase(IntegrationTestCase):
             grant_type="authorization_code",
             code=code,
             code_verifier=code_verifier,
-            redirect_uri=""
+            redirect_uri="",
         )
 
         # assert
@@ -166,14 +178,18 @@ class IAMTestCase(IntegrationTestCase):
         client_id, error = get_client_id()
         self.assertIsNone(error, error)
 
-        code_verifier, code_challenge, code_challenge_method = create_pkce_verifier_and_challenge_s256()
+        (
+            code_verifier,
+            code_challenge,
+            code_challenge_method,
+        ) = create_pkce_verifier_and_challenge_s256()
 
         request_id, error = authorize_v3(
             response_type="code",
             client_id=client_id,
             scope=self.scope,
             code_challenge=code_challenge,
-            code_challenge_method=code_challenge_method
+            code_challenge_method=code_challenge_method,
         )
         self.assertIsNone(error, error)
         self.assertIsNotNone(request_id)
@@ -185,7 +201,7 @@ class IAMTestCase(IntegrationTestCase):
             user_name=username,
             password=password,
             request_id=request_id,
-            client_id=client_id
+            client_id=client_id,
         )
 
         # assert
@@ -200,7 +216,11 @@ class IAMTestCase(IntegrationTestCase):
         client_id, error = get_client_id()
         self.assertIsNone(error, error)
 
-        code_verifier, code_challenge, code_challenge_method = create_pkce_verifier_and_challenge_s256()
+        (
+            code_verifier,
+            code_challenge,
+            code_challenge_method,
+        ) = create_pkce_verifier_and_challenge_s256()
 
         # act
         _, error = authorize_v3(
@@ -208,7 +228,7 @@ class IAMTestCase(IntegrationTestCase):
             client_id=client_id,
             scope=self.scope,
             code_challenge=code_challenge,
-            code_challenge_method=code_challenge_method
+            code_challenge_method=code_challenge_method,
         )
 
         # assert

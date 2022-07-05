@@ -11,11 +11,23 @@ from accelbyte_py_sdk.services.auth import login_client, login_user
 # region constants
 
 ENVIRONMENT_KEYS = [
-    "GAME_BASE_URL", "GAME_CLIENT_ID", "GAME_CLIENT_SECRET", "GAME_NAMESPACE", "GAME_MODE",
-    "IAM_BASE_URL", "IAM_CLIENT_ID", "IAM_CLIENT_SECRET",
+    "GAME_BASE_URL",
+    "GAME_CLIENT_ID",
+    "GAME_CLIENT_SECRET",
+    "GAME_NAMESPACE",
+    "GAME_MODE",
+    "IAM_BASE_URL",
+    "IAM_CLIENT_ID",
+    "IAM_CLIENT_SECRET",
     "DSMC_DEPLOYMENT",
-    "SESSION_BROWSER_GAME_VERSION", "SESSION_BROWSER_MAP_NAME", "SESSION_BROWSER_MODE", "SESSION_BROWSER_PASSWORD", "SESSION_BROWSER_TYPE", "SESSION_BROWSER_USERNAME",
-    "REDIS_HOST", "REDIS_PORT",
+    "SESSION_BROWSER_GAME_VERSION",
+    "SESSION_BROWSER_MAP_NAME",
+    "SESSION_BROWSER_MODE",
+    "SESSION_BROWSER_PASSWORD",
+    "SESSION_BROWSER_TYPE",
+    "SESSION_BROWSER_USERNAME",
+    "REDIS_HOST",
+    "REDIS_PORT",
 ]
 
 CHANNEL_LIST_KEY = "matchmaking:channelList"
@@ -37,8 +49,8 @@ GAME_REPO = None, None
 
 # region classes
 
-class ActiveMatchmakingRequestsSummary:
 
+class ActiveMatchmakingRequestsSummary:
     def __init__(self, matchmaking_requests):
         self.matchmaking_requests = matchmaking_requests
 
@@ -50,16 +62,18 @@ class ActiveMatchmakingRequestsSummary:
         return set(i for i in self.unique_user_ids if i != user_id)
 
     def get_other_matchmaking_request(self, user_id: str):
-        return next((i for i in self.matchmaking_requests if i["user_id"] != user_id), None)
+        return next(
+            (i for i in self.matchmaking_requests if i["user_id"] != user_id), None
+        )
 
 
 class Environment(object):
-
     def __init__(self, keys):
         for key in keys:
             if key not in os.environ:
                 raise EnvironmentError
             setattr(self, key.lower(), os.environ[key])
+
 
 # endregion classes
 
@@ -109,7 +123,9 @@ def lambda_handler(event, context):
     log_done(f"create redis client ({redact(f'{env.redis_host}:{env.redis_port}')})")
 
     # 05. Create IAM Client.
-    iam_client = create_iam_client(env.iam_base_url, env.iam_client_id, env.iam_client_secret)
+    iam_client = create_iam_client(
+        env.iam_base_url, env.iam_client_id, env.iam_client_secret
+    )
     log_done("create IAM client")
 
     # 06. Validate IAM Client locally.
@@ -149,12 +165,19 @@ def lambda_handler(event, context):
     accelbyte_py_sdk.initialize()
 
     # 11.a. Create IAM ConfigRepository and TokenRepository
-    iam_config_repo = MyConfigRepository(env.iam_base_url, env.iam_client_id, env.iam_client_secret)
+    iam_config_repo = MyConfigRepository(
+        env.iam_base_url, env.iam_client_id, env.iam_client_secret
+    )
     iam_token_repo = MyTokenRepository(oauth_token)
     iam_token_repo.store_token(oauth_token)
 
     # 11.b. Create Game ConfigRepository and TokenRepository
-    game_config_repo = MyConfigRepository(env.game_base_url, env.game_client_id, env.game_client_secret, env.game_namespace)
+    game_config_repo = MyConfigRepository(
+        env.game_base_url,
+        env.game_client_id,
+        env.game_client_secret,
+        env.game_namespace,
+    )
     game_token_repo = MyTokenRepository(None)
 
     # 11.c. Store the 2 different pairs of repositories
@@ -186,26 +209,33 @@ def lambda_handler(event, context):
     active_matchmaking_requests_summary = None
     other_matchmaking_request = None
     while elapsed_time < FIND_OTHER_USER_MAX_DURATION:
-        active_matchmaking_requests_summary, error = get_active_matchmaking_requests_summary(
-            redis_client,
-            namespace,
-            env.game_mode
+        (
+            active_matchmaking_requests_summary,
+            error,
+        ) = get_active_matchmaking_requests_summary(
+            redis_client, namespace, env.game_mode
         )
         if error:
             return error
-        other_matchmaking_request = active_matchmaking_requests_summary.get_other_matchmaking_request(user_id)
+        other_matchmaking_request = (
+            active_matchmaking_requests_summary.get_other_matchmaking_request(user_id)
+        )
         if other_matchmaking_request:
             break
         time.sleep(FIND_OTHER_USER_CHECK_INTERVAL)
         elapsed_time += FIND_OTHER_USER_CHECK_INTERVAL
-        log_wait(f"waiting for other players.. {elapsed_time:.2f}/{FIND_OTHER_USER_MAX_DURATION:.2f}s")
+        log_wait(
+            f"waiting for other players.. {elapsed_time:.2f}/{FIND_OTHER_USER_MAX_DURATION:.2f}s"
+        )
     if not other_matchmaking_request:
         return create_response(408, "Timed out! Not enough players.")
     log_done(f"find other user ({other_matchmaking_request['user_id']})")
 
     party_id = other_matchmaking_request["party_id"]
     user_ids = list(active_matchmaking_requests_summary.unique_user_ids)
-    other_user_ids = list(active_matchmaking_requests_summary.get_other_user_ids(user_id))
+    other_user_ids = list(
+        active_matchmaking_requests_summary.get_other_user_ids(user_id)
+    )
 
     # 16. Create session
     sb_session, error = create_session(
@@ -215,7 +245,7 @@ def lambda_handler(event, context):
         env.session_browser_mode,
         env.session_browser_password,
         env.session_browser_type,
-        env.session_browser_username
+        env.session_browser_username,
     )
     if error:
         return error
@@ -230,7 +260,7 @@ def lambda_handler(event, context):
         env.game_mode,
         env.game_namespace,
         party_id=party_id,
-        user_ids=user_ids
+        user_ids=user_ids,
     )
     if error:
         return error
@@ -240,19 +270,13 @@ def lambda_handler(event, context):
     time.sleep(5.0)
 
     # 18. Claim server
-    _, error = claim_server(
-        env.game_namespace,
-        sb_session_id
-    )
+    _, error = claim_server(env.game_namespace, sb_session_id)
     if error:
         return error
     log_done(f"claim server from dsmc")
 
     # 19. Get server from DSMC
-    dsmc_session, error = get_session_from_dsmc(
-        env.game_namespace,
-        sb_session_id
-    )
+    dsmc_session, error = get_session_from_dsmc(env.game_namespace, sb_session_id)
     if error:
         return error
     log_done(f"get server from dsmc")
@@ -270,8 +294,7 @@ def lambda_handler(event, context):
 
     # 21. Get session update from Session Browser
     sb_session, error = get_session_from_session_browser(
-        env.game_namespace,
-        sb_session_id
+        env.game_namespace, sb_session_id
     )
 
     # 22. Check if session is joinable
@@ -282,26 +305,25 @@ def lambda_handler(event, context):
     for idx, uid in enumerate(user_ids):
         error = send_notif_match_found(namespace, server_ip, server_port, uid)
         if error:
-            log_warn(f"failed to send free form notification (match found) to player ({uid}) [{(idx + 1):02d}/{len(user_ids):02d}]")
+            log_warn(
+                f"failed to send free form notification (match found) to player ({uid}) [{(idx + 1):02d}/{len(user_ids):02d}]"
+            )
         else:
-            log_done(f"send free form notification (match found) to  player ({uid}) [{(idx + 1):02d}/{len(user_ids):02d}]")
+            log_done(
+                f"send free form notification (match found) to  player ({uid}) [{(idx + 1):02d}/{len(user_ids):02d}]"
+            )
 
     response = {
         "message": f"successfully matchmade "
-                   f"server:(ip:{server_ip}|port:{server_port})|"
-                   f"session:(id:{sb_session_id})|"
-                   f"users:({user_id},{other_user_ids})",
+        f"server:(ip:{server_ip}|port:{server_port})|"
+        f"session:(id:{sb_session_id})|"
+        f"users:({user_id},{other_user_ids})",
         "server": {
             "ip": server_ip,
             "port": server_port,
         },
-        "session": {
-            "id": sb_session_id
-        },
-        "users": [
-            user_id,
-            other_user_ids
-        ]
+        "session": {"id": sb_session_id},
+        "users": [user_id, other_user_ids],
     }
 
     return {
@@ -324,9 +346,9 @@ def main(args):
                     {
                         "base_url": os.environ["IAM_BASE_URL"],
                         "client_id": os.environ["IAM_CLIENT_ID"],
-                        "client_secret": os.environ["IAM_CLIENT_SECRET"]
-                    }
-                )
+                        "client_secret": os.environ["IAM_CLIENT_SECRET"],
+                    },
+                ),
             }
         )
 
@@ -345,12 +367,7 @@ def main(args):
         accelbyte_py_sdk.reset()
 
     context = None
-    event = {
-        "headers":
-            {
-                "Authorization": f"Bearer {token}"
-            }
-    }
+    event = {"headers": {"Authorization": f"Bearer {token}"}}
 
     result = lambda_handler(event, context)
 
@@ -359,6 +376,7 @@ def main(args):
 
 # region iam
 
+
 def create_iam_client(base_url, client_id, client_secret):
     from iam_python_sdk import Config, NewDefaultClient
 
@@ -366,15 +384,9 @@ def create_iam_client(base_url, client_id, client_secret):
     if not base_url.endswith("/iam"):
         base_url += "/iam"
 
-    config = Config(
-        BaseURL=base_url,
-        ClientID=client_id,
-        ClientSecret=client_secret
-    )
+    config = Config(BaseURL=base_url, ClientID=client_id, ClientSecret=client_secret)
 
-    client = NewDefaultClient(
-        config=config
-    )
+    client = NewDefaultClient(config=config)
 
     return client
 
@@ -468,7 +480,7 @@ def validate_permissions(iam_client, access_token, oauth_token):
         result.Jflgs = 0
         result.Scope = ""
         result.Country = ""
-        result.ClientId = iam_client.config.ClientID,
+        result.ClientId = (iam_client.config.ClientID,)
         result.IsComply = False
         return result
 
@@ -486,7 +498,7 @@ def validate_permissions(iam_client, access_token, oauth_token):
         is_permission_valid = iam_client.ValidatePermission(
             claims=claims,
             requiredPermission=required_permission,
-            permissionResources=permission_resources
+            permissionResources=permission_resources,
         )
         if not is_permission_valid:
             return create_response(400, "Invalid permissions.")
@@ -495,10 +507,12 @@ def validate_permissions(iam_client, access_token, oauth_token):
         error_message = f"Invalid permissions: {str(e)}"
         return create_response(400, error_message)
 
+
 # endregion iam
 
 
 # region log
+
 
 def log(message, tag=None):
     if tag is None:
@@ -518,27 +532,22 @@ def log_wait(message):
 def log_warn(message):
     log(message, "warn")
 
+
 # endregion log
 
 
 # region matchmaking
 
-def add_player_to_sb_sesion(
-        game_namespace: str,
-        session_id: str,
-        user_id: str
-):
+
+def add_player_to_sb_sesion(game_namespace: str, session_id: str, user_id: str):
     from accelbyte_py_sdk.api.sessionbrowser import add_player_to_session
     from accelbyte_py_sdk.api.sessionbrowser.models import ModelsAddPlayerRequest
 
     switch_repo("iam")
     result, error = add_player_to_session(
-        body=ModelsAddPlayerRequest.create(
-            as_spectator=False,
-            user_id=user_id
-        ),
+        body=ModelsAddPlayerRequest.create(as_spectator=False, user_id=user_id),
         session_id=session_id,
-        namespace=game_namespace
+        namespace=game_namespace,
     )
     if error:
         return None, create_response(400, error)
@@ -546,17 +555,14 @@ def add_player_to_sb_sesion(
     return result, None
 
 
-def claim_server(
-        game_namespace,
-        session_id
-):
+def claim_server(game_namespace, session_id):
     from accelbyte_py_sdk.api.dsmc import claim_server
     from accelbyte_py_sdk.api.dsmc.models import ModelsClaimSessionRequest
 
     switch_repo("game")
     _, error = claim_server(
         body=ModelsClaimSessionRequest.create(session_id=session_id),
-        namespace=game_namespace
+        namespace=game_namespace,
     )
     if error:
         return None, create_response(400, error)
@@ -565,27 +571,24 @@ def claim_server(
 
 
 def create_matchmaking_request(
-        redis_client,
-        namespace,
-        game_mode,
-        user_id,
-        party_count=1,
-        party_member_count=1
+    redis_client, namespace, game_mode, user_id, party_count=1, party_member_count=1
 ):
-    from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceRule, ModelsChannel, ModelsMatchOptionRule, ModelsRuleSet
+    from accelbyte_py_sdk.api.matchmaking.models import (
+        ModelsAllianceRule,
+        ModelsChannel,
+        ModelsMatchOptionRule,
+        ModelsRuleSet,
+    )
 
     ruleset = ModelsRuleSet.create(
         alliance=ModelsAllianceRule.create(
-            max_number=2,
-            min_number=2,
-            player_max_number=1,
-            player_min_number=1
+            max_number=2, min_number=2, player_max_number=1, player_min_number=1
         ),
         alliance_flexing_rule=[],
         flexing_rule=[],
         match_options=ModelsMatchOptionRule.create(options=[]),
         matching_rule=[],
-        sub_game_modes={}
+        sub_game_modes={},
     )
 
     channel = ModelsChannel.create(
@@ -601,7 +604,7 @@ def create_matchmaking_request(
         slug=f"{namespace}:{game_mode}",
         social_matchmaking=False,
         updated_at="",
-        use_sub_gamemode=False
+        use_sub_gamemode=False,
     )
 
     error = save_channel(redis_client, channel)
@@ -616,7 +619,7 @@ def create_matchmaking_request(
             "party_members": [{"user_id": user_id} for _ in range(party_member_count)],
             "priority": 0,
             "server_name": "",
-            "user_id": user_id
+            "user_id": user_id,
         }
         for _ in range(party_count)
     ]
@@ -624,7 +627,9 @@ def create_matchmaking_request(
     parties_str = [json.dumps(party) for party in parties]
 
     matchmaking_request_key = get_matchmaking_requests_key(namespace, game_mode)
-    error = save_matchmaking_requests(redis_client, matchmaking_request_key, parties_str)
+    error = save_matchmaking_requests(
+        redis_client, matchmaking_request_key, parties_str
+    )
     if error:
         return error
 
@@ -632,14 +637,14 @@ def create_matchmaking_request(
 
 
 def create_session(
-        game_namespace,
-        game_version,
-        map_name,
-        mode,
-        password,
-        session_type,
-        username,
-        max_internal_player=2
+    game_namespace,
+    game_version,
+    map_name,
+    mode,
+    password,
+    session_type,
+    username,
+    max_internal_player=2,
 ):
     from accelbyte_py_sdk.api.sessionbrowser import create_session
     from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest
@@ -658,14 +663,14 @@ def create_session(
                 mode=mode,
                 num_bot=0,
                 password=password,
-                settings={}
+                settings={},
             ),
             game_version=game_version,
             namespace=game_namespace,
             session_type=session_type,
-            username=username
+            username=username,
         ),
-        namespace=game_namespace
+        namespace=game_namespace,
     )
     if error:
         return None, create_response(400, error)
@@ -674,29 +679,23 @@ def create_session(
 
 
 def get_active_matchmaking_requests_summary(
-        redis_client,
-        namespace,
-        game_mode,
-        start=0,
-        end=50
+    redis_client, namespace, game_mode, start=0, end=50
 ):
     matchmaking_requests_str, error = load_matchmaking_requests(
-        redis_client,
-        get_matchmaking_requests_key(namespace, game_mode)
+        redis_client, get_matchmaking_requests_key(namespace, game_mode)
     )
     if error:
         return None, error
-    result = ActiveMatchmakingRequestsSummary([
-        json.loads(matchmaking_request_str)
-        for matchmaking_request_str in matchmaking_requests_str
-    ])
+    result = ActiveMatchmakingRequestsSummary(
+        [
+            json.loads(matchmaking_request_str)
+            for matchmaking_request_str in matchmaking_requests_str
+        ]
+    )
     return result, None
 
 
-def get_session_from_dsmc(
-        game_namespace: str,
-        session_id: str
-):
+def get_session_from_dsmc(game_namespace: str, session_id: str):
     from accelbyte_py_sdk.api.dsmc import get_session
 
     switch_repo("game")
@@ -707,10 +706,7 @@ def get_session_from_dsmc(
     return result, None
 
 
-def get_session_from_session_browser(
-        game_namespace: str,
-        session_id: str
-):
+def get_session_from_session_browser(game_namespace: str, session_id: str):
     from accelbyte_py_sdk.api.sessionbrowser import get_session
 
     switch_repo("game")
@@ -722,12 +718,7 @@ def get_session_from_session_browser(
 
 
 def register_session_on_dsmc(
-        session_id,
-        deployment,
-        game_mode,
-        game_namespace,
-        party_id,
-        user_ids
+    session_id, deployment, game_mode, game_namespace, party_id, user_ids
 ):
     from accelbyte_py_sdk.api.dsmc import create_session
     from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchingAlly
@@ -751,7 +742,7 @@ def register_session_on_dsmc(
                             party_members=[
                                 ModelsRequestMatchMember.create(user_id=user_id)
                                 for user_id in user_ids
-                            ]
+                            ],
                         )
                     ]
                 )
@@ -759,9 +750,9 @@ def register_session_on_dsmc(
             namespace=game_namespace,
             pod_name="",
             region="",
-            session_id=session_id
+            session_id=session_id,
         ),
-        namespace=game_namespace
+        namespace=game_namespace,
     )
     if error:
         return None, create_response(400, error)
@@ -769,44 +760,34 @@ def register_session_on_dsmc(
     return result, None
 
 
-def send_notif_match_found(
-        namespace: str,
-        ip: str,
-        port: int,
-        user_id: str
-):
+def send_notif_match_found(namespace: str, ip: str, port: int, user_id: str):
     from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
     from accelbyte_py_sdk.api.lobby import free_form_notification_by_user_id
 
     switch_repo("iam")
     _, error = free_form_notification_by_user_id(
         body=ModelFreeFormNotificationRequest.create(
-            message=f"found {ip} {port}",
-            topic=MATCHMAKING_NOTIFICATION_TOPIC
+            message=f"found {ip} {port}", topic=MATCHMAKING_NOTIFICATION_TOPIC
         ),
         user_id=user_id,
-        namespace=namespace
+        namespace=namespace,
     )
     if error:
         return create_response(400, error)
     return None
 
 
-def send_notif_match_searching(
-        namespace: str,
-        user_id: str
-):
+def send_notif_match_searching(namespace: str, user_id: str):
     from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
     from accelbyte_py_sdk.api.lobby import free_form_notification_by_user_id
 
     switch_repo("iam")
     _, error = free_form_notification_by_user_id(
         body=ModelFreeFormNotificationRequest.create(
-            message="searching",
-            topic=MATCHMAKING_NOTIFICATION_TOPIC
+            message="searching", topic=MATCHMAKING_NOTIFICATION_TOPIC
         ),
         user_id=user_id,
-        namespace=namespace
+        namespace=namespace,
     )
     if error:
         return create_response(400, error)
@@ -818,18 +799,13 @@ def send_notif_match_searching(
 
 # region redis
 
+
 def create_redis_client(host, port, db=0, retries=10, retry_backoff=0.2):
     from redis import Redis
     from redis.retry import Retry
 
     client = Redis(
-        host=host,
-        port=port,
-        db=db,
-        retry=Retry(
-            backoff=retry_backoff,
-            retries=retries
-        )
+        host=host, port=port, db=db, retry=Retry(backoff=retry_backoff, retries=retries)
     )
 
     return client
@@ -842,7 +818,9 @@ def load_matchmaking_requests(redis_client, key: str, start=0, end=50):
         result = redis_client.lrange(key, start, end)
         return result, None
     except RedisConnectionError:
-        return None, create_response(status_code=500, body="Failed to connect to Redis server.")
+        return None, create_response(
+            status_code=500, body="Failed to connect to Redis server."
+        )
 
 
 def save_channel(redis_client, channel):
@@ -852,7 +830,9 @@ def save_channel(redis_client, channel):
         redis_client.sadd(CHANNEL_LIST_KEY, channel.slug)
         return None
     except RedisConnectionError:
-        return create_response(status_code=500, body="Failed to connect to Redis server.")
+        return create_response(
+            status_code=500, body="Failed to connect to Redis server."
+        )
 
 
 def save_matchmaking_requests(redis_client, key, matchmaking_requests):
@@ -862,13 +842,16 @@ def save_matchmaking_requests(redis_client, key, matchmaking_requests):
         redis_client.lpush(key, *matchmaking_requests)
         return None
     except RedisConnectionError:
-        return create_response(status_code=500, body="Failed to connect to Redis server.")
+        return create_response(
+            status_code=500, body="Failed to connect to Redis server."
+        )
 
 
 # endregion redis
 
 
 # region repositories
+
 
 def switch_repo(repo):
     from accelbyte_py_sdk.core import set_config_repository, set_token_repository
@@ -912,10 +895,12 @@ def switch_repo(repo):
     else:
         raise NotImplementedError
 
+
 # endregion repositories
 
 
 # region response
+
 
 def create_response(status_code, body):
     from accelbyte_py_sdk.core import HttpResponse
@@ -930,15 +915,14 @@ def create_response(status_code, body):
         body = body.__dict__
     if not isinstance(body, dict):
         raise NotImplementedError
-    return {
-        "statusCode": status_code,
-        "body": json.dumps(body)
-    }
+    return {"statusCode": status_code, "body": json.dumps(body)}
+
 
 # endregion response
 
 
 # region token
+
 
 def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
     import jwt
@@ -959,7 +943,9 @@ def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
     try:
         web_token = jwt.decode(bearer_auth_token, options={"verify_signature": False})
         patch_web_token(web_token)
-        oauth_token = OauthmodelTokenResponseV3.create_from_dict(web_token, include_empty=True)
+        oauth_token = OauthmodelTokenResponseV3.create_from_dict(
+            web_token, include_empty=True
+        )
         oauth_token.access_token = bearer_auth_token
         return oauth_token, None
     except ValueError as e:
@@ -968,16 +954,23 @@ def convert_bearer_auth_token_to_oauth_token(bearer_auth_token):
 
 def extract_bearer_auth_token(authorization):
     if authorization is None:
-        return None, create_response(status_code=403, body="Authorization header is missing.")
+        return None, create_response(
+            status_code=403, body="Authorization header is missing."
+        )
     if not authorization.startswith("Bearer "):
-        return None, create_response(status_code=400, body=f"Invalid Authorization. Expecting Bearer Auth Token. {authorization}")
+        return None, create_response(
+            status_code=400,
+            body=f"Invalid Authorization. Expecting Bearer Auth Token. {authorization}",
+        )
     bearer_auth_token = authorization.removeprefix("Bearer ")
     return bearer_auth_token, None
+
 
 # endregion token
 
 
 # region utils
+
 
 def create_uuid():
     return str(uuid4()).replace("-", "")
@@ -990,10 +983,16 @@ def get_matchmaking_requests_key(namespace: str, game_mode: str):
 def parse_args():
     parser = ArgumentParser()
 
-    parser.add_argument("-t", "--token", type=str, required=False, help="sets the token")
+    parser.add_argument(
+        "-t", "--token", type=str, required=False, help="sets the token"
+    )
 
-    parser.add_argument("-u", "--username", type=str, required=False, help="sets the username")
-    parser.add_argument("-p", "--password", type=str, required=False, help="sets the password")
+    parser.add_argument(
+        "-u", "--username", type=str, required=False, help="sets the username"
+    )
+    parser.add_argument(
+        "-p", "--password", type=str, required=False, help="sets the password"
+    )
 
     return vars(parser.parse_args())
 
@@ -1016,6 +1015,7 @@ def redact(text, start=2, end=3, mid=3):
         elif i >= (text_len - end):
             result.append(c)
     return "".join(result)
+
 
 # endregion utils
 

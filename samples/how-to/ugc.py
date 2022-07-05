@@ -7,11 +7,7 @@ def example_create_tag():
     from accelbyte_py_sdk.api.ugc import admin_create_tag
     from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagRequest
 
-    result, error = admin_create_tag(
-        body=ModelsCreateTagRequest.create(
-            tag="<tag>"
-        )
-    )
+    result, error = admin_create_tag(body=ModelsCreateTagRequest.create(tag="<tag>"))
     if error:
         print(error)
 
@@ -19,9 +15,7 @@ def example_create_tag():
 def example_delete_tag():
     from accelbyte_py_sdk.api.ugc import admin_delete_tag
 
-    result, error = admin_delete_tag(
-        tag_id="<tag-id>"
-    )
+    result, error = admin_delete_tag(tag_id="<tag-id>")
     if error:
         print(error)
 
@@ -39,10 +33,7 @@ def example_update_tag():
     from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagRequest
 
     result, error = admin_update_tag(
-        body=ModelsCreateTagRequest.create(
-            tag="<tag>"
-        ),
-        tag_id="<tag-id>"
+        body=ModelsCreateTagRequest.create(tag="<tag>"), tag_id="<tag-id>"
     )
     if error:
         print(error)

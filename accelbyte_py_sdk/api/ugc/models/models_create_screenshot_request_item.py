@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,9 +51,9 @@ class ModelsCreateScreenshotRequestItem(Model):
 
     # region fields
 
-    content_type: str                                                                              # REQUIRED
-    description: str                                                                               # REQUIRED
-    file_extension: Union[str, FileExtensionEnum]                                                  # REQUIRED
+    content_type: str  # REQUIRED
+    description: str  # REQUIRED
+    file_extension: Union[str, FileExtensionEnum]  # REQUIRED
 
     # endregion fields
 
@@ -67,7 +67,9 @@ class ModelsCreateScreenshotRequestItem(Model):
         self.description = value
         return self
 
-    def with_file_extension(self, value: Union[str, FileExtensionEnum]) -> ModelsCreateScreenshotRequestItem:
+    def with_file_extension(
+        self, value: Union[str, FileExtensionEnum]
+    ) -> ModelsCreateScreenshotRequestItem:
         self.file_extension = value
         return self
 
@@ -109,7 +111,9 @@ class ModelsCreateScreenshotRequestItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreateScreenshotRequestItem:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsCreateScreenshotRequestItem:
         instance = cls()
         if not dict_:
             return instance
@@ -128,15 +132,33 @@ class ModelsCreateScreenshotRequestItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsCreateScreenshotRequestItem]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsCreateScreenshotRequestItem]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsCreateScreenshotRequestItem]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsCreateScreenshotRequestItem]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsCreateScreenshotRequestItem, List[ModelsCreateScreenshotRequestItem], Dict[Any, ModelsCreateScreenshotRequestItem]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsCreateScreenshotRequestItem,
+        List[ModelsCreateScreenshotRequestItem],
+        Dict[Any, ModelsCreateScreenshotRequestItem],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

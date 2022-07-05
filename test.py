@@ -6,6 +6,7 @@ from typing import Optional
 
 def set_logger_level(level):
     from accelbyte_py_sdk import __name__ as module_name
+
     logging.basicConfig()
     logging.getLogger(module_name).setLevel(level)
 
@@ -25,11 +26,22 @@ def parse_args():
     parser = ArgumentParser()
 
     parser.add_argument("--test_core", default=True, type=str_to_bool, required=False)
-    parser.add_argument("--test_integration", default=False, type=str_to_bool, required=False)
-    parser.add_argument("--test_all", action="store_true", default=False, required=False)
+    parser.add_argument(
+        "--test_integration", default=False, type=str_to_bool, required=False
+    )
+    parser.add_argument(
+        "--test_all", action="store_true", default=False, required=False
+    )
 
-    parser.add_argument("--dotenv_file", default="tests/sample_apps/how_to.env", type=file_path, required=False)
-    parser.add_argument("--use_dotenv", action="store_true", default=False, required=False)
+    parser.add_argument(
+        "--dotenv_file",
+        default="tests/sample_apps/how_to.env",
+        type=file_path,
+        required=False,
+    )
+    parser.add_argument(
+        "--use_dotenv", action="store_true", default=False, required=False
+    )
 
     parser.add_argument("--use_tap", action="store_true", default=False, required=False)
 
@@ -54,6 +66,7 @@ def main(*args, **kwargs) -> None:
     if kwargs.get("use_tap", False):
         try:
             import tap
+
             runner = tap.TAPTestRunner()
             runner.set_stream(True)
         except ImportError as e:
@@ -62,10 +75,7 @@ def main(*args, **kwargs) -> None:
     if runner is None:
         runner = unittest.TextTestRunner()
 
-    results = {
-        "test_core": True,
-        "test_integration": True
-    }
+    results = {"test_core": True, "test_integration": True}
 
     if kwargs.get("test_core", False):
         import tests.core
@@ -84,12 +94,15 @@ def main(*args, **kwargs) -> None:
 
     if kwargs.get("test_integration", False):
         import tests.sample_apps.how_to
+
         dotenv_file = kwargs.get("dotenv_file", None)
         use_dotenv = kwargs.get("use_dotenv", False)
         if dotenv_file and use_dotenv:
             tests.sample_apps.how_to.DOTENV_FILE = dotenv_file
 
-        results_integration = runner.run(loader.loadTestsFromModule(tests.sample_apps.how_to))
+        results_integration = runner.run(
+            loader.loadTestsFromModule(tests.sample_apps.how_to)
+        )
         results["test_integration"] = results_integration.wasSuccessful()
 
     exit(0 if all(results.values()) else 1)

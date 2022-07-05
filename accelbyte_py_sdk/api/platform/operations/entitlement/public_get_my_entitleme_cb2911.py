@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -88,9 +88,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
-    item_id: str                                                                                   # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
+    item_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -160,7 +160,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
         self.namespace = value
         return self
 
-    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> PublicGetMyEntitlementOwnershipByItemId:
+    def with_entitlement_clazz(
+        self, value: Union[str, EntitlementClazzEnum]
+    ) -> PublicGetMyEntitlementOwnershipByItemId:
         self.entitlement_clazz = value
         return self
 
@@ -193,7 +195,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, TimedOwnership], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, TimedOwnership], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - TimedOwnership (successful operation)
@@ -204,7 +208,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -212,7 +218,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
         if code == 200:
             return TimedOwnership.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -233,7 +241,9 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetMyEntitlementOwnershipByItemId:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PublicGetMyEntitlementOwnershipByItemId:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -268,7 +278,13 @@ class PublicGetMyEntitlementOwnershipByItemId(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
+            "entitlementClazz": [
+                "APP",
+                "CODE",
+                "ENTITLEMENT",
+                "MEDIA",
+                "SUBSCRIPTION",
+            ],  # in query
         }
 
     # endregion static methods

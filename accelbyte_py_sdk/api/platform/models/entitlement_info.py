@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -125,30 +125,30 @@ class EntitlementInfo(Model):
 
     # region fields
 
-    clazz: Union[str, ClazzEnum]                                                                   # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    granted_at: str                                                                                # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    item_namespace: str                                                                            # REQUIRED
-    name: str                                                                                      # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    source: Union[str, SourceEnum]                                                                 # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    type_: Union[str, TypeEnum]                                                                    # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    app_id: str                                                                                    # OPTIONAL
-    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
-    features: List[str]                                                                            # OPTIONAL
-    granted_code: str                                                                              # OPTIONAL
-    item_snapshot: ItemSnapshot                                                                    # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    stackable: bool                                                                                # OPTIONAL
-    start_date: str                                                                                # OPTIONAL
-    store_id: str                                                                                  # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
+    clazz: Union[str, ClazzEnum]  # REQUIRED
+    created_at: str  # REQUIRED
+    granted_at: str  # REQUIRED
+    id_: str  # REQUIRED
+    item_id: str  # REQUIRED
+    item_namespace: str  # REQUIRED
+    name: str  # REQUIRED
+    namespace: str  # REQUIRED
+    source: Union[str, SourceEnum]  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    user_id: str  # REQUIRED
+    app_id: str  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    end_date: str  # OPTIONAL
+    features: List[str]  # OPTIONAL
+    granted_code: str  # OPTIONAL
+    item_snapshot: ItemSnapshot  # OPTIONAL
+    sku: str  # OPTIONAL
+    stackable: bool  # OPTIONAL
+    start_date: str  # OPTIONAL
+    store_id: str  # OPTIONAL
+    use_count: int  # OPTIONAL
 
     # endregion fields
 
@@ -329,7 +329,9 @@ class EntitlementInfo(Model):
         elif include_empty:
             result["grantedCode"] = ""
         if hasattr(self, "item_snapshot"):
-            result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
+            result["itemSnapshot"] = self.item_snapshot.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
         if hasattr(self, "sku"):
@@ -425,7 +427,9 @@ class EntitlementInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> EntitlementInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> EntitlementInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -502,7 +506,9 @@ class EntitlementInfo(Model):
         elif include_empty:
             instance.granted_code = ""
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
-            instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
+            instance.item_snapshot = ItemSnapshot.create_from_dict(
+                dict_["itemSnapshot"], include_empty=include_empty
+            )
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
         if "sku" in dict_ and dict_["sku"] is not None:
@@ -528,15 +534,29 @@ class EntitlementInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, EntitlementInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, EntitlementInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[EntitlementInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[EntitlementInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[EntitlementInfo, List[EntitlementInfo], Dict[Any, EntitlementInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[EntitlementInfo, List[EntitlementInfo], Dict[Any, EntitlementInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -609,7 +629,17 @@ class EntitlementInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "clazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],
-            "source": ["ACHIEVEMENT", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
+            "source": [
+                "ACHIEVEMENT",
+                "GIFT",
+                "IAP",
+                "OTHER",
+                "PROMOTION",
+                "PURCHASE",
+                "REDEEM_CODE",
+                "REFERRAL_BONUS",
+                "REWARD",
+            ],
             "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED"],
             "type": ["CONSUMABLE", "DURABLE"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],

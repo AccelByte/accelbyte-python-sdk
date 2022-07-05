@@ -24,7 +24,7 @@ class MatchmakingTestCase(IntegrationTestCase):
         max_number=max_number,
         min_number=min_number,
         player_max_number=max_number,
-        player_min_number=min_number
+        player_min_number=min_number,
     )
     models_alliance_flexing_rules: List[ModelsAllianceFlexingRule] = [
         ModelsAllianceFlexingRule.create(
@@ -32,28 +32,20 @@ class MatchmakingTestCase(IntegrationTestCase):
             max_number=max_number,
             min_number=min_number,
             player_max_number=max_number,
-            player_min_number=min_number
+            player_min_number=min_number,
         )
     ]
     models_flexing_rules: List[ModelsFlexingRule] = [
         ModelsFlexingRule.create(
-            attribute="<attribute>",
-            criteria=criteria,
-            duration=duration,
-            reference=10
+            attribute="<attribute>", criteria=criteria, duration=duration, reference=10
         )
     ]
     models_match_options: List[ModelsMatchOption] = [
-        ModelsMatchOption.create(
-            name="<name>",
-            type_="<type>"
-        )
+        ModelsMatchOption.create(name="<name>", type_="<type>")
     ]
     models_matching_rules: List[ModelsMatchingRule] = [
         ModelsMatchingRule.create(
-            attribute="<attribute>",
-            criteria=criteria,
-            reference=10
+            attribute="<attribute>", criteria=criteria, reference=10
         )
     ]
     models_channel_request = ModelsChannelRequest.create(
@@ -72,14 +64,14 @@ class MatchmakingTestCase(IntegrationTestCase):
                 game_mode: ModelsSubGameMode.create(
                     alliance=models_alliance_rule,
                     alliance_flexing_rule=models_alliance_flexing_rules,
-                    name=game_mode
+                    name=game_mode,
                 )
-            }
+            },
         ),
         session_queue_timeout_seconds=duration,
         joinable=True,
         social_matchmaking=True,
-        use_sub_gamemode=False
+        use_sub_gamemode=False,
     )
 
     def tearDown(self) -> None:
@@ -107,7 +99,10 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up channel handler. {str(error)}",
+            condition=error is not None,
+        )
 
         # act
         _, error = delete_channel_handler(channel=self.models_channel_request.game_mode)
@@ -121,10 +116,15 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up channel handler. {str(error)}",
+            condition=error is not None,
+        )
 
         # act
-        _, error = get_single_matchmaking_channel(channel_name=self.models_channel_request.game_mode)
+        _, error = get_single_matchmaking_channel(
+            channel_name=self.models_channel_request.game_mode
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -138,7 +138,10 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # arrange
         _, error = create_channel_handler(body=self.models_channel_request)
-        self.log_warning(msg=f"Failed to set up channel handler. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up channel handler. {str(error)}",
+            condition=error is not None,
+        )
 
         # act
         _, error = update_matchmaking_channel(
@@ -153,15 +156,15 @@ class MatchmakingTestCase(IntegrationTestCase):
                         max_number=self.models_alliance_rule.max_number,
                         min_number=self.models_alliance_rule.min_number,
                         player_max_number=self.models_alliance_rule.player_max_number,
-                        player_min_number=self.models_alliance_rule.player_min_number
+                        player_min_number=self.models_alliance_rule.player_min_number,
                     ),
-                    alliance_flexing_rule=self.models_alliance_flexing_rules
+                    alliance_flexing_rule=self.models_alliance_flexing_rules,
                 ),
                 session_queue_timeout_seconds=self.models_channel_request.session_queue_timeout_seconds,
                 social_matchmaking=self.models_channel_request.social_matchmaking,
-                use_sub_gamemode=self.models_channel_request.use_sub_gamemode
+                use_sub_gamemode=self.models_channel_request.use_sub_gamemode,
             ),
-            channel_name=self.game_mode
+            channel_name=self.game_mode,
         )
 
         # assert

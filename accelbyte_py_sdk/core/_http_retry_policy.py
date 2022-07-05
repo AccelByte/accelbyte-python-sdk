@@ -3,55 +3,97 @@ from typing import Optional, Protocol, Tuple, Union
 
 
 class HttpRetryPolicy(Protocol):
-
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool: ...
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
+        ...
 
 
 class CompositeHttpRetryPolicy:
-
     def __init__(self, *policies: HttpRetryPolicy):
         self.policies = list(policies)
 
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
         if elapsed is None:
             elapsed = timedelta(0)
         for policy in self.policies:
-            result = policy(request, response, retries=retries, elapsed=elapsed, **kwargs)
+            result = policy(
+                request, response, retries=retries, elapsed=elapsed, **kwargs
+            )
             if not result:
                 return False
         return True
 
 
 class MaxElapsedHttpRetryPolicy:
-
     def __init__(self, max_elapsed: Union[int, float, timedelta]):
         if isinstance(max_elapsed, (int, float)):
             max_elapsed = timedelta(seconds=max_elapsed)
         self.max_elapsed = max_elapsed
 
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
         if elapsed is None:
             elapsed = timedelta(0)
         return elapsed < self.max_elapsed
 
 
 class MaxRetriesHttpRetryPolicy:
-
     def __init__(self, max_retries: int):
         self.max_retries = max_retries
 
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
         return retries < self.max_retries
 
 
 class NoHttpRetryPolicy:
-
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
         return False
 
 
 class StatusCodesHttpRetryPolicy:
-
     def __init__(self, *status_codes: Union[int, Tuple[int, int]]):
         self.status_codes = set()
         for element in status_codes:
@@ -71,5 +113,14 @@ class StatusCodesHttpRetryPolicy:
             else:
                 raise ValueError(element)
 
-    def __call__(self, request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs) -> bool:
+    def __call__(
+        self,
+        request,
+        response,
+        /,
+        *,
+        retries: int = 0,
+        elapsed: Optional[timedelta] = None,
+        **kwargs,
+    ) -> bool:
         return response.status_code in self.status_codes

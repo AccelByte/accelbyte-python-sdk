@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,18 +49,20 @@ class ModelsCreatorResponse(Model):
 
     # region fields
 
-    creator_follow_state: ModelsCreatorFollowState                                                 # REQUIRED
-    follow_count: int                                                                              # REQUIRED
-    following_count: int                                                                           # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    total_liked_content: int                                                                       # REQUIRED
+    creator_follow_state: ModelsCreatorFollowState  # REQUIRED
+    follow_count: int  # REQUIRED
+    following_count: int  # REQUIRED
+    id_: str  # REQUIRED
+    namespace: str  # REQUIRED
+    total_liked_content: int  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_creator_follow_state(self, value: ModelsCreatorFollowState) -> ModelsCreatorResponse:
+    def with_creator_follow_state(
+        self, value: ModelsCreatorFollowState
+    ) -> ModelsCreatorResponse:
         self.creator_follow_state = value
         return self
 
@@ -91,7 +93,9 @@ class ModelsCreatorResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "creator_follow_state"):
-            result["creatorFollowState"] = self.creator_follow_state.to_dict(include_empty=include_empty)
+            result["creatorFollowState"] = self.creator_follow_state.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["creatorFollowState"] = ModelsCreatorFollowState()
         if hasattr(self, "follow_count"):
@@ -140,12 +144,16 @@ class ModelsCreatorResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreatorResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsCreatorResponse:
         instance = cls()
         if not dict_:
             return instance
         if "creatorFollowState" in dict_ and dict_["creatorFollowState"] is not None:
-            instance.creator_follow_state = ModelsCreatorFollowState.create_from_dict(dict_["creatorFollowState"], include_empty=include_empty)
+            instance.creator_follow_state = ModelsCreatorFollowState.create_from_dict(
+                dict_["creatorFollowState"], include_empty=include_empty
+            )
         elif include_empty:
             instance.creator_follow_state = ModelsCreatorFollowState()
         if "followCount" in dict_ and dict_["followCount"] is not None:
@@ -171,15 +179,33 @@ class ModelsCreatorResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsCreatorResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsCreatorResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsCreatorResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsCreatorResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsCreatorResponse, List[ModelsCreatorResponse], Dict[Any, ModelsCreatorResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsCreatorResponse,
+        List[ModelsCreatorResponse],
+        Dict[Any, ModelsCreatorResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

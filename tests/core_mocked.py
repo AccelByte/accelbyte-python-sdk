@@ -11,7 +11,12 @@ def test_file_upload():
     from accelbyte_py_sdk.services.auth import login_client
     from accelbyte_py_sdk.api.achievement import import_achievements
 
-    config = MyConfigRepository(base_url=BASE_URL, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, namespace=NAMESPACE)
+    config = MyConfigRepository(
+        base_url=BASE_URL,
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,
+        namespace=NAMESPACE,
+    )
     accelbyte_py_sdk.initialize(options={"config": config})
 
     file = "requirements.txt"
@@ -32,7 +37,12 @@ def test_file_download():
     from accelbyte_py_sdk.services.auth import login_client
     from accelbyte_py_sdk.api.social import get_slot_data
 
-    config = MyConfigRepository(base_url=BASE_URL, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, namespace=NAMESPACE)
+    config = MyConfigRepository(
+        base_url=BASE_URL,
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,
+        namespace=NAMESPACE,
+    )
     accelbyte_py_sdk.initialize(options={"config": config})
 
     result, error = login_client()

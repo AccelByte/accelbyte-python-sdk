@@ -16,11 +16,13 @@ class GDPRTestCase(IntegrationTestCase):
         country="US",
         display_name="testPythonServerSDKUser",
         login_id="",
-        password="q!w@e#r$azsxdcfv"
+        password="q!w@e#r$azsxdcfv",
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: ModelUserCreateRequest, namespace: Optional[str] = None):
+    def do_create_user(
+        self, body: ModelUserCreateRequest, namespace: Optional[str] = None
+    ):
         # pylint: disable=no-self-use
         from accelbyte_py_sdk.api.iam import create_user
 
@@ -42,11 +44,19 @@ class GDPRTestCase(IntegrationTestCase):
 
         if self.user_id is not None:
             _, error = delete_user(user_id=self.user_id, namespace=self.user_namespace)
-            self.log_warning(msg=f"Failed to tear down user. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down user. {str(error)}",
+                condition=error is not None,
+            )
             self.user_id = None
         if self.did_configure:
-            _, error = delete_admin_email_configuration(emails=[self.model_user_create_request.login_id])
-            self.log_warning(msg=f"Failed to tear down admin email configuration. {str(error)}", condition=error is not None)
+            _, error = delete_admin_email_configuration(
+                emails=[self.model_user_create_request.login_id]
+            )
+            self.log_warning(
+                msg=f"Failed to tear down admin email configuration. {str(error)}",
+                condition=error is not None,
+            )
             self.did_configure = False
         super().tearDown()
 
@@ -54,14 +64,18 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import admin_get_user_personal_data_requests
 
         # arrange
-        _, error, user_id = self.do_create_user(body=self.model_user_create_request, namespace=self.user_namespace)
+        _, error, user_id = self.do_create_user(
+            body=self.model_user_create_request, namespace=self.user_namespace
+        )
         if error is not None and not user_id:
             self.skipTest(reason=f"Failed to set up user. {str(error)}")
 
         self.user_id = user_id
 
         # act
-        _, error = admin_get_user_personal_data_requests(user_id=self.user_id, namespace=self.user_namespace)
+        _, error = admin_get_user_personal_data_requests(
+            user_id=self.user_id, namespace=self.user_namespace
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -70,14 +84,18 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
 
         # arrange
-        _, error, user_id = self.do_create_user(body=self.model_user_create_request, namespace=self.user_namespace)
+        _, error, user_id = self.do_create_user(
+            body=self.model_user_create_request, namespace=self.user_namespace
+        )
         if error is not None and not user_id:
             self.skipTest(reason=f"Failed to set up user. {str(error)}")
 
         self.user_id = user_id
 
         # act
-        _, error = admin_submit_user_account_deletion_request(user_id=self.user_id, namespace=self.user_namespace)
+        _, error = admin_submit_user_account_deletion_request(
+            user_id=self.user_id, namespace=self.user_namespace
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -87,12 +105,19 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
         # arrange
-        _, error = save_admin_email_configuration(body=[self.model_user_create_request.login_id])
-        self.log_warning(msg=f"Failed to set up admin email configuration {str(error)}", condition=error is not None)
+        _, error = save_admin_email_configuration(
+            body=[self.model_user_create_request.login_id]
+        )
+        self.log_warning(
+            msg=f"Failed to set up admin email configuration {str(error)}",
+            condition=error is not None,
+        )
         self.did_configure = error is None
 
         # act
-        _, error = delete_admin_email_configuration(emails=[self.model_user_create_request.login_id])
+        _, error = delete_admin_email_configuration(
+            emails=[self.model_user_create_request.login_id]
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -103,8 +128,13 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
         # arrange
-        _, error = save_admin_email_configuration(body=[self.model_user_create_request.login_id])
-        self.log_warning(msg=f"Failed to set up admin email configuration {str(error)}", condition=error is not None)
+        _, error = save_admin_email_configuration(
+            body=[self.model_user_create_request.login_id]
+        )
+        self.log_warning(
+            msg=f"Failed to set up admin email configuration {str(error)}",
+            condition=error is not None,
+        )
         self.did_configure = error is None
 
         # act
@@ -118,10 +148,14 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
         # arrange
-        _, _ = delete_admin_email_configuration(emails=[self.model_user_create_request.login_id])
+        _, _ = delete_admin_email_configuration(
+            emails=[self.model_user_create_request.login_id]
+        )
 
         # act
-        _, error = save_admin_email_configuration(body=[self.model_user_create_request.login_id])
+        _, error = save_admin_email_configuration(
+            body=[self.model_user_create_request.login_id]
+        )
         self.did_configure = error is None
 
         # assert
@@ -132,12 +166,19 @@ class GDPRTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
 
         # arrange
-        _, error = save_admin_email_configuration(body=[self.model_user_create_request.login_id])
-        self.log_warning(msg=f"Failed to set up admin email configuration {str(error)}", condition=error is not None)
+        _, error = save_admin_email_configuration(
+            body=[self.model_user_create_request.login_id]
+        )
+        self.log_warning(
+            msg=f"Failed to set up admin email configuration {str(error)}",
+            condition=error is not None,
+        )
         self.did_configure = error is None
 
         # act
-        _, error = update_admin_email_configuration(body=[self.model_user_create_request.login_id])
+        _, error = update_admin_email_configuration(
+            body=[self.model_user_create_request.login_id]
+        )
         self.did_configure = error is None
 
         # assert

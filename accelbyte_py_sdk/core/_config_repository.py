@@ -13,7 +13,6 @@ from typing import Any, List, Optional, Tuple, Union
 
 
 class ConfigRepository(ABC):
-
     @abstractmethod
     def auto_add_amazon_trace_id(self) -> bool:
         pass
@@ -51,17 +50,16 @@ class ConfigRepository(ABC):
 
 
 class MyConfigRepository(ConfigRepository):
-
     def __init__(
-            self,
-            base_url: str,
-            client_id: str,
-            client_secret: str,
-            namespace: Optional[str] = None,
-            app_name: Optional[str] = None,
-            app_version: Optional[str] = None,
-            auto_add_amazon_trace_id: Optional[bool] = None,
-            auto_add_user_agent: Optional[bool] = None,
+        self,
+        base_url: str,
+        client_id: str,
+        client_secret: str,
+        namespace: Optional[str] = None,
+        app_name: Optional[str] = None,
+        app_version: Optional[str] = None,
+        auto_add_amazon_trace_id: Optional[bool] = None,
+        auto_add_user_agent: Optional[bool] = None,
     ) -> None:
         self._base_url = base_url
         self._client_id = client_id
@@ -69,8 +67,12 @@ class MyConfigRepository(ConfigRepository):
         self._namespace = namespace if namespace else ""
         self._app_name = app_name if app_name else ""
         self._app_version = app_version if app_version else ""
-        self._auto_add_amazon_trace_id = auto_add_amazon_trace_id if auto_add_amazon_trace_id is not None else True
-        self._auto_add_user_agent = auto_add_user_agent if auto_add_user_agent is not None else True
+        self._auto_add_amazon_trace_id = (
+            auto_add_amazon_trace_id if auto_add_amazon_trace_id is not None else True
+        )
+        self._auto_add_user_agent = (
+            auto_add_user_agent if auto_add_user_agent is not None else True
+        )
 
     def auto_add_amazon_trace_id(self) -> bool:
         return self._auto_add_amazon_trace_id
@@ -99,14 +101,44 @@ class MyConfigRepository(ConfigRepository):
 
 class DictConfigRepository(ConfigRepository):
 
-    base_url_keys: List[str] = ["AB_BASE_URL", "baseUrl", "baseURL", "base-url", "BaseUrl", "BaseURL", "base_url"]
-    client_id_keys: List[str] = ["AB_CLIENT_ID", "clientId", "clientID", "client-id", "ClientId", "ClientID", "cliend_id"]
-    client_secret_keys: List[str] = ["AB_CLIENT_SECRET", "clientSecret", "client-secret", "ClientSecret", "cliend_secret"]
+    base_url_keys: List[str] = [
+        "AB_BASE_URL",
+        "baseUrl",
+        "baseURL",
+        "base-url",
+        "BaseUrl",
+        "BaseURL",
+        "base_url",
+    ]
+    client_id_keys: List[str] = [
+        "AB_CLIENT_ID",
+        "clientId",
+        "clientID",
+        "client-id",
+        "ClientId",
+        "ClientID",
+        "cliend_id",
+    ]
+    client_secret_keys: List[str] = [
+        "AB_CLIENT_SECRET",
+        "clientSecret",
+        "client-secret",
+        "ClientSecret",
+        "cliend_secret",
+    ]
     namespace_keys: List[str] = ["AB_NAMESPACE", "namespace", "Namespace"]
     app_name_keys: List[str] = ["AB_APP_NAME", "appName", "AppName"]
     app_version_keys: List[str] = ["AB_APP_VERSION", "appVersion", "AppVersion"]
-    auto_add_amazon_trace_id_keys: List[str] = ["AB_AUTO_ADD_AMAZON_TRACE_ID", "autoAddAmazonTraceId", "AutoAddAmazonTraceId"]
-    auto_add_user_agent_keys: List[str] = ["AB_AUTO_ADD_USER_AGENT", "autoAddUserAgent", "AutoAddUserAgent"]
+    auto_add_amazon_trace_id_keys: List[str] = [
+        "AB_AUTO_ADD_AMAZON_TRACE_ID",
+        "autoAddAmazonTraceId",
+        "AutoAddAmazonTraceId",
+    ]
+    auto_add_user_agent_keys: List[str] = [
+        "AB_AUTO_ADD_USER_AGENT",
+        "autoAddUserAgent",
+        "AutoAddUserAgent",
+    ]
 
     def __init__(self, dict_: dict):
         self._dict = dict_
@@ -116,8 +148,12 @@ class DictConfigRepository(ConfigRepository):
         self._namespace = self._try_get_value(self.namespace_keys)
         self._app_name = self._try_get_value(self.app_name_keys)
         self._app_version = self._try_get_value(self.app_version_keys)
-        self._auto_add_amazon_trace_id = DictConfigRepository._force_cast_to_bool(self._try_get_value(self.auto_add_amazon_trace_id_keys, True))
-        self._auto_add_user_agent = DictConfigRepository._force_cast_to_bool(self._try_get_value(self.auto_add_user_agent_keys, True))
+        self._auto_add_amazon_trace_id = DictConfigRepository._force_cast_to_bool(
+            self._try_get_value(self.auto_add_amazon_trace_id_keys, True)
+        )
+        self._auto_add_user_agent = DictConfigRepository._force_cast_to_bool(
+            self._try_get_value(self.auto_add_user_agent_keys, True)
+        )
 
     def auto_add_amazon_trace_id(self) -> bool:
         return self._auto_add_amazon_trace_id
@@ -143,7 +179,9 @@ class DictConfigRepository(ConfigRepository):
     def get_app_version(self) -> str:
         return self._app_version
 
-    def _try_get_value(self, keys: Union[str, List[str]], default: Union[None, Any] = None) -> Optional[Any]:
+    def _try_get_value(
+        self, keys: Union[str, List[str]], default: Union[None, Any] = None
+    ) -> Optional[Any]:
         if isinstance(keys, str):
             return self._dict.get(keys)
         else:
@@ -167,8 +205,9 @@ class DictConfigRepository(ConfigRepository):
 
 
 class DotEnvFileConfigRepository(DictConfigRepository):
-
-    def __init__(self, dotenv_file: Union[str, Path], set_env_var: Union[None, bool] = None):
+    def __init__(
+        self, dotenv_file: Union[str, Path], set_env_var: Union[None, bool] = None
+    ):
         set_env_var = set_env_var if set_env_var is not None else False
 
         if isinstance(dotenv_file, str):
@@ -182,8 +221,11 @@ class DotEnvFileConfigRepository(DictConfigRepository):
             if len(parts) != 2:
                 raise ValueError
             key, value = parts[0], parts[1]
-            if (value.startswith('"') and value.endswith('"')) or \
-                    value.startswith("'") and value.endswith("'"):
+            if (
+                (value.startswith('"') and value.endswith('"'))
+                or value.startswith("'")
+                and value.endswith("'")
+            ):
                 value = value[1:-1]
             dict_[key] = value
         if set_env_var and isinstance(dict_, dict):
@@ -193,13 +235,11 @@ class DotEnvFileConfigRepository(DictConfigRepository):
 
 
 class EnvironmentConfigRepository(DictConfigRepository):
-
     def __init__(self):
         super().__init__(dict(environ))
 
 
 class JsonConfigRepository(DictConfigRepository):
-
     def __init__(self, json_: Union[str, dict]):
         if isinstance(json_, str):
             json_ = json.loads(json_)
@@ -207,7 +247,6 @@ class JsonConfigRepository(DictConfigRepository):
 
 
 class JsonFileConfigRepository(JsonConfigRepository):
-
     def __init__(self, json_file: Union[str, Path]):
         if isinstance(json_file, str):
             json_file = Path(json_file)
@@ -218,7 +257,6 @@ class JsonFileConfigRepository(JsonConfigRepository):
 
 
 class YamlConfigRepository(DictConfigRepository):
-
     def __init__(self, yaml_: Union[str, dict]):
         if isinstance(yaml_, str):
             yaml_ = yaml.safe_load(yaml_)
@@ -226,7 +264,6 @@ class YamlConfigRepository(DictConfigRepository):
 
 
 class YamlFileConfigRepository(YamlConfigRepository):
-
     def __init__(self, yaml_file: Union[str, Path]):
         if isinstance(yaml_file, str):
             yaml_file = Path(yaml_file)

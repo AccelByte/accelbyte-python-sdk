@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -73,17 +73,19 @@ class BulkFetchOrDefaultStatItems1(Operation):
 
     # region fields
 
-    _url: str = "/social/v2/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault"
+    _url: str = (
+        "/social/v2/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    additional_key: str                                                                            # OPTIONAL in [query]
-    stat_code: str                                                                                 # REQUIRED in [query]
-    user_ids: List[str]                                                                            # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    additional_key: str  # OPTIONAL in [query]
+    stat_code: str  # REQUIRED in [query]
+    user_ids: List[str]  # REQUIRED in [query]
 
     # endregion fields
 
@@ -196,7 +198,12 @@ class BulkFetchOrDefaultStatItems1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ADTOObjectForUserStatItemValue]], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, List[ADTOObjectForUserStatItemValue]],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
@@ -211,19 +218,25 @@ class BulkFetchOrDefaultStatItems1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ADTOObjectForUserStatItemValue.create_from_dict(i) for i in content], None
+            return [
+                ADTOObjectForUserStatItemValue.create_from_dict(i) for i in content
+            ], None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -246,7 +259,9 @@ class BulkFetchOrDefaultStatItems1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkFetchOrDefaultStatItems1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> BulkFetchOrDefaultStatItems1:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -287,7 +302,7 @@ class BulkFetchOrDefaultStatItems1(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "userIds": "multi",                                                                    # in query
+            "userIds": "multi",  # in query
         }
 
     # endregion static methods

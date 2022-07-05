@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,13 +51,13 @@ class ModelUserInformation(Model):
 
     # region fields
 
-    country: str                                                                                   # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    email_addresses: List[str]                                                                     # REQUIRED
-    linked_platform_accounts: List[ModelPlatformUserInformation]                                   # REQUIRED
-    phone_number: str                                                                              # REQUIRED
-    username: str                                                                                  # REQUIRED
-    xuid: str                                                                                      # OPTIONAL
+    country: str  # REQUIRED
+    display_name: str  # REQUIRED
+    email_addresses: List[str]  # REQUIRED
+    linked_platform_accounts: List[ModelPlatformUserInformation]  # REQUIRED
+    phone_number: str  # REQUIRED
+    username: str  # REQUIRED
+    xuid: str  # OPTIONAL
 
     # endregion fields
 
@@ -75,7 +75,9 @@ class ModelUserInformation(Model):
         self.email_addresses = value
         return self
 
-    def with_linked_platform_accounts(self, value: List[ModelPlatformUserInformation]) -> ModelUserInformation:
+    def with_linked_platform_accounts(
+        self, value: List[ModelPlatformUserInformation]
+    ) -> ModelUserInformation:
         self.linked_platform_accounts = value
         return self
 
@@ -110,7 +112,10 @@ class ModelUserInformation(Model):
         elif include_empty:
             result["EmailAddresses"] = []
         if hasattr(self, "linked_platform_accounts"):
-            result["LinkedPlatformAccounts"] = [i0.to_dict(include_empty=include_empty) for i0 in self.linked_platform_accounts]
+            result["LinkedPlatformAccounts"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.linked_platform_accounts
+            ]
         elif include_empty:
             result["LinkedPlatformAccounts"] = []
         if hasattr(self, "phone_number"):
@@ -154,7 +159,9 @@ class ModelUserInformation(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserInformation:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelUserInformation:
         instance = cls()
         if not dict_:
             return instance
@@ -170,8 +177,16 @@ class ModelUserInformation(Model):
             instance.email_addresses = [str(i0) for i0 in dict_["EmailAddresses"]]
         elif include_empty:
             instance.email_addresses = []
-        if "LinkedPlatformAccounts" in dict_ and dict_["LinkedPlatformAccounts"] is not None:
-            instance.linked_platform_accounts = [ModelPlatformUserInformation.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["LinkedPlatformAccounts"]]
+        if (
+            "LinkedPlatformAccounts" in dict_
+            and dict_["LinkedPlatformAccounts"] is not None
+        ):
+            instance.linked_platform_accounts = [
+                ModelPlatformUserInformation.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["LinkedPlatformAccounts"]
+            ]
         elif include_empty:
             instance.linked_platform_accounts = []
         if "PhoneNumber" in dict_ and dict_["PhoneNumber"] is not None:
@@ -189,15 +204,33 @@ class ModelUserInformation(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserInformation]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelUserInformation]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserInformation]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelUserInformation]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserInformation, List[ModelUserInformation], Dict[Any, ModelUserInformation]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelUserInformation,
+        List[ModelUserInformation],
+        Dict[Any, ModelUserInformation],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

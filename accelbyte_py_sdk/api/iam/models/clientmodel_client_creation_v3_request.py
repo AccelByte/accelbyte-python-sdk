@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -59,17 +59,17 @@ class ClientmodelClientCreationV3Request(Model):
 
     # region fields
 
-    audiences: List[str]                                                                           # REQUIRED
-    base_uri: str                                                                                  # REQUIRED
-    client_id: str                                                                                 # REQUIRED
-    client_name: str                                                                               # REQUIRED
-    client_permissions: List[AccountcommonPermissionV3]                                            # REQUIRED
-    client_platform: str                                                                           # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    oauth_client_type: str                                                                         # REQUIRED
-    redirect_uri: str                                                                              # REQUIRED
-    secret: str                                                                                    # REQUIRED
-    deletable: bool                                                                                # OPTIONAL
+    audiences: List[str]  # REQUIRED
+    base_uri: str  # REQUIRED
+    client_id: str  # REQUIRED
+    client_name: str  # REQUIRED
+    client_permissions: List[AccountcommonPermissionV3]  # REQUIRED
+    client_platform: str  # REQUIRED
+    namespace: str  # REQUIRED
+    oauth_client_type: str  # REQUIRED
+    redirect_uri: str  # REQUIRED
+    secret: str  # REQUIRED
+    deletable: bool  # OPTIONAL
 
     # endregion fields
 
@@ -91,7 +91,9 @@ class ClientmodelClientCreationV3Request(Model):
         self.client_name = value
         return self
 
-    def with_client_permissions(self, value: List[AccountcommonPermissionV3]) -> ClientmodelClientCreationV3Request:
+    def with_client_permissions(
+        self, value: List[AccountcommonPermissionV3]
+    ) -> ClientmodelClientCreationV3Request:
         self.client_permissions = value
         return self
 
@@ -142,7 +144,10 @@ class ClientmodelClientCreationV3Request(Model):
         elif include_empty:
             result["clientName"] = ""
         if hasattr(self, "client_permissions"):
-            result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
+            result["clientPermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.client_permissions
+            ]
         elif include_empty:
             result["clientPermissions"] = []
         if hasattr(self, "client_platform"):
@@ -206,7 +211,9 @@ class ClientmodelClientCreationV3Request(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ClientmodelClientCreationV3Request:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ClientmodelClientCreationV3Request:
         instance = cls()
         if not dict_:
             return instance
@@ -227,7 +234,12 @@ class ClientmodelClientCreationV3Request(Model):
         elif include_empty:
             instance.client_name = ""
         if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
-            instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
+            instance.client_permissions = [
+                AccountcommonPermissionV3.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["clientPermissions"]
+            ]
         elif include_empty:
             instance.client_permissions = []
         if "clientPlatform" in dict_ and dict_["clientPlatform"] is not None:
@@ -257,15 +269,33 @@ class ClientmodelClientCreationV3Request(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ClientmodelClientCreationV3Request]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ClientmodelClientCreationV3Request]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ClientmodelClientCreationV3Request]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ClientmodelClientCreationV3Request]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ClientmodelClientCreationV3Request, List[ClientmodelClientCreationV3Request], Dict[Any, ClientmodelClientCreationV3Request]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ClientmodelClientCreationV3Request,
+        List[ClientmodelClientCreationV3Request],
+        Dict[Any, ClientmodelClientCreationV3Request],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

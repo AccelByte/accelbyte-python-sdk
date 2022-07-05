@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -84,10 +84,10 @@ class ConsumeUserEntitlement(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: EntitlementDecrement                                                                     # OPTIONAL in [body]
-    entitlement_id: str                                                                            # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: EntitlementDecrement  # OPTIONAL in [body]
+    entitlement_id: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -199,7 +199,9 @@ class ConsumeUserEntitlement(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, EntitlementInfo], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, EntitlementInfo], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - EntitlementInfo (successful operation)
@@ -214,7 +216,9 @@ class ConsumeUserEntitlement(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -226,7 +230,9 @@ class ConsumeUserEntitlement(Operation):
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -249,10 +255,14 @@ class ConsumeUserEntitlement(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ConsumeUserEntitlement:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ConsumeUserEntitlement:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = EntitlementDecrement.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = EntitlementDecrement.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = EntitlementDecrement()
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:

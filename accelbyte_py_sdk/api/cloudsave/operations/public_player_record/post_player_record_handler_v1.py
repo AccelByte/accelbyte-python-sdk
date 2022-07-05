@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -173,10 +173,10 @@ class PostPlayerRecordHandlerV1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsPlayerRecordRequest                                                                # REQUIRED in [body]
-    key: str                                                                                       # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: ModelsPlayerRecordRequest  # REQUIRED in [body]
+    key: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -288,7 +288,11 @@ class PostPlayerRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, Optional[str]], Union[None, HttpResponse, ModelsResponseError]
+    ]:
         """Parse the given response.
 
         201: Created - (Record saved)
@@ -307,7 +311,9 @@ class PostPlayerRecordHandlerV1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -323,7 +329,9 @@ class PostPlayerRecordHandlerV1(Operation):
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -345,10 +353,14 @@ class PostPlayerRecordHandlerV1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PostPlayerRecordHandlerV1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PostPlayerRecordHandlerV1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsPlayerRecordRequest.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = ModelsPlayerRecordRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = ModelsPlayerRecordRequest()
         if "key" in dict_ and dict_["key"] is not None:

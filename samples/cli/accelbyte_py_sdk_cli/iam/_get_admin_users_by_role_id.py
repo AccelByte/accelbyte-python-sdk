@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import get_admin_users_by_role_id as get_admin_users_by_role_id_internal
+from accelbyte_py_sdk.api.iam import (
+    get_admin_users_by_role_id as get_admin_users_by_role_id_internal,
+)
 from accelbyte_py_sdk.api.iam.models import ModelGetAdminUsersResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -45,23 +47,21 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_admin_users_by_role_id(
-        after: Optional[int] = None,
-        before: Optional[int] = None,
-        limit: Optional[int] = None,
-        role_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    after: Optional[int] = None,
+    before: Optional[int] = None,
+    limit: Optional[int] = None,
+    role_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_admin_users_by_role_id_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = get_admin_users_by_role_id_internal(

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -91,19 +91,19 @@ class FulfillmentRequest(Model):
 
     # region fields
 
-    quantity: int                                                                                  # REQUIRED
-    duration: int                                                                                  # OPTIONAL
-    end_date: str                                                                                  # OPTIONAL
-    item_id: str                                                                                   # OPTIONAL
-    item_sku: str                                                                                  # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    order: OrderSummary                                                                            # OPTIONAL
-    order_no: str                                                                                  # OPTIONAL
-    origin: Union[str, OriginEnum]                                                                 # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    source: Union[str, SourceEnum]                                                                 # OPTIONAL
-    start_date: str                                                                                # OPTIONAL
-    store_id: str                                                                                  # OPTIONAL
+    quantity: int  # REQUIRED
+    duration: int  # OPTIONAL
+    end_date: str  # OPTIONAL
+    item_id: str  # OPTIONAL
+    item_sku: str  # OPTIONAL
+    language: str  # OPTIONAL
+    order: OrderSummary  # OPTIONAL
+    order_no: str  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
+    region: str  # OPTIONAL
+    source: Union[str, SourceEnum]  # OPTIONAL
+    start_date: str  # OPTIONAL
+    store_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -271,7 +271,9 @@ class FulfillmentRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FulfillmentRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> FulfillmentRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -300,7 +302,9 @@ class FulfillmentRequest(Model):
         elif include_empty:
             instance.language = ""
         if "order" in dict_ and dict_["order"] is not None:
-            instance.order = OrderSummary.create_from_dict(dict_["order"], include_empty=include_empty)
+            instance.order = OrderSummary.create_from_dict(
+                dict_["order"], include_empty=include_empty
+            )
         elif include_empty:
             instance.order = OrderSummary()
         if "orderNo" in dict_ and dict_["orderNo"] is not None:
@@ -330,15 +334,31 @@ class FulfillmentRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FulfillmentRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, FulfillmentRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FulfillmentRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[FulfillmentRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FulfillmentRequest, List[FulfillmentRequest], Dict[Any, FulfillmentRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        FulfillmentRequest, List[FulfillmentRequest], Dict[Any, FulfillmentRequest]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -388,8 +408,31 @@ class FulfillmentRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "origin": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],
-            "source": ["ACHIEVEMENT", "DLC", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Other",
+                "Playstation",
+                "Stadia",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
+            "source": [
+                "ACHIEVEMENT",
+                "DLC",
+                "GIFT",
+                "IAP",
+                "OTHER",
+                "PROMOTION",
+                "PURCHASE",
+                "REDEEM_CODE",
+                "REFERRAL_BONUS",
+                "REWARD",
+            ],
         }
 
     # endregion static methods

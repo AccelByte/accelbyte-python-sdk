@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -36,7 +36,12 @@ from ..operations.sso import LogoutSSOClient
 
 
 @same_doc_as(LoginSSOClient)
-def login_sso_client(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def login_sso_client(
+    platform_id: str,
+    payload: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
@@ -45,16 +50,25 @@ def login_sso_client(platform_id: str, payload: Optional[str] = None, x_addition
 
 
 @same_doc_as(LoginSSOClient)
-async def login_sso_client_async(platform_id: str, payload: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def login_sso_client_async(
+    platform_id: str,
+    payload: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = LoginSSOClient.create(
         platform_id=platform_id,
         payload=payload,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(LogoutSSOClient)
-def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def logout_sso_client(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
@@ -62,8 +76,12 @@ def logout_sso_client(platform_id: str, x_additional_headers: Optional[Dict[str,
 
 
 @same_doc_as(LogoutSSOClient)
-async def logout_sso_client_async(platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def logout_sso_client_async(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = LogoutSSOClient.create(
         platform_id=platform_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

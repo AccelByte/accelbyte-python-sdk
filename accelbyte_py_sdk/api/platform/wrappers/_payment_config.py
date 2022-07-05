@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -81,13 +81,27 @@ from ..operations.payment_config import UpdateWxPayConfig
 from ..operations.payment_config import UpdateWxPayConfigCert
 from ..operations.payment_config import UpdateXsollaConfig
 from ..operations.payment_config import UpdateXsollaUIConfig
-from ..models import PaymentProviderConfigEditAggregateEnum, PaymentProviderConfigEditSpecialsEnum
-from ..models import PaymentProviderConfigInfoAggregateEnum, PaymentProviderConfigInfoSpecialsEnum
-from ..models import XsollaPaywallConfigRequestDeviceEnum, XsollaPaywallConfigRequestSizeEnum, XsollaPaywallConfigRequestThemeEnum
+from ..models import (
+    PaymentProviderConfigEditAggregateEnum,
+    PaymentProviderConfigEditSpecialsEnum,
+)
+from ..models import (
+    PaymentProviderConfigInfoAggregateEnum,
+    PaymentProviderConfigInfoSpecialsEnum,
+)
+from ..models import (
+    XsollaPaywallConfigRequestDeviceEnum,
+    XsollaPaywallConfigRequestSizeEnum,
+    XsollaPaywallConfigRequestThemeEnum,
+)
 
 
 @same_doc_as(CreatePaymentProviderConfig)
-def create_payment_provider_config(body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_payment_provider_config(
+    body: Optional[PaymentProviderConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreatePaymentProviderConfig.create(
         body=body,
     )
@@ -95,15 +109,26 @@ def create_payment_provider_config(body: Optional[PaymentProviderConfigEdit] = N
 
 
 @same_doc_as(CreatePaymentProviderConfig)
-async def create_payment_provider_config_async(body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_payment_provider_config_async(
+    body: Optional[PaymentProviderConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreatePaymentProviderConfig.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DebugMatchedPaymentMerchantConfig)
-def debug_matched_payment_merchant_config(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def debug_matched_payment_merchant_config(
+    namespace: Optional[str] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DebugMatchedPaymentMerchantConfig.create(
         namespace=namespace,
         region=region,
@@ -112,16 +137,28 @@ def debug_matched_payment_merchant_config(namespace: Optional[str] = None, regio
 
 
 @same_doc_as(DebugMatchedPaymentMerchantConfig)
-async def debug_matched_payment_merchant_config_async(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def debug_matched_payment_merchant_config_async(
+    namespace: Optional[str] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DebugMatchedPaymentMerchantConfig.create(
         namespace=namespace,
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DebugMatchedPaymentProviderConfig)
-def debug_matched_payment_provider_config(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def debug_matched_payment_provider_config(
+    namespace: Optional[str] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DebugMatchedPaymentProviderConfig.create(
         namespace=namespace,
         region=region,
@@ -130,16 +167,25 @@ def debug_matched_payment_provider_config(namespace: Optional[str] = None, regio
 
 
 @same_doc_as(DebugMatchedPaymentProviderConfig)
-async def debug_matched_payment_provider_config_async(namespace: Optional[str] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def debug_matched_payment_provider_config_async(
+    namespace: Optional[str] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DebugMatchedPaymentProviderConfig.create(
         namespace=namespace,
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeletePaymentProviderConfig)
-def delete_payment_provider_config(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_payment_provider_config(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeletePaymentProviderConfig.create(
         id_=id_,
     )
@@ -147,27 +193,39 @@ def delete_payment_provider_config(id_: str, x_additional_headers: Optional[Dict
 
 
 @same_doc_as(DeletePaymentProviderConfig)
-async def delete_payment_provider_config_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_payment_provider_config_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeletePaymentProviderConfig.create(
         id_=id_,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetAggregatePaymentProviders)
-def get_aggregate_payment_providers(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_aggregate_payment_providers(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetAggregatePaymentProviders.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAggregatePaymentProviders)
-async def get_aggregate_payment_providers_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_aggregate_payment_providers_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetAggregatePaymentProviders.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetPaymentMerchantConfig)
-def get_payment_merchant_config(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_payment_merchant_config(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetPaymentMerchantConfig.create(
         id_=id_,
     )
@@ -175,39 +233,62 @@ def get_payment_merchant_config(id_: str, x_additional_headers: Optional[Dict[st
 
 
 @same_doc_as(GetPaymentMerchantConfig)
-async def get_payment_merchant_config_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_payment_merchant_config_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetPaymentMerchantConfig.create(
         id_=id_,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetPaymentTaxConfig)
-def get_payment_tax_config(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_payment_tax_config(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetPaymentTaxConfig.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPaymentTaxConfig)
-async def get_payment_tax_config_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_payment_tax_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetPaymentTaxConfig.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSpecialPaymentProviders)
-def get_special_payment_providers(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_special_payment_providers(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetSpecialPaymentProviders.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSpecialPaymentProviders)
-async def get_special_payment_providers_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_special_payment_providers_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetSpecialPaymentProviders.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryPaymentProviderConfig)
-def query_payment_provider_config(limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_payment_provider_config(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = QueryPaymentProviderConfig.create(
         limit=limit,
         namespace=namespace,
@@ -218,18 +299,32 @@ def query_payment_provider_config(limit: Optional[int] = None, namespace: Option
 
 
 @same_doc_as(QueryPaymentProviderConfig)
-async def query_payment_provider_config_async(limit: Optional[int] = None, namespace: Optional[str] = None, offset: Optional[int] = None, region: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_payment_provider_config_async(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = QueryPaymentProviderConfig.create(
         limit=limit,
         namespace=namespace,
         offset=offset,
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestAdyenConfig)
-def test_adyen_config(body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_adyen_config(
+    body: Optional[AdyenConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAdyenConfig.create(
         body=body,
         sandbox=sandbox,
@@ -238,16 +333,28 @@ def test_adyen_config(body: Optional[AdyenConfig] = None, sandbox: Optional[bool
 
 
 @same_doc_as(TestAdyenConfig)
-async def test_adyen_config_async(body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_adyen_config_async(
+    body: Optional[AdyenConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAdyenConfig.create(
         body=body,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestAdyenConfigById)
-def test_adyen_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_adyen_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAdyenConfigById.create(
         id_=id_,
         sandbox=sandbox,
@@ -256,16 +363,28 @@ def test_adyen_config_by_id(id_: str, sandbox: Optional[bool] = None, x_addition
 
 
 @same_doc_as(TestAdyenConfigById)
-async def test_adyen_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_adyen_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAdyenConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestAliPayConfig)
-def test_ali_pay_config(body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_ali_pay_config(
+    body: Optional[AliPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAliPayConfig.create(
         body=body,
         sandbox=sandbox,
@@ -274,16 +393,28 @@ def test_ali_pay_config(body: Optional[AliPayConfig] = None, sandbox: Optional[b
 
 
 @same_doc_as(TestAliPayConfig)
-async def test_ali_pay_config_async(body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_ali_pay_config_async(
+    body: Optional[AliPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAliPayConfig.create(
         body=body,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestAliPayConfigById)
-def test_ali_pay_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_ali_pay_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAliPayConfigById.create(
         id_=id_,
         sandbox=sandbox,
@@ -292,16 +423,28 @@ def test_ali_pay_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additi
 
 
 @same_doc_as(TestAliPayConfigById)
-async def test_ali_pay_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_ali_pay_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestAliPayConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestCheckoutConfig)
-def test_checkout_config(body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_checkout_config(
+    body: Optional[CheckoutConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestCheckoutConfig.create(
         body=body,
         sandbox=sandbox,
@@ -310,16 +453,28 @@ def test_checkout_config(body: Optional[CheckoutConfig] = None, sandbox: Optiona
 
 
 @same_doc_as(TestCheckoutConfig)
-async def test_checkout_config_async(body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_checkout_config_async(
+    body: Optional[CheckoutConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestCheckoutConfig.create(
         body=body,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestCheckoutConfigById)
-def test_checkout_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_checkout_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestCheckoutConfigById.create(
         id_=id_,
         sandbox=sandbox,
@@ -328,16 +483,28 @@ def test_checkout_config_by_id(id_: str, sandbox: Optional[bool] = None, x_addit
 
 
 @same_doc_as(TestCheckoutConfigById)
-async def test_checkout_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_checkout_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestCheckoutConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestPayPalConfig)
-def test_pay_pal_config(body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_pay_pal_config(
+    body: Optional[PayPalConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestPayPalConfig.create(
         body=body,
         sandbox=sandbox,
@@ -346,16 +513,28 @@ def test_pay_pal_config(body: Optional[PayPalConfig] = None, sandbox: Optional[b
 
 
 @same_doc_as(TestPayPalConfig)
-async def test_pay_pal_config_async(body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_pay_pal_config_async(
+    body: Optional[PayPalConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestPayPalConfig.create(
         body=body,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestPayPalConfigById)
-def test_pay_pal_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_pay_pal_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestPayPalConfigById.create(
         id_=id_,
         sandbox=sandbox,
@@ -364,16 +543,28 @@ def test_pay_pal_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additi
 
 
 @same_doc_as(TestPayPalConfigById)
-async def test_pay_pal_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_pay_pal_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestPayPalConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestStripeConfig)
-def test_stripe_config(body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_stripe_config(
+    body: Optional[StripeConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestStripeConfig.create(
         body=body,
         sandbox=sandbox,
@@ -382,16 +573,28 @@ def test_stripe_config(body: Optional[StripeConfig] = None, sandbox: Optional[bo
 
 
 @same_doc_as(TestStripeConfig)
-async def test_stripe_config_async(body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_stripe_config_async(
+    body: Optional[StripeConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestStripeConfig.create(
         body=body,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestStripeConfigById)
-def test_stripe_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_stripe_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestStripeConfigById.create(
         id_=id_,
         sandbox=sandbox,
@@ -400,16 +603,27 @@ def test_stripe_config_by_id(id_: str, sandbox: Optional[bool] = None, x_additio
 
 
 @same_doc_as(TestStripeConfigById)
-async def test_stripe_config_by_id_async(id_: str, sandbox: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_stripe_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestStripeConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestWxPayConfig)
-def test_wx_pay_config(body: Optional[WxPayConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_wx_pay_config(
+    body: Optional[WxPayConfigRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestWxPayConfig.create(
         body=body,
     )
@@ -417,15 +631,23 @@ def test_wx_pay_config(body: Optional[WxPayConfigRequest] = None, x_additional_h
 
 
 @same_doc_as(TestWxPayConfig)
-async def test_wx_pay_config_async(body: Optional[WxPayConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_wx_pay_config_async(
+    body: Optional[WxPayConfigRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestWxPayConfig.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestWxPayConfigById)
-def test_wx_pay_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_wx_pay_config_by_id(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = TestWxPayConfigById.create(
         id_=id_,
     )
@@ -433,15 +655,23 @@ def test_wx_pay_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, 
 
 
 @same_doc_as(TestWxPayConfigById)
-async def test_wx_pay_config_by_id_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_wx_pay_config_by_id_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = TestWxPayConfigById.create(
         id_=id_,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestXsollaConfig)
-def test_xsolla_config(body: Optional[XsollaConfig] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_xsolla_config(
+    body: Optional[XsollaConfig] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestXsollaConfig.create(
         body=body,
     )
@@ -449,15 +679,23 @@ def test_xsolla_config(body: Optional[XsollaConfig] = None, x_additional_headers
 
 
 @same_doc_as(TestXsollaConfig)
-async def test_xsolla_config_async(body: Optional[XsollaConfig] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_xsolla_config_async(
+    body: Optional[XsollaConfig] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = TestXsollaConfig.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(TestXsollaConfigById)
-def test_xsolla_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def test_xsolla_config_by_id(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = TestXsollaConfigById.create(
         id_=id_,
     )
@@ -465,15 +703,26 @@ def test_xsolla_config_by_id(id_: str, x_additional_headers: Optional[Dict[str, 
 
 
 @same_doc_as(TestXsollaConfigById)
-async def test_xsolla_config_by_id_async(id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def test_xsolla_config_by_id_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = TestXsollaConfigById.create(
         id_=id_,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateAdyenConfig)
-def update_adyen_config(id_: str, body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_adyen_config(
+    id_: str,
+    body: Optional[AdyenConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateAdyenConfig.create(
         id_=id_,
         body=body,
@@ -484,18 +733,34 @@ def update_adyen_config(id_: str, body: Optional[AdyenConfig] = None, sandbox: O
 
 
 @same_doc_as(UpdateAdyenConfig)
-async def update_adyen_config_async(id_: str, body: Optional[AdyenConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_adyen_config_async(
+    id_: str,
+    body: Optional[AdyenConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateAdyenConfig.create(
         id_=id_,
         body=body,
         sandbox=sandbox,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateAliPayConfig)
-def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_ali_pay_config(
+    id_: str,
+    body: Optional[AliPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateAliPayConfig.create(
         id_=id_,
         body=body,
@@ -506,18 +771,34 @@ def update_ali_pay_config(id_: str, body: Optional[AliPayConfig] = None, sandbox
 
 
 @same_doc_as(UpdateAliPayConfig)
-async def update_ali_pay_config_async(id_: str, body: Optional[AliPayConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_ali_pay_config_async(
+    id_: str,
+    body: Optional[AliPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateAliPayConfig.create(
         id_=id_,
         body=body,
         sandbox=sandbox,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateCheckoutConfig)
-def update_checkout_config(id_: str, body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_checkout_config(
+    id_: str,
+    body: Optional[CheckoutConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateCheckoutConfig.create(
         id_=id_,
         body=body,
@@ -528,18 +809,34 @@ def update_checkout_config(id_: str, body: Optional[CheckoutConfig] = None, sand
 
 
 @same_doc_as(UpdateCheckoutConfig)
-async def update_checkout_config_async(id_: str, body: Optional[CheckoutConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_checkout_config_async(
+    id_: str,
+    body: Optional[CheckoutConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateCheckoutConfig.create(
         id_=id_,
         body=body,
         sandbox=sandbox,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePayPalConfig)
-def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_pay_pal_config(
+    id_: str,
+    body: Optional[PayPalConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePayPalConfig.create(
         id_=id_,
         body=body,
@@ -550,18 +847,32 @@ def update_pay_pal_config(id_: str, body: Optional[PayPalConfig] = None, sandbox
 
 
 @same_doc_as(UpdatePayPalConfig)
-async def update_pay_pal_config_async(id_: str, body: Optional[PayPalConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_pay_pal_config_async(
+    id_: str,
+    body: Optional[PayPalConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePayPalConfig.create(
         id_=id_,
         body=body,
         sandbox=sandbox,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePaymentProviderConfig)
-def update_payment_provider_config(id_: str, body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_payment_provider_config(
+    id_: str,
+    body: Optional[PaymentProviderConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePaymentProviderConfig.create(
         id_=id_,
         body=body,
@@ -570,16 +881,27 @@ def update_payment_provider_config(id_: str, body: Optional[PaymentProviderConfi
 
 
 @same_doc_as(UpdatePaymentProviderConfig)
-async def update_payment_provider_config_async(id_: str, body: Optional[PaymentProviderConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_payment_provider_config_async(
+    id_: str,
+    body: Optional[PaymentProviderConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePaymentProviderConfig.create(
         id_=id_,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePaymentTaxConfig)
-def update_payment_tax_config(body: Optional[PaymentTaxConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_payment_tax_config(
+    body: Optional[PaymentTaxConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePaymentTaxConfig.create(
         body=body,
     )
@@ -587,15 +909,28 @@ def update_payment_tax_config(body: Optional[PaymentTaxConfigEdit] = None, x_add
 
 
 @same_doc_as(UpdatePaymentTaxConfig)
-async def update_payment_tax_config_async(body: Optional[PaymentTaxConfigEdit] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_payment_tax_config_async(
+    body: Optional[PaymentTaxConfigEdit] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePaymentTaxConfig.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateStripeConfig)
-def update_stripe_config(id_: str, body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_stripe_config(
+    id_: str,
+    body: Optional[StripeConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateStripeConfig.create(
         id_=id_,
         body=body,
@@ -606,18 +941,33 @@ def update_stripe_config(id_: str, body: Optional[StripeConfig] = None, sandbox:
 
 
 @same_doc_as(UpdateStripeConfig)
-async def update_stripe_config_async(id_: str, body: Optional[StripeConfig] = None, sandbox: Optional[bool] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_stripe_config_async(
+    id_: str,
+    body: Optional[StripeConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateStripeConfig.create(
         id_=id_,
         body=body,
         sandbox=sandbox,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateWxPayConfig)
-def update_wx_pay_config(id_: str, body: Optional[WxPayConfigRequest] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_wx_pay_config(
+    id_: str,
+    body: Optional[WxPayConfigRequest] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateWxPayConfig.create(
         id_=id_,
         body=body,
@@ -627,17 +977,30 @@ def update_wx_pay_config(id_: str, body: Optional[WxPayConfigRequest] = None, va
 
 
 @same_doc_as(UpdateWxPayConfig)
-async def update_wx_pay_config_async(id_: str, body: Optional[WxPayConfigRequest] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_wx_pay_config_async(
+    id_: str,
+    body: Optional[WxPayConfigRequest] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateWxPayConfig.create(
         id_=id_,
         body=body,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateWxPayConfigCert)
-def update_wx_pay_config_cert(id_: str, file: Optional[Any] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_wx_pay_config_cert(
+    id_: str,
+    file: Optional[Any] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateWxPayConfigCert.create(
         id_=id_,
         file=file,
@@ -646,16 +1009,29 @@ def update_wx_pay_config_cert(id_: str, file: Optional[Any] = None, x_additional
 
 
 @same_doc_as(UpdateWxPayConfigCert)
-async def update_wx_pay_config_cert_async(id_: str, file: Optional[Any] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_wx_pay_config_cert_async(
+    id_: str,
+    file: Optional[Any] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateWxPayConfigCert.create(
         id_=id_,
         file=file,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateXsollaConfig)
-def update_xsolla_config(id_: str, body: Optional[XsollaConfig] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_xsolla_config(
+    id_: str,
+    body: Optional[XsollaConfig] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateXsollaConfig.create(
         id_=id_,
         body=body,
@@ -665,17 +1041,30 @@ def update_xsolla_config(id_: str, body: Optional[XsollaConfig] = None, validate
 
 
 @same_doc_as(UpdateXsollaConfig)
-async def update_xsolla_config_async(id_: str, body: Optional[XsollaConfig] = None, validate: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_xsolla_config_async(
+    id_: str,
+    body: Optional[XsollaConfig] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateXsollaConfig.create(
         id_=id_,
         body=body,
         validate=validate,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateXsollaUIConfig)
-def update_xsolla_ui_config(id_: str, body: Optional[XsollaPaywallConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_xsolla_ui_config(
+    id_: str,
+    body: Optional[XsollaPaywallConfigRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateXsollaUIConfig.create(
         id_=id_,
         body=body,
@@ -684,9 +1073,16 @@ def update_xsolla_ui_config(id_: str, body: Optional[XsollaPaywallConfigRequest]
 
 
 @same_doc_as(UpdateXsollaUIConfig)
-async def update_xsolla_ui_config_async(id_: str, body: Optional[XsollaPaywallConfigRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_xsolla_ui_config_async(
+    id_: str,
+    body: Optional[XsollaPaywallConfigRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateXsollaUIConfig.create(
         id_=id_,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

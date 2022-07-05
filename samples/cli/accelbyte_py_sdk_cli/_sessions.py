@@ -10,7 +10,6 @@ from accelbyte_py_sdk.core import WebsocketsWSClient
 
 
 class SessionWriter:
-
     def __init__(self):
         self.writes = []
 
@@ -34,7 +33,6 @@ class SessionWriter:
 
 
 class TapSessionWriter(SessionWriter):
-
     def __init__(self):
         super().__init__()
         self.count = 0
@@ -62,12 +60,12 @@ class TapSessionWriter(SessionWriter):
 
 
 async def _start_batched_ws_session_async(
-        messages: List[str],
-        continue_on_error: bool,
-        timeout: float,
-        mode: str,
-        uri_prefix: str,
-        writer: str,
+    messages: List[str],
+    continue_on_error: bool,
+    timeout: float,
+    mode: str,
+    uri_prefix: str,
+    writer: str,
 ):
     writer = TapSessionWriter() if writer == "tap" else SessionWriter()
 
@@ -122,7 +120,9 @@ async def _start_batched_ws_session_async(
                 if not continue_on_error:
                     break
             else:
-                writer.write_log(raw_response.splitlines(keepends=False)[0].removeprefix("type: "))
+                writer.write_log(
+                    raw_response.splitlines(keepends=False)[0].removeprefix("type: ")
+                )
     finally:
         await ws_client.disconnect()
         print(writer.flush())
@@ -131,11 +131,11 @@ async def _start_batched_ws_session_async(
 
 
 def _start_batched_ws_session(
-        continue_on_error: bool = False,
-        mode: str = "echo",
-        timeout: float = 10.0,
-        uri_prefix: str = "ws://",
-        writer: str = "default",
+    continue_on_error: bool = False,
+    mode: str = "echo",
+    timeout: float = 10.0,
+    uri_prefix: str = "ws://",
+    writer: str = "default",
 ):
     messages: List[str] = []
 
@@ -158,36 +158,43 @@ def _start_batched_ws_session(
             mode=mode,
             timeout=timeout,
             uri_prefix=uri_prefix,
-            writer=writer
+            writer=writer,
         )
     )
 
 
 start_batched_ws_session = click.command("start-batched-ws-session")(
     click.option("--continue_on_error", is_flag=True)(
-        click.option("--mode", type=click.Choice(["echo"], case_sensitive=False), default="echo")(
+        click.option(
+            "--mode", type=click.Choice(["echo"], case_sensitive=False), default="echo"
+        )(
             click.option("--timeout", type=float, default=10.0)(
                 click.option("--uri_prefix", type=str, default="ws://")(
-                    click.option("--writer", type=click.Choice(["default", "tap"], case_sensitive=False), default="default")
-                        (_start_batched_ws_session))))))
+                    click.option(
+                        "--writer",
+                        type=click.Choice(["default", "tap"], case_sensitive=False),
+                        default="default",
+                    )(_start_batched_ws_session)
+                )
+            )
+        )
+    )
+)
 
 
 def __intercept(ctx, attr: str):
-    def __intercept_impl(
-            message: Optional[Any] = None,
-            *args,
-            **kwargs
-    ):
+    def __intercept_impl(message: Optional[Any] = None, *args, **kwargs):
         setattr(ctx, "attr", message)
+
     return __intercept_impl
 
 
 def _one_shot_websocket(
-        raw_text: str,
-        mode: str = "echo",
-        timeout: float = 10.0,
-        uri_prefix: str = "ws://",
-        writer: str = "default",
+    raw_text: str,
+    mode: str = "echo",
+    timeout: float = 10.0,
+    uri_prefix: str = "ws://",
+    writer: str = "default",
 ):
     asyncio.run(
         _start_batched_ws_session_async(
@@ -196,15 +203,25 @@ def _one_shot_websocket(
             mode=mode,
             timeout=timeout,
             uri_prefix=uri_prefix,
-            writer=writer
+            writer=writer,
         )
     )
 
 
 one_shot_websocket = click.command("one-shot-websocket")(
     click.argument("raw_text", type=str)(
-        click.option("--mode", type=click.Choice(["echo"], case_sensitive=False), default="echo")(
+        click.option(
+            "--mode", type=click.Choice(["echo"], case_sensitive=False), default="echo"
+        )(
             click.option("--timeout", type=float, default=10.0)(
                 click.option("--uri_prefix", type=str, default="ws://")(
-                    click.option("--writer", type=click.Choice(["default", "tap"], case_sensitive=False), default="default")
-                        (_one_shot_websocket))))))
+                    click.option(
+                        "--writer",
+                        type=click.Choice(["default", "tap"], case_sensitive=False),
+                        default="default",
+                    )(_one_shot_websocket)
+                )
+            )
+        )
+    )
+)

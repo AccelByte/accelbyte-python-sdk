@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,24 +51,28 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    game_mode: str                                                                                 # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    joinable: bool                                                                                 # REQUIRED
-    match_id: str                                                                                  # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    status: str                                                                                    # REQUIRED
-    sub_game_mode: List[str]                                                                       # REQUIRED
+    created_at: str  # REQUIRED
+    game_mode: str  # REQUIRED
+    id_: str  # REQUIRED
+    joinable: bool  # REQUIRED
+    match_id: str  # REQUIRED
+    namespace: str  # REQUIRED
+    status: str  # REQUIRED
+    sub_game_mode: List[str]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_created_at(self, value: str) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def with_created_at(
+        self, value: str
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.created_at = value
         return self
 
-    def with_game_mode(self, value: str) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def with_game_mode(
+        self, value: str
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.game_mode = value
         return self
 
@@ -76,7 +80,9 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         self.id_ = value
         return self
 
-    def with_joinable(self, value: bool) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def with_joinable(
+        self, value: bool
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.joinable = value
         return self
 
@@ -84,7 +90,9 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         self.match_id = value
         return self
 
-    def with_namespace(self, value: str) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def with_namespace(
+        self, value: str
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.namespace = value
         return self
 
@@ -92,7 +100,9 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         self.status = value
         return self
 
-    def with_sub_game_mode(self, value: List[str]) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def with_sub_game_mode(
+        self, value: List[str]
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         self.sub_game_mode = value
         return self
 
@@ -164,7 +174,9 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ServiceGetSessionHistorySearchResponseItemV2:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ServiceGetSessionHistorySearchResponseItemV2:
         instance = cls()
         if not dict_:
             return instance
@@ -203,15 +215,33 @@ class ServiceGetSessionHistorySearchResponseItemV2(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ServiceGetSessionHistorySearchResponseItemV2]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ServiceGetSessionHistorySearchResponseItemV2]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ServiceGetSessionHistorySearchResponseItemV2]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ServiceGetSessionHistorySearchResponseItemV2]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ServiceGetSessionHistorySearchResponseItemV2, List[ServiceGetSessionHistorySearchResponseItemV2], Dict[Any, ServiceGetSessionHistorySearchResponseItemV2]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ServiceGetSessionHistorySearchResponseItemV2,
+        List[ServiceGetSessionHistorySearchResponseItemV2],
+        Dict[Any, ServiceGetSessionHistorySearchResponseItemV2],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

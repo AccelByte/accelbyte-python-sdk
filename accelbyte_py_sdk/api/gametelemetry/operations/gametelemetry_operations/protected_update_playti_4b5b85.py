@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -32,7 +32,9 @@ from .....core import HttpResponse
 from ...models import HTTPValidationError
 
 
-class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(Operation):
+class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(
+    Operation
+):
     """Protected Update Playtime (protected_update_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime__playtime__put)
 
     This endpoint requires valid JWT token.
@@ -74,9 +76,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     _securities: List[List[str]] = [["COOKIE_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
-    playtime: str                                                                                  # REQUIRED in [path]
-    steam_id: str                                                                                  # REQUIRED in [path]
+    cookie: Union[str, HeaderStr]  # OPTIONAL in [header]
+    playtime: str  # REQUIRED in [path]
+    steam_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -142,21 +144,29 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
     # region with_x methods
 
-    def with_cookie(self, value: Union[str, HeaderStr]) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def with_cookie(
+        self, value: Union[str, HeaderStr]
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         self.cookie = value
         return self
 
-    def with_cookie_access_token(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def with_cookie_access_token(
+        self, value: str
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         if not hasattr(self, "cookie"):
             self.cookie = HeaderStr()
         self.cookie["access_token"] = value
         return self
 
-    def with_playtime(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def with_playtime(
+        self, value: str
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         self.playtime = value
         return self
 
-    def with_steam_id(self, value: str) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def with_steam_id(
+        self, value: str
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         self.steam_id = value
         return self
 
@@ -185,7 +195,11 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]
+    ]:
         """Parse the given response.
 
         200: OK - (Successful Response)
@@ -198,7 +212,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -208,7 +224,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -229,7 +247,9 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut:
         instance = cls()
         if "Cookie" in dict_ and dict_["Cookie"] is not None:
             instance.cookie = str(dict_["Cookie"])

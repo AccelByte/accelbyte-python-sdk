@@ -15,14 +15,13 @@ from ._validators import validate_field
 
 
 class Operation:
-
     def is_valid(
-            self,
-            check_required: bool = True,
-            check_enum: bool = True,
-            check_pattern: bool = True,
-            recursive_check: bool = True,
-            **kwargs
+        self,
+        check_required: bool = True,
+        check_enum: bool = True,
+        check_pattern: bool = True,
+        recursive_check: bool = True,
+        **kwargs,
     ) -> Tuple[bool, Union[None, str]]:
         field_info = self.get_field_info()
         required_map = self.get_required_map() if check_required else None
@@ -30,7 +29,9 @@ class Operation:
         pattern_map = self.get_pattern_map() if check_pattern else None
         for name in field_info:
             is_valid, error = validate_field(
-                obj=self, name=name, alias_map=field_info,
+                obj=self,
+                name=name,
+                alias_map=field_info,
                 required_map=required_map,
                 enum_map=enum_map,
                 pattern_map=pattern_map,
@@ -64,43 +65,36 @@ class Operation:
 
     # noinspection PyMethodMayBeStatic
     def pre_process_response(
-            self,
-            code: int,
-            content_type: str,
-            content: Any
+        self, code: int, content_type: str, content: Any
     ) -> Tuple[Tuple[int, str, Any], Optional[HttpResponse]]:
         # pylint: disable=no-self-use
-        if len(self.produces) > 0 and \
-                content and \
-                content_type not in ["location"]:
+        if len(self.produces) > 0 and content and content_type not in ["location"]:
             actual_content_type = clean_content_type(content_type)
             if actual_content_type not in self.produces:
                 was_converted, converted_content = try_convert_content_type(
                     actual_content_type=actual_content_type,
                     expected_content_types=self.produces,
-                    content=content
+                    content=content,
                 )
                 if was_converted:
                     content = converted_content
                 else:
-                    return (code, content_type, content), \
-                           HttpResponse.create_unexpected_content_type_error(
-                               actual=actual_content_type,
-                               expected=self.produces
-                           )
+                    return (
+                        code,
+                        content_type,
+                        content,
+                    ), HttpResponse.create_unexpected_content_type_error(
+                        actual=actual_content_type, expected=self.produces
+                    )
         return (code, content_type, content), None
 
     # noinspection PyMethodMayBeStatic
     def handle_undocumented_response(
-            self,
-            code: int,
-            content_type: str,
-            content: Any
+        self, code: int, content_type: str, content: Any
     ) -> Optional[HttpResponse]:
         # pylint: disable=no-self-use
         undocumented_response = HttpResponse.create_undocumented_response(
-            code=code,
-            content=content
+            code=code, content=content
         )
         if undocumented_response is not None:
             if undocumented_response.is_no_content():

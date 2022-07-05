@@ -19,7 +19,6 @@ class WebSocketMessageParserError(Enum):
 
 
 class WebSocketMessageParserException(Exception):
-
     def __init__(self, error: WebSocketMessageParserError):
         self.error = error
         super().__init__()
@@ -31,7 +30,9 @@ class WebSocketMessage:
         raise NotImplementedError
 
 
-def parse_wsm_header(msg: str) -> Tuple[Optional[str], Optional[WebSocketMessageParserError]]:
+def parse_wsm_header(
+    msg: str,
+) -> Tuple[Optional[str], Optional[WebSocketMessageParserError]]:
     lines = msg.splitlines(keepends=False)
     if len(lines) < 2:
         return None, WebSocketMessageParserError.TypeFormatInvalid
@@ -45,7 +46,9 @@ def parse_wsm_header(msg: str) -> Tuple[Optional[str], Optional[WebSocketMessage
     return type_, None
 
 
-def parse_wsm(wsm: str, models: Dict[str, Type[WebSocketMessage]], is_strict: bool = False) -> Tuple[Optional[WebSocketMessage], Optional[WebSocketMessageParserError]]:
+def parse_wsm(
+    wsm: str, models: Dict[str, Type[WebSocketMessage]], is_strict: bool = False
+) -> Tuple[Optional[WebSocketMessage], Optional[WebSocketMessageParserError]]:
     type_, error = parse_wsm_header(wsm)
     if error:
         return None, error

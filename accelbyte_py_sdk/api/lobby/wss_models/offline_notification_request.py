@@ -47,16 +47,22 @@ class OfflineNotificationRequest(WebSocketMessage):
     # region static methods
 
     @classmethod
-    def create_from_wsm(cls, wsm: str, is_strict: bool = False) -> OfflineNotificationRequest:
+    def create_from_wsm(
+        cls, wsm: str, is_strict: bool = False
+    ) -> OfflineNotificationRequest:
         instance = cls()
         if not wsm:
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         id_line = lines[1]
         if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.FieldFormatInvalid
+            )
         instance.id_ = id_line.removeprefix("id: ")
         return instance
 

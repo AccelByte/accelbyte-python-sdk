@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,11 +49,11 @@ class FulfillmentResult(Model):
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    credit_summaries: List[CreditSummary]                                                          # OPTIONAL
-    entitlement_summaries: List[EntitlementSummary]                                                # OPTIONAL
-    subscription_summaries: List[SubscriptionSummary]                                              # OPTIONAL
+    namespace: str  # REQUIRED
+    user_id: str  # REQUIRED
+    credit_summaries: List[CreditSummary]  # OPTIONAL
+    entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
+    subscription_summaries: List[SubscriptionSummary]  # OPTIONAL
 
     # endregion fields
 
@@ -71,11 +71,15 @@ class FulfillmentResult(Model):
         self.credit_summaries = value
         return self
 
-    def with_entitlement_summaries(self, value: List[EntitlementSummary]) -> FulfillmentResult:
+    def with_entitlement_summaries(
+        self, value: List[EntitlementSummary]
+    ) -> FulfillmentResult:
         self.entitlement_summaries = value
         return self
 
-    def with_subscription_summaries(self, value: List[SubscriptionSummary]) -> FulfillmentResult:
+    def with_subscription_summaries(
+        self, value: List[SubscriptionSummary]
+    ) -> FulfillmentResult:
         self.subscription_summaries = value
         return self
 
@@ -94,15 +98,23 @@ class FulfillmentResult(Model):
         elif include_empty:
             result["userId"] = ""
         if hasattr(self, "credit_summaries"):
-            result["creditSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries]
+            result["creditSummaries"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.credit_summaries
+            ]
         elif include_empty:
             result["creditSummaries"] = []
         if hasattr(self, "entitlement_summaries"):
-            result["entitlementSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlement_summaries]
+            result["entitlementSummaries"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.entitlement_summaries
+            ]
         elif include_empty:
             result["entitlementSummaries"] = []
         if hasattr(self, "subscription_summaries"):
-            result["subscriptionSummaries"] = [i0.to_dict(include_empty=include_empty) for i0 in self.subscription_summaries]
+            result["subscriptionSummaries"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.subscription_summaries
+            ]
         elif include_empty:
             result["subscriptionSummaries"] = []
         return result
@@ -132,7 +144,9 @@ class FulfillmentResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FulfillmentResult:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> FulfillmentResult:
         instance = cls()
         if not dict_:
             return instance
@@ -145,29 +159,60 @@ class FulfillmentResult(Model):
         elif include_empty:
             instance.user_id = ""
         if "creditSummaries" in dict_ and dict_["creditSummaries"] is not None:
-            instance.credit_summaries = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["creditSummaries"]]
+            instance.credit_summaries = [
+                CreditSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["creditSummaries"]
+            ]
         elif include_empty:
             instance.credit_summaries = []
-        if "entitlementSummaries" in dict_ and dict_["entitlementSummaries"] is not None:
-            instance.entitlement_summaries = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlementSummaries"]]
+        if (
+            "entitlementSummaries" in dict_
+            and dict_["entitlementSummaries"] is not None
+        ):
+            instance.entitlement_summaries = [
+                EntitlementSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["entitlementSummaries"]
+            ]
         elif include_empty:
             instance.entitlement_summaries = []
-        if "subscriptionSummaries" in dict_ and dict_["subscriptionSummaries"] is not None:
-            instance.subscription_summaries = [SubscriptionSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["subscriptionSummaries"]]
+        if (
+            "subscriptionSummaries" in dict_
+            and dict_["subscriptionSummaries"] is not None
+        ):
+            instance.subscription_summaries = [
+                SubscriptionSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["subscriptionSummaries"]
+            ]
         elif include_empty:
             instance.subscription_summaries = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FulfillmentResult]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, FulfillmentResult]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FulfillmentResult]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[FulfillmentResult]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FulfillmentResult, List[FulfillmentResult], Dict[Any, FulfillmentResult]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        FulfillmentResult, List[FulfillmentResult], Dict[Any, FulfillmentResult]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

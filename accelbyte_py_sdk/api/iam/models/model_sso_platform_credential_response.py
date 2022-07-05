@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -55,16 +55,16 @@ class ModelSSOPlatformCredentialResponse(Model):
 
     # region fields
 
-    acs_url: str                                                                                   # REQUIRED
-    app_id: str                                                                                    # REQUIRED
-    federation_metadata_url: str                                                                   # REQUIRED
-    is_active: bool                                                                                # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    platform_id: str                                                                               # REQUIRED
-    redirect_uri: str                                                                              # REQUIRED
-    secret: str                                                                                    # REQUIRED
-    sso_url: str                                                                                   # REQUIRED
-    truncated_api_key: str                                                                         # REQUIRED
+    acs_url: str  # REQUIRED
+    app_id: str  # REQUIRED
+    federation_metadata_url: str  # REQUIRED
+    is_active: bool  # REQUIRED
+    namespace: str  # REQUIRED
+    platform_id: str  # REQUIRED
+    redirect_uri: str  # REQUIRED
+    secret: str  # REQUIRED
+    sso_url: str  # REQUIRED
+    truncated_api_key: str  # REQUIRED
 
     # endregion fields
 
@@ -78,7 +78,9 @@ class ModelSSOPlatformCredentialResponse(Model):
         self.app_id = value
         return self
 
-    def with_federation_metadata_url(self, value: str) -> ModelSSOPlatformCredentialResponse:
+    def with_federation_metadata_url(
+        self, value: str
+    ) -> ModelSSOPlatformCredentialResponse:
         self.federation_metadata_url = value
         return self
 
@@ -190,7 +192,9 @@ class ModelSSOPlatformCredentialResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelSSOPlatformCredentialResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelSSOPlatformCredentialResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -202,7 +206,10 @@ class ModelSSOPlatformCredentialResponse(Model):
             instance.app_id = str(dict_["appId"])
         elif include_empty:
             instance.app_id = ""
-        if "federationMetadataUrl" in dict_ and dict_["federationMetadataUrl"] is not None:
+        if (
+            "federationMetadataUrl" in dict_
+            and dict_["federationMetadataUrl"] is not None
+        ):
             instance.federation_metadata_url = str(dict_["federationMetadataUrl"])
         elif include_empty:
             instance.federation_metadata_url = ""
@@ -237,15 +244,33 @@ class ModelSSOPlatformCredentialResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelSSOPlatformCredentialResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelSSOPlatformCredentialResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelSSOPlatformCredentialResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelSSOPlatformCredentialResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelSSOPlatformCredentialResponse, List[ModelSSOPlatformCredentialResponse], Dict[Any, ModelSSOPlatformCredentialResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelSSOPlatformCredentialResponse,
+        List[ModelSSOPlatformCredentialResponse],
+        Dict[Any, ModelSSOPlatformCredentialResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

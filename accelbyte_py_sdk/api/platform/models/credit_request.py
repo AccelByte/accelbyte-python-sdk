@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -74,11 +74,11 @@ class CreditRequest(Model):
 
     # region fields
 
-    amount: int                                                                                    # REQUIRED
-    expire_at: str                                                                                 # OPTIONAL
-    origin: Union[str, OriginEnum]                                                                 # OPTIONAL
-    reason: str                                                                                    # OPTIONAL
-    source: Union[str, SourceEnum]                                                                 # OPTIONAL
+    amount: int  # REQUIRED
+    expire_at: str  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
+    reason: str  # OPTIONAL
+    source: Union[str, SourceEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -158,7 +158,9 @@ class CreditRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CreditRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> CreditRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -185,15 +187,29 @@ class CreditRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CreditRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, CreditRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CreditRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[CreditRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CreditRequest, List[CreditRequest], Dict[Any, CreditRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[CreditRequest, List[CreditRequest], Dict[Any, CreditRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -227,8 +243,32 @@ class CreditRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "origin": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],
-            "source": ["ACHIEVEMENT", "DLC", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REFUND", "REWARD"],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Other",
+                "Playstation",
+                "Stadia",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
+            "source": [
+                "ACHIEVEMENT",
+                "DLC",
+                "GIFT",
+                "IAP",
+                "OTHER",
+                "PROMOTION",
+                "PURCHASE",
+                "REDEEM_CODE",
+                "REFERRAL_BONUS",
+                "REFUND",
+                "REWARD",
+            ],
         }
 
     # endregion static methods

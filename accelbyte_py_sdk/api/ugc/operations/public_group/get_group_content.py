@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,18 +76,20 @@ class GetGroupContent(Operation):
 
     # region fields
 
-    _url: str = "/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents"
+    _url: str = (
+        "/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents"
+    )
     _method: str = "GET"
     _consumes: List[str] = ["application/json", "application/octet-stream"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    group_id: str                                                                                  # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
-    limit: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
+    group_id: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -210,7 +212,12 @@ class GetGroupContent(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPaginatedContentDownloadResponse], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsPaginatedContentDownloadResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsPaginatedContentDownloadResponse (OK)
@@ -227,13 +234,18 @@ class GetGroupContent(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsPaginatedContentDownloadResponse.create_from_dict(content), None
+            return (
+                ModelsPaginatedContentDownloadResponse.create_from_dict(content),
+                None,
+            )
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
@@ -241,7 +253,9 @@ class GetGroupContent(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -267,7 +281,9 @@ class GetGroupContent(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetGroupContent:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetGroupContent:
         instance = cls()
         if "groupId" in dict_ and dict_["groupId"] is not None:
             instance.group_id = str(dict_["groupId"])

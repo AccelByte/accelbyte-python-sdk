@@ -9,17 +9,16 @@ from ._validators import validate_field
 
 
 class Model:
-
     def __str__(self):
         return str(self.to_dict())
 
     def is_valid(
-            self,
-            check_required: bool = True,
-            check_enum: bool = True,
-            check_pattern: bool = True,
-            recursive_check: bool = True,
-            **kwargs
+        self,
+        check_required: bool = True,
+        check_enum: bool = True,
+        check_pattern: bool = True,
+        recursive_check: bool = True,
+        **kwargs
     ) -> Tuple[bool, Union[None, str]]:
         field_info = self.get_field_info()
         required_map = self.get_required_map() if check_required else None
@@ -27,7 +26,9 @@ class Model:
         pattern_map = self.get_pattern_map() if check_pattern else None
         for name in field_info:
             is_valid, error = validate_field(
-                obj=self, name=name, alias_map=field_info,
+                obj=self,
+                name=name,
+                alias_map=field_info,
                 required_map=required_map,
                 enum_map=enum_map,
                 pattern_map=pattern_map,

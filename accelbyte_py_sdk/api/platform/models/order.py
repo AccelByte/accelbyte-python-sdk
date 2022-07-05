@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -152,50 +152,50 @@ class Order(Model):
 
     # region fields
 
-    chargeback_reversed_time: str                                                                  # OPTIONAL
-    chargeback_time: str                                                                           # OPTIONAL
-    charged: bool                                                                                  # OPTIONAL
-    charged_time: str                                                                              # OPTIONAL
-    count_item_id: str                                                                             # OPTIONAL
-    count_namespace: str                                                                           # OPTIONAL
-    count_user_id: str                                                                             # OPTIONAL
-    created_at: str                                                                                # OPTIONAL
-    created_time: str                                                                              # OPTIONAL
-    currency: CurrencySummary                                                                      # OPTIONAL
-    discounted_price: int                                                                          # OPTIONAL
-    expire_time: str                                                                               # OPTIONAL
-    ext: Dict[str, Any]                                                                            # OPTIONAL
-    free: bool                                                                                     # OPTIONAL
-    fulfilled_time: str                                                                            # OPTIONAL
-    item_id: str                                                                                   # OPTIONAL
-    item_snapshot: ItemSnapshot                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    order_no: str                                                                                  # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    payment_order_no: str                                                                          # OPTIONAL
-    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    payment_remain_seconds: int                                                                    # OPTIONAL
-    payment_station_url: str                                                                       # OPTIONAL
-    price: int                                                                                     # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
-    refunded_time: str                                                                             # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    return_url: str                                                                                # OPTIONAL
-    rvn: int                                                                                       # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
-    status: Union[str, StatusEnum]                                                                 # OPTIONAL
-    status_reason: str                                                                             # OPTIONAL
-    subtotal_price: int                                                                            # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
-    total_price: int                                                                               # OPTIONAL
-    total_tax: int                                                                                 # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
-    user_id: str                                                                                   # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
+    chargeback_reversed_time: str  # OPTIONAL
+    chargeback_time: str  # OPTIONAL
+    charged: bool  # OPTIONAL
+    charged_time: str  # OPTIONAL
+    count_item_id: str  # OPTIONAL
+    count_namespace: str  # OPTIONAL
+    count_user_id: str  # OPTIONAL
+    created_at: str  # OPTIONAL
+    created_time: str  # OPTIONAL
+    currency: CurrencySummary  # OPTIONAL
+    discounted_price: int  # OPTIONAL
+    expire_time: str  # OPTIONAL
+    ext: Dict[str, Any]  # OPTIONAL
+    free: bool  # OPTIONAL
+    fulfilled_time: str  # OPTIONAL
+    item_id: str  # OPTIONAL
+    item_snapshot: ItemSnapshot  # OPTIONAL
+    language: str  # OPTIONAL
+    namespace: str  # OPTIONAL
+    order_no: str  # OPTIONAL
+    payment_method: str  # OPTIONAL
+    payment_method_fee: int  # OPTIONAL
+    payment_order_no: str  # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]  # OPTIONAL
+    payment_provider_fee: int  # OPTIONAL
+    payment_remain_seconds: int  # OPTIONAL
+    payment_station_url: str  # OPTIONAL
+    price: int  # OPTIONAL
+    quantity: int  # OPTIONAL
+    refunded_time: str  # OPTIONAL
+    region: str  # OPTIONAL
+    return_url: str  # OPTIONAL
+    rvn: int  # OPTIONAL
+    sales_tax: int  # OPTIONAL
+    sandbox: bool  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
+    status_reason: str  # OPTIONAL
+    subtotal_price: int  # OPTIONAL
+    tax: int  # OPTIONAL
+    total_price: int  # OPTIONAL
+    total_tax: int  # OPTIONAL
+    updated_at: str  # OPTIONAL
+    user_id: str  # OPTIONAL
+    vat: int  # OPTIONAL
 
     # endregion fields
 
@@ -448,7 +448,9 @@ class Order(Model):
         elif include_empty:
             result["itemId"] = ""
         if hasattr(self, "item_snapshot"):
-            result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
+            result["itemSnapshot"] = self.item_snapshot.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
         if hasattr(self, "language"):
@@ -709,7 +711,10 @@ class Order(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
+        if (
+            "chargebackReversedTime" in dict_
+            and dict_["chargebackReversedTime"] is not None
+        ):
             instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
         elif include_empty:
             instance.chargeback_reversed_time = ""
@@ -746,7 +751,9 @@ class Order(Model):
         elif include_empty:
             instance.created_time = ""
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
+            instance.currency = CurrencySummary.create_from_dict(
+                dict_["currency"], include_empty=include_empty
+            )
         elif include_empty:
             instance.currency = CurrencySummary()
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
@@ -774,7 +781,9 @@ class Order(Model):
         elif include_empty:
             instance.item_id = ""
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
-            instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
+            instance.item_snapshot = ItemSnapshot.create_from_dict(
+                dict_["itemSnapshot"], include_empty=include_empty
+            )
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
         if "language" in dict_ and dict_["language"] is not None:
@@ -809,7 +818,10 @@ class Order(Model):
             instance.payment_provider_fee = int(dict_["paymentProviderFee"])
         elif include_empty:
             instance.payment_provider_fee = 0
-        if "paymentRemainSeconds" in dict_ and dict_["paymentRemainSeconds"] is not None:
+        if (
+            "paymentRemainSeconds" in dict_
+            and dict_["paymentRemainSeconds"] is not None
+        ):
             instance.payment_remain_seconds = int(dict_["paymentRemainSeconds"])
         elif include_empty:
             instance.payment_remain_seconds = 0
@@ -888,15 +900,29 @@ class Order(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, Order]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, Order]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[Order]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[Order]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[Order, List[Order], Dict[Any, Order]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[Order, List[Order], Dict[Any, Order]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -1008,8 +1034,29 @@ class Order(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
-            "status": ["CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CLOSED", "DELETED", "FULFILLED", "FULFILL_FAILED", "INIT", "REFUNDED", "REFUNDING", "REFUND_FAILED"],
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
+            "status": [
+                "CHARGEBACK",
+                "CHARGEBACK_REVERSED",
+                "CHARGED",
+                "CLOSED",
+                "DELETED",
+                "FULFILLED",
+                "FULFILL_FAILED",
+                "INIT",
+                "REFUNDED",
+                "REFUNDING",
+                "REFUND_FAILED",
+            ],
         }
 
     # endregion static methods

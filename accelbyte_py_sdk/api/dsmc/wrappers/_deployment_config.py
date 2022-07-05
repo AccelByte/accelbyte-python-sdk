@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -56,7 +56,13 @@ from ..operations.deployment_config import UpdateRootRegionOverride
 
 
 @same_doc_as(CreateDeployment)
-def create_deployment(body: ModelsCreateDeploymentRequest, deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_deployment(
+    body: ModelsCreateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,7 +76,13 @@ def create_deployment(body: ModelsCreateDeploymentRequest, deployment: str, name
 
 
 @same_doc_as(CreateDeployment)
-async def create_deployment_async(body: ModelsCreateDeploymentRequest, deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_deployment_async(
+    body: ModelsCreateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,11 +92,20 @@ async def create_deployment_async(body: ModelsCreateDeploymentRequest, deploymen
         deployment=deployment,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateDeploymentOverride)
-def create_deployment_override(body: ModelsCreateDeploymentOverrideRequest, deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_deployment_override(
+    body: ModelsCreateDeploymentOverrideRequest,
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,7 +120,14 @@ def create_deployment_override(body: ModelsCreateDeploymentOverrideRequest, depl
 
 
 @same_doc_as(CreateDeploymentOverride)
-async def create_deployment_override_async(body: ModelsCreateDeploymentOverrideRequest, deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_deployment_override_async(
+    body: ModelsCreateDeploymentOverrideRequest,
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,11 +138,21 @@ async def create_deployment_override_async(body: ModelsCreateDeploymentOverrideR
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateOverrideRegionOverride)
-def create_override_region_override(body: ModelsCreateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_override_region_override(
+    body: ModelsCreateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,7 +168,15 @@ def create_override_region_override(body: ModelsCreateRegionOverrideRequest, dep
 
 
 @same_doc_as(CreateOverrideRegionOverride)
-async def create_override_region_override_async(body: ModelsCreateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_override_region_override_async(
+    body: ModelsCreateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,11 +188,20 @@ async def create_override_region_override_async(body: ModelsCreateRegionOverride
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateRootRegionOverride)
-def create_root_region_override(body: ModelsCreateRegionOverrideRequest, deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_root_region_override(
+    body: ModelsCreateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,7 +216,14 @@ def create_root_region_override(body: ModelsCreateRegionOverrideRequest, deploym
 
 
 @same_doc_as(CreateRootRegionOverride)
-async def create_root_region_override_async(body: ModelsCreateRegionOverrideRequest, deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_root_region_override_async(
+    body: ModelsCreateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,11 +234,18 @@ async def create_root_region_override_async(body: ModelsCreateRegionOverrideRequ
         region=region,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteDeployment)
-def delete_deployment(deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_deployment(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -189,7 +258,12 @@ def delete_deployment(deployment: str, namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(DeleteDeployment)
-async def delete_deployment_async(deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_deployment_async(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -198,11 +272,19 @@ async def delete_deployment_async(deployment: str, namespace: Optional[str] = No
         deployment=deployment,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteDeploymentOverride)
-def delete_deployment_override(deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_deployment_override(
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -216,7 +298,13 @@ def delete_deployment_override(deployment: str, version: str, namespace: Optiona
 
 
 @same_doc_as(DeleteDeploymentOverride)
-async def delete_deployment_override_async(deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_deployment_override_async(
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,11 +314,20 @@ async def delete_deployment_override_async(deployment: str, version: str, namesp
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteOverrideRegionOverride)
-def delete_override_region_override(deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_override_region_override(
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -245,7 +342,14 @@ def delete_override_region_override(deployment: str, region: str, version: str, 
 
 
 @same_doc_as(DeleteOverrideRegionOverride)
-async def delete_override_region_override_async(deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_override_region_override_async(
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,11 +360,19 @@ async def delete_override_region_override_async(deployment: str, region: str, ve
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteRootRegionOverride)
-def delete_root_region_override(deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_root_region_override(
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,7 +386,13 @@ def delete_root_region_override(deployment: str, region: str, namespace: Optiona
 
 
 @same_doc_as(DeleteRootRegionOverride)
-async def delete_root_region_override_async(deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_root_region_override_async(
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,11 +402,20 @@ async def delete_root_region_override_async(deployment: str, region: str, namesp
         region=region,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetAllDeployment)
-def get_all_deployment(count: int, offset: int, name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_all_deployment(
+    count: int,
+    offset: int,
+    name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -303,7 +430,14 @@ def get_all_deployment(count: int, offset: int, name: Optional[str] = None, name
 
 
 @same_doc_as(GetAllDeployment)
-async def get_all_deployment_async(count: int, offset: int, name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_all_deployment_async(
+    count: int,
+    offset: int,
+    name: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -314,11 +448,18 @@ async def get_all_deployment_async(count: int, offset: int, name: Optional[str] 
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetDeployment)
-def get_deployment(deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_deployment(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -331,7 +472,12 @@ def get_deployment(deployment: str, namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(GetDeployment)
-async def get_deployment_async(deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_deployment_async(
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -340,11 +486,19 @@ async def get_deployment_async(deployment: str, namespace: Optional[str] = None,
         deployment=deployment,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateDeployment)
-def update_deployment(body: ModelsUpdateDeploymentRequest, deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_deployment(
+    body: ModelsUpdateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -358,7 +512,13 @@ def update_deployment(body: ModelsUpdateDeploymentRequest, deployment: str, name
 
 
 @same_doc_as(UpdateDeployment)
-async def update_deployment_async(body: ModelsUpdateDeploymentRequest, deployment: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_deployment_async(
+    body: ModelsUpdateDeploymentRequest,
+    deployment: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -368,11 +528,20 @@ async def update_deployment_async(body: ModelsUpdateDeploymentRequest, deploymen
         deployment=deployment,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateDeploymentOverride)
-def update_deployment_override(body: ModelsUpdateDeploymentOverrideRequest, deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_deployment_override(
+    body: ModelsUpdateDeploymentOverrideRequest,
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -387,7 +556,14 @@ def update_deployment_override(body: ModelsUpdateDeploymentOverrideRequest, depl
 
 
 @same_doc_as(UpdateDeploymentOverride)
-async def update_deployment_override_async(body: ModelsUpdateDeploymentOverrideRequest, deployment: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_deployment_override_async(
+    body: ModelsUpdateDeploymentOverrideRequest,
+    deployment: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -398,11 +574,21 @@ async def update_deployment_override_async(body: ModelsUpdateDeploymentOverrideR
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateOverrideRegionOverride)
-def update_override_region_override(body: ModelsUpdateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_override_region_override(
+    body: ModelsUpdateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -418,7 +604,15 @@ def update_override_region_override(body: ModelsUpdateRegionOverrideRequest, dep
 
 
 @same_doc_as(UpdateOverrideRegionOverride)
-async def update_override_region_override_async(body: ModelsUpdateRegionOverrideRequest, deployment: str, region: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_override_region_override_async(
+    body: ModelsUpdateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    version: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -430,11 +624,20 @@ async def update_override_region_override_async(body: ModelsUpdateRegionOverride
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateRootRegionOverride)
-def update_root_region_override(body: ModelsUpdateRegionOverrideRequest, deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_root_region_override(
+    body: ModelsUpdateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -449,7 +652,14 @@ def update_root_region_override(body: ModelsUpdateRegionOverrideRequest, deploym
 
 
 @same_doc_as(UpdateRootRegionOverride)
-async def update_root_region_override_async(body: ModelsUpdateRegionOverrideRequest, deployment: str, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_root_region_override_async(
+    body: ModelsUpdateRegionOverrideRequest,
+    deployment: str,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -460,4 +670,6 @@ async def update_root_region_override_async(body: ModelsUpdateRegionOverrideRequ
         region=region,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

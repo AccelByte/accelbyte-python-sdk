@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -60,17 +60,17 @@ class PassInfo(Model):
 
     # region fields
 
-    auto_enroll: bool                                                                              # REQUIRED
-    code: str                                                                                      # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    display_order: str                                                                             # REQUIRED
-    localizations: Dict[str, Localization]                                                         # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    pass_item_id: str                                                                              # REQUIRED
-    pass_item_name: str                                                                            # REQUIRED
-    season_id: str                                                                                 # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    images: List[Image]                                                                            # OPTIONAL
+    auto_enroll: bool  # REQUIRED
+    code: str  # REQUIRED
+    created_at: str  # REQUIRED
+    display_order: str  # REQUIRED
+    localizations: Dict[str, Localization]  # REQUIRED
+    namespace: str  # REQUIRED
+    pass_item_id: str  # REQUIRED
+    pass_item_name: str  # REQUIRED
+    season_id: str  # REQUIRED
+    updated_at: str  # REQUIRED
+    images: List[Image]  # OPTIONAL
 
     # endregion fields
 
@@ -143,7 +143,10 @@ class PassInfo(Model):
         elif include_empty:
             result["displayOrder"] = ""
         if hasattr(self, "localizations"):
-            result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
+            result["localizations"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.localizations.items()
+            }
         elif include_empty:
             result["localizations"] = {}
         if hasattr(self, "namespace"):
@@ -167,7 +170,9 @@ class PassInfo(Model):
         elif include_empty:
             result["updatedAt"] = ""
         if hasattr(self, "images"):
-            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
+            result["images"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.images
+            ]
         elif include_empty:
             result["images"] = []
         return result
@@ -228,7 +233,10 @@ class PassInfo(Model):
         elif include_empty:
             instance.display_order = ""
         if "localizations" in dict_ and dict_["localizations"] is not None:
-            instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
+            instance.localizations = {
+                str(k0): Localization.create_from_dict(v0, include_empty=include_empty)
+                for k0, v0 in dict_["localizations"].items()
+            }
         elif include_empty:
             instance.localizations = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -252,21 +260,38 @@ class PassInfo(Model):
         elif include_empty:
             instance.updated_at = ""
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
+            instance.images = [
+                Image.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["images"]
+            ]
         elif include_empty:
             instance.images = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PassInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PassInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PassInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PassInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PassInfo, List[PassInfo], Dict[Any, PassInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[PassInfo, List[PassInfo], Dict[Any, PassInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

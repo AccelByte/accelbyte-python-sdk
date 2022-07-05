@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -16,10 +16,16 @@ __email__ = "dev@accelbyte.net"
 
 from ._admin_concurrent_record import admin_put_game_record_concurrent_handler_v1
 from ._admin_concurrent_record import admin_put_game_record_concurrent_handler_v1_async
-from ._admin_concurrent_record import admin_put_player_public_record_concurrent_handler_v1
-from ._admin_concurrent_record import admin_put_player_public_record_concurrent_handler_v1_async
+from ._admin_concurrent_record import (
+    admin_put_player_public_record_concurrent_handler_v1,
+)
+from ._admin_concurrent_record import (
+    admin_put_player_public_record_concurrent_handler_v1_async,
+)
 from ._admin_concurrent_record import admin_put_player_record_concurrent_handler_v1
-from ._admin_concurrent_record import admin_put_player_record_concurrent_handler_v1_async
+from ._admin_concurrent_record import (
+    admin_put_player_record_concurrent_handler_v1_async,
+)
 
 from ._admin_game_record import admin_delete_game_record_handler_v1
 from ._admin_game_record import admin_delete_game_record_handler_v1_async

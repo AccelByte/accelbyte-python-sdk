@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.accountcommon_user_with_linked_platform_accounts import AccountcommonUserWithLinkedPlatformAccounts
+from ..models.accountcommon_user_with_linked_platform_accounts import (
+    AccountcommonUserWithLinkedPlatformAccounts,
+)
 
 
 class AccountcommonConflictedUserPlatformAccounts(Model):
@@ -41,18 +43,22 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
 
     # region fields
 
-    platform_user_id: str                                                                          # REQUIRED
-    publisher_accounts: List[AccountcommonUserWithLinkedPlatformAccounts]                          # REQUIRED
+    platform_user_id: str  # REQUIRED
+    publisher_accounts: List[AccountcommonUserWithLinkedPlatformAccounts]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_platform_user_id(self, value: str) -> AccountcommonConflictedUserPlatformAccounts:
+    def with_platform_user_id(
+        self, value: str
+    ) -> AccountcommonConflictedUserPlatformAccounts:
         self.platform_user_id = value
         return self
 
-    def with_publisher_accounts(self, value: List[AccountcommonUserWithLinkedPlatformAccounts]) -> AccountcommonConflictedUserPlatformAccounts:
+    def with_publisher_accounts(
+        self, value: List[AccountcommonUserWithLinkedPlatformAccounts]
+    ) -> AccountcommonConflictedUserPlatformAccounts:
         self.publisher_accounts = value
         return self
 
@@ -67,7 +73,10 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         elif include_empty:
             result["platformUserID"] = ""
         if hasattr(self, "publisher_accounts"):
-            result["publisherAccounts"] = [i0.to_dict(include_empty=include_empty) for i0 in self.publisher_accounts]
+            result["publisherAccounts"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.publisher_accounts
+            ]
         elif include_empty:
             result["publisherAccounts"] = []
         return result
@@ -88,7 +97,9 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonConflictedUserPlatformAccounts:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountcommonConflictedUserPlatformAccounts:
         instance = cls()
         if not dict_:
             return instance
@@ -97,21 +108,44 @@ class AccountcommonConflictedUserPlatformAccounts(Model):
         elif include_empty:
             instance.platform_user_id = ""
         if "publisherAccounts" in dict_ and dict_["publisherAccounts"] is not None:
-            instance.publisher_accounts = [AccountcommonUserWithLinkedPlatformAccounts.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["publisherAccounts"]]
+            instance.publisher_accounts = [
+                AccountcommonUserWithLinkedPlatformAccounts.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["publisherAccounts"]
+            ]
         elif include_empty:
             instance.publisher_accounts = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonConflictedUserPlatformAccounts]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountcommonConflictedUserPlatformAccounts]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonConflictedUserPlatformAccounts]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountcommonConflictedUserPlatformAccounts]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonConflictedUserPlatformAccounts, List[AccountcommonConflictedUserPlatformAccounts], Dict[Any, AccountcommonConflictedUserPlatformAccounts]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountcommonConflictedUserPlatformAccounts,
+        List[AccountcommonConflictedUserPlatformAccounts],
+        Dict[Any, AccountcommonConflictedUserPlatformAccounts],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -39,19 +39,17 @@ from accelbyte_py_sdk.api.iam import revoke_a_user as revoke_a_user_internal
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def revoke_a_user(
-        user_id: str,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(revoke_a_user_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = revoke_a_user_internal(

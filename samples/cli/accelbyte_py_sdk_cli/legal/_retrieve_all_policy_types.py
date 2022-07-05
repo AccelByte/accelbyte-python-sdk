@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import retrieve_all_policy_types as retrieve_all_policy_types_internal
+from accelbyte_py_sdk.api.legal import (
+    retrieve_all_policy_types as retrieve_all_policy_types_internal,
+)
 from accelbyte_py_sdk.api.legal.models import RetrievePolicyTypeResponse
 
 
@@ -41,20 +43,18 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyTypeResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_all_policy_types(
-        limit: int,
-        offset: Optional[int] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    limit: int,
+    offset: Optional[int] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_all_policy_types_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = retrieve_all_policy_types_internal(

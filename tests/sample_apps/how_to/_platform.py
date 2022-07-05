@@ -9,9 +9,7 @@ class PlatformTestCase(IntegrationTestCase):
 
     did_delete_drafts: bool = False
     store_id: Optional[str] = None
-    store_create: StoreCreate = StoreCreate.create(
-        title="Python Server SDK Store"
-    )
+    store_create: StoreCreate = StoreCreate.create(title="Python Server SDK Store")
 
     # noinspection PyMethodMayBeStatic
     def do_create_store(self, body: Optional[StoreCreate]):
@@ -29,9 +27,13 @@ class PlatformTestCase(IntegrationTestCase):
                         continue
                     _, delete_error = delete_store(store_id=store_info.store_id)
                     if delete_error is not None:
-                        raise self.skipTest(reason=f"Failed to delete unpublished (draft) store: {store_info.title} ({store_info.store_id})")
+                        raise self.skipTest(
+                            reason=f"Failed to delete unpublished (draft) store: {store_info.title} ({store_info.store_id})"
+                        )
                     else:
-                        self.log_info(f"Deleted unpublished (draft) store: {store_info.title} ({store_info.store_id})")
+                        self.log_info(
+                            f"Deleted unpublished (draft) store: {store_info.title} ({store_info.store_id})"
+                        )
             self.did_delete_drafts = True
 
         result, error = create_store(body=body)
@@ -50,7 +52,10 @@ class PlatformTestCase(IntegrationTestCase):
 
         if self.store_id is not None:
             _, error = delete_store(store_id=self.store_id)
-            self.log_warning(msg=f"Failed to tear down store. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down store. {str(error)}",
+                condition=error is not None,
+            )
             self.store_id = None
         super().tearDown()
 
@@ -70,7 +75,9 @@ class PlatformTestCase(IntegrationTestCase):
 
         # arrange
         _, error, store_id = self.do_create_store(body=self.store_create)
-        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up store. {str(error)}", condition=error is not None
+        )
         self.store_id = store_id
 
         # act
@@ -85,7 +92,9 @@ class PlatformTestCase(IntegrationTestCase):
 
         # arrange
         _, error, store_id = self.do_create_store(body=self.store_create)
-        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up store. {str(error)}", condition=error is not None
+        )
         self.store_id = store_id
 
         # act
@@ -101,15 +110,14 @@ class PlatformTestCase(IntegrationTestCase):
 
         # arrange
         _, error, store_id = self.do_create_store(body=self.store_create)
-        self.log_warning(msg=f"Failed to set up store. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up store. {str(error)}", condition=error is not None
+        )
         self.store_id = store_id
 
         # act
         result, error = update_store(
-            store_id=self.store_id,
-            body=StoreUpdate.create(
-                title="JUDUL"
-            )
+            store_id=self.store_id, body=StoreUpdate.create(title="JUDUL")
         )
 
         # assert

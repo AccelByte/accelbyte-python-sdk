@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -48,7 +48,12 @@ from ..operations.user_action import UnBanUsers
 
 
 @same_doc_as(BanUsers)
-def ban_users(body: Optional[UserBanRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def ban_users(
+    body: Optional[UserBanRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,7 +66,12 @@ def ban_users(body: Optional[UserBanRequest] = None, namespace: Optional[str] = 
 
 
 @same_doc_as(BanUsers)
-async def ban_users_async(body: Optional[UserBanRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def ban_users_async(
+    body: Optional[UserBanRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,11 +80,17 @@ async def ban_users_async(body: Optional[UserBanRequest] = None, namespace: Opti
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetActions)
-def get_actions(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_actions(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,7 +102,11 @@ def get_actions(namespace: Optional[str] = None, x_additional_headers: Optional[
 
 
 @same_doc_as(GetActions)
-async def get_actions_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_actions_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -94,11 +114,18 @@ async def get_actions_async(namespace: Optional[str] = None, x_additional_header
     request = GetActions.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetBannedUsers)
-def get_banned_users(user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_banned_users(
+    user_ids: List[str],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,7 +138,12 @@ def get_banned_users(user_ids: List[str], namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(GetBannedUsers)
-async def get_banned_users_async(user_ids: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_banned_users_async(
+    user_ids: List[str],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,11 +152,18 @@ async def get_banned_users_async(user_ids: List[str], namespace: Optional[str] =
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetUserStatus)
-def get_user_status(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_status(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,7 +176,12 @@ def get_user_status(user_id: str, namespace: Optional[str] = None, x_additional_
 
 
 @same_doc_as(GetUserStatus)
-async def get_user_status_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_status_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,11 +190,19 @@ async def get_user_status_async(user_id: str, namespace: Optional[str] = None, x
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicReportUser)
-def public_report_user(user_id: str, body: Optional[UserReportRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_report_user(
+    user_id: str,
+    body: Optional[UserReportRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -164,7 +216,13 @@ def public_report_user(user_id: str, body: Optional[UserReportRequest] = None, n
 
 
 @same_doc_as(PublicReportUser)
-async def public_report_user_async(user_id: str, body: Optional[UserReportRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_report_user_async(
+    user_id: str,
+    body: Optional[UserReportRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,11 +232,18 @@ async def public_report_user_async(user_id: str, body: Optional[UserReportReques
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ReportUser)
-def report_user(body: Optional[UserReportRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def report_user(
+    body: Optional[UserReportRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,7 +256,12 @@ def report_user(body: Optional[UserReportRequest] = None, namespace: Optional[st
 
 
 @same_doc_as(ReportUser)
-async def report_user_async(body: Optional[UserReportRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def report_user_async(
+    body: Optional[UserReportRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,11 +270,18 @@ async def report_user_async(body: Optional[UserReportRequest] = None, namespace:
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UnBanUsers)
-def un_ban_users(body: Optional[ADTOForUnbanUserAPICall] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def un_ban_users(
+    body: Optional[ADTOForUnbanUserAPICall] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -217,7 +294,12 @@ def un_ban_users(body: Optional[ADTOForUnbanUserAPICall] = None, namespace: Opti
 
 
 @same_doc_as(UnBanUsers)
-async def un_ban_users_async(body: Optional[ADTOForUnbanUserAPICall] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def un_ban_users_async(
+    body: Optional[ADTOForUnbanUserAPICall] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,4 +308,6 @@ async def un_ban_users_async(body: Optional[ADTOForUnbanUserAPICall] = None, nam
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

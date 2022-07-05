@@ -8,8 +8,7 @@ def example_create_game_record():
     from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordRequest
 
     result, error = post_game_record_handler_v1(
-        body=ModelsGameRecordRequest.create(dict_={"foo": "bar"}),
-        key="<your-key>"
+        body=ModelsGameRecordRequest.create(dict_={"foo": "bar"}), key="<your-key>"
     )
     if error:
         print(error)
@@ -18,9 +17,7 @@ def example_create_game_record():
 def example_delete_game_record():
     from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
 
-    result, error = delete_game_record_handler_v1(
-        key="<your-key>"
-    )
+    result, error = delete_game_record_handler_v1(key="<your-key>")
     if error:
         print(error)
 
@@ -28,9 +25,7 @@ def example_delete_game_record():
 def example_get_game_record():
     from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
 
-    result, error = get_game_record_handler_v1(
-        key="<your-key>"
-    )
+    result, error = get_game_record_handler_v1(key="<your-key>")
     if error:
         print(error)
 
@@ -40,8 +35,7 @@ def example_update_game_record():
     from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordRequest
 
     result, error = put_game_record_handler_v1(
-        body=ModelsGameRecordRequest.create(dict_={"foo": "bar"}),
-        key="<your-key>"
+        body=ModelsGameRecordRequest.create(dict_={"foo": "bar"}), key="<your-key>"
     )
     if error:
         print(error)

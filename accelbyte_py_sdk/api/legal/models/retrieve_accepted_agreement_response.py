@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -65,20 +65,20 @@ class RetrieveAcceptedAgreementResponse(Model):
 
     # region fields
 
-    id_: str                                                                                       # REQUIRED
-    country_code: str                                                                              # OPTIONAL
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    display_version: str                                                                           # OPTIONAL
-    is_accepted: bool                                                                              # OPTIONAL
-    localized_policy_version: LocalizedPolicyVersionObject                                         # OPTIONAL
-    namespace: str                                                                                 # OPTIONAL
-    policy_id: str                                                                                 # OPTIONAL
-    policy_name: str                                                                               # OPTIONAL
-    policy_type: str                                                                               # OPTIONAL
-    signing_date: str                                                                              # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
-    user_id: str                                                                                   # OPTIONAL
+    id_: str  # REQUIRED
+    country_code: str  # OPTIONAL
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    display_version: str  # OPTIONAL
+    is_accepted: bool  # OPTIONAL
+    localized_policy_version: LocalizedPolicyVersionObject  # OPTIONAL
+    namespace: str  # OPTIONAL
+    policy_id: str  # OPTIONAL
+    policy_name: str  # OPTIONAL
+    policy_type: str  # OPTIONAL
+    signing_date: str  # OPTIONAL
+    updated_at: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -108,7 +108,9 @@ class RetrieveAcceptedAgreementResponse(Model):
         self.is_accepted = value
         return self
 
-    def with_localized_policy_version(self, value: LocalizedPolicyVersionObject) -> RetrieveAcceptedAgreementResponse:
+    def with_localized_policy_version(
+        self, value: LocalizedPolicyVersionObject
+    ) -> RetrieveAcceptedAgreementResponse:
         self.localized_policy_version = value
         return self
 
@@ -171,7 +173,9 @@ class RetrieveAcceptedAgreementResponse(Model):
         elif include_empty:
             result["isAccepted"] = False
         if hasattr(self, "localized_policy_version"):
-            result["localizedPolicyVersion"] = self.localized_policy_version.to_dict(include_empty=include_empty)
+            result["localizedPolicyVersion"] = self.localized_policy_version.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["localizedPolicyVersion"] = LocalizedPolicyVersionObject()
         if hasattr(self, "namespace"):
@@ -257,7 +261,9 @@ class RetrieveAcceptedAgreementResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrieveAcceptedAgreementResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RetrieveAcceptedAgreementResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -285,8 +291,15 @@ class RetrieveAcceptedAgreementResponse(Model):
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
             instance.is_accepted = False
-        if "localizedPolicyVersion" in dict_ and dict_["localizedPolicyVersion"] is not None:
-            instance.localized_policy_version = LocalizedPolicyVersionObject.create_from_dict(dict_["localizedPolicyVersion"], include_empty=include_empty)
+        if (
+            "localizedPolicyVersion" in dict_
+            and dict_["localizedPolicyVersion"] is not None
+        ):
+            instance.localized_policy_version = (
+                LocalizedPolicyVersionObject.create_from_dict(
+                    dict_["localizedPolicyVersion"], include_empty=include_empty
+                )
+            )
         elif include_empty:
             instance.localized_policy_version = LocalizedPolicyVersionObject()
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -320,15 +333,33 @@ class RetrieveAcceptedAgreementResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RetrieveAcceptedAgreementResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, RetrieveAcceptedAgreementResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RetrieveAcceptedAgreementResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[RetrieveAcceptedAgreementResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RetrieveAcceptedAgreementResponse, List[RetrieveAcceptedAgreementResponse], Dict[Any, RetrieveAcceptedAgreementResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        RetrieveAcceptedAgreementResponse,
+        List[RetrieveAcceptedAgreementResponse],
+        Dict[Any, RetrieveAcceptedAgreementResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

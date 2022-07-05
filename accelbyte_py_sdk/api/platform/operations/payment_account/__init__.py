@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -15,5 +15,7 @@ __email__ = "dev@accelbyte.net"
 # pylint: disable=line-too-long
 
 from .public_delete_payment_account import PublicDeletePaymentAccount
-from .public_delete_payment_account import TypeEnum as PublicDeletePaymentAccountTypeEnum
+from .public_delete_payment_account import (
+    TypeEnum as PublicDeletePaymentAccountTypeEnum,
+)
 from .public_get_payment_accounts import PublicGetPaymentAccounts

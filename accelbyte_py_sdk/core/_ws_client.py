@@ -16,7 +16,6 @@ _LOGGER = logging.getLogger("accelbyte_py_sdk.ws")
 
 
 class WSClient(ABC):
-
     def __init__(self, **kwargs):
         if "host" in kwargs and "port" in kwargs:
             self.host = kwargs.get("host")
@@ -44,14 +43,14 @@ class WSClient(ABC):
 
 
 class WebsocketsWSClient:
-
     def __init__(
-            self,
-            uri: str,
-            username: Optional[str] = None, password: Optional[str] = None,
-            access_token: Optional[str] = None,
-            uri_prefix: Optional[str] = None,
-            uri_suffix: Optional[str] = None
+        self,
+        uri: str,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        access_token: Optional[str] = None,
+        uri_prefix: Optional[str] = None,
+        uri_suffix: Optional[str] = None,
     ) -> None:
         # pylint: disable=no-member
 
@@ -69,7 +68,9 @@ class WebsocketsWSClient:
             authorization = None
 
         self._uri: str = uri
-        self._headers: Optional[Dict[str, str]] = {"Authorization": authorization} if authorization is not None else None
+        self._headers: Optional[Dict[str, str]] = (
+            {"Authorization": authorization} if authorization is not None else None
+        )
 
         self._connection: Optional[websockets.WebSocketClientProtocol] = None
         self._is_closed: bool = False
@@ -135,9 +136,7 @@ class WebsocketsWSClient:
     async def _process_messages(self):
         while not self._is_closed:
             message = await self._message_queue.get()
-            asyncio.ensure_future(
-                self._broadcast_message(message)
-            )
+            asyncio.ensure_future(self._broadcast_message(message))
 
     async def _receive_messages(self) -> None:
         while not self._is_closed:

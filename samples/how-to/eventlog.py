@@ -15,7 +15,7 @@ def example_query_event_stream_handler():
             session_id="<session-id>",
             trace_id="<trace-id>",
             user_id="<user-id>",
-            version=1
+            version=1,
         )
     )
     if error:
@@ -25,8 +25,6 @@ def example_query_event_stream_handler():
 def example_get_event_specific_to_user():
     from accelbyte_py_sdk.api.eventlog import get_event_specific_user_v2_handler
 
-    result, error = get_event_specific_user_v2_handler(
-        user_id="<user-id>"
-    )
+    result, error = get_event_specific_user_v2_handler(user_id="<user-id>")
     if error:
         print(error)

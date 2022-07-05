@@ -16,17 +16,15 @@ def example_create_achievement():
             goal_value=420,
             hidden=False,
             incremental=True,
-            locked_icons=[ModelsIcon.create(
-                slug="<your-icon-slug>",
-                url="<your-icon-url>"
-            )],
+            locked_icons=[
+                ModelsIcon.create(slug="<your-icon-slug>", url="<your-icon-url>")
+            ],
             name={"<your-name-key>": "<your-name-value>"},
             stat_code="<your-stat-code>",
             tags=["<your-tag>"],
-            unlocked_icons=[ModelsIcon.create(
-                slug="<your-icon-slug>",
-                url="<your-icon-url>"
-            )]
+            unlocked_icons=[
+                ModelsIcon.create(slug="<your-icon-slug>", url="<your-icon-url>")
+            ],
         )
     )
     if error:
@@ -36,9 +34,7 @@ def example_create_achievement():
 def example_delete_achievement():
     from accelbyte_py_sdk.api.achievement import admin_delete_achievement
 
-    result, error = admin_delete_achievement(
-        achievement_code="<your-achievement-code>"
-    )
+    result, error = admin_delete_achievement(achievement_code="<your-achievement-code>")
     if error:
         print(error)
 
@@ -46,9 +42,7 @@ def example_delete_achievement():
 def example_get_achievement():
     from accelbyte_py_sdk.api.achievement import admin_get_achievement
 
-    result, error = admin_get_achievement(
-        achievement_code="<your-achievement-code>"
-    )
+    result, error = admin_get_achievement(achievement_code="<your-achievement-code>")
     if error:
         print(error)
 
@@ -56,10 +50,7 @@ def example_get_achievement():
 def example_get_all_achievement():
     from accelbyte_py_sdk.api.achievement import admin_list_achievements
 
-    result, error = admin_list_achievements(
-        limit=20,
-        offset=0
-    )
+    result, error = admin_list_achievements(limit=20, offset=0)
     if error:
         print(error)
 
@@ -77,18 +68,16 @@ def example_query_achievements_by_keyword():
             goal_value=420,
             hidden=False,
             incremental=True,
-            locked_icons=[ModelsIcon.create(
-                slug="<your-icon-slug>",
-                url="<your-icon-url>"
-            )],
+            locked_icons=[
+                ModelsIcon.create(slug="<your-icon-slug>", url="<your-icon-url>")
+            ],
             name={"<your-name-key>": "<your-name-value>"},
             stat_code="<your-stat-code>",
             tags=["<your-tag>"],
-            unlocked_icons=[ModelsIcon.create(
-                slug="<your-icon-slug>",
-                url="<your-icon-url>"
-            )]
-        )
+            unlocked_icons=[
+                ModelsIcon.create(slug="<your-icon-slug>", url="<your-icon-url>")
+            ],
+        ),
     )
     if error:
         print(error)

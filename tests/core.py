@@ -36,26 +36,27 @@ from accelbyte_py_sdk.core import remove_token
 
 
 class TestConfigRepository(DictConfigRepository):
-
     def __init__(self):
         super().__init__({})
 
 
 class TestTokenRepository(MyTokenRepository):
-
     def __init__(self):
         super().__init__({})
 
 
 class TestHttpClient(HttpClient):
-
     def create_request(self, proto: ProtoHttpRequest) -> Any:
         return None, HttpResponse.create_unhandled_error()
 
-    def send_request(self, request: Any, **kwargs) -> Tuple[Any, Union[None, HttpResponse]]:
+    def send_request(
+        self, request: Any, **kwargs
+    ) -> Tuple[Any, Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
 
-    def handle_response(self, raw_response: Any, **kwargs) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
+    def handle_response(
+        self, raw_response: Any, **kwargs
+    ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         return None, HttpResponse.create_unhandled_error()
 
 
@@ -74,14 +75,14 @@ class TestModel(Model):
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {
-            "dateOfBirth": "date_of_birth"
-        }
+        return {"dateOfBirth": "date_of_birth"}
 
     @staticmethod
     def get_pattern_map() -> Dict[str, re.Pattern]:
         return {
-            "dateOfBirth": re.compile(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
+            "dateOfBirth": re.compile(
+                r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+            ),
         }
 
 
@@ -174,13 +175,10 @@ class TestOperation(Operation):
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "statuses": ["ACTIVE", "INACTIVE"]
-        }
+        return {"statuses": ["ACTIVE", "INACTIVE"]}
 
 
 class CoreTestCase(TestCase):
-
     def setUp(self) -> None:
         self.assertFalse(accelbyte_py_sdk.is_initialized())
 
@@ -200,14 +198,19 @@ class CoreTestCase(TestCase):
         self.assertIsNotNone(config_repo)
         self.assertEqual("EnvironmentConfigRepository", type(config_repo).__name__)
 
-    def test_initialize_with_str_config_option_throws_value_error_when_not_recognized(self):
+    def test_initialize_with_str_config_option_throws_value_error_when_not_recognized(
+        self,
+    ):
         options = {"config": "spam&eggs"}
         self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options=options)
 
     def test_initialize_with_str_config_with_params_option(self):
         options = {
             "config": "MyConfigRepository",
-            "config_params": (["http://0.0.0.0:8080", "admin", "pass"], {"namespace": "spam&eggs"})
+            "config_params": (
+                ["http://0.0.0.0:8080", "admin", "pass"],
+                {"namespace": "spam&eggs"},
+            ),
         }
         accelbyte_py_sdk.initialize(options=options)
         config_repo = get_config_repository()
@@ -218,11 +221,32 @@ class CoreTestCase(TestCase):
         self.assertEqual("pass", config_repo.get_client_secret())
         self.assertEqual("spam&eggs", config_repo.get_namespace())
 
-    def test_initialize_with_str_config_with_params_option_throws_value_error_when_params_is_invalid(self):
-        self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options={"config": "MyConfigRepository"})
-        self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options={"config": "MyConfigRepository", "config_params": ()})
-        self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options={"config": "MyConfigRepository", "config_params": ([], {})})
-        self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options={"config": "MyConfigRepository", "config_params": (["http://0.0.0.0:8080"], {})})
+    def test_initialize_with_str_config_with_params_option_throws_value_error_when_params_is_invalid(
+        self,
+    ):
+        self.assertRaises(
+            TypeError,
+            accelbyte_py_sdk.initialize,
+            options={"config": "MyConfigRepository"},
+        )
+        self.assertRaises(
+            ValueError,
+            accelbyte_py_sdk.initialize,
+            options={"config": "MyConfigRepository", "config_params": ()},
+        )
+        self.assertRaises(
+            TypeError,
+            accelbyte_py_sdk.initialize,
+            options={"config": "MyConfigRepository", "config_params": ([], {})},
+        )
+        self.assertRaises(
+            TypeError,
+            accelbyte_py_sdk.initialize,
+            options={
+                "config": "MyConfigRepository",
+                "config_params": (["http://0.0.0.0:8080"], {}),
+            },
+        )
 
     def test_initialize_with_str_token_option(self):
         options = {"token": "InMemoryTokenRepository"}
@@ -231,12 +255,17 @@ class CoreTestCase(TestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual("InMemoryTokenRepository", type(token_repo).__name__)
 
-    def test_initialize_with_str_token_option_throws_value_error_when_not_recognized(self):
+    def test_initialize_with_str_token_option_throws_value_error_when_not_recognized(
+        self,
+    ):
         options = {"token": "spam&eggs"}
         self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options=options)
 
     def test_initialize_with_str_token_with_params_option(self):
-        options = {"token": "MyTokenRepository", "token_params": ([{"access_token": "spam&eggs"}], {})}
+        options = {
+            "token": "MyTokenRepository",
+            "token_params": ([{"access_token": "spam&eggs"}], {}),
+        }
         accelbyte_py_sdk.initialize(options=options)
         token_repo = get_token_repository()
         self.assertIsNotNone(token_repo)
@@ -244,9 +273,22 @@ class CoreTestCase(TestCase):
         self.assertEqual({"access_token": "spam&eggs"}, token_repo.get_token())
         self.assertEqual(("spam&eggs", None), get_access_token())
 
-    def test_initialize_with_str_token_with_params_option_throws_value_error_when_not_recognized(self):
-        self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options={"token": "MyTokenRepository", "token_params": ()})
-        self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options={"token": "MyTokenRepository", "token_params": (["duplicate"], {"token": {}})})
+    def test_initialize_with_str_token_with_params_option_throws_value_error_when_not_recognized(
+        self,
+    ):
+        self.assertRaises(
+            ValueError,
+            accelbyte_py_sdk.initialize,
+            options={"token": "MyTokenRepository", "token_params": ()},
+        )
+        self.assertRaises(
+            TypeError,
+            accelbyte_py_sdk.initialize,
+            options={
+                "token": "MyTokenRepository",
+                "token_params": (["duplicate"], {"token": {}}),
+            },
+        )
 
     def test_initialize_with_str_http_option(self):
         options = {"http": "RequestsHttpClient"}
@@ -255,24 +297,42 @@ class CoreTestCase(TestCase):
         self.assertIsNotNone(http_client)
         self.assertEqual("RequestsHttpClient", type(http_client).__name__)
 
-    def test_initialize_with_str_http_option_throws_value_error_when_not_recognized(self):
+    def test_initialize_with_str_http_option_throws_value_error_when_not_recognized(
+        self,
+    ):
         options = {"http": "spam&eggs"}
         self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options=options)
 
     def test_initialize_with_str_http_with_params_option(self):
         options = {
             "http": "RequestsHttpClient",
-            "http_params": ([], {"allow_redirects": False})
+            "http_params": ([], {"allow_redirects": False}),
         }
         accelbyte_py_sdk.initialize(options=options)
         http_client = get_http_client()
         self.assertIsNotNone(http_client)
         self.assertEqual("RequestsHttpClient", type(http_client).__name__)
-        self.assertTrue(isinstance(http_client, RequestsHttpClient) and not http_client.allow_redirects)
+        self.assertTrue(
+            isinstance(http_client, RequestsHttpClient)
+            and not http_client.allow_redirects
+        )
 
-    def test_initialize_with_str_http_with_params_option_throws_value_error_when_not_recognized(self):
-        self.assertRaises(ValueError, accelbyte_py_sdk.initialize, options={"http": "RequestsHttpClient", "http_params": ()})
-        self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options={"http": "RequestsHttpClient", "http_params": (["duplicate"], {"allow_redirects": "incorrect"})})
+    def test_initialize_with_str_http_with_params_option_throws_value_error_when_not_recognized(
+        self,
+    ):
+        self.assertRaises(
+            ValueError,
+            accelbyte_py_sdk.initialize,
+            options={"http": "RequestsHttpClient", "http_params": ()},
+        )
+        self.assertRaises(
+            TypeError,
+            accelbyte_py_sdk.initialize,
+            options={
+                "http": "RequestsHttpClient",
+                "http_params": (["duplicate"], {"allow_redirects": "incorrect"}),
+            },
+        )
 
     def test_initialize_with_instance_config_option(self):
         config = MyConfigRepository(
@@ -300,7 +360,9 @@ class CoreTestCase(TestCase):
         self.assertEqual(("TestApp", None), get_app_name())
         self.assertEqual(("0.1.0", None), get_app_version())
 
-    def test_initialize_with_instance_config_option_throws_type_error_when_not_recognized(self):
+    def test_initialize_with_instance_config_option_throws_type_error_when_not_recognized(
+        self,
+    ):
         options = {"config": {}}
         self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options=options)
 
@@ -314,7 +376,9 @@ class CoreTestCase(TestCase):
         self.assertEqual({"access_token": "spam&eggs"}, token_repo.get_token())
         self.assertEqual(("spam&eggs", None), get_access_token())
 
-    def test_initialize_with_instance_token_option_throws_type_error_when_not_recognized(self):
+    def test_initialize_with_instance_token_option_throws_type_error_when_not_recognized(
+        self,
+    ):
         options = {"token": {}}
         self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options=options)
 
@@ -326,7 +390,9 @@ class CoreTestCase(TestCase):
         self.assertIsNotNone(http_client)
         self.assertEqual("TestHttpClient", type(http_client).__name__)
 
-    def test_initialize_with_instance_http_option_throws_type_error_when_not_recognized(self):
+    def test_initialize_with_instance_http_option_throws_type_error_when_not_recognized(
+        self,
+    ):
         options = {"http": {}}
         self.assertRaises(TypeError, accelbyte_py_sdk.initialize, options=options)
 
@@ -341,9 +407,7 @@ class CoreTestCase(TestCase):
 
     def test_get_client_auth_allows_empty_secret(self):
         config = MyConfigRepository(
-            base_url="http://0.0.0.0:8080",
-            client_id="admin",
-            client_secret=""
+            base_url="http://0.0.0.0:8080", client_id="admin", client_secret=""
         )
         options = {"config": config}
         accelbyte_py_sdk.initialize(options=options)
@@ -375,26 +439,46 @@ class CoreTestCase(TestCase):
         self.assertEqual("password", password)
 
     def test_get_query_from_http_redirect_response(self):
-        http_reponse = HttpResponse.create_redirect(302, "https://localhost:8080/?order-spam-with=eggs")
-        order_spam_with, error = get_query_from_http_redirect_response(http_reponse, "order-spam-with")
+        http_reponse = HttpResponse.create_redirect(
+            302, "https://localhost:8080/?order-spam-with=eggs"
+        )
+        order_spam_with, error = get_query_from_http_redirect_response(
+            http_reponse, "order-spam-with"
+        )
         self.assertEqual("eggs", order_spam_with)
         self.assertIsNone(error, error)
 
-    def test_get_query_from_http_redirect_response_returns_cant_find_location_in_header_error_when_response_is_not_location_type(self):
+    def test_get_query_from_http_redirect_response_returns_cant_find_location_in_header_error_when_response_is_not_location_type(
+        self,
+    ):
         http_response = HttpResponse.create_error(404, "Not Found")
-        order_spam_with, error = get_query_from_http_redirect_response(http_response, "order-spam-with")
+        order_spam_with, error = get_query_from_http_redirect_response(
+            http_response, "order-spam-with"
+        )
         self.assertIsNone(order_spam_with)
         self.assertEqual("[404] error: Can't find 'Location' in Header.", str(error))
 
-    def test_get_query_from_http_redirect_response_returns_cant_find_query_key_error_when_location_dont_contain_it(self):
+    def test_get_query_from_http_redirect_response_returns_cant_find_query_key_error_when_location_dont_contain_it(
+        self,
+    ):
         http_reponse = HttpResponse.create_redirect(302, "")
-        order_spam_with, error = get_query_from_http_redirect_response(http_reponse, "order-spam-with")
+        order_spam_with, error = get_query_from_http_redirect_response(
+            http_reponse, "order-spam-with"
+        )
         self.assertIsNone(order_spam_with)
-        self.assertEqual("[302] error: Can't find 'order-spam-with' in query.", str(error))
+        self.assertEqual(
+            "[302] error: Can't find 'order-spam-with' in query.", str(error)
+        )
 
-    def test_get_query_from_http_redirect_response_returns_custom_error_when_location_dont_contain_it(self):
-        http_reponse = HttpResponse.create_redirect(302, "?error=out_of_stock&error_description=no+spam+left")
-        order_spam_with, error = get_query_from_http_redirect_response(http_reponse, "order-spam-with")
+    def test_get_query_from_http_redirect_response_returns_custom_error_when_location_dont_contain_it(
+        self,
+    ):
+        http_reponse = HttpResponse.create_redirect(
+            302, "?error=out_of_stock&error_description=no+spam+left"
+        )
+        order_spam_with, error = get_query_from_http_redirect_response(
+            http_reponse, "order-spam-with"
+        )
         self.assertIsNone(order_spam_with)
         self.assertEqual("[302] error: [out_of_stock] no spam left", str(error))
 
@@ -416,13 +500,17 @@ class CoreTestCase(TestCase):
         header = Header()
         header.add_basic_authorization("username", "password")
         self.assertTrue("Authorization" in header)
-        self.assertEqual(create_basic_authentication("username", "password"), header["Authorization"])
+        self.assertEqual(
+            create_basic_authentication("username", "password"), header["Authorization"]
+        )
 
     def test_header_add_basic_authorization2(self):
         header = Header()
         header.add_basic_authorization2(("username", "password"))
         self.assertTrue("Authorization" in header)
-        self.assertEqual(create_basic_authentication("username", "password"), header["Authorization"])
+        self.assertEqual(
+            create_basic_authentication("username", "password"), header["Authorization"]
+        )
 
     def test_header_add_bearer_authorization(self):
         header = Header()
@@ -480,7 +568,9 @@ class CoreTestCase(TestCase):
         header = Header()
         header.add_user_agent(app_info=("AppName", "0.1.0"))
         self.assertTrue("User-Agent" in header)
-        self.assertEqual(f"{product}/{product_version} (AppName/0.1.0)", header["User-Agent"])
+        self.assertEqual(
+            f"{product}/{product_version} (AppName/0.1.0)", header["User-Agent"]
+        )
 
     def test_headerstr(self):
         headerstr = HeaderStr()
@@ -497,14 +587,22 @@ class CoreTestCase(TestCase):
 
     def test_headerstr_in_operation_with_zero_values(self):
         valid_operation = TestOperation()
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
 
     def test_headerstr_in_operation_with_one_value(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
@@ -513,7 +611,11 @@ class CoreTestCase(TestCase):
     def test_headerstr_in_operation_with_two_or_more_values(self):
         valid_operation = TestOperation().with_cookie_access_token("test")
         valid_operation.cookie["other_token"] = "hello"
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
@@ -521,7 +623,11 @@ class CoreTestCase(TestCase):
 
     def test_headerstr_in_operation_as_empty_string(self):
         valid_operation = TestOperation().with_cookie("")
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -529,7 +635,11 @@ class CoreTestCase(TestCase):
     def test_headerstr_in_operation_as_empty_headerstr(self):
         empty_headerstr = HeaderStr()
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -538,7 +648,11 @@ class CoreTestCase(TestCase):
         empty_headerstr = HeaderStr()
         empty_headerstr["empty_token"] = ""
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertNotIn("Cookie", headers)
@@ -547,7 +661,11 @@ class CoreTestCase(TestCase):
         empty_headerstr = HeaderStr()
         empty_headerstr["false_token"] = False
         valid_operation = TestOperation().with_cookie(empty_headerstr)
-        proto, error = create_proto_from_operation(operation=valid_operation, config_repo=TestConfigRepository(), token_repo=TestTokenRepository())
+        proto, error = create_proto_from_operation(
+            operation=valid_operation,
+            config_repo=TestConfigRepository(),
+            token_repo=TestTokenRepository(),
+        )
         headers = proto.headers
         self.assertIsNone(error)
         self.assertIn("Cookie", headers)
@@ -557,10 +675,7 @@ class CoreTestCase(TestCase):
         url = create_url(
             path="/test/namespaces/{namespace}/items/{item}",
             base="http://0.0.0.0:8080",
-            path_params={
-                "namespace": "foo",
-                "item": "bar"
-            }
+            path_params={"namespace": "foo", "item": "bar"},
         )
         self.assertEqual("http://0.0.0.0:8080/test/namespaces/foo/items/bar", url)
 
@@ -568,10 +683,7 @@ class CoreTestCase(TestCase):
         url = create_url(
             path="/test",
             base="http://0.0.0.0:8080",
-            query_params={
-                "status": "active",
-                "query": ["a", "b"]
-            }
+            query_params={"status": "active", "query": ["a", "b"]},
         )
         self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a,b", url)
 
@@ -580,10 +692,12 @@ class CoreTestCase(TestCase):
             base="http://0.0.0.0:8080",
             query_params={
                 "status": "active",
-                "query": [TestEnum.ACTIVE, TestEnum.INACTIVE]
-            }
+                "query": [TestEnum.ACTIVE, TestEnum.INACTIVE],
+            },
         )
-        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=ACTIVE,INACTIVE", url)
+        self.assertEqual(
+            "http://0.0.0.0:8080/test?status=active&query=ACTIVE,INACTIVE", url
+        )
 
         class TestSortByEnum(StrEnum):
             LISTORDER_ASC = "listOrder:asc"
@@ -598,22 +712,20 @@ class CoreTestCase(TestCase):
             base="http://0.0.0.0:8080",
             query_params={
                 "status": "active",
-                "query": [TestSortByEnum.LISTORDER_ASC, TestSortByEnum.CREATEDAT_DESC]
-            }
+                "query": [TestSortByEnum.LISTORDER_ASC, TestSortByEnum.CREATEDAT_DESC],
+            },
         )
-        self.assertEqual("http://0.0.0.0:8080/test?status=active&query=listOrder%3Aasc,createdAt%3Adesc", url)
+        self.assertEqual(
+            "http://0.0.0.0:8080/test?status=active&query=listOrder%3Aasc,createdAt%3Adesc",
+            url,
+        )
 
     def test_url_creation_with_query_params_with_collection_format_map(self):
         url = create_url(
             path="/test",
             base="http://0.0.0.0:8080",
-            query_params={
-                "status": "active",
-                "query": ["a", "b"]
-            },
-            collection_format_map={
-                "query": "multi"
-            }
+            query_params={"status": "active", "query": ["a", "b"]},
+            collection_format_map={"query": "multi"},
         )
         self.assertEqual("http://0.0.0.0:8080/test?status=active&query=a&query=b", url)
 
@@ -631,22 +743,34 @@ class CoreTestCase(TestCase):
         is_valid, error = invalid_operation.is_valid()
         self.assertFalse(is_valid, error)
 
-        invalid_operation = TestOperation().with_namespace("namespace").with_statuses(["inACTIVE"])
+        invalid_operation = (
+            TestOperation().with_namespace("namespace").with_statuses(["inACTIVE"])
+        )
         is_valid, error = invalid_operation.is_valid()
         self.assertFalse(is_valid, error)
 
-        invalid_operation = TestOperation().with_namespace("namespace").with_body(TestModel().with_date_of_birth("01-01-2000"))
+        invalid_operation = (
+            TestOperation()
+            .with_namespace("namespace")
+            .with_body(TestModel().with_date_of_birth("01-01-2000"))
+        )
         is_valid, error = invalid_operation.is_valid()
         self.assertFalse(is_valid, error)
 
-        valid_operation = TestOperation().with_namespace("namespace") \
+        valid_operation = (
+            TestOperation()
+            .with_namespace("namespace")
             .with_statuses([TestEnum.INACTIVE])
+        )
         is_valid, error = valid_operation.is_valid()
         self.assertTrue(is_valid, error)
 
-        valid_operation = TestOperation().with_body(TestModel().with_date_of_birth("2000-01-01")) \
-            .with_namespace("namespace") \
+        valid_operation = (
+            TestOperation()
+            .with_body(TestModel().with_date_of_birth("2000-01-01"))
+            .with_namespace("namespace")
             .with_statuses(["INACTIVE", "ACTIVE"])
+        )
         is_valid, error = valid_operation.is_valid()
         self.assertTrue(is_valid, error)
 
@@ -663,5 +787,7 @@ class CoreTestCase(TestCase):
         self.assertEqual([MenuEnum.SPAM, MenuEnum.EGGS], ["SPAM", "EGGS"])
         self.assertNotEqual([MenuEnum.SPAM, MenuEnum.EGGS], ["spAM", "EGGS"])
 
-        self.assertEqual([str(e) for e in [MenuEnum.SPAM, MenuEnum.EGGS]], ["SPAM", "EGGS"])
+        self.assertEqual(
+            [str(e) for e in [MenuEnum.SPAM, MenuEnum.EGGS]], ["SPAM", "EGGS"]
+        )
         self.assertEqual(list([MenuEnum.SPAM, MenuEnum.EGGS]), ["SPAM", "EGGS"])

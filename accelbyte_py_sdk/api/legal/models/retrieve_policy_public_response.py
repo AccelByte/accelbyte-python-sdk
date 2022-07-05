@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.policy_version_with_localized_version_object import PolicyVersionWithLocalizedVersionObject
+from ..models.policy_version_with_localized_version_object import (
+    PolicyVersionWithLocalizedVersionObject,
+)
 
 
 class RetrievePolicyPublicResponse(Model):
@@ -73,24 +75,24 @@ class RetrievePolicyPublicResponse(Model):
 
     # region fields
 
-    base_policy_id: str                                                                            # REQUIRED
-    country_code: str                                                                              # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    is_default_opted: bool                                                                         # REQUIRED
-    is_default_selection: bool                                                                     # REQUIRED
-    is_mandatory: bool                                                                             # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    policy_name: str                                                                               # REQUIRED
-    policy_type: str                                                                               # REQUIRED
-    should_notify_on_update: bool                                                                  # REQUIRED
-    base_urls: List[str]                                                                           # OPTIONAL
-    country_group_code: str                                                                        # OPTIONAL
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    policy_versions: List[PolicyVersionWithLocalizedVersionObject]                                 # OPTIONAL
-    readable_id: str                                                                               # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
+    base_policy_id: str  # REQUIRED
+    country_code: str  # REQUIRED
+    id_: str  # REQUIRED
+    is_default_opted: bool  # REQUIRED
+    is_default_selection: bool  # REQUIRED
+    is_mandatory: bool  # REQUIRED
+    namespace: str  # REQUIRED
+    policy_name: str  # REQUIRED
+    policy_type: str  # REQUIRED
+    should_notify_on_update: bool  # REQUIRED
+    base_urls: List[str]  # OPTIONAL
+    country_group_code: str  # OPTIONAL
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    policy_versions: List[PolicyVersionWithLocalizedVersionObject]  # OPTIONAL
+    readable_id: str  # OPTIONAL
+    tags: List[str]  # OPTIONAL
+    updated_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -152,7 +154,9 @@ class RetrievePolicyPublicResponse(Model):
         self.description = value
         return self
 
-    def with_policy_versions(self, value: List[PolicyVersionWithLocalizedVersionObject]) -> RetrievePolicyPublicResponse:
+    def with_policy_versions(
+        self, value: List[PolicyVersionWithLocalizedVersionObject]
+    ) -> RetrievePolicyPublicResponse:
         self.policy_versions = value
         return self
 
@@ -231,7 +235,9 @@ class RetrievePolicyPublicResponse(Model):
         elif include_empty:
             result["description"] = ""
         if hasattr(self, "policy_versions"):
-            result["policyVersions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions]
+            result["policyVersions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.policy_versions
+            ]
         elif include_empty:
             result["policyVersions"] = []
         if hasattr(self, "readable_id"):
@@ -304,7 +310,9 @@ class RetrievePolicyPublicResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrievePolicyPublicResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RetrievePolicyPublicResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -344,7 +352,10 @@ class RetrievePolicyPublicResponse(Model):
             instance.policy_type = str(dict_["policyType"])
         elif include_empty:
             instance.policy_type = ""
-        if "shouldNotifyOnUpdate" in dict_ and dict_["shouldNotifyOnUpdate"] is not None:
+        if (
+            "shouldNotifyOnUpdate" in dict_
+            and dict_["shouldNotifyOnUpdate"] is not None
+        ):
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
             instance.should_notify_on_update = False
@@ -365,7 +376,12 @@ class RetrievePolicyPublicResponse(Model):
         elif include_empty:
             instance.description = ""
         if "policyVersions" in dict_ and dict_["policyVersions"] is not None:
-            instance.policy_versions = [PolicyVersionWithLocalizedVersionObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["policyVersions"]]
+            instance.policy_versions = [
+                PolicyVersionWithLocalizedVersionObject.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["policyVersions"]
+            ]
         elif include_empty:
             instance.policy_versions = []
         if "readableId" in dict_ and dict_["readableId"] is not None:
@@ -383,15 +399,33 @@ class RetrievePolicyPublicResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RetrievePolicyPublicResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, RetrievePolicyPublicResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RetrievePolicyPublicResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[RetrievePolicyPublicResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RetrievePolicyPublicResponse, List[RetrievePolicyPublicResponse], Dict[Any, RetrievePolicyPublicResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        RetrievePolicyPublicResponse,
+        List[RetrievePolicyPublicResponse],
+        Dict[Any, RetrievePolicyPublicResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -22,7 +22,9 @@ def print_file_content(line_num: int, str_path: str) -> str:
     return content
 
 
-def print_file_snippet(line_num: int, str_path: str, start_token: str, end_token: str) -> str:
+def print_file_snippet(
+    line_num: int, str_path: str, start_token: str, end_token: str
+) -> str:
     path = get_path_from_str(str_path)
     if path is None:
         logger.error(f"[PRINTFS:{line_num}] File not found: '{str_path}'")
@@ -50,7 +52,9 @@ def print_file_snippet(line_num: int, str_path: str, start_token: str, end_token
     return snippet
 
 
-def print_json(line_num: int, str_path: str, json_ref: str = None, fmt: str = "json") -> str:
+def print_json(
+    line_num: int, str_path: str, json_ref: str = None, fmt: str = "json"
+) -> str:
     path = get_path_from_str(str_path)
     if path is None:
         logger.error(f"[PRINTJSON:{line_num}] File not found: '{str_path}'")
@@ -65,12 +69,16 @@ def print_json(line_num: int, str_path: str, json_ref: str = None, fmt: str = "j
                     ref_part_index = int(ref_part)
                     node = node[ref_part_index]
                 except ValueError:
-                    logger.error(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    logger.error(
+                        f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'"
+                    )
                     exit(1)
             else:
                 ref_part = unquote(ref_part)
                 if ref_part not in node:
-                    logger.error(f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'")
+                    logger.error(
+                        f"[PRINTJSON:{line_num}] Json Reference not found: '{json_ref}'"
+                    )
                     exit(1)
                 node = node[ref_part]
     if fmt == "json":
@@ -81,8 +89,8 @@ def print_json(line_num: int, str_path: str, json_ref: str = None, fmt: str = "j
 
 
 def main(
-        src: str,
-        dst: Optional[str] = None,
+    src: str,
+    dst: Optional[str] = None,
 ):
 
     src = Path(src)
@@ -146,18 +154,20 @@ def parse_args() -> Dict[str, Any]:
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "-s", "--src",
+        "-s",
+        "--src",
         type=str,
         required=True,
-        help="sets the source file (requires file extension: '.t.md')"
+        help="sets the source file (requires file extension: '.t.md')",
     )
 
     parser.add_argument(
-        "-d", "--dst",
+        "-d",
+        "--dst",
         default=None,
         type=str,
         required=False,
-        help="sets the destination file (default: None)"
+        help="sets the destination file (default: None)",
     )
 
     result = vars(parser.parse_args())

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.social import bulk_create_user_stat_items as bulk_create_user_stat_items_internal
+from accelbyte_py_sdk.api.social import (
+    bulk_create_user_stat_items as bulk_create_user_stat_items_internal,
+)
 from accelbyte_py_sdk.api.social.models import BulkStatItemCreate
 from accelbyte_py_sdk.api.social.models import BulkStatItemOperationResult
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
@@ -44,21 +46,19 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def bulk_create_user_stat_items(
-        user_id: str,
-        body: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    body: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(bulk_create_user_stat_items_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

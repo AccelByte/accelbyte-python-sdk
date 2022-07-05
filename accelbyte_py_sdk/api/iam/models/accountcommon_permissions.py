@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,13 +39,15 @@ class AccountcommonPermissions(Model):
 
     # region fields
 
-    permissions: List[AccountcommonPermission]                                                     # REQUIRED
+    permissions: List[AccountcommonPermission]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_permissions(self, value: List[AccountcommonPermission]) -> AccountcommonPermissions:
+    def with_permissions(
+        self, value: List[AccountcommonPermission]
+    ) -> AccountcommonPermissions:
         self.permissions = value
         return self
 
@@ -56,7 +58,9 @@ class AccountcommonPermissions(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "permissions"):
-            result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
+            result["Permissions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
+            ]
         elif include_empty:
             result["Permissions"] = []
         return result
@@ -75,26 +79,51 @@ class AccountcommonPermissions(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonPermissions:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountcommonPermissions:
         instance = cls()
         if not dict_:
             return instance
         if "Permissions" in dict_ and dict_["Permissions"] is not None:
-            instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
+            instance.permissions = [
+                AccountcommonPermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Permissions"]
+            ]
         elif include_empty:
             instance.permissions = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonPermissions]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountcommonPermissions]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonPermissions]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountcommonPermissions]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonPermissions, List[AccountcommonPermissions], Dict[Any, AccountcommonPermissions]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountcommonPermissions,
+        List[AccountcommonPermissions],
+        Dict[Any, AccountcommonPermissions],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

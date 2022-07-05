@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -14,8 +14,12 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .admin_get_archived_lead_191726 import AdminGetArchivedLeaderboardRankingDataV1Handler
-from .create_archived_leaderb_5492e4 import CreateArchivedLeaderboardRankingDataV1Handler
+from .admin_get_archived_lead_191726 import (
+    AdminGetArchivedLeaderboardRankingDataV1Handler,
+)
+from .create_archived_leaderb_5492e4 import (
+    CreateArchivedLeaderboardRankingDataV1Handler,
+)
 from .delete_user_ranking_admin_v1 import DeleteUserRankingAdminV1
 from .delete_user_ranking_public_v1 import DeleteUserRankingPublicV1
 from .delete_user_rankings_admin_v1 import DeleteUserRankingsAdminV1

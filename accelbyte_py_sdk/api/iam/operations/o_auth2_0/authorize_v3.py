@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -179,15 +179,15 @@ class AuthorizeV3(Operation):
     _securities: List[List[str]] = [["BASIC_AUTH"]]
     _location_query: str = "request_id"
 
-    code_challenge: str                                                                            # OPTIONAL in [query]
-    code_challenge_method: Union[str, CodeChallengeMethodEnum]                                     # OPTIONAL in [query]
-    create_headless: bool                                                                          # OPTIONAL in [query]
-    redirect_uri: str                                                                              # OPTIONAL in [query]
-    scope: str                                                                                     # OPTIONAL in [query]
-    state: str                                                                                     # OPTIONAL in [query]
-    target_auth_page: str                                                                          # OPTIONAL in [query]
-    client_id: str                                                                                 # REQUIRED in [query]
-    response_type: Union[str, ResponseTypeEnum]                                                    # REQUIRED in [query]
+    code_challenge: str  # OPTIONAL in [query]
+    code_challenge_method: Union[str, CodeChallengeMethodEnum]  # OPTIONAL in [query]
+    create_headless: bool  # OPTIONAL in [query]
+    redirect_uri: str  # OPTIONAL in [query]
+    scope: str  # OPTIONAL in [query]
+    state: str  # OPTIONAL in [query]
+    target_auth_page: str  # OPTIONAL in [query]
+    client_id: str  # REQUIRED in [query]
+    response_type: Union[str, ResponseTypeEnum]  # REQUIRED in [query]
 
     # endregion fields
 
@@ -272,7 +272,9 @@ class AuthorizeV3(Operation):
         self.code_challenge = value
         return self
 
-    def with_code_challenge_method(self, value: Union[str, CodeChallengeMethodEnum]) -> AuthorizeV3:
+    def with_code_challenge_method(
+        self, value: Union[str, CodeChallengeMethodEnum]
+    ) -> AuthorizeV3:
         self.code_challenge_method = value
         return self
 
@@ -353,7 +355,9 @@ class AuthorizeV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         302: Found - (Found. Redirected to login page with either request_id or error.)
@@ -364,7 +368,9 @@ class AuthorizeV3(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -372,7 +378,9 @@ class AuthorizeV3(Operation):
         if code == 302:
             return HttpResponse.create_redirect(code, content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -417,7 +425,10 @@ class AuthorizeV3(Operation):
             instance.code_challenge = str(dict_["code_challenge"])
         elif include_empty:
             instance.code_challenge = ""
-        if "code_challenge_method" in dict_ and dict_["code_challenge_method"] is not None:
+        if (
+            "code_challenge_method" in dict_
+            and dict_["code_challenge_method"] is not None
+        ):
             instance.code_challenge_method = str(dict_["code_challenge_method"])
         elif include_empty:
             instance.code_challenge_method = Union[str, CodeChallengeMethodEnum]()
@@ -482,8 +493,8 @@ class AuthorizeV3(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "code_challenge_method": ["S256", "plain"],                                            # in query
-            "response_type": ["code"],                                                             # in query
+            "code_challenge_method": ["S256", "plain"],  # in query
+            "response_type": ["code"],  # in query
         }
 
     # endregion static methods

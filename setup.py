@@ -14,20 +14,15 @@ PYTHON_VERSION = "3.9"
 config = {
     "name": NAME,
     "version": VERSION,
-
     "author": AUTHOR,
     "author_email": AUTHOR_EMAIL,
-
     "description": SHORT_DESCRIPTION,
     "long_description": LONG_DESCRIPTION,
-    "long_description_content_type": 'text/markdown',
-
+    "long_description_content_type": "text/markdown",
     "license": LICENSE_TYPE,
     "license_files": ["LICENSE"],
-
     "package_dir": {"": "."},
     "packages": setuptools.find_packages(where=".", exclude=("sample_app",)),
-
     "python_requires": f">={PYTHON_VERSION}",
     "classifiers": [
         "Development Status :: 2 - Pre-Alpha",

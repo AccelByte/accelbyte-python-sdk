@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -35,7 +35,13 @@ from ..operations.order_dedicated import SyncOrders
 
 
 @same_doc_as(SyncOrders)
-def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_orders(
+    end: str,
+    start: str,
+    next_evaluated_key: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SyncOrders.create(
         end=end,
         start=start,
@@ -45,10 +51,18 @@ def sync_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, 
 
 
 @same_doc_as(SyncOrders)
-async def sync_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_orders_async(
+    end: str,
+    start: str,
+    next_evaluated_key: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SyncOrders.create(
         end=end,
         start=start,
         next_evaluated_key=next_evaluated_key,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

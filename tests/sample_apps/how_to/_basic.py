@@ -7,9 +7,8 @@ from accelbyte_py_sdk.api.basic.models import UserProfilePrivateCreate
 
 class BasicTestCase(IntegrationTestCase):
 
-    user_profile_private_create: UserProfilePrivateCreate = UserProfilePrivateCreate.create(
-        first_name="First",
-        last_name="Last"
+    user_profile_private_create: UserProfilePrivateCreate = (
+        UserProfilePrivateCreate.create(first_name="First", last_name="Last")
     )
 
     def do_create_my_profile(self, body: Optional[UserProfilePrivateCreate] = None):
@@ -29,7 +28,10 @@ class BasicTestCase(IntegrationTestCase):
 
         if error is None and result is not None and result.user_id is not None:
             _, error = delete_user_profile(user_id=result.user_id)
-            self.log_warning(msg=f"Failed to tear down user profile. {str(error)}", condition=error is not None)
+            self.log_warning(
+                msg=f"Failed to tear down user profile. {str(error)}",
+                condition=error is not None,
+            )
 
     def tearDown(self) -> None:
         self.do_delete_my_profile()
@@ -49,7 +51,10 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(msg=f"Failed to set up user profile. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user profile. {str(error)}",
+            condition=error is not None,
+        )
         user_id = result.user_id
 
         # act
@@ -63,7 +68,10 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(msg=f"Failed to set up user profile. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user profile. {str(error)}",
+            condition=error is not None,
+        )
         user_id = result.user_id
 
         # act
@@ -78,16 +86,16 @@ class BasicTestCase(IntegrationTestCase):
 
         # arrange
         result, error = self.do_create_my_profile(body=self.user_profile_private_create)
-        self.log_warning(msg=f"Failed to set up user profile. {str(error)}", condition=error is not None)
+        self.log_warning(
+            msg=f"Failed to set up user profile. {str(error)}",
+            condition=error is not None,
+        )
         user_id = result.user_id
 
         # act
         result, error = public_update_user_profile(
             user_id=user_id,
-            body=UserProfileUpdate.create(
-                first_name="Pertama",
-                last_name="Terakhir"
-            )
+            body=UserProfileUpdate.create(first_name="Pertama", last_name="Terakhir"),
         )
 
         # assert

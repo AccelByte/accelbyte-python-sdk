@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,22 +76,22 @@ class PaymentMerchantConfigInfo(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    adyen_config: AdyenConfig                                                                      # OPTIONAL
-    adyen_sandbox_config: AdyenConfig                                                              # OPTIONAL
-    ali_pay_config: AliPayConfig                                                                   # OPTIONAL
-    ali_pay_sandbox_config: AliPayConfig                                                           # OPTIONAL
-    checkout_config: CheckoutConfig                                                                # OPTIONAL
-    checkout_sandbox_config: CheckoutConfig                                                        # OPTIONAL
-    pay_pal_config: PayPalConfig                                                                   # OPTIONAL
-    pay_pal_sandbox_config: PayPalConfig                                                           # OPTIONAL
-    stripe_config: StripeConfig                                                                    # OPTIONAL
-    stripe_sandbox_config: StripeConfig                                                            # OPTIONAL
-    wx_pay_config: WxPayConfigInfo                                                                 # OPTIONAL
-    xsolla_config: XsollaConfig                                                                    # OPTIONAL
-    xsolla_paywall_config: XsollaPaywallConfig                                                     # OPTIONAL
+    created_at: str  # REQUIRED
+    id_: str  # REQUIRED
+    updated_at: str  # REQUIRED
+    adyen_config: AdyenConfig  # OPTIONAL
+    adyen_sandbox_config: AdyenConfig  # OPTIONAL
+    ali_pay_config: AliPayConfig  # OPTIONAL
+    ali_pay_sandbox_config: AliPayConfig  # OPTIONAL
+    checkout_config: CheckoutConfig  # OPTIONAL
+    checkout_sandbox_config: CheckoutConfig  # OPTIONAL
+    pay_pal_config: PayPalConfig  # OPTIONAL
+    pay_pal_sandbox_config: PayPalConfig  # OPTIONAL
+    stripe_config: StripeConfig  # OPTIONAL
+    stripe_sandbox_config: StripeConfig  # OPTIONAL
+    wx_pay_config: WxPayConfigInfo  # OPTIONAL
+    xsolla_config: XsollaConfig  # OPTIONAL
+    xsolla_paywall_config: XsollaPaywallConfig  # OPTIONAL
 
     # endregion fields
 
@@ -113,7 +113,9 @@ class PaymentMerchantConfigInfo(Model):
         self.adyen_config = value
         return self
 
-    def with_adyen_sandbox_config(self, value: AdyenConfig) -> PaymentMerchantConfigInfo:
+    def with_adyen_sandbox_config(
+        self, value: AdyenConfig
+    ) -> PaymentMerchantConfigInfo:
         self.adyen_sandbox_config = value
         return self
 
@@ -121,7 +123,9 @@ class PaymentMerchantConfigInfo(Model):
         self.ali_pay_config = value
         return self
 
-    def with_ali_pay_sandbox_config(self, value: AliPayConfig) -> PaymentMerchantConfigInfo:
+    def with_ali_pay_sandbox_config(
+        self, value: AliPayConfig
+    ) -> PaymentMerchantConfigInfo:
         self.ali_pay_sandbox_config = value
         return self
 
@@ -129,7 +133,9 @@ class PaymentMerchantConfigInfo(Model):
         self.checkout_config = value
         return self
 
-    def with_checkout_sandbox_config(self, value: CheckoutConfig) -> PaymentMerchantConfigInfo:
+    def with_checkout_sandbox_config(
+        self, value: CheckoutConfig
+    ) -> PaymentMerchantConfigInfo:
         self.checkout_sandbox_config = value
         return self
 
@@ -137,7 +143,9 @@ class PaymentMerchantConfigInfo(Model):
         self.pay_pal_config = value
         return self
 
-    def with_pay_pal_sandbox_config(self, value: PayPalConfig) -> PaymentMerchantConfigInfo:
+    def with_pay_pal_sandbox_config(
+        self, value: PayPalConfig
+    ) -> PaymentMerchantConfigInfo:
         self.pay_pal_sandbox_config = value
         return self
 
@@ -145,7 +153,9 @@ class PaymentMerchantConfigInfo(Model):
         self.stripe_config = value
         return self
 
-    def with_stripe_sandbox_config(self, value: StripeConfig) -> PaymentMerchantConfigInfo:
+    def with_stripe_sandbox_config(
+        self, value: StripeConfig
+    ) -> PaymentMerchantConfigInfo:
         self.stripe_sandbox_config = value
         return self
 
@@ -157,7 +167,9 @@ class PaymentMerchantConfigInfo(Model):
         self.xsolla_config = value
         return self
 
-    def with_xsolla_paywall_config(self, value: XsollaPaywallConfig) -> PaymentMerchantConfigInfo:
+    def with_xsolla_paywall_config(
+        self, value: XsollaPaywallConfig
+    ) -> PaymentMerchantConfigInfo:
         self.xsolla_paywall_config = value
         return self
 
@@ -180,55 +192,81 @@ class PaymentMerchantConfigInfo(Model):
         elif include_empty:
             result["updatedAt"] = ""
         if hasattr(self, "adyen_config"):
-            result["adyenConfig"] = self.adyen_config.to_dict(include_empty=include_empty)
+            result["adyenConfig"] = self.adyen_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["adyenConfig"] = AdyenConfig()
         if hasattr(self, "adyen_sandbox_config"):
-            result["adyenSandboxConfig"] = self.adyen_sandbox_config.to_dict(include_empty=include_empty)
+            result["adyenSandboxConfig"] = self.adyen_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["adyenSandboxConfig"] = AdyenConfig()
         if hasattr(self, "ali_pay_config"):
-            result["aliPayConfig"] = self.ali_pay_config.to_dict(include_empty=include_empty)
+            result["aliPayConfig"] = self.ali_pay_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["aliPayConfig"] = AliPayConfig()
         if hasattr(self, "ali_pay_sandbox_config"):
-            result["aliPaySandboxConfig"] = self.ali_pay_sandbox_config.to_dict(include_empty=include_empty)
+            result["aliPaySandboxConfig"] = self.ali_pay_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["aliPaySandboxConfig"] = AliPayConfig()
         if hasattr(self, "checkout_config"):
-            result["checkoutConfig"] = self.checkout_config.to_dict(include_empty=include_empty)
+            result["checkoutConfig"] = self.checkout_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["checkoutConfig"] = CheckoutConfig()
         if hasattr(self, "checkout_sandbox_config"):
-            result["checkoutSandboxConfig"] = self.checkout_sandbox_config.to_dict(include_empty=include_empty)
+            result["checkoutSandboxConfig"] = self.checkout_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["checkoutSandboxConfig"] = CheckoutConfig()
         if hasattr(self, "pay_pal_config"):
-            result["payPalConfig"] = self.pay_pal_config.to_dict(include_empty=include_empty)
+            result["payPalConfig"] = self.pay_pal_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["payPalConfig"] = PayPalConfig()
         if hasattr(self, "pay_pal_sandbox_config"):
-            result["payPalSandboxConfig"] = self.pay_pal_sandbox_config.to_dict(include_empty=include_empty)
+            result["payPalSandboxConfig"] = self.pay_pal_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["payPalSandboxConfig"] = PayPalConfig()
         if hasattr(self, "stripe_config"):
-            result["stripeConfig"] = self.stripe_config.to_dict(include_empty=include_empty)
+            result["stripeConfig"] = self.stripe_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["stripeConfig"] = StripeConfig()
         if hasattr(self, "stripe_sandbox_config"):
-            result["stripeSandboxConfig"] = self.stripe_sandbox_config.to_dict(include_empty=include_empty)
+            result["stripeSandboxConfig"] = self.stripe_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["stripeSandboxConfig"] = StripeConfig()
         if hasattr(self, "wx_pay_config"):
-            result["wxPayConfig"] = self.wx_pay_config.to_dict(include_empty=include_empty)
+            result["wxPayConfig"] = self.wx_pay_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["wxPayConfig"] = WxPayConfigInfo()
         if hasattr(self, "xsolla_config"):
-            result["xsollaConfig"] = self.xsolla_config.to_dict(include_empty=include_empty)
+            result["xsollaConfig"] = self.xsolla_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["xsollaConfig"] = XsollaConfig()
         if hasattr(self, "xsolla_paywall_config"):
-            result["xsollaPaywallConfig"] = self.xsolla_paywall_config.to_dict(include_empty=include_empty)
+            result["xsollaPaywallConfig"] = self.xsolla_paywall_config.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["xsollaPaywallConfig"] = XsollaPaywallConfig()
         return result
@@ -290,7 +328,9 @@ class PaymentMerchantConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentMerchantConfigInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentMerchantConfigInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -307,69 +347,116 @@ class PaymentMerchantConfigInfo(Model):
         elif include_empty:
             instance.updated_at = ""
         if "adyenConfig" in dict_ and dict_["adyenConfig"] is not None:
-            instance.adyen_config = AdyenConfig.create_from_dict(dict_["adyenConfig"], include_empty=include_empty)
+            instance.adyen_config = AdyenConfig.create_from_dict(
+                dict_["adyenConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.adyen_config = AdyenConfig()
         if "adyenSandboxConfig" in dict_ and dict_["adyenSandboxConfig"] is not None:
-            instance.adyen_sandbox_config = AdyenConfig.create_from_dict(dict_["adyenSandboxConfig"], include_empty=include_empty)
+            instance.adyen_sandbox_config = AdyenConfig.create_from_dict(
+                dict_["adyenSandboxConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.adyen_sandbox_config = AdyenConfig()
         if "aliPayConfig" in dict_ and dict_["aliPayConfig"] is not None:
-            instance.ali_pay_config = AliPayConfig.create_from_dict(dict_["aliPayConfig"], include_empty=include_empty)
+            instance.ali_pay_config = AliPayConfig.create_from_dict(
+                dict_["aliPayConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.ali_pay_config = AliPayConfig()
         if "aliPaySandboxConfig" in dict_ and dict_["aliPaySandboxConfig"] is not None:
-            instance.ali_pay_sandbox_config = AliPayConfig.create_from_dict(dict_["aliPaySandboxConfig"], include_empty=include_empty)
+            instance.ali_pay_sandbox_config = AliPayConfig.create_from_dict(
+                dict_["aliPaySandboxConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.ali_pay_sandbox_config = AliPayConfig()
         if "checkoutConfig" in dict_ and dict_["checkoutConfig"] is not None:
-            instance.checkout_config = CheckoutConfig.create_from_dict(dict_["checkoutConfig"], include_empty=include_empty)
+            instance.checkout_config = CheckoutConfig.create_from_dict(
+                dict_["checkoutConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.checkout_config = CheckoutConfig()
-        if "checkoutSandboxConfig" in dict_ and dict_["checkoutSandboxConfig"] is not None:
-            instance.checkout_sandbox_config = CheckoutConfig.create_from_dict(dict_["checkoutSandboxConfig"], include_empty=include_empty)
+        if (
+            "checkoutSandboxConfig" in dict_
+            and dict_["checkoutSandboxConfig"] is not None
+        ):
+            instance.checkout_sandbox_config = CheckoutConfig.create_from_dict(
+                dict_["checkoutSandboxConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.checkout_sandbox_config = CheckoutConfig()
         if "payPalConfig" in dict_ and dict_["payPalConfig"] is not None:
-            instance.pay_pal_config = PayPalConfig.create_from_dict(dict_["payPalConfig"], include_empty=include_empty)
+            instance.pay_pal_config = PayPalConfig.create_from_dict(
+                dict_["payPalConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.pay_pal_config = PayPalConfig()
         if "payPalSandboxConfig" in dict_ and dict_["payPalSandboxConfig"] is not None:
-            instance.pay_pal_sandbox_config = PayPalConfig.create_from_dict(dict_["payPalSandboxConfig"], include_empty=include_empty)
+            instance.pay_pal_sandbox_config = PayPalConfig.create_from_dict(
+                dict_["payPalSandboxConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.pay_pal_sandbox_config = PayPalConfig()
         if "stripeConfig" in dict_ and dict_["stripeConfig"] is not None:
-            instance.stripe_config = StripeConfig.create_from_dict(dict_["stripeConfig"], include_empty=include_empty)
+            instance.stripe_config = StripeConfig.create_from_dict(
+                dict_["stripeConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.stripe_config = StripeConfig()
         if "stripeSandboxConfig" in dict_ and dict_["stripeSandboxConfig"] is not None:
-            instance.stripe_sandbox_config = StripeConfig.create_from_dict(dict_["stripeSandboxConfig"], include_empty=include_empty)
+            instance.stripe_sandbox_config = StripeConfig.create_from_dict(
+                dict_["stripeSandboxConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.stripe_sandbox_config = StripeConfig()
         if "wxPayConfig" in dict_ and dict_["wxPayConfig"] is not None:
-            instance.wx_pay_config = WxPayConfigInfo.create_from_dict(dict_["wxPayConfig"], include_empty=include_empty)
+            instance.wx_pay_config = WxPayConfigInfo.create_from_dict(
+                dict_["wxPayConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.wx_pay_config = WxPayConfigInfo()
         if "xsollaConfig" in dict_ and dict_["xsollaConfig"] is not None:
-            instance.xsolla_config = XsollaConfig.create_from_dict(dict_["xsollaConfig"], include_empty=include_empty)
+            instance.xsolla_config = XsollaConfig.create_from_dict(
+                dict_["xsollaConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.xsolla_config = XsollaConfig()
         if "xsollaPaywallConfig" in dict_ and dict_["xsollaPaywallConfig"] is not None:
-            instance.xsolla_paywall_config = XsollaPaywallConfig.create_from_dict(dict_["xsollaPaywallConfig"], include_empty=include_empty)
+            instance.xsolla_paywall_config = XsollaPaywallConfig.create_from_dict(
+                dict_["xsollaPaywallConfig"], include_empty=include_empty
+            )
         elif include_empty:
             instance.xsolla_paywall_config = XsollaPaywallConfig()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentMerchantConfigInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentMerchantConfigInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentMerchantConfigInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentMerchantConfigInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentMerchantConfigInfo, List[PaymentMerchantConfigInfo], Dict[Any, PaymentMerchantConfigInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentMerchantConfigInfo,
+        List[PaymentMerchantConfigInfo],
+        Dict[Any, PaymentMerchantConfigInfo],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

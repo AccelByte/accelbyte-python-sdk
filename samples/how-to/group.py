@@ -21,9 +21,7 @@ def example_create_group():
             group_name="<group-name>",
             group_region="<group-region>",
             group_rules=ModelsGroupRule.create(
-                group_custom_rule=ModelsGroupRuleGroupCustomRule.create(
-                    dict_={}
-                ),
+                group_custom_rule=ModelsGroupRuleGroupCustomRule.create(dict_={}),
                 group_predefined_rules=[
                     ModelsRule.create(
                         allowed_action="<allowed-action>",
@@ -31,13 +29,13 @@ def example_create_group():
                             ModelsRuleInformation.create(
                                 rule_attribute="<rule-attribute>",
                                 rule_criteria="<rule-criteria>",
-                                rule_value=1
+                                rule_value=1,
                             )
                         ],
                     )
-                ]
+                ],
             ),
-            group_type="<group-type>"
+            group_type="<group-type>",
         )
     )
     if error:
@@ -47,9 +45,7 @@ def example_create_group():
 def example_delete_group():
     from accelbyte_py_sdk.api.group import delete_group_public_v1
 
-    result, error = delete_group_public_v1(
-        group_id="<group-id>"
-    )
+    result, error = delete_group_public_v1(group_id="<group-id>")
     if error:
         print(error)
 
@@ -57,9 +53,7 @@ def example_delete_group():
 def example_get_group():
     from accelbyte_py_sdk.api.group import get_single_group_public_v1
 
-    result, error = get_single_group_public_v1(
-        group_id="<group-id>"
-    )
+    result, error = get_single_group_public_v1(group_id="<group-id>")
     if error:
         print(error)
 
@@ -67,7 +61,9 @@ def example_get_group():
 def example_update_group():
     from accelbyte_py_sdk.api.group import update_single_group_v1
     from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupRequestV1
-    from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupRequestV1CustomAttributes
+    from accelbyte_py_sdk.api.group.models import (
+        ModelsUpdateGroupRequestV1CustomAttributes,
+    )
 
     result, error = update_single_group_v1(
         body=ModelsUpdateGroupRequestV1.create(
@@ -78,9 +74,9 @@ def example_update_group():
             group_icon="<group-icon>",
             group_name="<group-name>",
             group_region="<group-region>",
-            group_type="<group-type>"
+            group_type="<group-type>",
         ),
-        group_id="<group-id>"
+        group_id="<group-id>",
     )
     if error:
         print(error)

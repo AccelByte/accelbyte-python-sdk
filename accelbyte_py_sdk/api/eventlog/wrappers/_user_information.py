@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -40,7 +40,12 @@ from ..operations.user_information import LastUserActivityTimeHandler
 
 @deprecated
 @same_doc_as(DeleteUserActivitiesHandler)
-def delete_user_activities_handler(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_user_activities_handler(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,7 +59,12 @@ def delete_user_activities_handler(user_id: str, namespace: Optional[str] = None
 
 @deprecated
 @same_doc_as(DeleteUserActivitiesHandler)
-async def delete_user_activities_handler_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_user_activities_handler_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,12 +73,21 @@ async def delete_user_activities_handler_async(user_id: str, namespace: Optional
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(GetUserActivitiesHandler)
-def get_user_activities_handler(page_size: int, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_user_activities_handler(
+    page_size: int,
+    user_id: str,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -84,7 +103,14 @@ def get_user_activities_handler(page_size: int, user_id: str, offset: Optional[i
 
 @deprecated
 @same_doc_as(GetUserActivitiesHandler)
-async def get_user_activities_handler_async(page_size: int, user_id: str, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_user_activities_handler_async(
+    page_size: int,
+    user_id: str,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,12 +121,19 @@ async def get_user_activities_handler_async(page_size: int, user_id: str, offset
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(LastUserActivityTimeHandler)
-def last_user_activity_time_handler(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def last_user_activity_time_handler(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,7 +147,12 @@ def last_user_activity_time_handler(user_id: str, namespace: Optional[str] = Non
 
 @deprecated
 @same_doc_as(LastUserActivityTimeHandler)
-async def last_user_activity_time_handler_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def last_user_activity_time_handler_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,4 +161,6 @@ async def last_user_activity_time_handler_async(user_id: str, namespace: Optiona
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

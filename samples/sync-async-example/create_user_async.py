@@ -7,7 +7,12 @@ from typing import Sequence
 import accelbyte_py_sdk
 from accelbyte_py_sdk.core import MyConfigRepository
 from accelbyte_py_sdk.core import get_access_token
-from accelbyte_py_sdk.core import get_env_config, get_env_user_credentials, set_env_config, set_env_user_credentials
+from accelbyte_py_sdk.core import (
+    get_env_config,
+    get_env_user_credentials,
+    set_env_config,
+    set_env_user_credentials,
+)
 from accelbyte_py_sdk.services.auth import login_client, login_user, logout
 
 # Import the wrapper 'public_create_user_v3'
@@ -35,7 +40,14 @@ async def main():
         # 8 to 32 characters, satisfy at least 3 out of 4 conditions
         # (uppercase, lowercase letters, numbers and special characters)
         # and should not have more than 2 equal characters in a row.
-        return "".join([random.choice(string.ascii_lowercase) + random.choice(string.digits) + random.choice(string.ascii_uppercase) for _ in range(4)])
+        return "".join(
+            [
+                random.choice(string.ascii_lowercase)
+                + random.choice(string.digits)
+                + random.choice(string.ascii_uppercase)
+                for _ in range(4)
+            ]
+        )
 
     # (1) Initialize the SDK.
     base_url, client_id, client_secret, namespace = get_env_config()
@@ -44,9 +56,9 @@ async def main():
             base_url=base_url,
             client_id=client_id,
             client_secret=client_secret,
-            namespace=namespace
+            namespace=namespace,
         ),
-        "http": "HttpxHttpClient"
+        "http": "HttpxHttpClient",
     }
     accelbyte_py_sdk.initialize(options=options)
     # # :bulb: is actually the same as:
@@ -83,7 +95,9 @@ async def main():
         display_name = random_string(16)
         email_address = f"{random_string(8)}@gfakemail.com"
         password = random_password()
-        print(f"creating display name: {display_name}, email address: {email_address} | password: {password}")
+        print(
+            f"creating display name: {display_name}, email address: {email_address} | password: {password}"
+        )
         start = time.perf_counter()
         result, err = await public_create_user_v3_async(
             body=ModelUserCreateRequestV3.create(
@@ -99,7 +113,9 @@ async def main():
         if err:
             print_error_and_exit(err)
         elapsed = end - start
-        print(f"[{elapsed:.4f}s] created display name: {display_name}, email address: {email_address} | password: {password}")
+        print(
+            f"[{elapsed:.4f}s] created display name: {display_name}, email address: {email_address} | password: {password}"
+        )
 
     # (4.b) Create users multiple times asynchronously
     number_of_users = 20

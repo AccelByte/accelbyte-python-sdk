@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -55,7 +55,13 @@ from ..operations.config import UpdatePort
 
 
 @same_doc_as(AddPort)
-def add_port(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def add_port(
+    body: ModelsCreatePortRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,7 +75,13 @@ def add_port(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] 
 
 
 @same_doc_as(AddPort)
-async def add_port_async(body: ModelsCreatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def add_port_async(
+    body: ModelsCreatePortRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,11 +91,17 @@ async def add_port_async(body: ModelsCreatePortRequest, name: str, namespace: Op
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ClearCache)
-def clear_cache(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def clear_cache(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,7 +113,11 @@ def clear_cache(namespace: Optional[str] = None, x_additional_headers: Optional[
 
 
 @same_doc_as(ClearCache)
-async def clear_cache_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def clear_cache_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,11 +125,18 @@ async def clear_cache_async(namespace: Optional[str] = None, x_additional_header
     request = ClearCache.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateConfig)
-def create_config(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_config(
+    body: ModelsCreateDSMConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,7 +149,12 @@ def create_config(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] =
 
 
 @same_doc_as(CreateConfig)
-async def create_config_async(body: ModelsCreateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_config_async(
+    body: ModelsCreateDSMConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -129,11 +163,17 @@ async def create_config_async(body: ModelsCreateDSMConfigRequest, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteConfig)
-def delete_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,7 +185,11 @@ def delete_config(namespace: Optional[str] = None, x_additional_headers: Optiona
 
 
 @same_doc_as(DeleteConfig)
-async def delete_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,11 +197,18 @@ async def delete_config_async(namespace: Optional[str] = None, x_additional_head
     request = DeleteConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeletePort)
-def delete_port(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_port(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -170,7 +221,12 @@ def delete_port(name: str, namespace: Optional[str] = None, x_additional_headers
 
 
 @same_doc_as(DeletePort)
-async def delete_port_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_port_async(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,11 +235,17 @@ async def delete_port_async(name: str, namespace: Optional[str] = None, x_additi
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ExportConfigV1)
-def export_config_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def export_config_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,7 +257,11 @@ def export_config_v1(namespace: Optional[str] = None, x_additional_headers: Opti
 
 
 @same_doc_as(ExportConfigV1)
-async def export_config_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def export_config_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,11 +269,17 @@ async def export_config_v1_async(namespace: Optional[str] = None, x_additional_h
     request = ExportConfigV1.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetConfig)
-def get_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,7 +291,11 @@ def get_config(namespace: Optional[str] = None, x_additional_headers: Optional[D
 
 
 @same_doc_as(GetConfig)
-async def get_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -227,11 +303,18 @@ async def get_config_async(namespace: Optional[str] = None, x_additional_headers
     request = GetConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ImportConfigV1)
-def import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def import_config_v1(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,7 +327,12 @@ def import_config_v1(file: Optional[Any] = None, namespace: Optional[str] = None
 
 
 @same_doc_as(ImportConfigV1)
-async def import_config_v1_async(file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def import_config_v1_async(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -253,7 +341,9 @@ async def import_config_v1_async(file: Optional[Any] = None, namespace: Optional
         file=file,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListConfig)
@@ -263,14 +353,22 @@ def list_config(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 
 
 @same_doc_as(ListConfig)
-async def list_config_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = ListConfig.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(SaveConfig)
-def save_config(body: ModelsDSMConfigRecord, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def save_config(
+    body: ModelsDSMConfigRecord,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SaveConfig.create(
         body=body,
     )
@@ -279,15 +377,26 @@ def save_config(body: ModelsDSMConfigRecord, x_additional_headers: Optional[Dict
 
 @deprecated
 @same_doc_as(SaveConfig)
-async def save_config_async(body: ModelsDSMConfigRecord, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def save_config_async(
+    body: ModelsDSMConfigRecord,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SaveConfig.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateConfig)
-def update_config(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_config(
+    body: ModelsUpdateDSMConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -300,7 +409,12 @@ def update_config(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] =
 
 
 @same_doc_as(UpdateConfig)
-async def update_config_async(body: ModelsUpdateDSMConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_config_async(
+    body: ModelsUpdateDSMConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,11 +423,19 @@ async def update_config_async(body: ModelsUpdateDSMConfigRequest, namespace: Opt
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePort)
-def update_port(body: ModelsUpdatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_port(
+    body: ModelsUpdatePortRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,7 +449,13 @@ def update_port(body: ModelsUpdatePortRequest, name: str, namespace: Optional[st
 
 
 @same_doc_as(UpdatePort)
-async def update_port_async(body: ModelsUpdatePortRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_port_async(
+    body: ModelsUpdatePortRequest,
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -337,4 +465,6 @@ async def update_port_async(body: ModelsUpdatePortRequest, name: str, namespace:
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

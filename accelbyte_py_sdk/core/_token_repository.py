@@ -12,7 +12,6 @@ from ._utils import clamp
 
 
 class TokenRepository(ABC):
-
     @abstractmethod
     def get_token(self) -> Any:
         pass
@@ -57,12 +56,13 @@ class TokenRepository(ABC):
         return self.get_token() is not None
 
     def has_token_expired(self, multiplier: float = 1.0) -> bool:
-        seconds_till_expiry = self.get_seconds_till_expiry() * clamp(multiplier, 0.0, 1.0)
+        seconds_till_expiry = self.get_seconds_till_expiry() * clamp(
+            multiplier, 0.0, 1.0
+        )
         return seconds_till_expiry <= 0
 
 
 class MyTokenRepository(TokenRepository):
-
     def __init__(self, token: Any):
         self._token = None
         self._token_issued_time = None
@@ -89,7 +89,6 @@ class MyTokenRepository(TokenRepository):
 
 
 class InMemoryTokenRepository(TokenRepository):
-
     def __init__(self):
         self._token = None
         self._token_issued_time = None
@@ -113,9 +112,6 @@ class InMemoryTokenRepository(TokenRepository):
         return True
 
 
-TOKEN_REPOS = [
-    MyTokenRepository,
-    InMemoryTokenRepository
-]
+TOKEN_REPOS = [MyTokenRepository, InMemoryTokenRepository]
 
 DEFAULT_TOKEN_REPO = InMemoryTokenRepository

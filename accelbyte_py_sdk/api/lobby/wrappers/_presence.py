@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -36,7 +36,13 @@ from ..operations.presence import UsersPresenceHandlerV1
 
 
 @same_doc_as(UsersPresenceHandlerV1)
-def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def users_presence_handler_v1(
+    user_ids: str,
+    count_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -50,7 +56,13 @@ def users_presence_handler_v1(user_ids: str, count_only: Optional[bool] = None, 
 
 
 @same_doc_as(UsersPresenceHandlerV1)
-async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def users_presence_handler_v1_async(
+    user_ids: str,
+    count_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -60,4 +72,6 @@ async def users_presence_handler_v1_async(user_ids: str, count_only: Optional[bo
         count_only=count_only,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

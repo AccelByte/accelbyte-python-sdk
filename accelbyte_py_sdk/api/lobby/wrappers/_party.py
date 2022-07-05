@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -42,7 +42,12 @@ from ..operations.party import PublicUpdatePartyAttributesV1
 
 
 @same_doc_as(AdminGetPartyDataV1)
-def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_party_data_v1(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -55,7 +60,12 @@ def admin_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(AdminGetPartyDataV1)
-async def admin_get_party_data_v1_async(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_party_data_v1_async(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,11 +74,18 @@ async def admin_get_party_data_v1_async(party_id: str, namespace: Optional[str] 
         party_id=party_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetUserPartyV1)
-def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_user_party_v1(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,7 +98,12 @@ def admin_get_user_party_v1(user_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(AdminGetUserPartyV1)
-async def admin_get_user_party_v1_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_user_party_v1_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,11 +112,18 @@ async def admin_get_user_party_v1_async(user_id: str, namespace: Optional[str] =
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetPartyDataV1)
-def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_party_data_v1(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,7 +136,12 @@ def public_get_party_data_v1(party_id: str, namespace: Optional[str] = None, x_a
 
 
 @same_doc_as(PublicGetPartyDataV1)
-async def public_get_party_data_v1_async(party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_party_data_v1_async(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,11 +150,19 @@ async def public_get_party_data_v1_async(party_id: str, namespace: Optional[str]
         party_id=party_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicSetPartyLimitV1)
-def public_set_party_limit_v1(body: ModelsPartyPUTLimitSizeRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_set_party_limit_v1(
+    body: ModelsPartyPUTLimitSizeRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,7 +176,13 @@ def public_set_party_limit_v1(body: ModelsPartyPUTLimitSizeRequest, party_id: st
 
 
 @same_doc_as(PublicSetPartyLimitV1)
-async def public_set_party_limit_v1_async(body: ModelsPartyPUTLimitSizeRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_set_party_limit_v1_async(
+    body: ModelsPartyPUTLimitSizeRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,11 +192,19 @@ async def public_set_party_limit_v1_async(body: ModelsPartyPUTLimitSizeRequest, 
         party_id=party_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUpdatePartyAttributesV1)
-def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_update_party_attributes_v1(
+    body: ModelsPartyPUTCustomAttributesRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,7 +218,13 @@ def public_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesReques
 
 
 @same_doc_as(PublicUpdatePartyAttributesV1)
-async def public_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_update_party_attributes_v1_async(
+    body: ModelsPartyPUTCustomAttributesRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -172,4 +234,6 @@ async def public_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttr
         party_id=party_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -41,9 +41,9 @@ class ConditionMatchResult(Model):
 
     # region fields
 
-    matched: bool                                                                                  # OPTIONAL
-    matched_conditions: List[Dict[str, Any]]                                                       # OPTIONAL
-    not_match_reason: str                                                                          # OPTIONAL
+    matched: bool  # OPTIONAL
+    matched_conditions: List[Dict[str, Any]]  # OPTIONAL
+    not_match_reason: str  # OPTIONAL
 
     # endregion fields
 
@@ -53,7 +53,9 @@ class ConditionMatchResult(Model):
         self.matched = value
         return self
 
-    def with_matched_conditions(self, value: List[Dict[str, Any]]) -> ConditionMatchResult:
+    def with_matched_conditions(
+        self, value: List[Dict[str, Any]]
+    ) -> ConditionMatchResult:
         self.matched_conditions = value
         return self
 
@@ -72,7 +74,9 @@ class ConditionMatchResult(Model):
         elif include_empty:
             result["matched"] = False
         if hasattr(self, "matched_conditions"):
-            result["matchedConditions"] = [{str(k1): v1 for k1, v1 in i0.items()} for i0 in self.matched_conditions]
+            result["matchedConditions"] = [
+                {str(k1): v1 for k1, v1 in i0.items()} for i0 in self.matched_conditions
+            ]
         elif include_empty:
             result["matchedConditions"] = []
         if hasattr(self, "not_match_reason"):
@@ -102,7 +106,9 @@ class ConditionMatchResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ConditionMatchResult:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ConditionMatchResult:
         instance = cls()
         if not dict_:
             return instance
@@ -111,7 +117,10 @@ class ConditionMatchResult(Model):
         elif include_empty:
             instance.matched = False
         if "matchedConditions" in dict_ and dict_["matchedConditions"] is not None:
-            instance.matched_conditions = [{str(k1): v1 for k1, v1 in i0.items()} for i0 in dict_["matchedConditions"]]
+            instance.matched_conditions = [
+                {str(k1): v1 for k1, v1 in i0.items()}
+                for i0 in dict_["matchedConditions"]
+            ]
         elif include_empty:
             instance.matched_conditions = []
         if "notMatchReason" in dict_ and dict_["notMatchReason"] is not None:
@@ -121,15 +130,33 @@ class ConditionMatchResult(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ConditionMatchResult]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ConditionMatchResult]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ConditionMatchResult]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ConditionMatchResult]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ConditionMatchResult, List[ConditionMatchResult], Dict[Any, ConditionMatchResult]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ConditionMatchResult,
+        List[ConditionMatchResult],
+        Dict[Any, ConditionMatchResult],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

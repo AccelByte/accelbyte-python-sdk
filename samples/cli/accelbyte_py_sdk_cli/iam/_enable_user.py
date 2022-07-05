@@ -40,20 +40,18 @@ from accelbyte_py_sdk.api.iam import enable_user as enable_user_internal
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def enable_user(
-        user_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(enable_user_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = enable_user_internal(

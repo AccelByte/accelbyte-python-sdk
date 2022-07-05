@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,13 +43,22 @@ def list_server(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 
 
 @same_doc_as(ListServer)
-async def list_server_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_server_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = ListServer.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListServerPerNamespace)
-def list_server_per_namespace(status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_server_per_namespace(
+    status: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,7 +71,12 @@ def list_server_per_namespace(status: Optional[str] = None, namespace: Optional[
 
 
 @same_doc_as(ListServerPerNamespace)
-async def list_server_per_namespace_async(status: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_server_per_namespace_async(
+    status: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,4 +85,6 @@ async def list_server_per_namespace_async(status: Optional[str] = None, namespac
         status=status,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

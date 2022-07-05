@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,22 +57,24 @@ class PolicyVersionWithLocalizedVersionObject(Model):
 
     # region fields
 
-    display_version: str                                                                           # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    is_committed: bool                                                                             # REQUIRED
-    is_in_effect: bool                                                                             # REQUIRED
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    localized_policy_versions: List[LocalizedPolicyVersionObject]                                  # OPTIONAL
-    published_date: str                                                                            # OPTIONAL
-    status: str                                                                                    # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
+    display_version: str  # REQUIRED
+    id_: str  # REQUIRED
+    is_committed: bool  # REQUIRED
+    is_in_effect: bool  # REQUIRED
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    localized_policy_versions: List[LocalizedPolicyVersionObject]  # OPTIONAL
+    published_date: str  # OPTIONAL
+    status: str  # OPTIONAL
+    updated_at: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_display_version(self, value: str) -> PolicyVersionWithLocalizedVersionObject:
+    def with_display_version(
+        self, value: str
+    ) -> PolicyVersionWithLocalizedVersionObject:
         self.display_version = value
         return self
 
@@ -96,11 +98,15 @@ class PolicyVersionWithLocalizedVersionObject(Model):
         self.description = value
         return self
 
-    def with_localized_policy_versions(self, value: List[LocalizedPolicyVersionObject]) -> PolicyVersionWithLocalizedVersionObject:
+    def with_localized_policy_versions(
+        self, value: List[LocalizedPolicyVersionObject]
+    ) -> PolicyVersionWithLocalizedVersionObject:
         self.localized_policy_versions = value
         return self
 
-    def with_published_date(self, value: str) -> PolicyVersionWithLocalizedVersionObject:
+    def with_published_date(
+        self, value: str
+    ) -> PolicyVersionWithLocalizedVersionObject:
         self.published_date = value
         return self
 
@@ -143,7 +149,10 @@ class PolicyVersionWithLocalizedVersionObject(Model):
         elif include_empty:
             result["description"] = ""
         if hasattr(self, "localized_policy_versions"):
-            result["localizedPolicyVersions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.localized_policy_versions]
+            result["localizedPolicyVersions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.localized_policy_versions
+            ]
         elif include_empty:
             result["localizedPolicyVersions"] = []
         if hasattr(self, "published_date"):
@@ -198,7 +207,9 @@ class PolicyVersionWithLocalizedVersionObject(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PolicyVersionWithLocalizedVersionObject:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PolicyVersionWithLocalizedVersionObject:
         instance = cls()
         if not dict_:
             return instance
@@ -226,8 +237,16 @@ class PolicyVersionWithLocalizedVersionObject(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "localizedPolicyVersions" in dict_ and dict_["localizedPolicyVersions"] is not None:
-            instance.localized_policy_versions = [LocalizedPolicyVersionObject.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["localizedPolicyVersions"]]
+        if (
+            "localizedPolicyVersions" in dict_
+            and dict_["localizedPolicyVersions"] is not None
+        ):
+            instance.localized_policy_versions = [
+                LocalizedPolicyVersionObject.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["localizedPolicyVersions"]
+            ]
         elif include_empty:
             instance.localized_policy_versions = []
         if "publishedDate" in dict_ and dict_["publishedDate"] is not None:
@@ -245,15 +264,33 @@ class PolicyVersionWithLocalizedVersionObject(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PolicyVersionWithLocalizedVersionObject]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PolicyVersionWithLocalizedVersionObject]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PolicyVersionWithLocalizedVersionObject]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PolicyVersionWithLocalizedVersionObject]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PolicyVersionWithLocalizedVersionObject, List[PolicyVersionWithLocalizedVersionObject], Dict[Any, PolicyVersionWithLocalizedVersionObject]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PolicyVersionWithLocalizedVersionObject,
+        List[PolicyVersionWithLocalizedVersionObject],
+        Dict[Any, PolicyVersionWithLocalizedVersionObject],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

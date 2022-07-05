@@ -4,7 +4,6 @@ from ._integration_test_case import IntegrationTestCase
 
 
 class DocsTestCase(IntegrationTestCase):
-
     @classmethod
     def setUpClass(cls) -> None:
         from ..how_to import DOTENV_FILE
@@ -33,7 +32,7 @@ class DocsTestCase(IntegrationTestCase):
             base_url=base_url,
             client_id=client_id,
             client_secret=client_secret,
-            namespace=namespace
+            namespace=namespace,
         )
 
         accelbyte_py_sdk.initialize(

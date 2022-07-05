@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -47,11 +47,11 @@ class ModelTemplateLocalizationResponse(Model):
 
     # region fields
 
-    first: str                                                                                     # REQUIRED
-    last: str                                                                                      # REQUIRED
-    next_: str                                                                                     # REQUIRED
-    previous: str                                                                                  # REQUIRED
-    template_localization: List[ModelTemplateLocalization]                                         # REQUIRED
+    first: str  # REQUIRED
+    last: str  # REQUIRED
+    next_: str  # REQUIRED
+    previous: str  # REQUIRED
+    template_localization: List[ModelTemplateLocalization]  # REQUIRED
 
     # endregion fields
 
@@ -73,7 +73,9 @@ class ModelTemplateLocalizationResponse(Model):
         self.previous = value
         return self
 
-    def with_template_localization(self, value: List[ModelTemplateLocalization]) -> ModelTemplateLocalizationResponse:
+    def with_template_localization(
+        self, value: List[ModelTemplateLocalization]
+    ) -> ModelTemplateLocalizationResponse:
         self.template_localization = value
         return self
 
@@ -100,7 +102,10 @@ class ModelTemplateLocalizationResponse(Model):
         elif include_empty:
             result["previous"] = ""
         if hasattr(self, "template_localization"):
-            result["templateLocalization"] = [i0.to_dict(include_empty=include_empty) for i0 in self.template_localization]
+            result["templateLocalization"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.template_localization
+            ]
         elif include_empty:
             result["templateLocalization"] = []
         return result
@@ -127,7 +132,9 @@ class ModelTemplateLocalizationResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelTemplateLocalizationResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelTemplateLocalizationResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -147,22 +154,48 @@ class ModelTemplateLocalizationResponse(Model):
             instance.previous = str(dict_["previous"])
         elif include_empty:
             instance.previous = ""
-        if "templateLocalization" in dict_ and dict_["templateLocalization"] is not None:
-            instance.template_localization = [ModelTemplateLocalization.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["templateLocalization"]]
+        if (
+            "templateLocalization" in dict_
+            and dict_["templateLocalization"] is not None
+        ):
+            instance.template_localization = [
+                ModelTemplateLocalization.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["templateLocalization"]
+            ]
         elif include_empty:
             instance.template_localization = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelTemplateLocalizationResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelTemplateLocalizationResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelTemplateLocalizationResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelTemplateLocalizationResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelTemplateLocalizationResponse, List[ModelTemplateLocalizationResponse], Dict[Any, ModelTemplateLocalizationResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelTemplateLocalizationResponse,
+        List[ModelTemplateLocalizationResponse],
+        Dict[Any, ModelTemplateLocalizationResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

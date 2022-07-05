@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import create_user_from_invitation_v4 as create_user_from_invitation_v4_internal
+from accelbyte_py_sdk.api.iam import (
+    create_user_from_invitation_v4 as create_user_from_invitation_v4_internal,
+)
 from accelbyte_py_sdk.api.iam.models import AccountCreateUserResponseV4
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateFromInvitationRequestV4
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -44,21 +46,19 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def create_user_from_invitation_v4(
-        body: str,
-        invitation_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    body: str,
+    invitation_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(create_user_from_invitation_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

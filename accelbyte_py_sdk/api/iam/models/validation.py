@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -67,21 +67,21 @@ class Validation(Model):
 
     # region fields
 
-    allow_digit: bool                                                                              # REQUIRED
-    allow_letter: bool                                                                             # REQUIRED
-    allow_space: bool                                                                              # REQUIRED
-    allow_unicode: bool                                                                            # REQUIRED
-    description: List[ValidationDescription]                                                       # REQUIRED
-    is_custom_regex: bool                                                                          # REQUIRED
-    letter_case: str                                                                               # REQUIRED
-    max_length: int                                                                                # REQUIRED
-    max_repeating_alpha_num: int                                                                   # REQUIRED
-    max_repeating_special_character: int                                                           # REQUIRED
-    min_char_type: int                                                                             # REQUIRED
-    min_length: int                                                                                # REQUIRED
-    regex: str                                                                                     # REQUIRED
-    special_character_location: str                                                                # REQUIRED
-    special_characters: List[str]                                                                  # REQUIRED
+    allow_digit: bool  # REQUIRED
+    allow_letter: bool  # REQUIRED
+    allow_space: bool  # REQUIRED
+    allow_unicode: bool  # REQUIRED
+    description: List[ValidationDescription]  # REQUIRED
+    is_custom_regex: bool  # REQUIRED
+    letter_case: str  # REQUIRED
+    max_length: int  # REQUIRED
+    max_repeating_alpha_num: int  # REQUIRED
+    max_repeating_special_character: int  # REQUIRED
+    min_char_type: int  # REQUIRED
+    min_length: int  # REQUIRED
+    regex: str  # REQUIRED
+    special_character_location: str  # REQUIRED
+    special_characters: List[str]  # REQUIRED
 
     # endregion fields
 
@@ -170,7 +170,9 @@ class Validation(Model):
         elif include_empty:
             result["allowUnicode"] = False
         if hasattr(self, "description"):
-            result["description"] = [i0.to_dict(include_empty=include_empty) for i0 in self.description]
+            result["description"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.description
+            ]
         elif include_empty:
             result["description"] = []
         if hasattr(self, "is_custom_regex"):
@@ -190,7 +192,9 @@ class Validation(Model):
         elif include_empty:
             result["maxRepeatingAlphaNum"] = 0
         if hasattr(self, "max_repeating_special_character"):
-            result["maxRepeatingSpecialCharacter"] = int(self.max_repeating_special_character)
+            result["maxRepeatingSpecialCharacter"] = int(
+                self.max_repeating_special_character
+            )
         elif include_empty:
             result["maxRepeatingSpecialCharacter"] = 0
         if hasattr(self, "min_char_type"):
@@ -278,7 +282,10 @@ class Validation(Model):
         elif include_empty:
             instance.allow_unicode = False
         if "description" in dict_ and dict_["description"] is not None:
-            instance.description = [ValidationDescription.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["description"]]
+            instance.description = [
+                ValidationDescription.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["description"]
+            ]
         elif include_empty:
             instance.description = []
         if "isCustomRegex" in dict_ and dict_["isCustomRegex"] is not None:
@@ -293,12 +300,20 @@ class Validation(Model):
             instance.max_length = int(dict_["maxLength"])
         elif include_empty:
             instance.max_length = 0
-        if "maxRepeatingAlphaNum" in dict_ and dict_["maxRepeatingAlphaNum"] is not None:
+        if (
+            "maxRepeatingAlphaNum" in dict_
+            and dict_["maxRepeatingAlphaNum"] is not None
+        ):
             instance.max_repeating_alpha_num = int(dict_["maxRepeatingAlphaNum"])
         elif include_empty:
             instance.max_repeating_alpha_num = 0
-        if "maxRepeatingSpecialCharacter" in dict_ and dict_["maxRepeatingSpecialCharacter"] is not None:
-            instance.max_repeating_special_character = int(dict_["maxRepeatingSpecialCharacter"])
+        if (
+            "maxRepeatingSpecialCharacter" in dict_
+            and dict_["maxRepeatingSpecialCharacter"] is not None
+        ):
+            instance.max_repeating_special_character = int(
+                dict_["maxRepeatingSpecialCharacter"]
+            )
         elif include_empty:
             instance.max_repeating_special_character = 0
         if "minCharType" in dict_ and dict_["minCharType"] is not None:
@@ -313,7 +328,10 @@ class Validation(Model):
             instance.regex = str(dict_["regex"])
         elif include_empty:
             instance.regex = ""
-        if "specialCharacterLocation" in dict_ and dict_["specialCharacterLocation"] is not None:
+        if (
+            "specialCharacterLocation" in dict_
+            and dict_["specialCharacterLocation"] is not None
+        ):
             instance.special_character_location = str(dict_["specialCharacterLocation"])
         elif include_empty:
             instance.special_character_location = ""
@@ -324,15 +342,29 @@ class Validation(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, Validation]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, Validation]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[Validation]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[Validation]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[Validation, List[Validation], Dict[Any, Validation]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[Validation, List[Validation], Dict[Any, Validation]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

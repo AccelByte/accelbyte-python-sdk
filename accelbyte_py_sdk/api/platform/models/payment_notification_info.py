@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,17 +76,17 @@ class PaymentNotificationInfo(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    notification: Dict[str, Any]                                                                   # REQUIRED
-    notification_source: Union[str, NotificationSourceEnum]                                        # REQUIRED
-    notification_type: str                                                                         # REQUIRED
-    payment_order_no: str                                                                          # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    external_id: str                                                                               # OPTIONAL
-    status_reason: str                                                                             # OPTIONAL
+    created_at: str  # REQUIRED
+    id_: str  # REQUIRED
+    namespace: str  # REQUIRED
+    notification: Dict[str, Any]  # REQUIRED
+    notification_source: Union[str, NotificationSourceEnum]  # REQUIRED
+    notification_type: str  # REQUIRED
+    payment_order_no: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    external_id: str  # OPTIONAL
+    status_reason: str  # OPTIONAL
 
     # endregion fields
 
@@ -108,7 +108,9 @@ class PaymentNotificationInfo(Model):
         self.notification = value
         return self
 
-    def with_notification_source(self, value: Union[str, NotificationSourceEnum]) -> PaymentNotificationInfo:
+    def with_notification_source(
+        self, value: Union[str, NotificationSourceEnum]
+    ) -> PaymentNotificationInfo:
         self.notification_source = value
         return self
 
@@ -155,7 +157,9 @@ class PaymentNotificationInfo(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "notification"):
-            result["notification"] = {str(k0): v0 for k0, v0 in self.notification.items()}
+            result["notification"] = {
+                str(k0): v0 for k0, v0 in self.notification.items()
+            }
         elif include_empty:
             result["notification"] = {}
         if hasattr(self, "notification_source"):
@@ -224,7 +228,9 @@ class PaymentNotificationInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentNotificationInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentNotificationInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -241,7 +247,9 @@ class PaymentNotificationInfo(Model):
         elif include_empty:
             instance.namespace = ""
         if "notification" in dict_ and dict_["notification"] is not None:
-            instance.notification = {str(k0): v0 for k0, v0 in dict_["notification"].items()}
+            instance.notification = {
+                str(k0): v0 for k0, v0 in dict_["notification"].items()
+            }
         elif include_empty:
             instance.notification = {}
         if "notificationSource" in dict_ and dict_["notificationSource"] is not None:
@@ -275,15 +283,33 @@ class PaymentNotificationInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentNotificationInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentNotificationInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentNotificationInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentNotificationInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentNotificationInfo, List[PaymentNotificationInfo], Dict[Any, PaymentNotificationInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentNotificationInfo,
+        List[PaymentNotificationInfo],
+        Dict[Any, PaymentNotificationInfo],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -329,7 +355,16 @@ class PaymentNotificationInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "notificationSource": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "notificationSource": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
             "status": ["ERROR", "IGNORED", "PROCESSED", "WARN"],
         }
 

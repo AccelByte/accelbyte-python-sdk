@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -40,7 +40,13 @@ from ..operations.file_upload import PublicGeneratedUserUploadContentUrl
 
 
 @same_doc_as(GeneratedUploadUrl)
-def generated_upload_url(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def generated_upload_url(
+    file_type: str,
+    folder: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,7 +60,13 @@ def generated_upload_url(file_type: str, folder: str, namespace: Optional[str] =
 
 
 @same_doc_as(GeneratedUploadUrl)
-async def generated_upload_url_async(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def generated_upload_url_async(
+    file_type: str,
+    folder: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,11 +76,19 @@ async def generated_upload_url_async(file_type: str, folder: str, namespace: Opt
         folder=folder,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GeneratedUserUploadContentUrl)
-def generated_user_upload_content_url(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def generated_user_upload_content_url(
+    file_type: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,7 +102,13 @@ def generated_user_upload_content_url(file_type: str, user_id: str, namespace: O
 
 
 @same_doc_as(GeneratedUserUploadContentUrl)
-async def generated_user_upload_content_url_async(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def generated_user_upload_content_url_async(
+    file_type: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,11 +118,19 @@ async def generated_user_upload_content_url_async(file_type: str, user_id: str, 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGeneratedUploadUrl)
-def public_generated_upload_url(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_generated_upload_url(
+    file_type: str,
+    folder: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,7 +144,13 @@ def public_generated_upload_url(file_type: str, folder: str, namespace: Optional
 
 
 @same_doc_as(PublicGeneratedUploadUrl)
-async def public_generated_upload_url_async(file_type: str, folder: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_generated_upload_url_async(
+    file_type: str,
+    folder: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,11 +160,19 @@ async def public_generated_upload_url_async(file_type: str, folder: str, namespa
         folder=folder,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGeneratedUserUploadContentUrl)
-def public_generated_user_upload_content_url(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_generated_user_upload_content_url(
+    file_type: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -138,7 +186,13 @@ def public_generated_user_upload_content_url(file_type: str, user_id: str, names
 
 
 @same_doc_as(PublicGeneratedUserUploadContentUrl)
-async def public_generated_user_upload_content_url_async(file_type: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_generated_user_upload_content_url_async(
+    file_type: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -148,4 +202,6 @@ async def public_generated_user_upload_content_url_async(file_type: str, user_id
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

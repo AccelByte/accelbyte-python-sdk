@@ -30,9 +30,13 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.leaderboard import get_all_time_leaderboard_ranking_public_v2 as get_all_time_leaderboard_ranking_public_v2_internal
+from accelbyte_py_sdk.api.leaderboard import (
+    get_all_time_leaderboard_ranking_public_v2 as get_all_time_leaderboard_ranking_public_v2_internal,
+)
 from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
-from accelbyte_py_sdk.api.leaderboard.models import V2GetPublicLeaderboardRankingResponse
+from accelbyte_py_sdk.api.leaderboard.models import (
+    V2GetPublicLeaderboardRankingResponse,
+)
 
 
 @click.command()
@@ -44,22 +48,20 @@ from accelbyte_py_sdk.api.leaderboard.models import V2GetPublicLeaderboardRankin
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_all_time_leaderboard_ranking_public_v2(
-        leaderboard_code: str,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    leaderboard_code: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_all_time_leaderboard_ranking_public_v2_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = get_all_time_leaderboard_ranking_public_v2_internal(
@@ -74,5 +76,7 @@ def get_all_time_leaderboard_ranking_public_v2(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_all_time_leaderboard_ranking_public_v2.operation_id = "GetAllTimeLeaderboardRankingPublicV2"
+get_all_time_leaderboard_ranking_public_v2.operation_id = (
+    "GetAllTimeLeaderboardRankingPublicV2"
+)
 get_all_time_leaderboard_ranking_public_v2.is_deprecated = False

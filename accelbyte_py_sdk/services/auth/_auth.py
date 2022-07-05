@@ -33,17 +33,20 @@ DEFAULT_REFRESH_RATE: float = 0.8
 
 
 def convert_bearer_auth_token_to_oauth_token_dict(
-        bearer_auth_token: str,
-        jwt_decode_options: Union[None, dict] = None,
-        patch_permission_keys: Union[None, bool, Dict[str, str]] = None,
+    bearer_auth_token: str,
+    jwt_decode_options: Union[None, dict] = None,
+    patch_permission_keys: Union[None, bool, Dict[str, str]] = None,
 ) -> Union[None, Dict[str, Any]]:
-    jwt_decode_options = jwt_decode_options if jwt_decode_options is not None else {"verify_signature": False}
-    patch_permission_keys = patch_permission_keys if patch_permission_keys is not None else True
+    jwt_decode_options = (
+        jwt_decode_options
+        if jwt_decode_options is not None
+        else {"verify_signature": False}
+    )
+    patch_permission_keys = (
+        patch_permission_keys if patch_permission_keys is not None else True
+    )
     if isinstance(patch_permission_keys, bool) and patch_permission_keys:
-        patch_permission_keys = {
-            "Action": "action",
-            "Resource": "resource"
-        }
+        patch_permission_keys = {"Action": "action", "Resource": "resource"}
 
     # the permission keys in the JSON web token is different from the keys defined in the schema
     def patch_jwt_permission_keys(jwt_: dict, ppk_: Dict[str, str]):
@@ -57,7 +60,9 @@ def convert_bearer_auth_token_to_oauth_token_dict(
 
     try:
         json_web_token = jwt.decode(bearer_auth_token, options=jwt_decode_options)
-        if patch_permission_keys is not None and isinstance(patch_permission_keys, dict):
+        if patch_permission_keys is not None and isinstance(
+            patch_permission_keys, dict
+        ):
             patch_jwt_permission_keys(jwt_=json_web_token, ppk_=patch_permission_keys)
         return json_web_token
     except ValueError as e:
@@ -65,10 +70,10 @@ def convert_bearer_auth_token_to_oauth_token_dict(
 
 
 def login_client(
-        client_id: Union[None, str] = None,
-        client_secret: Union[None, str] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    client_id: Union[None, str] = None,
+    client_secret: Union[None, str] = None,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -76,12 +81,10 @@ def login_client(
 
     if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
-        x_additional_headers["Authorization"] \
-            = create_basic_authentication(client_id, client_secret)
-    token, error = token_grant_v3(
-        "client_credentials",
-        **kwargs
-    )
+        x_additional_headers["Authorization"] = create_basic_authentication(
+            client_id, client_secret
+        )
+    token, error = token_grant_v3("client_credentials", **kwargs)
     if error:
         return None, error
 
@@ -101,10 +104,10 @@ def login_client(
 
 
 async def login_client_async(
-        client_id: Union[None, str] = None,
-        client_secret: Union[None, str] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    client_id: Union[None, str] = None,
+    client_secret: Union[None, str] = None,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -112,12 +115,10 @@ async def login_client_async(
 
     if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
-        x_additional_headers["Authorization"] \
-            = create_basic_authentication(client_id, client_secret)
-    token, error = await token_grant_v3_async(
-        "client_credentials",
-        **kwargs
-    )
+        x_additional_headers["Authorization"] = create_basic_authentication(
+            client_id, client_secret
+        )
+    token, error = await token_grant_v3_async("client_credentials", **kwargs)
     if error:
         return None, error
 
@@ -137,18 +138,21 @@ async def login_client_async(
 
 
 def login_user(
-        username: str,
-        password: str,
-        scope: Union[None, str, List[str]] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    username: str,
+    password: str,
+    scope: Union[None, str, List[str]] = None,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
-    code_verifier, code_challenge, code_challenge_method \
-        = create_pkce_verifier_and_challenge_s256()
+    (
+        code_verifier,
+        code_challenge,
+        code_challenge_method,
+    ) = create_pkce_verifier_and_challenge_s256()
 
     client_id, error = get_client_id()
     if error:
@@ -210,18 +214,21 @@ def login_user(
 
 
 async def login_user_async(
-        username: str,
-        password: str,
-        scope: Union[None, str, List[str]] = None,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    username: str,
+    password: str,
+    scope: Union[None, str, List[str]] = None,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
     kwargs["try_refresh"] = False
 
-    code_verifier, code_challenge, code_challenge_method \
-        = create_pkce_verifier_and_challenge_s256()
+    (
+        code_verifier,
+        code_challenge,
+        code_challenge_method,
+    ) = create_pkce_verifier_and_challenge_s256()
 
     client_id, error = get_client_id()
     if error:
@@ -282,10 +289,7 @@ async def login_user_async(
     return token, None
 
 
-def logout(
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
-):
+def logout(x_additional_headers: Union[None, Dict[str, str]] = None, **kwargs):
     kwargs["try_refresh"] = False
 
     access_token, error = get_access_token()
@@ -297,13 +301,13 @@ def logout(
         return None, error
 
     basic_auth = create_basic_authentication(*client_auth)
-    x_additional_headers = x_additional_headers if x_additional_headers is not None else {}
+    x_additional_headers = (
+        x_additional_headers if x_additional_headers is not None else {}
+    )
     x_additional_headers["Authorization"] = basic_auth
 
     _, error = token_revocation_v3(
-        token=access_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs
+        token=access_token, x_additional_headers=x_additional_headers, **kwargs
     )
     if error:
         return None, error
@@ -318,8 +322,7 @@ def logout(
 
 
 async def logout_async(
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    x_additional_headers: Union[None, Dict[str, str]] = None, **kwargs
 ):
     kwargs["try_refresh"] = False
 
@@ -328,9 +331,7 @@ async def logout_async(
         return None, error
 
     _, error = await token_revocation_v3_async(
-        token=access_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs
+        token=access_token, x_additional_headers=x_additional_headers, **kwargs
     )
     if error:
         return None, error
@@ -345,9 +346,7 @@ async def logout_async(
 
 
 def refresh_login(
-        refresh_token,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    refresh_token, x_additional_headers: Union[None, Dict[str, str]] = None, **kwargs
 ):
     kwargs["try_refresh"] = False
 
@@ -364,9 +363,7 @@ def refresh_login(
 
 
 async def refresh_login_async(
-        refresh_token,
-        x_additional_headers: Union[None, Dict[str, str]] = None,
-        **kwargs
+    refresh_token, x_additional_headers: Union[None, Dict[str, str]] = None, **kwargs
 ):
     kwargs["try_refresh"] = False
 

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -159,49 +159,49 @@ class BundledItemInfo(Model):
 
     # region fields
 
-    category_path: str                                                                             # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
-    language: str                                                                                  # REQUIRED
-    name: str                                                                                      # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    region: str                                                                                    # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    title: str                                                                                     # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    app_id: str                                                                                    # OPTIONAL
-    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
-    base_app_id: str                                                                               # OPTIONAL
-    booth_name: str                                                                                # OPTIONAL
-    bound_item_ids: List[str]                                                                      # OPTIONAL
-    bundled_qty: int                                                                               # OPTIONAL
-    clazz: str                                                                                     # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    display_order: int                                                                             # OPTIONAL
-    ext: Dict[str, Any]                                                                            # OPTIONAL
-    features: List[str]                                                                            # OPTIONAL
-    images: List[Image]                                                                            # OPTIONAL
-    item_ids: List[str]                                                                            # OPTIONAL
-    item_qty: Dict[str, int]                                                                       # OPTIONAL
-    listable: bool                                                                                 # OPTIONAL
-    local_ext: Dict[str, Any]                                                                      # OPTIONAL
-    long_description: str                                                                          # OPTIONAL
-    max_count: int                                                                                 # OPTIONAL
-    max_count_per_user: int                                                                        # OPTIONAL
-    purchasable: bool                                                                              # OPTIONAL
-    recurring: Recurring                                                                           # OPTIONAL
-    region_data: List[RegionDataItem]                                                              # OPTIONAL
-    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    stackable: bool                                                                                # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
-    target_currency_code: str                                                                      # OPTIONAL
-    target_item_id: str                                                                            # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
-    thumbnail_url: str                                                                             # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
+    category_path: str  # REQUIRED
+    created_at: str  # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]  # REQUIRED
+    item_id: str  # REQUIRED
+    item_type: Union[str, ItemTypeEnum]  # REQUIRED
+    language: str  # REQUIRED
+    name: str  # REQUIRED
+    namespace: str  # REQUIRED
+    region: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    title: str  # REQUIRED
+    updated_at: str  # REQUIRED
+    app_id: str  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    base_app_id: str  # OPTIONAL
+    booth_name: str  # OPTIONAL
+    bound_item_ids: List[str]  # OPTIONAL
+    bundled_qty: int  # OPTIONAL
+    clazz: str  # OPTIONAL
+    description: str  # OPTIONAL
+    display_order: int  # OPTIONAL
+    ext: Dict[str, Any]  # OPTIONAL
+    features: List[str]  # OPTIONAL
+    images: List[Image]  # OPTIONAL
+    item_ids: List[str]  # OPTIONAL
+    item_qty: Dict[str, int]  # OPTIONAL
+    listable: bool  # OPTIONAL
+    local_ext: Dict[str, Any]  # OPTIONAL
+    long_description: str  # OPTIONAL
+    max_count: int  # OPTIONAL
+    max_count_per_user: int  # OPTIONAL
+    purchasable: bool  # OPTIONAL
+    recurring: Recurring  # OPTIONAL
+    region_data: List[RegionDataItem]  # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    sku: str  # OPTIONAL
+    stackable: bool  # OPTIONAL
+    tags: List[str]  # OPTIONAL
+    target_currency_code: str  # OPTIONAL
+    target_item_id: str  # OPTIONAL
+    target_namespace: str  # OPTIONAL
+    thumbnail_url: str  # OPTIONAL
+    use_count: int  # OPTIONAL
 
     # endregion fields
 
@@ -215,7 +215,9 @@ class BundledItemInfo(Model):
         self.created_at = value
         return self
 
-    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> BundledItemInfo:
+    def with_entitlement_type(
+        self, value: Union[str, EntitlementTypeEnum]
+    ) -> BundledItemInfo:
         self.entitlement_type = value
         return self
 
@@ -478,7 +480,9 @@ class BundledItemInfo(Model):
         elif include_empty:
             result["features"] = []
         if hasattr(self, "images"):
-            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
+            result["images"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.images
+            ]
         elif include_empty:
             result["images"] = []
         if hasattr(self, "item_ids"):
@@ -518,7 +522,9 @@ class BundledItemInfo(Model):
         elif include_empty:
             result["recurring"] = Recurring()
         if hasattr(self, "region_data"):
-            result["regionData"] = [i0.to_dict(include_empty=include_empty) for i0 in self.region_data]
+            result["regionData"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.region_data
+            ]
         elif include_empty:
             result["regionData"] = []
         if hasattr(self, "season_type"):
@@ -688,7 +694,9 @@ class BundledItemInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BundledItemInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> BundledItemInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -785,7 +793,10 @@ class BundledItemInfo(Model):
         elif include_empty:
             instance.features = []
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
+            instance.images = [
+                Image.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["images"]
+            ]
         elif include_empty:
             instance.images = []
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
@@ -793,7 +804,9 @@ class BundledItemInfo(Model):
         elif include_empty:
             instance.item_ids = []
         if "itemQty" in dict_ and dict_["itemQty"] is not None:
-            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+            instance.item_qty = {
+                str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()
+            }
         elif include_empty:
             instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
@@ -821,11 +834,16 @@ class BundledItemInfo(Model):
         elif include_empty:
             instance.purchasable = False
         if "recurring" in dict_ and dict_["recurring"] is not None:
-            instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
+            instance.recurring = Recurring.create_from_dict(
+                dict_["recurring"], include_empty=include_empty
+            )
         elif include_empty:
             instance.recurring = Recurring()
         if "regionData" in dict_ and dict_["regionData"] is not None:
-            instance.region_data = [RegionDataItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["regionData"]]
+            instance.region_data = [
+                RegionDataItem.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["regionData"]
+            ]
         elif include_empty:
             instance.region_data = []
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
@@ -867,15 +885,29 @@ class BundledItemInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, BundledItemInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, BundledItemInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[BundledItemInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[BundledItemInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[BundledItemInfo, List[BundledItemInfo], Dict[Any, BundledItemInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[BundledItemInfo, List[BundledItemInfo], Dict[Any, BundledItemInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -986,7 +1018,16 @@ class BundledItemInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["CONSUMABLE", "DURABLE"],
-            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],
             "status": ["ACTIVE", "INACTIVE"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
             "seasonType": ["PASS", "TIER"],

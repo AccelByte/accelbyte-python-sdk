@@ -29,10 +29,7 @@ async def example_receive_and_send_formatted_web_socket_message():
     if error:
         exit(1)
 
-    client = WebsocketsWSClient(
-        uri=base_url,
-        access_token=access_token
-    )
+    client = WebsocketsWSClient(uri=base_url, access_token=access_token)
 
     # A.1 Register a listener for received web socket messages.
     client.listeners.append(on_receive)
@@ -44,6 +41,7 @@ async def example_receive_and_send_formatted_web_socket_message():
     # B.1. Create an instance of the desired web socket message type.
     # Full list of accepted web socket lobby messages are in 'accelbyte_py_sdk.api.lobby.wss_models'.
     from accelbyte_py_sdk.api.lobby.wss_models import OfflineNotificationRequest
+
     offline_notification_request = OfflineNotificationRequest()
 
     # B.2 Format then send the web socket message.
@@ -55,6 +53,7 @@ async def example_receive_and_send_formatted_web_socket_message():
     # B.1. Create an instance of the desired web socket message type.
     # Full list of accepted web socket lobby messages are in 'accelbyte_py_sdk.api.lobby.wss_models'.
     from accelbyte_py_sdk.api.lobby.wss_models import PartyJoinRequest
+
     party_join_request = PartyJoinRequest()
     party_join_request.invitation_token = "<invitation-token>"
     party_join_request.party_id = "<party-id>"

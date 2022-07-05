@@ -13,7 +13,7 @@ def example_bulk_accept_versioned_policy():
                 is_accepted=True,
                 localized_policy_version_id="<localized_policy_version_id>",
                 policy_id="<policy_id>",
-                policy_version_id="<policy_version_id>"
+                policy_version_id="<policy_version_id>",
             )
         ]
     )
@@ -39,7 +39,7 @@ def example_change_preference_consent():
                 is_accepted=True,
                 localized_policy_version_id="<localized_policy_version_id>",
                 policy_id="<policy_id>",
-                policy_version_id="<policy_version_id>"
+                policy_version_id="<policy_version_id>",
             )
         ]
     )

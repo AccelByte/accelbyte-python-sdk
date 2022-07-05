@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -62,22 +62,24 @@ class AccountCreateTestUserRequestV4(Model):
 
     # region fields
 
-    auth_type: Union[str, AuthTypeEnum]                                                            # REQUIRED
-    country: str                                                                                   # REQUIRED
-    date_of_birth: str                                                                             # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    email_address: str                                                                             # REQUIRED
-    password: str                                                                                  # REQUIRED
-    password_md5_sum: str                                                                          # REQUIRED
-    username: str                                                                                  # REQUIRED
-    verified: bool                                                                                 # REQUIRED
-    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
+    auth_type: Union[str, AuthTypeEnum]  # REQUIRED
+    country: str  # REQUIRED
+    date_of_birth: str  # REQUIRED
+    display_name: str  # REQUIRED
+    email_address: str  # REQUIRED
+    password: str  # REQUIRED
+    password_md5_sum: str  # REQUIRED
+    username: str  # REQUIRED
+    verified: bool  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_auth_type(self, value: Union[str, AuthTypeEnum]) -> AccountCreateTestUserRequestV4:
+    def with_auth_type(
+        self, value: Union[str, AuthTypeEnum]
+    ) -> AccountCreateTestUserRequestV4:
         self.auth_type = value
         return self
 
@@ -113,7 +115,9 @@ class AccountCreateTestUserRequestV4(Model):
         self.verified = value
         return self
 
-    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> AccountCreateTestUserRequestV4:
+    def with_accepted_policies(
+        self, value: List[LegalAcceptedPoliciesRequest]
+    ) -> AccountCreateTestUserRequestV4:
         self.accepted_policies = value
         return self
 
@@ -160,7 +164,9 @@ class AccountCreateTestUserRequestV4(Model):
         elif include_empty:
             result["verified"] = False
         if hasattr(self, "accepted_policies"):
-            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
+            result["acceptedPolicies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies
+            ]
         elif include_empty:
             result["acceptedPolicies"] = []
         return result
@@ -198,7 +204,9 @@ class AccountCreateTestUserRequestV4(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountCreateTestUserRequestV4:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountCreateTestUserRequestV4:
         instance = cls()
         if not dict_:
             return instance
@@ -239,21 +247,44 @@ class AccountCreateTestUserRequestV4(Model):
         elif include_empty:
             instance.verified = False
         if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
-            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
+            instance.accepted_policies = [
+                LegalAcceptedPoliciesRequest.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["acceptedPolicies"]
+            ]
         elif include_empty:
             instance.accepted_policies = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountCreateTestUserRequestV4]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountCreateTestUserRequestV4]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountCreateTestUserRequestV4]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountCreateTestUserRequestV4]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountCreateTestUserRequestV4, List[AccountCreateTestUserRequestV4], Dict[Any, AccountCreateTestUserRequestV4]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountCreateTestUserRequestV4,
+        List[AccountCreateTestUserRequestV4],
+        Dict[Any, AccountCreateTestUserRequestV4],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

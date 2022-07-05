@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -40,7 +40,12 @@ from ..operations.public_game_record import PutGameRecordHandlerV1
 
 
 @same_doc_as(DeleteGameRecordHandlerV1)
-def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_game_record_handler_v1(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,7 +58,12 @@ def delete_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_a
 
 
 @same_doc_as(DeleteGameRecordHandlerV1)
-async def delete_game_record_handler_v1_async(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_game_record_handler_v1_async(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,11 +72,18 @@ async def delete_game_record_handler_v1_async(key: str, namespace: Optional[str]
         key=key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetGameRecordHandlerV1)
-def get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_game_record_handler_v1(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +96,12 @@ def get_game_record_handler_v1(key: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(GetGameRecordHandlerV1)
-async def get_game_record_handler_v1_async(key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_game_record_handler_v1_async(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +110,19 @@ async def get_game_record_handler_v1_async(key: str, namespace: Optional[str] = 
         key=key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PostGameRecordHandlerV1)
-def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def post_game_record_handler_v1(
+    body: ModelsGameRecordRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,7 +136,13 @@ def post_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespa
 
 
 @same_doc_as(PostGameRecordHandlerV1)
-async def post_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def post_game_record_handler_v1_async(
+    body: ModelsGameRecordRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,11 +152,19 @@ async def post_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: 
         key=key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PutGameRecordHandlerV1)
-def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def put_game_record_handler_v1(
+    body: ModelsGameRecordRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,7 +178,13 @@ def put_game_record_handler_v1(body: ModelsGameRecordRequest, key: str, namespac
 
 
 @same_doc_as(PutGameRecordHandlerV1)
-async def put_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def put_game_record_handler_v1_async(
+    body: ModelsGameRecordRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,4 +194,6 @@ async def put_game_record_handler_v1_async(body: ModelsGameRecordRequest, key: s
         key=key,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

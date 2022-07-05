@@ -23,10 +23,8 @@ def example_create_session():
                             party_attributes={},
                             party_id="<party-id>",
                             party_members=[
-                                ModelsRequestMatchMember.create(
-                                    user_id="<user-id>"
-                                )
-                            ]
+                                ModelsRequestMatchMember.create(user_id="<user-id>")
+                            ],
                         )
                     ]
                 )
@@ -34,7 +32,7 @@ def example_create_session():
             namespace="<namespace>",
             pod_name="<pod-name>",
             region="<your-region>",
-            session_id="<session-id>"
+            session_id="<session-id>",
         )
     )
     if error:
@@ -44,9 +42,7 @@ def example_create_session():
 def example_get_session():
     from accelbyte_py_sdk.api.dsmc import get_session
 
-    result, error = get_session(
-        session_id="<session-id>"
-    )
+    result, error = get_session(session_id="<session-id>")
     if error:
         print(error)
 
@@ -56,9 +52,7 @@ def example_claim_server():
     from accelbyte_py_sdk.api.dsmc.models import ModelsClaimSessionRequest
 
     result, error = claim_server(
-        body=ModelsClaimSessionRequest.create(
-            session_id="<session-id>"
-        )
+        body=ModelsClaimSessionRequest.create(session_id="<session-id>")
     )
     if error:
         print(error)

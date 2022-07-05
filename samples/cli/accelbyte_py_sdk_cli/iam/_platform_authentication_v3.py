@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import platform_authentication_v3 as platform_authentication_v3_internal
+from accelbyte_py_sdk.api.iam import (
+    platform_authentication_v3 as platform_authentication_v3_internal,
+)
 
 
 @click.command()
@@ -52,32 +54,30 @@ from accelbyte_py_sdk.api.iam import platform_authentication_v3 as platform_auth
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def platform_authentication_v3(
-        platform_id: str,
-        state: str,
-        code: Optional[str] = None,
-        error: Optional[str] = None,
-        openid_assoc_handle: Optional[str] = None,
-        openid_claimed_id: Optional[str] = None,
-        openid_identity: Optional[str] = None,
-        openid_mode: Optional[str] = None,
-        openid_ns: Optional[str] = None,
-        openid_op_endpoint: Optional[str] = None,
-        openid_response_nonce: Optional[str] = None,
-        openid_return_to: Optional[str] = None,
-        openid_sig: Optional[str] = None,
-        openid_signed: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    error: Optional[str] = None,
+    openid_assoc_handle: Optional[str] = None,
+    openid_claimed_id: Optional[str] = None,
+    openid_identity: Optional[str] = None,
+    openid_mode: Optional[str] = None,
+    openid_ns: Optional[str] = None,
+    openid_op_endpoint: Optional[str] = None,
+    openid_response_nonce: Optional[str] = None,
+    openid_return_to: Optional[str] = None,
+    openid_sig: Optional[str] = None,
+    openid_signed: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(platform_authentication_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = platform_authentication_v3_internal(

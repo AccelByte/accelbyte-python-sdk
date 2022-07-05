@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,13 +49,13 @@ class FullCategoryInfo(Model):
 
     # region fields
 
-    category_path: str                                                                             # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    localization_display_names: Dict[str, str]                                                     # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    parent_category_path: str                                                                      # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    root: bool                                                                                     # OPTIONAL
+    category_path: str  # REQUIRED
+    created_at: str  # REQUIRED
+    localization_display_names: Dict[str, str]  # REQUIRED
+    namespace: str  # REQUIRED
+    parent_category_path: str  # REQUIRED
+    updated_at: str  # REQUIRED
+    root: bool  # OPTIONAL
 
     # endregion fields
 
@@ -69,7 +69,9 @@ class FullCategoryInfo(Model):
         self.created_at = value
         return self
 
-    def with_localization_display_names(self, value: Dict[str, str]) -> FullCategoryInfo:
+    def with_localization_display_names(
+        self, value: Dict[str, str]
+    ) -> FullCategoryInfo:
         self.localization_display_names = value
         return self
 
@@ -104,7 +106,9 @@ class FullCategoryInfo(Model):
         elif include_empty:
             result["createdAt"] = ""
         if hasattr(self, "localization_display_names"):
-            result["localizationDisplayNames"] = {str(k0): str(v0) for k0, v0 in self.localization_display_names.items()}
+            result["localizationDisplayNames"] = {
+                str(k0): str(v0) for k0, v0 in self.localization_display_names.items()
+            }
         elif include_empty:
             result["localizationDisplayNames"] = {}
         if hasattr(self, "namespace"):
@@ -152,7 +156,9 @@ class FullCategoryInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FullCategoryInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> FullCategoryInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -164,8 +170,13 @@ class FullCategoryInfo(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
-        if "localizationDisplayNames" in dict_ and dict_["localizationDisplayNames"] is not None:
-            instance.localization_display_names = {str(k0): str(v0) for k0, v0 in dict_["localizationDisplayNames"].items()}
+        if (
+            "localizationDisplayNames" in dict_
+            and dict_["localizationDisplayNames"] is not None
+        ):
+            instance.localization_display_names = {
+                str(k0): str(v0) for k0, v0 in dict_["localizationDisplayNames"].items()
+            }
         elif include_empty:
             instance.localization_display_names = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -187,15 +198,29 @@ class FullCategoryInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FullCategoryInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, FullCategoryInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FullCategoryInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[FullCategoryInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FullCategoryInfo, List[FullCategoryInfo], Dict[Any, FullCategoryInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[FullCategoryInfo, List[FullCategoryInfo], Dict[Any, FullCategoryInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

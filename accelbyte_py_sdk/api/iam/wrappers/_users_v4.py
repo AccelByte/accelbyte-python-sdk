@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -95,7 +95,13 @@ from ..models import ModelUserCreateFromInvitationRequestV4AuthTypeEnum
 
 
 @same_doc_as(AdminAddUserRoleV4)
-def admin_add_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_add_user_role_v4(
+    body: ModelAddUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,7 +115,13 @@ def admin_add_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namesp
 
 
 @same_doc_as(AdminAddUserRoleV4)
-async def admin_add_user_role_v4_async(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_add_user_role_v4_async(
+    body: ModelAddUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,11 +131,18 @@ async def admin_add_user_role_v4_async(body: ModelAddUserRoleV4Request, user_id:
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminBulkCheckValidUserIDV4)
-def admin_bulk_check_valid_user_idv4(body: ModelCheckValidUserIDRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_bulk_check_valid_user_idv4(
+    body: ModelCheckValidUserIDRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -136,7 +155,12 @@ def admin_bulk_check_valid_user_idv4(body: ModelCheckValidUserIDRequestV4, names
 
 
 @same_doc_as(AdminBulkCheckValidUserIDV4)
-async def admin_bulk_check_valid_user_idv4_async(body: ModelCheckValidUserIDRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_bulk_check_valid_user_idv4_async(
+    body: ModelCheckValidUserIDRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,35 +169,54 @@ async def admin_bulk_check_valid_user_idv4_async(body: ModelCheckValidUserIDRequ
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDisableMyAuthenticatorV4)
-def admin_disable_my_authenticator_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_disable_my_authenticator_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDisableMyAuthenticatorV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDisableMyAuthenticatorV4)
-async def admin_disable_my_authenticator_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_disable_my_authenticator_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDisableMyAuthenticatorV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDisableMyBackupCodesV4)
-def admin_disable_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_disable_my_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDisableMyBackupCodesV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDisableMyBackupCodesV4)
-async def admin_disable_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_disable_my_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDisableMyBackupCodesV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDisableUserMFAV4)
-def admin_disable_user_mfav4(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_disable_user_mfav4(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,7 +229,12 @@ def admin_disable_user_mfav4(user_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(AdminDisableUserMFAV4)
-async def admin_disable_user_mfav4_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_disable_user_mfav4_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,23 +243,35 @@ async def admin_disable_user_mfav4_async(user_id: str, namespace: Optional[str] 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDownloadMyBackupCodesV4)
-def admin_download_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_download_my_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDownloadMyBackupCodesV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDownloadMyBackupCodesV4)
-async def admin_download_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_download_my_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminDownloadMyBackupCodesV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminEnableMyAuthenticatorV4)
-def admin_enable_my_authenticator_v4(code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_enable_my_authenticator_v4(
+    code: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminEnableMyAuthenticatorV4.create(
         code=code,
     )
@@ -219,75 +279,115 @@ def admin_enable_my_authenticator_v4(code: Optional[str] = None, x_additional_he
 
 
 @same_doc_as(AdminEnableMyAuthenticatorV4)
-async def admin_enable_my_authenticator_v4_async(code: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_enable_my_authenticator_v4_async(
+    code: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminEnableMyAuthenticatorV4.create(
         code=code,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminEnableMyBackupCodesV4)
-def admin_enable_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_enable_my_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminEnableMyBackupCodesV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminEnableMyBackupCodesV4)
-async def admin_enable_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_enable_my_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminEnableMyBackupCodesV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGenerateMyAuthenticatorKeyV4)
-def admin_generate_my_authenticator_key_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_generate_my_authenticator_key_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGenerateMyAuthenticatorKeyV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGenerateMyAuthenticatorKeyV4)
-async def admin_generate_my_authenticator_key_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_generate_my_authenticator_key_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGenerateMyAuthenticatorKeyV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGenerateMyBackupCodesV4)
-def admin_generate_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_generate_my_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGenerateMyBackupCodesV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGenerateMyBackupCodesV4)
-async def admin_generate_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_generate_my_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGenerateMyBackupCodesV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetMyBackupCodesV4)
-def admin_get_my_backup_codes_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_my_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGetMyBackupCodesV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetMyBackupCodesV4)
-async def admin_get_my_backup_codes_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_my_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGetMyBackupCodesV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetMyEnabledFactorsV4)
-def admin_get_my_enabled_factors_v4(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_my_enabled_factors_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGetMyEnabledFactorsV4.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetMyEnabledFactorsV4)
-async def admin_get_my_enabled_factors_v4_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_my_enabled_factors_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminGetMyEnabledFactorsV4.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminInviteUserV4)
-def admin_invite_user_v4(body: ModelInviteUserRequestV4, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_invite_user_v4(
+    body: ModelInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminInviteUserV4.create(
         body=body,
     )
@@ -295,15 +395,26 @@ def admin_invite_user_v4(body: ModelInviteUserRequestV4, x_additional_headers: O
 
 
 @same_doc_as(AdminInviteUserV4)
-async def admin_invite_user_v4_async(body: ModelInviteUserRequestV4, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_invite_user_v4_async(
+    body: ModelInviteUserRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminInviteUserV4.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminListUserRolesV4)
-def admin_list_user_roles_v4(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_list_user_roles_v4(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,7 +427,12 @@ def admin_list_user_roles_v4(user_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(AdminListUserRolesV4)
-async def admin_list_user_roles_v4_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_list_user_roles_v4_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -325,11 +441,15 @@ async def admin_list_user_roles_v4_async(user_id: str, namespace: Optional[str] 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminMakeFactorMyDefaultV4)
-def admin_make_factor_my_default_v4(factor: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_make_factor_my_default_v4(
+    factor: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminMakeFactorMyDefaultV4.create(
         factor=factor,
     )
@@ -337,15 +457,25 @@ def admin_make_factor_my_default_v4(factor: str, x_additional_headers: Optional[
 
 
 @same_doc_as(AdminMakeFactorMyDefaultV4)
-async def admin_make_factor_my_default_v4_async(factor: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_make_factor_my_default_v4_async(
+    factor: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AdminMakeFactorMyDefaultV4.create(
         factor=factor,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminRemoveUserRoleV4)
-def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_remove_user_role_v4(
+    body: ModelRemoveUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -359,7 +489,13 @@ def admin_remove_user_role_v4(body: ModelRemoveUserRoleV4Request, user_id: str, 
 
 
 @same_doc_as(AdminRemoveUserRoleV4)
-async def admin_remove_user_role_v4_async(body: ModelRemoveUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_remove_user_role_v4_async(
+    body: ModelRemoveUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -369,11 +505,17 @@ async def admin_remove_user_role_v4_async(body: ModelRemoveUserRoleV4Request, us
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateMyUserV4)
-def admin_update_my_user_v4(body: ModelUserUpdateRequestV3, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_my_user_v4(
+    body: ModelUserUpdateRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminUpdateMyUserV4.create(
         body=body,
     )
@@ -381,15 +523,27 @@ def admin_update_my_user_v4(body: ModelUserUpdateRequestV3, x_additional_headers
 
 
 @same_doc_as(AdminUpdateMyUserV4)
-async def admin_update_my_user_v4_async(body: ModelUserUpdateRequestV3, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_my_user_v4_async(
+    body: ModelUserUpdateRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AdminUpdateMyUserV4.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateUserEmailAddressV4)
-def admin_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_user_email_address_v4(
+    body: ModelEmailUpdateRequestV4,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -403,7 +557,13 @@ def admin_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, user_id:
 
 
 @same_doc_as(AdminUpdateUserEmailAddressV4)
-async def admin_update_user_email_address_v4_async(body: ModelEmailUpdateRequestV4, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_user_email_address_v4_async(
+    body: ModelEmailUpdateRequestV4,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,11 +573,19 @@ async def admin_update_user_email_address_v4_async(body: ModelEmailUpdateRequest
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateUserRoleV4)
-def admin_update_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_user_role_v4(
+    body: ModelAddUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -431,7 +599,13 @@ def admin_update_user_role_v4(body: ModelAddUserRoleV4Request, user_id: str, nam
 
 
 @same_doc_as(AdminUpdateUserRoleV4)
-async def admin_update_user_role_v4_async(body: ModelAddUserRoleV4Request, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_user_role_v4_async(
+    body: ModelAddUserRoleV4Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -441,11 +615,19 @@ async def admin_update_user_role_v4_async(body: ModelAddUserRoleV4Request, user_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateUserV4)
-def admin_update_user_v4(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_user_v4(
+    body: ModelUserUpdateRequestV3,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -459,7 +641,13 @@ def admin_update_user_v4(body: ModelUserUpdateRequestV3, user_id: str, namespace
 
 
 @same_doc_as(AdminUpdateUserV4)
-async def admin_update_user_v4_async(body: ModelUserUpdateRequestV3, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_user_v4_async(
+    body: ModelUserUpdateRequestV3,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -469,11 +657,19 @@ async def admin_update_user_v4_async(body: ModelUserUpdateRequestV3, user_id: st
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateUserFromInvitationV4)
-def create_user_from_invitation_v4(body: ModelUserCreateFromInvitationRequestV4, invitation_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_user_from_invitation_v4(
+    body: ModelUserCreateFromInvitationRequestV4,
+    invitation_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -487,7 +683,13 @@ def create_user_from_invitation_v4(body: ModelUserCreateFromInvitationRequestV4,
 
 
 @same_doc_as(CreateUserFromInvitationV4)
-async def create_user_from_invitation_v4_async(body: ModelUserCreateFromInvitationRequestV4, invitation_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_user_from_invitation_v4_async(
+    body: ModelUserCreateFromInvitationRequestV4,
+    invitation_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -497,11 +699,18 @@ async def create_user_from_invitation_v4_async(body: ModelUserCreateFromInvitati
         invitation_id=invitation_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicCreateTestUserV4)
-def public_create_test_user_v4(body: AccountCreateTestUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_create_test_user_v4(
+    body: AccountCreateTestUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -514,7 +723,12 @@ def public_create_test_user_v4(body: AccountCreateTestUserRequestV4, namespace: 
 
 
 @same_doc_as(PublicCreateTestUserV4)
-async def public_create_test_user_v4_async(body: AccountCreateTestUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_create_test_user_v4_async(
+    body: AccountCreateTestUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -523,11 +737,18 @@ async def public_create_test_user_v4_async(body: AccountCreateTestUserRequestV4,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicCreateUserV4)
-def public_create_user_v4(body: AccountCreateUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_create_user_v4(
+    body: AccountCreateUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -540,7 +761,12 @@ def public_create_user_v4(body: AccountCreateUserRequestV4, namespace: Optional[
 
 
 @same_doc_as(PublicCreateUserV4)
-async def public_create_user_v4_async(body: AccountCreateUserRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_create_user_v4_async(
+    body: AccountCreateUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -549,11 +775,17 @@ async def public_create_user_v4_async(body: AccountCreateUserRequestV4, namespac
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicDisableMyAuthenticatorV4)
-def public_disable_my_authenticator_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_disable_my_authenticator_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -565,7 +797,11 @@ def public_disable_my_authenticator_v4(namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(PublicDisableMyAuthenticatorV4)
-async def public_disable_my_authenticator_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_disable_my_authenticator_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -573,11 +809,17 @@ async def public_disable_my_authenticator_v4_async(namespace: Optional[str] = No
     request = PublicDisableMyAuthenticatorV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicDisableMyBackupCodesV4)
-def public_disable_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_disable_my_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -589,7 +831,11 @@ def public_disable_my_backup_codes_v4(namespace: Optional[str] = None, x_additio
 
 
 @same_doc_as(PublicDisableMyBackupCodesV4)
-async def public_disable_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_disable_my_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -597,11 +843,17 @@ async def public_disable_my_backup_codes_v4_async(namespace: Optional[str] = Non
     request = PublicDisableMyBackupCodesV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicDownloadMyBackupCodesV4)
-def public_download_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_download_my_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -613,7 +865,11 @@ def public_download_my_backup_codes_v4(namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(PublicDownloadMyBackupCodesV4)
-async def public_download_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_download_my_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -621,11 +877,18 @@ async def public_download_my_backup_codes_v4_async(namespace: Optional[str] = No
     request = PublicDownloadMyBackupCodesV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicEnableMyAuthenticatorV4)
-def public_enable_my_authenticator_v4(code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_enable_my_authenticator_v4(
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -638,7 +901,12 @@ def public_enable_my_authenticator_v4(code: Optional[str] = None, namespace: Opt
 
 
 @same_doc_as(PublicEnableMyAuthenticatorV4)
-async def public_enable_my_authenticator_v4_async(code: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_enable_my_authenticator_v4_async(
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -647,11 +915,17 @@ async def public_enable_my_authenticator_v4_async(code: Optional[str] = None, na
         code=code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicEnableMyBackupCodesV4)
-def public_enable_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_enable_my_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -663,7 +937,11 @@ def public_enable_my_backup_codes_v4(namespace: Optional[str] = None, x_addition
 
 
 @same_doc_as(PublicEnableMyBackupCodesV4)
-async def public_enable_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_enable_my_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -671,11 +949,17 @@ async def public_enable_my_backup_codes_v4_async(namespace: Optional[str] = None
     request = PublicEnableMyBackupCodesV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGenerateMyAuthenticatorKeyV4)
-def public_generate_my_authenticator_key_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_generate_my_authenticator_key_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -687,7 +971,11 @@ def public_generate_my_authenticator_key_v4(namespace: Optional[str] = None, x_a
 
 
 @same_doc_as(PublicGenerateMyAuthenticatorKeyV4)
-async def public_generate_my_authenticator_key_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_generate_my_authenticator_key_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -695,11 +983,17 @@ async def public_generate_my_authenticator_key_v4_async(namespace: Optional[str]
     request = PublicGenerateMyAuthenticatorKeyV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGenerateMyBackupCodesV4)
-def public_generate_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_generate_my_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -711,7 +1005,11 @@ def public_generate_my_backup_codes_v4(namespace: Optional[str] = None, x_additi
 
 
 @same_doc_as(PublicGenerateMyBackupCodesV4)
-async def public_generate_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_generate_my_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -719,11 +1017,17 @@ async def public_generate_my_backup_codes_v4_async(namespace: Optional[str] = No
     request = PublicGenerateMyBackupCodesV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetMyBackupCodesV4)
-def public_get_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_my_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -735,7 +1039,11 @@ def public_get_my_backup_codes_v4(namespace: Optional[str] = None, x_additional_
 
 
 @same_doc_as(PublicGetMyBackupCodesV4)
-async def public_get_my_backup_codes_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_my_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -743,11 +1051,17 @@ async def public_get_my_backup_codes_v4_async(namespace: Optional[str] = None, x
     request = PublicGetMyBackupCodesV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetMyEnabledFactorsV4)
-def public_get_my_enabled_factors_v4(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_my_enabled_factors_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -759,7 +1073,11 @@ def public_get_my_enabled_factors_v4(namespace: Optional[str] = None, x_addition
 
 
 @same_doc_as(PublicGetMyEnabledFactorsV4)
-async def public_get_my_enabled_factors_v4_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_my_enabled_factors_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -767,11 +1085,18 @@ async def public_get_my_enabled_factors_v4_async(namespace: Optional[str] = None
     request = PublicGetMyEnabledFactorsV4.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicMakeFactorMyDefaultV4)
-def public_make_factor_my_default_v4(factor: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_make_factor_my_default_v4(
+    factor: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -784,7 +1109,12 @@ def public_make_factor_my_default_v4(factor: str, namespace: Optional[str] = Non
 
 
 @same_doc_as(PublicMakeFactorMyDefaultV4)
-async def public_make_factor_my_default_v4_async(factor: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_make_factor_my_default_v4_async(
+    factor: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -793,11 +1123,18 @@ async def public_make_factor_my_default_v4_async(factor: str, namespace: Optiona
         factor=factor,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicRemoveTrustedDeviceV4)
-def public_remove_trusted_device_v4(cookie: Optional[Union[str, HeaderStr]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_remove_trusted_device_v4(
+    cookie: Optional[Union[str, HeaderStr]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -810,7 +1147,12 @@ def public_remove_trusted_device_v4(cookie: Optional[Union[str, HeaderStr]] = No
 
 
 @same_doc_as(PublicRemoveTrustedDeviceV4)
-async def public_remove_trusted_device_v4_async(cookie: Optional[Union[str, HeaderStr]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_remove_trusted_device_v4_async(
+    cookie: Optional[Union[str, HeaderStr]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -819,11 +1161,18 @@ async def public_remove_trusted_device_v4_async(cookie: Optional[Union[str, Head
         cookie=cookie,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUpdateUserEmailAddressV4)
-def public_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_update_user_email_address_v4(
+    body: ModelEmailUpdateRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -836,7 +1185,12 @@ def public_update_user_email_address_v4(body: ModelEmailUpdateRequestV4, namespa
 
 
 @same_doc_as(PublicUpdateUserEmailAddressV4)
-async def public_update_user_email_address_v4_async(body: ModelEmailUpdateRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_update_user_email_address_v4_async(
+    body: ModelEmailUpdateRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -845,11 +1199,18 @@ async def public_update_user_email_address_v4_async(body: ModelEmailUpdateReques
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUpdateUserV4)
-def public_update_user_v4(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_update_user_v4(
+    body: ModelUserUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -862,7 +1223,12 @@ def public_update_user_v4(body: ModelUserUpdateRequestV3, namespace: Optional[st
 
 
 @same_doc_as(PublicUpdateUserV4)
-async def public_update_user_v4_async(body: ModelUserUpdateRequestV3, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_update_user_v4_async(
+    body: ModelUserUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -871,11 +1237,18 @@ async def public_update_user_v4_async(body: ModelUserUpdateRequestV3, namespace:
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountV4)
-def public_upgrade_headless_account_v4(body: AccountUpgradeHeadlessAccountRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_upgrade_headless_account_v4(
+    body: AccountUpgradeHeadlessAccountRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -888,7 +1261,12 @@ def public_upgrade_headless_account_v4(body: AccountUpgradeHeadlessAccountReques
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountV4)
-async def public_upgrade_headless_account_v4_async(body: AccountUpgradeHeadlessAccountRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_upgrade_headless_account_v4_async(
+    body: AccountUpgradeHeadlessAccountRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -897,11 +1275,18 @@ async def public_upgrade_headless_account_v4_async(body: AccountUpgradeHeadlessA
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountWithVerificationCodeV4)
-def public_upgrade_headless_account_with_verification_code_v4(body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_upgrade_headless_account_with_verification_code_v4(
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -914,7 +1299,12 @@ def public_upgrade_headless_account_with_verification_code_v4(body: AccountUpgra
 
 
 @same_doc_as(PublicUpgradeHeadlessAccountWithVerificationCodeV4)
-async def public_upgrade_headless_account_with_verification_code_v4_async(body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_upgrade_headless_account_with_verification_code_v4_async(
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -923,4 +1313,6 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(body: 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

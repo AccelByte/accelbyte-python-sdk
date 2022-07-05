@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,10 +43,10 @@ class LegalAcceptedPoliciesRequest(Model):
 
     # region fields
 
-    is_accepted: bool                                                                              # REQUIRED
-    localized_policy_version_id: str                                                               # REQUIRED
-    policy_id: str                                                                                 # REQUIRED
-    policy_version_id: str                                                                         # REQUIRED
+    is_accepted: bool  # REQUIRED
+    localized_policy_version_id: str  # REQUIRED
+    policy_id: str  # REQUIRED
+    policy_version_id: str  # REQUIRED
 
     # endregion fields
 
@@ -56,7 +56,9 @@ class LegalAcceptedPoliciesRequest(Model):
         self.is_accepted = value
         return self
 
-    def with_localized_policy_version_id(self, value: str) -> LegalAcceptedPoliciesRequest:
+    def with_localized_policy_version_id(
+        self, value: str
+    ) -> LegalAcceptedPoliciesRequest:
         self.localized_policy_version_id = value
         return self
 
@@ -112,7 +114,9 @@ class LegalAcceptedPoliciesRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> LegalAcceptedPoliciesRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> LegalAcceptedPoliciesRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -120,8 +124,13 @@ class LegalAcceptedPoliciesRequest(Model):
             instance.is_accepted = bool(dict_["isAccepted"])
         elif include_empty:
             instance.is_accepted = False
-        if "localizedPolicyVersionId" in dict_ and dict_["localizedPolicyVersionId"] is not None:
-            instance.localized_policy_version_id = str(dict_["localizedPolicyVersionId"])
+        if (
+            "localizedPolicyVersionId" in dict_
+            and dict_["localizedPolicyVersionId"] is not None
+        ):
+            instance.localized_policy_version_id = str(
+                dict_["localizedPolicyVersionId"]
+            )
         elif include_empty:
             instance.localized_policy_version_id = ""
         if "policyId" in dict_ and dict_["policyId"] is not None:
@@ -135,15 +144,33 @@ class LegalAcceptedPoliciesRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, LegalAcceptedPoliciesRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, LegalAcceptedPoliciesRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[LegalAcceptedPoliciesRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[LegalAcceptedPoliciesRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[LegalAcceptedPoliciesRequest, List[LegalAcceptedPoliciesRequest], Dict[Any, LegalAcceptedPoliciesRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        LegalAcceptedPoliciesRequest,
+        List[LegalAcceptedPoliciesRequest],
+        Dict[Any, LegalAcceptedPoliciesRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

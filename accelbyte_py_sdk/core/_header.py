@@ -18,7 +18,6 @@ HEADER_X_AMAZON_TRACE_ID_KEY: str = "X-Amzn-Trace-Id"
 
 
 class Header(dict):
-
     def add_authorization(self, authorization: str) -> Header:
         self[HEADER_AUTHORIZATION_KEY] = authorization
         return self
@@ -32,13 +31,17 @@ class Header(dict):
     def add_bearer_authorization(self, token: str) -> Header:
         return self.add_authorization(f"Bearer {token}")
 
-    def add_amazon_xray_trace_id(self, amazon_xray_trace_id: Union[None, str] = None) -> Header:
+    def add_amazon_xray_trace_id(
+        self, amazon_xray_trace_id: Union[None, str] = None
+    ) -> Header:
         if amazon_xray_trace_id is None:
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
         self[HEADER_X_AMAZON_TRACE_ID_KEY] = amazon_xray_trace_id
         return self
 
-    def add_cookie(self, key: str, value: str, replace_existing: bool = False) -> Header:
+    def add_cookie(
+        self, key: str, value: str, replace_existing: bool = False
+    ) -> Header:
         if HEADER_COOKIE_KEY in self:
             cookie_value = self[HEADER_COOKIE_KEY]
             if f"{key}=" in cookie_value and replace_existing:
@@ -52,9 +55,9 @@ class Header(dict):
         return self
 
     def add_user_agent(
-            self,
-            user_agent: Union[None, str] = None,
-            app_info: Union[None, Union[str, Tuple[str, str]]] = None,
+        self,
+        user_agent: Union[None, str] = None,
+        app_info: Union[None, Union[str, Tuple[str, str]]] = None,
     ) -> Header:
         if user_agent is None:
             product = accelbyte_py_sdk.__product__

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -406,7 +406,9 @@ def create_models_admin_add_profanity_filters_filter_request_example() -> Models
 
 def create_models_admin_add_profanity_filters_request_example() -> ModelsAdminAddProfanityFiltersRequest:
     instance = ModelsAdminAddProfanityFiltersRequest()
-    instance.filters = [create_models_admin_add_profanity_filters_filter_request_example()]
+    instance.filters = [
+        create_models_admin_add_profanity_filters_filter_request_example()
+    ]
     return instance
 
 
