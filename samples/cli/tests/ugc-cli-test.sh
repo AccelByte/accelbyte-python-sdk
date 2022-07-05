@@ -42,7 +42,7 @@ ugc-admin-search-content --login_with_auth "Bearer foo"
 ugc-admin-get-specific-content 'AGTJ8IEd' --login_with_auth "Bearer foo"
 ugc-admin-download-content-preview 'agEtp4w2' --login_with_auth "Bearer foo"
 ugc-admin-update-screenshots '{"screenshots": [{"description": "9KOu9c19", "screenshotId": "R6XDqWHk"}]}' 'kP8npLEK' --login_with_auth "Bearer foo"
-ugc-admin-upload-content-screenshot '{"screenshots": [{"contentType": "MfjiX7jp", "description": "kVZk3IaQ", "fileExtension": "jfif"}]}' 'mqGodOEG' --login_with_auth "Bearer foo"
+ugc-admin-upload-content-screenshot '{"screenshots": [{"contentType": "MfjiX7jp", "description": "kVZk3IaQ", "fileExtension": "jpg"}]}' 'mqGodOEG' --login_with_auth "Bearer foo"
 ugc-admin-delete-content-screenshot 't9gPOj0c' '6i0JkvIa' --login_with_auth "Bearer foo"
 ugc-single-admin-get-all-groups --login_with_auth "Bearer foo"
 ugc-admin-create-group '{"contents": ["s73ucYnF"], "name": "AJ3DK5T4"}' --login_with_auth "Bearer foo"
@@ -99,7 +99,7 @@ ugc-delete-content 'Mq7HJk0F' '89xAc3YV' 'faENtrl0' --login_with_auth "Bearer fo
 ugc-public-get-user-content 'pTKZTXqz' --login_with_auth "Bearer foo"
 ugc-delete-all-user-contents 'HuBMYQSA' --login_with_auth "Bearer foo"
 ugc-update-screenshots '{"screenshots": [{"description": "2jz1ZOpd", "screenshotId": "OjSyMddB"}]}' '41JuMf7R' 'UyBHRj8I' --login_with_auth "Bearer foo"
-ugc-upload-content-screenshot '{"screenshots": [{"contentType": "iRimRllH", "description": "T6Dc40vF", "fileExtension": "jfif"}]}' 'A6gpU7EW' '3x1dCpm5' --login_with_auth "Bearer foo"
+ugc-upload-content-screenshot '{"screenshots": [{"contentType": "iRimRllH", "description": "T6Dc40vF", "fileExtension": "jpg"}]}' 'A6gpU7EW' '3x1dCpm5' --login_with_auth "Bearer foo"
 ugc-delete-content-screenshot '5gOeqQIq' 'cJVKmBM1' 'J1IbuTrr' --login_with_auth "Bearer foo"
 ugc-update-user-follow-status '{"followStatus": false}' 'bmuT1whO' --login_with_auth "Bearer foo"
 ugc-get-public-followers 'qmEnDXIW' --login_with_auth "Bearer foo"
@@ -242,7 +242,7 @@ eval_tap $? 16 'AdminUpdateScreenshots' test.out
 
 #- 17 AdminUploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-admin-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "fkpaXtwY", "description": "ZJaQ4Wbw", "fileExtension": "bmp"}]}' \
+    '{"screenshots": [{"contentType": "fkpaXtwY", "description": "ZJaQ4Wbw", "fileExtension": "pjp"}]}' \
     'msFYetjE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
@@ -675,7 +675,7 @@ eval_tap $? 76 'UpdateScreenshots' test.out
 
 #- 77 UploadContentScreenshot
 $PYTHON -m $MODULE 'ugc-upload-content-screenshot' \
-    '{"screenshots": [{"contentType": "IsTHu8Qw", "description": "NyOlXfIW", "fileExtension": "pjp"}]}' \
+    '{"screenshots": [{"contentType": "IsTHu8Qw", "description": "NyOlXfIW", "fileExtension": "bmp"}]}' \
     '0mcq5T4S' \
     'Uc7cWfCK' \
     --login_with_auth "Bearer foo" \

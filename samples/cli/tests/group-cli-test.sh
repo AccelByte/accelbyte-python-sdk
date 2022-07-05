@@ -30,12 +30,12 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 group-list-group-configuration-admin-v1 --login_with_auth "Bearer foo"
-group-create-group-configuration-admin-v1 '{"configurationCode": "FtBxyZcD", "description": "XBpGlsQu", "globalRules": [{"allowedAction": "Ju8vMf0I", "ruleDetail": [{"ruleAttribute": "sJkTrd8I", "ruleCriteria": "MINIMUM", "ruleValue": 0.9953468146489199}]}], "groupAdminRoleId": "V2zXnTKj", "groupMaxMember": 99, "groupMemberRoleId": "Y1bPqami", "name": "Bxx9Cs18"}' --login_with_auth "Bearer foo"
+group-create-group-configuration-admin-v1 '{"configurationCode": "FtBxyZcD", "description": "XBpGlsQu", "globalRules": [{"allowedAction": "Ju8vMf0I", "ruleDetail": [{"ruleAttribute": "sJkTrd8I", "ruleCriteria": "MAXIMUM", "ruleValue": 0.9953468146489199}]}], "groupAdminRoleId": "V2zXnTKj", "groupMaxMember": 99, "groupMemberRoleId": "Y1bPqami", "name": "Bxx9Cs18"}' --login_with_auth "Bearer foo"
 group-initiate-group-configuration-admin-v1 --login_with_auth "Bearer foo"
 group-get-group-configuration-admin-v1 'EY84ekIt' --login_with_auth "Bearer foo"
 group-delete-group-configuration-v1 'qRzHU1oh' --login_with_auth "Bearer foo"
 group-update-group-configuration-admin-v1 '{"description": "570KQBVa", "groupMaxMember": 8, "name": "wc72krSh"}' 'a68n3Yno' --login_with_auth "Bearer foo"
-group-update-group-configuration-global-rule-admin-v1 '{"ruleDetail": [{"ruleAttribute": "zp1C2KmI", "ruleCriteria": "MAXIMUM", "ruleValue": 0.7164070183072041}]}' 'BdNEUsxF' 'b8CJ17M7' --login_with_auth "Bearer foo"
+group-update-group-configuration-global-rule-admin-v1 '{"ruleDetail": [{"ruleAttribute": "zp1C2KmI", "ruleCriteria": "MINIMUM", "ruleValue": 0.7164070183072041}]}' 'BdNEUsxF' 'b8CJ17M7' --login_with_auth "Bearer foo"
 group-delete-group-configuration-global-rule-admin-v1 'DJZaMSxE' 'CbZbygyo' --login_with_auth "Bearer foo"
 group-get-group-list-admin-v1 --login_with_auth "Bearer foo"
 group-get-single-group-admin-v1 'arORoeNH' --login_with_auth "Bearer foo"
@@ -61,7 +61,7 @@ group-cancel-group-join-request-v1 '1YHo9m12' --login_with_auth "Bearer foo"
 group-get-group-join-request-public-v1 '6ZWc8hHt' --login_with_auth "Bearer foo"
 group-get-group-members-list-public-v1 'WvbNYqgU' --login_with_auth "Bearer foo"
 group-update-group-custom-rule-public-v1 '{"groupCustomRule": {"qslArFPi": {}}}' 'HUIvaCv8' --login_with_auth "Bearer foo"
-group-update-group-predefined-rule-public-v1 '{"ruleDetail": [{"ruleAttribute": "kU9dBBpd", "ruleCriteria": "MINIMUM", "ruleValue": 0.5572810812875463}]}' 'hsVyExrk' 'xoot0B7W' --login_with_auth "Bearer foo"
+group-update-group-predefined-rule-public-v1 '{"ruleDetail": [{"ruleAttribute": "kU9dBBpd", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5572810812875463}]}' 'hsVyExrk' 'xoot0B7W' --login_with_auth "Bearer foo"
 group-delete-group-predefined-rule-public-v1 'OfercZdp' 'Mci37Ds7' --login_with_auth "Bearer foo"
 group-leave-group-public-v1 --login_with_auth "Bearer foo"
 group-get-member-roles-list-public-v1 --login_with_auth "Bearer foo"
@@ -237,7 +237,7 @@ eval_tap $? 20 'GetGroupListPublicV1' test.out
 
 #- 21 CreateNewGroupPublicV1
 $PYTHON -m $MODULE 'group-create-new-group-public-v1' \
-    '{"configurationCode": "DviplEk4", "customAttributes": {"vj3LDp4y": {}}, "groupDescription": "qDt8QUZD", "groupIcon": "pxlHasin", "groupMaxMember": 64, "groupName": "cjrkmRMt", "groupRegion": "tgjDSaIV", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "Bmft3Udg", "ruleDetail": [{"ruleAttribute": "7p9PGmY2", "ruleCriteria": "MAXIMUM", "ruleValue": 0.8957044270913745}]}]}, "groupType": "X4MsisSX"}' \
+    '{"configurationCode": "DviplEk4", "customAttributes": {"vj3LDp4y": {}}, "groupDescription": "qDt8QUZD", "groupIcon": "pxlHasin", "groupMaxMember": 64, "groupName": "cjrkmRMt", "groupRegion": "tgjDSaIV", "groupRules": {"groupCustomRule": {}, "groupPredefinedRules": [{"allowedAction": "Bmft3Udg", "ruleDetail": [{"ruleAttribute": "7p9PGmY2", "ruleCriteria": "MINIMUM", "ruleValue": 0.8957044270913745}]}]}, "groupType": "X4MsisSX"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'CreateNewGroupPublicV1' test.out

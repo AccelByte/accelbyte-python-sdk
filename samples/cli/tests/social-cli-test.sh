@@ -92,16 +92,16 @@ social-delete-user-stat-items-1 'DxVMq7HJ' 'k0F89xAc' --login_with_auth "Bearer 
 social-public-inc-user-stat-item '3YVfaENt' 'rl0pTKZT' --body '{"inc": 0.7762947176567949}' --login_with_auth "Bearer foo"
 social-public-inc-user-stat-item-value 'zHuBMYQS' 'A2jz1ZOp' --body '{"inc": 0.054739770539565136}' --login_with_auth "Bearer foo"
 social-reset-user-stat-item-value-1 'jSyMddB4' '1JuMf7RU' --login_with_auth "Bearer foo"
-social-bulk-update-user-stat-item-v2 --body '[{"additionalData": {"yBHRj8Ii": {}}, "additionalKey": "RimRllHT", "statCode": "6Dc40vFF", "updateStrategy": "MIN", "userId": "6gpU7EW3", "value": 0.36458520468327116}]' --login_with_auth "Bearer foo"
+social-bulk-update-user-stat-item-v2 --body '[{"additionalData": {"yBHRj8Ii": {}}, "additionalKey": "RimRllHT", "statCode": "6Dc40vFF", "updateStrategy": "OVERRIDE", "userId": "6gpU7EW3", "value": 0.36458520468327116}]' --login_with_auth "Bearer foo"
 social-bulk-fetch-or-default-stat-items-1 'dCpm55gO' '["eqQIqcJV"]' --login_with_auth "Bearer foo"
-social-bulk-update-user-stat-item 'KmBM1J1I' --body '[{"additionalData": {"buTrrkbm": {}}, "statCode": "uT1whOqm", "updateStrategy": "MIN", "value": 0.21201206347632295}]' --login_with_auth "Bearer foo"
+social-bulk-update-user-stat-item 'KmBM1J1I' --body '[{"additionalData": {"buTrrkbm": {}}, "statCode": "uT1whOqm", "updateStrategy": "OVERRIDE", "value": 0.21201206347632295}]' --login_with_auth "Bearer foo"
 social-bulk-reset-user-stat-item-values 'XIWrBPlS' --body '[{"additionalData": {"ay46mv71": {}}, "statCode": "BAZAOjtF"}]' --login_with_auth "Bearer foo"
 social-delete-user-stat-items-2 'J2vmTj7t' 'T7TZHWDd' --login_with_auth "Bearer foo"
-social-update-user-stat-item-value 'CkIsZoAr' 'WwPHcyFA' --body '{"additionalData": {"dAtYciLI": {}}, "updateStrategy": "OVERRIDE", "value": 0.6745395388866413}' --login_with_auth "Bearer foo"
-social-bulk-update-user-stat-item-1 --body '[{"additionalData": {"FRr0gwB9": {}}, "additionalKey": "tz3vp99X", "statCode": "VlV8rK3t", "updateStrategy": "MIN", "userId": "6n0smip1", "value": 0.30176534764477403}]' --login_with_auth "Bearer foo"
+social-update-user-stat-item-value 'CkIsZoAr' 'WwPHcyFA' --body '{"additionalData": {"dAtYciLI": {}}, "updateStrategy": "INCREMENT", "value": 0.6745395388866413}' --login_with_auth "Bearer foo"
+social-bulk-update-user-stat-item-1 --body '[{"additionalData": {"FRr0gwB9": {}}, "additionalKey": "tz3vp99X", "statCode": "VlV8rK3t", "updateStrategy": "OVERRIDE", "userId": "6n0smip1", "value": 0.30176534764477403}]' --login_with_auth "Bearer foo"
 social-public-query-user-stat-items-2 '3L7cUd9p' --login_with_auth "Bearer foo"
-social-bulk-update-user-stat-item-2 'qtv6JfPZ' --body '[{"additionalData": {"wcCVOXcV": {}}, "statCode": "a80TmCwt", "updateStrategy": "MIN", "value": 0.8542596114963421}]' --login_with_auth "Bearer foo"
-social-update-user-stat-item-value-1 'AH01o6Nd' 'cBIgzrDy' --body '{"additionalData": {"WpFBYGmm": {}}, "updateStrategy": "MIN", "value": 0.01353221648376457}' --login_with_auth "Bearer foo"
+social-bulk-update-user-stat-item-2 'qtv6JfPZ' --body '[{"additionalData": {"wcCVOXcV": {}}, "statCode": "a80TmCwt", "updateStrategy": "OVERRIDE", "value": 0.8542596114963421}]' --login_with_auth "Bearer foo"
+social-update-user-stat-item-value-1 'AH01o6Nd' 'cBIgzrDy' --body '{"additionalData": {"WpFBYGmm": {}}, "updateStrategy": "OVERRIDE", "value": 0.01353221648376457}' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -610,7 +610,7 @@ eval_tap $? 64 'ResetUserStatItemValue1' test.out
 
 #- 65 BulkUpdateUserStatItemV2
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item-v2' \
-    --body '[{"additionalData": {"mcq5T4SU": {}}, "additionalKey": "c7cWfCKK", "statCode": "6Dij1gFc", "updateStrategy": "OVERRIDE", "userId": "nEMySPfh", "value": 0.3714585113211749}]' \
+    --body '[{"additionalData": {"mcq5T4SU": {}}, "additionalKey": "c7cWfCKK", "statCode": "6Dij1gFc", "updateStrategy": "INCREMENT", "userId": "nEMySPfh", "value": 0.3714585113211749}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 65 'BulkUpdateUserStatItemV2' test.out
@@ -626,7 +626,7 @@ eval_tap $? 66 'BulkFetchOrDefaultStatItems1' test.out
 #- 67 BulkUpdateUserStatItem
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item' \
     'Lmmll6oe' \
-    --body '[{"additionalData": {"xId1OKGU": {}}, "statCode": "N2Uznd7u", "updateStrategy": "OVERRIDE", "value": 0.9312121965670692}]' \
+    --body '[{"additionalData": {"xId1OKGU": {}}, "statCode": "N2Uznd7u", "updateStrategy": "INCREMENT", "value": 0.9312121965670692}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 67 'BulkUpdateUserStatItem' test.out
@@ -651,14 +651,14 @@ eval_tap $? 69 'DeleteUserStatItems2' test.out
 $PYTHON -m $MODULE 'social-update-user-stat-item-value' \
     'zZFRkBNl' \
     'g6hn5qus' \
-    --body '{"additionalData": {"KyZAuV6u": {}}, "updateStrategy": "MAX", "value": 0.26371995061129305}' \
+    --body '{"additionalData": {"KyZAuV6u": {}}, "updateStrategy": "MIN", "value": 0.26371995061129305}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 70 'UpdateUserStatItemValue' test.out
 
 #- 71 BulkUpdateUserStatItem1
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item-1' \
-    --body '[{"additionalData": {"0lV6UZMl": {}}, "additionalKey": "EbxHNgJR", "statCode": "iQExaunj", "updateStrategy": "OVERRIDE", "userId": "AqnHUz44", "value": 0.3115776953801379}]' \
+    --body '[{"additionalData": {"0lV6UZMl": {}}, "additionalKey": "EbxHNgJR", "statCode": "iQExaunj", "updateStrategy": "INCREMENT", "userId": "AqnHUz44", "value": 0.3115776953801379}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 71 'BulkUpdateUserStatItem1' test.out
@@ -673,7 +673,7 @@ eval_tap $? 72 'PublicQueryUserStatItems2' test.out
 #- 73 BulkUpdateUserStatItem2
 $PYTHON -m $MODULE 'social-bulk-update-user-stat-item-2' \
     'Noi071ez' \
-    --body '[{"additionalData": {"DK56JFIG": {}}, "statCode": "e1IMUCLc", "updateStrategy": "MIN", "value": 0.2893143148259588}]' \
+    --body '[{"additionalData": {"DK56JFIG": {}}, "statCode": "e1IMUCLc", "updateStrategy": "OVERRIDE", "value": 0.2893143148259588}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 73 'BulkUpdateUserStatItem2' test.out
@@ -682,7 +682,7 @@ eval_tap $? 73 'BulkUpdateUserStatItem2' test.out
 $PYTHON -m $MODULE 'social-update-user-stat-item-value-1' \
     'D5FyBsFe' \
     '9OYEJVsY' \
-    --body '{"additionalData": {"ffmhyx6J": {}}, "updateStrategy": "MAX", "value": 0.6033164701427207}' \
+    --body '{"additionalData": {"ffmhyx6J": {}}, "updateStrategy": "MIN", "value": 0.6033164701427207}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 74 'UpdateUserStatItemValue1' test.out

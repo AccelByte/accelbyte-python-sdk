@@ -30,11 +30,11 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 seasonpass-query-seasons --login_with_auth "Bearer foo"
-seasonpass-create-season --body '{"autoClaim": true, "defaultLanguage": "tBxyZcDX", "defaultRequiredExp": 55, "draftStoreId": "pGlsQuJu", "end": "1981-11-03T00:00:00Z", "excessStrategy": {"currency": "f0IsJkTr", "method": "NONE", "percentPerExp": 68}, "images": [{"as": "DcV2zXnT", "caption": "KjXY1bPq", "height": 1, "imageUrl": "miBxx9Cs", "smallImageUrl": "18EY84ek", "width": 69}], "localizations": {"tqRzHU1o": {"description": "h570KQBV", "title": "aewc72kr"}}, "name": "Sha68n3Y", "start": "1977-04-27T00:00:00Z", "tierItemId": "zp1C2KmI"}' --login_with_auth "Bearer foo"
+seasonpass-create-season --body '{"autoClaim": true, "defaultLanguage": "tBxyZcDX", "defaultRequiredExp": 55, "draftStoreId": "pGlsQuJu", "end": "1981-11-03T00:00:00Z", "excessStrategy": {"currency": "f0IsJkTr", "method": "CURRENCY", "percentPerExp": 68}, "images": [{"as": "DcV2zXnT", "caption": "KjXY1bPq", "height": 1, "imageUrl": "miBxx9Cs", "smallImageUrl": "18EY84ek", "width": 69}], "localizations": {"tqRzHU1o": {"description": "h570KQBV", "title": "aewc72kr"}}, "name": "Sha68n3Y", "start": "1977-04-27T00:00:00Z", "tierItemId": "zp1C2KmI"}' --login_with_auth "Bearer foo"
 seasonpass-get-current-season --login_with_auth "Bearer foo"
 seasonpass-get-season 'QTuBdNEU' --login_with_auth "Bearer foo"
 seasonpass-delete-season 'sxFb8CJ1' --login_with_auth "Bearer foo"
-seasonpass-update-season '7M7DJZaM' --body '{"autoClaim": true, "defaultLanguage": "ECbZbygy", "defaultRequiredExp": 29, "draftStoreId": "arORoeNH", "end": "1993-01-05T00:00:00Z", "excessStrategy": {"currency": "8Rh3kgs9", "method": "CURRENCY", "percentPerExp": 33}, "images": [{"as": "JbnQsoBg", "caption": "iVpP8Cm3", "height": 49, "imageUrl": "vASUoxdx", "smallImageUrl": "xFqmAGTJ", "width": 68}], "localizations": {"EdagEtp4": {"description": "w29KOu9c", "title": "19R6XDqW"}}, "name": "HkkP8npL", "start": "1986-10-17T00:00:00Z", "tierItemId": "MfjiX7jp"}' --login_with_auth "Bearer foo"
+seasonpass-update-season '7M7DJZaM' --body '{"autoClaim": true, "defaultLanguage": "ECbZbygy", "defaultRequiredExp": 29, "draftStoreId": "arORoeNH", "end": "1993-01-05T00:00:00Z", "excessStrategy": {"currency": "8Rh3kgs9", "method": "NONE", "percentPerExp": 33}, "images": [{"as": "JbnQsoBg", "caption": "iVpP8Cm3", "height": 49, "imageUrl": "vASUoxdx", "smallImageUrl": "xFqmAGTJ", "width": 68}], "localizations": {"EdagEtp4": {"description": "w29KOu9c", "title": "19R6XDqW"}}, "name": "HkkP8npL", "start": "1986-10-17T00:00:00Z", "tierItemId": "MfjiX7jp"}' --login_with_auth "Bearer foo"
 seasonpass-clone-season 'kVZk3IaQ' --body '{"end": "1996-08-25T00:00:00Z", "name": "mqGodOEG", "start": "1980-02-22T00:00:00Z"}' --login_with_auth "Bearer foo"
 seasonpass-query-passes 'POj0c6i0' --login_with_auth "Bearer foo"
 seasonpass-create-pass 'JkvIas73' --body '{"autoEnroll": true, "code": "cYnFAJ3D", "displayOrder": 72, "images": [{"as": "5T4Eogg0", "caption": "Y39UoYlp", "height": 43, "imageUrl": "5bVAgtsD", "smallImageUrl": "hUTDUscb", "width": 85}], "localizations": {"DjbTQuPM": {"description": "z2PTRlky", "title": "U89ZPOw6"}}, "passItemId": "zPFJ42cw"}' --login_with_auth "Bearer foo"
@@ -44,10 +44,10 @@ seasonpass-update-pass 'jyK0XH45' 'PaRSOFQB' --body '{"autoEnroll": true, "displ
 seasonpass-publish-season '126ZWc8h' --login_with_auth "Bearer foo"
 seasonpass-retire-season 'HtWvbNYq' --login_with_auth "Bearer foo"
 seasonpass-query-rewards 'gUqslArF' --login_with_auth "Bearer foo"
-seasonpass-create-reward 'PiHUIvaC' --body '{"code": "v8kU9dBB", "currency": {"currencyCode": "pdsJLhsV", "namespace": "yExrkxoo"}, "image": {"as": "t0B7WOfe", "caption": "rcZdpMci", "height": 58, "imageUrl": "s7YSfExa", "smallImageUrl": "I3uzLteM", "width": 3}, "itemId": "FAlt4hr7", "quantity": 67, "type": "ITEM"}' --login_with_auth "Bearer foo"
+seasonpass-create-reward 'PiHUIvaC' --body '{"code": "v8kU9dBB", "currency": {"currencyCode": "pdsJLhsV", "namespace": "yExrkxoo"}, "image": {"as": "t0B7WOfe", "caption": "rcZdpMci", "height": 58, "imageUrl": "s7YSfExa", "smallImageUrl": "I3uzLteM", "width": 3}, "itemId": "FAlt4hr7", "quantity": 67, "type": "CURRENCY"}' --login_with_auth "Bearer foo"
 seasonpass-get-reward 'OYiBA5lt' 'AOXmlG6e' --login_with_auth "Bearer foo"
 seasonpass-delete-reward 'h1dTdoTF' 'pBIcuC1d' --login_with_auth "Bearer foo"
-seasonpass-update-reward 'QY93OJnJ' '6Te9vD8l' --body '{"currency": {"currencyCode": "dz7Hu8AD", "namespace": "79kdWunv"}, "image": {"as": "izU0q1pH", "caption": "yhhERoGg", "height": 7, "imageUrl": "rysMizBG", "smallImageUrl": "SRdP2l7D", "width": 79}, "itemId": "SZ8Aq0Xi", "nullFields": ["PLQXSe07"], "quantity": 7, "type": "ITEM"}' --login_with_auth "Bearer foo"
+seasonpass-update-reward 'QY93OJnJ' '6Te9vD8l' --body '{"currency": {"currencyCode": "dz7Hu8AD", "namespace": "79kdWunv"}, "image": {"as": "izU0q1pH", "caption": "yhhERoGg", "height": 7, "imageUrl": "rysMizBG", "smallImageUrl": "SRdP2l7D", "width": 79}, "itemId": "SZ8Aq0Xi", "nullFields": ["PLQXSe07"], "quantity": 7, "type": "CURRENCY"}' --login_with_auth "Bearer foo"
 seasonpass-query-tiers 'OGTMlJjB' --login_with_auth "Bearer foo"
 seasonpass-create-tier 'wj9HJHQK' --body '{"index": 36, "quantity": 8, "tier": {"requiredExp": 60, "rewards": {"dSXRDSvg": ["uauw1xT7"]}}}' --login_with_auth "Bearer foo"
 seasonpass-update-tier 'eMwSl9ML' 'H0NnTJ2u' --body '{"requiredExp": 22, "rewards": {"NzBvwJaQ": ["a547Jllv"]}}' --login_with_auth "Bearer foo"
@@ -106,7 +106,7 @@ eval_tap $? 2 'QuerySeasons' test.out
 
 #- 3 CreateSeason
 $PYTHON -m $MODULE 'seasonpass-create-season' \
-    --body '{"autoClaim": true, "defaultLanguage": "7HJk0F89", "defaultRequiredExp": 46, "draftStoreId": "Ac3YVfaE", "end": "1990-05-30T00:00:00Z", "excessStrategy": {"currency": "rl0pTKZT", "method": "CURRENCY", "percentPerExp": 50}, "images": [{"as": "HuBMYQSA", "caption": "2jz1ZOpd", "height": 81, "imageUrl": "jSyMddB4", "smallImageUrl": "1JuMf7RU", "width": 48}], "localizations": {"BHRj8IiR": {"description": "imRllHT6", "title": "Dc40vFFA"}}, "name": "6gpU7EW3", "start": "1982-01-26T00:00:00Z", "tierItemId": "Cpm55gOe"}' \
+    --body '{"autoClaim": true, "defaultLanguage": "7HJk0F89", "defaultRequiredExp": 46, "draftStoreId": "Ac3YVfaE", "end": "1990-05-30T00:00:00Z", "excessStrategy": {"currency": "rl0pTKZT", "method": "NONE", "percentPerExp": 50}, "images": [{"as": "HuBMYQSA", "caption": "2jz1ZOpd", "height": 81, "imageUrl": "jSyMddB4", "smallImageUrl": "1JuMf7RU", "width": 48}], "localizations": {"BHRj8IiR": {"description": "imRllHT6", "title": "Dc40vFFA"}}, "name": "6gpU7EW3", "start": "1982-01-26T00:00:00Z", "tierItemId": "Cpm55gOe"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'CreateSeason' test.out
@@ -134,7 +134,7 @@ eval_tap $? 6 'DeleteSeason' test.out
 #- 7 UpdateSeason
 $PYTHON -m $MODULE 'seasonpass-update-season' \
     'uTrrkbmu' \
-    --body '{"autoClaim": true, "defaultLanguage": "hOqmEnDX", "defaultRequiredExp": 69, "draftStoreId": "WrBPlSay", "end": "1999-04-03T00:00:00Z", "excessStrategy": {"currency": "v71BAZAO", "method": "NONE", "percentPerExp": 39}, "images": [{"as": "FJ2vmTj7", "caption": "tT7TZHWD", "height": 6, "imageUrl": "CkIsZoAr", "smallImageUrl": "WwPHcyFA", "width": 6}], "localizations": {"AtYciLIg": {"description": "RwFRr0gw", "title": "B9tz3vp9"}}, "name": "9XVlV8rK", "start": "1998-06-01T00:00:00Z", "tierItemId": "E6n0smip"}' \
+    --body '{"autoClaim": true, "defaultLanguage": "hOqmEnDX", "defaultRequiredExp": 69, "draftStoreId": "WrBPlSay", "end": "1999-04-03T00:00:00Z", "excessStrategy": {"currency": "v71BAZAO", "method": "CURRENCY", "percentPerExp": 39}, "images": [{"as": "FJ2vmTj7", "caption": "tT7TZHWD", "height": 6, "imageUrl": "CkIsZoAr", "smallImageUrl": "WwPHcyFA", "width": 6}], "localizations": {"AtYciLIg": {"description": "RwFRr0gw", "title": "B9tz3vp9"}}, "name": "9XVlV8rK", "start": "1998-06-01T00:00:00Z", "tierItemId": "E6n0smip"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'UpdateSeason' test.out
@@ -211,7 +211,7 @@ eval_tap $? 16 'QueryRewards' test.out
 #- 17 CreateReward
 $PYTHON -m $MODULE 'seasonpass-create-reward' \
     'UplWiLjq' \
-    --body '{"code": "06n6a0rW", "currency": {"currencyCode": "8EfkpaXt", "namespace": "wYZJaQ4W"}, "image": {"as": "bwNmsFYe", "caption": "tjEurH8e", "height": 22, "imageUrl": "oJzNKtRU", "smallImageUrl": "aTz1ETds", "width": 24}, "itemId": "wzjkkn9o", "quantity": 17, "type": "ITEM"}' \
+    --body '{"code": "06n6a0rW", "currency": {"currencyCode": "8EfkpaXt", "namespace": "wYZJaQ4W"}, "image": {"as": "bwNmsFYe", "caption": "tjEurH8e", "height": 22, "imageUrl": "oJzNKtRU", "smallImageUrl": "aTz1ETds", "width": 24}, "itemId": "wzjkkn9o", "quantity": 17, "type": "CURRENCY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'CreateReward' test.out
@@ -236,7 +236,7 @@ eval_tap $? 19 'DeleteReward' test.out
 $PYTHON -m $MODULE 'seasonpass-update-reward' \
     'U6wJhy1j' \
     'OVkkUlS7' \
-    --body '{"currency": {"currencyCode": "9527EZ25", "namespace": "Ia8uCeZF"}, "image": {"as": "lLtEVpDA", "caption": "EbA82jy7", "height": 23, "imageUrl": "q0pDE5xR", "smallImageUrl": "wh5b45eb", "width": 30}, "itemId": "cM7ScSs3", "nullFields": ["UOpAwIp9"], "quantity": 34, "type": "CURRENCY"}' \
+    --body '{"currency": {"currencyCode": "9527EZ25", "namespace": "Ia8uCeZF"}, "image": {"as": "lLtEVpDA", "caption": "EbA82jy7", "height": 23, "imageUrl": "q0pDE5xR", "smallImageUrl": "wh5b45eb", "width": 30}, "itemId": "cM7ScSs3", "nullFields": ["UOpAwIp9"], "quantity": 34, "type": "ITEM"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'UpdateReward' test.out
