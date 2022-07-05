@@ -8,12 +8,14 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.10.0"
+__version__ = "4.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .a_dto_object_for_unlock_steam_achievement_api import ADTOObjectForUnlockSteamAchievementAPI
+from .a_dto_object_for_update_xbox_achievement_complete_percentage_api import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
 from .additional_data import AdditionalData
 from .admin_order_create import AdminOrderCreate
 from .admin_order_create import PlatformEnum as AdminOrderCreatePlatformEnum
@@ -53,6 +55,7 @@ from .cancel_request import CancelRequest
 from .catalog_change_info import CatalogChangeInfo
 from .catalog_change_info import ActionEnum as CatalogChangeInfoActionEnum, ItemTypeEnum as CatalogChangeInfoItemTypeEnum, StatusEnum as CatalogChangeInfoStatusEnum, TypeEnum as CatalogChangeInfoTypeEnum
 from .catalog_change_paging_sliced_result import CatalogChangePagingSlicedResult
+from .catalog_change_statistics import CatalogChangeStatistics
 from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate
@@ -288,6 +291,7 @@ from .stackable_entitlement_info import StackableEntitlementInfo
 from .stackable_entitlement_info import AppTypeEnum as StackableEntitlementInfoAppTypeEnum, ClazzEnum as StackableEntitlementInfoClazzEnum, SourceEnum as StackableEntitlementInfoSourceEnum, StatusEnum as StackableEntitlementInfoStatusEnum, TypeEnum as StackableEntitlementInfoTypeEnum
 from .stadia_iap_config_info import StadiaIAPConfigInfo
 from .stadia_sync_request import StadiaSyncRequest
+from .steam_achievement_request import SteamAchievementRequest
 from .steam_dlc_sync_request import SteamDLCSyncRequest
 from .steam_iap_config import SteamIAPConfig
 from .steam_iap_config_info import SteamIAPConfigInfo
@@ -343,6 +347,7 @@ from .xbl_iap_config_request import XblIAPConfigRequest
 from .xbl_reconcile_request import XblReconcileRequest
 from .xbl_reconcile_result import XblReconcileResult
 from .xbl_reconcile_result import IapOrderStatusEnum as XblReconcileResultIapOrderStatusEnum
+from .xbox_achievement_request import XboxAchievementRequest
 from .xsolla_config import XsollaConfig
 from .xsolla_paywall_config import XsollaPaywallConfig
 from .xsolla_paywall_config import DeviceEnum as XsollaPaywallConfigDeviceEnum, SizeEnum as XsollaPaywallConfigSizeEnum, ThemeEnum as XsollaPaywallConfigThemeEnum

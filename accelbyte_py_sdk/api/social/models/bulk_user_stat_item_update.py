@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-social-service (1.29.2)
+# justice-social-service (1.29.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,10 +30,10 @@ from ....core import StrEnum
 
 
 class UpdateStrategyEnum(StrEnum):
-    OVERRIDE = "OVERRIDE"
     INCREMENT = "INCREMENT"
     MAX = "MAX"
     MIN = "MIN"
+    OVERRIDE = "OVERRIDE"
 
 
 class BulkUserStatItemUpdate(Model):
@@ -223,7 +223,7 @@ class BulkUserStatItemUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "updateStrategy": ["OVERRIDE", "INCREMENT", "MAX", "MIN"],
+            "updateStrategy": ["INCREMENT", "MAX", "MIN", "OVERRIDE"],
         }
 
     # endregion static methods

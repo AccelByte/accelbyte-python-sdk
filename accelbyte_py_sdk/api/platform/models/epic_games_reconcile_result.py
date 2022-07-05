@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,9 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    VERIFIED = "VERIFIED"
-    FULFILLED = "FULFILLED"
     FAILED = "FAILED"
+    FULFILLED = "FULFILLED"
+    VERIFIED = "VERIFIED"
 
 
 class EpicGamesReconcileResult(Model):
@@ -206,7 +206,7 @@ class EpicGamesReconcileResult(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["VERIFIED", "FULFILLED", "FAILED"],
+            "status": ["FAILED", "FULFILLED", "VERIFIED"],
         }
 
     # endregion static methods

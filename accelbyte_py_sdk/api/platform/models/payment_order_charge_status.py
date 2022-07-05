@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,19 +30,19 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    INIT = "INIT"
     AUTHORISED = "AUTHORISED"
     AUTHORISE_FAILED = "AUTHORISE_FAILED"
-    CHARGED = "CHARGED"
-    CHARGE_FAILED = "CHARGE_FAILED"
-    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
-    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
     CHARGEBACK = "CHARGEBACK"
     CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
-    REFUNDING = "REFUNDING"
-    REFUNDED = "REFUNDED"
-    REFUND_FAILED = "REFUND_FAILED"
+    CHARGED = "CHARGED"
+    CHARGE_FAILED = "CHARGE_FAILED"
     DELETED = "DELETED"
+    INIT = "INIT"
+    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
+    REFUNDED = "REFUNDED"
+    REFUNDING = "REFUNDING"
+    REFUND_FAILED = "REFUND_FAILED"
+    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
 
 
 class PaymentOrderChargeStatus(Model):
@@ -156,7 +156,7 @@ class PaymentOrderChargeStatus(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["INIT", "AUTHORISED", "AUTHORISE_FAILED", "CHARGED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "DELETED"],
+            "status": ["AUTHORISED", "AUTHORISE_FAILED", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CHARGE_FAILED", "DELETED", "INIT", "NOTIFICATION_OF_CHARGEBACK", "REFUNDED", "REFUNDING", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],
         }
 
     # endregion static methods

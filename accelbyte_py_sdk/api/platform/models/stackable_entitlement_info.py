@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,41 +33,41 @@ from ..models.item_snapshot import ItemSnapshot
 
 class ClazzEnum(StrEnum):
     APP = "APP"
-    ENTITLEMENT = "ENTITLEMENT"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
+    ENTITLEMENT = "ENTITLEMENT"
     MEDIA = "MEDIA"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class SourceEnum(StrEnum):
-    PURCHASE = "PURCHASE"
-    IAP = "IAP"
-    PROMOTION = "PROMOTION"
     ACHIEVEMENT = "ACHIEVEMENT"
-    REFERRAL_BONUS = "REFERRAL_BONUS"
-    REDEEM_CODE = "REDEEM_CODE"
-    REWARD = "REWARD"
     GIFT = "GIFT"
+    IAP = "IAP"
     OTHER = "OTHER"
+    PROMOTION = "PROMOTION"
+    PURCHASE = "PURCHASE"
+    REDEEM_CODE = "REDEEM_CODE"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REWARD = "REWARD"
 
 
 class StatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
-    INACTIVE = "INACTIVE"
     CONSUMED = "CONSUMED"
+    INACTIVE = "INACTIVE"
     REVOKED = "REVOKED"
 
 
 class TypeEnum(StrEnum):
-    DURABLE = "DURABLE"
     CONSUMABLE = "CONSUMABLE"
+    DURABLE = "DURABLE"
 
 
 class AppTypeEnum(StrEnum):
+    DEMO = "DEMO"
+    DLC = "DLC"
     GAME = "GAME"
     SOFTWARE = "SOFTWARE"
-    DLC = "DLC"
-    DEMO = "DEMO"
 
 
 class StackableEntitlementInfo(Model):
@@ -628,11 +628,11 @@ class StackableEntitlementInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "clazz": ["APP", "ENTITLEMENT", "CODE", "SUBSCRIPTION", "MEDIA"],
-            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "OTHER"],
-            "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
-            "type": ["DURABLE", "CONSUMABLE"],
-            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
+            "clazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],
+            "source": ["ACHIEVEMENT", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
+            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED"],
+            "type": ["CONSUMABLE", "DURABLE"],
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
         }
 
     # endregion static methods

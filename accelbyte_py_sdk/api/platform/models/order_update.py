@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,17 +30,17 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    INIT = "INIT"
-    CHARGED = "CHARGED"
     CHARGEBACK = "CHARGEBACK"
     CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
-    FULFILLED = "FULFILLED"
-    FULFILL_FAILED = "FULFILL_FAILED"
-    REFUNDING = "REFUNDING"
-    REFUNDED = "REFUNDED"
-    REFUND_FAILED = "REFUND_FAILED"
+    CHARGED = "CHARGED"
     CLOSED = "CLOSED"
     DELETED = "DELETED"
+    FULFILLED = "FULFILLED"
+    FULFILL_FAILED = "FULFILL_FAILED"
+    INIT = "INIT"
+    REFUNDED = "REFUNDED"
+    REFUNDING = "REFUNDING"
+    REFUND_FAILED = "REFUND_FAILED"
 
 
 class OrderUpdate(Model):
@@ -152,7 +152,7 @@ class OrderUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],
+            "status": ["CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CLOSED", "DELETED", "FULFILLED", "FULFILL_FAILED", "INIT", "REFUNDED", "REFUNDING", "REFUND_FAILED"],
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,16 +33,16 @@ from ..models.item_snapshot import ItemSnapshot
 
 class StatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
-    INACTIVE = "INACTIVE"
     CONSUMED = "CONSUMED"
+    INACTIVE = "INACTIVE"
     REVOKED = "REVOKED"
 
 
 class AppTypeEnum(StrEnum):
+    DEMO = "DEMO"
+    DLC = "DLC"
     GAME = "GAME"
     SOFTWARE = "SOFTWARE"
-    DLC = "DLC"
-    DEMO = "DEMO"
 
 
 class AppEntitlementInfo(Model):
@@ -352,8 +352,8 @@ class AppEntitlementInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["ACTIVE", "INACTIVE", "CONSUMED", "REVOKED"],
-            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
+            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED"],
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
         }
 
     # endregion static methods

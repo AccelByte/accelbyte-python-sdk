@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.2)
+# justice-legal-service (1.22.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,7 +69,7 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
         country_code: (countryCode) REQUIRED str in query
 
     Responses:
-        200: OK - AcceptAgreementResponse (successful operation)
+        201: Created - AcceptAgreementResponse (successful operation)
     """
 
     # region fields
@@ -226,7 +226,7 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
     def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - AcceptAgreementResponse (successful operation)
+        201: Created - AcceptAgreementResponse (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -239,7 +239,7 @@ class IndirectBulkAcceptVersionedPolicy(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
+        if code == 201:
             return AcceptAgreementResponse.create_from_dict(content), None
 
         return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)

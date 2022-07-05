@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,17 +30,17 @@ from ....core import StrEnum
 
 
 class ActionEnum(StrEnum):
-    SUBSCRIBE = "SUBSCRIBE"
     CANCEL = "CANCEL"
+    CHANGE_BILLING_ACCOUNT = "CHANGE_BILLING_ACCOUNT"
+    GRANT_DAYS = "GRANT_DAYS"
     IMMEDIATE_CANCEL = "IMMEDIATE_CANCEL"
     RESUBSCRIBE = "RESUBSCRIBE"
-    GRANT_DAYS = "GRANT_DAYS"
-    CHANGE_BILLING_ACCOUNT = "CHANGE_BILLING_ACCOUNT"
+    SUBSCRIBE = "SUBSCRIBE"
 
 
 class SubscribedByEnum(StrEnum):
-    USER = "USER"
     PLATFORM = "PLATFORM"
+    USER = "USER"
 
 
 class SubscriptionActivityInfo(Model):
@@ -404,8 +404,8 @@ class SubscriptionActivityInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "action": ["SUBSCRIBE", "CANCEL", "IMMEDIATE_CANCEL", "RESUBSCRIBE", "GRANT_DAYS", "CHANGE_BILLING_ACCOUNT"],
-            "subscribedBy": ["USER", "PLATFORM"],
+            "action": ["CANCEL", "CHANGE_BILLING_ACCOUNT", "GRANT_DAYS", "IMMEDIATE_CANCEL", "RESUBSCRIBE", "SUBSCRIBE"],
+            "subscribedBy": ["PLATFORM", "USER"],
         }
 
     # endregion static methods

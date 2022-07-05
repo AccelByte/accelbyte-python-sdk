@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.2)
+# justice-legal-service (1.22.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
-from ...models import UpdateLocalizedPolicyVersionResponse
+from ...models import RetrieveLocalizedPolicyVersionResponse
 
 
 class RetrieveSingleLocalizedPolicyVersion(Operation):
@@ -60,7 +60,7 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
     Responses:
-        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
 
         400: Bad Request - ErrorEntity (2912: errors.net.accelbyte.platform.legal.invalid_policy_version)
     """
@@ -152,10 +152,10 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, UpdateLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, RetrieveLocalizedPolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
 
         400: Bad Request - ErrorEntity (2912: errors.net.accelbyte.platform.legal.invalid_policy_version)
 
@@ -171,7 +171,7 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return UpdateLocalizedPolicyVersionResponse.create_from_dict(content), None
+            return RetrieveLocalizedPolicyVersionResponse.create_from_dict(content), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
 

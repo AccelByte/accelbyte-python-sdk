@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.36.3)
+# justice-basic-service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,7 +63,7 @@ class ReportUser(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (no content)
+        201: Created - (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -170,10 +170,10 @@ class ReportUser(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
-        204: No Content - (no content)
+        201: Created - (successful operation)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -188,8 +188,8 @@ class ReportUser(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 201:
+            return HttpResponse.create(code, "Created"), None
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 

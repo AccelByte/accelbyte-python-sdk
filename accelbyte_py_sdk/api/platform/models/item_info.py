@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,19 +34,19 @@ from ..models.region_data_item import RegionDataItem
 
 
 class EntitlementTypeEnum(StrEnum):
-    DURABLE = "DURABLE"
     CONSUMABLE = "CONSUMABLE"
+    DURABLE = "DURABLE"
 
 
 class ItemTypeEnum(StrEnum):
     APP = "APP"
-    COINS = "COINS"
-    INGAMEITEM = "INGAMEITEM"
     BUNDLE = "BUNDLE"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
-    SEASON = "SEASON"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class StatusEnum(StrEnum):
@@ -55,10 +55,10 @@ class StatusEnum(StrEnum):
 
 
 class AppTypeEnum(StrEnum):
+    DEMO = "DEMO"
+    DLC = "DLC"
     GAME = "GAME"
     SOFTWARE = "SOFTWARE"
-    DLC = "DLC"
-    DEMO = "DEMO"
 
 
 class SeasonTypeEnum(StrEnum):
@@ -965,10 +965,10 @@ class ItemInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "entitlementType": ["DURABLE", "CONSUMABLE"],
-            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
+            "entitlementType": ["CONSUMABLE", "DURABLE"],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
             "status": ["ACTIVE", "INACTIVE"],
-            "appType": ["GAME", "SOFTWARE", "DLC", "DEMO"],
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
             "seasonType": ["PASS", "TIER"],
         }
 

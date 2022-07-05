@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (2.1.0)
+# justice-ugc-service (2.2.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,11 +30,11 @@ from ....core import StrEnum
 
 
 class FileExtensionEnum(StrEnum):
-    PJP = "pjp"
-    JPG = "jpg"
-    JPEG = "jpeg"
-    JFIF = "jfif"
     BMP = "bmp"
+    JFIF = "jfif"
+    JPEG = "jpeg"
+    JPG = "jpg"
+    PJP = "pjp"
     PNG = "png"
 
 
@@ -166,7 +166,7 @@ class ModelsCreateScreenshotRequestItem(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "fileExtension": ["pjp", "jpg", "jpeg", "jfif", "bmp", "png"],
+            "fileExtension": ["bmp", "jfif", "jpeg", "jpg", "pjp", "png"],
         }
 
     # endregion static methods

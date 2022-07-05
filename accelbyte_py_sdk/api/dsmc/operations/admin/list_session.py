@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,8 @@ class ListSession(Operation):
     Required scope: social
 
     This endpoint lists all of sessions in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
@@ -63,13 +65,13 @@ class ListSession(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
         region: (region) OPTIONAL str in query
 
         with_server: (withServer) OPTIONAL bool in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ModelsListSessionResponse (sessions listed)
@@ -89,10 +91,10 @@ class ListSession(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    count: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
     with_server: bool                                                                              # OPTIONAL in [query]
+    count: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -144,14 +146,14 @@ class ListSession(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "count"):
-            result["count"] = self.count
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "region"):
             result["region"] = self.region
         if hasattr(self, "with_server"):
             result["withServer"] = self.with_server
+        if hasattr(self, "count"):
+            result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -166,20 +168,20 @@ class ListSession(Operation):
         self.namespace = value
         return self
 
-    def with_count(self, value: int) -> ListSession:
-        self.count = value
-        return self
-
-    def with_offset(self, value: int) -> ListSession:
-        self.offset = value
-        return self
-
     def with_region(self, value: str) -> ListSession:
         self.region = value
         return self
 
     def with_with_server(self, value: bool) -> ListSession:
         self.with_server = value
+        return self
+
+    def with_count(self, value: int) -> ListSession:
+        self.count = value
+        return self
+
+    def with_offset(self, value: int) -> ListSession:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -192,14 +194,6 @@ class ListSession(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "count") and self.count:
-            result["count"] = int(self.count)
-        elif include_empty:
-            result["count"] = 0
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = 0
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -208,6 +202,14 @@ class ListSession(Operation):
             result["withServer"] = bool(self.with_server)
         elif include_empty:
             result["withServer"] = False
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
+        elif include_empty:
+            result["count"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -252,17 +254,15 @@ class ListSession(Operation):
     def create(
         cls,
         namespace: str,
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         region: Optional[str] = None,
         with_server: Optional[bool] = None,
     ) -> ListSession:
         instance = cls()
         instance.namespace = namespace
-        if count is not None:
-            instance.count = count
-        if offset is not None:
-            instance.offset = offset
+        instance.count = count
+        instance.offset = offset
         if region is not None:
             instance.region = region
         if with_server is not None:
@@ -276,14 +276,6 @@ class ListSession(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "count" in dict_ and dict_["count"] is not None:
-            instance.count = int(dict_["count"])
-        elif include_empty:
-            instance.count = 0
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -292,26 +284,34 @@ class ListSession(Operation):
             instance.with_server = bool(dict_["withServer"])
         elif include_empty:
             instance.with_server = False
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
+        elif include_empty:
+            instance.count = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "count": "count",
-            "offset": "offset",
             "region": "region",
             "withServer": "with_server",
+            "count": "count",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "count": False,
-            "offset": False,
             "region": False,
             "withServer": False,
+            "count": True,
+            "offset": True,
         }
 
     # endregion static methods

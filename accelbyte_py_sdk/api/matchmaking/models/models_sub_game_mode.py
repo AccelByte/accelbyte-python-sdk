@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.15.1)
+# Justice Matchmaking Service (2.15.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

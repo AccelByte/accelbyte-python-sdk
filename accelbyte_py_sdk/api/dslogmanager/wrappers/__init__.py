@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-ds-log-manager-service."""
 
-__version__ = "2.3.2"
+__version__ = "2.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

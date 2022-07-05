@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,30 +31,30 @@ from ....core import StrEnum
 
 class ActionEnum(StrEnum):
     CREATE = "CREATE"
-    UPDATE = "UPDATE"
     DELETE = "DELETE"
+    UPDATE = "UPDATE"
 
 
 class StatusEnum(StrEnum):
-    UNPUBLISHED = "UNPUBLISHED"
     PUBLISHED = "PUBLISHED"
+    UNPUBLISHED = "UNPUBLISHED"
 
 
 class ItemTypeEnum(StrEnum):
     APP = "APP"
-    COINS = "COINS"
-    INGAMEITEM = "INGAMEITEM"
     BUNDLE = "BUNDLE"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
-    SEASON = "SEASON"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class TypeEnum(StrEnum):
-    STORE = "STORE"
     CATEGORY = "CATEGORY"
     ITEM = "ITEM"
+    STORE = "STORE"
 
 
 class CatalogChangeInfo(Model):
@@ -68,6 +68,8 @@ class CatalogChangeInfo(Model):
         created_at: (createdAt) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        selected: (selected) REQUIRED bool
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
@@ -98,6 +100,7 @@ class CatalogChangeInfo(Model):
     change_id: str                                                                                 # REQUIRED
     created_at: str                                                                                # REQUIRED
     namespace: str                                                                                 # REQUIRED
+    selected: bool                                                                                 # REQUIRED
     status: Union[str, StatusEnum]                                                                 # REQUIRED
     store_id: str                                                                                  # REQUIRED
     updated_at: str                                                                                # REQUIRED
@@ -128,6 +131,10 @@ class CatalogChangeInfo(Model):
 
     def with_namespace(self, value: str) -> CatalogChangeInfo:
         self.namespace = value
+        return self
+
+    def with_selected(self, value: bool) -> CatalogChangeInfo:
+        self.selected = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> CatalogChangeInfo:
@@ -196,6 +203,10 @@ class CatalogChangeInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "selected"):
+            result["selected"] = bool(self.selected)
+        elif include_empty:
+            result["selected"] = False
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -253,6 +264,7 @@ class CatalogChangeInfo(Model):
         change_id: str,
         created_at: str,
         namespace: str,
+        selected: bool,
         status: Union[str, StatusEnum],
         store_id: str,
         updated_at: str,
@@ -270,6 +282,7 @@ class CatalogChangeInfo(Model):
         instance.change_id = change_id
         instance.created_at = created_at
         instance.namespace = namespace
+        instance.selected = selected
         instance.status = status
         instance.store_id = store_id
         instance.updated_at = updated_at
@@ -312,6 +325,10 @@ class CatalogChangeInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "selected" in dict_ and dict_["selected"] is not None:
+            instance.selected = bool(dict_["selected"])
+        elif include_empty:
+            instance.selected = False
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -385,6 +402,7 @@ class CatalogChangeInfo(Model):
             "changeId": "change_id",
             "createdAt": "created_at",
             "namespace": "namespace",
+            "selected": "selected",
             "status": "status",
             "storeId": "store_id",
             "updatedAt": "updated_at",
@@ -405,6 +423,7 @@ class CatalogChangeInfo(Model):
             "changeId": True,
             "createdAt": True,
             "namespace": True,
+            "selected": True,
             "status": True,
             "storeId": True,
             "updatedAt": True,
@@ -421,10 +440,10 @@ class CatalogChangeInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "action": ["CREATE", "UPDATE", "DELETE"],
-            "status": ["UNPUBLISHED", "PUBLISHED"],
-            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
-            "type": ["STORE", "CATEGORY", "ITEM"],
+            "action": ["CREATE", "DELETE", "UPDATE"],
+            "status": ["PUBLISHED", "UNPUBLISHED"],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
+            "type": ["CATEGORY", "ITEM", "STORE"],
         }
 
     # endregion static methods

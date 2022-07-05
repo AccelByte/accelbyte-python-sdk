@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,15 +31,15 @@ from ....core import StrEnum
 
 class ClazzEnum(StrEnum):
     APP = "APP"
-    ENTITLEMENT = "ENTITLEMENT"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
+    ENTITLEMENT = "ENTITLEMENT"
     MEDIA = "MEDIA"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class TypeEnum(StrEnum):
-    DURABLE = "DURABLE"
     CONSUMABLE = "CONSUMABLE"
+    DURABLE = "DURABLE"
 
 
 class EntitlementSummary(Model):
@@ -386,8 +386,8 @@ class EntitlementSummary(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "clazz": ["APP", "ENTITLEMENT", "CODE", "SUBSCRIPTION", "MEDIA"],
-            "type": ["DURABLE", "CONSUMABLE"],
+            "clazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],
+            "type": ["CONSUMABLE", "DURABLE"],
         }
 
     # endregion static methods

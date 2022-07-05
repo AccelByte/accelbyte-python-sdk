@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ugc-service (2.1.0)
+# justice-ugc-service (2.2.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,9 +53,9 @@ class GetPublicFollowers(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelsPaginatedCreatorOverviewResponse (OK)
@@ -78,8 +78,8 @@ class GetPublicFollowers(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     user_id: str                                                                                   # REQUIRED in [path]
-    limit: str                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -155,11 +155,11 @@ class GetPublicFollowers(Operation):
         self.user_id = value
         return self
 
-    def with_limit(self, value: str) -> GetPublicFollowers:
+    def with_limit(self, value: int) -> GetPublicFollowers:
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> GetPublicFollowers:
+    def with_offset(self, value: int) -> GetPublicFollowers:
         self.offset = value
         return self
 
@@ -178,13 +178,13 @@ class GetPublicFollowers(Operation):
         elif include_empty:
             result["userId"] = ""
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = ""
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = ""
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -234,8 +234,8 @@ class GetPublicFollowers(Operation):
         cls,
         namespace: str,
         user_id: str,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
     ) -> GetPublicFollowers:
         instance = cls()
         instance.namespace = namespace
@@ -258,13 +258,13 @@ class GetPublicFollowers(Operation):
         elif include_empty:
             instance.user_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = ""
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = ""
+            instance.offset = 0
         return instance
 
     @staticmethod

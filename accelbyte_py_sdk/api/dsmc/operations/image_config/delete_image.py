@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,9 +37,11 @@ class DeleteImage(Operation):
 
     Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
 
-    Required scope: social
+    Required scope: social.
 
-    This endpoint will delete an image that specified in the request parameter
+    This endpoint will delete an image that specified in the request parameter.
+
+    Default image is cannot be deleted and will throw error 422 (Unprocessable entity).
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]

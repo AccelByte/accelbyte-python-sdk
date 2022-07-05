@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,6 +24,8 @@
 
 from .utils import randomize
 
+from ..api.platform.models import ADTOObjectForUnlockSteamAchievementAPI
+from ..api.platform.models import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
@@ -51,6 +53,7 @@ from ..api.platform.models import CampaignUpdate
 from ..api.platform.models import CancelRequest
 from ..api.platform.models import CatalogChangeInfo
 from ..api.platform.models import CatalogChangePagingSlicedResult
+from ..api.platform.models import CatalogChangeStatistics
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
@@ -223,6 +226,7 @@ from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
 from ..api.platform.models import StadiaIAPConfigInfo
 from ..api.platform.models import StadiaSyncRequest
+from ..api.platform.models import SteamAchievementRequest
 from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
 from ..api.platform.models import SteamIAPConfigInfo
@@ -269,9 +273,26 @@ from ..api.platform.models import XblIAPConfigInfo
 from ..api.platform.models import XblIAPConfigRequest
 from ..api.platform.models import XblReconcileRequest
 from ..api.platform.models import XblReconcileResult
+from ..api.platform.models import XboxAchievementRequest
 from ..api.platform.models import XsollaConfig
 from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
+
+
+def create_a_dto_object_for_unlock_steam_achievement_api_example() -> ADTOObjectForUnlockSteamAchievementAPI:
+    instance = ADTOObjectForUnlockSteamAchievementAPI()
+    instance.achievements = [create_steam_achievement_request_example()]
+    instance.steam_user_id = randomize()
+    return instance
+
+
+def create_a_dto_object_for_update_xbox_achievement_complete_percentage_api_example() -> ADTOObjectForUpdateXboxAchievementCompletePercentageAPI:
+    instance = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI()
+    instance.achievements = [create_xbox_achievement_request_example()]
+    instance.service_config_id = randomize()
+    instance.title_id = randomize()
+    instance.xbox_user_id = randomize()
+    return instance
 
 
 def create_additional_data_example() -> AdditionalData:
@@ -637,6 +658,7 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     instance.change_id = randomize()
     instance.created_at = randomize("date")
     instance.namespace = randomize("slug")
+    instance.selected = randomize("bool")
     instance.status = randomize()
     instance.store_id = randomize()
     instance.updated_at = randomize("date")
@@ -655,6 +677,13 @@ def create_catalog_change_paging_sliced_result_example() -> CatalogChangePagingS
     instance = CatalogChangePagingSlicedResult()
     instance.data = [create_catalog_change_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_catalog_change_statistics_example() -> CatalogChangeStatistics:
+    instance = CatalogChangeStatistics()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.selected_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2680,6 +2709,13 @@ def create_stadia_sync_request_example() -> StadiaSyncRequest:
     return instance
 
 
+def create_steam_achievement_request_example() -> SteamAchievementRequest:
+    instance = SteamAchievementRequest()
+    instance.id_ = randomize()
+    instance.value = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_steam_dlc_sync_request_example() -> SteamDLCSyncRequest:
     instance = SteamDLCSyncRequest()
     instance.steam_id = randomize()
@@ -3188,6 +3224,13 @@ def create_xbl_reconcile_result_example() -> XblReconcileResult:
     instance.sku = randomize("slug")
     instance.transaction_id = randomize("uid")
     instance.xbox_product_id = randomize()
+    return instance
+
+
+def create_xbox_achievement_request_example() -> XboxAchievementRequest:
+    instance = XboxAchievementRequest()
+    instance.id_ = randomize()
+    instance.percent_complete = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

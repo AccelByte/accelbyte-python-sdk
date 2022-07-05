@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,12 +30,12 @@ from ....core import StrEnum
 
 
 class ActionEnum(StrEnum):
-    GRANT = "GRANT"
-    UPDATE = "UPDATE"
     DECREMENT = "DECREMENT"
-    REVOKE = "REVOKE"
     DISABLE = "DISABLE"
     ENABLE = "ENABLE"
+    GRANT = "GRANT"
+    REVOKE = "REVOKE"
+    UPDATE = "UPDATE"
 
 
 class EntitlementHistoryInfo(Model):
@@ -262,7 +262,7 @@ class EntitlementHistoryInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "action": ["GRANT", "UPDATE", "DECREMENT", "REVOKE", "DISABLE", "ENABLE"],
+            "action": ["DECREMENT", "DISABLE", "ENABLE", "GRANT", "REVOKE", "UPDATE"],
         }
 
     # endregion static methods

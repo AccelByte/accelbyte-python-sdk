@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,14 +30,14 @@ from ....core import StrEnum
 
 
 class WalletPlatformEnum(StrEnum):
-    PLAYSTATION = "Playstation"
-    XBOX = "Xbox"
-    STEAM = "Steam"
     EPIC = "Epic"
-    IOS = "IOS"
     GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
     NINTENDO = "Nintendo"
     OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    XBOX = "Xbox"
 
 
 class PaymentRequest(Model):
@@ -150,7 +150,7 @@ class PaymentRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "walletPlatform": ["Playstation", "Xbox", "Steam", "Epic", "IOS", "GooglePlay", "Nintendo", "Other"],
+            "walletPlatform": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Steam", "Xbox"],
         }
 
     # endregion static methods

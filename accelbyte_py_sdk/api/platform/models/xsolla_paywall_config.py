@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,14 +35,14 @@ class DeviceEnum(StrEnum):
 
 
 class SizeEnum(StrEnum):
-    SMALL = "SMALL"
-    MEDIUM = "MEDIUM"
     LARGE = "LARGE"
+    MEDIUM = "MEDIUM"
+    SMALL = "SMALL"
 
 
 class ThemeEnum(StrEnum):
-    DEFAULT = "DEFAULT"
     DARK = "DARK"
+    DEFAULT = "DEFAULT"
     DEFAULT_DARK = "DEFAULT_DARK"
 
 
@@ -194,8 +194,8 @@ class XsollaPaywallConfig(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "device": ["DESKTOP", "MOBILE"],
-            "size": ["SMALL", "MEDIUM", "LARGE"],
-            "theme": ["DEFAULT", "DARK", "DEFAULT_DARK"],
+            "size": ["LARGE", "MEDIUM", "SMALL"],
+            "theme": ["DARK", "DEFAULT", "DEFAULT_DARK"],
         }
 
     # endregion static methods

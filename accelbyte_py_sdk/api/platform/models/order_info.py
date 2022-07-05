@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,28 +33,28 @@ from ..models.item_snapshot import ItemSnapshot
 
 
 class StatusEnum(StrEnum):
-    INIT = "INIT"
-    CHARGED = "CHARGED"
     CHARGEBACK = "CHARGEBACK"
     CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
-    FULFILLED = "FULFILLED"
-    FULFILL_FAILED = "FULFILL_FAILED"
-    REFUNDING = "REFUNDING"
-    REFUNDED = "REFUNDED"
-    REFUND_FAILED = "REFUND_FAILED"
+    CHARGED = "CHARGED"
     CLOSED = "CLOSED"
     DELETED = "DELETED"
+    FULFILLED = "FULFILLED"
+    FULFILL_FAILED = "FULFILL_FAILED"
+    INIT = "INIT"
+    REFUNDED = "REFUNDED"
+    REFUNDING = "REFUNDING"
+    REFUND_FAILED = "REFUND_FAILED"
 
 
 class PaymentProviderEnum(StrEnum):
-    WALLET = "WALLET"
-    XSOLLA = "XSOLLA"
     ADYEN = "ADYEN"
-    STRIPE = "STRIPE"
-    CHECKOUT = "CHECKOUT"
     ALIPAY = "ALIPAY"
-    WXPAY = "WXPAY"
+    CHECKOUT = "CHECKOUT"
     PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
 
 
 class OrderInfo(Model):
@@ -854,8 +854,8 @@ class OrderInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["INIT", "CHARGED", "CHARGEBACK", "CHARGEBACK_REVERSED", "FULFILLED", "FULFILL_FAILED", "REFUNDING", "REFUNDED", "REFUND_FAILED", "CLOSED", "DELETED"],
-            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "status": ["CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CLOSED", "DELETED", "FULFILLED", "FULFILL_FAILED", "INIT", "REFUNDED", "REFUNDING", "REFUND_FAILED"],
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
         }
 
     # endregion static methods

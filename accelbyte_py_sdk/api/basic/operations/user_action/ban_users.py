@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (1.36.3)
+# justice-basic-service (2.0.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,7 +63,7 @@ class BanUsers(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (no content)
+        200: OK - (successful operation)
 
         400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
 
@@ -176,10 +176,10 @@ class BanUsers(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
-        204: No Content - (no content)
+        200: OK - (successful operation)
 
         400: Bad Request - ErrorEntity (11621: Invalid EQU8 api key in namespace [{namespace}])
 
@@ -200,8 +200,8 @@ class BanUsers(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return HttpResponse.create(code, "OK"), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:

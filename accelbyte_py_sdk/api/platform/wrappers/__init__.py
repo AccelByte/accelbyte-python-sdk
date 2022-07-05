@@ -8,11 +8,16 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.10.0"
+__version__ = "4.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+from ._achievement_platform import unlock_steam_user_achievement
+from ._achievement_platform import unlock_steam_user_achievement_async
+from ._achievement_platform import update_xbl_user_achievement
+from ._achievement_platform import update_xbl_user_achievement_async
 
 from ._anonymization import anonymize_campaign
 from ._anonymization import anonymize_campaign_async
@@ -62,10 +67,22 @@ from ._campaign import query_redeem_history_async
 from ._campaign import update_campaign
 from ._campaign import update_campaign_async
 
+from ._catalog_changes import get_statistic
+from ._catalog_changes import get_statistic_async
 from ._catalog_changes import publish_all
 from ._catalog_changes import publish_all_async
+from ._catalog_changes import publish_selected
+from ._catalog_changes import publish_selected_async
 from ._catalog_changes import query_changes
 from ._catalog_changes import query_changes_async
+from ._catalog_changes import select_all_records
+from ._catalog_changes import select_all_records_async
+from ._catalog_changes import select_record
+from ._catalog_changes import select_record_async
+from ._catalog_changes import unselect_all_records
+from ._catalog_changes import unselect_all_records_async
+from ._catalog_changes import unselect_record
+from ._catalog_changes import unselect_record_async
 
 from ._category import create_category
 from ._category import create_category_async

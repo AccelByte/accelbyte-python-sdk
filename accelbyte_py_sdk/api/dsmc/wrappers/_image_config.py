@@ -318,7 +318,7 @@ async def import_images_async(file: Any, x_additional_headers: Optional[Dict[str
 
 
 @same_doc_as(ListImages)
-def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_images(count: int, offset: int, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -335,7 +335,7 @@ def list_images(count: Optional[int] = None, offset: Optional[int] = None, q: Op
 
 
 @same_doc_as(ListImages)
-async def list_images_async(count: Optional[int] = None, offset: Optional[int] = None, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_images_async(count: int, offset: int, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

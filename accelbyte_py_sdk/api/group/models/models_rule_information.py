@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-group-service (2.11.5)
+# justice-group-service (2.11.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,8 +31,8 @@ from ....core import StrEnum
 
 class RuleCriteriaEnum(StrEnum):
     EQUAL = "EQUAL"
-    MINIMUM = "MINIMUM"
     MAXIMUM = "MAXIMUM"
+    MINIMUM = "MINIMUM"
 
 
 class ModelsRuleInformation(Model):
@@ -163,7 +163,7 @@ class ModelsRuleInformation(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "ruleCriteria": ["EQUAL", "MINIMUM", "MAXIMUM"],
+            "ruleCriteria": ["EQUAL", "MAXIMUM", "MINIMUM"],
         }
 
     # endregion static methods

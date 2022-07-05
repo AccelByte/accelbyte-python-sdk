@@ -73,6 +73,8 @@ class AdminCreateThirdPartyConfig(Operation):
 
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
 
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
 
@@ -189,6 +191,8 @@ class AdminCreateThirdPartyConfig(Operation):
 
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
 
+        409: Conflict - RestapiErrorResponseV1 (Conflict)
+
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -209,6 +213,8 @@ class AdminCreateThirdPartyConfig(Operation):
         if code == 401:
             return None, RestapiErrorResponseV1.create_from_dict(content)
         if code == 403:
+            return None, RestapiErrorResponseV1.create_from_dict(content)
+        if code == 409:
             return None, RestapiErrorResponseV1.create_from_dict(content)
         if code == 500:
             return None, RestapiErrorResponseV1.create_from_dict(content)

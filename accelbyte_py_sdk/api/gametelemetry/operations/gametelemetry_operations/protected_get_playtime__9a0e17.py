@@ -53,7 +53,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [COOKIE_AUTH]
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
 
         cookie: (Cookie) OPTIONAL Union[str, HeaderStr] in header
 
@@ -71,7 +71,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["COOKIE_AUTH"]]
+    _securities: List[List[str]] = [["COOKIE_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]

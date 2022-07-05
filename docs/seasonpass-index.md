@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-seasonpass-service Index (1.12.2)
+# justice-seasonpass-service Index (1.13.1)
 
 
 ## Operations

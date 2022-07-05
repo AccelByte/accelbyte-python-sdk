@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,14 +32,14 @@ from ..models.additional_data import AdditionalData
 
 
 class PaymentProviderEnum(StrEnum):
-    WALLET = "WALLET"
-    XSOLLA = "XSOLLA"
     ADYEN = "ADYEN"
-    STRIPE = "STRIPE"
-    CHECKOUT = "CHECKOUT"
     ALIPAY = "ALIPAY"
-    WXPAY = "WXPAY"
+    CHECKOUT = "CHECKOUT"
     PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
 
 
 class BillingAccount(Model):
@@ -173,7 +173,7 @@ class BillingAccount(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
         }
 
     # endregion static methods

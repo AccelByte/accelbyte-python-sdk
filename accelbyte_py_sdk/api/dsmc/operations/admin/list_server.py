@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,8 @@ class ListServer(Operation):
     Required scope: social
 
     This endpoint lists all of dedicated servers in a namespace managed by this service.
+
+    Parameter Offset and Count is Required
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
@@ -63,11 +65,11 @@ class ListServer(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
         region: (region) OPTIONAL str in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ModelsListServerResponse (servers listed)
@@ -87,9 +89,9 @@ class ListServer(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    count: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     region: str                                                                                    # OPTIONAL in [query]
+    count: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -141,12 +143,12 @@ class ListServer(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "region"):
+            result["region"] = self.region
         if hasattr(self, "count"):
             result["count"] = self.count
         if hasattr(self, "offset"):
             result["offset"] = self.offset
-        if hasattr(self, "region"):
-            result["region"] = self.region
         return result
 
     # endregion get_x_params methods
@@ -161,16 +163,16 @@ class ListServer(Operation):
         self.namespace = value
         return self
 
+    def with_region(self, value: str) -> ListServer:
+        self.region = value
+        return self
+
     def with_count(self, value: int) -> ListServer:
         self.count = value
         return self
 
     def with_offset(self, value: int) -> ListServer:
         self.offset = value
-        return self
-
-    def with_region(self, value: str) -> ListServer:
-        self.region = value
         return self
 
     # endregion with_x methods
@@ -183,6 +185,10 @@ class ListServer(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
         if hasattr(self, "count") and self.count:
             result["count"] = int(self.count)
         elif include_empty:
@@ -191,10 +197,6 @@ class ListServer(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
-        if hasattr(self, "region") and self.region:
-            result["region"] = str(self.region)
-        elif include_empty:
-            result["region"] = ""
         return result
 
     # endregion to methods
@@ -239,16 +241,14 @@ class ListServer(Operation):
     def create(
         cls,
         namespace: str,
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         region: Optional[str] = None,
     ) -> ListServer:
         instance = cls()
         instance.namespace = namespace
-        if count is not None:
-            instance.count = count
-        if offset is not None:
-            instance.offset = offset
+        instance.count = count
+        instance.offset = offset
         if region is not None:
             instance.region = region
         return instance
@@ -260,6 +260,10 @@ class ListServer(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
         if "count" in dict_ and dict_["count"] is not None:
             instance.count = int(dict_["count"])
         elif include_empty:
@@ -268,28 +272,24 @@ class ListServer(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
-        if "region" in dict_ and dict_["region"] is not None:
-            instance.region = str(dict_["region"])
-        elif include_empty:
-            instance.region = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "region": "region",
             "count": "count",
             "offset": "offset",
-            "region": "region",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "count": False,
-            "offset": False,
             "region": False,
+            "count": True,
+            "offset": True,
         }
 
     # endregion static methods

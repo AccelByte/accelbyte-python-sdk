@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the justice-cloudsave-service."""
 
-__version__ = "3.0.1"
+__version__ = "3.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

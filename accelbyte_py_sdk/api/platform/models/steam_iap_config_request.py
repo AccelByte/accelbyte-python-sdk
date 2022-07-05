@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,14 +32,14 @@ class SteamIAPConfigRequest(Model):
     """Steam IAP config request (SteamIAPConfigRequest)
 
     Properties:
-        app_id: (appId) OPTIONAL str
+        app_id: (appId) REQUIRED str
 
         publisher_authentication_key: (publisherAuthenticationKey) OPTIONAL str
     """
 
     # region fields
 
-    app_id: str                                                                                    # OPTIONAL
+    app_id: str                                                                                    # REQUIRED
     publisher_authentication_key: str                                                              # OPTIONAL
 
     # endregion fields
@@ -77,12 +77,11 @@ class SteamIAPConfigRequest(Model):
     @classmethod
     def create(
         cls,
-        app_id: Optional[str] = None,
+        app_id: str,
         publisher_authentication_key: Optional[str] = None,
     ) -> SteamIAPConfigRequest:
         instance = cls()
-        if app_id is not None:
-            instance.app_id = app_id
+        instance.app_id = app_id
         if publisher_authentication_key is not None:
             instance.publisher_authentication_key = publisher_authentication_key
         return instance
@@ -132,7 +131,7 @@ class SteamIAPConfigRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "appId": False,
+            "appId": True,
             "publisherAuthenticationKey": False,
         }
 

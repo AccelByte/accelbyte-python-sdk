@@ -91,7 +91,7 @@ async def download_server_logs_async(pod_name: str, namespace: Optional[str] = N
 
 
 @same_doc_as(ListTerminatedServers)
-def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,6 +109,7 @@ def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional
         region=region,
         session_id=session_id,
         start_date=start_date,
+        status=status,
         user_id=user_id,
         namespace=namespace,
     )
@@ -116,7 +117,7 @@ def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional
 
 
 @same_doc_as(ListTerminatedServers)
-async def list_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -134,6 +135,7 @@ async def list_terminated_servers_async(deployment: Optional[str] = None, end_da
         region=region,
         session_id=session_id,
         start_date=start_date,
+        status=status,
         user_id=user_id,
         namespace=namespace,
     )

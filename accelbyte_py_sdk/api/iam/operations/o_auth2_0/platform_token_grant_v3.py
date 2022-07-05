@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.10.1)
+# justice-iam-service (5.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -106,13 +106,16 @@ class PlatformTokenGrantV3(Operation):
       * awscognito : The platform_tokenâs value is the aws cognito access token or id token (JWT).
 
 
-      * xbl : The platform_tokenâs value is XSTS token
+      * live : The platform_tokenâs value is xbox XSTS token
 
 
       * xblweb : The platform_tokenâs value is code returned by xbox after login
 
 
       * netflix : The platform_tokenâs value is GAT (Gamer Access Token) returned by Netflix backend
+
+
+      * snapchat : The platform_tokenâs value is the authorization code returned by Snapchat OAuth.
 
 
 

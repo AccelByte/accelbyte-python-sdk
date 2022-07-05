@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-ds-log-manager-service (2.3.2)
+# justice-ds-log-manager-service (2.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,6 +84,8 @@ class ListTerminatedServers(Operation):
 
         start_date: (start_date) OPTIONAL str in query
 
+        status: (status) OPTIONAL str in query
+
         user_id: (user_id) OPTIONAL str in query
 
     Responses:
@@ -118,6 +120,7 @@ class ListTerminatedServers(Operation):
     region: str                                                                                    # OPTIONAL in [query]
     session_id: str                                                                                # OPTIONAL in [query]
     start_date: str                                                                                # OPTIONAL in [query]
+    status: str                                                                                    # OPTIONAL in [query]
     user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
@@ -194,6 +197,8 @@ class ListTerminatedServers(Operation):
             result["session_id"] = self.session_id
         if hasattr(self, "start_date"):
             result["start_date"] = self.start_date
+        if hasattr(self, "status"):
+            result["status"] = self.status
         if hasattr(self, "user_id"):
             result["user_id"] = self.user_id
         return result
@@ -258,6 +263,10 @@ class ListTerminatedServers(Operation):
         self.start_date = value
         return self
 
+    def with_status(self, value: str) -> ListTerminatedServers:
+        self.status = value
+        return self
+
     def with_user_id(self, value: str) -> ListTerminatedServers:
         self.user_id = value
         return self
@@ -320,6 +329,10 @@ class ListTerminatedServers(Operation):
             result["start_date"] = str(self.start_date)
         elif include_empty:
             result["start_date"] = ""
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["user_id"] = str(self.user_id)
         elif include_empty:
@@ -384,6 +397,7 @@ class ListTerminatedServers(Operation):
         region: Optional[str] = None,
         session_id: Optional[str] = None,
         start_date: Optional[str] = None,
+        status: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> ListTerminatedServers:
         instance = cls()
@@ -412,6 +426,8 @@ class ListTerminatedServers(Operation):
             instance.session_id = session_id
         if start_date is not None:
             instance.start_date = start_date
+        if status is not None:
+            instance.status = status
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -471,6 +487,10 @@ class ListTerminatedServers(Operation):
             instance.start_date = str(dict_["start_date"])
         elif include_empty:
             instance.start_date = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
@@ -493,6 +513,7 @@ class ListTerminatedServers(Operation):
             "region": "region",
             "session_id": "session_id",
             "start_date": "start_date",
+            "status": "status",
             "user_id": "user_id",
         }
 
@@ -512,6 +533,7 @@ class ListTerminatedServers(Operation):
             "region": False,
             "session_id": False,
             "start_date": False,
+            "status": False,
             "user_id": False,
         }
 

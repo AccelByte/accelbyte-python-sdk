@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.2)
+# justice-legal-service (1.22.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,7 +65,7 @@ class RetrievePolicyVersions(Operation):
         namespace: (namespace) OPTIONAL str in query
 
     Responses:
-        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+        200: OK - RetrievePolicyVersionResponse (successful operation)
 
         404: Not Found - ErrorEntity (2920: errors.net.accelbyte.platform.legal.policy_not_found)
     """
@@ -179,10 +179,10 @@ class RetrievePolicyVersions(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[RetrievePolicyVersionResponse]], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, RetrievePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[RetrievePolicyVersionResponse] (successful operation)
+        200: OK - RetrievePolicyVersionResponse (successful operation)
 
         404: Not Found - ErrorEntity (2920: errors.net.accelbyte.platform.legal.policy_not_found)
 
@@ -198,7 +198,7 @@ class RetrievePolicyVersions(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [RetrievePolicyVersionResponse.create_from_dict(i) for i in content], None
+            return RetrievePolicyVersionResponse.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

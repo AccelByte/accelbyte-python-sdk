@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-seasonpass-service (1.12.2)
+# justice-seasonpass-service (1.13.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,8 +30,8 @@ from ....core import StrEnum
 
 
 class MethodEnum(StrEnum):
-    NONE = "NONE"
     CURRENCY = "CURRENCY"
+    NONE = "NONE"
 
 
 class ExcessStrategy(Model):
@@ -164,7 +164,7 @@ class ExcessStrategy(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "method": ["NONE", "CURRENCY"],
+            "method": ["CURRENCY", "NONE"],
         }
 
     # endregion static methods

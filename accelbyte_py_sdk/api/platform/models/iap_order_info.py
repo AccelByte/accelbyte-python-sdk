@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,20 +33,20 @@ from ..models.entitlement_summary import EntitlementSummary
 
 
 class StatusEnum(StrEnum):
-    VERIFIED = "VERIFIED"
-    FULFILLED = "FULFILLED"
     FAILED = "FAILED"
+    FULFILLED = "FULFILLED"
+    VERIFIED = "VERIFIED"
 
 
 class TypeEnum(StrEnum):
     APPLE = "APPLE"
+    EPICGAMES = "EPICGAMES"
     GOOGLE = "GOOGLE"
     PLAYSTATION = "PLAYSTATION"
-    STEAM = "STEAM"
-    XBOX = "XBOX"
     STADIA = "STADIA"
-    EPICGAMES = "EPICGAMES"
+    STEAM = "STEAM"
     TWITCH = "TWITCH"
+    XBOX = "XBOX"
 
 
 class IAPOrderInfo(Model):
@@ -533,8 +533,8 @@ class IAPOrderInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["VERIFIED", "FULFILLED", "FAILED"],
-            "type": ["APPLE", "GOOGLE", "PLAYSTATION", "STEAM", "XBOX", "STADIA", "EPICGAMES", "TWITCH"],
+            "status": ["FAILED", "FULFILLED", "VERIFIED"],
+            "type": ["APPLE", "EPICGAMES", "GOOGLE", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
         }
 
     # endregion static methods

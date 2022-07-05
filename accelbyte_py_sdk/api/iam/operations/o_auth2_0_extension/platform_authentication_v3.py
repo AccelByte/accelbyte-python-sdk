@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.10.1)
+# justice-iam-service (5.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -80,6 +80,10 @@ class PlatformAuthenticationV3(Operation):
 
       * google
     Google login page will redirects to this endpoint after login success
+    as previously defined on authorize request parameter `redirect_uri`
+
+      * snapchat
+    Snapchat login page will redirects to this endpoint after login success
     as previously defined on authorize request parameter `redirect_uri`
 
     action code : 10709

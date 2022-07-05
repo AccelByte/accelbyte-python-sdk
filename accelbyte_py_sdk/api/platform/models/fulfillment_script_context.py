@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,16 +33,16 @@ from ..models.order_summary import OrderSummary
 
 
 class SourceEnum(StrEnum):
-    PURCHASE = "PURCHASE"
-    IAP = "IAP"
-    PROMOTION = "PROMOTION"
     ACHIEVEMENT = "ACHIEVEMENT"
-    REFERRAL_BONUS = "REFERRAL_BONUS"
-    REDEEM_CODE = "REDEEM_CODE"
-    REWARD = "REWARD"
-    GIFT = "GIFT"
     DLC = "DLC"
+    GIFT = "GIFT"
+    IAP = "IAP"
     OTHER = "OTHER"
+    PROMOTION = "PROMOTION"
+    PURCHASE = "PURCHASE"
+    REDEEM_CODE = "REDEEM_CODE"
+    REFERRAL_BONUS = "REFERRAL_BONUS"
+    REWARD = "REWARD"
 
 
 class FulfillmentScriptContext(Model):
@@ -193,7 +193,7 @@ class FulfillmentScriptContext(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "source": ["PURCHASE", "IAP", "PROMOTION", "ACHIEVEMENT", "REFERRAL_BONUS", "REDEEM_CODE", "REWARD", "GIFT", "DLC", "OTHER"],
+            "source": ["ACHIEVEMENT", "DLC", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
         }
 
     # endregion static methods

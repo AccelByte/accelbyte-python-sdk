@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-seasonpass-service (1.12.2)
+# justice-seasonpass-service (1.13.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,18 +33,18 @@ from ..models.reward_currency import RewardCurrency
 
 
 class TypeEnum(StrEnum):
-    ITEM = "ITEM"
     CURRENCY = "CURRENCY"
+    ITEM = "ITEM"
 
 
 class ItemTypeEnum(StrEnum):
     APP = "APP"
-    COINS = "COINS"
-    INGAMEITEM = "INGAMEITEM"
     BUNDLE = "BUNDLE"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
     SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class RewardInfo(Model):
@@ -334,8 +334,8 @@ class RewardInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "type": ["ITEM", "CURRENCY"],
-            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON"],
+            "type": ["CURRENCY", "ITEM"],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "SEASON", "SUBSCRIPTION"],
         }
 
     # endregion static methods

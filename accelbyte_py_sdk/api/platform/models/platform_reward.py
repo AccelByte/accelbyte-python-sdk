@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from ..models.platform_reward_item import PlatformRewardItem
 
 
 class TypeEnum(StrEnum):
-    ITEM = "ITEM"
     CURRENCY = "CURRENCY"
+    ITEM = "ITEM"
 
 
 class PlatformReward(Model):
@@ -188,7 +188,7 @@ class PlatformReward(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "type": ["ITEM", "CURRENCY"],
+            "type": ["CURRENCY", "ITEM"],
         }
 
     # endregion static methods

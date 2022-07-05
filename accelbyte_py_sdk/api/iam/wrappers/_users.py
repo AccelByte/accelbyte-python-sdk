@@ -3454,7 +3454,7 @@ async def public_reset_password_v2_async(body: ModelResetPasswordRequest, namesp
 
 
 @same_doc_as(PublicSearchUserV3)
-def public_search_user_v3(by: Optional[str] = None, limit: Optional[str] = None, offset: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_search_user_v3(by: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -3470,7 +3470,7 @@ def public_search_user_v3(by: Optional[str] = None, limit: Optional[str] = None,
 
 
 @same_doc_as(PublicSearchUserV3)
-async def public_search_user_v3_async(by: Optional[str] = None, limit: Optional[str] = None, offset: Optional[str] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_search_user_v3_async(by: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

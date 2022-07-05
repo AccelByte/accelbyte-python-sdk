@@ -288,30 +288,30 @@ async def delete_root_region_override_async(deployment: str, region: str, namesp
 
 
 @same_doc_as(GetAllDeployment)
-def get_all_deployment(count: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_all_deployment(count: int, offset: int, name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetAllDeployment.create(
         count=count,
-        name=name,
         offset=offset,
+        name=name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllDeployment)
-async def get_all_deployment_async(count: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_all_deployment_async(count: int, offset: int, name: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetAllDeployment.create(
         count=count,
-        name=name,
         offset=offset,
+        name=name,
         namespace=namespace,
     )
     return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

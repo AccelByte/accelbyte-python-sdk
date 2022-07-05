@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.10.1)
+# justice-iam-service (5.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,9 +65,9 @@ class PublicSearchUserV3(Operation):
 
         by: (by) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        offset: (offset) OPTIONAL str in query
+        offset: (offset) OPTIONAL int in query
 
         query: (query) OPTIONAL str in query
 
@@ -94,8 +94,8 @@ class PublicSearchUserV3(Operation):
 
     namespace: str                                                                                 # REQUIRED in [path]
     by: str                                                                                        # OPTIONAL in [query]
-    limit: str                                                                                     # OPTIONAL in [query]
-    offset: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
     query: str                                                                                     # OPTIONAL in [query]
 
     # endregion fields
@@ -174,11 +174,11 @@ class PublicSearchUserV3(Operation):
         self.by = value
         return self
 
-    def with_limit(self, value: str) -> PublicSearchUserV3:
+    def with_limit(self, value: int) -> PublicSearchUserV3:
         self.limit = value
         return self
 
-    def with_offset(self, value: str) -> PublicSearchUserV3:
+    def with_offset(self, value: int) -> PublicSearchUserV3:
         self.offset = value
         return self
 
@@ -201,13 +201,13 @@ class PublicSearchUserV3(Operation):
         elif include_empty:
             result["by"] = ""
         if hasattr(self, "limit") and self.limit:
-            result["limit"] = str(self.limit)
+            result["limit"] = int(self.limit)
         elif include_empty:
-            result["limit"] = ""
+            result["limit"] = 0
         if hasattr(self, "offset") and self.offset:
-            result["offset"] = str(self.offset)
+            result["offset"] = int(self.offset)
         elif include_empty:
-            result["offset"] = ""
+            result["offset"] = 0
         if hasattr(self, "query") and self.query:
             result["query"] = str(self.query)
         elif include_empty:
@@ -265,8 +265,8 @@ class PublicSearchUserV3(Operation):
         cls,
         namespace: str,
         by: Optional[str] = None,
-        limit: Optional[str] = None,
-        offset: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         query: Optional[str] = None,
     ) -> PublicSearchUserV3:
         instance = cls()
@@ -293,13 +293,13 @@ class PublicSearchUserV3(Operation):
         elif include_empty:
             instance.by = ""
         if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = str(dict_["limit"])
+            instance.limit = int(dict_["limit"])
         elif include_empty:
-            instance.limit = ""
+            instance.limit = 0
         if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = str(dict_["offset"])
+            instance.offset = int(dict_["offset"])
         elif include_empty:
-            instance.offset = ""
+            instance.offset = 0
         if "query" in dict_ and dict_["query"] is not None:
             instance.query = str(dict_["query"])
         elif include_empty:

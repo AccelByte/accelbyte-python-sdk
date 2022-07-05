@@ -2,10 +2,16 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (4.10.0)
+# justice-platform-service Index (4.11.0)
 
 
 ## Operations
+
+### AchievementPlatform
+| Endpoint | Method | ID | Class | Wrapper | Example |
+|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam | PUT | unlockSteamUserAchievement | [UnlockSteamUserAchievement](../accelbyte_py_sdk/api/platform/operations/achievement_platform/unlock_steam_user_achievement.py) | [unlock_steam_user_achievement](../accelbyte_py_sdk/api/platform/wrappers/_achievement_platform.py) | [accelbyte_py_sdk_cli platform-unlock-steam-user-achievement](../samples/cli/accelbyte_py_sdk_cli/platform/_unlock_steam_user_achievement.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl | PUT | updateXblUserAchievement | [UpdateXblUserAchievement](../accelbyte_py_sdk/api/platform/operations/achievement_platform/update_xbl_user_achievement.py) | [update_xbl_user_achievement](../accelbyte_py_sdk/api/platform/wrappers/_achievement_platform.py) | [accelbyte_py_sdk_cli platform-update-xbl-user-achievement](../samples/cli/accelbyte_py_sdk_cli/platform/_update_xbl_user_achievement.py) |
 
 ### Anonymization
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -41,8 +47,14 @@
 ### CatalogChanges
 | Endpoint | Method | ID | Class | Wrapper | Example |
 |---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics | GET | getStatistic | [GetStatistic](../accelbyte_py_sdk/api/platform/operations/catalog_changes/get_statistic.py) | [get_statistic](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-get-statistic](../samples/cli/accelbyte_py_sdk_cli/platform/_get_statistic.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll | PUT | publishAll | [PublishAll](../accelbyte_py_sdk/api/platform/operations/catalog_changes/publish_all.py) | [publish_all](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-publish-all](../samples/cli/accelbyte_py_sdk_cli/platform/_publish_all.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected | PUT | publishSelected | [PublishSelected](../accelbyte_py_sdk/api/platform/operations/catalog_changes/publish_selected.py) | [publish_selected](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-publish-selected](../samples/cli/accelbyte_py_sdk_cli/platform/_publish_selected.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria | GET | queryChanges | [QueryChanges](../accelbyte_py_sdk/api/platform/operations/catalog_changes/query_changes.py) | [query_changes](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-query-changes](../samples/cli/accelbyte_py_sdk_cli/platform/_query_changes.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAll | PUT | selectAllRecords | [SelectAllRecords](../accelbyte_py_sdk/api/platform/operations/catalog_changes/select_all_records.py) | [select_all_records](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-select-all-records](../samples/cli/accelbyte_py_sdk_cli/platform/_select_all_records.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select | PUT | selectRecord | [SelectRecord](../accelbyte_py_sdk/api/platform/operations/catalog_changes/select_record.py) | [select_record](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-select-record](../samples/cli/accelbyte_py_sdk_cli/platform/_select_record.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll | PUT | unselectAllRecords | [UnselectAllRecords](../accelbyte_py_sdk/api/platform/operations/catalog_changes/unselect_all_records.py) | [unselect_all_records](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-unselect-all-records](../samples/cli/accelbyte_py_sdk_cli/platform/_unselect_all_records.py) |
+| /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect | PUT | unselectRecord | [UnselectRecord](../accelbyte_py_sdk/api/platform/operations/catalog_changes/unselect_record.py) | [unselect_record](../accelbyte_py_sdk/api/platform/wrappers/_catalog_changes.py) | [accelbyte_py_sdk_cli platform-unselect-record](../samples/cli/accelbyte_py_sdk_cli/platform/_unselect_record.py) |
 
 ### Category
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -440,6 +452,8 @@
 ## Models
 | Model | Class |
 |---|---|
+| A DTO object for unlock steam achievement API | [ADTOObjectForUnlockSteamAchievementAPI](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_unlock_steam_achievement_api.py) |
+| A DTO object for update xbox achievement complete percentage API | [ADTOObjectForUpdateXboxAchievementCompletePercentageAPI](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_update_xbox_achievement_complete_percentage_api.py) |
 | AdditionalData | [AdditionalData](../accelbyte_py_sdk/api/platform/models/additional_data.py) |
 | AdminOrderCreate | [AdminOrderCreate](../accelbyte_py_sdk/api/platform/models/admin_order_create.py) |
 | AdyenConfig | [AdyenConfig](../accelbyte_py_sdk/api/platform/models/adyen_config.py) |
@@ -467,6 +481,7 @@
 | CancelRequest | [CancelRequest](../accelbyte_py_sdk/api/platform/models/cancel_request.py) |
 | CatalogChangeInfo | [CatalogChangeInfo](../accelbyte_py_sdk/api/platform/models/catalog_change_info.py) |
 | CatalogChangePagingSlicedResult | [CatalogChangePagingSlicedResult](../accelbyte_py_sdk/api/platform/models/catalog_change_paging_sliced_result.py) |
+| CatalogChangeStatistics | [CatalogChangeStatistics](../accelbyte_py_sdk/api/platform/models/catalog_change_statistics.py) |
 | CategoryCreate | [CategoryCreate](../accelbyte_py_sdk/api/platform/models/category_create.py) |
 | CategoryInfo | [CategoryInfo](../accelbyte_py_sdk/api/platform/models/category_info.py) |
 | CategoryUpdate | [CategoryUpdate](../accelbyte_py_sdk/api/platform/models/category_update.py) |
@@ -639,6 +654,7 @@
 | StackableEntitlementInfo | [StackableEntitlementInfo](../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
 | StadiaIAPConfigInfo | [StadiaIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/stadia_iap_config_info.py) |
 | StadiaSyncRequest | [StadiaSyncRequest](../accelbyte_py_sdk/api/platform/models/stadia_sync_request.py) |
+| steam achievement request | [SteamAchievementRequest](../accelbyte_py_sdk/api/platform/models/steam_achievement_request.py) |
 | SteamDLCSyncRequest | [SteamDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/steam_dlc_sync_request.py) |
 | SteamIAPConfig | [SteamIAPConfig](../accelbyte_py_sdk/api/platform/models/steam_iap_config.py) |
 | SteamIAPConfigInfo | [SteamIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/steam_iap_config_info.py) |
@@ -685,6 +701,7 @@
 | XblIAPConfigRequest | [XblIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/xbl_iap_config_request.py) |
 | XblReconcileRequest | [XblReconcileRequest](../accelbyte_py_sdk/api/platform/models/xbl_reconcile_request.py) |
 | XblReconcileResult | [XblReconcileResult](../accelbyte_py_sdk/api/platform/models/xbl_reconcile_result.py) |
+| xbox achievement request | [XboxAchievementRequest](../accelbyte_py_sdk/api/platform/models/xbox_achievement_request.py) |
 | XsollaConfig | [XsollaConfig](../accelbyte_py_sdk/api/platform/models/xsolla_config.py) |
 | XsollaPaywallConfig | [XsollaPaywallConfig](../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config.py) |
 | XsollaPaywallConfigRequest | [XsollaPaywallConfigRequest](../accelbyte_py_sdk/api/platform/models/xsolla_paywall_config_request.py) |

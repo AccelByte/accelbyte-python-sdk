@@ -282,7 +282,7 @@ async def list_local_server_async(namespace: Optional[str] = None, x_additional_
 
 
 @same_doc_as(ListServer)
-def list_server(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_server(count: int, offset: int, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -297,7 +297,7 @@ def list_server(count: Optional[int] = None, offset: Optional[int] = None, regio
 
 
 @same_doc_as(ListServer)
-async def list_server_async(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_server_async(count: int, offset: int, region: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,7 +312,7 @@ async def list_server_async(count: Optional[int] = None, offset: Optional[int] =
 
 
 @same_doc_as(ListSession)
-def list_session(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_session(count: int, offset: int, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -328,7 +328,7 @@ def list_session(count: Optional[int] = None, offset: Optional[int] = None, regi
 
 
 @same_doc_as(ListSession)
-async def list_session_async(count: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_session_async(count: int, offset: int, region: Optional[str] = None, with_server: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:

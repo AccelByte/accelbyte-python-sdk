@@ -91,7 +91,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [COOKIE_AUTH]
+        securities: [COOKIE_AUTH] or [BEARER_AUTH]
 
         body: (body) REQUIRED List[TelemetryBody] in body
 
@@ -109,7 +109,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["COOKIE_AUTH"]]
+    _securities: List[List[str]] = [["COOKIE_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[TelemetryBody]                                                                      # REQUIRED in [body]

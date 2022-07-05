@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.10.1)
+# justice-iam-service (5.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -516,8 +516,11 @@ def create_accountcommon_namespace_role_example() -> AccountcommonNamespaceRole:
 def create_accountcommon_netflix_certificates_example() -> AccountcommonNetflixCertificates:
     instance = AccountcommonNetflixCertificates()
     instance.encrypted_private_key = randomize()
+    instance.encrypted_private_key_name = randomize()
     instance.public_certificate = randomize()
+    instance.public_certificate_name = randomize()
     instance.root_certificate = randomize()
+    instance.root_certificate_name = randomize()
     return instance
 
 

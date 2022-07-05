@@ -8,11 +8,17 @@
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.10.0"
+__version__ = "4.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+# achievement_platform
+from .wrappers import unlock_steam_user_achievement
+from .wrappers import unlock_steam_user_achievement_async
+from .wrappers import update_xbl_user_achievement
+from .wrappers import update_xbl_user_achievement_async
 
 # anonymization
 from .wrappers import anonymize_campaign
@@ -65,10 +71,22 @@ from .wrappers import update_campaign
 from .wrappers import update_campaign_async
 
 # catalog_changes
+from .wrappers import get_statistic
+from .wrappers import get_statistic_async
 from .wrappers import publish_all
 from .wrappers import publish_all_async
+from .wrappers import publish_selected
+from .wrappers import publish_selected_async
 from .wrappers import query_changes
 from .wrappers import query_changes_async
+from .wrappers import select_all_records
+from .wrappers import select_all_records_async
+from .wrappers import select_record
+from .wrappers import select_record_async
+from .wrappers import unselect_all_records
+from .wrappers import unselect_all_records_async
+from .wrappers import unselect_record
+from .wrappers import unselect_record_async
 
 # category
 from .wrappers import create_category

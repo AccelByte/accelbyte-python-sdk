@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,9 +33,9 @@ from ..models.currency_summary import CurrencySummary
 
 
 class StatusEnum(StrEnum):
-    INIT = "INIT"
     CHARGED = "CHARGED"
     CHARGE_FAILED = "CHARGE_FAILED"
+    INIT = "INIT"
     REFUNDED = "REFUNDED"
     REFUND_FAILED = "REFUND_FAILED"
 
@@ -578,7 +578,7 @@ class BillingHistoryInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["INIT", "CHARGED", "CHARGE_FAILED", "REFUNDED", "REFUND_FAILED"],
+            "status": ["CHARGED", "CHARGE_FAILED", "INIT", "REFUNDED", "REFUND_FAILED"],
         }
 
     # endregion static methods

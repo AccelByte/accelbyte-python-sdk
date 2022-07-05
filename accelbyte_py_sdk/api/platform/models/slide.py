@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,8 +36,8 @@ class TypeEnum(StrEnum):
 
 class VideoSourceEnum(StrEnum):
     GENERIC = "generic"
-    YOUTUBE = "youtube"
     VIMEO = "vimeo"
+    YOUTUBE = "youtube"
 
 
 class Slide(Model):
@@ -232,7 +232,7 @@ class Slide(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["image", "video"],
-            "videoSource": ["generic", "youtube", "vimeo"],
+            "videoSource": ["generic", "vimeo", "youtube"],
         }
 
     # endregion static methods

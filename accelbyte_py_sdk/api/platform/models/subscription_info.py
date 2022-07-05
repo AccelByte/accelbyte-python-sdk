@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,23 +36,23 @@ from ..models.recurring import Recurring
 
 
 class ChargeStatusEnum(StrEnum):
-    NEVER = "NEVER"
-    SETUP = "SETUP"
-    RECURRING_CHARGING = "RECURRING_CHARGING"
     CHARGED = "CHARGED"
     CHARGE_FAILED = "CHARGE_FAILED"
+    NEVER = "NEVER"
+    RECURRING_CHARGING = "RECURRING_CHARGING"
+    SETUP = "SETUP"
 
 
 class StatusEnum(StrEnum):
-    INIT = "INIT"
     ACTIVE = "ACTIVE"
     CANCELLED = "CANCELLED"
     EXPIRED = "EXPIRED"
+    INIT = "INIT"
 
 
 class SubscribedByEnum(StrEnum):
-    USER = "USER"
     PLATFORM = "PLATFORM"
+    USER = "USER"
 
 
 class SubscriptionInfo(Model):
@@ -974,9 +974,9 @@ class SubscriptionInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "chargeStatus": ["NEVER", "SETUP", "RECURRING_CHARGING", "CHARGED", "CHARGE_FAILED"],
-            "status": ["INIT", "ACTIVE", "CANCELLED", "EXPIRED"],
-            "subscribedBy": ["USER", "PLATFORM"],
+            "chargeStatus": ["CHARGED", "CHARGE_FAILED", "NEVER", "RECURRING_CHARGING", "SETUP"],
+            "status": ["ACTIVE", "CANCELLED", "EXPIRED", "INIT"],
+            "subscribedBy": ["PLATFORM", "USER"],
         }
 
     # endregion static methods

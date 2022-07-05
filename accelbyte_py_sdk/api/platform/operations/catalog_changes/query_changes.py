@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -102,11 +102,15 @@ class QueryChanges(Operation):
 
         action: (action) OPTIONAL Union[str, ActionEnum] in query
 
+        item_sku: (itemSku) OPTIONAL str in query
+
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        selected: (selected) OPTIONAL bool in query
 
         sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
@@ -134,9 +138,11 @@ class QueryChanges(Operation):
     namespace: str                                                                                 # REQUIRED in [path]
     store_id: str                                                                                  # REQUIRED in [path]
     action: Union[str, ActionEnum]                                                                 # OPTIONAL in [query]
+    item_sku: str                                                                                  # OPTIONAL in [query]
     item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL in [query]
     limit: int                                                                                     # OPTIONAL in [query]
     offset: int                                                                                    # OPTIONAL in [query]
+    selected: bool                                                                                 # OPTIONAL in [query]
     sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
     status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
     type_: Union[str, TypeEnum]                                                                    # OPTIONAL in [query]
@@ -197,12 +203,16 @@ class QueryChanges(Operation):
         result = {}
         if hasattr(self, "action"):
             result["action"] = self.action
+        if hasattr(self, "item_sku"):
+            result["itemSku"] = self.item_sku
         if hasattr(self, "item_type"):
             result["itemType"] = self.item_type
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "selected"):
+            result["selected"] = self.selected
         if hasattr(self, "sort_by"):
             result["sortBy"] = self.sort_by
         if hasattr(self, "status"):
@@ -235,6 +245,10 @@ class QueryChanges(Operation):
         self.action = value
         return self
 
+    def with_item_sku(self, value: str) -> QueryChanges:
+        self.item_sku = value
+        return self
+
     def with_item_type(self, value: Union[str, ItemTypeEnum]) -> QueryChanges:
         self.item_type = value
         return self
@@ -245,6 +259,10 @@ class QueryChanges(Operation):
 
     def with_offset(self, value: int) -> QueryChanges:
         self.offset = value
+        return self
+
+    def with_selected(self, value: bool) -> QueryChanges:
+        self.selected = value
         return self
 
     def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryChanges:
@@ -285,6 +303,10 @@ class QueryChanges(Operation):
             result["action"] = str(self.action)
         elif include_empty:
             result["action"] = Union[str, ActionEnum]()
+        if hasattr(self, "item_sku") and self.item_sku:
+            result["itemSku"] = str(self.item_sku)
+        elif include_empty:
+            result["itemSku"] = ""
         if hasattr(self, "item_type") and self.item_type:
             result["itemType"] = str(self.item_type)
         elif include_empty:
@@ -297,6 +319,10 @@ class QueryChanges(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "selected") and self.selected:
+            result["selected"] = bool(self.selected)
+        elif include_empty:
+            result["selected"] = False
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
@@ -355,9 +381,11 @@ class QueryChanges(Operation):
         namespace: str,
         store_id: str,
         action: Optional[Union[str, ActionEnum]] = None,
+        item_sku: Optional[str] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        selected: Optional[bool] = None,
         sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
@@ -369,12 +397,16 @@ class QueryChanges(Operation):
         instance.store_id = store_id
         if action is not None:
             instance.action = action
+        if item_sku is not None:
+            instance.item_sku = item_sku
         if item_type is not None:
             instance.item_type = item_type
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if selected is not None:
+            instance.selected = selected
         if sort_by is not None:
             instance.sort_by = sort_by
         if status is not None:
@@ -402,6 +434,10 @@ class QueryChanges(Operation):
             instance.action = str(dict_["action"])
         elif include_empty:
             instance.action = Union[str, ActionEnum]()
+        if "itemSku" in dict_ and dict_["itemSku"] is not None:
+            instance.item_sku = str(dict_["itemSku"])
+        elif include_empty:
+            instance.item_sku = ""
         if "itemType" in dict_ and dict_["itemType"] is not None:
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
@@ -414,6 +450,10 @@ class QueryChanges(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "selected" in dict_ and dict_["selected"] is not None:
+            instance.selected = bool(dict_["selected"])
+        elif include_empty:
+            instance.selected = False
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
@@ -442,9 +482,11 @@ class QueryChanges(Operation):
             "namespace": "namespace",
             "storeId": "store_id",
             "action": "action",
+            "itemSku": "item_sku",
             "itemType": "item_type",
             "limit": "limit",
             "offset": "offset",
+            "selected": "selected",
             "sortBy": "sort_by",
             "status": "status",
             "type": "type_",
@@ -458,9 +500,11 @@ class QueryChanges(Operation):
             "namespace": True,
             "storeId": True,
             "action": False,
+            "itemSku": False,
             "itemType": False,
             "limit": False,
             "offset": False,
+            "selected": False,
             "sortBy": False,
             "status": False,
             "type": False,

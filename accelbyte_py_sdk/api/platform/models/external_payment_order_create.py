@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,13 +32,13 @@ from ....core import StrEnum
 
 class ItemTypeEnum(StrEnum):
     APP = "APP"
-    COINS = "COINS"
-    INGAMEITEM = "INGAMEITEM"
     BUNDLE = "BUNDLE"
     CODE = "CODE"
-    SUBSCRIPTION = "SUBSCRIPTION"
-    SEASON = "SEASON"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class ExternalPaymentOrderCreate(Model):
@@ -546,7 +546,7 @@ class ExternalPaymentOrderCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "itemType": ["APP", "COINS", "INGAMEITEM", "BUNDLE", "CODE", "SUBSCRIPTION", "SEASON", "MEDIA"],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
         }
 
     @staticmethod

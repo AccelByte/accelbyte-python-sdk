@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-seasonpass-service (1.12.2)
+# justice-seasonpass-service (1.13.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,8 +33,8 @@ from ..models.reward_currency import RewardCurrency
 
 
 class TypeEnum(StrEnum):
-    ITEM = "ITEM"
     CURRENCY = "CURRENCY"
+    ITEM = "ITEM"
 
 
 class RewardUpdate(Model):
@@ -228,7 +228,7 @@ class RewardUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "type": ["ITEM", "CURRENCY"],
+            "type": ["CURRENCY", "ITEM"],
         }
 
     # endregion static methods

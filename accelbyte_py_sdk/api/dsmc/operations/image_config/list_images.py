@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -54,6 +54,8 @@ class ListImages(Operation):
 
     This endpoint lists all of dedicated servers images.
 
+    Parameter Offset and Count is Required
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
 
@@ -75,15 +77,15 @@ class ListImages(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
         q: (q) OPTIONAL str in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+        count: (count) REQUIRED int in query
+
+        offset: (offset) REQUIRED int in query
 
     Responses:
         200: OK - ModelsListImageResponse (configs listed)
@@ -105,11 +107,11 @@ class ListImages(Operation):
     _location_query: str = None
 
     namespace: str                                                                                 # REQUIRED in [path]
-    count: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
     q: str                                                                                         # OPTIONAL in [query]
     sort_by: Union[str, SortByEnum]                                                                # OPTIONAL in [query]
     sort_direction: Union[str, SortDirectionEnum]                                                  # OPTIONAL in [query]
+    count: int                                                                                     # REQUIRED in [query]
+    offset: int                                                                                    # REQUIRED in [query]
 
     # endregion fields
 
@@ -161,16 +163,16 @@ class ListImages(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "count"):
-            result["count"] = self.count
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
         if hasattr(self, "q"):
             result["q"] = self.q
         if hasattr(self, "sort_by"):
             result["sortBy"] = self.sort_by
         if hasattr(self, "sort_direction"):
             result["sortDirection"] = self.sort_direction
+        if hasattr(self, "count"):
+            result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -185,14 +187,6 @@ class ListImages(Operation):
         self.namespace = value
         return self
 
-    def with_count(self, value: int) -> ListImages:
-        self.count = value
-        return self
-
-    def with_offset(self, value: int) -> ListImages:
-        self.offset = value
-        return self
-
     def with_q(self, value: str) -> ListImages:
         self.q = value
         return self
@@ -205,6 +199,14 @@ class ListImages(Operation):
         self.sort_direction = value
         return self
 
+    def with_count(self, value: int) -> ListImages:
+        self.count = value
+        return self
+
+    def with_offset(self, value: int) -> ListImages:
+        self.offset = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -215,14 +217,6 @@ class ListImages(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "count") and self.count:
-            result["count"] = int(self.count)
-        elif include_empty:
-            result["count"] = 0
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = 0
         if hasattr(self, "q") and self.q:
             result["q"] = str(self.q)
         elif include_empty:
@@ -235,6 +229,14 @@ class ListImages(Operation):
             result["sortDirection"] = str(self.sort_direction)
         elif include_empty:
             result["sortDirection"] = Union[str, SortDirectionEnum]()
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
+        elif include_empty:
+            result["count"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -283,18 +285,16 @@ class ListImages(Operation):
     def create(
         cls,
         namespace: str,
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         q: Optional[str] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
         sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
     ) -> ListImages:
         instance = cls()
         instance.namespace = namespace
-        if count is not None:
-            instance.count = count
-        if offset is not None:
-            instance.offset = offset
+        instance.count = count
+        instance.offset = offset
         if q is not None:
             instance.q = q
         if sort_by is not None:
@@ -310,14 +310,6 @@ class ListImages(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "count" in dict_ and dict_["count"] is not None:
-            instance.count = int(dict_["count"])
-        elif include_empty:
-            instance.count = 0
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = 0
         if "q" in dict_ and dict_["q"] is not None:
             instance.q = str(dict_["q"])
         elif include_empty:
@@ -330,28 +322,36 @@ class ListImages(Operation):
             instance.sort_direction = str(dict_["sortDirection"])
         elif include_empty:
             instance.sort_direction = Union[str, SortDirectionEnum]()
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
+        elif include_empty:
+            instance.count = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "count": "count",
-            "offset": "offset",
             "q": "q",
             "sortBy": "sort_by",
             "sortDirection": "sort_direction",
+            "count": "count",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "count": False,
-            "offset": False,
             "q": False,
             "sortBy": False,
             "sortDirection": False,
+            "count": True,
+            "offset": True,
         }
 
     @staticmethod

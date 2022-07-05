@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,9 @@ from ....core import StrEnum
 
 
 class CycleEnum(StrEnum):
-    WEEKLY = "WEEKLY"
     MONTHLY = "MONTHLY"
     QUARTERLY = "QUARTERLY"
+    WEEKLY = "WEEKLY"
     YEARLY = "YEARLY"
 
 
@@ -183,7 +183,7 @@ class Recurring(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "cycle": ["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY"],
+            "cycle": ["MONTHLY", "QUARTERLY", "WEEKLY", "YEARLY"],
         }
 
     # endregion static methods

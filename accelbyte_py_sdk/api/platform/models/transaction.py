@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,31 +33,31 @@ from ..models.currency_summary import CurrencySummary
 
 
 class ProviderEnum(StrEnum):
-    WALLET = "WALLET"
-    XSOLLA = "XSOLLA"
     ADYEN = "ADYEN"
-    STRIPE = "STRIPE"
-    CHECKOUT = "CHECKOUT"
     ALIPAY = "ALIPAY"
-    WXPAY = "WXPAY"
+    CHECKOUT = "CHECKOUT"
     PAYPAL = "PAYPAL"
+    STRIPE = "STRIPE"
+    WALLET = "WALLET"
+    WXPAY = "WXPAY"
+    XSOLLA = "XSOLLA"
 
 
 class StatusEnum(StrEnum):
-    FINISHED = "FINISHED"
     FAILED = "FAILED"
+    FINISHED = "FINISHED"
 
 
 class TypeEnum(StrEnum):
     AUTHORISATION = "AUTHORISATION"
     CHARGE = "CHARGE"
-    CHARGE_FAILED = "CHARGE_FAILED"
-    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
-    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
     CHARGEBACK = "CHARGEBACK"
     CHARGEBACK_REVERSED = "CHARGEBACK_REVERSED"
+    CHARGE_FAILED = "CHARGE_FAILED"
+    NOTIFICATION_OF_CHARGEBACK = "NOTIFICATION_OF_CHARGEBACK"
     REFUND = "REFUND"
     REFUND_FAILED = "REFUND_FAILED"
+    REQUEST_FOR_INFORMATION = "REQUEST_FOR_INFORMATION"
 
 
 class Transaction(Model):
@@ -511,9 +511,9 @@ class Transaction(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "provider": ["WALLET", "XSOLLA", "ADYEN", "STRIPE", "CHECKOUT", "ALIPAY", "WXPAY", "PAYPAL"],
-            "status": ["FINISHED", "FAILED"],
-            "type": ["AUTHORISATION", "CHARGE", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REQUEST_FOR_INFORMATION", "CHARGEBACK", "CHARGEBACK_REVERSED", "REFUND", "REFUND_FAILED"],
+            "provider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "status": ["FAILED", "FINISHED"],
+            "type": ["AUTHORISATION", "CHARGE", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REFUND", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],
         }
 
     # endregion static methods

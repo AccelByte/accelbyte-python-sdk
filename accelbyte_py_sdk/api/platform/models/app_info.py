@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,28 +39,28 @@ class GenresEnum(StrEnum):
     FREETOPLAY = "FreeToPlay"
     INDIE = "Indie"
     MASSIVELYMULTIPLAYER = "MassivelyMultiplayer"
-    RACING = "Racing"
     RPG = "RPG"
+    RACING = "Racing"
     SIMULATION = "Simulation"
     SPORTS = "Sports"
     STRATEGY = "Strategy"
 
 
 class PlatformsEnum(StrEnum):
-    WINDOWS = "Windows"
-    MACOS = "MacOS"
-    LINUX = "Linux"
-    IOS = "IOS"
     ANDROID = "Android"
+    IOS = "IOS"
+    LINUX = "Linux"
+    MACOS = "MacOS"
+    WINDOWS = "Windows"
 
 
 class PlayersEnum(StrEnum):
-    SINGLE = "Single"
-    MULTI = "Multi"
-    CROSSPLATFORMMULTI = "CrossPlatformMulti"
-    MMO = "MMO"
     COOP = "Coop"
+    CROSSPLATFORMMULTI = "CrossPlatformMulti"
     LOCALCOOP = "LocalCoop"
+    MMO = "MMO"
+    MULTI = "Multi"
+    SINGLE = "Single"
 
 
 class PrimaryGenreEnum(StrEnum):
@@ -70,8 +70,8 @@ class PrimaryGenreEnum(StrEnum):
     FREETOPLAY = "FreeToPlay"
     INDIE = "Indie"
     MASSIVELYMULTIPLAYER = "MassivelyMultiplayer"
-    RACING = "Racing"
     RPG = "RPG"
+    RACING = "Racing"
     SIMULATION = "Simulation"
     SPORTS = "Sports"
     STRATEGY = "Strategy"
@@ -486,10 +486,10 @@ class AppInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "genres": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"],
-            "platforms": ["Windows", "MacOS", "Linux", "IOS", "Android"],
-            "players": ["Single", "Multi", "CrossPlatformMulti", "MMO", "Coop", "LocalCoop"],
-            "primaryGenre": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "Racing", "RPG", "Simulation", "Sports", "Strategy"],
+            "genres": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "RPG", "Racing", "Simulation", "Sports", "Strategy"],
+            "platforms": ["Android", "IOS", "Linux", "MacOS", "Windows"],
+            "players": ["Coop", "CrossPlatformMulti", "LocalCoop", "MMO", "Multi", "Single"],
+            "primaryGenre": ["Action", "Adventure", "Casual", "FreeToPlay", "Indie", "MassivelyMultiplayer", "RPG", "Racing", "Simulation", "Sports", "Strategy"],
         }
 
     # endregion static methods
