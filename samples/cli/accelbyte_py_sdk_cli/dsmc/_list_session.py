@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,8 +36,8 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--count", "count", type=int)
-@click.option("--offset", "offset", type=int)
+@click.argument("count", type=int)
+@click.argument("offset", type=int)
 @click.option("--region", "region", type=str)
 @click.option("--with_server", "with_server", type=bool)
 @click.option("--namespace", type=str)
@@ -45,8 +45,8 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_session(
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         region: Optional[str] = None,
         with_server: Optional[bool] = None,
         namespace: Optional[str] = None,

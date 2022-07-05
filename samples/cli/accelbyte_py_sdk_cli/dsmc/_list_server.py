@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,16 +36,16 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--count", "count", type=int)
-@click.option("--offset", "offset", type=int)
+@click.argument("count", type=int)
+@click.argument("offset", type=int)
 @click.option("--region", "region", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_server(
-        count: Optional[int] = None,
-        offset: Optional[int] = None,
+        count: int,
+        offset: int,
         region: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,

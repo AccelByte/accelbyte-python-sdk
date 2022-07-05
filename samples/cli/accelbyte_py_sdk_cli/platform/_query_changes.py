@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,9 +37,11 @@ from accelbyte_py_sdk.api.platform.models import CatalogChangePagingSlicedResult
 @click.command()
 @click.argument("store_id", type=str)
 @click.option("--action", "action", type=str)
+@click.option("--item_sku", "item_sku", type=str)
 @click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--selected", "selected", type=bool)
 @click.option("--sort_by", "sort_by", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--type", "type_", type=str)
@@ -52,9 +54,11 @@ from accelbyte_py_sdk.api.platform.models import CatalogChangePagingSlicedResult
 def query_changes(
         store_id: str,
         action: Optional[str] = None,
+        item_sku: Optional[str] = None,
         item_type: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        selected: Optional[bool] = None,
         sort_by: Optional[str] = None,
         status: Optional[str] = None,
         type_: Optional[str] = None,
@@ -84,9 +88,11 @@ def query_changes(
     result, error = query_changes_internal(
         store_id=store_id,
         action=action,
+        item_sku=item_sku,
         item_type=item_type,
         limit=limit,
         offset=offset,
+        selected=selected,
         sort_by=sort_by,
         status=status,
         type_=type_,

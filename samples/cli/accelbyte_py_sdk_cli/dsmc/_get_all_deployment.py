@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (3.2.1)
+# justice-dsm-controller-service (3.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,17 +36,17 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 
 @click.command()
-@click.option("--count", "count", type=int)
+@click.argument("count", type=int)
+@click.argument("offset", type=int)
 @click.option("--name", "name", type=str)
-@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_all_deployment(
-        count: Optional[int] = None,
+        count: int,
+        offset: int,
         name: Optional[str] = None,
-        offset: Optional[int] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
         login_with_auth: Optional[str] = None,
@@ -64,8 +64,8 @@ def get_all_deployment(
         login_as_internal(login_as)
     result, error = get_all_deployment_internal(
         count=count,
-        name=name,
         offset=offset,
+        name=name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

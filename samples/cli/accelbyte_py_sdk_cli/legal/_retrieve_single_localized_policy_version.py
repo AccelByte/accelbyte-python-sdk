@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.2)
+# justice-legal-service (1.22.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,7 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import retrieve_single_localized_policy_version as retrieve_single_localized_policy_version_internal
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
-from accelbyte_py_sdk.api.legal.models import UpdateLocalizedPolicyVersionResponse
+from accelbyte_py_sdk.api.legal.models import RetrieveLocalizedPolicyVersionResponse
 
 
 @click.command()

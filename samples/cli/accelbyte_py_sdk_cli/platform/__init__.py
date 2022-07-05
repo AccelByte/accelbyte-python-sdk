@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.10.0)
+# justice-platform-service (4.11.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -150,6 +150,12 @@ from ._update_store import update_store
 from ._delete_store import delete_store
 from ._query_changes import query_changes
 from ._publish_all import publish_all
+from ._publish_selected import publish_selected
+from ._select_all_records import select_all_records
+from ._get_statistic import get_statistic
+from ._unselect_all_records import unselect_all_records
+from ._select_record import select_record
+from ._unselect_record import unselect_record
 from ._clone_store import clone_store
 from ._export_store import export_store
 from ._query_subscriptions import query_subscriptions
@@ -158,6 +164,8 @@ from ._get_ticket_dynamic import get_ticket_dynamic
 from ._decrease_ticket_sale import decrease_ticket_sale
 from ._get_ticket_booth_id import get_ticket_booth_id
 from ._increase_ticket_sale import increase_ticket_sale
+from ._unlock_steam_user_achievement import unlock_steam_user_achievement
+from ._update_xbl_user_achievement import update_xbl_user_achievement
 from ._anonymize_campaign import anonymize_campaign
 from ._anonymize_entitlement import anonymize_entitlement
 from ._anonymize_fulfillment import anonymize_fulfillment
@@ -482,6 +490,12 @@ commands = [
     delete_store,
     query_changes,
     publish_all,
+    publish_selected,
+    select_all_records,
+    get_statistic,
+    unselect_all_records,
+    select_record,
+    unselect_record,
     clone_store,
     export_store,
     query_subscriptions,
@@ -490,6 +504,8 @@ commands = [
     decrease_ticket_sale,
     get_ticket_booth_id,
     increase_ticket_sale,
+    unlock_steam_user_achievement,
+    update_xbl_user_achievement,
     anonymize_campaign,
     anonymize_entitlement,
     anonymize_fulfillment,

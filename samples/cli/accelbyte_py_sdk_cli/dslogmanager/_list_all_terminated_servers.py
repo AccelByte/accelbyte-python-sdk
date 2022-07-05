@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-ds-log-manager-service (2.3.2)
+# justice-ds-log-manager-service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,7 @@ from accelbyte_py_sdk.api.dslogmanager.models import ResponseError
 @click.option("--region", "region", type=str)
 @click.option("--session_id", "session_id", type=str)
 @click.option("--start_date", "start_date", type=str)
+@click.option("--status", "status", type=str)
 @click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -66,6 +67,7 @@ def list_all_terminated_servers(
         region: Optional[str] = None,
         session_id: Optional[str] = None,
         start_date: Optional[str] = None,
+        status: Optional[str] = None,
         user_id: Optional[str] = None,
         namespace: Optional[str] = None,
         login_as: Optional[str] = None,
@@ -95,6 +97,7 @@ def list_all_terminated_servers(
         region=region,
         session_id=session_id,
         start_date=start_date,
+        status=status,
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

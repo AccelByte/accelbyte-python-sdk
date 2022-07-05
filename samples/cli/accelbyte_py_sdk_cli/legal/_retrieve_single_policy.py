@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.2)
+# justice-legal-service (1.22.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
