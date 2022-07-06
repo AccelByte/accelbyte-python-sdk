@@ -97,6 +97,7 @@ def login_client(
                 client_id,
                 client_secret,
                 x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
                 refresh_rate=refresh_rate,
                 **kwargs
             )
@@ -131,6 +132,7 @@ async def login_client_async(
                 client_id,
                 client_secret,
                 x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
                 refresh_rate=refresh_rate,
                 **kwargs
             )
@@ -277,6 +279,7 @@ def login_user(
                 password,
                 scope=scope,
                 x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
                 refresh_rate=refresh_rate,
                 **kwargs
             )
@@ -353,6 +356,7 @@ async def login_user_async(
                 password,
                 scope=scope,
                 x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
                 refresh_rate=refresh_rate,
                 **kwargs
             )
