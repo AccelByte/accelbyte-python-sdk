@@ -23,6 +23,8 @@ from ...api.iam import user_authentication_v3
 from ...api.iam import user_authentication_v3_async
 from ...api.iam import token_grant_v3
 from ...api.iam import token_grant_v3_async
+from ...api.iam import platform_token_grant_v3
+from ...api.iam import platform_token_grant_v3_async
 from ...api.iam import token_revocation_v3
 from ...api.iam import token_revocation_v3_async
 from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
@@ -129,6 +131,76 @@ async def login_client_async(
                 client_id,
                 client_secret,
                 x_additional_headers=x_additional_headers,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
+
+    return token, None
+
+
+def login_platform(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
+):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
+    kwargs["try_refresh"] = False
+
+    token, error = platform_token_grant_v3(
+        platform_id=platform_id,
+        platform_token=platform_token,
+        x_additional_headers=x_additional_headers,
+        **kwargs
+    )
+    if error:
+        return None, error
+
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_platform,
+                platform_id,
+                platform_token,
+                x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
+                refresh_rate=refresh_rate,
+                **kwargs
+            )
+        )
+
+    return token, None
+
+
+async def login_platform_async(
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Union[None, Dict[str, str]] = None,
+    **kwargs
+):
+    auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
+    refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
+    kwargs["try_refresh"] = False
+
+    token, error = await platform_token_grant_v3_async(
+        platform_id=platform_id,
+        platform_token=platform_token,
+        x_additional_headers=x_additional_headers,
+        **kwargs
+    )
+    if error:
+        return None, error
+
+    if auto_refresh:
+        set_token_refresher(
+            TokenRefresher(
+                login_platform,
+                platform_id,
+                platform_token,
+                x_additional_headers=x_additional_headers,
+                auto_refresh=auto_refresh,
                 refresh_rate=refresh_rate,
                 **kwargs
             )
