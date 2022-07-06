@@ -31,6 +31,59 @@ class AuthServicesTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    def test_login_platform(self):
+        import requests
+        from accelbyte_py_sdk.services.auth import login_platform
+
+        # arrange
+        client_id = "test.client"
+        client_secret = "UTBcWwt5"
+        grant_type = "authorization_code"
+        phant_auth_host = "https://phantauth.net"
+        platform_id = "phantauth"
+        redirect_uri = "http://localhost"
+        token_type = "authorization"
+        username = "test.serversdk1"
+
+        response = requests.get(
+            url="{host}/user/{username}/token/{tokenType}".format_map({
+                "host": phant_auth_host,
+                "username": username,
+                "tokenType": token_type,
+            })
+        )
+        if not response.ok:
+            self.skipTest(reason=f"Failed to get PhantAuth Code.")
+
+        phant_auth_code = response.text
+        self.assertTrue(phant_auth_code)
+
+        response = requests.post(
+            url="{host}/auth/token".format_map({
+                "host": phant_auth_host,
+            }),
+            data={
+                "grant_type": grant_type,
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "redirect_uri": redirect_uri,
+                "code": phant_auth_code
+            }
+        )
+        if not response.ok:
+            self.skipTest(reason=f"Failed to get PhantAuth Token.")
+
+        phant_auth_token = response.json()
+        self.assertTrue(phant_auth_token)
+
+        phant_auth_token_id = phant_auth_token["id_token"]
+
+        # act
+        _, error = login_platform(platform_id=platform_id, platform_token=phant_auth_token_id)
+
+        # assert
+        self.assertIsNone(error, error)
+
     def test_logout(self):
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.services.auth import login_user
