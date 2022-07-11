@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Single Page App</title>
+</head>
+<body>
+    <div id="content">
+        {% if current_user.is_authenticated %}
+        <div>
+            <p>Welcome back User {{ current_user.id }}!</p>
+        </div>
+
+        <form method="get" action="logout">
+            <button id="logout-button" class="btn btn-primary" type="submit">Logout</button>
+        </form>
+        {% else %}
+        <div>
+            <p>Hello!</p>
+        </div>
+
+        <form method="get" action="login">
+            <button id="login-button" class="btn btn-primary" type="submit">Login</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>
