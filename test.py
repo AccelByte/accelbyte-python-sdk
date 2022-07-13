@@ -11,6 +11,12 @@ def set_logger_level(level):
     logging.getLogger(module_name).setLevel(level)
 
 
+def reset():
+    from accelbyte_py_sdk import reset
+
+    reset()
+
+
 def parse_args():
     def file_path(value: str) -> Optional[str]:
         path = Path(value).resolve()
@@ -81,8 +87,6 @@ def main(*args, **kwargs) -> None:
         import tests.core
         import tests.sdk.core
 
-        set_logger_level(logging.CRITICAL)
-
         suite = unittest.TestSuite(
             [
                 loader.loadTestsFromModule(tests.core),
@@ -91,6 +95,8 @@ def main(*args, **kwargs) -> None:
         )
         results_core = runner.run(suite)
         results["test_core"] = results_core.wasSuccessful()
+
+        reset()
 
     if kwargs.get("test_integration", False):
         import tests.sample_apps.how_to
@@ -104,6 +110,8 @@ def main(*args, **kwargs) -> None:
             loader.loadTestsFromModule(tests.sample_apps.how_to)
         )
         results["test_integration"] = results_integration.wasSuccessful()
+
+        reset()
 
     exit(0 if all(results.values()) else 1)
 
