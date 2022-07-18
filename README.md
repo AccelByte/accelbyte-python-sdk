@@ -151,25 +151,37 @@ if __name__ == "__main__":
 
 ```
 
-:bulb: Using `login_client(...)` and `login_user(...)` automatically refreshes the token once the expiration draws near. To disable auto refreshing or to set the refresh rate.
+:bulb: Using `login_x(..., auto_refresh=True)` automatically refreshes the token once the expiration draws near.
 
-```python
-# disable token auto refresh with 'login_client'
-res, err = login_client(client_id, client_secret, auto_refresh=False)
-```
-```python
-# disable token auto refresh with 'login_user'
-res, err = login_user(username, password, auto_refresh=False)
-```
 ```python
 # set the refresh rate for 'login_client'
 # 0.5 means refresh when we 50% of the expiration duration has passed
-res, err = login_client(client_id, client_secret, refresh_rate=0.5)
+res, err = login_client(client_id, client_secret, auto_refresh=True, refresh_rate=0.5)
 ```
 ```python
 # set the refresh rate for 'login_user'
 # 0.5 means refresh when we 50% of the expiration duration has passed
-res, err = login_user(username, username, refresh_rate=0.5)
+res, err = login_user(username, password, auto_refresh=True, refresh_rate=0.5)
+```
+
+The auto refresh is only triggered when another request is fired. If you want to the refresh run automatically in the background. Use any of the `LoginXTimer` classes.
+
+```python
+from accelbyte_py_sdk.services.auth import LoginClientTimer, LoginPlatformTimer, LoginUserTimer, RefreshLoginTimer
+
+res, err = login_user(username, password)
+if err is not None:
+    exit(1)
+
+# creates a threading.Timer-like object that calls login_user every 1800 seconds repeatedly 'inf' times
+interval = 1800
+timer = LoginUserTimer(
+    interval,
+    username=username,
+    password=password,
+    repeats=-1,  # <0: repeat 'inf' times | 0 or None: repeat 0 times | >0: repeat n times 
+    autostart=True,
+)
 ```
 
 To manually refresh the token:
