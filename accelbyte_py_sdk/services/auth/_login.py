@@ -44,7 +44,7 @@ from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 
 # region constants
 
-DEFAULT_AUTO_REFRESH: bool = True
+DEFAULT_AUTO_REFRESH: bool = False
 DEFAULT_REFRESH_RATE: float = 0.8
 
 # endregion constants

@@ -1717,7 +1717,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = auth.login_client()
+        result, error = auth.login_client(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -1758,7 +1758,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = auth.login_user("admin", "admin")
+        result, error = auth.login_user("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2245,7 +2245,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = auth.login_client()
+        result, error = auth.login_client(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2286,7 +2286,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = await auth.login_client_async()
+        result, error = await auth.login_client_async(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2327,7 +2327,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = auth.login_user("admin", "admin")
+        result, error = auth.login_user("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2369,7 +2369,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertIsNotNone(token_repo)
         self.assertEqual(0, token_repo.counter)
 
-        result, error = await auth.login_user_async("admin", "admin")
+        result, error = await auth.login_user_async("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
