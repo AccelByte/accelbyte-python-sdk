@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import os
 import time
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from unittest import TestCase, IsolatedAsyncioTestCase
@@ -14,6 +14,7 @@ from accelbyte_py_sdk import initialize
 from accelbyte_py_sdk import is_initialized
 from accelbyte_py_sdk import reset
 
+from accelbyte_py_sdk.core import TokenRepository
 from accelbyte_py_sdk.core import DictConfigRepository
 from accelbyte_py_sdk.core import MyTokenRepository
 
@@ -34,9 +35,15 @@ class TestConfigRepository(DictConfigRepository):
 
 class TestTokenRepository(MyTokenRepository):
     def __init__(self, token: Any = None):
-        if token is None:
-            token = {}
+        self.counter = 0
         super().__init__(token)
+
+    def store_token(self, token: Any) -> bool:
+        if token is not None:
+            super().store_token(token=token)
+            self.counter += 1
+            return True
+        return False
 
 
 class TestModel(Model):
@@ -1378,7 +1385,7 @@ class HttpBinRequestTestCase(TestCase):
 class MockServerRequestTestCase(TestCase):
 
     reachable: bool = True
-    base_url: str = "http://0.0.0.0:8080"
+    base_url: str = "http://localhost:8080"
     ready_endpoint: str = f"{base_url}/ready"
 
     @classmethod
@@ -1402,7 +1409,9 @@ class MockServerRequestTestCase(TestCase):
     def setUp(self) -> None:
         if not self.reachable:
             self.skipTest(reason=f"'{self.base_url}' unreachable.")
-        self.assertFalse(is_initialized())
+        if is_initialized():
+            reset()
+        self.reset_overwrite_response()
         initialize(
             options={
                 "config": "MyConfigRepository",
@@ -1410,6 +1419,7 @@ class MockServerRequestTestCase(TestCase):
                     [self.base_url, "admin", "admin"],
                     {"namespace": "test"},
                 ),
+                "token": TestTokenRepository(),
                 "http": "RequestsHttpClient",
             }
         )
@@ -1417,6 +1427,19 @@ class MockServerRequestTestCase(TestCase):
     def tearDown(self) -> None:
         if is_initialized():
             reset()
+
+    # noinspection PyMethodMayBeStatic
+    def force_expiry_at(self, token_repo: TokenRepository, seconds: int):
+        token = token_repo.get_token()
+        expires_in = token_repo.get_expires_in()
+        now_utc = datetime.utcnow()
+
+        new_time_utc = now_utc + timedelta(seconds=seconds)
+        new_timestamp = int(new_time_utc.timestamp())
+        token.access_token = f"expiresAt:{new_timestamp}"
+
+        new_issued_time_utc = now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        token_repo._token_issued_time = new_issued_time_utc
 
     def configure_overwrite_response(self, config: dict):
         response = requests.post(
@@ -1427,6 +1450,15 @@ class MockServerRequestTestCase(TestCase):
     def reset_overwrite_response(self):
         response = requests.post(f"{self.base_url}/reset-overwrite-response")
         self.assertTrue(response.ok)
+
+    def validate_bearer_token(self, bearer_token: str) -> bool:
+        response = requests.get(
+            f"{self.base_url}/validate-bearer-auth",
+            headers={
+                "Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"
+            }
+        )
+        return response.ok
 
     def test_http_backoff_policy_constant(self):
         from accelbyte_py_sdk.api.lobby import get_user_friends_updated
@@ -1681,62 +1713,40 @@ class MockServerRequestTestCase(TestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
+        token_repo = core.get_token_repository()
+        self.assertIsNotNone(token_repo)
+        self.assertEqual(0, token_repo.counter)
+
         result, error = auth.login_client()
         self.assertIsNone(error)
-
-        self.repository = core.get_token_repository()
-        token_repo = self.repository
-        self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
-
-        token_refresher = core.get_token_refresher()
-        old_refresh = token_refresher.refresh
-
-        n_refreshes: int = 0
-
-        def new_refresh(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            old_refresh(kwargs.get("token_repo"))
-
-        token_refresher.refresh = new_refresh
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
-
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        time.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
     def test_auto_refresh_token_login_user(self):
         import accelbyte_py_sdk.core as core
@@ -1744,67 +1754,47 @@ class MockServerRequestTestCase(TestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
-        result, error = auth.login_user("admin", "admin")
-        self.assertIsNone(error)
-
         token_repo = core.get_token_repository()
         self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, token_repo.counter)
 
-        token_refresher = core.get_token_refresher()
-        old_refresh = token_refresher.refresh
-
-        n_refreshes: int = 0
-
-        def new_refresh(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            old_refresh(kwargs.get("token_repo"))
-
-        token_refresher.refresh = new_refresh
+        result, error = auth.login_user("admin", "admin")
+        self.assertIsNone(error)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        time.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
 
 class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
     reachable: bool = True
-    base_url: str = "http://0.0.0.0:8080"
+    base_url: str = "http://localhost:8080"
     ready_endpoint: str = f"{base_url}/ready"
 
     @classmethod
@@ -1828,13 +1818,17 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
     async def asyncSetUp(self) -> None:
         if not self.reachable:
             self.skipTest(reason=f"'{self.base_url}' unreachable.")
+        if is_initialized():
+            reset()
+        self.reset_overwrite_response()
         initialize(
             options={
                 "config": "MyConfigRepository",
                 "config_params": (
-                    ["http://0.0.0.0:8080", "admin", "admin"],
+                    [self.base_url, "admin", "admin"],
                     {"namespace": "test"},
                 ),
+                "token": TestTokenRepository(),
                 "http": "HttpxHttpClient",
             }
         )
@@ -1842,6 +1836,19 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
     async def asyncTearDown(self) -> None:
         if is_initialized():
             reset()
+
+    # noinspection PyMethodMayBeStatic
+    def force_expiry_at(self, token_repo: TokenRepository, seconds: int):
+        token = token_repo.get_token()
+        expires_in = token_repo.get_expires_in()
+        now_utc = datetime.utcnow()
+
+        new_time_utc = now_utc + timedelta(seconds=seconds)
+        new_timestamp = int(new_time_utc.timestamp())
+        token.access_token = f"expiresAt:{new_timestamp}"
+
+        new_issued_time_utc = now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        token_repo._token_issued_time = new_issued_time_utc
 
     def configure_overwrite_response(self, config: dict):
         response = requests.post(
@@ -1852,6 +1859,15 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
     def reset_overwrite_response(self):
         response = requests.post(f"{self.base_url}/reset-overwrite-response")
         self.assertTrue(response.ok)
+
+    def validate_bearer_token(self, bearer_token: str) -> bool:
+        response = requests.get(
+            f"{self.base_url}/validate-bearer-auth",
+            headers={
+                "Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"
+            }
+        )
+        return response.ok
 
     def test_http_backoff_policy_constant(self):
         from accelbyte_py_sdk.api.lobby import get_user_friends_updated
@@ -2225,61 +2241,40 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
-        result, error = auth.login_client()
-        self.assertIsNone(error)
-
         token_repo = core.get_token_repository()
         self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, token_repo.counter)
 
-        token_refresher = core.get_token_refresher()
-        old_refresh = token_refresher.refresh
-
-        n_refreshes: int = 0
-
-        def new_refresh(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            old_refresh(kwargs.get("token_repo"))
-
-        token_refresher.refresh = new_refresh
+        result, error = auth.login_client()
+        self.assertIsNone(error)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
-
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        time.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
     async def test_auto_refresh_token_login_client_async(self):
         import accelbyte_py_sdk.core as core
@@ -2287,61 +2282,40 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
-        result, error = await auth.login_client_async()
-        self.assertIsNone(error)
-
         token_repo = core.get_token_repository()
         self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, token_repo.counter)
 
-        token_refresher = core.get_token_refresher()
-        old_refresh_async = token_refresher.refresh_async
-
-        n_refreshes: int = 0
-
-        async def new_refresh_async(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            await old_refresh_async(kwargs.get("token_repo"))
-
-        token_refresher.refresh_async = new_refresh_async
+        result, error = await auth.login_client_async()
+        self.assertIsNone(error)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
-
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        await asyncio.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
     def test_auto_refresh_token_login_user(self):
         import accelbyte_py_sdk.core as core
@@ -2349,61 +2323,41 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
-        result, error = auth.login_user("admin", "admin")
-        self.assertIsNone(error)
-
         token_repo = core.get_token_repository()
         self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, token_repo.counter)
 
-        token_refresher = core.get_token_refresher()
-        old_refresh = token_refresher.refresh
-
-        n_refreshes: int = 0
-
-        def new_refresh(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            old_refresh(kwargs.get("token_repo"))
-
-        token_refresher.refresh = new_refresh
+        result, error = auth.login_user("admin", "admin")
+        self.assertIsNone(error)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
         result, error = iam.get_bans_type()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        time.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = iam.get_bans_type()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
     async def test_auto_refresh_token_login_user_async(self):
         import accelbyte_py_sdk.core as core
@@ -2411,61 +2365,41 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         import accelbyte_py_sdk.api.iam as iam
 
         # arrange
-        result, error = await auth.login_user_async("admin", "admin")
-        self.assertIsNone(error)
-
         token_repo = core.get_token_repository()
         self.assertIsNotNone(token_repo)
-        self.assertFalse(token_repo.has_token_expired())
+        self.assertEqual(0, token_repo.counter)
 
-        token_refresher = core.get_token_refresher()
-        old_refresh_async = token_refresher.refresh_async
-
-        n_refreshes: int = 0
-
-        async def new_refresh_async(*args, **kwargs):
-            nonlocal n_refreshes
-            n_refreshes += 1
-            await old_refresh_async(kwargs.get("token_repo"))
-
-        token_refresher.refresh_async = new_refresh_async
+        result, error = await auth.login_user_async("admin", "admin")
+        self.assertIsNone(error)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(0, n_refreshes)
+        self.assertEqual(1, token_repo.counter)
+        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+
+        token = token_repo.get_token()
 
         # act & assert
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
+        original_access_token = token.access_token
+        self.force_expiry_at(token_repo, 5)
+        modified_access_token = token.access_token
+        self.assertEqual(1, token_repo.counter)
+        self.assertNotEqual(original_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(modified_access_token))
 
         result, error = await iam.get_bans_type_async()
         self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(1, n_refreshes)
 
-        token_repo.get_token().expires_in = 0  # monkey-patch, force expiry
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(2, n_refreshes)
+        time.sleep(5)
 
-        token_repo.get_token().expires_in = (
-            3  # monkey-patch, force expiry in the future
-        )
-        self.assertFalse(token_repo.has_token_expired())
-        await asyncio.sleep(4)
-        self.assertTrue(token_repo.has_token_expired())
-        result, error = await iam.get_bans_type_async()
-        self.assertIsNone(error)
-        self.assertFalse(token_repo.has_token_expired())
-        self.assertEqual(3, n_refreshes)
+        token = token_repo.get_token()
+        new_access_token = token.access_token
+        self.assertEqual(2, token_repo.counter)
+        self.assertNotEqual(new_access_token, modified_access_token)
+        self.assertTrue(self.validate_bearer_token(new_access_token))
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):
