@@ -117,6 +117,14 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
+    def create_sdk_not_initialized_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "SDK not initialized."
+        return instance
+
+    @classmethod
     def create_base_url_not_set_error(cls):
         instance = cls()
         instance.code = 400
@@ -138,6 +146,14 @@ class HttpResponse(Model):
         instance.code = 400
         instance.content_type = "error"
         instance.content = "Token not found."
+        return instance
+
+    @classmethod
+    def create_token_invalid_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Token invalid."
         return instance
 
     @classmethod
@@ -170,6 +186,22 @@ class HttpResponse(Model):
         instance.code = 400
         instance.content_type = "error"
         instance.content = "Failed to resolve security."
+        return instance
+
+    @classmethod
+    def create_failed_to_remove_token_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Failed to remove token."
+        return instance
+
+    @classmethod
+    def create_failed_to_set_token_error(cls):
+        instance = cls()
+        instance.code = 400
+        instance.content_type = "error"
+        instance.content = "Failed to set token."
         return instance
 
     @classmethod

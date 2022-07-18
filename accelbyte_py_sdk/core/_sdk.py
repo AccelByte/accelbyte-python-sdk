@@ -2,22 +2,54 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+from __future__ import annotations
+
 import logging
 
 from os import PathLike as OSPathLike
-from typing import Any, Dict, Iterable, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, Optional, Protocol, Set, Tuple
 
 from ._config_repository import ConfigRepository, CONFIG_REPOS, DEFAULT_CONFIG_REPO
 from ._http_client import HttpClient, HTTP_CLIENTS, DEFAULT_HTTP_CLIENT
 from ._http_response import HttpResponse
 from ._operation import Operation
 from ._proto_http_request import ProtoHttpRequest, create_proto_from_operation
-from ._token_refresher import TokenRefresher
 from ._token_repository import TokenRepository, TOKEN_REPOS, DEFAULT_TOKEN_REPO
 from ._utils import (
     add_buffered_file_handler_to_logger,
     get_query_from_http_redirect_response,
 )
+
+
+class OperationPreprocessor(Protocol):
+
+    def __call__(self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs) -> Operation:
+        ...
+
+
+class RequestPreprocessor(Protocol):
+
+    def __call__(self, proto: ProtoHttpRequest, sdk: AccelByteSDK, *args, **kwargs) -> ProtoHttpRequest:
+        ...
+
+
+class ResponsePreprocessor(Protocol):
+
+    def __call__(self, response: Any, operation: Operation, sdk: AccelByteSDK, *args, **kwargs) -> Tuple[Any, Optional[HttpResponse]]:
+        ...
+
+
+def extract_redirect_query(response: Any, operation: Operation, sdk: AccelByteSDK) -> Tuple[Any, Optional[HttpResponse]]:
+    if (
+            isinstance(response, HttpResponse) and
+            operation.has_redirects() and
+            operation.location_query
+    ):
+        response, error = get_query_from_http_redirect_response(response, operation.location_query)
+        if error:
+            return None, error
+
+    return response, None
 
 
 class AccelByteSDK:
@@ -32,9 +64,12 @@ class AccelByteSDK:
         self._token_repository: Optional[TokenRepository] = None
         self._http_client: Optional[HttpClient] = None
 
-        self._token_refresher: Optional[TokenRefresher] = None
-
         self.logger = logging.getLogger(AccelByteSDK.LOGGER_NAME)
+        self.operation_preprocessors: Dict[str, OperationPreprocessor] = {}
+        self.request_preprocessors: Dict[str, RequestPreprocessor] = {}
+        self.response_preprocessors: Dict[str, ResponsePreprocessor] = {
+            "extract_redirect_query": extract_redirect_query
+        }
 
     # region Lifecycle
 
@@ -191,8 +226,6 @@ class AccelByteSDK:
         self._token_repository = None
         self._http_client = None
 
-        self._token_refresher = None
-
     # endregion Lifecycle
 
     # region Accessors
@@ -234,23 +267,6 @@ class AccelByteSDK:
         if not isinstance(http_client, HttpClient):
             raise TypeError(f"HTTP client '{type(http_client).__name__}' not valid.")
         self._http_client = http_client
-
-    def get_token_refresher(
-        self, raise_when_none: bool = True
-    ) -> Optional[TokenRefresher]:
-        if raise_when_none and self._token_refresher is None:
-            raise ValueError("Token refresher not set.")
-        return self._token_refresher
-
-    def set_token_refresher(self, token_refresher: TokenRefresher) -> None:
-        if token_refresher is None:
-            self._token_refresher = None
-            return
-        if not isinstance(token_refresher, TokenRefresher):
-            raise TypeError(
-                f"Token refresher '{type(token_refresher).__name__}' not valid."
-            )
-        self._token_refresher = token_refresher
 
     # endregion Accessors
 
@@ -324,7 +340,7 @@ class AccelByteSDK:
         if token_repo := self.get_token_repository(raise_when_none=False):
             success = token_repo.remove_token()
             if not success:
-                return None, HttpResponse.create_error(400, "Failed to remove token.")
+                return None, HttpResponse.create_failed_to_remove_token_error()
             return None, None
         return None, HttpResponse.create_token_repo_not_found_error()
 
@@ -332,7 +348,7 @@ class AccelByteSDK:
         if token_repo := self.get_token_repository(raise_when_none=False):
             success = token_repo.store_token(token)
             if not success:
-                return None, HttpResponse.create_error(400, "Failed to set token.")
+                return None, HttpResponse.create_failed_to_set_token_error()
             return None, None
         return None, HttpResponse.create_token_repo_not_found_error()
 
@@ -340,195 +356,103 @@ class AccelByteSDK:
 
     # region Requests
 
-    def run_request(
-        self,
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        http_client: Optional[HttpClient] = None,
-        try_refresh: bool = True,
-        **kwargs,
-    ) -> Tuple[Any, Any]:
-        proto, error = self._create_request_from_operation(
-            operation=operation,
-            base_url=base_url,
-            additional_headers=additional_headers,
-            additional_headers_override=additional_headers_override,
-            config_repo=config_repo,
-            token_repo=token_repo,
-            **kwargs,
-        )
+    def run_request(self, operation: Operation, **kwargs) -> Tuple[Any, Any]:
+
+        proto, error, kwargs = self._pre_run_request(operation=operation, **kwargs)
         if error:
             return None, error
 
-        self._pre_run_request(**kwargs)
-
-        if try_refresh and self._token_refresher:
-            self._token_refresher.try_refresh(
-                token_repo=token_repo
-                or self.get_token_repository(raise_when_none=False)
-            )
-
-        response, error = self.run_proto_request(
-            proto=proto,
-            has_redirects=operation.has_redirects(),
-            http_client=http_client,
-            **kwargs,
-        )
+        response, error, kwargs = self.run_proto_request(proto=proto, **kwargs)
         if error:
             return None, error
 
-        result, error = self._post_run_request(
-            operation=operation, response=response, error=error
-        )
+        result, error = self._post_run_request(operation=operation, response=response)
         return result, error
 
-    async def run_request_async(
-        self,
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        http_client: Optional[HttpClient] = None,
-        try_refresh: bool = True,
-        **kwargs,
-    ) -> Tuple[Any, Any]:
-        proto, error = self._create_request_from_operation(
-            operation=operation,
-            base_url=base_url,
-            additional_headers=additional_headers,
-            additional_headers_override=additional_headers_override,
-            config_repo=config_repo,
-            token_repo=token_repo,
-            **kwargs,
-        )
+    async def run_request_async(self, operation: Operation, **kwargs) -> Tuple[Any, Any]:
+        proto, error, kwargs = self._pre_run_request(operation=operation, **kwargs)
         if error:
             return None, error
 
-        await self._pre_run_request_async(**kwargs)
-
-        if try_refresh and self._token_refresher:
-            await self._token_refresher.try_refresh_async(
-                token_repo=token_repo
-                or self.get_token_repository(raise_when_none=False)
-            )
-
-        response, error = await self.run_proto_request_async(
-            proto=proto,
-            has_redirects=operation.has_redirects(),
-            http_client=http_client,
-            **kwargs,
-        )
+        response, error, kwargs = self.run_proto_request(proto=proto, **kwargs)
         if error:
             return None, error
 
-        result, error = self._post_run_request(
-            operation=operation, response=response, error=error
-        )
+        result, error = self._post_run_request(operation=operation, response=response)
         return result, error
 
-    def _create_request_from_operation(
-        self,
-        operation: Operation,
-        base_url: Optional[str] = "",
-        additional_headers: Optional[Dict[str, str]] = None,
-        additional_headers_override: bool = True,
-        config_repo: Optional[ConfigRepository] = None,
-        token_repo: Optional[TokenRepository] = None,
-        **kwargs,
-    ) -> Tuple[Optional[ProtoHttpRequest], Optional[HttpResponse]]:
-        if not config_repo:
-            config_repo = self.get_config_repository()
-        if not token_repo:
-            token_repo = self.get_token_repository()
-        if not base_url:
-            base_url = config_repo.get_base_url()
-
-        proto, error = create_proto_from_operation(
-            operation=operation,
-            base_url=base_url,
-            additional_headers=additional_headers,
-            additional_headers_override=additional_headers_override,
-            config_repo=config_repo,
-            token_repo=token_repo,
-            **kwargs,
-        )
-
-        return proto, error
-
-    def run_proto_request(
-        self,
-        proto: ProtoHttpRequest,
-        has_redirects: bool = False,
-        http_client: Optional[HttpClient] = None,
-        **kwargs,
-    ) -> Tuple[Any, Any]:
-        if has_redirects and "allow_redirects" not in kwargs:
-            kwargs["allow_redirects"] = False
-        if not http_client:
-            http_client = self.get_http_client()
-
+    def run_proto_request(self, proto: ProtoHttpRequest, **kwargs):
+        http_client = kwargs.pop("http_client", self.get_http_client())
         request = http_client.create_request(proto=proto)
         raw_response, error = http_client.send_request(request, **kwargs)
         if error:
-            return None, error
-
+            return None, error, kwargs
         response, error = http_client.handle_response(raw_response, **kwargs)
-        return response, error
+        return response, error, kwargs
 
-    async def run_proto_request_async(
-        self,
-        proto: ProtoHttpRequest,
-        has_redirects: bool = False,
-        http_client: Optional[HttpClient] = None,
-        **kwargs,
-    ) -> Tuple[Any, Any]:
-        if has_redirects and "allow_redirects" not in kwargs:
-            kwargs["allow_redirects"] = False
-        if not http_client:
-            http_client = self.get_http_client()
-
+    async def run_proto_request_async(self, proto: ProtoHttpRequest, **kwargs):
+        http_client = kwargs.pop("http_client", self.get_http_client())
         request = http_client.create_request(proto=proto)
         raw_response, error = await http_client.send_request_async(request, **kwargs)
         if error:
             return None, error
-
         response, error = http_client.handle_response(raw_response, **kwargs)
-        return response, error
+        return response, error, kwargs
 
-    def _pre_run_request(self, **kwargs) -> None:
-        pass
+    def _create_request_from_operation(
+        self,
+        operation: Operation,
+        **kwargs,
+    ):
+        config_repo = kwargs.pop("config_repo", self.get_config_repository())
+        token_repo = kwargs.pop("token_repo", self.get_token_repository())
+        base_url = kwargs.pop("base_url", "") or config_repo.get_base_url()
+        additional_headers = kwargs.pop("additional_headers", None)
+        additional_headers_override = kwargs.pop("additional_headers_override", True)
+        proto, error = create_proto_from_operation(
+            operation=operation,
+            base_url=base_url,
+            config_repo=config_repo,
+            token_repo=token_repo,
+            additional_headers=additional_headers,
+            additional_headers_override=additional_headers_override,
+            **kwargs,
+        )
+        return proto, error, kwargs
 
-    async def _pre_run_request_async(self, **kwargs) -> None:
-        pass
+    def _pre_run_request(self, operation: Operation, **kwargs):
+        if operation.has_redirects() and "allow_redirects" not in kwargs:
+            kwargs["allow_redirects"] = False
+
+        for k, v in self.operation_preprocessors.items():
+            operation, error = v(operation=operation, sdk=self)
+            if error:
+                return None, error, kwargs
+
+        proto, error, kwargs = self._create_request_from_operation(operation=operation, **kwargs)
+        if error:
+            return None, error, kwargs
+
+        for k, v in self.request_preprocessors.items():
+            proto, error = v(proto=proto, sdk=self)
+            if error:
+                return None, error, kwargs
+
+        return proto, None, kwargs
 
     def _post_run_request(
-        self, operation: Operation, response: Any, error: Any
+        self, operation: Operation, response: Any
     ) -> Tuple[Any, Any]:
-        result, error = operation.parse_response(*response)
+        response, error = operation.parse_response(*response)
         if error:
             return None, error
 
-        if operation.has_redirects() and operation.location_query:
-            query, error = get_query_from_http_redirect_response(
-                result, operation.location_query
-            )
+        for k, v in self.response_preprocessors.items():
+            response, error = v(response=response, operation=operation, sdk=self)
             if error:
                 return None, error
-            else:
-                return query, None
 
-        # TODO: remove
-        is_valid_token, error = self.__try_set_token(result)
-        if error and is_valid_token:
-            return None, error
-
-        return result, None
+        return response, None
 
     # endregion Requests
 
@@ -555,27 +479,6 @@ class AccelByteSDK:
         if not isinstance(kwargs, dict):
             return invalid_result
         return True, args, kwargs
-
-    @staticmethod
-    def __is_valid_token(token: Any) -> bool:
-        if token is None:
-            return False
-        key = "access_token"
-        if hasattr(token, key):
-            return True
-        if isinstance(token, dict) and key in token:
-            return True
-        return False
-
-    def __try_set_token(self, obj: Any) -> Tuple[bool, Optional[HttpResponse]]:
-        if obj is None:
-            return False, HttpResponse.create_error(400, "Empty token.")
-        if not self.__is_valid_token(obj):
-            return False, HttpResponse.create_error(
-                400, "Failed to set token. The token is invalid."
-            )
-        _, error = self.set_token(obj)
-        return True, error
 
     # endregion Utils
 

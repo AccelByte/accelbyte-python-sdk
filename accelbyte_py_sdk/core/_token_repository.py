@@ -56,10 +56,14 @@ class TokenRepository(ABC):
         return self.get_token() is not None
 
     def has_token_expired(self, multiplier: float = 1.0) -> bool:
-        seconds_till_expiry = self.get_seconds_till_expiry() * clamp(
-            multiplier, 0.0, 1.0
-        )
-        return seconds_till_expiry <= 0
+        if not self.has_token():
+            return False
+        expires_in = self.get_expires_in()
+        if expires_in is None:
+            return False
+        threshold = expires_in * clamp(multiplier, 0.0, 1.0)
+        seconds_till_expiry = self.get_seconds_till_expiry()
+        return seconds_till_expiry < threshold
 
 
 class MyTokenRepository(TokenRepository):

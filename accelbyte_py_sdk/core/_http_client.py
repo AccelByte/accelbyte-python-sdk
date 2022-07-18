@@ -83,6 +83,15 @@ class HttpClient(ABC):
 
 class RequestsHttpClient(HttpClient):
     def __init__(self, allow_redirects: bool = True):
+        self.allowed_kwarg_keys = {
+            "allow_redirects",
+            "cert",
+            "proxies",
+            "stream",
+            "timeout",
+            "verify",
+            "yield_requests",
+        }
         self.allow_redirects = allow_redirects
         self.session = requests.Session()
 
@@ -129,13 +138,13 @@ class RequestsHttpClient(HttpClient):
 
         attempts = 0
         elapsed = timedelta(0)
-        should_retry = True
         raw_response = None
         error = None
+        filtered_kwargs = {k: v for k, v in kwargs.items() if k in self.allowed_kwarg_keys}
         while True:
             try:
                 self.log_request(request)
-                raw_response = self.session.send(request, **kwargs)
+                raw_response = self.session.send(request, **filtered_kwargs)
             except requests.exceptions.ConnectionError as e:
                 _LOGGER.error(str(e))
                 error = HttpResponse.create_connection_error()
@@ -143,7 +152,6 @@ class RequestsHttpClient(HttpClient):
                 error = None
                 break
             if retry_policy is None:
-                should_retry = False
                 break
             attempts += 1
             elapsed += (
@@ -302,8 +310,6 @@ class HttpxHttpClient(HttpClient):
 
         attempts = 0
         elapsed = timedelta(0)
-        should_retry = True
-        raw_response = None
         error = None
         while True:
             self.log_request(request)
@@ -315,7 +321,6 @@ class HttpxHttpClient(HttpClient):
                 error = None
                 break
             if retry_policy is None:
-                should_retry = False
                 break
             attempts += 1
             elapsed += (
