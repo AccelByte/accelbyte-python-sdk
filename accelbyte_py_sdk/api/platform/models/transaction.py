@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -105,25 +105,25 @@ class Transaction(Model):
 
     # region fields
 
-    additional_data: AdditionalData                                                                # OPTIONAL
-    amount: int                                                                                    # OPTIONAL
-    currency: CurrencySummary                                                                      # OPTIONAL
-    ext_message: str                                                                               # OPTIONAL
-    ext_status_code: str                                                                           # OPTIONAL
-    ext_tx_id: str                                                                                 # OPTIONAL
-    merchant_id: str                                                                               # OPTIONAL
-    notified: bool                                                                                 # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    provider: Union[str, ProviderEnum]                                                             # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    status: Union[str, StatusEnum]                                                                 # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
-    tx_end_time: str                                                                               # OPTIONAL
-    tx_id: str                                                                                     # OPTIONAL
-    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
+    additional_data: AdditionalData  # OPTIONAL
+    amount: int  # OPTIONAL
+    currency: CurrencySummary  # OPTIONAL
+    ext_message: str  # OPTIONAL
+    ext_status_code: str  # OPTIONAL
+    ext_tx_id: str  # OPTIONAL
+    merchant_id: str  # OPTIONAL
+    notified: bool  # OPTIONAL
+    payment_method: str  # OPTIONAL
+    payment_method_fee: int  # OPTIONAL
+    payment_provider_fee: int  # OPTIONAL
+    provider: Union[str, ProviderEnum]  # OPTIONAL
+    sales_tax: int  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
+    tax: int  # OPTIONAL
+    tx_end_time: str  # OPTIONAL
+    tx_id: str  # OPTIONAL
+    type_: Union[str, TypeEnum]  # OPTIONAL
+    vat: int  # OPTIONAL
 
     # endregion fields
 
@@ -212,7 +212,9 @@ class Transaction(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "additional_data"):
-            result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
+            result["additionalData"] = self.additional_data.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["additionalData"] = AdditionalData()
         if hasattr(self, "amount"):
@@ -363,7 +365,9 @@ class Transaction(Model):
         if not dict_:
             return instance
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
-            instance.additional_data = AdditionalData.create_from_dict(dict_["additionalData"], include_empty=include_empty)
+            instance.additional_data = AdditionalData.create_from_dict(
+                dict_["additionalData"], include_empty=include_empty
+            )
         elif include_empty:
             instance.additional_data = AdditionalData()
         if "amount" in dict_ and dict_["amount"] is not None:
@@ -371,7 +375,9 @@ class Transaction(Model):
         elif include_empty:
             instance.amount = 0
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
+            instance.currency = CurrencySummary.create_from_dict(
+                dict_["currency"], include_empty=include_empty
+            )
         elif include_empty:
             instance.currency = CurrencySummary()
         if "extMessage" in dict_ and dict_["extMessage"] is not None:
@@ -441,15 +447,29 @@ class Transaction(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, Transaction]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, Transaction]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[Transaction]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[Transaction]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[Transaction, List[Transaction], Dict[Any, Transaction]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[Transaction, List[Transaction], Dict[Any, Transaction]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -511,9 +531,28 @@ class Transaction(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "provider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "provider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
             "status": ["FAILED", "FINISHED"],
-            "type": ["AUTHORISATION", "CHARGE", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGE_FAILED", "NOTIFICATION_OF_CHARGEBACK", "REFUND", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],
+            "type": [
+                "AUTHORISATION",
+                "CHARGE",
+                "CHARGEBACK",
+                "CHARGEBACK_REVERSED",
+                "CHARGE_FAILED",
+                "NOTIFICATION_OF_CHARGEBACK",
+                "REFUND",
+                "REFUND_FAILED",
+                "REQUEST_FOR_INFORMATION",
+            ],
         }
 
     # endregion static methods

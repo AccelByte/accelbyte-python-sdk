@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -144,20 +144,20 @@ class PlatformAuthenticationV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = "PLACEHOLDER"
 
-    platform_id: str                                                                               # REQUIRED in [path]
-    code: str                                                                                      # OPTIONAL in [query]
-    error: str                                                                                     # OPTIONAL in [query]
-    openid_assoc_handle: str                                                                       # OPTIONAL in [query]
-    openid_claimed_id: str                                                                         # OPTIONAL in [query]
-    openid_identity: str                                                                           # OPTIONAL in [query]
-    openid_mode: str                                                                               # OPTIONAL in [query]
-    openid_ns: str                                                                                 # OPTIONAL in [query]
-    openid_op_endpoint: str                                                                        # OPTIONAL in [query]
-    openid_response_nonce: str                                                                     # OPTIONAL in [query]
-    openid_return_to: str                                                                          # OPTIONAL in [query]
-    openid_sig: str                                                                                # OPTIONAL in [query]
-    openid_signed: str                                                                             # OPTIONAL in [query]
-    state: str                                                                                     # REQUIRED in [query]
+    platform_id: str  # REQUIRED in [path]
+    code: str  # OPTIONAL in [query]
+    error: str  # OPTIONAL in [query]
+    openid_assoc_handle: str  # OPTIONAL in [query]
+    openid_claimed_id: str  # OPTIONAL in [query]
+    openid_identity: str  # OPTIONAL in [query]
+    openid_mode: str  # OPTIONAL in [query]
+    openid_ns: str  # OPTIONAL in [query]
+    openid_op_endpoint: str  # OPTIONAL in [query]
+    openid_response_nonce: str  # OPTIONAL in [query]
+    openid_return_to: str  # OPTIONAL in [query]
+    openid_sig: str  # OPTIONAL in [query]
+    openid_signed: str  # OPTIONAL in [query]
+    state: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -378,7 +378,9 @@ class PlatformAuthenticationV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         302: Found - (Found. Redirect to clients redirection URL with either code or error on the query parameter)
@@ -389,7 +391,9 @@ class PlatformAuthenticationV3(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -397,7 +401,9 @@ class PlatformAuthenticationV3(Operation):
         if code == 302:
             return HttpResponse.create_redirect(code, content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -451,7 +457,9 @@ class PlatformAuthenticationV3(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformAuthenticationV3:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PlatformAuthenticationV3:
         instance = cls()
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
@@ -489,7 +497,10 @@ class PlatformAuthenticationV3(Operation):
             instance.openid_op_endpoint = str(dict_["openid.op_endpoint"])
         elif include_empty:
             instance.openid_op_endpoint = ""
-        if "openid.response_nonce" in dict_ and dict_["openid.response_nonce"] is not None:
+        if (
+            "openid.response_nonce" in dict_
+            and dict_["openid.response_nonce"] is not None
+        ):
             instance.openid_response_nonce = str(dict_["openid.response_nonce"])
         elif include_empty:
             instance.openid_response_nonce = ""

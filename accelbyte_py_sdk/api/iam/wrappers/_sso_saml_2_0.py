@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -34,7 +34,14 @@ from ..operations.sso_saml_2_0 import PlatformAuthenticateSAMLV3Handler
 
 
 @same_doc_as(PlatformAuthenticateSAMLV3Handler)
-def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def platform_authenticate_samlv3_handler(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    error: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
@@ -45,11 +52,20 @@ def platform_authenticate_samlv3_handler(platform_id: str, state: str, code: Opt
 
 
 @same_doc_as(PlatformAuthenticateSAMLV3Handler)
-async def platform_authenticate_samlv3_handler_async(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def platform_authenticate_samlv3_handler_async(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    error: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = PlatformAuthenticateSAMLV3Handler.create(
         platform_id=platform_id,
         state=state,
         code=code,
         error=error,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

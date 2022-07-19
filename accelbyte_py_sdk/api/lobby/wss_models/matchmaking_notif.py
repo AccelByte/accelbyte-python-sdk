@@ -44,13 +44,19 @@ class MatchmakingNotif(WebSocketMessage):
         # pylint: disable=no-self-use
         wsm = [f"type: {MatchmakingNotif.get_type()}"]
         if hasattr(self, "counter_party_member") and self.counter_party_member:
-            wsm.append(f"counterPartyMember: [" + ','.join([str(i) for i in self.counter_party_member]) + "]")
+            wsm.append(
+                f"counterPartyMember: ["
+                + ",".join([str(i) for i in self.counter_party_member])
+                + "]"
+            )
         if hasattr(self, "match_id") and self.match_id:
             wsm.append(f"matchId: {self.match_id}")
         if hasattr(self, "message") and self.message:
             wsm.append(f"message: {self.message}")
         if hasattr(self, "party_member") and self.party_member:
-            wsm.append(f"partyMember: [" + ','.join([str(i) for i in self.party_member]) + "]")
+            wsm.append(
+                f"partyMember: [" + ",".join([str(i) for i in self.party_member]) + "]"
+            )
         if hasattr(self, "ready_duration") and self.ready_duration:
             wsm.append(f"readyDuration: {self.ready_duration}")
         if hasattr(self, "status") and self.status:
@@ -68,32 +74,54 @@ class MatchmakingNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldFormatInvalid
+                )
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "counterPartyMember".casefold()) or (name == "counterPartyMember"):
-                instance.counter_party_member = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (
+                not is_strict and name.casefold() == "counterPartyMember".casefold()
+            ) or (name == "counterPartyMember"):
+                instance.counter_party_member = [
+                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
+                ]
                 continue
-            if (not is_strict and name.casefold() == "matchId".casefold()) or (name == "matchId"):
+            if (not is_strict and name.casefold() == "matchId".casefold()) or (
+                name == "matchId"
+            ):
                 instance.match_id = value
                 continue
-            if (not is_strict and name.casefold() == "message".casefold()) or (name == "message"):
+            if (not is_strict and name.casefold() == "message".casefold()) or (
+                name == "message"
+            ):
                 instance.message = value
                 continue
-            if (not is_strict and name.casefold() == "partyMember".casefold()) or (name == "partyMember"):
-                instance.party_member = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
+            if (not is_strict and name.casefold() == "partyMember".casefold()) or (
+                name == "partyMember"
+            ):
+                instance.party_member = [
+                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
+                ]
                 continue
-            if (not is_strict and name.casefold() == "readyDuration".casefold()) or (name == "readyDuration"):
+            if (not is_strict and name.casefold() == "readyDuration".casefold()) or (
+                name == "readyDuration"
+            ):
                 instance.ready_duration = value
                 continue
-            if (not is_strict and name.casefold() == "status".casefold()) or (name == "status"):
+            if (not is_strict and name.casefold() == "status".casefold()) or (
+                name == "status"
+            ):
                 instance.status = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
+                raise WebSocketMessageParserException(
+                    WebSocketMessageParserError.FieldTypeNotSupported
+                )
         return instance
 
     @staticmethod

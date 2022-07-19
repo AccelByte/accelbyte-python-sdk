@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -86,19 +86,21 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
 
     # region fields
 
-    _url: str = "/agreement/public/policies/namespaces/{namespace}/countries/{countryCode}"
+    _url: str = (
+        "/agreement/public/policies/namespaces/{namespace}/countries/{countryCode}"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    country_code: str                                                                              # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    always_include_default: bool                                                                   # OPTIONAL in [query]
-    default_on_empty: bool                                                                         # OPTIONAL in [query]
-    policy_type: Union[str, PolicyTypeEnum]                                                        # OPTIONAL in [query]
-    tags: str                                                                                      # OPTIONAL in [query]
+    country_code: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    always_include_default: bool  # OPTIONAL in [query]
+    default_on_empty: bool  # OPTIONAL in [query]
+    policy_type: Union[str, PolicyTypeEnum]  # OPTIONAL in [query]
+    tags: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -170,27 +172,39 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
 
     # region with_x methods
 
-    def with_country_code(self, value: str) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_country_code(
+        self, value: str
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.country_code = value
         return self
 
-    def with_namespace(self, value: str) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_namespace(
+        self, value: str
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.namespace = value
         return self
 
-    def with_always_include_default(self, value: bool) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_always_include_default(
+        self, value: bool
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.always_include_default = value
         return self
 
-    def with_default_on_empty(self, value: bool) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_default_on_empty(
+        self, value: bool
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.default_on_empty = value
         return self
 
-    def with_policy_type(self, value: Union[str, PolicyTypeEnum]) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_policy_type(
+        self, value: Union[str, PolicyTypeEnum]
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.policy_type = value
         return self
 
-    def with_tags(self, value: str) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def with_tags(
+        self, value: str
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         self.tags = value
         return self
 
@@ -231,7 +245,11 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]
+    ]:
         """Parse the given response.
 
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
@@ -242,15 +260,21 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [RetrievePolicyPublicResponse.create_from_dict(i) for i in content], None
+            return [
+                RetrievePolicyPublicResponse.create_from_dict(i) for i in content
+            ], None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -280,7 +304,9 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RetrieveLatestPoliciesByNamespaceAndCountryPublic:
         instance = cls()
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
@@ -290,7 +316,10 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "alwaysIncludeDefault" in dict_ and dict_["alwaysIncludeDefault"] is not None:
+        if (
+            "alwaysIncludeDefault" in dict_
+            and dict_["alwaysIncludeDefault"] is not None
+        ):
             instance.always_include_default = bool(dict_["alwaysIncludeDefault"])
         elif include_empty:
             instance.always_include_default = False
@@ -333,7 +362,10 @@ class RetrieveLatestPoliciesByNamespaceAndCountryPublic(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "policyType": ["LEGAL_DOCUMENT_TYPE", "MARKETING_PREFERENCE_TYPE"],                    # in query
+            "policyType": [
+                "LEGAL_DOCUMENT_TYPE",
+                "MARKETING_PREFERENCE_TYPE",
+            ],  # in query
         }
 
     # endregion static methods

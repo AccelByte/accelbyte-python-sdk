@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import partial_update_policy as partial_update_policy_internal
+from accelbyte_py_sdk.api.legal import (
+    partial_update_policy as partial_update_policy_internal,
+)
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyRequest
 from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyResponse
@@ -43,20 +45,18 @@ from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def partial_update_policy(
-        base_policy_id: str,
-        body: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    base_policy_id: str,
+    body: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(partial_update_policy_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

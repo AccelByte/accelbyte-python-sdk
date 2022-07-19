@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -61,18 +61,18 @@ class RewardInfo(Model):
 
     # region fields
 
-    event_topic: str                                                                               # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    reward_id: str                                                                                 # REQUIRED
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    max_awarded: int                                                                               # OPTIONAL
-    max_awarded_per_user: int                                                                      # OPTIONAL
-    namespace_expression: str                                                                      # OPTIONAL
-    reward_code: str                                                                               # OPTIONAL
-    reward_conditions: List[RewardCondition]                                                       # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
-    user_id_expression: str                                                                        # OPTIONAL
+    event_topic: str  # REQUIRED
+    namespace: str  # REQUIRED
+    reward_id: str  # REQUIRED
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    max_awarded: int  # OPTIONAL
+    max_awarded_per_user: int  # OPTIONAL
+    namespace_expression: str  # OPTIONAL
+    reward_code: str  # OPTIONAL
+    reward_conditions: List[RewardCondition]  # OPTIONAL
+    updated_at: str  # OPTIONAL
+    user_id_expression: str  # OPTIONAL
 
     # endregion fields
 
@@ -169,7 +169,9 @@ class RewardInfo(Model):
         elif include_empty:
             result["rewardCode"] = ""
         if hasattr(self, "reward_conditions"):
-            result["rewardConditions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions]
+            result["rewardConditions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.reward_conditions
+            ]
         elif include_empty:
             result["rewardConditions"] = []
         if hasattr(self, "updated_at"):
@@ -268,7 +270,10 @@ class RewardInfo(Model):
         elif include_empty:
             instance.reward_code = ""
         if "rewardConditions" in dict_ and dict_["rewardConditions"] is not None:
-            instance.reward_conditions = [RewardCondition.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewardConditions"]]
+            instance.reward_conditions = [
+                RewardCondition.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["rewardConditions"]
+            ]
         elif include_empty:
             instance.reward_conditions = []
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
@@ -282,15 +287,29 @@ class RewardInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RewardInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, RewardInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RewardInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[RewardInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RewardInfo, List[RewardInfo], Dict[Any, RewardInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[RewardInfo, List[RewardInfo], Dict[Any, RewardInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

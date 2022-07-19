@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,14 +51,14 @@ class HierarchicalCategoryInfo(Model):
 
     # region fields
 
-    category_path: str                                                                             # REQUIRED
-    child_categories: List[HierarchicalCategoryInfo]                                               # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    parent_category_path: str                                                                      # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    root: bool                                                                                     # OPTIONAL
+    category_path: str  # REQUIRED
+    child_categories: List[HierarchicalCategoryInfo]  # REQUIRED
+    created_at: str  # REQUIRED
+    display_name: str  # REQUIRED
+    namespace: str  # REQUIRED
+    parent_category_path: str  # REQUIRED
+    updated_at: str  # REQUIRED
+    root: bool  # OPTIONAL
 
     # endregion fields
 
@@ -68,7 +68,9 @@ class HierarchicalCategoryInfo(Model):
         self.category_path = value
         return self
 
-    def with_child_categories(self, value: List[HierarchicalCategoryInfo]) -> HierarchicalCategoryInfo:
+    def with_child_categories(
+        self, value: List[HierarchicalCategoryInfo]
+    ) -> HierarchicalCategoryInfo:
         self.child_categories = value
         return self
 
@@ -107,7 +109,9 @@ class HierarchicalCategoryInfo(Model):
         elif include_empty:
             result["categoryPath"] = ""
         if hasattr(self, "child_categories"):
-            result["childCategories"] = [i0.to_dict(include_empty=include_empty) for i0 in self.child_categories]
+            result["childCategories"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.child_categories
+            ]
         elif include_empty:
             result["childCategories"] = []
         if hasattr(self, "created_at"):
@@ -165,7 +169,9 @@ class HierarchicalCategoryInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HierarchicalCategoryInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> HierarchicalCategoryInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -174,7 +180,12 @@ class HierarchicalCategoryInfo(Model):
         elif include_empty:
             instance.category_path = ""
         if "childCategories" in dict_ and dict_["childCategories"] is not None:
-            instance.child_categories = [HierarchicalCategoryInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["childCategories"]]
+            instance.child_categories = [
+                HierarchicalCategoryInfo.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["childCategories"]
+            ]
         elif include_empty:
             instance.child_categories = []
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
@@ -204,15 +215,33 @@ class HierarchicalCategoryInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, HierarchicalCategoryInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, HierarchicalCategoryInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[HierarchicalCategoryInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[HierarchicalCategoryInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[HierarchicalCategoryInfo, List[HierarchicalCategoryInfo], Dict[Any, HierarchicalCategoryInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        HierarchicalCategoryInfo,
+        List[HierarchicalCategoryInfo],
+        Dict[Any, HierarchicalCategoryInfo],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -30,8 +30,12 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.lobby import send_multiple_users_freeform_notification_v1_admin as send_multiple_users_freeform_notification_v1_admin_internal
-from accelbyte_py_sdk.api.lobby.models import ModelBulkUsersFreeFormNotificationRequestV1
+from accelbyte_py_sdk.api.lobby import (
+    send_multiple_users_freeform_notification_v1_admin as send_multiple_users_freeform_notification_v1_admin_internal,
+)
+from accelbyte_py_sdk.api.lobby.models import (
+    ModelBulkUsersFreeFormNotificationRequestV1,
+)
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
@@ -42,26 +46,26 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def send_multiple_users_freeform_notification_v1_admin(
-        body: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    body: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(send_multiple_users_freeform_notification_v1_admin_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelBulkUsersFreeFormNotificationRequestV1.create_from_dict(body_json)
+            body = ModelBulkUsersFreeFormNotificationRequestV1.create_from_dict(
+                body_json
+            )
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = send_multiple_users_freeform_notification_v1_admin_internal(
@@ -70,9 +74,13 @@ def send_multiple_users_freeform_notification_v1_admin(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"sendMultipleUsersFreeformNotificationV1Admin failed: {str(error)}")
+        raise Exception(
+            f"sendMultipleUsersFreeformNotificationV1Admin failed: {str(error)}"
+        )
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-send_multiple_users_freeform_notification_v1_admin.operation_id = "sendMultipleUsersFreeformNotificationV1Admin"
+send_multiple_users_freeform_notification_v1_admin.operation_id = (
+    "sendMultipleUsersFreeformNotificationV1Admin"
+)
 send_multiple_users_freeform_notification_v1_admin.is_deprecated = False

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -68,14 +68,14 @@ class PaymentProviderConfigEdit(Model):
 
     # region fields
 
-    namespace: str                                                                                 # REQUIRED
-    region: str                                                                                    # REQUIRED
-    aggregate: Union[str, AggregateEnum]                                                           # OPTIONAL
-    sandbox_tax_jar_api_token: str                                                                 # OPTIONAL
-    specials: List[Union[str, SpecialsEnum]]                                                       # OPTIONAL
-    tax_jar_api_token: str                                                                         # OPTIONAL
-    tax_jar_enabled: bool                                                                          # OPTIONAL
-    use_global_tax_jar_api_token: bool                                                             # OPTIONAL
+    namespace: str  # REQUIRED
+    region: str  # REQUIRED
+    aggregate: Union[str, AggregateEnum]  # OPTIONAL
+    sandbox_tax_jar_api_token: str  # OPTIONAL
+    specials: List[Union[str, SpecialsEnum]]  # OPTIONAL
+    tax_jar_api_token: str  # OPTIONAL
+    tax_jar_enabled: bool  # OPTIONAL
+    use_global_tax_jar_api_token: bool  # OPTIONAL
 
     # endregion fields
 
@@ -89,7 +89,9 @@ class PaymentProviderConfigEdit(Model):
         self.region = value
         return self
 
-    def with_aggregate(self, value: Union[str, AggregateEnum]) -> PaymentProviderConfigEdit:
+    def with_aggregate(
+        self, value: Union[str, AggregateEnum]
+    ) -> PaymentProviderConfigEdit:
         self.aggregate = value
         return self
 
@@ -97,7 +99,9 @@ class PaymentProviderConfigEdit(Model):
         self.sandbox_tax_jar_api_token = value
         return self
 
-    def with_specials(self, value: List[Union[str, SpecialsEnum]]) -> PaymentProviderConfigEdit:
+    def with_specials(
+        self, value: List[Union[str, SpecialsEnum]]
+    ) -> PaymentProviderConfigEdit:
         self.specials = value
         return self
 
@@ -109,7 +113,9 @@ class PaymentProviderConfigEdit(Model):
         self.tax_jar_enabled = value
         return self
 
-    def with_use_global_tax_jar_api_token(self, value: bool) -> PaymentProviderConfigEdit:
+    def with_use_global_tax_jar_api_token(
+        self, value: bool
+    ) -> PaymentProviderConfigEdit:
         self.use_global_tax_jar_api_token = value
         return self
 
@@ -187,7 +193,9 @@ class PaymentProviderConfigEdit(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentProviderConfigEdit:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentProviderConfigEdit:
         instance = cls()
         if not dict_:
             return instance
@@ -203,7 +211,10 @@ class PaymentProviderConfigEdit(Model):
             instance.aggregate = str(dict_["aggregate"])
         elif include_empty:
             instance.aggregate = Union[str, AggregateEnum]()
-        if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
+        if (
+            "sandboxTaxJarApiToken" in dict_
+            and dict_["sandboxTaxJarApiToken"] is not None
+        ):
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:
             instance.sandbox_tax_jar_api_token = ""
@@ -219,22 +230,45 @@ class PaymentProviderConfigEdit(Model):
             instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
         elif include_empty:
             instance.tax_jar_enabled = False
-        if "useGlobalTaxJarApiToken" in dict_ and dict_["useGlobalTaxJarApiToken"] is not None:
-            instance.use_global_tax_jar_api_token = bool(dict_["useGlobalTaxJarApiToken"])
+        if (
+            "useGlobalTaxJarApiToken" in dict_
+            and dict_["useGlobalTaxJarApiToken"] is not None
+        ):
+            instance.use_global_tax_jar_api_token = bool(
+                dict_["useGlobalTaxJarApiToken"]
+            )
         elif include_empty:
             instance.use_global_tax_jar_api_token = False
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentProviderConfigEdit]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentProviderConfigEdit]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentProviderConfigEdit]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentProviderConfigEdit]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentProviderConfigEdit, List[PaymentProviderConfigEdit], Dict[Any, PaymentProviderConfigEdit]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentProviderConfigEdit,
+        List[PaymentProviderConfigEdit],
+        Dict[Any, PaymentProviderConfigEdit],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -275,7 +309,16 @@ class PaymentProviderConfigEdit(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "aggregate": ["ADYEN", "XSOLLA"],
-            "specials": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "specials": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
         }
 
     # endregion static methods

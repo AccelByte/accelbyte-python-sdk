@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_create_screenshot_request_item import ModelsCreateScreenshotRequestItem
+from ..models.models_create_screenshot_request_item import (
+    ModelsCreateScreenshotRequestItem,
+)
 
 
 class ModelsCreateScreenshotRequest(Model):
@@ -39,13 +41,15 @@ class ModelsCreateScreenshotRequest(Model):
 
     # region fields
 
-    screenshots: List[ModelsCreateScreenshotRequestItem]                                           # REQUIRED
+    screenshots: List[ModelsCreateScreenshotRequestItem]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_screenshots(self, value: List[ModelsCreateScreenshotRequestItem]) -> ModelsCreateScreenshotRequest:
+    def with_screenshots(
+        self, value: List[ModelsCreateScreenshotRequestItem]
+    ) -> ModelsCreateScreenshotRequest:
         self.screenshots = value
         return self
 
@@ -56,7 +60,9 @@ class ModelsCreateScreenshotRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "screenshots"):
-            result["screenshots"] = [i0.to_dict(include_empty=include_empty) for i0 in self.screenshots]
+            result["screenshots"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.screenshots
+            ]
         elif include_empty:
             result["screenshots"] = []
         return result
@@ -75,26 +81,51 @@ class ModelsCreateScreenshotRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreateScreenshotRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsCreateScreenshotRequest:
         instance = cls()
         if not dict_:
             return instance
         if "screenshots" in dict_ and dict_["screenshots"] is not None:
-            instance.screenshots = [ModelsCreateScreenshotRequestItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["screenshots"]]
+            instance.screenshots = [
+                ModelsCreateScreenshotRequestItem.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["screenshots"]
+            ]
         elif include_empty:
             instance.screenshots = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsCreateScreenshotRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsCreateScreenshotRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsCreateScreenshotRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsCreateScreenshotRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsCreateScreenshotRequest, List[ModelsCreateScreenshotRequest], Dict[Any, ModelsCreateScreenshotRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsCreateScreenshotRequest,
+        List[ModelsCreateScreenshotRequest],
+        Dict[Any, ModelsCreateScreenshotRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

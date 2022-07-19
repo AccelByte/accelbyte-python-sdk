@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,15 +53,17 @@ class PaymentOrderChargeRequest(Model):
 
     # region fields
 
-    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
-    ext_tx_id: str                                                                                 # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED
+    ext_tx_id: str  # OPTIONAL
+    payment_method: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> PaymentOrderChargeRequest:
+    def with_payment_provider(
+        self, value: Union[str, PaymentProviderEnum]
+    ) -> PaymentOrderChargeRequest:
         self.payment_provider = value
         return self
 
@@ -113,7 +115,9 @@ class PaymentOrderChargeRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentOrderChargeRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentOrderChargeRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -132,15 +136,33 @@ class PaymentOrderChargeRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentOrderChargeRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentOrderChargeRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentOrderChargeRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentOrderChargeRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentOrderChargeRequest, List[PaymentOrderChargeRequest], Dict[Any, PaymentOrderChargeRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentOrderChargeRequest,
+        List[PaymentOrderChargeRequest],
+        Dict[Any, PaymentOrderChargeRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -170,7 +192,16 @@ class PaymentOrderChargeRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
         }
 
     # endregion static methods

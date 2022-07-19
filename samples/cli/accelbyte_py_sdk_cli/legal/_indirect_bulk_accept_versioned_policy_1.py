@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import indirect_bulk_accept_versioned_policy_1 as indirect_bulk_accept_versioned_policy_1_internal
+from accelbyte_py_sdk.api.legal import (
+    indirect_bulk_accept_versioned_policy_1 as indirect_bulk_accept_versioned_policy_1_internal,
+)
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 
@@ -42,20 +44,18 @@ from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def indirect_bulk_accept_versioned_policy_1(
-        user_id: str,
-        body: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    body: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(indirect_bulk_accept_versioned_policy_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:
@@ -74,5 +74,7 @@ def indirect_bulk_accept_versioned_policy_1(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-indirect_bulk_accept_versioned_policy_1.operation_id = "indirectBulkAcceptVersionedPolicy_1"
+indirect_bulk_accept_versioned_policy_1.operation_id = (
+    "indirectBulkAcceptVersionedPolicy_1"
+)
 indirect_bulk_accept_versioned_policy_1.is_deprecated = False

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -77,25 +77,25 @@ class ModelPublicUserResponse(Model):
 
     # region fields
 
-    auth_type: str                                                                                 # REQUIRED
-    bans: List[ModelUserActiveBanResponse]                                                         # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    deletion_status: bool                                                                          # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    email_verified: bool                                                                           # REQUIRED
-    enabled: bool                                                                                  # REQUIRED
-    last_enabled_changed_time: str                                                                 # REQUIRED
-    login_id: str                                                                                  # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
-    permissions: List[AccountcommonPermission]                                                     # REQUIRED
-    phone_verified: bool                                                                           # REQUIRED
-    roles: List[str]                                                                               # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
-    username: str                                                                                  # OPTIONAL
-    xuid: str                                                                                      # OPTIONAL
+    auth_type: str  # REQUIRED
+    bans: List[ModelUserActiveBanResponse]  # REQUIRED
+    created_at: str  # REQUIRED
+    deletion_status: bool  # REQUIRED
+    display_name: str  # REQUIRED
+    email_verified: bool  # REQUIRED
+    enabled: bool  # REQUIRED
+    last_enabled_changed_time: str  # REQUIRED
+    login_id: str  # REQUIRED
+    namespace: str  # REQUIRED
+    namespace_roles: List[AccountcommonNamespaceRole]  # REQUIRED
+    permissions: List[AccountcommonPermission]  # REQUIRED
+    phone_verified: bool  # REQUIRED
+    roles: List[str]  # REQUIRED
+    user_id: str  # REQUIRED
+    platform_id: str  # OPTIONAL
+    platform_user_id: str  # OPTIONAL
+    username: str  # OPTIONAL
+    xuid: str  # OPTIONAL
 
     # endregion fields
 
@@ -105,7 +105,9 @@ class ModelPublicUserResponse(Model):
         self.auth_type = value
         return self
 
-    def with_bans(self, value: List[ModelUserActiveBanResponse]) -> ModelPublicUserResponse:
+    def with_bans(
+        self, value: List[ModelUserActiveBanResponse]
+    ) -> ModelPublicUserResponse:
         self.bans = value
         return self
 
@@ -141,11 +143,15 @@ class ModelPublicUserResponse(Model):
         self.namespace = value
         return self
 
-    def with_namespace_roles(self, value: List[AccountcommonNamespaceRole]) -> ModelPublicUserResponse:
+    def with_namespace_roles(
+        self, value: List[AccountcommonNamespaceRole]
+    ) -> ModelPublicUserResponse:
         self.namespace_roles = value
         return self
 
-    def with_permissions(self, value: List[AccountcommonPermission]) -> ModelPublicUserResponse:
+    def with_permissions(
+        self, value: List[AccountcommonPermission]
+    ) -> ModelPublicUserResponse:
         self.permissions = value
         return self
 
@@ -188,7 +194,9 @@ class ModelPublicUserResponse(Model):
         elif include_empty:
             result["AuthType"] = ""
         if hasattr(self, "bans"):
-            result["Bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
+            result["Bans"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.bans
+            ]
         elif include_empty:
             result["Bans"] = []
         if hasattr(self, "created_at"):
@@ -224,11 +232,15 @@ class ModelPublicUserResponse(Model):
         elif include_empty:
             result["Namespace"] = ""
         if hasattr(self, "namespace_roles"):
-            result["NamespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
+            result["NamespaceRoles"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles
+            ]
         elif include_empty:
             result["NamespaceRoles"] = []
         if hasattr(self, "permissions"):
-            result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
+            result["Permissions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
+            ]
         elif include_empty:
             result["Permissions"] = []
         if hasattr(self, "phone_verified"):
@@ -315,7 +327,9 @@ class ModelPublicUserResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelPublicUserResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelPublicUserResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -324,7 +338,12 @@ class ModelPublicUserResponse(Model):
         elif include_empty:
             instance.auth_type = ""
         if "Bans" in dict_ and dict_["Bans"] is not None:
-            instance.bans = [ModelUserActiveBanResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Bans"]]
+            instance.bans = [
+                ModelUserActiveBanResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Bans"]
+            ]
         elif include_empty:
             instance.bans = []
         if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
@@ -347,7 +366,10 @@ class ModelPublicUserResponse(Model):
             instance.enabled = bool(dict_["Enabled"])
         elif include_empty:
             instance.enabled = False
-        if "LastEnabledChangedTime" in dict_ and dict_["LastEnabledChangedTime"] is not None:
+        if (
+            "LastEnabledChangedTime" in dict_
+            and dict_["LastEnabledChangedTime"] is not None
+        ):
             instance.last_enabled_changed_time = str(dict_["LastEnabledChangedTime"])
         elif include_empty:
             instance.last_enabled_changed_time = ""
@@ -360,11 +382,21 @@ class ModelPublicUserResponse(Model):
         elif include_empty:
             instance.namespace = ""
         if "NamespaceRoles" in dict_ and dict_["NamespaceRoles"] is not None:
-            instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["NamespaceRoles"]]
+            instance.namespace_roles = [
+                AccountcommonNamespaceRole.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["NamespaceRoles"]
+            ]
         elif include_empty:
             instance.namespace_roles = []
         if "Permissions" in dict_ and dict_["Permissions"] is not None:
-            instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
+            instance.permissions = [
+                AccountcommonPermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Permissions"]
+            ]
         elif include_empty:
             instance.permissions = []
         if "PhoneVerified" in dict_ and dict_["PhoneVerified"] is not None:
@@ -398,15 +430,33 @@ class ModelPublicUserResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelPublicUserResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelPublicUserResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelPublicUserResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelPublicUserResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelPublicUserResponse, List[ModelPublicUserResponse], Dict[Any, ModelPublicUserResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelPublicUserResponse,
+        List[ModelPublicUserResponse],
+        Dict[Any, ModelPublicUserResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -34,7 +34,9 @@ from ._search_sessions import search_sessions
 from ._get_session_history_detailed import get_session_history_detailed
 from ._public_get_messages import public_get_messages
 from ._public_get_all_matchmaking_channel import public_get_all_matchmaking_channel
-from ._public_get_single_matchmaking_channel import public_get_single_matchmaking_channel
+from ._public_get_single_matchmaking_channel import (
+    public_get_single_matchmaking_channel,
+)
 from ._search_sessions_v2 import search_sessions_v2
 from ._version_check_handler import version_check_handler
 

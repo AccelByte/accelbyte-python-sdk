@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -27,7 +27,9 @@ from .utils import randomize
 from ..api.platform.models import ADTOObjectForOrderCreationOptions
 from ..api.platform.models import ADTOObjectForQueryingXboxUserAchievements
 from ..api.platform.models import ADTOObjectForUnlockSteamAchievementAPI
-from ..api.platform.models import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
+from ..api.platform.models import (
+    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI,
+)
 from ..api.platform.models import AchievementInfo
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
@@ -603,9 +605,13 @@ def create_campaign_create_example() -> CampaignCreate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -631,9 +637,13 @@ def create_campaign_info_example() -> CampaignInfo:
     instance.booth_name = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -661,9 +671,13 @@ def create_campaign_update_example() -> CampaignUpdate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -765,9 +779,13 @@ def create_code_info_example() -> CodeInfo:
     instance.campaign_id = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_campaign_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.max_redeem_count_per_code_per_user = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.namespace = randomize("slug")
     instance.redeem_type = randomize()
     instance.redeemed_count = randomize("int", min_val=1, max_val=1000)

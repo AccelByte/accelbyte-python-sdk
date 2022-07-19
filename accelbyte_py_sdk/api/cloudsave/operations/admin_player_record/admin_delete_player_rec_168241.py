@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,16 +76,18 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
 
     # region fields
 
-    _url: str = "/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}"
+    _url: str = (
+        "/cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}"
+    )
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    key: str                                                                                       # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    key: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -183,7 +185,9 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, ModelsResponseError]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[None, Union[None, HttpResponse, ModelsResponseError]]:
         """Parse the given response.
 
         204: No Content - (Record in user-level saved)
@@ -198,7 +202,9 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -210,7 +216,9 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
         if code == 500:
             return None, ModelsResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -230,7 +238,9 @@ class AdminDeletePlayerRecordHandlerV1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminDeletePlayerRecordHandlerV1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminDeletePlayerRecordHandlerV1:
         instance = cls()
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])

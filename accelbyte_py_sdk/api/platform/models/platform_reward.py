@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -52,10 +52,10 @@ class PlatformReward(Model):
 
     # region fields
 
-    currency: PlatformRewardCurrency                                                               # OPTIONAL
-    item: PlatformRewardItem                                                                       # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
-    type_: Union[str, TypeEnum]                                                                    # OPTIONAL
+    currency: PlatformRewardCurrency  # OPTIONAL
+    item: PlatformRewardItem  # OPTIONAL
+    quantity: int  # OPTIONAL
+    type_: Union[str, TypeEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -125,16 +125,22 @@ class PlatformReward(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformReward:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PlatformReward:
         instance = cls()
         if not dict_:
             return instance
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = PlatformRewardCurrency.create_from_dict(dict_["currency"], include_empty=include_empty)
+            instance.currency = PlatformRewardCurrency.create_from_dict(
+                dict_["currency"], include_empty=include_empty
+            )
         elif include_empty:
             instance.currency = PlatformRewardCurrency()
         if "item" in dict_ and dict_["item"] is not None:
-            instance.item = PlatformRewardItem.create_from_dict(dict_["item"], include_empty=include_empty)
+            instance.item = PlatformRewardItem.create_from_dict(
+                dict_["item"], include_empty=include_empty
+            )
         elif include_empty:
             instance.item = PlatformRewardItem()
         if "quantity" in dict_ and dict_["quantity"] is not None:
@@ -148,15 +154,29 @@ class PlatformReward(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PlatformReward]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PlatformReward]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PlatformReward]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PlatformReward]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PlatformReward, List[PlatformReward], Dict[Any, PlatformReward]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[PlatformReward, List[PlatformReward], Dict[Any, PlatformReward]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

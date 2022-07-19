@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -64,7 +64,14 @@ from ..operations.admin_content import SingleAdminUpdateContentS3
 
 
 @same_doc_as(AdminDeleteContent)
-def admin_delete_content(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_content(
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +86,14 @@ def admin_delete_content(channel_id: str, content_id: str, user_id: str, namespa
 
 
 @same_doc_as(AdminDeleteContent)
-async def admin_delete_content_async(channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_content_async(
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,11 +104,19 @@ async def admin_delete_content_async(channel_id: str, content_id: str, user_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteContentScreenshot)
-def admin_delete_content_screenshot(content_id: str, screenshot_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_content_screenshot(
+    content_id: str,
+    screenshot_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -108,7 +130,13 @@ def admin_delete_content_screenshot(content_id: str, screenshot_id: str, namespa
 
 
 @same_doc_as(AdminDeleteContentScreenshot)
-async def admin_delete_content_screenshot_async(content_id: str, screenshot_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_content_screenshot_async(
+    content_id: str,
+    screenshot_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,11 +146,18 @@ async def admin_delete_content_screenshot_async(content_id: str, screenshot_id: 
         screenshot_id=screenshot_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDownloadContentPreview)
-def admin_download_content_preview(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_download_content_preview(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,7 +170,12 @@ def admin_download_content_preview(content_id: str, namespace: Optional[str] = N
 
 
 @same_doc_as(AdminDownloadContentPreview)
-async def admin_download_content_preview_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_download_content_preview_async(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -144,11 +184,20 @@ async def admin_download_content_preview_async(content_id: str, namespace: Optio
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetContent)
-def admin_get_content(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_content(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,7 +212,14 @@ def admin_get_content(user_id: str, limit: Optional[int] = None, offset: Optiona
 
 
 @same_doc_as(AdminGetContent)
-async def admin_get_content_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_content_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,11 +230,18 @@ async def admin_get_content_async(user_id: str, limit: Optional[int] = None, off
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetSpecificContent)
-def admin_get_specific_content(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_specific_content(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,7 +254,12 @@ def admin_get_specific_content(content_id: str, namespace: Optional[str] = None,
 
 
 @same_doc_as(AdminGetSpecificContent)
-async def admin_get_specific_content_async(content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_specific_content_async(
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -200,11 +268,20 @@ async def admin_get_specific_content_async(content_id: str, namespace: Optional[
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminHideUserContent)
-def admin_hide_user_content(body: ModelsHideContentRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_hide_user_content(
+    body: ModelsHideContentRequest,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,7 +296,14 @@ def admin_hide_user_content(body: ModelsHideContentRequest, content_id: str, use
 
 
 @same_doc_as(AdminHideUserContent)
-async def admin_hide_user_content_async(body: ModelsHideContentRequest, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_hide_user_content_async(
+    body: ModelsHideContentRequest,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,11 +314,29 @@ async def admin_hide_user_content_async(body: ModelsHideContentRequest, content_
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminSearchChannelSpecificContent)
-def admin_search_channel_specific_content(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_search_channel_specific_content(
+    channel_id: str,
+    creator: Optional[str] = None,
+    isofficial: Optional[str] = None,
+    limit: Optional[int] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    subtype: Optional[str] = None,
+    tags: Optional[List[str]] = None,
+    type_: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -258,7 +360,23 @@ def admin_search_channel_specific_content(channel_id: str, creator: Optional[str
 
 
 @same_doc_as(AdminSearchChannelSpecificContent)
-async def admin_search_channel_specific_content_async(channel_id: str, creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_search_channel_specific_content_async(
+    channel_id: str,
+    creator: Optional[str] = None,
+    isofficial: Optional[str] = None,
+    limit: Optional[int] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    subtype: Optional[str] = None,
+    tags: Optional[List[str]] = None,
+    type_: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -278,11 +396,28 @@ async def admin_search_channel_specific_content_async(channel_id: str, creator: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminSearchContent)
-def admin_search_content(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_search_content(
+    creator: Optional[str] = None,
+    isofficial: Optional[str] = None,
+    limit: Optional[int] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    subtype: Optional[str] = None,
+    tags: Optional[List[str]] = None,
+    type_: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,7 +440,22 @@ def admin_search_content(creator: Optional[str] = None, isofficial: Optional[str
 
 
 @same_doc_as(AdminSearchContent)
-async def admin_search_content_async(creator: Optional[str] = None, isofficial: Optional[str] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_search_content_async(
+    creator: Optional[str] = None,
+    isofficial: Optional[str] = None,
+    limit: Optional[int] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    subtype: Optional[str] = None,
+    tags: Optional[List[str]] = None,
+    type_: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -324,12 +474,22 @@ async def admin_search_content_async(creator: Optional[str] = None, isofficial: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(AdminUpdateContentDirect)
-def admin_update_content_direct(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_content_direct(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,7 +506,15 @@ def admin_update_content_direct(body: ModelsCreateContentRequest, channel_id: st
 
 @deprecated
 @same_doc_as(AdminUpdateContentDirect)
-async def admin_update_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_content_direct_async(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -358,11 +526,21 @@ async def admin_update_content_direct_async(body: ModelsCreateContentRequest, ch
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateContentS3)
-def admin_update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_content_s3(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,7 +556,15 @@ def admin_update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str,
 
 
 @same_doc_as(AdminUpdateContentS3)
-async def admin_update_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_content_s3_async(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    content_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -390,11 +576,19 @@ async def admin_update_content_s3_async(body: ModelsCreateContentRequestS3, chan
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateScreenshots)
-def admin_update_screenshots(body: ModelsUpdateScreenshotRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_screenshots(
+    body: ModelsUpdateScreenshotRequest,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -408,7 +602,13 @@ def admin_update_screenshots(body: ModelsUpdateScreenshotRequest, content_id: st
 
 
 @same_doc_as(AdminUpdateScreenshots)
-async def admin_update_screenshots_async(body: ModelsUpdateScreenshotRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_screenshots_async(
+    body: ModelsUpdateScreenshotRequest,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -418,12 +618,20 @@ async def admin_update_screenshots_async(body: ModelsUpdateScreenshotRequest, co
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(AdminUploadContentDirect)
-def admin_upload_content_direct(body: ModelsCreateContentRequest, channel_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_upload_content_direct(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -438,7 +646,13 @@ def admin_upload_content_direct(body: ModelsCreateContentRequest, channel_id: st
 
 @deprecated
 @same_doc_as(AdminUploadContentDirect)
-async def admin_upload_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_upload_content_direct_async(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -448,11 +662,19 @@ async def admin_upload_content_direct_async(body: ModelsCreateContentRequest, ch
         channel_id=channel_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUploadContentS3)
-def admin_upload_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_upload_content_s3(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -466,7 +688,13 @@ def admin_upload_content_s3(body: ModelsCreateContentRequestS3, channel_id: str,
 
 
 @same_doc_as(AdminUploadContentS3)
-async def admin_upload_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_upload_content_s3_async(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -476,11 +704,19 @@ async def admin_upload_content_s3_async(body: ModelsCreateContentRequestS3, chan
         channel_id=channel_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUploadContentScreenshot)
-def admin_upload_content_screenshot(body: ModelsCreateScreenshotRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_upload_content_screenshot(
+    body: ModelsCreateScreenshotRequest,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -494,7 +730,13 @@ def admin_upload_content_screenshot(body: ModelsCreateScreenshotRequest, content
 
 
 @same_doc_as(AdminUploadContentScreenshot)
-async def admin_upload_content_screenshot_async(body: ModelsCreateScreenshotRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_upload_content_screenshot_async(
+    body: ModelsCreateScreenshotRequest,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -504,11 +746,19 @@ async def admin_upload_content_screenshot_async(body: ModelsCreateScreenshotRequ
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SingleAdminDeleteContent)
-def single_admin_delete_content(channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def single_admin_delete_content(
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -522,7 +772,13 @@ def single_admin_delete_content(channel_id: str, content_id: str, namespace: Opt
 
 
 @same_doc_as(SingleAdminDeleteContent)
-async def single_admin_delete_content_async(channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def single_admin_delete_content_async(
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -532,11 +788,19 @@ async def single_admin_delete_content_async(channel_id: str, content_id: str, na
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SingleAdminGetContent)
-def single_admin_get_content(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def single_admin_get_content(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -550,7 +814,13 @@ def single_admin_get_content(limit: Optional[int] = None, offset: Optional[int] 
 
 
 @same_doc_as(SingleAdminGetContent)
-async def single_admin_get_content_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def single_admin_get_content_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -560,12 +830,21 @@ async def single_admin_get_content_async(limit: Optional[int] = None, offset: Op
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(SingleAdminUpdateContentDirect)
-def single_admin_update_content_direct(body: ModelsCreateContentRequest, channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def single_admin_update_content_direct(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -581,7 +860,14 @@ def single_admin_update_content_direct(body: ModelsCreateContentRequest, channel
 
 @deprecated
 @same_doc_as(SingleAdminUpdateContentDirect)
-async def single_admin_update_content_direct_async(body: ModelsCreateContentRequest, channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def single_admin_update_content_direct_async(
+    body: ModelsCreateContentRequest,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -592,11 +878,20 @@ async def single_admin_update_content_direct_async(body: ModelsCreateContentRequ
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SingleAdminUpdateContentS3)
-def single_admin_update_content_s3(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def single_admin_update_content_s3(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -611,7 +906,14 @@ def single_admin_update_content_s3(body: ModelsCreateContentRequestS3, channel_i
 
 
 @same_doc_as(SingleAdminUpdateContentS3)
-async def single_admin_update_content_s3_async(body: ModelsCreateContentRequestS3, channel_id: str, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def single_admin_update_content_s3_async(
+    body: ModelsCreateContentRequestS3,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -622,4 +924,6 @@ async def single_admin_update_content_s3_async(body: ModelsCreateContentRequestS
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

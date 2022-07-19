@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -63,19 +63,19 @@ class ModelsChannelV1(Model):
 
     # region fields
 
-    deployment: str                                                                                # REQUIRED
-    description: str                                                                               # REQUIRED
-    find_match_timeout_seconds: int                                                                # REQUIRED
-    game_mode: str                                                                                 # REQUIRED
-    joinable: bool                                                                                 # REQUIRED
-    max_delay_ms: int                                                                              # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    rule_set: ModelsRuleSetV1                                                                      # REQUIRED
-    session_queue_timeout_seconds: int                                                             # REQUIRED
-    slug: str                                                                                      # REQUIRED
-    social_matchmaking: bool                                                                       # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    use_sub_gamemode: bool                                                                         # REQUIRED
+    deployment: str  # REQUIRED
+    description: str  # REQUIRED
+    find_match_timeout_seconds: int  # REQUIRED
+    game_mode: str  # REQUIRED
+    joinable: bool  # REQUIRED
+    max_delay_ms: int  # REQUIRED
+    namespace: str  # REQUIRED
+    rule_set: ModelsRuleSetV1  # REQUIRED
+    session_queue_timeout_seconds: int  # REQUIRED
+    slug: str  # REQUIRED
+    social_matchmaking: bool  # REQUIRED
+    updated_at: str  # REQUIRED
+    use_sub_gamemode: bool  # REQUIRED
 
     # endregion fields
 
@@ -172,7 +172,9 @@ class ModelsChannelV1(Model):
         elif include_empty:
             result["ruleSet"] = ModelsRuleSetV1()
         if hasattr(self, "session_queue_timeout_seconds"):
-            result["sessionQueueTimeoutSeconds"] = int(self.session_queue_timeout_seconds)
+            result["sessionQueueTimeoutSeconds"] = int(
+                self.session_queue_timeout_seconds
+            )
         elif include_empty:
             result["sessionQueueTimeoutSeconds"] = 0
         if hasattr(self, "slug"):
@@ -231,7 +233,9 @@ class ModelsChannelV1(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsChannelV1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsChannelV1:
         instance = cls()
         if not dict_:
             return instance
@@ -243,7 +247,10 @@ class ModelsChannelV1(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "findMatchTimeoutSeconds" in dict_ and dict_["findMatchTimeoutSeconds"] is not None:
+        if (
+            "findMatchTimeoutSeconds" in dict_
+            and dict_["findMatchTimeoutSeconds"] is not None
+        ):
             instance.find_match_timeout_seconds = int(dict_["findMatchTimeoutSeconds"])
         elif include_empty:
             instance.find_match_timeout_seconds = 0
@@ -264,11 +271,18 @@ class ModelsChannelV1(Model):
         elif include_empty:
             instance.namespace = ""
         if "ruleSet" in dict_ and dict_["ruleSet"] is not None:
-            instance.rule_set = ModelsRuleSetV1.create_from_dict(dict_["ruleSet"], include_empty=include_empty)
+            instance.rule_set = ModelsRuleSetV1.create_from_dict(
+                dict_["ruleSet"], include_empty=include_empty
+            )
         elif include_empty:
             instance.rule_set = ModelsRuleSetV1()
-        if "sessionQueueTimeoutSeconds" in dict_ and dict_["sessionQueueTimeoutSeconds"] is not None:
-            instance.session_queue_timeout_seconds = int(dict_["sessionQueueTimeoutSeconds"])
+        if (
+            "sessionQueueTimeoutSeconds" in dict_
+            and dict_["sessionQueueTimeoutSeconds"] is not None
+        ):
+            instance.session_queue_timeout_seconds = int(
+                dict_["sessionQueueTimeoutSeconds"]
+            )
         elif include_empty:
             instance.session_queue_timeout_seconds = 0
         if "slug" in dict_ and dict_["slug"] is not None:
@@ -290,15 +304,29 @@ class ModelsChannelV1(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsChannelV1]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsChannelV1]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsChannelV1]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsChannelV1]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsChannelV1, List[ModelsChannelV1], Dict[Any, ModelsChannelV1]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ModelsChannelV1, List[ModelsChannelV1], Dict[Any, ModelsChannelV1]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

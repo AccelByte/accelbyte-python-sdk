@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,9 +43,9 @@ class ModelsMatchingParty(Model):
 
     # region fields
 
-    party_attributes: Dict[str, Any]                                                               # REQUIRED
-    party_id: str                                                                                  # REQUIRED
-    party_members: List[ModelsPartyMember]                                                         # REQUIRED
+    party_attributes: Dict[str, Any]  # REQUIRED
+    party_id: str  # REQUIRED
+    party_members: List[ModelsPartyMember]  # REQUIRED
 
     # endregion fields
 
@@ -70,7 +70,9 @@ class ModelsMatchingParty(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "party_attributes"):
-            result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
+            result["party_attributes"] = {
+                str(k0): v0 for k0, v0 in self.party_attributes.items()
+            }
         elif include_empty:
             result["party_attributes"] = {}
         if hasattr(self, "party_id"):
@@ -78,7 +80,9 @@ class ModelsMatchingParty(Model):
         elif include_empty:
             result["party_id"] = ""
         if hasattr(self, "party_members"):
-            result["party_members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.party_members]
+            result["party_members"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.party_members
+            ]
         elif include_empty:
             result["party_members"] = []
         return result
@@ -101,12 +105,16 @@ class ModelsMatchingParty(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsMatchingParty:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsMatchingParty:
         instance = cls()
         if not dict_:
             return instance
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
-            instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
+            instance.party_attributes = {
+                str(k0): v0 for k0, v0 in dict_["party_attributes"].items()
+            }
         elif include_empty:
             instance.party_attributes = {}
         if "party_id" in dict_ and dict_["party_id"] is not None:
@@ -114,21 +122,40 @@ class ModelsMatchingParty(Model):
         elif include_empty:
             instance.party_id = ""
         if "party_members" in dict_ and dict_["party_members"] is not None:
-            instance.party_members = [ModelsPartyMember.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["party_members"]]
+            instance.party_members = [
+                ModelsPartyMember.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["party_members"]
+            ]
         elif include_empty:
             instance.party_members = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsMatchingParty]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsMatchingParty]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsMatchingParty]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsMatchingParty]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsMatchingParty, List[ModelsMatchingParty], Dict[Any, ModelsMatchingParty]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsMatchingParty, List[ModelsMatchingParty], Dict[Any, ModelsMatchingParty]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.lobby import admin_update_profanity_list as admin_update_profanity_list_internal
+from accelbyte_py_sdk.api.lobby import (
+    admin_update_profanity_list as admin_update_profanity_list_internal,
+)
 from accelbyte_py_sdk.api.lobby.models import ModelsAdminUpdateProfanityList
 from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 
@@ -43,21 +45,19 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_update_profanity_list(
-        body: str,
-        list_: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    body: str,
+    list_: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_update_profanity_list_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

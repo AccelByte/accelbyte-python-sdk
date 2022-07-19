@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -55,14 +55,14 @@ class AccountcommonRole(Model):
 
     # region fields
 
-    admin_role: bool                                                                               # REQUIRED
-    deletable: bool                                                                                # REQUIRED
-    is_wildcard: bool                                                                              # REQUIRED
-    managers: List[AccountcommonRoleManager]                                                       # REQUIRED
-    members: List[AccountcommonRoleMember]                                                         # REQUIRED
-    permissions: List[AccountcommonPermission]                                                     # REQUIRED
-    role_id: str                                                                                   # REQUIRED
-    role_name: str                                                                                 # REQUIRED
+    admin_role: bool  # REQUIRED
+    deletable: bool  # REQUIRED
+    is_wildcard: bool  # REQUIRED
+    managers: List[AccountcommonRoleManager]  # REQUIRED
+    members: List[AccountcommonRoleMember]  # REQUIRED
+    permissions: List[AccountcommonPermission]  # REQUIRED
+    role_id: str  # REQUIRED
+    role_name: str  # REQUIRED
 
     # endregion fields
 
@@ -88,7 +88,9 @@ class AccountcommonRole(Model):
         self.members = value
         return self
 
-    def with_permissions(self, value: List[AccountcommonPermission]) -> AccountcommonRole:
+    def with_permissions(
+        self, value: List[AccountcommonPermission]
+    ) -> AccountcommonRole:
         self.permissions = value
         return self
 
@@ -119,15 +121,21 @@ class AccountcommonRole(Model):
         elif include_empty:
             result["IsWildcard"] = False
         if hasattr(self, "managers"):
-            result["Managers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.managers]
+            result["Managers"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.managers
+            ]
         elif include_empty:
             result["Managers"] = []
         if hasattr(self, "members"):
-            result["Members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.members]
+            result["Members"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.members
+            ]
         elif include_empty:
             result["Members"] = []
         if hasattr(self, "permissions"):
-            result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
+            result["Permissions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
+            ]
         elif include_empty:
             result["Permissions"] = []
         if hasattr(self, "role_id"):
@@ -168,7 +176,9 @@ class AccountcommonRole(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonRole:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountcommonRole:
         instance = cls()
         if not dict_:
             return instance
@@ -185,15 +195,30 @@ class AccountcommonRole(Model):
         elif include_empty:
             instance.is_wildcard = False
         if "Managers" in dict_ and dict_["Managers"] is not None:
-            instance.managers = [AccountcommonRoleManager.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Managers"]]
+            instance.managers = [
+                AccountcommonRoleManager.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Managers"]
+            ]
         elif include_empty:
             instance.managers = []
         if "Members" in dict_ and dict_["Members"] is not None:
-            instance.members = [AccountcommonRoleMember.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Members"]]
+            instance.members = [
+                AccountcommonRoleMember.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Members"]
+            ]
         elif include_empty:
             instance.members = []
         if "Permissions" in dict_ and dict_["Permissions"] is not None:
-            instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
+            instance.permissions = [
+                AccountcommonPermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["Permissions"]
+            ]
         elif include_empty:
             instance.permissions = []
         if "RoleId" in dict_ and dict_["RoleId"] is not None:
@@ -207,15 +232,31 @@ class AccountcommonRole(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonRole]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountcommonRole]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonRole]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountcommonRole]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonRole, List[AccountcommonRole], Dict[Any, AccountcommonRole]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountcommonRole, List[AccountcommonRole], Dict[Any, AccountcommonRole]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

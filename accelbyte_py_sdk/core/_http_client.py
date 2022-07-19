@@ -140,7 +140,9 @@ class RequestsHttpClient(HttpClient):
         elapsed = timedelta(0)
         raw_response = None
         error = None
-        filtered_kwargs = {k: v for k, v in kwargs.items() if k in self.allowed_kwarg_keys}
+        filtered_kwargs = {
+            k: v for k, v in kwargs.items() if k in self.allowed_kwarg_keys
+        }
         while True:
             try:
                 self.log_request(request)

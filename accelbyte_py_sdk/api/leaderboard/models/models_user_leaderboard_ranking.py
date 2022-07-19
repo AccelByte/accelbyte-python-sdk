@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,28 +53,34 @@ class ModelsUserLeaderboardRanking(Model):
 
     # region fields
 
-    all_time: ModelsUserRankingResponseDetail                                                      # REQUIRED
-    current: ModelsUserRankingResponseDetail                                                       # REQUIRED
-    daily: ModelsUserRankingResponseDetail                                                         # REQUIRED
-    leaderboard_code: str                                                                          # REQUIRED
-    leaderboard_name: str                                                                          # REQUIRED
-    monthly: ModelsUserRankingResponseDetail                                                       # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    weekly: ModelsUserRankingResponseDetail                                                        # REQUIRED
+    all_time: ModelsUserRankingResponseDetail  # REQUIRED
+    current: ModelsUserRankingResponseDetail  # REQUIRED
+    daily: ModelsUserRankingResponseDetail  # REQUIRED
+    leaderboard_code: str  # REQUIRED
+    leaderboard_name: str  # REQUIRED
+    monthly: ModelsUserRankingResponseDetail  # REQUIRED
+    user_id: str  # REQUIRED
+    weekly: ModelsUserRankingResponseDetail  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_all_time(self, value: ModelsUserRankingResponseDetail) -> ModelsUserLeaderboardRanking:
+    def with_all_time(
+        self, value: ModelsUserRankingResponseDetail
+    ) -> ModelsUserLeaderboardRanking:
         self.all_time = value
         return self
 
-    def with_current(self, value: ModelsUserRankingResponseDetail) -> ModelsUserLeaderboardRanking:
+    def with_current(
+        self, value: ModelsUserRankingResponseDetail
+    ) -> ModelsUserLeaderboardRanking:
         self.current = value
         return self
 
-    def with_daily(self, value: ModelsUserRankingResponseDetail) -> ModelsUserLeaderboardRanking:
+    def with_daily(
+        self, value: ModelsUserRankingResponseDetail
+    ) -> ModelsUserLeaderboardRanking:
         self.daily = value
         return self
 
@@ -86,7 +92,9 @@ class ModelsUserLeaderboardRanking(Model):
         self.leaderboard_name = value
         return self
 
-    def with_monthly(self, value: ModelsUserRankingResponseDetail) -> ModelsUserLeaderboardRanking:
+    def with_monthly(
+        self, value: ModelsUserRankingResponseDetail
+    ) -> ModelsUserLeaderboardRanking:
         self.monthly = value
         return self
 
@@ -94,7 +102,9 @@ class ModelsUserLeaderboardRanking(Model):
         self.user_id = value
         return self
 
-    def with_weekly(self, value: ModelsUserRankingResponseDetail) -> ModelsUserLeaderboardRanking:
+    def with_weekly(
+        self, value: ModelsUserRankingResponseDetail
+    ) -> ModelsUserLeaderboardRanking:
         self.weekly = value
         return self
 
@@ -166,20 +176,28 @@ class ModelsUserLeaderboardRanking(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUserLeaderboardRanking:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsUserLeaderboardRanking:
         instance = cls()
         if not dict_:
             return instance
         if "allTime" in dict_ and dict_["allTime"] is not None:
-            instance.all_time = ModelsUserRankingResponseDetail.create_from_dict(dict_["allTime"], include_empty=include_empty)
+            instance.all_time = ModelsUserRankingResponseDetail.create_from_dict(
+                dict_["allTime"], include_empty=include_empty
+            )
         elif include_empty:
             instance.all_time = ModelsUserRankingResponseDetail()
         if "current" in dict_ and dict_["current"] is not None:
-            instance.current = ModelsUserRankingResponseDetail.create_from_dict(dict_["current"], include_empty=include_empty)
+            instance.current = ModelsUserRankingResponseDetail.create_from_dict(
+                dict_["current"], include_empty=include_empty
+            )
         elif include_empty:
             instance.current = ModelsUserRankingResponseDetail()
         if "daily" in dict_ and dict_["daily"] is not None:
-            instance.daily = ModelsUserRankingResponseDetail.create_from_dict(dict_["daily"], include_empty=include_empty)
+            instance.daily = ModelsUserRankingResponseDetail.create_from_dict(
+                dict_["daily"], include_empty=include_empty
+            )
         elif include_empty:
             instance.daily = ModelsUserRankingResponseDetail()
         if "leaderboardCode" in dict_ and dict_["leaderboardCode"] is not None:
@@ -191,7 +209,9 @@ class ModelsUserLeaderboardRanking(Model):
         elif include_empty:
             instance.leaderboard_name = ""
         if "monthly" in dict_ and dict_["monthly"] is not None:
-            instance.monthly = ModelsUserRankingResponseDetail.create_from_dict(dict_["monthly"], include_empty=include_empty)
+            instance.monthly = ModelsUserRankingResponseDetail.create_from_dict(
+                dict_["monthly"], include_empty=include_empty
+            )
         elif include_empty:
             instance.monthly = ModelsUserRankingResponseDetail()
         if "userId" in dict_ and dict_["userId"] is not None:
@@ -199,21 +219,41 @@ class ModelsUserLeaderboardRanking(Model):
         elif include_empty:
             instance.user_id = ""
         if "weekly" in dict_ and dict_["weekly"] is not None:
-            instance.weekly = ModelsUserRankingResponseDetail.create_from_dict(dict_["weekly"], include_empty=include_empty)
+            instance.weekly = ModelsUserRankingResponseDetail.create_from_dict(
+                dict_["weekly"], include_empty=include_empty
+            )
         elif include_empty:
             instance.weekly = ModelsUserRankingResponseDetail()
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUserLeaderboardRanking]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsUserLeaderboardRanking]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUserLeaderboardRanking]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsUserLeaderboardRanking]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUserLeaderboardRanking, List[ModelsUserLeaderboardRanking], Dict[Any, ModelsUserLeaderboardRanking]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsUserLeaderboardRanking,
+        List[ModelsUserLeaderboardRanking],
+        Dict[Any, ModelsUserLeaderboardRanking],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

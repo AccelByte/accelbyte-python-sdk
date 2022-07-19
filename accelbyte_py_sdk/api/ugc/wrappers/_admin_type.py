@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -41,7 +41,12 @@ from ..operations.admin_type import AdminUpdateType
 
 
 @same_doc_as(AdminCreateType)
-def admin_create_type(body: ModelsCreateTypeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_create_type(
+    body: ModelsCreateTypeRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,7 +59,12 @@ def admin_create_type(body: ModelsCreateTypeRequest, namespace: Optional[str] = 
 
 
 @same_doc_as(AdminCreateType)
-async def admin_create_type_async(body: ModelsCreateTypeRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_create_type_async(
+    body: ModelsCreateTypeRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,11 +73,18 @@ async def admin_create_type_async(body: ModelsCreateTypeRequest, namespace: Opti
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteType)
-def admin_delete_type(type_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_type(
+    type_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,7 +97,12 @@ def admin_delete_type(type_id: str, namespace: Optional[str] = None, x_additiona
 
 
 @same_doc_as(AdminDeleteType)
-async def admin_delete_type_async(type_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_type_async(
+    type_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,11 +111,19 @@ async def admin_delete_type_async(type_id: str, namespace: Optional[str] = None,
         type_id=type_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetType)
-def admin_get_type(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_type(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,7 +137,13 @@ def admin_get_type(limit: Optional[int] = None, offset: Optional[int] = None, na
 
 
 @same_doc_as(AdminGetType)
-async def admin_get_type_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_type_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,11 +153,19 @@ async def admin_get_type_async(limit: Optional[int] = None, offset: Optional[int
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateType)
-def admin_update_type(body: ModelsCreateTypeRequest, type_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_type(
+    body: ModelsCreateTypeRequest,
+    type_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -135,7 +179,13 @@ def admin_update_type(body: ModelsCreateTypeRequest, type_id: str, namespace: Op
 
 
 @same_doc_as(AdminUpdateType)
-async def admin_update_type_async(body: ModelsCreateTypeRequest, type_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_type_async(
+    body: ModelsCreateTypeRequest,
+    type_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,4 +195,6 @@ async def admin_update_type_async(body: ModelsCreateTypeRequest, type_id: str, n
         type_id=type_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

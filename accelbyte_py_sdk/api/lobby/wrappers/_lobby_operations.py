@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -40,7 +40,13 @@ from ..operations.lobby_operations import PublicGetMessages
 
 
 @same_doc_as(AdminJoinPartyV1)
-def admin_join_party_v1(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_join_party_v1(
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -54,7 +60,13 @@ def admin_join_party_v1(party_id: str, user_id: str, namespace: Optional[str] = 
 
 
 @same_doc_as(AdminJoinPartyV1)
-async def admin_join_party_v1_async(party_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_join_party_v1_async(
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,11 +76,19 @@ async def admin_join_party_v1_async(party_id: str, user_id: str, namespace: Opti
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdatePartyAttributesV1)
-def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_party_attributes_v1(
+    body: ModelsPartyPUTCustomAttributesRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -82,7 +102,13 @@ def admin_update_party_attributes_v1(body: ModelsPartyPUTCustomAttributesRequest
 
 
 @same_doc_as(AdminUpdatePartyAttributesV1)
-async def admin_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttributesRequest, party_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_party_attributes_v1_async(
+    body: ModelsPartyPUTCustomAttributesRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -92,16 +118,24 @@ async def admin_update_party_attributes_v1_async(body: ModelsPartyPUTCustomAttri
         party_id=party_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetMessages)
-def public_get_messages(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_messages(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = PublicGetMessages.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetMessages)
-async def public_get_messages_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_messages_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = PublicGetMessages.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -21,5 +21,7 @@ from .get_currency_summary import GetCurrencySummary
 from .list_currencies import ListCurrencies
 from .list_currencies import CurrencyTypeEnum as ListCurrenciesCurrencyTypeEnum
 from .public_list_currencies import PublicListCurrencies
-from .public_list_currencies import CurrencyTypeEnum as PublicListCurrenciesCurrencyTypeEnum
+from .public_list_currencies import (
+    CurrencyTypeEnum as PublicListCurrenciesCurrencyTypeEnum,
+)
 from .update_currency import UpdateCurrency

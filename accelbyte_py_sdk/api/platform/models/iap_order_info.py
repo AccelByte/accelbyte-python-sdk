@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -98,27 +98,27 @@ class IAPOrderInfo(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    iap_order_no: str                                                                              # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    type_: Union[str, TypeEnum]                                                                    # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    credits: List[CreditSummary]                                                                   # OPTIONAL
-    currency_code: str                                                                             # OPTIONAL
-    entitlements: List[EntitlementSummary]                                                         # OPTIONAL
-    fulfilled_time: str                                                                            # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    price: float                                                                                   # OPTIONAL
-    product_id: str                                                                                # OPTIONAL
-    quantity: int                                                                                  # OPTIONAL
-    receipt_data: str                                                                              # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    retry_count: int                                                                               # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
-    status_reason: str                                                                             # OPTIONAL
-    transaction_id: str                                                                            # OPTIONAL
+    created_at: str  # REQUIRED
+    iap_order_no: str  # REQUIRED
+    namespace: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    user_id: str  # REQUIRED
+    credits: List[CreditSummary]  # OPTIONAL
+    currency_code: str  # OPTIONAL
+    entitlements: List[EntitlementSummary]  # OPTIONAL
+    fulfilled_time: str  # OPTIONAL
+    language: str  # OPTIONAL
+    price: float  # OPTIONAL
+    product_id: str  # OPTIONAL
+    quantity: int  # OPTIONAL
+    receipt_data: str  # OPTIONAL
+    region: str  # OPTIONAL
+    retry_count: int  # OPTIONAL
+    sandbox: bool  # OPTIONAL
+    status_reason: str  # OPTIONAL
+    transaction_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -243,7 +243,9 @@ class IAPOrderInfo(Model):
         elif include_empty:
             result["userId"] = ""
         if hasattr(self, "credits"):
-            result["credits"] = [i0.to_dict(include_empty=include_empty) for i0 in self.credits]
+            result["credits"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.credits
+            ]
         elif include_empty:
             result["credits"] = []
         if hasattr(self, "currency_code"):
@@ -251,7 +253,9 @@ class IAPOrderInfo(Model):
         elif include_empty:
             result["currencyCode"] = ""
         if hasattr(self, "entitlements"):
-            result["entitlements"] = [i0.to_dict(include_empty=include_empty) for i0 in self.entitlements]
+            result["entitlements"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.entitlements
+            ]
         elif include_empty:
             result["entitlements"] = []
         if hasattr(self, "fulfilled_time"):
@@ -401,7 +405,10 @@ class IAPOrderInfo(Model):
         elif include_empty:
             instance.user_id = ""
         if "credits" in dict_ and dict_["credits"] is not None:
-            instance.credits = [CreditSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["credits"]]
+            instance.credits = [
+                CreditSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["credits"]
+            ]
         elif include_empty:
             instance.credits = []
         if "currencyCode" in dict_ and dict_["currencyCode"] is not None:
@@ -409,7 +416,10 @@ class IAPOrderInfo(Model):
         elif include_empty:
             instance.currency_code = ""
         if "entitlements" in dict_ and dict_["entitlements"] is not None:
-            instance.entitlements = [EntitlementSummary.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["entitlements"]]
+            instance.entitlements = [
+                EntitlementSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["entitlements"]
+            ]
         elif include_empty:
             instance.entitlements = []
         if "fulfilledTime" in dict_ and dict_["fulfilledTime"] is not None:
@@ -459,15 +469,29 @@ class IAPOrderInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, IAPOrderInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, IAPOrderInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[IAPOrderInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[IAPOrderInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[IAPOrderInfo, List[IAPOrderInfo], Dict[Any, IAPOrderInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[IAPOrderInfo, List[IAPOrderInfo], Dict[Any, IAPOrderInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -534,7 +558,16 @@ class IAPOrderInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["FAILED", "FULFILLED", "VERIFIED"],
-            "type": ["APPLE", "EPICGAMES", "GOOGLE", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "type": [
+                "APPLE",
+                "EPICGAMES",
+                "GOOGLE",
+                "PLAYSTATION",
+                "STADIA",
+                "STEAM",
+                "TWITCH",
+                "XBOX",
+            ],
         }
 
     # endregion static methods

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -141,21 +141,21 @@ class QueryItems(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    active_only: bool                                                                              # OPTIONAL in [query]
-    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL in [query]
-    available_date: str                                                                            # OPTIONAL in [query]
-    base_app_id: str                                                                               # OPTIONAL in [query]
-    category_path: str                                                                             # OPTIONAL in [query]
-    features: str                                                                                  # OPTIONAL in [query]
-    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    sort_by: List[Union[str, SortByEnum]]                                                          # OPTIONAL in [query]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    tags: str                                                                                      # OPTIONAL in [query]
-    target_namespace: str                                                                          # OPTIONAL in [query]
+    namespace: str  # REQUIRED in [path]
+    active_only: bool  # OPTIONAL in [query]
+    app_type: Union[str, AppTypeEnum]  # OPTIONAL in [query]
+    available_date: str  # OPTIONAL in [query]
+    base_app_id: str  # OPTIONAL in [query]
+    category_path: str  # OPTIONAL in [query]
+    features: str  # OPTIONAL in [query]
+    item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
+    region: str  # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]  # OPTIONAL in [query]
+    store_id: str  # OPTIONAL in [query]
+    tags: str  # OPTIONAL in [query]
+    target_namespace: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -378,7 +378,12 @@ class QueryItems(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, FullItemPagingSlicedResult], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, FullItemPagingSlicedResult],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - FullItemPagingSlicedResult (successful operation)
@@ -393,7 +398,9 @@ class QueryItems(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -405,7 +412,9 @@ class QueryItems(Operation):
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -570,15 +579,37 @@ class QueryItems(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "sortBy": "csv",                                                                       # in query
+            "sortBy": "csv",  # in query
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
-            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],# in query
-            "sortBy": ["name", "name:asc", "name:desc", "createdAt", "createdAt:asc", "createdAt:desc", "updatedAt", "updatedAt:asc", "updatedAt:desc", "displayOrder", "displayOrder:asc", "displayOrder:desc"],# in query
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],  # in query
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],  # in query
+            "sortBy": [
+                "name",
+                "name:asc",
+                "name:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+                "displayOrder",
+                "displayOrder:asc",
+                "displayOrder:desc",
+            ],  # in query
         }
 
     # endregion static methods

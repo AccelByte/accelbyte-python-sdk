@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -131,44 +131,46 @@ class ItemSnapshot(Model):
 
     # region fields
 
-    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
-    language: str                                                                                  # REQUIRED
-    name: str                                                                                      # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    region: str                                                                                    # REQUIRED
-    title: str                                                                                     # REQUIRED
-    app_id: str                                                                                    # OPTIONAL
-    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
-    base_app_id: str                                                                               # OPTIONAL
-    booth_name: str                                                                                # OPTIONAL
-    created_at: str                                                                                # OPTIONAL
-    description: str                                                                               # OPTIONAL
-    features: List[str]                                                                            # OPTIONAL
-    item_ids: List[str]                                                                            # OPTIONAL
-    item_qty: Dict[str, int]                                                                       # OPTIONAL
-    listable: bool                                                                                 # OPTIONAL
-    max_count: int                                                                                 # OPTIONAL
-    max_count_per_user: int                                                                        # OPTIONAL
-    purchasable: bool                                                                              # OPTIONAL
-    recurring: Recurring                                                                           # OPTIONAL
-    region_data_item: RegionDataItem                                                               # OPTIONAL
-    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    stackable: bool                                                                                # OPTIONAL
-    target_currency_code: str                                                                      # OPTIONAL
-    target_item_id: str                                                                            # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
-    thumbnail_url: str                                                                             # OPTIONAL
-    updated_at: str                                                                                # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
+    entitlement_type: Union[str, EntitlementTypeEnum]  # REQUIRED
+    item_id: str  # REQUIRED
+    item_type: Union[str, ItemTypeEnum]  # REQUIRED
+    language: str  # REQUIRED
+    name: str  # REQUIRED
+    namespace: str  # REQUIRED
+    region: str  # REQUIRED
+    title: str  # REQUIRED
+    app_id: str  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    base_app_id: str  # OPTIONAL
+    booth_name: str  # OPTIONAL
+    created_at: str  # OPTIONAL
+    description: str  # OPTIONAL
+    features: List[str]  # OPTIONAL
+    item_ids: List[str]  # OPTIONAL
+    item_qty: Dict[str, int]  # OPTIONAL
+    listable: bool  # OPTIONAL
+    max_count: int  # OPTIONAL
+    max_count_per_user: int  # OPTIONAL
+    purchasable: bool  # OPTIONAL
+    recurring: Recurring  # OPTIONAL
+    region_data_item: RegionDataItem  # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    sku: str  # OPTIONAL
+    stackable: bool  # OPTIONAL
+    target_currency_code: str  # OPTIONAL
+    target_item_id: str  # OPTIONAL
+    target_namespace: str  # OPTIONAL
+    thumbnail_url: str  # OPTIONAL
+    updated_at: str  # OPTIONAL
+    use_count: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> ItemSnapshot:
+    def with_entitlement_type(
+        self, value: Union[str, EntitlementTypeEnum]
+    ) -> ItemSnapshot:
         self.entitlement_type = value
         return self
 
@@ -391,7 +393,9 @@ class ItemSnapshot(Model):
         elif include_empty:
             result["recurring"] = Recurring()
         if hasattr(self, "region_data_item"):
-            result["regionDataItem"] = self.region_data_item.to_dict(include_empty=include_empty)
+            result["regionDataItem"] = self.region_data_item.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["regionDataItem"] = RegionDataItem()
         if hasattr(self, "season_type"):
@@ -601,7 +605,9 @@ class ItemSnapshot(Model):
         elif include_empty:
             instance.item_ids = []
         if "itemQty" in dict_ and dict_["itemQty"] is not None:
-            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
+            instance.item_qty = {
+                str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()
+            }
         elif include_empty:
             instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
@@ -621,11 +627,15 @@ class ItemSnapshot(Model):
         elif include_empty:
             instance.purchasable = False
         if "recurring" in dict_ and dict_["recurring"] is not None:
-            instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
+            instance.recurring = Recurring.create_from_dict(
+                dict_["recurring"], include_empty=include_empty
+            )
         elif include_empty:
             instance.recurring = Recurring()
         if "regionDataItem" in dict_ and dict_["regionDataItem"] is not None:
-            instance.region_data_item = RegionDataItem.create_from_dict(dict_["regionDataItem"], include_empty=include_empty)
+            instance.region_data_item = RegionDataItem.create_from_dict(
+                dict_["regionDataItem"], include_empty=include_empty
+            )
         elif include_empty:
             instance.region_data_item = RegionDataItem()
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
@@ -667,15 +677,29 @@ class ItemSnapshot(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ItemSnapshot]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ItemSnapshot]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ItemSnapshot]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ItemSnapshot]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ItemSnapshot, List[ItemSnapshot], Dict[Any, ItemSnapshot]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ItemSnapshot, List[ItemSnapshot], Dict[Any, ItemSnapshot]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -764,7 +788,16 @@ class ItemSnapshot(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["CONSUMABLE", "DURABLE"],
-            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
             "seasonType": ["PASS", "TIER"],
         }

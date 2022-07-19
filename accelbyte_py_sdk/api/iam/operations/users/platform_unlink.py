@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -122,17 +122,19 @@ class PlatformUnlink(Operation):
 
     # region fields
 
-    _url: str = "/iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink"
+    _url: str = (
+        "/iam/namespaces/{namespace}/users/{userId}/platforms/{platformId}/unlink"
+    )
     _method: str = "POST"
     _consumes: List[str] = ["application/x-www-form-urlencoded", "text/plain"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    platform_namespace: str                                                                        # OPTIONAL in [form_data]
-    namespace: str                                                                                 # REQUIRED in [path]
-    platform_id: str                                                                               # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
+    platform_namespace: str  # OPTIONAL in [form_data]
+    namespace: str  # REQUIRED in [path]
+    platform_id: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -245,7 +247,9 @@ class PlatformUnlink(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
@@ -266,7 +270,9 @@ class PlatformUnlink(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -284,7 +290,9 @@ class PlatformUnlink(Operation):
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -307,7 +315,9 @@ class PlatformUnlink(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformUnlink:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PlatformUnlink:
         instance = cls()
         if "platform_namespace" in dict_ and dict_["platform_namespace"] is not None:
             instance.platform_namespace = str(dict_["platform_namespace"])

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,17 +57,17 @@ class ModelsUpdateDeploymentRequest(Model):
 
     # region fields
 
-    allow_version_override: bool                                                                   # REQUIRED
-    buffer_count: int                                                                              # REQUIRED
-    buffer_percent: int                                                                            # REQUIRED
-    configuration: str                                                                             # REQUIRED
-    enable_region_overrides: bool                                                                  # REQUIRED
-    game_version: str                                                                              # REQUIRED
-    max_count: int                                                                                 # REQUIRED
-    min_count: int                                                                                 # REQUIRED
-    regions: List[str]                                                                             # REQUIRED
-    session_timeout: int                                                                           # REQUIRED
-    use_buffer_percent: bool                                                                       # REQUIRED
+    allow_version_override: bool  # REQUIRED
+    buffer_count: int  # REQUIRED
+    buffer_percent: int  # REQUIRED
+    configuration: str  # REQUIRED
+    enable_region_overrides: bool  # REQUIRED
+    game_version: str  # REQUIRED
+    max_count: int  # REQUIRED
+    min_count: int  # REQUIRED
+    regions: List[str]  # REQUIRED
+    session_timeout: int  # REQUIRED
+    use_buffer_percent: bool  # REQUIRED
 
     # endregion fields
 
@@ -89,7 +89,9 @@ class ModelsUpdateDeploymentRequest(Model):
         self.configuration = value
         return self
 
-    def with_enable_region_overrides(self, value: bool) -> ModelsUpdateDeploymentRequest:
+    def with_enable_region_overrides(
+        self, value: bool
+    ) -> ModelsUpdateDeploymentRequest:
         self.enable_region_overrides = value
         return self
 
@@ -203,11 +205,16 @@ class ModelsUpdateDeploymentRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateDeploymentRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsUpdateDeploymentRequest:
         instance = cls()
         if not dict_:
             return instance
-        if "allow_version_override" in dict_ and dict_["allow_version_override"] is not None:
+        if (
+            "allow_version_override" in dict_
+            and dict_["allow_version_override"] is not None
+        ):
             instance.allow_version_override = bool(dict_["allow_version_override"])
         elif include_empty:
             instance.allow_version_override = False
@@ -223,7 +230,10 @@ class ModelsUpdateDeploymentRequest(Model):
             instance.configuration = str(dict_["configuration"])
         elif include_empty:
             instance.configuration = ""
-        if "enable_region_overrides" in dict_ and dict_["enable_region_overrides"] is not None:
+        if (
+            "enable_region_overrides" in dict_
+            and dict_["enable_region_overrides"] is not None
+        ):
             instance.enable_region_overrides = bool(dict_["enable_region_overrides"])
         elif include_empty:
             instance.enable_region_overrides = False
@@ -254,15 +264,33 @@ class ModelsUpdateDeploymentRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUpdateDeploymentRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsUpdateDeploymentRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUpdateDeploymentRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsUpdateDeploymentRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUpdateDeploymentRequest, List[ModelsUpdateDeploymentRequest], Dict[Any, ModelsUpdateDeploymentRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsUpdateDeploymentRequest,
+        List[ModelsUpdateDeploymentRequest],
+        Dict[Any, ModelsUpdateDeploymentRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

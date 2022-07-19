@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -92,28 +92,28 @@ class ExternalPaymentOrderCreate(Model):
 
     # region fields
 
-    description: str                                                                               # REQUIRED
-    ext_order_no: str                                                                              # REQUIRED
-    price: int                                                                                     # REQUIRED
-    target_namespace: str                                                                          # REQUIRED
-    target_user_id: str                                                                            # REQUIRED
-    title: str                                                                                     # REQUIRED
-    currency_code: str                                                                             # OPTIONAL
-    currency_namespace: str                                                                        # OPTIONAL
-    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
-    ext_user_id: str                                                                               # OPTIONAL
-    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    metadata: Dict[str, str]                                                                       # OPTIONAL
-    notify_url: str                                                                                # OPTIONAL
-    omit_notification: bool                                                                        # OPTIONAL
-    platform: str                                                                                  # OPTIONAL
-    recurring_payment_order_no: str                                                                # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    return_url: str                                                                                # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    subscription_id: str                                                                           # OPTIONAL
+    description: str  # REQUIRED
+    ext_order_no: str  # REQUIRED
+    price: int  # REQUIRED
+    target_namespace: str  # REQUIRED
+    target_user_id: str  # REQUIRED
+    title: str  # REQUIRED
+    currency_code: str  # OPTIONAL
+    currency_namespace: str  # OPTIONAL
+    custom_parameters: Dict[str, Any]  # OPTIONAL
+    ext_user_id: str  # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]  # OPTIONAL
+    language: str  # OPTIONAL
+    metadata: Dict[str, str]  # OPTIONAL
+    notify_url: str  # OPTIONAL
+    omit_notification: bool  # OPTIONAL
+    platform: str  # OPTIONAL
+    recurring_payment_order_no: str  # OPTIONAL
+    region: str  # OPTIONAL
+    return_url: str  # OPTIONAL
+    sandbox: bool  # OPTIONAL
+    sku: str  # OPTIONAL
+    subscription_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -151,7 +151,9 @@ class ExternalPaymentOrderCreate(Model):
         self.currency_namespace = value
         return self
 
-    def with_custom_parameters(self, value: Dict[str, Any]) -> ExternalPaymentOrderCreate:
+    def with_custom_parameters(
+        self, value: Dict[str, Any]
+    ) -> ExternalPaymentOrderCreate:
         self.custom_parameters = value
         return self
 
@@ -159,7 +161,9 @@ class ExternalPaymentOrderCreate(Model):
         self.ext_user_id = value
         return self
 
-    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> ExternalPaymentOrderCreate:
+    def with_item_type(
+        self, value: Union[str, ItemTypeEnum]
+    ) -> ExternalPaymentOrderCreate:
         self.item_type = value
         return self
 
@@ -246,7 +250,9 @@ class ExternalPaymentOrderCreate(Model):
         elif include_empty:
             result["currencyNamespace"] = ""
         if hasattr(self, "custom_parameters"):
-            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
+            result["customParameters"] = {
+                str(k0): v0 for k0, v0 in self.custom_parameters.items()
+            }
         elif include_empty:
             result["customParameters"] = {}
         if hasattr(self, "ext_user_id"):
@@ -375,7 +381,9 @@ class ExternalPaymentOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ExternalPaymentOrderCreate:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ExternalPaymentOrderCreate:
         instance = cls()
         if not dict_:
             return instance
@@ -412,7 +420,9 @@ class ExternalPaymentOrderCreate(Model):
         elif include_empty:
             instance.currency_namespace = ""
         if "customParameters" in dict_ and dict_["customParameters"] is not None:
-            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
+            instance.custom_parameters = {
+                str(k0): v0 for k0, v0 in dict_["customParameters"].items()
+            }
         elif include_empty:
             instance.custom_parameters = {}
         if "extUserId" in dict_ and dict_["extUserId"] is not None:
@@ -428,7 +438,9 @@ class ExternalPaymentOrderCreate(Model):
         elif include_empty:
             instance.language = ""
         if "metadata" in dict_ and dict_["metadata"] is not None:
-            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
+            instance.metadata = {
+                str(k0): str(v0) for k0, v0 in dict_["metadata"].items()
+            }
         elif include_empty:
             instance.metadata = {}
         if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
@@ -443,7 +455,10 @@ class ExternalPaymentOrderCreate(Model):
             instance.platform = str(dict_["platform"])
         elif include_empty:
             instance.platform = ""
-        if "recurringPaymentOrderNo" in dict_ and dict_["recurringPaymentOrderNo"] is not None:
+        if (
+            "recurringPaymentOrderNo" in dict_
+            and dict_["recurringPaymentOrderNo"] is not None
+        ):
             instance.recurring_payment_order_no = str(dict_["recurringPaymentOrderNo"])
         elif include_empty:
             instance.recurring_payment_order_no = ""
@@ -470,15 +485,33 @@ class ExternalPaymentOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ExternalPaymentOrderCreate]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ExternalPaymentOrderCreate]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ExternalPaymentOrderCreate]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ExternalPaymentOrderCreate]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ExternalPaymentOrderCreate, List[ExternalPaymentOrderCreate], Dict[Any, ExternalPaymentOrderCreate]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ExternalPaymentOrderCreate,
+        List[ExternalPaymentOrderCreate],
+        Dict[Any, ExternalPaymentOrderCreate],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -546,13 +579,24 @@ class ExternalPaymentOrderCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],
         }
 
     @staticmethod
     def get_pattern_map() -> Dict[str, re.Pattern]:
         return {
-            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
+            "language": re.compile(
+                r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"
+            ),
         }
 
     # endregion static methods

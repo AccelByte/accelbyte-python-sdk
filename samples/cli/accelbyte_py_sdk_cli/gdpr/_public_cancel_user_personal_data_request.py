@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.gdpr import public_cancel_user_personal_data_request as public_cancel_user_personal_data_request_internal
+from accelbyte_py_sdk.api.gdpr import (
+    public_cancel_user_personal_data_request as public_cancel_user_personal_data_request_internal,
+)
 from accelbyte_py_sdk.api.gdpr.models import ModelsListPersonalDataResponse
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
@@ -43,21 +45,19 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_cancel_user_personal_data_request(
-        request_date: str,
-        user_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    request_date: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_cancel_user_personal_data_request_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = public_cancel_user_personal_data_request_internal(
@@ -71,5 +71,7 @@ def public_cancel_user_personal_data_request(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_cancel_user_personal_data_request.operation_id = "PublicCancelUserPersonalDataRequest"
+public_cancel_user_personal_data_request.operation_id = (
+    "PublicCancelUserPersonalDataRequest"
+)
 public_cancel_user_personal_data_request.is_deprecated = False

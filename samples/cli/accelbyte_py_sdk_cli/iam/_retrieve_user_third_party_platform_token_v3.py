@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import retrieve_user_third_party_platform_token_v3 as retrieve_user_third_party_platform_token_v3_internal
+from accelbyte_py_sdk.api.iam import (
+    retrieve_user_third_party_platform_token_v3 as retrieve_user_third_party_platform_token_v3_internal,
+)
 from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 
@@ -43,21 +45,19 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_user_third_party_platform_token_v3(
-        platform_id: str,
-        user_id: str,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_user_third_party_platform_token_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = retrieve_user_third_party_platform_token_v3_internal(
@@ -71,5 +71,7 @@ def retrieve_user_third_party_platform_token_v3(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-retrieve_user_third_party_platform_token_v3.operation_id = "RetrieveUserThirdPartyPlatformTokenV3"
+retrieve_user_third_party_platform_token_v3.operation_id = (
+    "RetrieveUserThirdPartyPlatformTokenV3"
+)
 retrieve_user_third_party_platform_token_v3.is_deprecated = False

@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.basic import update_private_custom_attributes_partially as update_private_custom_attributes_partially_internal
+from accelbyte_py_sdk.api.basic import (
+    update_private_custom_attributes_partially as update_private_custom_attributes_partially_internal,
+)
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
@@ -43,21 +45,19 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_private_custom_attributes_partially(
-        user_id: str,
-        body: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    body: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_private_custom_attributes_partially_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:
@@ -77,5 +77,7 @@ def update_private_custom_attributes_partially(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-update_private_custom_attributes_partially.operation_id = "updatePrivateCustomAttributesPartially"
+update_private_custom_attributes_partially.operation_id = (
+    "updatePrivateCustomAttributesPartially"
+)
 update_private_custom_attributes_partially.is_deprecated = False

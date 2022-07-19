@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,7 +43,12 @@ from ..operations.policy_versions import UpdatePolicyVersion
 
 
 @same_doc_as(CreatePolicyVersion)
-def create_policy_version(policy_id: str, body: Optional[CreatePolicyVersionRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_policy_version(
+    policy_id: str,
+    body: Optional[CreatePolicyVersionRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
@@ -52,16 +57,28 @@ def create_policy_version(policy_id: str, body: Optional[CreatePolicyVersionRequ
 
 
 @same_doc_as(CreatePolicyVersion)
-async def create_policy_version_async(policy_id: str, body: Optional[CreatePolicyVersionRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_policy_version_async(
+    policy_id: str,
+    body: Optional[CreatePolicyVersionRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublishPolicyVersion)
-def publish_policy_version(policy_version_id: str, should_notify: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def publish_policy_version(
+    policy_version_id: str,
+    should_notify: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
@@ -70,16 +87,28 @@ def publish_policy_version(policy_version_id: str, should_notify: Optional[bool]
 
 
 @same_doc_as(PublishPolicyVersion)
-async def publish_policy_version_async(policy_version_id: str, should_notify: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def publish_policy_version_async(
+    policy_version_id: str,
+    should_notify: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveSinglePolicyVersion)
-def retrieve_single_policy_version(policy_id: str, version_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def retrieve_single_policy_version(
+    policy_id: str,
+    version_id: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
@@ -88,16 +117,28 @@ def retrieve_single_policy_version(policy_id: str, version_id: Optional[str] = N
 
 
 @same_doc_as(RetrieveSinglePolicyVersion)
-async def retrieve_single_policy_version_async(policy_id: str, version_id: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def retrieve_single_policy_version_async(
+    policy_id: str,
+    version_id: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePolicyVersion)
-def update_policy_version(policy_version_id: str, body: Optional[UpdatePolicyVersionRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_policy_version(
+    policy_version_id: str,
+    body: Optional[UpdatePolicyVersionRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
@@ -106,9 +147,16 @@ def update_policy_version(policy_version_id: str, body: Optional[UpdatePolicyVer
 
 
 @same_doc_as(UpdatePolicyVersion)
-async def update_policy_version_async(policy_version_id: str, body: Optional[UpdatePolicyVersionRequest] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_policy_version_async(
+    policy_version_id: str,
+    body: Optional[UpdatePolicyVersionRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

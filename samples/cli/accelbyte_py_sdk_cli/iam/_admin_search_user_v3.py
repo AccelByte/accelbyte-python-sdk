@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import admin_search_user_v3 as admin_search_user_v3_internal
+from accelbyte_py_sdk.api.iam import (
+    admin_search_user_v3 as admin_search_user_v3_internal,
+)
 from accelbyte_py_sdk.api.iam.models import ModelSearchUsersResponseWithPaginationV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -49,27 +51,25 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_search_user_v3(
-        by: Optional[str] = None,
-        end_date: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        platform_by: Optional[str] = None,
-        platform_id: Optional[str] = None,
-        query: Optional[str] = None,
-        start_date: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    by: Optional[str] = None,
+    end_date: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    platform_by: Optional[str] = None,
+    platform_id: Optional[str] = None,
+    query: Optional[str] = None,
+    start_date: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_search_user_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = admin_search_user_v3_internal(

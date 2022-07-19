@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -47,11 +47,11 @@ class ModelTemplateLocalization(Model):
 
     # region fields
 
-    last_draft_at: str                                                                             # REQUIRED
-    last_published_at: str                                                                         # REQUIRED
-    template_content: ModelTemplateContent                                                         # REQUIRED
-    template_language: str                                                                         # REQUIRED
-    template_slug: str                                                                             # REQUIRED
+    last_draft_at: str  # REQUIRED
+    last_published_at: str  # REQUIRED
+    template_content: ModelTemplateContent  # REQUIRED
+    template_language: str  # REQUIRED
+    template_slug: str  # REQUIRED
 
     # endregion fields
 
@@ -65,7 +65,9 @@ class ModelTemplateLocalization(Model):
         self.last_published_at = value
         return self
 
-    def with_template_content(self, value: ModelTemplateContent) -> ModelTemplateLocalization:
+    def with_template_content(
+        self, value: ModelTemplateContent
+    ) -> ModelTemplateLocalization:
         self.template_content = value
         return self
 
@@ -92,7 +94,9 @@ class ModelTemplateLocalization(Model):
         elif include_empty:
             result["lastPublishedAt"] = ""
         if hasattr(self, "template_content"):
-            result["templateContent"] = self.template_content.to_dict(include_empty=include_empty)
+            result["templateContent"] = self.template_content.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["templateContent"] = ModelTemplateContent()
         if hasattr(self, "template_language"):
@@ -127,7 +131,9 @@ class ModelTemplateLocalization(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelTemplateLocalization:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelTemplateLocalization:
         instance = cls()
         if not dict_:
             return instance
@@ -140,7 +146,9 @@ class ModelTemplateLocalization(Model):
         elif include_empty:
             instance.last_published_at = ""
         if "templateContent" in dict_ and dict_["templateContent"] is not None:
-            instance.template_content = ModelTemplateContent.create_from_dict(dict_["templateContent"], include_empty=include_empty)
+            instance.template_content = ModelTemplateContent.create_from_dict(
+                dict_["templateContent"], include_empty=include_empty
+            )
         elif include_empty:
             instance.template_content = ModelTemplateContent()
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
@@ -154,15 +162,33 @@ class ModelTemplateLocalization(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelTemplateLocalization]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelTemplateLocalization]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelTemplateLocalization]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelTemplateLocalization]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelTemplateLocalization, List[ModelTemplateLocalization], Dict[Any, ModelTemplateLocalization]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelTemplateLocalization,
+        List[ModelTemplateLocalization],
+        Dict[Any, ModelTemplateLocalization],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

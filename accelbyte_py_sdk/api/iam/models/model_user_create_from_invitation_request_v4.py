@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -58,20 +58,22 @@ class ModelUserCreateFromInvitationRequestV4(Model):
 
     # region fields
 
-    auth_type: Union[str, AuthTypeEnum]                                                            # REQUIRED
-    country: str                                                                                   # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    password: str                                                                                  # REQUIRED
-    reach_minimum_age: bool                                                                        # REQUIRED
-    username: str                                                                                  # REQUIRED
-    accepted_policies: List[LegalAcceptedPoliciesRequest]                                          # OPTIONAL
-    date_of_birth: str                                                                             # OPTIONAL
+    auth_type: Union[str, AuthTypeEnum]  # REQUIRED
+    country: str  # REQUIRED
+    display_name: str  # REQUIRED
+    password: str  # REQUIRED
+    reach_minimum_age: bool  # REQUIRED
+    username: str  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
+    date_of_birth: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_auth_type(self, value: Union[str, AuthTypeEnum]) -> ModelUserCreateFromInvitationRequestV4:
+    def with_auth_type(
+        self, value: Union[str, AuthTypeEnum]
+    ) -> ModelUserCreateFromInvitationRequestV4:
         self.auth_type = value
         return self
 
@@ -87,7 +89,9 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         self.password = value
         return self
 
-    def with_reach_minimum_age(self, value: bool) -> ModelUserCreateFromInvitationRequestV4:
+    def with_reach_minimum_age(
+        self, value: bool
+    ) -> ModelUserCreateFromInvitationRequestV4:
         self.reach_minimum_age = value
         return self
 
@@ -95,7 +99,9 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         self.username = value
         return self
 
-    def with_accepted_policies(self, value: List[LegalAcceptedPoliciesRequest]) -> ModelUserCreateFromInvitationRequestV4:
+    def with_accepted_policies(
+        self, value: List[LegalAcceptedPoliciesRequest]
+    ) -> ModelUserCreateFromInvitationRequestV4:
         self.accepted_policies = value
         return self
 
@@ -134,7 +140,9 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         elif include_empty:
             result["username"] = ""
         if hasattr(self, "accepted_policies"):
-            result["acceptedPolicies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies]
+            result["acceptedPolicies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies
+            ]
         elif include_empty:
             result["acceptedPolicies"] = []
         if hasattr(self, "date_of_birth"):
@@ -173,7 +181,9 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserCreateFromInvitationRequestV4:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelUserCreateFromInvitationRequestV4:
         instance = cls()
         if not dict_:
             return instance
@@ -202,7 +212,12 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         elif include_empty:
             instance.username = ""
         if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
-            instance.accepted_policies = [LegalAcceptedPoliciesRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["acceptedPolicies"]]
+            instance.accepted_policies = [
+                LegalAcceptedPoliciesRequest.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["acceptedPolicies"]
+            ]
         elif include_empty:
             instance.accepted_policies = []
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
@@ -212,15 +227,33 @@ class ModelUserCreateFromInvitationRequestV4(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserCreateFromInvitationRequestV4]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelUserCreateFromInvitationRequestV4]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserCreateFromInvitationRequestV4]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelUserCreateFromInvitationRequestV4]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserCreateFromInvitationRequestV4, List[ModelUserCreateFromInvitationRequestV4], Dict[Any, ModelUserCreateFromInvitationRequestV4]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelUserCreateFromInvitationRequestV4,
+        List[ModelUserCreateFromInvitationRequestV4],
+        Dict[Any, ModelUserCreateFromInvitationRequestV4],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

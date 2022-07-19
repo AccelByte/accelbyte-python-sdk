@@ -1438,7 +1438,9 @@ class MockServerRequestTestCase(TestCase):
         new_timestamp = int(new_time_utc.timestamp())
         token.access_token = f"expiresAt:{new_timestamp}"
 
-        new_issued_time_utc = now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        new_issued_time_utc = (
+            now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        )
         token_repo._token_issued_time = new_issued_time_utc
 
     def configure_overwrite_response(self, config: dict):
@@ -1454,9 +1456,7 @@ class MockServerRequestTestCase(TestCase):
     def validate_bearer_token(self, bearer_token: str) -> bool:
         response = requests.get(
             f"{self.base_url}/validate-bearer-auth",
-            headers={
-                "Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"
-            }
+            headers={"Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"},
         )
         return response.ok
 
@@ -1720,12 +1720,16 @@ class MockServerRequestTestCase(TestCase):
         result, error = auth.login_client(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 
@@ -1761,12 +1765,16 @@ class MockServerRequestTestCase(TestCase):
         result, error = auth.login_user("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 
@@ -1847,7 +1855,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         new_timestamp = int(new_time_utc.timestamp())
         token.access_token = f"expiresAt:{new_timestamp}"
 
-        new_issued_time_utc = now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        new_issued_time_utc = (
+            now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+        )
         token_repo._token_issued_time = new_issued_time_utc
 
     def configure_overwrite_response(self, config: dict):
@@ -1863,9 +1873,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
     def validate_bearer_token(self, bearer_token: str) -> bool:
         response = requests.get(
             f"{self.base_url}/validate-bearer-auth",
-            headers={
-                "Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"
-            }
+            headers={"Authorization": f"Bearer {bearer_token.removeprefix('Bearer ')}"},
         )
         return response.ok
 
@@ -2248,12 +2256,16 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         result, error = auth.login_client(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 
@@ -2289,12 +2301,16 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         result, error = await auth.login_client_async(auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 
@@ -2330,12 +2346,16 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         result, error = auth.login_user("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 
@@ -2372,12 +2392,16 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         result, error = await auth.login_user_async("admin", "admin", auto_refresh=True)
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
-        self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         token = token_repo.get_token()
 

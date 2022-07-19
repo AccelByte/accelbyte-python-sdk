@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,15 +76,17 @@ class GetPersonalChatHistoryV1Public(Operation):
 
     # region fields
 
-    _url: str = "/lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}"
+    _url: str = (
+        "/lobby/v1/public/chat/namespaces/{namespace}/users/me/friends/{friendId}"
+    )
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    friend_id: str                                                                                 # REQUIRED in [path]
-    namespace: str                                                                                 # REQUIRED in [path]
+    friend_id: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -172,7 +174,12 @@ class GetPersonalChatHistoryV1Public(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ModelChatMessageResponse]], Union[None, HttpResponse, RestapiErrorResponseBody]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, List[ModelChatMessageResponse]],
+        Union[None, HttpResponse, RestapiErrorResponseBody],
+    ]:
         """Parse the given response.
 
         200: OK - List[ModelChatMessageResponse] (OK)
@@ -193,7 +200,9 @@ class GetPersonalChatHistoryV1Public(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -211,7 +220,9 @@ class GetPersonalChatHistoryV1Public(Operation):
         if code == 500:
             return None, RestapiErrorResponseBody.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -229,7 +240,9 @@ class GetPersonalChatHistoryV1Public(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetPersonalChatHistoryV1Public:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetPersonalChatHistoryV1Public:
         instance = cls()
         if "friendId" in dict_ and dict_["friendId"] is not None:
             instance.friend_id = str(dict_["friendId"])

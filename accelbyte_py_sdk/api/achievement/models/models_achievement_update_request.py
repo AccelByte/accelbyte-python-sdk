@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,16 +57,16 @@ class ModelsAchievementUpdateRequest(Model):
 
     # region fields
 
-    default_language: str                                                                          # REQUIRED
-    description: Dict[str, str]                                                                    # REQUIRED
-    goal_value: float                                                                              # REQUIRED
-    hidden: bool                                                                                   # REQUIRED
-    incremental: bool                                                                              # REQUIRED
-    locked_icons: List[ModelsIcon]                                                                 # REQUIRED
-    name: Dict[str, str]                                                                           # REQUIRED
-    stat_code: str                                                                                 # REQUIRED
-    tags: List[str]                                                                                # REQUIRED
-    unlocked_icons: List[ModelsIcon]                                                               # REQUIRED
+    default_language: str  # REQUIRED
+    description: Dict[str, str]  # REQUIRED
+    goal_value: float  # REQUIRED
+    hidden: bool  # REQUIRED
+    incremental: bool  # REQUIRED
+    locked_icons: List[ModelsIcon]  # REQUIRED
+    name: Dict[str, str]  # REQUIRED
+    stat_code: str  # REQUIRED
+    tags: List[str]  # REQUIRED
+    unlocked_icons: List[ModelsIcon]  # REQUIRED
 
     # endregion fields
 
@@ -92,7 +92,9 @@ class ModelsAchievementUpdateRequest(Model):
         self.incremental = value
         return self
 
-    def with_locked_icons(self, value: List[ModelsIcon]) -> ModelsAchievementUpdateRequest:
+    def with_locked_icons(
+        self, value: List[ModelsIcon]
+    ) -> ModelsAchievementUpdateRequest:
         self.locked_icons = value
         return self
 
@@ -108,7 +110,9 @@ class ModelsAchievementUpdateRequest(Model):
         self.tags = value
         return self
 
-    def with_unlocked_icons(self, value: List[ModelsIcon]) -> ModelsAchievementUpdateRequest:
+    def with_unlocked_icons(
+        self, value: List[ModelsIcon]
+    ) -> ModelsAchievementUpdateRequest:
         self.unlocked_icons = value
         return self
 
@@ -123,7 +127,9 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             result["defaultLanguage"] = ""
         if hasattr(self, "description"):
-            result["description"] = {str(k0): str(v0) for k0, v0 in self.description.items()}
+            result["description"] = {
+                str(k0): str(v0) for k0, v0 in self.description.items()
+            }
         elif include_empty:
             result["description"] = {}
         if hasattr(self, "goal_value"):
@@ -139,7 +145,9 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             result["incremental"] = False
         if hasattr(self, "locked_icons"):
-            result["lockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons]
+            result["lockedIcons"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons
+            ]
         elif include_empty:
             result["lockedIcons"] = []
         if hasattr(self, "name"):
@@ -155,7 +163,9 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             result["tags"] = []
         if hasattr(self, "unlocked_icons"):
-            result["unlockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.unlocked_icons]
+            result["unlockedIcons"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.unlocked_icons
+            ]
         elif include_empty:
             result["unlockedIcons"] = []
         return result
@@ -192,7 +202,9 @@ class ModelsAchievementUpdateRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsAchievementUpdateRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsAchievementUpdateRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -201,7 +213,9 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             instance.default_language = ""
         if "description" in dict_ and dict_["description"] is not None:
-            instance.description = {str(k0): str(v0) for k0, v0 in dict_["description"].items()}
+            instance.description = {
+                str(k0): str(v0) for k0, v0 in dict_["description"].items()
+            }
         elif include_empty:
             instance.description = {}
         if "goalValue" in dict_ and dict_["goalValue"] is not None:
@@ -217,7 +231,10 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             instance.incremental = False
         if "lockedIcons" in dict_ and dict_["lockedIcons"] is not None:
-            instance.locked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["lockedIcons"]]
+            instance.locked_icons = [
+                ModelsIcon.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["lockedIcons"]
+            ]
         elif include_empty:
             instance.locked_icons = []
         if "name" in dict_ and dict_["name"] is not None:
@@ -233,21 +250,42 @@ class ModelsAchievementUpdateRequest(Model):
         elif include_empty:
             instance.tags = []
         if "unlockedIcons" in dict_ and dict_["unlockedIcons"] is not None:
-            instance.unlocked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["unlockedIcons"]]
+            instance.unlocked_icons = [
+                ModelsIcon.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["unlockedIcons"]
+            ]
         elif include_empty:
             instance.unlocked_icons = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsAchievementUpdateRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsAchievementUpdateRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsAchievementUpdateRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsAchievementUpdateRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsAchievementUpdateRequest, List[ModelsAchievementUpdateRequest], Dict[Any, ModelsAchievementUpdateRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsAchievementUpdateRequest,
+        List[ModelsAchievementUpdateRequest],
+        Dict[Any, ModelsAchievementUpdateRequest],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

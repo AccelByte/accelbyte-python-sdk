@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import pay_with_user_wallet as pay_with_user_wallet_internal
+from accelbyte_py_sdk.api.platform import (
+    pay_with_user_wallet as pay_with_user_wallet_internal,
+)
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PaymentRequest
 from accelbyte_py_sdk.api.platform.models import PlatformWallet
@@ -46,22 +48,20 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def pay_with_user_wallet(
-        currency_code: str,
-        user_id: str,
-        body: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    currency_code: str,
+    user_id: str,
+    body: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(pay_with_user_wallet_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if body is not None:

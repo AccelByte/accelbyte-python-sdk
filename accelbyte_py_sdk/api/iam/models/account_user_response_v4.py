@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -28,7 +28,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.account_user_active_ban_response_v4 import AccountUserActiveBanResponseV4
-from ..models.account_user_permissions_response_v4 import AccountUserPermissionsResponseV4
+from ..models.account_user_permissions_response_v4 import (
+    AccountUserPermissionsResponseV4,
+)
 
 
 class AccountUserResponseV4(Model):
@@ -84,29 +86,29 @@ class AccountUserResponseV4(Model):
 
     # region fields
 
-    auth_type: str                                                                                 # REQUIRED
-    bans: List[AccountUserActiveBanResponseV4]                                                     # REQUIRED
-    country: str                                                                                   # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    date_of_birth: str                                                                             # REQUIRED
-    deletion_status: bool                                                                          # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    email_address: str                                                                             # REQUIRED
-    email_verified: bool                                                                           # REQUIRED
-    enabled: bool                                                                                  # REQUIRED
-    last_date_of_birth_changed_time: str                                                           # REQUIRED
-    last_enabled_changed_time: str                                                                 # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    old_email_address: str                                                                         # REQUIRED
-    permissions: List[AccountUserPermissionsResponseV4]                                            # REQUIRED
-    phone_verified: bool                                                                           # REQUIRED
-    roles: List[str]                                                                               # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    new_email_address: str                                                                         # OPTIONAL
-    phone_number: str                                                                              # OPTIONAL
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
-    username: str                                                                                  # OPTIONAL
+    auth_type: str  # REQUIRED
+    bans: List[AccountUserActiveBanResponseV4]  # REQUIRED
+    country: str  # REQUIRED
+    created_at: str  # REQUIRED
+    date_of_birth: str  # REQUIRED
+    deletion_status: bool  # REQUIRED
+    display_name: str  # REQUIRED
+    email_address: str  # REQUIRED
+    email_verified: bool  # REQUIRED
+    enabled: bool  # REQUIRED
+    last_date_of_birth_changed_time: str  # REQUIRED
+    last_enabled_changed_time: str  # REQUIRED
+    namespace: str  # REQUIRED
+    old_email_address: str  # REQUIRED
+    permissions: List[AccountUserPermissionsResponseV4]  # REQUIRED
+    phone_verified: bool  # REQUIRED
+    roles: List[str]  # REQUIRED
+    user_id: str  # REQUIRED
+    new_email_address: str  # OPTIONAL
+    phone_number: str  # OPTIONAL
+    platform_id: str  # OPTIONAL
+    platform_user_id: str  # OPTIONAL
+    username: str  # OPTIONAL
 
     # endregion fields
 
@@ -116,7 +118,9 @@ class AccountUserResponseV4(Model):
         self.auth_type = value
         return self
 
-    def with_bans(self, value: List[AccountUserActiveBanResponseV4]) -> AccountUserResponseV4:
+    def with_bans(
+        self, value: List[AccountUserActiveBanResponseV4]
+    ) -> AccountUserResponseV4:
         self.bans = value
         return self
 
@@ -168,7 +172,9 @@ class AccountUserResponseV4(Model):
         self.old_email_address = value
         return self
 
-    def with_permissions(self, value: List[AccountUserPermissionsResponseV4]) -> AccountUserResponseV4:
+    def with_permissions(
+        self, value: List[AccountUserPermissionsResponseV4]
+    ) -> AccountUserResponseV4:
         self.permissions = value
         return self
 
@@ -215,7 +221,9 @@ class AccountUserResponseV4(Model):
         elif include_empty:
             result["authType"] = ""
         if hasattr(self, "bans"):
-            result["bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
+            result["bans"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.bans
+            ]
         elif include_empty:
             result["bans"] = []
         if hasattr(self, "country"):
@@ -251,7 +259,9 @@ class AccountUserResponseV4(Model):
         elif include_empty:
             result["enabled"] = False
         if hasattr(self, "last_date_of_birth_changed_time"):
-            result["lastDateOfBirthChangedTime"] = str(self.last_date_of_birth_changed_time)
+            result["lastDateOfBirthChangedTime"] = str(
+                self.last_date_of_birth_changed_time
+            )
         elif include_empty:
             result["lastDateOfBirthChangedTime"] = ""
         if hasattr(self, "last_enabled_changed_time"):
@@ -267,7 +277,9 @@ class AccountUserResponseV4(Model):
         elif include_empty:
             result["oldEmailAddress"] = ""
         if hasattr(self, "permissions"):
-            result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
+            result["permissions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
+            ]
         elif include_empty:
             result["permissions"] = []
         if hasattr(self, "phone_verified"):
@@ -367,7 +379,9 @@ class AccountUserResponseV4(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountUserResponseV4:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountUserResponseV4:
         instance = cls()
         if not dict_:
             return instance
@@ -376,7 +390,12 @@ class AccountUserResponseV4(Model):
         elif include_empty:
             instance.auth_type = ""
         if "bans" in dict_ and dict_["bans"] is not None:
-            instance.bans = [AccountUserActiveBanResponseV4.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
+            instance.bans = [
+                AccountUserActiveBanResponseV4.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["bans"]
+            ]
         elif include_empty:
             instance.bans = []
         if "country" in dict_ and dict_["country"] is not None:
@@ -411,11 +430,19 @@ class AccountUserResponseV4(Model):
             instance.enabled = bool(dict_["enabled"])
         elif include_empty:
             instance.enabled = False
-        if "lastDateOfBirthChangedTime" in dict_ and dict_["lastDateOfBirthChangedTime"] is not None:
-            instance.last_date_of_birth_changed_time = str(dict_["lastDateOfBirthChangedTime"])
+        if (
+            "lastDateOfBirthChangedTime" in dict_
+            and dict_["lastDateOfBirthChangedTime"] is not None
+        ):
+            instance.last_date_of_birth_changed_time = str(
+                dict_["lastDateOfBirthChangedTime"]
+            )
         elif include_empty:
             instance.last_date_of_birth_changed_time = ""
-        if "lastEnabledChangedTime" in dict_ and dict_["lastEnabledChangedTime"] is not None:
+        if (
+            "lastEnabledChangedTime" in dict_
+            and dict_["lastEnabledChangedTime"] is not None
+        ):
             instance.last_enabled_changed_time = str(dict_["lastEnabledChangedTime"])
         elif include_empty:
             instance.last_enabled_changed_time = ""
@@ -428,7 +455,12 @@ class AccountUserResponseV4(Model):
         elif include_empty:
             instance.old_email_address = ""
         if "permissions" in dict_ and dict_["permissions"] is not None:
-            instance.permissions = [AccountUserPermissionsResponseV4.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
+            instance.permissions = [
+                AccountUserPermissionsResponseV4.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["permissions"]
+            ]
         elif include_empty:
             instance.permissions = []
         if "phoneVerified" in dict_ and dict_["phoneVerified"] is not None:
@@ -466,15 +498,33 @@ class AccountUserResponseV4(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountUserResponseV4]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountUserResponseV4]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountUserResponseV4]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountUserResponseV4]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountUserResponseV4, List[AccountUserResponseV4], Dict[Any, AccountUserResponseV4]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountUserResponseV4,
+        List[AccountUserResponseV4],
+        Dict[Any, AccountUserResponseV4],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

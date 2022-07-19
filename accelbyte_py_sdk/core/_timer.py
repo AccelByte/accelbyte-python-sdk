@@ -17,16 +17,16 @@ class TimerStatus(StrEnum):
 class Timer:
     """Call a function repeatedly after a specified number of seconds:
 
-            # name: t.name = "Foo"
-            # daemon: t.daemon = True|False
-            # repeats: <0: repeat 'inf' times
-                       0|None: repeat 0 times
-                       >0: repeat n times
-            t = Timer(30.0, f, args=None, kwargs=None, name="Foo", daemon=False, repeats=10)
-            t.start()
-            t.cancel()     # stop the timer's action if it's still waiting
+        # name: t.name = "Foo"
+        # daemon: t.daemon = True|False
+        # repeats: <0: repeat 'inf' times
+                   0|None: repeat 0 times
+                   >0: repeat n times
+        t = Timer(30.0, f, args=None, kwargs=None, name="Foo", daemon=False, repeats=10)
+        t.start()
+        t.cancel()     # stop the timer's action if it's still waiting
 
-        # Uses 'threading.Timer' internally.
+    # Uses 'threading.Timer' internally.
     """
 
     def __init__(
@@ -187,14 +187,12 @@ class Timer:
                 raise KeyError(k)
             kw[k] = v
 
-        return Timer(
-            interval,
-            self._function,
-            **kw
-        )
+        return Timer(interval, self._function, **kw)
 
     def _create_timer(self, *args, **kwargs) -> ThreadingTimer:
-        timer = ThreadingTimer(self._interval, self._execute_function, args=args, kwargs=kwargs)
+        timer = ThreadingTimer(
+            self._interval, self._execute_function, args=args, kwargs=kwargs
+        )
 
         if self._name is not None:
             timer.name = "{}:{}".format(self._name, timer.name)

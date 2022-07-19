@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -82,10 +82,10 @@ class UpdateStripeConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StripeConfig                                                                             # OPTIONAL in [body]
-    id_: str                                                                                       # REQUIRED in [path]
-    sandbox: bool                                                                                  # OPTIONAL in [query]
-    validate: bool                                                                                 # OPTIONAL in [query]
+    body: StripeConfig  # OPTIONAL in [body]
+    id_: str  # REQUIRED in [path]
+    sandbox: bool  # OPTIONAL in [query]
+    validate: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -202,7 +202,11 @@ class UpdateStripeConfig(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PaymentMerchantConfigInfo], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, PaymentMerchantConfigInfo], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
         200: OK - PaymentMerchantConfigInfo (successful operation)
@@ -215,7 +219,9 @@ class UpdateStripeConfig(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -225,7 +231,9 @@ class UpdateStripeConfig(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -250,10 +258,14 @@ class UpdateStripeConfig(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateStripeConfig:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UpdateStripeConfig:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = StripeConfig.create_from_dict(dict_["body"], include_empty=include_empty)
+            instance.body = StripeConfig.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
             instance.body = StripeConfig()
         if "id" in dict_ and dict_["id"] is not None:

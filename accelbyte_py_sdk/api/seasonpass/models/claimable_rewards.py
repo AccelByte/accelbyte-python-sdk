@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,8 +39,8 @@ class ClaimableRewards(Model):
 
     # region fields
 
-    claiming_rewards: Dict[str, Any]                                                               # REQUIRED
-    to_claim_rewards: Dict[str, Any]                                                               # REQUIRED
+    claiming_rewards: Dict[str, Any]  # REQUIRED
+    to_claim_rewards: Dict[str, Any]  # REQUIRED
 
     # endregion fields
 
@@ -61,11 +61,15 @@ class ClaimableRewards(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "claiming_rewards"):
-            result["claimingRewards"] = {str(k0): v0 for k0, v0 in self.claiming_rewards.items()}
+            result["claimingRewards"] = {
+                str(k0): v0 for k0, v0 in self.claiming_rewards.items()
+            }
         elif include_empty:
             result["claimingRewards"] = {}
         if hasattr(self, "to_claim_rewards"):
-            result["toClaimRewards"] = {str(k0): v0 for k0, v0 in self.to_claim_rewards.items()}
+            result["toClaimRewards"] = {
+                str(k0): v0 for k0, v0 in self.to_claim_rewards.items()
+            }
         elif include_empty:
             result["toClaimRewards"] = {}
         return result
@@ -86,30 +90,50 @@ class ClaimableRewards(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ClaimableRewards:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ClaimableRewards:
         instance = cls()
         if not dict_:
             return instance
         if "claimingRewards" in dict_ and dict_["claimingRewards"] is not None:
-            instance.claiming_rewards = {str(k0): v0 for k0, v0 in dict_["claimingRewards"].items()}
+            instance.claiming_rewards = {
+                str(k0): v0 for k0, v0 in dict_["claimingRewards"].items()
+            }
         elif include_empty:
             instance.claiming_rewards = {}
         if "toClaimRewards" in dict_ and dict_["toClaimRewards"] is not None:
-            instance.to_claim_rewards = {str(k0): v0 for k0, v0 in dict_["toClaimRewards"].items()}
+            instance.to_claim_rewards = {
+                str(k0): v0 for k0, v0 in dict_["toClaimRewards"].items()
+            }
         elif include_empty:
             instance.to_claim_rewards = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ClaimableRewards]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ClaimableRewards]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ClaimableRewards]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ClaimableRewards]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ClaimableRewards, List[ClaimableRewards], Dict[Any, ClaimableRewards]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ClaimableRewards, List[ClaimableRewards], Dict[Any, ClaimableRewards]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

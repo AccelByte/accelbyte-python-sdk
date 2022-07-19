@@ -30,8 +30,12 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.leaderboard import admin_get_archived_leaderboard_ranking_data_v1_handler as admin_get_archived_leaderboard_ranking_data_v1_handler_internal
-from accelbyte_py_sdk.api.leaderboard.models import ModelsArchiveLeaderboardSignedURLResponse
+from accelbyte_py_sdk.api.leaderboard import (
+    admin_get_archived_leaderboard_ranking_data_v1_handler as admin_get_archived_leaderboard_ranking_data_v1_handler_internal,
+)
+from accelbyte_py_sdk.api.leaderboard.models import (
+    ModelsArchiveLeaderboardSignedURLResponse,
+)
 from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 
@@ -43,21 +47,21 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_archived_leaderboard_ranking_data_v1_handler(
-        leaderboard_codes: str,
-        slug: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    leaderboard_codes: str,
+    slug: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(admin_get_archived_leaderboard_ranking_data_v1_handler_internal.__doc__)
+        click.echo(
+            admin_get_archived_leaderboard_ranking_data_v1_handler_internal.__doc__
+        )
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = admin_get_archived_leaderboard_ranking_data_v1_handler_internal(
@@ -67,9 +71,13 @@ def admin_get_archived_leaderboard_ranking_data_v1_handler(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"AdminGetArchivedLeaderboardRankingDataV1Handler failed: {str(error)}")
+        raise Exception(
+            f"AdminGetArchivedLeaderboardRankingDataV1Handler failed: {str(error)}"
+        )
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-admin_get_archived_leaderboard_ranking_data_v1_handler.operation_id = "AdminGetArchivedLeaderboardRankingDataV1Handler"
+admin_get_archived_leaderboard_ranking_data_v1_handler.operation_id = (
+    "AdminGetArchivedLeaderboardRankingDataV1Handler"
+)
 admin_get_archived_leaderboard_ranking_data_v1_handler.is_deprecated = False

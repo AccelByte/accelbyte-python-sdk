@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -48,7 +48,13 @@ from ..operations.admin_player_record import ListPlayerRecordHandlerV1
 
 
 @same_doc_as(AdminDeletePlayerPublicRecordHandlerV1)
-def admin_delete_player_public_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_player_public_record_handler_v1(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,7 +68,13 @@ def admin_delete_player_public_record_handler_v1(key: str, user_id: str, namespa
 
 
 @same_doc_as(AdminDeletePlayerPublicRecordHandlerV1)
-async def admin_delete_player_public_record_handler_v1_async(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_player_public_record_handler_v1_async(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -72,11 +84,19 @@ async def admin_delete_player_public_record_handler_v1_async(key: str, user_id: 
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeletePlayerRecordHandlerV1)
-def admin_delete_player_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_player_record_handler_v1(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,7 +110,13 @@ def admin_delete_player_record_handler_v1(key: str, user_id: str, namespace: Opt
 
 
 @same_doc_as(AdminDeletePlayerRecordHandlerV1)
-async def admin_delete_player_record_handler_v1_async(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_player_record_handler_v1_async(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +126,19 @@ async def admin_delete_player_record_handler_v1_async(key: str, user_id: str, na
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetPlayerPublicRecordHandlerV1)
-def admin_get_player_public_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_player_public_record_handler_v1(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,7 +152,13 @@ def admin_get_player_public_record_handler_v1(key: str, user_id: str, namespace:
 
 
 @same_doc_as(AdminGetPlayerPublicRecordHandlerV1)
-async def admin_get_player_public_record_handler_v1_async(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_player_public_record_handler_v1_async(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -128,11 +168,19 @@ async def admin_get_player_public_record_handler_v1_async(key: str, user_id: str
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetPlayerRecordHandlerV1)
-def admin_get_player_record_handler_v1(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_player_record_handler_v1(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,7 +194,13 @@ def admin_get_player_record_handler_v1(key: str, user_id: str, namespace: Option
 
 
 @same_doc_as(AdminGetPlayerRecordHandlerV1)
-async def admin_get_player_record_handler_v1_async(key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_player_record_handler_v1_async(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,11 +210,20 @@ async def admin_get_player_record_handler_v1_async(key: str, user_id: str, names
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminPostPlayerPublicRecordHandlerV1)
-def admin_post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_post_player_public_record_handler_v1(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -175,7 +238,14 @@ def admin_post_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, 
 
 
 @same_doc_as(AdminPostPlayerPublicRecordHandlerV1)
-async def admin_post_player_public_record_handler_v1_async(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_post_player_public_record_handler_v1_async(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -186,11 +256,20 @@ async def admin_post_player_public_record_handler_v1_async(body: ModelsPlayerRec
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminPostPlayerRecordHandlerV1)
-def admin_post_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_post_player_record_handler_v1(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,7 +284,14 @@ def admin_post_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: st
 
 
 @same_doc_as(AdminPostPlayerRecordHandlerV1)
-async def admin_post_player_record_handler_v1_async(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_post_player_record_handler_v1_async(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -216,11 +302,20 @@ async def admin_post_player_record_handler_v1_async(body: ModelsPlayerRecordRequ
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminPutPlayerPublicRecordHandlerV1)
-def admin_put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_put_player_public_record_handler_v1(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -235,7 +330,14 @@ def admin_put_player_public_record_handler_v1(body: ModelsPlayerRecordRequest, k
 
 
 @same_doc_as(AdminPutPlayerPublicRecordHandlerV1)
-async def admin_put_player_public_record_handler_v1_async(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_put_player_public_record_handler_v1_async(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -246,11 +348,20 @@ async def admin_put_player_public_record_handler_v1_async(body: ModelsPlayerReco
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminPutPlayerRecordHandlerV1)
-def admin_put_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_put_player_record_handler_v1(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,7 +376,14 @@ def admin_put_player_record_handler_v1(body: ModelsPlayerRecordRequest, key: str
 
 
 @same_doc_as(AdminPutPlayerRecordHandlerV1)
-async def admin_put_player_record_handler_v1_async(body: ModelsPlayerRecordRequest, key: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_put_player_record_handler_v1_async(
+    body: ModelsPlayerRecordRequest,
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,11 +394,20 @@ async def admin_put_player_record_handler_v1_async(body: ModelsPlayerRecordReque
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminRetrievePlayerRecords)
-def admin_retrieve_player_records(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_retrieve_player_records(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -295,7 +422,14 @@ def admin_retrieve_player_records(user_id: str, limit: Optional[int] = None, off
 
 
 @same_doc_as(AdminRetrievePlayerRecords)
-async def admin_retrieve_player_records_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_retrieve_player_records_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -306,12 +440,21 @@ async def admin_retrieve_player_records_async(user_id: str, limit: Optional[int]
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(ListPlayerRecordHandlerV1)
-def list_player_record_handler_v1(limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_player_record_handler_v1(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    query: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,7 +470,14 @@ def list_player_record_handler_v1(limit: Optional[int] = None, offset: Optional[
 
 @deprecated
 @same_doc_as(ListPlayerRecordHandlerV1)
-async def list_player_record_handler_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, query: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_player_record_handler_v1_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    query: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -338,4 +488,6 @@ async def list_player_record_handler_v1_async(limit: Optional[int] = None, offse
         query=query,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

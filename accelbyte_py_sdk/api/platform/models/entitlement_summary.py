@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -77,20 +77,20 @@ class EntitlementSummary(Model):
 
     # region fields
 
-    clazz: Union[str, ClazzEnum]                                                                   # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    type_: Union[str, TypeEnum]                                                                    # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    end_date: str                                                                                  # OPTIONAL
-    granted_code: str                                                                              # OPTIONAL
-    item_id: str                                                                                   # OPTIONAL
-    stackable: bool                                                                                # OPTIONAL
-    stacked_use_count: int                                                                         # OPTIONAL
-    start_date: str                                                                                # OPTIONAL
-    store_id: str                                                                                  # OPTIONAL
+    clazz: Union[str, ClazzEnum]  # REQUIRED
+    created_at: str  # REQUIRED
+    id_: str  # REQUIRED
+    namespace: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    user_id: str  # REQUIRED
+    end_date: str  # OPTIONAL
+    granted_code: str  # OPTIONAL
+    item_id: str  # OPTIONAL
+    stackable: bool  # OPTIONAL
+    stacked_use_count: int  # OPTIONAL
+    start_date: str  # OPTIONAL
+    store_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -263,7 +263,9 @@ class EntitlementSummary(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> EntitlementSummary:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> EntitlementSummary:
         instance = cls()
         if not dict_:
             return instance
@@ -326,15 +328,31 @@ class EntitlementSummary(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, EntitlementSummary]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, EntitlementSummary]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[EntitlementSummary]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[EntitlementSummary]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[EntitlementSummary, List[EntitlementSummary], Dict[Any, EntitlementSummary]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        EntitlementSummary, List[EntitlementSummary], Dict[Any, EntitlementSummary]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

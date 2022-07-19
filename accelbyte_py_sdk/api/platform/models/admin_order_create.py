@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -28,7 +28,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.a_dto_object_for_order_creation_options import ADTOObjectForOrderCreationOptions
+from ..models.a_dto_object_for_order_creation_options import (
+    ADTOObjectForOrderCreationOptions,
+)
 
 
 class PlatformEnum(StrEnum):
@@ -75,19 +77,19 @@ class AdminOrderCreate(Model):
 
     # region fields
 
-    currency_code: str                                                                             # REQUIRED
-    discounted_price: int                                                                          # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    price: int                                                                                     # REQUIRED
-    quantity: int                                                                                  # REQUIRED
-    region: str                                                                                    # REQUIRED
-    currency_namespace: str                                                                        # OPTIONAL
-    ext: Dict[str, Any]                                                                            # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    options: ADTOObjectForOrderCreationOptions                                                     # OPTIONAL
-    platform: Union[str, PlatformEnum]                                                             # OPTIONAL
-    return_url: str                                                                                # OPTIONAL
-    sandbox: bool                                                                                  # OPTIONAL
+    currency_code: str  # REQUIRED
+    discounted_price: int  # REQUIRED
+    item_id: str  # REQUIRED
+    price: int  # REQUIRED
+    quantity: int  # REQUIRED
+    region: str  # REQUIRED
+    currency_namespace: str  # OPTIONAL
+    ext: Dict[str, Any]  # OPTIONAL
+    language: str  # OPTIONAL
+    options: ADTOObjectForOrderCreationOptions  # OPTIONAL
+    platform: Union[str, PlatformEnum]  # OPTIONAL
+    return_url: str  # OPTIONAL
+    sandbox: bool  # OPTIONAL
 
     # endregion fields
 
@@ -129,7 +131,9 @@ class AdminOrderCreate(Model):
         self.language = value
         return self
 
-    def with_options(self, value: ADTOObjectForOrderCreationOptions) -> AdminOrderCreate:
+    def with_options(
+        self, value: ADTOObjectForOrderCreationOptions
+    ) -> AdminOrderCreate:
         self.options = value
         return self
 
@@ -250,7 +254,9 @@ class AdminOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminOrderCreate:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminOrderCreate:
         instance = cls()
         if not dict_:
             return instance
@@ -291,7 +297,9 @@ class AdminOrderCreate(Model):
         elif include_empty:
             instance.language = ""
         if "options" in dict_ and dict_["options"] is not None:
-            instance.options = ADTOObjectForOrderCreationOptions.create_from_dict(dict_["options"], include_empty=include_empty)
+            instance.options = ADTOObjectForOrderCreationOptions.create_from_dict(
+                dict_["options"], include_empty=include_empty
+            )
         elif include_empty:
             instance.options = ADTOObjectForOrderCreationOptions()
         if "platform" in dict_ and dict_["platform"] is not None:
@@ -309,15 +317,29 @@ class AdminOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AdminOrderCreate]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AdminOrderCreate]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AdminOrderCreate]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AdminOrderCreate]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AdminOrderCreate, List[AdminOrderCreate], Dict[Any, AdminOrderCreate]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[AdminOrderCreate, List[AdminOrderCreate], Dict[Any, AdminOrderCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -367,7 +389,16 @@ class AdminOrderCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Steam", "Xbox"],
+            "platform": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Other",
+                "Playstation",
+                "Steam",
+                "Xbox",
+            ],
         }
 
     # endregion static methods

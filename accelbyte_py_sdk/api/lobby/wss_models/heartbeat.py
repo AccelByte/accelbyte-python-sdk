@@ -45,7 +45,9 @@ class Heartbeat(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
+            raise WebSocketMessageParserException(
+                WebSocketMessageParserError.TypeFormatInvalid
+            )
         return instance
 
     @staticmethod
@@ -54,7 +56,6 @@ class Heartbeat(WebSocketMessage):
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {
-        }
+        return {}
 
     # endregion static methods

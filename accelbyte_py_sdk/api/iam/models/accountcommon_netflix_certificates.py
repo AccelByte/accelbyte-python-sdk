@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -47,22 +47,26 @@ class AccountcommonNetflixCertificates(Model):
 
     # region fields
 
-    encrypted_private_key: str                                                                     # REQUIRED
-    encrypted_private_key_name: str                                                                # REQUIRED
-    public_certificate: str                                                                        # REQUIRED
-    public_certificate_name: str                                                                   # REQUIRED
-    root_certificate: str                                                                          # REQUIRED
-    root_certificate_name: str                                                                     # REQUIRED
+    encrypted_private_key: str  # REQUIRED
+    encrypted_private_key_name: str  # REQUIRED
+    public_certificate: str  # REQUIRED
+    public_certificate_name: str  # REQUIRED
+    root_certificate: str  # REQUIRED
+    root_certificate_name: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_encrypted_private_key(self, value: str) -> AccountcommonNetflixCertificates:
+    def with_encrypted_private_key(
+        self, value: str
+    ) -> AccountcommonNetflixCertificates:
         self.encrypted_private_key = value
         return self
 
-    def with_encrypted_private_key_name(self, value: str) -> AccountcommonNetflixCertificates:
+    def with_encrypted_private_key_name(
+        self, value: str
+    ) -> AccountcommonNetflixCertificates:
         self.encrypted_private_key_name = value
         return self
 
@@ -70,7 +74,9 @@ class AccountcommonNetflixCertificates(Model):
         self.public_certificate = value
         return self
 
-    def with_public_certificate_name(self, value: str) -> AccountcommonNetflixCertificates:
+    def with_public_certificate_name(
+        self, value: str
+    ) -> AccountcommonNetflixCertificates:
         self.public_certificate_name = value
         return self
 
@@ -78,7 +84,9 @@ class AccountcommonNetflixCertificates(Model):
         self.root_certificate = value
         return self
 
-    def with_root_certificate_name(self, value: str) -> AccountcommonNetflixCertificates:
+    def with_root_certificate_name(
+        self, value: str
+    ) -> AccountcommonNetflixCertificates:
         self.root_certificate_name = value
         return self
 
@@ -138,7 +146,9 @@ class AccountcommonNetflixCertificates(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonNetflixCertificates:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AccountcommonNetflixCertificates:
         instance = cls()
         if not dict_:
             return instance
@@ -146,7 +156,10 @@ class AccountcommonNetflixCertificates(Model):
             instance.encrypted_private_key = str(dict_["encryptedPrivateKey"])
         elif include_empty:
             instance.encrypted_private_key = ""
-        if "encryptedPrivateKeyName" in dict_ and dict_["encryptedPrivateKeyName"] is not None:
+        if (
+            "encryptedPrivateKeyName" in dict_
+            and dict_["encryptedPrivateKeyName"] is not None
+        ):
             instance.encrypted_private_key_name = str(dict_["encryptedPrivateKeyName"])
         elif include_empty:
             instance.encrypted_private_key_name = ""
@@ -154,7 +167,10 @@ class AccountcommonNetflixCertificates(Model):
             instance.public_certificate = str(dict_["publicCertificate"])
         elif include_empty:
             instance.public_certificate = ""
-        if "publicCertificateName" in dict_ and dict_["publicCertificateName"] is not None:
+        if (
+            "publicCertificateName" in dict_
+            and dict_["publicCertificateName"] is not None
+        ):
             instance.public_certificate_name = str(dict_["publicCertificateName"])
         elif include_empty:
             instance.public_certificate_name = ""
@@ -169,15 +185,33 @@ class AccountcommonNetflixCertificates(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonNetflixCertificates]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, AccountcommonNetflixCertificates]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonNetflixCertificates]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[AccountcommonNetflixCertificates]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonNetflixCertificates, List[AccountcommonNetflixCertificates], Dict[Any, AccountcommonNetflixCertificates]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        AccountcommonNetflixCertificates,
+        List[AccountcommonNetflixCertificates],
+        Dict[Any, AccountcommonNetflixCertificates],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

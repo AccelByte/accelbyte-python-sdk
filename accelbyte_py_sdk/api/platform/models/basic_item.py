@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -101,22 +101,22 @@ class BasicItem(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
-    name: str                                                                                      # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    app_id: str                                                                                    # OPTIONAL
-    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
-    base_app_id: str                                                                               # OPTIONAL
-    features: List[str]                                                                            # OPTIONAL
-    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
-    sku: str                                                                                       # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
-    use_count: int                                                                                 # OPTIONAL
+    created_at: str  # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]  # REQUIRED
+    item_id: str  # REQUIRED
+    item_type: Union[str, ItemTypeEnum]  # REQUIRED
+    name: str  # REQUIRED
+    namespace: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    app_id: str  # OPTIONAL
+    app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    base_app_id: str  # OPTIONAL
+    features: List[str]  # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
+    sku: str  # OPTIONAL
+    tags: List[str]  # OPTIONAL
+    use_count: int  # OPTIONAL
 
     # endregion fields
 
@@ -126,7 +126,9 @@ class BasicItem(Model):
         self.created_at = value
         return self
 
-    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> BasicItem:
+    def with_entitlement_type(
+        self, value: Union[str, EntitlementTypeEnum]
+    ) -> BasicItem:
         self.entitlement_type = value
         return self
 
@@ -381,15 +383,29 @@ class BasicItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, BasicItem]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, BasicItem]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[BasicItem]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[BasicItem]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[BasicItem, List[BasicItem], Dict[Any, BasicItem]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[BasicItem, List[BasicItem], Dict[Any, BasicItem]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -446,7 +462,16 @@ class BasicItem(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["CONSUMABLE", "DURABLE"],
-            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],
             "status": ["ACTIVE", "INACTIVE"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
             "seasonType": ["PASS", "TIER"],

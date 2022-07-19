@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -44,10 +44,10 @@ class StadiaSyncRequest(Model):
 
     # region fields
 
-    app_id: str                                                                                    # REQUIRED
-    stadia_player_id: str                                                                          # REQUIRED
-    language: str                                                                                  # OPTIONAL
-    region: str                                                                                    # OPTIONAL
+    app_id: str  # REQUIRED
+    stadia_player_id: str  # REQUIRED
+    language: str  # OPTIONAL
+    region: str  # OPTIONAL
 
     # endregion fields
 
@@ -115,7 +115,9 @@ class StadiaSyncRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StadiaSyncRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> StadiaSyncRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -138,15 +140,31 @@ class StadiaSyncRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, StadiaSyncRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, StadiaSyncRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[StadiaSyncRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[StadiaSyncRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[StadiaSyncRequest, List[StadiaSyncRequest], Dict[Any, StadiaSyncRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        StadiaSyncRequest, List[StadiaSyncRequest], Dict[Any, StadiaSyncRequest]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -178,7 +196,9 @@ class StadiaSyncRequest(Model):
     @staticmethod
     def get_pattern_map() -> Dict[str, re.Pattern]:
         return {
-            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
+            "language": re.compile(
+                r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"
+            ),
         }
 
     # endregion static methods

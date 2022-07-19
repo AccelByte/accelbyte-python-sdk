@@ -47,27 +47,25 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def authorize_v3(
-        client_id: str,
-        response_type: str,
-        code_challenge: Optional[str] = None,
-        code_challenge_method: Optional[str] = None,
-        create_headless: Optional[bool] = None,
-        redirect_uri: Optional[str] = None,
-        scope: Optional[str] = None,
-        state: Optional[str] = None,
-        target_auth_page: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    client_id: str,
+    response_type: str,
+    code_challenge: Optional[str] = None,
+    code_challenge_method: Optional[str] = None,
+    create_headless: Optional[bool] = None,
+    redirect_uri: Optional[str] = None,
+    scope: Optional[str] = None,
+    state: Optional[str] = None,
+    target_auth_page: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(authorize_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = authorize_v3_internal(

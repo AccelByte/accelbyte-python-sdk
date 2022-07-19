@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -50,7 +50,13 @@ from ..operations.clients import AdminUpdateClientV3
 
 
 @same_doc_as(AdminAddClientPermissionsV3)
-def admin_add_client_permissions_v3(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_add_client_permissions_v3(
+    body: AccountcommonClientPermissionsV3,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,7 +70,13 @@ def admin_add_client_permissions_v3(body: AccountcommonClientPermissionsV3, clie
 
 
 @same_doc_as(AdminAddClientPermissionsV3)
-async def admin_add_client_permissions_v3_async(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_add_client_permissions_v3_async(
+    body: AccountcommonClientPermissionsV3,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -74,11 +86,18 @@ async def admin_add_client_permissions_v3_async(body: AccountcommonClientPermiss
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminCreateClientV3)
-def admin_create_client_v3(body: ClientmodelClientCreationV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_create_client_v3(
+    body: ClientmodelClientCreationV3Request,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,7 +110,12 @@ def admin_create_client_v3(body: ClientmodelClientCreationV3Request, namespace: 
 
 
 @same_doc_as(AdminCreateClientV3)
-async def admin_create_client_v3_async(body: ClientmodelClientCreationV3Request, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_create_client_v3_async(
+    body: ClientmodelClientCreationV3Request,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,11 +124,20 @@ async def admin_create_client_v3_async(body: ClientmodelClientCreationV3Request,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteClientPermissionV3)
-def admin_delete_client_permission_v3(action: int, client_id: str, resource: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_client_permission_v3(
+    action: int,
+    client_id: str,
+    resource: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -119,7 +152,14 @@ def admin_delete_client_permission_v3(action: int, client_id: str, resource: str
 
 
 @same_doc_as(AdminDeleteClientPermissionV3)
-async def admin_delete_client_permission_v3_async(action: int, client_id: str, resource: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_client_permission_v3_async(
+    action: int,
+    client_id: str,
+    resource: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,11 +170,18 @@ async def admin_delete_client_permission_v3_async(action: int, client_id: str, r
         resource=resource,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeleteClientV3)
-def admin_delete_client_v3(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_delete_client_v3(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,7 +194,12 @@ def admin_delete_client_v3(client_id: str, namespace: Optional[str] = None, x_ad
 
 
 @same_doc_as(AdminDeleteClientV3)
-async def admin_delete_client_v3_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_delete_client_v3_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,11 +208,19 @@ async def admin_delete_client_v3_async(client_id: str, namespace: Optional[str] 
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
-def admin_get_clients_by_namespace_v3(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_clients_by_namespace_v3(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,7 +234,13 @@ def admin_get_clients_by_namespace_v3(limit: Optional[int] = None, offset: Optio
 
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
-async def admin_get_clients_by_namespace_v3_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_clients_by_namespace_v3_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -184,11 +250,18 @@ async def admin_get_clients_by_namespace_v3_async(limit: Optional[int] = None, o
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetClientsbyNamespacebyIDV3)
-def admin_get_clientsby_namespaceby_idv3(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_get_clientsby_namespaceby_idv3(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -201,7 +274,12 @@ def admin_get_clientsby_namespaceby_idv3(client_id: str, namespace: Optional[str
 
 
 @same_doc_as(AdminGetClientsbyNamespacebyIDV3)
-async def admin_get_clientsby_namespaceby_idv3_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_get_clientsby_namespaceby_idv3_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,11 +288,19 @@ async def admin_get_clientsby_namespaceby_idv3_async(client_id: str, namespace: 
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateClientPermissionV3)
-def admin_update_client_permission_v3(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_client_permission_v3(
+    body: AccountcommonClientPermissionsV3,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -228,7 +314,13 @@ def admin_update_client_permission_v3(body: AccountcommonClientPermissionsV3, cl
 
 
 @same_doc_as(AdminUpdateClientPermissionV3)
-async def admin_update_client_permission_v3_async(body: AccountcommonClientPermissionsV3, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_client_permission_v3_async(
+    body: AccountcommonClientPermissionsV3,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -238,11 +330,19 @@ async def admin_update_client_permission_v3_async(body: AccountcommonClientPermi
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateClientSecretV3)
-def admin_update_client_secret_v3(body: ClientmodelV3ClientUpdateSecretRequest, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_client_secret_v3(
+    body: ClientmodelV3ClientUpdateSecretRequest,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,7 +356,13 @@ def admin_update_client_secret_v3(body: ClientmodelV3ClientUpdateSecretRequest, 
 
 
 @same_doc_as(AdminUpdateClientSecretV3)
-async def admin_update_client_secret_v3_async(body: ClientmodelV3ClientUpdateSecretRequest, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_client_secret_v3_async(
+    body: ClientmodelV3ClientUpdateSecretRequest,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -266,11 +372,19 @@ async def admin_update_client_secret_v3_async(body: ClientmodelV3ClientUpdateSec
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminUpdateClientV3)
-def admin_update_client_v3(body: ClientmodelClientUpdateV3Request, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_update_client_v3(
+    body: ClientmodelClientUpdateV3Request,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,7 +398,13 @@ def admin_update_client_v3(body: ClientmodelClientUpdateV3Request, client_id: st
 
 
 @same_doc_as(AdminUpdateClientV3)
-async def admin_update_client_v3_async(body: ClientmodelClientUpdateV3Request, client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_update_client_v3_async(
+    body: ClientmodelClientUpdateV3Request,
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -294,4 +414,6 @@ async def admin_update_client_v3_async(body: ClientmodelClientUpdateV3Request, c
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

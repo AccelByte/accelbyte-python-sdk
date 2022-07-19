@@ -46,11 +46,13 @@ class AuthServicesTestCase(IntegrationTestCase):
         username = "test.serversdk1"
 
         response = requests.get(
-            url="{host}/user/{username}/token/{tokenType}".format_map({
-                "host": phant_auth_host,
-                "username": username,
-                "tokenType": token_type,
-            })
+            url="{host}/user/{username}/token/{tokenType}".format_map(
+                {
+                    "host": phant_auth_host,
+                    "username": username,
+                    "tokenType": token_type,
+                }
+            )
         )
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Code.")
@@ -59,16 +61,18 @@ class AuthServicesTestCase(IntegrationTestCase):
         self.assertTrue(phant_auth_code)
 
         response = requests.post(
-            url="{host}/auth/token".format_map({
-                "host": phant_auth_host,
-            }),
+            url="{host}/auth/token".format_map(
+                {
+                    "host": phant_auth_host,
+                }
+            ),
             data={
                 "grant_type": grant_type,
                 "client_id": client_id,
                 "client_secret": client_secret,
                 "redirect_uri": redirect_uri,
-                "code": phant_auth_code
-            }
+                "code": phant_auth_code,
+            },
         )
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Token.")
@@ -79,7 +83,9 @@ class AuthServicesTestCase(IntegrationTestCase):
         phant_auth_token_id = phant_auth_token["id_token"]
 
         # act
-        _, error = login_platform(platform_id=platform_id, platform_token=phant_auth_token_id)
+        _, error = login_platform(
+            platform_id=platform_id, platform_token=phant_auth_token_id
+        )
 
         # assert
         self.assertIsNone(error, error)

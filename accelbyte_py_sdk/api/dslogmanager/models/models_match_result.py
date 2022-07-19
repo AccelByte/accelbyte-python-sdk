@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -45,10 +45,10 @@ class ModelsMatchResult(Model):
 
     # region fields
 
-    game_mode: str                                                                                 # REQUIRED
-    matching_allies: List[ModelsRequestMatchingAlly]                                               # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    session_id: str                                                                                # REQUIRED
+    game_mode: str  # REQUIRED
+    matching_allies: List[ModelsRequestMatchingAlly]  # REQUIRED
+    namespace: str  # REQUIRED
+    session_id: str  # REQUIRED
 
     # endregion fields
 
@@ -58,7 +58,9 @@ class ModelsMatchResult(Model):
         self.game_mode = value
         return self
 
-    def with_matching_allies(self, value: List[ModelsRequestMatchingAlly]) -> ModelsMatchResult:
+    def with_matching_allies(
+        self, value: List[ModelsRequestMatchingAlly]
+    ) -> ModelsMatchResult:
         self.matching_allies = value
         return self
 
@@ -81,7 +83,9 @@ class ModelsMatchResult(Model):
         elif include_empty:
             result["game_mode"] = ""
         if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
+            result["matching_allies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
+            ]
         elif include_empty:
             result["matching_allies"] = []
         if hasattr(self, "namespace"):
@@ -114,7 +118,9 @@ class ModelsMatchResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsMatchResult:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsMatchResult:
         instance = cls()
         if not dict_:
             return instance
@@ -123,7 +129,12 @@ class ModelsMatchResult(Model):
         elif include_empty:
             instance.game_mode = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [ModelsRequestMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
+            instance.matching_allies = [
+                ModelsRequestMatchingAlly.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["matching_allies"]
+            ]
         elif include_empty:
             instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -137,15 +148,31 @@ class ModelsMatchResult(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsMatchResult]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsMatchResult]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsMatchResult]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsMatchResult]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsMatchResult, List[ModelsMatchResult], Dict[Any, ModelsMatchResult]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsMatchResult, List[ModelsMatchResult], Dict[Any, ModelsMatchResult]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

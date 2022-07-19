@@ -57,25 +57,21 @@ def login_client(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    if (
-        client_id is not None and
-        client_secret is not None
-    ):
+    if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
         x_additional_headers["Authorization"] = create_basic_authentication(
-            client_id,
-            client_secret
+            client_id, client_secret
         )
 
     token, error = token_grant_v3(
         grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -93,9 +89,9 @@ def login_client(
                     client_secret=client_secret,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
@@ -105,7 +101,7 @@ def login_platform(
     platform_id: str,
     platform_token: str,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -114,7 +110,7 @@ def login_platform(
         platform_id=platform_id,
         platform_token=platform_token,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error is None:
         return None, error
@@ -132,9 +128,9 @@ def login_platform(
                     platform_token=platform_token,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
@@ -145,7 +141,7 @@ def login_user(
     password: str,
     scope: Optional[Union[str, List[str]]] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -178,7 +174,7 @@ def login_user(
         code_challenge_method=code_challenge_method,
         scope=scope,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -189,7 +185,7 @@ def login_user(
         user_name=username,
         client_id=client_id,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -199,7 +195,7 @@ def login_user(
         code=code,
         code_verifier=code_verifier,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -218,18 +214,15 @@ def login_user(
                     scope=scope,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
 
 
-def logout(
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     access_token, error = get_access_token()
     if error:
         return None, error
@@ -245,9 +238,7 @@ def logout(
     token_refresher = unset_on_demand_token_refresher(reset=False, **kwargs)
 
     _, error = token_revocation_v3(
-        token=access_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs
+        token=access_token, x_additional_headers=x_additional_headers, **kwargs
     )
     if error:
         if token_refresher is not None:
@@ -265,15 +256,13 @@ def logout(
 
 
 def refresh_login(
-    refresh_token,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    refresh_token, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     token, error = token_grant_v3(
         grant_type=TokenGrantV3GrantTypeEnum.REFRESH_TOKEN,
         refresh_token=refresh_token,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -298,25 +287,21 @@ async def login_client_async(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
 
-    if (
-        client_id is not None and
-        client_secret is not None
-    ):
+    if client_id is not None and client_secret is not None:
         x_additional_headers = x_additional_headers or {}
         x_additional_headers["Authorization"] = create_basic_authentication(
-            client_id,
-            client_secret
+            client_id, client_secret
         )
 
     token, error = await token_grant_v3_async(
         grant_type=TokenGrantV3GrantTypeEnum.CLIENT_CREDENTIALS,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -334,9 +319,9 @@ async def login_client_async(
                     client_secret=client_secret,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
@@ -346,7 +331,7 @@ async def login_platform_async(
     platform_id: str,
     platform_token: str,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -355,7 +340,7 @@ async def login_platform_async(
         platform_id=platform_id,
         platform_token=platform_token,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error is None:
         return None, error
@@ -373,9 +358,9 @@ async def login_platform_async(
                     platform_token=platform_token,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
@@ -386,7 +371,7 @@ async def login_user_async(
     password: str,
     scope: Optional[Union[str, List[str]]] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    **kwargs,
 ):
     auto_refresh = kwargs.pop("auto_refresh", DEFAULT_AUTO_REFRESH)
     refresh_rate = kwargs.pop("refresh_rate", DEFAULT_REFRESH_RATE)
@@ -419,7 +404,7 @@ async def login_user_async(
         code_challenge_method=code_challenge_method,
         scope=scope,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -430,7 +415,7 @@ async def login_user_async(
         user_name=username,
         client_id=client_id,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -440,7 +425,7 @@ async def login_user_async(
         code=code,
         code_verifier=code_verifier,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -459,18 +444,15 @@ async def login_user_async(
                     scope=scope,
                     x_additional_headers=x_additional_headers,
                 ),
-                refresh_rate=refresh_rate
+                refresh_rate=refresh_rate,
             ),
-            **kwargs
+            **kwargs,
         )
 
     return token, None
 
 
-async def logout_async(
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     access_token, error = get_access_token()
     if error:
         return None, error
@@ -486,9 +468,7 @@ async def logout_async(
     token_refresher = unset_on_demand_token_refresher(reset=False, **kwargs)
 
     _, error = await token_revocation_v3_async(
-        token=access_token,
-        x_additional_headers=x_additional_headers,
-        **kwargs
+        token=access_token, x_additional_headers=x_additional_headers, **kwargs
     )
     if error:
         if token_refresher is not None:
@@ -506,15 +486,13 @@ async def logout_async(
 
 
 async def refresh_login_async(
-    refresh_token,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    refresh_token, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     token, error = await token_grant_v3_async(
         grant_type=TokenGrantV3GrantTypeEnum.REFRESH_TOKEN,
         refresh_token=refresh_token,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -542,7 +520,6 @@ TIMER_KWARGS = {
 
 
 class LoginTimerBase(ABC, Timer):
-
     @abstractmethod
     def run(self):
         pass
@@ -553,7 +530,6 @@ class LoginTimerBase(ABC, Timer):
 
 
 class LoginClientTimer(LoginTimerBase):
-
     def __init__(
         self,
         interval: Union[int, float],
@@ -565,7 +541,7 @@ class LoginClientTimer(LoginTimerBase):
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
-        **kwargs
+        **kwargs,
     ) -> None:
         self.kwargs = {
             "client_id": client_id,
@@ -591,7 +567,6 @@ class LoginClientTimer(LoginTimerBase):
 
 
 class LoginPlatformTimer(LoginTimerBase):
-
     def __init__(
         self,
         interval: Union[int, float],
@@ -603,7 +578,7 @@ class LoginPlatformTimer(LoginTimerBase):
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
-        **kwargs
+        **kwargs,
     ) -> None:
         self.kwargs = {
             "platform_id": platform_id,
@@ -629,7 +604,6 @@ class LoginPlatformTimer(LoginTimerBase):
 
 
 class LoginUserTimer(LoginTimerBase):
-
     def __init__(
         self,
         interval: Union[int, float],
@@ -642,7 +616,7 @@ class LoginUserTimer(LoginTimerBase):
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
-        **kwargs
+        **kwargs,
     ) -> None:
         self.kwargs = {
             "username": username,
@@ -669,7 +643,6 @@ class LoginUserTimer(LoginTimerBase):
 
 
 class RefreshLoginTimer(LoginTimerBase):
-
     def __init__(
         self,
         interval: Union[int, float],
@@ -680,7 +653,7 @@ class RefreshLoginTimer(LoginTimerBase):
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
-        **kwargs
+        **kwargs,
     ) -> None:
         self.kwargs = {
             "refresh_token": refresh_token,
@@ -725,7 +698,6 @@ def unset_on_demand_token_refresher(reset: bool = True, **kwargs):
 
 
 class OnDemandTokenRefresher:
-
     def __init__(self, refresher: LoginTimerBase, refresh_rate: float = 0.8):
         self._refresher = refresher
         self._refresh_rate = refresh_rate
@@ -733,13 +705,17 @@ class OnDemandTokenRefresher:
         self._lock = threading.RLock()
         self._active_refresher: Optional[LoginTimerBase] = None
 
-    def __call__(self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs) -> Tuple[Optional[Operation], Optional[HttpResponse]]:
+    def __call__(
+        self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
+    ) -> Tuple[Optional[Operation], Optional[HttpResponse]]:
         token_repo = sdk.get_token_repository(raise_when_none=False)
         if token_repo is None:
             return None, HttpResponse.create_token_repo_not_found_error()
 
         with self._lock:
-            needs_refresh = token_repo.has_token() and token_repo.has_token_expired(multiplier=self._refresh_rate)
+            needs_refresh = token_repo.has_token() and token_repo.has_token_expired(
+                multiplier=self._refresh_rate
+            )
             if not needs_refresh:
                 return operation, None
             if self._active_refresher is not None:
@@ -761,9 +737,13 @@ class OnDemandTokenRefresher:
 
     def refresh(self, token_repo: TokenRepository):
         if refresh_token := token_repo.get_refresh_token():
-            self._active_refresher = RefreshLoginTimer(0, refresh_token=refresh_token, autostart=True)
+            self._active_refresher = RefreshLoginTimer(
+                0, refresh_token=refresh_token, autostart=True
+            )
         else:
-            self._active_refresher = self._refresher.clone(interval=0, repeats=None, autostart=True)
+            self._active_refresher = self._refresher.clone(
+                interval=0, repeats=None, autostart=True
+            )
 
     def reset(self):
         if self._active_refresher is not None:

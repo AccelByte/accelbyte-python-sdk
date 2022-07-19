@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,7 +53,11 @@ from ..operations.dlc import UpdatePlatformDLCConfig
 
 
 @same_doc_as(DeleteDLCItemConfig)
-def delete_dlc_item_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_dlc_item_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,7 +69,11 @@ def delete_dlc_item_config(namespace: Optional[str] = None, x_additional_headers
 
 
 @same_doc_as(DeleteDLCItemConfig)
-async def delete_dlc_item_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_dlc_item_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,11 +81,17 @@ async def delete_dlc_item_config_async(namespace: Optional[str] = None, x_additi
     request = DeleteDLCItemConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeletePlatformDLCConfig)
-def delete_platform_dlc_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_platform_dlc_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -89,7 +103,11 @@ def delete_platform_dlc_config(namespace: Optional[str] = None, x_additional_hea
 
 
 @same_doc_as(DeletePlatformDLCConfig)
-async def delete_platform_dlc_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_platform_dlc_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,11 +115,17 @@ async def delete_platform_dlc_config_async(namespace: Optional[str] = None, x_ad
     request = DeletePlatformDLCConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetDLCItemConfig)
-def get_dlc_item_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_dlc_item_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -113,7 +137,11 @@ def get_dlc_item_config(namespace: Optional[str] = None, x_additional_headers: O
 
 
 @same_doc_as(GetDLCItemConfig)
-async def get_dlc_item_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_dlc_item_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,11 +149,17 @@ async def get_dlc_item_config_async(namespace: Optional[str] = None, x_additiona
     request = GetDLCItemConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetPlatformDLCConfig)
-def get_platform_dlc_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_platform_dlc_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,7 +171,11 @@ def get_platform_dlc_config(namespace: Optional[str] = None, x_additional_header
 
 
 @same_doc_as(GetPlatformDLCConfig)
-async def get_platform_dlc_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_platform_dlc_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,11 +183,19 @@ async def get_platform_dlc_config_async(namespace: Optional[str] = None, x_addit
     request = GetPlatformDLCConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicSyncPsnDlcInventory)
-def public_sync_psn_dlc_inventory(user_id: str, body: Optional[PlayStationDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_sync_psn_dlc_inventory(
+    user_id: str,
+    body: Optional[PlayStationDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,7 +209,13 @@ def public_sync_psn_dlc_inventory(user_id: str, body: Optional[PlayStationDLCSyn
 
 
 @same_doc_as(PublicSyncPsnDlcInventory)
-async def public_sync_psn_dlc_inventory_async(user_id: str, body: Optional[PlayStationDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_sync_psn_dlc_inventory_async(
+    user_id: str,
+    body: Optional[PlayStationDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,11 +225,19 @@ async def public_sync_psn_dlc_inventory_async(user_id: str, body: Optional[PlayS
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SyncEpicGameDLC)
-def sync_epic_game_dlc(user_id: str, body: Optional[EpicGamesDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_epic_game_dlc(
+    user_id: str,
+    body: Optional[EpicGamesDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,7 +251,13 @@ def sync_epic_game_dlc(user_id: str, body: Optional[EpicGamesDLCSyncRequest] = N
 
 
 @same_doc_as(SyncEpicGameDLC)
-async def sync_epic_game_dlc_async(user_id: str, body: Optional[EpicGamesDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_epic_game_dlc_async(
+    user_id: str,
+    body: Optional[EpicGamesDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -201,11 +267,19 @@ async def sync_epic_game_dlc_async(user_id: str, body: Optional[EpicGamesDLCSync
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SyncSteamDLC)
-def sync_steam_dlc(user_id: str, body: Optional[SteamDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_steam_dlc(
+    user_id: str,
+    body: Optional[SteamDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -219,7 +293,13 @@ def sync_steam_dlc(user_id: str, body: Optional[SteamDLCSyncRequest] = None, nam
 
 
 @same_doc_as(SyncSteamDLC)
-async def sync_steam_dlc_async(user_id: str, body: Optional[SteamDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_steam_dlc_async(
+    user_id: str,
+    body: Optional[SteamDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -229,11 +309,19 @@ async def sync_steam_dlc_async(user_id: str, body: Optional[SteamDLCSyncRequest]
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SyncXboxDLC)
-def sync_xbox_dlc(user_id: str, body: Optional[XblDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_xbox_dlc(
+    user_id: str,
+    body: Optional[XblDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,7 +335,13 @@ def sync_xbox_dlc(user_id: str, body: Optional[XblDLCSyncRequest] = None, namesp
 
 
 @same_doc_as(SyncXboxDLC)
-async def sync_xbox_dlc_async(user_id: str, body: Optional[XblDLCSyncRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_xbox_dlc_async(
+    user_id: str,
+    body: Optional[XblDLCSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -257,11 +351,18 @@ async def sync_xbox_dlc_async(user_id: str, body: Optional[XblDLCSyncRequest] = 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateDLCItemConfig)
-def update_dlc_item_config(body: Optional[DLCItemConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_dlc_item_config(
+    body: Optional[DLCItemConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,7 +375,12 @@ def update_dlc_item_config(body: Optional[DLCItemConfigUpdate] = None, namespace
 
 
 @same_doc_as(UpdateDLCItemConfig)
-async def update_dlc_item_config_async(body: Optional[DLCItemConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_dlc_item_config_async(
+    body: Optional[DLCItemConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,11 +389,18 @@ async def update_dlc_item_config_async(body: Optional[DLCItemConfigUpdate] = Non
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePlatformDLCConfig)
-def update_platform_dlc_config(body: Optional[PlatformDLCConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_platform_dlc_config(
+    body: Optional[PlatformDLCConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -300,7 +413,12 @@ def update_platform_dlc_config(body: Optional[PlatformDLCConfigUpdate] = None, n
 
 
 @same_doc_as(UpdatePlatformDLCConfig)
-async def update_platform_dlc_config_async(body: Optional[PlatformDLCConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_platform_dlc_config_async(
+    body: Optional[PlatformDLCConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,4 +427,6 @@ async def update_platform_dlc_config_async(body: Optional[PlatformDLCConfigUpdat
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

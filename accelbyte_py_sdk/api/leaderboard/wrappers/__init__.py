@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -19,7 +19,9 @@ from ._leaderboard_configuration import create_leaderboard_configuration_admin_v
 from ._leaderboard_configuration import create_leaderboard_configuration_public_v1
 from ._leaderboard_configuration import create_leaderboard_configuration_public_v1_async
 from ._leaderboard_configuration import delete_bulk_leaderboard_configuration_admin_v1
-from ._leaderboard_configuration import delete_bulk_leaderboard_configuration_admin_v1_async
+from ._leaderboard_configuration import (
+    delete_bulk_leaderboard_configuration_admin_v1_async,
+)
 from ._leaderboard_configuration import delete_leaderboard_configuration_admin_v1
 from ._leaderboard_configuration import delete_leaderboard_configuration_admin_v1_async
 from ._leaderboard_configuration import get_leaderboard_configuration_admin_v1
@@ -34,7 +36,9 @@ from ._leaderboard_configuration import update_leaderboard_configuration_admin_v
 from ._leaderboard_configuration import update_leaderboard_configuration_admin_v1_async
 
 from ._leaderboard_data import admin_get_archived_leaderboard_ranking_data_v1_handler
-from ._leaderboard_data import admin_get_archived_leaderboard_ranking_data_v1_handler_async
+from ._leaderboard_data import (
+    admin_get_archived_leaderboard_ranking_data_v1_handler_async,
+)
 from ._leaderboard_data import create_archived_leaderboard_ranking_data_v1_handler
 from ._leaderboard_data import create_archived_leaderboard_ranking_data_v1_handler_async
 from ._leaderboard_data import delete_user_ranking_admin_v1

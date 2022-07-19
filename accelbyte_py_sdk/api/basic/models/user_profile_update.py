@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -56,16 +56,16 @@ class UserProfileUpdate(Model):
 
     # region fields
 
-    avatar_large_url: str                                                                          # OPTIONAL
-    avatar_small_url: str                                                                          # OPTIONAL
-    avatar_url: str                                                                                # OPTIONAL
-    custom_attributes: Dict[str, Any]                                                              # OPTIONAL
-    date_of_birth: str                                                                             # OPTIONAL
-    first_name: str                                                                                # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    last_name: str                                                                                 # OPTIONAL
-    time_zone: str                                                                                 # OPTIONAL
-    zip_code: str                                                                                  # OPTIONAL
+    avatar_large_url: str  # OPTIONAL
+    avatar_small_url: str  # OPTIONAL
+    avatar_url: str  # OPTIONAL
+    custom_attributes: Dict[str, Any]  # OPTIONAL
+    date_of_birth: str  # OPTIONAL
+    first_name: str  # OPTIONAL
+    language: str  # OPTIONAL
+    last_name: str  # OPTIONAL
+    time_zone: str  # OPTIONAL
+    zip_code: str  # OPTIONAL
 
     # endregion fields
 
@@ -130,7 +130,9 @@ class UserProfileUpdate(Model):
         elif include_empty:
             result["avatarUrl"] = ""
         if hasattr(self, "custom_attributes"):
-            result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
         elif include_empty:
             result["customAttributes"] = {}
         if hasattr(self, "date_of_birth"):
@@ -201,7 +203,9 @@ class UserProfileUpdate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UserProfileUpdate:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UserProfileUpdate:
         instance = cls()
         if not dict_:
             return instance
@@ -218,7 +222,9 @@ class UserProfileUpdate(Model):
         elif include_empty:
             instance.avatar_url = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
-            instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
         elif include_empty:
             instance.custom_attributes = {}
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
@@ -248,15 +254,31 @@ class UserProfileUpdate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, UserProfileUpdate]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, UserProfileUpdate]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[UserProfileUpdate]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[UserProfileUpdate]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[UserProfileUpdate, List[UserProfileUpdate], Dict[Any, UserProfileUpdate]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        UserProfileUpdate, List[UserProfileUpdate], Dict[Any, UserProfileUpdate]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -300,8 +322,12 @@ class UserProfileUpdate(Model):
     @staticmethod
     def get_pattern_map() -> Dict[str, re.Pattern]:
         return {
-            "dateOfBirth": re.compile(r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
-            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
+            "dateOfBirth": re.compile(
+                r"^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+            ),
+            "language": re.compile(
+                r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"
+            ),
         }
 
     # endregion static methods

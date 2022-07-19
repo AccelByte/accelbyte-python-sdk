@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,7 +39,11 @@ from ..operations.equ8_config import UpdateConfig
 
 
 @same_doc_as(DeleteConfig)
-def delete_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -51,7 +55,11 @@ def delete_config(namespace: Optional[str] = None, x_additional_headers: Optiona
 
 
 @same_doc_as(DeleteConfig)
-async def delete_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,11 +67,17 @@ async def delete_config_async(namespace: Optional[str] = None, x_additional_head
     request = DeleteConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetConfig)
-def get_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,7 +89,11 @@ def get_config(namespace: Optional[str] = None, x_additional_headers: Optional[D
 
 
 @same_doc_as(GetConfig)
-async def get_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,11 +101,18 @@ async def get_config_async(namespace: Optional[str] = None, x_additional_headers
     request = GetConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateConfig)
-def update_config(body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_config(
+    body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -100,7 +125,12 @@ def update_config(body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None, namespa
 
 
 @same_doc_as(UpdateConfig)
-async def update_config_async(body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_config_async(
+    body: Optional[ADTOForUpdateEqu8ConfigAPICall] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,4 +139,6 @@ async def update_config_async(body: Optional[ADTOForUpdateEqu8ConfigAPICall] = N
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

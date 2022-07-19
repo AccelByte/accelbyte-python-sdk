@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -67,21 +67,21 @@ class ModelLinkRequest(Model):
 
     # region fields
 
-    client_id: str                                                                                 # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    operation_name: str                                                                            # REQUIRED
-    payload: Dict[str, Any]                                                                        # REQUIRED
-    redirect_uri: str                                                                              # REQUIRED
-    request_id: str                                                                                # REQUIRED
-    status: str                                                                                    # REQUIRED
-    conflict_publisher_user_id: str                                                                # OPTIONAL
-    conflict_user_linked_games: List[str]                                                          # OPTIONAL
-    current_user_linked_games: List[str]                                                           # OPTIONAL
-    error: RestErrorResponse                                                                       # OPTIONAL
-    expiration: int                                                                                # OPTIONAL
-    platform_display_name: str                                                                     # OPTIONAL
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
+    client_id: str  # REQUIRED
+    namespace: str  # REQUIRED
+    operation_name: str  # REQUIRED
+    payload: Dict[str, Any]  # REQUIRED
+    redirect_uri: str  # REQUIRED
+    request_id: str  # REQUIRED
+    status: str  # REQUIRED
+    conflict_publisher_user_id: str  # OPTIONAL
+    conflict_user_linked_games: List[str]  # OPTIONAL
+    current_user_linked_games: List[str]  # OPTIONAL
+    error: RestErrorResponse  # OPTIONAL
+    expiration: int  # OPTIONAL
+    platform_display_name: str  # OPTIONAL
+    platform_id: str  # OPTIONAL
+    platform_user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -186,11 +186,15 @@ class ModelLinkRequest(Model):
         elif include_empty:
             result["conflict_publisher_user_id"] = ""
         if hasattr(self, "conflict_user_linked_games"):
-            result["conflict_user_linked_games"] = [str(i0) for i0 in self.conflict_user_linked_games]
+            result["conflict_user_linked_games"] = [
+                str(i0) for i0 in self.conflict_user_linked_games
+            ]
         elif include_empty:
             result["conflict_user_linked_games"] = []
         if hasattr(self, "current_user_linked_games"):
-            result["current_user_linked_games"] = [str(i0) for i0 in self.current_user_linked_games]
+            result["current_user_linked_games"] = [
+                str(i0) for i0 in self.current_user_linked_games
+            ]
         elif include_empty:
             result["current_user_linked_games"] = []
         if hasattr(self, "error"):
@@ -265,7 +269,9 @@ class ModelLinkRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelLinkRequest:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelLinkRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -297,20 +303,37 @@ class ModelLinkRequest(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
-        if "conflict_publisher_user_id" in dict_ and dict_["conflict_publisher_user_id"] is not None:
-            instance.conflict_publisher_user_id = str(dict_["conflict_publisher_user_id"])
+        if (
+            "conflict_publisher_user_id" in dict_
+            and dict_["conflict_publisher_user_id"] is not None
+        ):
+            instance.conflict_publisher_user_id = str(
+                dict_["conflict_publisher_user_id"]
+            )
         elif include_empty:
             instance.conflict_publisher_user_id = ""
-        if "conflict_user_linked_games" in dict_ and dict_["conflict_user_linked_games"] is not None:
-            instance.conflict_user_linked_games = [str(i0) for i0 in dict_["conflict_user_linked_games"]]
+        if (
+            "conflict_user_linked_games" in dict_
+            and dict_["conflict_user_linked_games"] is not None
+        ):
+            instance.conflict_user_linked_games = [
+                str(i0) for i0 in dict_["conflict_user_linked_games"]
+            ]
         elif include_empty:
             instance.conflict_user_linked_games = []
-        if "current_user_linked_games" in dict_ and dict_["current_user_linked_games"] is not None:
-            instance.current_user_linked_games = [str(i0) for i0 in dict_["current_user_linked_games"]]
+        if (
+            "current_user_linked_games" in dict_
+            and dict_["current_user_linked_games"] is not None
+        ):
+            instance.current_user_linked_games = [
+                str(i0) for i0 in dict_["current_user_linked_games"]
+            ]
         elif include_empty:
             instance.current_user_linked_games = []
         if "error" in dict_ and dict_["error"] is not None:
-            instance.error = RestErrorResponse.create_from_dict(dict_["error"], include_empty=include_empty)
+            instance.error = RestErrorResponse.create_from_dict(
+                dict_["error"], include_empty=include_empty
+            )
         elif include_empty:
             instance.error = RestErrorResponse()
         if "expiration" in dict_ and dict_["expiration"] is not None:
@@ -332,15 +355,29 @@ class ModelLinkRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelLinkRequest]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelLinkRequest]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelLinkRequest]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelLinkRequest]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelLinkRequest, List[ModelLinkRequest], Dict[Any, ModelLinkRequest]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ModelLinkRequest, List[ModelLinkRequest], Dict[Any, ModelLinkRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

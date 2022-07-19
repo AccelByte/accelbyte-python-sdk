@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -38,18 +38,36 @@ from ..models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..models import RestErrorResponse
 
 from ..operations.third_party_credential import AddThirdPartyLoginPlatformCredentialV3
-from ..operations.third_party_credential import DeleteThirdPartyLoginPlatformCredentialV3
+from ..operations.third_party_credential import (
+    DeleteThirdPartyLoginPlatformCredentialV3,
+)
 from ..operations.third_party_credential import DeleteThirdPartyLoginPlatformDomainV3
-from ..operations.third_party_credential import RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3
-from ..operations.third_party_credential import RetrieveAllActiveThirdPartyLoginPlatformCredentialV3
-from ..operations.third_party_credential import RetrieveAllThirdPartyLoginPlatformCredentialV3
-from ..operations.third_party_credential import RetrieveThirdPartyLoginPlatformCredentialV3
-from ..operations.third_party_credential import UpdateThirdPartyLoginPlatformCredentialV3
+from ..operations.third_party_credential import (
+    RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3,
+)
+from ..operations.third_party_credential import (
+    RetrieveAllActiveThirdPartyLoginPlatformCredentialV3,
+)
+from ..operations.third_party_credential import (
+    RetrieveAllThirdPartyLoginPlatformCredentialV3,
+)
+from ..operations.third_party_credential import (
+    RetrieveThirdPartyLoginPlatformCredentialV3,
+)
+from ..operations.third_party_credential import (
+    UpdateThirdPartyLoginPlatformCredentialV3,
+)
 from ..operations.third_party_credential import UpdateThirdPartyLoginPlatformDomainV3
 
 
 @same_doc_as(AddThirdPartyLoginPlatformCredentialV3)
-def add_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def add_third_party_login_platform_credential_v3(
+    body: ModelThirdPartyLoginPlatformCredentialRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,7 +81,13 @@ def add_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPlatf
 
 
 @same_doc_as(AddThirdPartyLoginPlatformCredentialV3)
-async def add_third_party_login_platform_credential_v3_async(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def add_third_party_login_platform_credential_v3_async(
+    body: ModelThirdPartyLoginPlatformCredentialRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -73,11 +97,18 @@ async def add_third_party_login_platform_credential_v3_async(body: ModelThirdPar
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteThirdPartyLoginPlatformCredentialV3)
-def delete_third_party_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_third_party_login_platform_credential_v3(
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -90,7 +121,12 @@ def delete_third_party_login_platform_credential_v3(platform_id: str, namespace:
 
 
 @same_doc_as(DeleteThirdPartyLoginPlatformCredentialV3)
-async def delete_third_party_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_third_party_login_platform_credential_v3_async(
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,11 +135,19 @@ async def delete_third_party_login_platform_credential_v3_async(platform_id: str
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteThirdPartyLoginPlatformDomainV3)
-def delete_third_party_login_platform_domain_v3(body: ModelPlatformDomainDeleteRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_third_party_login_platform_domain_v3(
+    body: ModelPlatformDomainDeleteRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,7 +161,13 @@ def delete_third_party_login_platform_domain_v3(body: ModelPlatformDomainDeleteR
 
 
 @same_doc_as(DeleteThirdPartyLoginPlatformDomainV3)
-async def delete_third_party_login_platform_domain_v3_async(body: ModelPlatformDomainDeleteRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_third_party_login_platform_domain_v3_async(
+    body: ModelPlatformDomainDeleteRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -127,11 +177,17 @@ async def delete_third_party_login_platform_domain_v3_async(body: ModelPlatformD
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
-def retrieve_all_active_third_party_login_platform_credential_public_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def retrieve_all_active_third_party_login_platform_credential_public_v3(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,7 +199,11 @@ def retrieve_all_active_third_party_login_platform_credential_public_v3(namespac
 
 
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
-async def retrieve_all_active_third_party_login_platform_credential_public_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def retrieve_all_active_third_party_login_platform_credential_public_v3_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,11 +211,17 @@ async def retrieve_all_active_third_party_login_platform_credential_public_v3_as
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
-def retrieve_all_active_third_party_login_platform_credential_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def retrieve_all_active_third_party_login_platform_credential_v3(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,7 +233,11 @@ def retrieve_all_active_third_party_login_platform_credential_v3(namespace: Opti
 
 
 @same_doc_as(RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
-async def retrieve_all_active_third_party_login_platform_credential_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def retrieve_all_active_third_party_login_platform_credential_v3_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -175,11 +245,17 @@ async def retrieve_all_active_third_party_login_platform_credential_v3_async(nam
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialV3.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveAllThirdPartyLoginPlatformCredentialV3)
-def retrieve_all_third_party_login_platform_credential_v3(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def retrieve_all_third_party_login_platform_credential_v3(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,7 +267,11 @@ def retrieve_all_third_party_login_platform_credential_v3(namespace: Optional[st
 
 
 @same_doc_as(RetrieveAllThirdPartyLoginPlatformCredentialV3)
-async def retrieve_all_third_party_login_platform_credential_v3_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def retrieve_all_third_party_login_platform_credential_v3_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -199,11 +279,18 @@ async def retrieve_all_third_party_login_platform_credential_v3_async(namespace:
     request = RetrieveAllThirdPartyLoginPlatformCredentialV3.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveThirdPartyLoginPlatformCredentialV3)
-def retrieve_third_party_login_platform_credential_v3(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def retrieve_third_party_login_platform_credential_v3(
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -216,7 +303,12 @@ def retrieve_third_party_login_platform_credential_v3(platform_id: str, namespac
 
 
 @same_doc_as(RetrieveThirdPartyLoginPlatformCredentialV3)
-async def retrieve_third_party_login_platform_credential_v3_async(platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def retrieve_third_party_login_platform_credential_v3_async(
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,11 +317,19 @@ async def retrieve_third_party_login_platform_credential_v3_async(platform_id: s
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateThirdPartyLoginPlatformCredentialV3)
-def update_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_third_party_login_platform_credential_v3(
+    body: ModelThirdPartyLoginPlatformCredentialRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,7 +343,13 @@ def update_third_party_login_platform_credential_v3(body: ModelThirdPartyLoginPl
 
 
 @same_doc_as(UpdateThirdPartyLoginPlatformCredentialV3)
-async def update_third_party_login_platform_credential_v3_async(body: ModelThirdPartyLoginPlatformCredentialRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_third_party_login_platform_credential_v3_async(
+    body: ModelThirdPartyLoginPlatformCredentialRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -253,11 +359,19 @@ async def update_third_party_login_platform_credential_v3_async(body: ModelThird
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateThirdPartyLoginPlatformDomainV3)
-def update_third_party_login_platform_domain_v3(body: ModelPlatformDomainUpdateRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_third_party_login_platform_domain_v3(
+    body: ModelPlatformDomainUpdateRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -271,7 +385,13 @@ def update_third_party_login_platform_domain_v3(body: ModelPlatformDomainUpdateR
 
 
 @same_doc_as(UpdateThirdPartyLoginPlatformDomainV3)
-async def update_third_party_login_platform_domain_v3_async(body: ModelPlatformDomainUpdateRequest, platform_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_third_party_login_platform_domain_v3_async(
+    body: ModelPlatformDomainUpdateRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -281,4 +401,6 @@ async def update_third_party_login_platform_domain_v3_async(body: ModelPlatformD
         platform_id=platform_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

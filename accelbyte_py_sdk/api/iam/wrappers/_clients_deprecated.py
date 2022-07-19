@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,7 +53,13 @@ from ..operations.clients_deprecated import UpdateClientSecret
 
 @deprecated
 @same_doc_as(AddClientPermission)
-def add_client_permission(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def add_client_permission(
+    action: int,
+    client_id: str,
+    resource: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AddClientPermission.create(
         action=action,
         client_id=client_id,
@@ -64,18 +70,30 @@ def add_client_permission(action: int, client_id: str, resource: str, x_addition
 
 @deprecated
 @same_doc_as(AddClientPermission)
-async def add_client_permission_async(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def add_client_permission_async(
+    action: int,
+    client_id: str,
+    resource: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = AddClientPermission.create(
         action=action,
         client_id=client_id,
         resource=resource,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(CreateClient)
-def create_client(body: ClientmodelClientCreateRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_client(
+    body: ClientmodelClientCreateRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreateClient.create(
         body=body,
     )
@@ -84,16 +102,27 @@ def create_client(body: ClientmodelClientCreateRequest, x_additional_headers: Op
 
 @deprecated
 @same_doc_as(CreateClient)
-async def create_client_async(body: ClientmodelClientCreateRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_client_async(
+    body: ClientmodelClientCreateRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = CreateClient.create(
         body=body,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(CreateClientByNamespace)
-def create_client_by_namespace(body: ClientmodelClientCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_client_by_namespace(
+    body: ClientmodelClientCreateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,7 +136,12 @@ def create_client_by_namespace(body: ClientmodelClientCreateRequest, namespace: 
 
 @deprecated
 @same_doc_as(CreateClientByNamespace)
-async def create_client_by_namespace_async(body: ClientmodelClientCreateRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_client_by_namespace_async(
+    body: ClientmodelClientCreateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,12 +150,16 @@ async def create_client_by_namespace_async(body: ClientmodelClientCreateRequest,
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(DeleteClient)
-def delete_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_client(
+    client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeleteClient.create(
         client_id=client_id,
     )
@@ -130,16 +168,25 @@ def delete_client(client_id: str, x_additional_headers: Optional[Dict[str, str]]
 
 @deprecated
 @same_doc_as(DeleteClient)
-async def delete_client_async(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_client_async(
+    client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeleteClient.create(
         client_id=client_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(DeleteClientByNamespace)
-def delete_client_by_namespace(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_client_by_namespace(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,7 +200,12 @@ def delete_client_by_namespace(client_id: str, namespace: Optional[str] = None, 
 
 @deprecated
 @same_doc_as(DeleteClientByNamespace)
-async def delete_client_by_namespace_async(client_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_client_by_namespace_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -162,12 +214,20 @@ async def delete_client_by_namespace_async(client_id: str, namespace: Optional[s
         client_id=client_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(DeleteClientPermission)
-def delete_client_permission(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_client_permission(
+    action: int,
+    client_id: str,
+    resource: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DeleteClientPermission.create(
         action=action,
         client_id=client_id,
@@ -178,18 +238,28 @@ def delete_client_permission(action: int, client_id: str, resource: str, x_addit
 
 @deprecated
 @same_doc_as(DeleteClientPermission)
-async def delete_client_permission_async(action: int, client_id: str, resource: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_client_permission_async(
+    action: int,
+    client_id: str,
+    resource: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = DeleteClientPermission.create(
         action=action,
         client_id=client_id,
         resource=resource,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(GetClient)
-def get_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_client(
+    client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetClient.create(
         client_id=client_id,
     )
@@ -198,11 +268,15 @@ def get_client(client_id: str, x_additional_headers: Optional[Dict[str, str]] = 
 
 @deprecated
 @same_doc_as(GetClient)
-async def get_client_async(client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_client_async(
+    client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetClient.create(
         client_id=client_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
@@ -214,14 +288,22 @@ def get_clients(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 
 @deprecated
 @same_doc_as(GetClients)
-async def get_clients_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_clients_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetClients.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(GetClientsbyNamespace)
-def get_clientsby_namespace(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_clientsby_namespace(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -234,7 +316,11 @@ def get_clientsby_namespace(namespace: Optional[str] = None, x_additional_header
 
 @deprecated
 @same_doc_as(GetClientsbyNamespace)
-async def get_clientsby_namespace_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_clientsby_namespace_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -242,12 +328,19 @@ async def get_clientsby_namespace_async(namespace: Optional[str] = None, x_addit
     request = GetClientsbyNamespace.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(UpdateClient)
-def update_client(body: ClientmodelClientUpdateRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_client(
+    body: ClientmodelClientUpdateRequest,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClient.create(
         body=body,
         client_id=client_id,
@@ -257,17 +350,29 @@ def update_client(body: ClientmodelClientUpdateRequest, client_id: str, x_additi
 
 @deprecated
 @same_doc_as(UpdateClient)
-async def update_client_async(body: ClientmodelClientUpdateRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_client_async(
+    body: ClientmodelClientUpdateRequest,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClient.create(
         body=body,
         client_id=client_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(UpdateClientPermission)
-def update_client_permission(body: AccountcommonClientPermissions, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_client_permission(
+    body: AccountcommonClientPermissions,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClientPermission.create(
         body=body,
         client_id=client_id,
@@ -277,17 +382,29 @@ def update_client_permission(body: AccountcommonClientPermissions, client_id: st
 
 @deprecated
 @same_doc_as(UpdateClientPermission)
-async def update_client_permission_async(body: AccountcommonClientPermissions, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_client_permission_async(
+    body: AccountcommonClientPermissions,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClientPermission.create(
         body=body,
         client_id=client_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(UpdateClientSecret)
-def update_client_secret(body: ClientmodelClientUpdateSecretRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_client_secret(
+    body: ClientmodelClientUpdateSecretRequest,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClientSecret.create(
         body=body,
         client_id=client_id,
@@ -297,9 +414,16 @@ def update_client_secret(body: ClientmodelClientUpdateSecretRequest, client_id: 
 
 @deprecated
 @same_doc_as(UpdateClientSecret)
-async def update_client_secret_async(body: ClientmodelClientUpdateSecretRequest, client_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_client_secret_async(
+    body: ClientmodelClientUpdateSecretRequest,
+    client_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = UpdateClientSecret.create(
         body=body,
         client_id=client_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

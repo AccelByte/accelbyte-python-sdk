@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -69,22 +69,22 @@ class ModelsAchievement(Model):
 
     # region fields
 
-    achievement_code: str                                                                          # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    default_language: str                                                                          # REQUIRED
-    description: Dict[str, str]                                                                    # REQUIRED
-    goal_value: float                                                                              # REQUIRED
-    hidden: bool                                                                                   # REQUIRED
-    id_: str                                                                                       # REQUIRED
-    incremental: bool                                                                              # REQUIRED
-    list_order: int                                                                                # REQUIRED
-    locked_icons: List[ModelsIcon]                                                                 # REQUIRED
-    name: Dict[str, str]                                                                           # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    stat_code: str                                                                                 # REQUIRED
-    tags: List[str]                                                                                # REQUIRED
-    unlocked_icons: List[ModelsIcon]                                                               # REQUIRED
-    updated_at: str                                                                                # REQUIRED
+    achievement_code: str  # REQUIRED
+    created_at: str  # REQUIRED
+    default_language: str  # REQUIRED
+    description: Dict[str, str]  # REQUIRED
+    goal_value: float  # REQUIRED
+    hidden: bool  # REQUIRED
+    id_: str  # REQUIRED
+    incremental: bool  # REQUIRED
+    list_order: int  # REQUIRED
+    locked_icons: List[ModelsIcon]  # REQUIRED
+    name: Dict[str, str]  # REQUIRED
+    namespace: str  # REQUIRED
+    stat_code: str  # REQUIRED
+    tags: List[str]  # REQUIRED
+    unlocked_icons: List[ModelsIcon]  # REQUIRED
+    updated_at: str  # REQUIRED
 
     # endregion fields
 
@@ -173,7 +173,9 @@ class ModelsAchievement(Model):
         elif include_empty:
             result["DefaultLanguage"] = ""
         if hasattr(self, "description"):
-            result["Description"] = {str(k0): str(v0) for k0, v0 in self.description.items()}
+            result["Description"] = {
+                str(k0): str(v0) for k0, v0 in self.description.items()
+            }
         elif include_empty:
             result["Description"] = {}
         if hasattr(self, "goal_value"):
@@ -197,7 +199,9 @@ class ModelsAchievement(Model):
         elif include_empty:
             result["ListOrder"] = 0
         if hasattr(self, "locked_icons"):
-            result["LockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons]
+            result["LockedIcons"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.locked_icons
+            ]
         elif include_empty:
             result["LockedIcons"] = []
         if hasattr(self, "name"):
@@ -217,7 +221,9 @@ class ModelsAchievement(Model):
         elif include_empty:
             result["Tags"] = []
         if hasattr(self, "unlocked_icons"):
-            result["UnlockedIcons"] = [i0.to_dict(include_empty=include_empty) for i0 in self.unlocked_icons]
+            result["UnlockedIcons"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.unlocked_icons
+            ]
         elif include_empty:
             result["UnlockedIcons"] = []
         if hasattr(self, "updated_at"):
@@ -270,7 +276,9 @@ class ModelsAchievement(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsAchievement:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsAchievement:
         instance = cls()
         if not dict_:
             return instance
@@ -287,7 +295,9 @@ class ModelsAchievement(Model):
         elif include_empty:
             instance.default_language = ""
         if "Description" in dict_ and dict_["Description"] is not None:
-            instance.description = {str(k0): str(v0) for k0, v0 in dict_["Description"].items()}
+            instance.description = {
+                str(k0): str(v0) for k0, v0 in dict_["Description"].items()
+            }
         elif include_empty:
             instance.description = {}
         if "GoalValue" in dict_ and dict_["GoalValue"] is not None:
@@ -311,7 +321,10 @@ class ModelsAchievement(Model):
         elif include_empty:
             instance.list_order = 0
         if "LockedIcons" in dict_ and dict_["LockedIcons"] is not None:
-            instance.locked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["LockedIcons"]]
+            instance.locked_icons = [
+                ModelsIcon.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["LockedIcons"]
+            ]
         elif include_empty:
             instance.locked_icons = []
         if "Name" in dict_ and dict_["Name"] is not None:
@@ -331,7 +344,10 @@ class ModelsAchievement(Model):
         elif include_empty:
             instance.tags = []
         if "UnlockedIcons" in dict_ and dict_["UnlockedIcons"] is not None:
-            instance.unlocked_icons = [ModelsIcon.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["UnlockedIcons"]]
+            instance.unlocked_icons = [
+                ModelsIcon.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["UnlockedIcons"]
+            ]
         elif include_empty:
             instance.unlocked_icons = []
         if "UpdatedAt" in dict_ and dict_["UpdatedAt"] is not None:
@@ -341,15 +357,31 @@ class ModelsAchievement(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsAchievement]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsAchievement]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsAchievement]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsAchievement]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsAchievement, List[ModelsAchievement], Dict[Any, ModelsAchievement]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsAchievement, List[ModelsAchievement], Dict[Any, ModelsAchievement]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

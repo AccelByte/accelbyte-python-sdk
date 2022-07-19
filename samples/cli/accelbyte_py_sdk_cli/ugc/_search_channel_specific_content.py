@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ugc import search_channel_specific_content as search_channel_specific_content_internal
+from accelbyte_py_sdk.api.ugc import (
+    search_channel_specific_content as search_channel_specific_content_internal,
+)
 from accelbyte_py_sdk.api.ugc.models import ModelsPaginatedContentDownloadResponse
 from accelbyte_py_sdk.api.ugc.models import ResponseError
 
@@ -53,31 +55,29 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def search_channel_specific_content(
-        channel_id: str,
-        creator: Optional[str] = None,
-        isofficial: Optional[str] = None,
-        limit: Optional[int] = None,
-        name: Optional[str] = None,
-        offset: Optional[int] = None,
-        orderby: Optional[str] = None,
-        sortby: Optional[str] = None,
-        subtype: Optional[str] = None,
-        tags: Optional[str] = None,
-        type_: Optional[str] = None,
-        user_id: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    channel_id: str,
+    creator: Optional[str] = None,
+    isofficial: Optional[str] = None,
+    limit: Optional[int] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    subtype: Optional[str] = None,
+    tags: Optional[str] = None,
+    type_: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(search_channel_specific_content_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     if tags is not None:

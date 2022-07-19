@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -73,25 +73,25 @@ class ModelsConfigExport(Model):
 
     # region fields
 
-    allow_invite_non_connected_user: bool                                                          # REQUIRED
-    allow_join_party_during_matchmaking: bool                                                      # REQUIRED
-    auto_kick_on_disconnect: bool                                                                  # REQUIRED
-    auto_kick_on_disconnect_delay: int                                                             # REQUIRED
-    cancel_ticket_on_disconnect: bool                                                              # REQUIRED
-    chat_rate_limit_burst: int                                                                     # REQUIRED
-    chat_rate_limit_duration: int                                                                  # REQUIRED
-    concurrent_users_limit: int                                                                    # REQUIRED
-    disable_invitation_on_join_party: bool                                                         # REQUIRED
-    enable_chat: bool                                                                              # REQUIRED
-    entitlement_check: bool                                                                        # REQUIRED
-    entitlement_item_id: str                                                                       # REQUIRED
-    general_rate_limit_burst: int                                                                  # REQUIRED
-    general_rate_limit_duration: int                                                               # REQUIRED
-    keep_presence_activity_on_disconnect: bool                                                     # REQUIRED
-    max_party_member: int                                                                          # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    profanity_filter: bool                                                                         # REQUIRED
-    ready_consent_timeout: int                                                                     # REQUIRED
+    allow_invite_non_connected_user: bool  # REQUIRED
+    allow_join_party_during_matchmaking: bool  # REQUIRED
+    auto_kick_on_disconnect: bool  # REQUIRED
+    auto_kick_on_disconnect_delay: int  # REQUIRED
+    cancel_ticket_on_disconnect: bool  # REQUIRED
+    chat_rate_limit_burst: int  # REQUIRED
+    chat_rate_limit_duration: int  # REQUIRED
+    concurrent_users_limit: int  # REQUIRED
+    disable_invitation_on_join_party: bool  # REQUIRED
+    enable_chat: bool  # REQUIRED
+    entitlement_check: bool  # REQUIRED
+    entitlement_item_id: str  # REQUIRED
+    general_rate_limit_burst: int  # REQUIRED
+    general_rate_limit_duration: int  # REQUIRED
+    keep_presence_activity_on_disconnect: bool  # REQUIRED
+    max_party_member: int  # REQUIRED
+    namespace: str  # REQUIRED
+    profanity_filter: bool  # REQUIRED
+    ready_consent_timeout: int  # REQUIRED
 
     # endregion fields
 
@@ -101,7 +101,9 @@ class ModelsConfigExport(Model):
         self.allow_invite_non_connected_user = value
         return self
 
-    def with_allow_join_party_during_matchmaking(self, value: bool) -> ModelsConfigExport:
+    def with_allow_join_party_during_matchmaking(
+        self, value: bool
+    ) -> ModelsConfigExport:
         self.allow_join_party_during_matchmaking = value
         return self
 
@@ -153,7 +155,9 @@ class ModelsConfigExport(Model):
         self.general_rate_limit_duration = value
         return self
 
-    def with_keep_presence_activity_on_disconnect(self, value: bool) -> ModelsConfigExport:
+    def with_keep_presence_activity_on_disconnect(
+        self, value: bool
+    ) -> ModelsConfigExport:
         self.keep_presence_activity_on_disconnect = value
         return self
 
@@ -180,11 +184,15 @@ class ModelsConfigExport(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "allow_invite_non_connected_user"):
-            result["allowInviteNonConnectedUser"] = bool(self.allow_invite_non_connected_user)
+            result["allowInviteNonConnectedUser"] = bool(
+                self.allow_invite_non_connected_user
+            )
         elif include_empty:
             result["allowInviteNonConnectedUser"] = False
         if hasattr(self, "allow_join_party_during_matchmaking"):
-            result["allowJoinPartyDuringMatchmaking"] = bool(self.allow_join_party_during_matchmaking)
+            result["allowJoinPartyDuringMatchmaking"] = bool(
+                self.allow_join_party_during_matchmaking
+            )
         elif include_empty:
             result["allowJoinPartyDuringMatchmaking"] = False
         if hasattr(self, "auto_kick_on_disconnect"):
@@ -192,7 +200,9 @@ class ModelsConfigExport(Model):
         elif include_empty:
             result["autoKickOnDisconnect"] = False
         if hasattr(self, "auto_kick_on_disconnect_delay"):
-            result["autoKickOnDisconnectDelay"] = int(self.auto_kick_on_disconnect_delay)
+            result["autoKickOnDisconnectDelay"] = int(
+                self.auto_kick_on_disconnect_delay
+            )
         elif include_empty:
             result["autoKickOnDisconnectDelay"] = 0
         if hasattr(self, "cancel_ticket_on_disconnect"):
@@ -212,7 +222,9 @@ class ModelsConfigExport(Model):
         elif include_empty:
             result["concurrentUsersLimit"] = 0
         if hasattr(self, "disable_invitation_on_join_party"):
-            result["disableInvitationOnJoinParty"] = bool(self.disable_invitation_on_join_party)
+            result["disableInvitationOnJoinParty"] = bool(
+                self.disable_invitation_on_join_party
+            )
         elif include_empty:
             result["disableInvitationOnJoinParty"] = False
         if hasattr(self, "enable_chat"):
@@ -236,7 +248,9 @@ class ModelsConfigExport(Model):
         elif include_empty:
             result["generalRateLimitDuration"] = 0
         if hasattr(self, "keep_presence_activity_on_disconnect"):
-            result["keepPresenceActivityOnDisconnect"] = bool(self.keep_presence_activity_on_disconnect)
+            result["keepPresenceActivityOnDisconnect"] = bool(
+                self.keep_presence_activity_on_disconnect
+            )
         elif include_empty:
             result["keepPresenceActivityOnDisconnect"] = False
         if hasattr(self, "max_party_member"):
@@ -286,7 +300,9 @@ class ModelsConfigExport(Model):
     ) -> ModelsConfigExport:
         instance = cls()
         instance.allow_invite_non_connected_user = allow_invite_non_connected_user
-        instance.allow_join_party_during_matchmaking = allow_join_party_during_matchmaking
+        instance.allow_join_party_during_matchmaking = (
+            allow_join_party_during_matchmaking
+        )
         instance.auto_kick_on_disconnect = auto_kick_on_disconnect
         instance.auto_kick_on_disconnect_delay = auto_kick_on_disconnect_delay
         instance.cancel_ticket_on_disconnect = cancel_ticket_on_disconnect
@@ -299,7 +315,9 @@ class ModelsConfigExport(Model):
         instance.entitlement_item_id = entitlement_item_id
         instance.general_rate_limit_burst = general_rate_limit_burst
         instance.general_rate_limit_duration = general_rate_limit_duration
-        instance.keep_presence_activity_on_disconnect = keep_presence_activity_on_disconnect
+        instance.keep_presence_activity_on_disconnect = (
+            keep_presence_activity_on_disconnect
+        )
         instance.max_party_member = max_party_member
         instance.namespace = namespace
         instance.profanity_filter = profanity_filter
@@ -307,44 +325,80 @@ class ModelsConfigExport(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsConfigExport:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsConfigExport:
         instance = cls()
         if not dict_:
             return instance
-        if "allowInviteNonConnectedUser" in dict_ and dict_["allowInviteNonConnectedUser"] is not None:
-            instance.allow_invite_non_connected_user = bool(dict_["allowInviteNonConnectedUser"])
+        if (
+            "allowInviteNonConnectedUser" in dict_
+            and dict_["allowInviteNonConnectedUser"] is not None
+        ):
+            instance.allow_invite_non_connected_user = bool(
+                dict_["allowInviteNonConnectedUser"]
+            )
         elif include_empty:
             instance.allow_invite_non_connected_user = False
-        if "allowJoinPartyDuringMatchmaking" in dict_ and dict_["allowJoinPartyDuringMatchmaking"] is not None:
-            instance.allow_join_party_during_matchmaking = bool(dict_["allowJoinPartyDuringMatchmaking"])
+        if (
+            "allowJoinPartyDuringMatchmaking" in dict_
+            and dict_["allowJoinPartyDuringMatchmaking"] is not None
+        ):
+            instance.allow_join_party_during_matchmaking = bool(
+                dict_["allowJoinPartyDuringMatchmaking"]
+            )
         elif include_empty:
             instance.allow_join_party_during_matchmaking = False
-        if "autoKickOnDisconnect" in dict_ and dict_["autoKickOnDisconnect"] is not None:
+        if (
+            "autoKickOnDisconnect" in dict_
+            and dict_["autoKickOnDisconnect"] is not None
+        ):
             instance.auto_kick_on_disconnect = bool(dict_["autoKickOnDisconnect"])
         elif include_empty:
             instance.auto_kick_on_disconnect = False
-        if "autoKickOnDisconnectDelay" in dict_ and dict_["autoKickOnDisconnectDelay"] is not None:
-            instance.auto_kick_on_disconnect_delay = int(dict_["autoKickOnDisconnectDelay"])
+        if (
+            "autoKickOnDisconnectDelay" in dict_
+            and dict_["autoKickOnDisconnectDelay"] is not None
+        ):
+            instance.auto_kick_on_disconnect_delay = int(
+                dict_["autoKickOnDisconnectDelay"]
+            )
         elif include_empty:
             instance.auto_kick_on_disconnect_delay = 0
-        if "cancelTicketOnDisconnect" in dict_ and dict_["cancelTicketOnDisconnect"] is not None:
-            instance.cancel_ticket_on_disconnect = bool(dict_["cancelTicketOnDisconnect"])
+        if (
+            "cancelTicketOnDisconnect" in dict_
+            and dict_["cancelTicketOnDisconnect"] is not None
+        ):
+            instance.cancel_ticket_on_disconnect = bool(
+                dict_["cancelTicketOnDisconnect"]
+            )
         elif include_empty:
             instance.cancel_ticket_on_disconnect = False
         if "chatRateLimitBurst" in dict_ and dict_["chatRateLimitBurst"] is not None:
             instance.chat_rate_limit_burst = int(dict_["chatRateLimitBurst"])
         elif include_empty:
             instance.chat_rate_limit_burst = 0
-        if "chatRateLimitDuration" in dict_ and dict_["chatRateLimitDuration"] is not None:
+        if (
+            "chatRateLimitDuration" in dict_
+            and dict_["chatRateLimitDuration"] is not None
+        ):
             instance.chat_rate_limit_duration = int(dict_["chatRateLimitDuration"])
         elif include_empty:
             instance.chat_rate_limit_duration = 0
-        if "concurrentUsersLimit" in dict_ and dict_["concurrentUsersLimit"] is not None:
+        if (
+            "concurrentUsersLimit" in dict_
+            and dict_["concurrentUsersLimit"] is not None
+        ):
             instance.concurrent_users_limit = int(dict_["concurrentUsersLimit"])
         elif include_empty:
             instance.concurrent_users_limit = 0
-        if "disableInvitationOnJoinParty" in dict_ and dict_["disableInvitationOnJoinParty"] is not None:
-            instance.disable_invitation_on_join_party = bool(dict_["disableInvitationOnJoinParty"])
+        if (
+            "disableInvitationOnJoinParty" in dict_
+            and dict_["disableInvitationOnJoinParty"] is not None
+        ):
+            instance.disable_invitation_on_join_party = bool(
+                dict_["disableInvitationOnJoinParty"]
+            )
         elif include_empty:
             instance.disable_invitation_on_join_party = False
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
@@ -359,16 +413,29 @@ class ModelsConfigExport(Model):
             instance.entitlement_item_id = str(dict_["entitlementItemID"])
         elif include_empty:
             instance.entitlement_item_id = ""
-        if "generalRateLimitBurst" in dict_ and dict_["generalRateLimitBurst"] is not None:
+        if (
+            "generalRateLimitBurst" in dict_
+            and dict_["generalRateLimitBurst"] is not None
+        ):
             instance.general_rate_limit_burst = int(dict_["generalRateLimitBurst"])
         elif include_empty:
             instance.general_rate_limit_burst = 0
-        if "generalRateLimitDuration" in dict_ and dict_["generalRateLimitDuration"] is not None:
-            instance.general_rate_limit_duration = int(dict_["generalRateLimitDuration"])
+        if (
+            "generalRateLimitDuration" in dict_
+            and dict_["generalRateLimitDuration"] is not None
+        ):
+            instance.general_rate_limit_duration = int(
+                dict_["generalRateLimitDuration"]
+            )
         elif include_empty:
             instance.general_rate_limit_duration = 0
-        if "keepPresenceActivityOnDisconnect" in dict_ and dict_["keepPresenceActivityOnDisconnect"] is not None:
-            instance.keep_presence_activity_on_disconnect = bool(dict_["keepPresenceActivityOnDisconnect"])
+        if (
+            "keepPresenceActivityOnDisconnect" in dict_
+            and dict_["keepPresenceActivityOnDisconnect"] is not None
+        ):
+            instance.keep_presence_activity_on_disconnect = bool(
+                dict_["keepPresenceActivityOnDisconnect"]
+            )
         elif include_empty:
             instance.keep_presence_activity_on_disconnect = False
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
@@ -390,15 +457,31 @@ class ModelsConfigExport(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsConfigExport]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsConfigExport]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsConfigExport]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsConfigExport]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsConfigExport, List[ModelsConfigExport], Dict[Any, ModelsConfigExport]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelsConfigExport, List[ModelsConfigExport], Dict[Any, ModelsConfigExport]
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

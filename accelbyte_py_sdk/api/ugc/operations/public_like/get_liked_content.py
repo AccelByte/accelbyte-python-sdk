@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -90,16 +90,16 @@ class GetLikedContent(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    isofficial: bool                                                                               # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
-    name: str                                                                                      # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
-    orderby: str                                                                                   # OPTIONAL in [query]
-    sortby: str                                                                                    # OPTIONAL in [query]
-    subtype: str                                                                                   # OPTIONAL in [query]
-    tags: List[str]                                                                                # OPTIONAL in [query]
-    type_: str                                                                                     # OPTIONAL in [query]
+    namespace: str  # REQUIRED in [path]
+    isofficial: bool  # OPTIONAL in [query]
+    limit: int  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
+    orderby: str  # OPTIONAL in [query]
+    sortby: str  # OPTIONAL in [query]
+    subtype: str  # OPTIONAL in [query]
+    tags: List[str]  # OPTIONAL in [query]
+    type_: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -272,7 +272,12 @@ class GetLikedContent(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsPaginatedContentDownloadResponse], Union[None, HttpResponse, ResponseError]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, ModelsPaginatedContentDownloadResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
         200: OK - ModelsPaginatedContentDownloadResponse (OK)
@@ -289,13 +294,18 @@ class GetLikedContent(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsPaginatedContentDownloadResponse.create_from_dict(content), None
+            return (
+                ModelsPaginatedContentDownloadResponse.create_from_dict(content),
+                None,
+            )
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
@@ -303,7 +313,9 @@ class GetLikedContent(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -346,7 +358,9 @@ class GetLikedContent(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetLikedContent:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetLikedContent:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -423,7 +437,7 @@ class GetLikedContent(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "tags": "csv",                                                                         # in query
+            "tags": "csv",  # in query
         }
 
     # endregion static methods

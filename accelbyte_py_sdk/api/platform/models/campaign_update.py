@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -71,18 +71,18 @@ class CampaignUpdate(Model):
 
     # region fields
 
-    name: str                                                                                      # REQUIRED
-    description: str                                                                               # OPTIONAL
-    items: List[RedeemableItem]                                                                    # OPTIONAL
-    max_redeem_count_per_campaign_per_user: int                                                    # OPTIONAL
-    max_redeem_count_per_code: int                                                                 # OPTIONAL
-    max_redeem_count_per_code_per_user: int                                                        # OPTIONAL
-    max_sale_count: int                                                                            # OPTIONAL
-    redeem_end: str                                                                                # OPTIONAL
-    redeem_start: str                                                                              # OPTIONAL
-    redeem_type: Union[str, RedeemTypeEnum]                                                        # OPTIONAL
-    status: Union[str, StatusEnum]                                                                 # OPTIONAL
-    tags: List[str]                                                                                # OPTIONAL
+    name: str  # REQUIRED
+    description: str  # OPTIONAL
+    items: List[RedeemableItem]  # OPTIONAL
+    max_redeem_count_per_campaign_per_user: int  # OPTIONAL
+    max_redeem_count_per_code: int  # OPTIONAL
+    max_redeem_count_per_code_per_user: int  # OPTIONAL
+    max_sale_count: int  # OPTIONAL
+    redeem_end: str  # OPTIONAL
+    redeem_start: str  # OPTIONAL
+    redeem_type: Union[str, RedeemTypeEnum]  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -151,11 +151,15 @@ class CampaignUpdate(Model):
         elif include_empty:
             result["description"] = ""
         if hasattr(self, "items"):
-            result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
+            result["items"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.items
+            ]
         elif include_empty:
             result["items"] = []
         if hasattr(self, "max_redeem_count_per_campaign_per_user"):
-            result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
+            result["maxRedeemCountPerCampaignPerUser"] = int(
+                self.max_redeem_count_per_campaign_per_user
+            )
         elif include_empty:
             result["maxRedeemCountPerCampaignPerUser"] = 0
         if hasattr(self, "max_redeem_count_per_code"):
@@ -163,7 +167,9 @@ class CampaignUpdate(Model):
         elif include_empty:
             result["maxRedeemCountPerCode"] = 0
         if hasattr(self, "max_redeem_count_per_code_per_user"):
-            result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
+            result["maxRedeemCountPerCodePerUser"] = int(
+                self.max_redeem_count_per_code_per_user
+            )
         elif include_empty:
             result["maxRedeemCountPerCodePerUser"] = 0
         if hasattr(self, "max_sale_count"):
@@ -219,11 +225,15 @@ class CampaignUpdate(Model):
         if items is not None:
             instance.items = items
         if max_redeem_count_per_campaign_per_user is not None:
-            instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
+            instance.max_redeem_count_per_campaign_per_user = (
+                max_redeem_count_per_campaign_per_user
+            )
         if max_redeem_count_per_code is not None:
             instance.max_redeem_count_per_code = max_redeem_count_per_code
         if max_redeem_count_per_code_per_user is not None:
-            instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
+            instance.max_redeem_count_per_code_per_user = (
+                max_redeem_count_per_code_per_user
+            )
         if max_sale_count is not None:
             instance.max_sale_count = max_sale_count
         if redeem_end is not None:
@@ -239,7 +249,9 @@ class CampaignUpdate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CampaignUpdate:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> CampaignUpdate:
         instance = cls()
         if not dict_:
             return instance
@@ -252,19 +264,35 @@ class CampaignUpdate(Model):
         elif include_empty:
             instance.description = ""
         if "items" in dict_ and dict_["items"] is not None:
-            instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
+            instance.items = [
+                RedeemableItem.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["items"]
+            ]
         elif include_empty:
             instance.items = []
-        if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
-            instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
+        if (
+            "maxRedeemCountPerCampaignPerUser" in dict_
+            and dict_["maxRedeemCountPerCampaignPerUser"] is not None
+        ):
+            instance.max_redeem_count_per_campaign_per_user = int(
+                dict_["maxRedeemCountPerCampaignPerUser"]
+            )
         elif include_empty:
             instance.max_redeem_count_per_campaign_per_user = 0
-        if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
+        if (
+            "maxRedeemCountPerCode" in dict_
+            and dict_["maxRedeemCountPerCode"] is not None
+        ):
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
             instance.max_redeem_count_per_code = 0
-        if "maxRedeemCountPerCodePerUser" in dict_ and dict_["maxRedeemCountPerCodePerUser"] is not None:
-            instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
+        if (
+            "maxRedeemCountPerCodePerUser" in dict_
+            and dict_["maxRedeemCountPerCodePerUser"] is not None
+        ):
+            instance.max_redeem_count_per_code_per_user = int(
+                dict_["maxRedeemCountPerCodePerUser"]
+            )
         elif include_empty:
             instance.max_redeem_count_per_code_per_user = 0
         if "maxSaleCount" in dict_ and dict_["maxSaleCount"] is not None:
@@ -294,15 +322,29 @@ class CampaignUpdate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CampaignUpdate]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, CampaignUpdate]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CampaignUpdate]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[CampaignUpdate]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CampaignUpdate, List[CampaignUpdate], Dict[Any, CampaignUpdate]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[CampaignUpdate, List[CampaignUpdate], Dict[Any, CampaignUpdate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

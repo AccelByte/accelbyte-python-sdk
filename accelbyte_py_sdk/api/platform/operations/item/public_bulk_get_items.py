@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -82,11 +82,11 @@ class PublicBulkGetItems(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    language: str                                                                                  # OPTIONAL in [query]
-    region: str                                                                                    # OPTIONAL in [query]
-    store_id: str                                                                                  # OPTIONAL in [query]
-    item_ids: str                                                                                  # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    language: str  # OPTIONAL in [query]
+    region: str  # OPTIONAL in [query]
+    store_id: str  # OPTIONAL in [query]
+    item_ids: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -209,7 +209,9 @@ class PublicBulkGetItems(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ItemInfo]], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, List[ItemInfo]], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - List[ItemInfo] (successful operation)
@@ -222,7 +224,9 @@ class PublicBulkGetItems(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -232,7 +236,9 @@ class PublicBulkGetItems(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -259,7 +265,9 @@ class PublicBulkGetItems(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicBulkGetItems:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PublicBulkGetItems:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

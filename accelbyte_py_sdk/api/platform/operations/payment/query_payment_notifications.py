@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -109,16 +109,16 @@ class QueryPaymentNotifications(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    end_date: str                                                                                  # OPTIONAL in [query]
-    external_id: str                                                                               # OPTIONAL in [query]
-    limit: int                                                                                     # OPTIONAL in [query]
-    notification_source: Union[str, NotificationSourceEnum]                                        # OPTIONAL in [query]
-    notification_type: str                                                                         # OPTIONAL in [query]
-    offset: int                                                                                    # OPTIONAL in [query]
-    payment_order_no: str                                                                          # OPTIONAL in [query]
-    start_date: str                                                                                # OPTIONAL in [query]
-    status: Union[str, StatusEnum]                                                                 # OPTIONAL in [query]
+    namespace: str  # REQUIRED in [path]
+    end_date: str  # OPTIONAL in [query]
+    external_id: str  # OPTIONAL in [query]
+    limit: int  # OPTIONAL in [query]
+    notification_source: Union[str, NotificationSourceEnum]  # OPTIONAL in [query]
+    notification_type: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
+    payment_order_no: str  # OPTIONAL in [query]
+    start_date: str  # OPTIONAL in [query]
+    status: Union[str, StatusEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -214,7 +214,9 @@ class QueryPaymentNotifications(Operation):
         self.limit = value
         return self
 
-    def with_notification_source(self, value: Union[str, NotificationSourceEnum]) -> QueryPaymentNotifications:
+    def with_notification_source(
+        self, value: Union[str, NotificationSourceEnum]
+    ) -> QueryPaymentNotifications:
         self.notification_source = value
         return self
 
@@ -291,7 +293,11 @@ class QueryPaymentNotifications(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, PaymentNotificationPagingSlicedResult], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, PaymentNotificationPagingSlicedResult], Union[None, HttpResponse]
+    ]:
         """Parse the given response.
 
         200: OK - PaymentNotificationPagingSlicedResult (successful operation)
@@ -302,7 +308,9 @@ class QueryPaymentNotifications(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -310,7 +318,9 @@ class QueryPaymentNotifications(Operation):
         if code == 200:
             return PaymentNotificationPagingSlicedResult.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -353,7 +363,9 @@ class QueryPaymentNotifications(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryPaymentNotifications:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> QueryPaymentNotifications:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -430,8 +442,17 @@ class QueryPaymentNotifications(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "notificationSource": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],# in query
-            "status": ["ERROR", "IGNORED", "PROCESSED", "WARN"],                                   # in query
+            "notificationSource": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],  # in query
+            "status": ["ERROR", "IGNORED", "PROCESSED", "WARN"],  # in query
         }
 
     # endregion static methods

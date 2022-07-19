@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -38,7 +38,13 @@ from ..operations.chat import PersonalChatHistory
 
 
 @same_doc_as(AdminChatHistory)
-def admin_chat_history(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def admin_chat_history(
+    friend_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -52,7 +58,13 @@ def admin_chat_history(friend_id: str, user_id: str, namespace: Optional[str] = 
 
 
 @same_doc_as(AdminChatHistory)
-async def admin_chat_history_async(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def admin_chat_history_async(
+    friend_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -62,11 +74,18 @@ async def admin_chat_history_async(friend_id: str, user_id: str, namespace: Opti
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetPersonalChatHistoryV1Public)
-def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_personal_chat_history_v1_public(
+    friend_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,7 +98,12 @@ def get_personal_chat_history_v1_public(friend_id: str, namespace: Optional[str]
 
 
 @same_doc_as(GetPersonalChatHistoryV1Public)
-async def get_personal_chat_history_v1_public_async(friend_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_personal_chat_history_v1_public_async(
+    friend_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,11 +112,19 @@ async def get_personal_chat_history_v1_public_async(friend_id: str, namespace: O
         friend_id=friend_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PersonalChatHistory)
-def personal_chat_history(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def personal_chat_history(
+    friend_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -106,7 +138,13 @@ def personal_chat_history(friend_id: str, user_id: str, namespace: Optional[str]
 
 
 @same_doc_as(PersonalChatHistory)
-async def personal_chat_history_async(friend_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def personal_chat_history_async(
+    friend_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,4 +154,6 @@ async def personal_chat_history_async(friend_id: str, user_id: str, namespace: O
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

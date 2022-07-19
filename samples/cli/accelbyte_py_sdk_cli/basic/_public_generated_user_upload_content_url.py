@@ -30,7 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.basic import public_generated_user_upload_content_url as public_generated_user_upload_content_url_internal
+from accelbyte_py_sdk.api.basic import (
+    public_generated_user_upload_content_url as public_generated_user_upload_content_url_internal,
+)
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import FileUploadUrlInfo
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -45,22 +47,20 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_generated_user_upload_content_url(
-        user_id: str,
-        file_type: str,
-        category: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    user_id: str,
+    file_type: str,
+    category: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_generated_user_upload_content_url_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = public_generated_user_upload_content_url_internal(
@@ -75,5 +75,7 @@ def public_generated_user_upload_content_url(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_generated_user_upload_content_url.operation_id = "publicGeneratedUserUploadContentUrl"
+public_generated_user_upload_content_url.operation_id = (
+    "publicGeneratedUserUploadContentUrl"
+)
 public_generated_user_upload_content_url.is_deprecated = False

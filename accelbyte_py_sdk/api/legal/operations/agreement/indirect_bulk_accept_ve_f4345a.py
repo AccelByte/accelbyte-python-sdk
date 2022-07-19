@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,8 +76,8 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[AcceptAgreementRequest]                                                             # OPTIONAL in [body]
-    user_id: str                                                                                   # REQUIRED in [path]
+    body: List[AcceptAgreementRequest]  # OPTIONAL in [body]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -140,7 +140,9 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: List[AcceptAgreementRequest]) -> IndirectBulkAcceptVersionedPolicy1:
+    def with_body(
+        self, value: List[AcceptAgreementRequest]
+    ) -> IndirectBulkAcceptVersionedPolicy1:
         self.body = value
         return self
 
@@ -155,7 +157,9 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
+            result["body"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.body
+            ]
         elif include_empty:
             result["body"] = []
         if hasattr(self, "user_id") and self.user_id:
@@ -169,7 +173,9 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         201: Created - AcceptAgreementResponse (successful operation)
@@ -180,7 +186,9 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -188,7 +196,9 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
         if code == 201:
             return AcceptAgreementResponse.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -207,10 +217,15 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> IndirectBulkAcceptVersionedPolicy1:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> IndirectBulkAcceptVersionedPolicy1:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
+            instance.body = [
+                AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["body"]
+            ]
         elif include_empty:
             instance.body = []
         if "userId" in dict_ and dict_["userId"] is not None:

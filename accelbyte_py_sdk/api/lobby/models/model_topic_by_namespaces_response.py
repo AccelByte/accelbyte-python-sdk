@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -47,11 +47,11 @@ class ModelTopicByNamespacesResponse(Model):
 
     # region fields
 
-    first: str                                                                                     # REQUIRED
-    last: str                                                                                      # REQUIRED
-    next_: str                                                                                     # REQUIRED
-    previous: str                                                                                  # REQUIRED
-    topics: List[ModelNotificationTopicResponse]                                                   # REQUIRED
+    first: str  # REQUIRED
+    last: str  # REQUIRED
+    next_: str  # REQUIRED
+    previous: str  # REQUIRED
+    topics: List[ModelNotificationTopicResponse]  # REQUIRED
 
     # endregion fields
 
@@ -73,7 +73,9 @@ class ModelTopicByNamespacesResponse(Model):
         self.previous = value
         return self
 
-    def with_topics(self, value: List[ModelNotificationTopicResponse]) -> ModelTopicByNamespacesResponse:
+    def with_topics(
+        self, value: List[ModelNotificationTopicResponse]
+    ) -> ModelTopicByNamespacesResponse:
         self.topics = value
         return self
 
@@ -100,7 +102,9 @@ class ModelTopicByNamespacesResponse(Model):
         elif include_empty:
             result["previous"] = ""
         if hasattr(self, "topics"):
-            result["topics"] = [i0.to_dict(include_empty=include_empty) for i0 in self.topics]
+            result["topics"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.topics
+            ]
         elif include_empty:
             result["topics"] = []
         return result
@@ -127,7 +131,9 @@ class ModelTopicByNamespacesResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelTopicByNamespacesResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelTopicByNamespacesResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -148,21 +154,44 @@ class ModelTopicByNamespacesResponse(Model):
         elif include_empty:
             instance.previous = ""
         if "topics" in dict_ and dict_["topics"] is not None:
-            instance.topics = [ModelNotificationTopicResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["topics"]]
+            instance.topics = [
+                ModelNotificationTopicResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["topics"]
+            ]
         elif include_empty:
             instance.topics = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelTopicByNamespacesResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelTopicByNamespacesResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelTopicByNamespacesResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelTopicByNamespacesResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelTopicByNamespacesResponse, List[ModelTopicByNamespacesResponse], Dict[Any, ModelTopicByNamespacesResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelTopicByNamespacesResponse,
+        List[ModelTopicByNamespacesResponse],
+        Dict[Any, ModelTopicByNamespacesResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,7 +39,9 @@ from ..operations.admin import UpdateServerConfig
 
 
 @same_doc_as(DeleteServer)
-def delete_server(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_server(
+    region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeleteServer.create(
         region=region,
     )
@@ -47,15 +49,24 @@ def delete_server(region: str, x_additional_headers: Optional[Dict[str, str]] = 
 
 
 @same_doc_as(DeleteServer)
-async def delete_server_async(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_server_async(
+    region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = DeleteServer.create(
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SetServerAlias)
-def set_server_alias(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def set_server_alias(
+    body: ModelsSetAliasRequest,
+    region: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SetServerAlias.create(
         body=body,
         region=region,
@@ -64,16 +75,29 @@ def set_server_alias(body: ModelsSetAliasRequest, region: str, x_additional_head
 
 
 @same_doc_as(SetServerAlias)
-async def set_server_alias_async(body: ModelsSetAliasRequest, region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def set_server_alias_async(
+    body: ModelsSetAliasRequest,
+    region: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     request = SetServerAlias.create(
         body=body,
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateServerConfig)
-def update_server_config(body: ModelsUpdateServerRequest, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_server_config(
+    body: ModelsUpdateServerRequest,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,7 +111,13 @@ def update_server_config(body: ModelsUpdateServerRequest, region: str, namespace
 
 
 @same_doc_as(UpdateServerConfig)
-async def update_server_config_async(body: ModelsUpdateServerRequest, region: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_server_config_async(
+    body: ModelsUpdateServerRequest,
+    region: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,4 +127,6 @@ async def update_server_config_async(body: ModelsUpdateServerRequest, region: st
         region=region,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -71,22 +71,22 @@ class OauthmodelTokenResponse(Model):
 
     # region fields
 
-    access_token: str                                                                              # REQUIRED
-    bans: List[AccountcommonJWTBanV3]                                                              # REQUIRED
-    display_name: str                                                                              # REQUIRED
-    expires_in: int                                                                                # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
-    permissions: List[AccountcommonPermission]                                                     # REQUIRED
-    refresh_token: str                                                                             # REQUIRED
-    roles: List[str]                                                                               # REQUIRED
-    token_type: str                                                                                # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    is_comply: bool                                                                                # OPTIONAL
-    jflgs: int                                                                                     # OPTIONAL
-    platform_id: str                                                                               # OPTIONAL
-    platform_user_id: str                                                                          # OPTIONAL
-    refresh_expires_in: int                                                                        # OPTIONAL
+    access_token: str  # REQUIRED
+    bans: List[AccountcommonJWTBanV3]  # REQUIRED
+    display_name: str  # REQUIRED
+    expires_in: int  # REQUIRED
+    namespace: str  # REQUIRED
+    namespace_roles: List[AccountcommonNamespaceRole]  # REQUIRED
+    permissions: List[AccountcommonPermission]  # REQUIRED
+    refresh_token: str  # REQUIRED
+    roles: List[str]  # REQUIRED
+    token_type: str  # REQUIRED
+    user_id: str  # REQUIRED
+    is_comply: bool  # OPTIONAL
+    jflgs: int  # OPTIONAL
+    platform_id: str  # OPTIONAL
+    platform_user_id: str  # OPTIONAL
+    refresh_expires_in: int  # OPTIONAL
 
     # endregion fields
 
@@ -112,11 +112,15 @@ class OauthmodelTokenResponse(Model):
         self.namespace = value
         return self
 
-    def with_namespace_roles(self, value: List[AccountcommonNamespaceRole]) -> OauthmodelTokenResponse:
+    def with_namespace_roles(
+        self, value: List[AccountcommonNamespaceRole]
+    ) -> OauthmodelTokenResponse:
         self.namespace_roles = value
         return self
 
-    def with_permissions(self, value: List[AccountcommonPermission]) -> OauthmodelTokenResponse:
+    def with_permissions(
+        self, value: List[AccountcommonPermission]
+    ) -> OauthmodelTokenResponse:
         self.permissions = value
         return self
 
@@ -167,7 +171,9 @@ class OauthmodelTokenResponse(Model):
         elif include_empty:
             result["access_token"] = ""
         if hasattr(self, "bans"):
-            result["bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
+            result["bans"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.bans
+            ]
         elif include_empty:
             result["bans"] = []
         if hasattr(self, "display_name"):
@@ -183,11 +189,15 @@ class OauthmodelTokenResponse(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "namespace_roles"):
-            result["namespace_roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
+            result["namespace_roles"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles
+            ]
         elif include_empty:
             result["namespace_roles"] = []
         if hasattr(self, "permissions"):
-            result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
+            result["permissions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
+            ]
         elif include_empty:
             result["permissions"] = []
         if hasattr(self, "refresh_token"):
@@ -277,7 +287,9 @@ class OauthmodelTokenResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> OauthmodelTokenResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> OauthmodelTokenResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -286,7 +298,10 @@ class OauthmodelTokenResponse(Model):
         elif include_empty:
             instance.access_token = ""
         if "bans" in dict_ and dict_["bans"] is not None:
-            instance.bans = [AccountcommonJWTBanV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["bans"]]
+            instance.bans = [
+                AccountcommonJWTBanV3.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["bans"]
+            ]
         elif include_empty:
             instance.bans = []
         if "display_name" in dict_ and dict_["display_name"] is not None:
@@ -302,11 +317,21 @@ class OauthmodelTokenResponse(Model):
         elif include_empty:
             instance.namespace = ""
         if "namespace_roles" in dict_ and dict_["namespace_roles"] is not None:
-            instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["namespace_roles"]]
+            instance.namespace_roles = [
+                AccountcommonNamespaceRole.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["namespace_roles"]
+            ]
         elif include_empty:
             instance.namespace_roles = []
         if "permissions" in dict_ and dict_["permissions"] is not None:
-            instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
+            instance.permissions = [
+                AccountcommonPermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["permissions"]
+            ]
         elif include_empty:
             instance.permissions = []
         if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
@@ -348,15 +373,33 @@ class OauthmodelTokenResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, OauthmodelTokenResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, OauthmodelTokenResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[OauthmodelTokenResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[OauthmodelTokenResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[OauthmodelTokenResponse, List[OauthmodelTokenResponse], Dict[Any, OauthmodelTokenResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        OauthmodelTokenResponse,
+        List[OauthmodelTokenResponse],
+        Dict[Any, OauthmodelTokenResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

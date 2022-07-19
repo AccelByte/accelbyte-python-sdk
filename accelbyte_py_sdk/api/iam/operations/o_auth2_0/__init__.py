@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -17,7 +17,10 @@ __email__ = "dev@accelbyte.net"
 from .admin_retrieve_user_thi_205ff1 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from .auth_code_request_v3 import AuthCodeRequestV3
 from .authorize_v3 import AuthorizeV3
-from .authorize_v3 import CodeChallengeMethodEnum as AuthorizeV3CodeChallengeMethodEnum, ResponseTypeEnum as AuthorizeV3ResponseTypeEnum
+from .authorize_v3 import (
+    CodeChallengeMethodEnum as AuthorizeV3CodeChallengeMethodEnum,
+    ResponseTypeEnum as AuthorizeV3ResponseTypeEnum,
+)
 from .change2fa_method import Change2faMethod
 from .get_jwksv3 import GetJWKSV3
 from .get_revocation_list_v3 import GetRevocationListV3

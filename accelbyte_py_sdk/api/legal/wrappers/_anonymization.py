@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -35,7 +35,9 @@ from ..operations.anonymization import AnonymizeUserAgreement
 
 
 @same_doc_as(AnonymizeUserAgreement)
-def anonymize_user_agreement(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def anonymize_user_agreement(
+    user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )
@@ -43,8 +45,12 @@ def anonymize_user_agreement(user_id: str, x_additional_headers: Optional[Dict[s
 
 
 @same_doc_as(AnonymizeUserAgreement)
-async def anonymize_user_agreement_async(user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def anonymize_user_agreement_async(
+    user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = AnonymizeUserAgreement.create(
         user_id=user_id,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

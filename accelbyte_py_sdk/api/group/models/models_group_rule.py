@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -42,14 +42,16 @@ class ModelsGroupRule(Model):
 
     # region fields
 
-    group_custom_rule: ModelsGroupRuleGroupCustomRule                                              # REQUIRED
-    group_predefined_rules: List[ModelsRule]                                                       # REQUIRED
+    group_custom_rule: ModelsGroupRuleGroupCustomRule  # REQUIRED
+    group_predefined_rules: List[ModelsRule]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_group_custom_rule(self, value: ModelsGroupRuleGroupCustomRule) -> ModelsGroupRule:
+    def with_group_custom_rule(
+        self, value: ModelsGroupRuleGroupCustomRule
+    ) -> ModelsGroupRule:
         self.group_custom_rule = value
         return self
 
@@ -64,11 +66,16 @@ class ModelsGroupRule(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "group_custom_rule"):
-            result["groupCustomRule"] = self.group_custom_rule.to_dict(include_empty=include_empty)
+            result["groupCustomRule"] = self.group_custom_rule.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["groupCustomRule"] = ModelsGroupRuleGroupCustomRule()
         if hasattr(self, "group_predefined_rules"):
-            result["groupPredefinedRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.group_predefined_rules]
+            result["groupPredefinedRules"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.group_predefined_rules
+            ]
         elif include_empty:
             result["groupPredefinedRules"] = []
         return result
@@ -89,30 +96,56 @@ class ModelsGroupRule(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGroupRule:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsGroupRule:
         instance = cls()
         if not dict_:
             return instance
         if "groupCustomRule" in dict_ and dict_["groupCustomRule"] is not None:
-            instance.group_custom_rule = ModelsGroupRuleGroupCustomRule.create_from_dict(dict_["groupCustomRule"], include_empty=include_empty)
+            instance.group_custom_rule = (
+                ModelsGroupRuleGroupCustomRule.create_from_dict(
+                    dict_["groupCustomRule"], include_empty=include_empty
+                )
+            )
         elif include_empty:
             instance.group_custom_rule = ModelsGroupRuleGroupCustomRule()
-        if "groupPredefinedRules" in dict_ and dict_["groupPredefinedRules"] is not None:
-            instance.group_predefined_rules = [ModelsRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["groupPredefinedRules"]]
+        if (
+            "groupPredefinedRules" in dict_
+            and dict_["groupPredefinedRules"] is not None
+        ):
+            instance.group_predefined_rules = [
+                ModelsRule.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["groupPredefinedRules"]
+            ]
         elif include_empty:
             instance.group_predefined_rules = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGroupRule]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelsGroupRule]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGroupRule]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelsGroupRule]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGroupRule, List[ModelsGroupRule], Dict[Any, ModelsGroupRule]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[ModelsGroupRule, List[ModelsGroupRule], Dict[Any, ModelsGroupRule]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

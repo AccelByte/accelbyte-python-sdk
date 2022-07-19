@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -54,7 +54,12 @@ from ..operations.group import UpdateSingleGroupV1
 
 
 @same_doc_as(CreateNewGroupPublicV1)
-def create_new_group_public_v1(body: ModelsPublicCreateNewGroupRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_new_group_public_v1(
+    body: ModelsPublicCreateNewGroupRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,7 +72,12 @@ def create_new_group_public_v1(body: ModelsPublicCreateNewGroupRequestV1, namesp
 
 
 @same_doc_as(CreateNewGroupPublicV1)
-async def create_new_group_public_v1_async(body: ModelsPublicCreateNewGroupRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_new_group_public_v1_async(
+    body: ModelsPublicCreateNewGroupRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -76,11 +86,18 @@ async def create_new_group_public_v1_async(body: ModelsPublicCreateNewGroupReque
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGroupAdminV1)
-def delete_group_admin_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_group_admin_v1(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,7 +110,12 @@ def delete_group_admin_v1(group_id: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(DeleteGroupAdminV1)
-async def delete_group_admin_v1_async(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_group_admin_v1_async(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -102,11 +124,19 @@ async def delete_group_admin_v1_async(group_id: str, namespace: Optional[str] = 
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGroupPredefinedRulePublicV1)
-def delete_group_predefined_rule_public_v1(allowed_action: str, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_group_predefined_rule_public_v1(
+    allowed_action: str,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,7 +150,13 @@ def delete_group_predefined_rule_public_v1(allowed_action: str, group_id: str, n
 
 
 @same_doc_as(DeleteGroupPredefinedRulePublicV1)
-async def delete_group_predefined_rule_public_v1_async(allowed_action: str, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_group_predefined_rule_public_v1_async(
+    allowed_action: str,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,11 +166,18 @@ async def delete_group_predefined_rule_public_v1_async(allowed_action: str, grou
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGroupPublicV1)
-def delete_group_public_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_group_public_v1(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,7 +190,12 @@ def delete_group_public_v1(group_id: str, namespace: Optional[str] = None, x_add
 
 
 @same_doc_as(DeleteGroupPublicV1)
-async def delete_group_public_v1_async(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_group_public_v1_async(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -156,11 +204,22 @@ async def delete_group_public_v1_async(group_id: str, namespace: Optional[str] =
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetGroupListAdminV1)
-def get_group_list_admin_v1(configuration_code: Optional[str] = None, group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_group_list_admin_v1(
+    configuration_code: Optional[str] = None,
+    group_name: Optional[str] = None,
+    group_region: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -177,7 +236,16 @@ def get_group_list_admin_v1(configuration_code: Optional[str] = None, group_name
 
 
 @same_doc_as(GetGroupListAdminV1)
-async def get_group_list_admin_v1_async(configuration_code: Optional[str] = None, group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_group_list_admin_v1_async(
+    configuration_code: Optional[str] = None,
+    group_name: Optional[str] = None,
+    group_region: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -190,11 +258,21 @@ async def get_group_list_admin_v1_async(configuration_code: Optional[str] = None
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetGroupListPublicV1)
-def get_group_list_public_v1(group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_group_list_public_v1(
+    group_name: Optional[str] = None,
+    group_region: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -210,7 +288,15 @@ def get_group_list_public_v1(group_name: Optional[str] = None, group_region: Opt
 
 
 @same_doc_as(GetGroupListPublicV1)
-async def get_group_list_public_v1_async(group_name: Optional[str] = None, group_region: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_group_list_public_v1_async(
+    group_name: Optional[str] = None,
+    group_region: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -222,11 +308,18 @@ async def get_group_list_public_v1_async(group_name: Optional[str] = None, group
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSingleGroupAdminV1)
-def get_single_group_admin_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_single_group_admin_v1(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,7 +332,12 @@ def get_single_group_admin_v1(group_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(GetSingleGroupAdminV1)
-async def get_single_group_admin_v1_async(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_single_group_admin_v1_async(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,11 +346,18 @@ async def get_single_group_admin_v1_async(group_id: str, namespace: Optional[str
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSingleGroupPublicV1)
-def get_single_group_public_v1(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_single_group_public_v1(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -265,7 +370,12 @@ def get_single_group_public_v1(group_id: str, namespace: Optional[str] = None, x
 
 
 @same_doc_as(GetSingleGroupPublicV1)
-async def get_single_group_public_v1_async(group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_single_group_public_v1_async(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -274,11 +384,19 @@ async def get_single_group_public_v1_async(group_id: str, namespace: Optional[st
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateGroupCustomAttributesPublicV1)
-def update_group_custom_attributes_public_v1(body: ModelsUpdateGroupCustomAttributesRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_group_custom_attributes_public_v1(
+    body: ModelsUpdateGroupCustomAttributesRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,7 +410,13 @@ def update_group_custom_attributes_public_v1(body: ModelsUpdateGroupCustomAttrib
 
 
 @same_doc_as(UpdateGroupCustomAttributesPublicV1)
-async def update_group_custom_attributes_public_v1_async(body: ModelsUpdateGroupCustomAttributesRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_group_custom_attributes_public_v1_async(
+    body: ModelsUpdateGroupCustomAttributesRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -302,11 +426,19 @@ async def update_group_custom_attributes_public_v1_async(body: ModelsUpdateGroup
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateGroupCustomRulePublicV1)
-def update_group_custom_rule_public_v1(body: ModelsUpdateGroupCustomRuleRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_group_custom_rule_public_v1(
+    body: ModelsUpdateGroupCustomRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -320,7 +452,13 @@ def update_group_custom_rule_public_v1(body: ModelsUpdateGroupCustomRuleRequestV
 
 
 @same_doc_as(UpdateGroupCustomRulePublicV1)
-async def update_group_custom_rule_public_v1_async(body: ModelsUpdateGroupCustomRuleRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_group_custom_rule_public_v1_async(
+    body: ModelsUpdateGroupCustomRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -330,11 +468,20 @@ async def update_group_custom_rule_public_v1_async(body: ModelsUpdateGroupCustom
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateGroupPredefinedRulePublicV1)
-def update_group_predefined_rule_public_v1(allowed_action: str, body: ModelsUpdateGroupPredefinedRuleRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_group_predefined_rule_public_v1(
+    allowed_action: str,
+    body: ModelsUpdateGroupPredefinedRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -349,7 +496,14 @@ def update_group_predefined_rule_public_v1(allowed_action: str, body: ModelsUpda
 
 
 @same_doc_as(UpdateGroupPredefinedRulePublicV1)
-async def update_group_predefined_rule_public_v1_async(allowed_action: str, body: ModelsUpdateGroupPredefinedRuleRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_group_predefined_rule_public_v1_async(
+    allowed_action: str,
+    body: ModelsUpdateGroupPredefinedRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -360,11 +514,19 @@ async def update_group_predefined_rule_public_v1_async(allowed_action: str, body
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdatePatchSingleGroupPublicV1)
-def update_patch_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_patch_single_group_public_v1(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,7 +540,13 @@ def update_patch_single_group_public_v1(body: ModelsUpdateGroupRequestV1, group_
 
 
 @same_doc_as(UpdatePatchSingleGroupPublicV1)
-async def update_patch_single_group_public_v1_async(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_patch_single_group_public_v1_async(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -388,11 +556,19 @@ async def update_patch_single_group_public_v1_async(body: ModelsUpdateGroupReque
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateSingleGroupV1)
-def update_single_group_v1(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_single_group_v1(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -406,7 +582,13 @@ def update_single_group_v1(body: ModelsUpdateGroupRequestV1, group_id: str, name
 
 
 @same_doc_as(UpdateSingleGroupV1)
-async def update_single_group_v1_async(body: ModelsUpdateGroupRequestV1, group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_single_group_v1_async(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -416,4 +598,6 @@ async def update_single_group_v1_async(body: ModelsUpdateGroupRequestV1, group_i
         group_id=group_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

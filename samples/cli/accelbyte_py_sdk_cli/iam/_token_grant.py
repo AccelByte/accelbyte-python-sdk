@@ -49,27 +49,25 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def token_grant(
-        grant_type: str,
-        device_id: Optional[str] = None,
-        code: Optional[str] = None,
-        extend_exp: Optional[bool] = None,
-        password: Optional[str] = None,
-        redirect_uri: Optional[str] = None,
-        refresh_token: Optional[str] = None,
-        username: Optional[str] = None,
-        namespace: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    grant_type: str,
+    device_id: Optional[str] = None,
+    code: Optional[str] = None,
+    extend_exp: Optional[bool] = None,
+    password: Optional[str] = None,
+    redirect_uri: Optional[str] = None,
+    refresh_token: Optional[str] = None,
+    username: Optional[str] = None,
+    namespace: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(token_grant_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = token_grant_internal(

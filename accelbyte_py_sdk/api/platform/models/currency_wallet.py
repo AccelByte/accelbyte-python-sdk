@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,14 +53,14 @@ class CurrencyWallet(Model):
 
     # region fields
 
-    balance: int                                                                                   # REQUIRED
-    currency_code: str                                                                             # REQUIRED
-    currency_symbol: str                                                                           # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    total_permanent_balance: int                                                                   # OPTIONAL
-    total_time_limited_balance: int                                                                # OPTIONAL
-    wallet_infos: List[WalletInfo]                                                                 # OPTIONAL
+    balance: int  # REQUIRED
+    currency_code: str  # REQUIRED
+    currency_symbol: str  # REQUIRED
+    namespace: str  # REQUIRED
+    user_id: str  # REQUIRED
+    total_permanent_balance: int  # OPTIONAL
+    total_time_limited_balance: int  # OPTIONAL
+    wallet_infos: List[WalletInfo]  # OPTIONAL
 
     # endregion fields
 
@@ -133,7 +133,9 @@ class CurrencyWallet(Model):
         elif include_empty:
             result["totalTimeLimitedBalance"] = 0
         if hasattr(self, "wallet_infos"):
-            result["walletInfos"] = [i0.to_dict(include_empty=include_empty) for i0 in self.wallet_infos]
+            result["walletInfos"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.wallet_infos
+            ]
         elif include_empty:
             result["walletInfos"] = []
         return result
@@ -169,7 +171,9 @@ class CurrencyWallet(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CurrencyWallet:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> CurrencyWallet:
         instance = cls()
         if not dict_:
             return instance
@@ -193,30 +197,53 @@ class CurrencyWallet(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
-        if "totalPermanentBalance" in dict_ and dict_["totalPermanentBalance"] is not None:
+        if (
+            "totalPermanentBalance" in dict_
+            and dict_["totalPermanentBalance"] is not None
+        ):
             instance.total_permanent_balance = int(dict_["totalPermanentBalance"])
         elif include_empty:
             instance.total_permanent_balance = 0
-        if "totalTimeLimitedBalance" in dict_ and dict_["totalTimeLimitedBalance"] is not None:
+        if (
+            "totalTimeLimitedBalance" in dict_
+            and dict_["totalTimeLimitedBalance"] is not None
+        ):
             instance.total_time_limited_balance = int(dict_["totalTimeLimitedBalance"])
         elif include_empty:
             instance.total_time_limited_balance = 0
         if "walletInfos" in dict_ and dict_["walletInfos"] is not None:
-            instance.wallet_infos = [WalletInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["walletInfos"]]
+            instance.wallet_infos = [
+                WalletInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["walletInfos"]
+            ]
         elif include_empty:
             instance.wallet_infos = []
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CurrencyWallet]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, CurrencyWallet]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CurrencyWallet]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[CurrencyWallet]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CurrencyWallet, List[CurrencyWallet], Dict[Any, CurrencyWallet]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[CurrencyWallet, List[CurrencyWallet], Dict[Any, CurrencyWallet]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

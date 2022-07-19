@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -28,7 +28,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
-from ..models.a_dto_object_for_order_creation_options import ADTOObjectForOrderCreationOptions
+from ..models.a_dto_object_for_order_creation_options import (
+    ADTOObjectForOrderCreationOptions,
+)
 from ..models.currency_summary import CurrencySummary
 from ..models.item_snapshot import ItemSnapshot
 
@@ -141,44 +143,44 @@ class OrderInfo(Model):
 
     # region fields
 
-    created_at: str                                                                                # REQUIRED
-    currency: CurrencySummary                                                                      # REQUIRED
-    discounted_price: int                                                                          # REQUIRED
-    expire_time: str                                                                               # REQUIRED
-    item_id: str                                                                                   # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    order_no: str                                                                                  # REQUIRED
-    payment_remain_seconds: int                                                                    # REQUIRED
-    price: int                                                                                     # REQUIRED
-    quantity: int                                                                                  # REQUIRED
-    sandbox: bool                                                                                  # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    updated_at: str                                                                                # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    chargeback_reversed_time: str                                                                  # OPTIONAL
-    chargeback_time: str                                                                           # OPTIONAL
-    charged_time: str                                                                              # OPTIONAL
-    created_time: str                                                                              # OPTIONAL
-    creation_options: ADTOObjectForOrderCreationOptions                                            # OPTIONAL
-    ext: Dict[str, Any]                                                                            # OPTIONAL
-    fulfilled_time: str                                                                            # OPTIONAL
-    item_snapshot: ItemSnapshot                                                                    # OPTIONAL
-    language: str                                                                                  # OPTIONAL
-    payment_method: str                                                                            # OPTIONAL
-    payment_method_fee: int                                                                        # OPTIONAL
-    payment_order_no: str                                                                          # OPTIONAL
-    payment_provider: Union[str, PaymentProviderEnum]                                              # OPTIONAL
-    payment_provider_fee: int                                                                      # OPTIONAL
-    payment_station_url: str                                                                       # OPTIONAL
-    refunded_time: str                                                                             # OPTIONAL
-    region: str                                                                                    # OPTIONAL
-    sales_tax: int                                                                                 # OPTIONAL
-    status_reason: str                                                                             # OPTIONAL
-    subtotal_price: int                                                                            # OPTIONAL
-    tax: int                                                                                       # OPTIONAL
-    total_price: int                                                                               # OPTIONAL
-    total_tax: int                                                                                 # OPTIONAL
-    vat: int                                                                                       # OPTIONAL
+    created_at: str  # REQUIRED
+    currency: CurrencySummary  # REQUIRED
+    discounted_price: int  # REQUIRED
+    expire_time: str  # REQUIRED
+    item_id: str  # REQUIRED
+    namespace: str  # REQUIRED
+    order_no: str  # REQUIRED
+    payment_remain_seconds: int  # REQUIRED
+    price: int  # REQUIRED
+    quantity: int  # REQUIRED
+    sandbox: bool  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    updated_at: str  # REQUIRED
+    user_id: str  # REQUIRED
+    chargeback_reversed_time: str  # OPTIONAL
+    chargeback_time: str  # OPTIONAL
+    charged_time: str  # OPTIONAL
+    created_time: str  # OPTIONAL
+    creation_options: ADTOObjectForOrderCreationOptions  # OPTIONAL
+    ext: Dict[str, Any]  # OPTIONAL
+    fulfilled_time: str  # OPTIONAL
+    item_snapshot: ItemSnapshot  # OPTIONAL
+    language: str  # OPTIONAL
+    payment_method: str  # OPTIONAL
+    payment_method_fee: int  # OPTIONAL
+    payment_order_no: str  # OPTIONAL
+    payment_provider: Union[str, PaymentProviderEnum]  # OPTIONAL
+    payment_provider_fee: int  # OPTIONAL
+    payment_station_url: str  # OPTIONAL
+    refunded_time: str  # OPTIONAL
+    region: str  # OPTIONAL
+    sales_tax: int  # OPTIONAL
+    status_reason: str  # OPTIONAL
+    subtotal_price: int  # OPTIONAL
+    tax: int  # OPTIONAL
+    total_price: int  # OPTIONAL
+    total_tax: int  # OPTIONAL
+    vat: int  # OPTIONAL
 
     # endregion fields
 
@@ -256,7 +258,9 @@ class OrderInfo(Model):
         self.created_time = value
         return self
 
-    def with_creation_options(self, value: ADTOObjectForOrderCreationOptions) -> OrderInfo:
+    def with_creation_options(
+        self, value: ADTOObjectForOrderCreationOptions
+    ) -> OrderInfo:
         self.creation_options = value
         return self
 
@@ -288,7 +292,9 @@ class OrderInfo(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> OrderInfo:
+    def with_payment_provider(
+        self, value: Union[str, PaymentProviderEnum]
+    ) -> OrderInfo:
         self.payment_provider = value
         return self
 
@@ -415,7 +421,9 @@ class OrderInfo(Model):
         elif include_empty:
             result["createdTime"] = ""
         if hasattr(self, "creation_options"):
-            result["creationOptions"] = self.creation_options.to_dict(include_empty=include_empty)
+            result["creationOptions"] = self.creation_options.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["creationOptions"] = ADTOObjectForOrderCreationOptions()
         if hasattr(self, "ext"):
@@ -427,7 +435,9 @@ class OrderInfo(Model):
         elif include_empty:
             result["fulfilledTime"] = ""
         if hasattr(self, "item_snapshot"):
-            result["itemSnapshot"] = self.item_snapshot.to_dict(include_empty=include_empty)
+            result["itemSnapshot"] = self.item_snapshot.to_dict(
+                include_empty=include_empty
+            )
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
         if hasattr(self, "language"):
@@ -617,7 +627,9 @@ class OrderInfo(Model):
         elif include_empty:
             instance.created_at = ""
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
+            instance.currency = CurrencySummary.create_from_dict(
+                dict_["currency"], include_empty=include_empty
+            )
         elif include_empty:
             instance.currency = CurrencySummary()
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
@@ -640,7 +652,10 @@ class OrderInfo(Model):
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
             instance.order_no = ""
-        if "paymentRemainSeconds" in dict_ and dict_["paymentRemainSeconds"] is not None:
+        if (
+            "paymentRemainSeconds" in dict_
+            and dict_["paymentRemainSeconds"] is not None
+        ):
             instance.payment_remain_seconds = int(dict_["paymentRemainSeconds"])
         elif include_empty:
             instance.payment_remain_seconds = 0
@@ -668,7 +683,10 @@ class OrderInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
-        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
+        if (
+            "chargebackReversedTime" in dict_
+            and dict_["chargebackReversedTime"] is not None
+        ):
             instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
         elif include_empty:
             instance.chargeback_reversed_time = ""
@@ -685,7 +703,11 @@ class OrderInfo(Model):
         elif include_empty:
             instance.created_time = ""
         if "creationOptions" in dict_ and dict_["creationOptions"] is not None:
-            instance.creation_options = ADTOObjectForOrderCreationOptions.create_from_dict(dict_["creationOptions"], include_empty=include_empty)
+            instance.creation_options = (
+                ADTOObjectForOrderCreationOptions.create_from_dict(
+                    dict_["creationOptions"], include_empty=include_empty
+                )
+            )
         elif include_empty:
             instance.creation_options = ADTOObjectForOrderCreationOptions()
         if "ext" in dict_ and dict_["ext"] is not None:
@@ -697,7 +719,9 @@ class OrderInfo(Model):
         elif include_empty:
             instance.fulfilled_time = ""
         if "itemSnapshot" in dict_ and dict_["itemSnapshot"] is not None:
-            instance.item_snapshot = ItemSnapshot.create_from_dict(dict_["itemSnapshot"], include_empty=include_empty)
+            instance.item_snapshot = ItemSnapshot.create_from_dict(
+                dict_["itemSnapshot"], include_empty=include_empty
+            )
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
         if "language" in dict_ and dict_["language"] is not None:
@@ -767,15 +791,29 @@ class OrderInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, OrderInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, OrderInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[OrderInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[OrderInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[OrderInfo, List[OrderInfo], Dict[Any, OrderInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[OrderInfo, List[OrderInfo], Dict[Any, OrderInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -875,8 +913,29 @@ class OrderInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CLOSED", "DELETED", "FULFILLED", "FULFILL_FAILED", "INIT", "REFUNDED", "REFUNDING", "REFUND_FAILED"],
-            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "status": [
+                "CHARGEBACK",
+                "CHARGEBACK_REVERSED",
+                "CHARGED",
+                "CLOSED",
+                "DELETED",
+                "FULFILLED",
+                "FULFILL_FAILED",
+                "INIT",
+                "REFUNDED",
+                "REFUNDING",
+                "REFUND_FAILED",
+            ],
+            "paymentProvider": [
+                "ADYEN",
+                "ALIPAY",
+                "CHECKOUT",
+                "PAYPAL",
+                "STRIPE",
+                "WALLET",
+                "WXPAY",
+                "XSOLLA",
+            ],
         }
 
     # endregion static methods

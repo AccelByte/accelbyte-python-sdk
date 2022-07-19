@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,4 +51,6 @@ from .public_remove_trusted_d_78cd8f import PublicRemoveTrustedDeviceV4
 from .public_update_user_emai_2d6478 import PublicUpdateUserEmailAddressV4
 from .public_update_user_v4 import PublicUpdateUserV4
 from .public_upgrade_headless_966239 import PublicUpgradeHeadlessAccountV4
-from .public_upgrade_headless_a902b1 import PublicUpgradeHeadlessAccountWithVerificationCodeV4
+from .public_upgrade_headless_a902b1 import (
+    PublicUpgradeHeadlessAccountWithVerificationCodeV4,
+)

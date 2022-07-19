@@ -22,30 +22,37 @@ from ._utils import (
 
 
 class OperationPreprocessor(Protocol):
-
-    def __call__(self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs) -> Operation:
+    def __call__(
+        self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
+    ) -> Operation:
         ...
 
 
 class RequestPreprocessor(Protocol):
-
-    def __call__(self, proto: ProtoHttpRequest, sdk: AccelByteSDK, *args, **kwargs) -> ProtoHttpRequest:
+    def __call__(
+        self, proto: ProtoHttpRequest, sdk: AccelByteSDK, *args, **kwargs
+    ) -> ProtoHttpRequest:
         ...
 
 
 class ResponsePreprocessor(Protocol):
-
-    def __call__(self, response: Any, operation: Operation, sdk: AccelByteSDK, *args, **kwargs) -> Tuple[Any, Optional[HttpResponse]]:
+    def __call__(
+        self, response: Any, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
+    ) -> Tuple[Any, Optional[HttpResponse]]:
         ...
 
 
-def extract_redirect_query(response: Any, operation: Operation, sdk: AccelByteSDK) -> Tuple[Any, Optional[HttpResponse]]:
+def extract_redirect_query(
+    response: Any, operation: Operation, sdk: AccelByteSDK
+) -> Tuple[Any, Optional[HttpResponse]]:
     if (
-            isinstance(response, HttpResponse) and
-            operation.has_redirects() and
-            operation.location_query
+        isinstance(response, HttpResponse)
+        and operation.has_redirects()
+        and operation.location_query
     ):
-        response, error = get_query_from_http_redirect_response(response, operation.location_query)
+        response, error = get_query_from_http_redirect_response(
+            response, operation.location_query
+        )
         if error:
             return None, error
 
@@ -369,7 +376,9 @@ class AccelByteSDK:
         result, error = self._post_run_request(operation=operation, response=response)
         return result, error
 
-    async def run_request_async(self, operation: Operation, **kwargs) -> Tuple[Any, Any]:
+    async def run_request_async(
+        self, operation: Operation, **kwargs
+    ) -> Tuple[Any, Any]:
         proto, error, kwargs = self._pre_run_request(operation=operation, **kwargs)
         if error:
             return None, error
@@ -429,7 +438,9 @@ class AccelByteSDK:
             if error:
                 return None, error, kwargs
 
-        proto, error, kwargs = self._create_request_from_operation(operation=operation, **kwargs)
+        proto, error, kwargs = self._create_request_from_operation(
+            operation=operation, **kwargs
+        )
         if error:
             return None, error, kwargs
 
@@ -440,9 +451,7 @@ class AccelByteSDK:
 
         return proto, None, kwargs
 
-    def _post_run_request(
-        self, operation: Operation, response: Any
-    ) -> Tuple[Any, Any]:
+    def _post_run_request(self, operation: Operation, response: Any) -> Tuple[Any, Any]:
         response, error = operation.parse_response(*response)
         if error:
             return None, error

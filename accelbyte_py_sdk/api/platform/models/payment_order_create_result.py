@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -66,13 +66,13 @@ class PaymentOrderCreateResult(Model):
 
     # region fields
 
-    created_time: str                                                                              # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    payment_order_no: str                                                                          # REQUIRED
-    status: Union[str, StatusEnum]                                                                 # REQUIRED
-    payment_station_url: str                                                                       # OPTIONAL
-    target_namespace: str                                                                          # OPTIONAL
-    target_user_id: str                                                                            # OPTIONAL
+    created_time: str  # REQUIRED
+    namespace: str  # REQUIRED
+    payment_order_no: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    payment_station_url: str  # OPTIONAL
+    target_namespace: str  # OPTIONAL
+    target_user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -171,7 +171,9 @@ class PaymentOrderCreateResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentOrderCreateResult:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentOrderCreateResult:
         instance = cls()
         if not dict_:
             return instance
@@ -206,15 +208,33 @@ class PaymentOrderCreateResult(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentOrderCreateResult]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentOrderCreateResult]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentOrderCreateResult]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentOrderCreateResult]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentOrderCreateResult, List[PaymentOrderCreateResult], Dict[Any, PaymentOrderCreateResult]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentOrderCreateResult,
+        List[PaymentOrderCreateResult],
+        Dict[Any, PaymentOrderCreateResult],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -252,7 +272,21 @@ class PaymentOrderCreateResult(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["AUTHORISED", "AUTHORISE_FAILED", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CHARGE_FAILED", "DELETED", "INIT", "NOTIFICATION_OF_CHARGEBACK", "REFUNDED", "REFUNDING", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],
+            "status": [
+                "AUTHORISED",
+                "AUTHORISE_FAILED",
+                "CHARGEBACK",
+                "CHARGEBACK_REVERSED",
+                "CHARGED",
+                "CHARGE_FAILED",
+                "DELETED",
+                "INIT",
+                "NOTIFICATION_OF_CHARGEBACK",
+                "REFUNDED",
+                "REFUNDING",
+                "REFUND_FAILED",
+                "REQUEST_FOR_INFORMATION",
+            ],
         }
 
     # endregion static methods

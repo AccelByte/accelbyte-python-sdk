@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -260,19 +260,37 @@ from ._sso_saml_2_0 import platform_authenticate_samlv3_handler_async
 from ._third_party_credential import add_third_party_login_platform_credential_v3
 from ._third_party_credential import add_third_party_login_platform_credential_v3_async
 from ._third_party_credential import delete_third_party_login_platform_credential_v3
-from ._third_party_credential import delete_third_party_login_platform_credential_v3_async
+from ._third_party_credential import (
+    delete_third_party_login_platform_credential_v3_async,
+)
 from ._third_party_credential import delete_third_party_login_platform_domain_v3
 from ._third_party_credential import delete_third_party_login_platform_domain_v3_async
-from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3
-from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3_async
-from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_v3
-from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_v3_async
-from ._third_party_credential import retrieve_all_third_party_login_platform_credential_v3
-from ._third_party_credential import retrieve_all_third_party_login_platform_credential_v3_async
+from ._third_party_credential import (
+    retrieve_all_active_third_party_login_platform_credential_public_v3,
+)
+from ._third_party_credential import (
+    retrieve_all_active_third_party_login_platform_credential_public_v3_async,
+)
+from ._third_party_credential import (
+    retrieve_all_active_third_party_login_platform_credential_v3,
+)
+from ._third_party_credential import (
+    retrieve_all_active_third_party_login_platform_credential_v3_async,
+)
+from ._third_party_credential import (
+    retrieve_all_third_party_login_platform_credential_v3,
+)
+from ._third_party_credential import (
+    retrieve_all_third_party_login_platform_credential_v3_async,
+)
 from ._third_party_credential import retrieve_third_party_login_platform_credential_v3
-from ._third_party_credential import retrieve_third_party_login_platform_credential_v3_async
+from ._third_party_credential import (
+    retrieve_third_party_login_platform_credential_v3_async,
+)
 from ._third_party_credential import update_third_party_login_platform_credential_v3
-from ._third_party_credential import update_third_party_login_platform_credential_v3_async
+from ._third_party_credential import (
+    update_third_party_login_platform_credential_v3_async,
+)
 from ._third_party_credential import update_third_party_login_platform_domain_v3
 from ._third_party_credential import update_third_party_login_platform_domain_v3_async
 

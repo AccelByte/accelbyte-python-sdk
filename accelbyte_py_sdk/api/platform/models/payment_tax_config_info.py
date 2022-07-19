@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,10 +43,10 @@ class PaymentTaxConfigInfo(Model):
 
     # region fields
 
-    sandbox_tax_jar_api_token: str                                                                 # OPTIONAL
-    tax_jar_api_token: str                                                                         # OPTIONAL
-    tax_jar_enabled: bool                                                                          # OPTIONAL
-    tax_jar_product_codes_mapping: Dict[str, str]                                                  # OPTIONAL
+    sandbox_tax_jar_api_token: str  # OPTIONAL
+    tax_jar_api_token: str  # OPTIONAL
+    tax_jar_enabled: bool  # OPTIONAL
+    tax_jar_product_codes_mapping: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
@@ -64,7 +64,9 @@ class PaymentTaxConfigInfo(Model):
         self.tax_jar_enabled = value
         return self
 
-    def with_tax_jar_product_codes_mapping(self, value: Dict[str, str]) -> PaymentTaxConfigInfo:
+    def with_tax_jar_product_codes_mapping(
+        self, value: Dict[str, str]
+    ) -> PaymentTaxConfigInfo:
         self.tax_jar_product_codes_mapping = value
         return self
 
@@ -87,7 +89,10 @@ class PaymentTaxConfigInfo(Model):
         elif include_empty:
             result["taxJarEnabled"] = False
         if hasattr(self, "tax_jar_product_codes_mapping"):
-            result["taxJarProductCodesMapping"] = {str(k0): str(v0) for k0, v0 in self.tax_jar_product_codes_mapping.items()}
+            result["taxJarProductCodesMapping"] = {
+                str(k0): str(v0)
+                for k0, v0 in self.tax_jar_product_codes_mapping.items()
+            }
         elif include_empty:
             result["taxJarProductCodesMapping"] = {}
         return result
@@ -116,11 +121,16 @@ class PaymentTaxConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PaymentTaxConfigInfo:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PaymentTaxConfigInfo:
         instance = cls()
         if not dict_:
             return instance
-        if "sandboxTaxJarApiToken" in dict_ and dict_["sandboxTaxJarApiToken"] is not None:
+        if (
+            "sandboxTaxJarApiToken" in dict_
+            and dict_["sandboxTaxJarApiToken"] is not None
+        ):
             instance.sandbox_tax_jar_api_token = str(dict_["sandboxTaxJarApiToken"])
         elif include_empty:
             instance.sandbox_tax_jar_api_token = ""
@@ -132,22 +142,46 @@ class PaymentTaxConfigInfo(Model):
             instance.tax_jar_enabled = bool(dict_["taxJarEnabled"])
         elif include_empty:
             instance.tax_jar_enabled = False
-        if "taxJarProductCodesMapping" in dict_ and dict_["taxJarProductCodesMapping"] is not None:
-            instance.tax_jar_product_codes_mapping = {str(k0): str(v0) for k0, v0 in dict_["taxJarProductCodesMapping"].items()}
+        if (
+            "taxJarProductCodesMapping" in dict_
+            and dict_["taxJarProductCodesMapping"] is not None
+        ):
+            instance.tax_jar_product_codes_mapping = {
+                str(k0): str(v0)
+                for k0, v0 in dict_["taxJarProductCodesMapping"].items()
+            }
         elif include_empty:
             instance.tax_jar_product_codes_mapping = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PaymentTaxConfigInfo]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, PaymentTaxConfigInfo]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PaymentTaxConfigInfo]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[PaymentTaxConfigInfo]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PaymentTaxConfigInfo, List[PaymentTaxConfigInfo], Dict[Any, PaymentTaxConfigInfo]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        PaymentTaxConfigInfo,
+        List[PaymentTaxConfigInfo],
+        Dict[Any, PaymentTaxConfigInfo],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

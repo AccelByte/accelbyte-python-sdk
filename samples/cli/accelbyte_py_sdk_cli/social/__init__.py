@@ -31,7 +31,9 @@ from ._public_create_user_namespace_slot import public_create_user_namespace_slo
 from ._public_get_slot_data import public_get_slot_data
 from ._public_update_user_namespace_slot import public_update_user_namespace_slot
 from ._public_delete_user_namespace_slot import public_delete_user_namespace_slot
-from ._public_update_user_namespace_slot_metadata import public_update_user_namespace_slot_metadata
+from ._public_update_user_namespace_slot_metadata import (
+    public_update_user_namespace_slot_metadata,
+)
 from ._get_global_stat_items import get_global_stat_items
 from ._bulk_fetch_stat_items import bulk_fetch_stat_items
 from ._bulk_inc_user_stat_item import bulk_inc_user_stat_item

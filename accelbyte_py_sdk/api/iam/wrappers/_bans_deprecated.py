@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -46,20 +46,30 @@ def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwarg
 
 @deprecated
 @same_doc_as(GetBansType)
-async def get_bans_type_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_bans_type_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetBansType.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @deprecated
 @same_doc_as(GetListBanReason)
-def get_list_ban_reason(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_list_ban_reason(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetListBanReason.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetListBanReason)
-async def get_list_ban_reason_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_list_ban_reason_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetListBanReason.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

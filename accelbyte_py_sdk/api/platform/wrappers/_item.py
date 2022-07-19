@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -74,10 +74,18 @@ from ..operations.item import PublicGetItemByAppId
 from ..operations.item import PublicGetItemBySku
 from ..operations.item import PublicGetItemDynamicData
 from ..operations.item import PublicQueryItems
-from ..operations.item import PublicQueryItemsAppTypeEnum, PublicQueryItemsItemTypeEnum, PublicQueryItemsSortByEnum
+from ..operations.item import (
+    PublicQueryItemsAppTypeEnum,
+    PublicQueryItemsItemTypeEnum,
+    PublicQueryItemsSortByEnum,
+)
 from ..operations.item import PublicSearchItems
 from ..operations.item import QueryItems
-from ..operations.item import QueryItemsAppTypeEnum, QueryItemsItemTypeEnum, QueryItemsSortByEnum
+from ..operations.item import (
+    QueryItemsAppTypeEnum,
+    QueryItemsItemTypeEnum,
+    QueryItemsSortByEnum,
+)
 from ..operations.item import QueryUncategorizedItems
 from ..operations.item import QueryUncategorizedItemsSortByEnum
 from ..operations.item import ReturnItem
@@ -85,19 +93,76 @@ from ..operations.item import SearchItems
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
-from ..models import AppInfoGenresEnum, AppInfoPlatformsEnum, AppInfoPlayersEnum, AppInfoPrimaryGenreEnum
-from ..models import AppUpdateGenresEnum, AppUpdatePlatformsEnum, AppUpdatePlayersEnum, AppUpdatePrimaryGenreEnum
-from ..models import BasicItemAppTypeEnum, BasicItemEntitlementTypeEnum, BasicItemItemTypeEnum, BasicItemSeasonTypeEnum, BasicItemStatusEnum
-from ..models import FullAppInfoGenresEnum, FullAppInfoPlatformsEnum, FullAppInfoPlayersEnum, FullAppInfoPrimaryGenreEnum
-from ..models import FullItemInfoAppTypeEnum, FullItemInfoEntitlementTypeEnum, FullItemInfoItemTypeEnum, FullItemInfoSeasonTypeEnum, FullItemInfoStatusEnum
-from ..models import ItemCreateAppTypeEnum, ItemCreateEntitlementTypeEnum, ItemCreateItemTypeEnum, ItemCreateSeasonTypeEnum, ItemCreateStatusEnum
-from ..models import ItemInfoAppTypeEnum, ItemInfoEntitlementTypeEnum, ItemInfoItemTypeEnum, ItemInfoSeasonTypeEnum, ItemInfoStatusEnum
-from ..models import ItemUpdateAppTypeEnum, ItemUpdateEntitlementTypeEnum, ItemUpdateItemTypeEnum, ItemUpdateSeasonTypeEnum, ItemUpdateStatusEnum
-from ..models import PopulatedItemInfoAppTypeEnum, PopulatedItemInfoEntitlementTypeEnum, PopulatedItemInfoItemTypeEnum, PopulatedItemInfoSeasonTypeEnum, PopulatedItemInfoStatusEnum
+from ..models import (
+    AppInfoGenresEnum,
+    AppInfoPlatformsEnum,
+    AppInfoPlayersEnum,
+    AppInfoPrimaryGenreEnum,
+)
+from ..models import (
+    AppUpdateGenresEnum,
+    AppUpdatePlatformsEnum,
+    AppUpdatePlayersEnum,
+    AppUpdatePrimaryGenreEnum,
+)
+from ..models import (
+    BasicItemAppTypeEnum,
+    BasicItemEntitlementTypeEnum,
+    BasicItemItemTypeEnum,
+    BasicItemSeasonTypeEnum,
+    BasicItemStatusEnum,
+)
+from ..models import (
+    FullAppInfoGenresEnum,
+    FullAppInfoPlatformsEnum,
+    FullAppInfoPlayersEnum,
+    FullAppInfoPrimaryGenreEnum,
+)
+from ..models import (
+    FullItemInfoAppTypeEnum,
+    FullItemInfoEntitlementTypeEnum,
+    FullItemInfoItemTypeEnum,
+    FullItemInfoSeasonTypeEnum,
+    FullItemInfoStatusEnum,
+)
+from ..models import (
+    ItemCreateAppTypeEnum,
+    ItemCreateEntitlementTypeEnum,
+    ItemCreateItemTypeEnum,
+    ItemCreateSeasonTypeEnum,
+    ItemCreateStatusEnum,
+)
+from ..models import (
+    ItemInfoAppTypeEnum,
+    ItemInfoEntitlementTypeEnum,
+    ItemInfoItemTypeEnum,
+    ItemInfoSeasonTypeEnum,
+    ItemInfoStatusEnum,
+)
+from ..models import (
+    ItemUpdateAppTypeEnum,
+    ItemUpdateEntitlementTypeEnum,
+    ItemUpdateItemTypeEnum,
+    ItemUpdateSeasonTypeEnum,
+    ItemUpdateStatusEnum,
+)
+from ..models import (
+    PopulatedItemInfoAppTypeEnum,
+    PopulatedItemInfoEntitlementTypeEnum,
+    PopulatedItemInfoItemTypeEnum,
+    PopulatedItemInfoSeasonTypeEnum,
+    PopulatedItemInfoStatusEnum,
+)
 
 
 @same_doc_as(AcquireItem)
-def acquire_item(item_id: str, body: Optional[ItemAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def acquire_item(
+    item_id: str,
+    body: Optional[ItemAcquireRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,7 +176,13 @@ def acquire_item(item_id: str, body: Optional[ItemAcquireRequest] = None, namesp
 
 
 @same_doc_as(AcquireItem)
-async def acquire_item_async(item_id: str, body: Optional[ItemAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def acquire_item_async(
+    item_id: str,
+    body: Optional[ItemAcquireRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,11 +192,22 @@ async def acquire_item_async(item_id: str, body: Optional[ItemAcquireRequest] = 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(BulkGetLocaleItems)
-def bulk_get_locale_items(item_ids: str, active_only: Optional[bool] = None, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def bulk_get_locale_items(
+    item_ids: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -142,7 +224,16 @@ def bulk_get_locale_items(item_ids: str, active_only: Optional[bool] = None, lan
 
 
 @same_doc_as(BulkGetLocaleItems)
-async def bulk_get_locale_items_async(item_ids: str, active_only: Optional[bool] = None, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def bulk_get_locale_items_async(
+    item_ids: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -155,11 +246,19 @@ async def bulk_get_locale_items_async(item_ids: str, active_only: Optional[bool]
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateItem)
-def create_item(store_id: str, body: Optional[ItemCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_item(
+    store_id: str,
+    body: Optional[ItemCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -173,7 +272,13 @@ def create_item(store_id: str, body: Optional[ItemCreate] = None, namespace: Opt
 
 
 @same_doc_as(CreateItem)
-async def create_item_async(store_id: str, body: Optional[ItemCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_item_async(
+    store_id: str,
+    body: Optional[ItemCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,11 +288,20 @@ async def create_item_async(store_id: str, body: Optional[ItemCreate] = None, na
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DefeatureItem)
-def defeature_item(feature: str, item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def defeature_item(
+    feature: str,
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,7 +316,14 @@ def defeature_item(feature: str, item_id: str, store_id: str, namespace: Optiona
 
 
 @same_doc_as(DefeatureItem)
-async def defeature_item_async(feature: str, item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def defeature_item_async(
+    feature: str,
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -213,11 +334,19 @@ async def defeature_item_async(feature: str, item_id: str, store_id: str, namesp
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteItem)
-def delete_item(item_id: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_item(
+    item_id: str,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -231,7 +360,13 @@ def delete_item(item_id: str, store_id: Optional[str] = None, namespace: Optiona
 
 
 @same_doc_as(DeleteItem)
-async def delete_item_async(item_id: str, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_item_async(
+    item_id: str,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,11 +376,19 @@ async def delete_item_async(item_id: str, store_id: Optional[str] = None, namesp
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DisableItem)
-def disable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def disable_item(
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -259,7 +402,13 @@ def disable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x
 
 
 @same_doc_as(DisableItem)
-async def disable_item_async(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def disable_item_async(
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -269,11 +418,19 @@ async def disable_item_async(item_id: str, store_id: str, namespace: Optional[st
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(EnableItem)
-def enable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def enable_item(
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,7 +444,13 @@ def enable_item(item_id: str, store_id: str, namespace: Optional[str] = None, x_
 
 
 @same_doc_as(EnableItem)
-async def enable_item_async(item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def enable_item_async(
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -297,11 +460,20 @@ async def enable_item_async(item_id: str, store_id: str, namespace: Optional[str
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FeatureItem)
-def feature_item(feature: str, item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def feature_item(
+    feature: str,
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -316,7 +488,14 @@ def feature_item(feature: str, item_id: str, store_id: str, namespace: Optional[
 
 
 @same_doc_as(FeatureItem)
-async def feature_item_async(feature: str, item_id: str, store_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def feature_item_async(
+    feature: str,
+    item_id: str,
+    store_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,11 +506,20 @@ async def feature_item_async(feature: str, item_id: str, store_id: str, namespac
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetApp)
-def get_app(item_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_app(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -346,7 +534,14 @@ def get_app(item_id: str, active_only: Optional[bool] = None, store_id: Optional
 
 
 @same_doc_as(GetApp)
-async def get_app_async(item_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_app_async(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -357,11 +552,19 @@ async def get_app_async(item_id: str, active_only: Optional[bool] = None, store_
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetBulkItemIdBySkus)
-def get_bulk_item_id_by_skus(sku: Optional[List[str]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_bulk_item_id_by_skus(
+    sku: Optional[List[str]] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -375,7 +578,13 @@ def get_bulk_item_id_by_skus(sku: Optional[List[str]] = None, store_id: Optional
 
 
 @same_doc_as(GetBulkItemIdBySkus)
-async def get_bulk_item_id_by_skus_async(sku: Optional[List[str]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_bulk_item_id_by_skus_async(
+    sku: Optional[List[str]] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -385,11 +594,20 @@ async def get_bulk_item_id_by_skus_async(sku: Optional[List[str]] = None, store_
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetItem)
-def get_item(item_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_item(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -404,7 +622,14 @@ def get_item(item_id: str, active_only: Optional[bool] = None, store_id: Optiona
 
 
 @same_doc_as(GetItem)
-async def get_item_async(item_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_item_async(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -415,11 +640,20 @@ async def get_item_async(item_id: str, active_only: Optional[bool] = None, store
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetItemByAppId)
-def get_item_by_app_id(app_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_item_by_app_id(
+    app_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -434,7 +668,14 @@ def get_item_by_app_id(app_id: str, active_only: Optional[bool] = None, store_id
 
 
 @same_doc_as(GetItemByAppId)
-async def get_item_by_app_id_async(app_id: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_item_by_app_id_async(
+    app_id: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -445,11 +686,20 @@ async def get_item_by_app_id_async(app_id: str, active_only: Optional[bool] = No
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetItemBySku)
-def get_item_by_sku(sku: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_item_by_sku(
+    sku: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -464,7 +714,14 @@ def get_item_by_sku(sku: str, active_only: Optional[bool] = None, store_id: Opti
 
 
 @same_doc_as(GetItemBySku)
-async def get_item_by_sku_async(sku: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_item_by_sku_async(
+    sku: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -475,11 +732,18 @@ async def get_item_by_sku_async(sku: str, active_only: Optional[bool] = None, st
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetItemDynamicData)
-def get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_item_dynamic_data(
+    item_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -492,7 +756,12 @@ def get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, x_addit
 
 
 @same_doc_as(GetItemDynamicData)
-async def get_item_dynamic_data_async(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_item_dynamic_data_async(
+    item_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -501,11 +770,20 @@ async def get_item_dynamic_data_async(item_id: str, namespace: Optional[str] = N
         item_id=item_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetItemIdBySku)
-def get_item_id_by_sku(sku: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_item_id_by_sku(
+    sku: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -520,7 +798,14 @@ def get_item_id_by_sku(sku: str, active_only: Optional[bool] = None, store_id: O
 
 
 @same_doc_as(GetItemIdBySku)
-async def get_item_id_by_sku_async(sku: str, active_only: Optional[bool] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_item_id_by_sku_async(
+    sku: str,
+    active_only: Optional[bool] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -531,11 +816,23 @@ async def get_item_id_by_sku_async(sku: str, active_only: Optional[bool] = None,
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetLocaleItem)
-def get_locale_item(item_id: str, active_only: Optional[bool] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_locale_item(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -553,7 +850,17 @@ def get_locale_item(item_id: str, active_only: Optional[bool] = None, language: 
 
 
 @same_doc_as(GetLocaleItem)
-async def get_locale_item_async(item_id: str, active_only: Optional[bool] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_locale_item_async(
+    item_id: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -567,11 +874,23 @@ async def get_locale_item_async(item_id: str, active_only: Optional[bool] = None
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetLocaleItemBySku)
-def get_locale_item_by_sku(sku: str, active_only: Optional[bool] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_locale_item_by_sku(
+    sku: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -589,7 +908,17 @@ def get_locale_item_by_sku(sku: str, active_only: Optional[bool] = None, languag
 
 
 @same_doc_as(GetLocaleItemBySku)
-async def get_locale_item_by_sku_async(sku: str, active_only: Optional[bool] = None, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_locale_item_by_sku_async(
+    sku: str,
+    active_only: Optional[bool] = None,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -603,11 +932,19 @@ async def get_locale_item_by_sku_async(sku: str, active_only: Optional[bool] = N
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListBasicItemsByFeatures)
-def list_basic_items_by_features(active_only: Optional[bool] = None, features: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_basic_items_by_features(
+    active_only: Optional[bool] = None,
+    features: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -621,7 +958,13 @@ def list_basic_items_by_features(active_only: Optional[bool] = None, features: O
 
 
 @same_doc_as(ListBasicItemsByFeatures)
-async def list_basic_items_by_features_async(active_only: Optional[bool] = None, features: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_basic_items_by_features_async(
+    active_only: Optional[bool] = None,
+    features: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -631,11 +974,21 @@ async def list_basic_items_by_features_async(active_only: Optional[bool] = None,
         features=features,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicBulkGetItems)
-def public_bulk_get_items(item_ids: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_bulk_get_items(
+    item_ids: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -651,7 +1004,15 @@ def public_bulk_get_items(item_ids: str, language: Optional[str] = None, region:
 
 
 @same_doc_as(PublicBulkGetItems)
-async def public_bulk_get_items_async(item_ids: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_bulk_get_items_async(
+    item_ids: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -663,11 +1024,21 @@ async def public_bulk_get_items_async(item_ids: str, language: Optional[str] = N
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetApp)
-def public_get_app(item_id: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_app(
+    item_id: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -683,7 +1054,15 @@ def public_get_app(item_id: str, language: Optional[str] = None, region: Optiona
 
 
 @same_doc_as(PublicGetApp)
-async def public_get_app_async(item_id: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_app_async(
+    item_id: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -695,11 +1074,22 @@ async def public_get_app_async(item_id: str, language: Optional[str] = None, reg
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetItem)
-def public_get_item(item_id: str, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_item(
+    item_id: str,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -716,7 +1106,16 @@ def public_get_item(item_id: str, language: Optional[str] = None, populate_bundl
 
 
 @same_doc_as(PublicGetItem)
-async def public_get_item_async(item_id: str, language: Optional[str] = None, populate_bundle: Optional[bool] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_item_async(
+    item_id: str,
+    language: Optional[str] = None,
+    populate_bundle: Optional[bool] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -729,11 +1128,21 @@ async def public_get_item_async(item_id: str, language: Optional[str] = None, po
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetItemByAppId)
-def public_get_item_by_app_id(app_id: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_item_by_app_id(
+    app_id: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -749,7 +1158,15 @@ def public_get_item_by_app_id(app_id: str, language: Optional[str] = None, regio
 
 
 @same_doc_as(PublicGetItemByAppId)
-async def public_get_item_by_app_id_async(app_id: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_item_by_app_id_async(
+    app_id: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -761,11 +1178,21 @@ async def public_get_item_by_app_id_async(app_id: str, language: Optional[str] =
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetItemBySku)
-def public_get_item_by_sku(sku: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_item_by_sku(
+    sku: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -781,7 +1208,15 @@ def public_get_item_by_sku(sku: str, language: Optional[str] = None, region: Opt
 
 
 @same_doc_as(PublicGetItemBySku)
-async def public_get_item_by_sku_async(sku: str, language: Optional[str] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_item_by_sku_async(
+    sku: str,
+    language: Optional[str] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -793,11 +1228,18 @@ async def public_get_item_by_sku_async(sku: str, language: Optional[str] = None,
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicGetItemDynamicData)
-def public_get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_get_item_dynamic_data(
+    item_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -810,7 +1252,12 @@ def public_get_item_dynamic_data(item_id: str, namespace: Optional[str] = None, 
 
 
 @same_doc_as(PublicGetItemDynamicData)
-async def public_get_item_dynamic_data_async(item_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_get_item_dynamic_data_async(
+    item_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -819,11 +1266,29 @@ async def public_get_item_dynamic_data_async(item_id: str, namespace: Optional[s
         item_id=item_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicQueryItems)
-def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_query_items(
+    app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None,
+    language: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -847,7 +1312,23 @@ def public_query_items(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum
 
 
 @same_doc_as(PublicQueryItems)
-async def public_query_items_async(app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None, language: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_query_items_async(
+    app_type: Optional[Union[str, PublicQueryItemsAppTypeEnum]] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_type: Optional[Union[str, PublicQueryItemsItemTypeEnum]] = None,
+    language: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[List[Union[str, PublicQueryItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -867,11 +1348,23 @@ async def public_query_items_async(app_type: Optional[Union[str, PublicQueryItem
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(PublicSearchItems)
-def public_search_items(keyword: str, language: str, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def public_search_items(
+    keyword: str,
+    language: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -889,7 +1382,17 @@ def public_search_items(keyword: str, language: str, limit: Optional[int] = None
 
 
 @same_doc_as(PublicSearchItems)
-async def public_search_items_async(keyword: str, language: str, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def public_search_items_async(
+    keyword: str,
+    language: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -903,11 +1406,31 @@ async def public_search_items_async(keyword: str, language: str, limit: Optional
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryItems)
-def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_items(
+    active_only: Optional[bool] = None,
+    app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None,
+    available_date: Optional[str] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    target_namespace: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -933,7 +1456,25 @@ def query_items(active_only: Optional[bool] = None, app_type: Optional[Union[str
 
 
 @same_doc_as(QueryItems)
-async def query_items_async(active_only: Optional[bool] = None, app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None, available_date: Optional[str] = None, base_app_id: Optional[str] = None, category_path: Optional[str] = None, features: Optional[str] = None, item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None, limit: Optional[int] = None, offset: Optional[int] = None, region: Optional[str] = None, sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None, store_id: Optional[str] = None, tags: Optional[str] = None, target_namespace: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_items_async(
+    active_only: Optional[bool] = None,
+    app_type: Optional[Union[str, QueryItemsAppTypeEnum]] = None,
+    available_date: Optional[str] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_type: Optional[Union[str, QueryItemsItemTypeEnum]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[List[Union[str, QueryItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    target_namespace: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -955,11 +1496,22 @@ async def query_items_async(active_only: Optional[bool] = None, app_type: Option
         target_namespace=target_namespace,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryUncategorizedItems)
-def query_uncategorized_items(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_uncategorized_items(
+    active_only: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -976,7 +1528,16 @@ def query_uncategorized_items(active_only: Optional[bool] = None, limit: Optiona
 
 
 @same_doc_as(QueryUncategorizedItems)
-async def query_uncategorized_items_async(active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_uncategorized_items_async(
+    active_only: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryUncategorizedItemsSortByEnum]]] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -989,11 +1550,19 @@ async def query_uncategorized_items_async(active_only: Optional[bool] = None, li
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ReturnItem)
-def return_item(item_id: str, body: Optional[ItemReturnRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def return_item(
+    item_id: str,
+    body: Optional[ItemReturnRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1007,7 +1576,13 @@ def return_item(item_id: str, body: Optional[ItemReturnRequest] = None, namespac
 
 
 @same_doc_as(ReturnItem)
-async def return_item_async(item_id: str, body: Optional[ItemReturnRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def return_item_async(
+    item_id: str,
+    body: Optional[ItemReturnRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1017,11 +1592,23 @@ async def return_item_async(item_id: str, body: Optional[ItemReturnRequest] = No
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SearchItems)
-def search_items(keyword: str, language: str, active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def search_items(
+    keyword: str,
+    language: str,
+    active_only: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1039,7 +1626,17 @@ def search_items(keyword: str, language: str, active_only: Optional[bool] = None
 
 
 @same_doc_as(SearchItems)
-async def search_items_async(keyword: str, language: str, active_only: Optional[bool] = None, limit: Optional[int] = None, offset: Optional[int] = None, store_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def search_items_async(
+    keyword: str,
+    language: str,
+    active_only: Optional[bool] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1053,11 +1650,19 @@ async def search_items_async(keyword: str, language: str, active_only: Optional[
         store_id=store_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SyncInGameItem)
-def sync_in_game_item(store_id: str, body: Optional[InGameItemSync] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def sync_in_game_item(
+    store_id: str,
+    body: Optional[InGameItemSync] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1071,7 +1676,13 @@ def sync_in_game_item(store_id: str, body: Optional[InGameItemSync] = None, name
 
 
 @same_doc_as(SyncInGameItem)
-async def sync_in_game_item_async(store_id: str, body: Optional[InGameItemSync] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def sync_in_game_item_async(
+    store_id: str,
+    body: Optional[InGameItemSync] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1081,11 +1692,20 @@ async def sync_in_game_item_async(store_id: str, body: Optional[InGameItemSync] 
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateApp)
-def update_app(item_id: str, store_id: str, body: Optional[AppUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_app(
+    item_id: str,
+    store_id: str,
+    body: Optional[AppUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1100,7 +1720,14 @@ def update_app(item_id: str, store_id: str, body: Optional[AppUpdate] = None, na
 
 
 @same_doc_as(UpdateApp)
-async def update_app_async(item_id: str, store_id: str, body: Optional[AppUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_app_async(
+    item_id: str,
+    store_id: str,
+    body: Optional[AppUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1111,11 +1738,20 @@ async def update_app_async(item_id: str, store_id: str, body: Optional[AppUpdate
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateItem)
-def update_item(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_item(
+    item_id: str,
+    store_id: str,
+    body: Optional[ItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1130,7 +1766,14 @@ def update_item(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, 
 
 
 @same_doc_as(UpdateItem)
-async def update_item_async(item_id: str, store_id: str, body: Optional[ItemUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_item_async(
+    item_id: str,
+    store_id: str,
+    body: Optional[ItemUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1141,4 +1784,6 @@ async def update_item_async(item_id: str, store_id: str, body: Optional[ItemUpda
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

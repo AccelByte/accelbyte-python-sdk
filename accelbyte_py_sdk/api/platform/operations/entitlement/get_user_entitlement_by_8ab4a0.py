@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -85,18 +85,20 @@ class GetUserEntitlementByItemId(Operation):
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemId"
+    _url: str = (
+        "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byItemId"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    user_id: str                                                                                   # REQUIRED in [path]
-    active_only: bool                                                                              # OPTIONAL in [query]
-    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
-    item_id: str                                                                                   # REQUIRED in [query]
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
+    active_only: bool  # OPTIONAL in [query]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
+    item_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -178,7 +180,9 @@ class GetUserEntitlementByItemId(Operation):
         self.active_only = value
         return self
 
-    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> GetUserEntitlementByItemId:
+    def with_entitlement_clazz(
+        self, value: Union[str, EntitlementClazzEnum]
+    ) -> GetUserEntitlementByItemId:
         self.entitlement_clazz = value
         return self
 
@@ -219,7 +223,9 @@ class GetUserEntitlementByItemId(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, EntitlementInfo], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[Union[None, EntitlementInfo], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - EntitlementInfo (successful operation)
@@ -232,7 +238,9 @@ class GetUserEntitlementByItemId(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -242,7 +250,9 @@ class GetUserEntitlementByItemId(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -268,7 +278,9 @@ class GetUserEntitlementByItemId(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetUserEntitlementByItemId:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> GetUserEntitlementByItemId:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -315,7 +327,13 @@ class GetUserEntitlementByItemId(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
+            "entitlementClazz": [
+                "APP",
+                "CODE",
+                "ENTITLEMENT",
+                "MEDIA",
+                "SUBSCRIPTION",
+            ],  # in query
         }
 
     # endregion static methods

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -59,17 +59,17 @@ class ModelUserBanResponse(Model):
 
     # region fields
 
-    ban: str                                                                                       # REQUIRED
-    ban_id: str                                                                                    # REQUIRED
-    banned_by: BannedBy                                                                            # REQUIRED
-    comment: str                                                                                   # REQUIRED
-    created_at: str                                                                                # REQUIRED
-    enabled: bool                                                                                  # REQUIRED
-    end_date: str                                                                                  # REQUIRED
-    namespace: str                                                                                 # REQUIRED
-    reason: str                                                                                    # REQUIRED
-    user_id: str                                                                                   # REQUIRED
-    disabled_date: str                                                                             # OPTIONAL
+    ban: str  # REQUIRED
+    ban_id: str  # REQUIRED
+    banned_by: BannedBy  # REQUIRED
+    comment: str  # REQUIRED
+    created_at: str  # REQUIRED
+    enabled: bool  # REQUIRED
+    end_date: str  # REQUIRED
+    namespace: str  # REQUIRED
+    reason: str  # REQUIRED
+    user_id: str  # REQUIRED
+    disabled_date: str  # OPTIONAL
 
     # endregion fields
 
@@ -206,7 +206,9 @@ class ModelUserBanResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserBanResponse:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelUserBanResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -219,7 +221,9 @@ class ModelUserBanResponse(Model):
         elif include_empty:
             instance.ban_id = ""
         if "BannedBy" in dict_ and dict_["BannedBy"] is not None:
-            instance.banned_by = BannedBy.create_from_dict(dict_["BannedBy"], include_empty=include_empty)
+            instance.banned_by = BannedBy.create_from_dict(
+                dict_["BannedBy"], include_empty=include_empty
+            )
         elif include_empty:
             instance.banned_by = BannedBy()
         if "Comment" in dict_ and dict_["Comment"] is not None:
@@ -257,15 +261,33 @@ class ModelUserBanResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserBanResponse]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelUserBanResponse]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserBanResponse]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelUserBanResponse]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserBanResponse, List[ModelUserBanResponse], Dict[Any, ModelUserBanResponse]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelUserBanResponse,
+        List[ModelUserBanResponse],
+        Dict[Any, ModelUserBanResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

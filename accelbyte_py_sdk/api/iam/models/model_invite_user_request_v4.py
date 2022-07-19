@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,10 +43,10 @@ class ModelInviteUserRequestV4(Model):
 
     # region fields
 
-    assigned_namespaces: List[str]                                                                 # REQUIRED
-    email_addresses: List[str]                                                                     # REQUIRED
-    is_admin: bool                                                                                 # REQUIRED
-    role_id: str                                                                                   # REQUIRED
+    assigned_namespaces: List[str]  # REQUIRED
+    email_addresses: List[str]  # REQUIRED
+    is_admin: bool  # REQUIRED
+    role_id: str  # REQUIRED
 
     # endregion fields
 
@@ -112,12 +112,16 @@ class ModelInviteUserRequestV4(Model):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelInviteUserRequestV4:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelInviteUserRequestV4:
         instance = cls()
         if not dict_:
             return instance
         if "assignedNamespaces" in dict_ and dict_["assignedNamespaces"] is not None:
-            instance.assigned_namespaces = [str(i0) for i0 in dict_["assignedNamespaces"]]
+            instance.assigned_namespaces = [
+                str(i0) for i0 in dict_["assignedNamespaces"]
+            ]
         elif include_empty:
             instance.assigned_namespaces = []
         if "emailAddresses" in dict_ and dict_["emailAddresses"] is not None:
@@ -135,15 +139,33 @@ class ModelInviteUserRequestV4(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelInviteUserRequestV4]:
-        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
+    def create_many_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> Dict[str, ModelInviteUserRequestV4]:
+        return (
+            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
+            if dict_
+            else {}
+        )
 
     @classmethod
-    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelInviteUserRequestV4]:
-        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
+    def create_many_from_list(
+        cls, list_: list, include_empty: bool = False
+    ) -> List[ModelInviteUserRequestV4]:
+        return (
+            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
+            if list_
+            else []
+        )
 
     @classmethod
-    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelInviteUserRequestV4, List[ModelInviteUserRequestV4], Dict[Any, ModelInviteUserRequestV4]]:
+    def create_from_any(
+        cls, any_: any, include_empty: bool = False, many: bool = False
+    ) -> Union[
+        ModelInviteUserRequestV4,
+        List[ModelInviteUserRequestV4],
+        Dict[Any, ModelInviteUserRequestV4],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

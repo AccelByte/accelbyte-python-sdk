@@ -45,25 +45,23 @@ from accelbyte_py_sdk.api.iam import authorization as authorization_internal
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def authorization(
-        client_id: str,
-        redirect_uri: str,
-        response_type: str,
-        login: Optional[str] = None,
-        password: Optional[str] = None,
-        scope: Optional[str] = None,
-        state: Optional[str] = None,
-        login_as: Optional[str] = None,
-        login_with_auth: Optional[str] = None,
-        doc: Optional[bool] = None,
+    client_id: str,
+    redirect_uri: str,
+    response_type: str,
+    login: Optional[str] = None,
+    password: Optional[str] = None,
+    scope: Optional[str] = None,
+    state: Optional[str] = None,
+    login_as: Optional[str] = None,
+    login_with_auth: Optional[str] = None,
+    doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(authorization_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {
-            "Authorization": login_with_auth
-        }
+        x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
     result, error = authorization_internal(

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -37,15 +37,21 @@ from ..operations.public import ListProvidersByRegion
 
 
 @same_doc_as(GetDefaultProvider)
-def get_default_provider(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_default_provider(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetDefaultProvider.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetDefaultProvider)
-async def get_default_provider_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_default_provider_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = GetDefaultProvider.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListProviders)
@@ -55,13 +61,19 @@ def list_providers(x_additional_headers: Optional[Dict[str, str]] = None, **kwar
 
 
 @same_doc_as(ListProviders)
-async def list_providers_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_providers_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = ListProviders.create()
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ListProvidersByRegion)
-def list_providers_by_region(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def list_providers_by_region(
+    region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = ListProvidersByRegion.create(
         region=region,
     )
@@ -69,8 +81,12 @@ def list_providers_by_region(region: str, x_additional_headers: Optional[Dict[st
 
 
 @same_doc_as(ListProvidersByRegion)
-async def list_providers_by_region_async(region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def list_providers_by_region_async(
+    region: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
     request = ListProvidersByRegion.create(
         region=region,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

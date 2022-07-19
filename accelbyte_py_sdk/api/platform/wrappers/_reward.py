@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -54,7 +54,13 @@ from ..operations.reward import UpdateReward
 
 
 @same_doc_as(CheckEventCondition)
-def check_event_condition(reward_id: str, body: Optional[EventPayload] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def check_event_condition(
+    reward_id: str,
+    body: Optional[EventPayload] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -68,7 +74,13 @@ def check_event_condition(reward_id: str, body: Optional[EventPayload] = None, n
 
 
 @same_doc_as(CheckEventCondition)
-async def check_event_condition_async(reward_id: str, body: Optional[EventPayload] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def check_event_condition_async(
+    reward_id: str,
+    body: Optional[EventPayload] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,11 +90,18 @@ async def check_event_condition_async(reward_id: str, body: Optional[EventPayloa
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateReward)
-def create_reward(body: Optional[RewardCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def create_reward(
+    body: Optional[RewardCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,7 +114,12 @@ def create_reward(body: Optional[RewardCreate] = None, namespace: Optional[str] 
 
 
 @same_doc_as(CreateReward)
-async def create_reward_async(body: Optional[RewardCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def create_reward_async(
+    body: Optional[RewardCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,11 +128,18 @@ async def create_reward_async(body: Optional[RewardCreate] = None, namespace: Op
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteReward)
-def delete_reward(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def delete_reward(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -121,7 +152,12 @@ def delete_reward(reward_id: str, namespace: Optional[str] = None, x_additional_
 
 
 @same_doc_as(DeleteReward)
-async def delete_reward_async(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def delete_reward_async(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,11 +166,17 @@ async def delete_reward_async(reward_id: str, namespace: Optional[str] = None, x
         reward_id=reward_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ExportRewards)
-def export_rewards(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def export_rewards(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,7 +188,11 @@ def export_rewards(namespace: Optional[str] = None, x_additional_headers: Option
 
 
 @same_doc_as(ExportRewards)
-async def export_rewards_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def export_rewards_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,11 +200,18 @@ async def export_rewards_async(namespace: Optional[str] = None, x_additional_hea
     request = ExportRewards.create(
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetReward)
-def get_reward(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_reward(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -171,7 +224,12 @@ def get_reward(reward_id: str, namespace: Optional[str] = None, x_additional_hea
 
 
 @same_doc_as(GetReward)
-async def get_reward_async(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_reward_async(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -180,11 +238,18 @@ async def get_reward_async(reward_id: str, namespace: Optional[str] = None, x_ad
         reward_id=reward_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetReward1)
-def get_reward_1(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_reward_1(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -197,7 +262,12 @@ def get_reward_1(reward_id: str, namespace: Optional[str] = None, x_additional_h
 
 
 @same_doc_as(GetReward1)
-async def get_reward_1_async(reward_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_reward_1_async(
+    reward_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,11 +276,18 @@ async def get_reward_1_async(reward_id: str, namespace: Optional[str] = None, x_
         reward_id=reward_id,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetRewardByCode)
-def get_reward_by_code(reward_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def get_reward_by_code(
+    reward_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,7 +300,12 @@ def get_reward_by_code(reward_code: str, namespace: Optional[str] = None, x_addi
 
 
 @same_doc_as(GetRewardByCode)
-async def get_reward_by_code_async(reward_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def get_reward_by_code_async(
+    reward_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,11 +314,19 @@ async def get_reward_by_code_async(reward_code: str, namespace: Optional[str] = 
         reward_code=reward_code,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ImportRewards)
-def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def import_rewards(
+    replace_existing: bool,
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,7 +340,13 @@ def import_rewards(replace_existing: bool, file: Optional[Any] = None, namespace
 
 
 @same_doc_as(ImportRewards)
-async def import_rewards_async(replace_existing: bool, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def import_rewards_async(
+    replace_existing: bool,
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,11 +356,21 @@ async def import_rewards_async(replace_existing: bool, file: Optional[Any] = Non
         file=file,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryRewards)
-def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_rewards(
+    event_topic: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -280,7 +386,15 @@ def query_rewards(event_topic: Optional[str] = None, limit: Optional[int] = None
 
 
 @same_doc_as(QueryRewards)
-async def query_rewards_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_rewards_async(
+    event_topic: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryRewardsSortByEnum]]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -292,11 +406,21 @@ async def query_rewards_async(event_topic: Optional[str] = None, limit: Optional
         sort_by=sort_by,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryRewards1)
-def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def query_rewards_1(
+    event_topic: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -312,7 +436,15 @@ def query_rewards_1(event_topic: Optional[str] = None, limit: Optional[int] = No
 
 
 @same_doc_as(QueryRewards1)
-async def query_rewards_1_async(event_topic: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def query_rewards_1_async(
+    event_topic: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[List[Union[str, QueryRewards1SortByEnum]]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -324,11 +456,19 @@ async def query_rewards_1_async(event_topic: Optional[str] = None, limit: Option
         sort_by=sort_by,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(UpdateReward)
-def update_reward(reward_id: str, body: Optional[RewardUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+def update_reward(
+    reward_id: str,
+    body: Optional[RewardUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -342,7 +482,13 @@ def update_reward(reward_id: str, body: Optional[RewardUpdate] = None, namespace
 
 
 @same_doc_as(UpdateReward)
-async def update_reward_async(reward_id: str, body: Optional[RewardUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+async def update_reward_async(
+    reward_id: str,
+    body: Optional[RewardUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,4 +498,6 @@ async def update_reward_async(reward_id: str, body: Optional[RewardUpdate] = Non
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )

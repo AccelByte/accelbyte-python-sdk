@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-# 
+#
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -82,15 +82,17 @@ class BulkGetSessions(Operation):
 
     # region fields
 
-    _url: str = "/matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk"
+    _url: str = (
+        "/matchmaking/v1/admin/namespaces/{namespace}/channels/all/sessions/bulk"
+    )
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str                                                                                 # REQUIRED in [path]
-    match_i_ds: str                                                                                # OPTIONAL in [query]
+    namespace: str  # REQUIRED in [path]
+    match_i_ds: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -183,7 +185,12 @@ class BulkGetSessions(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ModelsMatchmakingResult]], Union[None, HttpResponse, ResponseError, ResponseErrorV1]]:
+    def parse_response(
+        self, code: int, content_type: str, content: Any
+    ) -> Tuple[
+        Union[None, List[ModelsMatchmakingResult]],
+        Union[None, HttpResponse, ResponseError, ResponseErrorV1],
+    ]:
         """Parse the given response.
 
         200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
@@ -204,7 +211,9 @@ class BulkGetSessions(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
+        pre_processed_response, error = self.pre_process_response(
+            code=code, content_type=content_type, content=content
+        )
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -222,7 +231,9 @@ class BulkGetSessions(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
+        return None, self.handle_undocumented_response(
+            code=code, content_type=content_type, content=content
+        )
 
     # endregion response methods
 
@@ -241,7 +252,9 @@ class BulkGetSessions(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkGetSessions:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> BulkGetSessions:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
