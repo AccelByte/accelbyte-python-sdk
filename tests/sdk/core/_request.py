@@ -1722,7 +1722,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -1737,7 +1737,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
 
         time.sleep(5)
@@ -1763,7 +1763,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -1779,7 +1779,7 @@ class MockServerRequestTestCase(TestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
 
         time.sleep(5)
@@ -2250,7 +2250,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2265,7 +2265,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
 
         time.sleep(5)
@@ -2291,7 +2291,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = await iam.get_bans_type_async()
+        result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2306,7 +2306,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = await iam.get_bans_type_async()
+        result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
 
         time.sleep(5)
@@ -2332,7 +2332,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2348,7 +2348,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = iam.get_bans_type()
+        result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
 
         time.sleep(5)
@@ -2374,7 +2374,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
 
-        result, error = await iam.get_bans_type_async()
+        result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
         self.assertEqual(1, token_repo.counter)
         self.assertFalse(token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE))
@@ -2390,7 +2390,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
 
-        result, error = await iam.get_bans_type_async()
+        result, error = await iam.admin_get_bans_type_v3_async()
         self.assertIsNone(error)
 
         time.sleep(5)
