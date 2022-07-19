@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.19.0
+- ! Change default `login_x(auto_refresh)` value to `False`. You are encouraged to use any of the `LoginXTimer` classes.
+- Add Sample OIDC App.
+- Fix issue with the test entry point.
+- Fix performance issue with the (on demand) token refresh.
+- Updated spec for Justice 3.27.
+
 ## v0.18.0
 - Add and fix unit test(s)
 - Updated spec for Justice 3.26.
