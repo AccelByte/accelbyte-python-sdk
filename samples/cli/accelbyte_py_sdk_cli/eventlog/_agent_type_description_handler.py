@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.eventlog import (
-    agent_type_description_handler as agent_type_description_handler_internal,
-)
+from accelbyte_py_sdk.api.eventlog import agent_type_description_handler as agent_type_description_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleAgentType
 
 
@@ -41,16 +39,18 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsMultipleAgentType
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def agent_type_description_handler(
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(agent_type_description_handler_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = agent_type_description_handler_internal(

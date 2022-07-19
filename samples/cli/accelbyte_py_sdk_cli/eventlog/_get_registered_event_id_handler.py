@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.eventlog import (
-    get_registered_event_id_handler as get_registered_event_id_handler_internal,
-)
+from accelbyte_py_sdk.api.eventlog import get_registered_event_id_handler as get_registered_event_id_handler_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventRegistry
 
 
@@ -42,17 +40,19 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventRegistry
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_registered_event_id_handler(
-    event_id: str,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        event_id: str,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_registered_event_id_handler_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = get_registered_event_id_handler_internal(

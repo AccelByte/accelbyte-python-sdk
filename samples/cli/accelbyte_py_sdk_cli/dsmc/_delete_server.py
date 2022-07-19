@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,18 +41,20 @@ from accelbyte_py_sdk.api.dsmc.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_server(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        pod_name: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(delete_server_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = delete_server_internal(

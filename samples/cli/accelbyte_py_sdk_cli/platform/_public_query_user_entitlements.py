@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    public_query_user_entitlements as public_query_user_entitlements_internal,
-)
+from accelbyte_py_sdk.api.platform import public_query_user_entitlements as public_query_user_entitlements_internal
 from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 
 
@@ -49,24 +47,26 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_query_user_entitlements(
-    user_id: str,
-    app_type: Optional[str] = None,
-    entitlement_clazz: Optional[str] = None,
-    entitlement_name: Optional[str] = None,
-    item_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        user_id: str,
+        app_type: Optional[str] = None,
+        entitlement_clazz: Optional[str] = None,
+        entitlement_name: Optional[str] = None,
+        item_id: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_query_user_entitlements_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if item_id is not None:

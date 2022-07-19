@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.gdpr import (
-    public_submit_user_account_deletion_request as public_submit_user_account_deletion_request_internal,
-)
+from accelbyte_py_sdk.api.gdpr import public_submit_user_account_deletion_request as public_submit_user_account_deletion_request_internal
 from accelbyte_py_sdk.api.gdpr.models import ModelsRequestDeleteResponse
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
@@ -45,19 +43,21 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_submit_user_account_deletion_request(
-    password: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        password: str,
+        user_id: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_submit_user_account_deletion_request_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = public_submit_user_account_deletion_request_internal(
@@ -71,7 +71,5 @@ def public_submit_user_account_deletion_request(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_submit_user_account_deletion_request.operation_id = (
-    "PublicSubmitUserAccountDeletionRequest"
-)
+public_submit_user_account_deletion_request.operation_id = "PublicSubmitUserAccountDeletionRequest"
 public_submit_user_account_deletion_request.is_deprecated = False

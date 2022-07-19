@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    get_payment_customization as get_payment_customization_internal,
-)
+from accelbyte_py_sdk.api.platform import get_payment_customization as get_payment_customization_internal
 from accelbyte_py_sdk.api.platform.models import Customization
 
 
@@ -45,20 +43,22 @@ from accelbyte_py_sdk.api.platform.models import Customization
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_payment_customization(
-    payment_provider: str,
-    region: str,
-    sandbox: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        payment_provider: str,
+        region: str,
+        sandbox: Optional[bool] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_payment_customization_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = get_payment_customization_internal(

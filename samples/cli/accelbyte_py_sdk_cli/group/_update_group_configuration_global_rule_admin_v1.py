@@ -30,12 +30,8 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.group import (
-    update_group_configuration_global_rule_admin_v1 as update_group_configuration_global_rule_admin_v1_internal,
-)
-from accelbyte_py_sdk.api.group.models import (
-    ModelsUpdateGroupConfigurationGlobalRulesRequestV1,
-)
+from accelbyte_py_sdk.api.group import update_group_configuration_global_rule_admin_v1 as update_group_configuration_global_rule_admin_v1_internal
+from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupConfigurationGlobalRulesRequestV1
 from accelbyte_py_sdk.api.group.models import ModelsUpdateGroupConfigurationResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
@@ -49,28 +45,28 @@ from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_group_configuration_global_rule_admin_v1(
-    body: str,
-    allowed_action: str,
-    configuration_code: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        allowed_action: str,
+        configuration_code: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(update_group_configuration_global_rule_admin_v1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelsUpdateGroupConfigurationGlobalRulesRequestV1.create_from_dict(
-                body_json
-            )
+            body = ModelsUpdateGroupConfigurationGlobalRulesRequestV1.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_group_configuration_global_rule_admin_v1_internal(
@@ -81,13 +77,9 @@ def update_group_configuration_global_rule_admin_v1(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(
-            f"updateGroupConfigurationGlobalRuleAdminV1 failed: {str(error)}"
-        )
+        raise Exception(f"updateGroupConfigurationGlobalRuleAdminV1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-update_group_configuration_global_rule_admin_v1.operation_id = (
-    "updateGroupConfigurationGlobalRuleAdminV1"
-)
+update_group_configuration_global_rule_admin_v1.operation_id = "updateGroupConfigurationGlobalRuleAdminV1"
 update_group_configuration_global_rule_admin_v1.is_deprecated = False

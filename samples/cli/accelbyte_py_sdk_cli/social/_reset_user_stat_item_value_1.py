@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.social import (
-    reset_user_stat_item_value_1 as reset_user_stat_item_value_1_internal,
-)
+from accelbyte_py_sdk.api.social import reset_user_stat_item_value_1 as reset_user_stat_item_value_1_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatItemIncResult
 
@@ -45,19 +43,21 @@ from accelbyte_py_sdk.api.social.models import StatItemIncResult
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def reset_user_stat_item_value_1(
-    stat_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        stat_code: str,
+        user_id: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(reset_user_stat_item_value_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = reset_user_stat_item_value_1_internal(

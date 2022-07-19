@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._handler_v3_healthz import handler_v3_healthz
@@ -34,9 +34,7 @@ from ._search_sessions import search_sessions
 from ._get_session_history_detailed import get_session_history_detailed
 from ._public_get_messages import public_get_messages
 from ._public_get_all_matchmaking_channel import public_get_all_matchmaking_channel
-from ._public_get_single_matchmaking_channel import (
-    public_get_single_matchmaking_channel,
-)
+from ._public_get_single_matchmaking_channel import public_get_single_matchmaking_channel
 from ._search_sessions_v2 import search_sessions_v2
 from ._version_check_handler import version_check_handler
 

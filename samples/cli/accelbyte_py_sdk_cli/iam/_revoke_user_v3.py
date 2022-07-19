@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,18 +41,20 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def revoke_user_v3(
-    user_id: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        user_id: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(revoke_user_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = revoke_user_v3_internal(

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.3)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,46 +30,51 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import (
-    retrieve_policy_versions as retrieve_policy_versions_internal,
-)
-from accelbyte_py_sdk.api.legal.models import ErrorEntity
-from accelbyte_py_sdk.api.legal.models import RetrievePolicyVersionResponse
+from accelbyte_py_sdk.api.platform import sync_epic_game_dlc as sync_epic_game_dlc_internal
+from accelbyte_py_sdk.api.platform.models import EpicGamesDLCSyncRequest
 
 
 @click.command()
-@click.option("--base_policy_id", "base_policy_id", type=str)
-@click.option("--locale_id", "locale_id", type=str)
+@click.argument("user_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def retrieve_policy_versions(
-    base_policy_id: Optional[str] = None,
-    locale_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+def sync_epic_game_dlc(
+        user_id: str,
+        body: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(retrieve_policy_versions_internal.__doc__)
+        click.echo(sync_epic_game_dlc_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
-    result, error = retrieve_policy_versions_internal(
-        base_policy_id=base_policy_id,
-        locale_id=locale_id,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = EpicGamesDLCSyncRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = sync_epic_game_dlc_internal(
+        user_id=user_id,
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"retrievePolicyVersions failed: {str(error)}")
+        raise Exception(f"syncEpicGameDLC failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-retrieve_policy_versions.operation_id = "retrievePolicyVersions"
-retrieve_policy_versions.is_deprecated = False
+sync_epic_game_dlc.operation_id = "syncEpicGameDLC"
+sync_epic_game_dlc.is_deprecated = False

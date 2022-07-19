@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.cloudsave import (
-    list_game_records_handler_v1 as list_game_records_handler_v1_internal,
-)
+from accelbyte_py_sdk.api.cloudsave import list_game_records_handler_v1 as list_game_records_handler_v1_internal
 from accelbyte_py_sdk.api.cloudsave.models import ModelsListGameRecordKeysResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
@@ -46,20 +44,22 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_game_records_handler_v1(
-    limit: int,
-    offset: int,
-    query: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        limit: int,
+        offset: int,
+        query: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(list_game_records_handler_v1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = list_game_records_handler_v1_internal(

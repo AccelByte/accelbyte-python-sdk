@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-ugc-service (2.2.1)
+# justice-ugc-service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,31 +36,60 @@ from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()
+@click.option("--isofficial", "isofficial", type=bool)
 @click.option("--limit", "limit", type=int)
+@click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
+@click.option("--orderby", "orderby", type=str)
+@click.option("--sortby", "sortby", type=str)
+@click.option("--subtype", "subtype", type=str)
+@click.option("--tags", "tags", type=str)
+@click.option("--type", "type_", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_liked_content(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        isofficial: Optional[bool] = None,
+        limit: Optional[int] = None,
+        name: Optional[str] = None,
+        offset: Optional[int] = None,
+        orderby: Optional[str] = None,
+        sortby: Optional[str] = None,
+        subtype: Optional[str] = None,
+        tags: Optional[str] = None,
+        type_: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_liked_content_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = get_liked_content_internal(
+        isofficial=isofficial,
         limit=limit,
+        name=name,
         offset=offset,
+        orderby=orderby,
+        sortby=sortby,
+        subtype=subtype,
+        tags=tags,
+        type_=type_,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

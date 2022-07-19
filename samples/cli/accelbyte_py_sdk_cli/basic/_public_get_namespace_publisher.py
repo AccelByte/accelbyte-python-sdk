@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-basic-service (2.0.0)
+# justice-basic-service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.basic import (
-    public_get_namespace_publisher as public_get_namespace_publisher_internal,
-)
+from accelbyte_py_sdk.api.basic import public_get_namespace_publisher as public_get_namespace_publisher_internal
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
 from accelbyte_py_sdk.api.basic.models import NamespacePublisherInfo
 from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
@@ -44,17 +42,19 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_namespace_publisher(
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_get_namespace_publisher_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = public_get_namespace_publisher_internal(

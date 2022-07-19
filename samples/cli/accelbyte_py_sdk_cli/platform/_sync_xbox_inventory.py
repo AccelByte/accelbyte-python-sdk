@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    sync_xbox_inventory as sync_xbox_inventory_internal,
-)
+from accelbyte_py_sdk.api.platform import sync_xbox_inventory as sync_xbox_inventory_internal
 from accelbyte_py_sdk.api.platform.models import XblReconcileRequest
 from accelbyte_py_sdk.api.platform.models import XblReconcileResult
 
@@ -45,19 +43,21 @@ from accelbyte_py_sdk.api.platform.models import XblReconcileResult
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def sync_xbox_inventory(
-    user_id: str,
-    body: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        user_id: str,
+        body: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(sync_xbox_inventory_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:

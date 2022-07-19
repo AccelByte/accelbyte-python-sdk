@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import (
-    admin_update_input_validations as admin_update_input_validations_internal,
-)
+from accelbyte_py_sdk.api.iam import admin_update_input_validations as admin_update_input_validations_internal
 from accelbyte_py_sdk.api.iam.models import ModelInputValidationUpdatePayload
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -43,26 +41,25 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_update_input_validations(
-    body: str,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(admin_update_input_validations_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = [
-                ModelInputValidationUpdatePayload.create_from_dict(i0)
-                for i0 in body_json
-            ]
+            body = [ModelInputValidationUpdatePayload.create_from_dict(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_update_input_validations_internal(

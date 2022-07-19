@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.0.0)
+# justice-basic-service (2.1.0)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -31,9 +31,7 @@ from ._delete_country_group import delete_country_group
 from ._get_languages import get_languages
 from ._get_time_zones import get_time_zones
 from ._get_user_profile_info_by_public_id import get_user_profile_info_by_public_id
-from ._admin_get_user_profile_public_info_by_ids import (
-    admin_get_user_profile_public_info_by_ids,
-)
+from ._admin_get_user_profile_public_info_by_ids import admin_get_user_profile_public_info_by_ids
 from ._get_namespace_publisher import get_namespace_publisher
 from ._change_namespace_status import change_namespace_status
 from ._anonymize_user_profile import anonymize_user_profile
@@ -44,9 +42,7 @@ from ._delete_user_profile import delete_user_profile
 from ._get_custom_attributes_info import get_custom_attributes_info
 from ._update_custom_attributes_partially import update_custom_attributes_partially
 from ._get_private_custom_attributes_info import get_private_custom_attributes_info
-from ._update_private_custom_attributes_partially import (
-    update_private_custom_attributes_partially,
-)
+from ._update_private_custom_attributes_partially import update_private_custom_attributes_partially
 from ._update_user_profile_status import update_user_profile_status
 from ._public_get_time import public_get_time
 from ._public_get_namespaces import public_get_namespaces
@@ -54,12 +50,8 @@ from ._public_generated_upload_url import public_generated_upload_url
 from ._public_get_countries import public_get_countries
 from ._public_get_languages import public_get_languages
 from ._public_get_time_zones import public_get_time_zones
-from ._public_get_user_profile_public_info_by_ids import (
-    public_get_user_profile_public_info_by_ids,
-)
-from ._public_get_user_profile_info_by_public_id import (
-    public_get_user_profile_info_by_public_id,
-)
+from ._public_get_user_profile_public_info_by_ids import public_get_user_profile_public_info_by_ids
+from ._public_get_user_profile_info_by_public_id import public_get_user_profile_info_by_public_id
 from ._public_get_namespace_publisher import public_get_namespace_publisher
 from ._get_my_profile_info import get_my_profile_info
 from ._update_my_profile import update_my_profile
@@ -67,16 +59,12 @@ from ._create_my_profile import create_my_profile
 from ._get_my_zip_code import get_my_zip_code
 from ._update_my_zip_code import update_my_zip_code
 from ._public_report_user import public_report_user
-from ._public_generated_user_upload_content_url import (
-    public_generated_user_upload_content_url,
-)
+from ._public_generated_user_upload_content_url import public_generated_user_upload_content_url
 from ._public_get_user_profile_info import public_get_user_profile_info
 from ._public_update_user_profile import public_update_user_profile
 from ._public_create_user_profile import public_create_user_profile
 from ._public_get_custom_attributes_info import public_get_custom_attributes_info
-from ._public_update_custom_attributes_partially import (
-    public_update_custom_attributes_partially,
-)
+from ._public_update_custom_attributes_partially import public_update_custom_attributes_partially
 from ._public_get_user_profile_public_info import public_get_user_profile_public_info
 from ._public_update_user_profile_status import public_update_user_profile_status
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import (
-    indirect_bulk_accept_versioned_policy_v2 as indirect_bulk_accept_versioned_policy_v2_internal,
-)
+from accelbyte_py_sdk.api.legal import indirect_bulk_accept_versioned_policy_v2 as indirect_bulk_accept_versioned_policy_v2_internal
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 
@@ -47,21 +45,23 @@ from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def indirect_bulk_accept_versioned_policy_v2(
-    client_id: str,
-    country_code: str,
-    user_id: str,
-    body: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        client_id: str,
+        country_code: str,
+        user_id: str,
+        body: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(indirect_bulk_accept_versioned_policy_v2_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
@@ -83,7 +83,5 @@ def indirect_bulk_accept_versioned_policy_v2(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-indirect_bulk_accept_versioned_policy_v2.operation_id = (
-    "indirectBulkAcceptVersionedPolicyV2"
-)
+indirect_bulk_accept_versioned_policy_v2.operation_id = "indirectBulkAcceptVersionedPolicyV2"
 indirect_bulk_accept_versioned_policy_v2.is_deprecated = False

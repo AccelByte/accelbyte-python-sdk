@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,17 +39,19 @@ from accelbyte_py_sdk.api.iam import set_role_as_admin as set_role_as_admin_inte
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def set_role_as_admin(
-    role_id: str,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        role_id: str,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(set_role_as_admin_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = set_role_as_admin_internal(
@@ -62,4 +64,4 @@ def set_role_as_admin(
 
 
 set_role_as_admin.operation_id = "SetRoleAsAdmin"
-set_role_as_admin.is_deprecated = False
+set_role_as_admin.is_deprecated = True

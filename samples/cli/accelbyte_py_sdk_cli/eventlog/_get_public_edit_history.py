@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.eventlog import (
-    get_public_edit_history as get_public_edit_history_internal,
-)
+from accelbyte_py_sdk.api.eventlog import get_public_edit_history as get_public_edit_history_internal
 from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 
 
@@ -48,23 +46,25 @@ from accelbyte_py_sdk.api.eventlog.models import ModelsEventResponseV2
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_public_edit_history(
-    user_id: str,
-    end_date: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    type_: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        user_id: str,
+        end_date: Optional[str] = None,
+        offset: Optional[int] = None,
+        page_size: Optional[int] = None,
+        start_date: Optional[str] = None,
+        type_: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(get_public_edit_history_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = get_public_edit_history_internal(

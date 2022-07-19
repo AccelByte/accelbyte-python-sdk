@@ -42,19 +42,21 @@ from accelbyte_py_sdk.api.seasonpass.models import ErrorEntity
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_pass(
-    code: str,
-    season_id: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        code: str,
+        season_id: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(delete_pass_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = delete_pass_internal(

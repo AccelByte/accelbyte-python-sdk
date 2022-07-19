@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -43,20 +43,22 @@ from accelbyte_py_sdk.api.iam.models import ModelUpdatePermissionScheduleRequest
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def add_role_permission(
-    body: str,
-    action: int,
-    resource: str,
-    role_id: str,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        action: int,
+        resource: str,
+        role_id: str,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(add_role_permission_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
@@ -78,4 +80,4 @@ def add_role_permission(
 
 
 add_role_permission.operation_id = "AddRolePermission"
-add_role_permission.is_deprecated = False
+add_role_permission.is_deprecated = True

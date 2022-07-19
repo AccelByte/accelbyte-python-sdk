@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,17 +39,19 @@ from accelbyte_py_sdk.api.legal import sync_user_info as sync_user_info_internal
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def sync_user_info(
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(sync_user_info_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = sync_user_info_internal(

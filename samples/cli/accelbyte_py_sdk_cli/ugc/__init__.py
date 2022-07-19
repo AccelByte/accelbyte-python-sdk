@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (2.2.1)
+# justice-ugc-service (2.3.0)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel
@@ -15,9 +15,7 @@ from ._single_admin_delete_channel import single_admin_delete_channel
 from ._admin_upload_content_direct import admin_upload_content_direct
 from ._admin_upload_content_s3 import admin_upload_content_s3
 from ._single_admin_update_content_s3 import single_admin_update_content_s3
-from ._admin_search_channel_specific_content import (
-    admin_search_channel_specific_content,
-)
+from ._admin_search_channel_specific_content import admin_search_channel_specific_content
 from ._single_admin_update_content_direct import single_admin_update_content_direct
 from ._single_admin_delete_content import single_admin_delete_content
 from ._single_admin_get_content import single_admin_get_content
@@ -64,9 +62,7 @@ from ._public_get_content_bulk import public_get_content_bulk
 from ._get_followed_content import get_followed_content
 from ._get_liked_content import get_liked_content
 from ._download_content_by_share_code import download_content_by_share_code
-from ._public_download_content_by_content_id import (
-    public_download_content_by_content_id,
-)
+from ._public_download_content_by_content_id import public_download_content_by_content_id
 from ._add_download_count import add_download_count
 from ._update_content_like_status import update_content_like_status
 from ._public_download_content_preview import public_download_content_preview

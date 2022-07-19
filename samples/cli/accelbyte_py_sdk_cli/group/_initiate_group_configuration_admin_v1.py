@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.group import (
-    initiate_group_configuration_admin_v1 as initiate_group_configuration_admin_v1_internal,
-)
+from accelbyte_py_sdk.api.group import initiate_group_configuration_admin_v1 as initiate_group_configuration_admin_v1_internal
 from accelbyte_py_sdk.api.group.models import ModelsCreateGroupConfigurationResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
@@ -43,17 +41,19 @@ from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def initiate_group_configuration_admin_v1(
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(initiate_group_configuration_admin_v1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = initiate_group_configuration_admin_v1_internal(

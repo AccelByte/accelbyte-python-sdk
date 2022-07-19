@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.gametelemetry import (
-    protected_save_events_game_telemetry_v1_protected_events_post as protected_save_events_game_telemetry_v1_protected_events_post_internal,
-)
+from accelbyte_py_sdk.api.gametelemetry import protected_save_events_game_telemetry_v1_protected_events_post as protected_save_events_game_telemetry_v1_protected_events_post_internal
 from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 from accelbyte_py_sdk.api.gametelemetry.models import TelemetryBody
 
@@ -44,20 +42,20 @@ from accelbyte_py_sdk.api.gametelemetry.models import TelemetryBody
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def protected_save_events_game_telemetry_v1_protected_events_post(
-    body: str,
-    cookie: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        cookie: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(
-            protected_save_events_game_telemetry_v1_protected_events_post_internal.__doc__
-        )
+        click.echo(protected_save_events_game_telemetry_v1_protected_events_post_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
@@ -66,22 +64,15 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
             body = [TelemetryBody.create_from_dict(i0) for i0 in body_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    (
-        result,
-        error,
-    ) = protected_save_events_game_telemetry_v1_protected_events_post_internal(
+    result, error = protected_save_events_game_telemetry_v1_protected_events_post_internal(
         body=body,
         cookie=cookie,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(
-            f"protected_save_events_game_telemetry_v1_protected_events_post failed: {str(error)}"
-        )
+        raise Exception(f"protected_save_events_game_telemetry_v1_protected_events_post failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-protected_save_events_game_telemetry_v1_protected_events_post.operation_id = (
-    "protected_save_events_game_telemetry_v1_protected_events_post"
-)
+protected_save_events_game_telemetry_v1_protected_events_post.operation_id = "protected_save_events_game_telemetry_v1_protected_events_post"
 protected_save_events_game_telemetry_v1_protected_events_post.is_deprecated = False

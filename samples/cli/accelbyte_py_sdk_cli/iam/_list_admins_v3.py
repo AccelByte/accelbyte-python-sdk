@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,20 +44,22 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def list_admins_v3(
-    after: Optional[str] = None,
-    before: Optional[str] = None,
-    limit: Optional[int] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        after: Optional[str] = None,
+        before: Optional[str] = None,
+        limit: Optional[int] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(list_admins_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = list_admins_v3_internal(

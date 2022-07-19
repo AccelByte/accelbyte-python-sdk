@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,13 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import (
-    public_upgrade_headless_account_with_verification_code_v4 as public_upgrade_headless_account_with_verification_code_v4_internal,
-)
+from accelbyte_py_sdk.api.iam import public_upgrade_headless_account_with_verification_code_v4 as public_upgrade_headless_account_with_verification_code_v4_internal
 from accelbyte_py_sdk.api.iam.models import AccountUserResponseV4
-from accelbyte_py_sdk.api.iam.models import (
-    AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
-)
+from accelbyte_py_sdk.api.iam.models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -47,28 +43,26 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_upgrade_headless_account_with_verification_code_v4(
-    body: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(
-            public_upgrade_headless_account_with_verification_code_v4_internal.__doc__
-        )
+        click.echo(public_upgrade_headless_account_with_verification_code_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4.create_from_dict(
-                body_json
-            )
+            body = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_upgrade_headless_account_with_verification_code_v4_internal(
@@ -77,13 +71,9 @@ def public_upgrade_headless_account_with_verification_code_v4(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(
-            f"PublicUpgradeHeadlessAccountWithVerificationCodeV4 failed: {str(error)}"
-        )
+        raise Exception(f"PublicUpgradeHeadlessAccountWithVerificationCodeV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_upgrade_headless_account_with_verification_code_v4.operation_id = (
-    "PublicUpgradeHeadlessAccountWithVerificationCodeV4"
-)
+public_upgrade_headless_account_with_verification_code_v4.operation_id = "PublicUpgradeHeadlessAccountWithVerificationCodeV4"
 public_upgrade_headless_account_with_verification_code_v4.is_deprecated = False

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    public_normalize_payment_return_url as public_normalize_payment_return_url_internal,
-)
+from accelbyte_py_sdk.api.platform import public_normalize_payment_return_url as public_normalize_payment_return_url_internal
 
 
 @click.command()
@@ -56,32 +54,34 @@ from accelbyte_py_sdk.api.platform import (
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_normalize_payment_return_url(
-    order_no: str,
-    payment_order_no: str,
-    payment_provider: str,
-    return_url: str,
-    payer_id: Optional[str] = None,
-    foreinginvoice: Optional[str] = None,
-    invoice_id: Optional[str] = None,
-    payload: Optional[str] = None,
-    redirect_result: Optional[str] = None,
-    result_code: Optional[str] = None,
-    session_id: Optional[str] = None,
-    status: Optional[str] = None,
-    token: Optional[str] = None,
-    type_: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        order_no: str,
+        payment_order_no: str,
+        payment_provider: str,
+        return_url: str,
+        payer_id: Optional[str] = None,
+        foreinginvoice: Optional[str] = None,
+        invoice_id: Optional[str] = None,
+        payload: Optional[str] = None,
+        redirect_result: Optional[str] = None,
+        result_code: Optional[str] = None,
+        session_id: Optional[str] = None,
+        status: Optional[str] = None,
+        token: Optional[str] = None,
+        type_: Optional[str] = None,
+        user_id: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(public_normalize_payment_return_url_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = public_normalize_payment_return_url_internal(

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,15 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import (
-    add_third_party_login_platform_credential_v3 as add_third_party_login_platform_credential_v3_internal,
-)
-from accelbyte_py_sdk.api.iam.models import (
-    ModelThirdPartyLoginPlatformCredentialRequest,
-)
-from accelbyte_py_sdk.api.iam.models import (
-    ModelThirdPartyLoginPlatformCredentialResponse,
-)
+from accelbyte_py_sdk.api.iam import add_third_party_login_platform_credential_v3 as add_third_party_login_platform_credential_v3_internal
+from accelbyte_py_sdk.api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
+from accelbyte_py_sdk.api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -50,27 +44,27 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def add_third_party_login_platform_credential_v3(
-    body: str,
-    platform_id: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        platform_id: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(add_third_party_login_platform_credential_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelThirdPartyLoginPlatformCredentialRequest.create_from_dict(
-                body_json
-            )
+            body = ModelThirdPartyLoginPlatformCredentialRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = add_third_party_login_platform_credential_v3_internal(
@@ -84,7 +78,5 @@ def add_third_party_login_platform_credential_v3(
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-add_third_party_login_platform_credential_v3.operation_id = (
-    "AddThirdPartyLoginPlatformCredentialV3"
-)
+add_third_party_login_platform_credential_v3.operation_id = "AddThirdPartyLoginPlatformCredentialV3"
 add_third_party_login_platform_credential_v3.is_deprecated = False

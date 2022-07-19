@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,9 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import search_sessions as search_sessions_internal
 from accelbyte_py_sdk.api.matchmaking.models import ResponseError
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
-from accelbyte_py_sdk.api.matchmaking.models import (
-    ServiceGetSessionHistorySearchResponse,
-)
+from accelbyte_py_sdk.api.matchmaking.models import ServiceGetSessionHistorySearchResponse
 
 
 @click.command()
@@ -51,24 +49,26 @@ from accelbyte_py_sdk.api.matchmaking.models import (
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def search_sessions(
-    limit: int,
-    offset: int,
-    channel: Optional[str] = None,
-    deleted: Optional[bool] = None,
-    match_id: Optional[str] = None,
-    party_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        limit: int,
+        offset: int,
+        channel: Optional[str] = None,
+        deleted: Optional[bool] = None,
+        match_id: Optional[str] = None,
+        party_id: Optional[str] = None,
+        user_id: Optional[str] = None,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(search_sessions_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = search_sessions_internal(

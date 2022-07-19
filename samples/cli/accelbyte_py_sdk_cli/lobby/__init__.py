@@ -26,90 +26,50 @@ from ._admin_update_config_v1 import admin_update_config_v1
 from ._admin_export_config_v1 import admin_export_config_v1
 from ._admin_import_config_v1 import admin_import_config_v1
 from ._get_list_of_friends import get_list_of_friends
-from ._send_multiple_users_freeform_notification_v1_admin import (
-    send_multiple_users_freeform_notification_v1_admin,
-)
-from ._send_users_freeform_notification_v1_admin import (
-    send_users_freeform_notification_v1_admin,
-)
-from ._send_party_freeform_notification_v1_admin import (
-    send_party_freeform_notification_v1_admin,
-)
-from ._send_party_templated_notification_v1_admin import (
-    send_party_templated_notification_v1_admin,
-)
-from ._get_all_notification_templates_v1_admin import (
-    get_all_notification_templates_v1_admin,
-)
-from ._create_notification_template_v1_admin import (
-    create_notification_template_v1_admin,
-)
-from ._send_users_templated_notification_v1_admin import (
-    send_users_templated_notification_v1_admin,
-)
-from ._get_template_slug_localizations_template_v1_admin import (
-    get_template_slug_localizations_template_v1_admin,
-)
-from ._delete_notification_template_slug_v1_admin import (
-    delete_notification_template_slug_v1_admin,
-)
-from ._get_single_template_localization_v1_admin import (
-    get_single_template_localization_v1_admin,
-)
-from ._update_template_localization_v1_admin import (
-    update_template_localization_v1_admin,
-)
-from ._delete_template_localization_v1_admin import (
-    delete_template_localization_v1_admin,
-)
-from ._publish_template_localization_v1_admin import (
-    publish_template_localization_v1_admin,
-)
+from ._send_multiple_users_freeform_notification_v1_admin import send_multiple_users_freeform_notification_v1_admin
+from ._send_users_freeform_notification_v1_admin import send_users_freeform_notification_v1_admin
+from ._send_party_freeform_notification_v1_admin import send_party_freeform_notification_v1_admin
+from ._send_party_templated_notification_v1_admin import send_party_templated_notification_v1_admin
+from ._get_all_notification_templates_v1_admin import get_all_notification_templates_v1_admin
+from ._create_notification_template_v1_admin import create_notification_template_v1_admin
+from ._send_users_templated_notification_v1_admin import send_users_templated_notification_v1_admin
+from ._get_template_slug_localizations_template_v1_admin import get_template_slug_localizations_template_v1_admin
+from ._delete_notification_template_slug_v1_admin import delete_notification_template_slug_v1_admin
+from ._get_single_template_localization_v1_admin import get_single_template_localization_v1_admin
+from ._update_template_localization_v1_admin import update_template_localization_v1_admin
+from ._delete_template_localization_v1_admin import delete_template_localization_v1_admin
+from ._publish_template_localization_v1_admin import publish_template_localization_v1_admin
 from ._get_all_notification_topics_v1_admin import get_all_notification_topics_v1_admin
 from ._create_notification_topic_v1_admin import create_notification_topic_v1_admin
 from ._get_notification_topic_v1_admin import get_notification_topic_v1_admin
 from ._update_notification_topic_v1_admin import update_notification_topic_v1_admin
 from ._delete_notification_topic_v1_admin import delete_notification_topic_v1_admin
-from ._send_specific_user_freeform_notification_v1_admin import (
-    send_specific_user_freeform_notification_v1_admin,
-)
-from ._send_specific_user_templated_notification_v1_admin import (
-    send_specific_user_templated_notification_v1_admin,
-)
+from ._send_specific_user_freeform_notification_v1_admin import send_specific_user_freeform_notification_v1_admin
+from ._send_specific_user_templated_notification_v1_admin import send_specific_user_templated_notification_v1_admin
 from ._admin_get_party_data_v1 import admin_get_party_data_v1
 from ._admin_update_party_attributes_v1 import admin_update_party_attributes_v1
 from ._admin_join_party_v1 import admin_join_party_v1
 from ._admin_get_user_party_v1 import admin_get_user_party_v1
 from ._admin_get_lobby_ccu import admin_get_lobby_ccu
-from ._admin_get_all_player_session_attribute import (
-    admin_get_all_player_session_attribute,
-)
+from ._admin_get_all_player_session_attribute import admin_get_all_player_session_attribute
 from ._admin_set_player_session_attribute import admin_set_player_session_attribute
 from ._admin_get_player_session_attribute import admin_get_player_session_attribute
 from ._admin_get_player_blocked_players_v1 import admin_get_player_blocked_players_v1
-from ._admin_get_player_blocked_by_players_v1 import (
-    admin_get_player_blocked_by_players_v1,
-)
+from ._admin_get_player_blocked_by_players_v1 import admin_get_player_blocked_by_players_v1
 from ._admin_bulk_block_players_v1 import admin_bulk_block_players_v1
 from ._admin_debug_profanity_filters import admin_debug_profanity_filters
 from ._admin_get_profanity_list_filters_v1 import admin_get_profanity_list_filters_v1
 from ._admin_add_profanity_filter_into_list import admin_add_profanity_filter_into_list
 from ._admin_add_profanity_filters import admin_add_profanity_filters
-from ._admin_import_profanity_filters_from_file import (
-    admin_import_profanity_filters_from_file,
-)
+from ._admin_import_profanity_filters_from_file import admin_import_profanity_filters_from_file
 from ._admin_delete_profanity_filter import admin_delete_profanity_filter
 from ._admin_get_profanity_lists import admin_get_profanity_lists
 from ._admin_create_profanity_list import admin_create_profanity_list
 from ._admin_update_profanity_list import admin_update_profanity_list
 from ._admin_delete_profanity_list import admin_delete_profanity_list
 from ._admin_get_profanity_rule import admin_get_profanity_rule
-from ._admin_set_profanity_rule_for_namespace import (
-    admin_set_profanity_rule_for_namespace,
-)
-from ._admin_verify_message_profanity_response import (
-    admin_verify_message_profanity_response,
-)
+from ._admin_set_profanity_rule_for_namespace import admin_set_profanity_rule_for_namespace
+from ._admin_verify_message_profanity_response import admin_verify_message_profanity_response
 from ._admin_get_third_party_config import admin_get_third_party_config
 from ._admin_update_third_party_config import admin_update_third_party_config
 from ._admin_create_third_party_config import admin_create_third_party_config
@@ -120,9 +80,7 @@ from ._public_get_party_data_v1 import public_get_party_data_v1
 from ._public_update_party_attributes_v1 import public_update_party_attributes_v1
 from ._public_set_party_limit_v1 import public_set_party_limit_v1
 from ._public_get_player_blocked_players_v1 import public_get_player_blocked_players_v1
-from ._public_get_player_blocked_by_players_v1 import (
-    public_get_player_blocked_by_players_v1,
-)
+from ._public_get_player_blocked_by_players_v1 import public_get_player_blocked_by_players_v1
 from ._users_presence_handler_v1 import users_presence_handler_v1
 from ._free_form_notification import free_form_notification
 from ._notification_with_template import notification_with_template
@@ -140,9 +98,7 @@ from ._get_topic_by_topic_name import get_topic_by_topic_name
 from ._update_topic_by_topic_name import update_topic_by_topic_name
 from ._delete_topic_by_topic_name import delete_topic_by_topic_name
 from ._free_form_notification_by_user_id import free_form_notification_by_user_id
-from ._notification_with_template_by_user_id import (
-    notification_with_template_by_user_id,
-)
+from ._notification_with_template_by_user_id import notification_with_template_by_user_id
 
 
 commands = [

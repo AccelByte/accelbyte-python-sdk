@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.sessionbrowser import (
-    create_session as create_session_internal,
-)
+from accelbyte_py_sdk.api.sessionbrowser import create_session as create_session_internal
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsCreateSessionRequest
 from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
 from accelbyte_py_sdk.api.sessionbrowser.models import ResponseError
@@ -46,18 +44,20 @@ from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def create_session(
-    body: str,
-    namespace: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        body: str,
+        namespace: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(create_session_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     if body is not None:

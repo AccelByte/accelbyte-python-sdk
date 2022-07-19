@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.legal import (
-    retrieve_latest_policies as retrieve_latest_policies_internal,
-)
+from accelbyte_py_sdk.api.legal import retrieve_latest_policies as retrieve_latest_policies_internal
 from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 
 
@@ -45,20 +43,22 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_latest_policies(
-    country_code: str,
-    default_on_empty: Optional[bool] = None,
-    policy_type: Optional[str] = None,
-    tags: Optional[str] = None,
-    login_as: Optional[str] = None,
-    login_with_auth: Optional[str] = None,
-    doc: Optional[bool] = None,
+        country_code: str,
+        default_on_empty: Optional[bool] = None,
+        policy_type: Optional[str] = None,
+        tags: Optional[str] = None,
+        login_as: Optional[str] = None,
+        login_with_auth: Optional[str] = None,
+        doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(retrieve_latest_policies_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
-        x_additional_headers = {"Authorization": login_with_auth}
+        x_additional_headers = {
+            "Authorization": login_with_auth
+        }
     else:
         login_as_internal(login_as)
     result, error = retrieve_latest_policies_internal(
