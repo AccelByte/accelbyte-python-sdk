@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -42,9 +42,7 @@ from ..operations.event_registry import UpdateEventRegistryHandler
 
 @deprecated
 @same_doc_as(GetRegisteredEventIDHandler)
-def get_registered_event_id_handler(
-    event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def get_registered_event_id_handler(event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventIDHandler.create(
         event_id=event_id,
     )
@@ -53,22 +51,16 @@ def get_registered_event_id_handler(
 
 @deprecated
 @same_doc_as(GetRegisteredEventIDHandler)
-async def get_registered_event_id_handler_async(
-    event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_registered_event_id_handler_async(event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventIDHandler.create(
         event_id=event_id,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetRegisteredEventsByEventTypeHandler)
-def get_registered_events_by_event_type_handler(
-    event_type: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def get_registered_events_by_event_type_handler(event_type: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventsByEventTypeHandler.create(
         event_type=event_type,
     )
@@ -77,44 +69,30 @@ def get_registered_events_by_event_type_handler(
 
 @deprecated
 @same_doc_as(GetRegisteredEventsByEventTypeHandler)
-async def get_registered_events_by_event_type_handler_async(
-    event_type: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_registered_events_by_event_type_handler_async(event_type: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventsByEventTypeHandler.create(
         event_type=event_type,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetRegisteredEventsHandler)
-def get_registered_events_handler(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def get_registered_events_handler(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventsHandler.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetRegisteredEventsHandler)
-async def get_registered_events_handler_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_registered_events_handler_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRegisteredEventsHandler.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(RegisterEventHandler)
-def register_event_handler(
-    body: ModelsEventRegistry,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def register_event_handler(body: ModelsEventRegistry, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RegisterEventHandler.create(
         body=body,
     )
@@ -123,24 +101,16 @@ def register_event_handler(
 
 @deprecated
 @same_doc_as(RegisterEventHandler)
-async def register_event_handler_async(
-    body: ModelsEventRegistry,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def register_event_handler_async(body: ModelsEventRegistry, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = RegisterEventHandler.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(UnregisterEventIDHandler)
-def unregister_event_id_handler(
-    event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def unregister_event_id_handler(event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UnregisterEventIDHandler.create(
         event_id=event_id,
     )
@@ -149,25 +119,16 @@ def unregister_event_id_handler(
 
 @deprecated
 @same_doc_as(UnregisterEventIDHandler)
-async def unregister_event_id_handler_async(
-    event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def unregister_event_id_handler_async(event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UnregisterEventIDHandler.create(
         event_id=event_id,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(UpdateEventRegistryHandler)
-def update_event_registry_handler(
-    body: ModelsEventRegistry,
-    event_id: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_event_registry_handler(body: ModelsEventRegistry, event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdateEventRegistryHandler.create(
         body=body,
         event_id=event_id,
@@ -177,16 +138,9 @@ def update_event_registry_handler(
 
 @deprecated
 @same_doc_as(UpdateEventRegistryHandler)
-async def update_event_registry_handler_async(
-    body: ModelsEventRegistry,
-    event_id: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_event_registry_handler_async(body: ModelsEventRegistry, event_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdateEventRegistryHandler.create(
         body=body,
         event_id=event_id,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

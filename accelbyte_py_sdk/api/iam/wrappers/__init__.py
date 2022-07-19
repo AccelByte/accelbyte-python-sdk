@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.12.0"
+__version__ = "5.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,13 +22,12 @@ from ._bans import admin_get_bans_type_with_namespace_v3
 from ._bans import admin_get_bans_type_with_namespace_v3_async
 from ._bans import admin_get_list_ban_reason_v3
 from ._bans import admin_get_list_ban_reason_v3_async
-from ._bans import get_bans_type
-from ._bans import get_bans_type_async
-from ._bans import get_list_ban_reason
-from ._bans import get_list_ban_reason_async
 
-from ._clients import add_client_permission
-from ._clients import add_client_permission_async
+from ._bans_deprecated import get_bans_type
+from ._bans_deprecated import get_bans_type_async
+from ._bans_deprecated import get_list_ban_reason
+from ._bans_deprecated import get_list_ban_reason_async
+
 from ._clients import admin_add_client_permissions_v3
 from ._clients import admin_add_client_permissions_v3_async
 from ._clients import admin_create_client_v3
@@ -43,30 +42,35 @@ from ._clients import admin_get_clientsby_namespaceby_idv3
 from ._clients import admin_get_clientsby_namespaceby_idv3_async
 from ._clients import admin_update_client_permission_v3
 from ._clients import admin_update_client_permission_v3_async
+from ._clients import admin_update_client_secret_v3
+from ._clients import admin_update_client_secret_v3_async
 from ._clients import admin_update_client_v3
 from ._clients import admin_update_client_v3_async
-from ._clients import create_client
-from ._clients import create_client_async
-from ._clients import create_client_by_namespace
-from ._clients import create_client_by_namespace_async
-from ._clients import delete_client
-from ._clients import delete_client_async
-from ._clients import delete_client_by_namespace
-from ._clients import delete_client_by_namespace_async
-from ._clients import delete_client_permission
-from ._clients import delete_client_permission_async
-from ._clients import get_client
-from ._clients import get_client_async
-from ._clients import get_clients
-from ._clients import get_clients_async
-from ._clients import get_clientsby_namespace
-from ._clients import get_clientsby_namespace_async
-from ._clients import update_client
-from ._clients import update_client_async
-from ._clients import update_client_permission
-from ._clients import update_client_permission_async
-from ._clients import update_client_secret
-from ._clients import update_client_secret_async
+
+from ._clients_deprecated import add_client_permission
+from ._clients_deprecated import add_client_permission_async
+from ._clients_deprecated import create_client
+from ._clients_deprecated import create_client_async
+from ._clients_deprecated import create_client_by_namespace
+from ._clients_deprecated import create_client_by_namespace_async
+from ._clients_deprecated import delete_client
+from ._clients_deprecated import delete_client_async
+from ._clients_deprecated import delete_client_by_namespace
+from ._clients_deprecated import delete_client_by_namespace_async
+from ._clients_deprecated import delete_client_permission
+from ._clients_deprecated import delete_client_permission_async
+from ._clients_deprecated import get_client
+from ._clients_deprecated import get_client_async
+from ._clients_deprecated import get_clients
+from ._clients_deprecated import get_clients_async
+from ._clients_deprecated import get_clientsby_namespace
+from ._clients_deprecated import get_clientsby_namespace_async
+from ._clients_deprecated import update_client
+from ._clients_deprecated import update_client_async
+from ._clients_deprecated import update_client_permission
+from ._clients_deprecated import update_client_permission_async
+from ._clients_deprecated import update_client_secret
+from ._clients_deprecated import update_client_secret_async
 
 from ._input_validations import admin_get_input_validations
 from ._input_validations import admin_get_input_validations_async
@@ -136,12 +140,6 @@ from ._o_auth2_0_extension import platform_authentication_v3_async
 from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
 
-from ._roles import add_role_managers
-from ._roles import add_role_managers_async
-from ._roles import add_role_members
-from ._roles import add_role_members_async
-from ._roles import add_role_permission
-from ._roles import add_role_permission_async
 from ._roles import admin_add_role_managers_v3
 from ._roles import admin_add_role_managers_v3_async
 from ._roles import admin_add_role_members_v3
@@ -200,38 +198,45 @@ from ._roles import admin_update_role_v3
 from ._roles import admin_update_role_v3_async
 from ._roles import admin_update_role_v4
 from ._roles import admin_update_role_v4_async
-from ._roles import create_role
-from ._roles import create_role_async
-from ._roles import delete_role
-from ._roles import delete_role_async
-from ._roles import delete_role_permission
-from ._roles import delete_role_permission_async
-from ._roles import get_role
-from ._roles import get_role_async
-from ._roles import get_role_admin_status
-from ._roles import get_role_admin_status_async
-from ._roles import get_role_managers
-from ._roles import get_role_managers_async
-from ._roles import get_role_members
-from ._roles import get_role_members_async
-from ._roles import get_roles
-from ._roles import get_roles_async
 from ._roles import public_get_role_v3
 from ._roles import public_get_role_v3_async
 from ._roles import public_get_roles_v3
 from ._roles import public_get_roles_v3_async
-from ._roles import remove_role_admin
-from ._roles import remove_role_admin_async
-from ._roles import remove_role_managers
-from ._roles import remove_role_managers_async
-from ._roles import remove_role_members
-from ._roles import remove_role_members_async
-from ._roles import set_role_as_admin
-from ._roles import set_role_as_admin_async
-from ._roles import update_role
-from ._roles import update_role_async
-from ._roles import update_role_permissions
-from ._roles import update_role_permissions_async
+
+from ._roles_deprecated import add_role_managers
+from ._roles_deprecated import add_role_managers_async
+from ._roles_deprecated import add_role_members
+from ._roles_deprecated import add_role_members_async
+from ._roles_deprecated import add_role_permission
+from ._roles_deprecated import add_role_permission_async
+from ._roles_deprecated import create_role
+from ._roles_deprecated import create_role_async
+from ._roles_deprecated import delete_role
+from ._roles_deprecated import delete_role_async
+from ._roles_deprecated import delete_role_permission
+from ._roles_deprecated import delete_role_permission_async
+from ._roles_deprecated import get_role
+from ._roles_deprecated import get_role_async
+from ._roles_deprecated import get_role_admin_status
+from ._roles_deprecated import get_role_admin_status_async
+from ._roles_deprecated import get_role_managers
+from ._roles_deprecated import get_role_managers_async
+from ._roles_deprecated import get_role_members
+from ._roles_deprecated import get_role_members_async
+from ._roles_deprecated import get_roles
+from ._roles_deprecated import get_roles_async
+from ._roles_deprecated import remove_role_admin
+from ._roles_deprecated import remove_role_admin_async
+from ._roles_deprecated import remove_role_managers
+from ._roles_deprecated import remove_role_managers_async
+from ._roles_deprecated import remove_role_members
+from ._roles_deprecated import remove_role_members_async
+from ._roles_deprecated import set_role_as_admin
+from ._roles_deprecated import set_role_as_admin_async
+from ._roles_deprecated import update_role
+from ._roles_deprecated import update_role_async
+from ._roles_deprecated import update_role_permissions
+from ._roles_deprecated import update_role_permissions_async
 
 from ._sso import login_sso_client
 from ._sso import login_sso_client_async
@@ -255,37 +260,19 @@ from ._sso_saml_2_0 import platform_authenticate_samlv3_handler_async
 from ._third_party_credential import add_third_party_login_platform_credential_v3
 from ._third_party_credential import add_third_party_login_platform_credential_v3_async
 from ._third_party_credential import delete_third_party_login_platform_credential_v3
-from ._third_party_credential import (
-    delete_third_party_login_platform_credential_v3_async,
-)
+from ._third_party_credential import delete_third_party_login_platform_credential_v3_async
 from ._third_party_credential import delete_third_party_login_platform_domain_v3
 from ._third_party_credential import delete_third_party_login_platform_domain_v3_async
-from ._third_party_credential import (
-    retrieve_all_active_third_party_login_platform_credential_public_v3,
-)
-from ._third_party_credential import (
-    retrieve_all_active_third_party_login_platform_credential_public_v3_async,
-)
-from ._third_party_credential import (
-    retrieve_all_active_third_party_login_platform_credential_v3,
-)
-from ._third_party_credential import (
-    retrieve_all_active_third_party_login_platform_credential_v3_async,
-)
-from ._third_party_credential import (
-    retrieve_all_third_party_login_platform_credential_v3,
-)
-from ._third_party_credential import (
-    retrieve_all_third_party_login_platform_credential_v3_async,
-)
+from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3
+from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_public_v3_async
+from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_v3
+from ._third_party_credential import retrieve_all_active_third_party_login_platform_credential_v3_async
+from ._third_party_credential import retrieve_all_third_party_login_platform_credential_v3
+from ._third_party_credential import retrieve_all_third_party_login_platform_credential_v3_async
 from ._third_party_credential import retrieve_third_party_login_platform_credential_v3
-from ._third_party_credential import (
-    retrieve_third_party_login_platform_credential_v3_async,
-)
+from ._third_party_credential import retrieve_third_party_login_platform_credential_v3_async
 from ._third_party_credential import update_third_party_login_platform_credential_v3
-from ._third_party_credential import (
-    update_third_party_login_platform_credential_v3_async,
-)
+from ._third_party_credential import update_third_party_login_platform_credential_v3_async
 from ._third_party_credential import update_third_party_login_platform_domain_v3
 from ._third_party_credential import update_third_party_login_platform_domain_v3_async
 

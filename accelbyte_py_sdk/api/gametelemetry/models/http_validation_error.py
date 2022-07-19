@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,7 +39,7 @@ class HTTPValidationError(Model):
 
     # region fields
 
-    detail: List[ValidationError]  # OPTIONAL
+    detail: List[ValidationError]                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -56,9 +56,7 @@ class HTTPValidationError(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "detail"):
-            result["detail"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.detail
-            ]
+            result["detail"] = [i0.to_dict(include_empty=include_empty) for i0 in self.detail]
         elif include_empty:
             result["detail"] = []
         return result
@@ -78,47 +76,26 @@ class HTTPValidationError(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> HTTPValidationError:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> HTTPValidationError:
         instance = cls()
         if not dict_:
             return instance
         if "detail" in dict_ and dict_["detail"] is not None:
-            instance.detail = [
-                ValidationError.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["detail"]
-            ]
+            instance.detail = [ValidationError.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["detail"]]
         elif include_empty:
             instance.detail = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, HTTPValidationError]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, HTTPValidationError]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[HTTPValidationError]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[HTTPValidationError]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        HTTPValidationError, List[HTTPValidationError], Dict[Any, HTTPValidationError]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[HTTPValidationError, List[HTTPValidationError], Dict[Any, HTTPValidationError]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

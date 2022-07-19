@@ -53,44 +53,30 @@ class CancelMatchmakingRequest(WebSocketMessage):
     # region static methods
 
     @classmethod
-    def create_from_wsm(
-        cls, wsm: str, is_strict: bool = False
-    ) -> CancelMatchmakingRequest:
+    def create_from_wsm(cls, wsm: str, is_strict: bool = False) -> CancelMatchmakingRequest:
         instance = cls()
         if not wsm:
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         id_line = lines[1]
         if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.FieldFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
         instance.id_ = id_line.removeprefix("id: ")
         for line in lines[2:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldFormatInvalid
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "gameMode".casefold()) or (
-                name == "gameMode"
-            ):
+            if (not is_strict and name.casefold() == "gameMode".casefold()) or (name == "gameMode"):
                 instance.game_mode = value
                 continue
-            if (not is_strict and name.casefold() == "isTempParty".casefold()) or (
-                name == "isTempParty"
-            ):
+            if (not is_strict and name.casefold() == "isTempParty".casefold()) or (name == "isTempParty"):
                 instance.is_temp_party = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldTypeNotSupported
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
         return instance
 
     @staticmethod

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -63,20 +63,20 @@ class ModelsEvent(Model):
 
     # region fields
 
-    agent_type: int  # REQUIRED
-    client_id: str  # REQUIRED
-    component_id: int  # REQUIRED
-    event_id: int  # REQUIRED
-    event_level: int  # REQUIRED
-    event_type: int  # REQUIRED
-    ip_address: str  # REQUIRED
-    namespace: str  # REQUIRED
-    realm: str  # REQUIRED
-    target_namespace: str  # REQUIRED
-    target_user_id: str  # REQUIRED
-    time: str  # REQUIRED
-    user_id: str  # REQUIRED
-    ux: int  # REQUIRED
+    agent_type: int                                                                                # REQUIRED
+    client_id: str                                                                                 # REQUIRED
+    component_id: int                                                                              # REQUIRED
+    event_id: int                                                                                  # REQUIRED
+    event_level: int                                                                               # REQUIRED
+    event_type: int                                                                                # REQUIRED
+    ip_address: str                                                                                # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    realm: str                                                                                     # REQUIRED
+    target_namespace: str                                                                          # REQUIRED
+    target_user_id: str                                                                            # REQUIRED
+    time: str                                                                                      # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    ux: int                                                                                        # REQUIRED
 
     # endregion fields
 
@@ -305,29 +305,15 @@ class ModelsEvent(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsEvent]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsEvent]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsEvent]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsEvent]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ModelsEvent, List[ModelsEvent], Dict[Any, ModelsEvent]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsEvent, List[ModelsEvent], Dict[Any, ModelsEvent]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

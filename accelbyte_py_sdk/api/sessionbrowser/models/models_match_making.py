@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -62,6 +62,8 @@ class ModelsMatchMaking(Model):
 
         status: (status) REQUIRED str
 
+        sub_game_mode: (sub_game_mode) REQUIRED List[str]
+
         joinable: (joinable) OPTIONAL bool
 
         party_id: (party_id) OPTIONAL str
@@ -69,22 +71,23 @@ class ModelsMatchMaking(Model):
 
     # region fields
 
-    channel: str  # REQUIRED
-    client_version: str  # REQUIRED
-    created_at: str  # REQUIRED
-    deployment: str  # REQUIRED
-    event: str  # REQUIRED
-    game_mode: str  # REQUIRED
-    match_id: str  # REQUIRED
-    matching_allies: List[ModelsMatchingAlly]  # REQUIRED
-    namespace: str  # REQUIRED
-    party_attributes: Dict[str, Any]  # REQUIRED
-    queued_at: int  # REQUIRED
-    region: str  # REQUIRED
-    server_name: str  # REQUIRED
-    status: str  # REQUIRED
-    joinable: bool  # OPTIONAL
-    party_id: str  # OPTIONAL
+    channel: str                                                                                   # REQUIRED
+    client_version: str                                                                            # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    deployment: str                                                                                # REQUIRED
+    event: str                                                                                     # REQUIRED
+    game_mode: str                                                                                 # REQUIRED
+    match_id: str                                                                                  # REQUIRED
+    matching_allies: List[ModelsMatchingAlly]                                                      # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    party_attributes: Dict[str, Any]                                                               # REQUIRED
+    queued_at: int                                                                                 # REQUIRED
+    region: str                                                                                    # REQUIRED
+    server_name: str                                                                               # REQUIRED
+    status: str                                                                                    # REQUIRED
+    sub_game_mode: List[str]                                                                       # REQUIRED
+    joinable: bool                                                                                 # OPTIONAL
+    party_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -118,9 +121,7 @@ class ModelsMatchMaking(Model):
         self.match_id = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsMatchingAlly]
-    ) -> ModelsMatchMaking:
+    def with_matching_allies(self, value: List[ModelsMatchingAlly]) -> ModelsMatchMaking:
         self.matching_allies = value
         return self
 
@@ -146,6 +147,10 @@ class ModelsMatchMaking(Model):
 
     def with_status(self, value: str) -> ModelsMatchMaking:
         self.status = value
+        return self
+
+    def with_sub_game_mode(self, value: List[str]) -> ModelsMatchMaking:
+        self.sub_game_mode = value
         return self
 
     def with_joinable(self, value: bool) -> ModelsMatchMaking:
@@ -191,9 +196,7 @@ class ModelsMatchMaking(Model):
         elif include_empty:
             result["match_id"] = ""
         if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
+            result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
         if hasattr(self, "namespace"):
@@ -201,9 +204,7 @@ class ModelsMatchMaking(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "party_attributes"):
-            result["party_attributes"] = {
-                str(k0): v0 for k0, v0 in self.party_attributes.items()
-            }
+            result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
             result["party_attributes"] = {}
         if hasattr(self, "queued_at"):
@@ -222,6 +223,10 @@ class ModelsMatchMaking(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "sub_game_mode"):
+            result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
+        elif include_empty:
+            result["sub_game_mode"] = []
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
@@ -253,6 +258,7 @@ class ModelsMatchMaking(Model):
         region: str,
         server_name: str,
         status: str,
+        sub_game_mode: List[str],
         joinable: Optional[bool] = None,
         party_id: Optional[str] = None,
     ) -> ModelsMatchMaking:
@@ -271,6 +277,7 @@ class ModelsMatchMaking(Model):
         instance.region = region
         instance.server_name = server_name
         instance.status = status
+        instance.sub_game_mode = sub_game_mode
         if joinable is not None:
             instance.joinable = joinable
         if party_id is not None:
@@ -278,9 +285,7 @@ class ModelsMatchMaking(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsMatchMaking:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsMatchMaking:
         instance = cls()
         if not dict_:
             return instance
@@ -313,10 +318,7 @@ class ModelsMatchMaking(Model):
         elif include_empty:
             instance.match_id = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [
-                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["matching_allies"]
-            ]
+            instance.matching_allies = [ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
             instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -324,9 +326,7 @@ class ModelsMatchMaking(Model):
         elif include_empty:
             instance.namespace = ""
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
-            instance.party_attributes = {
-                str(k0): v0 for k0, v0 in dict_["party_attributes"].items()
-            }
+            instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
             instance.party_attributes = {}
         if "queued_at" in dict_ and dict_["queued_at"] is not None:
@@ -345,6 +345,10 @@ class ModelsMatchMaking(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
+            instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
+        elif include_empty:
+            instance.sub_game_mode = []
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
@@ -356,31 +360,15 @@ class ModelsMatchMaking(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsMatchMaking]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsMatchMaking]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsMatchMaking]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsMatchMaking]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsMatchMaking, List[ModelsMatchMaking], Dict[Any, ModelsMatchMaking]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsMatchMaking, List[ModelsMatchMaking], Dict[Any, ModelsMatchMaking]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -408,6 +396,7 @@ class ModelsMatchMaking(Model):
             "region": "region",
             "server_name": "server_name",
             "status": "status",
+            "sub_game_mode": "sub_game_mode",
             "joinable": "joinable",
             "party_id": "party_id",
         }
@@ -429,6 +418,7 @@ class ModelsMatchMaking(Model):
             "region": True,
             "server_name": True,
             "status": True,
+            "sub_game_mode": True,
             "joinable": False,
             "party_id": False,
         }

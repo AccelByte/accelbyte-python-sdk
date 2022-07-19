@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -75,12 +75,7 @@ from ..models import UserProfileStatusUpdateStatusEnum
 
 
 @same_doc_as(AdminGetUserProfilePublicInfoByIds)
-def admin_get_user_profile_public_info_by_ids(
-    body: Optional[UserProfileBulkRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_user_profile_public_info_by_ids(body: Optional[UserProfileBulkRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,12 +88,7 @@ def admin_get_user_profile_public_info_by_ids(
 
 
 @same_doc_as(AdminGetUserProfilePublicInfoByIds)
-async def admin_get_user_profile_public_info_by_ids_async(
-    body: Optional[UserProfileBulkRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_user_profile_public_info_by_ids_async(body: Optional[UserProfileBulkRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,18 +97,11 @@ async def admin_get_user_profile_public_info_by_ids_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateMyProfile)
-def create_my_profile(
-    body: Optional[UserProfilePrivateCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_my_profile(body: Optional[UserProfilePrivateCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,12 +114,7 @@ def create_my_profile(
 
 
 @same_doc_as(CreateMyProfile)
-async def create_my_profile_async(
-    body: Optional[UserProfilePrivateCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_my_profile_async(body: Optional[UserProfilePrivateCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,18 +123,11 @@ async def create_my_profile_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteUserProfile)
-def delete_user_profile(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_user_profile(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,12 +140,7 @@ def delete_user_profile(
 
 
 @same_doc_as(DeleteUserProfile)
-async def delete_user_profile_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_user_profile_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,18 +149,11 @@ async def delete_user_profile_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCustomAttributesInfo)
-def get_custom_attributes_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,12 +166,7 @@ def get_custom_attributes_info(
 
 
 @same_doc_as(GetCustomAttributesInfo)
-async def get_custom_attributes_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_custom_attributes_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,17 +175,11 @@ async def get_custom_attributes_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetMyProfileInfo)
-def get_my_profile_info(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_my_profile_info(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,11 +191,7 @@ def get_my_profile_info(
 
 
 @same_doc_as(GetMyProfileInfo)
-async def get_my_profile_info_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_my_profile_info_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -255,17 +199,11 @@ async def get_my_profile_info_async(
     request = GetMyProfileInfo.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetMyZipCode)
-def get_my_zip_code(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_my_zip_code(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -277,11 +215,7 @@ def get_my_zip_code(
 
 
 @same_doc_as(GetMyZipCode)
-async def get_my_zip_code_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_my_zip_code_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -289,18 +223,11 @@ async def get_my_zip_code_async(
     request = GetMyZipCode.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPrivateCustomAttributesInfo)
-def get_private_custom_attributes_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_private_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,12 +240,7 @@ def get_private_custom_attributes_info(
 
 
 @same_doc_as(GetPrivateCustomAttributesInfo)
-async def get_private_custom_attributes_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_private_custom_attributes_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,18 +249,11 @@ async def get_private_custom_attributes_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserProfileInfo)
-def get_user_profile_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_profile_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -351,12 +266,7 @@ def get_user_profile_info(
 
 
 @same_doc_as(GetUserProfileInfo)
-async def get_user_profile_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_profile_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -365,18 +275,11 @@ async def get_user_profile_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserProfileInfoByPublicId)
-def get_user_profile_info_by_public_id(
-    public_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_profile_info_by_public_id(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -389,12 +292,7 @@ def get_user_profile_info_by_public_id(
 
 
 @same_doc_as(GetUserProfileInfoByPublicId)
-async def get_user_profile_info_by_public_id_async(
-    public_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_profile_info_by_public_id_async(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -403,19 +301,11 @@ async def get_user_profile_info_by_public_id_async(
         public_id=public_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicCreateUserProfile)
-def public_create_user_profile(
-    user_id: str,
-    body: Optional[UserProfileCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_create_user_profile(user_id: str, body: Optional[UserProfileCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -429,13 +319,7 @@ def public_create_user_profile(
 
 
 @same_doc_as(PublicCreateUserProfile)
-async def public_create_user_profile_async(
-    user_id: str,
-    body: Optional[UserProfileCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_create_user_profile_async(user_id: str, body: Optional[UserProfileCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -445,18 +329,11 @@ async def public_create_user_profile_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetCustomAttributesInfo)
-def public_get_custom_attributes_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_custom_attributes_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -469,12 +346,7 @@ def public_get_custom_attributes_info(
 
 
 @same_doc_as(PublicGetCustomAttributesInfo)
-async def public_get_custom_attributes_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_custom_attributes_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -483,18 +355,11 @@ async def public_get_custom_attributes_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserProfileInfo)
-def public_get_user_profile_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_profile_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -507,12 +372,7 @@ def public_get_user_profile_info(
 
 
 @same_doc_as(PublicGetUserProfileInfo)
-async def public_get_user_profile_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_profile_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -521,18 +381,11 @@ async def public_get_user_profile_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserProfileInfoByPublicId)
-def public_get_user_profile_info_by_public_id(
-    public_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_profile_info_by_public_id(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -545,12 +398,7 @@ def public_get_user_profile_info_by_public_id(
 
 
 @same_doc_as(PublicGetUserProfileInfoByPublicId)
-async def public_get_user_profile_info_by_public_id_async(
-    public_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_profile_info_by_public_id_async(public_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -559,18 +407,11 @@ async def public_get_user_profile_info_by_public_id_async(
         public_id=public_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserProfilePublicInfo)
-def public_get_user_profile_public_info(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_profile_public_info(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -583,12 +424,7 @@ def public_get_user_profile_public_info(
 
 
 @same_doc_as(PublicGetUserProfilePublicInfo)
-async def public_get_user_profile_public_info_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_profile_public_info_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -597,18 +433,11 @@ async def public_get_user_profile_public_info_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserProfilePublicInfoByIds)
-def public_get_user_profile_public_info_by_ids(
-    user_ids: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_profile_public_info_by_ids(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -621,12 +450,7 @@ def public_get_user_profile_public_info_by_ids(
 
 
 @same_doc_as(PublicGetUserProfilePublicInfoByIds)
-async def public_get_user_profile_public_info_by_ids_async(
-    user_ids: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_profile_public_info_by_ids_async(user_ids: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -635,19 +459,11 @@ async def public_get_user_profile_public_info_by_ids_async(
         user_ids=user_ids,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicUpdateCustomAttributesPartially)
-def public_update_custom_attributes_partially(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -661,13 +477,7 @@ def public_update_custom_attributes_partially(
 
 
 @same_doc_as(PublicUpdateCustomAttributesPartially)
-async def public_update_custom_attributes_partially_async(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_update_custom_attributes_partially_async(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -677,19 +487,11 @@ async def public_update_custom_attributes_partially_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicUpdateUserProfile)
-def public_update_user_profile(
-    user_id: str,
-    body: Optional[UserProfileUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_update_user_profile(user_id: str, body: Optional[UserProfileUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -703,13 +505,7 @@ def public_update_user_profile(
 
 
 @same_doc_as(PublicUpdateUserProfile)
-async def public_update_user_profile_async(
-    user_id: str,
-    body: Optional[UserProfileUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_update_user_profile_async(user_id: str, body: Optional[UserProfileUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -719,19 +515,11 @@ async def public_update_user_profile_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicUpdateUserProfileStatus)
-def public_update_user_profile_status(
-    user_id: str,
-    body: Optional[UserProfileStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -745,13 +533,7 @@ def public_update_user_profile_status(
 
 
 @same_doc_as(PublicUpdateUserProfileStatus)
-async def public_update_user_profile_status_async(
-    user_id: str,
-    body: Optional[UserProfileStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_update_user_profile_status_async(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -761,19 +543,11 @@ async def public_update_user_profile_status_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateCustomAttributesPartially)
-def update_custom_attributes_partially(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -787,13 +561,7 @@ def update_custom_attributes_partially(
 
 
 @same_doc_as(UpdateCustomAttributesPartially)
-async def update_custom_attributes_partially_async(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_custom_attributes_partially_async(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -803,18 +571,11 @@ async def update_custom_attributes_partially_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMyProfile)
-def update_my_profile(
-    body: Optional[UserProfilePrivateUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_my_profile(body: Optional[UserProfilePrivateUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -827,12 +588,7 @@ def update_my_profile(
 
 
 @same_doc_as(UpdateMyProfile)
-async def update_my_profile_async(
-    body: Optional[UserProfilePrivateUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_my_profile_async(body: Optional[UserProfilePrivateUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -841,18 +597,11 @@ async def update_my_profile_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMyZipCode)
-def update_my_zip_code(
-    user_zip_code_update: UserZipCodeUpdate,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_my_zip_code(user_zip_code_update: UserZipCodeUpdate, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -865,12 +614,7 @@ def update_my_zip_code(
 
 
 @same_doc_as(UpdateMyZipCode)
-async def update_my_zip_code_async(
-    user_zip_code_update: UserZipCodeUpdate,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_my_zip_code_async(user_zip_code_update: UserZipCodeUpdate, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -879,19 +623,11 @@ async def update_my_zip_code_async(
         user_zip_code_update=user_zip_code_update,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePrivateCustomAttributesPartially)
-def update_private_custom_attributes_partially(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_private_custom_attributes_partially(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -905,13 +641,7 @@ def update_private_custom_attributes_partially(
 
 
 @same_doc_as(UpdatePrivateCustomAttributesPartially)
-async def update_private_custom_attributes_partially_async(
-    user_id: str,
-    body: Optional[Dict[str, Any]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_private_custom_attributes_partially_async(user_id: str, body: Optional[Dict[str, Any]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -921,19 +651,11 @@ async def update_private_custom_attributes_partially_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateUserProfile)
-def update_user_profile(
-    user_id: str,
-    body: Optional[UserProfileAdmin] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_user_profile(user_id: str, body: Optional[UserProfileAdmin] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -947,13 +669,7 @@ def update_user_profile(
 
 
 @same_doc_as(UpdateUserProfile)
-async def update_user_profile_async(
-    user_id: str,
-    body: Optional[UserProfileAdmin] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_user_profile_async(user_id: str, body: Optional[UserProfileAdmin] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -963,19 +679,11 @@ async def update_user_profile_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateUserProfileStatus)
-def update_user_profile_status(
-    user_id: str,
-    body: Optional[UserProfileStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_user_profile_status(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -989,13 +697,7 @@ def update_user_profile_status(
 
 
 @same_doc_as(UpdateUserProfileStatus)
-async def update_user_profile_status_async(
-    user_id: str,
-    body: Optional[UserProfileStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_user_profile_status_async(user_id: str, body: Optional[UserProfileStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1005,6 +707,4 @@ async def update_user_profile_status_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

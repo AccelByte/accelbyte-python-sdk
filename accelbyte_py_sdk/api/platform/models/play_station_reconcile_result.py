@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -52,11 +52,11 @@ class PlayStationReconcileResult(Model):
 
     # region fields
 
-    item_id: str  # OPTIONAL
-    psn_item_id: str  # OPTIONAL
-    sku: str  # OPTIONAL
-    status: Union[str, StatusEnum]  # OPTIONAL
-    transaction_id: str  # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    psn_item_id: str                                                                               # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    status: Union[str, StatusEnum]                                                                 # OPTIONAL
+    transaction_id: str                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -137,9 +137,7 @@ class PlayStationReconcileResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PlayStationReconcileResult:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlayStationReconcileResult:
         instance = cls()
         if not dict_:
             return instance
@@ -166,33 +164,15 @@ class PlayStationReconcileResult(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, PlayStationReconcileResult]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PlayStationReconcileResult]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[PlayStationReconcileResult]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PlayStationReconcileResult]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        PlayStationReconcileResult,
-        List[PlayStationReconcileResult],
-        Dict[Any, PlayStationReconcileResult],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PlayStationReconcileResult, List[PlayStationReconcileResult], Dict[Any, PlayStationReconcileResult]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

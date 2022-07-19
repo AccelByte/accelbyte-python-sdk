@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,9 +84,9 @@ class AdminListUsersV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    limit: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
 
     # endregion fields
 
@@ -189,12 +189,7 @@ class AdminListUsersV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, AccountcommonListUsersWithPlatformAccountsResponse],
-        Union[None, HttpResponse, RestErrorResponse],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, AccountcommonListUsersWithPlatformAccountsResponse], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         200: OK - AccountcommonListUsersWithPlatformAccountsResponse (Operation succeeded)
@@ -213,20 +208,13 @@ class AdminListUsersV3(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return (
-                AccountcommonListUsersWithPlatformAccountsResponse.create_from_dict(
-                    content
-                ),
-                None,
-            )
+            return AccountcommonListUsersWithPlatformAccountsResponse.create_from_dict(content), None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
@@ -236,9 +224,7 @@ class AdminListUsersV3(Operation):
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -260,9 +246,7 @@ class AdminListUsersV3(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AdminListUsersV3:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminListUsersV3:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

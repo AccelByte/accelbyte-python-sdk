@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -93,33 +93,33 @@ class ModelUserResponse(Model):
 
     # region fields
 
-    auth_type: str  # REQUIRED
-    bans: List[ModelUserActiveBanResponse]  # REQUIRED
-    country: str  # REQUIRED
-    created_at: str  # REQUIRED
-    date_of_birth: str  # REQUIRED
-    deletion_status: bool  # REQUIRED
-    display_name: str  # REQUIRED
-    email_verified: bool  # REQUIRED
-    enabled: bool  # REQUIRED
-    last_date_of_birth_changed_time: str  # REQUIRED
-    last_enabled_changed_time: str  # REQUIRED
-    login_id: str  # REQUIRED
-    namespace: str  # REQUIRED
-    namespace_roles: List[AccountcommonNamespaceRole]  # REQUIRED
-    old_email_address: str  # REQUIRED
-    permissions: List[AccountcommonPermission]  # REQUIRED
-    phone_verified: bool  # REQUIRED
-    roles: List[str]  # REQUIRED
-    user_id: str  # REQUIRED
-    avatar_url: str  # OPTIONAL
-    email_address: str  # OPTIONAL
-    new_email_address: str  # OPTIONAL
-    phone_number: str  # OPTIONAL
-    platform_id: str  # OPTIONAL
-    platform_user_id: str  # OPTIONAL
-    username: str  # OPTIONAL
-    xuid: str  # OPTIONAL
+    auth_type: str                                                                                 # REQUIRED
+    bans: List[ModelUserActiveBanResponse]                                                         # REQUIRED
+    country: str                                                                                   # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    date_of_birth: str                                                                             # REQUIRED
+    deletion_status: bool                                                                          # REQUIRED
+    display_name: str                                                                              # REQUIRED
+    email_verified: bool                                                                           # REQUIRED
+    enabled: bool                                                                                  # REQUIRED
+    last_date_of_birth_changed_time: str                                                           # REQUIRED
+    last_enabled_changed_time: str                                                                 # REQUIRED
+    login_id: str                                                                                  # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    namespace_roles: List[AccountcommonNamespaceRole]                                              # REQUIRED
+    old_email_address: str                                                                         # REQUIRED
+    permissions: List[AccountcommonPermission]                                                     # REQUIRED
+    phone_verified: bool                                                                           # REQUIRED
+    roles: List[str]                                                                               # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    avatar_url: str                                                                                # OPTIONAL
+    email_address: str                                                                             # OPTIONAL
+    new_email_address: str                                                                         # OPTIONAL
+    phone_number: str                                                                              # OPTIONAL
+    platform_id: str                                                                               # OPTIONAL
+    platform_user_id: str                                                                          # OPTIONAL
+    username: str                                                                                  # OPTIONAL
+    xuid: str                                                                                      # OPTIONAL
 
     # endregion fields
 
@@ -177,9 +177,7 @@ class ModelUserResponse(Model):
         self.namespace = value
         return self
 
-    def with_namespace_roles(
-        self, value: List[AccountcommonNamespaceRole]
-    ) -> ModelUserResponse:
+    def with_namespace_roles(self, value: List[AccountcommonNamespaceRole]) -> ModelUserResponse:
         self.namespace_roles = value
         return self
 
@@ -187,9 +185,7 @@ class ModelUserResponse(Model):
         self.old_email_address = value
         return self
 
-    def with_permissions(
-        self, value: List[AccountcommonPermission]
-    ) -> ModelUserResponse:
+    def with_permissions(self, value: List[AccountcommonPermission]) -> ModelUserResponse:
         self.permissions = value
         return self
 
@@ -248,9 +244,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             result["AuthType"] = ""
         if hasattr(self, "bans"):
-            result["Bans"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.bans
-            ]
+            result["Bans"] = [i0.to_dict(include_empty=include_empty) for i0 in self.bans]
         elif include_empty:
             result["Bans"] = []
         if hasattr(self, "country"):
@@ -282,9 +276,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             result["Enabled"] = False
         if hasattr(self, "last_date_of_birth_changed_time"):
-            result["LastDateOfBirthChangedTime"] = str(
-                self.last_date_of_birth_changed_time
-            )
+            result["LastDateOfBirthChangedTime"] = str(self.last_date_of_birth_changed_time)
         elif include_empty:
             result["LastDateOfBirthChangedTime"] = ""
         if hasattr(self, "last_enabled_changed_time"):
@@ -300,9 +292,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             result["Namespace"] = ""
         if hasattr(self, "namespace_roles"):
-            result["NamespaceRoles"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles
-            ]
+            result["NamespaceRoles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.namespace_roles]
         elif include_empty:
             result["NamespaceRoles"] = []
         if hasattr(self, "old_email_address"):
@@ -310,9 +300,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             result["OldEmailAddress"] = ""
         if hasattr(self, "permissions"):
-            result["Permissions"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
-            ]
+            result["Permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["Permissions"] = []
         if hasattr(self, "phone_verified"):
@@ -435,9 +423,7 @@ class ModelUserResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelUserResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -446,12 +432,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             instance.auth_type = ""
         if "Bans" in dict_ and dict_["Bans"] is not None:
-            instance.bans = [
-                ModelUserActiveBanResponse.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["Bans"]
-            ]
+            instance.bans = [ModelUserActiveBanResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Bans"]]
         elif include_empty:
             instance.bans = []
         if "Country" in dict_ and dict_["Country"] is not None:
@@ -482,19 +463,11 @@ class ModelUserResponse(Model):
             instance.enabled = bool(dict_["Enabled"])
         elif include_empty:
             instance.enabled = False
-        if (
-            "LastDateOfBirthChangedTime" in dict_
-            and dict_["LastDateOfBirthChangedTime"] is not None
-        ):
-            instance.last_date_of_birth_changed_time = str(
-                dict_["LastDateOfBirthChangedTime"]
-            )
+        if "LastDateOfBirthChangedTime" in dict_ and dict_["LastDateOfBirthChangedTime"] is not None:
+            instance.last_date_of_birth_changed_time = str(dict_["LastDateOfBirthChangedTime"])
         elif include_empty:
             instance.last_date_of_birth_changed_time = ""
-        if (
-            "LastEnabledChangedTime" in dict_
-            and dict_["LastEnabledChangedTime"] is not None
-        ):
+        if "LastEnabledChangedTime" in dict_ and dict_["LastEnabledChangedTime"] is not None:
             instance.last_enabled_changed_time = str(dict_["LastEnabledChangedTime"])
         elif include_empty:
             instance.last_enabled_changed_time = ""
@@ -507,12 +480,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             instance.namespace = ""
         if "NamespaceRoles" in dict_ and dict_["NamespaceRoles"] is not None:
-            instance.namespace_roles = [
-                AccountcommonNamespaceRole.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["NamespaceRoles"]
-            ]
+            instance.namespace_roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["NamespaceRoles"]]
         elif include_empty:
             instance.namespace_roles = []
         if "OldEmailAddress" in dict_ and dict_["OldEmailAddress"] is not None:
@@ -520,12 +488,7 @@ class ModelUserResponse(Model):
         elif include_empty:
             instance.old_email_address = ""
         if "Permissions" in dict_ and dict_["Permissions"] is not None:
-            instance.permissions = [
-                AccountcommonPermission.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["Permissions"]
-            ]
+            instance.permissions = [AccountcommonPermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Permissions"]]
         elif include_empty:
             instance.permissions = []
         if "PhoneVerified" in dict_ and dict_["PhoneVerified"] is not None:
@@ -575,31 +538,15 @@ class ModelUserResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelUserResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelUserResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelUserResponse, List[ModelUserResponse], Dict[Any, ModelUserResponse]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserResponse, List[ModelUserResponse], Dict[Any, ModelUserResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

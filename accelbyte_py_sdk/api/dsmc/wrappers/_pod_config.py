@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,13 +43,7 @@ from ..operations.pod_config import UpdatePodConfig
 
 
 @same_doc_as(CreatePodConfig)
-def create_pod_config(
-    body: ModelsCreatePodConfigRequest,
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_pod_config(body: ModelsCreatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,13 +57,7 @@ def create_pod_config(
 
 
 @same_doc_as(CreatePodConfig)
-async def create_pod_config_async(
-    body: ModelsCreatePodConfigRequest,
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_pod_config_async(body: ModelsCreatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,18 +67,11 @@ async def create_pod_config_async(
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeletePodConfig)
-def delete_pod_config(
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -103,12 +84,7 @@ def delete_pod_config(
 
 
 @same_doc_as(DeletePodConfig)
-async def delete_pod_config_async(
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_pod_config_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,19 +93,11 @@ async def delete_pod_config_async(
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllPodConfig)
-def get_all_pod_config(
-    count: int,
-    offset: int,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_pod_config(count: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,13 +111,7 @@ def get_all_pod_config(
 
 
 @same_doc_as(GetAllPodConfig)
-async def get_all_pod_config_async(
-    count: int,
-    offset: int,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_pod_config_async(count: int, offset: int, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,18 +121,11 @@ async def get_all_pod_config_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPodConfig)
-def get_pod_config(
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_pod_config(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,12 +138,7 @@ def get_pod_config(
 
 
 @same_doc_as(GetPodConfig)
-async def get_pod_config_async(
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_pod_config_async(name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -197,19 +147,11 @@ async def get_pod_config_async(
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePodConfig)
-def update_pod_config(
-    body: ModelsUpdatePodConfigRequest,
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_pod_config(body: ModelsUpdatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -223,13 +165,7 @@ def update_pod_config(
 
 
 @same_doc_as(UpdatePodConfig)
-async def update_pod_config_async(
-    body: ModelsUpdatePodConfigRequest,
-    name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_pod_config_async(body: ModelsUpdatePodConfigRequest, name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,6 +175,4 @@ async def update_pod_config_async(
         name=name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

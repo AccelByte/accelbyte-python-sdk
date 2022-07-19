@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -41,10 +41,7 @@ from ..models import RestErrorResponse
 from ..operations.o_auth2_0 import AdminRetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import AuthCodeRequestV3
 from ..operations.o_auth2_0 import AuthorizeV3
-from ..operations.o_auth2_0 import (
-    AuthorizeV3CodeChallengeMethodEnum,
-    AuthorizeV3ResponseTypeEnum,
-)
+from ..operations.o_auth2_0 import AuthorizeV3CodeChallengeMethodEnum, AuthorizeV3ResponseTypeEnum
 from ..operations.o_auth2_0 import Change2faMethod
 from ..operations.o_auth2_0 import GetJWKSV3
 from ..operations.o_auth2_0 import GetRevocationListV3
@@ -59,13 +56,7 @@ from ..operations.o_auth2_0 import Verify2faCode
 
 
 @same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
-def admin_retrieve_user_third_party_platform_token_v3(
-    platform_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_retrieve_user_third_party_platform_token_v3(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,13 +70,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
 
 
 @same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
-async def admin_retrieve_user_third_party_platform_token_v3_async(
-    platform_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_retrieve_user_third_party_platform_token_v3_async(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,20 +80,11 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AuthCodeRequestV3)
-def auth_code_request_v3(
-    platform_id: str,
-    request_id: str,
-    client_id: Optional[str] = None,
-    redirect_uri: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def auth_code_request_v3(platform_id: str, request_id: str, client_id: Optional[str] = None, redirect_uri: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthCodeRequestV3.create(
         platform_id=platform_id,
         request_id=request_id,
@@ -119,41 +95,18 @@ def auth_code_request_v3(
 
 
 @same_doc_as(AuthCodeRequestV3)
-async def auth_code_request_v3_async(
-    platform_id: str,
-    request_id: str,
-    client_id: Optional[str] = None,
-    redirect_uri: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def auth_code_request_v3_async(platform_id: str, request_id: str, client_id: Optional[str] = None, redirect_uri: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthCodeRequestV3.create(
         platform_id=platform_id,
         request_id=request_id,
         client_id=client_id,
         redirect_uri=redirect_uri,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AuthorizeV3)
-def authorize_v3(
-    client_id: str,
-    response_type: Union[str, AuthorizeV3ResponseTypeEnum],
-    code_challenge: Optional[str] = None,
-    code_challenge_method: Optional[
-        Union[str, AuthorizeV3CodeChallengeMethodEnum]
-    ] = None,
-    create_headless: Optional[bool] = None,
-    redirect_uri: Optional[str] = None,
-    scope: Optional[str] = None,
-    state: Optional[str] = None,
-    target_auth_page: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def authorize_v3(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, create_headless: Optional[bool] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
@@ -169,21 +122,7 @@ def authorize_v3(
 
 
 @same_doc_as(AuthorizeV3)
-async def authorize_v3_async(
-    client_id: str,
-    response_type: Union[str, AuthorizeV3ResponseTypeEnum],
-    code_challenge: Optional[str] = None,
-    code_challenge_method: Optional[
-        Union[str, AuthorizeV3CodeChallengeMethodEnum]
-    ] = None,
-    create_headless: Optional[bool] = None,
-    redirect_uri: Optional[str] = None,
-    scope: Optional[str] = None,
-    state: Optional[str] = None,
-    target_auth_page: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def authorize_v3_async(client_id: str, response_type: Union[str, AuthorizeV3ResponseTypeEnum], code_challenge: Optional[str] = None, code_challenge_method: Optional[Union[str, AuthorizeV3CodeChallengeMethodEnum]] = None, create_headless: Optional[bool] = None, redirect_uri: Optional[str] = None, scope: Optional[str] = None, state: Optional[str] = None, target_auth_page: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
@@ -195,18 +134,11 @@ async def authorize_v3_async(
         state=state,
         target_auth_page=target_auth_page,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Change2faMethod)
-def change2fa_method(
-    factor: str,
-    mfa_token: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def change2fa_method(factor: str, mfa_token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Change2faMethod.create(
         factor=factor,
         mfa_token=mfa_token,
@@ -215,19 +147,12 @@ def change2fa_method(
 
 
 @same_doc_as(Change2faMethod)
-async def change2fa_method_async(
-    factor: str,
-    mfa_token: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def change2fa_method_async(factor: str, mfa_token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Change2faMethod.create(
         factor=factor,
         mfa_token=mfa_token,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetJWKSV3)
@@ -237,43 +162,25 @@ def get_jwksv3(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
 
 
 @same_doc_as(GetJWKSV3)
-async def get_jwksv3_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_jwksv3_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetJWKSV3.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetRevocationListV3)
-def get_revocation_list_v3(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def get_revocation_list_v3(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRevocationListV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetRevocationListV3)
-async def get_revocation_list_v3_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_revocation_list_v3_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetRevocationListV3.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PlatformTokenGrantV3)
-def platform_token_grant_v3(
-    platform_id: str,
-    client_id: Optional[str] = None,
-    create_headless: Optional[bool] = None,
-    device_id: Optional[str] = None,
-    platform_token: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def platform_token_grant_v3(platform_id: str, client_id: Optional[str] = None, create_headless: Optional[bool] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
         client_id=client_id,
@@ -285,15 +192,7 @@ def platform_token_grant_v3(
 
 
 @same_doc_as(PlatformTokenGrantV3)
-async def platform_token_grant_v3_async(
-    platform_id: str,
-    client_id: Optional[str] = None,
-    create_headless: Optional[bool] = None,
-    device_id: Optional[str] = None,
-    platform_token: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def platform_token_grant_v3_async(platform_id: str, client_id: Optional[str] = None, create_headless: Optional[bool] = None, device_id: Optional[str] = None, platform_token: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformTokenGrantV3.create(
         platform_id=platform_id,
         client_id=client_id,
@@ -301,19 +200,11 @@ async def platform_token_grant_v3_async(
         device_id=device_id,
         platform_token=platform_token,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveUserThirdPartyPlatformTokenV3)
-def retrieve_user_third_party_platform_token_v3(
-    platform_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def retrieve_user_third_party_platform_token_v3(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,13 +218,7 @@ def retrieve_user_third_party_platform_token_v3(
 
 
 @same_doc_as(RetrieveUserThirdPartyPlatformTokenV3)
-async def retrieve_user_third_party_platform_token_v3_async(
-    platform_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def retrieve_user_third_party_platform_token_v3_async(platform_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -343,18 +228,11 @@ async def retrieve_user_third_party_platform_token_v3_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RevokeUserV3)
-def revoke_user_v3(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def revoke_user_v3(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -367,12 +245,7 @@ def revoke_user_v3(
 
 
 @same_doc_as(RevokeUserV3)
-async def revoke_user_v3_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def revoke_user_v3_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,26 +254,11 @@ async def revoke_user_v3_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(TokenGrantV3)
-def token_grant_v3(
-    grant_type: Union[str, TokenGrantV3GrantTypeEnum],
-    client_id: Optional[str] = None,
-    code: Optional[str] = None,
-    code_verifier: Optional[str] = None,
-    device_id: Optional[Union[str, HeaderStr]] = None,
-    extend_exp: Optional[bool] = None,
-    password: Optional[str] = None,
-    redirect_uri: Optional[str] = None,
-    refresh_token: Optional[str] = None,
-    username: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def token_grant_v3(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
@@ -417,20 +275,7 @@ def token_grant_v3(
 
 
 @same_doc_as(TokenGrantV3)
-async def token_grant_v3_async(
-    grant_type: Union[str, TokenGrantV3GrantTypeEnum],
-    client_id: Optional[str] = None,
-    code: Optional[str] = None,
-    code_verifier: Optional[str] = None,
-    device_id: Optional[Union[str, HeaderStr]] = None,
-    extend_exp: Optional[bool] = None,
-    password: Optional[str] = None,
-    redirect_uri: Optional[str] = None,
-    refresh_token: Optional[str] = None,
-    username: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def token_grant_v3_async(grant_type: Union[str, TokenGrantV3GrantTypeEnum], client_id: Optional[str] = None, code: Optional[str] = None, code_verifier: Optional[str] = None, device_id: Optional[Union[str, HeaderStr]] = None, extend_exp: Optional[bool] = None, password: Optional[str] = None, redirect_uri: Optional[str] = None, refresh_token: Optional[str] = None, username: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenGrantV3.create(
         grant_type=grant_type,
         client_id=client_id,
@@ -443,15 +288,11 @@ async def token_grant_v3_async(
         refresh_token=refresh_token,
         username=username,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(TokenIntrospectionV3)
-def token_introspection_v3(
-    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def token_introspection_v3(token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenIntrospectionV3.create(
         token=token,
     )
@@ -459,21 +300,15 @@ def token_introspection_v3(
 
 
 @same_doc_as(TokenIntrospectionV3)
-async def token_introspection_v3_async(
-    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def token_introspection_v3_async(token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenIntrospectionV3.create(
         token=token,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(TokenRevocationV3)
-def token_revocation_v3(
-    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def token_revocation_v3(token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenRevocationV3.create(
         token=token,
     )
@@ -481,26 +316,15 @@ def token_revocation_v3(
 
 
 @same_doc_as(TokenRevocationV3)
-async def token_revocation_v3_async(
-    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def token_revocation_v3_async(token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = TokenRevocationV3.create(
         token=token,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Verify2faCode)
-def verify2fa_code(
-    code: str,
-    factor: str,
-    mfa_token: str,
-    remember_device: bool,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def verify2fa_code(code: str, factor: str, mfa_token: str, remember_device: bool, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Verify2faCode.create(
         code=code,
         factor=factor,
@@ -511,20 +335,11 @@ def verify2fa_code(
 
 
 @same_doc_as(Verify2faCode)
-async def verify2fa_code_async(
-    code: str,
-    factor: str,
-    mfa_token: str,
-    remember_device: bool,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def verify2fa_code_async(code: str, factor: str, mfa_token: str, remember_device: bool, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Verify2faCode.create(
         code=code,
         factor=factor,
         mfa_token=mfa_token,
         remember_device=remember_device,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

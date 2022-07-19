@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -144,45 +144,45 @@ class TradeNotification(Model):
 
     # region fields
 
-    currency: CurrencySummary  # REQUIRED
-    ext_order_no: str  # REQUIRED
-    issued_at: str  # REQUIRED
-    namespace: str  # REQUIRED
-    nonce_str: str  # REQUIRED
-    payment_order_no: str  # REQUIRED
-    payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED
-    price: int  # REQUIRED
-    sandbox: bool  # REQUIRED
-    status: Union[str, StatusEnum]  # REQUIRED
-    type_: str  # REQUIRED
-    additional_data: AdditionalData  # OPTIONAL
-    authorised_time: str  # OPTIONAL
-    chargeback_reversed_time: str  # OPTIONAL
-    chargeback_time: str  # OPTIONAL
-    charged_time: str  # OPTIONAL
-    created_time: str  # OPTIONAL
-    custom_parameters: Dict[str, Any]  # OPTIONAL
-    ext_tx_id: str  # OPTIONAL
-    ext_user_id: str  # OPTIONAL
-    metadata: Dict[str, str]  # OPTIONAL
-    payment_method: str  # OPTIONAL
-    payment_method_fee: int  # OPTIONAL
-    payment_provider_fee: int  # OPTIONAL
-    payment_station_url: str  # OPTIONAL
-    refunded_time: str  # OPTIONAL
-    sales_tax: int  # OPTIONAL
-    sku: str  # OPTIONAL
-    status_reason: str  # OPTIONAL
-    subscription_id: str  # OPTIONAL
-    subtotal_price: int  # OPTIONAL
-    target_namespace: str  # OPTIONAL
-    target_user_id: str  # OPTIONAL
-    tax: int  # OPTIONAL
-    total_price: int  # OPTIONAL
-    total_tax: int  # OPTIONAL
-    tx_end_time: str  # OPTIONAL
-    user_id: str  # OPTIONAL
-    vat: int  # OPTIONAL
+    currency: CurrencySummary                                                                      # REQUIRED
+    ext_order_no: str                                                                              # REQUIRED
+    issued_at: str                                                                                 # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    nonce_str: str                                                                                 # REQUIRED
+    payment_order_no: str                                                                          # REQUIRED
+    payment_provider: Union[str, PaymentProviderEnum]                                              # REQUIRED
+    price: int                                                                                     # REQUIRED
+    sandbox: bool                                                                                  # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: str                                                                                     # REQUIRED
+    additional_data: AdditionalData                                                                # OPTIONAL
+    authorised_time: str                                                                           # OPTIONAL
+    chargeback_reversed_time: str                                                                  # OPTIONAL
+    chargeback_time: str                                                                           # OPTIONAL
+    charged_time: str                                                                              # OPTIONAL
+    created_time: str                                                                              # OPTIONAL
+    custom_parameters: Dict[str, Any]                                                              # OPTIONAL
+    ext_tx_id: str                                                                                 # OPTIONAL
+    ext_user_id: str                                                                               # OPTIONAL
+    metadata: Dict[str, str]                                                                       # OPTIONAL
+    payment_method: str                                                                            # OPTIONAL
+    payment_method_fee: int                                                                        # OPTIONAL
+    payment_provider_fee: int                                                                      # OPTIONAL
+    payment_station_url: str                                                                       # OPTIONAL
+    refunded_time: str                                                                             # OPTIONAL
+    sales_tax: int                                                                                 # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    subscription_id: str                                                                           # OPTIONAL
+    subtotal_price: int                                                                            # OPTIONAL
+    target_namespace: str                                                                          # OPTIONAL
+    target_user_id: str                                                                            # OPTIONAL
+    tax: int                                                                                       # OPTIONAL
+    total_price: int                                                                               # OPTIONAL
+    total_tax: int                                                                                 # OPTIONAL
+    tx_end_time: str                                                                               # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
+    vat: int                                                                                       # OPTIONAL
 
     # endregion fields
 
@@ -212,9 +212,7 @@ class TradeNotification(Model):
         self.payment_order_no = value
         return self
 
-    def with_payment_provider(
-        self, value: Union[str, PaymentProviderEnum]
-    ) -> TradeNotification:
+    def with_payment_provider(self, value: Union[str, PaymentProviderEnum]) -> TradeNotification:
         self.payment_provider = value
         return self
 
@@ -397,9 +395,7 @@ class TradeNotification(Model):
         elif include_empty:
             result["type"] = ""
         if hasattr(self, "additional_data"):
-            result["additionalData"] = self.additional_data.to_dict(
-                include_empty=include_empty
-            )
+            result["additionalData"] = self.additional_data.to_dict(include_empty=include_empty)
         elif include_empty:
             result["additionalData"] = AdditionalData()
         if hasattr(self, "authorised_time"):
@@ -423,9 +419,7 @@ class TradeNotification(Model):
         elif include_empty:
             result["createdTime"] = ""
         if hasattr(self, "custom_parameters"):
-            result["customParameters"] = {
-                str(k0): v0 for k0, v0 in self.custom_parameters.items()
-            }
+            result["customParameters"] = {str(k0): v0 for k0, v0 in self.custom_parameters.items()}
         elif include_empty:
             result["customParameters"] = {}
         if hasattr(self, "ext_tx_id"):
@@ -632,16 +626,12 @@ class TradeNotification(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> TradeNotification:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> TradeNotification:
         instance = cls()
         if not dict_:
             return instance
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(
-                dict_["currency"], include_empty=include_empty
-            )
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
             instance.currency = CurrencySummary()
         if "extOrderNo" in dict_ and dict_["extOrderNo"] is not None:
@@ -685,19 +675,14 @@ class TradeNotification(Model):
         elif include_empty:
             instance.type_ = ""
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
-            instance.additional_data = AdditionalData.create_from_dict(
-                dict_["additionalData"], include_empty=include_empty
-            )
+            instance.additional_data = AdditionalData.create_from_dict(dict_["additionalData"], include_empty=include_empty)
         elif include_empty:
             instance.additional_data = AdditionalData()
         if "authorisedTime" in dict_ and dict_["authorisedTime"] is not None:
             instance.authorised_time = str(dict_["authorisedTime"])
         elif include_empty:
             instance.authorised_time = ""
-        if (
-            "chargebackReversedTime" in dict_
-            and dict_["chargebackReversedTime"] is not None
-        ):
+        if "chargebackReversedTime" in dict_ and dict_["chargebackReversedTime"] is not None:
             instance.chargeback_reversed_time = str(dict_["chargebackReversedTime"])
         elif include_empty:
             instance.chargeback_reversed_time = ""
@@ -714,9 +699,7 @@ class TradeNotification(Model):
         elif include_empty:
             instance.created_time = ""
         if "customParameters" in dict_ and dict_["customParameters"] is not None:
-            instance.custom_parameters = {
-                str(k0): v0 for k0, v0 in dict_["customParameters"].items()
-            }
+            instance.custom_parameters = {str(k0): v0 for k0, v0 in dict_["customParameters"].items()}
         elif include_empty:
             instance.custom_parameters = {}
         if "extTxId" in dict_ and dict_["extTxId"] is not None:
@@ -728,9 +711,7 @@ class TradeNotification(Model):
         elif include_empty:
             instance.ext_user_id = ""
         if "metadata" in dict_ and dict_["metadata"] is not None:
-            instance.metadata = {
-                str(k0): str(v0) for k0, v0 in dict_["metadata"].items()
-            }
+            instance.metadata = {str(k0): str(v0) for k0, v0 in dict_["metadata"].items()}
         elif include_empty:
             instance.metadata = {}
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
@@ -808,31 +789,15 @@ class TradeNotification(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, TradeNotification]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, TradeNotification]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[TradeNotification]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[TradeNotification]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        TradeNotification, List[TradeNotification], Dict[Any, TradeNotification]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[TradeNotification, List[TradeNotification], Dict[Any, TradeNotification]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -934,31 +899,8 @@ class TradeNotification(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "paymentProvider": [
-                "ADYEN",
-                "ALIPAY",
-                "CHECKOUT",
-                "PAYPAL",
-                "STRIPE",
-                "WALLET",
-                "WXPAY",
-                "XSOLLA",
-            ],
-            "status": [
-                "AUTHORISED",
-                "AUTHORISE_FAILED",
-                "CHARGEBACK",
-                "CHARGEBACK_REVERSED",
-                "CHARGED",
-                "CHARGE_FAILED",
-                "DELETED",
-                "INIT",
-                "NOTIFICATION_OF_CHARGEBACK",
-                "REFUNDED",
-                "REFUNDING",
-                "REFUND_FAILED",
-                "REQUEST_FOR_INFORMATION",
-            ],
+            "paymentProvider": ["ADYEN", "ALIPAY", "CHECKOUT", "PAYPAL", "STRIPE", "WALLET", "WXPAY", "XSOLLA"],
+            "status": ["AUTHORISED", "AUTHORISE_FAILED", "CHARGEBACK", "CHARGEBACK_REVERSED", "CHARGED", "CHARGE_FAILED", "DELETED", "INIT", "NOTIFICATION_OF_CHARGEBACK", "REFUNDED", "REFUNDING", "REFUND_FAILED", "REQUEST_FOR_INFORMATION"],
         }
 
     # endregion static methods

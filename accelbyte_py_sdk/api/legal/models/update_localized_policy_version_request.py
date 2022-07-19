@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,31 +45,25 @@ class UpdateLocalizedPolicyVersionRequest(Model):
 
     # region fields
 
-    attachment_checksum: str  # OPTIONAL
-    attachment_location: str  # OPTIONAL
-    attachment_version_identifier: str  # OPTIONAL
-    content_type: str  # OPTIONAL
-    description: str  # OPTIONAL
+    attachment_checksum: str                                                                       # OPTIONAL
+    attachment_location: str                                                                       # OPTIONAL
+    attachment_version_identifier: str                                                             # OPTIONAL
+    content_type: str                                                                              # OPTIONAL
+    description: str                                                                               # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_attachment_checksum(
-        self, value: str
-    ) -> UpdateLocalizedPolicyVersionRequest:
+    def with_attachment_checksum(self, value: str) -> UpdateLocalizedPolicyVersionRequest:
         self.attachment_checksum = value
         return self
 
-    def with_attachment_location(
-        self, value: str
-    ) -> UpdateLocalizedPolicyVersionRequest:
+    def with_attachment_location(self, value: str) -> UpdateLocalizedPolicyVersionRequest:
         self.attachment_location = value
         return self
 
-    def with_attachment_version_identifier(
-        self, value: str
-    ) -> UpdateLocalizedPolicyVersionRequest:
+    def with_attachment_version_identifier(self, value: str) -> UpdateLocalizedPolicyVersionRequest:
         self.attachment_version_identifier = value
         return self
 
@@ -96,9 +90,7 @@ class UpdateLocalizedPolicyVersionRequest(Model):
         elif include_empty:
             result["attachmentLocation"] = ""
         if hasattr(self, "attachment_version_identifier"):
-            result["attachmentVersionIdentifier"] = str(
-                self.attachment_version_identifier
-            )
+            result["attachmentVersionIdentifier"] = str(self.attachment_version_identifier)
         elif include_empty:
             result["attachmentVersionIdentifier"] = ""
         if hasattr(self, "content_type"):
@@ -138,9 +130,7 @@ class UpdateLocalizedPolicyVersionRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> UpdateLocalizedPolicyVersionRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateLocalizedPolicyVersionRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -152,13 +142,8 @@ class UpdateLocalizedPolicyVersionRequest(Model):
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
             instance.attachment_location = ""
-        if (
-            "attachmentVersionIdentifier" in dict_
-            and dict_["attachmentVersionIdentifier"] is not None
-        ):
-            instance.attachment_version_identifier = str(
-                dict_["attachmentVersionIdentifier"]
-            )
+        if "attachmentVersionIdentifier" in dict_ and dict_["attachmentVersionIdentifier"] is not None:
+            instance.attachment_version_identifier = str(dict_["attachmentVersionIdentifier"])
         elif include_empty:
             instance.attachment_version_identifier = ""
         if "contentType" in dict_ and dict_["contentType"] is not None:
@@ -172,33 +157,15 @@ class UpdateLocalizedPolicyVersionRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, UpdateLocalizedPolicyVersionRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, UpdateLocalizedPolicyVersionRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[UpdateLocalizedPolicyVersionRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[UpdateLocalizedPolicyVersionRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        UpdateLocalizedPolicyVersionRequest,
-        List[UpdateLocalizedPolicyVersionRequest],
-        Dict[Any, UpdateLocalizedPolicyVersionRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[UpdateLocalizedPolicyVersionRequest, List[UpdateLocalizedPolicyVersionRequest], Dict[Any, UpdateLocalizedPolicyVersionRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

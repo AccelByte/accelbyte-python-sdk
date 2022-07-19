@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -105,10 +105,10 @@ class PlatformTokenRequestHandler(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    device_id: str  # OPTIONAL in [form_data]
-    platform_token: str  # OPTIONAL in [form_data]
-    namespace: str  # REQUIRED in [path]
-    platform_id: str  # REQUIRED in [path]
+    device_id: str                                                                                 # OPTIONAL in [form_data]
+    platform_token: str                                                                            # OPTIONAL in [form_data]
+    namespace: str                                                                                 # REQUIRED in [path]
+    platform_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
 
@@ -221,12 +221,7 @@ class PlatformTokenRequestHandler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, OauthmodelTokenResponse],
-        Union[None, HttpResponse, OauthmodelErrorResponse],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, OauthmodelTokenResponse], Union[None, HttpResponse, OauthmodelErrorResponse]]:
         """Parse the given response.
 
         200: OK - OauthmodelTokenResponse (Access Token returned)
@@ -241,9 +236,7 @@ class PlatformTokenRequestHandler(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -255,9 +248,7 @@ class PlatformTokenRequestHandler(Operation):
         if code == 401:
             return None, OauthmodelErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -281,9 +272,7 @@ class PlatformTokenRequestHandler(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PlatformTokenRequestHandler:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformTokenRequestHandler:
         instance = cls()
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])

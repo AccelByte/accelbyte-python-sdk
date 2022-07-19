@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,9 +41,9 @@ class SteamIAPConfigInfo(Model):
 
     # region fields
 
-    namespace: str  # REQUIRED
-    publisher_authentication_key: str  # REQUIRED
-    app_id: str  # OPTIONAL
+    namespace: str                                                                                 # REQUIRED
+    publisher_authentication_key: str                                                              # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -72,9 +72,7 @@ class SteamIAPConfigInfo(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "publisher_authentication_key"):
-            result["publisherAuthenticationKey"] = str(
-                self.publisher_authentication_key
-            )
+            result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
             result["publisherAuthenticationKey"] = ""
         if hasattr(self, "app_id"):
@@ -102,9 +100,7 @@ class SteamIAPConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> SteamIAPConfigInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SteamIAPConfigInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -112,13 +108,8 @@ class SteamIAPConfigInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if (
-            "publisherAuthenticationKey" in dict_
-            and dict_["publisherAuthenticationKey"] is not None
-        ):
-            instance.publisher_authentication_key = str(
-                dict_["publisherAuthenticationKey"]
-            )
+        if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
+            instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
             instance.publisher_authentication_key = ""
         if "appId" in dict_ and dict_["appId"] is not None:
@@ -128,31 +119,15 @@ class SteamIAPConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, SteamIAPConfigInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, SteamIAPConfigInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[SteamIAPConfigInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[SteamIAPConfigInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        SteamIAPConfigInfo, List[SteamIAPConfigInfo], Dict[Any, SteamIAPConfigInfo]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[SteamIAPConfigInfo, List[SteamIAPConfigInfo], Dict[Any, SteamIAPConfigInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,19 +1,21 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.11.0"
+__version__ = "4.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._achievement_platform import get_xbl_user_achievements
+from ._achievement_platform import get_xbl_user_achievements_async
 from ._achievement_platform import unlock_steam_user_achievement
 from ._achievement_platform import unlock_steam_user_achievement_async
 from ._achievement_platform import update_xbl_user_achievement
@@ -136,6 +138,8 @@ from ._dlc import get_platform_dlc_config
 from ._dlc import get_platform_dlc_config_async
 from ._dlc import public_sync_psn_dlc_inventory
 from ._dlc import public_sync_psn_dlc_inventory_async
+from ._dlc import sync_epic_game_dlc
+from ._dlc import sync_epic_game_dlc_async
 from ._dlc import sync_steam_dlc
 from ._dlc import sync_steam_dlc_async
 from ._dlc import sync_xbox_dlc

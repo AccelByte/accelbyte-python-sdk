@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,9 +32,7 @@ from ..models.models_flexing_rule import ModelsFlexingRule
 from ..models.models_match_option_rule import ModelsMatchOptionRule
 from ..models.models_matching_rule import ModelsMatchingRule
 from ..models.models_update_alliance_rule import ModelsUpdateAllianceRule
-from ..models.models_update_ruleset_sub_game_modes import (
-    ModelsUpdateRulesetSubGameModes,
-)
+from ..models.models_update_ruleset_sub_game_modes import ModelsUpdateRulesetSubGameModes
 
 
 class ModelsUpdateRuleset(Model):
@@ -56,12 +54,12 @@ class ModelsUpdateRuleset(Model):
 
     # region fields
 
-    alliance: ModelsUpdateAllianceRule  # REQUIRED
-    alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # REQUIRED
-    flexing_rules: List[ModelsFlexingRule]  # OPTIONAL
-    match_options: ModelsMatchOptionRule  # OPTIONAL
-    matching_rules: List[ModelsMatchingRule]  # OPTIONAL
-    sub_game_modes: ModelsUpdateRulesetSubGameModes  # OPTIONAL
+    alliance: ModelsUpdateAllianceRule                                                             # REQUIRED
+    alliance_flexing_rule: List[ModelsAllianceFlexingRule]                                         # REQUIRED
+    flexing_rules: List[ModelsFlexingRule]                                                         # OPTIONAL
+    match_options: ModelsMatchOptionRule                                                           # OPTIONAL
+    matching_rules: List[ModelsMatchingRule]                                                       # OPTIONAL
+    sub_game_modes: ModelsUpdateRulesetSubGameModes                                                # OPTIONAL
 
     # endregion fields
 
@@ -71,9 +69,7 @@ class ModelsUpdateRuleset(Model):
         self.alliance = value
         return self
 
-    def with_alliance_flexing_rule(
-        self, value: List[ModelsAllianceFlexingRule]
-    ) -> ModelsUpdateRuleset:
+    def with_alliance_flexing_rule(self, value: List[ModelsAllianceFlexingRule]) -> ModelsUpdateRuleset:
         self.alliance_flexing_rule = value
         return self
 
@@ -85,15 +81,11 @@ class ModelsUpdateRuleset(Model):
         self.match_options = value
         return self
 
-    def with_matching_rules(
-        self, value: List[ModelsMatchingRule]
-    ) -> ModelsUpdateRuleset:
+    def with_matching_rules(self, value: List[ModelsMatchingRule]) -> ModelsUpdateRuleset:
         self.matching_rules = value
         return self
 
-    def with_sub_game_modes(
-        self, value: ModelsUpdateRulesetSubGameModes
-    ) -> ModelsUpdateRuleset:
+    def with_sub_game_modes(self, value: ModelsUpdateRulesetSubGameModes) -> ModelsUpdateRuleset:
         self.sub_game_modes = value
         return self
 
@@ -108,34 +100,23 @@ class ModelsUpdateRuleset(Model):
         elif include_empty:
             result["alliance"] = ModelsUpdateAllianceRule()
         if hasattr(self, "alliance_flexing_rule"):
-            result["alliance_flexing_rule"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.alliance_flexing_rule
-            ]
+            result["alliance_flexing_rule"] = [i0.to_dict(include_empty=include_empty) for i0 in self.alliance_flexing_rule]
         elif include_empty:
             result["alliance_flexing_rule"] = []
         if hasattr(self, "flexing_rules"):
-            result["flexingRules"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.flexing_rules
-            ]
+            result["flexingRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.flexing_rules]
         elif include_empty:
             result["flexingRules"] = []
         if hasattr(self, "match_options"):
-            result["match_options"] = self.match_options.to_dict(
-                include_empty=include_empty
-            )
+            result["match_options"] = self.match_options.to_dict(include_empty=include_empty)
         elif include_empty:
             result["match_options"] = ModelsMatchOptionRule()
         if hasattr(self, "matching_rules"):
-            result["matchingRules"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_rules
-            ]
+            result["matchingRules"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_rules]
         elif include_empty:
             result["matchingRules"] = []
         if hasattr(self, "sub_game_modes"):
-            result["sub_game_modes"] = self.sub_game_modes.to_dict(
-                include_empty=include_empty
-            )
+            result["sub_game_modes"] = self.sub_game_modes.to_dict(include_empty=include_empty)
         elif include_empty:
             result["sub_game_modes"] = ModelsUpdateRulesetSubGameModes()
         return result
@@ -168,84 +149,46 @@ class ModelsUpdateRuleset(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUpdateRuleset:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateRuleset:
         instance = cls()
         if not dict_:
             return instance
         if "alliance" in dict_ and dict_["alliance"] is not None:
-            instance.alliance = ModelsUpdateAllianceRule.create_from_dict(
-                dict_["alliance"], include_empty=include_empty
-            )
+            instance.alliance = ModelsUpdateAllianceRule.create_from_dict(dict_["alliance"], include_empty=include_empty)
         elif include_empty:
             instance.alliance = ModelsUpdateAllianceRule()
-        if (
-            "alliance_flexing_rule" in dict_
-            and dict_["alliance_flexing_rule"] is not None
-        ):
-            instance.alliance_flexing_rule = [
-                ModelsAllianceFlexingRule.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["alliance_flexing_rule"]
-            ]
+        if "alliance_flexing_rule" in dict_ and dict_["alliance_flexing_rule"] is not None:
+            instance.alliance_flexing_rule = [ModelsAllianceFlexingRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["alliance_flexing_rule"]]
         elif include_empty:
             instance.alliance_flexing_rule = []
         if "flexingRules" in dict_ and dict_["flexingRules"] is not None:
-            instance.flexing_rules = [
-                ModelsFlexingRule.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["flexingRules"]
-            ]
+            instance.flexing_rules = [ModelsFlexingRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["flexingRules"]]
         elif include_empty:
             instance.flexing_rules = []
         if "match_options" in dict_ and dict_["match_options"] is not None:
-            instance.match_options = ModelsMatchOptionRule.create_from_dict(
-                dict_["match_options"], include_empty=include_empty
-            )
+            instance.match_options = ModelsMatchOptionRule.create_from_dict(dict_["match_options"], include_empty=include_empty)
         elif include_empty:
             instance.match_options = ModelsMatchOptionRule()
         if "matchingRules" in dict_ and dict_["matchingRules"] is not None:
-            instance.matching_rules = [
-                ModelsMatchingRule.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["matchingRules"]
-            ]
+            instance.matching_rules = [ModelsMatchingRule.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matchingRules"]]
         elif include_empty:
             instance.matching_rules = []
         if "sub_game_modes" in dict_ and dict_["sub_game_modes"] is not None:
-            instance.sub_game_modes = ModelsUpdateRulesetSubGameModes.create_from_dict(
-                dict_["sub_game_modes"], include_empty=include_empty
-            )
+            instance.sub_game_modes = ModelsUpdateRulesetSubGameModes.create_from_dict(dict_["sub_game_modes"], include_empty=include_empty)
         elif include_empty:
             instance.sub_game_modes = ModelsUpdateRulesetSubGameModes()
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUpdateRuleset]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUpdateRuleset]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUpdateRuleset]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUpdateRuleset]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsUpdateRuleset, List[ModelsUpdateRuleset], Dict[Any, ModelsUpdateRuleset]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUpdateRuleset, List[ModelsUpdateRuleset], Dict[Any, ModelsUpdateRuleset]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

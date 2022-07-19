@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 
 class PlatformEnum(StrEnum):
+    EPICGAMES = "EPICGAMES"
     PSN = "PSN"
     STEAM = "STEAM"
     XBOX = "XBOX"
@@ -46,8 +47,8 @@ class PlatformDlcEntry(Model):
 
     # region fields
 
-    platform: Union[str, PlatformEnum]  # OPTIONAL
-    platform_dlc_id_map: Dict[str, str]  # OPTIONAL
+    platform: Union[str, PlatformEnum]                                                             # OPTIONAL
+    platform_dlc_id_map: Dict[str, str]                                                            # OPTIONAL
 
     # endregion fields
 
@@ -72,9 +73,7 @@ class PlatformDlcEntry(Model):
         elif include_empty:
             result["platform"] = Union[str, PlatformEnum]()
         if hasattr(self, "platform_dlc_id_map"):
-            result["platformDlcIdMap"] = {
-                str(k0): str(v0) for k0, v0 in self.platform_dlc_id_map.items()
-            }
+            result["platformDlcIdMap"] = {str(k0): str(v0) for k0, v0 in self.platform_dlc_id_map.items()}
         elif include_empty:
             result["platformDlcIdMap"] = {}
         return result
@@ -97,9 +96,7 @@ class PlatformDlcEntry(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PlatformDlcEntry:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformDlcEntry:
         instance = cls()
         if not dict_:
             return instance
@@ -108,37 +105,21 @@ class PlatformDlcEntry(Model):
         elif include_empty:
             instance.platform = Union[str, PlatformEnum]()
         if "platformDlcIdMap" in dict_ and dict_["platformDlcIdMap"] is not None:
-            instance.platform_dlc_id_map = {
-                str(k0): str(v0) for k0, v0 in dict_["platformDlcIdMap"].items()
-            }
+            instance.platform_dlc_id_map = {str(k0): str(v0) for k0, v0 in dict_["platformDlcIdMap"].items()}
         elif include_empty:
             instance.platform_dlc_id_map = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, PlatformDlcEntry]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PlatformDlcEntry]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[PlatformDlcEntry]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PlatformDlcEntry]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[PlatformDlcEntry, List[PlatformDlcEntry], Dict[Any, PlatformDlcEntry]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PlatformDlcEntry, List[PlatformDlcEntry], Dict[Any, PlatformDlcEntry]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -166,7 +147,7 @@ class PlatformDlcEntry(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": ["PSN", "STEAM", "XBOX"],
+            "platform": ["EPICGAMES", "PSN", "STEAM", "XBOX"],
         }
 
     # endregion static methods

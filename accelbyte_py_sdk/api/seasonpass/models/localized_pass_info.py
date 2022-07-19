@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -61,18 +61,18 @@ class LocalizedPassInfo(Model):
 
     # region fields
 
-    auto_enroll: bool  # REQUIRED
-    code: str  # REQUIRED
-    created_at: str  # REQUIRED
-    display_order: str  # REQUIRED
-    language: str  # REQUIRED
-    namespace: str  # REQUIRED
-    pass_item_id: str  # REQUIRED
-    season_id: str  # REQUIRED
-    updated_at: str  # REQUIRED
-    description: str  # OPTIONAL
-    images: List[Image]  # OPTIONAL
-    title: str  # OPTIONAL
+    auto_enroll: bool                                                                              # REQUIRED
+    code: str                                                                                      # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    display_order: str                                                                             # REQUIRED
+    language: str                                                                                  # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    pass_item_id: str                                                                              # REQUIRED
+    season_id: str                                                                                 # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    description: str                                                                               # OPTIONAL
+    images: List[Image]                                                                            # OPTIONAL
+    title: str                                                                                     # OPTIONAL
 
     # endregion fields
 
@@ -173,9 +173,7 @@ class LocalizedPassInfo(Model):
         elif include_empty:
             result["description"] = ""
         if hasattr(self, "images"):
-            result["images"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.images
-            ]
+            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
         if hasattr(self, "title"):
@@ -223,9 +221,7 @@ class LocalizedPassInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> LocalizedPassInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> LocalizedPassInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -270,10 +266,7 @@ class LocalizedPassInfo(Model):
         elif include_empty:
             instance.description = ""
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [
-                Image.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["images"]
-            ]
+            instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
             instance.images = []
         if "title" in dict_ and dict_["title"] is not None:
@@ -283,31 +276,15 @@ class LocalizedPassInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, LocalizedPassInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, LocalizedPassInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[LocalizedPassInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[LocalizedPassInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        LocalizedPassInfo, List[LocalizedPassInfo], Dict[Any, LocalizedPassInfo]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[LocalizedPassInfo, List[LocalizedPassInfo], Dict[Any, LocalizedPassInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

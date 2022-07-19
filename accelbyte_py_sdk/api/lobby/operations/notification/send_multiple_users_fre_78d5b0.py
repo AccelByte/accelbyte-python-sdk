@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,17 +76,15 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
 
     # region fields
 
-    _url: str = (
-        "/lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify"
-    )
+    _url: str = "/lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify"
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelBulkUsersFreeFormNotificationRequestV1  # REQUIRED in [body]
-    namespace: str  # REQUIRED in [path]
+    body: ModelBulkUsersFreeFormNotificationRequestV1                                              # REQUIRED in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -149,15 +147,11 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelBulkUsersFreeFormNotificationRequestV1
-    ) -> SendMultipleUsersFreeformNotificationV1Admin:
+    def with_body(self, value: ModelBulkUsersFreeFormNotificationRequestV1) -> SendMultipleUsersFreeformNotificationV1Admin:
         self.body = value
         return self
 
-    def with_namespace(
-        self, value: str
-    ) -> SendMultipleUsersFreeformNotificationV1Admin:
+    def with_namespace(self, value: str) -> SendMultipleUsersFreeformNotificationV1Admin:
         self.namespace = value
         return self
 
@@ -182,9 +176,7 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponseV1]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -201,9 +193,7 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -217,9 +207,7 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         if code == 403:
             return None, RestapiErrorResponseV1.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -237,16 +225,10 @@ class SendMultipleUsersFreeformNotificationV1Admin(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> SendMultipleUsersFreeformNotificationV1Admin:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SendMultipleUsersFreeformNotificationV1Admin:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = (
-                ModelBulkUsersFreeFormNotificationRequestV1.create_from_dict(
-                    dict_["body"], include_empty=include_empty
-                )
-            )
+            instance.body = ModelBulkUsersFreeFormNotificationRequestV1.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelBulkUsersFreeFormNotificationRequestV1()
         if "namespace" in dict_ and dict_["namespace"] is not None:

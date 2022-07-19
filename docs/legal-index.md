@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-legal-service Index (1.22.3)
+# justice-legal-service Index (1.22.4)
 
 
 ## Operations
@@ -77,7 +77,6 @@
 |---|---|---|---|---|---|
 | /agreement/admin/policies/{policyId}/versions | POST | createPolicyVersion | [CreatePolicyVersion](../accelbyte_py_sdk/api/legal/operations/policy_versions/create_policy_version.py) | [create_policy_version](../accelbyte_py_sdk/api/legal/wrappers/_policy_versions.py) | [accelbyte_py_sdk_cli legal-create-policy-version](../samples/cli/accelbyte_py_sdk_cli/legal/_create_policy_version.py) |
 | /agreement/admin/policies/versions/{policyVersionId}/latest | PATCH | publishPolicyVersion | [PublishPolicyVersion](../accelbyte_py_sdk/api/legal/operations/policy_versions/publish_policy_version.py) | [publish_policy_version](../accelbyte_py_sdk/api/legal/wrappers/_policy_versions.py) | [accelbyte_py_sdk_cli legal-publish-policy-version](../samples/cli/accelbyte_py_sdk_cli/legal/_publish_policy_version.py) |
-| /agreement/public/policies | GET | retrievePolicyVersions | [RetrievePolicyVersions](../accelbyte_py_sdk/api/legal/operations/policy_versions/retrieve_policy_versions.py) | [retrieve_policy_versions](../accelbyte_py_sdk/api/legal/wrappers/_policy_versions.py) | [accelbyte_py_sdk_cli legal-retrieve-policy-versions](../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_policy_versions.py) |
 | /agreement/admin/policies/{policyId}/versions | GET | retrieveSinglePolicyVersion | [RetrieveSinglePolicyVersion](../accelbyte_py_sdk/api/legal/operations/policy_versions/retrieve_single_policy_version.py) | [retrieve_single_policy_version](../accelbyte_py_sdk/api/legal/wrappers/_policy_versions.py) | [accelbyte_py_sdk_cli legal-retrieve-single-policy-version](../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_single_policy_version.py) |
 | /agreement/admin/policies/versions/{policyVersionId} | PATCH | updatePolicyVersion | [UpdatePolicyVersion](../accelbyte_py_sdk/api/legal/operations/policy_versions/update_policy_version.py) | [update_policy_version](../accelbyte_py_sdk/api/legal/wrappers/_policy_versions.py) | [accelbyte_py_sdk_cli legal-update-policy-version](../samples/cli/accelbyte_py_sdk_cli/legal/_update_policy_version.py) |
 

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,14 +53,14 @@ class ClientmodelClientUpdateV3Request(Model):
 
     # region fields
 
-    client_platform: str  # REQUIRED
-    audiences: List[str]  # OPTIONAL
-    base_uri: str  # OPTIONAL
-    client_name: str  # OPTIONAL
-    client_permissions: List[AccountcommonPermissionV3]  # OPTIONAL
-    deletable: bool  # OPTIONAL
-    namespace: str  # OPTIONAL
-    redirect_uri: str  # OPTIONAL
+    client_platform: str                                                                           # REQUIRED
+    audiences: List[str]                                                                           # OPTIONAL
+    base_uri: str                                                                                  # OPTIONAL
+    client_name: str                                                                               # OPTIONAL
+    client_permissions: List[AccountcommonPermissionV3]                                            # OPTIONAL
+    deletable: bool                                                                                # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    redirect_uri: str                                                                              # OPTIONAL
 
     # endregion fields
 
@@ -82,9 +82,7 @@ class ClientmodelClientUpdateV3Request(Model):
         self.client_name = value
         return self
 
-    def with_client_permissions(
-        self, value: List[AccountcommonPermissionV3]
-    ) -> ClientmodelClientUpdateV3Request:
+    def with_client_permissions(self, value: List[AccountcommonPermissionV3]) -> ClientmodelClientUpdateV3Request:
         self.client_permissions = value
         return self
 
@@ -123,10 +121,7 @@ class ClientmodelClientUpdateV3Request(Model):
         elif include_empty:
             result["clientName"] = ""
         if hasattr(self, "client_permissions"):
-            result["clientPermissions"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.client_permissions
-            ]
+            result["clientPermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.client_permissions]
         elif include_empty:
             result["clientPermissions"] = []
         if hasattr(self, "deletable"):
@@ -178,9 +173,7 @@ class ClientmodelClientUpdateV3Request(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ClientmodelClientUpdateV3Request:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ClientmodelClientUpdateV3Request:
         instance = cls()
         if not dict_:
             return instance
@@ -201,12 +194,7 @@ class ClientmodelClientUpdateV3Request(Model):
         elif include_empty:
             instance.client_name = ""
         if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
-            instance.client_permissions = [
-                AccountcommonPermissionV3.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["clientPermissions"]
-            ]
+            instance.client_permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["clientPermissions"]]
         elif include_empty:
             instance.client_permissions = []
         if "deletable" in dict_ and dict_["deletable"] is not None:
@@ -224,33 +212,15 @@ class ClientmodelClientUpdateV3Request(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ClientmodelClientUpdateV3Request]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ClientmodelClientUpdateV3Request]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ClientmodelClientUpdateV3Request]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ClientmodelClientUpdateV3Request]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ClientmodelClientUpdateV3Request,
-        List[ClientmodelClientUpdateV3Request],
-        Dict[Any, ClientmodelClientUpdateV3Request],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ClientmodelClientUpdateV3Request, List[ClientmodelClientUpdateV3Request], Dict[Any, ClientmodelClientUpdateV3Request]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

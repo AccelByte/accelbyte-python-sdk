@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-platform-service."""
 
-__version__ = "4.11.0"
+__version__ = "4.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,18 +39,10 @@ from .public_get_item_by_app_id import PublicGetItemByAppId
 from .public_get_item_by_sku import PublicGetItemBySku
 from .public_get_item_dynamic_data import PublicGetItemDynamicData
 from .public_query_items import PublicQueryItems
-from .public_query_items import (
-    AppTypeEnum as PublicQueryItemsAppTypeEnum,
-    ItemTypeEnum as PublicQueryItemsItemTypeEnum,
-    SortByEnum as PublicQueryItemsSortByEnum,
-)
+from .public_query_items import AppTypeEnum as PublicQueryItemsAppTypeEnum, ItemTypeEnum as PublicQueryItemsItemTypeEnum, SortByEnum as PublicQueryItemsSortByEnum
 from .public_search_items import PublicSearchItems
 from .query_items import QueryItems
-from .query_items import (
-    AppTypeEnum as QueryItemsAppTypeEnum,
-    ItemTypeEnum as QueryItemsItemTypeEnum,
-    SortByEnum as QueryItemsSortByEnum,
-)
+from .query_items import AppTypeEnum as QueryItemsAppTypeEnum, ItemTypeEnum as QueryItemsItemTypeEnum, SortByEnum as QueryItemsSortByEnum
 from .query_uncategorized_items import QueryUncategorizedItems
 from .query_uncategorized_items import SortByEnum as QueryUncategorizedItemsSortByEnum
 from .return_item import ReturnItem

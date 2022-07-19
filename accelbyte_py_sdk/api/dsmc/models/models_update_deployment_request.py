@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,21 +50,24 @@ class ModelsUpdateDeploymentRequest(Model):
 
         regions: (regions) REQUIRED List[str]
 
+        session_timeout: (session_timeout) REQUIRED int
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
     """
 
     # region fields
 
-    allow_version_override: bool  # REQUIRED
-    buffer_count: int  # REQUIRED
-    buffer_percent: int  # REQUIRED
-    configuration: str  # REQUIRED
-    enable_region_overrides: bool  # REQUIRED
-    game_version: str  # REQUIRED
-    max_count: int  # REQUIRED
-    min_count: int  # REQUIRED
-    regions: List[str]  # REQUIRED
-    use_buffer_percent: bool  # REQUIRED
+    allow_version_override: bool                                                                   # REQUIRED
+    buffer_count: int                                                                              # REQUIRED
+    buffer_percent: int                                                                            # REQUIRED
+    configuration: str                                                                             # REQUIRED
+    enable_region_overrides: bool                                                                  # REQUIRED
+    game_version: str                                                                              # REQUIRED
+    max_count: int                                                                                 # REQUIRED
+    min_count: int                                                                                 # REQUIRED
+    regions: List[str]                                                                             # REQUIRED
+    session_timeout: int                                                                           # REQUIRED
+    use_buffer_percent: bool                                                                       # REQUIRED
 
     # endregion fields
 
@@ -86,9 +89,7 @@ class ModelsUpdateDeploymentRequest(Model):
         self.configuration = value
         return self
 
-    def with_enable_region_overrides(
-        self, value: bool
-    ) -> ModelsUpdateDeploymentRequest:
+    def with_enable_region_overrides(self, value: bool) -> ModelsUpdateDeploymentRequest:
         self.enable_region_overrides = value
         return self
 
@@ -106,6 +107,10 @@ class ModelsUpdateDeploymentRequest(Model):
 
     def with_regions(self, value: List[str]) -> ModelsUpdateDeploymentRequest:
         self.regions = value
+        return self
+
+    def with_session_timeout(self, value: int) -> ModelsUpdateDeploymentRequest:
+        self.session_timeout = value
         return self
 
     def with_use_buffer_percent(self, value: bool) -> ModelsUpdateDeploymentRequest:
@@ -154,6 +159,10 @@ class ModelsUpdateDeploymentRequest(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "session_timeout"):
+            result["session_timeout"] = int(self.session_timeout)
+        elif include_empty:
+            result["session_timeout"] = 0
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -176,6 +185,7 @@ class ModelsUpdateDeploymentRequest(Model):
         max_count: int,
         min_count: int,
         regions: List[str],
+        session_timeout: int,
         use_buffer_percent: bool,
     ) -> ModelsUpdateDeploymentRequest:
         instance = cls()
@@ -188,20 +198,16 @@ class ModelsUpdateDeploymentRequest(Model):
         instance.max_count = max_count
         instance.min_count = min_count
         instance.regions = regions
+        instance.session_timeout = session_timeout
         instance.use_buffer_percent = use_buffer_percent
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUpdateDeploymentRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateDeploymentRequest:
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "allow_version_override" in dict_
-            and dict_["allow_version_override"] is not None
-        ):
+        if "allow_version_override" in dict_ and dict_["allow_version_override"] is not None:
             instance.allow_version_override = bool(dict_["allow_version_override"])
         elif include_empty:
             instance.allow_version_override = False
@@ -217,10 +223,7 @@ class ModelsUpdateDeploymentRequest(Model):
             instance.configuration = str(dict_["configuration"])
         elif include_empty:
             instance.configuration = ""
-        if (
-            "enable_region_overrides" in dict_
-            and dict_["enable_region_overrides"] is not None
-        ):
+        if "enable_region_overrides" in dict_ and dict_["enable_region_overrides"] is not None:
             instance.enable_region_overrides = bool(dict_["enable_region_overrides"])
         elif include_empty:
             instance.enable_region_overrides = False
@@ -240,6 +243,10 @@ class ModelsUpdateDeploymentRequest(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
+        if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
+            instance.session_timeout = int(dict_["session_timeout"])
+        elif include_empty:
+            instance.session_timeout = 0
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -247,33 +254,15 @@ class ModelsUpdateDeploymentRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUpdateDeploymentRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUpdateDeploymentRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUpdateDeploymentRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUpdateDeploymentRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsUpdateDeploymentRequest,
-        List[ModelsUpdateDeploymentRequest],
-        Dict[Any, ModelsUpdateDeploymentRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUpdateDeploymentRequest, List[ModelsUpdateDeploymentRequest], Dict[Any, ModelsUpdateDeploymentRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -296,6 +285,7 @@ class ModelsUpdateDeploymentRequest(Model):
             "max_count": "max_count",
             "min_count": "min_count",
             "regions": "regions",
+            "session_timeout": "session_timeout",
             "use_buffer_percent": "use_buffer_percent",
         }
 
@@ -311,6 +301,7 @@ class ModelsUpdateDeploymentRequest(Model):
             "max_count": True,
             "min_count": True,
             "regions": True,
+            "session_timeout": True,
             "use_buffer_percent": True,
         }
 

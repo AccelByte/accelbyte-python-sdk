@@ -62,40 +62,26 @@ class UserStatusNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldFormatInvalid
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "activity".casefold()) or (
-                name == "activity"
-            ):
+            if (not is_strict and name.casefold() == "activity".casefold()) or (name == "activity"):
                 instance.activity = value
                 continue
-            if (not is_strict and name.casefold() == "availability".casefold()) or (
-                name == "availability"
-            ):
+            if (not is_strict and name.casefold() == "availability".casefold()) or (name == "availability"):
                 instance.availability = value
                 continue
-            if (not is_strict and name.casefold() == "lastSeenAt".casefold()) or (
-                name == "lastSeenAt"
-            ):
+            if (not is_strict and name.casefold() == "lastSeenAt".casefold()) or (name == "lastSeenAt"):
                 instance.last_seen_at = value
                 continue
-            if (not is_strict and name.casefold() == "userId".casefold()) or (
-                name == "userId"
-            ):
+            if (not is_strict and name.casefold() == "userId".casefold()) or (name == "userId"):
                 instance.user_id = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldTypeNotSupported
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
         return instance
 
     @staticmethod

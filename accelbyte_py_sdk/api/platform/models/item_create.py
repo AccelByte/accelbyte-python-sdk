@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -136,37 +136,37 @@ class ItemCreate(Model):
 
     # region fields
 
-    category_path: str  # REQUIRED
-    entitlement_type: Union[str, EntitlementTypeEnum]  # REQUIRED
-    item_type: Union[str, ItemTypeEnum]  # REQUIRED
-    localizations: Dict[str, Localization]  # REQUIRED
-    name: str  # REQUIRED
-    region_data: Dict[str, List[RegionDataItem]]  # REQUIRED
-    status: Union[str, StatusEnum]  # REQUIRED
-    app_id: str  # OPTIONAL
-    app_type: Union[str, AppTypeEnum]  # OPTIONAL
-    base_app_id: str  # OPTIONAL
-    booth_name: str  # OPTIONAL
-    clazz: str  # OPTIONAL
-    display_order: int  # OPTIONAL
-    ext: Dict[str, Any]  # OPTIONAL
-    features: List[str]  # OPTIONAL
-    images: List[Image]  # OPTIONAL
-    item_ids: List[str]  # OPTIONAL
-    item_qty: Dict[str, int]  # OPTIONAL
-    listable: bool  # OPTIONAL
-    max_count: int  # OPTIONAL
-    max_count_per_user: int  # OPTIONAL
-    purchasable: bool  # OPTIONAL
-    recurring: Recurring  # OPTIONAL
-    season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
-    sku: str  # OPTIONAL
-    stackable: bool  # OPTIONAL
-    tags: List[str]  # OPTIONAL
-    target_currency_code: str  # OPTIONAL
-    target_namespace: str  # OPTIONAL
-    thumbnail_url: str  # OPTIONAL
-    use_count: int  # OPTIONAL
+    category_path: str                                                                             # REQUIRED
+    entitlement_type: Union[str, EntitlementTypeEnum]                                              # REQUIRED
+    item_type: Union[str, ItemTypeEnum]                                                            # REQUIRED
+    localizations: Dict[str, Localization]                                                         # REQUIRED
+    name: str                                                                                      # REQUIRED
+    region_data: Dict[str, List[RegionDataItem]]                                                   # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    app_id: str                                                                                    # OPTIONAL
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL
+    base_app_id: str                                                                               # OPTIONAL
+    booth_name: str                                                                                # OPTIONAL
+    clazz: str                                                                                     # OPTIONAL
+    display_order: int                                                                             # OPTIONAL
+    ext: Dict[str, Any]                                                                            # OPTIONAL
+    features: List[str]                                                                            # OPTIONAL
+    images: List[Image]                                                                            # OPTIONAL
+    item_ids: List[str]                                                                            # OPTIONAL
+    item_qty: Dict[str, int]                                                                       # OPTIONAL
+    listable: bool                                                                                 # OPTIONAL
+    max_count: int                                                                                 # OPTIONAL
+    max_count_per_user: int                                                                        # OPTIONAL
+    purchasable: bool                                                                              # OPTIONAL
+    recurring: Recurring                                                                           # OPTIONAL
+    season_type: Union[str, SeasonTypeEnum]                                                        # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    stackable: bool                                                                                # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
+    target_currency_code: str                                                                      # OPTIONAL
+    target_namespace: str                                                                          # OPTIONAL
+    thumbnail_url: str                                                                             # OPTIONAL
+    use_count: int                                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -176,9 +176,7 @@ class ItemCreate(Model):
         self.category_path = value
         return self
 
-    def with_entitlement_type(
-        self, value: Union[str, EntitlementTypeEnum]
-    ) -> ItemCreate:
+    def with_entitlement_type(self, value: Union[str, EntitlementTypeEnum]) -> ItemCreate:
         self.entitlement_type = value
         return self
 
@@ -317,10 +315,7 @@ class ItemCreate(Model):
         elif include_empty:
             result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "localizations"):
-            result["localizations"] = {
-                str(k0): v0.to_dict(include_empty=include_empty)
-                for k0, v0 in self.localizations.items()
-            }
+            result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
             result["localizations"] = {}
         if hasattr(self, "name"):
@@ -328,10 +323,7 @@ class ItemCreate(Model):
         elif include_empty:
             result["name"] = ""
         if hasattr(self, "region_data"):
-            result["regionData"] = {
-                str(k0): [i1.to_dict(include_empty=include_empty) for i1 in v0]
-                for k0, v0 in self.region_data.items()
-            }
+            result["regionData"] = {str(k0): [i1.to_dict(include_empty=include_empty) for i1 in v0] for k0, v0 in self.region_data.items()}
         elif include_empty:
             result["regionData"] = {}
         if hasattr(self, "status"):
@@ -371,9 +363,7 @@ class ItemCreate(Model):
         elif include_empty:
             result["features"] = []
         if hasattr(self, "images"):
-            result["images"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.images
-            ]
+            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
         if hasattr(self, "item_ids"):
@@ -553,10 +543,7 @@ class ItemCreate(Model):
         elif include_empty:
             instance.item_type = Union[str, ItemTypeEnum]()
         if "localizations" in dict_ and dict_["localizations"] is not None:
-            instance.localizations = {
-                str(k0): Localization.create_from_dict(v0, include_empty=include_empty)
-                for k0, v0 in dict_["localizations"].items()
-            }
+            instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
             instance.localizations = {}
         if "name" in dict_ and dict_["name"] is not None:
@@ -564,13 +551,7 @@ class ItemCreate(Model):
         elif include_empty:
             instance.name = ""
         if "regionData" in dict_ and dict_["regionData"] is not None:
-            instance.region_data = {
-                str(k0): [
-                    RegionDataItem.create_from_dict(i1, include_empty=include_empty)
-                    for i1 in v0
-                ]
-                for k0, v0 in dict_["regionData"].items()
-            }
+            instance.region_data = {str(k0): [RegionDataItem.create_from_dict(i1, include_empty=include_empty) for i1 in v0] for k0, v0 in dict_["regionData"].items()}
         elif include_empty:
             instance.region_data = {}
         if "status" in dict_ and dict_["status"] is not None:
@@ -610,10 +591,7 @@ class ItemCreate(Model):
         elif include_empty:
             instance.features = []
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [
-                Image.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["images"]
-            ]
+            instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
             instance.images = []
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
@@ -621,9 +599,7 @@ class ItemCreate(Model):
         elif include_empty:
             instance.item_ids = []
         if "itemQty" in dict_ and dict_["itemQty"] is not None:
-            instance.item_qty = {
-                str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()
-            }
+            instance.item_qty = {str(k0): int(v0) for k0, v0 in dict_["itemQty"].items()}
         elif include_empty:
             instance.item_qty = {}
         if "listable" in dict_ and dict_["listable"] is not None:
@@ -643,9 +619,7 @@ class ItemCreate(Model):
         elif include_empty:
             instance.purchasable = False
         if "recurring" in dict_ and dict_["recurring"] is not None:
-            instance.recurring = Recurring.create_from_dict(
-                dict_["recurring"], include_empty=include_empty
-            )
+            instance.recurring = Recurring.create_from_dict(dict_["recurring"], include_empty=include_empty)
         elif include_empty:
             instance.recurring = Recurring()
         if "seasonType" in dict_ and dict_["seasonType"] is not None:
@@ -683,29 +657,15 @@ class ItemCreate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ItemCreate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ItemCreate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ItemCreate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ItemCreate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ItemCreate, List[ItemCreate], Dict[Any, ItemCreate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ItemCreate, List[ItemCreate], Dict[Any, ItemCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -792,16 +752,7 @@ class ItemCreate(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "entitlementType": ["CONSUMABLE", "DURABLE"],
-            "itemType": [
-                "APP",
-                "BUNDLE",
-                "CODE",
-                "COINS",
-                "INGAMEITEM",
-                "MEDIA",
-                "SEASON",
-                "SUBSCRIPTION",
-            ],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "MEDIA", "SEASON", "SUBSCRIPTION"],
             "status": ["ACTIVE", "INACTIVE"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
             "seasonType": ["PASS", "TIER"],

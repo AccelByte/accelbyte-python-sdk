@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -55,29 +55,25 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
 
     # region fields
 
-    configuration_code: str  # REQUIRED
-    custom_attributes: Dict[str, Any]  # REQUIRED
-    group_description: str  # REQUIRED
-    group_icon: str  # REQUIRED
-    group_max_member: int  # REQUIRED
-    group_name: str  # REQUIRED
-    group_region: str  # REQUIRED
-    group_rules: ModelsGroupRule  # REQUIRED
-    group_type: str  # REQUIRED
+    configuration_code: str                                                                        # REQUIRED
+    custom_attributes: Dict[str, Any]                                                              # REQUIRED
+    group_description: str                                                                         # REQUIRED
+    group_icon: str                                                                                # REQUIRED
+    group_max_member: int                                                                          # REQUIRED
+    group_name: str                                                                                # REQUIRED
+    group_region: str                                                                              # REQUIRED
+    group_rules: ModelsGroupRule                                                                   # REQUIRED
+    group_type: str                                                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_configuration_code(
-        self, value: str
-    ) -> ModelsPublicCreateNewGroupRequestV1:
+    def with_configuration_code(self, value: str) -> ModelsPublicCreateNewGroupRequestV1:
         self.configuration_code = value
         return self
 
-    def with_custom_attributes(
-        self, value: Dict[str, Any]
-    ) -> ModelsPublicCreateNewGroupRequestV1:
+    def with_custom_attributes(self, value: Dict[str, Any]) -> ModelsPublicCreateNewGroupRequestV1:
         self.custom_attributes = value
         return self
 
@@ -101,9 +97,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         self.group_region = value
         return self
 
-    def with_group_rules(
-        self, value: ModelsGroupRule
-    ) -> ModelsPublicCreateNewGroupRequestV1:
+    def with_group_rules(self, value: ModelsGroupRule) -> ModelsPublicCreateNewGroupRequestV1:
         self.group_rules = value
         return self
 
@@ -122,9 +116,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         elif include_empty:
             result["configurationCode"] = ""
         if hasattr(self, "custom_attributes"):
-            result["customAttributes"] = {
-                str(k0): v0 for k0, v0 in self.custom_attributes.items()
-            }
+            result["customAttributes"] = {str(k0): v0 for k0, v0 in self.custom_attributes.items()}
         elif include_empty:
             result["customAttributes"] = {}
         if hasattr(self, "group_description"):
@@ -187,9 +179,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsPublicCreateNewGroupRequestV1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPublicCreateNewGroupRequestV1:
         instance = cls()
         if not dict_:
             return instance
@@ -198,9 +188,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         elif include_empty:
             instance.configuration_code = ""
         if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
-            instance.custom_attributes = {
-                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
-            }
+            instance.custom_attributes = {str(k0): v0 for k0, v0 in dict_["customAttributes"].items()}
         elif include_empty:
             instance.custom_attributes = {}
         if "groupDescription" in dict_ and dict_["groupDescription"] is not None:
@@ -224,9 +212,7 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         elif include_empty:
             instance.group_region = ""
         if "groupRules" in dict_ and dict_["groupRules"] is not None:
-            instance.group_rules = ModelsGroupRule.create_from_dict(
-                dict_["groupRules"], include_empty=include_empty
-            )
+            instance.group_rules = ModelsGroupRule.create_from_dict(dict_["groupRules"], include_empty=include_empty)
         elif include_empty:
             instance.group_rules = ModelsGroupRule()
         if "groupType" in dict_ and dict_["groupType"] is not None:
@@ -236,33 +222,15 @@ class ModelsPublicCreateNewGroupRequestV1(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsPublicCreateNewGroupRequestV1]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPublicCreateNewGroupRequestV1]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsPublicCreateNewGroupRequestV1]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPublicCreateNewGroupRequestV1]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsPublicCreateNewGroupRequestV1,
-        List[ModelsPublicCreateNewGroupRequestV1],
-        Dict[Any, ModelsPublicCreateNewGroupRequestV1],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPublicCreateNewGroupRequestV1, List[ModelsPublicCreateNewGroupRequestV1], Dict[Any, ModelsPublicCreateNewGroupRequestV1]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

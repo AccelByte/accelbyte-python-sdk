@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,7 +69,7 @@ class BulkAcceptVersionedPolicy(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[AcceptAgreementRequest]  # OPTIONAL in [body]
+    body: List[AcceptAgreementRequest]                                                             # OPTIONAL in [body]
 
     # endregion fields
 
@@ -125,9 +125,7 @@ class BulkAcceptVersionedPolicy(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: List[AcceptAgreementRequest]
-    ) -> BulkAcceptVersionedPolicy:
+    def with_body(self, value: List[AcceptAgreementRequest]) -> BulkAcceptVersionedPolicy:
         self.body = value
         return self
 
@@ -138,9 +136,7 @@ class BulkAcceptVersionedPolicy(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.body
-            ]
+            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
             result["body"] = []
         return result
@@ -150,9 +146,7 @@ class BulkAcceptVersionedPolicy(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         201: Created - AcceptAgreementResponse (successful operation)
@@ -163,9 +157,7 @@ class BulkAcceptVersionedPolicy(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -173,9 +165,7 @@ class BulkAcceptVersionedPolicy(Operation):
         if code == 201:
             return AcceptAgreementResponse.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -192,15 +182,10 @@ class BulkAcceptVersionedPolicy(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> BulkAcceptVersionedPolicy:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkAcceptVersionedPolicy:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [
-                AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["body"]
-            ]
+            instance.body = [AcceptAgreementRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
         return instance

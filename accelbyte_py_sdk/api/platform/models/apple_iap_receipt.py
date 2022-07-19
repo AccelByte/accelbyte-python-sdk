@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,12 +48,12 @@ class AppleIAPReceipt(Model):
 
     # region fields
 
-    product_id: str  # REQUIRED
-    receipt_data: str  # REQUIRED
-    transaction_id: str  # REQUIRED
-    exclude_old_transactions: bool  # OPTIONAL
-    language: str  # OPTIONAL
-    region: str  # OPTIONAL
+    product_id: str                                                                                # REQUIRED
+    receipt_data: str                                                                              # REQUIRED
+    transaction_id: str                                                                            # REQUIRED
+    exclude_old_transactions: bool                                                                 # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    region: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -142,9 +142,7 @@ class AppleIAPReceipt(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AppleIAPReceipt:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AppleIAPReceipt:
         instance = cls()
         if not dict_:
             return instance
@@ -160,10 +158,7 @@ class AppleIAPReceipt(Model):
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
             instance.transaction_id = ""
-        if (
-            "excludeOldTransactions" in dict_
-            and dict_["excludeOldTransactions"] is not None
-        ):
+        if "excludeOldTransactions" in dict_ and dict_["excludeOldTransactions"] is not None:
             instance.exclude_old_transactions = bool(dict_["excludeOldTransactions"])
         elif include_empty:
             instance.exclude_old_transactions = False
@@ -178,29 +173,15 @@ class AppleIAPReceipt(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, AppleIAPReceipt]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AppleIAPReceipt]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[AppleIAPReceipt]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AppleIAPReceipt]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[AppleIAPReceipt, List[AppleIAPReceipt], Dict[Any, AppleIAPReceipt]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AppleIAPReceipt, List[AppleIAPReceipt], Dict[Any, AppleIAPReceipt]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -236,9 +217,7 @@ class AppleIAPReceipt(Model):
     @staticmethod
     def get_pattern_map() -> Dict[str, re.Pattern]:
         return {
-            "language": re.compile(
-                r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"
-            ),
+            "language": re.compile(r"^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"),
         }
 
     # endregion static methods

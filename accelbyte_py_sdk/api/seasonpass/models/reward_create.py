@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -56,12 +56,12 @@ class RewardCreate(Model):
 
     # region fields
 
-    code: str  # REQUIRED
-    type_: Union[str, TypeEnum]  # REQUIRED
-    currency: RewardCurrency  # OPTIONAL
-    image: Image  # OPTIONAL
-    item_id: str  # OPTIONAL
-    quantity: int  # OPTIONAL
+    code: str                                                                                      # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
+    currency: RewardCurrency                                                                       # OPTIONAL
+    image: Image                                                                                   # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -164,15 +164,11 @@ class RewardCreate(Model):
         elif include_empty:
             instance.type_ = Union[str, TypeEnum]()
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = RewardCurrency.create_from_dict(
-                dict_["currency"], include_empty=include_empty
-            )
+            instance.currency = RewardCurrency.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
             instance.currency = RewardCurrency()
         if "image" in dict_ and dict_["image"] is not None:
-            instance.image = Image.create_from_dict(
-                dict_["image"], include_empty=include_empty
-            )
+            instance.image = Image.create_from_dict(dict_["image"], include_empty=include_empty)
         elif include_empty:
             instance.image = Image()
         if "itemId" in dict_ and dict_["itemId"] is not None:
@@ -186,29 +182,15 @@ class RewardCreate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, RewardCreate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RewardCreate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[RewardCreate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RewardCreate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[RewardCreate, List[RewardCreate], Dict[Any, RewardCreate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RewardCreate, List[RewardCreate], Dict[Any, RewardCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

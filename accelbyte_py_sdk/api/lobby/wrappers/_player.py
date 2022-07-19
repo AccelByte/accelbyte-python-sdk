@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -50,13 +50,7 @@ from ..operations.player import PublicGetPlayerBlockedPlayersV1
 
 
 @same_doc_as(AdminBulkBlockPlayersV1)
-def admin_bulk_block_players_v1(
-    body: ModelsListBlockedPlayerRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_bulk_block_players_v1(body: ModelsListBlockedPlayerRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,13 +64,7 @@ def admin_bulk_block_players_v1(
 
 
 @same_doc_as(AdminBulkBlockPlayersV1)
-async def admin_bulk_block_players_v1_async(
-    body: ModelsListBlockedPlayerRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_bulk_block_players_v1_async(body: ModelsListBlockedPlayerRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -86,18 +74,11 @@ async def admin_bulk_block_players_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetAllPlayerSessionAttribute)
-def admin_get_all_player_session_attribute(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_all_player_session_attribute(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -110,12 +91,7 @@ def admin_get_all_player_session_attribute(
 
 
 @same_doc_as(AdminGetAllPlayerSessionAttribute)
-async def admin_get_all_player_session_attribute_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_all_player_session_attribute_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -124,17 +100,11 @@ async def admin_get_all_player_session_attribute_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetLobbyCCU)
-def admin_get_lobby_ccu(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_lobby_ccu(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,11 +116,7 @@ def admin_get_lobby_ccu(
 
 
 @same_doc_as(AdminGetLobbyCCU)
-async def admin_get_lobby_ccu_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_lobby_ccu_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -158,18 +124,11 @@ async def admin_get_lobby_ccu_async(
     request = AdminGetLobbyCCU.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetPlayerBlockedByPlayersV1)
-def admin_get_player_blocked_by_players_v1(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_player_blocked_by_players_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -182,12 +141,7 @@ def admin_get_player_blocked_by_players_v1(
 
 
 @same_doc_as(AdminGetPlayerBlockedByPlayersV1)
-async def admin_get_player_blocked_by_players_v1_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_player_blocked_by_players_v1_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -196,18 +150,11 @@ async def admin_get_player_blocked_by_players_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetPlayerBlockedPlayersV1)
-def admin_get_player_blocked_players_v1(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_player_blocked_players_v1(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -220,12 +167,7 @@ def admin_get_player_blocked_players_v1(
 
 
 @same_doc_as(AdminGetPlayerBlockedPlayersV1)
-async def admin_get_player_blocked_players_v1_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_player_blocked_players_v1_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -234,19 +176,11 @@ async def admin_get_player_blocked_players_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetPlayerSessionAttribute)
-def admin_get_player_session_attribute(
-    attribute: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_player_session_attribute(attribute: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,13 +194,7 @@ def admin_get_player_session_attribute(
 
 
 @same_doc_as(AdminGetPlayerSessionAttribute)
-async def admin_get_player_session_attribute_async(
-    attribute: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_player_session_attribute_async(attribute: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -276,19 +204,11 @@ async def admin_get_player_session_attribute_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminSetPlayerSessionAttribute)
-def admin_set_player_session_attribute(
-    body: ModelsSetPlayerSessionAttributeRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_set_player_session_attribute(body: ModelsSetPlayerSessionAttributeRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -302,13 +222,7 @@ def admin_set_player_session_attribute(
 
 
 @same_doc_as(AdminSetPlayerSessionAttribute)
-async def admin_set_player_session_attribute_async(
-    body: ModelsSetPlayerSessionAttributeRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_set_player_session_attribute_async(body: ModelsSetPlayerSessionAttributeRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,17 +232,11 @@ async def admin_set_player_session_attribute_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetPlayerBlockedByPlayersV1)
-def public_get_player_blocked_by_players_v1(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_player_blocked_by_players_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -340,11 +248,7 @@ def public_get_player_blocked_by_players_v1(
 
 
 @same_doc_as(PublicGetPlayerBlockedByPlayersV1)
-async def public_get_player_blocked_by_players_v1_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_player_blocked_by_players_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -352,17 +256,11 @@ async def public_get_player_blocked_by_players_v1_async(
     request = PublicGetPlayerBlockedByPlayersV1.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetPlayerBlockedPlayersV1)
-def public_get_player_blocked_players_v1(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_player_blocked_players_v1(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -374,11 +272,7 @@ def public_get_player_blocked_players_v1(
 
 
 @same_doc_as(PublicGetPlayerBlockedPlayersV1)
-async def public_get_player_blocked_players_v1_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_player_blocked_players_v1_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -386,6 +280,4 @@ async def public_get_player_blocked_players_v1_async(
     request = PublicGetPlayerBlockedPlayersV1.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

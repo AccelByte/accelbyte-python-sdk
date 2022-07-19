@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -41,9 +41,9 @@ class V2Entry(Model):
 
     # region fields
 
-    point: float  # REQUIRED
-    additional_data: Dict[str, Any]  # OPTIONAL
-    hidden: bool  # OPTIONAL
+    point: float                                                                                   # REQUIRED
+    additional_data: Dict[str, Any]                                                                # OPTIONAL
+    hidden: bool                                                                                   # OPTIONAL
 
     # endregion fields
 
@@ -72,9 +72,7 @@ class V2Entry(Model):
         elif include_empty:
             result["point"] = 0.0
         if hasattr(self, "additional_data"):
-            result["additionalData"] = {
-                str(k0): v0 for k0, v0 in self.additional_data.items()
-            }
+            result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
             result["additionalData"] = {}
         if hasattr(self, "hidden"):
@@ -112,9 +110,7 @@ class V2Entry(Model):
         elif include_empty:
             instance.point = 0.0
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
-            instance.additional_data = {
-                str(k0): v0 for k0, v0 in dict_["additionalData"].items()
-            }
+            instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:
             instance.additional_data = {}
         if "hidden" in dict_ and dict_["hidden"] is not None:
@@ -124,29 +120,15 @@ class V2Entry(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, V2Entry]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, V2Entry]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[V2Entry]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[V2Entry]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[V2Entry, List[V2Entry], Dict[Any, V2Entry]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[V2Entry, List[V2Entry], Dict[Any, V2Entry]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -74,8 +74,8 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
     _securities: List[List[str]] = [["COOKIE_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    cookie: Union[str, HeaderStr]  # OPTIONAL in [header]
-    steam_id: str  # REQUIRED in [path]
+    cookie: Union[str, HeaderStr]                                                                  # OPTIONAL in [header]
+    steam_id: str                                                                                  # REQUIRED in [path]
 
     # endregion fields
 
@@ -139,23 +139,17 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
 
     # region with_x methods
 
-    def with_cookie(
-        self, value: Union[str, HeaderStr]
-    ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
+    def with_cookie(self, value: Union[str, HeaderStr]) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         self.cookie = value
         return self
 
-    def with_cookie_access_token(
-        self, value: str
-    ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
+    def with_cookie_access_token(self, value: str) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         if not hasattr(self, "cookie"):
             self.cookie = HeaderStr()
         self.cookie["access_token"] = value
         return self
 
-    def with_steam_id(
-        self, value: str
-    ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
+    def with_steam_id(self, value: str) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         self.steam_id = value
         return self
 
@@ -180,11 +174,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, Dict[str, Any]], Union[None, HTTPValidationError, HttpResponse]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Dict[str, Any]], Union[None, HTTPValidationError, HttpResponse]]:
         """Parse the given response.
 
         200: OK - Dict[str, Any] (Successful Response)
@@ -197,9 +187,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -209,9 +197,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -230,9 +216,7 @@ class ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet(Ope
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet:
         instance = cls()
         if "Cookie" in dict_ and dict_["Cookie"] is not None:
             instance.cookie = str(dict_["Cookie"])

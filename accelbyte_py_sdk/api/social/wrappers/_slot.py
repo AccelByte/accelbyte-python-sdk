@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -44,13 +44,7 @@ from ..operations.slot import PublicUpdateUserNamespaceSlotMetadata
 
 
 @same_doc_as(GetSlotData)
-def get_slot_data(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_slot_data(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,13 +58,7 @@ def get_slot_data(
 
 
 @same_doc_as(GetSlotData)
-async def get_slot_data_async(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_slot_data_async(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -80,18 +68,11 @@ async def get_slot_data_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserNamespaceSlots)
-def get_user_namespace_slots(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_namespace_slots(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,12 +85,7 @@ def get_user_namespace_slots(
 
 
 @same_doc_as(GetUserNamespaceSlots)
-async def get_user_namespace_slots_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_namespace_slots_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -118,23 +94,11 @@ async def get_user_namespace_slots_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicCreateUserNamespaceSlot)
-def public_create_user_namespace_slot(
-    user_id: str,
-    checksum: Optional[str] = None,
-    custom_attribute: Optional[str] = None,
-    file: Optional[Any] = None,
-    label: Optional[str] = None,
-    tags: Optional[List[str]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_create_user_namespace_slot(user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -152,17 +116,7 @@ def public_create_user_namespace_slot(
 
 
 @same_doc_as(PublicCreateUserNamespaceSlot)
-async def public_create_user_namespace_slot_async(
-    user_id: str,
-    checksum: Optional[str] = None,
-    custom_attribute: Optional[str] = None,
-    file: Optional[Any] = None,
-    label: Optional[str] = None,
-    tags: Optional[List[str]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_create_user_namespace_slot_async(user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -176,19 +130,11 @@ async def public_create_user_namespace_slot_async(
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDeleteUserNamespaceSlot)
-def public_delete_user_namespace_slot(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_delete_user_namespace_slot(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -202,13 +148,7 @@ def public_delete_user_namespace_slot(
 
 
 @same_doc_as(PublicDeleteUserNamespaceSlot)
-async def public_delete_user_namespace_slot_async(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_delete_user_namespace_slot_async(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -218,19 +158,11 @@ async def public_delete_user_namespace_slot_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetSlotData)
-def public_get_slot_data(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_slot_data(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -244,13 +176,7 @@ def public_get_slot_data(
 
 
 @same_doc_as(PublicGetSlotData)
-async def public_get_slot_data_async(
-    slot_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_slot_data_async(slot_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -260,18 +186,11 @@ async def public_get_slot_data_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserNamespaceSlots)
-def public_get_user_namespace_slots(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_namespace_slots(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -284,12 +203,7 @@ def public_get_user_namespace_slots(
 
 
 @same_doc_as(PublicGetUserNamespaceSlots)
-async def public_get_user_namespace_slots_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_namespace_slots_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,24 +212,11 @@ async def public_get_user_namespace_slots_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlot)
-def public_update_user_namespace_slot(
-    slot_id: str,
-    user_id: str,
-    checksum: Optional[str] = None,
-    custom_attribute: Optional[str] = None,
-    file: Optional[Any] = None,
-    label: Optional[str] = None,
-    tags: Optional[List[str]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_update_user_namespace_slot(slot_id: str, user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -334,18 +235,7 @@ def public_update_user_namespace_slot(
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlot)
-async def public_update_user_namespace_slot_async(
-    slot_id: str,
-    user_id: str,
-    checksum: Optional[str] = None,
-    custom_attribute: Optional[str] = None,
-    file: Optional[Any] = None,
-    label: Optional[str] = None,
-    tags: Optional[List[str]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_update_user_namespace_slot_async(slot_id: str, user_id: str, checksum: Optional[str] = None, custom_attribute: Optional[str] = None, file: Optional[Any] = None, label: Optional[str] = None, tags: Optional[List[str]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -360,20 +250,11 @@ async def public_update_user_namespace_slot_async(
         tags=tags,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlotMetadata)
-def public_update_user_namespace_slot_metadata(
-    slot_id: str,
-    user_id: str,
-    body: Optional[SlotMetadataUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_update_user_namespace_slot_metadata(slot_id: str, user_id: str, body: Optional[SlotMetadataUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -388,14 +269,7 @@ def public_update_user_namespace_slot_metadata(
 
 
 @same_doc_as(PublicUpdateUserNamespaceSlotMetadata)
-async def public_update_user_namespace_slot_metadata_async(
-    slot_id: str,
-    user_id: str,
-    body: Optional[SlotMetadataUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_update_user_namespace_slot_metadata_async(slot_id: str, user_id: str, body: Optional[SlotMetadataUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -406,6 +280,4 @@ async def public_update_user_namespace_slot_metadata_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

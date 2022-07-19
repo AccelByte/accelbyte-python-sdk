@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -43,10 +43,10 @@ class RedeemableItem(Model):
 
     # region fields
 
-    item_id: str  # REQUIRED
-    item_name: str  # REQUIRED
-    extra_subscription_days: int  # OPTIONAL
-    quantity: int  # OPTIONAL
+    item_id: str                                                                                   # REQUIRED
+    item_name: str                                                                                 # REQUIRED
+    extra_subscription_days: int                                                                   # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -114,9 +114,7 @@ class RedeemableItem(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> RedeemableItem:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RedeemableItem:
         instance = cls()
         if not dict_:
             return instance
@@ -128,10 +126,7 @@ class RedeemableItem(Model):
             instance.item_name = str(dict_["itemName"])
         elif include_empty:
             instance.item_name = ""
-        if (
-            "extraSubscriptionDays" in dict_
-            and dict_["extraSubscriptionDays"] is not None
-        ):
+        if "extraSubscriptionDays" in dict_ and dict_["extraSubscriptionDays"] is not None:
             instance.extra_subscription_days = int(dict_["extraSubscriptionDays"])
         elif include_empty:
             instance.extra_subscription_days = 0
@@ -142,29 +137,15 @@ class RedeemableItem(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, RedeemableItem]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RedeemableItem]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[RedeemableItem]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RedeemableItem]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[RedeemableItem, List[RedeemableItem], Dict[Any, RedeemableItem]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RedeemableItem, List[RedeemableItem], Dict[Any, RedeemableItem]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,17 +84,15 @@ class GetAllSessionsInChannel(Operation):
 
     # region fields
 
-    _url: str = (
-        "/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions"
-    )
+    _url: str = "/matchmaking/v1/admin/namespaces/{namespace}/channels/{channelName}/sessions"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    channel_name: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
+    channel_name: str                                                                              # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -182,12 +180,7 @@ class GetAllSessionsInChannel(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[ModelsMatchmakingResult]],
-        Union[None, HttpResponse, ResponseError, ResponseErrorV1],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[ModelsMatchmakingResult]], Union[None, HttpResponse, ResponseError, ResponseErrorV1]]:
         """Parse the given response.
 
         200: OK - List[ModelsMatchmakingResult] (Operation succeeded)
@@ -208,9 +201,7 @@ class GetAllSessionsInChannel(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -228,9 +219,7 @@ class GetAllSessionsInChannel(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -248,9 +237,7 @@ class GetAllSessionsInChannel(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> GetAllSessionsInChannel:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetAllSessionsInChannel:
         instance = cls()
         if "channelName" in dict_ and dict_["channelName"] is not None:
             instance.channel_name = str(dict_["channelName"])

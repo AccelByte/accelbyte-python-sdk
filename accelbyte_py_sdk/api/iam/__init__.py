@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-iam-service."""
 
-__version__ = "5.12.0"
+__version__ = "5.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,14 +23,14 @@ from .wrappers import admin_get_bans_type_with_namespace_v3
 from .wrappers import admin_get_bans_type_with_namespace_v3_async
 from .wrappers import admin_get_list_ban_reason_v3
 from .wrappers import admin_get_list_ban_reason_v3_async
+
+# bans_deprecated
 from .wrappers import get_bans_type
 from .wrappers import get_bans_type_async
 from .wrappers import get_list_ban_reason
 from .wrappers import get_list_ban_reason_async
 
 # clients
-from .wrappers import add_client_permission
-from .wrappers import add_client_permission_async
 from .wrappers import admin_add_client_permissions_v3
 from .wrappers import admin_add_client_permissions_v3_async
 from .wrappers import admin_create_client_v3
@@ -45,8 +45,14 @@ from .wrappers import admin_get_clientsby_namespaceby_idv3
 from .wrappers import admin_get_clientsby_namespaceby_idv3_async
 from .wrappers import admin_update_client_permission_v3
 from .wrappers import admin_update_client_permission_v3_async
+from .wrappers import admin_update_client_secret_v3
+from .wrappers import admin_update_client_secret_v3_async
 from .wrappers import admin_update_client_v3
 from .wrappers import admin_update_client_v3_async
+
+# clients_deprecated
+from .wrappers import add_client_permission
+from .wrappers import add_client_permission_async
 from .wrappers import create_client
 from .wrappers import create_client_async
 from .wrappers import create_client_by_namespace
@@ -143,12 +149,6 @@ from .wrappers import user_authentication_v3
 from .wrappers import user_authentication_v3_async
 
 # roles
-from .wrappers import add_role_managers
-from .wrappers import add_role_managers_async
-from .wrappers import add_role_members
-from .wrappers import add_role_members_async
-from .wrappers import add_role_permission
-from .wrappers import add_role_permission_async
 from .wrappers import admin_add_role_managers_v3
 from .wrappers import admin_add_role_managers_v3_async
 from .wrappers import admin_add_role_members_v3
@@ -207,6 +207,18 @@ from .wrappers import admin_update_role_v3
 from .wrappers import admin_update_role_v3_async
 from .wrappers import admin_update_role_v4
 from .wrappers import admin_update_role_v4_async
+from .wrappers import public_get_role_v3
+from .wrappers import public_get_role_v3_async
+from .wrappers import public_get_roles_v3
+from .wrappers import public_get_roles_v3_async
+
+# roles_deprecated
+from .wrappers import add_role_managers
+from .wrappers import add_role_managers_async
+from .wrappers import add_role_members
+from .wrappers import add_role_members_async
+from .wrappers import add_role_permission
+from .wrappers import add_role_permission_async
 from .wrappers import create_role
 from .wrappers import create_role_async
 from .wrappers import delete_role
@@ -223,10 +235,6 @@ from .wrappers import get_role_members
 from .wrappers import get_role_members_async
 from .wrappers import get_roles
 from .wrappers import get_roles_async
-from .wrappers import public_get_role_v3
-from .wrappers import public_get_role_v3_async
-from .wrappers import public_get_roles_v3
-from .wrappers import public_get_roles_v3_async
 from .wrappers import remove_role_admin
 from .wrappers import remove_role_admin_async
 from .wrappers import remove_role_managers
@@ -269,12 +277,8 @@ from .wrappers import delete_third_party_login_platform_credential_v3
 from .wrappers import delete_third_party_login_platform_credential_v3_async
 from .wrappers import delete_third_party_login_platform_domain_v3
 from .wrappers import delete_third_party_login_platform_domain_v3_async
-from .wrappers import (
-    retrieve_all_active_third_party_login_platform_credential_public_v3,
-)
-from .wrappers import (
-    retrieve_all_active_third_party_login_platform_credential_public_v3_async,
-)
+from .wrappers import retrieve_all_active_third_party_login_platform_credential_public_v3
+from .wrappers import retrieve_all_active_third_party_login_platform_credential_public_v3_async
 from .wrappers import retrieve_all_active_third_party_login_platform_credential_v3
 from .wrappers import retrieve_all_active_third_party_login_platform_credential_v3_async
 from .wrappers import retrieve_all_third_party_login_platform_credential_v3

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class AccountcommonUserPlatforms(Model):
 
     # region fields
 
-    user_id_platforms: List[AccountcommonUserPlatformInfo]  # REQUIRED
+    user_id_platforms: List[AccountcommonUserPlatformInfo]                                         # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_user_id_platforms(
-        self, value: List[AccountcommonUserPlatformInfo]
-    ) -> AccountcommonUserPlatforms:
+    def with_user_id_platforms(self, value: List[AccountcommonUserPlatformInfo]) -> AccountcommonUserPlatforms:
         self.user_id_platforms = value
         return self
 
@@ -58,9 +56,7 @@ class AccountcommonUserPlatforms(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "user_id_platforms"):
-            result["userIdPlatforms"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.user_id_platforms
-            ]
+            result["userIdPlatforms"] = [i0.to_dict(include_empty=include_empty) for i0 in self.user_id_platforms]
         elif include_empty:
             result["userIdPlatforms"] = []
         return result
@@ -79,51 +75,26 @@ class AccountcommonUserPlatforms(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AccountcommonUserPlatforms:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountcommonUserPlatforms:
         instance = cls()
         if not dict_:
             return instance
         if "userIdPlatforms" in dict_ and dict_["userIdPlatforms"] is not None:
-            instance.user_id_platforms = [
-                AccountcommonUserPlatformInfo.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["userIdPlatforms"]
-            ]
+            instance.user_id_platforms = [AccountcommonUserPlatformInfo.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["userIdPlatforms"]]
         elif include_empty:
             instance.user_id_platforms = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, AccountcommonUserPlatforms]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountcommonUserPlatforms]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[AccountcommonUserPlatforms]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountcommonUserPlatforms]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        AccountcommonUserPlatforms,
-        List[AccountcommonUserPlatforms],
-        Dict[Any, AccountcommonUserPlatforms],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountcommonUserPlatforms, List[AccountcommonUserPlatforms], Dict[Any, AccountcommonUserPlatforms]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

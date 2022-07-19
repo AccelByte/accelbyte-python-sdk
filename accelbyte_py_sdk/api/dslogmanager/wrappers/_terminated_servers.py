@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,12 +39,7 @@ from ..operations.terminated_servers import ListTerminatedServers
 
 
 @same_doc_as(CheckServerLogs)
-def check_server_logs(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def check_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -57,12 +52,7 @@ def check_server_logs(
 
 
 @same_doc_as(CheckServerLogs)
-async def check_server_logs_async(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def check_server_logs_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,18 +61,11 @@ async def check_server_logs_async(
         pod_name=pod_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DownloadServerLogs)
-def download_server_logs(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def download_server_logs(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,12 +78,7 @@ def download_server_logs(
 
 
 @same_doc_as(DownloadServerLogs)
-async def download_server_logs_async(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def download_server_logs_async(pod_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,31 +87,11 @@ async def download_server_logs_async(
         pod_name=pod_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListTerminatedServers)
-def list_terminated_servers(
-    deployment: Optional[str] = None,
-    end_date: Optional[str] = None,
-    game_mode: Optional[str] = None,
-    limit: Optional[int] = None,
-    next_: Optional[str] = None,
-    party_id: Optional[str] = None,
-    pod_name: Optional[str] = None,
-    previous: Optional[str] = None,
-    provider: Optional[str] = None,
-    region: Optional[str] = None,
-    session_id: Optional[str] = None,
-    start_date: Optional[str] = None,
-    status: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def list_terminated_servers(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -159,25 +117,7 @@ def list_terminated_servers(
 
 
 @same_doc_as(ListTerminatedServers)
-async def list_terminated_servers_async(
-    deployment: Optional[str] = None,
-    end_date: Optional[str] = None,
-    game_mode: Optional[str] = None,
-    limit: Optional[int] = None,
-    next_: Optional[str] = None,
-    party_id: Optional[str] = None,
-    pod_name: Optional[str] = None,
-    previous: Optional[str] = None,
-    provider: Optional[str] = None,
-    region: Optional[str] = None,
-    session_id: Optional[str] = None,
-    start_date: Optional[str] = None,
-    status: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def list_terminated_servers_async(deployment: Optional[str] = None, end_date: Optional[str] = None, game_mode: Optional[str] = None, limit: Optional[int] = None, next_: Optional[str] = None, party_id: Optional[str] = None, pod_name: Optional[str] = None, previous: Optional[str] = None, provider: Optional[str] = None, region: Optional[str] = None, session_id: Optional[str] = None, start_date: Optional[str] = None, status: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -199,6 +139,4 @@ async def list_terminated_servers_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

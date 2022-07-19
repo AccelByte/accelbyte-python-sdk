@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -83,7 +83,7 @@ class RegisterEventHandler(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsEventRegistry  # REQUIRED in [body]
+    body: ModelsEventRegistry                                                                      # REQUIRED in [body]
 
     # endregion fields
 
@@ -160,9 +160,7 @@ class RegisterEventHandler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         201: Created - (Created)
@@ -183,9 +181,7 @@ class RegisterEventHandler(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -203,9 +199,7 @@ class RegisterEventHandler(Operation):
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -221,14 +215,10 @@ class RegisterEventHandler(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> RegisterEventHandler:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RegisterEventHandler:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsEventRegistry.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+            instance.body = ModelsEventRegistry.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsEventRegistry()
         return instance

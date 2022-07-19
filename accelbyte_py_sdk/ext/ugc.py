@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (2.2.1)
+# justice-ugc-service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

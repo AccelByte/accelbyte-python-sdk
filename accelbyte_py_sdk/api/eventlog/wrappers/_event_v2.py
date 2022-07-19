@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,17 +39,7 @@ from ..operations.event_v2 import QueryEventStreamHandler
 
 
 @same_doc_as(GetEventSpecificUserV2Handler)
-def get_event_specific_user_v2_handler(
-    user_id: str,
-    end_date: Optional[str] = None,
-    event_name: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_event_specific_user_v2_handler(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,17 +57,7 @@ def get_event_specific_user_v2_handler(
 
 
 @same_doc_as(GetEventSpecificUserV2Handler)
-async def get_event_specific_user_v2_handler_async(
-    user_id: str,
-    end_date: Optional[str] = None,
-    event_name: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_event_specific_user_v2_handler_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -91,23 +71,11 @@ async def get_event_specific_user_v2_handler_async(
         start_date=start_date,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPublicEditHistory)
-def get_public_edit_history(
-    user_id: str,
-    end_date: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    type_: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_public_edit_history(user_id: str, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,17 +93,7 @@ def get_public_edit_history(
 
 
 @same_doc_as(GetPublicEditHistory)
-async def get_public_edit_history_async(
-    user_id: str,
-    end_date: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    type_: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_public_edit_history_async(user_id: str, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,23 +107,11 @@ async def get_public_edit_history_async(
         type_=type_,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserEventsV2Public)
-def get_user_events_v2_public(
-    user_id: str,
-    end_date: Optional[str] = None,
-    event_name: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_events_v2_public(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -183,17 +129,7 @@ def get_user_events_v2_public(
 
 
 @same_doc_as(GetUserEventsV2Public)
-async def get_user_events_v2_public_async(
-    user_id: str,
-    end_date: Optional[str] = None,
-    event_name: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_events_v2_public_async(user_id: str, end_date: Optional[str] = None, event_name: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,22 +143,11 @@ async def get_user_events_v2_public_async(
         start_date=start_date,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryEventStreamHandler)
-def query_event_stream_handler(
-    body: ModelsGenericQueryPayload,
-    end_date: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_event_stream_handler(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,16 +164,7 @@ def query_event_stream_handler(
 
 
 @same_doc_as(QueryEventStreamHandler)
-async def query_event_stream_handler_async(
-    body: ModelsGenericQueryPayload,
-    end_date: Optional[str] = None,
-    offset: Optional[int] = None,
-    page_size: Optional[int] = None,
-    start_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_event_stream_handler_async(body: ModelsGenericQueryPayload, end_date: Optional[str] = None, offset: Optional[int] = None, page_size: Optional[int] = None, start_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,6 +177,4 @@ async def query_event_stream_handler_async(
         start_date=start_date,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

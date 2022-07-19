@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -75,13 +75,7 @@ from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStat
 
 
 @same_doc_as(AdminCreateUserOrder)
-def admin_create_user_order(
-    user_id: str,
-    body: Optional[AdminOrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_create_user_order(user_id: str, body: Optional[AdminOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -95,13 +89,7 @@ def admin_create_user_order(
 
 
 @same_doc_as(AdminCreateUserOrder)
-async def admin_create_user_order_async(
-    user_id: str,
-    body: Optional[AdminOrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_create_user_order_async(user_id: str, body: Optional[AdminOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,19 +99,11 @@ async def admin_create_user_order_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CountOfPurchasedItem)
-def count_of_purchased_item(
-    item_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def count_of_purchased_item(item_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,13 +117,7 @@ def count_of_purchased_item(
 
 
 @same_doc_as(CountOfPurchasedItem)
-async def count_of_purchased_item_async(
-    item_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def count_of_purchased_item_async(item_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -153,19 +127,11 @@ async def count_of_purchased_item_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DownloadUserOrderReceipt)
-def download_user_order_receipt(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def download_user_order_receipt(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,13 +145,7 @@ def download_user_order_receipt(
 
 
 @same_doc_as(DownloadUserOrderReceipt)
-async def download_user_order_receipt_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def download_user_order_receipt_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,19 +155,11 @@ async def download_user_order_receipt_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(FulfillUserOrder)
-def fulfill_user_order(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def fulfill_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,13 +173,7 @@ def fulfill_user_order(
 
 
 @same_doc_as(FulfillUserOrder)
-async def fulfill_user_order_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def fulfill_user_order_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -237,18 +183,11 @@ async def fulfill_user_order_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetOrder)
-def get_order(
-    order_no: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_order(order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,12 +200,7 @@ def get_order(
 
 
 @same_doc_as(GetOrder)
-async def get_order_async(
-    order_no: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_order_async(order_no: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,17 +209,11 @@ async def get_order_async(
         order_no=order_no,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetOrderStatistics)
-def get_order_statistics(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_order_statistics(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -297,11 +225,7 @@ def get_order_statistics(
 
 
 @same_doc_as(GetOrderStatistics)
-async def get_order_statistics_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_order_statistics_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,19 +233,11 @@ async def get_order_statistics_async(
     request = GetOrderStatistics.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserOrder)
-def get_user_order(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -335,13 +251,7 @@ def get_user_order(
 
 
 @same_doc_as(GetUserOrder)
-async def get_user_order_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_order_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -351,19 +261,11 @@ async def get_user_order_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserOrderGrant)
-def get_user_order_grant(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_order_grant(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -377,13 +279,7 @@ def get_user_order_grant(
 
 
 @same_doc_as(GetUserOrderGrant)
-async def get_user_order_grant_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_order_grant_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -393,19 +289,11 @@ async def get_user_order_grant_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserOrderHistories)
-def get_user_order_histories(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_order_histories(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -419,13 +307,7 @@ def get_user_order_histories(
 
 
 @same_doc_as(GetUserOrderHistories)
-async def get_user_order_histories_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_order_histories_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -435,20 +317,11 @@ async def get_user_order_histories_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ProcessUserOrderNotification)
-def process_user_order_notification(
-    order_no: str,
-    user_id: str,
-    body: Optional[TradeNotification] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def process_user_order_notification(order_no: str, user_id: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -463,14 +336,7 @@ def process_user_order_notification(
 
 
 @same_doc_as(ProcessUserOrderNotification)
-async def process_user_order_notification_async(
-    order_no: str,
-    user_id: str,
-    body: Optional[TradeNotification] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def process_user_order_notification_async(order_no: str, user_id: str, body: Optional[TradeNotification] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -481,19 +347,11 @@ async def process_user_order_notification_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicCancelUserOrder)
-def public_cancel_user_order(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_cancel_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -507,13 +365,7 @@ def public_cancel_user_order(
 
 
 @same_doc_as(PublicCancelUserOrder)
-async def public_cancel_user_order_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_cancel_user_order_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -523,19 +375,11 @@ async def public_cancel_user_order_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicCreateUserOrder)
-def public_create_user_order(
-    user_id: str,
-    body: Optional[OrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_create_user_order(user_id: str, body: Optional[OrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -549,13 +393,7 @@ def public_create_user_order(
 
 
 @same_doc_as(PublicCreateUserOrder)
-async def public_create_user_order_async(
-    user_id: str,
-    body: Optional[OrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_create_user_order_async(user_id: str, body: Optional[OrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -565,19 +403,11 @@ async def public_create_user_order_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicDownloadUserOrderReceipt)
-def public_download_user_order_receipt(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_download_user_order_receipt(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -591,13 +421,7 @@ def public_download_user_order_receipt(
 
 
 @same_doc_as(PublicDownloadUserOrderReceipt)
-async def public_download_user_order_receipt_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_download_user_order_receipt_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -607,19 +431,11 @@ async def public_download_user_order_receipt_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserOrder)
-def public_get_user_order(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_order(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -633,13 +449,7 @@ def public_get_user_order(
 
 
 @same_doc_as(PublicGetUserOrder)
-async def public_get_user_order_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_order_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -649,19 +459,11 @@ async def public_get_user_order_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserOrderHistories)
-def public_get_user_order_histories(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_order_histories(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -675,13 +477,7 @@ def public_get_user_order_histories(
 
 
 @same_doc_as(PublicGetUserOrderHistories)
-async def public_get_user_order_histories_async(
-    order_no: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_order_histories_async(order_no: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -691,22 +487,11 @@ async def public_get_user_order_histories_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicQueryUserOrders)
-def public_query_user_orders(
-    user_id: str,
-    item_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -723,16 +508,7 @@ def public_query_user_orders(
 
 
 @same_doc_as(PublicQueryUserOrders)
-async def public_query_user_orders_async(
-    user_id: str,
-    item_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, PublicQueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -745,25 +521,11 @@ async def public_query_user_orders_async(
         status=status,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryOrders)
-def query_orders(
-    end_time: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    order_nos: Optional[List[str]] = None,
-    sort_by: Optional[str] = None,
-    start_time: Optional[str] = None,
-    status: Optional[Union[str, QueryOrdersStatusEnum]] = None,
-    with_total: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_orders(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryOrdersStatusEnum]] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -783,19 +545,7 @@ def query_orders(
 
 
 @same_doc_as(QueryOrders)
-async def query_orders_async(
-    end_time: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    order_nos: Optional[List[str]] = None,
-    sort_by: Optional[str] = None,
-    start_time: Optional[str] = None,
-    status: Optional[Union[str, QueryOrdersStatusEnum]] = None,
-    with_total: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_orders_async(end_time: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, order_nos: Optional[List[str]] = None, sort_by: Optional[str] = None, start_time: Optional[str] = None, status: Optional[Union[str, QueryOrdersStatusEnum]] = None, with_total: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -811,22 +561,11 @@ async def query_orders_async(
         with_total=with_total,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryUserOrders)
-def query_user_orders(
-    user_id: str,
-    item_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_user_orders(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -843,16 +582,7 @@ def query_user_orders(
 
 
 @same_doc_as(QueryUserOrders)
-async def query_user_orders_async(
-    user_id: str,
-    item_id: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_user_orders_async(user_id: str, item_id: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryUserOrdersStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -865,19 +595,11 @@ async def query_user_orders_async(
         status=status,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RefundOrder)
-def refund_order(
-    order_no: str,
-    body: Optional[OrderRefundCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def refund_order(order_no: str, body: Optional[OrderRefundCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -891,13 +613,7 @@ def refund_order(
 
 
 @same_doc_as(RefundOrder)
-async def refund_order_async(
-    order_no: str,
-    body: Optional[OrderRefundCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def refund_order_async(order_no: str, body: Optional[OrderRefundCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -907,20 +623,11 @@ async def refund_order_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateUserOrderStatus)
-def update_user_order_status(
-    order_no: str,
-    user_id: str,
-    body: Optional[OrderUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_user_order_status(order_no: str, user_id: str, body: Optional[OrderUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -935,14 +642,7 @@ def update_user_order_status(
 
 
 @same_doc_as(UpdateUserOrderStatus)
-async def update_user_order_status_async(
-    order_no: str,
-    user_id: str,
-    body: Optional[OrderUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_user_order_status_async(order_no: str, user_id: str, body: Optional[OrderUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -953,6 +653,4 @@ async def update_user_order_status_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

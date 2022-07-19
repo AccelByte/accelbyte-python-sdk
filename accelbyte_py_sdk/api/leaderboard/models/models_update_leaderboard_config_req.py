@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,15 +57,15 @@ class ModelsUpdateLeaderboardConfigReq(Model):
 
     # region fields
 
-    daily: ModelsDailyConfig  # REQUIRED
-    descending: bool  # REQUIRED
-    icon_url: str  # REQUIRED
-    monthly: ModelsMonthlyConfig  # REQUIRED
-    name: str  # REQUIRED
-    season_period: int  # REQUIRED
-    start_time: str  # REQUIRED
-    stat_code: str  # REQUIRED
-    weekly: ModelsWeeklyConfig  # REQUIRED
+    daily: ModelsDailyConfig                                                                       # REQUIRED
+    descending: bool                                                                               # REQUIRED
+    icon_url: str                                                                                  # REQUIRED
+    monthly: ModelsMonthlyConfig                                                                   # REQUIRED
+    name: str                                                                                      # REQUIRED
+    season_period: int                                                                             # REQUIRED
+    start_time: str                                                                                # REQUIRED
+    stat_code: str                                                                                 # REQUIRED
+    weekly: ModelsWeeklyConfig                                                                     # REQUIRED
 
     # endregion fields
 
@@ -83,9 +83,7 @@ class ModelsUpdateLeaderboardConfigReq(Model):
         self.icon_url = value
         return self
 
-    def with_monthly(
-        self, value: ModelsMonthlyConfig
-    ) -> ModelsUpdateLeaderboardConfigReq:
+    def with_monthly(self, value: ModelsMonthlyConfig) -> ModelsUpdateLeaderboardConfigReq:
         self.monthly = value
         return self
 
@@ -105,9 +103,7 @@ class ModelsUpdateLeaderboardConfigReq(Model):
         self.stat_code = value
         return self
 
-    def with_weekly(
-        self, value: ModelsWeeklyConfig
-    ) -> ModelsUpdateLeaderboardConfigReq:
+    def with_weekly(self, value: ModelsWeeklyConfig) -> ModelsUpdateLeaderboardConfigReq:
         self.weekly = value
         return self
 
@@ -185,16 +181,12 @@ class ModelsUpdateLeaderboardConfigReq(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUpdateLeaderboardConfigReq:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateLeaderboardConfigReq:
         instance = cls()
         if not dict_:
             return instance
         if "daily" in dict_ and dict_["daily"] is not None:
-            instance.daily = ModelsDailyConfig.create_from_dict(
-                dict_["daily"], include_empty=include_empty
-            )
+            instance.daily = ModelsDailyConfig.create_from_dict(dict_["daily"], include_empty=include_empty)
         elif include_empty:
             instance.daily = ModelsDailyConfig()
         if "descending" in dict_ and dict_["descending"] is not None:
@@ -206,9 +198,7 @@ class ModelsUpdateLeaderboardConfigReq(Model):
         elif include_empty:
             instance.icon_url = ""
         if "monthly" in dict_ and dict_["monthly"] is not None:
-            instance.monthly = ModelsMonthlyConfig.create_from_dict(
-                dict_["monthly"], include_empty=include_empty
-            )
+            instance.monthly = ModelsMonthlyConfig.create_from_dict(dict_["monthly"], include_empty=include_empty)
         elif include_empty:
             instance.monthly = ModelsMonthlyConfig()
         if "name" in dict_ and dict_["name"] is not None:
@@ -228,41 +218,21 @@ class ModelsUpdateLeaderboardConfigReq(Model):
         elif include_empty:
             instance.stat_code = ""
         if "weekly" in dict_ and dict_["weekly"] is not None:
-            instance.weekly = ModelsWeeklyConfig.create_from_dict(
-                dict_["weekly"], include_empty=include_empty
-            )
+            instance.weekly = ModelsWeeklyConfig.create_from_dict(dict_["weekly"], include_empty=include_empty)
         elif include_empty:
             instance.weekly = ModelsWeeklyConfig()
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUpdateLeaderboardConfigReq]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUpdateLeaderboardConfigReq]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUpdateLeaderboardConfigReq]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUpdateLeaderboardConfigReq]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsUpdateLeaderboardConfigReq,
-        List[ModelsUpdateLeaderboardConfigReq],
-        Dict[Any, ModelsUpdateLeaderboardConfigReq],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUpdateLeaderboardConfigReq, List[ModelsUpdateLeaderboardConfigReq], Dict[Any, ModelsUpdateLeaderboardConfigReq]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

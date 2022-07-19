@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,13 +51,7 @@ from ..operations.data_retrieval import UpdateAdminEmailConfiguration
 
 
 @same_doc_as(AdminCancelUserPersonalDataRequest)
-def admin_cancel_user_personal_data_request(
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_cancel_user_personal_data_request(request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,13 +65,7 @@ def admin_cancel_user_personal_data_request(
 
 
 @same_doc_as(AdminCancelUserPersonalDataRequest)
-async def admin_cancel_user_personal_data_request_async(
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_cancel_user_personal_data_request_async(request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -87,20 +75,11 @@ async def admin_cancel_user_personal_data_request_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGeneratePersonalDataURL)
-def admin_generate_personal_data_url(
-    password: str,
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_generate_personal_data_url(password: str, request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -115,14 +94,7 @@ def admin_generate_personal_data_url(
 
 
 @same_doc_as(AdminGeneratePersonalDataURL)
-async def admin_generate_personal_data_url_async(
-    password: str,
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_generate_personal_data_url_async(password: str, request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -133,20 +105,11 @@ async def admin_generate_personal_data_url_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetListPersonalDataRequest)
-def admin_get_list_personal_data_request(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    request_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_list_personal_data_request(limit: Optional[int] = None, offset: Optional[int] = None, request_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,14 +124,7 @@ def admin_get_list_personal_data_request(
 
 
 @same_doc_as(AdminGetListPersonalDataRequest)
-async def admin_get_list_personal_data_request_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    request_date: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_list_personal_data_request_async(limit: Optional[int] = None, offset: Optional[int] = None, request_date: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,20 +135,11 @@ async def admin_get_list_personal_data_request_async(
         request_date=request_date,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetUserPersonalDataRequests)
-def admin_get_user_personal_data_requests(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_user_personal_data_requests(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,14 +154,7 @@ def admin_get_user_personal_data_requests(
 
 
 @same_doc_as(AdminGetUserPersonalDataRequests)
-async def admin_get_user_personal_data_requests_async(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_user_personal_data_requests_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -225,19 +165,11 @@ async def admin_get_user_personal_data_requests_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminRequestDataRetrieval)
-def admin_request_data_retrieval(
-    user_id: str,
-    password: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_request_data_retrieval(user_id: str, password: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -251,13 +183,7 @@ def admin_request_data_retrieval(
 
 
 @same_doc_as(AdminRequestDataRetrieval)
-async def admin_request_data_retrieval_async(
-    user_id: str,
-    password: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_request_data_retrieval_async(user_id: str, password: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -267,18 +193,11 @@ async def admin_request_data_retrieval_async(
         password=password,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteAdminEmailConfiguration)
-def delete_admin_email_configuration(
-    emails: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_admin_email_configuration(emails: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -291,12 +210,7 @@ def delete_admin_email_configuration(
 
 
 @same_doc_as(DeleteAdminEmailConfiguration)
-async def delete_admin_email_configuration_async(
-    emails: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_admin_email_configuration_async(emails: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -305,17 +219,11 @@ async def delete_admin_email_configuration_async(
         emails=emails,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAdminEmailConfiguration)
-def get_admin_email_configuration(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_admin_email_configuration(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -327,11 +235,7 @@ def get_admin_email_configuration(
 
 
 @same_doc_as(GetAdminEmailConfiguration)
-async def get_admin_email_configuration_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_admin_email_configuration_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -339,19 +243,11 @@ async def get_admin_email_configuration_async(
     request = GetAdminEmailConfiguration.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicCancelUserPersonalDataRequest)
-def public_cancel_user_personal_data_request(
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_cancel_user_personal_data_request(request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -365,13 +261,7 @@ def public_cancel_user_personal_data_request(
 
 
 @same_doc_as(PublicCancelUserPersonalDataRequest)
-async def public_cancel_user_personal_data_request_async(
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_cancel_user_personal_data_request_async(request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,20 +271,11 @@ async def public_cancel_user_personal_data_request_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGeneratePersonalDataURL)
-def public_generate_personal_data_url(
-    password: str,
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_generate_personal_data_url(password: str, request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -409,14 +290,7 @@ def public_generate_personal_data_url(
 
 
 @same_doc_as(PublicGeneratePersonalDataURL)
-async def public_generate_personal_data_url_async(
-    password: str,
-    request_date: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_generate_personal_data_url_async(password: str, request_date: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -427,20 +301,11 @@ async def public_generate_personal_data_url_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetUserPersonalDataRequests)
-def public_get_user_personal_data_requests(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_user_personal_data_requests(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -455,14 +320,7 @@ def public_get_user_personal_data_requests(
 
 
 @same_doc_as(PublicGetUserPersonalDataRequests)
-async def public_get_user_personal_data_requests_async(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_user_personal_data_requests_async(user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -473,19 +331,11 @@ async def public_get_user_personal_data_requests_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicRequestDataRetrieval)
-def public_request_data_retrieval(
-    password: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_request_data_retrieval(password: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -499,13 +349,7 @@ def public_request_data_retrieval(
 
 
 @same_doc_as(PublicRequestDataRetrieval)
-async def public_request_data_retrieval_async(
-    password: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_request_data_retrieval_async(password: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -515,18 +359,11 @@ async def public_request_data_retrieval_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SaveAdminEmailConfiguration)
-def save_admin_email_configuration(
-    body: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def save_admin_email_configuration(body: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -539,12 +376,7 @@ def save_admin_email_configuration(
 
 
 @same_doc_as(SaveAdminEmailConfiguration)
-async def save_admin_email_configuration_async(
-    body: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def save_admin_email_configuration_async(body: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -553,18 +385,11 @@ async def save_admin_email_configuration_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateAdminEmailConfiguration)
-def update_admin_email_configuration(
-    body: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_admin_email_configuration(body: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -577,12 +402,7 @@ def update_admin_email_configuration(
 
 
 @same_doc_as(UpdateAdminEmailConfiguration)
-async def update_admin_email_configuration_async(
-    body: List[str],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_admin_email_configuration_async(body: List[str], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -591,6 +411,4 @@ async def update_admin_email_configuration_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

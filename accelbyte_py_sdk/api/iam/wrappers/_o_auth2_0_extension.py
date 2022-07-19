@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,15 +43,7 @@ from ..operations.o_auth2_0_extension import UserAuthenticationV3
 
 
 @same_doc_as(AuthenticationWithPlatformLinkV3)
-def authentication_with_platform_link_v3(
-    client_id: str,
-    linking_token: str,
-    password: str,
-    username: str,
-    extend_exp: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def authentication_with_platform_link_v3(client_id: str, linking_token: str, password: str, username: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthenticationWithPlatformLinkV3.create(
         client_id=client_id,
         linking_token=linking_token,
@@ -63,15 +55,7 @@ def authentication_with_platform_link_v3(
 
 
 @same_doc_as(AuthenticationWithPlatformLinkV3)
-async def authentication_with_platform_link_v3_async(
-    client_id: str,
-    linking_token: str,
-    password: str,
-    username: str,
-    extend_exp: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def authentication_with_platform_link_v3_async(client_id: str, linking_token: str, password: str, username: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = AuthenticationWithPlatformLinkV3.create(
         client_id=client_id,
         linking_token=linking_token,
@@ -79,18 +63,11 @@ async def authentication_with_platform_link_v3_async(
         username=username,
         extend_exp=extend_exp,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GenerateTokenByNewHeadlessAccountV3)
-def generate_token_by_new_headless_account_v3(
-    linking_token: str,
-    extend_exp: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def generate_token_by_new_headless_account_v3(linking_token: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GenerateTokenByNewHeadlessAccountV3.create(
         linking_token=linking_token,
         extend_exp=extend_exp,
@@ -99,37 +76,24 @@ def generate_token_by_new_headless_account_v3(
 
 
 @same_doc_as(GenerateTokenByNewHeadlessAccountV3)
-async def generate_token_by_new_headless_account_v3_async(
-    linking_token: str,
-    extend_exp: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def generate_token_by_new_headless_account_v3_async(linking_token: str, extend_exp: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GenerateTokenByNewHeadlessAccountV3.create(
         linking_token=linking_token,
         extend_exp=extend_exp,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCountryLocationV3)
-def get_country_location_v3(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def get_country_location_v3(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetCountryLocationV3.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCountryLocationV3)
-async def get_country_location_v3_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def get_country_location_v3_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetCountryLocationV3.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Logout)
@@ -141,30 +105,11 @@ def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
 @same_doc_as(Logout)
 async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Logout.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PlatformAuthenticationV3)
-def platform_authentication_v3(
-    platform_id: str,
-    state: str,
-    code: Optional[str] = None,
-    error: Optional[str] = None,
-    openid_assoc_handle: Optional[str] = None,
-    openid_claimed_id: Optional[str] = None,
-    openid_identity: Optional[str] = None,
-    openid_mode: Optional[str] = None,
-    openid_ns: Optional[str] = None,
-    openid_op_endpoint: Optional[str] = None,
-    openid_response_nonce: Optional[str] = None,
-    openid_return_to: Optional[str] = None,
-    openid_sig: Optional[str] = None,
-    openid_signed: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def platform_authentication_v3(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, openid_assoc_handle: Optional[str] = None, openid_claimed_id: Optional[str] = None, openid_identity: Optional[str] = None, openid_mode: Optional[str] = None, openid_ns: Optional[str] = None, openid_op_endpoint: Optional[str] = None, openid_response_nonce: Optional[str] = None, openid_return_to: Optional[str] = None, openid_sig: Optional[str] = None, openid_signed: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformAuthenticationV3.create(
         platform_id=platform_id,
         state=state,
@@ -185,24 +130,7 @@ def platform_authentication_v3(
 
 
 @same_doc_as(PlatformAuthenticationV3)
-async def platform_authentication_v3_async(
-    platform_id: str,
-    state: str,
-    code: Optional[str] = None,
-    error: Optional[str] = None,
-    openid_assoc_handle: Optional[str] = None,
-    openid_claimed_id: Optional[str] = None,
-    openid_identity: Optional[str] = None,
-    openid_mode: Optional[str] = None,
-    openid_ns: Optional[str] = None,
-    openid_op_endpoint: Optional[str] = None,
-    openid_response_nonce: Optional[str] = None,
-    openid_return_to: Optional[str] = None,
-    openid_sig: Optional[str] = None,
-    openid_signed: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def platform_authentication_v3_async(platform_id: str, state: str, code: Optional[str] = None, error: Optional[str] = None, openid_assoc_handle: Optional[str] = None, openid_claimed_id: Optional[str] = None, openid_identity: Optional[str] = None, openid_mode: Optional[str] = None, openid_ns: Optional[str] = None, openid_op_endpoint: Optional[str] = None, openid_response_nonce: Optional[str] = None, openid_return_to: Optional[str] = None, openid_sig: Optional[str] = None, openid_signed: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PlatformAuthenticationV3.create(
         platform_id=platform_id,
         state=state,
@@ -219,22 +147,11 @@ async def platform_authentication_v3_async(
         openid_sig=openid_sig,
         openid_signed=openid_signed,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UserAuthenticationV3)
-def user_authentication_v3(
-    password: str,
-    request_id: str,
-    user_name: str,
-    client_id: Optional[str] = None,
-    extend_exp: Optional[bool] = None,
-    redirect_uri: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def user_authentication_v3(password: str, request_id: str, user_name: str, client_id: Optional[str] = None, extend_exp: Optional[bool] = None, redirect_uri: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UserAuthenticationV3.create(
         password=password,
         request_id=request_id,
@@ -247,16 +164,7 @@ def user_authentication_v3(
 
 
 @same_doc_as(UserAuthenticationV3)
-async def user_authentication_v3_async(
-    password: str,
-    request_id: str,
-    user_name: str,
-    client_id: Optional[str] = None,
-    extend_exp: Optional[bool] = None,
-    redirect_uri: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def user_authentication_v3_async(password: str, request_id: str, user_name: str, client_id: Optional[str] = None, extend_exp: Optional[bool] = None, redirect_uri: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UserAuthenticationV3.create(
         password=password,
         request_id=request_id,
@@ -265,6 +173,4 @@ async def user_authentication_v3_async(
         extend_exp=extend_exp,
         redirect_uri=redirect_uri,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

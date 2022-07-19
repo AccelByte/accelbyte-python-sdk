@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,19 +69,19 @@ class WalletInfo(Model):
 
     # region fields
 
-    balance: int  # REQUIRED
-    balance_origin: str  # REQUIRED
-    created_at: str  # REQUIRED
-    currency_code: str  # REQUIRED
-    currency_symbol: str  # REQUIRED
-    id_: str  # REQUIRED
-    namespace: str  # REQUIRED
-    status: Union[str, StatusEnum]  # REQUIRED
-    updated_at: str  # REQUIRED
-    user_id: str  # REQUIRED
-    time_limited_balances: List[TimeLimitedBalance]  # OPTIONAL
-    total_permanent_balance: int  # OPTIONAL
-    total_time_limited_balance: int  # OPTIONAL
+    balance: int                                                                                   # REQUIRED
+    balance_origin: str                                                                            # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    currency_code: str                                                                             # REQUIRED
+    currency_symbol: str                                                                           # REQUIRED
+    id_: str                                                                                       # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    time_limited_balances: List[TimeLimitedBalance]                                                # OPTIONAL
+    total_permanent_balance: int                                                                   # OPTIONAL
+    total_time_limited_balance: int                                                                # OPTIONAL
 
     # endregion fields
 
@@ -186,10 +186,7 @@ class WalletInfo(Model):
         elif include_empty:
             result["userId"] = ""
         if hasattr(self, "time_limited_balances"):
-            result["timeLimitedBalances"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.time_limited_balances
-            ]
+            result["timeLimitedBalances"] = [i0.to_dict(include_empty=include_empty) for i0 in self.time_limited_balances]
         elif include_empty:
             result["timeLimitedBalances"] = []
         if hasattr(self, "total_permanent_balance"):
@@ -288,52 +285,29 @@ class WalletInfo(Model):
         elif include_empty:
             instance.user_id = ""
         if "timeLimitedBalances" in dict_ and dict_["timeLimitedBalances"] is not None:
-            instance.time_limited_balances = [
-                TimeLimitedBalance.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["timeLimitedBalances"]
-            ]
+            instance.time_limited_balances = [TimeLimitedBalance.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["timeLimitedBalances"]]
         elif include_empty:
             instance.time_limited_balances = []
-        if (
-            "totalPermanentBalance" in dict_
-            and dict_["totalPermanentBalance"] is not None
-        ):
+        if "totalPermanentBalance" in dict_ and dict_["totalPermanentBalance"] is not None:
             instance.total_permanent_balance = int(dict_["totalPermanentBalance"])
         elif include_empty:
             instance.total_permanent_balance = 0
-        if (
-            "totalTimeLimitedBalance" in dict_
-            and dict_["totalTimeLimitedBalance"] is not None
-        ):
+        if "totalTimeLimitedBalance" in dict_ and dict_["totalTimeLimitedBalance"] is not None:
             instance.total_time_limited_balance = int(dict_["totalTimeLimitedBalance"])
         elif include_empty:
             instance.total_time_limited_balance = 0
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, WalletInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, WalletInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[WalletInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[WalletInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[WalletInfo, List[WalletInfo], Dict[Any, WalletInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[WalletInfo, List[WalletInfo], Dict[Any, WalletInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

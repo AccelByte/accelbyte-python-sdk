@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,21 +68,21 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
 
     # region fields
 
-    id_: str  # REQUIRED
-    locale_code: str  # REQUIRED
-    namespace: str  # REQUIRED
-    policy: PolicyObject  # REQUIRED
-    policy_version: PolicyVersionObject  # REQUIRED
-    attachment_checksum: str  # OPTIONAL
-    attachment_location: str  # OPTIONAL
-    attachment_version_identifier: str  # OPTIONAL
-    base_policy_id: str  # OPTIONAL
-    base_urls: List[str]  # OPTIONAL
-    content_type: str  # OPTIONAL
-    created_at: str  # OPTIONAL
-    description: str  # OPTIONAL
-    tags: List[str]  # OPTIONAL
-    updated_at: str  # OPTIONAL
+    id_: str                                                                                       # REQUIRED
+    locale_code: str                                                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    policy: PolicyObject                                                                           # REQUIRED
+    policy_version: PolicyVersionObject                                                            # REQUIRED
+    attachment_checksum: str                                                                       # OPTIONAL
+    attachment_location: str                                                                       # OPTIONAL
+    attachment_version_identifier: str                                                             # OPTIONAL
+    base_policy_id: str                                                                            # OPTIONAL
+    base_urls: List[str]                                                                           # OPTIONAL
+    content_type: str                                                                              # OPTIONAL
+    created_at: str                                                                                # OPTIONAL
+    description: str                                                                               # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
+    updated_at: str                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -92,87 +92,59 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         self.id_ = value
         return self
 
-    def with_locale_code(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_locale_code(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.locale_code = value
         return self
 
-    def with_namespace(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_namespace(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.namespace = value
         return self
 
-    def with_policy(
-        self, value: PolicyObject
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_policy(self, value: PolicyObject) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.policy = value
         return self
 
-    def with_policy_version(
-        self, value: PolicyVersionObject
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_policy_version(self, value: PolicyVersionObject) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.policy_version = value
         return self
 
-    def with_attachment_checksum(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_attachment_checksum(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.attachment_checksum = value
         return self
 
-    def with_attachment_location(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_attachment_location(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.attachment_location = value
         return self
 
-    def with_attachment_version_identifier(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_attachment_version_identifier(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.attachment_version_identifier = value
         return self
 
-    def with_base_policy_id(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_base_policy_id(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.base_policy_id = value
         return self
 
-    def with_base_urls(
-        self, value: List[str]
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_base_urls(self, value: List[str]) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.base_urls = value
         return self
 
-    def with_content_type(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_content_type(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.content_type = value
         return self
 
-    def with_created_at(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_created_at(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.created_at = value
         return self
 
-    def with_description(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_description(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.description = value
         return self
 
-    def with_tags(
-        self, value: List[str]
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_tags(self, value: List[str]) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.tags = value
         return self
 
-    def with_updated_at(
-        self, value: str
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def with_updated_at(self, value: str) -> RetrieveLocalizedPolicyVersionPublicResponse:
         self.updated_at = value
         return self
 
@@ -199,9 +171,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         elif include_empty:
             result["policy"] = PolicyObject()
         if hasattr(self, "policy_version"):
-            result["policyVersion"] = self.policy_version.to_dict(
-                include_empty=include_empty
-            )
+            result["policyVersion"] = self.policy_version.to_dict(include_empty=include_empty)
         elif include_empty:
             result["policyVersion"] = PolicyVersionObject()
         if hasattr(self, "attachment_checksum"):
@@ -213,9 +183,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         elif include_empty:
             result["attachmentLocation"] = ""
         if hasattr(self, "attachment_version_identifier"):
-            result["attachmentVersionIdentifier"] = str(
-                self.attachment_version_identifier
-            )
+            result["attachmentVersionIdentifier"] = str(self.attachment_version_identifier)
         elif include_empty:
             result["attachmentVersionIdentifier"] = ""
         if hasattr(self, "base_policy_id"):
@@ -300,9 +268,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrieveLocalizedPolicyVersionPublicResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -319,15 +285,11 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         elif include_empty:
             instance.namespace = ""
         if "policy" in dict_ and dict_["policy"] is not None:
-            instance.policy = PolicyObject.create_from_dict(
-                dict_["policy"], include_empty=include_empty
-            )
+            instance.policy = PolicyObject.create_from_dict(dict_["policy"], include_empty=include_empty)
         elif include_empty:
             instance.policy = PolicyObject()
         if "policyVersion" in dict_ and dict_["policyVersion"] is not None:
-            instance.policy_version = PolicyVersionObject.create_from_dict(
-                dict_["policyVersion"], include_empty=include_empty
-            )
+            instance.policy_version = PolicyVersionObject.create_from_dict(dict_["policyVersion"], include_empty=include_empty)
         elif include_empty:
             instance.policy_version = PolicyVersionObject()
         if "attachmentChecksum" in dict_ and dict_["attachmentChecksum"] is not None:
@@ -338,13 +300,8 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             instance.attachment_location = str(dict_["attachmentLocation"])
         elif include_empty:
             instance.attachment_location = ""
-        if (
-            "attachmentVersionIdentifier" in dict_
-            and dict_["attachmentVersionIdentifier"] is not None
-        ):
-            instance.attachment_version_identifier = str(
-                dict_["attachmentVersionIdentifier"]
-            )
+        if "attachmentVersionIdentifier" in dict_ and dict_["attachmentVersionIdentifier"] is not None:
+            instance.attachment_version_identifier = str(dict_["attachmentVersionIdentifier"])
         elif include_empty:
             instance.attachment_version_identifier = ""
         if "basePolicyId" in dict_ and dict_["basePolicyId"] is not None:
@@ -378,33 +335,15 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, RetrieveLocalizedPolicyVersionPublicResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RetrieveLocalizedPolicyVersionPublicResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[RetrieveLocalizedPolicyVersionPublicResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RetrieveLocalizedPolicyVersionPublicResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        RetrieveLocalizedPolicyVersionPublicResponse,
-        List[RetrieveLocalizedPolicyVersionPublicResponse],
-        Dict[Any, RetrieveLocalizedPolicyVersionPublicResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RetrieveLocalizedPolicyVersionPublicResponse, List[RetrieveLocalizedPolicyVersionPublicResponse], Dict[Any, RetrieveLocalizedPolicyVersionPublicResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

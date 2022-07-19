@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -88,8 +88,8 @@ class DeleteNotificationTopicV1Admin(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    topic_name: str  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    topic_name: str                                                                                # REQUIRED in [path]
 
     # endregion fields
 
@@ -177,9 +177,7 @@ class DeleteNotificationTopicV1Admin(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponseV1]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -198,9 +196,7 @@ class DeleteNotificationTopicV1Admin(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -216,9 +212,7 @@ class DeleteNotificationTopicV1Admin(Operation):
         if code == 500:
             return None, RestapiErrorResponseV1.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -236,9 +230,7 @@ class DeleteNotificationTopicV1Admin(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> DeleteNotificationTopicV1Admin:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteNotificationTopicV1Admin:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

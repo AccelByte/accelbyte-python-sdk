@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -81,28 +81,28 @@ class ModelsServer(Model):
 
     # region fields
 
-    allocation_id: str  # REQUIRED
-    alternate_ips: List[str]  # REQUIRED
-    cpu_limit: int  # REQUIRED
-    cpu_request: str  # REQUIRED
-    deployment: str  # REQUIRED
-    game_version: str  # REQUIRED
-    image_version: str  # REQUIRED
-    ip: str  # REQUIRED
-    is_override_game_version: bool  # REQUIRED
-    last_update: str  # REQUIRED
-    mem_limit: int  # REQUIRED
-    mem_request: str  # REQUIRED
-    namespace: str  # REQUIRED
-    params: str  # REQUIRED
-    pod_name: str  # REQUIRED
-    port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
-    provider: str  # REQUIRED
-    region: str  # REQUIRED
-    session_id: str  # REQUIRED
-    status: str  # REQUIRED
-    status_history: List[ModelsStatusHistory]  # REQUIRED
+    allocation_id: str                                                                             # REQUIRED
+    alternate_ips: List[str]                                                                       # REQUIRED
+    cpu_limit: int                                                                                 # REQUIRED
+    cpu_request: str                                                                               # REQUIRED
+    deployment: str                                                                                # REQUIRED
+    game_version: str                                                                              # REQUIRED
+    image_version: str                                                                             # REQUIRED
+    ip: str                                                                                        # REQUIRED
+    is_override_game_version: bool                                                                 # REQUIRED
+    last_update: str                                                                               # REQUIRED
+    mem_limit: int                                                                                 # REQUIRED
+    mem_request: str                                                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    params: str                                                                                    # REQUIRED
+    pod_name: str                                                                                  # REQUIRED
+    port: int                                                                                      # REQUIRED
+    ports: Dict[str, int]                                                                          # REQUIRED
+    provider: str                                                                                  # REQUIRED
+    region: str                                                                                    # REQUIRED
+    session_id: str                                                                                # REQUIRED
+    status: str                                                                                    # REQUIRED
+    status_history: List[ModelsStatusHistory]                                                      # REQUIRED
 
     # endregion fields
 
@@ -287,9 +287,7 @@ class ModelsServer(Model):
         elif include_empty:
             result["status"] = ""
         if hasattr(self, "status_history"):
-            result["status_history"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.status_history
-            ]
+            result["status_history"] = [i0.to_dict(include_empty=include_empty) for i0 in self.status_history]
         elif include_empty:
             result["status_history"] = []
         return result
@@ -386,10 +384,7 @@ class ModelsServer(Model):
             instance.ip = str(dict_["ip"])
         elif include_empty:
             instance.ip = ""
-        if (
-            "is_override_game_version" in dict_
-            and dict_["is_override_game_version"] is not None
-        ):
+        if "is_override_game_version" in dict_ and dict_["is_override_game_version"] is not None:
             instance.is_override_game_version = bool(dict_["is_override_game_version"])
         elif include_empty:
             instance.is_override_game_version = False
@@ -442,38 +437,21 @@ class ModelsServer(Model):
         elif include_empty:
             instance.status = ""
         if "status_history" in dict_ and dict_["status_history"] is not None:
-            instance.status_history = [
-                ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["status_history"]
-            ]
+            instance.status_history = [ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["status_history"]]
         elif include_empty:
             instance.status_history = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsServer]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsServer]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsServer]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsServer]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ModelsServer, List[ModelsServer], Dict[Any, ModelsServer]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsServer, List[ModelsServer], Dict[Any, ModelsServer]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

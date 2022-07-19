@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -38,9 +38,7 @@ from ..models import ModelsUserRankingResponse
 from ..models import ResponseErrorResponse
 from ..models import V2GetPublicLeaderboardRankingResponse
 
-from ..operations.leaderboard_data import (
-    AdminGetArchivedLeaderboardRankingDataV1Handler,
-)
+from ..operations.leaderboard_data import AdminGetArchivedLeaderboardRankingDataV1Handler
 from ..operations.leaderboard_data import CreateArchivedLeaderboardRankingDataV1Handler
 from ..operations.leaderboard_data import DeleteUserRankingAdminV1
 from ..operations.leaderboard_data import DeleteUserRankingPublicV1
@@ -63,13 +61,7 @@ from ..operations.leaderboard_data import UpdateUserPointAdminV1
 
 
 @same_doc_as(AdminGetArchivedLeaderboardRankingDataV1Handler)
-def admin_get_archived_leaderboard_ranking_data_v1_handler(
-    leaderboard_codes: str,
-    slug: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_archived_leaderboard_ranking_data_v1_handler(leaderboard_codes: str, slug: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,13 +75,7 @@ def admin_get_archived_leaderboard_ranking_data_v1_handler(
 
 
 @same_doc_as(AdminGetArchivedLeaderboardRankingDataV1Handler)
-async def admin_get_archived_leaderboard_ranking_data_v1_handler_async(
-    leaderboard_codes: str,
-    slug: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_archived_leaderboard_ranking_data_v1_handler_async(leaderboard_codes: str, slug: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,18 +85,11 @@ async def admin_get_archived_leaderboard_ranking_data_v1_handler_async(
         slug=slug,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateArchivedLeaderboardRankingDataV1Handler)
-def create_archived_leaderboard_ranking_data_v1_handler(
-    body: ModelsArchiveLeaderboardReq,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_archived_leaderboard_ranking_data_v1_handler(body: ModelsArchiveLeaderboardReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,12 +102,7 @@ def create_archived_leaderboard_ranking_data_v1_handler(
 
 
 @same_doc_as(CreateArchivedLeaderboardRankingDataV1Handler)
-async def create_archived_leaderboard_ranking_data_v1_handler_async(
-    body: ModelsArchiveLeaderboardReq,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_archived_leaderboard_ranking_data_v1_handler_async(body: ModelsArchiveLeaderboardReq, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -137,19 +111,11 @@ async def create_archived_leaderboard_ranking_data_v1_handler_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteUserRankingAdminV1)
-def delete_user_ranking_admin_v1(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_user_ranking_admin_v1(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,13 +129,7 @@ def delete_user_ranking_admin_v1(
 
 
 @same_doc_as(DeleteUserRankingAdminV1)
-async def delete_user_ranking_admin_v1_async(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_user_ranking_admin_v1_async(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -179,19 +139,11 @@ async def delete_user_ranking_admin_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteUserRankingPublicV1)
-def delete_user_ranking_public_v1(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_user_ranking_public_v1(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -205,13 +157,7 @@ def delete_user_ranking_public_v1(
 
 
 @same_doc_as(DeleteUserRankingPublicV1)
-async def delete_user_ranking_public_v1_async(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_user_ranking_public_v1_async(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -221,19 +167,11 @@ async def delete_user_ranking_public_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteUserRankingsAdminV1)
-def delete_user_rankings_admin_v1(
-    leaderboard_code: List[str],
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_user_rankings_admin_v1(leaderboard_code: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -247,13 +185,7 @@ def delete_user_rankings_admin_v1(
 
 
 @same_doc_as(DeleteUserRankingsAdminV1)
-async def delete_user_rankings_admin_v1_async(
-    leaderboard_code: List[str],
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_user_rankings_admin_v1_async(leaderboard_code: List[str], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,20 +195,11 @@ async def delete_user_rankings_admin_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingAdminV1)
-def get_all_time_leaderboard_ranking_admin_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_time_leaderboard_ranking_admin_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -291,14 +214,7 @@ def get_all_time_leaderboard_ranking_admin_v1(
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingAdminV1)
-async def get_all_time_leaderboard_ranking_admin_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_time_leaderboard_ranking_admin_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -309,20 +225,11 @@ async def get_all_time_leaderboard_ranking_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingPublicV1)
-def get_all_time_leaderboard_ranking_public_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_time_leaderboard_ranking_public_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -337,14 +244,7 @@ def get_all_time_leaderboard_ranking_public_v1(
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingPublicV1)
-async def get_all_time_leaderboard_ranking_public_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_time_leaderboard_ranking_public_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,20 +255,11 @@ async def get_all_time_leaderboard_ranking_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingPublicV2)
-def get_all_time_leaderboard_ranking_public_v2(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_time_leaderboard_ranking_public_v2(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -383,14 +274,7 @@ def get_all_time_leaderboard_ranking_public_v2(
 
 
 @same_doc_as(GetAllTimeLeaderboardRankingPublicV2)
-async def get_all_time_leaderboard_ranking_public_v2_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_time_leaderboard_ranking_public_v2_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -401,20 +285,11 @@ async def get_all_time_leaderboard_ranking_public_v2_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetArchivedLeaderboardRankingDataV1Handler)
-def get_archived_leaderboard_ranking_data_v1_handler(
-    leaderboard_code: str,
-    leaderboard_codes: str,
-    slug: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_archived_leaderboard_ranking_data_v1_handler(leaderboard_code: str, leaderboard_codes: str, slug: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -429,14 +304,7 @@ def get_archived_leaderboard_ranking_data_v1_handler(
 
 
 @same_doc_as(GetArchivedLeaderboardRankingDataV1Handler)
-async def get_archived_leaderboard_ranking_data_v1_handler_async(
-    leaderboard_code: str,
-    leaderboard_codes: str,
-    slug: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_archived_leaderboard_ranking_data_v1_handler_async(leaderboard_code: str, leaderboard_codes: str, slug: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -447,20 +315,11 @@ async def get_archived_leaderboard_ranking_data_v1_handler_async(
         slug=slug,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentMonthLeaderboardRankingAdminV1)
-def get_current_month_leaderboard_ranking_admin_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_month_leaderboard_ranking_admin_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -475,14 +334,7 @@ def get_current_month_leaderboard_ranking_admin_v1(
 
 
 @same_doc_as(GetCurrentMonthLeaderboardRankingAdminV1)
-async def get_current_month_leaderboard_ranking_admin_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_month_leaderboard_ranking_admin_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -493,20 +345,11 @@ async def get_current_month_leaderboard_ranking_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentMonthLeaderboardRankingPublicV1)
-def get_current_month_leaderboard_ranking_public_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_month_leaderboard_ranking_public_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -521,14 +364,7 @@ def get_current_month_leaderboard_ranking_public_v1(
 
 
 @same_doc_as(GetCurrentMonthLeaderboardRankingPublicV1)
-async def get_current_month_leaderboard_ranking_public_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_month_leaderboard_ranking_public_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -539,20 +375,11 @@ async def get_current_month_leaderboard_ranking_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentSeasonLeaderboardRankingAdminV1)
-def get_current_season_leaderboard_ranking_admin_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_season_leaderboard_ranking_admin_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -567,14 +394,7 @@ def get_current_season_leaderboard_ranking_admin_v1(
 
 
 @same_doc_as(GetCurrentSeasonLeaderboardRankingAdminV1)
-async def get_current_season_leaderboard_ranking_admin_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_season_leaderboard_ranking_admin_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -585,20 +405,11 @@ async def get_current_season_leaderboard_ranking_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentSeasonLeaderboardRankingPublicV1)
-def get_current_season_leaderboard_ranking_public_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_season_leaderboard_ranking_public_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -613,14 +424,7 @@ def get_current_season_leaderboard_ranking_public_v1(
 
 
 @same_doc_as(GetCurrentSeasonLeaderboardRankingPublicV1)
-async def get_current_season_leaderboard_ranking_public_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_season_leaderboard_ranking_public_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -631,20 +435,11 @@ async def get_current_season_leaderboard_ranking_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentWeekLeaderboardRankingAdminV1)
-def get_current_week_leaderboard_ranking_admin_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_week_leaderboard_ranking_admin_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -659,14 +454,7 @@ def get_current_week_leaderboard_ranking_admin_v1(
 
 
 @same_doc_as(GetCurrentWeekLeaderboardRankingAdminV1)
-async def get_current_week_leaderboard_ranking_admin_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_week_leaderboard_ranking_admin_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -677,20 +465,11 @@ async def get_current_week_leaderboard_ranking_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetCurrentWeekLeaderboardRankingPublicV1)
-def get_current_week_leaderboard_ranking_public_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_current_week_leaderboard_ranking_public_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -705,14 +484,7 @@ def get_current_week_leaderboard_ranking_public_v1(
 
 
 @same_doc_as(GetCurrentWeekLeaderboardRankingPublicV1)
-async def get_current_week_leaderboard_ranking_public_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_current_week_leaderboard_ranking_public_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -723,20 +495,11 @@ async def get_current_week_leaderboard_ranking_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTodayLeaderboardRankingAdminV1)
-def get_today_leaderboard_ranking_admin_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_today_leaderboard_ranking_admin_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -751,14 +514,7 @@ def get_today_leaderboard_ranking_admin_v1(
 
 
 @same_doc_as(GetTodayLeaderboardRankingAdminV1)
-async def get_today_leaderboard_ranking_admin_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_today_leaderboard_ranking_admin_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -769,20 +525,11 @@ async def get_today_leaderboard_ranking_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTodayLeaderboardRankingPublicV1)
-def get_today_leaderboard_ranking_public_v1(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_today_leaderboard_ranking_public_v1(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -797,14 +544,7 @@ def get_today_leaderboard_ranking_public_v1(
 
 
 @same_doc_as(GetTodayLeaderboardRankingPublicV1)
-async def get_today_leaderboard_ranking_public_v1_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_today_leaderboard_ranking_public_v1_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -815,19 +555,11 @@ async def get_today_leaderboard_ranking_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserRankingAdminV1)
-def get_user_ranking_admin_v1(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_ranking_admin_v1(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -841,13 +573,7 @@ def get_user_ranking_admin_v1(
 
 
 @same_doc_as(GetUserRankingAdminV1)
-async def get_user_ranking_admin_v1_async(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_ranking_admin_v1_async(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -857,19 +583,11 @@ async def get_user_ranking_admin_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserRankingPublicV1)
-def get_user_ranking_public_v1(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_ranking_public_v1(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -883,13 +601,7 @@ def get_user_ranking_public_v1(
 
 
 @same_doc_as(GetUserRankingPublicV1)
-async def get_user_ranking_public_v1_async(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_ranking_public_v1_async(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -899,20 +611,11 @@ async def get_user_ranking_public_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateUserPointAdminV1)
-def update_user_point_admin_v1(
-    body: ModelsUpdateUserPointAdminV1Request,
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_user_point_admin_v1(body: ModelsUpdateUserPointAdminV1Request, leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -927,14 +630,7 @@ def update_user_point_admin_v1(
 
 
 @same_doc_as(UpdateUserPointAdminV1)
-async def update_user_point_admin_v1_async(
-    body: ModelsUpdateUserPointAdminV1Request,
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_user_point_admin_v1_async(body: ModelsUpdateUserPointAdminV1Request, leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -945,6 +641,4 @@ async def update_user_point_admin_v1_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

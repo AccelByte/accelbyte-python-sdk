@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -94,8 +94,8 @@ class QuerySessionHandler(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    match_id: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
+    match_id: str                                                                                  # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -183,11 +183,7 @@ class QuerySessionHandler(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsMatchmakingResult], Union[None, HttpResponse, ResponseError]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsMatchmakingResult], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
         200: OK - ModelsMatchmakingResult (OK)
@@ -208,9 +204,7 @@ class QuerySessionHandler(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -228,9 +222,7 @@ class QuerySessionHandler(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -248,9 +240,7 @@ class QuerySessionHandler(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> QuerySessionHandler:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QuerySessionHandler:
         instance = cls()
         if "matchID" in dict_ and dict_["matchID"] is not None:
             instance.match_id = str(dict_["matchID"])

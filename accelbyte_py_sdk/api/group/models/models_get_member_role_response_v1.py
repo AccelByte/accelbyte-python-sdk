@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,9 +43,9 @@ class ModelsGetMemberRoleResponseV1(Model):
 
     # region fields
 
-    member_role_id: str  # REQUIRED
-    member_role_name: str  # REQUIRED
-    member_role_permissions: List[ModelsRolePermission]  # REQUIRED
+    member_role_id: str                                                                            # REQUIRED
+    member_role_name: str                                                                          # REQUIRED
+    member_role_permissions: List[ModelsRolePermission]                                            # REQUIRED
 
     # endregion fields
 
@@ -59,9 +59,7 @@ class ModelsGetMemberRoleResponseV1(Model):
         self.member_role_name = value
         return self
 
-    def with_member_role_permissions(
-        self, value: List[ModelsRolePermission]
-    ) -> ModelsGetMemberRoleResponseV1:
+    def with_member_role_permissions(self, value: List[ModelsRolePermission]) -> ModelsGetMemberRoleResponseV1:
         self.member_role_permissions = value
         return self
 
@@ -80,10 +78,7 @@ class ModelsGetMemberRoleResponseV1(Model):
         elif include_empty:
             result["memberRoleName"] = ""
         if hasattr(self, "member_role_permissions"):
-            result["memberRolePermissions"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.member_role_permissions
-            ]
+            result["memberRolePermissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.member_role_permissions]
         elif include_empty:
             result["memberRolePermissions"] = []
         return result
@@ -106,9 +101,7 @@ class ModelsGetMemberRoleResponseV1(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsGetMemberRoleResponseV1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetMemberRoleResponseV1:
         instance = cls()
         if not dict_:
             return instance
@@ -120,46 +113,22 @@ class ModelsGetMemberRoleResponseV1(Model):
             instance.member_role_name = str(dict_["memberRoleName"])
         elif include_empty:
             instance.member_role_name = ""
-        if (
-            "memberRolePermissions" in dict_
-            and dict_["memberRolePermissions"] is not None
-        ):
-            instance.member_role_permissions = [
-                ModelsRolePermission.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["memberRolePermissions"]
-            ]
+        if "memberRolePermissions" in dict_ and dict_["memberRolePermissions"] is not None:
+            instance.member_role_permissions = [ModelsRolePermission.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["memberRolePermissions"]]
         elif include_empty:
             instance.member_role_permissions = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsGetMemberRoleResponseV1]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGetMemberRoleResponseV1]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsGetMemberRoleResponseV1]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGetMemberRoleResponseV1]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsGetMemberRoleResponseV1,
-        List[ModelsGetMemberRoleResponseV1],
-        Dict[Any, ModelsGetMemberRoleResponseV1],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGetMemberRoleResponseV1, List[ModelsGetMemberRoleResponseV1], Dict[Any, ModelsGetMemberRoleResponseV1]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

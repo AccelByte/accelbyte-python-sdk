@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-platform-service Index (4.11.0)
+# justice-platform-service Index (4.12.0)
 
 
 ## Operations
@@ -10,6 +10,7 @@
 ### AchievementPlatform
 | Endpoint | Method | ID | Class | Wrapper | Example |
 |---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl | GET | getXblUserAchievements | [GetXblUserAchievements](../accelbyte_py_sdk/api/platform/operations/achievement_platform/get_xbl_user_achievements.py) | [get_xbl_user_achievements](../accelbyte_py_sdk/api/platform/wrappers/_achievement_platform.py) | [accelbyte_py_sdk_cli platform-get-xbl-user-achievements](../samples/cli/accelbyte_py_sdk_cli/platform/_get_xbl_user_achievements.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam | PUT | unlockSteamUserAchievement | [UnlockSteamUserAchievement](../accelbyte_py_sdk/api/platform/operations/achievement_platform/unlock_steam_user_achievement.py) | [unlock_steam_user_achievement](../accelbyte_py_sdk/api/platform/wrappers/_achievement_platform.py) | [accelbyte_py_sdk_cli platform-unlock-steam-user-achievement](../samples/cli/accelbyte_py_sdk_cli/platform/_unlock_steam_user_achievement.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl | PUT | updateXblUserAchievement | [UpdateXblUserAchievement](../accelbyte_py_sdk/api/platform/operations/achievement_platform/update_xbl_user_achievement.py) | [update_xbl_user_achievement](../accelbyte_py_sdk/api/platform/wrappers/_achievement_platform.py) | [accelbyte_py_sdk_cli platform-update-xbl-user-achievement](../samples/cli/accelbyte_py_sdk_cli/platform/_update_xbl_user_achievement.py) |
 
@@ -92,6 +93,7 @@
 | /platform/admin/namespaces/{namespace}/dlc/config/item | GET | getDLCItemConfig | [GetDLCItemConfig](../accelbyte_py_sdk/api/platform/operations/dlc/get_dlc_item_config.py) | [get_dlc_item_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-dlc-item-config](../samples/cli/accelbyte_py_sdk_cli/platform/_get_dlc_item_config.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/platformMap | GET | getPlatformDLCConfig | [GetPlatformDLCConfig](../accelbyte_py_sdk/api/platform/operations/dlc/get_platform_dlc_config.py) | [get_platform_dlc_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-platform-dlc-config](../samples/cli/accelbyte_py_sdk_cli/platform/_get_platform_dlc_config.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync | PUT | publicSyncPsnDlcInventory | [PublicSyncPsnDlcInventory](../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inventory.py) | [public_sync_psn_dlc_inventory](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-sync-psn-dlc-inventory](../samples/cli/accelbyte_py_sdk_cli/platform/_public_sync_psn_dlc_inventory.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync | PUT | syncEpicGameDLC | [SyncEpicGameDLC](../accelbyte_py_sdk/api/platform/operations/dlc/sync_epic_game_dlc.py) | [sync_epic_game_dlc](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-epic-game-dlc](../samples/cli/accelbyte_py_sdk_cli/platform/_sync_epic_game_dlc.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync | PUT | syncSteamDLC | [SyncSteamDLC](../accelbyte_py_sdk/api/platform/operations/dlc/sync_steam_dlc.py) | [sync_steam_dlc](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-steam-dlc](../samples/cli/accelbyte_py_sdk_cli/platform/_sync_steam_dlc.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync | PUT | syncXboxDLC | [SyncXboxDLC](../accelbyte_py_sdk/api/platform/operations/dlc/sync_xbox_dlc.py) | [sync_xbox_dlc](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-xbox-dlc](../samples/cli/accelbyte_py_sdk_cli/platform/_sync_xbox_dlc.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/item | PUT | updateDLCItemConfig | [UpdateDLCItemConfig](../accelbyte_py_sdk/api/platform/operations/dlc/update_dlc_item_config.py) | [update_dlc_item_config](../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-update-dlc-item-config](../samples/cli/accelbyte_py_sdk_cli/platform/_update_dlc_item_config.py) |
@@ -452,8 +454,11 @@
 ## Models
 | Model | Class |
 |---|---|
+| A DTO object for order creation options | [ADTOObjectForOrderCreationOptions](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_order_creation_options.py) |
+| A DTO object for querying xbox user achievements | [ADTOObjectForQueryingXboxUserAchievements](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_querying_xbox_user_achievements.py) |
 | A DTO object for unlock steam achievement API | [ADTOObjectForUnlockSteamAchievementAPI](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_unlock_steam_achievement_api.py) |
 | A DTO object for update xbox achievement complete percentage API | [ADTOObjectForUpdateXboxAchievementCompletePercentageAPI](../accelbyte_py_sdk/api/platform/models/a_dto_object_for_update_xbox_achievement_complete_percentage_api.py) |
+| AchievementInfo | [AchievementInfo](../accelbyte_py_sdk/api/platform/models/achievement_info.py) |
 | AdditionalData | [AdditionalData](../accelbyte_py_sdk/api/platform/models/additional_data.py) |
 | AdminOrderCreate | [AdminOrderCreate](../accelbyte_py_sdk/api/platform/models/admin_order_create.py) |
 | AdyenConfig | [AdyenConfig](../accelbyte_py_sdk/api/platform/models/adyen_config.py) |
@@ -513,6 +518,7 @@
 | EntitlementPagingSlicedResult | [EntitlementPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/entitlement_paging_sliced_result.py) |
 | EntitlementSummary | [EntitlementSummary](../accelbyte_py_sdk/api/platform/models/entitlement_summary.py) |
 | EntitlementUpdate | [EntitlementUpdate](../accelbyte_py_sdk/api/platform/models/entitlement_update.py) |
+| EpicGamesDLCSyncRequest | [EpicGamesDLCSyncRequest](../accelbyte_py_sdk/api/platform/models/epic_games_dlc_sync_request.py) |
 | EpicGamesIAPConfigInfo | [EpicGamesIAPConfigInfo](../accelbyte_py_sdk/api/platform/models/epic_games_iap_config_info.py) |
 | EpicGamesIAPConfigRequest | [EpicGamesIAPConfigRequest](../accelbyte_py_sdk/api/platform/models/epic_games_iap_config_request.py) |
 | EpicGamesReconcileRequest | [EpicGamesReconcileRequest](../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_request.py) |

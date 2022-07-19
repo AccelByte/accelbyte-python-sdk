@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,15 +53,15 @@ class ModelsImageRecord(Model):
 
     # region fields
 
-    artifact_path: str  # REQUIRED
-    created_at: str  # REQUIRED
-    docker_path: str  # REQUIRED
-    image: str  # REQUIRED
-    modified_by: str  # REQUIRED
-    namespace: str  # REQUIRED
-    persistent: bool  # REQUIRED
-    updated_at: str  # REQUIRED
-    version: str  # REQUIRED
+    artifact_path: str                                                                             # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    docker_path: str                                                                               # REQUIRED
+    image: str                                                                                     # REQUIRED
+    modified_by: str                                                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    persistent: bool                                                                               # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    version: str                                                                                   # REQUIRED
 
     # endregion fields
 
@@ -177,9 +177,7 @@ class ModelsImageRecord(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsImageRecord:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsImageRecord:
         instance = cls()
         if not dict_:
             return instance
@@ -222,31 +220,15 @@ class ModelsImageRecord(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsImageRecord]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsImageRecord]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsImageRecord]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsImageRecord]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsImageRecord, List[ModelsImageRecord], Dict[Any, ModelsImageRecord]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsImageRecord, List[ModelsImageRecord], Dict[Any, ModelsImageRecord]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

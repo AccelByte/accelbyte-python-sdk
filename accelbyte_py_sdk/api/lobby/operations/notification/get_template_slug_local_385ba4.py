@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -85,20 +85,18 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
 
     # region fields
 
-    _url: str = (
-        "/lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}"
-    )
+    _url: str = "/lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    template_slug: str  # REQUIRED in [path]
-    after: str  # OPTIONAL in [query]
-    before: str  # OPTIONAL in [query]
-    limit: int  # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
+    template_slug: str                                                                             # REQUIRED in [path]
+    after: str                                                                                     # OPTIONAL in [query]
+    before: str                                                                                    # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
 
     # endregion fields
 
@@ -172,9 +170,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
         self.namespace = value
         return self
 
-    def with_template_slug(
-        self, value: str
-    ) -> GetTemplateSlugLocalizationsTemplateV1Admin:
+    def with_template_slug(self, value: str) -> GetTemplateSlugLocalizationsTemplateV1Admin:
         self.template_slug = value
         return self
 
@@ -223,12 +219,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelGetAllNotificationTemplateSlugResp],
-        Union[None, HttpResponse, RestapiErrorResponseV1],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelGetAllNotificationTemplateSlugResp], Union[None, HttpResponse, RestapiErrorResponseV1]]:
         """Parse the given response.
 
         200: OK - ModelGetAllNotificationTemplateSlugResp (OK)
@@ -247,18 +238,13 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return (
-                ModelGetAllNotificationTemplateSlugResp.create_from_dict(content),
-                None,
-            )
+            return ModelGetAllNotificationTemplateSlugResp.create_from_dict(content), None
         if code == 400:
             return None, RestapiErrorResponseV1.create_from_dict(content)
         if code == 401:
@@ -268,9 +254,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
         if code == 404:
             return None, RestapiErrorResponseV1.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -297,9 +281,7 @@ class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> GetTemplateSlugLocalizationsTemplateV1Admin:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GetTemplateSlugLocalizationsTemplateV1Admin:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

@@ -39,17 +39,13 @@ class UserBannedNotification(WebSocketMessage):
     # region static methods
 
     @classmethod
-    def create_from_wsm(
-        cls, wsm: str, is_strict: bool = False
-    ) -> UserBannedNotification:
+    def create_from_wsm(cls, wsm: str, is_strict: bool = False) -> UserBannedNotification:
         instance = cls()
         if not wsm:
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         return instance
 
     @staticmethod
@@ -58,6 +54,7 @@ class UserBannedNotification(WebSocketMessage):
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+        }
 
     # endregion static methods

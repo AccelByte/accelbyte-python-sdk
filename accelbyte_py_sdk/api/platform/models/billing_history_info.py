@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -95,30 +95,30 @@ class BillingHistoryInfo(Model):
 
     # region fields
 
-    amount: int  # REQUIRED
-    created_at: str  # REQUIRED
-    currency: CurrencySummary  # REQUIRED
-    item_id: str  # REQUIRED
-    namespace: str  # REQUIRED
-    payment_order_no: str  # REQUIRED
-    recurring_order_no: str  # REQUIRED
-    sandbox: bool  # REQUIRED
-    status: Union[str, StatusEnum]  # REQUIRED
-    subscription_id: str  # REQUIRED
-    title: str  # REQUIRED
-    updated_at: str  # REQUIRED
-    user_id: str  # REQUIRED
-    billing_account: BillingAccount  # OPTIONAL
-    change_billing_account: bool  # OPTIONAL
-    description: str  # OPTIONAL
-    ext_tx_id: str  # OPTIONAL
-    retry_attempted: int  # OPTIONAL
-    sku: str  # OPTIONAL
-    status_reason: str  # OPTIONAL
-    subtotal_price: int  # OPTIONAL
-    total_price: int  # OPTIONAL
-    total_tax: int  # OPTIONAL
-    tx_end_time: str  # OPTIONAL
+    amount: int                                                                                    # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    currency: CurrencySummary                                                                      # REQUIRED
+    item_id: str                                                                                   # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    payment_order_no: str                                                                          # REQUIRED
+    recurring_order_no: str                                                                        # REQUIRED
+    sandbox: bool                                                                                  # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    subscription_id: str                                                                           # REQUIRED
+    title: str                                                                                     # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    billing_account: BillingAccount                                                                # OPTIONAL
+    change_billing_account: bool                                                                   # OPTIONAL
+    description: str                                                                               # OPTIONAL
+    ext_tx_id: str                                                                                 # OPTIONAL
+    retry_attempted: int                                                                           # OPTIONAL
+    sku: str                                                                                       # OPTIONAL
+    status_reason: str                                                                             # OPTIONAL
+    subtotal_price: int                                                                            # OPTIONAL
+    total_price: int                                                                               # OPTIONAL
+    total_tax: int                                                                                 # OPTIONAL
+    tx_end_time: str                                                                               # OPTIONAL
 
     # endregion fields
 
@@ -279,9 +279,7 @@ class BillingHistoryInfo(Model):
         elif include_empty:
             result["userId"] = ""
         if hasattr(self, "billing_account"):
-            result["billingAccount"] = self.billing_account.to_dict(
-                include_empty=include_empty
-            )
+            result["billingAccount"] = self.billing_account.to_dict(include_empty=include_empty)
         elif include_empty:
             result["billingAccount"] = BillingAccount()
         if hasattr(self, "change_billing_account"):
@@ -397,9 +395,7 @@ class BillingHistoryInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> BillingHistoryInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BillingHistoryInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -412,9 +408,7 @@ class BillingHistoryInfo(Model):
         elif include_empty:
             instance.created_at = ""
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = CurrencySummary.create_from_dict(
-                dict_["currency"], include_empty=include_empty
-            )
+            instance.currency = CurrencySummary.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
             instance.currency = CurrencySummary()
         if "itemId" in dict_ and dict_["itemId"] is not None:
@@ -458,15 +452,10 @@ class BillingHistoryInfo(Model):
         elif include_empty:
             instance.user_id = ""
         if "billingAccount" in dict_ and dict_["billingAccount"] is not None:
-            instance.billing_account = BillingAccount.create_from_dict(
-                dict_["billingAccount"], include_empty=include_empty
-            )
+            instance.billing_account = BillingAccount.create_from_dict(dict_["billingAccount"], include_empty=include_empty)
         elif include_empty:
             instance.billing_account = BillingAccount()
-        if (
-            "changeBillingAccount" in dict_
-            and dict_["changeBillingAccount"] is not None
-        ):
+        if "changeBillingAccount" in dict_ and dict_["changeBillingAccount"] is not None:
             instance.change_billing_account = bool(dict_["changeBillingAccount"])
         elif include_empty:
             instance.change_billing_account = False
@@ -509,31 +498,15 @@ class BillingHistoryInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, BillingHistoryInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, BillingHistoryInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[BillingHistoryInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[BillingHistoryInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        BillingHistoryInfo, List[BillingHistoryInfo], Dict[Any, BillingHistoryInfo]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[BillingHistoryInfo, List[BillingHistoryInfo], Dict[Any, BillingHistoryInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -91,26 +91,26 @@ class CodeInfo(Model):
 
     # region fields
 
-    batch_no: int  # REQUIRED
-    campaign_id: str  # REQUIRED
-    created_at: str  # REQUIRED
-    id_: str  # REQUIRED
-    max_redeem_count_per_campaign_per_user: int  # REQUIRED
-    max_redeem_count_per_code: int  # REQUIRED
-    max_redeem_count_per_code_per_user: int  # REQUIRED
-    namespace: str  # REQUIRED
-    redeem_type: Union[str, RedeemTypeEnum]  # REQUIRED
-    redeemed_count: int  # REQUIRED
-    remainder: int  # REQUIRED
-    status: Union[str, StatusEnum]  # REQUIRED
-    type_: Union[str, TypeEnum]  # REQUIRED
-    updated_at: str  # REQUIRED
-    value: str  # REQUIRED
-    acquire_order_no: str  # OPTIONAL
-    acquire_user_id: str  # OPTIONAL
-    items: List[RedeemableItem]  # OPTIONAL
-    redeem_end: str  # OPTIONAL
-    redeem_start: str  # OPTIONAL
+    batch_no: int                                                                                  # REQUIRED
+    campaign_id: str                                                                               # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    id_: str                                                                                       # REQUIRED
+    max_redeem_count_per_campaign_per_user: int                                                    # REQUIRED
+    max_redeem_count_per_code: int                                                                 # REQUIRED
+    max_redeem_count_per_code_per_user: int                                                        # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    redeem_type: Union[str, RedeemTypeEnum]                                                        # REQUIRED
+    redeemed_count: int                                                                            # REQUIRED
+    remainder: int                                                                                 # REQUIRED
+    status: Union[str, StatusEnum]                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    value: str                                                                                     # REQUIRED
+    acquire_order_no: str                                                                          # OPTIONAL
+    acquire_user_id: str                                                                           # OPTIONAL
+    items: List[RedeemableItem]                                                                    # OPTIONAL
+    redeem_end: str                                                                                # OPTIONAL
+    redeem_start: str                                                                              # OPTIONAL
 
     # endregion fields
 
@@ -219,9 +219,7 @@ class CodeInfo(Model):
         elif include_empty:
             result["id"] = ""
         if hasattr(self, "max_redeem_count_per_campaign_per_user"):
-            result["maxRedeemCountPerCampaignPerUser"] = int(
-                self.max_redeem_count_per_campaign_per_user
-            )
+            result["maxRedeemCountPerCampaignPerUser"] = int(self.max_redeem_count_per_campaign_per_user)
         elif include_empty:
             result["maxRedeemCountPerCampaignPerUser"] = 0
         if hasattr(self, "max_redeem_count_per_code"):
@@ -229,9 +227,7 @@ class CodeInfo(Model):
         elif include_empty:
             result["maxRedeemCountPerCode"] = 0
         if hasattr(self, "max_redeem_count_per_code_per_user"):
-            result["maxRedeemCountPerCodePerUser"] = int(
-                self.max_redeem_count_per_code_per_user
-            )
+            result["maxRedeemCountPerCodePerUser"] = int(self.max_redeem_count_per_code_per_user)
         elif include_empty:
             result["maxRedeemCountPerCodePerUser"] = 0
         if hasattr(self, "namespace"):
@@ -275,9 +271,7 @@ class CodeInfo(Model):
         elif include_empty:
             result["acquireUserId"] = ""
         if hasattr(self, "items"):
-            result["items"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.items
-            ]
+            result["items"] = [i0.to_dict(include_empty=include_empty) for i0 in self.items]
         elif include_empty:
             result["items"] = []
         if hasattr(self, "redeem_end"):
@@ -323,9 +317,7 @@ class CodeInfo(Model):
         instance.campaign_id = campaign_id
         instance.created_at = created_at
         instance.id_ = id_
-        instance.max_redeem_count_per_campaign_per_user = (
-            max_redeem_count_per_campaign_per_user
-        )
+        instance.max_redeem_count_per_campaign_per_user = max_redeem_count_per_campaign_per_user
         instance.max_redeem_count_per_code = max_redeem_count_per_code
         instance.max_redeem_count_per_code_per_user = max_redeem_count_per_code_per_user
         instance.namespace = namespace
@@ -369,29 +361,16 @@ class CodeInfo(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
-        if (
-            "maxRedeemCountPerCampaignPerUser" in dict_
-            and dict_["maxRedeemCountPerCampaignPerUser"] is not None
-        ):
-            instance.max_redeem_count_per_campaign_per_user = int(
-                dict_["maxRedeemCountPerCampaignPerUser"]
-            )
+        if "maxRedeemCountPerCampaignPerUser" in dict_ and dict_["maxRedeemCountPerCampaignPerUser"] is not None:
+            instance.max_redeem_count_per_campaign_per_user = int(dict_["maxRedeemCountPerCampaignPerUser"])
         elif include_empty:
             instance.max_redeem_count_per_campaign_per_user = 0
-        if (
-            "maxRedeemCountPerCode" in dict_
-            and dict_["maxRedeemCountPerCode"] is not None
-        ):
+        if "maxRedeemCountPerCode" in dict_ and dict_["maxRedeemCountPerCode"] is not None:
             instance.max_redeem_count_per_code = int(dict_["maxRedeemCountPerCode"])
         elif include_empty:
             instance.max_redeem_count_per_code = 0
-        if (
-            "maxRedeemCountPerCodePerUser" in dict_
-            and dict_["maxRedeemCountPerCodePerUser"] is not None
-        ):
-            instance.max_redeem_count_per_code_per_user = int(
-                dict_["maxRedeemCountPerCodePerUser"]
-            )
+        if "maxRedeemCountPerCodePerUser" in dict_ and dict_["maxRedeemCountPerCodePerUser"] is not None:
+            instance.max_redeem_count_per_code_per_user = int(dict_["maxRedeemCountPerCodePerUser"])
         elif include_empty:
             instance.max_redeem_count_per_code_per_user = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -435,10 +414,7 @@ class CodeInfo(Model):
         elif include_empty:
             instance.acquire_user_id = ""
         if "items" in dict_ and dict_["items"] is not None:
-            instance.items = [
-                RedeemableItem.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["items"]
-            ]
+            instance.items = [RedeemableItem.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["items"]]
         elif include_empty:
             instance.items = []
         if "redeemEnd" in dict_ and dict_["redeemEnd"] is not None:
@@ -452,29 +428,15 @@ class CodeInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, CodeInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CodeInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[CodeInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CodeInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[CodeInfo, List[CodeInfo], Dict[Any, CodeInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CodeInfo, List[CodeInfo], Dict[Any, CodeInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

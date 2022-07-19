@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,71 +53,53 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
 
     # region fields
 
-    code: str  # REQUIRED
-    email_address: str  # REQUIRED
-    password: str  # REQUIRED
-    reach_minimum_age: bool  # REQUIRED
-    username: str  # REQUIRED
-    validate_only: bool  # REQUIRED
-    country: str  # OPTIONAL
-    date_of_birth: str  # OPTIONAL
-    display_name: str  # OPTIONAL
+    code: str                                                                                      # REQUIRED
+    email_address: str                                                                             # REQUIRED
+    password: str                                                                                  # REQUIRED
+    reach_minimum_age: bool                                                                        # REQUIRED
+    username: str                                                                                  # REQUIRED
+    validate_only: bool                                                                            # REQUIRED
+    country: str                                                                                   # OPTIONAL
+    date_of_birth: str                                                                             # OPTIONAL
+    display_name: str                                                                              # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_code(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_code(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.code = value
         return self
 
-    def with_email_address(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_email_address(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.email_address = value
         return self
 
-    def with_password(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_password(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.password = value
         return self
 
-    def with_reach_minimum_age(
-        self, value: bool
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_reach_minimum_age(self, value: bool) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.reach_minimum_age = value
         return self
 
-    def with_username(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_username(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.username = value
         return self
 
-    def with_validate_only(
-        self, value: bool
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_validate_only(self, value: bool) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.validate_only = value
         return self
 
-    def with_country(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_country(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.country = value
         return self
 
-    def with_date_of_birth(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_date_of_birth(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.date_of_birth = value
         return self
 
-    def with_display_name(
-        self, value: str
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def with_display_name(self, value: str) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.display_name = value
         return self
 
@@ -198,9 +180,7 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         instance = cls()
         if not dict_:
             return instance
@@ -243,33 +223,15 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
-        List[AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4],
-        Dict[Any, AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, List[AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4], Dict[Any, AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -82,10 +82,10 @@ class RetrieveLatestPolicies(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    country_code: str  # REQUIRED in [path]
-    default_on_empty: bool  # OPTIONAL in [query]
-    policy_type: Union[str, PolicyTypeEnum]  # OPTIONAL in [query]
-    tags: str  # OPTIONAL in [query]
+    country_code: str                                                                              # REQUIRED in [path]
+    default_on_empty: bool                                                                         # OPTIONAL in [query]
+    policy_type: Union[str, PolicyTypeEnum]                                                        # OPTIONAL in [query]
+    tags: str                                                                                      # OPTIONAL in [query]
 
     # endregion fields
 
@@ -161,9 +161,7 @@ class RetrieveLatestPolicies(Operation):
         self.default_on_empty = value
         return self
 
-    def with_policy_type(
-        self, value: Union[str, PolicyTypeEnum]
-    ) -> RetrieveLatestPolicies:
+    def with_policy_type(self, value: Union[str, PolicyTypeEnum]) -> RetrieveLatestPolicies:
         self.policy_type = value
         return self
 
@@ -200,11 +198,7 @@ class RetrieveLatestPolicies(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[RetrievePolicyPublicResponse]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
@@ -215,21 +209,15 @@ class RetrieveLatestPolicies(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                RetrievePolicyPublicResponse.create_from_dict(i) for i in content
-            ], None
+            return [RetrievePolicyPublicResponse.create_from_dict(i) for i in content], None
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -254,9 +242,7 @@ class RetrieveLatestPolicies(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> RetrieveLatestPolicies:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RetrieveLatestPolicies:
         instance = cls()
         if "countryCode" in dict_ and dict_["countryCode"] is not None:
             instance.country_code = str(dict_["countryCode"])
@@ -297,10 +283,7 @@ class RetrieveLatestPolicies(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "policyType": [
-                "LEGAL_DOCUMENT_TYPE",
-                "MARKETING_PREFERENCE_TYPE",
-            ],  # in query
+            "policyType": ["LEGAL_DOCUMENT_TYPE", "MARKETING_PREFERENCE_TYPE"],                    # in query
         }
 
     # endregion static methods

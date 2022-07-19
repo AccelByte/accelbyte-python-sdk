@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -51,12 +51,7 @@ from ..models import NamespaceStatusUpdateStatusEnum
 
 
 @same_doc_as(ChangeNamespaceStatus)
-def change_namespace_status(
-    body: Optional[NamespaceStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def change_namespace_status(body: Optional[NamespaceStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -69,12 +64,7 @@ def change_namespace_status(
 
 
 @same_doc_as(ChangeNamespaceStatus)
-async def change_namespace_status_async(
-    body: Optional[NamespaceStatusUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def change_namespace_status_async(body: Optional[NamespaceStatusUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,17 +73,11 @@ async def change_namespace_status_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateNamespace)
-def create_namespace(
-    body: Optional[NamespaceCreate] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_namespace(body: Optional[NamespaceCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateNamespace.create(
         body=body,
     )
@@ -101,25 +85,15 @@ def create_namespace(
 
 
 @same_doc_as(CreateNamespace)
-async def create_namespace_async(
-    body: Optional[NamespaceCreate] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_namespace_async(body: Optional[NamespaceCreate] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateNamespace.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteNamespace)
-def delete_namespace(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_namespace(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,11 +105,7 @@ def delete_namespace(
 
 
 @same_doc_as(DeleteNamespace)
-async def delete_namespace_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_namespace_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,18 +113,11 @@ async def delete_namespace_async(
     request = DeleteNamespace.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetNamespace)
-def get_namespace(
-    active_only: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_namespace(active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,12 +130,7 @@ def get_namespace(
 
 
 @same_doc_as(GetNamespace)
-async def get_namespace_async(
-    active_only: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_namespace_async(active_only: Optional[bool] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,17 +139,11 @@ async def get_namespace_async(
         active_only=active_only,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetNamespacePublisher)
-def get_namespace_publisher(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_namespace_publisher(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -203,11 +155,7 @@ def get_namespace_publisher(
 
 
 @same_doc_as(GetNamespacePublisher)
-async def get_namespace_publisher_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_namespace_publisher_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -215,17 +163,11 @@ async def get_namespace_publisher_async(
     request = GetNamespacePublisher.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetNamespaces)
-def get_namespaces(
-    active_only: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetNamespaces.create(
         active_only=active_only,
     )
@@ -233,25 +175,15 @@ def get_namespaces(
 
 
 @same_doc_as(GetNamespaces)
-async def get_namespaces_async(
-    active_only: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_namespaces_async(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = GetNamespaces.create(
         active_only=active_only,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetNamespacePublisher)
-def public_get_namespace_publisher(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_namespace_publisher(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -263,11 +195,7 @@ def public_get_namespace_publisher(
 
 
 @same_doc_as(PublicGetNamespacePublisher)
-async def public_get_namespace_publisher_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_namespace_publisher_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -275,17 +203,11 @@ async def public_get_namespace_publisher_async(
     request = PublicGetNamespacePublisher.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetNamespaces)
-def public_get_namespaces(
-    active_only: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_namespaces(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
@@ -293,26 +215,15 @@ def public_get_namespaces(
 
 
 @same_doc_as(PublicGetNamespaces)
-async def public_get_namespaces_async(
-    active_only: Optional[bool] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_namespaces_async(active_only: Optional[bool] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = PublicGetNamespaces.create(
         active_only=active_only,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateNamespace)
-def update_namespace(
-    body: Optional[NamespaceUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_namespace(body: Optional[NamespaceUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -325,12 +236,7 @@ def update_namespace(
 
 
 @same_doc_as(UpdateNamespace)
-async def update_namespace_async(
-    body: Optional[NamespaceUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_namespace_async(body: Optional[NamespaceUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -339,6 +245,4 @@ async def update_namespace_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

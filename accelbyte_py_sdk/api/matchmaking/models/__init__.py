@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the Justice Matchmaking Service."""
 
-__version__ = "2.15.3"
+__version__ = "2.15.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,9 +26,7 @@ from .models_dequeue_request import ModelsDequeueRequest
 from .models_flexing_rule import ModelsFlexingRule
 from .models_get_channels_response import ModelsGetChannelsResponse
 from .models_import_config_response import ModelsImportConfigResponse
-from .models_match_add_user_into_session_request import (
-    ModelsMatchAddUserIntoSessionRequest,
-)
+from .models_match_add_user_into_session_request import ModelsMatchAddUserIntoSessionRequest
 from .models_match_option import ModelsMatchOption
 from .models_match_option_rule import ModelsMatchOptionRule
 from .models_match_result_request import ModelsMatchResultRequest
@@ -51,25 +49,13 @@ from .models_sub_game_mode import ModelsSubGameMode
 from .models_update_alliance_rule import ModelsUpdateAllianceRule
 from .models_update_channel_request import ModelsUpdateChannelRequest
 from .models_update_play_time_weight_request import ModelsUpdatePlayTimeWeightRequest
-from .models_update_player_playtime_weight_response import (
-    ModelsUpdatePlayerPlaytimeWeightResponse,
-)
+from .models_update_player_playtime_weight_response import ModelsUpdatePlayerPlaytimeWeightResponse
 from .models_update_ruleset import ModelsUpdateRuleset
 from .models_update_ruleset_sub_game_modes import ModelsUpdateRulesetSubGameModes
 from .response_error import ResponseError
 from .response_error_v1 import ResponseErrorV1
-from .service_get_session_history_detailed_response_item import (
-    ServiceGetSessionHistoryDetailedResponseItem,
-)
-from .service_get_session_history_search_response import (
-    ServiceGetSessionHistorySearchResponse,
-)
-from .service_get_session_history_search_response_item import (
-    ServiceGetSessionHistorySearchResponseItem,
-)
-from .service_get_session_history_search_response_item_v2 import (
-    ServiceGetSessionHistorySearchResponseItemV2,
-)
-from .service_get_session_history_search_response_v2 import (
-    ServiceGetSessionHistorySearchResponseV2,
-)
+from .service_get_session_history_detailed_response_item import ServiceGetSessionHistoryDetailedResponseItem
+from .service_get_session_history_search_response import ServiceGetSessionHistorySearchResponse
+from .service_get_session_history_search_response_item import ServiceGetSessionHistorySearchResponseItem
+from .service_get_session_history_search_response_item_v2 import ServiceGetSessionHistorySearchResponseItemV2
+from .service_get_session_history_search_response_v2 import ServiceGetSessionHistorySearchResponseV2

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -41,14 +41,7 @@ from ..operations.user_visibility import SetUserVisibilityStatusV2
 
 
 @same_doc_as(GetHiddenUsersV2)
-def get_hidden_users_v2(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_hidden_users_v2(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -63,14 +56,7 @@ def get_hidden_users_v2(
 
 
 @same_doc_as(GetHiddenUsersV2)
-async def get_hidden_users_v2_async(
-    leaderboard_code: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_hidden_users_v2_async(leaderboard_code: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -81,19 +67,11 @@ async def get_hidden_users_v2_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetUserVisibilityStatusV2)
-def get_user_visibility_status_v2(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_visibility_status_v2(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -107,13 +85,7 @@ def get_user_visibility_status_v2(
 
 
 @same_doc_as(GetUserVisibilityStatusV2)
-async def get_user_visibility_status_v2_async(
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_visibility_status_v2_async(leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,20 +95,11 @@ async def get_user_visibility_status_v2_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetUserLeaderboardVisibilityStatusV2)
-def set_user_leaderboard_visibility_status_v2(
-    body: ModelsSetUserVisibilityRequest,
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def set_user_leaderboard_visibility_status_v2(body: ModelsSetUserVisibilityRequest, leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,14 +114,7 @@ def set_user_leaderboard_visibility_status_v2(
 
 
 @same_doc_as(SetUserLeaderboardVisibilityStatusV2)
-async def set_user_leaderboard_visibility_status_v2_async(
-    body: ModelsSetUserVisibilityRequest,
-    leaderboard_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def set_user_leaderboard_visibility_status_v2_async(body: ModelsSetUserVisibilityRequest, leaderboard_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -169,19 +125,11 @@ async def set_user_leaderboard_visibility_status_v2_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SetUserVisibilityStatusV2)
-def set_user_visibility_status_v2(
-    body: ModelsSetUserVisibilityRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def set_user_visibility_status_v2(body: ModelsSetUserVisibilityRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -195,13 +143,7 @@ def set_user_visibility_status_v2(
 
 
 @same_doc_as(SetUserVisibilityStatusV2)
-async def set_user_visibility_status_v2_async(
-    body: ModelsSetUserVisibilityRequest,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def set_user_visibility_status_v2_async(body: ModelsSetUserVisibilityRequest, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -211,6 +153,4 @@ async def set_user_visibility_status_v2_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

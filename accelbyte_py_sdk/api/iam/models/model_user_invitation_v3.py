@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,10 +45,10 @@ class ModelUserInvitationV3(Model):
 
     # region fields
 
-    email: str  # REQUIRED
-    expired_at: str  # REQUIRED
-    roles: List[AccountcommonNamespaceRole]  # REQUIRED
-    id_: str  # OPTIONAL
+    email: str                                                                                     # REQUIRED
+    expired_at: str                                                                                # REQUIRED
+    roles: List[AccountcommonNamespaceRole]                                                        # REQUIRED
+    id_: str                                                                                       # OPTIONAL
 
     # endregion fields
 
@@ -62,9 +62,7 @@ class ModelUserInvitationV3(Model):
         self.expired_at = value
         return self
 
-    def with_roles(
-        self, value: List[AccountcommonNamespaceRole]
-    ) -> ModelUserInvitationV3:
+    def with_roles(self, value: List[AccountcommonNamespaceRole]) -> ModelUserInvitationV3:
         self.roles = value
         return self
 
@@ -87,9 +85,7 @@ class ModelUserInvitationV3(Model):
         elif include_empty:
             result["expiredAt"] = ""
         if hasattr(self, "roles"):
-            result["roles"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.roles
-            ]
+            result["roles"] = [i0.to_dict(include_empty=include_empty) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
         if hasattr(self, "id_"):
@@ -119,9 +115,7 @@ class ModelUserInvitationV3(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelUserInvitationV3:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelUserInvitationV3:
         instance = cls()
         if not dict_:
             return instance
@@ -134,12 +128,7 @@ class ModelUserInvitationV3(Model):
         elif include_empty:
             instance.expired_at = ""
         if "roles" in dict_ and dict_["roles"] is not None:
-            instance.roles = [
-                AccountcommonNamespaceRole.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["roles"]
-            ]
+            instance.roles = [AccountcommonNamespaceRole.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
         if "id" in dict_ and dict_["id"] is not None:
@@ -149,33 +138,15 @@ class ModelUserInvitationV3(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelUserInvitationV3]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelUserInvitationV3]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelUserInvitationV3]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelUserInvitationV3]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelUserInvitationV3,
-        List[ModelUserInvitationV3],
-        Dict[Any, ModelUserInvitationV3],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelUserInvitationV3, List[ModelUserInvitationV3], Dict[Any, ModelUserInvitationV3]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

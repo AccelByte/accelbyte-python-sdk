@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,12 +47,12 @@ class SteamIAPConfig(Model):
 
     # region fields
 
-    app_id: str  # OPTIONAL
-    created_at: str  # OPTIONAL
-    namespace: str  # OPTIONAL
-    publisher_authentication_key: str  # OPTIONAL
-    rvn: int  # OPTIONAL
-    updated_at: str  # OPTIONAL
+    app_id: str                                                                                    # OPTIONAL
+    created_at: str                                                                                # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    publisher_authentication_key: str                                                              # OPTIONAL
+    rvn: int                                                                                       # OPTIONAL
+    updated_at: str                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -101,9 +101,7 @@ class SteamIAPConfig(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "publisher_authentication_key"):
-            result["publisherAuthenticationKey"] = str(
-                self.publisher_authentication_key
-            )
+            result["publisherAuthenticationKey"] = str(self.publisher_authentication_key)
         elif include_empty:
             result["publisherAuthenticationKey"] = ""
         if hasattr(self, "rvn"):
@@ -146,9 +144,7 @@ class SteamIAPConfig(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> SteamIAPConfig:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SteamIAPConfig:
         instance = cls()
         if not dict_:
             return instance
@@ -164,13 +160,8 @@ class SteamIAPConfig(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if (
-            "publisherAuthenticationKey" in dict_
-            and dict_["publisherAuthenticationKey"] is not None
-        ):
-            instance.publisher_authentication_key = str(
-                dict_["publisherAuthenticationKey"]
-            )
+        if "publisherAuthenticationKey" in dict_ and dict_["publisherAuthenticationKey"] is not None:
+            instance.publisher_authentication_key = str(dict_["publisherAuthenticationKey"])
         elif include_empty:
             instance.publisher_authentication_key = ""
         if "rvn" in dict_ and dict_["rvn"] is not None:
@@ -184,29 +175,15 @@ class SteamIAPConfig(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, SteamIAPConfig]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, SteamIAPConfig]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[SteamIAPConfig]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[SteamIAPConfig]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[SteamIAPConfig, List[SteamIAPConfig], Dict[Any, SteamIAPConfig]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[SteamIAPConfig, List[SteamIAPConfig], Dict[Any, SteamIAPConfig]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

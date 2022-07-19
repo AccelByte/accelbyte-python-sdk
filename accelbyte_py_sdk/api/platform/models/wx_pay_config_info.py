@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,11 +45,11 @@ class WxPayConfigInfo(Model):
 
     # region fields
 
-    app_id: str  # OPTIONAL
-    cert_path: str  # OPTIONAL
-    key: str  # OPTIONAL
-    mchid: str  # OPTIONAL
-    return_url: str  # OPTIONAL
+    app_id: str                                                                                    # OPTIONAL
+    cert_path: str                                                                                 # OPTIONAL
+    key: str                                                                                       # OPTIONAL
+    mchid: str                                                                                     # OPTIONAL
+    return_url: str                                                                                # OPTIONAL
 
     # endregion fields
 
@@ -130,9 +130,7 @@ class WxPayConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> WxPayConfigInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> WxPayConfigInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -159,29 +157,15 @@ class WxPayConfigInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, WxPayConfigInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, WxPayConfigInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[WxPayConfigInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[WxPayConfigInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[WxPayConfigInfo, List[WxPayConfigInfo], Dict[Any, WxPayConfigInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[WxPayConfigInfo, List[WxPayConfigInfo], Dict[Any, WxPayConfigInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

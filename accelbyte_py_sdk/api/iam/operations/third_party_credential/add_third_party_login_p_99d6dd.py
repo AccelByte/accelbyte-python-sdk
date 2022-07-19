@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -48,6 +48,86 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
 
     The secret for apple is base64 encoded private key.
+
+
+
+
+    No secret for awscognito , we only need to configure AWS Cognito Region and User Pool
+
+
+
+
+    The secret for discord is client secret of the twitch client id.
+
+
+
+
+    The secret for epicgames is client secret of the epicgames client id.
+
+
+
+
+    The secret for facebook is client secret of the facebook client id.
+
+
+
+
+    The secret for google is client secret of the google OAuth client.
+
+
+
+
+    No secret for nintendo , we only need to configure app id of the game
+
+
+
+
+    No secret for netflix , we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
+
+
+
+
+    The secret for oculus is app secret of the oculus app.
+
+
+
+
+    The secret for ps4, ps5, and ps4web is client secret of the psn web server.
+
+
+
+
+    The secret for stadia is the google cloud service account in base64 encode JSON format.
+
+
+
+
+    The secret for stadiaweb is client secret of the google OAuth client.
+
+
+
+
+    The secret for steam is the Steam Web API Key.
+
+
+
+
+    The secret for steamopenid is the Steam Web API Key.
+
+
+
+
+    The secret for twitch is client secret of the twitch client.
+
+
+
+
+    The secret for live is the Relying Party Private Key in base64 encode PEM format.
+
+
+
+
+    The secret for xblwebapi is client secret of the xbl client.
 
 
 
@@ -109,9 +189,9 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelThirdPartyLoginPlatformCredentialRequest  # REQUIRED in [body]
-    namespace: str  # REQUIRED in [path]
-    platform_id: str  # REQUIRED in [path]
+    body: ModelThirdPartyLoginPlatformCredentialRequest                                            # REQUIRED in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
+    platform_id: str                                                                               # REQUIRED in [path]
 
     # endregion fields
 
@@ -176,9 +256,7 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelThirdPartyLoginPlatformCredentialRequest
-    ) -> AddThirdPartyLoginPlatformCredentialV3:
+    def with_body(self, value: ModelThirdPartyLoginPlatformCredentialRequest) -> AddThirdPartyLoginPlatformCredentialV3:
         self.body = value
         return self
 
@@ -215,12 +293,7 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelThirdPartyLoginPlatformCredentialResponse],
-        Union[None, HttpResponse, RestErrorResponse],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelThirdPartyLoginPlatformCredentialResponse], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         201: Created - ModelThirdPartyLoginPlatformCredentialResponse (Third Party Credential Created)
@@ -239,20 +312,13 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return (
-                ModelThirdPartyLoginPlatformCredentialResponse.create_from_dict(
-                    content
-                ),
-                None,
-            )
+            return ModelThirdPartyLoginPlatformCredentialResponse.create_from_dict(content), None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
@@ -262,9 +328,7 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -284,16 +348,10 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AddThirdPartyLoginPlatformCredentialV3:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AddThirdPartyLoginPlatformCredentialV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = (
-                ModelThirdPartyLoginPlatformCredentialRequest.create_from_dict(
-                    dict_["body"], include_empty=include_empty
-                )
-            )
+            instance.body = ModelThirdPartyLoginPlatformCredentialRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelThirdPartyLoginPlatformCredentialRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:

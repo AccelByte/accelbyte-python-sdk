@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,10 +24,11 @@
 
 from .utils import randomize
 
+from ..api.platform.models import ADTOObjectForOrderCreationOptions
+from ..api.platform.models import ADTOObjectForQueryingXboxUserAchievements
 from ..api.platform.models import ADTOObjectForUnlockSteamAchievementAPI
-from ..api.platform.models import (
-    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI,
-)
+from ..api.platform.models import ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
+from ..api.platform.models import AchievementInfo
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
@@ -87,6 +88,7 @@ from ..api.platform.models import EntitlementInfo
 from ..api.platform.models import EntitlementPagingSlicedResult
 from ..api.platform.models import EntitlementSummary
 from ..api.platform.models import EntitlementUpdate
+from ..api.platform.models import EpicGamesDLCSyncRequest
 from ..api.platform.models import EpicGamesIAPConfigInfo
 from ..api.platform.models import EpicGamesIAPConfigRequest
 from ..api.platform.models import EpicGamesReconcileRequest
@@ -281,6 +283,18 @@ from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
 
 
+def create_a_dto_object_for_order_creation_options_example() -> ADTOObjectForOrderCreationOptions:
+    instance = ADTOObjectForOrderCreationOptions()
+    instance.skip_price_validation = randomize("bool")
+    return instance
+
+
+def create_a_dto_object_for_querying_xbox_user_achievements_example() -> ADTOObjectForQueryingXboxUserAchievements:
+    instance = ADTOObjectForQueryingXboxUserAchievements()
+    instance.achievements = [create_achievement_info_example()]
+    return instance
+
+
 def create_a_dto_object_for_unlock_steam_achievement_api_example() -> ADTOObjectForUnlockSteamAchievementAPI:
     instance = ADTOObjectForUnlockSteamAchievementAPI()
     instance.achievements = [create_steam_achievement_request_example()]
@@ -294,6 +308,16 @@ def create_a_dto_object_for_update_xbox_achievement_complete_percentage_api_exam
     instance.service_config_id = randomize()
     instance.title_id = randomize()
     instance.xbox_user_id = randomize()
+    return instance
+
+
+def create_achievement_info_example() -> AchievementInfo:
+    instance = AchievementInfo()
+    instance.id_ = randomize()
+    instance.name = randomize()
+    instance.progress_state = randomize()
+    instance.progression = {randomize(): randomize()}
+    instance.service_config_id = randomize()
     return instance
 
 
@@ -311,8 +335,10 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.price = randomize("int", min_val=1, max_val=1000)
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
+    instance.currency_namespace = randomize("slug")
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
+    instance.options = create_a_dto_object_for_order_creation_options_example()
     instance.platform = randomize()
     instance.return_url = randomize("url")
     instance.sandbox = randomize("bool")
@@ -577,13 +603,9 @@ def create_campaign_create_example() -> CampaignCreate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -609,13 +631,9 @@ def create_campaign_info_example() -> CampaignInfo:
     instance.booth_name = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.namespace = randomize("slug")
@@ -643,13 +661,9 @@ def create_campaign_update_example() -> CampaignUpdate:
     instance.name = randomize()
     instance.description = randomize()
     instance.items = [create_redeemable_item_example()]
-    instance.max_redeem_count_per_campaign_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_sale_count = randomize("int", min_val=1, max_val=1000)
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -751,13 +765,9 @@ def create_code_info_example() -> CodeInfo:
     instance.campaign_id = randomize()
     instance.created_at = randomize("date")
     instance.id_ = randomize()
-    instance.max_redeem_count_per_campaign_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_campaign_per_user = randomize("int", min_val=1, max_val=1000)
     instance.max_redeem_count_per_code = randomize("int", min_val=1, max_val=1000)
-    instance.max_redeem_count_per_code_per_user = randomize(
-        "int", min_val=1, max_val=1000
-    )
+    instance.max_redeem_count_per_code_per_user = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.redeem_type = randomize()
     instance.redeemed_count = randomize("int", min_val=1, max_val=1000)
@@ -1017,6 +1027,12 @@ def create_entitlement_update_example() -> EntitlementUpdate:
     instance.start_date = randomize("date")
     instance.status = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_epic_games_dlc_sync_request_example() -> EpicGamesDLCSyncRequest:
+    instance = EpicGamesDLCSyncRequest()
+    instance.epic_games_jwt_token = randomize()
     return instance
 
 
@@ -1740,6 +1756,7 @@ def create_order_example() -> Order:
     instance.count_user_id = randomize()
     instance.created_at = randomize("date")
     instance.created_time = randomize("date")
+    instance.creation_options = create_a_dto_object_for_order_creation_options_example()
     instance.currency = create_currency_summary_example()
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.expire_time = randomize("date")
@@ -1832,6 +1849,7 @@ def create_order_info_example() -> OrderInfo:
     instance.chargeback_time = randomize("date")
     instance.charged_time = randomize("date")
     instance.created_time = randomize("date")
+    instance.creation_options = create_a_dto_object_for_order_creation_options_example()
     instance.ext = {randomize(): randomize()}
     instance.fulfilled_time = randomize("date")
     instance.item_snapshot = create_item_snapshot_example()

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,12 +50,12 @@ class ModelRoleResponseWithManagersV3(Model):
 
     # region fields
 
-    admin_role: bool  # REQUIRED
-    is_wildcard: bool  # REQUIRED
-    managers: List[AccountcommonRoleManagerV3]  # REQUIRED
-    permissions: List[AccountcommonPermissionV3]  # REQUIRED
-    role_id: str  # REQUIRED
-    role_name: str  # REQUIRED
+    admin_role: bool                                                                               # REQUIRED
+    is_wildcard: bool                                                                              # REQUIRED
+    managers: List[AccountcommonRoleManagerV3]                                                     # REQUIRED
+    permissions: List[AccountcommonPermissionV3]                                                   # REQUIRED
+    role_id: str                                                                                   # REQUIRED
+    role_name: str                                                                                 # REQUIRED
 
     # endregion fields
 
@@ -69,15 +69,11 @@ class ModelRoleResponseWithManagersV3(Model):
         self.is_wildcard = value
         return self
 
-    def with_managers(
-        self, value: List[AccountcommonRoleManagerV3]
-    ) -> ModelRoleResponseWithManagersV3:
+    def with_managers(self, value: List[AccountcommonRoleManagerV3]) -> ModelRoleResponseWithManagersV3:
         self.managers = value
         return self
 
-    def with_permissions(
-        self, value: List[AccountcommonPermissionV3]
-    ) -> ModelRoleResponseWithManagersV3:
+    def with_permissions(self, value: List[AccountcommonPermissionV3]) -> ModelRoleResponseWithManagersV3:
         self.permissions = value
         return self
 
@@ -104,15 +100,11 @@ class ModelRoleResponseWithManagersV3(Model):
         elif include_empty:
             result["isWildcard"] = False
         if hasattr(self, "managers"):
-            result["managers"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.managers
-            ]
+            result["managers"] = [i0.to_dict(include_empty=include_empty) for i0 in self.managers]
         elif include_empty:
             result["managers"] = []
         if hasattr(self, "permissions"):
-            result["permissions"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.permissions
-            ]
+            result["permissions"] = [i0.to_dict(include_empty=include_empty) for i0 in self.permissions]
         elif include_empty:
             result["permissions"] = []
         if hasattr(self, "role_id"):
@@ -149,9 +141,7 @@ class ModelRoleResponseWithManagersV3(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelRoleResponseWithManagersV3:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRoleResponseWithManagersV3:
         instance = cls()
         if not dict_:
             return instance
@@ -164,21 +154,11 @@ class ModelRoleResponseWithManagersV3(Model):
         elif include_empty:
             instance.is_wildcard = False
         if "managers" in dict_ and dict_["managers"] is not None:
-            instance.managers = [
-                AccountcommonRoleManagerV3.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["managers"]
-            ]
+            instance.managers = [AccountcommonRoleManagerV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["managers"]]
         elif include_empty:
             instance.managers = []
         if "permissions" in dict_ and dict_["permissions"] is not None:
-            instance.permissions = [
-                AccountcommonPermissionV3.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["permissions"]
-            ]
+            instance.permissions = [AccountcommonPermissionV3.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["permissions"]]
         elif include_empty:
             instance.permissions = []
         if "roleId" in dict_ and dict_["roleId"] is not None:
@@ -192,33 +172,15 @@ class ModelRoleResponseWithManagersV3(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelRoleResponseWithManagersV3]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelRoleResponseWithManagersV3]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelRoleResponseWithManagersV3]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelRoleResponseWithManagersV3]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelRoleResponseWithManagersV3,
-        List[ModelRoleResponseWithManagersV3],
-        Dict[Any, ModelRoleResponseWithManagersV3],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelRoleResponseWithManagersV3, List[ModelRoleResponseWithManagersV3], Dict[Any, ModelRoleResponseWithManagersV3]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

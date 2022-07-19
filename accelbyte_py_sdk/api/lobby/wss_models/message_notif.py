@@ -68,49 +68,33 @@ class MessageNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         id_line = lines[1]
         if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.FieldFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
         instance.id_ = id_line.removeprefix("id: ")
         for line in lines[2:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldFormatInvalid
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "from".casefold()) or (
-                name == "from"
-            ):
+            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if (not is_strict and name.casefold() == "payload".casefold()) or (
-                name == "payload"
-            ):
+            if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
-            if (not is_strict and name.casefold() == "sentAt".casefold()) or (
-                name == "sentAt"
-            ):
+            if (not is_strict and name.casefold() == "sentAt".casefold()) or (name == "sentAt"):
                 instance.sent_at = value
                 continue
             if (not is_strict and name.casefold() == "to".casefold()) or (name == "to"):
                 instance.to = value
                 continue
-            if (not is_strict and name.casefold() == "topic".casefold()) or (
-                name == "topic"
-            ):
+            if (not is_strict and name.casefold() == "topic".casefold()) or (name == "topic"):
                 instance.topic = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldTypeNotSupported
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
         return instance
 
     @staticmethod

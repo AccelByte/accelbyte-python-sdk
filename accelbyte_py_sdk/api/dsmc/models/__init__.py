@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-dsm-controller-service."""
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,9 +18,7 @@ from .log_app_message_declaration import LogAppMessageDeclaration
 from .models_claim_session_request import ModelsClaimSessionRequest
 from .models_count_server_response import ModelsCountServerResponse
 from .models_count_session_response import ModelsCountSessionResponse
-from .models_create_deployment_override_request import (
-    ModelsCreateDeploymentOverrideRequest,
-)
+from .models_create_deployment_override_request import ModelsCreateDeploymentOverrideRequest
 from .models_create_deployment_request import ModelsCreateDeploymentRequest
 from .models_create_dsm_config_request import ModelsCreateDSMConfigRequest
 from .models_create_image_patch_request import ModelsCreateImagePatchRequest
@@ -50,9 +48,7 @@ from .models_list_image_response import ModelsListImageResponse
 from .models_list_pod_config_response import ModelsListPodConfigResponse
 from .models_list_server_response import ModelsListServerResponse
 from .models_list_session_response import ModelsListSessionResponse
-from .models_match_result_notification_payload import (
-    ModelsMatchResultNotificationPayload,
-)
+from .models_match_result_notification_payload import ModelsMatchResultNotificationPayload
 from .models_paging_cursor import ModelsPagingCursor
 from .models_patch_image_record import ModelsPatchImageRecord
 from .models_pod_config_record import ModelsPodConfigRecord
@@ -69,9 +65,7 @@ from .models_session import ModelsSession
 from .models_session_response import ModelsSessionResponse
 from .models_shutdown_server_request import ModelsShutdownServerRequest
 from .models_status_history import ModelsStatusHistory
-from .models_update_deployment_override_request import (
-    ModelsUpdateDeploymentOverrideRequest,
-)
+from .models_update_deployment_override_request import ModelsUpdateDeploymentOverrideRequest
 from .models_update_deployment_request import ModelsUpdateDeploymentRequest
 from .models_update_dsm_config_request import ModelsUpdateDSMConfigRequest
 from .models_update_pod_config_request import ModelsUpdatePodConfigRequest

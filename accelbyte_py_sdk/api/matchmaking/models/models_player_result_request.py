@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,16 +41,14 @@ class ModelsPlayerResultRequest(Model):
 
     # region fields
 
-    results: List[ModelsResultAttributeRequest]  # REQUIRED
-    user_id: str  # REQUIRED
+    results: List[ModelsResultAttributeRequest]                                                    # REQUIRED
+    user_id: str                                                                                   # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_results(
-        self, value: List[ModelsResultAttributeRequest]
-    ) -> ModelsPlayerResultRequest:
+    def with_results(self, value: List[ModelsResultAttributeRequest]) -> ModelsPlayerResultRequest:
         self.results = value
         return self
 
@@ -65,9 +63,7 @@ class ModelsPlayerResultRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "results"):
-            result["results"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.results
-            ]
+            result["results"] = [i0.to_dict(include_empty=include_empty) for i0 in self.results]
         elif include_empty:
             result["results"] = []
         if hasattr(self, "user_id"):
@@ -92,19 +88,12 @@ class ModelsPlayerResultRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsPlayerResultRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPlayerResultRequest:
         instance = cls()
         if not dict_:
             return instance
         if "results" in dict_ and dict_["results"] is not None:
-            instance.results = [
-                ModelsResultAttributeRequest.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["results"]
-            ]
+            instance.results = [ModelsResultAttributeRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["results"]]
         elif include_empty:
             instance.results = []
         if "user_id" in dict_ and dict_["user_id"] is not None:
@@ -114,33 +103,15 @@ class ModelsPlayerResultRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsPlayerResultRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPlayerResultRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsPlayerResultRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPlayerResultRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsPlayerResultRequest,
-        List[ModelsPlayerResultRequest],
-        Dict[Any, ModelsPlayerResultRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPlayerResultRequest, List[ModelsPlayerResultRequest], Dict[Any, ModelsPlayerResultRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

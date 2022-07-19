@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -52,15 +52,13 @@ class PlatformWalletConfigUpdate(Model):
 
     # region fields
 
-    allowed_balance_origins: List[Union[str, AllowedBalanceOriginsEnum]]  # OPTIONAL
+    allowed_balance_origins: List[Union[str, AllowedBalanceOriginsEnum]]                           # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_allowed_balance_origins(
-        self, value: List[Union[str, AllowedBalanceOriginsEnum]]
-    ) -> PlatformWalletConfigUpdate:
+    def with_allowed_balance_origins(self, value: List[Union[str, AllowedBalanceOriginsEnum]]) -> PlatformWalletConfigUpdate:
         self.allowed_balance_origins = value
         return self
 
@@ -71,9 +69,7 @@ class PlatformWalletConfigUpdate(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "allowed_balance_origins"):
-            result["allowedBalanceOrigins"] = [
-                str(i0) for i0 in self.allowed_balance_origins
-            ]
+            result["allowedBalanceOrigins"] = [str(i0) for i0 in self.allowed_balance_origins]
         elif include_empty:
             result["allowedBalanceOrigins"] = []
         return result
@@ -85,9 +81,7 @@ class PlatformWalletConfigUpdate(Model):
     @classmethod
     def create(
         cls,
-        allowed_balance_origins: Optional[
-            List[Union[str, AllowedBalanceOriginsEnum]]
-        ] = None,
+        allowed_balance_origins: Optional[List[Union[str, AllowedBalanceOriginsEnum]]] = None,
     ) -> PlatformWalletConfigUpdate:
         instance = cls()
         if allowed_balance_origins is not None:
@@ -95,51 +89,26 @@ class PlatformWalletConfigUpdate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PlatformWalletConfigUpdate:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PlatformWalletConfigUpdate:
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "allowedBalanceOrigins" in dict_
-            and dict_["allowedBalanceOrigins"] is not None
-        ):
-            instance.allowed_balance_origins = [
-                str(i0) for i0 in dict_["allowedBalanceOrigins"]
-            ]
+        if "allowedBalanceOrigins" in dict_ and dict_["allowedBalanceOrigins"] is not None:
+            instance.allowed_balance_origins = [str(i0) for i0 in dict_["allowedBalanceOrigins"]]
         elif include_empty:
             instance.allowed_balance_origins = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, PlatformWalletConfigUpdate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PlatformWalletConfigUpdate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[PlatformWalletConfigUpdate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PlatformWalletConfigUpdate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        PlatformWalletConfigUpdate,
-        List[PlatformWalletConfigUpdate],
-        Dict[Any, PlatformWalletConfigUpdate],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PlatformWalletConfigUpdate, List[PlatformWalletConfigUpdate], Dict[Any, PlatformWalletConfigUpdate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -165,19 +134,7 @@ class PlatformWalletConfigUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "allowedBalanceOrigins": [
-                "Epic",
-                "GooglePlay",
-                "IOS",
-                "Nintendo",
-                "Other",
-                "Playstation",
-                "Stadia",
-                "Steam",
-                "System",
-                "Twitch",
-                "Xbox",
-            ],
+            "allowedBalanceOrigins": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],
         }
 
     # endregion static methods

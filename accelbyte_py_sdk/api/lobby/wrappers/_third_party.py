@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,12 +43,7 @@ from ..operations.third_party import AdminUpdateThirdPartyConfig
 
 
 @same_doc_as(AdminCreateThirdPartyConfig)
-def admin_create_third_party_config(
-    body: ModelsCreateConfigRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_create_third_party_config(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -61,12 +56,7 @@ def admin_create_third_party_config(
 
 
 @same_doc_as(AdminCreateThirdPartyConfig)
-async def admin_create_third_party_config_async(
-    body: ModelsCreateConfigRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_create_third_party_config_async(body: ModelsCreateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -75,17 +65,11 @@ async def admin_create_third_party_config_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDeleteThirdPartyConfig)
-def admin_delete_third_party_config(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_delete_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -97,11 +81,7 @@ def admin_delete_third_party_config(
 
 
 @same_doc_as(AdminDeleteThirdPartyConfig)
-async def admin_delete_third_party_config_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_delete_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,17 +89,11 @@ async def admin_delete_third_party_config_async(
     request = AdminDeleteThirdPartyConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetThirdPartyConfig)
-def admin_get_third_party_config(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_get_third_party_config(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -131,11 +105,7 @@ def admin_get_third_party_config(
 
 
 @same_doc_as(AdminGetThirdPartyConfig)
-async def admin_get_third_party_config_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_get_third_party_config_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -143,18 +113,11 @@ async def admin_get_third_party_config_async(
     request = AdminGetThirdPartyConfig.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminUpdateThirdPartyConfig)
-def admin_update_third_party_config(
-    body: ModelsUpdateConfigRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_update_third_party_config(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,12 +130,7 @@ def admin_update_third_party_config(
 
 
 @same_doc_as(AdminUpdateThirdPartyConfig)
-async def admin_update_third_party_config_async(
-    body: ModelsUpdateConfigRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_update_third_party_config_async(body: ModelsUpdateConfigRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -181,6 +139,4 @@ async def admin_update_third_party_config_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

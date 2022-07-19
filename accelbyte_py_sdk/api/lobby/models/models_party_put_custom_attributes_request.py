@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,16 +39,14 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
 
     # region fields
 
-    custom_attribute: Dict[str, Any]  # REQUIRED
-    updated_at: int  # REQUIRED
+    custom_attribute: Dict[str, Any]                                                               # REQUIRED
+    updated_at: int                                                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_custom_attribute(
-        self, value: Dict[str, Any]
-    ) -> ModelsPartyPUTCustomAttributesRequest:
+    def with_custom_attribute(self, value: Dict[str, Any]) -> ModelsPartyPUTCustomAttributesRequest:
         self.custom_attribute = value
         return self
 
@@ -63,9 +61,7 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "custom_attribute"):
-            result["custom_attribute"] = {
-                str(k0): v0 for k0, v0 in self.custom_attribute.items()
-            }
+            result["custom_attribute"] = {str(k0): v0 for k0, v0 in self.custom_attribute.items()}
         elif include_empty:
             result["custom_attribute"] = {}
         if hasattr(self, "updated_at"):
@@ -90,16 +86,12 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsPartyPUTCustomAttributesRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsPartyPUTCustomAttributesRequest:
         instance = cls()
         if not dict_:
             return instance
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
-            instance.custom_attribute = {
-                str(k0): v0 for k0, v0 in dict_["custom_attribute"].items()
-            }
+            instance.custom_attribute = {str(k0): v0 for k0, v0 in dict_["custom_attribute"].items()}
         elif include_empty:
             instance.custom_attribute = {}
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
@@ -109,33 +101,15 @@ class ModelsPartyPUTCustomAttributesRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsPartyPUTCustomAttributesRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsPartyPUTCustomAttributesRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsPartyPUTCustomAttributesRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsPartyPUTCustomAttributesRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsPartyPUTCustomAttributesRequest,
-        List[ModelsPartyPUTCustomAttributesRequest],
-        Dict[Any, ModelsPartyPUTCustomAttributesRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsPartyPUTCustomAttributesRequest, List[ModelsPartyPUTCustomAttributesRequest], Dict[Any, ModelsPartyPUTCustomAttributesRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

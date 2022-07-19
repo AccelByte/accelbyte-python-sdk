@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -72,8 +72,8 @@ class ListExtOrderNoByExtTxId(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    ext_tx_id: str  # REQUIRED in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
+    ext_tx_id: str                                                                                 # REQUIRED in [query]
 
     # endregion fields
 
@@ -166,9 +166,7 @@ class ListExtOrderNoByExtTxId(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[str]], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[str]], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - List[str] (successful operation)
@@ -179,9 +177,7 @@ class ListExtOrderNoByExtTxId(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -189,9 +185,7 @@ class ListExtOrderNoByExtTxId(Operation):
         if code == 200:
             return [str(i) for i in content], None
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -209,9 +203,7 @@ class ListExtOrderNoByExtTxId(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ListExtOrderNoByExtTxId:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ListExtOrderNoByExtTxId:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

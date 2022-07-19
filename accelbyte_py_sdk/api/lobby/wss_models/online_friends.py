@@ -45,11 +45,7 @@ class OnlineFriends(WebSocketMessage):
         id_ = self.id_ if hasattr(self, "id_") else generate_websocket_message_id()
         wsm.append(f"id: {id_}")
         if hasattr(self, "online_friend_ids") and self.online_friend_ids:
-            wsm.append(
-                f"onlineFriendIds: ["
-                + ",".join([str(i) for i in self.online_friend_ids])
-                + "]"
-            )
+            wsm.append(f"onlineFriendIds: [" + ','.join([str(i) for i in self.online_friend_ids]) + "]")
         return "\n".join(wsm)
 
     # endregion methods
@@ -63,38 +59,24 @@ class OnlineFriends(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         id_line = lines[1]
         if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.FieldFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
         instance.id_ = id_line.removeprefix("id: ")
         for line in lines[2:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldFormatInvalid
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "code".casefold()) or (
-                name == "code"
-            ):
+            if (not is_strict and name.casefold() == "code".casefold()) or (name == "code"):
                 instance.code = value
                 continue
-            if (not is_strict and name.casefold() == "onlineFriendIds".casefold()) or (
-                name == "onlineFriendIds"
-            ):
-                instance.online_friend_ids = [
-                    str(i) for i in value.removeprefix("[").removesuffix("]").split(",")
-                ]
+            if (not is_strict and name.casefold() == "onlineFriendIds".casefold()) or (name == "onlineFriendIds"):
+                instance.online_friend_ids = [str(i) for i in value.removeprefix("[").removesuffix("]").split(",")]
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldTypeNotSupported
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
         return instance
 
     @staticmethod

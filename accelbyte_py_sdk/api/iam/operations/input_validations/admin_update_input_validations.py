@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -148,7 +148,7 @@ class AdminUpdateInputValidations(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[ModelInputValidationUpdatePayload]  # REQUIRED in [body]
+    body: List[ModelInputValidationUpdatePayload]                                                  # REQUIRED in [body]
 
     # endregion fields
 
@@ -204,9 +204,7 @@ class AdminUpdateInputValidations(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: List[ModelInputValidationUpdatePayload]
-    ) -> AdminUpdateInputValidations:
+    def with_body(self, value: List[ModelInputValidationUpdatePayload]) -> AdminUpdateInputValidations:
         self.body = value
         return self
 
@@ -217,9 +215,7 @@ class AdminUpdateInputValidations(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.body
-            ]
+            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
             result["body"] = []
         return result
@@ -229,9 +225,7 @@ class AdminUpdateInputValidations(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (No Content)
@@ -248,9 +242,7 @@ class AdminUpdateInputValidations(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -264,9 +256,7 @@ class AdminUpdateInputValidations(Operation):
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -282,17 +272,10 @@ class AdminUpdateInputValidations(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AdminUpdateInputValidations:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminUpdateInputValidations:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [
-                ModelInputValidationUpdatePayload.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["body"]
-            ]
+            instance.body = [ModelInputValidationUpdatePayload.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
         return instance

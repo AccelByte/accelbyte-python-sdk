@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -82,19 +82,17 @@ class ReorderTier(Operation):
 
     # region fields
 
-    _url: str = (
-        "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder"
-    )
+    _url: str = "/seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: TierReorder  # OPTIONAL in [body]
-    id_: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
-    season_id: str  # REQUIRED in [path]
+    body: TierReorder                                                                              # OPTIONAL in [body]
+    id_: str                                                                                       # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    season_id: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -206,11 +204,7 @@ class ReorderTier(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, Tier], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, Tier], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
         200: OK - Tier (successful operation)
@@ -229,9 +223,7 @@ class ReorderTier(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -247,9 +239,7 @@ class ReorderTier(Operation):
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -275,9 +265,7 @@ class ReorderTier(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ReorderTier:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = TierReorder.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+            instance.body = TierReorder.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = TierReorder()
         if "id" in dict_ and dict_["id"] is not None:

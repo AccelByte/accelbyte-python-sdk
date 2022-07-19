@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -36,11 +36,7 @@ from ..operations.server import Heartbeat
 
 
 @same_doc_as(Heartbeat)
-def heartbeat(
-    body: ModelsHeartbeatRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def heartbeat(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Heartbeat.create(
         body=body,
     )
@@ -48,14 +44,8 @@ def heartbeat(
 
 
 @same_doc_as(Heartbeat)
-async def heartbeat_async(
-    body: ModelsHeartbeatRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def heartbeat_async(body: ModelsHeartbeatRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = Heartbeat.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

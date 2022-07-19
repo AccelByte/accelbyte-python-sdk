@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -46,12 +46,7 @@ from ..models import PaymentOrderRefundResultStatusEnum
 
 
 @same_doc_as(CreatePaymentOrderByDedicated)
-def create_payment_order_by_dedicated(
-    body: Optional[ExternalPaymentOrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_payment_order_by_dedicated(body: Optional[ExternalPaymentOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -64,12 +59,7 @@ def create_payment_order_by_dedicated(
 
 
 @same_doc_as(CreatePaymentOrderByDedicated)
-async def create_payment_order_by_dedicated_async(
-    body: Optional[ExternalPaymentOrderCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_payment_order_by_dedicated_async(body: Optional[ExternalPaymentOrderCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -78,19 +68,11 @@ async def create_payment_order_by_dedicated_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RefundPaymentOrderByDedicated)
-def refund_payment_order_by_dedicated(
-    payment_order_no: str,
-    body: Optional[PaymentOrderRefund] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def refund_payment_order_by_dedicated(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -104,13 +86,7 @@ def refund_payment_order_by_dedicated(
 
 
 @same_doc_as(RefundPaymentOrderByDedicated)
-async def refund_payment_order_by_dedicated_async(
-    payment_order_no: str,
-    body: Optional[PaymentOrderRefund] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def refund_payment_order_by_dedicated_async(payment_order_no: str, body: Optional[PaymentOrderRefund] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -120,19 +96,11 @@ async def refund_payment_order_by_dedicated_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SyncPaymentOrders)
-def sync_payment_orders(
-    end: str,
-    start: str,
-    next_evaluated_key: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def sync_payment_orders(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SyncPaymentOrders.create(
         end=end,
         start=start,
@@ -142,18 +110,10 @@ def sync_payment_orders(
 
 
 @same_doc_as(SyncPaymentOrders)
-async def sync_payment_orders_async(
-    end: str,
-    start: str,
-    next_evaluated_key: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def sync_payment_orders_async(end: str, start: str, next_evaluated_key: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = SyncPaymentOrders.create(
         end=end,
         start=start,
         next_evaluated_key=next_evaluated_key,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

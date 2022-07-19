@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -57,17 +57,17 @@ class GameProfileInfo(Model):
 
     # region fields
 
-    achievements: List[str]  # OPTIONAL
-    attributes: Dict[str, str]  # OPTIONAL
-    avatar_url: str  # OPTIONAL
-    inventories: List[str]  # OPTIONAL
-    label: str  # OPTIONAL
-    namespace: str  # OPTIONAL
-    profile_id: str  # OPTIONAL
-    profile_name: str  # OPTIONAL
-    statistics: List[str]  # OPTIONAL
-    tags: List[str]  # OPTIONAL
-    user_id: str  # OPTIONAL
+    achievements: List[str]                                                                        # OPTIONAL
+    attributes: Dict[str, str]                                                                     # OPTIONAL
+    avatar_url: str                                                                                # OPTIONAL
+    inventories: List[str]                                                                         # OPTIONAL
+    label: str                                                                                     # OPTIONAL
+    namespace: str                                                                                 # OPTIONAL
+    profile_id: str                                                                                # OPTIONAL
+    profile_name: str                                                                              # OPTIONAL
+    statistics: List[str]                                                                          # OPTIONAL
+    tags: List[str]                                                                                # OPTIONAL
+    user_id: str                                                                                   # OPTIONAL
 
     # endregion fields
 
@@ -128,9 +128,7 @@ class GameProfileInfo(Model):
         elif include_empty:
             result["achievements"] = []
         if hasattr(self, "attributes"):
-            result["attributes"] = {
-                str(k0): str(v0) for k0, v0 in self.attributes.items()
-            }
+            result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
         if hasattr(self, "avatar_url"):
@@ -216,9 +214,7 @@ class GameProfileInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> GameProfileInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> GameProfileInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -227,9 +223,7 @@ class GameProfileInfo(Model):
         elif include_empty:
             instance.achievements = []
         if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {
-                str(k0): str(v0) for k0, v0 in dict_["attributes"].items()
-            }
+            instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
         elif include_empty:
             instance.attributes = {}
         if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
@@ -271,29 +265,15 @@ class GameProfileInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, GameProfileInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, GameProfileInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[GameProfileInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[GameProfileInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[GameProfileInfo, List[GameProfileInfo], Dict[Any, GameProfileInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[GameProfileInfo, List[GameProfileInfo], Dict[Any, GameProfileInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

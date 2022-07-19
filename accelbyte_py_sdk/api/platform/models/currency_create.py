@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -51,11 +51,11 @@ class CurrencyCreate(Model):
 
     # region fields
 
-    currency_code: str  # REQUIRED
-    currency_symbol: str  # OPTIONAL
-    currency_type: Union[str, CurrencyTypeEnum]  # OPTIONAL
-    decimals: int  # OPTIONAL
-    localization_descriptions: Dict[str, str]  # OPTIONAL
+    currency_code: str                                                                             # REQUIRED
+    currency_symbol: str                                                                           # OPTIONAL
+    currency_type: Union[str, CurrencyTypeEnum]                                                    # OPTIONAL
+    decimals: int                                                                                  # OPTIONAL
+    localization_descriptions: Dict[str, str]                                                      # OPTIONAL
 
     # endregion fields
 
@@ -104,9 +104,7 @@ class CurrencyCreate(Model):
         elif include_empty:
             result["decimals"] = 0
         if hasattr(self, "localization_descriptions"):
-            result["localizationDescriptions"] = {
-                str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()
-            }
+            result["localizationDescriptions"] = {str(k0): str(v0) for k0, v0 in self.localization_descriptions.items()}
         elif include_empty:
             result["localizationDescriptions"] = {}
         return result
@@ -137,9 +135,7 @@ class CurrencyCreate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> CurrencyCreate:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CurrencyCreate:
         instance = cls()
         if not dict_:
             return instance
@@ -159,41 +155,22 @@ class CurrencyCreate(Model):
             instance.decimals = int(dict_["decimals"])
         elif include_empty:
             instance.decimals = 0
-        if (
-            "localizationDescriptions" in dict_
-            and dict_["localizationDescriptions"] is not None
-        ):
-            instance.localization_descriptions = {
-                str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()
-            }
+        if "localizationDescriptions" in dict_ and dict_["localizationDescriptions"] is not None:
+            instance.localization_descriptions = {str(k0): str(v0) for k0, v0 in dict_["localizationDescriptions"].items()}
         elif include_empty:
             instance.localization_descriptions = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, CurrencyCreate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CurrencyCreate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[CurrencyCreate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CurrencyCreate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[CurrencyCreate, List[CurrencyCreate], Dict[Any, CurrencyCreate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CurrencyCreate, List[CurrencyCreate], Dict[Any, CurrencyCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

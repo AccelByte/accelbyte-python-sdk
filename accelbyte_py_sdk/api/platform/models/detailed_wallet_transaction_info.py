@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,17 +64,17 @@ class DetailedWalletTransactionInfo(Model):
 
     # region fields
 
-    amount: int  # REQUIRED
-    created_at: str  # REQUIRED
-    currency_code: str  # REQUIRED
-    namespace: str  # REQUIRED
-    operator: str  # REQUIRED
-    updated_at: str  # REQUIRED
-    user_id: str  # REQUIRED
-    wallet_action: Union[str, WalletActionEnum]  # REQUIRED
-    wallet_id: str  # REQUIRED
-    balance_source: str  # OPTIONAL
-    reason: str  # OPTIONAL
+    amount: int                                                                                    # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    currency_code: str                                                                             # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    operator: str                                                                                  # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    wallet_action: Union[str, WalletActionEnum]                                                    # REQUIRED
+    wallet_id: str                                                                                 # REQUIRED
+    balance_source: str                                                                            # OPTIONAL
+    reason: str                                                                                    # OPTIONAL
 
     # endregion fields
 
@@ -108,9 +108,7 @@ class DetailedWalletTransactionInfo(Model):
         self.user_id = value
         return self
 
-    def with_wallet_action(
-        self, value: Union[str, WalletActionEnum]
-    ) -> DetailedWalletTransactionInfo:
+    def with_wallet_action(self, value: Union[str, WalletActionEnum]) -> DetailedWalletTransactionInfo:
         self.wallet_action = value
         return self
 
@@ -214,9 +212,7 @@ class DetailedWalletTransactionInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> DetailedWalletTransactionInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DetailedWalletTransactionInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -267,33 +263,15 @@ class DetailedWalletTransactionInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, DetailedWalletTransactionInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, DetailedWalletTransactionInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[DetailedWalletTransactionInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[DetailedWalletTransactionInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        DetailedWalletTransactionInfo,
-        List[DetailedWalletTransactionInfo],
-        Dict[Any, DetailedWalletTransactionInfo],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[DetailedWalletTransactionInfo, List[DetailedWalletTransactionInfo], Dict[Any, DetailedWalletTransactionInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

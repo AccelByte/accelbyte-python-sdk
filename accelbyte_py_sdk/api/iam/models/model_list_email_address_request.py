@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,15 +37,13 @@ class ModelListEmailAddressRequest(Model):
 
     # region fields
 
-    list_email_address_request: List[str]  # REQUIRED
+    list_email_address_request: List[str]                                                          # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_list_email_address_request(
-        self, value: List[str]
-    ) -> ModelListEmailAddressRequest:
+    def with_list_email_address_request(self, value: List[str]) -> ModelListEmailAddressRequest:
         self.list_email_address_request = value
         return self
 
@@ -56,9 +54,7 @@ class ModelListEmailAddressRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "list_email_address_request"):
-            result["listEmailAddressRequest"] = [
-                str(i0) for i0 in self.list_email_address_request
-            ]
+            result["listEmailAddressRequest"] = [str(i0) for i0 in self.list_email_address_request]
         elif include_empty:
             result["listEmailAddressRequest"] = []
         return result
@@ -77,51 +73,26 @@ class ModelListEmailAddressRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelListEmailAddressRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelListEmailAddressRequest:
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "listEmailAddressRequest" in dict_
-            and dict_["listEmailAddressRequest"] is not None
-        ):
-            instance.list_email_address_request = [
-                str(i0) for i0 in dict_["listEmailAddressRequest"]
-            ]
+        if "listEmailAddressRequest" in dict_ and dict_["listEmailAddressRequest"] is not None:
+            instance.list_email_address_request = [str(i0) for i0 in dict_["listEmailAddressRequest"]]
         elif include_empty:
             instance.list_email_address_request = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelListEmailAddressRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelListEmailAddressRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelListEmailAddressRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelListEmailAddressRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelListEmailAddressRequest,
-        List[ModelListEmailAddressRequest],
-        Dict[Any, ModelListEmailAddressRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelListEmailAddressRequest, List[ModelListEmailAddressRequest], Dict[Any, ModelListEmailAddressRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

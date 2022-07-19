@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -125,6 +125,7 @@ def create_models_create_deployment_override_request_example() -> ModelsCreateDe
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -142,6 +143,7 @@ def create_models_create_deployment_request_example() -> ModelsCreateDeploymentR
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -217,9 +219,7 @@ def create_models_create_session_request_example() -> ModelsCreateSessionRequest
     instance.pod_name = randomize()
     instance.region = randomize()
     instance.session_id = randomize("uid")
-    instance.notification_payload = (
-        create_models_match_result_notification_payload_example()
-    )
+    instance.notification_payload = create_models_match_result_notification_payload_example()
     return instance
 
 
@@ -242,6 +242,7 @@ def create_models_deployment_config_override_example() -> ModelsDeploymentConfig
     instance.region_overrides = {}
     instance.regions = [randomize()]
     instance.use_buffer_percent = randomize("bool")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -264,6 +265,7 @@ def create_models_deployment_with_override_example() -> ModelsDeploymentWithOver
     instance.regions = [randomize()]
     instance.updated_at = randomize("date")
     instance.use_buffer_percent = randomize("bool")
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -607,6 +609,7 @@ def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentR
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 

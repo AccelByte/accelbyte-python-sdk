@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,14 +76,7 @@ from ..models import WalletInfoStatusEnum
 
 @deprecated
 @same_doc_as(CheckWallet)
-def check_wallet(
-    currency_code: str,
-    origin: Union[str, CheckWalletOriginEnum],
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def check_wallet(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -99,14 +92,7 @@ def check_wallet(
 
 @deprecated
 @same_doc_as(CheckWallet)
-async def check_wallet_async(
-    currency_code: str,
-    origin: Union[str, CheckWalletOriginEnum],
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def check_wallet_async(currency_code: str, origin: Union[str, CheckWalletOriginEnum], user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,20 +103,11 @@ async def check_wallet_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreditUserWallet)
-def credit_user_wallet(
-    currency_code: str,
-    user_id: str,
-    body: Optional[CreditRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def credit_user_wallet(currency_code: str, user_id: str, body: Optional[CreditRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -145,14 +122,7 @@ def credit_user_wallet(
 
 
 @same_doc_as(CreditUserWallet)
-async def credit_user_wallet_async(
-    currency_code: str,
-    user_id: str,
-    body: Optional[CreditRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def credit_user_wallet_async(currency_code: str, user_id: str, body: Optional[CreditRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -163,21 +133,12 @@ async def credit_user_wallet_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(DebitUserWallet)
-def debit_user_wallet(
-    user_id: str,
-    wallet_id: str,
-    body: Optional[DebitRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def debit_user_wallet(user_id: str, wallet_id: str, body: Optional[DebitRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -193,14 +154,7 @@ def debit_user_wallet(
 
 @deprecated
 @same_doc_as(DebitUserWallet)
-async def debit_user_wallet_async(
-    user_id: str,
-    wallet_id: str,
-    body: Optional[DebitRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def debit_user_wallet_async(user_id: str, wallet_id: str, body: Optional[DebitRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -211,20 +165,12 @@ async def debit_user_wallet_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(DisableUserWallet)
-def disable_user_wallet(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def disable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -239,13 +185,7 @@ def disable_user_wallet(
 
 @deprecated
 @same_doc_as(DisableUserWallet)
-async def disable_user_wallet_async(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def disable_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -255,20 +195,12 @@ async def disable_user_wallet_async(
         wallet_id=wallet_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(EnableUserWallet)
-def enable_user_wallet(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def enable_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -283,13 +215,7 @@ def enable_user_wallet(
 
 @deprecated
 @same_doc_as(EnableUserWallet)
-async def enable_user_wallet_async(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def enable_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -299,18 +225,11 @@ async def enable_user_wallet_async(
         wallet_id=wallet_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPlatformWalletConfig)
-def get_platform_wallet_config(
-    platform: Union[str, GetPlatformWalletConfigPlatformEnum],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_platform_wallet_config(platform: Union[str, GetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -323,12 +242,7 @@ def get_platform_wallet_config(
 
 
 @same_doc_as(GetPlatformWalletConfig)
-async def get_platform_wallet_config_async(
-    platform: Union[str, GetPlatformWalletConfigPlatformEnum],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_platform_wallet_config_async(platform: Union[str, GetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -337,20 +251,12 @@ async def get_platform_wallet_config_async(
         platform=platform,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetUserWallet)
-def get_user_wallet(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_user_wallet(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -365,13 +271,7 @@ def get_user_wallet(
 
 @deprecated
 @same_doc_as(GetUserWallet)
-async def get_user_wallet_async(
-    user_id: str,
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_user_wallet_async(user_id: str, wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -381,19 +281,12 @@ async def get_user_wallet_async(
         wallet_id=wallet_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(GetWallet)
-def get_wallet(
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_wallet(wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -407,12 +300,7 @@ def get_wallet(
 
 @deprecated
 @same_doc_as(GetWallet)
-async def get_wallet_async(
-    wallet_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_wallet_async(wallet_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -421,21 +309,11 @@ async def get_wallet_async(
         wallet_id=wallet_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListUserCurrencyTransactions)
-def list_user_currency_transactions(
-    currency_code: str,
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def list_user_currency_transactions(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -451,15 +329,7 @@ def list_user_currency_transactions(
 
 
 @same_doc_as(ListUserCurrencyTransactions)
-async def list_user_currency_transactions_async(
-    currency_code: str,
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def list_user_currency_transactions_async(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -471,22 +341,12 @@ async def list_user_currency_transactions_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(ListUserWalletTransactions)
-def list_user_wallet_transactions(
-    user_id: str,
-    wallet_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def list_user_wallet_transactions(user_id: str, wallet_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -503,15 +363,7 @@ def list_user_wallet_transactions(
 
 @deprecated
 @same_doc_as(ListUserWalletTransactions)
-async def list_user_wallet_transactions_async(
-    user_id: str,
-    wallet_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def list_user_wallet_transactions_async(user_id: str, wallet_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -523,20 +375,11 @@ async def list_user_wallet_transactions_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PayWithUserWallet)
-def pay_with_user_wallet(
-    currency_code: str,
-    user_id: str,
-    body: Optional[PaymentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def pay_with_user_wallet(currency_code: str, user_id: str, body: Optional[PaymentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -551,14 +394,7 @@ def pay_with_user_wallet(
 
 
 @same_doc_as(PayWithUserWallet)
-async def pay_with_user_wallet_async(
-    currency_code: str,
-    user_id: str,
-    body: Optional[PaymentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def pay_with_user_wallet_async(currency_code: str, user_id: str, body: Optional[PaymentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -569,18 +405,11 @@ async def pay_with_user_wallet_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetMyWallet)
-def public_get_my_wallet(
-    currency_code: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_my_wallet(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -593,12 +422,7 @@ def public_get_my_wallet(
 
 
 @same_doc_as(PublicGetMyWallet)
-async def public_get_my_wallet_async(
-    currency_code: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_my_wallet_async(currency_code: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -607,19 +431,11 @@ async def public_get_my_wallet_async(
         currency_code=currency_code,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetWallet)
-def public_get_wallet(
-    currency_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_wallet(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -633,13 +449,7 @@ def public_get_wallet(
 
 
 @same_doc_as(PublicGetWallet)
-async def public_get_wallet_async(
-    currency_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_wallet_async(currency_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -649,21 +459,11 @@ async def public_get_wallet_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicListUserWalletTransactions)
-def public_list_user_wallet_transactions(
-    currency_code: str,
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_list_user_wallet_transactions(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -679,15 +479,7 @@ def public_list_user_wallet_transactions(
 
 
 @same_doc_as(PublicListUserWalletTransactions)
-async def public_list_user_wallet_transactions_async(
-    currency_code: str,
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_list_user_wallet_transactions_async(currency_code: str, user_id: str, limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -699,18 +491,11 @@ async def public_list_user_wallet_transactions_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryUserCurrencyWallets)
-def query_user_currency_wallets(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_user_currency_wallets(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -723,12 +508,7 @@ def query_user_currency_wallets(
 
 
 @same_doc_as(QueryUserCurrencyWallets)
-async def query_user_currency_wallets_async(
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_user_currency_wallets_async(user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -737,23 +517,12 @@ async def query_user_currency_wallets_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @deprecated
 @same_doc_as(QueryWallets)
-def query_wallets(
-    currency_code: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    origin: Optional[Union[str, QueryWalletsOriginEnum]] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_wallets(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -771,16 +540,7 @@ def query_wallets(
 
 @deprecated
 @same_doc_as(QueryWallets)
-async def query_wallets_async(
-    currency_code: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    origin: Optional[Union[str, QueryWalletsOriginEnum]] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_wallets_async(currency_code: Optional[str] = None, limit: Optional[int] = None, offset: Optional[int] = None, origin: Optional[Union[str, QueryWalletsOriginEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -793,18 +553,11 @@ async def query_wallets_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ResetPlatformWalletConfig)
-def reset_platform_wallet_config(
-    platform: Union[str, ResetPlatformWalletConfigPlatformEnum],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def reset_platform_wallet_config(platform: Union[str, ResetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -817,12 +570,7 @@ def reset_platform_wallet_config(
 
 
 @same_doc_as(ResetPlatformWalletConfig)
-async def reset_platform_wallet_config_async(
-    platform: Union[str, ResetPlatformWalletConfigPlatformEnum],
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def reset_platform_wallet_config_async(platform: Union[str, ResetPlatformWalletConfigPlatformEnum], namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -831,19 +579,11 @@ async def reset_platform_wallet_config_async(
         platform=platform,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePlatformWalletConfig)
-def update_platform_wallet_config(
-    platform: Union[str, UpdatePlatformWalletConfigPlatformEnum],
-    body: Optional[PlatformWalletConfigUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_platform_wallet_config(platform: Union[str, UpdatePlatformWalletConfigPlatformEnum], body: Optional[PlatformWalletConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -857,13 +597,7 @@ def update_platform_wallet_config(
 
 
 @same_doc_as(UpdatePlatformWalletConfig)
-async def update_platform_wallet_config_async(
-    platform: Union[str, UpdatePlatformWalletConfigPlatformEnum],
-    body: Optional[PlatformWalletConfigUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_platform_wallet_config_async(platform: Union[str, UpdatePlatformWalletConfigPlatformEnum], body: Optional[PlatformWalletConfigUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -873,6 +607,4 @@ async def update_platform_wallet_config_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

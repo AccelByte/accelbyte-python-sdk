@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -105,15 +105,15 @@ class QueryEntitlements(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    active_only: bool  # OPTIONAL in [query]
-    app_type: Union[str, AppTypeEnum]  # OPTIONAL in [query]
-    entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
-    entitlement_name: str  # OPTIONAL in [query]
-    item_id: List[str]  # OPTIONAL in [query]
-    limit: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
-    user_id: str  # OPTIONAL in [query]
+    namespace: str                                                                                 # REQUIRED in [path]
+    active_only: bool                                                                              # OPTIONAL in [query]
+    app_type: Union[str, AppTypeEnum]                                                              # OPTIONAL in [query]
+    entitlement_clazz: Union[str, EntitlementClazzEnum]                                            # OPTIONAL in [query]
+    entitlement_name: str                                                                          # OPTIONAL in [query]
+    item_id: List[str]                                                                             # OPTIONAL in [query]
+    limit: int                                                                                     # OPTIONAL in [query]
+    offset: int                                                                                    # OPTIONAL in [query]
+    user_id: str                                                                                   # OPTIONAL in [query]
 
     # endregion fields
 
@@ -203,9 +203,7 @@ class QueryEntitlements(Operation):
         self.app_type = value
         return self
 
-    def with_entitlement_clazz(
-        self, value: Union[str, EntitlementClazzEnum]
-    ) -> QueryEntitlements:
+    def with_entitlement_clazz(self, value: Union[str, EntitlementClazzEnum]) -> QueryEntitlements:
         self.entitlement_clazz = value
         return self
 
@@ -278,9 +276,7 @@ class QueryEntitlements(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -291,9 +287,7 @@ class QueryEntitlements(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -301,9 +295,7 @@ class QueryEntitlements(Operation):
         if code == 200:
             return EntitlementPagingSlicedResult.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -343,9 +335,7 @@ class QueryEntitlements(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> QueryEntitlements:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryEntitlements:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -416,20 +406,14 @@ class QueryEntitlements(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "itemId": "multi",  # in query
+            "itemId": "multi",                                                                     # in query
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],  # in query
-            "entitlementClazz": [
-                "APP",
-                "CODE",
-                "ENTITLEMENT",
-                "MEDIA",
-                "SUBSCRIPTION",
-            ],  # in query
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],                                        # in query
+            "entitlementClazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],           # in query
         }
 
     # endregion static methods

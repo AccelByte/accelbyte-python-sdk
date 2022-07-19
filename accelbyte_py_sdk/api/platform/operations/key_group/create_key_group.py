@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -81,8 +81,8 @@ class CreateKeyGroup(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: KeyGroupCreate  # OPTIONAL in [body]
-    namespace: str  # REQUIRED in [path]
+    body: KeyGroupCreate                                                                           # OPTIONAL in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -174,12 +174,7 @@ class CreateKeyGroup(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, KeyGroupInfo],
-        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, KeyGroupInfo], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
         201: Created - KeyGroupInfo (successful operation)
@@ -194,9 +189,7 @@ class CreateKeyGroup(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -208,9 +201,7 @@ class CreateKeyGroup(Operation):
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -229,14 +220,10 @@ class CreateKeyGroup(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> CreateKeyGroup:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CreateKeyGroup:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = KeyGroupCreate.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+            instance.body = KeyGroupCreate.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = KeyGroupCreate()
         if "namespace" in dict_ and dict_["namespace"] is not None:

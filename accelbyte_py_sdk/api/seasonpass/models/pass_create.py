@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -50,12 +50,12 @@ class PassCreate(Model):
 
     # region fields
 
-    code: str  # REQUIRED
-    display_order: int  # REQUIRED
-    localizations: Dict[str, Localization]  # REQUIRED
-    pass_item_id: str  # REQUIRED
-    auto_enroll: bool  # OPTIONAL
-    images: List[Image]  # OPTIONAL
+    code: str                                                                                      # REQUIRED
+    display_order: int                                                                             # REQUIRED
+    localizations: Dict[str, Localization]                                                         # REQUIRED
+    pass_item_id: str                                                                              # REQUIRED
+    auto_enroll: bool                                                                              # OPTIONAL
+    images: List[Image]                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -100,10 +100,7 @@ class PassCreate(Model):
         elif include_empty:
             result["displayOrder"] = 0
         if hasattr(self, "localizations"):
-            result["localizations"] = {
-                str(k0): v0.to_dict(include_empty=include_empty)
-                for k0, v0 in self.localizations.items()
-            }
+            result["localizations"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.localizations.items()}
         elif include_empty:
             result["localizations"] = {}
         if hasattr(self, "pass_item_id"):
@@ -115,9 +112,7 @@ class PassCreate(Model):
         elif include_empty:
             result["autoEnroll"] = False
         if hasattr(self, "images"):
-            result["images"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.images
-            ]
+            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
         return result
@@ -161,10 +156,7 @@ class PassCreate(Model):
         elif include_empty:
             instance.display_order = 0
         if "localizations" in dict_ and dict_["localizations"] is not None:
-            instance.localizations = {
-                str(k0): Localization.create_from_dict(v0, include_empty=include_empty)
-                for k0, v0 in dict_["localizations"].items()
-            }
+            instance.localizations = {str(k0): Localization.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["localizations"].items()}
         elif include_empty:
             instance.localizations = {}
         if "passItemId" in dict_ and dict_["passItemId"] is not None:
@@ -176,38 +168,21 @@ class PassCreate(Model):
         elif include_empty:
             instance.auto_enroll = False
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [
-                Image.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["images"]
-            ]
+            instance.images = [Image.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
             instance.images = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, PassCreate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, PassCreate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[PassCreate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[PassCreate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[PassCreate, List[PassCreate], Dict[Any, PassCreate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[PassCreate, List[PassCreate], Dict[Any, PassCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

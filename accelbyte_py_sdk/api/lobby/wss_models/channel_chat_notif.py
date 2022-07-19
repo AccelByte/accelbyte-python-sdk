@@ -62,40 +62,26 @@ class ChannelChatNotif(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 1:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         for line in lines[1:]:
             parts = line.split(":", 1)
             if len(parts) != 2:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldFormatInvalid
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "channelSlug".casefold()) or (
-                name == "channelSlug"
-            ):
+            if (not is_strict and name.casefold() == "channelSlug".casefold()) or (name == "channelSlug"):
                 instance.channel_slug = value
                 continue
-            if (not is_strict and name.casefold() == "from".casefold()) or (
-                name == "from"
-            ):
+            if (not is_strict and name.casefold() == "from".casefold()) or (name == "from"):
                 instance.from_ = value
                 continue
-            if (not is_strict and name.casefold() == "payload".casefold()) or (
-                name == "payload"
-            ):
+            if (not is_strict and name.casefold() == "payload".casefold()) or (name == "payload"):
                 instance.payload = value
                 continue
-            if (not is_strict and name.casefold() == "sentAt".casefold()) or (
-                name == "sentAt"
-            ):
+            if (not is_strict and name.casefold() == "sentAt".casefold()) or (name == "sentAt"):
                 instance.sent_at = value
                 continue
             if is_strict:
-                raise WebSocketMessageParserException(
-                    WebSocketMessageParserError.FieldTypeNotSupported
-                )
+                raise WebSocketMessageParserException(WebSocketMessageParserError.FieldTypeNotSupported)
         return instance
 
     @staticmethod

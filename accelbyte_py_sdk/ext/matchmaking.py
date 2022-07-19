@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -506,8 +506,6 @@ def create_service_get_session_history_search_response_item_v2_example() -> Serv
 
 def create_service_get_session_history_search_response_v2_example() -> ServiceGetSessionHistorySearchResponseV2:
     instance = ServiceGetSessionHistorySearchResponseV2()
-    instance.data = [
-        create_service_get_session_history_search_response_item_v2_example()
-    ]
+    instance.data = [create_service_get_session_history_search_response_item_v2_example()]
     instance.pagination = create_models_pagination_example()
     return instance

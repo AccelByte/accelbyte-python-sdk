@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -80,21 +80,21 @@ class SubscriptionActivityInfo(Model):
 
     # region fields
 
-    action: Union[str, ActionEnum]  # REQUIRED
-    charged_cycles: int  # REQUIRED
-    created_at: str  # REQUIRED
-    current_cycle: int  # REQUIRED
-    namespace: str  # REQUIRED
-    operator: str  # REQUIRED
-    subscribed_by: Union[str, SubscribedByEnum]  # REQUIRED
-    subscription_id: str  # REQUIRED
-    updated_at: str  # REQUIRED
-    user_id: str  # REQUIRED
-    grant_days: int  # OPTIONAL
-    in_fixed_cycle_trial: bool  # OPTIONAL
-    in_fixed_free_days: bool  # OPTIONAL
-    reason: str  # OPTIONAL
-    trialed_cycles: int  # OPTIONAL
+    action: Union[str, ActionEnum]                                                                 # REQUIRED
+    charged_cycles: int                                                                            # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    current_cycle: int                                                                             # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    operator: str                                                                                  # REQUIRED
+    subscribed_by: Union[str, SubscribedByEnum]                                                    # REQUIRED
+    subscription_id: str                                                                           # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    grant_days: int                                                                                # OPTIONAL
+    in_fixed_cycle_trial: bool                                                                     # OPTIONAL
+    in_fixed_free_days: bool                                                                       # OPTIONAL
+    reason: str                                                                                    # OPTIONAL
+    trialed_cycles: int                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -124,9 +124,7 @@ class SubscriptionActivityInfo(Model):
         self.operator = value
         return self
 
-    def with_subscribed_by(
-        self, value: Union[str, SubscribedByEnum]
-    ) -> SubscriptionActivityInfo:
+    def with_subscribed_by(self, value: Union[str, SubscribedByEnum]) -> SubscriptionActivityInfo:
         self.subscribed_by = value
         return self
 
@@ -277,9 +275,7 @@ class SubscriptionActivityInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> SubscriptionActivityInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SubscriptionActivityInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -346,33 +342,15 @@ class SubscriptionActivityInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, SubscriptionActivityInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, SubscriptionActivityInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[SubscriptionActivityInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[SubscriptionActivityInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        SubscriptionActivityInfo,
-        List[SubscriptionActivityInfo],
-        Dict[Any, SubscriptionActivityInfo],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[SubscriptionActivityInfo, List[SubscriptionActivityInfo], Dict[Any, SubscriptionActivityInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -426,14 +404,7 @@ class SubscriptionActivityInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "action": [
-                "CANCEL",
-                "CHANGE_BILLING_ACCOUNT",
-                "GRANT_DAYS",
-                "IMMEDIATE_CANCEL",
-                "RESUBSCRIBE",
-                "SUBSCRIBE",
-            ],
+            "action": ["CANCEL", "CHANGE_BILLING_ACCOUNT", "GRANT_DAYS", "IMMEDIATE_CANCEL", "RESUBSCRIBE", "SUBSCRIBE"],
             "subscribedBy": ["PLATFORM", "USER"],
         }
 

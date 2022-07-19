@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -37,11 +37,7 @@ from ..operations.eligibilities import RetrieveEligibilitiesPublicIndirect
 
 
 @same_doc_as(RetrieveEligibilitiesPublic)
-def retrieve_eligibilities_public(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def retrieve_eligibilities_public(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -53,11 +49,7 @@ def retrieve_eligibilities_public(
 
 
 @same_doc_as(RetrieveEligibilitiesPublic)
-async def retrieve_eligibilities_public_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def retrieve_eligibilities_public_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -65,20 +57,11 @@ async def retrieve_eligibilities_public_async(
     request = RetrieveEligibilitiesPublic.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveEligibilitiesPublicIndirect)
-def retrieve_eligibilities_public_indirect(
-    client_id: str,
-    country_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def retrieve_eligibilities_public_indirect(client_id: str, country_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -93,14 +76,7 @@ def retrieve_eligibilities_public_indirect(
 
 
 @same_doc_as(RetrieveEligibilitiesPublicIndirect)
-async def retrieve_eligibilities_public_indirect_async(
-    client_id: str,
-    country_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def retrieve_eligibilities_public_indirect_async(client_id: str, country_code: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -111,6 +87,4 @@ async def retrieve_eligibilities_public_indirect_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

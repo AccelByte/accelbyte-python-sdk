@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -35,15 +35,7 @@ from ..operations.admin_user_eligibilities import AdminRetrieveEligibilities
 
 
 @same_doc_as(AdminRetrieveEligibilities)
-def admin_retrieve_eligibilities(
-    client_id: str,
-    country_code: str,
-    user_id: str,
-    publisher_user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def admin_retrieve_eligibilities(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -59,15 +51,7 @@ def admin_retrieve_eligibilities(
 
 
 @same_doc_as(AdminRetrieveEligibilities)
-async def admin_retrieve_eligibilities_async(
-    client_id: str,
-    country_code: str,
-    user_id: str,
-    publisher_user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def admin_retrieve_eligibilities_async(client_id: str, country_code: str, user_id: str, publisher_user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -79,6 +63,4 @@ async def admin_retrieve_eligibilities_async(
         publisher_user_id=publisher_user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

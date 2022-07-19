@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (2.2.1)
+# justice-ugc-service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class ModelsUpdateScreenshotResponse(Model):
 
     # region fields
 
-    screenshots: List[ModelsUpdateScreenshot]  # REQUIRED
+    screenshots: List[ModelsUpdateScreenshot]                                                      # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_screenshots(
-        self, value: List[ModelsUpdateScreenshot]
-    ) -> ModelsUpdateScreenshotResponse:
+    def with_screenshots(self, value: List[ModelsUpdateScreenshot]) -> ModelsUpdateScreenshotResponse:
         self.screenshots = value
         return self
 
@@ -58,9 +56,7 @@ class ModelsUpdateScreenshotResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "screenshots"):
-            result["screenshots"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.screenshots
-            ]
+            result["screenshots"] = [i0.to_dict(include_empty=include_empty) for i0 in self.screenshots]
         elif include_empty:
             result["screenshots"] = []
         return result
@@ -79,49 +75,26 @@ class ModelsUpdateScreenshotResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUpdateScreenshotResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsUpdateScreenshotResponse:
         instance = cls()
         if not dict_:
             return instance
         if "screenshots" in dict_ and dict_["screenshots"] is not None:
-            instance.screenshots = [
-                ModelsUpdateScreenshot.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["screenshots"]
-            ]
+            instance.screenshots = [ModelsUpdateScreenshot.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["screenshots"]]
         elif include_empty:
             instance.screenshots = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUpdateScreenshotResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsUpdateScreenshotResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUpdateScreenshotResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsUpdateScreenshotResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsUpdateScreenshotResponse,
-        List[ModelsUpdateScreenshotResponse],
-        Dict[Any, ModelsUpdateScreenshotResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsUpdateScreenshotResponse, List[ModelsUpdateScreenshotResponse], Dict[Any, ModelsUpdateScreenshotResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

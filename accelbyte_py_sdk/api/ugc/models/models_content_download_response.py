@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ugc-service (2.2.1)
+# justice-ugc-service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -84,28 +84,28 @@ class ModelsContentDownloadResponse(Model):
 
     # region fields
 
-    channel_id: str  # REQUIRED
-    created_time: str  # REQUIRED
-    creator_follow_state: ModelsCreatorFollowState  # REQUIRED
-    creator_name: str  # REQUIRED
-    download_count: int  # REQUIRED
-    file_extension: str  # REQUIRED
-    id_: str  # REQUIRED
-    is_hidden: bool  # REQUIRED
-    is_official: bool  # REQUIRED
-    like_count: int  # REQUIRED
-    name: str  # REQUIRED
-    namespace: str  # REQUIRED
-    share_code: str  # REQUIRED
-    sub_type: str  # REQUIRED
-    tags: List[str]  # REQUIRED
-    type_: str  # REQUIRED
-    user_id: str  # REQUIRED
-    groups: List[str]  # OPTIONAL
-    like_state: ModelsLikeState  # OPTIONAL
-    payload: str  # OPTIONAL
-    payload_url: List[ModelsPayloadURL]  # OPTIONAL
-    screenshots: List[ModelsScreenshotResponse]  # OPTIONAL
+    channel_id: str                                                                                # REQUIRED
+    created_time: str                                                                              # REQUIRED
+    creator_follow_state: ModelsCreatorFollowState                                                 # REQUIRED
+    creator_name: str                                                                              # REQUIRED
+    download_count: int                                                                            # REQUIRED
+    file_extension: str                                                                            # REQUIRED
+    id_: str                                                                                       # REQUIRED
+    is_hidden: bool                                                                                # REQUIRED
+    is_official: bool                                                                              # REQUIRED
+    like_count: int                                                                                # REQUIRED
+    name: str                                                                                      # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    share_code: str                                                                                # REQUIRED
+    sub_type: str                                                                                  # REQUIRED
+    tags: List[str]                                                                                # REQUIRED
+    type_: str                                                                                     # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    groups: List[str]                                                                              # OPTIONAL
+    like_state: ModelsLikeState                                                                    # OPTIONAL
+    payload: str                                                                                   # OPTIONAL
+    payload_url: List[ModelsPayloadURL]                                                            # OPTIONAL
+    screenshots: List[ModelsScreenshotResponse]                                                    # OPTIONAL
 
     # endregion fields
 
@@ -119,9 +119,7 @@ class ModelsContentDownloadResponse(Model):
         self.created_time = value
         return self
 
-    def with_creator_follow_state(
-        self, value: ModelsCreatorFollowState
-    ) -> ModelsContentDownloadResponse:
+    def with_creator_follow_state(self, value: ModelsCreatorFollowState) -> ModelsContentDownloadResponse:
         self.creator_follow_state = value
         return self
 
@@ -193,15 +191,11 @@ class ModelsContentDownloadResponse(Model):
         self.payload = value
         return self
 
-    def with_payload_url(
-        self, value: List[ModelsPayloadURL]
-    ) -> ModelsContentDownloadResponse:
+    def with_payload_url(self, value: List[ModelsPayloadURL]) -> ModelsContentDownloadResponse:
         self.payload_url = value
         return self
 
-    def with_screenshots(
-        self, value: List[ModelsScreenshotResponse]
-    ) -> ModelsContentDownloadResponse:
+    def with_screenshots(self, value: List[ModelsScreenshotResponse]) -> ModelsContentDownloadResponse:
         self.screenshots = value
         return self
 
@@ -220,9 +214,7 @@ class ModelsContentDownloadResponse(Model):
         elif include_empty:
             result["createdTime"] = ""
         if hasattr(self, "creator_follow_state"):
-            result["creatorFollowState"] = self.creator_follow_state.to_dict(
-                include_empty=include_empty
-            )
+            result["creatorFollowState"] = self.creator_follow_state.to_dict(include_empty=include_empty)
         elif include_empty:
             result["creatorFollowState"] = ModelsCreatorFollowState()
         if hasattr(self, "creator_name"):
@@ -294,15 +286,11 @@ class ModelsContentDownloadResponse(Model):
         elif include_empty:
             result["payload"] = ""
         if hasattr(self, "payload_url"):
-            result["payloadURL"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.payload_url
-            ]
+            result["payloadURL"] = [i0.to_dict(include_empty=include_empty) for i0 in self.payload_url]
         elif include_empty:
             result["payloadURL"] = []
         if hasattr(self, "screenshots"):
-            result["screenshots"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.screenshots
-            ]
+            result["screenshots"] = [i0.to_dict(include_empty=include_empty) for i0 in self.screenshots]
         elif include_empty:
             result["screenshots"] = []
         return result
@@ -368,9 +356,7 @@ class ModelsContentDownloadResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsContentDownloadResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsContentDownloadResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -383,9 +369,7 @@ class ModelsContentDownloadResponse(Model):
         elif include_empty:
             instance.created_time = ""
         if "creatorFollowState" in dict_ and dict_["creatorFollowState"] is not None:
-            instance.creator_follow_state = ModelsCreatorFollowState.create_from_dict(
-                dict_["creatorFollowState"], include_empty=include_empty
-            )
+            instance.creator_follow_state = ModelsCreatorFollowState.create_from_dict(dict_["creatorFollowState"], include_empty=include_empty)
         elif include_empty:
             instance.creator_follow_state = ModelsCreatorFollowState()
         if "creatorName" in dict_ and dict_["creatorName"] is not None:
@@ -449,9 +433,7 @@ class ModelsContentDownloadResponse(Model):
         elif include_empty:
             instance.groups = []
         if "likeState" in dict_ and dict_["likeState"] is not None:
-            instance.like_state = ModelsLikeState.create_from_dict(
-                dict_["likeState"], include_empty=include_empty
-            )
+            instance.like_state = ModelsLikeState.create_from_dict(dict_["likeState"], include_empty=include_empty)
         elif include_empty:
             instance.like_state = ModelsLikeState()
         if "payload" in dict_ and dict_["payload"] is not None:
@@ -459,51 +441,25 @@ class ModelsContentDownloadResponse(Model):
         elif include_empty:
             instance.payload = ""
         if "payloadURL" in dict_ and dict_["payloadURL"] is not None:
-            instance.payload_url = [
-                ModelsPayloadURL.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["payloadURL"]
-            ]
+            instance.payload_url = [ModelsPayloadURL.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["payloadURL"]]
         elif include_empty:
             instance.payload_url = []
         if "screenshots" in dict_ and dict_["screenshots"] is not None:
-            instance.screenshots = [
-                ModelsScreenshotResponse.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["screenshots"]
-            ]
+            instance.screenshots = [ModelsScreenshotResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["screenshots"]]
         elif include_empty:
             instance.screenshots = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsContentDownloadResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsContentDownloadResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsContentDownloadResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsContentDownloadResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsContentDownloadResponse,
-        List[ModelsContentDownloadResponse],
-        Dict[Any, ModelsContentDownloadResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsContentDownloadResponse, List[ModelsContentDownloadResponse], Dict[Any, ModelsContentDownloadResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

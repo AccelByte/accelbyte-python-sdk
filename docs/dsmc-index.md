@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-dsm-controller-service Index (3.3.0)
+# justice-dsm-controller-service Index (3.4.0)
 
 
 ## Operations

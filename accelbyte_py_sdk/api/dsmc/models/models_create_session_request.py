@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,9 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_match_result_notification_payload import (
-    ModelsMatchResultNotificationPayload,
-)
+from ..models.models_match_result_notification_payload import ModelsMatchResultNotificationPayload
 from ..models.models_request_matching_ally import ModelsRequestMatchingAlly
 
 
@@ -60,16 +58,16 @@ class ModelsCreateSessionRequest(Model):
 
     # region fields
 
-    client_version: str  # REQUIRED
-    configuration: str  # REQUIRED
-    deployment: str  # REQUIRED
-    game_mode: str  # REQUIRED
-    matching_allies: List[ModelsRequestMatchingAlly]  # REQUIRED
-    namespace: str  # REQUIRED
-    pod_name: str  # REQUIRED
-    region: str  # REQUIRED
-    session_id: str  # REQUIRED
-    notification_payload: ModelsMatchResultNotificationPayload  # OPTIONAL
+    client_version: str                                                                            # REQUIRED
+    configuration: str                                                                             # REQUIRED
+    deployment: str                                                                                # REQUIRED
+    game_mode: str                                                                                 # REQUIRED
+    matching_allies: List[ModelsRequestMatchingAlly]                                               # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    pod_name: str                                                                                  # REQUIRED
+    region: str                                                                                    # REQUIRED
+    session_id: str                                                                                # REQUIRED
+    notification_payload: ModelsMatchResultNotificationPayload                                     # OPTIONAL
 
     # endregion fields
 
@@ -91,9 +89,7 @@ class ModelsCreateSessionRequest(Model):
         self.game_mode = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsRequestMatchingAlly]
-    ) -> ModelsCreateSessionRequest:
+    def with_matching_allies(self, value: List[ModelsRequestMatchingAlly]) -> ModelsCreateSessionRequest:
         self.matching_allies = value
         return self
 
@@ -113,9 +109,7 @@ class ModelsCreateSessionRequest(Model):
         self.session_id = value
         return self
 
-    def with_notification_payload(
-        self, value: ModelsMatchResultNotificationPayload
-    ) -> ModelsCreateSessionRequest:
+    def with_notification_payload(self, value: ModelsMatchResultNotificationPayload) -> ModelsCreateSessionRequest:
         self.notification_payload = value
         return self
 
@@ -142,9 +136,7 @@ class ModelsCreateSessionRequest(Model):
         elif include_empty:
             result["game_mode"] = ""
         if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
+            result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
         if hasattr(self, "namespace"):
@@ -164,9 +156,7 @@ class ModelsCreateSessionRequest(Model):
         elif include_empty:
             result["session_id"] = ""
         if hasattr(self, "notification_payload"):
-            result["notification_payload"] = self.notification_payload.to_dict(
-                include_empty=include_empty
-            )
+            result["notification_payload"] = self.notification_payload.to_dict(include_empty=include_empty)
         elif include_empty:
             result["notification_payload"] = ModelsMatchResultNotificationPayload()
         return result
@@ -204,9 +194,7 @@ class ModelsCreateSessionRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsCreateSessionRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreateSessionRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -227,12 +215,7 @@ class ModelsCreateSessionRequest(Model):
         elif include_empty:
             instance.game_mode = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [
-                ModelsRequestMatchingAlly.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["matching_allies"]
-            ]
+            instance.matching_allies = [ModelsRequestMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
             instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -251,47 +234,22 @@ class ModelsCreateSessionRequest(Model):
             instance.session_id = str(dict_["session_id"])
         elif include_empty:
             instance.session_id = ""
-        if (
-            "notification_payload" in dict_
-            and dict_["notification_payload"] is not None
-        ):
-            instance.notification_payload = (
-                ModelsMatchResultNotificationPayload.create_from_dict(
-                    dict_["notification_payload"], include_empty=include_empty
-                )
-            )
+        if "notification_payload" in dict_ and dict_["notification_payload"] is not None:
+            instance.notification_payload = ModelsMatchResultNotificationPayload.create_from_dict(dict_["notification_payload"], include_empty=include_empty)
         elif include_empty:
             instance.notification_payload = ModelsMatchResultNotificationPayload()
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsCreateSessionRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsCreateSessionRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsCreateSessionRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsCreateSessionRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsCreateSessionRequest,
-        List[ModelsCreateSessionRequest],
-        Dict[Any, ModelsCreateSessionRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsCreateSessionRequest, List[ModelsCreateSessionRequest], Dict[Any, ModelsCreateSessionRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

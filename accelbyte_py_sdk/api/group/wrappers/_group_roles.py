@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,12 +53,7 @@ from ..operations.group_roles import UpdateMemberRolePublicV1
 
 
 @same_doc_as(CreateMemberRoleAdminV1)
-def create_member_role_admin_v1(
-    body: ModelsCreateMemberRoleRequestV1,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_member_role_admin_v1(body: ModelsCreateMemberRoleRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,12 +66,7 @@ def create_member_role_admin_v1(
 
 
 @same_doc_as(CreateMemberRoleAdminV1)
-async def create_member_role_admin_v1_async(
-    body: ModelsCreateMemberRoleRequestV1,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_member_role_admin_v1_async(body: ModelsCreateMemberRoleRequestV1, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,18 +75,11 @@ async def create_member_role_admin_v1_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteMemberRoleAdminV1)
-def delete_member_role_admin_v1(
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_member_role_admin_v1(member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,12 +92,7 @@ def delete_member_role_admin_v1(
 
 
 @same_doc_as(DeleteMemberRoleAdminV1)
-async def delete_member_role_admin_v1_async(
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_member_role_admin_v1_async(member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,19 +101,11 @@ async def delete_member_role_admin_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteMemberRolePublicV1)
-def delete_member_role_public_v1(
-    body: ModelsRemoveRoleFromMemberRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_member_role_public_v1(body: ModelsRemoveRoleFromMemberRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -149,13 +119,7 @@ def delete_member_role_public_v1(
 
 
 @same_doc_as(DeleteMemberRolePublicV1)
-async def delete_member_role_public_v1_async(
-    body: ModelsRemoveRoleFromMemberRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_member_role_public_v1_async(body: ModelsRemoveRoleFromMemberRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -165,19 +129,11 @@ async def delete_member_role_public_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetMemberRolesListAdminV1)
-def get_member_roles_list_admin_v1(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_member_roles_list_admin_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,13 +147,7 @@ def get_member_roles_list_admin_v1(
 
 
 @same_doc_as(GetMemberRolesListAdminV1)
-async def get_member_roles_list_admin_v1_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_member_roles_list_admin_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -207,19 +157,11 @@ async def get_member_roles_list_admin_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetMemberRolesListPublicV1)
-def get_member_roles_list_public_v1(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_member_roles_list_public_v1(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -233,13 +175,7 @@ def get_member_roles_list_public_v1(
 
 
 @same_doc_as(GetMemberRolesListPublicV1)
-async def get_member_roles_list_public_v1_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_member_roles_list_public_v1_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -249,18 +185,11 @@ async def get_member_roles_list_public_v1_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSingleMemberRoleAdminV1)
-def get_single_member_role_admin_v1(
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_single_member_role_admin_v1(member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -273,12 +202,7 @@ def get_single_member_role_admin_v1(
 
 
 @same_doc_as(GetSingleMemberRoleAdminV1)
-async def get_single_member_role_admin_v1_async(
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_single_member_role_admin_v1_async(member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,19 +211,11 @@ async def get_single_member_role_admin_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMemberRoleAdminV1)
-def update_member_role_admin_v1(
-    body: ModelsUpdateMemberRoleRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_member_role_admin_v1(body: ModelsUpdateMemberRoleRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -313,13 +229,7 @@ def update_member_role_admin_v1(
 
 
 @same_doc_as(UpdateMemberRoleAdminV1)
-async def update_member_role_admin_v1_async(
-    body: ModelsUpdateMemberRoleRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_member_role_admin_v1_async(body: ModelsUpdateMemberRoleRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -329,19 +239,11 @@ async def update_member_role_admin_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMemberRolePermissionAdminV1)
-def update_member_role_permission_admin_v1(
-    body: ModelsUpdateMemberRolePermissionsRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_member_role_permission_admin_v1(body: ModelsUpdateMemberRolePermissionsRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -355,13 +257,7 @@ def update_member_role_permission_admin_v1(
 
 
 @same_doc_as(UpdateMemberRolePermissionAdminV1)
-async def update_member_role_permission_admin_v1_async(
-    body: ModelsUpdateMemberRolePermissionsRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_member_role_permission_admin_v1_async(body: ModelsUpdateMemberRolePermissionsRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -371,19 +267,11 @@ async def update_member_role_permission_admin_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMemberRolePublicV1)
-def update_member_role_public_v1(
-    body: ModelsAssignRoleToMemberRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_member_role_public_v1(body: ModelsAssignRoleToMemberRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -397,13 +285,7 @@ def update_member_role_public_v1(
 
 
 @same_doc_as(UpdateMemberRolePublicV1)
-async def update_member_role_public_v1_async(
-    body: ModelsAssignRoleToMemberRequestV1,
-    member_role_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_member_role_public_v1_async(body: ModelsAssignRoleToMemberRequestV1, member_role_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -413,6 +295,4 @@ async def update_member_role_public_v1_async(
         member_role_id=member_role_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

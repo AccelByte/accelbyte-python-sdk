@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -39,55 +39,49 @@ from ..operations.public_like import UpdateContentLikeStatus
 
 
 @same_doc_as(GetLikedContent)
-def get_liked_content(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_liked_content(isofficial: Optional[bool] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetLikedContent.create(
+        isofficial=isofficial,
         limit=limit,
+        name=name,
         offset=offset,
+        orderby=orderby,
+        sortby=sortby,
+        subtype=subtype,
+        tags=tags,
+        type_=type_,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetLikedContent)
-async def get_liked_content_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_liked_content_async(isofficial: Optional[bool] = None, limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, orderby: Optional[str] = None, sortby: Optional[str] = None, subtype: Optional[str] = None, tags: Optional[List[str]] = None, type_: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = GetLikedContent.create(
+        isofficial=isofficial,
         limit=limit,
+        name=name,
         offset=offset,
+        orderby=orderby,
+        sortby=sortby,
+        subtype=subtype,
+        tags=tags,
+        type_=type_,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateContentLikeStatus)
-def update_content_like_status(
-    body: ModelsContentLikeRequest,
-    content_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_content_like_status(body: ModelsContentLikeRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -101,13 +95,7 @@ def update_content_like_status(
 
 
 @same_doc_as(UpdateContentLikeStatus)
-async def update_content_like_status_async(
-    body: ModelsContentLikeRequest,
-    content_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_content_like_status_async(body: ModelsContentLikeRequest, content_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -117,6 +105,4 @@ async def update_content_like_status_async(
         content_id=content_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

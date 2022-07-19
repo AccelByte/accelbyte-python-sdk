@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -53,12 +53,7 @@ from ..models import KeyGroupUpdateStatusEnum
 
 
 @same_doc_as(CreateKeyGroup)
-def create_key_group(
-    body: Optional[KeyGroupCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_key_group(body: Optional[KeyGroupCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -71,12 +66,7 @@ def create_key_group(
 
 
 @same_doc_as(CreateKeyGroup)
-async def create_key_group_async(
-    body: Optional[KeyGroupCreate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_key_group_async(body: Optional[KeyGroupCreate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -85,18 +75,11 @@ async def create_key_group_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetKeyGroup)
-def get_key_group(
-    key_group_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_key_group(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,12 +92,7 @@ def get_key_group(
 
 
 @same_doc_as(GetKeyGroup)
-async def get_key_group_async(
-    key_group_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_key_group_async(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -123,18 +101,11 @@ async def get_key_group_async(
         key_group_id=key_group_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetKeyGroupDynamic)
-def get_key_group_dynamic(
-    key_group_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_key_group_dynamic(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -147,12 +118,7 @@ def get_key_group_dynamic(
 
 
 @same_doc_as(GetKeyGroupDynamic)
-async def get_key_group_dynamic_async(
-    key_group_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_key_group_dynamic_async(key_group_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -161,21 +127,11 @@ async def get_key_group_dynamic_async(
         key_group_id=key_group_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListKeys)
-def list_keys(
-    key_group_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, ListKeysStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def list_keys(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, ListKeysStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -191,15 +147,7 @@ def list_keys(
 
 
 @same_doc_as(ListKeys)
-async def list_keys_async(
-    key_group_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, ListKeysStatusEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def list_keys_async(key_group_id: str, limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, ListKeysStatusEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -211,21 +159,11 @@ async def list_keys_async(
         status=status,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryKeyGroups)
-def query_key_groups(
-    limit: Optional[int] = None,
-    name: Optional[str] = None,
-    offset: Optional[int] = None,
-    tag: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_key_groups(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -241,15 +179,7 @@ def query_key_groups(
 
 
 @same_doc_as(QueryKeyGroups)
-async def query_key_groups_async(
-    limit: Optional[int] = None,
-    name: Optional[str] = None,
-    offset: Optional[int] = None,
-    tag: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_key_groups_async(limit: Optional[int] = None, name: Optional[str] = None, offset: Optional[int] = None, tag: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -261,19 +191,11 @@ async def query_key_groups_async(
         tag=tag,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateKeyGroup)
-def update_key_group(
-    key_group_id: str,
-    body: Optional[KeyGroupUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_key_group(key_group_id: str, body: Optional[KeyGroupUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -287,13 +209,7 @@ def update_key_group(
 
 
 @same_doc_as(UpdateKeyGroup)
-async def update_key_group_async(
-    key_group_id: str,
-    body: Optional[KeyGroupUpdate] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_key_group_async(key_group_id: str, body: Optional[KeyGroupUpdate] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -303,19 +219,11 @@ async def update_key_group_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UploadKeys)
-def upload_keys(
-    key_group_id: str,
-    file: Optional[Any] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def upload_keys(key_group_id: str, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -329,13 +237,7 @@ def upload_keys(
 
 
 @same_doc_as(UploadKeys)
-async def upload_keys_async(
-    key_group_id: str,
-    file: Optional[Any] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def upload_keys_async(key_group_id: str, file: Optional[Any] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -345,6 +247,4 @@ async def upload_keys_async(
         file=file,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

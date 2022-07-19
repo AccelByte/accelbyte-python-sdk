@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -67,20 +67,20 @@ class ModelsGameSession(Model):
 
     # region fields
 
-    all_players: List[str]  # REQUIRED
-    created_at: str  # REQUIRED
-    game_session_setting: ModelsGameSessionSetting  # REQUIRED
-    game_version: str  # REQUIRED
-    joinable: bool  # REQUIRED
-    match: ModelsMatchMaking  # REQUIRED
-    namespace: str  # REQUIRED
-    players: List[str]  # REQUIRED
-    server: ModelsServer  # REQUIRED
-    session_id: str  # REQUIRED
-    session_type: str  # REQUIRED
-    spectators: List[str]  # REQUIRED
-    user_id: str  # REQUIRED
-    username: str  # REQUIRED
+    all_players: List[str]                                                                         # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    game_session_setting: ModelsGameSessionSetting                                                 # REQUIRED
+    game_version: str                                                                              # REQUIRED
+    joinable: bool                                                                                 # REQUIRED
+    match: ModelsMatchMaking                                                                       # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    players: List[str]                                                                             # REQUIRED
+    server: ModelsServer                                                                           # REQUIRED
+    session_id: str                                                                                # REQUIRED
+    session_type: str                                                                              # REQUIRED
+    spectators: List[str]                                                                          # REQUIRED
+    user_id: str                                                                                   # REQUIRED
+    username: str                                                                                  # REQUIRED
 
     # endregion fields
 
@@ -94,9 +94,7 @@ class ModelsGameSession(Model):
         self.created_at = value
         return self
 
-    def with_game_session_setting(
-        self, value: ModelsGameSessionSetting
-    ) -> ModelsGameSession:
+    def with_game_session_setting(self, value: ModelsGameSessionSetting) -> ModelsGameSession:
         self.game_session_setting = value
         return self
 
@@ -159,9 +157,7 @@ class ModelsGameSession(Model):
         elif include_empty:
             result["created_at"] = ""
         if hasattr(self, "game_session_setting"):
-            result["game_session_setting"] = self.game_session_setting.to_dict(
-                include_empty=include_empty
-            )
+            result["game_session_setting"] = self.game_session_setting.to_dict(include_empty=include_empty)
         elif include_empty:
             result["game_session_setting"] = ModelsGameSessionSetting()
         if hasattr(self, "game_version"):
@@ -250,9 +246,7 @@ class ModelsGameSession(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsGameSession:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGameSession:
         instance = cls()
         if not dict_:
             return instance
@@ -264,13 +258,8 @@ class ModelsGameSession(Model):
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
             instance.created_at = ""
-        if (
-            "game_session_setting" in dict_
-            and dict_["game_session_setting"] is not None
-        ):
-            instance.game_session_setting = ModelsGameSessionSetting.create_from_dict(
-                dict_["game_session_setting"], include_empty=include_empty
-            )
+        if "game_session_setting" in dict_ and dict_["game_session_setting"] is not None:
+            instance.game_session_setting = ModelsGameSessionSetting.create_from_dict(dict_["game_session_setting"], include_empty=include_empty)
         elif include_empty:
             instance.game_session_setting = ModelsGameSessionSetting()
         if "game_version" in dict_ and dict_["game_version"] is not None:
@@ -282,9 +271,7 @@ class ModelsGameSession(Model):
         elif include_empty:
             instance.joinable = False
         if "match" in dict_ and dict_["match"] is not None:
-            instance.match = ModelsMatchMaking.create_from_dict(
-                dict_["match"], include_empty=include_empty
-            )
+            instance.match = ModelsMatchMaking.create_from_dict(dict_["match"], include_empty=include_empty)
         elif include_empty:
             instance.match = ModelsMatchMaking()
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -296,9 +283,7 @@ class ModelsGameSession(Model):
         elif include_empty:
             instance.players = []
         if "server" in dict_ and dict_["server"] is not None:
-            instance.server = ModelsServer.create_from_dict(
-                dict_["server"], include_empty=include_empty
-            )
+            instance.server = ModelsServer.create_from_dict(dict_["server"], include_empty=include_empty)
         elif include_empty:
             instance.server = ModelsServer()
         if "session_id" in dict_ and dict_["session_id"] is not None:
@@ -324,31 +309,15 @@ class ModelsGameSession(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsGameSession]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGameSession]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsGameSession]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGameSession]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsGameSession, List[ModelsGameSession], Dict[Any, ModelsGameSession]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGameSession, List[ModelsGameSession], Dict[Any, ModelsGameSession]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

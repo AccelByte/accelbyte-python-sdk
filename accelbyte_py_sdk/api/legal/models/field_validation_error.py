@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,11 +45,11 @@ class FieldValidationError(Model):
 
     # region fields
 
-    error_code: str  # OPTIONAL
-    error_field: str  # OPTIONAL
-    error_message: str  # OPTIONAL
-    error_value: str  # OPTIONAL
-    message_variables: Dict[str, str]  # OPTIONAL
+    error_code: str                                                                                # OPTIONAL
+    error_field: str                                                                               # OPTIONAL
+    error_message: str                                                                             # OPTIONAL
+    error_value: str                                                                               # OPTIONAL
+    message_variables: Dict[str, str]                                                              # OPTIONAL
 
     # endregion fields
 
@@ -98,9 +98,7 @@ class FieldValidationError(Model):
         elif include_empty:
             result["errorValue"] = ""
         if hasattr(self, "message_variables"):
-            result["messageVariables"] = {
-                str(k0): str(v0) for k0, v0 in self.message_variables.items()
-            }
+            result["messageVariables"] = {str(k0): str(v0) for k0, v0 in self.message_variables.items()}
         elif include_empty:
             result["messageVariables"] = {}
         return result
@@ -132,9 +130,7 @@ class FieldValidationError(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> FieldValidationError:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FieldValidationError:
         instance = cls()
         if not dict_:
             return instance
@@ -155,41 +151,21 @@ class FieldValidationError(Model):
         elif include_empty:
             instance.error_value = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
-            instance.message_variables = {
-                str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()
-            }
+            instance.message_variables = {str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()}
         elif include_empty:
             instance.message_variables = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, FieldValidationError]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FieldValidationError]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[FieldValidationError]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FieldValidationError]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        FieldValidationError,
-        List[FieldValidationError],
-        Dict[Any, FieldValidationError],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FieldValidationError, List[FieldValidationError], Dict[Any, FieldValidationError]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

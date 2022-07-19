@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -91,14 +91,14 @@ class PublicUpdateUserNamespaceSlot(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    checksum: str  # OPTIONAL in [form_data]
-    custom_attribute: str  # OPTIONAL in [form_data]
-    file: Any  # OPTIONAL in [form_data]
-    namespace: str  # REQUIRED in [path]
-    slot_id: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
-    label: str  # OPTIONAL in [query]
-    tags: List[str]  # OPTIONAL in [query]
+    checksum: str                                                                                  # OPTIONAL in [form_data]
+    custom_attribute: str                                                                          # OPTIONAL in [form_data]
+    file: Any                                                                                      # OPTIONAL in [form_data]
+    namespace: str                                                                                 # REQUIRED in [path]
+    slot_id: str                                                                                   # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
+    label: str                                                                                     # OPTIONAL in [query]
+    tags: List[str]                                                                                # OPTIONAL in [query]
 
     # endregion fields
 
@@ -256,9 +256,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, SlotInfo], Union[None, ErrorEntity, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, SlotInfo], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - SlotInfo (successful operation)
@@ -273,9 +271,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -287,9 +283,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -324,9 +318,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PublicUpdateUserNamespaceSlot:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicUpdateUserNamespaceSlot:
         instance = cls()
         if "checksum" in dict_ and dict_["checksum"] is not None:
             instance.checksum = str(dict_["checksum"])
@@ -391,7 +383,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "tags": "multi",  # in query
+            "tags": "multi",                                                                       # in query
         }
 
     # endregion static methods

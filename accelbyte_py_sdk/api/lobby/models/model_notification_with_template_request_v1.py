@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,24 +43,20 @@ class ModelNotificationWithTemplateRequestV1(Model):
 
     # region fields
 
-    template_context: Dict[str, str]  # REQUIRED
-    template_language: str  # REQUIRED
-    template_slug: str  # REQUIRED
-    topic_name: str  # REQUIRED
+    template_context: Dict[str, str]                                                               # REQUIRED
+    template_language: str                                                                         # REQUIRED
+    template_slug: str                                                                             # REQUIRED
+    topic_name: str                                                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_template_context(
-        self, value: Dict[str, str]
-    ) -> ModelNotificationWithTemplateRequestV1:
+    def with_template_context(self, value: Dict[str, str]) -> ModelNotificationWithTemplateRequestV1:
         self.template_context = value
         return self
 
-    def with_template_language(
-        self, value: str
-    ) -> ModelNotificationWithTemplateRequestV1:
+    def with_template_language(self, value: str) -> ModelNotificationWithTemplateRequestV1:
         self.template_language = value
         return self
 
@@ -79,9 +75,7 @@ class ModelNotificationWithTemplateRequestV1(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "template_context"):
-            result["templateContext"] = {
-                str(k0): str(v0) for k0, v0 in self.template_context.items()
-            }
+            result["templateContext"] = {str(k0): str(v0) for k0, v0 in self.template_context.items()}
         elif include_empty:
             result["templateContext"] = {}
         if hasattr(self, "template_language"):
@@ -118,16 +112,12 @@ class ModelNotificationWithTemplateRequestV1(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelNotificationWithTemplateRequestV1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelNotificationWithTemplateRequestV1:
         instance = cls()
         if not dict_:
             return instance
         if "templateContext" in dict_ and dict_["templateContext"] is not None:
-            instance.template_context = {
-                str(k0): str(v0) for k0, v0 in dict_["templateContext"].items()
-            }
+            instance.template_context = {str(k0): str(v0) for k0, v0 in dict_["templateContext"].items()}
         elif include_empty:
             instance.template_context = {}
         if "templateLanguage" in dict_ and dict_["templateLanguage"] is not None:
@@ -145,33 +135,15 @@ class ModelNotificationWithTemplateRequestV1(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelNotificationWithTemplateRequestV1]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelNotificationWithTemplateRequestV1]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelNotificationWithTemplateRequestV1]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelNotificationWithTemplateRequestV1]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelNotificationWithTemplateRequestV1,
-        List[ModelNotificationWithTemplateRequestV1],
-        Dict[Any, ModelNotificationWithTemplateRequestV1],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelNotificationWithTemplateRequestV1, List[ModelNotificationWithTemplateRequestV1], Dict[Any, ModelNotificationWithTemplateRequestV1]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

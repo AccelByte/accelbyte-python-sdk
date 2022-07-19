@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -61,19 +61,19 @@ class AdyenConfig(Model):
 
     # region fields
 
-    allowed_payment_methods: List[str]  # OPTIONAL
-    api_key: str  # OPTIONAL
-    authorise_as_capture: bool  # OPTIONAL
-    blocked_payment_methods: List[str]  # OPTIONAL
-    client_key: str  # OPTIONAL
-    drop_in_settings: str  # OPTIONAL
-    live_endpoint_url_prefix: str  # OPTIONAL
-    merchant_account: str  # OPTIONAL
-    notification_hmac_key: str  # OPTIONAL
-    notification_password: str  # OPTIONAL
-    notification_username: str  # OPTIONAL
-    return_url: str  # OPTIONAL
-    settings: str  # OPTIONAL
+    allowed_payment_methods: List[str]                                                             # OPTIONAL
+    api_key: str                                                                                   # OPTIONAL
+    authorise_as_capture: bool                                                                     # OPTIONAL
+    blocked_payment_methods: List[str]                                                             # OPTIONAL
+    client_key: str                                                                                # OPTIONAL
+    drop_in_settings: str                                                                          # OPTIONAL
+    live_endpoint_url_prefix: str                                                                  # OPTIONAL
+    merchant_account: str                                                                          # OPTIONAL
+    notification_hmac_key: str                                                                     # OPTIONAL
+    notification_password: str                                                                     # OPTIONAL
+    notification_username: str                                                                     # OPTIONAL
+    return_url: str                                                                                # OPTIONAL
+    settings: str                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -138,9 +138,7 @@ class AdyenConfig(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "allowed_payment_methods"):
-            result["allowedPaymentMethods"] = [
-                str(i0) for i0 in self.allowed_payment_methods
-            ]
+            result["allowedPaymentMethods"] = [str(i0) for i0 in self.allowed_payment_methods]
         elif include_empty:
             result["allowedPaymentMethods"] = []
         if hasattr(self, "api_key"):
@@ -152,9 +150,7 @@ class AdyenConfig(Model):
         elif include_empty:
             result["authoriseAsCapture"] = False
         if hasattr(self, "blocked_payment_methods"):
-            result["blockedPaymentMethods"] = [
-                str(i0) for i0 in self.blocked_payment_methods
-            ]
+            result["blockedPaymentMethods"] = [str(i0) for i0 in self.blocked_payment_methods]
         elif include_empty:
             result["blockedPaymentMethods"] = []
         if hasattr(self, "client_key"):
@@ -250,13 +246,8 @@ class AdyenConfig(Model):
         instance = cls()
         if not dict_:
             return instance
-        if (
-            "allowedPaymentMethods" in dict_
-            and dict_["allowedPaymentMethods"] is not None
-        ):
-            instance.allowed_payment_methods = [
-                str(i0) for i0 in dict_["allowedPaymentMethods"]
-            ]
+        if "allowedPaymentMethods" in dict_ and dict_["allowedPaymentMethods"] is not None:
+            instance.allowed_payment_methods = [str(i0) for i0 in dict_["allowedPaymentMethods"]]
         elif include_empty:
             instance.allowed_payment_methods = []
         if "apiKey" in dict_ and dict_["apiKey"] is not None:
@@ -267,13 +258,8 @@ class AdyenConfig(Model):
             instance.authorise_as_capture = bool(dict_["authoriseAsCapture"])
         elif include_empty:
             instance.authorise_as_capture = False
-        if (
-            "blockedPaymentMethods" in dict_
-            and dict_["blockedPaymentMethods"] is not None
-        ):
-            instance.blocked_payment_methods = [
-                str(i0) for i0 in dict_["blockedPaymentMethods"]
-            ]
+        if "blockedPaymentMethods" in dict_ and dict_["blockedPaymentMethods"] is not None:
+            instance.blocked_payment_methods = [str(i0) for i0 in dict_["blockedPaymentMethods"]]
         elif include_empty:
             instance.blocked_payment_methods = []
         if "clientKey" in dict_ and dict_["clientKey"] is not None:
@@ -284,10 +270,7 @@ class AdyenConfig(Model):
             instance.drop_in_settings = str(dict_["dropInSettings"])
         elif include_empty:
             instance.drop_in_settings = ""
-        if (
-            "liveEndpointUrlPrefix" in dict_
-            and dict_["liveEndpointUrlPrefix"] is not None
-        ):
+        if "liveEndpointUrlPrefix" in dict_ and dict_["liveEndpointUrlPrefix"] is not None:
             instance.live_endpoint_url_prefix = str(dict_["liveEndpointUrlPrefix"])
         elif include_empty:
             instance.live_endpoint_url_prefix = ""
@@ -299,17 +282,11 @@ class AdyenConfig(Model):
             instance.notification_hmac_key = str(dict_["notificationHmacKey"])
         elif include_empty:
             instance.notification_hmac_key = ""
-        if (
-            "notificationPassword" in dict_
-            and dict_["notificationPassword"] is not None
-        ):
+        if "notificationPassword" in dict_ and dict_["notificationPassword"] is not None:
             instance.notification_password = str(dict_["notificationPassword"])
         elif include_empty:
             instance.notification_password = ""
-        if (
-            "notificationUsername" in dict_
-            and dict_["notificationUsername"] is not None
-        ):
+        if "notificationUsername" in dict_ and dict_["notificationUsername"] is not None:
             instance.notification_username = str(dict_["notificationUsername"])
         elif include_empty:
             instance.notification_username = ""
@@ -324,29 +301,15 @@ class AdyenConfig(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, AdyenConfig]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AdyenConfig]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[AdyenConfig]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AdyenConfig]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[AdyenConfig, List[AdyenConfig], Dict[Any, AdyenConfig]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AdyenConfig, List[AdyenConfig], Dict[Any, AdyenConfig]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

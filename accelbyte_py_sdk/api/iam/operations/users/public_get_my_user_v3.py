@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -107,7 +107,8 @@ class PublicGetMyUserV3(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+        }
 
     # endregion get_x_params methods
 
@@ -130,11 +131,7 @@ class PublicGetMyUserV3(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelUserResponseV3], Union[None, HttpResponse, RestErrorResponse]
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelUserResponseV3], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         200: OK - ModelUserResponseV3 (OK)
@@ -149,9 +146,7 @@ class PublicGetMyUserV3(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -163,9 +158,7 @@ class PublicGetMyUserV3(Operation):
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -179,18 +172,18 @@ class PublicGetMyUserV3(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> PublicGetMyUserV3:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> PublicGetMyUserV3:
         instance = cls()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+        }
 
     # endregion static methods

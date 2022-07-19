@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -43,10 +43,10 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
 
     # region fields
 
-    icon_url: str  # REQUIRED
-    leaderboard_code: str  # REQUIRED
-    name: str  # REQUIRED
-    stat_code: str  # REQUIRED
+    icon_url: str                                                                                  # REQUIRED
+    leaderboard_code: str                                                                          # REQUIRED
+    name: str                                                                                      # REQUIRED
+    stat_code: str                                                                                 # REQUIRED
 
     # endregion fields
 
@@ -112,9 +112,7 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsGetLeaderboardConfigPublicResp:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsGetLeaderboardConfigPublicResp:
         instance = cls()
         if not dict_:
             return instance
@@ -137,33 +135,15 @@ class ModelsGetLeaderboardConfigPublicResp(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsGetLeaderboardConfigPublicResp]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsGetLeaderboardConfigPublicResp]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsGetLeaderboardConfigPublicResp]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsGetLeaderboardConfigPublicResp]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsGetLeaderboardConfigPublicResp,
-        List[ModelsGetLeaderboardConfigPublicResp],
-        Dict[Any, ModelsGetLeaderboardConfigPublicResp],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsGetLeaderboardConfigPublicResp, List[ModelsGetLeaderboardConfigPublicResp], Dict[Any, ModelsGetLeaderboardConfigPublicResp]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

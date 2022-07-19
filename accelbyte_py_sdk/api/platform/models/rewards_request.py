@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,9 +71,9 @@ class RewardsRequest(Model):
 
     # region fields
 
-    rewards: List[PlatformReward]  # REQUIRED
-    origin: Union[str, OriginEnum]  # OPTIONAL
-    source: Union[str, SourceEnum]  # OPTIONAL
+    rewards: List[PlatformReward]                                                                  # REQUIRED
+    origin: Union[str, OriginEnum]                                                                 # OPTIONAL
+    source: Union[str, SourceEnum]                                                                 # OPTIONAL
 
     # endregion fields
 
@@ -98,9 +98,7 @@ class RewardsRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "rewards"):
-            result["rewards"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.rewards
-            ]
+            result["rewards"] = [i0.to_dict(include_empty=include_empty) for i0 in self.rewards]
         elif include_empty:
             result["rewards"] = []
         if hasattr(self, "origin"):
@@ -133,17 +131,12 @@ class RewardsRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> RewardsRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RewardsRequest:
         instance = cls()
         if not dict_:
             return instance
         if "rewards" in dict_ and dict_["rewards"] is not None:
-            instance.rewards = [
-                PlatformReward.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["rewards"]
-            ]
+            instance.rewards = [PlatformReward.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["rewards"]]
         elif include_empty:
             instance.rewards = []
         if "origin" in dict_ and dict_["origin"] is not None:
@@ -157,29 +150,15 @@ class RewardsRequest(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, RewardsRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RewardsRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[RewardsRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RewardsRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[RewardsRequest, List[RewardsRequest], Dict[Any, RewardsRequest]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RewardsRequest, List[RewardsRequest], Dict[Any, RewardsRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -209,31 +188,8 @@ class RewardsRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "origin": [
-                "Epic",
-                "GooglePlay",
-                "IOS",
-                "Nintendo",
-                "Other",
-                "Playstation",
-                "Stadia",
-                "Steam",
-                "System",
-                "Twitch",
-                "Xbox",
-            ],
-            "source": [
-                "ACHIEVEMENT",
-                "DLC",
-                "GIFT",
-                "IAP",
-                "OTHER",
-                "PROMOTION",
-                "PURCHASE",
-                "REDEEM_CODE",
-                "REFERRAL_BONUS",
-                "REWARD",
-            ],
+            "origin": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Stadia", "Steam", "System", "Twitch", "Xbox"],
+            "source": ["ACHIEVEMENT", "DLC", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
         }
 
     # endregion static methods

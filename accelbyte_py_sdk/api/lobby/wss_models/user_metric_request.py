@@ -53,14 +53,10 @@ class UserMetricRequest(WebSocketMessage):
             return instance
         lines = wsm.splitlines(keepends=False)
         if len(lines) < 2:
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.TypeFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.TypeFormatInvalid)
         id_line = lines[1]
         if not id_line.startswith("id: "):
-            raise WebSocketMessageParserException(
-                WebSocketMessageParserError.FieldFormatInvalid
-            )
+            raise WebSocketMessageParserException(WebSocketMessageParserError.FieldFormatInvalid)
         instance.id_ = id_line.removeprefix("id: ")
         return instance
 

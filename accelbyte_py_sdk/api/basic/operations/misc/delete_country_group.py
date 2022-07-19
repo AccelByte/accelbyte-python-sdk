@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-basic-service (2.0.0)
+# justice-basic-service (2.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -75,17 +75,15 @@ class DeleteCountryGroup(Operation):
 
     # region fields
 
-    _url: str = (
-        "/basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}"
-    )
+    _url: str = "/basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}"
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    country_group_code: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
+    country_group_code: str                                                                        # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
 
     # endregion fields
 
@@ -173,12 +171,7 @@ class DeleteCountryGroup(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, HttpResponse],
-        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
         200: OK - (Successful operation)
@@ -197,9 +190,7 @@ class DeleteCountryGroup(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -215,9 +206,7 @@ class DeleteCountryGroup(Operation):
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -235,9 +224,7 @@ class DeleteCountryGroup(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> DeleteCountryGroup:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DeleteCountryGroup:
         instance = cls()
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])

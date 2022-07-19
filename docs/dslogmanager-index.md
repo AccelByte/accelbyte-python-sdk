@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
 
-# justice-ds-log-manager-service Index (2.4.0)
+# justice-ds-log-manager-service Index (2.4.1)
 
 
 ## Operations

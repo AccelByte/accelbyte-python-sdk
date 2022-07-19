@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -49,17 +49,15 @@ class StatItemUpdate(Model):
 
     # region fields
 
-    update_strategy: Union[str, UpdateStrategyEnum]  # REQUIRED
-    value: float  # REQUIRED
-    additional_data: Dict[str, Any]  # OPTIONAL
+    update_strategy: Union[str, UpdateStrategyEnum]                                                # REQUIRED
+    value: float                                                                                   # REQUIRED
+    additional_data: Dict[str, Any]                                                                # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_update_strategy(
-        self, value: Union[str, UpdateStrategyEnum]
-    ) -> StatItemUpdate:
+    def with_update_strategy(self, value: Union[str, UpdateStrategyEnum]) -> StatItemUpdate:
         self.update_strategy = value
         return self
 
@@ -86,9 +84,7 @@ class StatItemUpdate(Model):
         elif include_empty:
             result["value"] = 0.0
         if hasattr(self, "additional_data"):
-            result["additionalData"] = {
-                str(k0): v0 for k0, v0 in self.additional_data.items()
-            }
+            result["additionalData"] = {str(k0): v0 for k0, v0 in self.additional_data.items()}
         elif include_empty:
             result["additionalData"] = {}
         return result
@@ -112,9 +108,7 @@ class StatItemUpdate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> StatItemUpdate:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> StatItemUpdate:
         instance = cls()
         if not dict_:
             return instance
@@ -127,37 +121,21 @@ class StatItemUpdate(Model):
         elif include_empty:
             instance.value = 0.0
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
-            instance.additional_data = {
-                str(k0): v0 for k0, v0 in dict_["additionalData"].items()
-            }
+            instance.additional_data = {str(k0): v0 for k0, v0 in dict_["additionalData"].items()}
         elif include_empty:
             instance.additional_data = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, StatItemUpdate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, StatItemUpdate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[StatItemUpdate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[StatItemUpdate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[StatItemUpdate, List[StatItemUpdate], Dict[Any, StatItemUpdate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[StatItemUpdate, List[StatItemUpdate], Dict[Any, StatItemUpdate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

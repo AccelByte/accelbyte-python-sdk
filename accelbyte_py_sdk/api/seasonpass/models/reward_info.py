@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,17 +76,17 @@ class RewardInfo(Model):
 
     # region fields
 
-    code: str  # REQUIRED
-    namespace: str  # REQUIRED
-    season_id: str  # REQUIRED
-    type_: Union[str, TypeEnum]  # REQUIRED
-    currency: RewardCurrency  # OPTIONAL
-    image: Image  # OPTIONAL
-    item_id: str  # OPTIONAL
-    item_name: str  # OPTIONAL
-    item_sku: str  # OPTIONAL
-    item_type: Union[str, ItemTypeEnum]  # OPTIONAL
-    quantity: int  # OPTIONAL
+    code: str                                                                                      # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    season_id: str                                                                                 # REQUIRED
+    type_: Union[str, TypeEnum]                                                                    # REQUIRED
+    currency: RewardCurrency                                                                       # OPTIONAL
+    image: Image                                                                                   # OPTIONAL
+    item_id: str                                                                                   # OPTIONAL
+    item_name: str                                                                                 # OPTIONAL
+    item_sku: str                                                                                  # OPTIONAL
+    item_type: Union[str, ItemTypeEnum]                                                            # OPTIONAL
+    quantity: int                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -250,15 +250,11 @@ class RewardInfo(Model):
         elif include_empty:
             instance.type_ = Union[str, TypeEnum]()
         if "currency" in dict_ and dict_["currency"] is not None:
-            instance.currency = RewardCurrency.create_from_dict(
-                dict_["currency"], include_empty=include_empty
-            )
+            instance.currency = RewardCurrency.create_from_dict(dict_["currency"], include_empty=include_empty)
         elif include_empty:
             instance.currency = RewardCurrency()
         if "image" in dict_ and dict_["image"] is not None:
-            instance.image = Image.create_from_dict(
-                dict_["image"], include_empty=include_empty
-            )
+            instance.image = Image.create_from_dict(dict_["image"], include_empty=include_empty)
         elif include_empty:
             instance.image = Image()
         if "itemId" in dict_ and dict_["itemId"] is not None:
@@ -284,29 +280,15 @@ class RewardInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, RewardInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, RewardInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[RewardInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[RewardInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[RewardInfo, List[RewardInfo], Dict[Any, RewardInfo]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[RewardInfo, List[RewardInfo], Dict[Any, RewardInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -353,15 +335,7 @@ class RewardInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "type": ["CURRENCY", "ITEM"],
-            "itemType": [
-                "APP",
-                "BUNDLE",
-                "CODE",
-                "COINS",
-                "INGAMEITEM",
-                "SEASON",
-                "SUBSCRIPTION",
-            ],
+            "itemType": ["APP", "BUNDLE", "CODE", "COINS", "INGAMEITEM", "SEASON", "SUBSCRIPTION"],
         }
 
     # endregion static methods

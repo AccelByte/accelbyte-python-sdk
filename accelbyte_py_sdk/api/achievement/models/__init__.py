@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -22,9 +22,7 @@ from .models_achievement_update_request import ModelsAchievementUpdateRequest
 from .models_additional_info import ModelsAdditionalInfo
 from .models_icon import ModelsIcon
 from .models_paginated_achievement_response import ModelsPaginatedAchievementResponse
-from .models_paginated_user_achievement_response import (
-    ModelsPaginatedUserAchievementResponse,
-)
+from .models_paginated_user_achievement_response import ModelsPaginatedUserAchievementResponse
 from .models_pagination import ModelsPagination
 from .models_public_achievement_response import ModelsPublicAchievementResponse
 from .models_public_achievements_response import ModelsPublicAchievementsResponse

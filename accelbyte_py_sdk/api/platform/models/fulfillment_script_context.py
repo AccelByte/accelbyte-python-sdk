@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -60,10 +60,10 @@ class FulfillmentScriptContext(Model):
 
     # region fields
 
-    item: ItemInfo  # REQUIRED
-    namespace: str  # REQUIRED
-    source: Union[str, SourceEnum]  # REQUIRED
-    order: OrderSummary  # OPTIONAL
+    item: ItemInfo                                                                                 # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    source: Union[str, SourceEnum]                                                                 # REQUIRED
+    order: OrderSummary                                                                            # OPTIONAL
 
     # endregion fields
 
@@ -130,16 +130,12 @@ class FulfillmentScriptContext(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> FulfillmentScriptContext:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> FulfillmentScriptContext:
         instance = cls()
         if not dict_:
             return instance
         if "item" in dict_ and dict_["item"] is not None:
-            instance.item = ItemInfo.create_from_dict(
-                dict_["item"], include_empty=include_empty
-            )
+            instance.item = ItemInfo.create_from_dict(dict_["item"], include_empty=include_empty)
         elif include_empty:
             instance.item = ItemInfo()
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -151,41 +147,21 @@ class FulfillmentScriptContext(Model):
         elif include_empty:
             instance.source = Union[str, SourceEnum]()
         if "order" in dict_ and dict_["order"] is not None:
-            instance.order = OrderSummary.create_from_dict(
-                dict_["order"], include_empty=include_empty
-            )
+            instance.order = OrderSummary.create_from_dict(dict_["order"], include_empty=include_empty)
         elif include_empty:
             instance.order = OrderSummary()
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, FulfillmentScriptContext]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, FulfillmentScriptContext]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[FulfillmentScriptContext]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[FulfillmentScriptContext]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        FulfillmentScriptContext,
-        List[FulfillmentScriptContext],
-        Dict[Any, FulfillmentScriptContext],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[FulfillmentScriptContext, List[FulfillmentScriptContext], Dict[Any, FulfillmentScriptContext]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -217,18 +193,7 @@ class FulfillmentScriptContext(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "source": [
-                "ACHIEVEMENT",
-                "DLC",
-                "GIFT",
-                "IAP",
-                "OTHER",
-                "PROMOTION",
-                "PURCHASE",
-                "REDEEM_CODE",
-                "REFERRAL_BONUS",
-                "REWARD",
-            ],
+            "source": ["ACHIEVEMENT", "DLC", "GIFT", "IAP", "OTHER", "PROMOTION", "PURCHASE", "REDEEM_CODE", "REFERRAL_BONUS", "REWARD"],
         }
 
     # endregion static methods

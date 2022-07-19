@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,11 +45,11 @@ class CampaignDynamicInfo(Model):
 
     # region fields
 
-    available_sale_count: int  # REQUIRED
-    last_batch_no: int  # REQUIRED
-    quantity: int  # REQUIRED
-    remainder: int  # REQUIRED
-    sale_count: int  # REQUIRED
+    available_sale_count: int                                                                      # REQUIRED
+    last_batch_no: int                                                                             # REQUIRED
+    quantity: int                                                                                  # REQUIRED
+    remainder: int                                                                                 # REQUIRED
+    sale_count: int                                                                                # REQUIRED
 
     # endregion fields
 
@@ -125,9 +125,7 @@ class CampaignDynamicInfo(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> CampaignDynamicInfo:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> CampaignDynamicInfo:
         instance = cls()
         if not dict_:
             return instance
@@ -154,31 +152,15 @@ class CampaignDynamicInfo(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, CampaignDynamicInfo]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, CampaignDynamicInfo]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[CampaignDynamicInfo]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[CampaignDynamicInfo]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        CampaignDynamicInfo, List[CampaignDynamicInfo], Dict[Any, CampaignDynamicInfo]
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[CampaignDynamicInfo, List[CampaignDynamicInfo], Dict[Any, CampaignDynamicInfo]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

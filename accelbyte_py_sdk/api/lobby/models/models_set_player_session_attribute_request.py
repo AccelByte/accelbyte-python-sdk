@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -37,15 +37,13 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
 
     # region fields
 
-    attributes: Dict[str, str]  # REQUIRED
+    attributes: Dict[str, str]                                                                     # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_attributes(
-        self, value: Dict[str, str]
-    ) -> ModelsSetPlayerSessionAttributeRequest:
+    def with_attributes(self, value: Dict[str, str]) -> ModelsSetPlayerSessionAttributeRequest:
         self.attributes = value
         return self
 
@@ -56,9 +54,7 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "attributes"):
-            result["attributes"] = {
-                str(k0): str(v0) for k0, v0 in self.attributes.items()
-            }
+            result["attributes"] = {str(k0): str(v0) for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
         return result
@@ -77,48 +73,26 @@ class ModelsSetPlayerSessionAttributeRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsSetPlayerSessionAttributeRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsSetPlayerSessionAttributeRequest:
         instance = cls()
         if not dict_:
             return instance
         if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {
-                str(k0): str(v0) for k0, v0 in dict_["attributes"].items()
-            }
+            instance.attributes = {str(k0): str(v0) for k0, v0 in dict_["attributes"].items()}
         elif include_empty:
             instance.attributes = {}
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsSetPlayerSessionAttributeRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsSetPlayerSessionAttributeRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsSetPlayerSessionAttributeRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsSetPlayerSessionAttributeRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsSetPlayerSessionAttributeRequest,
-        List[ModelsSetPlayerSessionAttributeRequest],
-        Dict[Any, ModelsSetPlayerSessionAttributeRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsSetPlayerSessionAttributeRequest, List[ModelsSetPlayerSessionAttributeRequest], Dict[Any, ModelsSetPlayerSessionAttributeRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

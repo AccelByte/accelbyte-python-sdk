@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -31,9 +31,7 @@ from .publish_season import PublishSeason
 from .query_seasons import QuerySeasons
 from .query_seasons import StatusEnum as QuerySeasonsStatusEnum
 from .query_user_exp_grant_history import QueryUserExpGrantHistory
-from .query_user_exp_grant_history import (
-    SourceEnum as QueryUserExpGrantHistorySourceEnum,
-)
+from .query_user_exp_grant_history import SourceEnum as QueryUserExpGrantHistorySourceEnum
 from .query_user_exp_grant_hi_12346c import QueryUserExpGrantHistoryTag
 from .reset_user_season import ResetUserSeason
 from .retire_season import RetireSeason

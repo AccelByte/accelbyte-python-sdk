@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,9 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.accountcommon_input_validation_description import (
-    AccountcommonInputValidationDescription,
-)
+from ..models.accountcommon_input_validation_description import AccountcommonInputValidationDescription
 
 
 class ModelValidationDetailPublic(Model):
@@ -69,21 +67,21 @@ class ModelValidationDetailPublic(Model):
 
     # region fields
 
-    allow_digit: bool  # REQUIRED
-    allow_letter: bool  # REQUIRED
-    allow_space: bool  # REQUIRED
-    allow_unicode: bool  # REQUIRED
-    description: AccountcommonInputValidationDescription  # REQUIRED
-    is_custom_regex: bool  # REQUIRED
-    letter_case: str  # REQUIRED
-    max_length: int  # REQUIRED
-    max_repeating_alpha_num: int  # REQUIRED
-    max_repeating_special_character: int  # REQUIRED
-    min_char_type: int  # REQUIRED
-    min_length: int  # REQUIRED
-    regex: str  # REQUIRED
-    special_character_location: str  # REQUIRED
-    special_characters: List[str]  # REQUIRED
+    allow_digit: bool                                                                              # REQUIRED
+    allow_letter: bool                                                                             # REQUIRED
+    allow_space: bool                                                                              # REQUIRED
+    allow_unicode: bool                                                                            # REQUIRED
+    description: AccountcommonInputValidationDescription                                           # REQUIRED
+    is_custom_regex: bool                                                                          # REQUIRED
+    letter_case: str                                                                               # REQUIRED
+    max_length: int                                                                                # REQUIRED
+    max_repeating_alpha_num: int                                                                   # REQUIRED
+    max_repeating_special_character: int                                                           # REQUIRED
+    min_char_type: int                                                                             # REQUIRED
+    min_length: int                                                                                # REQUIRED
+    regex: str                                                                                     # REQUIRED
+    special_character_location: str                                                                # REQUIRED
+    special_characters: List[str]                                                                  # REQUIRED
 
     # endregion fields
 
@@ -105,9 +103,7 @@ class ModelValidationDetailPublic(Model):
         self.allow_unicode = value
         return self
 
-    def with_description(
-        self, value: AccountcommonInputValidationDescription
-    ) -> ModelValidationDetailPublic:
+    def with_description(self, value: AccountcommonInputValidationDescription) -> ModelValidationDetailPublic:
         self.description = value
         return self
 
@@ -127,9 +123,7 @@ class ModelValidationDetailPublic(Model):
         self.max_repeating_alpha_num = value
         return self
 
-    def with_max_repeating_special_character(
-        self, value: int
-    ) -> ModelValidationDetailPublic:
+    def with_max_repeating_special_character(self, value: int) -> ModelValidationDetailPublic:
         self.max_repeating_special_character = value
         return self
 
@@ -145,9 +139,7 @@ class ModelValidationDetailPublic(Model):
         self.regex = value
         return self
 
-    def with_special_character_location(
-        self, value: str
-    ) -> ModelValidationDetailPublic:
+    def with_special_character_location(self, value: str) -> ModelValidationDetailPublic:
         self.special_character_location = value
         return self
 
@@ -178,9 +170,7 @@ class ModelValidationDetailPublic(Model):
         elif include_empty:
             result["allowUnicode"] = False
         if hasattr(self, "description"):
-            result["description"] = self.description.to_dict(
-                include_empty=include_empty
-            )
+            result["description"] = self.description.to_dict(include_empty=include_empty)
         elif include_empty:
             result["description"] = AccountcommonInputValidationDescription()
         if hasattr(self, "is_custom_regex"):
@@ -200,9 +190,7 @@ class ModelValidationDetailPublic(Model):
         elif include_empty:
             result["maxRepeatingAlphaNum"] = 0
         if hasattr(self, "max_repeating_special_character"):
-            result["maxRepeatingSpecialCharacter"] = int(
-                self.max_repeating_special_character
-            )
+            result["maxRepeatingSpecialCharacter"] = int(self.max_repeating_special_character)
         elif include_empty:
             result["maxRepeatingSpecialCharacter"] = 0
         if hasattr(self, "min_char_type"):
@@ -269,9 +257,7 @@ class ModelValidationDetailPublic(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelValidationDetailPublic:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelValidationDetailPublic:
         instance = cls()
         if not dict_:
             return instance
@@ -292,11 +278,7 @@ class ModelValidationDetailPublic(Model):
         elif include_empty:
             instance.allow_unicode = False
         if "description" in dict_ and dict_["description"] is not None:
-            instance.description = (
-                AccountcommonInputValidationDescription.create_from_dict(
-                    dict_["description"], include_empty=include_empty
-                )
-            )
+            instance.description = AccountcommonInputValidationDescription.create_from_dict(dict_["description"], include_empty=include_empty)
         elif include_empty:
             instance.description = AccountcommonInputValidationDescription()
         if "isCustomRegex" in dict_ and dict_["isCustomRegex"] is not None:
@@ -311,20 +293,12 @@ class ModelValidationDetailPublic(Model):
             instance.max_length = int(dict_["maxLength"])
         elif include_empty:
             instance.max_length = 0
-        if (
-            "maxRepeatingAlphaNum" in dict_
-            and dict_["maxRepeatingAlphaNum"] is not None
-        ):
+        if "maxRepeatingAlphaNum" in dict_ and dict_["maxRepeatingAlphaNum"] is not None:
             instance.max_repeating_alpha_num = int(dict_["maxRepeatingAlphaNum"])
         elif include_empty:
             instance.max_repeating_alpha_num = 0
-        if (
-            "maxRepeatingSpecialCharacter" in dict_
-            and dict_["maxRepeatingSpecialCharacter"] is not None
-        ):
-            instance.max_repeating_special_character = int(
-                dict_["maxRepeatingSpecialCharacter"]
-            )
+        if "maxRepeatingSpecialCharacter" in dict_ and dict_["maxRepeatingSpecialCharacter"] is not None:
+            instance.max_repeating_special_character = int(dict_["maxRepeatingSpecialCharacter"])
         elif include_empty:
             instance.max_repeating_special_character = 0
         if "minCharType" in dict_ and dict_["minCharType"] is not None:
@@ -339,10 +313,7 @@ class ModelValidationDetailPublic(Model):
             instance.regex = str(dict_["regex"])
         elif include_empty:
             instance.regex = ""
-        if (
-            "specialCharacterLocation" in dict_
-            and dict_["specialCharacterLocation"] is not None
-        ):
+        if "specialCharacterLocation" in dict_ and dict_["specialCharacterLocation"] is not None:
             instance.special_character_location = str(dict_["specialCharacterLocation"])
         elif include_empty:
             instance.special_character_location = ""
@@ -353,33 +324,15 @@ class ModelValidationDetailPublic(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelValidationDetailPublic]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelValidationDetailPublic]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelValidationDetailPublic]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelValidationDetailPublic]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelValidationDetailPublic,
-        List[ModelValidationDetailPublic],
-        Dict[Any, ModelValidationDetailPublic],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelValidationDetailPublic, List[ModelValidationDetailPublic], Dict[Any, ModelValidationDetailPublic]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

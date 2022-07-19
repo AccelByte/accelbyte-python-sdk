@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-ds-log-manager-service (2.4.0)
+# justice-ds-log-manager-service (2.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class ModelsBatchDownloadLogsRequest(Model):
 
     # region fields
 
-    downloads: List[ModelsDownloadLogsRequest]  # REQUIRED
+    downloads: List[ModelsDownloadLogsRequest]                                                     # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_downloads(
-        self, value: List[ModelsDownloadLogsRequest]
-    ) -> ModelsBatchDownloadLogsRequest:
+    def with_downloads(self, value: List[ModelsDownloadLogsRequest]) -> ModelsBatchDownloadLogsRequest:
         self.downloads = value
         return self
 
@@ -58,9 +56,7 @@ class ModelsBatchDownloadLogsRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "downloads"):
-            result["Downloads"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.downloads
-            ]
+            result["Downloads"] = [i0.to_dict(include_empty=include_empty) for i0 in self.downloads]
         elif include_empty:
             result["Downloads"] = []
         return result
@@ -79,51 +75,26 @@ class ModelsBatchDownloadLogsRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsBatchDownloadLogsRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsBatchDownloadLogsRequest:
         instance = cls()
         if not dict_:
             return instance
         if "Downloads" in dict_ and dict_["Downloads"] is not None:
-            instance.downloads = [
-                ModelsDownloadLogsRequest.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["Downloads"]
-            ]
+            instance.downloads = [ModelsDownloadLogsRequest.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Downloads"]]
         elif include_empty:
             instance.downloads = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsBatchDownloadLogsRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsBatchDownloadLogsRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsBatchDownloadLogsRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsBatchDownloadLogsRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsBatchDownloadLogsRequest,
-        List[ModelsBatchDownloadLogsRequest],
-        Dict[Any, ModelsBatchDownloadLogsRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsBatchDownloadLogsRequest, List[ModelsBatchDownloadLogsRequest], Dict[Any, ModelsBatchDownloadLogsRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

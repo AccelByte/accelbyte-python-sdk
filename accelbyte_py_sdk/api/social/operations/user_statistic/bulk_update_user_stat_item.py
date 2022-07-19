@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -83,19 +83,17 @@ class BulkUpdateUserStatItem(Operation):
 
     # region fields
 
-    _url: str = (
-        "/social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk"
-    )
+    _url: str = "/social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk"
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[BulkStatItemUpdate]  # OPTIONAL in [body]
-    namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
-    additional_key: str  # OPTIONAL in [query]
+    body: List[BulkStatItemUpdate]                                                                 # OPTIONAL in [body]
+    namespace: str                                                                                 # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
+    additional_key: str                                                                            # OPTIONAL in [query]
 
     # endregion fields
 
@@ -190,9 +188,7 @@ class BulkUpdateUserStatItem(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.body
-            ]
+            result["body"] = [i0.to_dict(include_empty=include_empty) for i0 in self.body]
         elif include_empty:
             result["body"] = []
         if hasattr(self, "namespace") and self.namespace:
@@ -214,12 +210,7 @@ class BulkUpdateUserStatItem(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[BulkStatItemOperationResult]],
-        Union[None, HttpResponse, ValidationErrorEntity],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, List[BulkStatItemOperationResult]], Union[None, HttpResponse, ValidationErrorEntity]]:
         """Parse the given response.
 
         200: OK - List[BulkStatItemOperationResult] (successful operation)
@@ -232,23 +223,17 @@ class BulkUpdateUserStatItem(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                BulkStatItemOperationResult.create_from_dict(i) for i in content
-            ], None
+            return [BulkStatItemOperationResult.create_from_dict(i) for i in content], None
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -272,15 +257,10 @@ class BulkUpdateUserStatItem(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> BulkUpdateUserStatItem:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BulkUpdateUserStatItem:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = [
-                BulkStatItemUpdate.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["body"]
-            ]
+            instance.body = [BulkStatItemUpdate.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["body"]]
         elif include_empty:
             instance.body = []
         if "namespace" in dict_ and dict_["namespace"] is not None:

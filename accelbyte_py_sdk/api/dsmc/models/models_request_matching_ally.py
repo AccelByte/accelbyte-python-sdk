@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class ModelsRequestMatchingAlly(Model):
 
     # region fields
 
-    matching_parties: List[ModelsRequestMatchParty]  # REQUIRED
+    matching_parties: List[ModelsRequestMatchParty]                                                # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_matching_parties(
-        self, value: List[ModelsRequestMatchParty]
-    ) -> ModelsRequestMatchingAlly:
+    def with_matching_parties(self, value: List[ModelsRequestMatchParty]) -> ModelsRequestMatchingAlly:
         self.matching_parties = value
         return self
 
@@ -58,9 +56,7 @@ class ModelsRequestMatchingAlly(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "matching_parties"):
-            result["matching_parties"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_parties
-            ]
+            result["matching_parties"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_parties]
         elif include_empty:
             result["matching_parties"] = []
         return result
@@ -79,51 +75,26 @@ class ModelsRequestMatchingAlly(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsRequestMatchingAlly:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsRequestMatchingAlly:
         instance = cls()
         if not dict_:
             return instance
         if "matching_parties" in dict_ and dict_["matching_parties"] is not None:
-            instance.matching_parties = [
-                ModelsRequestMatchParty.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["matching_parties"]
-            ]
+            instance.matching_parties = [ModelsRequestMatchParty.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_parties"]]
         elif include_empty:
             instance.matching_parties = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsRequestMatchingAlly]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsRequestMatchingAlly]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsRequestMatchingAlly]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsRequestMatchingAlly]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsRequestMatchingAlly,
-        List[ModelsRequestMatchingAlly],
-        Dict[Any, ModelsRequestMatchingAlly],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsRequestMatchingAlly, List[ModelsRequestMatchingAlly], Dict[Any, ModelsRequestMatchingAlly]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

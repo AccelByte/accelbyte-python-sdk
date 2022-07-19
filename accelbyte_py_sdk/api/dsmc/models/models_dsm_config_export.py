@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,21 +69,21 @@ class ModelsDSMConfigExport(Model):
 
     # region fields
 
-    claim_timeout: int  # REQUIRED
-    created_at: str  # REQUIRED
-    creation_timeout: int  # REQUIRED
-    default_version: str  # REQUIRED
-    deployments: List[ModelsDeploymentWithOverride]  # REQUIRED
-    images: List[ModelsImageRecord]  # REQUIRED
-    namespace: str  # REQUIRED
-    pod_configs: List[ModelsPodConfigRecord]  # REQUIRED
-    port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
-    protocol: str  # REQUIRED
-    providers: List[str]  # REQUIRED
-    session_timeout: int  # REQUIRED
-    unreachable_timeout: int  # REQUIRED
-    updated_at: str  # REQUIRED
+    claim_timeout: int                                                                             # REQUIRED
+    created_at: str                                                                                # REQUIRED
+    creation_timeout: int                                                                          # REQUIRED
+    default_version: str                                                                           # REQUIRED
+    deployments: List[ModelsDeploymentWithOverride]                                                # REQUIRED
+    images: List[ModelsImageRecord]                                                                # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    pod_configs: List[ModelsPodConfigRecord]                                                       # REQUIRED
+    port: int                                                                                      # REQUIRED
+    ports: Dict[str, int]                                                                          # REQUIRED
+    protocol: str                                                                                  # REQUIRED
+    providers: List[str]                                                                           # REQUIRED
+    session_timeout: int                                                                           # REQUIRED
+    unreachable_timeout: int                                                                       # REQUIRED
+    updated_at: str                                                                                # REQUIRED
 
     # endregion fields
 
@@ -105,9 +105,7 @@ class ModelsDSMConfigExport(Model):
         self.default_version = value
         return self
 
-    def with_deployments(
-        self, value: List[ModelsDeploymentWithOverride]
-    ) -> ModelsDSMConfigExport:
+    def with_deployments(self, value: List[ModelsDeploymentWithOverride]) -> ModelsDSMConfigExport:
         self.deployments = value
         return self
 
@@ -119,9 +117,7 @@ class ModelsDSMConfigExport(Model):
         self.namespace = value
         return self
 
-    def with_pod_configs(
-        self, value: List[ModelsPodConfigRecord]
-    ) -> ModelsDSMConfigExport:
+    def with_pod_configs(self, value: List[ModelsPodConfigRecord]) -> ModelsDSMConfigExport:
         self.pod_configs = value
         return self
 
@@ -176,15 +172,11 @@ class ModelsDSMConfigExport(Model):
         elif include_empty:
             result["default_version"] = ""
         if hasattr(self, "deployments"):
-            result["deployments"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.deployments
-            ]
+            result["deployments"] = [i0.to_dict(include_empty=include_empty) for i0 in self.deployments]
         elif include_empty:
             result["deployments"] = []
         if hasattr(self, "images"):
-            result["images"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.images
-            ]
+            result["images"] = [i0.to_dict(include_empty=include_empty) for i0 in self.images]
         elif include_empty:
             result["images"] = []
         if hasattr(self, "namespace"):
@@ -192,9 +184,7 @@ class ModelsDSMConfigExport(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "pod_configs"):
-            result["pod_configs"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.pod_configs
-            ]
+            result["pod_configs"] = [i0.to_dict(include_empty=include_empty) for i0 in self.pod_configs]
         elif include_empty:
             result["pod_configs"] = []
         if hasattr(self, "port"):
@@ -269,9 +259,7 @@ class ModelsDSMConfigExport(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsDSMConfigExport:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsDSMConfigExport:
         instance = cls()
         if not dict_:
             return instance
@@ -292,19 +280,11 @@ class ModelsDSMConfigExport(Model):
         elif include_empty:
             instance.default_version = ""
         if "deployments" in dict_ and dict_["deployments"] is not None:
-            instance.deployments = [
-                ModelsDeploymentWithOverride.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["deployments"]
-            ]
+            instance.deployments = [ModelsDeploymentWithOverride.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["deployments"]]
         elif include_empty:
             instance.deployments = []
         if "images" in dict_ and dict_["images"] is not None:
-            instance.images = [
-                ModelsImageRecord.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["images"]
-            ]
+            instance.images = [ModelsImageRecord.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["images"]]
         elif include_empty:
             instance.images = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -312,10 +292,7 @@ class ModelsDSMConfigExport(Model):
         elif include_empty:
             instance.namespace = ""
         if "pod_configs" in dict_ and dict_["pod_configs"] is not None:
-            instance.pod_configs = [
-                ModelsPodConfigRecord.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["pod_configs"]
-            ]
+            instance.pod_configs = [ModelsPodConfigRecord.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["pod_configs"]]
         elif include_empty:
             instance.pod_configs = []
         if "port" in dict_ and dict_["port"] is not None:
@@ -349,33 +326,15 @@ class ModelsDSMConfigExport(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsDSMConfigExport]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsDSMConfigExport]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsDSMConfigExport]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsDSMConfigExport]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsDSMConfigExport,
-        List[ModelsDSMConfigExport],
-        Dict[Any, ModelsDSMConfigExport],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsDSMConfigExport, List[ModelsDSMConfigExport], Dict[Any, ModelsDSMConfigExport]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

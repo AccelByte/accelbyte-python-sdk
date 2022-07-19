@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-legal-service (1.22.3)
+# justice-legal-service (1.22.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -244,9 +244,7 @@ def create_policy_version_with_localized_version_object_example() -> PolicyVersi
     instance.is_in_effect = randomize("bool")
     instance.created_at = randomize("date")
     instance.description = randomize()
-    instance.localized_policy_versions = [
-        create_localized_policy_version_object_example()
-    ]
+    instance.localized_policy_versions = [create_localized_policy_version_object_example()]
     instance.published_date = randomize("date")
     instance.status = randomize()
     instance.updated_at = randomize("date")
@@ -341,9 +339,7 @@ def create_retrieve_policy_public_response_example() -> RetrievePolicyPublicResp
     instance.country_group_code = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
-    instance.policy_versions = [
-        create_policy_version_with_localized_version_object_example()
-    ]
+    instance.policy_versions = [create_policy_version_with_localized_version_object_example()]
     instance.readable_id = randomize()
     instance.tags = [randomize()]
     instance.updated_at = randomize("date")
@@ -389,9 +385,7 @@ def create_retrieve_policy_version_response_example() -> RetrievePolicyVersionRe
     instance.base_policy_id = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
-    instance.localized_policy_versions = [
-        create_localized_policy_version_object_example()
-    ]
+    instance.localized_policy_versions = [create_localized_policy_version_object_example()]
     instance.published_date = randomize("date")
     instance.status = randomize()
     instance.updated_at = randomize("date")
@@ -435,9 +429,7 @@ def create_retrieve_user_eligibilities_response_example() -> RetrieveUserEligibi
     instance.base_urls = [randomize()]
     instance.country_group_code = randomize()
     instance.description = randomize()
-    instance.policy_versions = [
-        create_policy_version_with_localized_version_object_example()
-    ]
+    instance.policy_versions = [create_policy_version_with_localized_version_object_example()]
     instance.readable_id = randomize()
     return instance
 

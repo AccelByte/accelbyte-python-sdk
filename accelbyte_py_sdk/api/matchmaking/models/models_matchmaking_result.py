@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Justice Matchmaking Service (2.15.3)
+# Justice Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,21 +67,21 @@ class ModelsMatchmakingResult(Model):
 
     # region fields
 
-    channel: str  # REQUIRED
-    client_version: str  # REQUIRED
-    deployment: str  # REQUIRED
-    game_mode: str  # REQUIRED
-    match_id: str  # REQUIRED
-    matching_allies: List[ModelsMatchingAlly]  # REQUIRED
-    namespace: str  # REQUIRED
-    party_attributes: Dict[str, Any]  # REQUIRED
-    queued_at: int  # REQUIRED
-    region: str  # REQUIRED
-    server_name: str  # REQUIRED
-    status: str  # REQUIRED
-    updated_at: str  # REQUIRED
-    joinable: bool  # OPTIONAL
-    party_id: str  # OPTIONAL
+    channel: str                                                                                   # REQUIRED
+    client_version: str                                                                            # REQUIRED
+    deployment: str                                                                                # REQUIRED
+    game_mode: str                                                                                 # REQUIRED
+    match_id: str                                                                                  # REQUIRED
+    matching_allies: List[ModelsMatchingAlly]                                                      # REQUIRED
+    namespace: str                                                                                 # REQUIRED
+    party_attributes: Dict[str, Any]                                                               # REQUIRED
+    queued_at: int                                                                                 # REQUIRED
+    region: str                                                                                    # REQUIRED
+    server_name: str                                                                               # REQUIRED
+    status: str                                                                                    # REQUIRED
+    updated_at: str                                                                                # REQUIRED
+    joinable: bool                                                                                 # OPTIONAL
+    party_id: str                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -107,9 +107,7 @@ class ModelsMatchmakingResult(Model):
         self.match_id = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsMatchingAlly]
-    ) -> ModelsMatchmakingResult:
+    def with_matching_allies(self, value: List[ModelsMatchingAlly]) -> ModelsMatchmakingResult:
         self.matching_allies = value
         return self
 
@@ -176,9 +174,7 @@ class ModelsMatchmakingResult(Model):
         elif include_empty:
             result["match_id"] = ""
         if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
+            result["matching_allies"] = [i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies]
         elif include_empty:
             result["matching_allies"] = []
         if hasattr(self, "namespace"):
@@ -186,9 +182,7 @@ class ModelsMatchmakingResult(Model):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "party_attributes"):
-            result["party_attributes"] = {
-                str(k0): v0 for k0, v0 in self.party_attributes.items()
-            }
+            result["party_attributes"] = {str(k0): v0 for k0, v0 in self.party_attributes.items()}
         elif include_empty:
             result["party_attributes"] = {}
         if hasattr(self, "queued_at"):
@@ -265,9 +259,7 @@ class ModelsMatchmakingResult(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsMatchmakingResult:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsMatchmakingResult:
         instance = cls()
         if not dict_:
             return instance
@@ -292,10 +284,7 @@ class ModelsMatchmakingResult(Model):
         elif include_empty:
             instance.match_id = ""
         if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [
-                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["matching_allies"]
-            ]
+            instance.matching_allies = [ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["matching_allies"]]
         elif include_empty:
             instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
@@ -303,9 +292,7 @@ class ModelsMatchmakingResult(Model):
         elif include_empty:
             instance.namespace = ""
         if "party_attributes" in dict_ and dict_["party_attributes"] is not None:
-            instance.party_attributes = {
-                str(k0): v0 for k0, v0 in dict_["party_attributes"].items()
-            }
+            instance.party_attributes = {str(k0): v0 for k0, v0 in dict_["party_attributes"].items()}
         elif include_empty:
             instance.party_attributes = {}
         if "queued_at" in dict_ and dict_["queued_at"] is not None:
@@ -339,33 +326,15 @@ class ModelsMatchmakingResult(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsMatchmakingResult]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsMatchmakingResult]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsMatchmakingResult]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsMatchmakingResult]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsMatchmakingResult,
-        List[ModelsMatchmakingResult],
-        Dict[Any, ModelsMatchmakingResult],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsMatchmakingResult, List[ModelsMatchmakingResult], Dict[Any, ModelsMatchmakingResult]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

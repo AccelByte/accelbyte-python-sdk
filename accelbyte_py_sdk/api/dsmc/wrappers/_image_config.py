@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -58,11 +58,7 @@ from ..operations.image_config import UpdateImage
 
 
 @same_doc_as(CreateImage)
-def create_image(
-    body: ModelsCreateImageRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_image(body: ModelsCreateImageRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateImage.create(
         body=body,
     )
@@ -70,25 +66,15 @@ def create_image(
 
 
 @same_doc_as(CreateImage)
-async def create_image_async(
-    body: ModelsCreateImageRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_image_async(body: ModelsCreateImageRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateImage.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateImagePatch)
-def create_image_patch(
-    body: ModelsCreateImagePatchRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_image_patch(body: ModelsCreateImagePatchRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateImagePatch.create(
         body=body,
     )
@@ -96,27 +82,15 @@ def create_image_patch(
 
 
 @same_doc_as(CreateImagePatch)
-async def create_image_patch_async(
-    body: ModelsCreateImagePatchRequest,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_image_patch_async(body: ModelsCreateImagePatchRequest, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = CreateImagePatch.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteImage)
-def delete_image(
-    image_uri: str,
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_image(image_uri: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,13 +104,7 @@ def delete_image(
 
 
 @same_doc_as(DeleteImage)
-async def delete_image_async(
-    image_uri: str,
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_image_async(image_uri: str, version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -146,20 +114,11 @@ async def delete_image_async(
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteImagePatch)
-def delete_image_patch(
-    image_uri: str,
-    version: str,
-    version_patch: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_image_patch(image_uri: str, version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -174,14 +133,7 @@ def delete_image_patch(
 
 
 @same_doc_as(DeleteImagePatch)
-async def delete_image_patch_async(
-    image_uri: str,
-    version: str,
-    version_patch: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_image_patch_async(image_uri: str, version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,17 +144,11 @@ async def delete_image_patch_async(
         version_patch=version_patch,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ExportImages)
-def export_images(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def export_images(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -214,11 +160,7 @@ def export_images(
 
 
 @same_doc_as(ExportImages)
-async def export_images_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def export_images_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -226,18 +168,11 @@ async def export_images_async(
     request = ExportImages.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetImageDetail)
-def get_image_detail(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_image_detail(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -250,12 +185,7 @@ def get_image_detail(
 
 
 @same_doc_as(GetImageDetail)
-async def get_image_detail_async(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_image_detail_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -264,17 +194,11 @@ async def get_image_detail_async(
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetImageLimit)
-def get_image_limit(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_image_limit(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -286,11 +210,7 @@ def get_image_limit(
 
 
 @same_doc_as(GetImageLimit)
-async def get_image_limit_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_image_limit_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -298,19 +218,11 @@ async def get_image_limit_async(
     request = GetImageLimit.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetImagePatchDetail)
-def get_image_patch_detail(
-    version: str,
-    version_patch: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_image_patch_detail(version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -324,13 +236,7 @@ def get_image_patch_detail(
 
 
 @same_doc_as(GetImagePatchDetail)
-async def get_image_patch_detail_async(
-    version: str,
-    version_patch: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_image_patch_detail_async(version: str, version_patch: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -340,18 +246,11 @@ async def get_image_patch_detail_async(
         version_patch=version_patch,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetImagePatches)
-def get_image_patches(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_image_patches(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -364,12 +263,7 @@ def get_image_patches(
 
 
 @same_doc_as(GetImagePatches)
-async def get_image_patches_async(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_image_patches_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,18 +272,11 @@ async def get_image_patches_async(
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ImageDetailClient)
-def image_detail_client(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def image_detail_client(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -402,12 +289,7 @@ def image_detail_client(
 
 
 @same_doc_as(ImageDetailClient)
-async def image_detail_client_async(
-    version: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def image_detail_client_async(version: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -416,15 +298,11 @@ async def image_detail_client_async(
         version=version,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ImportImages)
-def import_images(
-    file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+def import_images(file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ImportImages.create(
         file=file,
     )
@@ -432,28 +310,15 @@ def import_images(
 
 
 @same_doc_as(ImportImages)
-async def import_images_async(
-    file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
+async def import_images_async(file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = ImportImages.create(
         file=file,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ListImages)
-def list_images(
-    count: int,
-    offset: int,
-    q: Optional[str] = None,
-    sort_by: Optional[Union[str, ListImagesSortByEnum]] = None,
-    sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def list_images(count: int, offset: int, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -470,16 +335,7 @@ def list_images(
 
 
 @same_doc_as(ListImages)
-async def list_images_async(
-    count: int,
-    offset: int,
-    q: Optional[str] = None,
-    sort_by: Optional[Union[str, ListImagesSortByEnum]] = None,
-    sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def list_images_async(count: int, offset: int, q: Optional[str] = None, sort_by: Optional[Union[str, ListImagesSortByEnum]] = None, sort_direction: Optional[Union[str, ListImagesSortDirectionEnum]] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -492,17 +348,11 @@ async def list_images_async(
         sort_direction=sort_direction,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateImage)
-def update_image(
-    body: ModelsImageRecordUpdate,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_image(body: ModelsImageRecordUpdate, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdateImage.create(
         body=body,
     )
@@ -510,14 +360,8 @@ def update_image(
 
 
 @same_doc_as(UpdateImage)
-async def update_image_async(
-    body: ModelsImageRecordUpdate,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_image_async(body: ModelsImageRecordUpdate, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     request = UpdateImage.create(
         body=body,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

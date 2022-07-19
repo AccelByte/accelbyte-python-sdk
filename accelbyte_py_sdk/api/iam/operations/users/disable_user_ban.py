@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -93,9 +93,9 @@ class DisableUserBan(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    ban_id: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
+    ban_id: str                                                                                    # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    user_id: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -193,9 +193,7 @@ class DisableUserBan(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelUserBanResponse], Union[None, HttpResponse]]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelUserBanResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
         200: OK - ModelUserBanResponse (OK)
@@ -214,9 +212,7 @@ class DisableUserBan(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -232,9 +228,7 @@ class DisableUserBan(Operation):
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -254,9 +248,7 @@ class DisableUserBan(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> DisableUserBan:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> DisableUserBan:
         instance = cls()
         if "banId" in dict_ and dict_["banId"] is not None:
             instance.ban_id = str(dict_["banId"])

@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -48,14 +48,7 @@ from ..models import TicketBoothIDTypeEnum
 
 
 @same_doc_as(AcquireUserTicket)
-def acquire_user_ticket(
-    booth_name: str,
-    user_id: str,
-    body: Optional[TicketAcquireRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def acquire_user_ticket(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -70,14 +63,7 @@ def acquire_user_ticket(
 
 
 @same_doc_as(AcquireUserTicket)
-async def acquire_user_ticket_async(
-    booth_name: str,
-    user_id: str,
-    body: Optional[TicketAcquireRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def acquire_user_ticket_async(booth_name: str, user_id: str, body: Optional[TicketAcquireRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -88,19 +74,11 @@ async def acquire_user_ticket_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DecreaseTicketSale)
-def decrease_ticket_sale(
-    booth_name: str,
-    body: Optional[TicketSaleDecrementRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def decrease_ticket_sale(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -114,13 +92,7 @@ def decrease_ticket_sale(
 
 
 @same_doc_as(DecreaseTicketSale)
-async def decrease_ticket_sale_async(
-    booth_name: str,
-    body: Optional[TicketSaleDecrementRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def decrease_ticket_sale_async(booth_name: str, body: Optional[TicketSaleDecrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -130,18 +102,11 @@ async def decrease_ticket_sale_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketBoothID)
-def get_ticket_booth_id(
-    booth_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_ticket_booth_id(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,12 +119,7 @@ def get_ticket_booth_id(
 
 
 @same_doc_as(GetTicketBoothID)
-async def get_ticket_booth_id_async(
-    booth_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_ticket_booth_id_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -168,18 +128,11 @@ async def get_ticket_booth_id_async(
         booth_name=booth_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetTicketDynamic)
-def get_ticket_dynamic(
-    booth_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_ticket_dynamic(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,12 +145,7 @@ def get_ticket_dynamic(
 
 
 @same_doc_as(GetTicketDynamic)
-async def get_ticket_dynamic_async(
-    booth_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_ticket_dynamic_async(booth_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -206,19 +154,11 @@ async def get_ticket_dynamic_async(
         booth_name=booth_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(IncreaseTicketSale)
-def increase_ticket_sale(
-    booth_name: str,
-    body: Optional[TicketSaleIncrementRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def increase_ticket_sale(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -232,13 +172,7 @@ def increase_ticket_sale(
 
 
 @same_doc_as(IncreaseTicketSale)
-async def increase_ticket_sale_async(
-    booth_name: str,
-    body: Optional[TicketSaleIncrementRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def increase_ticket_sale_async(booth_name: str, body: Optional[TicketSaleIncrementRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -248,6 +182,4 @@ async def increase_ticket_sale_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

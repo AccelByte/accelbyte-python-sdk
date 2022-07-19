@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class ModelRoleMembersRequest(Model):
 
     # region fields
 
-    members: List[AccountcommonRoleMember]  # REQUIRED
+    members: List[AccountcommonRoleMember]                                                         # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_members(
-        self, value: List[AccountcommonRoleMember]
-    ) -> ModelRoleMembersRequest:
+    def with_members(self, value: List[AccountcommonRoleMember]) -> ModelRoleMembersRequest:
         self.members = value
         return self
 
@@ -58,9 +56,7 @@ class ModelRoleMembersRequest(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "members"):
-            result["Members"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.members
-            ]
+            result["Members"] = [i0.to_dict(include_empty=include_empty) for i0 in self.members]
         elif include_empty:
             result["Members"] = []
         return result
@@ -79,51 +75,26 @@ class ModelRoleMembersRequest(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelRoleMembersRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelRoleMembersRequest:
         instance = cls()
         if not dict_:
             return instance
         if "Members" in dict_ and dict_["Members"] is not None:
-            instance.members = [
-                AccountcommonRoleMember.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["Members"]
-            ]
+            instance.members = [AccountcommonRoleMember.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Members"]]
         elif include_empty:
             instance.members = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelRoleMembersRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelRoleMembersRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelRoleMembersRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelRoleMembersRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelRoleMembersRequest,
-        List[ModelRoleMembersRequest],
-        Dict[Any, ModelRoleMembersRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelRoleMembersRequest, List[ModelRoleMembersRequest], Dict[Any, ModelRoleMembersRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)

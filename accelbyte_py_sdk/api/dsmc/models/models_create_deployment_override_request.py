@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -53,20 +53,23 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         regions: (regions) REQUIRED List[str]
 
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
+
+        session_timeout: (session_timeout) OPTIONAL int
     """
 
     # region fields
 
-    buffer_count: int  # REQUIRED
-    buffer_percent: int  # REQUIRED
-    configuration: str  # REQUIRED
-    enable_region_overrides: bool  # REQUIRED
-    game_version: str  # REQUIRED
-    max_count: int  # REQUIRED
-    min_count: int  # REQUIRED
-    region_overrides: Dict[str, ModelsPodCountConfigOverride]  # REQUIRED
-    regions: List[str]  # REQUIRED
-    use_buffer_percent: bool  # REQUIRED
+    buffer_count: int                                                                              # REQUIRED
+    buffer_percent: int                                                                            # REQUIRED
+    configuration: str                                                                             # REQUIRED
+    enable_region_overrides: bool                                                                  # REQUIRED
+    game_version: str                                                                              # REQUIRED
+    max_count: int                                                                                 # REQUIRED
+    min_count: int                                                                                 # REQUIRED
+    region_overrides: Dict[str, ModelsPodCountConfigOverride]                                      # REQUIRED
+    regions: List[str]                                                                             # REQUIRED
+    use_buffer_percent: bool                                                                       # REQUIRED
+    session_timeout: int                                                                           # OPTIONAL
 
     # endregion fields
 
@@ -84,9 +87,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         self.configuration = value
         return self
 
-    def with_enable_region_overrides(
-        self, value: bool
-    ) -> ModelsCreateDeploymentOverrideRequest:
+    def with_enable_region_overrides(self, value: bool) -> ModelsCreateDeploymentOverrideRequest:
         self.enable_region_overrides = value
         return self
 
@@ -102,9 +103,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         self.min_count = value
         return self
 
-    def with_region_overrides(
-        self, value: Dict[str, ModelsPodCountConfigOverride]
-    ) -> ModelsCreateDeploymentOverrideRequest:
+    def with_region_overrides(self, value: Dict[str, ModelsPodCountConfigOverride]) -> ModelsCreateDeploymentOverrideRequest:
         self.region_overrides = value
         return self
 
@@ -112,10 +111,12 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         self.regions = value
         return self
 
-    def with_use_buffer_percent(
-        self, value: bool
-    ) -> ModelsCreateDeploymentOverrideRequest:
+    def with_use_buffer_percent(self, value: bool) -> ModelsCreateDeploymentOverrideRequest:
         self.use_buffer_percent = value
+        return self
+
+    def with_session_timeout(self, value: int) -> ModelsCreateDeploymentOverrideRequest:
+        self.session_timeout = value
         return self
 
     # endregion with_x methods
@@ -153,10 +154,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         elif include_empty:
             result["min_count"] = 0
         if hasattr(self, "region_overrides"):
-            result["region_overrides"] = {
-                str(k0): v0.to_dict(include_empty=include_empty)
-                for k0, v0 in self.region_overrides.items()
-            }
+            result["region_overrides"] = {str(k0): v0.to_dict(include_empty=include_empty) for k0, v0 in self.region_overrides.items()}
         elif include_empty:
             result["region_overrides"] = {}
         if hasattr(self, "regions"):
@@ -167,6 +165,10 @@ class ModelsCreateDeploymentOverrideRequest(Model):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
             result["use_buffer_percent"] = False
+        if hasattr(self, "session_timeout"):
+            result["session_timeout"] = int(self.session_timeout)
+        elif include_empty:
+            result["session_timeout"] = 0
         return result
 
     # endregion to methods
@@ -186,6 +188,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         region_overrides: Dict[str, ModelsPodCountConfigOverride],
         regions: List[str],
         use_buffer_percent: bool,
+        session_timeout: Optional[int] = None,
     ) -> ModelsCreateDeploymentOverrideRequest:
         instance = cls()
         instance.buffer_count = buffer_count
@@ -198,12 +201,12 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         instance.region_overrides = region_overrides
         instance.regions = regions
         instance.use_buffer_percent = use_buffer_percent
+        if session_timeout is not None:
+            instance.session_timeout = session_timeout
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsCreateDeploymentOverrideRequest:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsCreateDeploymentOverrideRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -219,10 +222,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
             instance.configuration = str(dict_["configuration"])
         elif include_empty:
             instance.configuration = ""
-        if (
-            "enable_region_overrides" in dict_
-            and dict_["enable_region_overrides"] is not None
-        ):
+        if "enable_region_overrides" in dict_ and dict_["enable_region_overrides"] is not None:
             instance.enable_region_overrides = bool(dict_["enable_region_overrides"])
         elif include_empty:
             instance.enable_region_overrides = False
@@ -239,12 +239,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
         elif include_empty:
             instance.min_count = 0
         if "region_overrides" in dict_ and dict_["region_overrides"] is not None:
-            instance.region_overrides = {
-                str(k0): ModelsPodCountConfigOverride.create_from_dict(
-                    v0, include_empty=include_empty
-                )
-                for k0, v0 in dict_["region_overrides"].items()
-            }
+            instance.region_overrides = {str(k0): ModelsPodCountConfigOverride.create_from_dict(v0, include_empty=include_empty) for k0, v0 in dict_["region_overrides"].items()}
         elif include_empty:
             instance.region_overrides = {}
         if "regions" in dict_ and dict_["regions"] is not None:
@@ -255,36 +250,22 @@ class ModelsCreateDeploymentOverrideRequest(Model):
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
             instance.use_buffer_percent = False
+        if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
+            instance.session_timeout = int(dict_["session_timeout"])
+        elif include_empty:
+            instance.session_timeout = 0
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsCreateDeploymentOverrideRequest]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelsCreateDeploymentOverrideRequest]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsCreateDeploymentOverrideRequest]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelsCreateDeploymentOverrideRequest]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelsCreateDeploymentOverrideRequest,
-        List[ModelsCreateDeploymentOverrideRequest],
-        Dict[Any, ModelsCreateDeploymentOverrideRequest],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelsCreateDeploymentOverrideRequest, List[ModelsCreateDeploymentOverrideRequest], Dict[Any, ModelsCreateDeploymentOverrideRequest]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -308,6 +289,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
             "region_overrides": "region_overrides",
             "regions": "regions",
             "use_buffer_percent": "use_buffer_percent",
+            "session_timeout": "session_timeout",
         }
 
     @staticmethod
@@ -323,6 +305,7 @@ class ModelsCreateDeploymentOverrideRequest(Model):
             "region_overrides": True,
             "regions": True,
             "use_buffer_percent": True,
+            "session_timeout": False,
         }
 
     # endregion static methods

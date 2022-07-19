@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -76,14 +76,7 @@ from ..operations.matchmaking import UpdateMatchmakingChannel
 
 
 @same_doc_as(AddUserIntoSessionInChannel)
-def add_user_into_session_in_channel(
-    body: ModelsMatchAddUserIntoSessionRequest,
-    channel_name: str,
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def add_user_into_session_in_channel(body: ModelsMatchAddUserIntoSessionRequest, channel_name: str, match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -98,14 +91,7 @@ def add_user_into_session_in_channel(
 
 
 @same_doc_as(AddUserIntoSessionInChannel)
-async def add_user_into_session_in_channel_async(
-    body: ModelsMatchAddUserIntoSessionRequest,
-    channel_name: str,
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def add_user_into_session_in_channel_async(body: ModelsMatchAddUserIntoSessionRequest, channel_name: str, match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -116,18 +102,11 @@ async def add_user_into_session_in_channel_async(
         match_id=match_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(BulkGetSessions)
-def bulk_get_sessions(
-    match_i_ds: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def bulk_get_sessions(match_i_ds: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -140,12 +119,7 @@ def bulk_get_sessions(
 
 
 @same_doc_as(BulkGetSessions)
-async def bulk_get_sessions_async(
-    match_i_ds: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def bulk_get_sessions_async(match_i_ds: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -154,18 +128,11 @@ async def bulk_get_sessions_async(
         match_i_ds=match_i_ds,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(CreateChannelHandler)
-def create_channel_handler(
-    body: ModelsChannelRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def create_channel_handler(body: ModelsChannelRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -178,12 +145,7 @@ def create_channel_handler(
 
 
 @same_doc_as(CreateChannelHandler)
-async def create_channel_handler_async(
-    body: ModelsChannelRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def create_channel_handler_async(body: ModelsChannelRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -192,18 +154,11 @@ async def create_channel_handler_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteChannelHandler)
-def delete_channel_handler(
-    channel: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_channel_handler(channel: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -216,12 +171,7 @@ def delete_channel_handler(
 
 
 @same_doc_as(DeleteChannelHandler)
-async def delete_channel_handler_async(
-    channel: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_channel_handler_async(channel: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -230,19 +180,11 @@ async def delete_channel_handler_async(
         channel=channel,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteSessionInChannel)
-def delete_session_in_channel(
-    channel_name: str,
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_session_in_channel(channel_name: str, match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -256,13 +198,7 @@ def delete_session_in_channel(
 
 
 @same_doc_as(DeleteSessionInChannel)
-async def delete_session_in_channel_async(
-    channel_name: str,
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_session_in_channel_async(channel_name: str, match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -272,20 +208,11 @@ async def delete_session_in_channel_async(
         match_id=match_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DeleteUserFromSessionInChannel)
-def delete_user_from_session_in_channel(
-    channel_name: str,
-    match_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def delete_user_from_session_in_channel(channel_name: str, match_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -300,14 +227,7 @@ def delete_user_from_session_in_channel(
 
 
 @same_doc_as(DeleteUserFromSessionInChannel)
-async def delete_user_from_session_in_channel_async(
-    channel_name: str,
-    match_id: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def delete_user_from_session_in_channel_async(channel_name: str, match_id: str, user_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -318,18 +238,11 @@ async def delete_user_from_session_in_channel_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(DequeueSessionHandler)
-def dequeue_session_handler(
-    body: ModelsDequeueRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def dequeue_session_handler(body: ModelsDequeueRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -342,12 +255,7 @@ def dequeue_session_handler(
 
 
 @same_doc_as(DequeueSessionHandler)
-async def dequeue_session_handler_async(
-    body: ModelsDequeueRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def dequeue_session_handler_async(body: ModelsDequeueRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -356,17 +264,11 @@ async def dequeue_session_handler_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ExportChannels)
-def export_channels(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def export_channels(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -378,11 +280,7 @@ def export_channels(
 
 
 @same_doc_as(ExportChannels)
-async def export_channels_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def export_channels_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -390,19 +288,11 @@ async def export_channels_async(
     request = ExportChannels.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllChannelsHandler)
-def get_all_channels_handler(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_channels_handler(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -416,13 +306,7 @@ def get_all_channels_handler(
 
 
 @same_doc_as(GetAllChannelsHandler)
-async def get_all_channels_handler_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_channels_handler_async(limit: Optional[int] = None, offset: Optional[int] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -432,17 +316,11 @@ async def get_all_channels_handler_async(
         offset=offset,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllPartyInAllChannel)
-def get_all_party_in_all_channel(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_party_in_all_channel(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -454,11 +332,7 @@ def get_all_party_in_all_channel(
 
 
 @same_doc_as(GetAllPartyInAllChannel)
-async def get_all_party_in_all_channel_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_party_in_all_channel_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -466,18 +340,11 @@ async def get_all_party_in_all_channel_async(
     request = GetAllPartyInAllChannel.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllPartyInChannel)
-def get_all_party_in_channel(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_party_in_channel(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -490,12 +357,7 @@ def get_all_party_in_channel(
 
 
 @same_doc_as(GetAllPartyInChannel)
-async def get_all_party_in_channel_async(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_party_in_channel_async(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -504,18 +366,11 @@ async def get_all_party_in_channel_async(
         channel_name=channel_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetAllSessionsInChannel)
-def get_all_sessions_in_channel(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_all_sessions_in_channel(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -528,12 +383,7 @@ def get_all_sessions_in_channel(
 
 
 @same_doc_as(GetAllSessionsInChannel)
-async def get_all_sessions_in_channel_async(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_all_sessions_in_channel_async(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -542,18 +392,11 @@ async def get_all_sessions_in_channel_async(
         channel_name=channel_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSessionHistoryDetailed)
-def get_session_history_detailed(
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_session_history_detailed(match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -566,12 +409,7 @@ def get_session_history_detailed(
 
 
 @same_doc_as(GetSessionHistoryDetailed)
-async def get_session_history_detailed_async(
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_session_history_detailed_async(match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -580,18 +418,11 @@ async def get_session_history_detailed_async(
         match_id=match_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetSingleMatchmakingChannel)
-def get_single_matchmaking_channel(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def get_single_matchmaking_channel(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -604,12 +435,7 @@ def get_single_matchmaking_channel(
 
 
 @same_doc_as(GetSingleMatchmakingChannel)
-async def get_single_matchmaking_channel_async(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def get_single_matchmaking_channel_async(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -618,19 +444,11 @@ async def get_single_matchmaking_channel_async(
         channel_name=channel_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(ImportChannels)
-def import_channels(
-    file: Optional[Any] = None,
-    strategy: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def import_channels(file: Optional[Any] = None, strategy: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -644,13 +462,7 @@ def import_channels(
 
 
 @same_doc_as(ImportChannels)
-async def import_channels_async(
-    file: Optional[Any] = None,
-    strategy: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def import_channels_async(file: Optional[Any] = None, strategy: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -660,17 +472,11 @@ async def import_channels_async(
         strategy=strategy,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetAllMatchmakingChannel)
-def public_get_all_matchmaking_channel(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_all_matchmaking_channel(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -682,11 +488,7 @@ def public_get_all_matchmaking_channel(
 
 
 @same_doc_as(PublicGetAllMatchmakingChannel)
-async def public_get_all_matchmaking_channel_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_all_matchmaking_channel_async(namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -694,18 +496,11 @@ async def public_get_all_matchmaking_channel_async(
     request = PublicGetAllMatchmakingChannel.create(
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicGetSingleMatchmakingChannel)
-def public_get_single_matchmaking_channel(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_get_single_matchmaking_channel(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -718,12 +513,7 @@ def public_get_single_matchmaking_channel(
 
 
 @same_doc_as(PublicGetSingleMatchmakingChannel)
-async def public_get_single_matchmaking_channel_async(
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_get_single_matchmaking_channel_async(channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -732,18 +522,11 @@ async def public_get_single_matchmaking_channel_async(
         channel_name=channel_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QuerySessionHandler)
-def query_session_handler(
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_session_handler(match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -756,12 +539,7 @@ def query_session_handler(
 
 
 @same_doc_as(QuerySessionHandler)
-async def query_session_handler_async(
-    match_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_session_handler_async(match_id: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -770,18 +548,11 @@ async def query_session_handler_async(
         match_id=match_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueueSessionHandler)
-def queue_session_handler(
-    body: ModelsMatchmakingResult,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def queue_session_handler(body: ModelsMatchmakingResult, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -794,12 +565,7 @@ def queue_session_handler(
 
 
 @same_doc_as(QueueSessionHandler)
-async def queue_session_handler_async(
-    body: ModelsMatchmakingResult,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def queue_session_handler_async(body: ModelsMatchmakingResult, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -808,18 +574,11 @@ async def queue_session_handler_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(Rebalance)
-def rebalance(
-    body: ModelsRebalanceRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def rebalance(body: ModelsRebalanceRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -832,12 +591,7 @@ def rebalance(
 
 
 @same_doc_as(Rebalance)
-async def rebalance_async(
-    body: ModelsRebalanceRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def rebalance_async(body: ModelsRebalanceRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -846,24 +600,11 @@ async def rebalance_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SearchSessions)
-def search_sessions(
-    limit: int,
-    offset: int,
-    channel: Optional[str] = None,
-    deleted: Optional[bool] = None,
-    match_id: Optional[str] = None,
-    party_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def search_sessions(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -882,18 +623,7 @@ def search_sessions(
 
 
 @same_doc_as(SearchSessions)
-async def search_sessions_async(
-    limit: int,
-    offset: int,
-    channel: Optional[str] = None,
-    deleted: Optional[bool] = None,
-    match_id: Optional[str] = None,
-    party_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def search_sessions_async(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -908,24 +638,11 @@ async def search_sessions_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(SearchSessionsV2)
-def search_sessions_v2(
-    limit: int,
-    offset: int,
-    channel: Optional[str] = None,
-    deleted: Optional[bool] = None,
-    match_id: Optional[str] = None,
-    party_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def search_sessions_v2(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -944,18 +661,7 @@ def search_sessions_v2(
 
 
 @same_doc_as(SearchSessionsV2)
-async def search_sessions_v2_async(
-    limit: int,
-    offset: int,
-    channel: Optional[str] = None,
-    deleted: Optional[bool] = None,
-    match_id: Optional[str] = None,
-    party_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def search_sessions_v2_async(limit: int, offset: int, channel: Optional[str] = None, deleted: Optional[bool] = None, match_id: Optional[str] = None, party_id: Optional[str] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -970,18 +676,11 @@ async def search_sessions_v2_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(StoreMatchResults)
-def store_match_results(
-    body: ModelsMatchResultRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def store_match_results(body: ModelsMatchResultRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -994,12 +693,7 @@ def store_match_results(
 
 
 @same_doc_as(StoreMatchResults)
-async def store_match_results_async(
-    body: ModelsMatchResultRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def store_match_results_async(body: ModelsMatchResultRequest, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1008,19 +702,11 @@ async def store_match_results_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateMatchmakingChannel)
-def update_matchmaking_channel(
-    body: ModelsUpdateChannelRequest,
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def update_matchmaking_channel(body: ModelsUpdateChannelRequest, channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1034,13 +720,7 @@ def update_matchmaking_channel(
 
 
 @same_doc_as(UpdateMatchmakingChannel)
-async def update_matchmaking_channel_async(
-    body: ModelsUpdateChannelRequest,
-    channel_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def update_matchmaking_channel_async(body: ModelsUpdateChannelRequest, channel_name: str, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -1050,6 +730,4 @@ async def update_matchmaking_channel_async(
         channel_name=channel_name,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

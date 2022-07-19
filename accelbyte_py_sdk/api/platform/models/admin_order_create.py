@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-platform-service (4.11.0)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 from ....core import StrEnum
+
+from ..models.a_dto_object_for_order_creation_options import ADTOObjectForOrderCreationOptions
 
 
 class PlatformEnum(StrEnum):
@@ -56,9 +58,13 @@ class AdminOrderCreate(Model):
 
         region: (region) REQUIRED str
 
+        currency_namespace: (currencyNamespace) OPTIONAL str
+
         ext: (ext) OPTIONAL Dict[str, Any]
 
         language: (language) OPTIONAL str
+
+        options: (options) OPTIONAL ADTOObjectForOrderCreationOptions
 
         platform: (platform) OPTIONAL Union[str, PlatformEnum]
 
@@ -69,17 +75,19 @@ class AdminOrderCreate(Model):
 
     # region fields
 
-    currency_code: str  # REQUIRED
-    discounted_price: int  # REQUIRED
-    item_id: str  # REQUIRED
-    price: int  # REQUIRED
-    quantity: int  # REQUIRED
-    region: str  # REQUIRED
-    ext: Dict[str, Any]  # OPTIONAL
-    language: str  # OPTIONAL
-    platform: Union[str, PlatformEnum]  # OPTIONAL
-    return_url: str  # OPTIONAL
-    sandbox: bool  # OPTIONAL
+    currency_code: str                                                                             # REQUIRED
+    discounted_price: int                                                                          # REQUIRED
+    item_id: str                                                                                   # REQUIRED
+    price: int                                                                                     # REQUIRED
+    quantity: int                                                                                  # REQUIRED
+    region: str                                                                                    # REQUIRED
+    currency_namespace: str                                                                        # OPTIONAL
+    ext: Dict[str, Any]                                                                            # OPTIONAL
+    language: str                                                                                  # OPTIONAL
+    options: ADTOObjectForOrderCreationOptions                                                     # OPTIONAL
+    platform: Union[str, PlatformEnum]                                                             # OPTIONAL
+    return_url: str                                                                                # OPTIONAL
+    sandbox: bool                                                                                  # OPTIONAL
 
     # endregion fields
 
@@ -109,12 +117,20 @@ class AdminOrderCreate(Model):
         self.region = value
         return self
 
+    def with_currency_namespace(self, value: str) -> AdminOrderCreate:
+        self.currency_namespace = value
+        return self
+
     def with_ext(self, value: Dict[str, Any]) -> AdminOrderCreate:
         self.ext = value
         return self
 
     def with_language(self, value: str) -> AdminOrderCreate:
         self.language = value
+        return self
+
+    def with_options(self, value: ADTOObjectForOrderCreationOptions) -> AdminOrderCreate:
+        self.options = value
         return self
 
     def with_platform(self, value: Union[str, PlatformEnum]) -> AdminOrderCreate:
@@ -159,6 +175,10 @@ class AdminOrderCreate(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "currency_namespace"):
+            result["currencyNamespace"] = str(self.currency_namespace)
+        elif include_empty:
+            result["currencyNamespace"] = ""
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -167,6 +187,10 @@ class AdminOrderCreate(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "options"):
+            result["options"] = self.options.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["options"] = ADTOObjectForOrderCreationOptions()
         if hasattr(self, "platform"):
             result["platform"] = str(self.platform)
         elif include_empty:
@@ -194,8 +218,10 @@ class AdminOrderCreate(Model):
         price: int,
         quantity: int,
         region: str,
+        currency_namespace: Optional[str] = None,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
+        options: Optional[ADTOObjectForOrderCreationOptions] = None,
         platform: Optional[Union[str, PlatformEnum]] = None,
         return_url: Optional[str] = None,
         sandbox: Optional[bool] = None,
@@ -207,10 +233,14 @@ class AdminOrderCreate(Model):
         instance.price = price
         instance.quantity = quantity
         instance.region = region
+        if currency_namespace is not None:
+            instance.currency_namespace = currency_namespace
         if ext is not None:
             instance.ext = ext
         if language is not None:
             instance.language = language
+        if options is not None:
+            instance.options = options
         if platform is not None:
             instance.platform = platform
         if return_url is not None:
@@ -220,9 +250,7 @@ class AdminOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> AdminOrderCreate:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AdminOrderCreate:
         instance = cls()
         if not dict_:
             return instance
@@ -250,6 +278,10 @@ class AdminOrderCreate(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "currencyNamespace" in dict_ and dict_["currencyNamespace"] is not None:
+            instance.currency_namespace = str(dict_["currencyNamespace"])
+        elif include_empty:
+            instance.currency_namespace = ""
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -258,6 +290,10 @@ class AdminOrderCreate(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if "options" in dict_ and dict_["options"] is not None:
+            instance.options = ADTOObjectForOrderCreationOptions.create_from_dict(dict_["options"], include_empty=include_empty)
+        elif include_empty:
+            instance.options = ADTOObjectForOrderCreationOptions()
         if "platform" in dict_ and dict_["platform"] is not None:
             instance.platform = str(dict_["platform"])
         elif include_empty:
@@ -273,29 +309,15 @@ class AdminOrderCreate(Model):
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, AdminOrderCreate]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, AdminOrderCreate]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[AdminOrderCreate]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[AdminOrderCreate]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[AdminOrderCreate, List[AdminOrderCreate], Dict[Any, AdminOrderCreate]]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[AdminOrderCreate, List[AdminOrderCreate], Dict[Any, AdminOrderCreate]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -315,8 +337,10 @@ class AdminOrderCreate(Model):
             "price": "price",
             "quantity": "quantity",
             "region": "region",
+            "currencyNamespace": "currency_namespace",
             "ext": "ext",
             "language": "language",
+            "options": "options",
             "platform": "platform",
             "returnUrl": "return_url",
             "sandbox": "sandbox",
@@ -331,8 +355,10 @@ class AdminOrderCreate(Model):
             "price": True,
             "quantity": True,
             "region": True,
+            "currencyNamespace": False,
             "ext": False,
             "language": False,
+            "options": False,
             "platform": False,
             "returnUrl": False,
             "sandbox": False,
@@ -341,16 +367,7 @@ class AdminOrderCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "platform": [
-                "Epic",
-                "GooglePlay",
-                "IOS",
-                "Nintendo",
-                "Other",
-                "Playstation",
-                "Steam",
-                "Xbox",
-            ],
+            "platform": ["Epic", "GooglePlay", "IOS", "Nintendo", "Other", "Playstation", "Steam", "Xbox"],
         }
 
     # endregion static methods

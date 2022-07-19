@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-dsm-controller-service (3.3.0)
+# justice-dsm-controller-service (3.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -91,10 +91,10 @@ class UpdateDeploymentOverride(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsUpdateDeploymentOverrideRequest  # REQUIRED in [body]
-    deployment: str  # REQUIRED in [path]
-    namespace: str  # REQUIRED in [path]
-    version: str  # REQUIRED in [path]
+    body: ModelsUpdateDeploymentOverrideRequest                                                    # REQUIRED in [body]
+    deployment: str                                                                                # REQUIRED in [path]
+    namespace: str                                                                                 # REQUIRED in [path]
+    version: str                                                                                   # REQUIRED in [path]
 
     # endregion fields
 
@@ -161,9 +161,7 @@ class UpdateDeploymentOverride(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelsUpdateDeploymentOverrideRequest
-    ) -> UpdateDeploymentOverride:
+    def with_body(self, value: ModelsUpdateDeploymentOverrideRequest) -> UpdateDeploymentOverride:
         self.body = value
         return self
 
@@ -208,12 +206,7 @@ class UpdateDeploymentOverride(Operation):
     # region response methods
 
     # noinspection PyMethodMayBeStatic
-    def parse_response(
-        self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsDeploymentWithOverride],
-        Union[None, HttpResponse, ResponseError],
-    ]:
+    def parse_response(self, code: int, content_type: str, content: Any) -> Tuple[Union[None, ModelsDeploymentWithOverride], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
         200: OK - ModelsDeploymentWithOverride (deployment override updated)
@@ -232,9 +225,7 @@ class UpdateDeploymentOverride(Operation):
 
         ---: HttpResponse (Unhandled Error)
         """
-        pre_processed_response, error = self.pre_process_response(
-            code=code, content_type=content_type, content=content
-        )
+        pre_processed_response, error = self.pre_process_response(code=code, content_type=content_type, content=content)
         if error is not None:
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
@@ -250,9 +241,7 @@ class UpdateDeploymentOverride(Operation):
         if code == 500:
             return None, ResponseError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
-            code=code, content_type=content_type, content=content
-        )
+        return None, self.handle_undocumented_response(code=code, content_type=content_type, content=content)
 
     # endregion response methods
 
@@ -274,14 +263,10 @@ class UpdateDeploymentOverride(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> UpdateDeploymentOverride:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> UpdateDeploymentOverride:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsUpdateDeploymentOverrideRequest.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+            instance.body = ModelsUpdateDeploymentOverrideRequest.create_from_dict(dict_["body"], include_empty=include_empty)
         elif include_empty:
             instance.body = ModelsUpdateDeploymentOverrideRequest()
         if "deployment" in dict_ and dict_["deployment"] is not None:

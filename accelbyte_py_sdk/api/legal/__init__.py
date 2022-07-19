@@ -1,14 +1,14 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
 """Auto-generated package that contains models used by the justice-legal-service."""
 
-__version__ = "1.22.3"
+__version__ = "1.22.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -101,8 +101,6 @@ from .wrappers import create_policy_version
 from .wrappers import create_policy_version_async
 from .wrappers import publish_policy_version
 from .wrappers import publish_policy_version_async
-from .wrappers import retrieve_policy_versions
-from .wrappers import retrieve_policy_versions_async
 from .wrappers import retrieve_single_policy_version
 from .wrappers import retrieve_single_policy_version_async
 from .wrappers import update_policy_version

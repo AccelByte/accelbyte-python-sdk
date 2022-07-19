@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -188,6 +188,7 @@ def create_models_match_making_example() -> ModelsMatchMaking:
     instance.region = randomize()
     instance.server_name = randomize()
     instance.status = randomize()
+    instance.sub_game_mode = [randomize()]
     instance.joinable = randomize("bool")
     instance.party_id = randomize("uid")
     return instance

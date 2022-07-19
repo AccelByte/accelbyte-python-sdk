@@ -1,7 +1,7 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
@@ -47,13 +47,7 @@ from ..models import RewardsRequestOriginEnum, RewardsRequestSourceEnum
 
 
 @same_doc_as(FulfillItem)
-def fulfill_item(
-    user_id: str,
-    body: Optional[FulfillmentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def fulfill_item(user_id: str, body: Optional[FulfillmentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -67,13 +61,7 @@ def fulfill_item(
 
 
 @same_doc_as(FulfillItem)
-async def fulfill_item_async(
-    user_id: str,
-    body: Optional[FulfillmentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def fulfill_item_async(user_id: str, body: Optional[FulfillmentRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -83,19 +71,11 @@ async def fulfill_item_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(FulfillRewards)
-def fulfill_rewards(
-    user_id: str,
-    body: Optional[RewardsRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def fulfill_rewards(user_id: str, body: Optional[RewardsRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -109,13 +89,7 @@ def fulfill_rewards(
 
 
 @same_doc_as(FulfillRewards)
-async def fulfill_rewards_async(
-    user_id: str,
-    body: Optional[RewardsRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def fulfill_rewards_async(user_id: str, body: Optional[RewardsRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -125,19 +99,11 @@ async def fulfill_rewards_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(PublicRedeemCode)
-def public_redeem_code(
-    user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def public_redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -151,13 +117,7 @@ def public_redeem_code(
 
 
 @same_doc_as(PublicRedeemCode)
-async def public_redeem_code_async(
-    user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def public_redeem_code_async(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -167,21 +127,11 @@ async def public_redeem_code_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(QueryFulfillmentHistories)
-def query_fulfillment_histories(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def query_fulfillment_histories(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -197,15 +147,7 @@ def query_fulfillment_histories(
 
 
 @same_doc_as(QueryFulfillmentHistories)
-async def query_fulfillment_histories_async(
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def query_fulfillment_histories_async(limit: Optional[int] = None, offset: Optional[int] = None, status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None, user_id: Optional[str] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -217,19 +159,11 @@ async def query_fulfillment_histories_async(
         user_id=user_id,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RedeemCode)
-def redeem_code(
-    user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+def redeem_code(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -243,13 +177,7 @@ def redeem_code(
 
 
 @same_doc_as(RedeemCode)
-async def redeem_code_async(
-    user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
+async def redeem_code_async(user_id: str, body: Optional[FulfillCodeRequest] = None, namespace: Optional[str] = None, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
@@ -259,6 +187,4 @@ async def redeem_code_async(
         body=body,
         namespace=namespace,
     )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
+    return await run_request_async(request, additional_headers=x_additional_headers, **kwargs)

@@ -1,12 +1,12 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-#
+# 
 # Code generated. DO NOT EDIT!
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# justice-iam-service (5.12.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,15 +39,13 @@ class ModelPublicUsersResponse(Model):
 
     # region fields
 
-    users: List[ModelPublicUserResponse]  # OPTIONAL
+    users: List[ModelPublicUserResponse]                                                           # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_users(
-        self, value: List[ModelPublicUserResponse]
-    ) -> ModelPublicUsersResponse:
+    def with_users(self, value: List[ModelPublicUserResponse]) -> ModelPublicUsersResponse:
         self.users = value
         return self
 
@@ -58,9 +56,7 @@ class ModelPublicUsersResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "users"):
-            result["Users"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.users
-            ]
+            result["Users"] = [i0.to_dict(include_empty=include_empty) for i0 in self.users]
         elif include_empty:
             result["Users"] = []
         return result
@@ -80,51 +76,26 @@ class ModelPublicUsersResponse(Model):
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> ModelPublicUsersResponse:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelPublicUsersResponse:
         instance = cls()
         if not dict_:
             return instance
         if "Users" in dict_ and dict_["Users"] is not None:
-            instance.users = [
-                ModelPublicUserResponse.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["Users"]
-            ]
+            instance.users = [ModelPublicUserResponse.create_from_dict(i0, include_empty=include_empty) for i0 in dict_["Users"]]
         elif include_empty:
             instance.users = []
         return instance
 
     @classmethod
-    def create_many_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelPublicUsersResponse]:
-        return (
-            {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
-            if dict_
-            else {}
-        )
+    def create_many_from_dict(cls, dict_: dict, include_empty: bool = False) -> Dict[str, ModelPublicUsersResponse]:
+        return {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_} if dict_ else {}
 
     @classmethod
-    def create_many_from_list(
-        cls, list_: list, include_empty: bool = False
-    ) -> List[ModelPublicUsersResponse]:
-        return (
-            [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
-            if list_
-            else []
-        )
+    def create_many_from_list(cls, list_: list, include_empty: bool = False) -> List[ModelPublicUsersResponse]:
+        return [cls.create_from_dict(i, include_empty=include_empty) for i in list_] if list_ else []
 
     @classmethod
-    def create_from_any(
-        cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[
-        ModelPublicUsersResponse,
-        List[ModelPublicUsersResponse],
-        Dict[Any, ModelPublicUsersResponse],
-    ]:
+    def create_from_any(cls, any_: any, include_empty: bool = False, many: bool = False) -> Union[ModelPublicUsersResponse, List[ModelPublicUsersResponse], Dict[Any, ModelPublicUsersResponse]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
