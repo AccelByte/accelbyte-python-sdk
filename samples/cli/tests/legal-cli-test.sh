@@ -66,7 +66,6 @@ legal-indirect-bulk-accept-versioned-policy-1 '1pHyhhER' --body '[{"isAccepted":
 legal-retrieve-eligibilities-public --login_with_auth "Bearer foo"
 legal-retrieve-eligibilities-public-indirect 'XiPLQXSe' '07ZddOGT' 'MlJjBwj9' --login_with_auth "Bearer foo"
 legal-retrieve-single-localized-policy-version-1 'HJHQKseE' --login_with_auth "Bearer foo"
-legal-retrieve-policy-versions --login_with_auth "Bearer foo"
 legal-retrieve-latest-policies 'dSXRDSvg' --login_with_auth "Bearer foo"
 legal-retrieve-latest-policies-public --login_with_auth "Bearer foo"
 legal-retrieve-latest-policies-by-namespace-and-country-public 'uauw1xT7' --login_with_auth "Bearer foo"
@@ -90,7 +89,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..43"
+echo "1..42"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -372,37 +371,31 @@ $PYTHON -m $MODULE 'legal-retrieve-single-localized-policy-version-1' \
     > test.out 2>&1
 eval_tap $? 38 'RetrieveSingleLocalizedPolicyVersion1' test.out
 
-#- 39 RetrievePolicyVersions
-$PYTHON -m $MODULE 'legal-retrieve-policy-versions' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 39 'RetrievePolicyVersions' test.out
-
-#- 40 RetrieveLatestPolicies
+#- 39 RetrieveLatestPolicies
 $PYTHON -m $MODULE 'legal-retrieve-latest-policies' \
     'EVc75Ufe' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 40 'RetrieveLatestPolicies' test.out
+eval_tap $? 39 'RetrieveLatestPolicies' test.out
 
-#- 41 RetrieveLatestPoliciesPublic
+#- 40 RetrieveLatestPoliciesPublic
 $PYTHON -m $MODULE 'legal-retrieve-latest-policies-public' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 41 'RetrieveLatestPoliciesPublic' test.out
+eval_tap $? 40 'RetrieveLatestPoliciesPublic' test.out
 
-#- 42 RetrieveLatestPoliciesByNamespaceAndCountryPublic
+#- 41 RetrieveLatestPoliciesByNamespaceAndCountryPublic
 $PYTHON -m $MODULE 'legal-retrieve-latest-policies-by-namespace-and-country-public' \
     'ypWjDNhz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 42 'RetrieveLatestPoliciesByNamespaceAndCountryPublic' test.out
+eval_tap $? 41 'RetrieveLatestPoliciesByNamespaceAndCountryPublic' test.out
 
-#- 43 CheckReadiness
+#- 42 CheckReadiness
 $PYTHON -m $MODULE 'legal-check-readiness' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 43 'CheckReadiness' test.out
+eval_tap $? 42 'CheckReadiness' test.out
 
 
 fi
