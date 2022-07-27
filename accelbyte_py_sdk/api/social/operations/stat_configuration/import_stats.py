@@ -23,6 +23,7 @@
 # justice-social-service (1.29.3)
 
 from __future__ import annotations
+import math
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .....core import Operation
@@ -211,9 +212,10 @@ class ImportStats(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
+        code_class = math.floor(200 / 100)*100
+        if code_class == 200:
             return StatImportInfo.create_from_dict(content), None
-        if code == 400:
+        if code_class >= 400:
             return None, ErrorEntity.create_from_dict(content)
 
         return None, self.handle_undocumented_response(
