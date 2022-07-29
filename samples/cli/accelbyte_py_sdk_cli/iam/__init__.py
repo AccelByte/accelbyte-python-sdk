@@ -266,10 +266,14 @@ from ._platform_token_grant_v3 import platform_token_grant_v3
 from ._get_revocation_list_v3 import get_revocation_list_v3
 from ._token_revocation_v3 import token_revocation_v3
 from ._token_grant_v3 import token_grant_v3
+from ._verify_token_v3 import verify_token_v3
 from ._platform_authentication_v3 import platform_authentication_v3
 from ._public_get_input_validations import public_get_input_validations
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
+)
+from ._retrieve_active_oidc_clients_public_v3 import (
+    retrieve_active_oidc_clients_public_v3,
 )
 from ._public_list_user_id_by_platform_user_i_ds_v3 import (
     public_list_user_id_by_platform_user_i_ds_v3,
@@ -591,9 +595,11 @@ commands = [
     get_revocation_list_v3,
     token_revocation_v3,
     token_grant_v3,
+    verify_token_v3,
     platform_authentication_v3,
     public_get_input_validations,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
+    retrieve_active_oidc_clients_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,
     public_get_user_by_platform_user_idv3,
     public_get_async_status,

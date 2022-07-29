@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Analytics Game Telemetry (1.7.2)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,53 +30,40 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.gametelemetry import (
-    protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get as protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal,
+from accelbyte_py_sdk.api.platform import (
+    get_available_predicate_types as get_available_predicate_types_internal,
 )
-from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import AvailablePredicateObject
 
 
 @click.command()
-@click.argument("steam_id", type=str)
-@click.option("--cookie", "cookie", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(
-    steam_id: str,
-    cookie: Optional[str] = None,
+def get_available_predicate_types(
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(
-            protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal.__doc__
-        )
+        click.echo(get_available_predicate_types_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    (
-        result,
-        error,
-    ) = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
-        steam_id=steam_id,
-        cookie=cookie,
+    result, error = get_available_predicate_types_internal(
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(
-            f"protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get failed: {str(error)}"
-        )
+        raise Exception(f"getAvailablePredicateTypes failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.operation_id = (
-    "protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get"
-)
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.is_deprecated = (
-    False
-)
+get_available_predicate_types.operation_id = "getAvailablePredicateTypes"
+get_available_predicate_types.is_deprecated = False

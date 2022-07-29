@@ -62,4 +62,4 @@ def revoke_a_user(
 
 
 revoke_a_user.operation_id = "RevokeAUser"
-revoke_a_user.is_deprecated = True
+revoke_a_user.is_deprecated = False

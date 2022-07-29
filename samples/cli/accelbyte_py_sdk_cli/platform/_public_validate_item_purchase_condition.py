@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Analytics Game Telemetry (1.7.2)
+# justice-platform-service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,53 +30,52 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.gametelemetry import (
-    protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get as protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal,
+from accelbyte_py_sdk.api.platform import (
+    public_validate_item_purchase_condition as public_validate_item_purchase_condition_internal,
 )
-from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.platform.models import ItemPurchaseConditionValidateRequest
+from accelbyte_py_sdk.api.platform.models import ItemPurchaseConditionValidateResult
+from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.argument("steam_id", type=str)
-@click.option("--cookie", "cookie", type=str)
+@click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(
-    steam_id: str,
-    cookie: Optional[str] = None,
+def public_validate_item_purchase_condition(
+    body: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(
-            protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal.__doc__
-        )
+        click.echo(public_validate_item_purchase_condition_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    (
-        result,
-        error,
-    ) = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
-        steam_id=steam_id,
-        cookie=cookie,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ItemPurchaseConditionValidateRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = public_validate_item_purchase_condition_internal(
+        body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(
-            f"protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get failed: {str(error)}"
-        )
+        raise Exception(f"publicValidateItemPurchaseCondition failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.operation_id = (
-    "protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get"
+public_validate_item_purchase_condition.operation_id = (
+    "publicValidateItemPurchaseCondition"
 )
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.is_deprecated = (
-    False
-)
+public_validate_item_purchase_condition.is_deprecated = False

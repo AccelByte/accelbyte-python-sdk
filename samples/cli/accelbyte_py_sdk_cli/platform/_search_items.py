@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.platform.models import FullItemPagingSlicedResult
 @click.argument("keyword", type=str)
 @click.argument("language", type=str)
 @click.option("--active_only", "active_only", type=bool)
+@click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--store_id", "store_id", type=str)
@@ -50,6 +51,7 @@ def search_items(
     keyword: str,
     language: str,
     active_only: Optional[bool] = None,
+    item_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     store_id: Optional[str] = None,
@@ -70,6 +72,7 @@ def search_items(
         keyword=keyword,
         language=language,
         active_only=active_only,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         store_id=store_id,

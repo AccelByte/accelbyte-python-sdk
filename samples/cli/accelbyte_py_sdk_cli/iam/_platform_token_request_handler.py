@@ -75,4 +75,4 @@ def platform_token_request_handler(
 
 
 platform_token_request_handler.operation_id = "PlatformTokenRequestHandler"
-platform_token_request_handler.is_deprecated = True
+platform_token_request_handler.is_deprecated = False

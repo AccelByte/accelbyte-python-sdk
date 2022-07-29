@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
 @click.command()
 @click.argument("keyword", type=str)
 @click.argument("language", type=str)
+@click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--region", "region", type=str)
@@ -51,6 +52,7 @@ from accelbyte_py_sdk.api.platform.models import ItemPagingSlicedResult
 def public_search_items(
     keyword: str,
     language: str,
+    item_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -71,6 +73,7 @@ def public_search_items(
     result, error = public_search_items_internal(
         keyword=keyword,
         language=language,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         region=region,

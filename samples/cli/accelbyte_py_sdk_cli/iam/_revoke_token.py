@@ -62,4 +62,4 @@ def revoke_token(
 
 
 revoke_token.operation_id = "RevokeToken"
-revoke_token.is_deprecated = True
+revoke_token.is_deprecated = False

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-ugc-service (2.3.0)
+# justice-iam-service (5.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,41 +30,45 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ugc import get_creator as get_creator_internal
-from accelbyte_py_sdk.api.ugc.models import ModelsCreatorResponse
-from accelbyte_py_sdk.api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.iam import (
+    retrieve_active_oidc_clients_public_v3 as retrieve_active_oidc_clients_public_v3_internal,
+)
+from accelbyte_py_sdk.api.iam.models import ModelPublicThirdPartyPlatformInfo
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.argument("user_id", type=str)
+@click.argument("client_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_creator(
-    user_id: str,
+def retrieve_active_oidc_clients_public_v3(
+    client_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_creator_internal.__doc__)
+        click.echo(retrieve_active_oidc_clients_public_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_creator_internal(
-        user_id=user_id,
+    result, error = retrieve_active_oidc_clients_public_v3_internal(
+        client_id=client_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"GetCreator failed: {str(error)}")
+        raise Exception(f"RetrieveActiveOIDCClientsPublicV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_creator.operation_id = "GetCreator"
-get_creator.is_deprecated = False
+retrieve_active_oidc_clients_public_v3.operation_id = (
+    "RetrieveActiveOIDCClientsPublicV3"
+)
+retrieve_active_oidc_clients_public_v3.is_deprecated = False

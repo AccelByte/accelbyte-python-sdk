@@ -72,8 +72,9 @@ from ._update_content_like_status import update_content_like_status
 from ._public_download_content_preview import public_download_content_preview
 from ._get_tag import get_tag
 from ._get_type import get_type
+from ._public_search_creator import public_search_creator
 from ._get_followed_users import get_followed_users
-from ._get_creator import get_creator
+from ._public_get_creator import public_get_creator
 from ._get_channels import get_channels
 from ._create_channel import create_channel
 from ._delete_all_user_channel import delete_all_user_channel
@@ -163,8 +164,9 @@ commands = [
     public_download_content_preview,
     get_tag,
     get_type,
+    public_search_creator,
     get_followed_users,
-    get_creator,
+    public_get_creator,
     get_channels,
     create_channel,
     delete_all_user_channel,

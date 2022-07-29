@@ -31,27 +31,39 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import (
-    protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get as protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal,
+    get_events_game_telemetry_v1_admin_namespaces_namespace_events_get as get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_internal,
 )
 from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
 
 
 @click.command()
-@click.argument("steam_id", type=str)
-@click.option("--cookie", "cookie", type=str)
+@click.option("--end_time", "end_time", type=str)
+@click.option("--event_id", "event_id", type=str)
+@click.option("--event_name", "event_name", type=str)
+@click.option("--event_payload", "event_payload", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--start_time", "start_time", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get(
-    steam_id: str,
-    cookie: Optional[str] = None,
+def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
+    end_time: Optional[str] = None,
+    event_id: Optional[str] = None,
+    event_name: Optional[str] = None,
+    event_payload: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
         click.echo(
-            protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal.__doc__
+            get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_internal.__doc__
         )
         return
     x_additional_headers = None
@@ -62,21 +74,25 @@ def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playti
     (
         result,
         error,
-    ) = protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get_internal(
-        steam_id=steam_id,
-        cookie=cookie,
+    ) = get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_internal(
+        end_time=end_time,
+        event_id=event_id,
+        event_name=event_name,
+        event_payload=event_payload,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
         raise Exception(
-            f"protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get failed: {str(error)}"
+            f"get_events_game_telemetry_v1_admin_namespaces__namespace__events_get failed: {str(error)}"
         )
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.operation_id = (
-    "protected_get_playtime_game_telemetry_v1_protected_steamIds__steamId__playtime_get"
+get_events_game_telemetry_v1_admin_namespaces_namespace_events_get.operation_id = (
+    "get_events_game_telemetry_v1_admin_namespaces__namespace__events_get"
 )
-protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get.is_deprecated = (
-    False
-)
+get_events_game_telemetry_v1_admin_namespaces_namespace_events_get.is_deprecated = False

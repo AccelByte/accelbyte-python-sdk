@@ -90,6 +90,8 @@ from ._get_locale_item_by_sku import get_locale_item_by_sku
 from ._get_item_id_by_sku import get_item_id_by_sku
 from ._get_bulk_item_id_by_skus import get_bulk_item_id_by_skus
 from ._bulk_get_locale_items import bulk_get_locale_items
+from ._get_available_predicate_types import get_available_predicate_types
+from ._validate_item_purchase_condition import validate_item_purchase_condition
 from ._search_items import search_items
 from ._query_uncategorized_items import query_uncategorized_items
 from ._get_item import get_item
@@ -104,6 +106,7 @@ from ._enable_item import enable_item
 from ._feature_item import feature_item
 from ._defeature_item import defeature_item
 from ._get_locale_item import get_locale_item
+from ._update_item_purchase_condition import update_item_purchase_condition
 from ._return_item import return_item
 from ._query_key_groups import query_key_groups
 from ._create_key_group import create_key_group
@@ -190,6 +193,9 @@ from ._get_user_app_entitlement_ownership_by_app_id import (
 )
 from ._get_user_entitlement_ownership_by_item_id import (
     get_user_entitlement_ownership_by_item_id,
+)
+from ._get_user_entitlement_ownership_by_item_ids import (
+    get_user_entitlement_ownership_by_item_ids,
 )
 from ._get_user_entitlement_ownership_by_sku import (
     get_user_entitlement_ownership_by_sku,
@@ -300,6 +306,9 @@ from ._public_get_item_by_app_id import public_get_item_by_app_id
 from ._public_query_items import public_query_items
 from ._public_get_item_by_sku import public_get_item_by_sku
 from ._public_bulk_get_items import public_bulk_get_items
+from ._public_validate_item_purchase_condition import (
+    public_validate_item_purchase_condition,
+)
 from ._public_search_items import public_search_items
 from ._public_get_app import public_get_app
 from ._public_get_item_dynamic_data import public_get_item_dynamic_data
@@ -359,6 +368,9 @@ from ._public_get_user_app_entitlement_ownership_by_app_id import (
 )
 from ._public_get_user_entitlement_ownership_by_item_id import (
     public_get_user_entitlement_ownership_by_item_id,
+)
+from ._public_get_user_entitlement_ownership_by_item_ids import (
+    public_get_user_entitlement_ownership_by_item_ids,
 )
 from ._public_get_user_entitlement_ownership_by_sku import (
     public_get_user_entitlement_ownership_by_sku,
@@ -482,6 +494,8 @@ commands = [
     get_item_id_by_sku,
     get_bulk_item_id_by_skus,
     bulk_get_locale_items,
+    get_available_predicate_types,
+    validate_item_purchase_condition,
     search_items,
     query_uncategorized_items,
     get_item,
@@ -496,6 +510,7 @@ commands = [
     feature_item,
     defeature_item,
     get_locale_item,
+    update_item_purchase_condition,
     return_item,
     query_key_groups,
     create_key_group,
@@ -577,6 +592,7 @@ commands = [
     exists_any_user_active_entitlement_by_item_ids,
     get_user_app_entitlement_ownership_by_app_id,
     get_user_entitlement_ownership_by_item_id,
+    get_user_entitlement_ownership_by_item_ids,
     get_user_entitlement_ownership_by_sku,
     revoke_user_entitlements,
     get_user_entitlement,
@@ -674,6 +690,7 @@ commands = [
     public_query_items,
     public_get_item_by_sku,
     public_bulk_get_items,
+    public_validate_item_purchase_condition,
     public_search_items,
     public_get_app,
     public_get_item_dynamic_data,
@@ -710,6 +727,7 @@ commands = [
     public_exists_any_user_active_entitlement,
     public_get_user_app_entitlement_ownership_by_app_id,
     public_get_user_entitlement_ownership_by_item_id,
+    public_get_user_entitlement_ownership_by_item_ids,
     public_get_user_entitlement_ownership_by_sku,
     public_get_user_entitlement,
     public_consume_user_entitlement,

@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.cloudsave import (
     post_player_public_record_handler_v1 as post_player_public_record_handler_v1_internal,
 )
 from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecordRequest
+from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecordResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 
