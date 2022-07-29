@@ -287,7 +287,7 @@ class GetEventByEventTypeAndEventIDHandler(Operation):
         if code == 500:
             return None, HttpResponse.create(code, "Internal Server Error")
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

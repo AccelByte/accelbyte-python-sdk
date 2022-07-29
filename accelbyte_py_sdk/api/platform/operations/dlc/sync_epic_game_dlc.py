@@ -203,7 +203,7 @@ class SyncEpicGameDLC(Operation):
         if code == 204:
             return None, None
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

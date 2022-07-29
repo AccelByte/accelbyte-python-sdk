@@ -291,7 +291,7 @@ class QueryEventStreamHandler(Operation):
         if code == 501:
             return None, HttpResponse.create(code, "Not Implemented")
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

@@ -229,7 +229,7 @@ class CreateClientByNamespace(Operation):
         if code == 409:
             return None, HttpResponse.create(code, "Conflict")
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

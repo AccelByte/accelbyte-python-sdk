@@ -246,7 +246,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

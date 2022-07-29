@@ -172,7 +172,7 @@ class VerifyToken(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

@@ -179,7 +179,7 @@ class GetUserInfoStatus(Operation):
                 RetrieveUserInfoCacheStatusResponse.create_from_dict(i) for i in content
             ], None
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

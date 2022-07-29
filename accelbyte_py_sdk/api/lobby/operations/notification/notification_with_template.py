@@ -225,7 +225,7 @@ class NotificationWithTemplate(Operation):
         if code == 404:
             return None, RestapiErrorResponseBody.create_from_dict(content)
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

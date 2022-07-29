@@ -318,7 +318,7 @@ class QueryPaymentNotifications(Operation):
         if code == 200:
             return PaymentNotificationPagingSlicedResult.create_from_dict(content), None
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

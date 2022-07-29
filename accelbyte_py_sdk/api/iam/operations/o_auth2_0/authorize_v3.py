@@ -378,7 +378,7 @@ class AuthorizeV3(Operation):
         if code == 302:
             return HttpResponse.create_redirect(code, content), None
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 

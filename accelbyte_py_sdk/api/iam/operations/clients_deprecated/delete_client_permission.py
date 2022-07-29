@@ -232,7 +232,7 @@ class DeleteClientPermission(Operation):
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 
-        return None, self.handle_undocumented_response(
+        return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
         )
 
