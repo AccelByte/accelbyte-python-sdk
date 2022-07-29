@@ -8,6 +8,7 @@
     # previously: result (None),                     error (UndocumentedResponse 201)
     # now:        result (UndocumentedResponse 201), error (None)
     ```
+- Updated spec for Justice 3.28.
 
 ## v0.19.0
 - ! Change default `login_x(auto_refresh)` value to `False`. You are encouraged to use any of the `LoginXTimer` classes.
