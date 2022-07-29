@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.20.0
+- ! Only 4XX and 5XX **undocumented** responses are considered as an error.
+    ```python
+    result, error = some_endpoint_with_200_400_response_that_will_return_201()
+
+    # previously: result (None),                     error (UndocumentedResponse 201)
+    # now:        result (UndocumentedResponse 201), error (None)
+    ```
+
 ## v0.19.0
 - ! Change default `login_x(auto_refresh)` value to `False`. You are encouraged to use any of the `LoginXTimer` classes.
 - Add Sample OIDC App.
