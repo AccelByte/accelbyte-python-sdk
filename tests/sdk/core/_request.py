@@ -634,7 +634,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return content, None
 
-                return None, self.handle_undocumented_response(
+                admin_get_bans_type_v3ocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -699,7 +699,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return HttpBinJsonModel.create_from_dict(content), None
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -776,7 +776,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 201:
                     return HttpBinJsonModel.create_from_dict(content), None
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -831,7 +831,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 204:
                     return None, None
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -889,7 +889,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return content, None
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -966,7 +966,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 403:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1045,7 +1045,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 404:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1124,7 +1124,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 503:
                     return None, HttpBinJsonModel.create_from_dict(content)
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1180,7 +1180,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 403:
                     return None, content
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1235,7 +1235,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 404:
                     return None, content
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1290,7 +1290,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 503:
                     return None, content
 
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1342,7 +1342,7 @@ class HttpBinRequestTestCase(TestCase):
                 return {}
 
             def parse_response(self, code: int, content_type: str, content: Any):
-                return None, self.handle_undocumented_response(
+                return self.handle_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 
@@ -1376,10 +1376,10 @@ class HttpBinRequestTestCase(TestCase):
         )
 
         # assert
-        self.assertIsNone(result)
-        self.assertIsNotNone(error)
-        self.assertIsInstance(error, HttpResponse)
-        self.assertEqual("error", error.content_type)
+        self.assertIsNone(error)
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, HttpResponse)
+        self.assertEqual("application/json", result.content_type)
 
 
 class MockServerRequestTestCase(TestCase):
