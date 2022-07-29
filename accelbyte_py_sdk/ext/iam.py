@@ -1282,6 +1282,7 @@ def create_model_public_third_party_platform_info_example() -> ModelPublicThirdP
     instance.environment = randomize()
     instance.is_active = randomize("bool")
     instance.platform_id = randomize()
+    instance.platform_name = randomize()
     return instance
 
 
@@ -1632,7 +1633,9 @@ def create_model_sso_platform_credential_response_example() -> ModelSSOPlatformC
 def create_model_third_party_login_platform_credential_request_example() -> ModelThirdPartyLoginPlatformCredentialRequest:
     instance = ModelThirdPartyLoginPlatformCredentialRequest()
     instance.acsurl = randomize()
+    instance.allowed_clients = [randomize()]
     instance.app_id = randomize("uid")
+    instance.authorization_endpoint = randomize()
     instance.aws_cognito_region = randomize()
     instance.aws_cognito_user_pool = randomize()
     instance.client_id = randomize("uid")
@@ -1647,16 +1650,19 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.organization_id = randomize()
     instance.platform_name = randomize()
     instance.redirect_uri = randomize()
+    instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.secret = randomize()
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
     instance.token_claims_mapping = {randomize(): randomize()}
+    instance.token_endpoint = randomize()
     return instance
 
 
 def create_model_third_party_login_platform_credential_response_example() -> ModelThirdPartyLoginPlatformCredentialResponse:
     instance = ModelThirdPartyLoginPlatformCredentialResponse()
     instance.acsurl = randomize()
+    instance.allowed_clients = [randomize()]
     instance.app_id = randomize("uid")
     instance.aws_cognito_region = randomize()
     instance.aws_cognito_user_pool = randomize()
@@ -1678,7 +1684,9 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
     instance.token_claims_mapping = {randomize(): randomize()}
+    instance.authorization_endpoint = randomize()
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
+    instance.token_endpoint = randomize()
     return instance
 
 

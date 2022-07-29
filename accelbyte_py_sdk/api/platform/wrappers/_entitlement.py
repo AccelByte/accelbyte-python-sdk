@@ -36,6 +36,7 @@ from ..models import EntitlementDecrement
 from ..models import EntitlementGrant
 from ..models import EntitlementHistoryInfo
 from ..models import EntitlementInfo
+from ..models import EntitlementOwnership
 from ..models import EntitlementPagingSlicedResult
 from ..models import EntitlementUpdate
 from ..models import ErrorEntity
@@ -63,6 +64,7 @@ from ..operations.entitlement import GetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import (
     GetUserEntitlementOwnershipByItemIdEntitlementClazzEnum,
 )
+from ..operations.entitlement import GetUserEntitlementOwnershipByItemIds
 from ..operations.entitlement import GetUserEntitlementOwnershipBySku
 from ..operations.entitlement import (
     GetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
@@ -94,6 +96,7 @@ from ..operations.entitlement import PublicGetUserEntitlementOwnershipByItemId
 from ..operations.entitlement import (
     PublicGetUserEntitlementOwnershipByItemIdEntitlementClazzEnum,
 )
+from ..operations.entitlement import PublicGetUserEntitlementOwnershipByItemIds
 from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySku
 from ..operations.entitlement import (
     PublicGetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
@@ -723,6 +726,48 @@ async def get_user_entitlement_ownership_by_item_id_async(
         item_id=item_id,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetUserEntitlementOwnershipByItemIds)
+def get_user_entitlement_ownership_by_item_ids(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementOwnershipByItemIds.create(
+        user_id=user_id,
+        ids=ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserEntitlementOwnershipByItemIds)
+async def get_user_entitlement_ownership_by_item_ids_async(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementOwnershipByItemIds.create(
+        user_id=user_id,
+        ids=ids,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1409,6 +1454,48 @@ async def public_get_user_entitlement_ownership_by_item_id_async(
         item_id=item_id,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetUserEntitlementOwnershipByItemIds)
+def public_get_user_entitlement_ownership_by_item_ids(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementOwnershipByItemIds.create(
+        user_id=user_id,
+        ids=ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserEntitlementOwnershipByItemIds)
+async def public_get_user_entitlement_ownership_by_item_ids_async(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementOwnershipByItemIds.create(
+        user_id=user_id,
+        ids=ids,
         namespace=namespace,
     )
     return await run_request_async(

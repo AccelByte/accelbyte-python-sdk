@@ -51,7 +51,7 @@ class TokenGrantV3(Operation):
       1. Grant Type == `authorization_code`:
 
         It generates the user token by given the authorization
-    code which generated in "/v3/oauth/auth" API response. It should also pass
+    code which generated in "/iam/v3/authenticate" API response. It should also pass
     in the redirect_uri, which should be the same as generating the
     authorization code request.
 

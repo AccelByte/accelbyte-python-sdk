@@ -86,26 +86,6 @@ from .wrappers import admin_update_input_validations_async
 from .wrappers import public_get_input_validations
 from .wrappers import public_get_input_validations_async
 
-# o_auth
-from .wrappers import authorization
-from .wrappers import authorization_async
-from .wrappers import get_jwks
-from .wrappers import get_jwks_async
-from .wrappers import get_revocation_list
-from .wrappers import get_revocation_list_async
-from .wrappers import platform_token_request_handler
-from .wrappers import platform_token_request_handler_async
-from .wrappers import revoke_a_user
-from .wrappers import revoke_a_user_async
-from .wrappers import revoke_token
-from .wrappers import revoke_token_async
-from .wrappers import revoke_user
-from .wrappers import revoke_user_async
-from .wrappers import token_grant
-from .wrappers import token_grant_async
-from .wrappers import verify_token
-from .wrappers import verify_token_async
-
 # o_auth2_0
 from .wrappers import admin_retrieve_user_third_party_platform_token_v3
 from .wrappers import admin_retrieve_user_third_party_platform_token_v3_async
@@ -133,6 +113,8 @@ from .wrappers import token_revocation_v3
 from .wrappers import token_revocation_v3_async
 from .wrappers import verify2fa_code
 from .wrappers import verify2fa_code_async
+from .wrappers import verify_token_v3
+from .wrappers import verify_token_v3_async
 
 # o_auth2_0_extension
 from .wrappers import authentication_with_platform_link_v3
@@ -147,6 +129,26 @@ from .wrappers import platform_authentication_v3
 from .wrappers import platform_authentication_v3_async
 from .wrappers import user_authentication_v3
 from .wrappers import user_authentication_v3_async
+
+# o_auth_deprecated
+from .wrappers import authorization
+from .wrappers import authorization_async
+from .wrappers import get_jwks
+from .wrappers import get_jwks_async
+from .wrappers import get_revocation_list
+from .wrappers import get_revocation_list_async
+from .wrappers import platform_token_request_handler
+from .wrappers import platform_token_request_handler_async
+from .wrappers import revoke_a_user
+from .wrappers import revoke_a_user_async
+from .wrappers import revoke_token
+from .wrappers import revoke_token_async
+from .wrappers import revoke_user
+from .wrappers import revoke_user_async
+from .wrappers import token_grant
+from .wrappers import token_grant_async
+from .wrappers import verify_token
+from .wrappers import verify_token_async
 
 # roles
 from .wrappers import admin_add_role_managers_v3
@@ -277,6 +279,8 @@ from .wrappers import delete_third_party_login_platform_credential_v3
 from .wrappers import delete_third_party_login_platform_credential_v3_async
 from .wrappers import delete_third_party_login_platform_domain_v3
 from .wrappers import delete_third_party_login_platform_domain_v3_async
+from .wrappers import retrieve_active_oidc_clients_public_v3
+from .wrappers import retrieve_active_oidc_clients_public_v3_async
 from .wrappers import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
 )

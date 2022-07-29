@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.models_payload_url import ModelsPayloadURL
+from ..models.models_preview_url import ModelsPreviewURL
 
 
 class ModelsCreateContentResponse(Model):
@@ -62,11 +63,15 @@ class ModelsCreateContentResponse(Model):
 
         type_: (type) REQUIRED str
 
+        updated_time: (updatedTime) REQUIRED str
+
         user_id: (userId) REQUIRED str
 
         content_type: (contentType) OPTIONAL str
 
         payload_url: (payloadURL) OPTIONAL List[ModelsPayloadURL]
+
+        preview_url: (previewURL) OPTIONAL List[ModelsPreviewURL]
     """
 
     # region fields
@@ -85,9 +90,11 @@ class ModelsCreateContentResponse(Model):
     sub_type: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
+    updated_time: str  # REQUIRED
     user_id: str  # REQUIRED
     content_type: str  # OPTIONAL
     payload_url: List[ModelsPayloadURL]  # OPTIONAL
+    preview_url: List[ModelsPreviewURL]  # OPTIONAL
 
     # endregion fields
 
@@ -149,6 +156,10 @@ class ModelsCreateContentResponse(Model):
         self.type_ = value
         return self
 
+    def with_updated_time(self, value: str) -> ModelsCreateContentResponse:
+        self.updated_time = value
+        return self
+
     def with_user_id(self, value: str) -> ModelsCreateContentResponse:
         self.user_id = value
         return self
@@ -161,6 +172,12 @@ class ModelsCreateContentResponse(Model):
         self, value: List[ModelsPayloadURL]
     ) -> ModelsCreateContentResponse:
         self.payload_url = value
+        return self
+
+    def with_preview_url(
+        self, value: List[ModelsPreviewURL]
+    ) -> ModelsCreateContentResponse:
+        self.preview_url = value
         return self
 
     # endregion with_x methods
@@ -225,6 +242,10 @@ class ModelsCreateContentResponse(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "updated_time"):
+            result["updatedTime"] = str(self.updated_time)
+        elif include_empty:
+            result["updatedTime"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -239,6 +260,12 @@ class ModelsCreateContentResponse(Model):
             ]
         elif include_empty:
             result["payloadURL"] = []
+        if hasattr(self, "preview_url"):
+            result["previewURL"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.preview_url
+            ]
+        elif include_empty:
+            result["previewURL"] = []
         return result
 
     # endregion to methods
@@ -262,9 +289,11 @@ class ModelsCreateContentResponse(Model):
         sub_type: str,
         tags: List[str],
         type_: str,
+        updated_time: str,
         user_id: str,
         content_type: Optional[str] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
+        preview_url: Optional[List[ModelsPreviewURL]] = None,
     ) -> ModelsCreateContentResponse:
         instance = cls()
         instance.channel_id = channel_id
@@ -281,11 +310,14 @@ class ModelsCreateContentResponse(Model):
         instance.sub_type = sub_type
         instance.tags = tags
         instance.type_ = type_
+        instance.updated_time = updated_time
         instance.user_id = user_id
         if content_type is not None:
             instance.content_type = content_type
         if payload_url is not None:
             instance.payload_url = payload_url
+        if preview_url is not None:
+            instance.preview_url = preview_url
         return instance
 
     @classmethod
@@ -351,6 +383,10 @@ class ModelsCreateContentResponse(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "updatedTime" in dict_ and dict_["updatedTime"] is not None:
+            instance.updated_time = str(dict_["updatedTime"])
+        elif include_empty:
+            instance.updated_time = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -366,6 +402,13 @@ class ModelsCreateContentResponse(Model):
             ]
         elif include_empty:
             instance.payload_url = []
+        if "previewURL" in dict_ and dict_["previewURL"] is not None:
+            instance.preview_url = [
+                ModelsPreviewURL.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["previewURL"]
+            ]
+        elif include_empty:
+            instance.preview_url = []
         return instance
 
     @classmethod
@@ -423,9 +466,11 @@ class ModelsCreateContentResponse(Model):
             "subType": "sub_type",
             "tags": "tags",
             "type": "type_",
+            "updatedTime": "updated_time",
             "userId": "user_id",
             "contentType": "content_type",
             "payloadURL": "payload_url",
+            "previewURL": "preview_url",
         }
 
     @staticmethod
@@ -445,9 +490,11 @@ class ModelsCreateContentResponse(Model):
             "subType": True,
             "tags": True,
             "type": True,
+            "updatedTime": True,
             "userId": True,
             "contentType": False,
             "payloadURL": False,
+            "previewURL": False,
         }
 
     # endregion static methods

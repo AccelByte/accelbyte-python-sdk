@@ -53,6 +53,8 @@ from .models_paginated_get_type_response import ModelsPaginatedGetTypeResponse
 from .models_paginated_group_response import ModelsPaginatedGroupResponse
 from .models_paging_cursor import ModelsPagingCursor
 from .models_payload_url import ModelsPayloadURL
+from .models_preview_metadata import ModelsPreviewMetadata
+from .models_preview_url import ModelsPreviewURL
 from .models_public_get_content_bulk_request import ModelsPublicGetContentBulkRequest
 from .models_screenshot_response import ModelsScreenshotResponse
 from .models_update_screenshot import ModelsUpdateScreenshot

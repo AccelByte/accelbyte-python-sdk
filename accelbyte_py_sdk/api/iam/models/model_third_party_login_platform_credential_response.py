@@ -37,6 +37,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     Properties:
         acsurl: (ACSURL) REQUIRED str
 
+        allowed_clients: (AllowedClients) REQUIRED List[str]
+
         app_id: (AppId) REQUIRED str
 
         aws_cognito_region: (AWSCognitoRegion) REQUIRED str
@@ -79,12 +81,17 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
 
+        authorization_endpoint: (AuthorizationEndpoint) OPTIONAL str
+
         netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
+
+        token_endpoint: (TokenEndpoint) OPTIONAL str
     """
 
     # region fields
 
     acsurl: str  # REQUIRED
+    allowed_clients: List[str]  # REQUIRED
     app_id: str  # REQUIRED
     aws_cognito_region: str  # REQUIRED
     aws_cognito_user_pool: str  # REQUIRED
@@ -106,7 +113,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     team_id: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
     token_claims_mapping: Dict[str, str]  # REQUIRED
+    authorization_endpoint: str  # OPTIONAL
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
+    token_endpoint: str  # OPTIONAL
 
     # endregion fields
 
@@ -114,6 +123,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
     def with_acsurl(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.acsurl = value
+        return self
+
+    def with_allowed_clients(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.allowed_clients = value
         return self
 
     def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -234,10 +249,22 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.token_claims_mapping = value
         return self
 
+    def with_authorization_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.authorization_endpoint = value
+        return self
+
     def with_netflix_certificates(
         self, value: AccountcommonNetflixCertificates
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.netflix_certificates = value
+        return self
+
+    def with_token_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.token_endpoint = value
         return self
 
     # endregion with_x methods
@@ -250,6 +277,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = ""
+        if hasattr(self, "allowed_clients"):
+            result["AllowedClients"] = [str(i0) for i0 in self.allowed_clients]
+        elif include_empty:
+            result["AllowedClients"] = []
         if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
@@ -339,12 +370,20 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             }
         elif include_empty:
             result["TokenClaimsMapping"] = {}
+        if hasattr(self, "authorization_endpoint"):
+            result["AuthorizationEndpoint"] = str(self.authorization_endpoint)
+        elif include_empty:
+            result["AuthorizationEndpoint"] = ""
         if hasattr(self, "netflix_certificates"):
             result["NetflixCertificates"] = self.netflix_certificates.to_dict(
                 include_empty=include_empty
             )
         elif include_empty:
             result["NetflixCertificates"] = AccountcommonNetflixCertificates()
+        if hasattr(self, "token_endpoint"):
+            result["TokenEndpoint"] = str(self.token_endpoint)
+        elif include_empty:
+            result["TokenEndpoint"] = ""
         return result
 
     # endregion to methods
@@ -355,6 +394,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     def create(
         cls,
         acsurl: str,
+        allowed_clients: List[str],
         app_id: str,
         aws_cognito_region: str,
         aws_cognito_user_pool: str,
@@ -376,10 +416,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         team_id: str,
         token_authentication_type: str,
         token_claims_mapping: Dict[str, str],
+        authorization_endpoint: Optional[str] = None,
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
+        token_endpoint: Optional[str] = None,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
         instance.acsurl = acsurl
+        instance.allowed_clients = allowed_clients
         instance.app_id = app_id
         instance.aws_cognito_region = aws_cognito_region
         instance.aws_cognito_user_pool = aws_cognito_user_pool
@@ -401,8 +444,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
         instance.token_claims_mapping = token_claims_mapping
+        if authorization_endpoint is not None:
+            instance.authorization_endpoint = authorization_endpoint
         if netflix_certificates is not None:
             instance.netflix_certificates = netflix_certificates
+        if token_endpoint is not None:
+            instance.token_endpoint = token_endpoint
         return instance
 
     @classmethod
@@ -416,6 +463,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
             instance.acsurl = ""
+        if "AllowedClients" in dict_ and dict_["AllowedClients"] is not None:
+            instance.allowed_clients = [str(i0) for i0 in dict_["AllowedClients"]]
+        elif include_empty:
+            instance.allowed_clients = []
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
@@ -513,6 +564,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             }
         elif include_empty:
             instance.token_claims_mapping = {}
+        if (
+            "AuthorizationEndpoint" in dict_
+            and dict_["AuthorizationEndpoint"] is not None
+        ):
+            instance.authorization_endpoint = str(dict_["AuthorizationEndpoint"])
+        elif include_empty:
+            instance.authorization_endpoint = ""
         if "NetflixCertificates" in dict_ and dict_["NetflixCertificates"] is not None:
             instance.netflix_certificates = (
                 AccountcommonNetflixCertificates.create_from_dict(
@@ -521,6 +579,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             )
         elif include_empty:
             instance.netflix_certificates = AccountcommonNetflixCertificates()
+        if "TokenEndpoint" in dict_ and dict_["TokenEndpoint"] is not None:
+            instance.token_endpoint = str(dict_["TokenEndpoint"])
+        elif include_empty:
+            instance.token_endpoint = ""
         return instance
 
     @classmethod
@@ -565,6 +627,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "ACSURL": "acsurl",
+            "AllowedClients": "allowed_clients",
             "AppId": "app_id",
             "AWSCognitoRegion": "aws_cognito_region",
             "AWSCognitoUserPool": "aws_cognito_user_pool",
@@ -586,13 +649,16 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
             "TokenClaimsMapping": "token_claims_mapping",
+            "AuthorizationEndpoint": "authorization_endpoint",
             "NetflixCertificates": "netflix_certificates",
+            "TokenEndpoint": "token_endpoint",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "ACSURL": True,
+            "AllowedClients": True,
             "AppId": True,
             "AWSCognitoRegion": True,
             "AWSCognitoUserPool": True,
@@ -614,7 +680,9 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TeamID": True,
             "TokenAuthenticationType": True,
             "TokenClaimsMapping": True,
+            "AuthorizationEndpoint": False,
             "NetflixCertificates": False,
+            "TokenEndpoint": False,
         }
 
     # endregion static methods

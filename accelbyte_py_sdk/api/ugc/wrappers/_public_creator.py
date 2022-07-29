@@ -30,13 +30,15 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsCreatorResponse
+from ..models import ModelsPaginatedCreatorOverviewResponse
 from ..models import ResponseError
 
-from ..operations.public_creator import GetCreator
+from ..operations.public_creator import PublicGetCreator
+from ..operations.public_creator import PublicSearchCreator
 
 
-@same_doc_as(GetCreator)
-def get_creator(
+@same_doc_as(PublicGetCreator)
+def public_get_creator(
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -46,15 +48,15 @@ def get_creator(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetCreator.create(
+    request = PublicGetCreator.create(
         user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(GetCreator)
-async def get_creator_async(
+@same_doc_as(PublicGetCreator)
+async def public_get_creator_async(
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -64,8 +66,58 @@ async def get_creator_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetCreator.create(
+    request = PublicGetCreator.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicSearchCreator)
+def public_search_creator(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSearchCreator.create(
+        limit=limit,
+        offset=offset,
+        orderby=orderby,
+        sortby=sortby,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSearchCreator)
+async def public_search_creator_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    orderby: Optional[str] = None,
+    sortby: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSearchCreator.create(
+        limit=limit,
+        offset=offset,
+        orderby=orderby,
+        sortby=sortby,
         namespace=namespace,
     )
     return await run_request_async(

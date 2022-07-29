@@ -39,6 +39,9 @@ class ResponseTypeEnum(StrEnum):
 class Authorization(Operation):
     """OAuth2 authorize API (Authorization)
 
+    ## The endpoint is going to be deprecated
+
+
     The endpoint supports two response types:
 
 
@@ -104,43 +107,31 @@ class Authorization(Operation):
 
 
 
-    2. Response Type == "token":
+     2. Response Type == "token" (Implicit) is deprecated.
+
+
+
+
+     Endpoint migration guide
 
 
 
 
 
 
-      *
+      *  Substitute endpoint: /iam/v3/oauth/authorize [GET]
 
 
-    Authorize success : redirects to the given URL with the following information:
-
-
-
-
-    #access_token={accesstoken}&expires;_in={expiration duration in seconds}&token;_type=Bearer
-
-
-
-
-
-      *
-
-
-    Authorize failure : redirects to the given URL with the following information:
-
-
-
-
-    ?error=access_denied&error;_description=...
+      *  Note:
+        1. V3 is standard OAuth2 flow and support PKCE
+        2. Will not support implicit flow in v3.
 
     Properties:
         url: /iam/oauth/authorize
 
         method: POST
 
-        tags: ["OAuth"]
+        tags: ["OAuth(Deprecated)"]
 
         consumes: ["application/x-www-form-urlencoded"]
 

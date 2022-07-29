@@ -113,7 +113,8 @@
 ### Public Creator
 | Endpoint | Method | ID | Class | Wrapper | Example |
 |---|---|---|---|---|---|
-| /ugc/v1/public/namespaces/{namespace}/users/{userId} | GET | GetCreator | [GetCreator](../accelbyte_py_sdk/api/ugc/operations/public_creator/get_creator.py) | [get_creator](../accelbyte_py_sdk/api/ugc/wrappers/_public_creator.py) | [accelbyte_py_sdk_cli ugc-get-creator](../samples/cli/accelbyte_py_sdk_cli/ugc/_get_creator.py) |
+| /ugc/v1/public/namespaces/{namespace}/users/{userId} | GET | PublicGetCreator | [PublicGetCreator](../accelbyte_py_sdk/api/ugc/operations/public_creator/public_get_creator.py) | [public_get_creator](../accelbyte_py_sdk/api/ugc/wrappers/_public_creator.py) | [accelbyte_py_sdk_cli ugc-public-get-creator](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_get_creator.py) |
+| /ugc/v1/public/namespaces/{namespace}/users | GET | PublicSearchCreator | [PublicSearchCreator](../accelbyte_py_sdk/api/ugc/operations/public_creator/public_search_creator.py) | [public_search_creator](../accelbyte_py_sdk/api/ugc/wrappers/_public_creator.py) | [accelbyte_py_sdk_cli ugc-public-search-creator](../samples/cli/accelbyte_py_sdk_cli/ugc/_public_search_creator.py) |
 
 ### Public Download Count
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -191,6 +192,8 @@
 | models.PaginatedGroupResponse | [ModelsPaginatedGroupResponse](../accelbyte_py_sdk/api/ugc/models/models_paginated_group_response.py) |
 | models.PagingCursor | [ModelsPagingCursor](../accelbyte_py_sdk/api/ugc/models/models_paging_cursor.py) |
 | models.PayloadURL | [ModelsPayloadURL](../accelbyte_py_sdk/api/ugc/models/models_payload_url.py) |
+| models.previewMetadata | [ModelsPreviewMetadata](../accelbyte_py_sdk/api/ugc/models/models_preview_metadata.py) |
+| models.PreviewURL | [ModelsPreviewURL](../accelbyte_py_sdk/api/ugc/models/models_preview_url.py) |
 | models.PublicGetContentBulkRequest | [ModelsPublicGetContentBulkRequest](../accelbyte_py_sdk/api/ugc/models/models_public_get_content_bulk_request.py) |
 | models.ScreenshotResponse | [ModelsScreenshotResponse](../accelbyte_py_sdk/api/ugc/models/models_screenshot_response.py) |
 | models.updateScreenshot | [ModelsUpdateScreenshot](../accelbyte_py_sdk/api/ugc/models/models_update_screenshot.py) |

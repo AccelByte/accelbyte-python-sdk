@@ -56,6 +56,7 @@ from ..operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 from ..operations.o_auth2_0 import TokenIntrospectionV3
 from ..operations.o_auth2_0 import TokenRevocationV3
 from ..operations.o_auth2_0 import Verify2faCode
+from ..operations.o_auth2_0 import VerifyTokenV3
 
 
 @same_doc_as(AdminRetrieveUserThirdPartyPlatformTokenV3)
@@ -524,6 +525,28 @@ async def verify2fa_code_async(
         factor=factor,
         mfa_token=mfa_token,
         remember_device=remember_device,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(VerifyTokenV3)
+def verify_token_v3(
+    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = VerifyTokenV3.create(
+        token=token,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(VerifyTokenV3)
+async def verify_token_v3_async(
+    token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = VerifyTokenV3.create(
+        token=token,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

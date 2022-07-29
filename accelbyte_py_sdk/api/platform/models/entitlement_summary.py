@@ -34,6 +34,7 @@ class ClazzEnum(StrEnum):
     CODE = "CODE"
     ENTITLEMENT = "ENTITLEMENT"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
@@ -404,7 +405,14 @@ class EntitlementSummary(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "clazz": ["APP", "CODE", "ENTITLEMENT", "MEDIA", "SUBSCRIPTION"],
+            "clazz": [
+                "APP",
+                "CODE",
+                "ENTITLEMENT",
+                "MEDIA",
+                "OPTIONBOX",
+                "SUBSCRIPTION",
+            ],
             "type": ["CONSUMABLE", "DURABLE"],
         }
 

@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import AppInfo
 from ..models import AppUpdate
+from ..models import AvailablePredicateObject
 from ..models import BasicItem
 from ..models import ErrorEntity
 from ..models import FullAppInfo
@@ -44,9 +45,12 @@ from ..models import ItemDynamicDataInfo
 from ..models import ItemId
 from ..models import ItemInfo
 from ..models import ItemPagingSlicedResult
+from ..models import ItemPurchaseConditionValidateRequest
+from ..models import ItemPurchaseConditionValidateResult
 from ..models import ItemReturnRequest
 from ..models import ItemUpdate
 from ..models import PopulatedItemInfo
+from ..models import PurchaseConditionUpdate
 from ..models import ValidationErrorEntity
 
 from ..operations.item import AcquireItem
@@ -58,6 +62,7 @@ from ..operations.item import DisableItem
 from ..operations.item import EnableItem
 from ..operations.item import FeatureItem
 from ..operations.item import GetApp
+from ..operations.item import GetAvailablePredicateTypes
 from ..operations.item import GetBulkItemIdBySkus
 from ..operations.item import GetItem
 from ..operations.item import GetItemByAppId
@@ -80,6 +85,8 @@ from ..operations.item import (
     PublicQueryItemsSortByEnum,
 )
 from ..operations.item import PublicSearchItems
+from ..operations.item import PublicSearchItemsItemTypeEnum
+from ..operations.item import PublicValidateItemPurchaseCondition
 from ..operations.item import QueryItems
 from ..operations.item import (
     QueryItemsAppTypeEnum,
@@ -90,9 +97,12 @@ from ..operations.item import QueryUncategorizedItems
 from ..operations.item import QueryUncategorizedItemsSortByEnum
 from ..operations.item import ReturnItem
 from ..operations.item import SearchItems
+from ..operations.item import SearchItemsItemTypeEnum
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
+from ..operations.item import UpdateItemPurchaseCondition
+from ..operations.item import ValidateItemPurchaseCondition
 from ..models import (
     AppInfoGenresEnum,
     AppInfoPlatformsEnum,
@@ -104,6 +114,10 @@ from ..models import (
     AppUpdatePlatformsEnum,
     AppUpdatePlayersEnum,
     AppUpdatePrimaryGenreEnum,
+)
+from ..models import (
+    AvailablePredicateObjectPredicateTypeEnum,
+    AvailablePredicateObjectValueTypeEnum,
 )
 from ..models import (
     BasicItemAppTypeEnum,
@@ -550,6 +564,40 @@ async def get_app_async(
         item_id=item_id,
         active_only=active_only,
         store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetAvailablePredicateTypes)
+def get_available_predicate_types(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAvailablePredicateTypes.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetAvailablePredicateTypes)
+async def get_available_predicate_types_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAvailablePredicateTypes.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -1357,6 +1405,7 @@ async def public_query_items_async(
 def public_search_items(
     keyword: str,
     language: str,
+    item_type: Optional[Union[str, PublicSearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -1372,6 +1421,7 @@ def public_search_items(
     request = PublicSearchItems.create(
         keyword=keyword,
         language=language,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         region=region,
@@ -1385,6 +1435,7 @@ def public_search_items(
 async def public_search_items_async(
     keyword: str,
     language: str,
+    item_type: Optional[Union[str, PublicSearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -1400,10 +1451,49 @@ async def public_search_items_async(
     request = PublicSearchItems.create(
         keyword=keyword,
         language=language,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         region=region,
         store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicValidateItemPurchaseCondition)
+def public_validate_item_purchase_condition(
+    body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicValidateItemPurchaseCondition.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicValidateItemPurchaseCondition)
+async def public_validate_item_purchase_condition_async(
+    body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicValidateItemPurchaseCondition.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1602,6 +1692,7 @@ def search_items(
     keyword: str,
     language: str,
     active_only: Optional[bool] = None,
+    item_type: Optional[Union[str, SearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     store_id: Optional[str] = None,
@@ -1617,6 +1708,7 @@ def search_items(
         keyword=keyword,
         language=language,
         active_only=active_only,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         store_id=store_id,
@@ -1630,6 +1722,7 @@ async def search_items_async(
     keyword: str,
     language: str,
     active_only: Optional[bool] = None,
+    item_type: Optional[Union[str, SearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     store_id: Optional[str] = None,
@@ -1645,6 +1738,7 @@ async def search_items_async(
         keyword=keyword,
         language=language,
         active_only=active_only,
+        item_type=item_type,
         limit=limit,
         offset=offset,
         store_id=store_id,
@@ -1781,6 +1875,94 @@ async def update_item_async(
     request = UpdateItem.create(
         item_id=item_id,
         store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateItemPurchaseCondition)
+def update_item_purchase_condition(
+    item_id: str,
+    store_id: str,
+    body: Optional[PurchaseConditionUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateItemPurchaseCondition.create(
+        item_id=item_id,
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateItemPurchaseCondition)
+async def update_item_purchase_condition_async(
+    item_id: str,
+    store_id: str,
+    body: Optional[PurchaseConditionUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateItemPurchaseCondition.create(
+        item_id=item_id,
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ValidateItemPurchaseCondition)
+def validate_item_purchase_condition(
+    user_id: str,
+    body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ValidateItemPurchaseCondition.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ValidateItemPurchaseCondition)
+async def validate_item_purchase_condition_async(
+    user_id: str,
+    body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ValidateItemPurchaseCondition.create(
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

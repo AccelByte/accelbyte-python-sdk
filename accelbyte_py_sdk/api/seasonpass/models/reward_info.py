@@ -43,6 +43,8 @@ class ItemTypeEnum(StrEnum):
     CODE = "CODE"
     COINS = "COINS"
     INGAMEITEM = "INGAMEITEM"
+    MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
 
@@ -359,6 +361,8 @@ class RewardInfo(Model):
                 "CODE",
                 "COINS",
                 "INGAMEITEM",
+                "MEDIA",
+                "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
             ],

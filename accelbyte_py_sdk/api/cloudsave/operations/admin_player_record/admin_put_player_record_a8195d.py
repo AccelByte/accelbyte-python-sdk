@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsPlayerRecordRequest
+from ...models import ModelsPlayerRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -137,7 +138,7 @@ class AdminPutPlayerRecordHandlerV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - (Record in user-level saved)
+        200: OK - ModelsPlayerRecordResponse (Record in user-level saved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -275,11 +276,12 @@ class AdminPutPlayerRecordHandlerV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, HttpResponse], Union[None, HttpResponse, ModelsResponseError]
+        Union[None, ModelsPlayerRecordResponse],
+        Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - (Record in user-level saved)
+        200: OK - ModelsPlayerRecordResponse (Record in user-level saved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -299,7 +301,7 @@ class AdminPutPlayerRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return ModelsPlayerRecordResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

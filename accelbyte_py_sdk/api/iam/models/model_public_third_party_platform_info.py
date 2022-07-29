@@ -41,6 +41,8 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         is_active: (IsActive) REQUIRED bool
 
         platform_id: (PlatformId) REQUIRED str
+
+        platform_name: (PlatformName) REQUIRED str
     """
 
     # region fields
@@ -50,6 +52,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
     environment: str  # REQUIRED
     is_active: bool  # REQUIRED
     platform_id: str  # REQUIRED
+    platform_name: str  # REQUIRED
 
     # endregion fields
 
@@ -73,6 +76,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
 
     def with_platform_id(self, value: str) -> ModelPublicThirdPartyPlatformInfo:
         self.platform_id = value
+        return self
+
+    def with_platform_name(self, value: str) -> ModelPublicThirdPartyPlatformInfo:
+        self.platform_name = value
         return self
 
     # endregion with_x methods
@@ -101,6 +108,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             result["PlatformId"] = str(self.platform_id)
         elif include_empty:
             result["PlatformId"] = ""
+        if hasattr(self, "platform_name"):
+            result["PlatformName"] = str(self.platform_name)
+        elif include_empty:
+            result["PlatformName"] = ""
         return result
 
     # endregion to methods
@@ -115,6 +126,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         environment: str,
         is_active: bool,
         platform_id: str,
+        platform_name: str,
     ) -> ModelPublicThirdPartyPlatformInfo:
         instance = cls()
         instance.app_id = app_id
@@ -122,6 +134,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         instance.environment = environment
         instance.is_active = is_active
         instance.platform_id = platform_id
+        instance.platform_name = platform_name
         return instance
 
     @classmethod
@@ -151,6 +164,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             instance.platform_id = str(dict_["PlatformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "PlatformName" in dict_ and dict_["PlatformName"] is not None:
+            instance.platform_name = str(dict_["PlatformName"])
+        elif include_empty:
+            instance.platform_name = ""
         return instance
 
     @classmethod
@@ -199,6 +216,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "Environment": "environment",
             "IsActive": "is_active",
             "PlatformId": "platform_id",
+            "PlatformName": "platform_name",
         }
 
     @staticmethod
@@ -209,6 +227,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "Environment": True,
             "IsActive": True,
             "PlatformId": True,
+            "PlatformName": True,
         }
 
     # endregion static methods

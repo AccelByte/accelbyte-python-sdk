@@ -32,16 +32,23 @@ class EntitlementDecrement(Model):
     """A DTO object for entitlement decrement. (EntitlementDecrement)
 
     Properties:
+        options: (options) OPTIONAL List[str]
+
         use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
+    options: List[str]  # OPTIONAL
     use_count: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_options(self, value: List[str]) -> EntitlementDecrement:
+        self.options = value
+        return self
 
     def with_use_count(self, value: int) -> EntitlementDecrement:
         self.use_count = value
@@ -53,6 +60,10 @@ class EntitlementDecrement(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "options"):
+            result["options"] = [str(i0) for i0 in self.options]
+        elif include_empty:
+            result["options"] = []
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -66,9 +77,12 @@ class EntitlementDecrement(Model):
     @classmethod
     def create(
         cls,
+        options: Optional[List[str]] = None,
         use_count: Optional[int] = None,
     ) -> EntitlementDecrement:
         instance = cls()
+        if options is not None:
+            instance.options = options
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -80,6 +94,10 @@ class EntitlementDecrement(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "options" in dict_ and dict_["options"] is not None:
+            instance.options = [str(i0) for i0 in dict_["options"]]
+        elif include_empty:
+            instance.options = []
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -127,12 +145,14 @@ class EntitlementDecrement(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "options": "options",
             "useCount": "use_count",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "options": False,
             "useCount": False,
         }
 

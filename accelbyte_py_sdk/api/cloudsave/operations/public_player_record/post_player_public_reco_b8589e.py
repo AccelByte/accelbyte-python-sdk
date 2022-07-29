@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsPlayerRecordRequest
+from ...models import ModelsPlayerRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -156,7 +157,7 @@ class PostPlayerPublicRecordHandlerV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        201: Created - (Record saved)
+        201: Created - ModelsPlayerRecordResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
@@ -296,11 +297,12 @@ class PostPlayerPublicRecordHandlerV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, Optional[str]], Union[None, HttpResponse, ModelsResponseError]
+        Union[None, ModelsPlayerRecordResponse],
+        Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        201: Created - (Record saved)
+        201: Created - ModelsPlayerRecordResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18201: invalid record operator, expect [%s] but actual [%s])
 
@@ -322,7 +324,7 @@ class PostPlayerPublicRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return HttpResponse.create(code, "Created"), None
+            return ModelsPlayerRecordResponse.create_from_dict(content), None
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:

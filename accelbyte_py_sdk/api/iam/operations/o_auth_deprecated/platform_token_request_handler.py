@@ -28,17 +28,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
-from .....core import deprecated
 
 from ...models import OauthmodelErrorResponse
 from ...models import OauthmodelTokenResponse
 
 
-@deprecated
 class PlatformTokenRequestHandler(Operation):
     """OAuth2 access token generation specific to platform (PlatformTokenRequestHandler)
 
-    ## The endpoint is going to be deprecated at 2 July, 2018. Please use this instead: oauth/platforms/{platformId}/token
+    ## The endpoint is going to be deprecated
 
 
 
@@ -67,12 +65,23 @@ class PlatformTokenRequestHandler(Operation):
 
     The JWT contains user's active bans with its expiry date. List of ban types can be obtained from /iam/bans.
 
+    .
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/oauth/platforms/{platformId}/token [POST]
+
+
+      * Note:
+
     Properties:
         url: /iam/oauth/namespaces/{namespace}/platforms/{platformId}/token
 
         method: POST
 
-        tags: ["OAuth"]
+        tags: ["OAuth(Deprecated)"]
 
         consumes: ["application/x-www-form-urlencoded"]
 

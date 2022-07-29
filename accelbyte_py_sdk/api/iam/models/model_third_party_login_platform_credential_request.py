@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.accountcommon_netflix_certificates import AccountcommonNetflixCertificates
+from ..models.accountcommon_registered_domain import AccountcommonRegisteredDomain
 
 
 class ModelThirdPartyLoginPlatformCredentialRequest(Model):
@@ -36,7 +37,11 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     Properties:
         acsurl: (ACSURL) REQUIRED str
 
+        allowed_clients: (AllowedClients) REQUIRED List[str]
+
         app_id: (AppId) REQUIRED str
+
+        authorization_endpoint: (AuthorizationEndpoint) REQUIRED str
 
         aws_cognito_region: (AWSCognitoRegion) REQUIRED str
 
@@ -66,6 +71,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         redirect_uri: (RedirectUri) REQUIRED str
 
+        registered_domains: (RegisteredDomains) REQUIRED List[AccountcommonRegisteredDomain]
+
         secret: (Secret) REQUIRED str
 
         team_id: (TeamID) REQUIRED str
@@ -73,12 +80,16 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         token_authentication_type: (TokenAuthenticationType) REQUIRED str
 
         token_claims_mapping: (TokenClaimsMapping) REQUIRED Dict[str, str]
+
+        token_endpoint: (TokenEndpoint) REQUIRED str
     """
 
     # region fields
 
     acsurl: str  # REQUIRED
+    allowed_clients: List[str]  # REQUIRED
     app_id: str  # REQUIRED
+    authorization_endpoint: str  # REQUIRED
     aws_cognito_region: str  # REQUIRED
     aws_cognito_user_pool: str  # REQUIRED
     client_id: str  # REQUIRED
@@ -93,10 +104,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     organization_id: str  # REQUIRED
     platform_name: str  # REQUIRED
     redirect_uri: str  # REQUIRED
+    registered_domains: List[AccountcommonRegisteredDomain]  # REQUIRED
     secret: str  # REQUIRED
     team_id: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
     token_claims_mapping: Dict[str, str]  # REQUIRED
+    token_endpoint: str  # REQUIRED
 
     # endregion fields
 
@@ -106,8 +119,20 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.acsurl = value
         return self
 
+    def with_allowed_clients(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.allowed_clients = value
+        return self
+
     def with_app_id(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.app_id = value
+        return self
+
+    def with_authorization_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.authorization_endpoint = value
         return self
 
     def with_aws_cognito_region(
@@ -190,6 +215,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.redirect_uri = value
         return self
 
+    def with_registered_domains(
+        self, value: List[AccountcommonRegisteredDomain]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.registered_domains = value
+        return self
+
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.secret = value
         return self
@@ -210,6 +241,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.token_claims_mapping = value
         return self
 
+    def with_token_endpoint(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.token_endpoint = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -220,10 +257,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["ACSURL"] = str(self.acsurl)
         elif include_empty:
             result["ACSURL"] = ""
+        if hasattr(self, "allowed_clients"):
+            result["AllowedClients"] = [str(i0) for i0 in self.allowed_clients]
+        elif include_empty:
+            result["AllowedClients"] = []
         if hasattr(self, "app_id"):
             result["AppId"] = str(self.app_id)
         elif include_empty:
             result["AppId"] = ""
+        if hasattr(self, "authorization_endpoint"):
+            result["AuthorizationEndpoint"] = str(self.authorization_endpoint)
+        elif include_empty:
+            result["AuthorizationEndpoint"] = ""
         if hasattr(self, "aws_cognito_region"):
             result["AWSCognitoRegion"] = str(self.aws_cognito_region)
         elif include_empty:
@@ -282,6 +327,13 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = ""
+        if hasattr(self, "registered_domains"):
+            result["RegisteredDomains"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.registered_domains
+            ]
+        elif include_empty:
+            result["RegisteredDomains"] = []
         if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
@@ -300,6 +352,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             }
         elif include_empty:
             result["TokenClaimsMapping"] = {}
+        if hasattr(self, "token_endpoint"):
+            result["TokenEndpoint"] = str(self.token_endpoint)
+        elif include_empty:
+            result["TokenEndpoint"] = ""
         return result
 
     # endregion to methods
@@ -310,7 +366,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def create(
         cls,
         acsurl: str,
+        allowed_clients: List[str],
         app_id: str,
+        authorization_endpoint: str,
         aws_cognito_region: str,
         aws_cognito_user_pool: str,
         client_id: str,
@@ -325,14 +383,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         organization_id: str,
         platform_name: str,
         redirect_uri: str,
+        registered_domains: List[AccountcommonRegisteredDomain],
         secret: str,
         team_id: str,
         token_authentication_type: str,
         token_claims_mapping: Dict[str, str],
+        token_endpoint: str,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         instance = cls()
         instance.acsurl = acsurl
+        instance.allowed_clients = allowed_clients
         instance.app_id = app_id
+        instance.authorization_endpoint = authorization_endpoint
         instance.aws_cognito_region = aws_cognito_region
         instance.aws_cognito_user_pool = aws_cognito_user_pool
         instance.client_id = client_id
@@ -347,10 +409,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.organization_id = organization_id
         instance.platform_name = platform_name
         instance.redirect_uri = redirect_uri
+        instance.registered_domains = registered_domains
         instance.secret = secret
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
         instance.token_claims_mapping = token_claims_mapping
+        instance.token_endpoint = token_endpoint
         return instance
 
     @classmethod
@@ -364,10 +428,21 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.acsurl = str(dict_["ACSURL"])
         elif include_empty:
             instance.acsurl = ""
+        if "AllowedClients" in dict_ and dict_["AllowedClients"] is not None:
+            instance.allowed_clients = [str(i0) for i0 in dict_["AllowedClients"]]
+        elif include_empty:
+            instance.allowed_clients = []
         if "AppId" in dict_ and dict_["AppId"] is not None:
             instance.app_id = str(dict_["AppId"])
         elif include_empty:
             instance.app_id = ""
+        if (
+            "AuthorizationEndpoint" in dict_
+            and dict_["AuthorizationEndpoint"] is not None
+        ):
+            instance.authorization_endpoint = str(dict_["AuthorizationEndpoint"])
+        elif include_empty:
+            instance.authorization_endpoint = ""
         if "AWSCognitoRegion" in dict_ and dict_["AWSCognitoRegion"] is not None:
             instance.aws_cognito_region = str(dict_["AWSCognitoRegion"])
         elif include_empty:
@@ -431,6 +506,15 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
             instance.redirect_uri = ""
+        if "RegisteredDomains" in dict_ and dict_["RegisteredDomains"] is not None:
+            instance.registered_domains = [
+                AccountcommonRegisteredDomain.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["RegisteredDomains"]
+            ]
+        elif include_empty:
+            instance.registered_domains = []
         if "Secret" in dict_ and dict_["Secret"] is not None:
             instance.secret = str(dict_["Secret"])
         elif include_empty:
@@ -452,6 +536,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             }
         elif include_empty:
             instance.token_claims_mapping = {}
+        if "TokenEndpoint" in dict_ and dict_["TokenEndpoint"] is not None:
+            instance.token_endpoint = str(dict_["TokenEndpoint"])
+        elif include_empty:
+            instance.token_endpoint = ""
         return instance
 
     @classmethod
@@ -496,7 +584,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "ACSURL": "acsurl",
+            "AllowedClients": "allowed_clients",
             "AppId": "app_id",
+            "AuthorizationEndpoint": "authorization_endpoint",
             "AWSCognitoRegion": "aws_cognito_region",
             "AWSCognitoUserPool": "aws_cognito_user_pool",
             "ClientId": "client_id",
@@ -511,17 +601,21 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "OrganizationId": "organization_id",
             "PlatformName": "platform_name",
             "RedirectUri": "redirect_uri",
+            "RegisteredDomains": "registered_domains",
             "Secret": "secret",
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
             "TokenClaimsMapping": "token_claims_mapping",
+            "TokenEndpoint": "token_endpoint",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "ACSURL": True,
+            "AllowedClients": True,
             "AppId": True,
+            "AuthorizationEndpoint": True,
             "AWSCognitoRegion": True,
             "AWSCognitoUserPool": True,
             "ClientId": True,
@@ -536,10 +630,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "OrganizationId": True,
             "PlatformName": True,
             "RedirectUri": True,
+            "RegisteredDomains": True,
             "Secret": True,
             "TeamID": True,
             "TokenAuthenticationType": True,
             "TokenClaimsMapping": True,
+            "TokenEndpoint": True,
         }
 
     # endregion static methods

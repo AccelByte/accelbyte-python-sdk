@@ -164,8 +164,10 @@ from ._public_content import update_screenshots_async
 from ._public_content import upload_content_screenshot
 from ._public_content import upload_content_screenshot_async
 
-from ._public_creator import get_creator
-from ._public_creator import get_creator_async
+from ._public_creator import public_get_creator
+from ._public_creator import public_get_creator_async
+from ._public_creator import public_search_creator
+from ._public_creator import public_search_creator_async
 
 from ._public_download_count import add_download_count
 from ._public_download_count import add_download_count_async

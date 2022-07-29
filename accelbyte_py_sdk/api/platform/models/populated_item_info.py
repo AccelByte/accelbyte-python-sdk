@@ -30,6 +30,8 @@ from ....core import StrEnum
 
 from ..models.bundled_item_info import BundledItemInfo
 from ..models.image import Image
+from ..models.option_box_config import OptionBoxConfig
+from ..models.purchase_condition import PurchaseCondition
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
 
@@ -46,6 +48,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
 
@@ -133,7 +136,11 @@ class PopulatedItemInfo(Model):
 
         max_count_per_user: (maxCountPerUser) OPTIONAL int
 
+        option_box_config: (optionBoxConfig) OPTIONAL OptionBoxConfig
+
         purchasable: (purchasable) OPTIONAL bool
+
+        purchase_condition: (purchaseCondition) OPTIONAL PurchaseCondition
 
         recurring: (recurring) OPTIONAL Recurring
 
@@ -191,7 +198,9 @@ class PopulatedItemInfo(Model):
     long_description: str  # OPTIONAL
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
+    option_box_config: OptionBoxConfig  # OPTIONAL
     purchasable: bool  # OPTIONAL
+    purchase_condition: PurchaseCondition  # OPTIONAL
     recurring: Recurring  # OPTIONAL
     region_data: List[RegionDataItem]  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
@@ -334,8 +343,16 @@ class PopulatedItemInfo(Model):
         self.max_count_per_user = value
         return self
 
+    def with_option_box_config(self, value: OptionBoxConfig) -> PopulatedItemInfo:
+        self.option_box_config = value
+        return self
+
     def with_purchasable(self, value: bool) -> PopulatedItemInfo:
         self.purchasable = value
+        return self
+
+    def with_purchase_condition(self, value: PurchaseCondition) -> PopulatedItemInfo:
+        self.purchase_condition = value
         return self
 
     def with_recurring(self, value: Recurring) -> PopulatedItemInfo:
@@ -516,10 +533,22 @@ class PopulatedItemInfo(Model):
             result["maxCountPerUser"] = int(self.max_count_per_user)
         elif include_empty:
             result["maxCountPerUser"] = 0
+        if hasattr(self, "option_box_config"):
+            result["optionBoxConfig"] = self.option_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["optionBoxConfig"] = OptionBoxConfig()
         if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
             result["purchasable"] = False
+        if hasattr(self, "purchase_condition"):
+            result["purchaseCondition"] = self.purchase_condition.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["purchaseCondition"] = PurchaseCondition()
         if hasattr(self, "recurring"):
             result["recurring"] = self.recurring.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -606,7 +635,9 @@ class PopulatedItemInfo(Model):
         long_description: Optional[str] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
+        option_box_config: Optional[OptionBoxConfig] = None,
         purchasable: Optional[bool] = None,
+        purchase_condition: Optional[PurchaseCondition] = None,
         recurring: Optional[Recurring] = None,
         region_data: Optional[List[RegionDataItem]] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
@@ -670,8 +701,12 @@ class PopulatedItemInfo(Model):
             instance.max_count = max_count
         if max_count_per_user is not None:
             instance.max_count_per_user = max_count_per_user
+        if option_box_config is not None:
+            instance.option_box_config = option_box_config
         if purchasable is not None:
             instance.purchasable = purchasable
+        if purchase_condition is not None:
+            instance.purchase_condition = purchase_condition
         if recurring is not None:
             instance.recurring = recurring
         if region_data is not None:
@@ -835,10 +870,22 @@ class PopulatedItemInfo(Model):
             instance.max_count_per_user = int(dict_["maxCountPerUser"])
         elif include_empty:
             instance.max_count_per_user = 0
+        if "optionBoxConfig" in dict_ and dict_["optionBoxConfig"] is not None:
+            instance.option_box_config = OptionBoxConfig.create_from_dict(
+                dict_["optionBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.option_box_config = OptionBoxConfig()
         if "purchasable" in dict_ and dict_["purchasable"] is not None:
             instance.purchasable = bool(dict_["purchasable"])
         elif include_empty:
             instance.purchasable = False
+        if "purchaseCondition" in dict_ and dict_["purchaseCondition"] is not None:
+            instance.purchase_condition = PurchaseCondition.create_from_dict(
+                dict_["purchaseCondition"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.purchase_condition = PurchaseCondition()
         if "recurring" in dict_ and dict_["recurring"] is not None:
             instance.recurring = Recurring.create_from_dict(
                 dict_["recurring"], include_empty=include_empty
@@ -960,7 +1007,9 @@ class PopulatedItemInfo(Model):
             "longDescription": "long_description",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
+            "optionBoxConfig": "option_box_config",
             "purchasable": "purchasable",
+            "purchaseCondition": "purchase_condition",
             "recurring": "recurring",
             "regionData": "region_data",
             "seasonType": "season_type",
@@ -1008,7 +1057,9 @@ class PopulatedItemInfo(Model):
             "longDescription": False,
             "maxCount": False,
             "maxCountPerUser": False,
+            "optionBoxConfig": False,
             "purchasable": False,
+            "purchaseCondition": False,
             "recurring": False,
             "regionData": False,
             "seasonType": False,
@@ -1033,6 +1084,7 @@ class PopulatedItemInfo(Model):
                 "COINS",
                 "INGAMEITEM",
                 "MEDIA",
+                "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
             ],

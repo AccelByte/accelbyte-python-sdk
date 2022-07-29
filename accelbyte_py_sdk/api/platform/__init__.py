@@ -183,6 +183,8 @@ from .wrappers import get_user_entitlement_histories
 from .wrappers import get_user_entitlement_histories_async
 from .wrappers import get_user_entitlement_ownership_by_item_id
 from .wrappers import get_user_entitlement_ownership_by_item_id_async
+from .wrappers import get_user_entitlement_ownership_by_item_ids
+from .wrappers import get_user_entitlement_ownership_by_item_ids_async
 from .wrappers import get_user_entitlement_ownership_by_sku
 from .wrappers import get_user_entitlement_ownership_by_sku_async
 from .wrappers import grant_user_entitlement
@@ -213,6 +215,8 @@ from .wrappers import public_get_user_entitlement_by_sku
 from .wrappers import public_get_user_entitlement_by_sku_async
 from .wrappers import public_get_user_entitlement_ownership_by_item_id
 from .wrappers import public_get_user_entitlement_ownership_by_item_id_async
+from .wrappers import public_get_user_entitlement_ownership_by_item_ids
+from .wrappers import public_get_user_entitlement_ownership_by_item_ids_async
 from .wrappers import public_get_user_entitlement_ownership_by_sku
 from .wrappers import public_get_user_entitlement_ownership_by_sku_async
 from .wrappers import public_query_user_entitlements
@@ -359,6 +363,8 @@ from .wrappers import feature_item
 from .wrappers import feature_item_async
 from .wrappers import get_app
 from .wrappers import get_app_async
+from .wrappers import get_available_predicate_types
+from .wrappers import get_available_predicate_types_async
 from .wrappers import get_bulk_item_id_by_skus
 from .wrappers import get_bulk_item_id_by_skus_async
 from .wrappers import get_item
@@ -393,6 +399,8 @@ from .wrappers import public_query_items
 from .wrappers import public_query_items_async
 from .wrappers import public_search_items
 from .wrappers import public_search_items_async
+from .wrappers import public_validate_item_purchase_condition
+from .wrappers import public_validate_item_purchase_condition_async
 from .wrappers import query_items
 from .wrappers import query_items_async
 from .wrappers import query_uncategorized_items
@@ -407,6 +415,10 @@ from .wrappers import update_app
 from .wrappers import update_app_async
 from .wrappers import update_item
 from .wrappers import update_item_async
+from .wrappers import update_item_purchase_condition
+from .wrappers import update_item_purchase_condition_async
+from .wrappers import validate_item_purchase_condition
+from .wrappers import validate_item_purchase_condition_async
 
 # key_group
 from .wrappers import create_key_group

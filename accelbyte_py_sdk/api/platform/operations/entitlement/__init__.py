@@ -36,6 +36,7 @@ from .get_user_entitlement_ow_ec2b70 import GetUserEntitlementOwnershipByItemId
 from .get_user_entitlement_ow_ec2b70 import (
     EntitlementClazzEnum as GetUserEntitlementOwnershipByItemIdEntitlementClazzEnum,
 )
+from .get_user_entitlement_ow_5a8354 import GetUserEntitlementOwnershipByItemIds
 from .get_user_entitlement_ow_dab0ca import GetUserEntitlementOwnershipBySku
 from .get_user_entitlement_ow_dab0ca import (
     EntitlementClazzEnum as GetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
@@ -69,6 +70,7 @@ from .public_get_user_entitle_b313cf import PublicGetUserEntitlementOwnershipByI
 from .public_get_user_entitle_b313cf import (
     EntitlementClazzEnum as PublicGetUserEntitlementOwnershipByItemIdEntitlementClazzEnum,
 )
+from .public_get_user_entitle_408425 import PublicGetUserEntitlementOwnershipByItemIds
 from .public_get_user_entitle_ee3005 import PublicGetUserEntitlementOwnershipBySku
 from .public_get_user_entitle_ee3005 import (
     EntitlementClazzEnum as PublicGetUserEntitlementOwnershipBySkuEntitlementClazzEnum,

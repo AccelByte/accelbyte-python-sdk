@@ -32,3 +32,4 @@ from .token_grant_v3 import GrantTypeEnum as TokenGrantV3GrantTypeEnum
 from .token_introspection_v3 import TokenIntrospectionV3
 from .token_revocation_v3 import TokenRevocationV3
 from .verify2fa_code import Verify2faCode
+from .verify_token_v3 import VerifyTokenV3

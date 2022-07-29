@@ -175,6 +175,8 @@ from ._entitlement import get_user_entitlement_histories
 from ._entitlement import get_user_entitlement_histories_async
 from ._entitlement import get_user_entitlement_ownership_by_item_id
 from ._entitlement import get_user_entitlement_ownership_by_item_id_async
+from ._entitlement import get_user_entitlement_ownership_by_item_ids
+from ._entitlement import get_user_entitlement_ownership_by_item_ids_async
 from ._entitlement import get_user_entitlement_ownership_by_sku
 from ._entitlement import get_user_entitlement_ownership_by_sku_async
 from ._entitlement import grant_user_entitlement
@@ -205,6 +207,8 @@ from ._entitlement import public_get_user_entitlement_by_sku
 from ._entitlement import public_get_user_entitlement_by_sku_async
 from ._entitlement import public_get_user_entitlement_ownership_by_item_id
 from ._entitlement import public_get_user_entitlement_ownership_by_item_id_async
+from ._entitlement import public_get_user_entitlement_ownership_by_item_ids
+from ._entitlement import public_get_user_entitlement_ownership_by_item_ids_async
 from ._entitlement import public_get_user_entitlement_ownership_by_sku
 from ._entitlement import public_get_user_entitlement_ownership_by_sku_async
 from ._entitlement import public_query_user_entitlements
@@ -347,6 +351,8 @@ from ._item import feature_item
 from ._item import feature_item_async
 from ._item import get_app
 from ._item import get_app_async
+from ._item import get_available_predicate_types
+from ._item import get_available_predicate_types_async
 from ._item import get_bulk_item_id_by_skus
 from ._item import get_bulk_item_id_by_skus_async
 from ._item import get_item
@@ -381,6 +387,8 @@ from ._item import public_query_items
 from ._item import public_query_items_async
 from ._item import public_search_items
 from ._item import public_search_items_async
+from ._item import public_validate_item_purchase_condition
+from ._item import public_validate_item_purchase_condition_async
 from ._item import query_items
 from ._item import query_items_async
 from ._item import query_uncategorized_items
@@ -395,6 +403,10 @@ from ._item import update_app
 from ._item import update_app_async
 from ._item import update_item
 from ._item import update_item_async
+from ._item import update_item_purchase_condition
+from ._item import update_item_purchase_condition_async
+from ._item import validate_item_purchase_condition
+from ._item import validate_item_purchase_condition_async
 
 from ._key_group import create_key_group
 from ._key_group import create_key_group_async

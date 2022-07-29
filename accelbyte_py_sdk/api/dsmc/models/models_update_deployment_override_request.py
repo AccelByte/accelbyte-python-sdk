@@ -48,6 +48,8 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
 
         regions: (regions) REQUIRED List[str]
 
+        session_timeout: (session_timeout) REQUIRED int
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
     """
 
@@ -61,6 +63,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
     max_count: int  # REQUIRED
     min_count: int  # REQUIRED
     regions: List[str]  # REQUIRED
+    session_timeout: int  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
 
     # endregion fields
@@ -99,6 +102,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
 
     def with_regions(self, value: List[str]) -> ModelsUpdateDeploymentOverrideRequest:
         self.regions = value
+        return self
+
+    def with_session_timeout(self, value: int) -> ModelsUpdateDeploymentOverrideRequest:
+        self.session_timeout = value
         return self
 
     def with_use_buffer_percent(
@@ -145,6 +152,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "session_timeout"):
+            result["session_timeout"] = int(self.session_timeout)
+        elif include_empty:
+            result["session_timeout"] = 0
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -166,6 +177,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
         max_count: int,
         min_count: int,
         regions: List[str],
+        session_timeout: int,
         use_buffer_percent: bool,
     ) -> ModelsUpdateDeploymentOverrideRequest:
         instance = cls()
@@ -177,6 +189,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
         instance.max_count = max_count
         instance.min_count = min_count
         instance.regions = regions
+        instance.session_timeout = session_timeout
         instance.use_buffer_percent = use_buffer_percent
         return instance
 
@@ -222,6 +235,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
+        if "session_timeout" in dict_ and dict_["session_timeout"] is not None:
+            instance.session_timeout = int(dict_["session_timeout"])
+        elif include_empty:
+            instance.session_timeout = 0
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -277,6 +294,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             "max_count": "max_count",
             "min_count": "min_count",
             "regions": "regions",
+            "session_timeout": "session_timeout",
             "use_buffer_percent": "use_buffer_percent",
         }
 
@@ -291,6 +309,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             "max_count": True,
             "min_count": True,
             "regions": True,
+            "session_timeout": True,
             "use_buffer_percent": True,
         }
 

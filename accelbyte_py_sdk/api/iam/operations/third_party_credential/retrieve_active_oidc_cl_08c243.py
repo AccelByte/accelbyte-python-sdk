@@ -28,58 +28,56 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
-from .....core import deprecated
+
+from ...models import ModelPublicThirdPartyPlatformInfo
+from ...models import RestErrorResponse
 
 
-@deprecated
-class RevokeToken(Operation):
-    """OAuth2 token revocation API (RevokeToken)
+class RetrieveActiveOIDCClientsPublicV3(Operation):
+    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
 
-    # Deprecated at August 30, 2019. Please use the /v3/oauth/revoke endpoint instead
-
-
-
-
-    Revokes a token.
-
-
-
-
-    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret or Bearer access authentication with valid access token.
+    This is the Public API to Get All Active OIDC Platform Credential By Client ID
 
     Properties:
-        url: /iam/oauth/revoke/token
+        url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc
 
-        method: POST
+        method: GET
 
-        tags: ["OAuth"]
+        tags: ["Third Party Credential"]
 
-        consumes: ["application/x-www-form-urlencoded"]
+        consumes: []
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        token: (token) REQUIRED str in form_data
+        namespace: (namespace) REQUIRED str in path
+
+        client_id: (clientId) REQUIRED str in query
 
     Responses:
-        200: OK - (Token revoked or does not exist)
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
 
-        400: Bad Request - (Invalid input)
+        401: Unauthorized - (Unauthorized)
 
-        401: Unauthorized - (Invalid basic auth header)
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - RestErrorResponse (OIDC Credential Not Found)
+
+        500: Internal Server Error - RestErrorResponse (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/iam/oauth/revoke/token"
-    _method: str = "POST"
-    _consumes: List[str] = ["application/x-www-form-urlencoded"]
+    _url: str = "/iam/v3/public/namespaces/{namespace}/platforms/clients/oidc"
+    _method: str = "GET"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    token: str  # REQUIRED in [form_data]
+    namespace: str  # REQUIRED in [path]
+    client_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -119,13 +117,20 @@ class RevokeToken(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "form_data": self.get_form_data_params(),
+            "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
-    def get_form_data_params(self) -> dict:
+    def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "token"):
-            result["token"] = self.token
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "client_id"):
+            result["clientId"] = self.client_id
         return result
 
     # endregion get_x_params methods
@@ -136,8 +141,12 @@ class RevokeToken(Operation):
 
     # region with_x methods
 
-    def with_token(self, value: str) -> RevokeToken:
-        self.token = value
+    def with_namespace(self, value: str) -> RetrieveActiveOIDCClientsPublicV3:
+        self.namespace = value
+        return self
+
+    def with_client_id(self, value: str) -> RetrieveActiveOIDCClientsPublicV3:
+        self.client_id = value
         return self
 
     # endregion with_x methods
@@ -146,10 +155,14 @@ class RevokeToken(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "token") and self.token:
-            result["token"] = str(self.token)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["token"] = ""
+            result["namespace"] = ""
+        if hasattr(self, "client_id") and self.client_id:
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
         return result
 
     # endregion to methods
@@ -159,14 +172,21 @@ class RevokeToken(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[ModelPublicThirdPartyPlatformInfo]],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
-        200: OK - (Token revoked or does not exist)
+        200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
 
-        400: Bad Request - (Invalid input)
+        401: Unauthorized - (Unauthorized)
 
-        401: Unauthorized - (Invalid basic auth header)
+        403: Forbidden - (Forbidden)
+
+        404: Not Found - RestErrorResponse (OIDC Credential Not Found)
+
+        500: Internal Server Error - RestErrorResponse (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -182,11 +202,17 @@ class RevokeToken(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
-        if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return [
+                ModelPublicThirdPartyPlatformInfo.create_from_dict(i) for i in content
+            ], None
         if code == 401:
             return None, HttpResponse.create(code, "Unauthorized")
+        if code == 403:
+            return None, HttpResponse.create(code, "Forbidden")
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -199,31 +225,41 @@ class RevokeToken(Operation):
     @classmethod
     def create(
         cls,
-        token: str,
-    ) -> RevokeToken:
+        namespace: str,
+        client_id: str,
+    ) -> RetrieveActiveOIDCClientsPublicV3:
         instance = cls()
-        instance.token = token
+        instance.namespace = namespace
+        instance.client_id = client_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> RevokeToken:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> RetrieveActiveOIDCClientsPublicV3:
         instance = cls()
-        if "token" in dict_ and dict_["token"] is not None:
-            instance.token = str(dict_["token"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.token = ""
+            instance.namespace = ""
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "token": "token",
+            "namespace": "namespace",
+            "clientId": "client_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "token": True,
+            "namespace": True,
+            "clientId": True,
         }
 
     # endregion static methods

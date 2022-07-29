@@ -44,6 +44,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
 
@@ -1209,6 +1210,7 @@ class PaymentOrder(Model):
                 "COINS",
                 "INGAMEITEM",
                 "MEDIA",
+                "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
             ],

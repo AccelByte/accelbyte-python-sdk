@@ -43,6 +43,8 @@ from ..api.platform.models import AppUpdate
 from ..api.platform.models import AppleIAPConfigInfo
 from ..api.platform.models import AppleIAPConfigRequest
 from ..api.platform.models import AppleIAPReceipt
+from ..api.platform.models import AvailableComparisonObject
+from ..api.platform.models import AvailablePredicateObject
 from ..api.platform.models import BasicCategoryInfo
 from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
@@ -67,6 +69,8 @@ from ..api.platform.models import CodeCreate
 from ..api.platform.models import CodeCreateResult
 from ..api.platform.models import CodeInfo
 from ..api.platform.models import CodeInfoPagingSlicedResult
+from ..api.platform.models import ConditionGroup
+from ..api.platform.models import ConditionGroupValidateResult
 from ..api.platform.models import ConditionMatchResult
 from ..api.platform.models import CreditRequest
 from ..api.platform.models import CreditSummary
@@ -87,6 +91,7 @@ from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementHistoryInfo
 from ..api.platform.models import EntitlementInfo
+from ..api.platform.models import EntitlementOwnership
 from ..api.platform.models import EntitlementPagingSlicedResult
 from ..api.platform.models import EntitlementSummary
 from ..api.platform.models import EntitlementUpdate
@@ -136,6 +141,8 @@ from ..api.platform.models import ItemDynamicDataInfo
 from ..api.platform.models import ItemId
 from ..api.platform.models import ItemInfo
 from ..api.platform.models import ItemPagingSlicedResult
+from ..api.platform.models import ItemPurchaseConditionValidateRequest
+from ..api.platform.models import ItemPurchaseConditionValidateResult
 from ..api.platform.models import ItemReturnRequest
 from ..api.platform.models import ItemSnapshot
 from ..api.platform.models import ItemUpdate
@@ -149,6 +156,8 @@ from ..api.platform.models import KeyPagingSliceResult
 from ..api.platform.models import Localization
 from ..api.platform.models import MockIAPReceipt
 from ..api.platform.models import NotificationProcessResult
+from ..api.platform.models import OptionBoxConfig
+from ..api.platform.models import OptionBoxItem
 from ..api.platform.models import Order
 from ..api.platform.models import OrderCreate
 from ..api.platform.models import OrderGrantInfo
@@ -211,6 +220,10 @@ from ..api.platform.models import PlayStationReconcileRequest
 from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
+from ..api.platform.models import PredicateObject
+from ..api.platform.models import PredicateValidateResult
+from ..api.platform.models import PurchaseCondition
+from ..api.platform.models import PurchaseConditionUpdate
 from ..api.platform.models import PurchasedItemCount
 from ..api.platform.models import Recurring
 from ..api.platform.models import RecurringChargeResult
@@ -470,6 +483,22 @@ def create_apple_iap_receipt_example() -> AppleIAPReceipt:
     return instance
 
 
+def create_available_comparison_object_example() -> AvailableComparisonObject:
+    instance = AvailableComparisonObject()
+    instance.comparison = randomize()
+    instance.text = randomize()
+    return instance
+
+
+def create_available_predicate_object_example() -> AvailablePredicateObject:
+    instance = AvailablePredicateObject()
+    instance.available_comparisons = [create_available_comparison_object_example()]
+    instance.predicate_type = randomize()
+    instance.show_any_of = randomize("bool")
+    instance.value_type = randomize()
+    return instance
+
+
 def create_basic_category_info_example() -> BasicCategoryInfo:
     instance = BasicCategoryInfo()
     instance.category_path = randomize()
@@ -585,7 +614,9 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     instance.long_description = randomize()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
+    instance.purchase_condition = create_purchase_condition_example()
     instance.recurring = create_recurring_example()
     instance.region_data = [create_region_data_item_example()]
     instance.season_type = randomize()
@@ -809,6 +840,19 @@ def create_code_info_paging_sliced_result_example() -> CodeInfoPagingSlicedResul
     return instance
 
 
+def create_condition_group_example() -> ConditionGroup:
+    instance = ConditionGroup()
+    instance.operator = randomize()
+    instance.predicates = [create_predicate_object_example()]
+    return instance
+
+
+def create_condition_group_validate_result_example() -> ConditionGroupValidateResult:
+    instance = ConditionGroupValidateResult()
+    instance.predicate_validate_results = [create_predicate_validate_result_example()]
+    return instance
+
+
 def create_condition_match_result_example() -> ConditionMatchResult:
     instance = ConditionMatchResult()
     instance.matched = randomize("bool")
@@ -951,6 +995,7 @@ def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
 
 def create_entitlement_decrement_example() -> EntitlementDecrement:
     instance = EntitlementDecrement()
+    instance.options = [randomize()]
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -1009,6 +1054,13 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.start_date = randomize("date")
     instance.store_id = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_entitlement_ownership_example() -> EntitlementOwnership:
+    instance = EntitlementOwnership()
+    instance.owned = randomize("bool")
+    instance.item_id = randomize()
     return instance
 
 
@@ -1318,7 +1370,9 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
+    instance.purchase_condition = create_purchase_condition_example()
     instance.recurring = create_recurring_example()
     instance.season_type = randomize()
     instance.sku = randomize("slug")
@@ -1503,6 +1557,7 @@ def create_item_create_example() -> ItemCreate:
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
     instance.recurring = create_recurring_example()
     instance.season_type = randomize()
@@ -1565,7 +1620,9 @@ def create_item_info_example() -> ItemInfo:
     instance.long_description = randomize()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
+    instance.purchase_condition = create_purchase_condition_example()
     instance.recurring = create_recurring_example()
     instance.region_data = [create_region_data_item_example()]
     instance.season_type = randomize()
@@ -1584,6 +1641,21 @@ def create_item_paging_sliced_result_example() -> ItemPagingSlicedResult:
     instance = ItemPagingSlicedResult()
     instance.data = [create_item_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_item_purchase_condition_validate_request_example() -> ItemPurchaseConditionValidateRequest:
+    instance = ItemPurchaseConditionValidateRequest()
+    instance.item_ids = [randomize()]
+    return instance
+
+
+def create_item_purchase_condition_validate_result_example() -> ItemPurchaseConditionValidateResult:
+    instance = ItemPurchaseConditionValidateResult()
+    instance.item_id = randomize()
+    instance.purchasable = randomize("bool")
+    instance.sku = randomize("slug")
+    instance.validate_details = [create_condition_group_validate_result_example()]
     return instance
 
 
@@ -1615,6 +1687,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.listable = randomize("bool")
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
     instance.recurring = create_recurring_example()
     instance.region_data_item = create_region_data_item_example()
@@ -1651,6 +1724,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
     instance.recurring = create_recurring_example()
     instance.region_data = {}
@@ -1760,6 +1834,20 @@ def create_notification_process_result_example() -> NotificationProcessResult:
     instance.custom_param = {randomize(): randomize()}
     instance.severity = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
+    return instance
+
+
+def create_option_box_config_example() -> OptionBoxConfig:
+    instance = OptionBoxConfig()
+    instance.box_items = [create_option_box_item_example()]
+    return instance
+
+
+def create_option_box_item_example() -> OptionBoxItem:
+    instance = OptionBoxItem()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
     return instance
 
 
@@ -2519,7 +2607,9 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.long_description = randomize()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
+    instance.option_box_config = create_option_box_config_example()
     instance.purchasable = randomize("bool")
+    instance.purchase_condition = create_purchase_condition_example()
     instance.recurring = create_recurring_example()
     instance.region_data = [create_region_data_item_example()]
     instance.season_type = randomize()
@@ -2531,6 +2621,38 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.target_namespace = randomize("slug")
     instance.thumbnail_url = randomize("url")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_predicate_object_example() -> PredicateObject:
+    instance = PredicateObject()
+    instance.any_of = randomize("int", min_val=1, max_val=1000)
+    instance.comparison = randomize()
+    instance.name = randomize()
+    instance.predicate_type = randomize()
+    instance.value = randomize()
+    instance.values = [randomize()]
+    return instance
+
+
+def create_predicate_validate_result_example() -> PredicateValidateResult:
+    instance = PredicateValidateResult()
+    instance.matched = [randomize()]
+    instance.predicate_name = randomize()
+    instance.unmatched = [randomize()]
+    instance.validated = randomize("bool")
+    return instance
+
+
+def create_purchase_condition_example() -> PurchaseCondition:
+    instance = PurchaseCondition()
+    instance.condition_groups = [create_condition_group_example()]
+    return instance
+
+
+def create_purchase_condition_update_example() -> PurchaseConditionUpdate:
+    instance = PurchaseConditionUpdate()
+    instance.purchase_condition = create_purchase_condition_example()
     return instance
 
 

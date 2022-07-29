@@ -56,6 +56,8 @@ from ..api.ugc.models import ModelsPaginatedGetTypeResponse
 from ..api.ugc.models import ModelsPaginatedGroupResponse
 from ..api.ugc.models import ModelsPagingCursor
 from ..api.ugc.models import ModelsPayloadURL
+from ..api.ugc.models import ModelsPreviewMetadata
+from ..api.ugc.models import ModelsPreviewURL
 from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
 from ..api.ugc.models import ModelsUpdateScreenshot
@@ -105,11 +107,13 @@ def create_models_content_download_response_example() -> ModelsContentDownloadRe
     instance.sub_type = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
+    instance.updated_time = randomize()
     instance.user_id = randomize("uid")
     instance.groups = [randomize()]
     instance.like_state = create_models_like_state_example()
     instance.payload = randomize()
     instance.payload_url = randomize("url")
+    instance.preview_url = randomize("url")
     instance.screenshots = [create_models_screenshot_response_example()]
     return instance
 
@@ -132,6 +136,7 @@ def create_models_create_content_request_example() -> ModelsCreateContentRequest
     instance.name = randomize()
     instance.payload = randomize()
     instance.preview = randomize()
+    instance.preview_metadata = create_models_preview_metadata_example()
     instance.sub_type = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -144,6 +149,7 @@ def create_models_create_content_request_s3_example() -> ModelsCreateContentRequ
     instance.file_extension = randomize()
     instance.name = randomize()
     instance.preview = randomize()
+    instance.preview_metadata = create_models_preview_metadata_example()
     instance.sub_type = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -166,9 +172,11 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.sub_type = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
+    instance.updated_time = randomize()
     instance.user_id = randomize("uid")
     instance.content_type = randomize()
     instance.payload_url = randomize("url")
+    instance.preview_url = randomize("url")
     return instance
 
 
@@ -271,6 +279,7 @@ def create_models_creator_response_example() -> ModelsCreatorResponse:
 def create_models_get_content_preview_response_example() -> ModelsGetContentPreviewResponse:
     instance = ModelsGetContentPreviewResponse()
     instance.preview = randomize()
+    instance.preview_url = randomize("url")
     return instance
 
 
@@ -340,6 +349,20 @@ def create_models_paging_cursor_example() -> ModelsPagingCursor:
 
 def create_models_payload_url_example() -> ModelsPayloadURL:
     instance = ModelsPayloadURL()
+    instance.source = randomize()
+    instance.url = randomize("url")
+    return instance
+
+
+def create_models_preview_metadata_example() -> ModelsPreviewMetadata:
+    instance = ModelsPreviewMetadata()
+    instance.preview_content_type = randomize()
+    instance.preview_file_extension = randomize()
+    return instance
+
+
+def create_models_preview_url_example() -> ModelsPreviewURL:
+    instance = ModelsPreviewURL()
     instance.source = randomize()
     instance.url = randomize("url")
     return instance

@@ -28,9 +28,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import FullItemPagingSlicedResult
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class SearchItems(Operation):
@@ -63,6 +76,8 @@ class SearchItems(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -90,6 +105,7 @@ class SearchItems(Operation):
 
     namespace: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
+    item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
@@ -148,6 +164,8 @@ class SearchItems(Operation):
         result = {}
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "item_type"):
+            result["itemType"] = self.item_type
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -174,6 +192,10 @@ class SearchItems(Operation):
 
     def with_active_only(self, value: bool) -> SearchItems:
         self.active_only = value
+        return self
+
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> SearchItems:
+        self.item_type = value
         return self
 
     def with_limit(self, value: int) -> SearchItems:
@@ -210,6 +232,10 @@ class SearchItems(Operation):
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = False
+        if hasattr(self, "item_type") and self.item_type:
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -281,6 +307,7 @@ class SearchItems(Operation):
         keyword: str,
         language: str,
         active_only: Optional[bool] = None,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         store_id: Optional[str] = None,
@@ -291,6 +318,8 @@ class SearchItems(Operation):
         instance.language = language
         if active_only is not None:
             instance.active_only = active_only
+        if item_type is not None:
+            instance.item_type = item_type
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -310,6 +339,10 @@ class SearchItems(Operation):
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = False
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -337,6 +370,7 @@ class SearchItems(Operation):
         return {
             "namespace": "namespace",
             "activeOnly": "active_only",
+            "itemType": "item_type",
             "limit": "limit",
             "offset": "offset",
             "storeId": "store_id",
@@ -349,11 +383,28 @@ class SearchItems(Operation):
         return {
             "namespace": True,
             "activeOnly": False,
+            "itemType": False,
             "limit": False,
             "offset": False,
             "storeId": False,
             "keyword": True,
             "language": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "OPTIONBOX",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],  # in query
         }
 
     # endregion static methods

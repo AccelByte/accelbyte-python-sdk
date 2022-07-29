@@ -30,6 +30,7 @@ from ....core import Model
 from ..models.models_creator_follow_state import ModelsCreatorFollowState
 from ..models.models_like_state import ModelsLikeState
 from ..models.models_payload_url import ModelsPayloadURL
+from ..models.models_preview_url import ModelsPreviewURL
 from ..models.models_screenshot_response import ModelsScreenshotResponse
 
 
@@ -69,6 +70,8 @@ class ModelsContentDownloadResponse(Model):
 
         type_: (type) REQUIRED str
 
+        updated_time: (updatedTime) REQUIRED str
+
         user_id: (userId) REQUIRED str
 
         groups: (groups) OPTIONAL List[str]
@@ -78,6 +81,8 @@ class ModelsContentDownloadResponse(Model):
         payload: (payload) OPTIONAL str
 
         payload_url: (payloadURL) OPTIONAL List[ModelsPayloadURL]
+
+        preview_url: (previewURL) OPTIONAL List[ModelsPreviewURL]
 
         screenshots: (screenshots) OPTIONAL List[ModelsScreenshotResponse]
     """
@@ -100,11 +105,13 @@ class ModelsContentDownloadResponse(Model):
     sub_type: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
+    updated_time: str  # REQUIRED
     user_id: str  # REQUIRED
     groups: List[str]  # OPTIONAL
     like_state: ModelsLikeState  # OPTIONAL
     payload: str  # OPTIONAL
     payload_url: List[ModelsPayloadURL]  # OPTIONAL
+    preview_url: List[ModelsPreviewURL]  # OPTIONAL
     screenshots: List[ModelsScreenshotResponse]  # OPTIONAL
 
     # endregion fields
@@ -177,6 +184,10 @@ class ModelsContentDownloadResponse(Model):
         self.type_ = value
         return self
 
+    def with_updated_time(self, value: str) -> ModelsContentDownloadResponse:
+        self.updated_time = value
+        return self
+
     def with_user_id(self, value: str) -> ModelsContentDownloadResponse:
         self.user_id = value
         return self
@@ -197,6 +208,12 @@ class ModelsContentDownloadResponse(Model):
         self, value: List[ModelsPayloadURL]
     ) -> ModelsContentDownloadResponse:
         self.payload_url = value
+        return self
+
+    def with_preview_url(
+        self, value: List[ModelsPreviewURL]
+    ) -> ModelsContentDownloadResponse:
+        self.preview_url = value
         return self
 
     def with_screenshots(
@@ -277,6 +294,10 @@ class ModelsContentDownloadResponse(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "updated_time"):
+            result["updatedTime"] = str(self.updated_time)
+        elif include_empty:
+            result["updatedTime"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -299,6 +320,12 @@ class ModelsContentDownloadResponse(Model):
             ]
         elif include_empty:
             result["payloadURL"] = []
+        if hasattr(self, "preview_url"):
+            result["previewURL"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.preview_url
+            ]
+        elif include_empty:
+            result["previewURL"] = []
         if hasattr(self, "screenshots"):
             result["screenshots"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.screenshots
@@ -330,11 +357,13 @@ class ModelsContentDownloadResponse(Model):
         sub_type: str,
         tags: List[str],
         type_: str,
+        updated_time: str,
         user_id: str,
         groups: Optional[List[str]] = None,
         like_state: Optional[ModelsLikeState] = None,
         payload: Optional[str] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
+        preview_url: Optional[List[ModelsPreviewURL]] = None,
         screenshots: Optional[List[ModelsScreenshotResponse]] = None,
     ) -> ModelsContentDownloadResponse:
         instance = cls()
@@ -354,6 +383,7 @@ class ModelsContentDownloadResponse(Model):
         instance.sub_type = sub_type
         instance.tags = tags
         instance.type_ = type_
+        instance.updated_time = updated_time
         instance.user_id = user_id
         if groups is not None:
             instance.groups = groups
@@ -363,6 +393,8 @@ class ModelsContentDownloadResponse(Model):
             instance.payload = payload
         if payload_url is not None:
             instance.payload_url = payload_url
+        if preview_url is not None:
+            instance.preview_url = preview_url
         if screenshots is not None:
             instance.screenshots = screenshots
         return instance
@@ -440,6 +472,10 @@ class ModelsContentDownloadResponse(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "updatedTime" in dict_ and dict_["updatedTime"] is not None:
+            instance.updated_time = str(dict_["updatedTime"])
+        elif include_empty:
+            instance.updated_time = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -465,6 +501,13 @@ class ModelsContentDownloadResponse(Model):
             ]
         elif include_empty:
             instance.payload_url = []
+        if "previewURL" in dict_ and dict_["previewURL"] is not None:
+            instance.preview_url = [
+                ModelsPreviewURL.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["previewURL"]
+            ]
+        elif include_empty:
+            instance.preview_url = []
         if "screenshots" in dict_ and dict_["screenshots"] is not None:
             instance.screenshots = [
                 ModelsScreenshotResponse.create_from_dict(
@@ -533,11 +576,13 @@ class ModelsContentDownloadResponse(Model):
             "subType": "sub_type",
             "tags": "tags",
             "type": "type_",
+            "updatedTime": "updated_time",
             "userId": "user_id",
             "groups": "groups",
             "likeState": "like_state",
             "payload": "payload",
             "payloadURL": "payload_url",
+            "previewURL": "preview_url",
             "screenshots": "screenshots",
         }
 
@@ -560,11 +605,13 @@ class ModelsContentDownloadResponse(Model):
             "subType": True,
             "tags": True,
             "type": True,
+            "updatedTime": True,
             "userId": True,
             "groups": False,
             "likeState": False,
             "payload": False,
             "payloadURL": False,
+            "previewURL": False,
             "screenshots": False,
         }
 

@@ -38,6 +38,8 @@ class AdminDownloadContentPreview(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
+     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 

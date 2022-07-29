@@ -62,7 +62,7 @@ class SyncEpicGameDLC(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (successful operation)
+        204: No Content - (Successful operation)
     """
 
     # region fields
@@ -185,7 +185,7 @@ class SyncEpicGameDLC(Operation):
     ) -> Tuple[None, Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (successful operation)
+        204: No Content - (Successful operation)
 
         ---: HttpResponse (Undocumented Response)
 

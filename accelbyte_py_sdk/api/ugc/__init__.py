@@ -173,8 +173,10 @@ from .wrappers import upload_content_screenshot
 from .wrappers import upload_content_screenshot_async
 
 # public_creator
-from .wrappers import get_creator
-from .wrappers import get_creator_async
+from .wrappers import public_get_creator
+from .wrappers import public_get_creator_async
+from .wrappers import public_search_creator
+from .wrappers import public_search_creator_async
 
 # public_download_count
 from .wrappers import add_download_count

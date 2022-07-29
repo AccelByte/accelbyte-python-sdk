@@ -44,6 +44,26 @@ class GrantTypeEnum(StrEnum):
 class TokenGrant(Operation):
     """OAuth2 access token generation endpoint (TokenGrant)
 
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/oauth/platforms/{platformId}/token [POST]
+
+
+      * Note: difference in V3 response:
+        1. format differenceï¼Pascal case => Camel case): permissions field from Action => action, Resource => resource
+
+
+
+
+
+
+
     This endpoint requires all requests to have `Authorization` header set with `Basic` access authentication
     constructed from client id and client secret.
 
@@ -272,7 +292,7 @@ class TokenGrant(Operation):
 
         method: POST
 
-        tags: ["OAuth"]
+        tags: ["OAuth(Deprecated)"]
 
         consumes: ["application/x-www-form-urlencoded"]
 

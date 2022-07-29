@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsGameRecordRequest
+from ...models import ModelsGameRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -153,7 +154,7 @@ class AdminPostGameRecordHandlerV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Record in namespace-level saved)
+        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -276,11 +277,12 @@ class AdminPostGameRecordHandlerV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, Optional[str]], Union[None, HttpResponse, ModelsResponseError]
+        Union[None, ModelsGameRecordResponse],
+        Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        201: Created - (Record in namespace-level saved)
+        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
 
         401: Unauthorized - ModelsResponseError (Unauthorized)
 
@@ -300,7 +302,7 @@ class AdminPostGameRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return HttpResponse.create(code, "Created"), None
+            return ModelsGameRecordResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 500:

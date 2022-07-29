@@ -54,6 +54,15 @@ from .app_update import (
 from .apple_iap_config_info import AppleIAPConfigInfo
 from .apple_iap_config_request import AppleIAPConfigRequest
 from .apple_iap_receipt import AppleIAPReceipt
+from .available_comparison_object import AvailableComparisonObject
+from .available_comparison_object import (
+    ComparisonEnum as AvailableComparisonObjectComparisonEnum,
+)
+from .available_predicate_object import AvailablePredicateObject
+from .available_predicate_object import (
+    PredicateTypeEnum as AvailablePredicateObjectPredicateTypeEnum,
+    ValueTypeEnum as AvailablePredicateObjectValueTypeEnum,
+)
 from .basic_category_info import BasicCategoryInfo
 from .basic_item import BasicItem
 from .basic_item import (
@@ -119,6 +128,9 @@ from .code_info import (
     TypeEnum as CodeInfoTypeEnum,
 )
 from .code_info_paging_sliced_result import CodeInfoPagingSlicedResult
+from .condition_group import ConditionGroup
+from .condition_group import OperatorEnum as ConditionGroupOperatorEnum
+from .condition_group_validate_result import ConditionGroupValidateResult
 from .condition_match_result import ConditionMatchResult
 from .credit_request import CreditRequest
 from .credit_request import (
@@ -160,6 +172,7 @@ from .entitlement_info import (
     StatusEnum as EntitlementInfoStatusEnum,
     TypeEnum as EntitlementInfoTypeEnum,
 )
+from .entitlement_ownership import EntitlementOwnership
 from .entitlement_paging_sliced_result import EntitlementPagingSlicedResult
 from .entitlement_summary import EntitlementSummary
 from .entitlement_summary import (
@@ -264,6 +277,10 @@ from .item_info import (
     StatusEnum as ItemInfoStatusEnum,
 )
 from .item_paging_sliced_result import ItemPagingSlicedResult
+from .item_purchase_condition_validate_request import (
+    ItemPurchaseConditionValidateRequest,
+)
+from .item_purchase_condition_validate_result import ItemPurchaseConditionValidateResult
 from .item_return_request import ItemReturnRequest
 from .item_snapshot import ItemSnapshot
 from .item_snapshot import (
@@ -301,6 +318,8 @@ from .notification_process_result import NotificationProcessResult
 from .notification_process_result import (
     StatusEnum as NotificationProcessResultStatusEnum,
 )
+from .option_box_config import OptionBoxConfig
+from .option_box_item import OptionBoxItem
 from .order import Order
 from .order import (
     PaymentProviderEnum as OrderPaymentProviderEnum,
@@ -444,6 +463,14 @@ from .populated_item_info import (
     SeasonTypeEnum as PopulatedItemInfoSeasonTypeEnum,
     StatusEnum as PopulatedItemInfoStatusEnum,
 )
+from .predicate_object import PredicateObject
+from .predicate_object import (
+    ComparisonEnum as PredicateObjectComparisonEnum,
+    PredicateTypeEnum as PredicateObjectPredicateTypeEnum,
+)
+from .predicate_validate_result import PredicateValidateResult
+from .purchase_condition import PurchaseCondition
+from .purchase_condition_update import PurchaseConditionUpdate
 from .purchased_item_count import PurchasedItemCount
 from .recurring import Recurring
 from .recurring import CycleEnum as RecurringCycleEnum

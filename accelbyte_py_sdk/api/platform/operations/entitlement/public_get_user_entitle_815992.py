@@ -39,6 +39,7 @@ class EntitlementClazzEnum(StrEnum):
     CODE = "CODE"
     ENTITLEMENT = "ENTITLEMENT"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
@@ -310,6 +311,7 @@ class PublicGetUserEntitlementBySku(Operation):
                 "CODE",
                 "ENTITLEMENT",
                 "MEDIA",
+                "OPTIONBOX",
                 "SUBSCRIPTION",
             ],  # in query
         }

@@ -6,7 +6,7 @@
 
 # template file: justice_py_sdk_codegen/__main__.py
 
-# Analytics Game Telemetry (0.0.1)
+# Analytics Game Telemetry (1.7.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.localization import Localization
+from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
 
@@ -46,6 +47,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
 
@@ -113,6 +115,8 @@ class ItemCreate(Model):
 
         max_count_per_user: (maxCountPerUser) OPTIONAL int
 
+        option_box_config: (optionBoxConfig) OPTIONAL OptionBoxConfig
+
         purchasable: (purchasable) OPTIONAL bool
 
         recurring: (recurring) OPTIONAL Recurring
@@ -157,6 +161,7 @@ class ItemCreate(Model):
     listable: bool  # OPTIONAL
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
+    option_box_config: OptionBoxConfig  # OPTIONAL
     purchasable: bool  # OPTIONAL
     recurring: Recurring  # OPTIONAL
     season_type: Union[str, SeasonTypeEnum]  # OPTIONAL
@@ -256,6 +261,10 @@ class ItemCreate(Model):
 
     def with_max_count_per_user(self, value: int) -> ItemCreate:
         self.max_count_per_user = value
+        return self
+
+    def with_option_box_config(self, value: OptionBoxConfig) -> ItemCreate:
+        self.option_box_config = value
         return self
 
     def with_purchasable(self, value: bool) -> ItemCreate:
@@ -396,6 +405,12 @@ class ItemCreate(Model):
             result["maxCountPerUser"] = int(self.max_count_per_user)
         elif include_empty:
             result["maxCountPerUser"] = 0
+        if hasattr(self, "option_box_config"):
+            result["optionBoxConfig"] = self.option_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["optionBoxConfig"] = OptionBoxConfig()
         if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
@@ -466,6 +481,7 @@ class ItemCreate(Model):
         listable: Optional[bool] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
+        option_box_config: Optional[OptionBoxConfig] = None,
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         season_type: Optional[Union[str, SeasonTypeEnum]] = None,
@@ -513,6 +529,8 @@ class ItemCreate(Model):
             instance.max_count = max_count
         if max_count_per_user is not None:
             instance.max_count_per_user = max_count_per_user
+        if option_box_config is not None:
+            instance.option_box_config = option_box_config
         if purchasable is not None:
             instance.purchasable = purchasable
         if recurring is not None:
@@ -638,6 +656,12 @@ class ItemCreate(Model):
             instance.max_count_per_user = int(dict_["maxCountPerUser"])
         elif include_empty:
             instance.max_count_per_user = 0
+        if "optionBoxConfig" in dict_ and dict_["optionBoxConfig"] is not None:
+            instance.option_box_config = OptionBoxConfig.create_from_dict(
+                dict_["optionBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.option_box_config = OptionBoxConfig()
         if "purchasable" in dict_ and dict_["purchasable"] is not None:
             instance.purchasable = bool(dict_["purchasable"])
         elif include_empty:
@@ -740,6 +764,7 @@ class ItemCreate(Model):
             "listable": "listable",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
+            "optionBoxConfig": "option_box_config",
             "purchasable": "purchasable",
             "recurring": "recurring",
             "seasonType": "season_type",
@@ -776,6 +801,7 @@ class ItemCreate(Model):
             "listable": False,
             "maxCount": False,
             "maxCountPerUser": False,
+            "optionBoxConfig": False,
             "purchasable": False,
             "recurring": False,
             "seasonType": False,
@@ -799,6 +825,7 @@ class ItemCreate(Model):
                 "COINS",
                 "INGAMEITEM",
                 "MEDIA",
+                "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
             ],

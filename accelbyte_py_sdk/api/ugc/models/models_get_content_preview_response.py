@@ -27,17 +27,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_preview_url import ModelsPreviewURL
+
 
 class ModelsGetContentPreviewResponse(Model):
     """Models get content preview response (models.GetContentPreviewResponse)
 
     Properties:
         preview: (preview) REQUIRED str
+
+        preview_url: (previewURL) OPTIONAL ModelsPreviewURL
     """
 
     # region fields
 
     preview: str  # REQUIRED
+    preview_url: ModelsPreviewURL  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +50,12 @@ class ModelsGetContentPreviewResponse(Model):
 
     def with_preview(self, value: str) -> ModelsGetContentPreviewResponse:
         self.preview = value
+        return self
+
+    def with_preview_url(
+        self, value: ModelsPreviewURL
+    ) -> ModelsGetContentPreviewResponse:
+        self.preview_url = value
         return self
 
     # endregion with_x methods
@@ -57,6 +68,10 @@ class ModelsGetContentPreviewResponse(Model):
             result["preview"] = str(self.preview)
         elif include_empty:
             result["preview"] = ""
+        if hasattr(self, "preview_url"):
+            result["previewURL"] = self.preview_url.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["previewURL"] = ModelsPreviewURL()
         return result
 
     # endregion to methods
@@ -67,9 +82,12 @@ class ModelsGetContentPreviewResponse(Model):
     def create(
         cls,
         preview: str,
+        preview_url: Optional[ModelsPreviewURL] = None,
     ) -> ModelsGetContentPreviewResponse:
         instance = cls()
         instance.preview = preview
+        if preview_url is not None:
+            instance.preview_url = preview_url
         return instance
 
     @classmethod
@@ -83,6 +101,12 @@ class ModelsGetContentPreviewResponse(Model):
             instance.preview = str(dict_["preview"])
         elif include_empty:
             instance.preview = ""
+        if "previewURL" in dict_ and dict_["previewURL"] is not None:
+            instance.preview_url = ModelsPreviewURL.create_from_dict(
+                dict_["previewURL"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.preview_url = ModelsPreviewURL()
         return instance
 
     @classmethod
@@ -127,12 +151,14 @@ class ModelsGetContentPreviewResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "preview": "preview",
+            "previewURL": "preview_url",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "preview": True,
+            "previewURL": False,
         }
 
     # endregion static methods

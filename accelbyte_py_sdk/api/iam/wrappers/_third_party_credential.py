@@ -42,6 +42,7 @@ from ..operations.third_party_credential import (
     DeleteThirdPartyLoginPlatformCredentialV3,
 )
 from ..operations.third_party_credential import DeleteThirdPartyLoginPlatformDomainV3
+from ..operations.third_party_credential import RetrieveActiveOIDCClientsPublicV3
 from ..operations.third_party_credential import (
     RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3,
 )
@@ -175,6 +176,44 @@ async def delete_third_party_login_platform_domain_v3_async(
     request = DeleteThirdPartyLoginPlatformDomainV3.create(
         body=body,
         platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetrieveActiveOIDCClientsPublicV3)
+def retrieve_active_oidc_clients_public_v3(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveActiveOIDCClientsPublicV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrieveActiveOIDCClientsPublicV3)
+async def retrieve_active_oidc_clients_public_v3_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrieveActiveOIDCClientsPublicV3.create(
+        client_id=client_id,
         namespace=namespace,
     )
     return await run_request_async(

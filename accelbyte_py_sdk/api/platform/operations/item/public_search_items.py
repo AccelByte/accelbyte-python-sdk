@@ -28,9 +28,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
 from ...models import ItemPagingSlicedResult
+
+
+class ItemTypeEnum(StrEnum):
+    APP = "APP"
+    BUNDLE = "BUNDLE"
+    CODE = "CODE"
+    COINS = "COINS"
+    INGAMEITEM = "INGAMEITEM"
+    MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
+    SEASON = "SEASON"
+    SUBSCRIPTION = "SUBSCRIPTION"
 
 
 class PublicSearchItems(Operation):
@@ -58,6 +71,8 @@ class PublicSearchItems(Operation):
         securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
+
+        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -87,6 +102,7 @@ class PublicSearchItems(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
@@ -144,6 +160,8 @@ class PublicSearchItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "item_type"):
+            result["itemType"] = self.item_type
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -168,6 +186,10 @@ class PublicSearchItems(Operation):
 
     def with_namespace(self, value: str) -> PublicSearchItems:
         self.namespace = value
+        return self
+
+    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> PublicSearchItems:
+        self.item_type = value
         return self
 
     def with_limit(self, value: int) -> PublicSearchItems:
@@ -204,6 +226,10 @@ class PublicSearchItems(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "item_type") and self.item_type:
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = Union[str, ItemTypeEnum]()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -278,6 +304,7 @@ class PublicSearchItems(Operation):
         namespace: str,
         keyword: str,
         language: str,
+        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
@@ -287,6 +314,8 @@ class PublicSearchItems(Operation):
         instance.namespace = namespace
         instance.keyword = keyword
         instance.language = language
+        if item_type is not None:
+            instance.item_type = item_type
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -306,6 +335,10 @@ class PublicSearchItems(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = Union[str, ItemTypeEnum]()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -336,6 +369,7 @@ class PublicSearchItems(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "itemType": "item_type",
             "limit": "limit",
             "offset": "offset",
             "region": "region",
@@ -348,12 +382,29 @@ class PublicSearchItems(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "itemType": False,
             "limit": False,
             "offset": False,
             "region": False,
             "storeId": False,
             "keyword": True,
             "language": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "itemType": [
+                "APP",
+                "BUNDLE",
+                "CODE",
+                "COINS",
+                "INGAMEITEM",
+                "MEDIA",
+                "OPTIONBOX",
+                "SEASON",
+                "SUBSCRIPTION",
+            ],  # in query
         }
 
     # endregion static methods

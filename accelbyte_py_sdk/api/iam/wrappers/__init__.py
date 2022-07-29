@@ -81,25 +81,6 @@ from ._input_validations import admin_update_input_validations_async
 from ._input_validations import public_get_input_validations
 from ._input_validations import public_get_input_validations_async
 
-from ._o_auth import authorization
-from ._o_auth import authorization_async
-from ._o_auth import get_jwks
-from ._o_auth import get_jwks_async
-from ._o_auth import get_revocation_list
-from ._o_auth import get_revocation_list_async
-from ._o_auth import platform_token_request_handler
-from ._o_auth import platform_token_request_handler_async
-from ._o_auth import revoke_a_user
-from ._o_auth import revoke_a_user_async
-from ._o_auth import revoke_token
-from ._o_auth import revoke_token_async
-from ._o_auth import revoke_user
-from ._o_auth import revoke_user_async
-from ._o_auth import token_grant
-from ._o_auth import token_grant_async
-from ._o_auth import verify_token
-from ._o_auth import verify_token_async
-
 from ._o_auth2_0 import admin_retrieve_user_third_party_platform_token_v3
 from ._o_auth2_0 import admin_retrieve_user_third_party_platform_token_v3_async
 from ._o_auth2_0 import auth_code_request_v3
@@ -126,6 +107,8 @@ from ._o_auth2_0 import token_revocation_v3
 from ._o_auth2_0 import token_revocation_v3_async
 from ._o_auth2_0 import verify2fa_code
 from ._o_auth2_0 import verify2fa_code_async
+from ._o_auth2_0 import verify_token_v3
+from ._o_auth2_0 import verify_token_v3_async
 
 from ._o_auth2_0_extension import authentication_with_platform_link_v3
 from ._o_auth2_0_extension import authentication_with_platform_link_v3_async
@@ -139,6 +122,25 @@ from ._o_auth2_0_extension import platform_authentication_v3
 from ._o_auth2_0_extension import platform_authentication_v3_async
 from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
+
+from ._o_auth_deprecated import authorization
+from ._o_auth_deprecated import authorization_async
+from ._o_auth_deprecated import get_jwks
+from ._o_auth_deprecated import get_jwks_async
+from ._o_auth_deprecated import get_revocation_list
+from ._o_auth_deprecated import get_revocation_list_async
+from ._o_auth_deprecated import platform_token_request_handler
+from ._o_auth_deprecated import platform_token_request_handler_async
+from ._o_auth_deprecated import revoke_a_user
+from ._o_auth_deprecated import revoke_a_user_async
+from ._o_auth_deprecated import revoke_token
+from ._o_auth_deprecated import revoke_token_async
+from ._o_auth_deprecated import revoke_user
+from ._o_auth_deprecated import revoke_user_async
+from ._o_auth_deprecated import token_grant
+from ._o_auth_deprecated import token_grant_async
+from ._o_auth_deprecated import verify_token
+from ._o_auth_deprecated import verify_token_async
 
 from ._roles import admin_add_role_managers_v3
 from ._roles import admin_add_role_managers_v3_async
@@ -265,6 +267,8 @@ from ._third_party_credential import (
 )
 from ._third_party_credential import delete_third_party_login_platform_domain_v3
 from ._third_party_credential import delete_third_party_login_platform_domain_v3_async
+from ._third_party_credential import retrieve_active_oidc_clients_public_v3
+from ._third_party_credential import retrieve_active_oidc_clients_public_v3_async
 from ._third_party_credential import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
 )

@@ -27,7 +27,6 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
-from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import OauthapiRevocationList
@@ -35,17 +34,17 @@ from ..models import OauthcommonJWKSet
 from ..models import OauthmodelErrorResponse
 from ..models import OauthmodelTokenResponse
 
-from ..operations.o_auth import Authorization
-from ..operations.o_auth import AuthorizationResponseTypeEnum
-from ..operations.o_auth import GetJWKS
-from ..operations.o_auth import GetRevocationList
-from ..operations.o_auth import PlatformTokenRequestHandler
-from ..operations.o_auth import RevokeAUser
-from ..operations.o_auth import RevokeToken
-from ..operations.o_auth import RevokeUser
-from ..operations.o_auth import TokenGrant
-from ..operations.o_auth import TokenGrantGrantTypeEnum
-from ..operations.o_auth import VerifyToken
+from ..operations.o_auth_deprecated import Authorization
+from ..operations.o_auth_deprecated import AuthorizationResponseTypeEnum
+from ..operations.o_auth_deprecated import GetJWKS
+from ..operations.o_auth_deprecated import GetRevocationList
+from ..operations.o_auth_deprecated import PlatformTokenRequestHandler
+from ..operations.o_auth_deprecated import RevokeAUser
+from ..operations.o_auth_deprecated import RevokeToken
+from ..operations.o_auth_deprecated import RevokeUser
+from ..operations.o_auth_deprecated import TokenGrant
+from ..operations.o_auth_deprecated import TokenGrantGrantTypeEnum
+from ..operations.o_auth_deprecated import VerifyToken
 
 
 @same_doc_as(Authorization)
@@ -132,7 +131,6 @@ async def get_revocation_list_async(
     )
 
 
-@deprecated
 @same_doc_as(PlatformTokenRequestHandler)
 def platform_token_request_handler(
     platform_id: str,
@@ -155,7 +153,6 @@ def platform_token_request_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@deprecated
 @same_doc_as(PlatformTokenRequestHandler)
 async def platform_token_request_handler_async(
     platform_id: str,
@@ -180,7 +177,6 @@ async def platform_token_request_handler_async(
     )
 
 
-@deprecated
 @same_doc_as(RevokeAUser)
 def revoke_a_user(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -191,7 +187,6 @@ def revoke_a_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@deprecated
 @same_doc_as(RevokeAUser)
 async def revoke_a_user_async(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -204,7 +199,6 @@ async def revoke_a_user_async(
     )
 
 
-@deprecated
 @same_doc_as(RevokeToken)
 def revoke_token(
     token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -215,7 +209,6 @@ def revoke_token(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@deprecated
 @same_doc_as(RevokeToken)
 async def revoke_token_async(
     token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs

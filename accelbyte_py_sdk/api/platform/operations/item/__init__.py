@@ -23,6 +23,7 @@ from .disable_item import DisableItem
 from .enable_item import EnableItem
 from .feature_item import FeatureItem
 from .get_app import GetApp
+from .get_available_predicate_types import GetAvailablePredicateTypes
 from .get_bulk_item_id_by_skus import GetBulkItemIdBySkus
 from .get_item import GetItem
 from .get_item_by_app_id import GetItemByAppId
@@ -45,6 +46,8 @@ from .public_query_items import (
     SortByEnum as PublicQueryItemsSortByEnum,
 )
 from .public_search_items import PublicSearchItems
+from .public_search_items import ItemTypeEnum as PublicSearchItemsItemTypeEnum
+from .public_validate_item_pu_bd546e import PublicValidateItemPurchaseCondition
 from .query_items import QueryItems
 from .query_items import (
     AppTypeEnum as QueryItemsAppTypeEnum,
@@ -55,6 +58,9 @@ from .query_uncategorized_items import QueryUncategorizedItems
 from .query_uncategorized_items import SortByEnum as QueryUncategorizedItemsSortByEnum
 from .return_item import ReturnItem
 from .search_items import SearchItems
+from .search_items import ItemTypeEnum as SearchItemsItemTypeEnum
 from .sync_in_game_item import SyncInGameItem
 from .update_app import UpdateApp
 from .update_item import UpdateItem
+from .update_item_purchase_condition import UpdateItemPurchaseCondition
+from .validate_item_purchase__929f78 import ValidateItemPurchaseCondition

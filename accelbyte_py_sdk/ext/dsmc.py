@@ -596,6 +596,7 @@ def create_models_update_deployment_override_request_example() -> ModelsUpdateDe
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     instance.use_buffer_percent = randomize("bool")
     return instance
 

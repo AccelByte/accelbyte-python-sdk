@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-iam-service (5.13.0)
+# justice-ugc-service (2.3.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,46 +29,53 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import OauthapiRevocationList
+from ...models import ModelsCreatorResponse
+from ...models import ResponseError
 
 
-class GetRevocationList(Operation):
-    """OAuth2 revocation list API (GetRevocationList)
+class PublicGetCreator(Operation):
+    """Get creator stats: number of total like by other user, number of total following and follower user (PublicGetCreator)
 
-    This endpoint will return a list of revoked users and revoked tokens. List of revoked tokens in bloom filter format. This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
-
-
-
-
-    The bloom filter uses MurmurHash3 algorithm for hashing the values
+    Public user can access without token or if token specified, requires valid user token
 
     Properties:
-        url: /iam/oauth/revocationlist
+        url: /ugc/v1/public/namespaces/{namespace}/users/{userId}
 
         method: GET
 
-        tags: ["OAuth"]
+        tags: ["Public Creator"]
 
-        consumes: [""]
+        consumes: ["application/json", "application/octet-stream"]
 
         produces: ["application/json"]
 
-        securities: [BASIC_AUTH]
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - OauthapiRevocationList (revocation list returned)
+        200: OK - ModelsCreatorResponse (OK)
 
-        401: Unauthorized - (Invalid basic auth header)
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/iam/oauth/revocationlist"
+    _url: str = "/ugc/v1/public/namespaces/{namespace}/users/{userId}"
     _method: str = "GET"
-    _consumes: List[str] = [""]
+    _consumes: List[str] = ["application/json", "application/octet-stream"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BASIC_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -107,7 +114,17 @@ class GetRevocationList(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "path": self.get_path_params(),
+        }
+
+    def get_path_params(self) -> dict:
+        result = {}
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
+        return result
 
     # endregion get_x_params methods
 
@@ -117,12 +134,28 @@ class GetRevocationList(Operation):
 
     # region with_x methods
 
+    def with_namespace(self, value: str) -> PublicGetCreator:
+        self.namespace = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicGetCreator:
+        self.user_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -132,12 +165,18 @@ class GetRevocationList(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, OauthapiRevocationList], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelsCreatorResponse], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - OauthapiRevocationList (revocation list returned)
+        200: OK - ModelsCreatorResponse (OK)
 
-        401: Unauthorized - (Invalid basic auth header)
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -153,9 +192,13 @@ class GetRevocationList(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return OauthapiRevocationList.create_from_dict(content), None
+            return ModelsCreatorResponse.create_from_dict(content), None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 500:
+            return None, ResponseError.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -168,23 +211,41 @@ class GetRevocationList(Operation):
     @classmethod
     def create(
         cls,
-    ) -> GetRevocationList:
+        namespace: str,
+        user_id: str,
+    ) -> PublicGetCreator:
         instance = cls()
+        instance.namespace = namespace
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetRevocationList:
+    ) -> PublicGetCreator:
         instance = cls()
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "namespace": "namespace",
+            "userId": "user_id",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "namespace": True,
+            "userId": True,
+        }
 
     # endregion static methods

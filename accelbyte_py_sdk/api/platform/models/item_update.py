@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.localization import Localization
+from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
 
@@ -46,6 +47,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
 
@@ -109,6 +111,8 @@ class ItemUpdate(Model):
 
         name: (name) OPTIONAL str
 
+        option_box_config: (optionBoxConfig) OPTIONAL OptionBoxConfig
+
         purchasable: (purchasable) OPTIONAL bool
 
         recurring: (recurring) OPTIONAL Recurring
@@ -155,6 +159,7 @@ class ItemUpdate(Model):
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
     name: str  # OPTIONAL
+    option_box_config: OptionBoxConfig  # OPTIONAL
     purchasable: bool  # OPTIONAL
     recurring: Recurring  # OPTIONAL
     region_data: Dict[str, List[RegionDataItem]]  # OPTIONAL
@@ -248,6 +253,10 @@ class ItemUpdate(Model):
 
     def with_name(self, value: str) -> ItemUpdate:
         self.name = value
+        return self
+
+    def with_option_box_config(self, value: OptionBoxConfig) -> ItemUpdate:
+        self.option_box_config = value
         return self
 
     def with_purchasable(self, value: bool) -> ItemUpdate:
@@ -385,6 +394,12 @@ class ItemUpdate(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "option_box_config"):
+            result["optionBoxConfig"] = self.option_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["optionBoxConfig"] = OptionBoxConfig()
         if hasattr(self, "purchasable"):
             result["purchasable"] = bool(self.purchasable)
         elif include_empty:
@@ -464,6 +479,7 @@ class ItemUpdate(Model):
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
         name: Optional[str] = None,
+        option_box_config: Optional[OptionBoxConfig] = None,
         purchasable: Optional[bool] = None,
         recurring: Optional[Recurring] = None,
         region_data: Optional[Dict[str, List[RegionDataItem]]] = None,
@@ -514,6 +530,8 @@ class ItemUpdate(Model):
             instance.max_count_per_user = max_count_per_user
         if name is not None:
             instance.name = name
+        if option_box_config is not None:
+            instance.option_box_config = option_box_config
         if purchasable is not None:
             instance.purchasable = purchasable
         if recurring is not None:
@@ -629,6 +647,12 @@ class ItemUpdate(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "optionBoxConfig" in dict_ and dict_["optionBoxConfig"] is not None:
+            instance.option_box_config = OptionBoxConfig.create_from_dict(
+                dict_["optionBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.option_box_config = OptionBoxConfig()
         if "purchasable" in dict_ and dict_["purchasable"] is not None:
             instance.purchasable = bool(dict_["purchasable"])
         elif include_empty:
@@ -743,6 +767,7 @@ class ItemUpdate(Model):
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
             "name": "name",
+            "optionBoxConfig": "option_box_config",
             "purchasable": "purchasable",
             "recurring": "recurring",
             "regionData": "region_data",
@@ -779,6 +804,7 @@ class ItemUpdate(Model):
             "maxCount": False,
             "maxCountPerUser": False,
             "name": False,
+            "optionBoxConfig": False,
             "purchasable": False,
             "recurring": False,
             "regionData": False,
@@ -804,6 +830,7 @@ class ItemUpdate(Model):
                 "COINS",
                 "INGAMEITEM",
                 "MEDIA",
+                "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
             ],

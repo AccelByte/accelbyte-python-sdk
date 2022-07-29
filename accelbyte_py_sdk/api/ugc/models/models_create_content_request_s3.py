@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_preview_metadata import ModelsPreviewMetadata
+
 
 class ModelsCreateContentRequestS3(Model):
     """Models create content request S3 (models.CreateContentRequestS3)
@@ -39,6 +41,8 @@ class ModelsCreateContentRequestS3(Model):
         name: (name) REQUIRED str
 
         preview: (preview) REQUIRED str
+
+        preview_metadata: (previewMetadata) REQUIRED ModelsPreviewMetadata
 
         sub_type: (subType) REQUIRED str
 
@@ -53,6 +57,7 @@ class ModelsCreateContentRequestS3(Model):
     file_extension: str  # REQUIRED
     name: str  # REQUIRED
     preview: str  # REQUIRED
+    preview_metadata: ModelsPreviewMetadata  # REQUIRED
     sub_type: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
@@ -75,6 +80,12 @@ class ModelsCreateContentRequestS3(Model):
 
     def with_preview(self, value: str) -> ModelsCreateContentRequestS3:
         self.preview = value
+        return self
+
+    def with_preview_metadata(
+        self, value: ModelsPreviewMetadata
+    ) -> ModelsCreateContentRequestS3:
+        self.preview_metadata = value
         return self
 
     def with_sub_type(self, value: str) -> ModelsCreateContentRequestS3:
@@ -111,6 +122,12 @@ class ModelsCreateContentRequestS3(Model):
             result["preview"] = str(self.preview)
         elif include_empty:
             result["preview"] = ""
+        if hasattr(self, "preview_metadata"):
+            result["previewMetadata"] = self.preview_metadata.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["previewMetadata"] = ModelsPreviewMetadata()
         if hasattr(self, "sub_type"):
             result["subType"] = str(self.sub_type)
         elif include_empty:
@@ -136,6 +153,7 @@ class ModelsCreateContentRequestS3(Model):
         file_extension: str,
         name: str,
         preview: str,
+        preview_metadata: ModelsPreviewMetadata,
         sub_type: str,
         tags: List[str],
         type_: str,
@@ -145,6 +163,7 @@ class ModelsCreateContentRequestS3(Model):
         instance.file_extension = file_extension
         instance.name = name
         instance.preview = preview
+        instance.preview_metadata = preview_metadata
         instance.sub_type = sub_type
         instance.tags = tags
         instance.type_ = type_
@@ -173,6 +192,12 @@ class ModelsCreateContentRequestS3(Model):
             instance.preview = str(dict_["preview"])
         elif include_empty:
             instance.preview = ""
+        if "previewMetadata" in dict_ and dict_["previewMetadata"] is not None:
+            instance.preview_metadata = ModelsPreviewMetadata.create_from_dict(
+                dict_["previewMetadata"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.preview_metadata = ModelsPreviewMetadata()
         if "subType" in dict_ and dict_["subType"] is not None:
             instance.sub_type = str(dict_["subType"])
         elif include_empty:
@@ -232,6 +257,7 @@ class ModelsCreateContentRequestS3(Model):
             "fileExtension": "file_extension",
             "name": "name",
             "preview": "preview",
+            "previewMetadata": "preview_metadata",
             "subType": "sub_type",
             "tags": "tags",
             "type": "type_",
@@ -244,6 +270,7 @@ class ModelsCreateContentRequestS3(Model):
             "fileExtension": True,
             "name": True,
             "preview": True,
+            "previewMetadata": True,
             "subType": True,
             "tags": True,
             "type": True,

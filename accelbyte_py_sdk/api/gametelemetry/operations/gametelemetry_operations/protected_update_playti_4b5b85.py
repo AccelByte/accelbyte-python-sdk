@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (0.0.1)
+# Analytics Game Telemetry (1.7.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
