@@ -91,18 +91,19 @@ class Operation:
     # noinspection PyMethodMayBeStatic
     def handle_undocumented_response(
         self, code: int, content_type: str, content: Any
-    ) -> Optional[HttpResponse]:
+    ) -> Tuple[Any, Optional[HttpResponse]]:
         # pylint: disable=no-self-use
         undocumented_response = HttpResponse.create_undocumented_response(
-            code=code, content=content
+            code=code, content_type=content_type, content=content
         )
-        if undocumented_response is not None:
-            if undocumented_response.is_no_content():
-                return None
-            else:
-                return undocumented_response
+        if undocumented_response is None:
+            return None, HttpResponse.create_unhandled_error()
+        elif undocumented_response.is_no_content():
+            return None, None
+        elif undocumented_response.is_error():
+            return None, undocumented_response
         else:
-            return HttpResponse.create_unhandled_error()
+            return undocumented_response, None
 
     # region overrideable members
 

@@ -73,16 +73,17 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
-    def create_undocumented_response(cls, code: int, content: Any):
+    def create_undocumented_response(cls, code: int, content_type: str, content: Any):
         if code not in HTTP_STATUS_CODES:
             return None
-        content_type = "error"
         if code == 200 and not content:
             content_type = "no_content"
             content = None
-        if code == 204:
+        elif code == 204:
             content_type = "no_content"
             content = None
+        elif 400 <= code <= 599:
+            content_type = "error"
         instance = cls()
         instance.code = code
         instance.content_type = content_type
