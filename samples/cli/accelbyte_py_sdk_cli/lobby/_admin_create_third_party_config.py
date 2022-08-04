@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-lobby-server (staging)
+# Accelbyte Cloud Lobby Server (staging)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

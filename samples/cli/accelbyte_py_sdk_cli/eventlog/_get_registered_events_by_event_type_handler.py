@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-event-log-service ()
+# Accelbyte Cloud Event Log Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

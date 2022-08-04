@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# justice-platform-service (4.12.0)
+# Accelbyte Cloud Platform Service (4.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
