@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-# Justice Matchmaking Service (2.15.4)
+# AccelByte Cloud Matchmaking Service (2.15.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

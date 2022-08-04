@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-# justice-basic-service (2.1.0)
+# AccelByte Cloud Basic Service (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

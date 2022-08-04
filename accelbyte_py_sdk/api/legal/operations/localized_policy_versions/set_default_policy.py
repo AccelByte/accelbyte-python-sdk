@@ -4,7 +4,7 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# justice-legal-service (1.22.4)
+# AccelByte Cloud Legal Service (1.22.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

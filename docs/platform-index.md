@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+[//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# justice-platform-service Index (4.12.0)
+# AccelByte Cloud Platform Service Index (4.12.0)
 
 
 ## Operations

@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-# justice-lobby-server (staging)
+# AccelByte Cloud Lobby Server (staging)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

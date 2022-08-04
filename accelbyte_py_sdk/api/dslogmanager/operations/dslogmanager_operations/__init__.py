@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-"""Auto-generated package that contains models used by the justice-ds-log-manager-service."""
+"""Auto-generated package that contains models used by the AccelByte Cloud Ds Log Manager Service."""
 
 __version__ = "2.4.1"
 __author__ = "AccelByte"

@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+[//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# justice-dsm-controller-service Index (3.4.0)
+# AccelByte Cloud Dsm Controller Service Index (3.4.0)
 
 
 ## Operations

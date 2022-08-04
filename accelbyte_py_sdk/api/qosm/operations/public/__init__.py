@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-"""Auto-generated package that contains models used by the Justice QoS Manager Service."""
+"""Auto-generated package that contains models used by the AccelByte Cloud Qo S Manager Service."""
 
 __version__ = ""
 __author__ = "AccelByte"

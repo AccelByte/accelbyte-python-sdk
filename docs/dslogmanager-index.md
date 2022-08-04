@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+[//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# justice-ds-log-manager-service Index (2.4.1)
+# AccelByte Cloud Ds Log Manager Service Index (2.4.1)
 
 
 ## Operations

@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+[//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# justice-gdpr-service Index (1.14.7)
+# AccelByte Cloud Gdpr Service Index (1.14.7)
 
 
 ## Operations

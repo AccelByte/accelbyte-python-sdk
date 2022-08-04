@@ -228,9 +228,12 @@ def run(
 
     ab.initialize(
         options={
-            "config": "DotEnvFileConfigRepository",                            # Loads config repository values from the argument 'dotenv_file'.
-            "config_params": ([], {"dotenv_file": env, "set_env_var": True}),  # Setting 'set_env_var' to 'True' will also set the values found
-        }                                                                      #   in the 'dotenv_file' as environment variables. (os.environ)
+            "config": "DotEnvFileConfigRepository",  # Loads config repository values from the argument 'dotenv_file'.
+            "config_params": (
+                [],
+                {"dotenv_file": env, "set_env_var": True},
+            ),  # Setting 'set_env_var' to 'True' will also set the values found
+        }  #   in the 'dotenv_file' as environment variables. (os.environ)
     )
 
     app.run(host=host, port=port, debug=debug)

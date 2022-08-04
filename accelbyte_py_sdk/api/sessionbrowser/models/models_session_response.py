@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-# justice-session-browser-service ()
+# AccelByte Cloud Session Browser Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

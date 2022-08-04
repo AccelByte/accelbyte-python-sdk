@@ -1,8 +1,8 @@
 [//]: # (<< Code generated. DO NOT EDIT!)
 
-[//]: # (<< template file: justice_py_sdk_codegen/__main__.py)
+[//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# justice-leaderboard-service Index (2.15.6)
+# AccelByte Cloud Leaderboard Service Index (2.15.6)
 
 
 ## Operations

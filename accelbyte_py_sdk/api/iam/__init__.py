@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-"""Auto-generated package that contains models used by the justice-iam-service."""
+"""Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
 __version__ = "5.13.0"
 __author__ = "AccelByte"

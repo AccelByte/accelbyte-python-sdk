@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-"""Auto-generated package that contains models used by the Justice Matchmaking Service."""
+"""Auto-generated package that contains models used by the AccelByte Cloud Matchmaking Service."""
 
 __version__ = "2.15.4"
 __author__ = "AccelByte"

@@ -4,9 +4,9 @@
 #
 # Code generated. DO NOT EDIT!
 
-# template file: justice_py_sdk_codegen/__main__.py
+# template file: accelbyte_cloud_py_codegen
 
-"""Auto-generated package that contains models used by the justice-dsm-controller-service."""
+"""Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
 __version__ = "3.4.0"
 __author__ = "AccelByte"
