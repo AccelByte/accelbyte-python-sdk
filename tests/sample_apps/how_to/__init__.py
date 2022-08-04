@@ -13,6 +13,7 @@ from ._legal import LegalTestCase
 from ._lobby import AsyncLobbyTestCase, LobbyTestCase
 from ._matchmaking import MatchmakingTestCase
 from ._platform import PlatformTestCase
+from ._qosm import QosmTestCase
 from ._sessionbrowser import SessionBrowserTestCase
 from ._social import SocialTestCase
 from ._ugc import UGCTestCase
