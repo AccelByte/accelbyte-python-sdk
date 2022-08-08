@@ -1,7 +1,9 @@
 import logging
+import re
+import unittest.case
 from argparse import ArgumentParser
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional, Union
 
 
 def set_logger_level(level):
@@ -49,6 +51,23 @@ def parse_args():
         "--use_dotenv", action="store_true", default=False, required=False
     )
 
+    parser.add_argument(
+        "-f",
+        "--filter",
+        default=None,
+        type=str,
+        required=False,
+        help=f"performs a regex filter on test cases",
+    )
+    parser.add_argument(
+        "-e",
+        "--exclude",
+        default=None,
+        type=str,
+        required=False,
+        help=f"performs a regex exclude on test cases.",
+    )
+
     parser.add_argument("--use_tap", action="store_true", default=False, required=False)
 
     result = vars(parser.parse_args())
@@ -61,6 +80,39 @@ def parse_args():
     del result["test_all"]
 
     return result
+
+
+# noinspection PyShadowingBuiltins
+def should_skip(test_case: str, filter: Optional[str] = None, exclude: Optional[str] = None) -> bool:
+    if filter is not None and not re.match(filter, test_case):
+        return True
+    if exclude is not None and re.match(exclude, test_case):
+        return True
+    return False
+
+
+# noinspection PyShadowingBuiltins
+def load_tests_from_module(
+    loader,
+    module,
+    filter: Optional[str] = None,
+    exclude: Optional[str] = None,
+    **kwargs
+) -> List[unittest.TestSuite]:
+    tests = []
+    for name in dir(module):
+        obj = getattr(module, name)
+        if (
+            isinstance(obj, type) and
+            obj != unittest.case.TestCase and
+            issubclass(obj, unittest.case.TestCase)
+        ):
+            if should_skip(obj.__name__, filter=filter, exclude=exclude):
+                continue
+            suite = loader.loadTestsFromTestCase(obj)
+            tests.append(suite)
+    tests = loader.suiteClass(tests)
+    return tests
 
 
 def main(*args, **kwargs) -> None:
@@ -87,10 +139,13 @@ def main(*args, **kwargs) -> None:
         import tests.core
         import tests.sdk.core
 
+        core_tests = load_tests_from_module(loader, tests.core, **kwargs)
+        sdk_core_tests = load_tests_from_module(loader, tests.sdk.core, **kwargs)
+
         suite = unittest.TestSuite(
             [
-                loader.loadTestsFromModule(tests.core),
-                loader.loadTestsFromModule(tests.sdk.core),
+                core_tests,
+                sdk_core_tests,
             ]
         )
         results_core = runner.run(suite)
@@ -106,9 +161,9 @@ def main(*args, **kwargs) -> None:
         if dotenv_file and use_dotenv:
             tests.sample_apps.how_to.DOTENV_FILE = dotenv_file
 
-        results_integration = runner.run(
-            loader.loadTestsFromModule(tests.sample_apps.how_to)
-        )
+        how_to_tests = load_tests_from_module(loader, tests.sample_apps.how_to, **kwargs)
+
+        results_integration = runner.run(how_to_tests)
         results["test_integration"] = results_integration.wasSuccessful()
 
         reset()
