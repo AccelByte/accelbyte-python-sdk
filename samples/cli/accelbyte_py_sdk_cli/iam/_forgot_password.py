@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -72,4 +72,4 @@ def forgot_password(
 
 
 forgot_password.operation_id = "ForgotPassword"
-forgot_password.is_deprecated = False
+forgot_password.is_deprecated = True

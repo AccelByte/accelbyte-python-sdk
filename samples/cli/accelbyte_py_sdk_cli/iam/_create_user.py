@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,4 +73,4 @@ def create_user(
 
 
 create_user.operation_id = "CreateUser"
-create_user.is_deprecated = False
+create_user.is_deprecated = True

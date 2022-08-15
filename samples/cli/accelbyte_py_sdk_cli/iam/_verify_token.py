@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -63,4 +63,4 @@ def verify_token(
 
 
 verify_token.operation_id = "VerifyToken"
-verify_token.is_deprecated = False
+verify_token.is_deprecated = True

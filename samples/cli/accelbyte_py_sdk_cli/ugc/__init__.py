@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (2.3.0)
+# justice-ugc-service (2.4.0)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel
@@ -22,6 +22,7 @@ from ._single_admin_update_content_direct import single_admin_update_content_dir
 from ._single_admin_delete_content import single_admin_delete_content
 from ._single_admin_get_content import single_admin_get_content
 from ._admin_search_content import admin_search_content
+from ._admin_get_user_content_by_share_code import admin_get_user_content_by_share_code
 from ._admin_get_specific_content import admin_get_specific_content
 from ._admin_download_content_preview import admin_download_content_preview
 from ._admin_update_screenshots import admin_update_screenshots
@@ -63,7 +64,9 @@ from ._public_search_content import public_search_content
 from ._public_get_content_bulk import public_get_content_bulk
 from ._get_followed_content import get_followed_content
 from ._get_liked_content import get_liked_content
-from ._download_content_by_share_code import download_content_by_share_code
+from ._public_download_content_by_share_code import (
+    public_download_content_by_share_code,
+)
 from ._public_download_content_by_content_id import (
     public_download_content_by_content_id,
 )
@@ -116,6 +119,7 @@ commands = [
     single_admin_delete_content,
     single_admin_get_content,
     admin_search_content,
+    admin_get_user_content_by_share_code,
     admin_get_specific_content,
     admin_download_content_preview,
     admin_update_screenshots,
@@ -157,7 +161,7 @@ commands = [
     public_get_content_bulk,
     get_followed_content,
     get_liked_content,
-    download_content_by_share_code,
+    public_download_content_by_share_code,
     public_download_content_by_content_id,
     add_download_count,
     update_content_like_status,

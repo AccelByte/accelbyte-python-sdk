@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.13.0)
+# justice-iam-service (5.14.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -292,7 +292,7 @@ from ._public_forgot_password_v3 import public_forgot_password_v3
 from ._get_admin_invitation_v3 import get_admin_invitation_v3
 from ._create_user_from_invitation_v3 import create_user_from_invitation_v3
 from ._update_user_v3 import update_user_v3
-from ._public_update_user_v3 import public_update_user_v3
+from ._public_partial_update_user_v3 import public_partial_update_user_v3
 from ._public_send_verification_code_v3 import public_send_verification_code_v3
 from ._public_user_verification_v3 import public_user_verification_v3
 from ._public_upgrade_headless_account_v3 import public_upgrade_headless_account_v3
@@ -316,6 +316,7 @@ from ._public_link_platform_account import public_link_platform_account
 from ._public_force_link_platform_with_progression import (
     public_force_link_platform_with_progression,
 )
+from ._public_get_publisher_user_v3 import public_get_publisher_user_v3
 from ._public_validate_user_by_user_id_and_password_v3 import (
     public_validate_user_by_user_id_and_password_v3,
 )
@@ -325,6 +326,7 @@ from ._public_get_my_user_v3 import public_get_my_user_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
+from ._admin_create_test_users_v4 import admin_create_test_users_v4
 from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
 from ._admin_update_user_email_address_v4 import admin_update_user_email_address_v4
@@ -613,7 +615,7 @@ commands = [
     get_admin_invitation_v3,
     create_user_from_invitation_v3,
     update_user_v3,
-    public_update_user_v3,
+    public_partial_update_user_v3,
     public_send_verification_code_v3,
     public_user_verification_v3,
     public_upgrade_headless_account_v3,
@@ -633,6 +635,7 @@ commands = [
     public_get_user_platform_accounts_v3,
     public_link_platform_account,
     public_force_link_platform_with_progression,
+    public_get_publisher_user_v3,
     public_validate_user_by_user_id_and_password_v3,
     public_get_roles_v3,
     public_get_role_v3,
@@ -640,6 +643,7 @@ commands = [
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,
+    admin_create_test_users_v4,
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,
     admin_update_user_email_address_v4,

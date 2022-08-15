@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Ugc Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,50 +30,43 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import (
-    public_update_user_v3 as public_update_user_v3_internal,
+from accelbyte_py_sdk.api.ugc import (
+    admin_get_user_content_by_share_code as admin_get_user_content_by_share_code_internal,
 )
-from accelbyte_py_sdk.api.iam.models import ModelUserResponseV3
-from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequestV3
-from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+from accelbyte_py_sdk.api.ugc.models import ModelsContentDownloadResponse
+from accelbyte_py_sdk.api.ugc.models import ResponseError
 
 
 @click.command()
-@click.argument("body", type=str)
+@click.argument("share_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def public_update_user_v3(
-    body: str,
+def admin_get_user_content_by_share_code(
+    share_code: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(public_update_user_v3_internal.__doc__)
+        click.echo(admin_get_user_content_by_share_code_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ModelUserUpdateRequestV3.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = public_update_user_v3_internal(
-        body=body,
+    result, error = admin_get_user_content_by_share_code_internal(
+        share_code=share_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"PublicUpdateUserV3 failed: {str(error)}")
+        raise Exception(f"AdminGetUserContentByShareCode failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-public_update_user_v3.operation_id = "PublicUpdateUserV3"
-public_update_user_v3.is_deprecated = False
+admin_get_user_content_by_share_code.operation_id = "AdminGetUserContentByShareCode"
+admin_get_user_content_by_share_code.is_deprecated = False

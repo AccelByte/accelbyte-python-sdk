@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,4 +75,4 @@ def user_verification(
 
 
 user_verification.operation_id = "UserVerification"
-user_verification.is_deprecated = False
+user_verification.is_deprecated = True

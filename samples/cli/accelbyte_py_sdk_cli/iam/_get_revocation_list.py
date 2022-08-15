@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -60,4 +60,4 @@ def get_revocation_list(
 
 
 get_revocation_list.operation_id = "GetRevocationList"
-get_revocation_list.is_deprecated = False
+get_revocation_list.is_deprecated = True

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.12.0)
+# Accelbyte Cloud Platform Service (4.12.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 @click.option("--app_type", "app_type", type=str)
 @click.option("--entitlement_clazz", "entitlement_clazz", type=str)
 @click.option("--entitlement_name", "entitlement_name", type=str)
+@click.option("--features", "features", type=str)
 @click.option("--item_id", "item_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -53,6 +54,7 @@ def public_query_user_entitlements(
     app_type: Optional[str] = None,
     entitlement_clazz: Optional[str] = None,
     entitlement_name: Optional[str] = None,
+    features: Optional[str] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -69,6 +71,12 @@ def public_query_user_entitlements(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if features is not None:
+        try:
+            features_json = json.loads(features)
+            features = [str(i0) for i0 in features_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'features'. {str(e)}") from e
     if item_id is not None:
         try:
             item_id_json = json.loads(item_id)
@@ -80,6 +88,7 @@ def public_query_user_entitlements(
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
+        features=features,
         item_id=item_id,
         limit=limit,
         offset=offset,

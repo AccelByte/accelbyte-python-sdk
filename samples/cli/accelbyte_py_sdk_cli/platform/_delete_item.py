@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.12.0)
+# Accelbyte Cloud Platform Service (4.12.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 @click.command()
 @click.argument("item_id", type=str)
+@click.option("--force", "force", type=bool)
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -43,6 +44,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 @click.option("--doc", type=bool)
 def delete_item(
     item_id: str,
+    force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -59,6 +61,7 @@ def delete_item(
         login_as_internal(login_as)
     result, error = delete_item_internal(
         item_id=item_id,
+        force=force,
         store_id=store_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

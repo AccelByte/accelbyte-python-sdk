@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.gdpr import (
     public_cancel_user_personal_data_request as public_cancel_user_personal_data_request_internal,
 )
-from accelbyte_py_sdk.api.gdpr.models import ModelsListPersonalDataResponse
 from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 

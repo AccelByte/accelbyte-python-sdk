@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -77,4 +77,4 @@ def send_verification_code(
 
 
 send_verification_code.operation_id = "SendVerificationCode"
-send_verification_code.is_deprecated = False
+send_verification_code.is_deprecated = True

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Ugc Service (2.3.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,43 +30,50 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ugc import (
-    download_content_by_share_code as download_content_by_share_code_internal,
+from accelbyte_py_sdk.api.iam import (
+    public_partial_update_user_v3 as public_partial_update_user_v3_internal,
 )
-from accelbyte_py_sdk.api.ugc.models import ModelsContentDownloadResponse
-from accelbyte_py_sdk.api.ugc.models import ResponseError
+from accelbyte_py_sdk.api.iam.models import ModelUserResponseV3
+from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequestV3
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.argument("share_code", type=str)
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def download_content_by_share_code(
-    share_code: str,
+def public_partial_update_user_v3(
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(download_content_by_share_code_internal.__doc__)
+        click.echo(public_partial_update_user_v3_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = download_content_by_share_code_internal(
-        share_code=share_code,
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelUserUpdateRequestV3.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = public_partial_update_user_v3_internal(
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"DownloadContentByShareCode failed: {str(error)}")
+        raise Exception(f"PublicPartialUpdateUserV3 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-download_content_by_share_code.operation_id = "DownloadContentByShareCode"
-download_content_by_share_code.is_deprecated = False
+public_partial_update_user_v3.operation_id = "PublicPartialUpdateUserV3"
+public_partial_update_user_v3.is_deprecated = False

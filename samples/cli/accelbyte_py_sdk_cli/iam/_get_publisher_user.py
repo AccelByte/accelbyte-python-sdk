@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,4 +67,4 @@ def get_publisher_user(
 
 
 get_publisher_user.operation_id = "GetPublisherUser"
-get_publisher_user.is_deprecated = False
+get_publisher_user.is_deprecated = True

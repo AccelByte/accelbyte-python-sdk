@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -74,4 +74,4 @@ def save_user_roles(
 
 
 save_user_roles.operation_id = "SaveUserRoles"
-save_user_roles.is_deprecated = False
+save_user_roles.is_deprecated = True

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -72,4 +72,4 @@ def reset_password(
 
 
 reset_password.operation_id = "ResetPassword"
-reset_password.is_deprecated = False
+reset_password.is_deprecated = True

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.12.0)
+# justice-platform-service (4.12.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -141,6 +141,7 @@ from ._get_reward import get_reward
 from ._update_reward import update_reward
 from ._delete_reward import delete_reward
 from ._check_event_condition import check_event_condition
+from ._delete_reward_condition_record import delete_reward_condition_record
 from ._list_stores import list_stores
 from ._create_store import create_store
 from ._import_store import import_store
@@ -545,6 +546,7 @@ commands = [
     update_reward,
     delete_reward,
     check_event_condition,
+    delete_reward_condition_record,
     list_stores,
     create_store,
     import_store,

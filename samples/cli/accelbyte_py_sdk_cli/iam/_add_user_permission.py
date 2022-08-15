@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -81,4 +81,4 @@ def add_user_permission(
 
 
 add_user_permission.operation_id = "AddUserPermission"
-add_user_permission.is_deprecated = False
+add_user_permission.is_deprecated = True

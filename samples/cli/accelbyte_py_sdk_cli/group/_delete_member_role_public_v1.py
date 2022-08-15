@@ -34,7 +34,6 @@ from accelbyte_py_sdk.api.group import (
     delete_member_role_public_v1 as delete_member_role_public_v1_internal,
 )
 from accelbyte_py_sdk.api.group.models import ModelsRemoveRoleFromMemberRequestV1
-from accelbyte_py_sdk.api.group.models import ModelsUpdateMemberRoleResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
 

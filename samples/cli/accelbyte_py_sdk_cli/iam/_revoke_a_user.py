@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,4 +62,4 @@ def revoke_a_user(
 
 
 revoke_a_user.operation_id = "RevokeAUser"
-revoke_a_user.is_deprecated = False
+revoke_a_user.is_deprecated = True

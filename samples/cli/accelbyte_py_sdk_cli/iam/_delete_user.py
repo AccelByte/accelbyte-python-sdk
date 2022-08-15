@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.13.0)
+# Accelbyte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,4 +65,4 @@ def delete_user(
 
 
 delete_user.operation_id = "DeleteUser"
-delete_user.is_deprecated = False
+delete_user.is_deprecated = True
