@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice DSM Controller Service",
     "title": "justice-dsm-controller-service",
-    "version": "3.4.0"
+    "version": "3.4.1"
   },
   "schemes": [
     "https"
@@ -3066,7 +3066,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]\n\nRequired scope: social\n\nThis endpoint get image patches by version.",
+        "description": "Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]\n\nRequired scope: social\n\nThis endpoint get image patches by version.\n\nImage Size unit is byte.",
         "operationId": "GetImagePatches",
         "parameters": [
           {
@@ -5162,6 +5162,10 @@
         "image": {
           "type": "string"
         },
+        "imageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
         "namespace": {
           "type": "string"
         },
@@ -5180,6 +5184,7 @@
         "artifactPath",
         "dockerPath",
         "image",
+        "imageSize",
         "namespace",
         "patchVersion",
         "persistent",
@@ -5197,6 +5202,10 @@
         "image": {
           "type": "string"
         },
+        "imageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
         "namespace": {
           "type": "string"
         },
@@ -5212,6 +5221,7 @@
         "artifactPath",
         "dockerPath",
         "image",
+        "imageSize",
         "namespace",
         "persistent",
         "version"
@@ -5777,6 +5787,10 @@
         "image": {
           "type": "string"
         },
+        "imageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
         "modifiedBy": {
           "type": "string"
         },
@@ -5801,6 +5815,7 @@
         "createdAt",
         "dockerPath",
         "image",
+        "imageSize",
         "modifiedBy",
         "namespace",
         "persistent",
@@ -5997,6 +6012,10 @@
         "image": {
           "type": "string"
         },
+        "imageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
         "modifiedBy": {
           "type": "string"
         },
@@ -6024,6 +6043,7 @@
         "createdAt",
         "dockerPath",
         "image",
+        "imageSize",
         "modifiedBy",
         "namespace",
         "patchVersion",
