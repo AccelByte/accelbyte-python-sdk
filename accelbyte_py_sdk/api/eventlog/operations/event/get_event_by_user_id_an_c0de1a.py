@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventResponse
 
 
-@deprecated
 class GetEventByUserIDAndEventTypeHandler(Operation):
     """Get events from specific user with specific eventType (GetEventByUserIDAndEventTypeHandler)
 

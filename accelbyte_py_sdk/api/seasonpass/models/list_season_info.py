@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.13.1)
+# AccelByte Cloud Seasonpass Service (1.13.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,10 @@ class ListSeasonInfo(Model):
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
+        tier_item_id: (tierItemId) REQUIRED str
+
+        tier_item_name: (tierItemName) REQUIRED str
+
         updated_at: (updatedAt) REQUIRED str
 
         pass_codes: (passCodes) OPTIONAL List[str]
@@ -72,6 +76,8 @@ class ListSeasonInfo(Model):
     namespace: str  # REQUIRED
     start: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
+    tier_item_id: str  # REQUIRED
+    tier_item_name: str  # REQUIRED
     updated_at: str  # REQUIRED
     pass_codes: List[str]  # OPTIONAL
     published_at: str  # OPTIONAL
@@ -110,6 +116,14 @@ class ListSeasonInfo(Model):
 
     def with_status(self, value: Union[str, StatusEnum]) -> ListSeasonInfo:
         self.status = value
+        return self
+
+    def with_tier_item_id(self, value: str) -> ListSeasonInfo:
+        self.tier_item_id = value
+        return self
+
+    def with_tier_item_name(self, value: str) -> ListSeasonInfo:
+        self.tier_item_name = value
         return self
 
     def with_updated_at(self, value: str) -> ListSeasonInfo:
@@ -162,6 +176,14 @@ class ListSeasonInfo(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "tier_item_id"):
+            result["tierItemId"] = str(self.tier_item_id)
+        elif include_empty:
+            result["tierItemId"] = ""
+        if hasattr(self, "tier_item_name"):
+            result["tierItemName"] = str(self.tier_item_name)
+        elif include_empty:
+            result["tierItemName"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -191,6 +213,8 @@ class ListSeasonInfo(Model):
         namespace: str,
         start: str,
         status: Union[str, StatusEnum],
+        tier_item_id: str,
+        tier_item_name: str,
         updated_at: str,
         pass_codes: Optional[List[str]] = None,
         published_at: Optional[str] = None,
@@ -204,6 +228,8 @@ class ListSeasonInfo(Model):
         instance.namespace = namespace
         instance.start = start
         instance.status = status
+        instance.tier_item_id = tier_item_id
+        instance.tier_item_name = tier_item_name
         instance.updated_at = updated_at
         if pass_codes is not None:
             instance.pass_codes = pass_codes
@@ -250,6 +276,14 @@ class ListSeasonInfo(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "tierItemId" in dict_ and dict_["tierItemId"] is not None:
+            instance.tier_item_id = str(dict_["tierItemId"])
+        elif include_empty:
+            instance.tier_item_id = ""
+        if "tierItemName" in dict_ and dict_["tierItemName"] is not None:
+            instance.tier_item_name = str(dict_["tierItemName"])
+        elif include_empty:
+            instance.tier_item_name = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -309,6 +343,8 @@ class ListSeasonInfo(Model):
             "namespace": "namespace",
             "start": "start",
             "status": "status",
+            "tierItemId": "tier_item_id",
+            "tierItemName": "tier_item_name",
             "updatedAt": "updated_at",
             "passCodes": "pass_codes",
             "publishedAt": "published_at",
@@ -325,6 +361,8 @@ class ListSeasonInfo(Model):
             "namespace": True,
             "start": True,
             "status": True,
+            "tierItemId": True,
+            "tierItemName": True,
             "updatedAt": True,
             "passCodes": False,
             "publishedAt": False,

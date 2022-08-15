@@ -8,12 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.13.0"
+__version__ = "5.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .add_role_managers import AddRoleManagers
+from .add_role_members import AddRoleMembers
+from .add_role_permission import AddRolePermission
 from .admin_add_role_managers_v3 import AdminAddRoleManagersV3
 from .admin_add_role_members_v3 import AdminAddRoleMembersV3
 from .admin_add_role_permissions_v3 import AdminAddRolePermissionsV3
@@ -43,5 +46,19 @@ from .admin_update_role_permi_728d52 import AdminUpdateRolePermissionsV3
 from .admin_update_role_permi_e17189 import AdminUpdateRolePermissionsV4
 from .admin_update_role_v3 import AdminUpdateRoleV3
 from .admin_update_role_v4 import AdminUpdateRoleV4
+from .create_role import CreateRole
+from .delete_role import DeleteRole
+from .delete_role_permission import DeleteRolePermission
+from .get_role import GetRole
+from .get_role_admin_status import GetRoleAdminStatus
+from .get_role_managers import GetRoleManagers
+from .get_role_members import GetRoleMembers
+from .get_roles import GetRoles
 from .public_get_role_v3 import PublicGetRoleV3
 from .public_get_roles_v3 import PublicGetRolesV3
+from .remove_role_admin import RemoveRoleAdmin
+from .remove_role_managers import RemoveRoleManagers
+from .remove_role_members import RemoveRoleMembers
+from .set_role_as_admin import SetRoleAsAdmin
+from .update_role import UpdateRole
+from .update_role_permissions import UpdateRolePermissions

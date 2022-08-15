@@ -146,6 +146,7 @@ from ..models import (
     ItemCreateSeasonTypeEnum,
     ItemCreateStatusEnum,
 )
+from ..models import ItemIdStatusEnum
 from ..models import (
     ItemInfoAppTypeEnum,
     ItemInfoEntitlementTypeEnum,
@@ -356,6 +357,7 @@ async def defeature_item_async(
 @same_doc_as(DeleteItem)
 def delete_item(
     item_id: str,
+    force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -367,6 +369,7 @@ def delete_item(
             return None, error
     request = DeleteItem.create(
         item_id=item_id,
+        force=force,
         store_id=store_id,
         namespace=namespace,
     )
@@ -376,6 +379,7 @@ def delete_item(
 @same_doc_as(DeleteItem)
 async def delete_item_async(
     item_id: str,
+    force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -387,6 +391,7 @@ async def delete_item_async(
             return None, error
     request = DeleteItem.create(
         item_id=item_id,
+        force=force,
         store_id=store_id,
         namespace=namespace,
     )

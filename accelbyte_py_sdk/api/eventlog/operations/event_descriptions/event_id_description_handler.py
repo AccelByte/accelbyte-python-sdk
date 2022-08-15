@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleEventID
 
 
-@deprecated
 class EventIDDescriptionHandler(Operation):
     """Get list of eventID and the descriptions (EventIDDescriptionHandler)
 

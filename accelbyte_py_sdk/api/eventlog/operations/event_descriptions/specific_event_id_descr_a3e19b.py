@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleEventID
 
 
-@deprecated
 class SpecificEventIDDescriptionHandler(Operation):
     """Get specific list of eventID and the descriptions by comma separated value of eventIDs (SpecificEventIDDescriptionHandler)
 

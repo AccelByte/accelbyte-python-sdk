@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleAgentType
 
 
-@deprecated
 class AgentTypeDescriptionHandler(Operation):
     """Get list of agent type and the descriptions (AgentTypeDescriptionHandler)
 

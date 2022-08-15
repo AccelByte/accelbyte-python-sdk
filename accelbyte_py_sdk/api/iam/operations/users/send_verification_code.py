@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,12 +28,27 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelSendVerificationCodeRequest
 
 
 class SendVerificationCode(Operation):
     """Send verification code to user (SendVerificationCode)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]
+
+
+
+
 
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 

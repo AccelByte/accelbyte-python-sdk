@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ConditionMatchResult
+from ..models import DeleteRewardConditionRequest
 from ..models import ErrorEntity
 from ..models import EventPayload
 from ..models import RewardCreate
@@ -41,6 +42,7 @@ from ..models import ValidationErrorEntity
 from ..operations.reward import CheckEventCondition
 from ..operations.reward import CreateReward
 from ..operations.reward import DeleteReward
+from ..operations.reward import DeleteRewardConditionRecord
 from ..operations.reward import ExportRewards
 from ..operations.reward import GetReward
 from ..operations.reward import GetReward1
@@ -164,6 +166,48 @@ async def delete_reward_async(
             return None, error
     request = DeleteReward.create(
         reward_id=reward_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteRewardConditionRecord)
+def delete_reward_condition_record(
+    reward_id: str,
+    body: Optional[DeleteRewardConditionRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteRewardConditionRecord.create(
+        reward_id=reward_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteRewardConditionRecord)
+async def delete_reward_condition_record_async(
+    reward_id: str,
+    body: Optional[DeleteRewardConditionRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteRewardConditionRecord.create(
+        reward_id=reward_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

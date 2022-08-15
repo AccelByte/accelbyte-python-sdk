@@ -31,7 +31,6 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 
-@deprecated
 class UnregisterEventIDHandler(Operation):
     """Unregister eventID from the Event Registry (UnregisterEventIDHandler)
 

@@ -52,6 +52,7 @@ from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
 from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetPublisherUserResponse
+from ..models import ModelGetPublisherUserV3Response
 from ..models import ModelGetUserBanV3Response
 from ..models import ModelGetUserJusticePlatformAccountResponse
 from ..models import ModelGetUserMapping
@@ -214,6 +215,7 @@ from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
 from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetMyUserV3
+from ..operations.users import PublicGetPublisherUserV3
 from ..operations.users import PublicGetUserBan
 from ..operations.users import PublicGetUserBanHistoryV3
 from ..operations.users import PublicGetUserByPlatformUserIDV3
@@ -224,6 +226,7 @@ from ..operations.users import PublicGetUserPlatformAccountsV3
 from ..operations.users import PublicLinkPlatformAccount
 from ..operations.users import PublicListUserAllPlatformAccountsDistinctV3
 from ..operations.users import PublicListUserIDByPlatformUserIDsV3
+from ..operations.users import PublicPartialUpdateUserV3
 from ..operations.users import PublicPlatformLinkV2
 from ..operations.users import PublicPlatformLinkV3
 from ..operations.users import PublicPlatformUnlinkAllV3
@@ -235,7 +238,6 @@ from ..operations.users import PublicSendVerificationCodeV3
 from ..operations.users import PublicUpdatePasswordV2
 from ..operations.users import PublicUpdatePasswordV3
 from ..operations.users import PublicUpdateUserV2
-from ..operations.users import PublicUpdateUserV3
 from ..operations.users import PublicUpgradeHeadlessAccountV3
 from ..operations.users import PublicUserVerificationV3
 from ..operations.users import PublicValidateUserByUserIDAndPasswordV3
@@ -259,6 +261,7 @@ from ..operations.users import UserVerification
 from ..models import ModelUserCreateFromInvitationRequestV3AuthTypeEnum
 
 
+@deprecated
 @same_doc_as(AddUserPermission)
 def add_user_permission(
     action: int,
@@ -283,6 +286,7 @@ def add_user_permission(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AddUserPermission)
 async def add_user_permission_async(
     action: int,
@@ -309,6 +313,7 @@ async def add_user_permission_async(
     )
 
 
+@deprecated
 @same_doc_as(AddUserRole)
 def add_user_role(
     role_id: str,
@@ -329,6 +334,7 @@ def add_user_role(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AddUserRole)
 async def add_user_role_async(
     role_id: str,
@@ -2577,6 +2583,7 @@ async def admin_verify_user_without_verification_code_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(BanUser)
 def ban_user(
     body: ModelBanCreateRequest,
@@ -2597,6 +2604,7 @@ def ban_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(BanUser)
 async def ban_user_async(
     body: ModelBanCreateRequest,
@@ -2661,6 +2669,7 @@ async def check_user_availability_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateUser)
 def create_user(
     body: ModelUserCreateRequest,
@@ -2679,6 +2688,7 @@ def create_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateUser)
 async def create_user_async(
     body: ModelUserCreateRequest,
@@ -2741,6 +2751,7 @@ async def create_user_from_invitation_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteUser)
 def delete_user(
     user_id: str,
@@ -2759,6 +2770,7 @@ def delete_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteUser)
 async def delete_user_async(
     user_id: str,
@@ -2779,6 +2791,7 @@ async def delete_user_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteUserInformation)
 def delete_user_information(
     user_id: str,
@@ -2797,6 +2810,7 @@ def delete_user_information(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteUserInformation)
 async def delete_user_information_async(
     user_id: str,
@@ -2817,6 +2831,7 @@ async def delete_user_information_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteUserPermission)
 def delete_user_permission(
     action: int,
@@ -2839,6 +2854,7 @@ def delete_user_permission(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteUserPermission)
 async def delete_user_permission_async(
     action: int,
@@ -2863,6 +2879,7 @@ async def delete_user_permission_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteUserRole)
 def delete_user_role(
     role_id: str,
@@ -2883,6 +2900,7 @@ def delete_user_role(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteUserRole)
 async def delete_user_role_async(
     role_id: str,
@@ -2949,6 +2967,7 @@ async def disable_user_async(
     )
 
 
+@deprecated
 @same_doc_as(DisableUserBan)
 def disable_user_ban(
     ban_id: str,
@@ -2969,6 +2988,7 @@ def disable_user_ban(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DisableUserBan)
 async def disable_user_ban_async(
     ban_id: str,
@@ -3031,6 +3051,7 @@ async def enable_user_async(
     )
 
 
+@deprecated
 @same_doc_as(EnableUserBan)
 def enable_user_ban(
     ban_id: str,
@@ -3051,6 +3072,7 @@ def enable_user_ban(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(EnableUserBan)
 async def enable_user_ban_async(
     ban_id: str,
@@ -3073,6 +3095,7 @@ async def enable_user_ban_async(
     )
 
 
+@deprecated
 @same_doc_as(ForgotPassword)
 def forgot_password(
     body: ModelSendVerificationCodeRequest,
@@ -3091,6 +3114,7 @@ def forgot_password(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ForgotPassword)
 async def forgot_password_async(
     body: ModelSendVerificationCodeRequest,
@@ -3321,6 +3345,7 @@ async def get_list_justice_platform_accounts_async(
     )
 
 
+@deprecated
 @same_doc_as(GetPublisherUser)
 def get_publisher_user(
     user_id: str,
@@ -3339,6 +3364,7 @@ def get_publisher_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetPublisherUser)
 async def get_publisher_user_async(
     user_id: str,
@@ -3359,6 +3385,7 @@ async def get_publisher_user_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserBanHistory)
 def get_user_ban_history(
     user_id: str,
@@ -3377,6 +3404,7 @@ def get_user_ban_history(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserBanHistory)
 async def get_user_ban_history_async(
     user_id: str,
@@ -3397,6 +3425,7 @@ async def get_user_ban_history_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserByLoginID)
 def get_user_by_login_id(
     login_id: Optional[str] = None,
@@ -3415,6 +3444,7 @@ def get_user_by_login_id(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserByLoginID)
 async def get_user_by_login_id_async(
     login_id: Optional[str] = None,
@@ -3435,6 +3465,7 @@ async def get_user_by_login_id_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserByPlatformUserID)
 def get_user_by_platform_user_id(
     platform_id: str,
@@ -3455,6 +3486,7 @@ def get_user_by_platform_user_id(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserByPlatformUserID)
 async def get_user_by_platform_user_id_async(
     platform_id: str,
@@ -3477,6 +3509,7 @@ async def get_user_by_platform_user_id_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserByUserID)
 def get_user_by_user_id(
     user_id: str,
@@ -3495,6 +3528,7 @@ def get_user_by_user_id(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserByUserID)
 async def get_user_by_user_id_async(
     user_id: str,
@@ -3765,6 +3799,7 @@ async def get_user_verification_code_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUsersByLoginIds)
 def get_users_by_login_ids(
     login_ids: Optional[str] = None,
@@ -3783,6 +3818,7 @@ def get_users_by_login_ids(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUsersByLoginIds)
 async def get_users_by_login_ids_async(
     login_ids: Optional[str] = None,
@@ -4399,6 +4435,44 @@ async def public_get_my_user_v3_async(
     )
 
 
+@same_doc_as(PublicGetPublisherUserV3)
+def public_get_publisher_user_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPublisherUserV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetPublisherUserV3)
+async def public_get_publisher_user_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPublisherUserV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetUserBan)
 def public_get_user_ban(
     user_id: str,
@@ -4828,6 +4902,44 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     request = PublicListUserIDByPlatformUserIDsV3.create(
         body=body,
         platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicPartialUpdateUserV3)
+def public_partial_update_user_v3(
+    body: ModelUserUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPartialUpdateUserV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicPartialUpdateUserV3)
+async def public_partial_update_user_v3_async(
+    body: ModelUserUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPartialUpdateUserV3.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5293,44 +5405,6 @@ async def public_update_user_v2_async(
     )
 
 
-@same_doc_as(PublicUpdateUserV3)
-def public_update_user_v3(
-    body: ModelUserUpdateRequestV3,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUpdateUserV3.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(PublicUpdateUserV3)
-async def public_update_user_v3_async(
-    body: ModelUserUpdateRequestV3,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUpdateUserV3.create(
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(PublicUpgradeHeadlessAccountV3)
 def public_upgrade_headless_account_v3(
     body: ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3,
@@ -5613,6 +5687,7 @@ async def public_web_link_platform_establish_async(
     )
 
 
+@deprecated
 @same_doc_as(ResetPassword)
 def reset_password(
     body: ModelResetPasswordRequest,
@@ -5631,6 +5706,7 @@ def reset_password(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ResetPassword)
 async def reset_password_async(
     body: ModelResetPasswordRequest,
@@ -5689,6 +5765,7 @@ async def reset_password_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(SaveUserPermission)
 def save_user_permission(
     body: AccountcommonPermissions,
@@ -5709,6 +5786,7 @@ def save_user_permission(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SaveUserPermission)
 async def save_user_permission_async(
     body: AccountcommonPermissions,
@@ -5731,6 +5809,7 @@ async def save_user_permission_async(
     )
 
 
+@deprecated
 @same_doc_as(SaveUserRoles)
 def save_user_roles(
     body: List[str],
@@ -5751,6 +5830,7 @@ def save_user_roles(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SaveUserRoles)
 async def save_user_roles_async(
     body: List[str],
@@ -5813,6 +5893,7 @@ async def search_user_async(
     )
 
 
+@deprecated
 @same_doc_as(SendVerificationCode)
 def send_verification_code(
     body: ModelSendVerificationCodeRequest,
@@ -5833,6 +5914,7 @@ def send_verification_code(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SendVerificationCode)
 async def send_verification_code_async(
     body: ModelSendVerificationCodeRequest,
@@ -5941,6 +6023,7 @@ async def update_password_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdateUser)
 def update_user(
     body: ModelUserUpdateRequest,
@@ -5961,6 +6044,7 @@ def update_user(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdateUser)
 async def update_user_async(
     body: ModelUserUpdateRequest,
@@ -6105,6 +6189,7 @@ async def upgrade_headless_account_with_verification_code_async(
     )
 
 
+@deprecated
 @same_doc_as(UserVerification)
 def user_verification(
     body: ModelUserVerificationRequest,
@@ -6125,6 +6210,7 @@ def user_verification(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UserVerification)
 async def user_verification_async(
     body: ModelUserVerificationRequest,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,12 +28,34 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserResponse
 
 
 class GetUserByUserID(Operation):
     """Get User By User Id (GetUserByUserID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/public/namespaces/{namespace}/users/{userId} [GET]
+
+      * Substitute endpoint(Admin): /iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]
+
+
+
+      * Note:
+        format difference in response: Pascal case => Camel case
+
+
+
+
 
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [READ]'
 

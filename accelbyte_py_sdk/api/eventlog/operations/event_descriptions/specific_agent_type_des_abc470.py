@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleAgentType
 
 
-@deprecated
 class SpecificAgentTypeDescriptionHandler(Operation):
     """Get specific list of agent type and the descriptions by comma separated value of agent types (SpecificAgentTypeDescriptionHandler)
 

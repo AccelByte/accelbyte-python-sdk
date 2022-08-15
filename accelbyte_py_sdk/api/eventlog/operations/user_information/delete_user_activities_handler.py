@@ -31,7 +31,6 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 
-@deprecated
 class DeleteUserActivitiesHandler(Operation):
     """Delete all user's activities (DeleteUserActivitiesHandler)
 

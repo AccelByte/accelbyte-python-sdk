@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.13.0"
+__version__ = "5.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,14 +23,14 @@ from .wrappers import admin_get_bans_type_with_namespace_v3
 from .wrappers import admin_get_bans_type_with_namespace_v3_async
 from .wrappers import admin_get_list_ban_reason_v3
 from .wrappers import admin_get_list_ban_reason_v3_async
-
-# bans_deprecated
 from .wrappers import get_bans_type
 from .wrappers import get_bans_type_async
 from .wrappers import get_list_ban_reason
 from .wrappers import get_list_ban_reason_async
 
 # clients
+from .wrappers import add_client_permission
+from .wrappers import add_client_permission_async
 from .wrappers import admin_add_client_permissions_v3
 from .wrappers import admin_add_client_permissions_v3_async
 from .wrappers import admin_create_client_v3
@@ -49,10 +49,6 @@ from .wrappers import admin_update_client_secret_v3
 from .wrappers import admin_update_client_secret_v3_async
 from .wrappers import admin_update_client_v3
 from .wrappers import admin_update_client_v3_async
-
-# clients_deprecated
-from .wrappers import add_client_permission
-from .wrappers import add_client_permission_async
 from .wrappers import create_client
 from .wrappers import create_client_async
 from .wrappers import create_client_by_namespace
@@ -85,6 +81,26 @@ from .wrappers import admin_update_input_validations
 from .wrappers import admin_update_input_validations_async
 from .wrappers import public_get_input_validations
 from .wrappers import public_get_input_validations_async
+
+# o_auth
+from .wrappers import authorization
+from .wrappers import authorization_async
+from .wrappers import get_jwks
+from .wrappers import get_jwks_async
+from .wrappers import get_revocation_list
+from .wrappers import get_revocation_list_async
+from .wrappers import platform_token_request_handler
+from .wrappers import platform_token_request_handler_async
+from .wrappers import revoke_a_user
+from .wrappers import revoke_a_user_async
+from .wrappers import revoke_token
+from .wrappers import revoke_token_async
+from .wrappers import revoke_user
+from .wrappers import revoke_user_async
+from .wrappers import token_grant
+from .wrappers import token_grant_async
+from .wrappers import verify_token
+from .wrappers import verify_token_async
 
 # o_auth2_0
 from .wrappers import admin_retrieve_user_third_party_platform_token_v3
@@ -130,27 +146,13 @@ from .wrappers import platform_authentication_v3_async
 from .wrappers import user_authentication_v3
 from .wrappers import user_authentication_v3_async
 
-# o_auth_deprecated
-from .wrappers import authorization
-from .wrappers import authorization_async
-from .wrappers import get_jwks
-from .wrappers import get_jwks_async
-from .wrappers import get_revocation_list
-from .wrappers import get_revocation_list_async
-from .wrappers import platform_token_request_handler
-from .wrappers import platform_token_request_handler_async
-from .wrappers import revoke_a_user
-from .wrappers import revoke_a_user_async
-from .wrappers import revoke_token
-from .wrappers import revoke_token_async
-from .wrappers import revoke_user
-from .wrappers import revoke_user_async
-from .wrappers import token_grant
-from .wrappers import token_grant_async
-from .wrappers import verify_token
-from .wrappers import verify_token_async
-
 # roles
+from .wrappers import add_role_managers
+from .wrappers import add_role_managers_async
+from .wrappers import add_role_members
+from .wrappers import add_role_members_async
+from .wrappers import add_role_permission
+from .wrappers import add_role_permission_async
 from .wrappers import admin_add_role_managers_v3
 from .wrappers import admin_add_role_managers_v3_async
 from .wrappers import admin_add_role_members_v3
@@ -209,18 +211,6 @@ from .wrappers import admin_update_role_v3
 from .wrappers import admin_update_role_v3_async
 from .wrappers import admin_update_role_v4
 from .wrappers import admin_update_role_v4_async
-from .wrappers import public_get_role_v3
-from .wrappers import public_get_role_v3_async
-from .wrappers import public_get_roles_v3
-from .wrappers import public_get_roles_v3_async
-
-# roles_deprecated
-from .wrappers import add_role_managers
-from .wrappers import add_role_managers_async
-from .wrappers import add_role_members
-from .wrappers import add_role_members_async
-from .wrappers import add_role_permission
-from .wrappers import add_role_permission_async
 from .wrappers import create_role
 from .wrappers import create_role_async
 from .wrappers import delete_role
@@ -237,6 +227,10 @@ from .wrappers import get_role_members
 from .wrappers import get_role_members_async
 from .wrappers import get_roles
 from .wrappers import get_roles_async
+from .wrappers import public_get_role_v3
+from .wrappers import public_get_role_v3_async
+from .wrappers import public_get_roles_v3
+from .wrappers import public_get_roles_v3_async
 from .wrappers import remove_role_admin
 from .wrappers import remove_role_admin_async
 from .wrappers import remove_role_managers
@@ -499,6 +493,8 @@ from .wrappers import public_get_country_age_restriction
 from .wrappers import public_get_country_age_restriction_async
 from .wrappers import public_get_my_user_v3
 from .wrappers import public_get_my_user_v3_async
+from .wrappers import public_get_publisher_user_v3
+from .wrappers import public_get_publisher_user_v3_async
 from .wrappers import public_get_user_ban
 from .wrappers import public_get_user_ban_async
 from .wrappers import public_get_user_ban_history_v3
@@ -519,6 +515,8 @@ from .wrappers import public_list_user_all_platform_accounts_distinct_v3
 from .wrappers import public_list_user_all_platform_accounts_distinct_v3_async
 from .wrappers import public_list_user_id_by_platform_user_i_ds_v3
 from .wrappers import public_list_user_id_by_platform_user_i_ds_v3_async
+from .wrappers import public_partial_update_user_v3
+from .wrappers import public_partial_update_user_v3_async
 from .wrappers import public_platform_link_v2
 from .wrappers import public_platform_link_v2_async
 from .wrappers import public_platform_link_v3
@@ -541,8 +539,6 @@ from .wrappers import public_update_password_v3
 from .wrappers import public_update_password_v3_async
 from .wrappers import public_update_user_v2
 from .wrappers import public_update_user_v2_async
-from .wrappers import public_update_user_v3
-from .wrappers import public_update_user_v3_async
 from .wrappers import public_upgrade_headless_account_v3
 from .wrappers import public_upgrade_headless_account_v3_async
 from .wrappers import public_user_verification_v3
@@ -589,6 +585,8 @@ from .wrappers import admin_add_user_role_v4
 from .wrappers import admin_add_user_role_v4_async
 from .wrappers import admin_bulk_check_valid_user_idv4
 from .wrappers import admin_bulk_check_valid_user_idv4_async
+from .wrappers import admin_create_test_users_v4
+from .wrappers import admin_create_test_users_v4_async
 from .wrappers import admin_disable_my_authenticator_v4
 from .wrappers import admin_disable_my_authenticator_v4_async
 from .wrappers import admin_disable_my_backup_codes_v4

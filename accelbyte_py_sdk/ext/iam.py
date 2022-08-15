@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,9 @@
 from .utils import randomize
 
 from ..api.iam.models import AccountCreateTestUserRequestV4
+from ..api.iam.models import AccountCreateTestUserResponseV4
+from ..api.iam.models import AccountCreateTestUsersRequestV4
+from ..api.iam.models import AccountCreateTestUsersResponseV4
 from ..api.iam.models import AccountCreateUserRequestV4
 from ..api.iam.models import AccountCreateUserResponseV4
 from ..api.iam.models import AccountUpgradeHeadlessAccountRequestV4
@@ -115,6 +118,7 @@ from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
+from ..api.iam.models import ModelGetPublisherUserV3Response
 from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
@@ -257,6 +261,33 @@ def create_account_create_test_user_request_v4_example() -> AccountCreateTestUse
     instance.username = randomize("slug")
     instance.verified = randomize("bool")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    return instance
+
+
+def create_account_create_test_user_response_v4_example() -> AccountCreateTestUserResponseV4:
+    instance = AccountCreateTestUserResponseV4()
+    instance.auth_type = randomize()
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize("adult_birthdate")
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.namespace = randomize("slug")
+    instance.password = randomize("password")
+    instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
+    instance.verified = randomize("bool")
+    return instance
+
+
+def create_account_create_test_users_request_v4_example() -> AccountCreateTestUsersRequestV4:
+    instance = AccountCreateTestUsersRequestV4()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_account_create_test_users_response_v4_example() -> AccountCreateTestUsersResponseV4:
+    instance = AccountCreateTestUsersResponseV4()
+    instance.data = [create_account_create_test_user_response_v4_example()]
     return instance
 
 
@@ -581,6 +612,7 @@ def create_accountcommon_platform_account_example() -> AccountcommonPlatformAcco
     instance = AccountcommonPlatformAccount()
     instance.namespace = randomize("slug")
     instance.platform_user_id = randomize()
+    instance.platform_id = randomize()
     return instance
 
 
@@ -1039,6 +1071,13 @@ def create_model_get_admin_users_response_example() -> ModelGetAdminUsersRespons
 
 def create_model_get_publisher_user_response_example() -> ModelGetPublisherUserResponse:
     instance = ModelGetPublisherUserResponse()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_get_publisher_user_v3_response_example() -> ModelGetPublisherUserV3Response:
+    instance = ModelGetPublisherUserV3Response()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     return instance

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.0)
+# AccelByte Cloud Dsm Controller Service (3.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsPatchImageRecord(Model):
 
         image: (image) REQUIRED str
 
+        image_size: (imageSize) REQUIRED int
+
         modified_by: (modifiedBy) REQUIRED str
 
         namespace: (namespace) REQUIRED str
@@ -59,6 +61,7 @@ class ModelsPatchImageRecord(Model):
     created_at: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
+    image_size: int  # REQUIRED
     modified_by: str  # REQUIRED
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
@@ -84,6 +87,10 @@ class ModelsPatchImageRecord(Model):
 
     def with_image(self, value: str) -> ModelsPatchImageRecord:
         self.image = value
+        return self
+
+    def with_image_size(self, value: int) -> ModelsPatchImageRecord:
+        self.image_size = value
         return self
 
     def with_modified_by(self, value: str) -> ModelsPatchImageRecord:
@@ -132,6 +139,10 @@ class ModelsPatchImageRecord(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "image_size"):
+            result["imageSize"] = int(self.image_size)
+        elif include_empty:
+            result["imageSize"] = 0
         if hasattr(self, "modified_by"):
             result["modifiedBy"] = str(self.modified_by)
         elif include_empty:
@@ -169,6 +180,7 @@ class ModelsPatchImageRecord(Model):
         created_at: str,
         docker_path: str,
         image: str,
+        image_size: int,
         modified_by: str,
         namespace: str,
         patch_version: str,
@@ -181,6 +193,7 @@ class ModelsPatchImageRecord(Model):
         instance.created_at = created_at
         instance.docker_path = docker_path
         instance.image = image
+        instance.image_size = image_size
         instance.modified_by = modified_by
         instance.namespace = namespace
         instance.patch_version = patch_version
@@ -212,6 +225,10 @@ class ModelsPatchImageRecord(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "imageSize" in dict_ and dict_["imageSize"] is not None:
+            instance.image_size = int(dict_["imageSize"])
+        elif include_empty:
+            instance.image_size = 0
         if "modifiedBy" in dict_ and dict_["modifiedBy"] is not None:
             instance.modified_by = str(dict_["modifiedBy"])
         elif include_empty:
@@ -283,6 +300,7 @@ class ModelsPatchImageRecord(Model):
             "createdAt": "created_at",
             "dockerPath": "docker_path",
             "image": "image",
+            "imageSize": "image_size",
             "modifiedBy": "modified_by",
             "namespace": "namespace",
             "patchVersion": "patch_version",
@@ -298,6 +316,7 @@ class ModelsPatchImageRecord(Model):
             "createdAt": True,
             "dockerPath": True,
             "image": True,
+            "imageSize": True,
             "modifiedBy": True,
             "namespace": True,
             "patchVersion": True,

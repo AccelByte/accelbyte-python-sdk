@@ -27,31 +27,46 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import AccountcommonPermissions
 from ..models import AccountcommonPermissionsV3
+from ..models import AccountcommonRole
 from ..models import AccountcommonRoleV3
 from ..models import ModelAssignUserV4Request
 from ..models import ModelAssignedUserV4Response
 from ..models import ModelListAssignedUsersV4Response
 from ..models import ModelListRoleV4Response
 from ..models import ModelRevokeUserV4Request
+from ..models import ModelRoleAdminStatusResponse
 from ..models import ModelRoleAdminStatusResponseV3
+from ..models import ModelRoleCreateRequest
 from ..models import ModelRoleCreateV3Request
+from ..models import ModelRoleManagersRequest
 from ..models import ModelRoleManagersRequestV3
+from ..models import ModelRoleManagersResponse
 from ..models import ModelRoleManagersResponsesV3
+from ..models import ModelRoleMembersRequest
 from ..models import ModelRoleMembersRequestV3
+from ..models import ModelRoleMembersResponse
 from ..models import ModelRoleMembersResponseV3
 from ..models import ModelRoleNamesResponseV3
 from ..models import ModelRoleResponse
 from ..models import ModelRoleResponseV3
+from ..models import ModelRoleResponseWithManagers
 from ..models import ModelRoleResponseWithManagersAndPaginationV3
+from ..models import ModelRoleUpdateRequest
 from ..models import ModelRoleUpdateRequestV3
 from ..models import ModelRoleV4Request
 from ..models import ModelRoleV4Response
+from ..models import ModelUpdatePermissionScheduleRequest
 from ..models import RestErrorResponse
 from ..models import RestapiErrorResponse
 
+from ..operations.roles import AddRoleManagers
+from ..operations.roles import AddRoleMembers
+from ..operations.roles import AddRolePermission
 from ..operations.roles import AdminAddRoleManagersV3
 from ..operations.roles import AdminAddRoleMembersV3
 from ..operations.roles import AdminAddRolePermissionsV3
@@ -81,8 +96,126 @@ from ..operations.roles import AdminUpdateRolePermissionsV3
 from ..operations.roles import AdminUpdateRolePermissionsV4
 from ..operations.roles import AdminUpdateRoleV3
 from ..operations.roles import AdminUpdateRoleV4
+from ..operations.roles import CreateRole
+from ..operations.roles import DeleteRole
+from ..operations.roles import DeleteRolePermission
+from ..operations.roles import GetRole
+from ..operations.roles import GetRoleAdminStatus
+from ..operations.roles import GetRoleManagers
+from ..operations.roles import GetRoleMembers
+from ..operations.roles import GetRoles
 from ..operations.roles import PublicGetRoleV3
 from ..operations.roles import PublicGetRolesV3
+from ..operations.roles import RemoveRoleAdmin
+from ..operations.roles import RemoveRoleManagers
+from ..operations.roles import RemoveRoleMembers
+from ..operations.roles import SetRoleAsAdmin
+from ..operations.roles import UpdateRole
+from ..operations.roles import UpdateRolePermissions
+
+
+@deprecated
+@same_doc_as(AddRoleManagers)
+def add_role_managers(
+    body: ModelRoleManagersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRoleManagers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(AddRoleManagers)
+async def add_role_managers_async(
+    body: ModelRoleManagersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRoleManagers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(AddRoleMembers)
+def add_role_members(
+    body: ModelRoleMembersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRoleMembers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(AddRoleMembers)
+async def add_role_members_async(
+    body: ModelRoleMembersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRoleMembers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(AddRolePermission)
+def add_role_permission(
+    action: int,
+    body: ModelUpdatePermissionScheduleRequest,
+    resource: str,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRolePermission.create(
+        action=action,
+        body=body,
+        resource=resource,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(AddRolePermission)
+async def add_role_permission_async(
+    action: int,
+    body: ModelUpdatePermissionScheduleRequest,
+    resource: str,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = AddRolePermission.create(
+        action=action,
+        body=body,
+        resource=resource,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminAddRoleManagersV3)
@@ -935,6 +1068,218 @@ async def admin_update_role_v4_async(
     )
 
 
+@deprecated
+@same_doc_as(CreateRole)
+def create_role(
+    body: ModelRoleCreateRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = CreateRole.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(CreateRole)
+async def create_role_async(
+    body: ModelRoleCreateRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = CreateRole.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(DeleteRole)
+def delete_role(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = DeleteRole.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(DeleteRole)
+async def delete_role_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = DeleteRole.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(DeleteRolePermission)
+def delete_role_permission(
+    action: int,
+    resource: str,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = DeleteRolePermission.create(
+        action=action,
+        resource=resource,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(DeleteRolePermission)
+async def delete_role_permission_async(
+    action: int,
+    resource: str,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = DeleteRolePermission.create(
+        action=action,
+        resource=resource,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetRole)
+def get_role(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRole.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetRole)
+async def get_role_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRole.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetRoleAdminStatus)
+def get_role_admin_status(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleAdminStatus.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetRoleAdminStatus)
+async def get_role_admin_status_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleAdminStatus.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetRoleManagers)
+def get_role_managers(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleManagers.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetRoleManagers)
+async def get_role_managers_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleManagers.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetRoleMembers)
+def get_role_members(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleMembers.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetRoleMembers)
+async def get_role_members_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetRoleMembers.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetRoles)
+def get_roles(
+    is_wildcard: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = GetRoles.create(
+        is_wildcard=is_wildcard,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetRoles)
+async def get_roles_async(
+    is_wildcard: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = GetRoles.create(
+        is_wildcard=is_wildcard,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetRoleV3)
 def public_get_role_v3(
     role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -989,6 +1334,182 @@ async def public_get_roles_v3_async(
         before=before,
         is_wildcard=is_wildcard,
         limit=limit,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(RemoveRoleAdmin)
+def remove_role_admin(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RemoveRoleAdmin.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(RemoveRoleAdmin)
+async def remove_role_admin_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RemoveRoleAdmin.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(RemoveRoleManagers)
+def remove_role_managers(
+    body: ModelRoleManagersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RemoveRoleManagers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(RemoveRoleManagers)
+async def remove_role_managers_async(
+    body: ModelRoleManagersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RemoveRoleManagers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(RemoveRoleMembers)
+def remove_role_members(
+    body: ModelRoleMembersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RemoveRoleMembers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(RemoveRoleMembers)
+async def remove_role_members_async(
+    body: ModelRoleMembersRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RemoveRoleMembers.create(
+        body=body,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(SetRoleAsAdmin)
+def set_role_as_admin(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = SetRoleAsAdmin.create(
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(SetRoleAsAdmin)
+async def set_role_as_admin_async(
+    role_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = SetRoleAsAdmin.create(
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(UpdateRole)
+def update_role(
+    body: ModelRoleUpdateRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateRole.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(UpdateRole)
+async def update_role_async(
+    body: ModelRoleUpdateRequest,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateRole.create(
+        body=body,
+        role_id=role_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(UpdateRolePermissions)
+def update_role_permissions(
+    body: AccountcommonPermissions,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateRolePermissions.create(
+        body=body,
+        role_id=role_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(UpdateRolePermissions)
+async def update_role_permissions_async(
+    body: AccountcommonPermissions,
+    role_id: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateRolePermissions.create(
+        body=body,
+        role_id=role_id,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

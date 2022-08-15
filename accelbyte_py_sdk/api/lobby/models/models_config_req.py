@@ -62,6 +62,8 @@ class ModelsConfigReq(Model):
 
         keep_presence_activity_on_disconnect: (keepPresenceActivityOnDisconnect) OPTIONAL bool
 
+        max_ds_wait_time: (maxDSWaitTime) OPTIONAL int
+
         max_party_member: (maxPartyMember) OPTIONAL int
 
         profanity_filter: (profanityFilter) OPTIONAL bool
@@ -86,6 +88,7 @@ class ModelsConfigReq(Model):
     general_rate_limit_burst: int  # OPTIONAL
     general_rate_limit_duration: int  # OPTIONAL
     keep_presence_activity_on_disconnect: bool  # OPTIONAL
+    max_ds_wait_time: int  # OPTIONAL
     max_party_member: int  # OPTIONAL
     profanity_filter: bool  # OPTIONAL
     ready_consent_timeout: int  # OPTIONAL
@@ -152,6 +155,10 @@ class ModelsConfigReq(Model):
 
     def with_keep_presence_activity_on_disconnect(self, value: bool) -> ModelsConfigReq:
         self.keep_presence_activity_on_disconnect = value
+        return self
+
+    def with_max_ds_wait_time(self, value: int) -> ModelsConfigReq:
+        self.max_ds_wait_time = value
         return self
 
     def with_max_party_member(self, value: int) -> ModelsConfigReq:
@@ -242,6 +249,10 @@ class ModelsConfigReq(Model):
             )
         elif include_empty:
             result["keepPresenceActivityOnDisconnect"] = False
+        if hasattr(self, "max_ds_wait_time"):
+            result["maxDSWaitTime"] = int(self.max_ds_wait_time)
+        elif include_empty:
+            result["maxDSWaitTime"] = 0
         if hasattr(self, "max_party_member"):
             result["maxPartyMember"] = int(self.max_party_member)
         elif include_empty:
@@ -278,6 +289,7 @@ class ModelsConfigReq(Model):
         general_rate_limit_burst: Optional[int] = None,
         general_rate_limit_duration: Optional[int] = None,
         keep_presence_activity_on_disconnect: Optional[bool] = None,
+        max_ds_wait_time: Optional[int] = None,
         max_party_member: Optional[int] = None,
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
@@ -317,6 +329,8 @@ class ModelsConfigReq(Model):
             instance.keep_presence_activity_on_disconnect = (
                 keep_presence_activity_on_disconnect
             )
+        if max_ds_wait_time is not None:
+            instance.max_ds_wait_time = max_ds_wait_time
         if max_party_member is not None:
             instance.max_party_member = max_party_member
         if profanity_filter is not None:
@@ -439,6 +453,10 @@ class ModelsConfigReq(Model):
             )
         elif include_empty:
             instance.keep_presence_activity_on_disconnect = False
+        if "maxDSWaitTime" in dict_ and dict_["maxDSWaitTime"] is not None:
+            instance.max_ds_wait_time = int(dict_["maxDSWaitTime"])
+        elif include_empty:
+            instance.max_ds_wait_time = 0
         if "maxPartyMember" in dict_ and dict_["maxPartyMember"] is not None:
             instance.max_party_member = int(dict_["maxPartyMember"])
         elif include_empty:
@@ -505,6 +523,7 @@ class ModelsConfigReq(Model):
             "generalRateLimitBurst": "general_rate_limit_burst",
             "generalRateLimitDuration": "general_rate_limit_duration",
             "keepPresenceActivityOnDisconnect": "keep_presence_activity_on_disconnect",
+            "maxDSWaitTime": "max_ds_wait_time",
             "maxPartyMember": "max_party_member",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
@@ -528,6 +547,7 @@ class ModelsConfigReq(Model):
             "generalRateLimitBurst": False,
             "generalRateLimitDuration": False,
             "keepPresenceActivityOnDisconnect": False,
+            "maxDSWaitTime": False,
             "maxPartyMember": False,
             "profanityFilter": False,
             "readyConsentTimeout": False,

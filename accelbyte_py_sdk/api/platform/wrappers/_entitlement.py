@@ -1561,6 +1561,7 @@ def public_query_user_entitlements(
         Union[str, PublicQueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
     entitlement_name: Optional[str] = None,
+    features: Optional[List[str]] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1577,6 +1578,7 @@ def public_query_user_entitlements(
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
+        features=features,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -1593,6 +1595,7 @@ async def public_query_user_entitlements_async(
         Union[str, PublicQueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
     entitlement_name: Optional[str] = None,
+    features: Optional[List[str]] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1609,6 +1612,7 @@ async def public_query_user_entitlements_async(
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
+        features=features,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -1748,6 +1752,7 @@ def query_user_entitlements(
         Union[str, QueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
     entitlement_name: Optional[str] = None,
+    features: Optional[List[str]] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1765,6 +1770,7 @@ def query_user_entitlements(
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
+        features=features,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -1782,6 +1788,7 @@ async def query_user_entitlements_async(
         Union[str, QueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
     entitlement_name: Optional[str] = None,
+    features: Optional[List[str]] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1799,6 +1806,7 @@ async def query_user_entitlements_async(
         app_type=app_type,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
+        features=features,
         item_id=item_id,
         limit=limit,
         offset=offset,

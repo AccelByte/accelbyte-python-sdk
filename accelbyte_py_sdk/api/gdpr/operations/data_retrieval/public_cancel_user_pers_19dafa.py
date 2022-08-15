@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsListPersonalDataResponse
 from ...models import ResponseError
 
 
@@ -58,7 +57,7 @@ class PublicCancelUserPersonalDataRequest(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelsListPersonalDataResponse (No Content)
+        204: No Content - (No Content)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -185,7 +184,7 @@ class PublicCancelUserPersonalDataRequest(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - ModelsListPersonalDataResponse (No Content)
+        204: No Content - (No Content)
 
         401: Unauthorized - ResponseError (Unauthorized)
 

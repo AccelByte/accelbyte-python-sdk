@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.0)
+# AccelByte Cloud Dsm Controller Service (3.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,8 @@ class ModelsCreateImagePatchRequest(Model):
 
         image: (image) REQUIRED str
 
+        image_size: (imageSize) REQUIRED int
+
         namespace: (namespace) REQUIRED str
 
         patch_version: (patchVersion) REQUIRED str
@@ -52,6 +54,7 @@ class ModelsCreateImagePatchRequest(Model):
     artifact_path: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
+    image_size: int  # REQUIRED
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
@@ -71,6 +74,10 @@ class ModelsCreateImagePatchRequest(Model):
 
     def with_image(self, value: str) -> ModelsCreateImagePatchRequest:
         self.image = value
+        return self
+
+    def with_image_size(self, value: int) -> ModelsCreateImagePatchRequest:
+        self.image_size = value
         return self
 
     def with_namespace(self, value: str) -> ModelsCreateImagePatchRequest:
@@ -107,6 +114,10 @@ class ModelsCreateImagePatchRequest(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "image_size"):
+            result["imageSize"] = int(self.image_size)
+        elif include_empty:
+            result["imageSize"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -135,6 +146,7 @@ class ModelsCreateImagePatchRequest(Model):
         artifact_path: str,
         docker_path: str,
         image: str,
+        image_size: int,
         namespace: str,
         patch_version: str,
         persistent: bool,
@@ -144,6 +156,7 @@ class ModelsCreateImagePatchRequest(Model):
         instance.artifact_path = artifact_path
         instance.docker_path = docker_path
         instance.image = image
+        instance.image_size = image_size
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
@@ -169,6 +182,10 @@ class ModelsCreateImagePatchRequest(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "imageSize" in dict_ and dict_["imageSize"] is not None:
+            instance.image_size = int(dict_["imageSize"])
+        elif include_empty:
+            instance.image_size = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -231,6 +248,7 @@ class ModelsCreateImagePatchRequest(Model):
             "artifactPath": "artifact_path",
             "dockerPath": "docker_path",
             "image": "image",
+            "imageSize": "image_size",
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
@@ -243,6 +261,7 @@ class ModelsCreateImagePatchRequest(Model):
             "artifactPath": True,
             "dockerPath": True,
             "image": True,
+            "imageSize": True,
             "namespace": True,
             "patchVersion": True,
             "persistent": True,

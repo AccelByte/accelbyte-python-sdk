@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleEventType
 
 
-@deprecated
 class SpecificEventTypeDescriptionHandler(Operation):
     """Get specific list of event type and the descriptions by comma separated value of event types (SpecificEventTypeDescriptionHandler)
 

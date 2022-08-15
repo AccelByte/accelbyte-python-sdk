@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,8 +35,11 @@ from ...models import ErrorEntity
 class DeleteItem(Operation):
     """Delete an item (deleteItem)
 
-    This API is used to delete an item permanently, usually for test purpose. DO NOT delete already published item.
+    This API is used to delete an item permanently.
 
+    force: the default value should be: false. When the value is:
+    * false: only the items in the draft store that have never been published yet can be removed.
+    *  true: the item in the draft store(even been published before) can be removed.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
@@ -61,12 +64,14 @@ class DeleteItem(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        force: (force) OPTIONAL bool in query
+
         store_id: (storeId) OPTIONAL str in query
 
     Responses:
         204: No Content - (Delete item successfully)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
     """
 
     # region fields
@@ -80,6 +85,7 @@ class DeleteItem(Operation):
 
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    force: bool  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -134,6 +140,8 @@ class DeleteItem(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "force"):
+            result["force"] = self.force
         if hasattr(self, "store_id"):
             result["storeId"] = self.store_id
         return result
@@ -154,6 +162,10 @@ class DeleteItem(Operation):
         self.namespace = value
         return self
 
+    def with_force(self, value: bool) -> DeleteItem:
+        self.force = value
+        return self
+
     def with_store_id(self, value: str) -> DeleteItem:
         self.store_id = value
         return self
@@ -172,6 +184,10 @@ class DeleteItem(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "force") and self.force:
+            result["force"] = bool(self.force)
+        elif include_empty:
+            result["force"] = False
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -190,7 +206,7 @@ class DeleteItem(Operation):
 
         204: No Content - (Delete item successfully)
 
-        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -223,11 +239,14 @@ class DeleteItem(Operation):
         cls,
         item_id: str,
         namespace: str,
+        force: Optional[bool] = None,
         store_id: Optional[str] = None,
     ) -> DeleteItem:
         instance = cls()
         instance.item_id = item_id
         instance.namespace = namespace
+        if force is not None:
+            instance.force = force
         if store_id is not None:
             instance.store_id = store_id
         return instance
@@ -243,6 +262,10 @@ class DeleteItem(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "force" in dict_ and dict_["force"] is not None:
+            instance.force = bool(dict_["force"])
+        elif include_empty:
+            instance.force = False
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -254,6 +277,7 @@ class DeleteItem(Operation):
         return {
             "itemId": "item_id",
             "namespace": "namespace",
+            "force": "force",
             "storeId": "store_id",
         }
 
@@ -262,6 +286,7 @@ class DeleteItem(Operation):
         return {
             "itemId": True,
             "namespace": True,
+            "force": False,
             "storeId": False,
         }
 

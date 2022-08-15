@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelGetPublisherUserResponse
 from ...models import RestErrorResponse
@@ -35,6 +36,21 @@ from ...models import RestErrorResponse
 
 class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]
+
+
+
+
+
 
     Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
 

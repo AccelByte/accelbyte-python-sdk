@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.12.0"
+__version__ = "4.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -149,6 +149,7 @@ from .currency_update import CurrencyUpdate
 from .currency_wallet import CurrencyWallet
 from .customization import Customization
 from .debit_request import DebitRequest
+from .delete_reward_condition_request import DeleteRewardConditionRequest
 from .detailed_wallet_transaction_info import DetailedWalletTransactionInfo
 from .detailed_wallet_transaction_info import (
     WalletActionEnum as DetailedWalletTransactionInfoWalletActionEnum,
@@ -268,6 +269,7 @@ from .item_create import (
 )
 from .item_dynamic_data_info import ItemDynamicDataInfo
 from .item_id import ItemId
+from .item_id import StatusEnum as ItemIdStatusEnum
 from .item_info import ItemInfo
 from .item_info import (
     AppTypeEnum as ItemInfoAppTypeEnum,

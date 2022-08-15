@@ -27,9 +27,12 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import AccountcommonBanReasons
 from ..models import AccountcommonBanReasonsV3
+from ..models import AccountcommonBans
 from ..models import AccountcommonBansV3
 from ..models import ModelGetUserBanV3Response
 from ..models import RestapiErrorResponse
@@ -38,6 +41,8 @@ from ..operations.bans import AdminGetBannedUsersV3
 from ..operations.bans import AdminGetBansTypeV3
 from ..operations.bans import AdminGetBansTypeWithNamespaceV3
 from ..operations.bans import AdminGetListBanReasonV3
+from ..operations.bans import GetBansType
+from ..operations.bans import GetListBanReason
 
 
 @same_doc_as(AdminGetBannedUsersV3)
@@ -155,6 +160,44 @@ async def admin_get_list_ban_reason_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     request = AdminGetListBanReasonV3.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetBansType)
+def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    request = GetBansType.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetBansType)
+async def get_bans_type_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetBansType.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(GetListBanReason)
+def get_list_ban_reason(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetListBanReason.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(GetListBanReason)
+async def get_list_ban_reason_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetListBanReason.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

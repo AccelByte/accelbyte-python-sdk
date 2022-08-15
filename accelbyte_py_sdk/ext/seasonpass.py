@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.13.1)
+# AccelByte Cloud Seasonpass Service (1.13.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -168,6 +168,8 @@ def create_list_season_info_example() -> ListSeasonInfo:
     instance.namespace = randomize("slug")
     instance.start = randomize("date")
     instance.status = randomize()
+    instance.tier_item_id = randomize()
+    instance.tier_item_name = randomize()
     instance.updated_at = randomize("date")
     instance.pass_codes = [randomize()]
     instance.published_at = randomize("date")

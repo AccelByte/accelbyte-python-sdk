@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -117,6 +117,8 @@ class ItemInfo(Model):
 
         features: (features) OPTIONAL List[str]
 
+        fresh: (fresh) OPTIONAL bool
+
         images: (images) OPTIONAL List[Image]
 
         item_ids: (itemIds) OPTIONAL List[str]
@@ -186,6 +188,7 @@ class ItemInfo(Model):
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     features: List[str]  # OPTIONAL
+    fresh: bool  # OPTIONAL
     images: List[Image]  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
@@ -299,6 +302,10 @@ class ItemInfo(Model):
 
     def with_features(self, value: List[str]) -> ItemInfo:
         self.features = value
+        return self
+
+    def with_fresh(self, value: bool) -> ItemInfo:
+        self.fresh = value
         return self
 
     def with_images(self, value: List[Image]) -> ItemInfo:
@@ -483,6 +490,10 @@ class ItemInfo(Model):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "fresh"):
+            result["fresh"] = bool(self.fresh)
+        elif include_empty:
+            result["fresh"] = False
         if hasattr(self, "images"):
             result["images"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.images
@@ -610,6 +621,7 @@ class ItemInfo(Model):
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
         features: Optional[List[str]] = None,
+        fresh: Optional[bool] = None,
         images: Optional[List[Image]] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
@@ -666,6 +678,8 @@ class ItemInfo(Model):
             instance.ext = ext
         if features is not None:
             instance.features = features
+        if fresh is not None:
+            instance.fresh = fresh
         if images is not None:
             instance.images = images
         if item_ids is not None:
@@ -805,6 +819,10 @@ class ItemInfo(Model):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "fresh" in dict_ and dict_["fresh"] is not None:
+            instance.fresh = bool(dict_["fresh"])
+        elif include_empty:
+            instance.fresh = False
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [
                 Image.create_from_dict(i0, include_empty=include_empty)
@@ -968,6 +986,7 @@ class ItemInfo(Model):
             "displayOrder": "display_order",
             "ext": "ext",
             "features": "features",
+            "fresh": "fresh",
             "images": "images",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
@@ -1017,6 +1036,7 @@ class ItemInfo(Model):
             "displayOrder": False,
             "ext": False,
             "features": False,
+            "fresh": False,
             "images": False,
             "itemIds": False,
             "itemQty": False,

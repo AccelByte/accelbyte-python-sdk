@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventRegistry
 
 
-@deprecated
 class GetRegisteredEventIDHandler(Operation):
     """Get registered eventID data from the Event Registry (GetRegisteredEventIDHandler)
 

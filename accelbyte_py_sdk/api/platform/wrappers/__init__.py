@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.12.0"
+__version__ = "4.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -599,6 +599,8 @@ from ._reward import create_reward
 from ._reward import create_reward_async
 from ._reward import delete_reward
 from ._reward import delete_reward_async
+from ._reward import delete_reward_condition_record
+from ._reward import delete_reward_condition_record_async
 from ._reward import export_rewards
 from ._reward import export_rewards_async
 from ._reward import get_reward

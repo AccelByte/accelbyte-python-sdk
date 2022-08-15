@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.12.0)
+# AccelByte Cloud Platform Service Index (4.12.1)
 
 
 ## Operations
@@ -376,6 +376,7 @@
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match | PUT | checkEventCondition | [CheckEventCondition](../accelbyte_py_sdk/api/platform/operations/reward/check_event_condition.py) | [check_event_condition](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-check-event-condition](../samples/cli/accelbyte_py_sdk_cli/platform/_check_event_condition.py) |
 | /platform/admin/namespaces/{namespace}/rewards | POST | createReward | [CreateReward](../accelbyte_py_sdk/api/platform/operations/reward/create_reward.py) | [create_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-create-reward](../samples/cli/accelbyte_py_sdk_cli/platform/_create_reward.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | DELETE | deleteReward | [DeleteReward](../accelbyte_py_sdk/api/platform/operations/reward/delete_reward.py) | [delete_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-delete-reward](../samples/cli/accelbyte_py_sdk_cli/platform/_delete_reward.py) |
+| /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record | DELETE | deleteRewardConditionRecord | [DeleteRewardConditionRecord](../accelbyte_py_sdk/api/platform/operations/reward/delete_reward_condition_record.py) | [delete_reward_condition_record](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-delete-reward-condition-record](../samples/cli/accelbyte_py_sdk_cli/platform/_delete_reward_condition_record.py) |
 | /platform/admin/namespaces/{namespace}/rewards/export | GET | exportRewards | [ExportRewards](../accelbyte_py_sdk/api/platform/operations/reward/export_rewards.py) | [export_rewards](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-export-rewards](../samples/cli/accelbyte_py_sdk_cli/platform/_export_rewards.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | GET | getReward | [GetReward](../accelbyte_py_sdk/api/platform/operations/reward/get_reward.py) | [get_reward](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-get-reward](../samples/cli/accelbyte_py_sdk_cli/platform/_get_reward.py) |
 | /platform/public/namespaces/{namespace}/rewards/{rewardId} | GET | getReward_1 | [GetReward1](../accelbyte_py_sdk/api/platform/operations/reward/get_reward_1.py) | [get_reward_1](../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-get-reward-1](../samples/cli/accelbyte_py_sdk_cli/platform/_get_reward_1.py) |
@@ -516,6 +517,7 @@
 | CurrencyWallet | [CurrencyWallet](../accelbyte_py_sdk/api/platform/models/currency_wallet.py) |
 | Customization | [Customization](../accelbyte_py_sdk/api/platform/models/customization.py) |
 | DebitRequest | [DebitRequest](../accelbyte_py_sdk/api/platform/models/debit_request.py) |
+| DeleteRewardConditionRequest | [DeleteRewardConditionRequest](../accelbyte_py_sdk/api/platform/models/delete_reward_condition_request.py) |
 | DetailedWalletTransactionInfo | [DetailedWalletTransactionInfo](../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_info.py) |
 | DetailedWalletTransactionPagingSlicedResult | [DetailedWalletTransactionPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_paging_sliced_result.py) |
 | DLCItem | [DLCItem](../accelbyte_py_sdk/api/platform/models/dlc_item.py) |

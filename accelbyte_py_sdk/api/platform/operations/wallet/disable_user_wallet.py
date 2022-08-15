@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ErrorEntity
 
 
-@deprecated
 class DisableUserWallet(Operation):
     """Disable a user wallet (disableUserWallet)
 

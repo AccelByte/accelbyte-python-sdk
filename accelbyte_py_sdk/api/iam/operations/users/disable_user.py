@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,14 +33,23 @@ from .....core import deprecated
 from ...models import ModelDisableUserRequest
 
 
-@deprecated
 class DisableUser(Operation):
     """Disable a user (DisableUser)
 
-    ## The endpoint is going to be deprecated. Please use this instead: iam/v2/admin/namespaces/{namespace}/users/{userId}/disable
+    ## The endpoint is going to be deprecated
 
 
-    +
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]
+
+
+
+
+
 
     Required permissions 'ADMIN:NAMESPACE:{namespace}:USERSTATUS:USER:{userId} [UPDATE]'
 

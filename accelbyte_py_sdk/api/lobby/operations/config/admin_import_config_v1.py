@@ -44,6 +44,8 @@ class AdminImportConfigV1(Operation):
     Import config configuration from file. The existing configuration will be replaced.
     The json file to import can be obtained from the /export endpoint.
 
+    MaxDSWaitTime value is cannot less than 1, if null it will use default value in 120 (second)
+
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [UPDATE]
 

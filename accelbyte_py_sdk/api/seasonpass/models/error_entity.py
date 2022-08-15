@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.13.1)
+# AccelByte Cloud Seasonpass Service (1.13.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

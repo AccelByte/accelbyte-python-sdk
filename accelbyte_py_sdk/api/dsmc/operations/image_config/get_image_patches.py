@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Dsm Controller Service (3.4.0)
+# AccelByte Cloud Dsm Controller Service (3.4.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,8 @@ class GetImagePatches(Operation):
     Required scope: social
 
     This endpoint get image patches by version.
+
+    Image Size unit is byte.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.13.0"
+__version__ = "5.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -114,6 +114,7 @@ from .public_forgot_password_v3 import PublicForgotPasswordV3
 from .public_get_async_status import PublicGetAsyncStatus
 from .public_get_country_age__7cfd03 import PublicGetCountryAgeRestriction
 from .public_get_my_user_v3 import PublicGetMyUserV3
+from .public_get_publisher_user_v3 import PublicGetPublisherUserV3
 from .public_get_user_ban import PublicGetUserBan
 from .public_get_user_ban_history_v3 import PublicGetUserBanHistoryV3
 from .public_get_user_by_plat_ae1e0a import PublicGetUserByPlatformUserIDV3
@@ -124,6 +125,7 @@ from .public_get_user_platfor_890bc0 import PublicGetUserPlatformAccountsV3
 from .public_link_platform_account import PublicLinkPlatformAccount
 from .public_list_user_all_pl_0f3031 import PublicListUserAllPlatformAccountsDistinctV3
 from .public_list_user_id_by__d6f348 import PublicListUserIDByPlatformUserIDsV3
+from .public_partial_update_user_v3 import PublicPartialUpdateUserV3
 from .public_platform_link_v2 import PublicPlatformLinkV2
 from .public_platform_link_v3 import PublicPlatformLinkV3
 from .public_platform_unlink_all_v3 import PublicPlatformUnlinkAllV3
@@ -135,7 +137,6 @@ from .public_send_verificatio_dc732c import PublicSendVerificationCodeV3
 from .public_update_password_v2 import PublicUpdatePasswordV2
 from .public_update_password_v3 import PublicUpdatePasswordV3
 from .public_update_user_v2 import PublicUpdateUserV2
-from .public_update_user_v3 import PublicUpdateUserV3
 from .public_upgrade_headless_a93947 import PublicUpgradeHeadlessAccountV3
 from .public_user_verification_v3 import PublicUserVerificationV3
 from .public_validate_user_by_fc4982 import PublicValidateUserByUserIDAndPasswordV3

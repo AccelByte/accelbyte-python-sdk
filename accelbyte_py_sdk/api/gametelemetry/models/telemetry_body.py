@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# Analytics Game Telemetry (1.7.2)
+# Analytics Game Telemetry (1.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

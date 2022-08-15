@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsUserLastActivity
 
 
-@deprecated
 class LastUserActivityTimeHandler(Operation):
     """Get last activity time of a user in a namespace (LastUserActivityTimeHandler)
 

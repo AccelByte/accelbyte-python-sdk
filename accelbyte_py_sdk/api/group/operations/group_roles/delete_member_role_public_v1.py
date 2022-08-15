@@ -30,7 +30,6 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelsRemoveRoleFromMemberRequestV1
-from ...models import ModelsUpdateMemberRoleResponseV1
 from ...models import ResponseErrorResponse
 
 
@@ -69,7 +68,7 @@ class DeleteMemberRolePublicV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
@@ -201,13 +200,10 @@ class DeleteMemberRolePublicV1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsUpdateMemberRoleResponseV1],
-        Union[None, HttpResponse, ResponseErrorResponse],
-    ]:
+    ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
-        200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
@@ -234,8 +230,8 @@ class DeleteMemberRolePublicV1(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return ModelsUpdateMemberRoleResponseV1.create_from_dict(content), None
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

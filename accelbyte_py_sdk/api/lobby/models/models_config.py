@@ -32,6 +32,8 @@ class ModelsConfig(Model):
     """Models config (models.Config)
 
     Properties:
+        max_ds_wait_time: (maxDSWaitTime) REQUIRED int
+
         allow_invite_non_connected_user: (allowInviteNonConnectedUser) OPTIONAL bool
 
         allow_join_party_during_matchmaking: (allowJoinPartyDuringMatchmaking) OPTIONAL bool
@@ -73,6 +75,7 @@ class ModelsConfig(Model):
 
     # region fields
 
+    max_ds_wait_time: int  # REQUIRED
     allow_invite_non_connected_user: bool  # OPTIONAL
     allow_join_party_during_matchmaking: bool  # OPTIONAL
     auto_kick_on_disconnect: bool  # OPTIONAL
@@ -96,6 +99,10 @@ class ModelsConfig(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_max_ds_wait_time(self, value: int) -> ModelsConfig:
+        self.max_ds_wait_time = value
+        return self
 
     def with_allow_invite_non_connected_user(self, value: bool) -> ModelsConfig:
         self.allow_invite_non_connected_user = value
@@ -179,6 +186,10 @@ class ModelsConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "max_ds_wait_time"):
+            result["maxDSWaitTime"] = int(self.max_ds_wait_time)
+        elif include_empty:
+            result["maxDSWaitTime"] = 0
         if hasattr(self, "allow_invite_non_connected_user"):
             result["allowInviteNonConnectedUser"] = bool(
                 self.allow_invite_non_connected_user
@@ -274,6 +285,7 @@ class ModelsConfig(Model):
     @classmethod
     def create(
         cls,
+        max_ds_wait_time: int,
         allow_invite_non_connected_user: Optional[bool] = None,
         allow_join_party_during_matchmaking: Optional[bool] = None,
         auto_kick_on_disconnect: Optional[bool] = None,
@@ -295,6 +307,7 @@ class ModelsConfig(Model):
         ready_consent_timeout: Optional[int] = None,
     ) -> ModelsConfig:
         instance = cls()
+        instance.max_ds_wait_time = max_ds_wait_time
         if allow_invite_non_connected_user is not None:
             instance.allow_invite_non_connected_user = allow_invite_non_connected_user
         if allow_join_party_during_matchmaking is not None:
@@ -344,6 +357,10 @@ class ModelsConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "maxDSWaitTime" in dict_ and dict_["maxDSWaitTime"] is not None:
+            instance.max_ds_wait_time = int(dict_["maxDSWaitTime"])
+        elif include_empty:
+            instance.max_ds_wait_time = 0
         if (
             "allowInviteNonConnectedUser" in dict_
             and dict_["allowInviteNonConnectedUser"] is not None
@@ -506,6 +523,7 @@ class ModelsConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "maxDSWaitTime": "max_ds_wait_time",
             "allowInviteNonConnectedUser": "allow_invite_non_connected_user",
             "allowJoinPartyDuringMatchmaking": "allow_join_party_during_matchmaking",
             "autoKickOnDisconnect": "auto_kick_on_disconnect",
@@ -530,6 +548,7 @@ class ModelsConfig(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "maxDSWaitTime": True,
             "allowInviteNonConnectedUser": False,
             "allowJoinPartyDuringMatchmaking": False,
             "autoKickOnDisconnect": False,

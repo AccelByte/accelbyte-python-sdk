@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleEventLevel
 
 
-@deprecated
 class SpecificEventLevelDescriptionHandler(Operation):
     """Get specific list of event level and the descriptions by comma separated value of event levels (SpecificEventLevelDescriptionHandler)
 

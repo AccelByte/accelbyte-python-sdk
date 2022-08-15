@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventResponse
 
 
-@deprecated
 class GetUserActivitiesHandler(Operation):
     """Get all user's activities (GetUserActivitiesHandler)
 

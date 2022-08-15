@@ -39,6 +39,7 @@ class AdminGetConfigV1(Operation):
     Required permission : `ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]` with scope `social`
 
     get lobby config of a namespace.
+    default MaxDSWaitTime is 120 (second)
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]

@@ -30,6 +30,8 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import AccountCreateTestUserRequestV4
+from ..models import AccountCreateTestUsersRequestV4
+from ..models import AccountCreateTestUsersResponseV4
 from ..models import AccountCreateUserRequestV4
 from ..models import AccountCreateUserResponseV4
 from ..models import AccountUpgradeHeadlessAccountRequestV4
@@ -53,6 +55,7 @@ from ..models import RestErrorResponse
 
 from ..operations.users_v4 import AdminAddUserRoleV4
 from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
+from ..operations.users_v4 import AdminCreateTestUsersV4
 from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
 from ..operations.users_v4 import AdminDisableMyBackupCodesV4
 from ..operations.users_v4 import AdminDisableUserMFAV4
@@ -166,6 +169,44 @@ async def admin_bulk_check_valid_user_idv4_async(
         if error:
             return None, error
     request = AdminBulkCheckValidUserIDV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminCreateTestUsersV4)
+def admin_create_test_users_v4(
+    body: AccountCreateTestUsersRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateTestUsersV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCreateTestUsersV4)
+async def admin_create_test_users_v4_async(
+    body: AccountCreateTestUsersRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateTestUsersV4.create(
         body=body,
         namespace=namespace,
     )

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
 
 
 class ItemId(Model):
@@ -35,12 +41,15 @@ class ItemId(Model):
         item_id: (itemId) REQUIRED str
 
         sku: (sku) OPTIONAL str
+
+        status: (status) OPTIONAL Union[str, StatusEnum]
     """
 
     # region fields
 
     item_id: str  # REQUIRED
     sku: str  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +61,10 @@ class ItemId(Model):
 
     def with_sku(self, value: str) -> ItemId:
         self.sku = value
+        return self
+
+    def with_status(self, value: Union[str, StatusEnum]) -> ItemId:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -68,6 +81,10 @@ class ItemId(Model):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = ""
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -79,11 +96,14 @@ class ItemId(Model):
         cls,
         item_id: str,
         sku: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
     ) -> ItemId:
         instance = cls()
         instance.item_id = item_id
         if sku is not None:
             instance.sku = sku
+        if status is not None:
+            instance.status = status
         return instance
 
     @classmethod
@@ -99,6 +119,10 @@ class ItemId(Model):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod
@@ -140,6 +164,7 @@ class ItemId(Model):
         return {
             "itemId": "item_id",
             "sku": "sku",
+            "status": "status",
         }
 
     @staticmethod
@@ -147,6 +172,13 @@ class ItemId(Model):
         return {
             "itemId": True,
             "sku": False,
+            "status": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "status": ["ACTIVE", "INACTIVE"],
         }
 
     # endregion static methods

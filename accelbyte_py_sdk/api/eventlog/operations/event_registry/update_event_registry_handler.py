@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventRegistry
 
 
-@deprecated
 class UpdateEventRegistryHandler(Operation):
     """Update an eventID data in the Event Registry (UpdateEventRegistryHandler)
 

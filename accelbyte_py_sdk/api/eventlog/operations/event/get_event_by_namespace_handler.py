@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventResponse
 
 
-@deprecated
 class GetEventByNamespaceHandler(Operation):
     """Get events from all users in a namespace (GetEventByNamespaceHandler)
 

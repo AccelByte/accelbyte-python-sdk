@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.0)
+# AccelByte Cloud Dsm Controller Service (3.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,8 @@ class ModelsCreateImageRequest(Model):
 
         image: (image) REQUIRED str
 
+        image_size: (imageSize) REQUIRED int
+
         namespace: (namespace) REQUIRED str
 
         persistent: (persistent) REQUIRED bool
@@ -50,6 +52,7 @@ class ModelsCreateImageRequest(Model):
     artifact_path: str  # REQUIRED
     docker_path: str  # REQUIRED
     image: str  # REQUIRED
+    image_size: int  # REQUIRED
     namespace: str  # REQUIRED
     persistent: bool  # REQUIRED
     version: str  # REQUIRED
@@ -68,6 +71,10 @@ class ModelsCreateImageRequest(Model):
 
     def with_image(self, value: str) -> ModelsCreateImageRequest:
         self.image = value
+        return self
+
+    def with_image_size(self, value: int) -> ModelsCreateImageRequest:
+        self.image_size = value
         return self
 
     def with_namespace(self, value: str) -> ModelsCreateImageRequest:
@@ -100,6 +107,10 @@ class ModelsCreateImageRequest(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "image_size"):
+            result["imageSize"] = int(self.image_size)
+        elif include_empty:
+            result["imageSize"] = 0
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -124,6 +135,7 @@ class ModelsCreateImageRequest(Model):
         artifact_path: str,
         docker_path: str,
         image: str,
+        image_size: int,
         namespace: str,
         persistent: bool,
         version: str,
@@ -132,6 +144,7 @@ class ModelsCreateImageRequest(Model):
         instance.artifact_path = artifact_path
         instance.docker_path = docker_path
         instance.image = image
+        instance.image_size = image_size
         instance.namespace = namespace
         instance.persistent = persistent
         instance.version = version
@@ -156,6 +169,10 @@ class ModelsCreateImageRequest(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "imageSize" in dict_ and dict_["imageSize"] is not None:
+            instance.image_size = int(dict_["imageSize"])
+        elif include_empty:
+            instance.image_size = 0
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -214,6 +231,7 @@ class ModelsCreateImageRequest(Model):
             "artifactPath": "artifact_path",
             "dockerPath": "docker_path",
             "image": "image",
+            "imageSize": "image_size",
             "namespace": "namespace",
             "persistent": "persistent",
             "version": "version",
@@ -225,6 +243,7 @@ class ModelsCreateImageRequest(Model):
             "artifactPath": True,
             "dockerPath": True,
             "image": True,
+            "imageSize": True,
             "namespace": True,
             "persistent": True,
             "version": True,

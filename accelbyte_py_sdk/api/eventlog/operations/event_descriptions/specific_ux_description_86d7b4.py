@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleUX
 
 
-@deprecated
 class SpecificUXDescriptionHandler(Operation):
     """Get specific list of UX and the descriptions by comma separated value of UX (SpecificUXDescriptionHandler)
 

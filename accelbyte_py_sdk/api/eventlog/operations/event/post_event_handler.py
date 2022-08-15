@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEvent
 
 
-@deprecated
 class PostEventHandler(Operation):
     """Post an activity log (PostEventHandler)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,14 +33,21 @@ from .....core import deprecated
 from ...models import ModelUserPasswordUpdateRequest
 
 
-@deprecated
 class UpdatePassword(Operation):
     """Update User Password (UpdatePassword)
 
-    ## The endpoint is going to be deprecated. Admin user please use this instead: iam/v2/admin/namespaces/{namespace}/users/{userId}/password
+    ## The endpoint is going to be deprecated
 
 
-    +
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/password [PUT]
+
+
+
 
     Required permission 'NAMESPACE:{namespace}:PASSWORD:USER:{userId} [UPDATE]'
 

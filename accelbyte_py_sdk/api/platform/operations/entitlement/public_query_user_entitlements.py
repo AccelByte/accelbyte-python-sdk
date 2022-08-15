@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -85,6 +85,8 @@ class PublicQueryUserEntitlements(Operation):
 
         entitlement_name: (entitlementName) OPTIONAL str in query
 
+        features: (features) OPTIONAL List[str] in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
@@ -109,6 +111,7 @@ class PublicQueryUserEntitlements(Operation):
     app_type: Union[str, AppTypeEnum]  # OPTIONAL in [query]
     entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
     entitlement_name: str  # OPTIONAL in [query]
+    features: List[str]  # OPTIONAL in [query]
     item_id: List[str]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -171,6 +174,8 @@ class PublicQueryUserEntitlements(Operation):
             result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "entitlement_name"):
             result["entitlementName"] = self.entitlement_name
+        if hasattr(self, "features"):
+            result["features"] = self.features
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         if hasattr(self, "limit"):
@@ -211,6 +216,10 @@ class PublicQueryUserEntitlements(Operation):
         self.entitlement_name = value
         return self
 
+    def with_features(self, value: List[str]) -> PublicQueryUserEntitlements:
+        self.features = value
+        return self
+
     def with_item_id(self, value: List[str]) -> PublicQueryUserEntitlements:
         self.item_id = value
         return self
@@ -249,6 +258,10 @@ class PublicQueryUserEntitlements(Operation):
             result["entitlementName"] = str(self.entitlement_name)
         elif include_empty:
             result["entitlementName"] = ""
+        if hasattr(self, "features") and self.features:
+            result["features"] = [str(i0) for i0 in self.features]
+        elif include_empty:
+            result["features"] = []
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
@@ -307,6 +320,7 @@ class PublicQueryUserEntitlements(Operation):
         app_type: Optional[Union[str, AppTypeEnum]] = None,
         entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
         entitlement_name: Optional[str] = None,
+        features: Optional[List[str]] = None,
         item_id: Optional[List[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -320,6 +334,8 @@ class PublicQueryUserEntitlements(Operation):
             instance.entitlement_clazz = entitlement_clazz
         if entitlement_name is not None:
             instance.entitlement_name = entitlement_name
+        if features is not None:
+            instance.features = features
         if item_id is not None:
             instance.item_id = item_id
         if limit is not None:
@@ -353,6 +369,10 @@ class PublicQueryUserEntitlements(Operation):
             instance.entitlement_name = str(dict_["entitlementName"])
         elif include_empty:
             instance.entitlement_name = ""
+        if "features" in dict_ and dict_["features"] is not None:
+            instance.features = [str(i0) for i0 in dict_["features"]]
+        elif include_empty:
+            instance.features = []
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
@@ -375,6 +395,7 @@ class PublicQueryUserEntitlements(Operation):
             "appType": "app_type",
             "entitlementClazz": "entitlement_clazz",
             "entitlementName": "entitlement_name",
+            "features": "features",
             "itemId": "item_id",
             "limit": "limit",
             "offset": "offset",
@@ -388,6 +409,7 @@ class PublicQueryUserEntitlements(Operation):
             "appType": False,
             "entitlementClazz": False,
             "entitlementName": False,
+            "features": False,
             "itemId": False,
             "limit": False,
             "offset": False,
@@ -396,6 +418,7 @@ class PublicQueryUserEntitlements(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
+            "features": "multi",  # in query
             "itemId": "multi",  # in query
         }
 

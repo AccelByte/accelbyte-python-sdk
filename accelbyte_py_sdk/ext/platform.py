@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.0)
+# AccelByte Cloud Platform Service (4.12.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -85,6 +85,7 @@ from ..api.platform.models import DLCItem
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DebitRequest
+from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
 from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
 from ..api.platform.models import EntitlementDecrement
@@ -606,6 +607,7 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}
@@ -948,6 +950,13 @@ def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
+    return instance
+
+
+def create_delete_reward_condition_request_example() -> DeleteRewardConditionRequest:
+    instance = DeleteRewardConditionRequest()
+    instance.condition_name = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1585,6 +1594,7 @@ def create_item_id_example() -> ItemId:
     instance = ItemId()
     instance.item_id = randomize()
     instance.sku = randomize("slug")
+    instance.status = randomize()
     return instance
 
 
@@ -1612,6 +1622,7 @@ def create_item_info_example() -> ItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}
@@ -2598,6 +2609,7 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.features = [randomize()]
+    instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
     instance.item_ids = [randomize()]
     instance.item_qty = {}

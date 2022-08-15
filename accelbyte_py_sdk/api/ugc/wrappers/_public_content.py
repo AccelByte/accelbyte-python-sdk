@@ -47,8 +47,8 @@ from ..operations.public_content import CreateContentDirect
 from ..operations.public_content import CreateContentS3
 from ..operations.public_content import DeleteContent
 from ..operations.public_content import DeleteContentScreenshot
-from ..operations.public_content import DownloadContentByShareCode
 from ..operations.public_content import PublicDownloadContentByContentID
+from ..operations.public_content import PublicDownloadContentByShareCode
 from ..operations.public_content import PublicDownloadContentPreview
 from ..operations.public_content import PublicGetContentBulk
 from ..operations.public_content import PublicGetUserContent
@@ -246,44 +246,6 @@ async def delete_content_screenshot_async(
     )
 
 
-@same_doc_as(DownloadContentByShareCode)
-def download_content_by_share_code(
-    share_code: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DownloadContentByShareCode.create(
-        share_code=share_code,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(DownloadContentByShareCode)
-async def download_content_by_share_code_async(
-    share_code: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DownloadContentByShareCode.create(
-        share_code=share_code,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(PublicDownloadContentByContentID)
 def public_download_content_by_content_id(
     content_id: str,
@@ -315,6 +277,44 @@ async def public_download_content_by_content_id_async(
             return None, error
     request = PublicDownloadContentByContentID.create(
         content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicDownloadContentByShareCode)
+def public_download_content_by_share_code(
+    share_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDownloadContentByShareCode.create(
+        share_code=share_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicDownloadContentByShareCode)
+async def public_download_content_by_share_code_async(
+    share_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDownloadContentByShareCode.create(
+        share_code=share_code,
         namespace=namespace,
     )
     return await run_request_async(

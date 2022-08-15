@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Cloudsave Service (3.1.1)
+# AccelByte Cloud Cloudsave Service (3.1.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,6 @@ from ...models import ModelsListPlayerRecordKeysResponse
 from ...models import ModelsResponseError
 
 
-@deprecated
 class ListPlayerRecordHandlerV1(Operation):
     """Retrieve list of public player records (listPlayerRecordHandlerV1)
 

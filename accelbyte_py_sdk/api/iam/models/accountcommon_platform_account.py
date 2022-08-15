@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.13.0)
+# AccelByte Cloud Iam Service (5.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,12 +35,15 @@ class AccountcommonPlatformAccount(Model):
         namespace: (namespace) REQUIRED str
 
         platform_user_id: (platformUserId) REQUIRED str
+
+        platform_id: (platformId) OPTIONAL str
     """
 
     # region fields
 
     namespace: str  # REQUIRED
     platform_user_id: str  # REQUIRED
+    platform_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class AccountcommonPlatformAccount(Model):
 
     def with_platform_user_id(self, value: str) -> AccountcommonPlatformAccount:
         self.platform_user_id = value
+        return self
+
+    def with_platform_id(self, value: str) -> AccountcommonPlatformAccount:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class AccountcommonPlatformAccount(Model):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = ""
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -79,10 +90,13 @@ class AccountcommonPlatformAccount(Model):
         cls,
         namespace: str,
         platform_user_id: str,
+        platform_id: Optional[str] = None,
     ) -> AccountcommonPlatformAccount:
         instance = cls()
         instance.namespace = namespace
         instance.platform_user_id = platform_user_id
+        if platform_id is not None:
+            instance.platform_id = platform_id
         return instance
 
     @classmethod
@@ -100,6 +114,10 @@ class AccountcommonPlatformAccount(Model):
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @classmethod
@@ -145,6 +163,7 @@ class AccountcommonPlatformAccount(Model):
         return {
             "namespace": "namespace",
             "platformUserId": "platform_user_id",
+            "platformId": "platform_id",
         }
 
     @staticmethod
@@ -152,6 +171,7 @@ class AccountcommonPlatformAccount(Model):
         return {
             "namespace": True,
             "platformUserId": True,
+            "platformId": False,
         }
 
     # endregion static methods

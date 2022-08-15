@@ -48,6 +48,7 @@ from ..operations.admin_content import AdminDeleteContentScreenshot
 from ..operations.admin_content import AdminDownloadContentPreview
 from ..operations.admin_content import AdminGetContent
 from ..operations.admin_content import AdminGetSpecificContent
+from ..operations.admin_content import AdminGetUserContentByShareCode
 from ..operations.admin_content import AdminHideUserContent
 from ..operations.admin_content import AdminSearchChannelSpecificContent
 from ..operations.admin_content import AdminSearchContent
@@ -266,6 +267,44 @@ async def admin_get_specific_content_async(
             return None, error
     request = AdminGetSpecificContent.create(
         content_id=content_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserContentByShareCode)
+def admin_get_user_content_by_share_code(
+    share_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserContentByShareCode.create(
+        share_code=share_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserContentByShareCode)
+async def admin_get_user_content_by_share_code_async(
+    share_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserContentByShareCode.create(
+        share_code=share_code,
         namespace=namespace,
     )
     return await run_request_async(

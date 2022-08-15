@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleUX
 
 
-@deprecated
 class UXNameDescriptionHandler(Operation):
     """Get list of ux name and the descriptions (UXNameDescriptionHandler)
 

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (3.4.0)
+# AccelByte Cloud Dsm Controller Service Index (3.4.1)
 
 
 ## Operations

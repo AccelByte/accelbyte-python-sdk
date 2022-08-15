@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsEventRegistry
 
 
-@deprecated
 class GetRegisteredEventsHandler(Operation):
     """Get registered events in the Event Registry (GetRegisteredEventsHandler)
 

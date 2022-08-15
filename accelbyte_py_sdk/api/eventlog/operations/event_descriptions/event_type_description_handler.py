@@ -33,7 +33,6 @@ from .....core import deprecated
 from ...models import ModelsMultipleEventType
 
 
-@deprecated
 class EventTypeDescriptionHandler(Operation):
     """Get list of event type and the descriptions (EventTypeDescriptionHandler)
 

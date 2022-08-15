@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ugc Service."""
 
-__version__ = "2.3.0"
+__version__ = "2.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -41,6 +41,8 @@ from .wrappers import admin_get_content
 from .wrappers import admin_get_content_async
 from .wrappers import admin_get_specific_content
 from .wrappers import admin_get_specific_content_async
+from .wrappers import admin_get_user_content_by_share_code
+from .wrappers import admin_get_user_content_by_share_code_async
 from .wrappers import admin_hide_user_content
 from .wrappers import admin_hide_user_content_async
 from .wrappers import admin_search_channel_specific_content
@@ -149,10 +151,10 @@ from .wrappers import delete_content
 from .wrappers import delete_content_async
 from .wrappers import delete_content_screenshot
 from .wrappers import delete_content_screenshot_async
-from .wrappers import download_content_by_share_code
-from .wrappers import download_content_by_share_code_async
 from .wrappers import public_download_content_by_content_id
 from .wrappers import public_download_content_by_content_id_async
+from .wrappers import public_download_content_by_share_code
+from .wrappers import public_download_content_by_share_code_async
 from .wrappers import public_download_content_preview
 from .wrappers import public_download_content_preview_async
 from .wrappers import public_get_content_bulk
