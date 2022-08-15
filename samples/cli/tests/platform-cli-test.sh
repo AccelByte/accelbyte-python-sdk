@@ -30,7 +30,7 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 platform-list-fulfillment-scripts --login_with_auth "Bearer foo"
-platform-test-fulfillment-script-eval --body '{"context": {"item": {"appId": "FtBxyZcD", "appType": "SOFTWARE", "baseAppId": "pGlsQuJu", "boothName": "8vMf0IsJ", "boundItemIds": ["kTrd8IDc"], "categoryPath": "V2zXnTKj", "clazz": "XY1bPqam", "createdAt": "1975-08-05T00:00:00Z", "description": "xx9Cs18E", "displayOrder": 100, "entitlementType": "CONSUMABLE", "ext": {"kItqRzHU": {}}, "features": ["1oh570KQ"], "images": [{"as": "BVaewc72", "caption": "krSha68n", "height": 100, "imageUrl": "nozp1C2K", "smallImageUrl": "mIQTuBdN", "width": 61}], "itemId": "UsxFb8CJ", "itemIds": ["17M7DJZa"], "itemQty": {"MSxECbZb": 49}, "itemType": "BUNDLE", "language": "yoarORoe", "listable": false, "localExt": {"8Rh3kgs9": {}}, "longDescription": "qqJbnQso", "maxCount": 54, "maxCountPerUser": 12, "name": "iVpP8Cm3", "namespace": "yvASUoxd", "optionBoxConfig": {"boxItems": [{"count": 46, "itemId": "xFqmAGTJ", "itemSku": "8IEdagEt"}]}, "purchasable": false, "purchaseCondition": {"conditionGroups": [{"operator": "or", "predicates": [{"anyOf": 73, "comparison": "isLessThan", "name": "9c19R6XD", "predicateType": "SeasonPassPredicate", "value": "WHkkP8np", "values": ["LEKMfjiX"]}]}]}, "recurring": {"cycle": "QUARTERLY", "fixedFreeDays": 31, "fixedTrialCycles": 21, "graceDays": 95}, "region": "Zk3IaQYE", "regionData": [{"currencyCode": "mqGodOEG", "currencyNamespace": "t9gPOj0c", "currencyType": "REAL", "discountAmount": 70, "discountExpireAt": "1976-06-17T00:00:00Z", "discountPercentage": 69, "discountPurchaseAt": "1971-05-31T00:00:00Z", "discountedPrice": 40, "expireAt": "1972-04-21T00:00:00Z", "price": 63, "purchaseAt": "1984-10-12T00:00:00Z", "trialPrice": 59}], "seasonType": "TIER", "sku": "ogg0Y39U", "stackable": false, "status": "ACTIVE", "tags": ["pv5bVAgt"], "targetCurrencyCode": "sDhUTDUs", "targetItemId": "cbQDjbTQ", "targetNamespace": "uPMz2PTR", "thumbnailUrl": "lkyU89ZP", "title": "Ow6zPFJ4", "updatedAt": "1998-01-16T00:00:00Z", "useCount": 45}, "namespace": "mzBBSMNc", "order": {"currency": {"currencyCode": "oAAOjKNj", "currencySymbol": "fcYHm093", "currencyType": "REAL", "decimals": 100, "namespace": "gBU1sqjy"}, "ext": {"K0XH45Pa": {}}, "free": true}, "source": "PURCHASE"}, "script": "tu23REZ8", "type": "grantDays"}' --login_with_auth "Bearer foo"
+platform-test-fulfillment-script-eval --body '{"context": {"item": {"appId": "FtBxyZcD", "appType": "SOFTWARE", "baseAppId": "pGlsQuJu", "boothName": "8vMf0IsJ", "boundItemIds": ["kTrd8IDc"], "categoryPath": "V2zXnTKj", "clazz": "XY1bPqam", "createdAt": "1975-08-05T00:00:00Z", "description": "xx9Cs18E", "displayOrder": 100, "entitlementType": "CONSUMABLE", "ext": {"kItqRzHU": {}}, "features": ["1oh570KQ"], "fresh": true, "images": [{"as": "Vaewc72k", "caption": "rSha68n3", "height": 100, "imageUrl": "nozp1C2K", "smallImageUrl": "mIQTuBdN", "width": 61}], "itemId": "UsxFb8CJ", "itemIds": ["17M7DJZa"], "itemQty": {"MSxECbZb": 49}, "itemType": "BUNDLE", "language": "yoarORoe", "listable": false, "localExt": {"8Rh3kgs9": {}}, "longDescription": "qqJbnQso", "maxCount": 54, "maxCountPerUser": 12, "name": "iVpP8Cm3", "namespace": "yvASUoxd", "optionBoxConfig": {"boxItems": [{"count": 46, "itemId": "xFqmAGTJ", "itemSku": "8IEdagEt"}]}, "purchasable": false, "purchaseCondition": {"conditionGroups": [{"operator": "or", "predicates": [{"anyOf": 73, "comparison": "isLessThan", "name": "9c19R6XD", "predicateType": "SeasonPassPredicate", "value": "WHkkP8np", "values": ["LEKMfjiX"]}]}]}, "recurring": {"cycle": "QUARTERLY", "fixedFreeDays": 31, "fixedTrialCycles": 21, "graceDays": 95}, "region": "Zk3IaQYE", "regionData": [{"currencyCode": "mqGodOEG", "currencyNamespace": "t9gPOj0c", "currencyType": "REAL", "discountAmount": 70, "discountExpireAt": "1976-06-17T00:00:00Z", "discountPercentage": 69, "discountPurchaseAt": "1971-05-31T00:00:00Z", "discountedPrice": 40, "expireAt": "1972-04-21T00:00:00Z", "price": 63, "purchaseAt": "1984-10-12T00:00:00Z", "trialPrice": 59}], "seasonType": "TIER", "sku": "ogg0Y39U", "stackable": false, "status": "ACTIVE", "tags": ["pv5bVAgt"], "targetCurrencyCode": "sDhUTDUs", "targetItemId": "cbQDjbTQ", "targetNamespace": "uPMz2PTR", "thumbnailUrl": "lkyU89ZP", "title": "Ow6zPFJ4", "updatedAt": "1998-01-16T00:00:00Z", "useCount": 45}, "namespace": "mzBBSMNc", "order": {"currency": {"currencyCode": "oAAOjKNj", "currencySymbol": "fcYHm093", "currencyType": "REAL", "decimals": 100, "namespace": "gBU1sqjy"}, "ext": {"K0XH45Pa": {}}, "free": true}, "source": "PURCHASE"}, "script": "tu23REZ8", "type": "grantDays"}' --login_with_auth "Bearer foo"
 platform-get-fulfillment-script 'RVX7LGOv' --login_with_auth "Bearer foo"
 platform-create-fulfillment-script 'DdYiQS9i' --body '{"grantDays": "7mV1C91p"}' --login_with_auth "Bearer foo"
 platform-delete-fulfillment-script 'jG9gpxL6' --login_with_auth "Bearer foo"
@@ -162,185 +162,186 @@ platform-get-reward '9OYEJVsY' --login_with_auth "Bearer foo"
 platform-update-reward 'ffmhyx6J' --body '{"description": "25PrM4S3", "eventTopic": "cB8m17hE", "maxAwarded": 9, "maxAwardedPerUser": 74, "namespaceExpression": "LgoaYth6", "rewardCode": "zcf8eA45", "rewardConditions": [{"condition": "OMvObWej", "conditionName": "o9LfGeeg", "eventName": "JMaBGR6D", "rewardItems": [{"duration": 29, "itemId": "ZEZQkJ8D", "quantity": 88}]}], "userIdExpression": "qFnhdKvj"}' --login_with_auth "Bearer foo"
 platform-delete-reward 'FCFbSFlE' --login_with_auth "Bearer foo"
 platform-check-event-condition 'WoMPdgK5' --body '{"payload": {"zn62mhnF": {}}}' --login_with_auth "Bearer foo"
+platform-delete-reward-condition-record 'SpCTlDNB' --body '{"conditionName": "Ocygvv2L", "userId": "AgfBGVza"}' --login_with_auth "Bearer foo"
 platform-list-stores --login_with_auth "Bearer foo"
-platform-create-store --body '{"defaultLanguage": "SpCTlDNB", "defaultRegion": "Ocygvv2L", "description": "AgfBGVza", "supportedLanguages": ["nbKYsB0g"], "supportedRegions": ["qJ8VhYSi"], "title": "kJl2p9rB"}' --login_with_auth "Bearer foo"
+platform-create-store --body '{"defaultLanguage": "nbKYsB0g", "defaultRegion": "qJ8VhYSi", "description": "kJl2p9rB", "supportedLanguages": ["x8N5egap"], "supportedRegions": ["qxDy4cLf"], "title": "NjzzEZYA"}' --login_with_auth "Bearer foo"
 platform-import-store --login_with_auth "Bearer foo"
 platform-get-published-store --login_with_auth "Bearer foo"
 platform-delete-published-store --login_with_auth "Bearer foo"
 platform-get-published-store-backup --login_with_auth "Bearer foo"
 platform-rollback-published-store --login_with_auth "Bearer foo"
-platform-get-store 'x8N5egap' --login_with_auth "Bearer foo"
-platform-update-store 'qxDy4cLf' --body '{"defaultLanguage": "NjzzEZYA", "defaultRegion": "8jIkMJb7", "description": "cZ2bPsaL", "supportedLanguages": ["LpEBVEMk"], "supportedRegions": ["5AsKaF2P"], "title": "44lXkI3z"}' --login_with_auth "Bearer foo"
-platform-delete-store 'diRiC5Ib' --login_with_auth "Bearer foo"
-platform-query-changes 'Pit71JWl' --login_with_auth "Bearer foo"
-platform-publish-all 'YCoi4nDf' --login_with_auth "Bearer foo"
-platform-publish-selected 'Pu5V6QSY' --login_with_auth "Bearer foo"
-platform-select-all-records 'xEVOryVu' --login_with_auth "Bearer foo"
-platform-get-statistic 'ZYmgUeEP' --login_with_auth "Bearer foo"
-platform-unselect-all-records 'B5AGPgvk' --login_with_auth "Bearer foo"
-platform-select-record '0Zthaj0E' 'BA4azRz0' --login_with_auth "Bearer foo"
-platform-unselect-record 'd56smobo' 'r4p1PlgQ' --login_with_auth "Bearer foo"
-platform-clone-store 'B9EcNGOe' --login_with_auth "Bearer foo"
-platform-export-store 'BRY6G5ae' --login_with_auth "Bearer foo"
+platform-get-store '8jIkMJb7' --login_with_auth "Bearer foo"
+platform-update-store 'cZ2bPsaL' --body '{"defaultLanguage": "LpEBVEMk", "defaultRegion": "5AsKaF2P", "description": "44lXkI3z", "supportedLanguages": ["diRiC5Ib"], "supportedRegions": ["Pit71JWl"], "title": "YCoi4nDf"}' --login_with_auth "Bearer foo"
+platform-delete-store 'Pu5V6QSY' --login_with_auth "Bearer foo"
+platform-query-changes 'xEVOryVu' --login_with_auth "Bearer foo"
+platform-publish-all 'ZYmgUeEP' --login_with_auth "Bearer foo"
+platform-publish-selected 'B5AGPgvk' --login_with_auth "Bearer foo"
+platform-select-all-records '0Zthaj0E' --login_with_auth "Bearer foo"
+platform-get-statistic 'BA4azRz0' --login_with_auth "Bearer foo"
+platform-unselect-all-records 'd56smobo' --login_with_auth "Bearer foo"
+platform-select-record 'r4p1PlgQ' 'B9EcNGOe' --login_with_auth "Bearer foo"
+platform-unselect-record 'BRY6G5ae' '07deDLaZ' --login_with_auth "Bearer foo"
+platform-clone-store '8JCvbeTf' --login_with_auth "Bearer foo"
+platform-export-store 'W0hgzrab' --login_with_auth "Bearer foo"
 platform-query-subscriptions --login_with_auth "Bearer foo"
-platform-recurring-charge-subscription '07deDLaZ' --login_with_auth "Bearer foo"
-platform-get-ticket-dynamic '8JCvbeTf' --login_with_auth "Bearer foo"
-platform-decrease-ticket-sale 'W0hgzrab' --body '{"orderNo": "LJxEwJrE"}' --login_with_auth "Bearer foo"
-platform-get-ticket-booth-id 'BmQ64haN' --login_with_auth "Bearer foo"
-platform-increase-ticket-sale 'OzlGu68U' --body '{"count": 100, "orderNo": "yupjdDet"}' --login_with_auth "Bearer foo"
-platform-unlock-steam-user-achievement 'noT0rfWt' --body '{"achievements": [{"id": "VPwQfq6V", "value": 13}], "steamUserId": "bfPouNdm"}' --login_with_auth "Bearer foo"
-platform-get-xbl-user-achievements 'P7fckVnu' 'DGvYIb1p' --login_with_auth "Bearer foo"
-platform-update-xbl-user-achievement '5tcR5z8Z' --body '{"achievements": [{"id": "JLjSHcaR", "percentComplete": 99}], "serviceConfigId": "4tZmwr0Q", "titleId": "mOnsEg49", "xboxUserId": "eXp0xQkZ"}' --login_with_auth "Bearer foo"
-platform-anonymize-campaign '2JjuwWWy' --login_with_auth "Bearer foo"
-platform-anonymize-entitlement '0tU11PCe' --login_with_auth "Bearer foo"
-platform-anonymize-fulfillment 'SrvejUKw' --login_with_auth "Bearer foo"
-platform-anonymize-integration 'VfF37Vr7' --login_with_auth "Bearer foo"
-platform-anonymize-order 'mkDzFBI1' --login_with_auth "Bearer foo"
-platform-anonymize-payment 'VwhkVSKD' --login_with_auth "Bearer foo"
-platform-anonymize-subscription 'lNFOUHBJ' --login_with_auth "Bearer foo"
-platform-anonymize-wallet 'svTsqk9h' --login_with_auth "Bearer foo"
-platform-query-user-entitlements 'g4hj6nUd' --login_with_auth "Bearer foo"
-platform-grant-user-entitlement 'ebW6Uskb' --body '[{"endDate": "1991-03-24T00:00:00Z", "grantedCode": "kZAk01f1", "itemId": "KxCtWADU", "itemNamespace": "2guN6U9w", "language": "tzqQ_OWeR", "quantity": 24, "region": "M0CCs35T", "source": "OTHER", "startDate": "1980-02-24T00:00:00Z", "storeId": "wSx1DI5G"}]' --login_with_auth "Bearer foo"
-platform-get-user-app-entitlement-by-app-id 'H9bv9ZTo' '2HpA6pzj' --login_with_auth "Bearer foo"
-platform-query-user-entitlements-by-app-type 'HpZO0E9i' 'DEMO' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-by-item-id 'RPJK3nBa' 'e3GOgbQr' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-by-sku 'qra0Ptkf' 'vOpY2ram' --login_with_auth "Bearer foo"
-platform-exists-any-user-active-entitlement 'p5lnBn6x' --login_with_auth "Bearer foo"
-platform-exists-any-user-active-entitlement-by-item-ids 'mBkfMtC6' '["6hFq0kPO"]' --login_with_auth "Bearer foo"
-platform-get-user-app-entitlement-ownership-by-app-id 'kORm2Xjl' 'NEE5ecPz' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-ownership-by-item-id 'Ami0ySJH' 'fPloP1Xk' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-ownership-by-item-ids 'YK4MgIsD' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-ownership-by-sku 'SFMPyMhy' 'w1OLZPVw' --login_with_auth "Bearer foo"
-platform-revoke-user-entitlements 'wxH4BIDJ' 'uDoShMMf' --login_with_auth "Bearer foo"
-platform-get-user-entitlement 'tll8N0Vv' 'ChHz9urm' --login_with_auth "Bearer foo"
-platform-update-user-entitlement 't7QWvE8s' '6Uz8BRuY' --body '{"endDate": "1995-08-18T00:00:00Z", "nullFieldList": ["TtL6MTTR"], "startDate": "1976-08-12T00:00:00Z", "status": "ACTIVE", "useCount": 2}' --login_with_auth "Bearer foo"
-platform-consume-user-entitlement '9S5Q1IVH' 'GT88prRE' --body '{"options": ["BgYOWdHJ"], "useCount": 70}' --login_with_auth "Bearer foo"
-platform-disable-user-entitlement 'umohtU13' 'gf7TRigN' --login_with_auth "Bearer foo"
-platform-enable-user-entitlement 'Zj5w5y3H' 'mK8QVOa6' --login_with_auth "Bearer foo"
-platform-get-user-entitlement-histories '2eQZtbLL' 'cF671WLt' --login_with_auth "Bearer foo"
-platform-revoke-user-entitlement 'v38Heccz' 'opFmeRwp' --login_with_auth "Bearer foo"
-platform-fulfill-item 'cJBZyi3m' --body '{"duration": 74, "endDate": "1985-10-14T00:00:00Z", "itemId": "zekiSzey", "itemSku": "olnOQt0j", "language": "oVHgCytC", "order": {"currency": {"currencyCode": "6lRG98Yx", "currencySymbol": "nHbRdoTK", "currencyType": "REAL", "decimals": 40, "namespace": "SjfZe9i1"}, "ext": {"osghF1hz": {}}, "free": false}, "orderNo": "1Nl47syJ", "origin": "IOS", "quantity": 3, "region": "zSHZeCLI", "source": "PROMOTION", "startDate": "1995-11-25T00:00:00Z", "storeId": "VRsdEqA6"}' --login_with_auth "Bearer foo"
-platform-redeem-code '1yTrMgsy' --body '{"code": "cTgmPzc2", "language": "UoD-szpy-hJ", "region": "L6ZbXjG6"}' --login_with_auth "Bearer foo"
-platform-fulfill-rewards 'DSmpp3op' --body '{"origin": "GooglePlay", "rewards": [{"currency": {"currencyCode": "taRLxtW4", "namespace": "PvFkESTU"}, "item": {"itemId": "Lat5F1Le", "itemSku": "7cR7q6PW", "itemType": "hZmmKz41"}, "quantity": 17, "type": "CURRENCY"}], "source": "REDEEM_CODE"}' --login_with_auth "Bearer foo"
-platform-query-user-iap-orders 'ipJHahVi' --login_with_auth "Bearer foo"
-platform-query-all-user-iap-orders 'JvLYW0kd' --login_with_auth "Bearer foo"
-platform-mock-fulfill-iap-item 'mlk2luqS' --body '{"itemIdentityType": "ITEM_SKU", "language": "ozbO-476", "productId": "PwSMXT53", "region": "bBuL38be", "type": "XBOX"}' --login_with_auth "Bearer foo"
-platform-query-user-orders 'VuHZQ9LY' --login_with_auth "Bearer foo"
-platform-admin-create-user-order 't6w23Wf8' --body '{"currencyCode": "iEQo72sH", "currencyNamespace": "0aRdcDlD", "discountedPrice": 49, "ext": {"GcsfIuI4": {}}, "itemId": "Dv5lEJpK", "language": "1AyRlzsr", "options": {"skipPriceValidation": true}, "platform": "Xbox", "price": 16, "quantity": 42, "region": "QOHG6wVi", "returnUrl": "cNratsvv", "sandbox": false}' --login_with_auth "Bearer foo"
-platform-count-of-purchased-item 'IohfNISL' 'XMDWDdm5' --login_with_auth "Bearer foo"
-platform-get-user-order 'FE4lliQM' 'nutJbpEo' --login_with_auth "Bearer foo"
-platform-update-user-order-status '4mUNHFtd' 'ml2xNviW' --body '{"status": "CHARGEBACK", "statusReason": "cJc3Fm7Z"}' --login_with_auth "Bearer foo"
-platform-fulfill-user-order '548uuKgo' 'CBqS5uId' --login_with_auth "Bearer foo"
-platform-get-user-order-grant 'CbwCeeq9' 'ouEdDtjO' --login_with_auth "Bearer foo"
-platform-get-user-order-histories 'gsypLkm2' 'ZYew5H7Z' --login_with_auth "Bearer foo"
-platform-process-user-order-notification 'm0gnYyj6' 'MXf9G1nt' --body '{"additionalData": {"cardSummary": "yebvoeHe"}, "authorisedTime": "1977-07-30T00:00:00Z", "chargebackReversedTime": "1984-10-27T00:00:00Z", "chargebackTime": "1989-05-31T00:00:00Z", "chargedTime": "1986-02-12T00:00:00Z", "createdTime": "1982-09-30T00:00:00Z", "currency": {"currencyCode": "H446oUnP", "currencySymbol": "2S74unXw", "currencyType": "REAL", "decimals": 70, "namespace": "KqVWW1rj"}, "customParameters": {"K1epwkAv": {}}, "extOrderNo": "csYvbgfB", "extTxId": "VPpTa8Yu", "extUserId": "q7TKiNXm", "issuedAt": "1983-02-02T00:00:00Z", "metadata": {"MrMD5Tba": "UxTCTng0"}, "namespace": "xjtdBrjs", "nonceStr": "3Kiykt2C", "paymentMethod": "k2gOlSat", "paymentMethodFee": 60, "paymentOrderNo": "CZ2UgwQL", "paymentProvider": "STRIPE", "paymentProviderFee": 59, "paymentStationUrl": "qYSxTPuV", "price": 23, "refundedTime": "1984-05-09T00:00:00Z", "salesTax": 16, "sandbox": true, "sku": "dp3yxnsE", "status": "REFUND_FAILED", "statusReason": "l1SvhQud", "subscriptionId": "sjIhXdxi", "subtotalPrice": 89, "targetNamespace": "oWpnnxgX", "targetUserId": "7BCPMqzQ", "tax": 68, "totalPrice": 46, "totalTax": 17, "txEndTime": "1971-03-05T00:00:00Z", "type": "pNYsHtdB", "userId": "3IkjuaZq", "vat": 14}' --login_with_auth "Bearer foo"
-platform-download-user-order-receipt 'JilrZkSS' 'KgP5rxCR' --login_with_auth "Bearer foo"
-platform-create-user-payment-order '77G9d5CA' --body '{"currencyCode": "1GORSbL9", "currencyNamespace": "n0dbWDEu", "customParameters": {"pmdLQzPn": {}}, "description": "NfBAcWAr", "extOrderNo": "bkCfdHIZ", "extUserId": "b03otqmB", "itemType": "MEDIA", "language": "vPcz", "metadata": {"0lpJ4JLl": "01qi7L2o"}, "notifyUrl": "DUoVRUb3", "omitNotification": false, "platform": "22P4Sp09", "price": 5, "recurringPaymentOrderNo": "KmjRUbZV", "region": "BVS7OK2Z", "returnUrl": "rdcsckMe", "sandbox": false, "sku": "ROWZ2KUT", "subscriptionId": "qkK2eFaG", "title": "LoSmEEPb"}' --login_with_auth "Bearer foo"
-platform-refund-user-payment-order 'LywJsyUi' 'e6fZgLll' --body '{"description": "UPsO8lg4"}' --login_with_auth "Bearer foo"
-platform-apply-user-redemption '6Si7006v' --body '{"code": "L2w4aajD", "orderNo": "AOx0iJjY"}' --login_with_auth "Bearer foo"
-platform-query-user-subscriptions 'leaktqv2' --login_with_auth "Bearer foo"
-platform-get-user-subscription-activities 'WkljQuD5' --login_with_auth "Bearer foo"
-platform-platform-subscribe-subscription 'mnJONqHG' --body '{"grantDays": 33, "itemId": "8mB7mF2l", "language": "MFcaghFX", "reason": "JIJflRHF", "region": "csIqCy4x", "source": "DifSSQ5O"}' --login_with_auth "Bearer foo"
-platform-check-user-subscription-subscribable-by-item-id 'n2ccEcl3' 'xeiO4bwF' --login_with_auth "Bearer foo"
-platform-get-user-subscription '5JOjGoGx' 'KM3qMce5' --login_with_auth "Bearer foo"
-platform-delete-user-subscription 'tfLcpjFZ' 'MKCbp0pE' --login_with_auth "Bearer foo"
-platform-cancel-subscription 'bLCLFpHx' 'MYF83607' --body '{"immediate": true, "reason": "EpzdnYtp"}' --login_with_auth "Bearer foo"
-platform-grant-days-to-subscription 'ja5ig2is' 'QZga6Vy7' --body '{"grantDays": 16, "reason": "zPiQRjYa"}' --login_with_auth "Bearer foo"
-platform-get-user-subscription-billing-histories '8fv5fIt2' '2tIZhjhg' --login_with_auth "Bearer foo"
-platform-process-user-subscription-notification 'kigW22zX' 'MWXfbcM0' --body '{"additionalData": {"cardSummary": "GIALIbFC"}, "authorisedTime": "1992-02-14T00:00:00Z", "chargebackReversedTime": "1984-01-17T00:00:00Z", "chargebackTime": "1989-11-06T00:00:00Z", "chargedTime": "1993-03-07T00:00:00Z", "createdTime": "1991-12-05T00:00:00Z", "currency": {"currencyCode": "VYx5rW2g", "currencySymbol": "MsI1aYBi", "currencyType": "VIRTUAL", "decimals": 89, "namespace": "n3UDeKj9"}, "customParameters": {"7I4WYXLq": {}}, "extOrderNo": "jN7ktOBT", "extTxId": "raBxWRTV", "extUserId": "uYEqGlKD", "issuedAt": "1982-10-15T00:00:00Z", "metadata": {"XBrXiQcd": "9IW8kiCK"}, "namespace": "eQJWZBvc", "nonceStr": "q1ETvWBx", "paymentMethod": "YZJh7B8g", "paymentMethodFee": 2, "paymentOrderNo": "nSu9M2Ox", "paymentProvider": "XSOLLA", "paymentProviderFee": 41, "paymentStationUrl": "daeYpCXY", "price": 88, "refundedTime": "1990-03-07T00:00:00Z", "salesTax": 48, "sandbox": true, "sku": "TqEQBg36", "status": "CHARGEBACK_REVERSED", "statusReason": "y3sY2clr", "subscriptionId": "Dcain0cO", "subtotalPrice": 95, "targetNamespace": "F1zHwDTI", "targetUserId": "0sJ1Q0kp", "tax": 15, "totalPrice": 76, "totalTax": 91, "txEndTime": "1974-02-19T00:00:00Z", "type": "SP2SLcuA", "userId": "P7vU971C", "vat": 50}' --login_with_auth "Bearer foo"
-platform-acquire-user-ticket 'w2nbg8C7' 'Mvywhu6M' --body '{"count": 18, "orderNo": "OjuGzo1F"}' --login_with_auth "Bearer foo"
-platform-query-user-currency-wallets 'z4tU0aSn' --login_with_auth "Bearer foo"
-platform-list-user-currency-transactions '98N8qOUA' '0z92RaDe' --login_with_auth "Bearer foo"
-platform-credit-user-wallet '8ngT8LRQ' 'kMnG1LZy' --body '{"amount": 63, "expireAt": "1998-04-03T00:00:00Z", "origin": "Epic", "reason": "YY6ZMfuT", "source": "REFUND"}' --login_with_auth "Bearer foo"
-platform-pay-with-user-wallet 'sue48qBE' 'BNAV5BTe' --body '{"amount": 9, "walletPlatform": "Epic"}' --login_with_auth "Bearer foo"
-platform-sync-orders '1zA92URC' 'LSGPmRBZ' --login_with_auth "Bearer foo"
-platform-test-adyen-config --body '{"allowedPaymentMethods": ["WunHW7MY"], "apiKey": "vr6QA7Pp", "authoriseAsCapture": false, "blockedPaymentMethods": ["pc92HA94"], "clientKey": "eACdeyfU", "dropInSettings": "pgiPpf8n", "liveEndpointUrlPrefix": "xKJ3dnmt", "merchantAccount": "Pwa64Y4g", "notificationHmacKey": "PEKMhhu9", "notificationPassword": "a6f3xJNt", "notificationUsername": "UlKLlIIA", "returnUrl": "eHbm5M6L", "settings": "sY1VMuIE"}' --login_with_auth "Bearer foo"
-platform-test-ali-pay-config --body '{"appId": "cRls68M3", "privateKey": "MPMRPBep", "publicKey": "yyMz6zfR", "returnUrl": "1pvTYYtD"}' --login_with_auth "Bearer foo"
-platform-test-checkout-config --body '{"publicKey": "OiEi4RuE", "secretKey": "cHCSGhpO"}' --login_with_auth "Bearer foo"
+platform-recurring-charge-subscription 'LJxEwJrE' --login_with_auth "Bearer foo"
+platform-get-ticket-dynamic 'BmQ64haN' --login_with_auth "Bearer foo"
+platform-decrease-ticket-sale 'OzlGu68U' --body '{"orderNo": "YyupjdDe"}' --login_with_auth "Bearer foo"
+platform-get-ticket-booth-id 'tnoT0rfW' --login_with_auth "Bearer foo"
+platform-increase-ticket-sale 'tVPwQfq6' --body '{"count": 95, "orderNo": "92gbfPou"}' --login_with_auth "Bearer foo"
+platform-unlock-steam-user-achievement 'NdmP7fck' --body '{"achievements": [{"id": "VnuDGvYI", "value": 3}], "steamUserId": "1p5tcR5z"}' --login_with_auth "Bearer foo"
+platform-get-xbl-user-achievements '8ZJLjSHc' 'aR3X4tZm' --login_with_auth "Bearer foo"
+platform-update-xbl-user-achievement 'wr0QmOns' --body '{"achievements": [{"id": "Eg49eXp0", "percentComplete": 47}], "serviceConfigId": "QkZ2Jjuw", "titleId": "WWy0tU11", "xboxUserId": "PCeSrvej"}' --login_with_auth "Bearer foo"
+platform-anonymize-campaign 'UKwVfF37' --login_with_auth "Bearer foo"
+platform-anonymize-entitlement 'Vr7mkDzF' --login_with_auth "Bearer foo"
+platform-anonymize-fulfillment 'BI1VwhkV' --login_with_auth "Bearer foo"
+platform-anonymize-integration 'SKDlNFOU' --login_with_auth "Bearer foo"
+platform-anonymize-order 'HBJsvTsq' --login_with_auth "Bearer foo"
+platform-anonymize-payment 'k9hg4hj6' --login_with_auth "Bearer foo"
+platform-anonymize-subscription 'nUdebW6U' --login_with_auth "Bearer foo"
+platform-anonymize-wallet 'skbPkkZA' --login_with_auth "Bearer foo"
+platform-query-user-entitlements 'k01f1KxC' --login_with_auth "Bearer foo"
+platform-grant-user-entitlement 'tWADU2gu' --body '[{"endDate": "1990-06-27T00:00:00Z", "grantedCode": "13W1K9TZ", "itemId": "Q4qRLEi5", "itemNamespace": "wowE36rf", "language": "mc-SywG-538", "quantity": 30, "region": "A6pzjHpZ", "source": "REFERRAL_BONUS", "startDate": "1975-10-31T00:00:00Z", "storeId": "gRPJK3nB"}]' --login_with_auth "Bearer foo"
+platform-get-user-app-entitlement-by-app-id 'ae3GOgbQ' 'rqra0Ptk' --login_with_auth "Bearer foo"
+platform-query-user-entitlements-by-app-type 'fvOpY2ra' 'DLC' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-by-item-id 'p5lnBn6x' 'mBkfMtC6' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-by-sku '6hFq0kPO' 'kORm2Xjl' --login_with_auth "Bearer foo"
+platform-exists-any-user-active-entitlement 'NEE5ecPz' --login_with_auth "Bearer foo"
+platform-exists-any-user-active-entitlement-by-item-ids 'Ami0ySJH' '["fPloP1Xk"]' --login_with_auth "Bearer foo"
+platform-get-user-app-entitlement-ownership-by-app-id 'YK4MgIsD' 'SFMPyMhy' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-ownership-by-item-id 'w1OLZPVw' 'wxH4BIDJ' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-ownership-by-item-ids 'uDoShMMf' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-ownership-by-sku 'tll8N0Vv' 'ChHz9urm' --login_with_auth "Bearer foo"
+platform-revoke-user-entitlements 't7QWvE8s' '6Uz8BRuY' --login_with_auth "Bearer foo"
+platform-get-user-entitlement 'WDTtL6MT' 'TRkCbb9S' --login_with_auth "Bearer foo"
+platform-update-user-entitlement '5Q1IVHGT' '88prREBg' --body '{"endDate": "1996-11-12T00:00:00Z", "nullFieldList": ["WdHJ9Jum"], "startDate": "1978-03-03T00:00:00Z", "status": "INACTIVE", "useCount": 92}' --login_with_auth "Bearer foo"
+platform-consume-user-entitlement '13gf7TRi' 'gNZj5w5y' --body '{"options": ["3HmK8QVO"], "useCount": 1}' --login_with_auth "Bearer foo"
+platform-disable-user-entitlement '62eQZtbL' 'LcF671WL' --login_with_auth "Bearer foo"
+platform-enable-user-entitlement 'tv38Hecc' 'zopFmeRw' --login_with_auth "Bearer foo"
+platform-get-user-entitlement-histories 'pcJBZyi3' 'mLC4Kzek' --login_with_auth "Bearer foo"
+platform-revoke-user-entitlement 'iSzeyoln' 'OQt0joVH' --login_with_auth "Bearer foo"
+platform-fulfill-item 'gCytC6lR' --body '{"duration": 65, "endDate": "1996-07-03T00:00:00Z", "itemId": "nHbRdoTK", "itemSku": "KeuSjfZe", "language": "9i1osghF", "order": {"currency": {"currencyCode": "1hzi1Nl4", "currencySymbol": "7syJ5ibz", "currencyType": "REAL", "decimals": 56, "namespace": "LIvWPVRs"}, "ext": {"dEqA61yT": {}}, "free": true}, "orderNo": "MgsycTgm", "origin": "Xbox", "quantity": 51, "region": "c20EuO5d", "source": "REWARD", "startDate": "1979-09-17T00:00:00Z", "storeId": "DlSZPY07"}' --login_with_auth "Bearer foo"
+platform-redeem-code 'rEVSjzHj' --body '{"code": "L6ZbXjG6", "language": "sMP", "region": "p8htaRLx"}' --login_with_auth "Bearer foo"
+platform-fulfill-rewards 'tW4PvFkE' --body '{"origin": "Twitch", "rewards": [{"currency": {"currencyCode": "at5F1Le7", "namespace": "cR7q6PWh"}, "item": {"itemId": "ZmmKz41i", "itemSku": "1Tp78Fip", "itemType": "JHahViJv"}, "quantity": 75, "type": "CURRENCY"}], "source": "ACHIEVEMENT"}' --login_with_auth "Bearer foo"
+platform-query-user-iap-orders 'mlk2luqS' --login_with_auth "Bearer foo"
+platform-query-all-user-iap-orders 'OOA2VOZB' --login_with_auth "Bearer foo"
+platform-mock-fulfill-iap-item 'oNbB98Pu' --body '{"itemIdentityType": "ITEM_SKU", "language": "Qf-bUlB", "productId": "OYDVuHZQ", "region": "9LYt6w23", "type": "EPICGAMES"}' --login_with_auth "Bearer foo"
+platform-query-user-orders '8iEQo72s' --login_with_auth "Bearer foo"
+platform-admin-create-user-order 'H0aRdcDl' --body '{"currencyCode": "DyGcsfIu", "currencyNamespace": "I4Dv5lEJ", "discountedPrice": 31, "ext": {"K1AyRlzs": {}}, "itemId": "rRXEFZiv", "language": "QOHG6wVi", "options": {"skipPriceValidation": false}, "platform": "Other", "price": 0, "quantity": 38, "region": "svvHLmIo", "returnUrl": "hfNISLXM", "sandbox": true}' --login_with_auth "Bearer foo"
+platform-count-of-purchased-item 'WDdm5FE4' 'lliQMnut' --login_with_auth "Bearer foo"
+platform-get-user-order 'JbpEo4mU' 'NHFtdml2' --login_with_auth "Bearer foo"
+platform-update-user-order-status 'xNviWacJ' 'c3Fm7Z54' --body '{"status": "FULFILLED", "statusReason": "uKgoCBqS"}' --login_with_auth "Bearer foo"
+platform-fulfill-user-order '5uIdCbwC' 'eeq9ouEd' --login_with_auth "Bearer foo"
+platform-get-user-order-grant 'DtjOgsyp' 'Lkm2ZYew' --login_with_auth "Bearer foo"
+platform-get-user-order-histories '5H7Zm0gn' 'Yyj6MXf9' --login_with_auth "Bearer foo"
+platform-process-user-order-notification 'G1ntyebv' 'oeHenAAL' --body '{"additionalData": {"cardSummary": "Kt7EfxIH"}, "authorisedTime": "1999-04-21T00:00:00Z", "chargebackReversedTime": "1994-04-12T00:00:00Z", "chargebackTime": "1991-12-21T00:00:00Z", "chargedTime": "1999-06-05T00:00:00Z", "createdTime": "1977-06-28T00:00:00Z", "currency": {"currencyCode": "g0JKqVWW", "currencySymbol": "1rjK1epw", "currencyType": "REAL", "decimals": 53, "namespace": "vcsYvbgf"}, "customParameters": {"BVPpTa8Y": {}}, "extOrderNo": "uq7TKiNX", "extTxId": "mz7eMrMD", "extUserId": "5TbaUxTC", "issuedAt": "1993-04-11T00:00:00Z", "metadata": {"g0xjtdBr": "js3Kiykt"}, "namespace": "2Ck2gOlS", "nonceStr": "atECZ2Ug", "paymentMethod": "wQLqDqYS", "paymentMethodFee": 46, "paymentOrderNo": "TPuVlBqi", "paymentProvider": "STRIPE", "paymentProviderFee": 7, "paymentStationUrl": "p3yxnsET", "price": 22, "refundedTime": "1997-12-14T00:00:00Z", "salesTax": 42, "sandbox": false, "sku": "QudsjIhX", "status": "AUTHORISED", "statusReason": "xiSoWpnn", "subscriptionId": "xgX7BCPM", "subtotalPrice": 33, "targetNamespace": "zQIxibhp", "targetUserId": "NYsHtdB3", "tax": 69, "totalPrice": 20, "totalTax": 19, "txEndTime": "1981-01-05T00:00:00Z", "type": "ZqhJilrZ", "userId": "kSSKgP5r", "vat": 46}' --login_with_auth "Bearer foo"
+platform-download-user-order-receipt 'CR77G9d5' 'CA1GORSb' --login_with_auth "Bearer foo"
+platform-create-user-payment-order 'L9n0dbWD' --body '{"currencyCode": "EupmdLQz", "currencyNamespace": "PnNfBAcW", "customParameters": {"ArbkCfdH": {}}, "description": "IZb03otq", "extOrderNo": "mBuS9V2p", "extUserId": "CZ23UHmk", "itemType": "CODE", "language": "jj_uO", "metadata": {"VRUb39j2": "2P4Sp09c"}, "notifyUrl": "KmjRUbZV", "omitNotification": true, "platform": "VS7OK2Zr", "price": 6, "recurringPaymentOrderNo": "csckMekR", "region": "OWZ2KUTq", "returnUrl": "kK2eFaGL", "sandbox": false, "sku": "SmEEPbLy", "subscriptionId": "wJsyUie6", "title": "fZgLllUP"}' --login_with_auth "Bearer foo"
+platform-refund-user-payment-order 'sO8lg46S' 'i7006vL2' --body '{"description": "w4aajDAO"}' --login_with_auth "Bearer foo"
+platform-apply-user-redemption 'x0iJjYle' --body '{"code": "aktqv2Wk", "orderNo": "ljQuD5mn"}' --login_with_auth "Bearer foo"
+platform-query-user-subscriptions 'JONqHGq8' --login_with_auth "Bearer foo"
+platform-get-user-subscription-activities 'mB7mF2lM' --login_with_auth "Bearer foo"
+platform-platform-subscribe-subscription 'FcaghFXJ' --body '{"grantDays": 68, "itemId": "JflRHFcs", "language": "IqCy4xDi", "reason": "fSSQ5On2", "region": "ccEcl3xe", "source": "iO4bwF5J"}' --login_with_auth "Bearer foo"
+platform-check-user-subscription-subscribable-by-item-id 'OjGoGxKM' '3qMce5tf' --login_with_auth "Bearer foo"
+platform-get-user-subscription 'LcpjFZMK' 'Cbp0pEbL' --login_with_auth "Bearer foo"
+platform-delete-user-subscription 'CLFpHxMY' 'F836075x' --login_with_auth "Bearer foo"
+platform-cancel-subscription 'EpzdnYtp' 'ja5ig2is' --body '{"immediate": false, "reason": "a6Vy76iz"}' --login_with_auth "Bearer foo"
+platform-grant-days-to-subscription 'PiQRjYa8' 'fv5fIt22' --body '{"grantDays": 39, "reason": "IZhjhgki"}' --login_with_auth "Bearer foo"
+platform-get-user-subscription-billing-histories 'gW22zXMW' 'XfbcM0GI' --login_with_auth "Bearer foo"
+platform-process-user-subscription-notification 'ALIbFCQg' 'BcLNT6iO' --body '{"additionalData": {"cardSummary": "QVYx5rW2"}, "authorisedTime": "1974-11-02T00:00:00Z", "chargebackReversedTime": "1980-10-05T00:00:00Z", "chargebackTime": "1996-12-28T00:00:00Z", "chargedTime": "1996-07-31T00:00:00Z", "createdTime": "1975-06-04T00:00:00Z", "currency": {"currencyCode": "Sn3UDeKj", "currencySymbol": "97I4WYXL", "currencyType": "VIRTUAL", "decimals": 18, "namespace": "N7ktOBTr"}, "customParameters": {"aBxWRTVu": {}}, "extOrderNo": "YEqGlKDw", "extTxId": "TKXBrXiQ", "extUserId": "cd9IW8ki", "issuedAt": "1985-10-17T00:00:00Z", "metadata": {"eQJWZBvc": "q1ETvWBx"}, "namespace": "YZJh7B8g", "nonceStr": "bnSu9M2O", "paymentMethod": "xD2udaeY", "paymentMethodFee": 30, "paymentOrderNo": "CXYSMiy8", "paymentProvider": "XSOLLA", "paymentProviderFee": 90, "paymentStationUrl": "qEQBg36m", "price": 48, "refundedTime": "1998-05-19T00:00:00Z", "salesTax": 4, "sandbox": false, "sku": "rDcain0c", "status": "REFUNDING", "statusReason": "VF1zHwDT", "subscriptionId": "I0sJ1Q0k", "subtotalPrice": 30, "targetNamespace": "hMTggSP2", "targetUserId": "SLcuAP7v", "tax": 92, "totalPrice": 56, "totalTax": 50, "txEndTime": "1982-04-14T00:00:00Z", "type": "bg8C7Mvy", "userId": "whu6MjOj", "vat": 41}' --login_with_auth "Bearer foo"
+platform-acquire-user-ticket 'Gzo1Fz4t' 'U0aSn98N' --body '{"count": 33, "orderNo": "OUA0z92R"}' --login_with_auth "Bearer foo"
+platform-query-user-currency-wallets 'aDe8ngT8' --login_with_auth "Bearer foo"
+platform-list-user-currency-transactions 'LRQkMnG1' 'LZyF2mdY' --login_with_auth "Bearer foo"
+platform-credit-user-wallet 'Y6ZMfuTY' 'TKsue48q' --body '{"amount": 54, "expireAt": "1986-08-08T00:00:00Z", "origin": "Twitch", "reason": "AV5BTe6e", "source": "ACHIEVEMENT"}' --login_with_auth "Bearer foo"
+platform-pay-with-user-wallet '1zA92URC' 'LSGPmRBZ' --body '{"amount": 97, "walletPlatform": "Playstation"}' --login_with_auth "Bearer foo"
+platform-sync-orders 'nHW7MYvr' '6QA7Ppep' --login_with_auth "Bearer foo"
+platform-test-adyen-config --body '{"allowedPaymentMethods": ["c92HA94e"], "apiKey": "ACdeyfUp", "authoriseAsCapture": false, "blockedPaymentMethods": ["iPpf8nxK"], "clientKey": "J3dnmtPw", "dropInSettings": "a64Y4gPE", "liveEndpointUrlPrefix": "KMhhu9a6", "merchantAccount": "f3xJNtUl", "notificationHmacKey": "KLlIIAeH", "notificationPassword": "bm5M6LsY", "notificationUsername": "1VMuIEcR", "returnUrl": "ls68M3MP", "settings": "MRPBepyy"}' --login_with_auth "Bearer foo"
+platform-test-ali-pay-config --body '{"appId": "Mz6zfR1p", "privateKey": "vTYYtDOi", "publicKey": "Ei4RuEcH", "returnUrl": "CSGhpOZQ"}' --login_with_auth "Bearer foo"
+platform-test-checkout-config --body '{"publicKey": "FlwOiuKG", "secretKey": "DFgK49Yu"}' --login_with_auth "Bearer foo"
 platform-debug-matched-payment-merchant-config --login_with_auth "Bearer foo"
-platform-test-pay-pal-config --body '{"clientID": "ZQFlwOiu", "clientSecret": "KGDFgK49", "returnUrl": "YuKnXks0", "webHookId": "m8ANrcRa"}' --login_with_auth "Bearer foo"
-platform-test-stripe-config --body '{"allowedPaymentMethodTypes": ["l7ta3foj"], "publishableKey": "A3h4MMW3", "secretKey": "AJ5zlsFB", "webhookSecret": "wjvLYvmg"}' --login_with_auth "Bearer foo"
-platform-test-wx-pay-config --body '{"appId": "6avudQFF", "key": "1CPNY9u2", "mchid": "dVYdglOO", "returnUrl": "oCeK0kPK"}' --login_with_auth "Bearer foo"
-platform-test-xsolla-config --body '{"apiKey": "mBqVux3l", "flowCompletionUrl": "XcD8aert", "merchantId": 52, "projectId": 95, "projectSecretKey": "Cqs8XT8x"}' --login_with_auth "Bearer foo"
-platform-get-payment-merchant-config 'y3nJ06Kk' --login_with_auth "Bearer foo"
-platform-update-adyen-config 'seA0ARj9' --body '{"allowedPaymentMethods": ["ricfayvn"], "apiKey": "hi8MDdY4", "authoriseAsCapture": false, "blockedPaymentMethods": ["aUkYnQp5"], "clientKey": "egdmVE8I", "dropInSettings": "mivNtQxq", "liveEndpointUrlPrefix": "WRKHohOD", "merchantAccount": "oWOr98kj", "notificationHmacKey": "BUas9jjz", "notificationPassword": "2FrgiaGr", "notificationUsername": "cB7dIOVK", "returnUrl": "IPSJJHo5", "settings": "W8tKH8ou"}' --login_with_auth "Bearer foo"
-platform-test-adyen-config-by-id '9SdbxSXc' --login_with_auth "Bearer foo"
-platform-update-ali-pay-config 'rEFCwqeG' --body '{"appId": "NLdIBRdl", "privateKey": "iFQVMKEz", "publicKey": "VUWlUWDs", "returnUrl": "2x1EQU0o"}' --login_with_auth "Bearer foo"
-platform-test-ali-pay-config-by-id 'epEvcjaS' --login_with_auth "Bearer foo"
-platform-update-checkout-config 'gEh6jJnF' --body '{"publicKey": "xinIHJ1o", "secretKey": "7aq5Zznd"}' --login_with_auth "Bearer foo"
-platform-test-checkout-config-by-id '5eacobTs' --login_with_auth "Bearer foo"
-platform-update-pay-pal-config 'uRlhreQV' --body '{"clientID": "FID3o8hJ", "clientSecret": "WVjKIOAw", "returnUrl": "70DvAHhS", "webHookId": "GWUvzq1Z"}' --login_with_auth "Bearer foo"
-platform-test-pay-pal-config-by-id 'a3IBC4vQ' --login_with_auth "Bearer foo"
-platform-update-stripe-config 'FsUJPfia' --body '{"allowedPaymentMethodTypes": ["Jp1rt7OB"], "publishableKey": "gBCe6N0e", "secretKey": "I65Mn5tn", "webhookSecret": "gEYXgPVT"}' --login_with_auth "Bearer foo"
-platform-test-stripe-config-by-id '5CqXDZBV' --login_with_auth "Bearer foo"
-platform-update-wx-pay-config 'MJyJeKFO' --body '{"appId": "92YDtaZv", "key": "JoKS0Oxy", "mchid": "ipZuO4N9", "returnUrl": "S2YCgHa6"}' --login_with_auth "Bearer foo"
-platform-update-wx-pay-config-cert 'XBcvGRYk' --login_with_auth "Bearer foo"
-platform-test-wx-pay-config-by-id '5rUtWHCn' --login_with_auth "Bearer foo"
-platform-update-xsolla-config 'hmzzppV7' --body '{"apiKey": "tKNKYUQV", "flowCompletionUrl": "BXymWcNl", "merchantId": 66, "projectId": 1, "projectSecretKey": "FxYaGHUp"}' --login_with_auth "Bearer foo"
-platform-test-xsolla-config-by-id 'mBFyOrFK' --login_with_auth "Bearer foo"
-platform-update-xsolla-ui-config 'txGNAi0f' --body '{"device": "MOBILE", "showCloseButton": true, "size": "MEDIUM", "theme": "DARK"}' --login_with_auth "Bearer foo"
+platform-test-pay-pal-config --body '{"clientID": "KnXks0m8", "clientSecret": "ANrcRal7", "returnUrl": "ta3fojA3", "webHookId": "h4MMW3AJ"}' --login_with_auth "Bearer foo"
+platform-test-stripe-config --body '{"allowedPaymentMethodTypes": ["5zlsFBwj"], "publishableKey": "vLYvmg6a", "secretKey": "vudQFF1C", "webhookSecret": "PNY9u2dV"}' --login_with_auth "Bearer foo"
+platform-test-wx-pay-config --body '{"appId": "YdglOOoC", "key": "eK0kPKmB", "mchid": "qVux3lXc", "returnUrl": "D8aertAV"}' --login_with_auth "Bearer foo"
+platform-test-xsolla-config --body '{"apiKey": "Cqs8XT8x", "flowCompletionUrl": "y3nJ06Kk", "merchantId": 36, "projectId": 9, "projectSecretKey": "A0ARj9ri"}' --login_with_auth "Bearer foo"
+platform-get-payment-merchant-config 'cfayvnhi' --login_with_auth "Bearer foo"
+platform-update-adyen-config '8MDdY4WL' --body '{"allowedPaymentMethods": ["HoaUkYnQ"], "apiKey": "p5egdmVE", "authoriseAsCapture": false, "blockedPaymentMethods": ["ivNtQxqW"], "clientKey": "RKHohODo", "dropInSettings": "WOr98kjB", "liveEndpointUrlPrefix": "Uas9jjz2", "merchantAccount": "FrgiaGrc", "notificationHmacKey": "B7dIOVKI", "notificationPassword": "PSJJHo5W", "notificationUsername": "8tKH8ou9", "returnUrl": "SdbxSXcr", "settings": "EFCwqeGN"}' --login_with_auth "Bearer foo"
+platform-test-adyen-config-by-id 'LdIBRdli' --login_with_auth "Bearer foo"
+platform-update-ali-pay-config 'FQVMKEzV' --body '{"appId": "UWlUWDs2", "privateKey": "x1EQU0oe", "publicKey": "pEvcjaSg", "returnUrl": "Eh6jJnFx"}' --login_with_auth "Bearer foo"
+platform-test-ali-pay-config-by-id 'inIHJ1o7' --login_with_auth "Bearer foo"
+platform-update-checkout-config 'aq5Zznd5' --body '{"publicKey": "eacobTsu", "secretKey": "RlhreQVF"}' --login_with_auth "Bearer foo"
+platform-test-checkout-config-by-id 'ID3o8hJW' --login_with_auth "Bearer foo"
+platform-update-pay-pal-config 'VjKIOAw7' --body '{"clientID": "0DvAHhSG", "clientSecret": "WUvzq1Za", "returnUrl": "3IBC4vQF", "webHookId": "sUJPfiaJ"}' --login_with_auth "Bearer foo"
+platform-test-pay-pal-config-by-id 'p1rt7OBg' --login_with_auth "Bearer foo"
+platform-update-stripe-config 'BCe6N0eI' --body '{"allowedPaymentMethodTypes": ["65Mn5tng"], "publishableKey": "EYXgPVT5", "secretKey": "CqXDZBVM", "webhookSecret": "JyJeKFO9"}' --login_with_auth "Bearer foo"
+platform-test-stripe-config-by-id '2YDtaZvJ' --login_with_auth "Bearer foo"
+platform-update-wx-pay-config 'oKS0Oxyi' --body '{"appId": "pZuO4N9S", "key": "2YCgHa6X", "mchid": "BcvGRYk5", "returnUrl": "rUtWHCnh"}' --login_with_auth "Bearer foo"
+platform-update-wx-pay-config-cert 'mzzppV7t' --login_with_auth "Bearer foo"
+platform-test-wx-pay-config-by-id 'KNKYUQVB' --login_with_auth "Bearer foo"
+platform-update-xsolla-config 'XymWcNlH' --body '{"apiKey": "aFxYaGHU", "flowCompletionUrl": "pmBFyOrF", "merchantId": 72, "projectId": 38, "projectSecretKey": "xGNAi0fq"}' --login_with_auth "Bearer foo"
+platform-test-xsolla-config-by-id '4xChPLd2' --login_with_auth "Bearer foo"
+platform-update-xsolla-ui-config 'lOopc7Xo' --body '{"device": "DESKTOP", "showCloseButton": false, "size": "LARGE", "theme": "DEFAULT"}' --login_with_auth "Bearer foo"
 platform-query-payment-provider-config --login_with_auth "Bearer foo"
-platform-create-payment-provider-config --body '{"aggregate": "ADYEN", "namespace": "2lOopc7X", "region": "oVpdd6rC", "sandboxTaxJarApiToken": "pyMrnH9Y", "specials": ["ALIPAY"], "taxJarApiToken": "7KnCVOKY", "taxJarEnabled": true, "useGlobalTaxJarApiToken": true}' --login_with_auth "Bearer foo"
+platform-create-payment-provider-config --body '{"aggregate": "XSOLLA", "namespace": "pyMrnH9Y", "region": "HXh7KnCV", "sandboxTaxJarApiToken": "OKY2zsBR", "specials": ["STRIPE"], "taxJarApiToken": "d8QY2OLb", "taxJarEnabled": false, "useGlobalTaxJarApiToken": false}' --login_with_auth "Bearer foo"
 platform-get-aggregate-payment-providers --login_with_auth "Bearer foo"
 platform-debug-matched-payment-provider-config --login_with_auth "Bearer foo"
 platform-get-special-payment-providers --login_with_auth "Bearer foo"
-platform-update-payment-provider-config 'BRGtd8QY' --body '{"aggregate": "ADYEN", "namespace": "ijrvfr8h", "region": "knjWUWdM", "sandboxTaxJarApiToken": "UXHvw4pN", "specials": ["CHECKOUT"], "taxJarApiToken": "GLjdBxLM", "taxJarEnabled": false, "useGlobalTaxJarApiToken": true}' --login_with_auth "Bearer foo"
-platform-delete-payment-provider-config 'AbTgmsEY' --login_with_auth "Bearer foo"
+platform-update-payment-provider-config 'rvfr8hkn' --body '{"aggregate": "ADYEN", "namespace": "WUWdMUXH", "region": "vw4pNlGL", "sandboxTaxJarApiToken": "jdBxLM07", "specials": ["PAYPAL"], "taxJarApiToken": "DAbTgmsE", "taxJarEnabled": true, "useGlobalTaxJarApiToken": true}' --login_with_auth "Bearer foo"
+platform-delete-payment-provider-config '2GkYK1vY' --login_with_auth "Bearer foo"
 platform-get-payment-tax-config --login_with_auth "Bearer foo"
-platform-update-payment-tax-config --body '{"sandboxTaxJarApiToken": "Eq2GkYK1", "taxJarApiToken": "vYm9flXQ", "taxJarEnabled": true, "taxJarProductCodesMapping": {"QoemnQG0": "dH0NVM9V"}}' --login_with_auth "Bearer foo"
-platform-sync-payment-orders 'EHTPqDhk' 'cu5vnz6G' --login_with_auth "Bearer foo"
+platform-update-payment-tax-config --body '{"sandboxTaxJarApiToken": "m9flXQ7C", "taxJarApiToken": "QoemnQG0", "taxJarEnabled": false, "taxJarProductCodesMapping": {"H0NVM9VE": "HTPqDhkc"}}' --login_with_auth "Bearer foo"
+platform-sync-payment-orders 'u5vnz6Gi' 'NMboBJHm' --login_with_auth "Bearer foo"
 platform-public-get-root-categories --login_with_auth "Bearer foo"
 platform-download-categories --login_with_auth "Bearer foo"
-platform-public-get-category 'iNMboBJH' --login_with_auth "Bearer foo"
-platform-public-get-child-categories 'ml0LJmpP' --login_with_auth "Bearer foo"
-platform-public-get-descendant-categories 'i4mqhrui' --login_with_auth "Bearer foo"
+platform-public-get-category 'l0LJmpPi' --login_with_auth "Bearer foo"
+platform-public-get-child-categories '4mqhruiC' --login_with_auth "Bearer foo"
+platform-public-get-descendant-categories 'ZLGGP5UX' --login_with_auth "Bearer foo"
 platform-public-list-currencies --login_with_auth "Bearer foo"
-platform-public-get-item-by-app-id 'CZLGGP5U' --login_with_auth "Bearer foo"
+platform-public-get-item-by-app-id 'kHNTMapp' --login_with_auth "Bearer foo"
 platform-public-query-items --login_with_auth "Bearer foo"
-platform-public-get-item-by-sku 'XkHNTMap' --login_with_auth "Bearer foo"
-platform-public-bulk-get-items 'p5SbonsU' --login_with_auth "Bearer foo"
-platform-public-validate-item-purchase-condition --body '{"itemIds": ["JKADr60E"]}' --login_with_auth "Bearer foo"
-platform-public-search-items 'kdFrpLsG' 't9yTXWUS' --login_with_auth "Bearer foo"
-platform-public-get-app 'CQcMsHN7' --login_with_auth "Bearer foo"
-platform-public-get-item-dynamic-data 'reI22ks7' --login_with_auth "Bearer foo"
-platform-public-get-item 'I12tAZc8' --login_with_auth "Bearer foo"
-platform-public-get-payment-url --body '{"paymentOrderNo": "sxxLx9XQ", "paymentProvider": "ALIPAY", "returnUrl": "qNWLm8cN", "ui": "JbYH5J4W", "zipCode": "iJLv9NvH"}' --login_with_auth "Bearer foo"
-platform-public-get-payment-methods 'wtw2Mjcy' --login_with_auth "Bearer foo"
-platform-public-get-unpaid-payment-order '9ZL6Zs5B' --login_with_auth "Bearer foo"
-platform-pay 'u2XYopLW' --body '{"token": "ZeUKJJNf"}' --login_with_auth "Bearer foo"
-platform-public-check-payment-order-paid-status 'tRpGgk1i' --login_with_auth "Bearer foo"
-platform-get-payment-public-config 'STRIPE' 'eREzzRG6' --login_with_auth "Bearer foo"
-platform-public-get-qr-code 'z9wmuHdd' --login_with_auth "Bearer foo"
-platform-public-normalize-payment-return-url 'yOdibI1L' 'VyqbdY8D' 'WXPAY' 'uoIKz3Pp' --login_with_auth "Bearer foo"
-platform-get-payment-tax-value '3zLWUxMz' 'STRIPE' --login_with_auth "Bearer foo"
-platform-get-reward-by-code 'SmMmZP8n' --login_with_auth "Bearer foo"
+platform-public-get-item-by-sku '5SbonsUJ' --login_with_auth "Bearer foo"
+platform-public-bulk-get-items 'KADr60Ek' --login_with_auth "Bearer foo"
+platform-public-validate-item-purchase-condition --body '{"itemIds": ["dFrpLsGt"]}' --login_with_auth "Bearer foo"
+platform-public-search-items '9yTXWUSC' 'QcMsHN7r' --login_with_auth "Bearer foo"
+platform-public-get-app 'eI22ks7I' --login_with_auth "Bearer foo"
+platform-public-get-item-dynamic-data '12tAZc8s' --login_with_auth "Bearer foo"
+platform-public-get-item 'xxLx9XQe' --login_with_auth "Bearer foo"
+platform-public-get-payment-url --body '{"paymentOrderNo": "qNWLm8cN", "paymentProvider": "ADYEN", "returnUrl": "YH5J4WiJ", "ui": "Lv9NvHwt", "zipCode": "w2Mjcy9Z"}' --login_with_auth "Bearer foo"
+platform-public-get-payment-methods 'L6Zs5Bu2' --login_with_auth "Bearer foo"
+platform-public-get-unpaid-payment-order 'XYopLWZe' --login_with_auth "Bearer foo"
+platform-pay 'UKJJNftR' --body '{"token": "pGgk1ise"}' --login_with_auth "Bearer foo"
+platform-public-check-payment-order-paid-status 'REzzRG6z' --login_with_auth "Bearer foo"
+platform-get-payment-public-config 'WALLET' 'muHddyOd' --login_with_auth "Bearer foo"
+platform-public-get-qr-code 'ibI1LVyq' --login_with_auth "Bearer foo"
+platform-public-normalize-payment-return-url 'bdY8DGZK' 'AuoIKz3P' 'PAYPAL' '3zLWUxMz' --login_with_auth "Bearer foo"
+platform-get-payment-tax-value 'MtSmMmZP' 'PAYPAL' --login_with_auth "Bearer foo"
+platform-get-reward-by-code 'G0FoQP8q' --login_with_auth "Bearer foo"
 platform-query-rewards-1 --login_with_auth "Bearer foo"
-platform-get-reward-1 'G0FoQP8q' --login_with_auth "Bearer foo"
+platform-get-reward-1 '7aSsb85g' --login_with_auth "Bearer foo"
 platform-public-list-stores --login_with_auth "Bearer foo"
 platform-public-exists-any-my-active-entitlement --login_with_auth "Bearer foo"
-platform-public-get-my-app-entitlement-ownership-by-app-id '7aSsb85g' --login_with_auth "Bearer foo"
-platform-public-get-my-entitlement-ownership-by-item-id 'Ah9RD3Zz' --login_with_auth "Bearer foo"
-platform-public-get-my-entitlement-ownership-by-sku 'N6N1iJ8l' --login_with_auth "Bearer foo"
+platform-public-get-my-app-entitlement-ownership-by-app-id 'Ah9RD3Zz' --login_with_auth "Bearer foo"
+platform-public-get-my-entitlement-ownership-by-item-id 'N6N1iJ8l' --login_with_auth "Bearer foo"
+platform-public-get-my-entitlement-ownership-by-sku 'tt9IRqCf' --login_with_auth "Bearer foo"
 platform-public-get-entitlement-ownership-token --login_with_auth "Bearer foo"
-platform-public-get-my-wallet 'tt9IRqCf' --login_with_auth "Bearer foo"
-platform-sync-epic-game-dlc 'lgln6r5f' --body '{"epicGamesJwtToken": "0s5H6lCf"}' --login_with_auth "Bearer foo"
-platform-public-sync-psn-dlc-inventory '3QHa11hL' --body '{"serviceLabel": 74}' --login_with_auth "Bearer foo"
-platform-sync-steam-dlc 'Cgw5av4L' --body '{"appId": "ExdabD8g", "steamId": "2cvHfMRu"}' --login_with_auth "Bearer foo"
-platform-sync-xbox-dlc 'pDA5xbjs' --body '{"xstsToken": "3XRdHUJ0"}' --login_with_auth "Bearer foo"
-platform-public-query-user-entitlements 'GCmflIXk' --login_with_auth "Bearer foo"
-platform-public-get-user-app-entitlement-by-app-id 'gJ6zkTwo' 'akq7sEej' --login_with_auth "Bearer foo"
-platform-public-query-user-entitlements-by-app-type 'FZ1NtONX' 'DEMO' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement-by-item-id '9w9hsQHs' 'zIsfrlzK' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement-by-sku 'pQdd58dZ' 'P5RvrinN' --login_with_auth "Bearer foo"
-platform-public-exists-any-user-active-entitlement 'tvBtqFSk' --login_with_auth "Bearer foo"
-platform-public-get-user-app-entitlement-ownership-by-app-id 'A68mIVYJ' '5pSVxBsL' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement-ownership-by-item-id 'hty3pecT' 'oXA4M1oU' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement-ownership-by-item-ids 'FPhgo7Z6' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement-ownership-by-sku 'mwNC4FY6' '9mM87joJ' --login_with_auth "Bearer foo"
-platform-public-get-user-entitlement 'NOGB83Ns' '6Hl5Poab' --login_with_auth "Bearer foo"
-platform-public-consume-user-entitlement '6lKoVqNB' 'UzIxOfgl' --body '{"options": ["quS2q2Do"], "useCount": 97}' --login_with_auth "Bearer foo"
-platform-public-redeem-code 'r9zvFtKa' --body '{"code": "2mOAqOok", "language": "PLXq_IPdJ", "region": "iZkrtLnh"}' --login_with_auth "Bearer foo"
-platform-public-fulfill-apple-iap-item '2U1RQlMx' --body '{"excludeOldTransactions": false, "language": "nm-tmZB", "productId": "zkXOek83", "receiptData": "Igm1wkSW", "region": "sYvAsu18", "transactionId": "obUdc8mb"}' --login_with_auth "Bearer foo"
+platform-public-get-my-wallet 'lgln6r5f' --login_with_auth "Bearer foo"
+platform-sync-epic-game-dlc '0s5H6lCf' --body '{"epicGamesJwtToken": "3QHa11hL"}' --login_with_auth "Bearer foo"
+platform-public-sync-psn-dlc-inventory 'LCgw5av4' --body '{"serviceLabel": 74}' --login_with_auth "Bearer foo"
+platform-sync-steam-dlc 'ExdabD8g' --body '{"appId": "2cvHfMRu", "steamId": "pDA5xbjs"}' --login_with_auth "Bearer foo"
+platform-sync-xbox-dlc '3XRdHUJ0' --body '{"xstsToken": "GCmflIXk"}' --login_with_auth "Bearer foo"
+platform-public-query-user-entitlements 'gJ6zkTwo' --login_with_auth "Bearer foo"
+platform-public-get-user-app-entitlement-by-app-id 'akq7sEej' 'FZ1NtONX' --login_with_auth "Bearer foo"
+platform-public-query-user-entitlements-by-app-type 'b9w9hsQH' 'GAME' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement-by-item-id 'zIsfrlzK' 'pQdd58dZ' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement-by-sku 'P5RvrinN' 'tvBtqFSk' --login_with_auth "Bearer foo"
+platform-public-exists-any-user-active-entitlement 'A68mIVYJ' --login_with_auth "Bearer foo"
+platform-public-get-user-app-entitlement-ownership-by-app-id '5pSVxBsL' 'hty3pecT' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement-ownership-by-item-id 'oXA4M1oU' 'FPhgo7Z6' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement-ownership-by-item-ids 'mwNC4FY6' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement-ownership-by-sku '9mM87joJ' 'NOGB83Ns' --login_with_auth "Bearer foo"
+platform-public-get-user-entitlement '6Hl5Poab' '6lKoVqNB' --login_with_auth "Bearer foo"
+platform-public-consume-user-entitlement 'UzIxOfgl' 'quS2q2Do' --body '{"options": ["Wr9zvFtK"], "useCount": 1}' --login_with_auth "Bearer foo"
+platform-public-redeem-code '2mOAqOok' --body '{"code": "V1plxQ2Y", "language": "Itp", "region": "pD67jI2h"}' --login_with_auth "Bearer foo"
+platform-public-fulfill-apple-iap-item 'iZkrtLnh' --body '{"excludeOldTransactions": false, "language": "XKFn-tmZB", "productId": "zkXOek83", "receiptData": "Igm1wkSW", "region": "sYvAsu18", "transactionId": "obUdc8mb"}' --login_with_auth "Bearer foo"
 platform-sync-epic-games-inventory 'vXcwcgMq' --body '{"epicGamesJwtToken": "OXMziXrV"}' --login_with_auth "Bearer foo"
 platform-public-fulfill-google-iap-item 'dsEc3ClF' --body '{"autoAck": false, "language": "WUSc_lCUQ", "orderId": "ekRavpaG", "packageName": "TA9BTyCC", "productId": "yN4Fw9i6", "purchaseTime": 24, "purchaseToken": "I2W3tjjC", "region": "qPVyYs01"}' --login_with_auth "Bearer foo"
 platform-public-reconcile-play-station-store 'hEYzWw3q' --body '{"currencyCode": "rcxM0DPA", "price": 0.7790865575462415, "productId": "BNMP7j3x", "serviceLabel": 11}' --login_with_auth "Bearer foo"
@@ -384,7 +385,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..346"
+echo "1..347"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -401,7 +402,7 @@ eval_tap $? 2 'ListFulfillmentScripts' test.out
 
 #- 3 TestFulfillmentScriptEval
 $PYTHON -m $MODULE 'platform-test-fulfillment-script-eval' \
-    --body '{"context": {"item": {"appId": "ACp6he0f", "appType": "SOFTWARE", "baseAppId": "jkPNNS0B", "boothName": "fgF6inIR", "boundItemIds": ["sZ5hrqNz"], "categoryPath": "VszGVP5P", "clazz": "1iwhcf30", "createdAt": "1985-10-20T00:00:00Z", "description": "HRZHMGy5", "displayOrder": 43, "entitlementType": "CONSUMABLE", "ext": {"fZvYIFFc": {}}, "features": ["tEKOLxSR"], "images": [{"as": "xe0wmWBM", "caption": "cNiWoobB", "height": 28, "imageUrl": "6alTQcP0", "smallImageUrl": "EpE9wGNV", "width": 44}], "itemId": "kgfJJ2HI", "itemIds": ["alfzgRpT"], "itemQty": {"f9lxF1JP": 55}, "itemType": "CODE", "language": "zXZtrGe8", "listable": true, "localExt": {"OH24nneZ": {}}, "longDescription": "HFeRld0b", "maxCount": 65, "maxCountPerUser": 52, "name": "7JxWYzaE", "namespace": "aimvokcW", "optionBoxConfig": {"boxItems": [{"count": 98, "itemId": "59kwiYHg", "itemSku": "HT6Ivd0f"}]}, "purchasable": false, "purchaseCondition": {"conditionGroups": [{"operator": "and", "predicates": [{"anyOf": 95, "comparison": "excludes", "name": "lumQTFvr", "predicateType": "SeasonPassPredicate", "value": "RyYzaNmz", "values": ["3PjMx2T8"]}]}]}, "recurring": {"cycle": "WEEKLY", "fixedFreeDays": 62, "fixedTrialCycles": 87, "graceDays": 93}, "region": "CXFkruxe", "regionData": [{"currencyCode": "gpkcXCfz", "currencyNamespace": "gcvv0WE5", "currencyType": "VIRTUAL", "discountAmount": 85, "discountExpireAt": "1974-01-17T00:00:00Z", "discountPercentage": 29, "discountPurchaseAt": "1977-11-27T00:00:00Z", "discountedPrice": 89, "expireAt": "1997-08-28T00:00:00Z", "price": 5, "purchaseAt": "1978-05-24T00:00:00Z", "trialPrice": 75}], "seasonType": "PASS", "sku": "r2zEnjyR", "stackable": false, "status": "INACTIVE", "tags": ["C3FMDcZv"], "targetCurrencyCode": "wwf8aU98", "targetItemId": "In31mF4j", "targetNamespace": "lwKyGxTF", "thumbnailUrl": "1l5q1Np0", "title": "sT1X8J2e", "updatedAt": "1984-11-16T00:00:00Z", "useCount": 51}, "namespace": "jmh9UzIf", "order": {"currency": {"currencyCode": "nhoo6xUm", "currencySymbol": "TleUnJFM", "currencyType": "REAL", "decimals": 29, "namespace": "DxGik2JS"}, "ext": {"fZ64wWeP": {}}, "free": true}, "source": "REWARD"}, "script": "KIS7F9em", "type": "grantDays"}' \
+    --body '{"context": {"item": {"appId": "ACp6he0f", "appType": "SOFTWARE", "baseAppId": "jkPNNS0B", "boothName": "fgF6inIR", "boundItemIds": ["sZ5hrqNz"], "categoryPath": "VszGVP5P", "clazz": "1iwhcf30", "createdAt": "1985-10-20T00:00:00Z", "description": "HRZHMGy5", "displayOrder": 43, "entitlementType": "CONSUMABLE", "ext": {"fZvYIFFc": {}}, "features": ["tEKOLxSR"], "fresh": true, "images": [{"as": "e0wmWBMc", "caption": "NiWoobB6", "height": 28, "imageUrl": "6alTQcP0", "smallImageUrl": "EpE9wGNV", "width": 44}], "itemId": "kgfJJ2HI", "itemIds": ["alfzgRpT"], "itemQty": {"f9lxF1JP": 55}, "itemType": "CODE", "language": "zXZtrGe8", "listable": true, "localExt": {"OH24nneZ": {}}, "longDescription": "HFeRld0b", "maxCount": 65, "maxCountPerUser": 52, "name": "7JxWYzaE", "namespace": "aimvokcW", "optionBoxConfig": {"boxItems": [{"count": 98, "itemId": "59kwiYHg", "itemSku": "HT6Ivd0f"}]}, "purchasable": false, "purchaseCondition": {"conditionGroups": [{"operator": "and", "predicates": [{"anyOf": 95, "comparison": "excludes", "name": "lumQTFvr", "predicateType": "SeasonPassPredicate", "value": "RyYzaNmz", "values": ["3PjMx2T8"]}]}]}, "recurring": {"cycle": "WEEKLY", "fixedFreeDays": 62, "fixedTrialCycles": 87, "graceDays": 93}, "region": "CXFkruxe", "regionData": [{"currencyCode": "gpkcXCfz", "currencyNamespace": "gcvv0WE5", "currencyType": "VIRTUAL", "discountAmount": 85, "discountExpireAt": "1974-01-17T00:00:00Z", "discountPercentage": 29, "discountPurchaseAt": "1977-11-27T00:00:00Z", "discountedPrice": 89, "expireAt": "1997-08-28T00:00:00Z", "price": 5, "purchaseAt": "1978-05-24T00:00:00Z", "trialPrice": 75}], "seasonType": "PASS", "sku": "r2zEnjyR", "stackable": false, "status": "INACTIVE", "tags": ["C3FMDcZv"], "targetCurrencyCode": "wwf8aU98", "targetItemId": "In31mF4j", "targetNamespace": "lwKyGxTF", "thumbnailUrl": "1l5q1Np0", "title": "sT1X8J2e", "updatedAt": "1984-11-16T00:00:00Z", "useCount": 51}, "namespace": "jmh9UzIf", "order": {"currency": {"currencyCode": "nhoo6xUm", "currencySymbol": "TleUnJFM", "currencyType": "REAL", "decimals": 29, "namespace": "DxGik2JS"}, "ext": {"fZ64wWeP": {}}, "free": true}, "source": "REWARD"}, "script": "KIS7F9em", "type": "grantDays"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'TestFulfillmentScriptEval' test.out
@@ -1314,1553 +1315,1561 @@ $PYTHON -m $MODULE 'platform-check-event-condition' \
     > test.out 2>&1
 eval_tap $? 134 'CheckEventCondition' test.out
 
-#- 135 ListStores
+#- 135 DeleteRewardConditionRecord
+$PYTHON -m $MODULE 'platform-delete-reward-condition-record' \
+    'V63gcdU4' \
+    --body '{"conditionName": "vyIPJeRj", "userId": "Cj7UK5nE"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 135 'DeleteRewardConditionRecord' test.out
+
+#- 136 ListStores
 $PYTHON -m $MODULE 'platform-list-stores' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 135 'ListStores' test.out
+eval_tap $? 136 'ListStores' test.out
 
-#- 136 CreateStore
+#- 137 CreateStore
 $PYTHON -m $MODULE 'platform-create-store' \
-    --body '{"defaultLanguage": "V63gcdU4", "defaultRegion": "vyIPJeRj", "description": "Cj7UK5nE", "supportedLanguages": ["mwsQtSfD"], "supportedRegions": ["qA4CysEX"], "title": "4VOy0n2E"}' \
+    --body '{"defaultLanguage": "mwsQtSfD", "defaultRegion": "qA4CysEX", "description": "4VOy0n2E", "supportedLanguages": ["kPBjC4ec"], "supportedRegions": ["HwtSGzay"], "title": "UaDh3m2e"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 136 'CreateStore' test.out
+eval_tap $? 137 'CreateStore' test.out
 
-#- 137 ImportStore
+#- 138 ImportStore
 $PYTHON -m $MODULE 'platform-import-store' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 137 'ImportStore' test.out
+eval_tap $? 138 'ImportStore' test.out
 
-#- 138 GetPublishedStore
+#- 139 GetPublishedStore
 $PYTHON -m $MODULE 'platform-get-published-store' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 138 'GetPublishedStore' test.out
+eval_tap $? 139 'GetPublishedStore' test.out
 
-#- 139 DeletePublishedStore
+#- 140 DeletePublishedStore
 $PYTHON -m $MODULE 'platform-delete-published-store' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 139 'DeletePublishedStore' test.out
+eval_tap $? 140 'DeletePublishedStore' test.out
 
-#- 140 GetPublishedStoreBackup
+#- 141 GetPublishedStoreBackup
 $PYTHON -m $MODULE 'platform-get-published-store-backup' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 140 'GetPublishedStoreBackup' test.out
+eval_tap $? 141 'GetPublishedStoreBackup' test.out
 
-#- 141 RollbackPublishedStore
+#- 142 RollbackPublishedStore
 $PYTHON -m $MODULE 'platform-rollback-published-store' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 141 'RollbackPublishedStore' test.out
+eval_tap $? 142 'RollbackPublishedStore' test.out
 
-#- 142 GetStore
+#- 143 GetStore
 $PYTHON -m $MODULE 'platform-get-store' \
-    'kPBjC4ec' \
+    'X31qVPH2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 142 'GetStore' test.out
+eval_tap $? 143 'GetStore' test.out
 
-#- 143 UpdateStore
+#- 144 UpdateStore
 $PYTHON -m $MODULE 'platform-update-store' \
-    'HwtSGzay' \
-    --body '{"defaultLanguage": "UaDh3m2e", "defaultRegion": "X31qVPH2", "description": "VHDznf57", "supportedLanguages": ["fQ1PY5uD"], "supportedRegions": ["kQ8zpNRw"], "title": "ycEAShpF"}' \
+    'VHDznf57' \
+    --body '{"defaultLanguage": "fQ1PY5uD", "defaultRegion": "kQ8zpNRw", "description": "ycEAShpF", "supportedLanguages": ["LpqAx1N5"], "supportedRegions": ["IGebNuvy"], "title": "rghVdsSw"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 143 'UpdateStore' test.out
+eval_tap $? 144 'UpdateStore' test.out
 
-#- 144 DeleteStore
+#- 145 DeleteStore
 $PYTHON -m $MODULE 'platform-delete-store' \
-    'LpqAx1N5' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 144 'DeleteStore' test.out
-
-#- 145 QueryChanges
-$PYTHON -m $MODULE 'platform-query-changes' \
-    'IGebNuvy' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 145 'QueryChanges' test.out
-
-#- 146 PublishAll
-$PYTHON -m $MODULE 'platform-publish-all' \
-    'rghVdsSw' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 146 'PublishAll' test.out
-
-#- 147 PublishSelected
-$PYTHON -m $MODULE 'platform-publish-selected' \
     'Dc9NJRX9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 147 'PublishSelected' test.out
+eval_tap $? 145 'DeleteStore' test.out
 
-#- 148 SelectAllRecords
-$PYTHON -m $MODULE 'platform-select-all-records' \
+#- 146 QueryChanges
+$PYTHON -m $MODULE 'platform-query-changes' \
     'ZdaC8sja' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 148 'SelectAllRecords' test.out
+eval_tap $? 146 'QueryChanges' test.out
 
-#- 149 GetStatistic
-$PYTHON -m $MODULE 'platform-get-statistic' \
+#- 147 PublishAll
+$PYTHON -m $MODULE 'platform-publish-all' \
     '1J7eucGS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 149 'GetStatistic' test.out
+eval_tap $? 147 'PublishAll' test.out
 
-#- 150 UnselectAllRecords
-$PYTHON -m $MODULE 'platform-unselect-all-records' \
+#- 148 PublishSelected
+$PYTHON -m $MODULE 'platform-publish-selected' \
     'SxZJPto0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 150 'UnselectAllRecords' test.out
+eval_tap $? 148 'PublishSelected' test.out
 
-#- 151 SelectRecord
-$PYTHON -m $MODULE 'platform-select-record' \
+#- 149 SelectAllRecords
+$PYTHON -m $MODULE 'platform-select-all-records' \
     '4wTEI8is' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 149 'SelectAllRecords' test.out
+
+#- 150 GetStatistic
+$PYTHON -m $MODULE 'platform-get-statistic' \
     'XmyAGW2r' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 151 'SelectRecord' test.out
+eval_tap $? 150 'GetStatistic' test.out
 
-#- 152 UnselectRecord
-$PYTHON -m $MODULE 'platform-unselect-record' \
+#- 151 UnselectAllRecords
+$PYTHON -m $MODULE 'platform-unselect-all-records' \
     'Z7bYvVW2' \
-    '6Oaysx72' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 152 'UnselectRecord' test.out
+eval_tap $? 151 'UnselectAllRecords' test.out
 
-#- 153 CloneStore
-$PYTHON -m $MODULE 'platform-clone-store' \
+#- 152 SelectRecord
+$PYTHON -m $MODULE 'platform-select-record' \
+    '6Oaysx72' \
     'rwV3MdXN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 153 'CloneStore' test.out
+eval_tap $? 152 'SelectRecord' test.out
 
-#- 154 ExportStore
-$PYTHON -m $MODULE 'platform-export-store' \
+#- 153 UnselectRecord
+$PYTHON -m $MODULE 'platform-unselect-record' \
     'VRDzT2sB' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 154 'ExportStore' test.out
-
-#- 155 QuerySubscriptions
-$PYTHON -m $MODULE 'platform-query-subscriptions' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 155 'QuerySubscriptions' test.out
-
-#- 156 RecurringChargeSubscription
-$PYTHON -m $MODULE 'platform-recurring-charge-subscription' \
     'bflg7cD2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 156 'RecurringChargeSubscription' test.out
+eval_tap $? 153 'UnselectRecord' test.out
 
-#- 157 GetTicketDynamic
-$PYTHON -m $MODULE 'platform-get-ticket-dynamic' \
+#- 154 CloneStore
+$PYTHON -m $MODULE 'platform-clone-store' \
     '47c1XYYJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 157 'GetTicketDynamic' test.out
+eval_tap $? 154 'CloneStore' test.out
 
-#- 158 DecreaseTicketSale
-$PYTHON -m $MODULE 'platform-decrease-ticket-sale' \
+#- 155 ExportStore
+$PYTHON -m $MODULE 'platform-export-store' \
     'f18StYu6' \
-    --body '{"orderNo": "wb2We3Q6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 158 'DecreaseTicketSale' test.out
+eval_tap $? 155 'ExportStore' test.out
 
-#- 159 GetTicketBoothID
-$PYTHON -m $MODULE 'platform-get-ticket-booth-id' \
+#- 156 QuerySubscriptions
+$PYTHON -m $MODULE 'platform-query-subscriptions' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 156 'QuerySubscriptions' test.out
+
+#- 157 RecurringChargeSubscription
+$PYTHON -m $MODULE 'platform-recurring-charge-subscription' \
+    'wb2We3Q6' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 157 'RecurringChargeSubscription' test.out
+
+#- 158 GetTicketDynamic
+$PYTHON -m $MODULE 'platform-get-ticket-dynamic' \
     'Pm7RBkqW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 159 'GetTicketBoothID' test.out
+eval_tap $? 158 'GetTicketDynamic' test.out
 
-#- 160 IncreaseTicketSale
-$PYTHON -m $MODULE 'platform-increase-ticket-sale' \
+#- 159 DecreaseTicketSale
+$PYTHON -m $MODULE 'platform-decrease-ticket-sale' \
     'DPEP4CWn' \
-    --body '{"count": 71, "orderNo": "jXdiUv9o"}' \
+    --body '{"orderNo": "ZJjXdiUv"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 160 'IncreaseTicketSale' test.out
+eval_tap $? 159 'DecreaseTicketSale' test.out
 
-#- 161 UnlockSteamUserAchievement
+#- 160 GetTicketBoothID
+$PYTHON -m $MODULE 'platform-get-ticket-booth-id' \
+    '9owF1mQr' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 160 'GetTicketBoothID' test.out
+
+#- 161 IncreaseTicketSale
+$PYTHON -m $MODULE 'platform-increase-ticket-sale' \
+    'c03W7oOd' \
+    --body '{"count": 31, "orderNo": "Y5ZJChQt"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 161 'IncreaseTicketSale' test.out
+
+#- 162 UnlockSteamUserAchievement
 $PYTHON -m $MODULE 'platform-unlock-steam-user-achievement' \
-    'wF1mQrc0' \
-    --body '{"achievements": [{"id": "3W7oOdpY", "value": 71}], "steamUserId": "ChQtpD2U"}' \
+    'pD2U9IQz' \
+    --body '{"achievements": [{"id": "A2eexjq3", "value": 91}], "steamUserId": "fnJ6ryQ4"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 161 'UnlockSteamUserAchievement' test.out
+eval_tap $? 162 'UnlockSteamUserAchievement' test.out
 
-#- 162 GetXblUserAchievements
+#- 163 GetXblUserAchievements
 $PYTHON -m $MODULE 'platform-get-xbl-user-achievements' \
-    '9IQzA2ee' \
-    'xjq3TfnJ' \
+    'wCg5Itn9' \
+    'TYOR2n8q' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 162 'GetXblUserAchievements' test.out
+eval_tap $? 163 'GetXblUserAchievements' test.out
 
-#- 163 UpdateXblUserAchievement
+#- 164 UpdateXblUserAchievement
 $PYTHON -m $MODULE 'platform-update-xbl-user-achievement' \
-    '6ryQ4wCg' \
-    --body '{"achievements": [{"id": "5Itn9TYO", "percentComplete": 87}], "serviceConfigId": "2n8qFjjS", "titleId": "Zx0FeRdm", "xboxUserId": "gOta6pcK"}' \
+    'FjjSZx0F' \
+    --body '{"achievements": [{"id": "eRdmgOta", "percentComplete": 31}], "serviceConfigId": "cKzSPfek", "titleId": "369fIM1t", "xboxUserId": "cxwt2XqP"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 163 'UpdateXblUserAchievement' test.out
+eval_tap $? 164 'UpdateXblUserAchievement' test.out
 
-#- 164 AnonymizeCampaign
+#- 165 AnonymizeCampaign
 $PYTHON -m $MODULE 'platform-anonymize-campaign' \
-    'zSPfek36' \
+    'FaIxBgzR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 164 'AnonymizeCampaign' test.out
+eval_tap $? 165 'AnonymizeCampaign' test.out
 
-#- 165 AnonymizeEntitlement
+#- 166 AnonymizeEntitlement
 $PYTHON -m $MODULE 'platform-anonymize-entitlement' \
-    '9fIM1tcx' \
+    'O8GKycdc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 165 'AnonymizeEntitlement' test.out
+eval_tap $? 166 'AnonymizeEntitlement' test.out
 
-#- 166 AnonymizeFulfillment
+#- 167 AnonymizeFulfillment
 $PYTHON -m $MODULE 'platform-anonymize-fulfillment' \
-    'wt2XqPFa' \
+    'XuULpvuB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 166 'AnonymizeFulfillment' test.out
+eval_tap $? 167 'AnonymizeFulfillment' test.out
 
-#- 167 AnonymizeIntegration
+#- 168 AnonymizeIntegration
 $PYTHON -m $MODULE 'platform-anonymize-integration' \
-    'IxBgzRO8' \
+    'NRzUbH0h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 167 'AnonymizeIntegration' test.out
+eval_tap $? 168 'AnonymizeIntegration' test.out
 
-#- 168 AnonymizeOrder
+#- 169 AnonymizeOrder
 $PYTHON -m $MODULE 'platform-anonymize-order' \
-    'GKycdcXu' \
+    'I7yCEyjK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 168 'AnonymizeOrder' test.out
+eval_tap $? 169 'AnonymizeOrder' test.out
 
-#- 169 AnonymizePayment
+#- 170 AnonymizePayment
 $PYTHON -m $MODULE 'platform-anonymize-payment' \
-    'ULpvuBNR' \
+    'XQPnomAs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 169 'AnonymizePayment' test.out
+eval_tap $? 170 'AnonymizePayment' test.out
 
-#- 170 AnonymizeSubscription
+#- 171 AnonymizeSubscription
 $PYTHON -m $MODULE 'platform-anonymize-subscription' \
-    'zUbH0hI7' \
+    'HMpmDvt4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 170 'AnonymizeSubscription' test.out
+eval_tap $? 171 'AnonymizeSubscription' test.out
 
-#- 171 AnonymizeWallet
+#- 172 AnonymizeWallet
 $PYTHON -m $MODULE 'platform-anonymize-wallet' \
-    'yCEyjKXQ' \
+    'tkWavQ0j' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 171 'AnonymizeWallet' test.out
+eval_tap $? 172 'AnonymizeWallet' test.out
 
-#- 172 QueryUserEntitlements
+#- 173 QueryUserEntitlements
 $PYTHON -m $MODULE 'platform-query-user-entitlements' \
-    'PnomAsHM' \
+    'o17Qq6AF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 172 'QueryUserEntitlements' test.out
+eval_tap $? 173 'QueryUserEntitlements' test.out
 
-#- 173 GrantUserEntitlement
+#- 174 GrantUserEntitlement
 $PYTHON -m $MODULE 'platform-grant-user-entitlement' \
-    'pmDvt4tk' \
-    --body '[{"endDate": "1994-12-30T00:00:00Z", "grantedCode": "vQ0jo17Q", "itemId": "q6AFdE7U", "itemNamespace": "Rb19BcvW", "language": "pX_218", "quantity": 20, "region": "GwDsoo09", "source": "ACHIEVEMENT", "startDate": "1996-03-11T00:00:00Z", "storeId": "Njjtl8XI"}]' \
+    'dE7URb19' \
+    --body '[{"endDate": "1984-01-19T00:00:00Z", "grantedCode": "vWfPxHPQ", "itemId": "aUClyAjf", "itemNamespace": "GkGwDsoo", "language": "DzJn", "quantity": 39, "region": "l8XIGZV3", "source": "REWARD", "startDate": "1984-10-02T00:00:00Z", "storeId": "HxWGX4iw"}]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 173 'GrantUserEntitlement' test.out
+eval_tap $? 174 'GrantUserEntitlement' test.out
 
-#- 174 GetUserAppEntitlementByAppId
+#- 175 GetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-by-app-id' \
-    'GZV3GBXI' \
-    'HxWGX4iw' \
+    'wHLohaKv' \
+    'D9nNeLi2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 174 'GetUserAppEntitlementByAppId' test.out
+eval_tap $? 175 'GetUserAppEntitlementByAppId' test.out
 
-#- 175 QueryUserEntitlementsByAppType
+#- 176 QueryUserEntitlementsByAppType
 $PYTHON -m $MODULE 'platform-query-user-entitlements-by-app-type' \
-    'wHLohaKv' \
+    'tRrclM3o' \
     'SOFTWARE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 175 'QueryUserEntitlementsByAppType' test.out
+eval_tap $? 176 'QueryUserEntitlementsByAppType' test.out
 
-#- 176 GetUserEntitlementByItemId
+#- 177 GetUserEntitlementByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-item-id' \
-    '9nNeLi2t' \
-    'RrclM3o5' \
+    'mkWcIpWl' \
+    'bLNxQciS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 176 'GetUserEntitlementByItemId' test.out
+eval_tap $? 177 'GetUserEntitlementByItemId' test.out
 
-#- 177 GetUserEntitlementBySku
+#- 178 GetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-by-sku' \
-    'FmkWcIpW' \
-    'lbLNxQci' \
+    'm2ObiacE' \
+    '1VtVP5yW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 177 'GetUserEntitlementBySku' test.out
+eval_tap $? 178 'GetUserEntitlementBySku' test.out
 
-#- 178 ExistsAnyUserActiveEntitlement
+#- 179 ExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement' \
-    'Sm2Obiac' \
+    'KB3dhO4E' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 178 'ExistsAnyUserActiveEntitlement' test.out
+eval_tap $? 179 'ExistsAnyUserActiveEntitlement' test.out
 
-#- 179 ExistsAnyUserActiveEntitlementByItemIds
+#- 180 ExistsAnyUserActiveEntitlementByItemIds
 $PYTHON -m $MODULE 'platform-exists-any-user-active-entitlement-by-item-ids' \
-    'E1VtVP5y' \
-    '["WKB3dhO4"]' \
+    '5cHbV6Tq' \
+    '["3makniWG"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 179 'ExistsAnyUserActiveEntitlementByItemIds' test.out
+eval_tap $? 180 'ExistsAnyUserActiveEntitlementByItemIds' test.out
 
-#- 180 GetUserAppEntitlementOwnershipByAppId
+#- 181 GetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-get-user-app-entitlement-ownership-by-app-id' \
-    'E5cHbV6T' \
-    'q3makniW' \
+    '9AtaznHr' \
+    'mvF1mJZ3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 180 'GetUserAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 181 'GetUserAppEntitlementOwnershipByAppId' test.out
 
-#- 181 GetUserEntitlementOwnershipByItemId
+#- 182 GetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-item-id' \
-    'G9AtaznH' \
-    'rmvF1mJZ' \
+    'dLFxAkQr' \
+    'sQXCUjnX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 181 'GetUserEntitlementOwnershipByItemId' test.out
+eval_tap $? 182 'GetUserEntitlementOwnershipByItemId' test.out
 
-#- 182 GetUserEntitlementOwnershipByItemIds
+#- 183 GetUserEntitlementOwnershipByItemIds
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-item-ids' \
-    '3dLFxAkQ' \
+    'NZpacdMf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 182 'GetUserEntitlementOwnershipByItemIds' test.out
+eval_tap $? 183 'GetUserEntitlementOwnershipByItemIds' test.out
 
-#- 183 GetUserEntitlementOwnershipBySku
+#- 184 GetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-get-user-entitlement-ownership-by-sku' \
-    'rsQXCUjn' \
-    'XNZpacdM' \
+    'X6X3Zta5' \
+    'msSId556' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 183 'GetUserEntitlementOwnershipBySku' test.out
+eval_tap $? 184 'GetUserEntitlementOwnershipBySku' test.out
 
-#- 184 RevokeUserEntitlements
+#- 185 RevokeUserEntitlements
 $PYTHON -m $MODULE 'platform-revoke-user-entitlements' \
-    'fX6X3Zta' \
-    '5msSId55' \
+    'xncCH37z' \
+    'oQElCSNp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 184 'RevokeUserEntitlements' test.out
+eval_tap $? 185 'RevokeUserEntitlements' test.out
 
-#- 185 GetUserEntitlement
+#- 186 GetUserEntitlement
 $PYTHON -m $MODULE 'platform-get-user-entitlement' \
-    '6xncCH37' \
-    'zoQElCSN' \
+    'KYpjKmII' \
+    'b0iBSA7v' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 185 'GetUserEntitlement' test.out
+eval_tap $? 186 'GetUserEntitlement' test.out
 
-#- 186 UpdateUserEntitlement
+#- 187 UpdateUserEntitlement
 $PYTHON -m $MODULE 'platform-update-user-entitlement' \
-    'pKYpjKmI' \
-    'Ib0iBSA7' \
-    --body '{"endDate": "1981-01-26T00:00:00Z", "nullFieldList": ["LvUFJ7qN"], "startDate": "1981-01-20T00:00:00Z", "status": "INACTIVE", "useCount": 10}' \
+    'dLvUFJ7q' \
+    'N6ucqfJt' \
+    --body '{"endDate": "1974-09-11T00:00:00Z", "nullFieldList": ["D6A3kchL"], "startDate": "1981-07-05T00:00:00Z", "status": "INACTIVE", "useCount": 93}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 186 'UpdateUserEntitlement' test.out
+eval_tap $? 187 'UpdateUserEntitlement' test.out
 
-#- 187 ConsumeUserEntitlement
+#- 188 ConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-consume-user-entitlement' \
-    'Jth42FD6' \
-    'A3kchLvx' \
-    --body '{"options": ["RuULxDjX"], "useCount": 71}' \
+    'LxDjXJ9B' \
+    'FwEyGUCv' \
+    --body '{"options": ["8O9EBlPm"], "useCount": 60}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 187 'ConsumeUserEntitlement' test.out
+eval_tap $? 188 'ConsumeUserEntitlement' test.out
 
-#- 188 DisableUserEntitlement
+#- 189 DisableUserEntitlement
 $PYTHON -m $MODULE 'platform-disable-user-entitlement' \
-    '9BFwEyGU' \
-    'Cv8O9EBl' \
+    'Nb7inSCG' \
+    'zNuHpABt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 188 'DisableUserEntitlement' test.out
+eval_tap $? 189 'DisableUserEntitlement' test.out
 
-#- 189 EnableUserEntitlement
+#- 190 EnableUserEntitlement
 $PYTHON -m $MODULE 'platform-enable-user-entitlement' \
-    'PmENb7in' \
-    'SCGzNuHp' \
+    't9GgpAZj' \
+    'cg8z9cH6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 189 'EnableUserEntitlement' test.out
+eval_tap $? 190 'EnableUserEntitlement' test.out
 
-#- 190 GetUserEntitlementHistories
+#- 191 GetUserEntitlementHistories
 $PYTHON -m $MODULE 'platform-get-user-entitlement-histories' \
-    'ABtt9Ggp' \
-    'AZjcg8z9' \
+    'u6SmVFci' \
+    'DGufTZk7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 190 'GetUserEntitlementHistories' test.out
+eval_tap $? 191 'GetUserEntitlementHistories' test.out
 
-#- 191 RevokeUserEntitlement
+#- 192 RevokeUserEntitlement
 $PYTHON -m $MODULE 'platform-revoke-user-entitlement' \
-    'cH6u6SmV' \
-    'FciDGufT' \
+    'gk6nZZgU' \
+    'CWs5b2fl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 191 'RevokeUserEntitlement' test.out
+eval_tap $? 192 'RevokeUserEntitlement' test.out
 
-#- 192 FulfillItem
+#- 193 FulfillItem
 $PYTHON -m $MODULE 'platform-fulfill-item' \
-    'Zk7gk6nZ' \
-    --body '{"duration": 12, "endDate": "1994-08-09T00:00:00Z", "itemId": "Ws5b2flA", "itemSku": "nrsypCRQ", "language": "fPhfO9Ea", "order": {"currency": {"currencyCode": "mej28Jum", "currencySymbol": "6vaoBRuM", "currencyType": "VIRTUAL", "decimals": 2, "namespace": "Zvy6mJ2j"}, "ext": {"HxdpqHuB": {}}, "free": false}, "orderNo": "bSpyFVnk", "origin": "Steam", "quantity": 87, "region": "Z9gwlM0h", "source": "REDEEM_CODE", "startDate": "1999-06-14T00:00:00Z", "storeId": "8sFHE2tr"}' \
+    'AnrsypCR' \
+    --body '{"duration": 84, "endDate": "1973-11-25T00:00:00Z", "itemId": "hfO9Eame", "itemSku": "j28Jum6v", "language": "aoBRuMFZ", "order": {"currency": {"currencyCode": "bZvy6mJ2", "currencySymbol": "jHxdpqHu", "currencyType": "VIRTUAL", "decimals": 16, "namespace": "bSpyFVnk"}, "ext": {"ERZ9gwlM": {}}, "free": false}, "orderNo": "F50v8sFH", "origin": "Steam", "quantity": 38, "region": "rW2mRr4X", "source": "DLC", "startDate": "1976-10-05T00:00:00Z", "storeId": "K6APTpbu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 192 'FulfillItem' test.out
+eval_tap $? 193 'FulfillItem' test.out
 
-#- 193 RedeemCode
+#- 194 RedeemCode
 $PYTHON -m $MODULE 'platform-redeem-code' \
-    'W2mRr4XS' \
-    --body '{"code": "8ek4IK6A", "language": "tPBU-cV", "region": "oCnb0By8"}' \
+    'kLGw4HJ5' \
+    --body '{"code": "1V5Dd7JZ", "language": "cV_Yg", "region": "bfDbnZRa"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 193 'RedeemCode' test.out
+eval_tap $? 194 'RedeemCode' test.out
 
-#- 194 FulfillRewards
+#- 195 FulfillRewards
 $PYTHON -m $MODULE 'platform-fulfill-rewards' \
-    'GbfDbnZR' \
-    --body '{"origin": "Epic", "rewards": [{"currency": {"currencyCode": "sK3D9LYj", "namespace": "8f7kb4sU"}, "item": {"itemId": "5W5wrnCC", "itemSku": "7OGhuPV9", "itemType": "8XUYE5mm"}, "quantity": 3, "type": "ITEM"}], "source": "GIFT"}' \
+    'sK3D9LYj' \
+    --body '{"origin": "GooglePlay", "rewards": [{"currency": {"currencyCode": "7kb4sU5W", "namespace": "5wrnCC7O"}, "item": {"itemId": "GhuPV98X", "itemSku": "UYE5mm7b", "itemType": "HElXpNGE"}, "quantity": 92, "type": "ITEM"}], "source": "REWARD"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 194 'FulfillRewards' test.out
+eval_tap $? 195 'FulfillRewards' test.out
 
-#- 195 QueryUserIAPOrders
+#- 196 QueryUserIAPOrders
 $PYTHON -m $MODULE 'platform-query-user-iap-orders' \
-    'XpNGEUuL' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 195 'QueryUserIAPOrders' test.out
-
-#- 196 QueryAllUserIAPOrders
-$PYTHON -m $MODULE 'platform-query-all-user-iap-orders' \
     'Y9Nu31el' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 196 'QueryAllUserIAPOrders' test.out
+eval_tap $? 196 'QueryUserIAPOrders' test.out
 
-#- 197 MockFulfillIAPItem
-$PYTHON -m $MODULE 'platform-mock-fulfill-iap-item' \
+#- 197 QueryAllUserIAPOrders
+$PYTHON -m $MODULE 'platform-query-all-user-iap-orders' \
     'zdmX7gz9' \
-    --body '{"itemIdentityType": "ITEM_ID", "language": "dt", "productId": "7LyGDuYX", "region": "VurnW5P0", "type": "STADIA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 197 'MockFulfillIAPItem' test.out
+eval_tap $? 197 'QueryAllUserIAPOrders' test.out
 
-#- 198 QueryUserOrders
+#- 198 MockFulfillIAPItem
+$PYTHON -m $MODULE 'platform-mock-fulfill-iap-item' \
+    'djDT8HpJ' \
+    --body '{"itemIdentityType": "ITEM_ID", "language": "YgdU-wpzS-496", "productId": "HR1S2ZUI", "region": "C8uvkyFC", "type": "TWITCH"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 198 'MockFulfillIAPItem' test.out
+
+#- 199 QueryUserOrders
 $PYTHON -m $MODULE 'platform-query-user-orders' \
-    '13FtOvKL' \
+    'FVFMD8Rm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 198 'QueryUserOrders' test.out
+eval_tap $? 199 'QueryUserOrders' test.out
 
-#- 199 AdminCreateUserOrder
+#- 200 AdminCreateUserOrder
 $PYTHON -m $MODULE 'platform-admin-create-user-order' \
-    '3NS8Iq1r' \
-    --body '{"currencyCode": "RNyHR1S2", "currencyNamespace": "ZUIC8uvk", "discountedPrice": 49, "ext": {"FCMKBFVF": {}}, "itemId": "MD8RmFR3", "language": "7lij05gC", "options": {"skipPriceValidation": false}, "platform": "GooglePlay", "price": 46, "quantity": 45, "region": "Kmx7cjHq", "returnUrl": "zVYnt0cm", "sandbox": false}' \
+    'FR37lij0' \
+    --body '{"currencyCode": "5gCbgx9w", "currencyNamespace": "Kmx7cjHq", "discountedPrice": 51, "ext": {"VYnt0cmk": {}}, "itemId": "vnirigdj", "language": "wdDLkv0p", "options": {"skipPriceValidation": true}, "platform": "Playstation", "price": 34, "quantity": 18, "region": "Q08MafjV", "returnUrl": "6ihDDPn2", "sandbox": true}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 199 'AdminCreateUserOrder' test.out
+eval_tap $? 200 'AdminCreateUserOrder' test.out
 
-#- 200 CountOfPurchasedItem
+#- 201 CountOfPurchasedItem
 $PYTHON -m $MODULE 'platform-count-of-purchased-item' \
-    'vnirigdj' \
-    'wdDLkv0p' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 200 'CountOfPurchasedItem' test.out
-
-#- 201 GetUserOrder
-$PYTHON -m $MODULE 'platform-get-user-order' \
-    'xwrYjQ08' \
-    'MafjV6ih' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 201 'GetUserOrder' test.out
-
-#- 202 UpdateUserOrderStatus
-$PYTHON -m $MODULE 'platform-update-user-order-status' \
-    'DDPn2UOD' \
     'E5C6wjRy' \
-    --body '{"status": "FULFILLED", "statusReason": "XS6QpnJB"}' \
+    'wXS6QpnJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 202 'UpdateUserOrderStatus' test.out
+eval_tap $? 201 'CountOfPurchasedItem' test.out
 
-#- 203 FulfillUserOrder
+#- 202 GetUserOrder
+$PYTHON -m $MODULE 'platform-get-user-order' \
+    'BEzx6dWq' \
+    'AZXp1nDS' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 202 'GetUserOrder' test.out
+
+#- 203 UpdateUserOrderStatus
+$PYTHON -m $MODULE 'platform-update-user-order-status' \
+    'pnpvCuDb' \
+    'IzKZsyGX' \
+    --body '{"status": "REFUNDED", "statusReason": "JkbGq2cf"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 203 'UpdateUserOrderStatus' test.out
+
+#- 204 FulfillUserOrder
 $PYTHON -m $MODULE 'platform-fulfill-user-order' \
-    'Ezx6dWqA' \
-    'ZXp1nDSp' \
+    '2RYx5T5v' \
+    'YIU38uD0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 203 'FulfillUserOrder' test.out
+eval_tap $? 204 'FulfillUserOrder' test.out
 
-#- 204 GetUserOrderGrant
+#- 205 GetUserOrderGrant
 $PYTHON -m $MODULE 'platform-get-user-order-grant' \
-    'npvCuDbI' \
-    'zKZsyGX6' \
+    'CmguXsTI' \
+    'zKibhFZH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 204 'GetUserOrderGrant' test.out
+eval_tap $? 205 'GetUserOrderGrant' test.out
 
-#- 205 GetUserOrderHistories
+#- 206 GetUserOrderHistories
 $PYTHON -m $MODULE 'platform-get-user-order-histories' \
-    'JJkbGq2c' \
-    'f2RYx5T5' \
+    'PU1Wj69C' \
+    '0WjiFzSi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 205 'GetUserOrderHistories' test.out
+eval_tap $? 206 'GetUserOrderHistories' test.out
 
-#- 206 ProcessUserOrderNotification
+#- 207 ProcessUserOrderNotification
 $PYTHON -m $MODULE 'platform-process-user-order-notification' \
-    'vYIU38uD' \
-    '0CmguXsT' \
-    --body '{"additionalData": {"cardSummary": "IzKibhFZ"}, "authorisedTime": "1987-11-23T00:00:00Z", "chargebackReversedTime": "1994-03-11T00:00:00Z", "chargebackTime": "1985-03-13T00:00:00Z", "chargedTime": "1975-09-06T00:00:00Z", "createdTime": "1983-12-21T00:00:00Z", "currency": {"currencyCode": "iMY3Ws9F", "currencySymbol": "ISxHT2n4", "currencyType": "VIRTUAL", "decimals": 51, "namespace": "ccwccBEL"}, "customParameters": {"wGw2MtzY": {}}, "extOrderNo": "XVSOadf8", "extTxId": "DmjQPLvw", "extUserId": "UrZEieuj", "issuedAt": "1982-05-13T00:00:00Z", "metadata": {"BkdlvUCT": "avaEgxUv"}, "namespace": "iPTrKQdl", "nonceStr": "aAHqUiWY", "paymentMethod": "Y25XBucG", "paymentMethodFee": 31, "paymentOrderNo": "j0lvAm79", "paymentProvider": "CHECKOUT", "paymentProviderFee": 11, "paymentStationUrl": "AIygeL9j", "price": 81, "refundedTime": "1988-12-06T00:00:00Z", "salesTax": 52, "sandbox": false, "sku": "jxPLaTrF", "status": "REFUNDING", "statusReason": "9wj0k9J7", "subscriptionId": "zQlxTM4w", "subtotalPrice": 52, "targetNamespace": "bIaBJF8V", "targetUserId": "QfE9fBFx", "tax": 37, "totalPrice": 61, "totalTax": 5, "txEndTime": "1982-02-27T00:00:00Z", "type": "InPH6WGH", "userId": "oWLtuXx6", "vat": 67}' \
+    'MY3Ws9FI' \
+    'SxHT2n4v' \
+    --body '{"additionalData": {"cardSummary": "zccwccBE"}, "authorisedTime": "1989-06-28T00:00:00Z", "chargebackReversedTime": "1987-06-23T00:00:00Z", "chargebackTime": "1998-10-29T00:00:00Z", "chargedTime": "1980-07-21T00:00:00Z", "createdTime": "1996-12-17T00:00:00Z", "currency": {"currencyCode": "Oadf8Dmj", "currencySymbol": "QPLvwUrZ", "currencyType": "VIRTUAL", "decimals": 16, "namespace": "eujw5qBk"}, "customParameters": {"dlvUCTav": {}}, "extOrderNo": "aEgxUviP", "extTxId": "TrKQdlaA", "extUserId": "HqUiWYY2", "issuedAt": "1999-08-06T00:00:00Z", "metadata": {"ucG9pj0l": "vAm79Jif"}, "namespace": "AIygeL9j", "nonceStr": "OJQAmjxP", "paymentMethod": "LaTrFO9w", "paymentMethodFee": 19, "paymentOrderNo": "0k9J7zQl", "paymentProvider": "WALLET", "paymentProviderFee": 90, "paymentStationUrl": "M4wAbIaB", "price": 70, "refundedTime": "1986-12-03T00:00:00Z", "salesTax": 10, "sandbox": true, "sku": "9fBFxsEc", "status": "CHARGE_FAILED", "statusReason": "U3hInPH6", "subscriptionId": "WGHoWLtu", "subtotalPrice": 98, "targetNamespace": "x6HZKN3M", "targetUserId": "9BmHlEEb", "tax": 36, "totalPrice": 77, "totalTax": 81, "txEndTime": "1982-06-16T00:00:00Z", "type": "kKm55nGq", "userId": "L82Wnens", "vat": 52}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 206 'ProcessUserOrderNotification' test.out
+eval_tap $? 207 'ProcessUserOrderNotification' test.out
 
-#- 207 DownloadUserOrderReceipt
+#- 208 DownloadUserOrderReceipt
 $PYTHON -m $MODULE 'platform-download-user-order-receipt' \
-    'ZKN3M9Bm' \
-    'HlEEbsM2' \
+    '4XqDpcNJ' \
+    'f1z35hDE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 207 'DownloadUserOrderReceipt' test.out
+eval_tap $? 208 'DownloadUserOrderReceipt' test.out
 
-#- 208 CreateUserPaymentOrder
+#- 209 CreateUserPaymentOrder
 $PYTHON -m $MODULE 'platform-create-user-payment-order' \
-    'OxvkKm55' \
-    --body '{"currencyCode": "nGqL82Wn", "currencyNamespace": "ensZA4Xq", "customParameters": {"DpcNJf1z": {}}, "description": "35hDEAI2", "extOrderNo": "t0briD5L", "extUserId": "IWthO7lS", "itemType": "SUBSCRIPTION", "language": "HWW-223", "metadata": {"ojGJpQoq": "R37zyvGf"}, "notifyUrl": "BwIwUb2v", "omitNotification": false, "platform": "1Nyvf3E3", "price": 8, "recurringPaymentOrderNo": "AS5oIXUf", "region": "pQwWGai7", "returnUrl": "6ytXQXBC", "sandbox": false, "sku": "frm4ewy1", "subscriptionId": "DqBG8JjZ", "title": "FetBdgq9"}' \
+    'AI2t0bri' \
+    --body '{"currencyCode": "D5LIWthO", "currencyNamespace": "7lSGEhww", "customParameters": {"hO3BEqq6": {}}, "description": "4jTipojG", "extOrderNo": "JpQoqR37", "extUserId": "zyvGfBwI", "itemType": "MEDIA", "language": "BVxo-Ea", "metadata": {"S5oIXUfp": "QwWGai76"}, "notifyUrl": "ytXQXBCH", "omitNotification": false, "platform": "frm4ewy1", "price": 59, "recurringPaymentOrderNo": "qBG8JjZF", "region": "etBdgq9t", "returnUrl": "nIAcoMWK", "sandbox": false, "sku": "9kmxpXX8", "subscriptionId": "J38efuUG", "title": "ZB9jaeWR"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 208 'CreateUserPaymentOrder' test.out
+eval_tap $? 209 'CreateUserPaymentOrder' test.out
 
-#- 209 RefundUserPaymentOrder
+#- 210 RefundUserPaymentOrder
 $PYTHON -m $MODULE 'platform-refund-user-payment-order' \
-    'tnIAcoMW' \
-    'KJZMKj9k' \
-    --body '{"description": "mxpXX8J3"}' \
+    'zlsDdiuR' \
+    '6RZDT5q7' \
+    --body '{"description": "YcCkB6eL"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 209 'RefundUserPaymentOrder' test.out
+eval_tap $? 210 'RefundUserPaymentOrder' test.out
 
-#- 210 ApplyUserRedemption
+#- 211 ApplyUserRedemption
 $PYTHON -m $MODULE 'platform-apply-user-redemption' \
-    '8efuUGZB' \
-    --body '{"code": "9jaeWRzl", "orderNo": "sDdiuR6R"}' \
+    'uzsPaXoh' \
+    --body '{"code": "AvroQYbo", "orderNo": "fyTgKruu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 210 'ApplyUserRedemption' test.out
+eval_tap $? 211 'ApplyUserRedemption' test.out
 
-#- 211 QueryUserSubscriptions
+#- 212 QueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-query-user-subscriptions' \
-    'ZDT5q7Yc' \
+    'tbCF9DcE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 211 'QueryUserSubscriptions' test.out
+eval_tap $? 212 'QueryUserSubscriptions' test.out
 
-#- 212 GetUserSubscriptionActivities
+#- 213 GetUserSubscriptionActivities
 $PYTHON -m $MODULE 'platform-get-user-subscription-activities' \
-    'CkB6eLuz' \
+    'V3SD004R' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 212 'GetUserSubscriptionActivities' test.out
+eval_tap $? 213 'GetUserSubscriptionActivities' test.out
 
-#- 213 PlatformSubscribeSubscription
+#- 214 PlatformSubscribeSubscription
 $PYTHON -m $MODULE 'platform-platform-subscribe-subscription' \
-    'sPaXohAv' \
-    --body '{"grantDays": 34, "itemId": "oQYbofyT", "language": "gKruutbC", "reason": "F9DcEV3S", "region": "D004RRxW", "source": "aBiyCKBs"}' \
+    'RxWaBiyC' \
+    --body '{"grantDays": 72, "itemId": "BsxKfO0Q", "language": "MZpBpvQu", "reason": "O9P251BV", "region": "fUn3ZgcT", "source": "hlx4DM5M"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 213 'PlatformSubscribeSubscription' test.out
+eval_tap $? 214 'PlatformSubscribeSubscription' test.out
 
-#- 214 CheckUserSubscriptionSubscribableByItemId
+#- 215 CheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-check-user-subscription-subscribable-by-item-id' \
-    'xKfO0QMZ' \
-    'pBpvQuO9' \
+    'J2Pc8bul' \
+    'wqLyhFMe' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 214 'CheckUserSubscriptionSubscribableByItemId' test.out
+eval_tap $? 215 'CheckUserSubscriptionSubscribableByItemId' test.out
 
-#- 215 GetUserSubscription
+#- 216 GetUserSubscription
 $PYTHON -m $MODULE 'platform-get-user-subscription' \
-    'P251BVfU' \
-    'n3ZgcThl' \
+    'CxvRHmTK' \
+    '6J8Prk4d' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 215 'GetUserSubscription' test.out
+eval_tap $? 216 'GetUserSubscription' test.out
 
-#- 216 DeleteUserSubscription
+#- 217 DeleteUserSubscription
 $PYTHON -m $MODULE 'platform-delete-user-subscription' \
-    'x4DM5MJ2' \
-    'Pc8bulwq' \
+    'hQH62tYA' \
+    'MHu963tu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 216 'DeleteUserSubscription' test.out
+eval_tap $? 217 'DeleteUserSubscription' test.out
 
-#- 217 CancelSubscription
+#- 218 CancelSubscription
 $PYTHON -m $MODULE 'platform-cancel-subscription' \
-    'LyhFMeCx' \
-    'vRHmTK6J' \
-    --body '{"immediate": true, "reason": "k4dhQH62"}' \
+    'VtmjatnR' \
+    '06xDNs2S' \
+    --body '{"immediate": false, "reason": "I1hXVOD0"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 217 'CancelSubscription' test.out
+eval_tap $? 218 'CancelSubscription' test.out
 
-#- 218 GrantDaysToSubscription
+#- 219 GrantDaysToSubscription
 $PYTHON -m $MODULE 'platform-grant-days-to-subscription' \
-    'tYAMHu96' \
-    '3tuVtmja' \
-    --body '{"grantDays": 38, "reason": "nR06xDNs"}' \
+    'eAWHAN9P' \
+    'fJYqbY1o' \
+    --body '{"grantDays": 71, "reason": "TdNileWv"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 218 'GrantDaysToSubscription' test.out
+eval_tap $? 219 'GrantDaysToSubscription' test.out
 
-#- 219 GetUserSubscriptionBillingHistories
+#- 220 GetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-get-user-subscription-billing-histories' \
-    '2SWbI1hX' \
-    'VOD0eAWH' \
+    'sff1vwfz' \
+    '6XV95AYc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 219 'GetUserSubscriptionBillingHistories' test.out
+eval_tap $? 220 'GetUserSubscriptionBillingHistories' test.out
 
-#- 220 ProcessUserSubscriptionNotification
+#- 221 ProcessUserSubscriptionNotification
 $PYTHON -m $MODULE 'platform-process-user-subscription-notification' \
-    'AN9PfJYq' \
-    'bY1oJTdN' \
-    --body '{"additionalData": {"cardSummary": "ileWvsff"}, "authorisedTime": "1997-06-14T00:00:00Z", "chargebackReversedTime": "1982-02-10T00:00:00Z", "chargebackTime": "1983-08-01T00:00:00Z", "chargedTime": "1996-01-16T00:00:00Z", "createdTime": "1973-04-27T00:00:00Z", "currency": {"currencyCode": "0eecB0xt", "currencySymbol": "L3jFZOEL", "currencyType": "REAL", "decimals": 75, "namespace": "mYKsPGmu"}, "customParameters": {"AIxJmj3U": {}}, "extOrderNo": "DvN6gGLo", "extTxId": "AUPH7Sjr", "extUserId": "EfcuDTSj", "issuedAt": "1979-12-09T00:00:00Z", "metadata": {"9btDnwEz": "Msielcjx"}, "namespace": "QjMfclMX", "nonceStr": "Oz5zBKrt", "paymentMethod": "8bOHGp5P", "paymentMethodFee": 15, "paymentOrderNo": "LDgFeSh6", "paymentProvider": "XSOLLA", "paymentProviderFee": 27, "paymentStationUrl": "KHynFXOH", "price": 13, "refundedTime": "1989-04-02T00:00:00Z", "salesTax": 72, "sandbox": false, "sku": "cIlMKOlq", "status": "CHARGE_FAILED", "statusReason": "pI4Hja15", "subscriptionId": "XYvf51zc", "subtotalPrice": 55, "targetNamespace": "d5rD2Wuo", "targetUserId": "6Hrr2NbY", "tax": 93, "totalPrice": 70, "totalTax": 65, "txEndTime": "1996-03-04T00:00:00Z", "type": "JejefFKs", "userId": "LszYGFlW", "vat": 79}' \
+    'eo0eecB0' \
+    'xtL3jFZO' \
+    --body '{"additionalData": {"cardSummary": "ELdLmYKs"}, "authorisedTime": "1991-09-14T00:00:00Z", "chargebackReversedTime": "1977-06-11T00:00:00Z", "chargebackTime": "1984-09-27T00:00:00Z", "chargedTime": "1982-10-08T00:00:00Z", "createdTime": "1977-03-14T00:00:00Z", "currency": {"currencyCode": "3UDvN6gG", "currencySymbol": "LoAUPH7S", "currencyType": "REAL", "decimals": 34, "namespace": "EfcuDTSj"}, "customParameters": {"7rQ9btDn": {}}, "extOrderNo": "wEzMsiel", "extTxId": "cjxQjMfc", "extUserId": "lMXOz5zB", "issuedAt": "1989-05-17T00:00:00Z", "metadata": {"t8bOHGp5": "P78hLDgF"}, "namespace": "eSh6EnKH", "nonceStr": "ynFXOH8g", "paymentMethod": "KVlK1fcI", "paymentMethodFee": 22, "paymentOrderNo": "MKOlq53u", "paymentProvider": "PAYPAL", "paymentProviderFee": 69, "paymentStationUrl": "4Hja15XY", "price": 42, "refundedTime": "1973-07-21T00:00:00Z", "salesTax": 4, "sandbox": true, "sku": "d5rD2Wuo", "status": "NOTIFICATION_OF_CHARGEBACK", "statusReason": "rr2NbYUJ", "subscriptionId": "GZiJejef", "subtotalPrice": 63, "targetNamespace": "KsLszYGF", "targetUserId": "lWNm21v9", "tax": 2, "totalPrice": 42, "totalTax": 15, "txEndTime": "1981-07-07T00:00:00Z", "type": "pnWueDoX", "userId": "qziW0pPT", "vat": 72}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 220 'ProcessUserSubscriptionNotification' test.out
+eval_tap $? 221 'ProcessUserSubscriptionNotification' test.out
 
-#- 221 AcquireUserTicket
+#- 222 AcquireUserTicket
 $PYTHON -m $MODULE 'platform-acquire-user-ticket' \
-    'm21v93bv' \
-    'huxpnWue' \
-    --body '{"count": 58, "orderNo": "oXqziW0p"}' \
+    'lfM7OLcw' \
+    'hNQ0ISPj' \
+    --body '{"count": 77, "orderNo": "A5wYj4TN"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 221 'AcquireUserTicket' test.out
+eval_tap $? 222 'AcquireUserTicket' test.out
 
-#- 222 QueryUserCurrencyWallets
+#- 223 QueryUserCurrencyWallets
 $PYTHON -m $MODULE 'platform-query-user-currency-wallets' \
-    'PTKlfM7O' \
+    'oMAawH8Q' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 222 'QueryUserCurrencyWallets' test.out
+eval_tap $? 223 'QueryUserCurrencyWallets' test.out
 
-#- 223 ListUserCurrencyTransactions
+#- 224 ListUserCurrencyTransactions
 $PYTHON -m $MODULE 'platform-list-user-currency-transactions' \
-    'LcwhNQ0I' \
-    'SPjMA5wY' \
+    'DHVdTqEM' \
+    'lF2AUpoh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 223 'ListUserCurrencyTransactions' test.out
+eval_tap $? 224 'ListUserCurrencyTransactions' test.out
 
-#- 224 CheckWallet
-eval_tap 0 224 'CheckWallet # SKIP deprecated' test.out
+#- 225 CheckWallet
+eval_tap 0 225 'CheckWallet # SKIP deprecated' test.out
 
-#- 225 CreditUserWallet
+#- 226 CreditUserWallet
 $PYTHON -m $MODULE 'platform-credit-user-wallet' \
-    'j4TNoMAa' \
-    'wH8QDHVd' \
-    --body '{"amount": 90, "expireAt": "1979-08-29T00:00:00Z", "origin": "Twitch", "reason": "lF2AUpoh", "source": "REDEEM_CODE"}' \
+    'DiAhJuGj' \
+    'wVionKla' \
+    --body '{"amount": 56, "expireAt": "1979-11-19T00:00:00Z", "origin": "IOS", "reason": "06kgIwCr", "source": "REDEEM_CODE"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 225 'CreditUserWallet' test.out
+eval_tap $? 226 'CreditUserWallet' test.out
 
-#- 226 PayWithUserWallet
+#- 227 PayWithUserWallet
 $PYTHON -m $MODULE 'platform-pay-with-user-wallet' \
-    'iAhJuGjw' \
-    'VionKlaC' \
-    --body '{"amount": 35, "walletPlatform": "IOS"}' \
+    'gelT8zVC' \
+    '1YeUyHaX' \
+    --body '{"amount": 32, "walletPlatform": "Playstation"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 226 'PayWithUserWallet' test.out
+eval_tap $? 227 'PayWithUserWallet' test.out
 
-#- 227 GetUserWallet
-eval_tap 0 227 'GetUserWallet # SKIP deprecated' test.out
+#- 228 GetUserWallet
+eval_tap 0 228 'GetUserWallet # SKIP deprecated' test.out
 
-#- 228 DebitUserWallet
-eval_tap 0 228 'DebitUserWallet # SKIP deprecated' test.out
+#- 229 DebitUserWallet
+eval_tap 0 229 'DebitUserWallet # SKIP deprecated' test.out
 
-#- 229 DisableUserWallet
-eval_tap 0 229 'DisableUserWallet # SKIP deprecated' test.out
+#- 230 DisableUserWallet
+eval_tap 0 230 'DisableUserWallet # SKIP deprecated' test.out
 
-#- 230 EnableUserWallet
-eval_tap 0 230 'EnableUserWallet # SKIP deprecated' test.out
+#- 231 EnableUserWallet
+eval_tap 0 231 'EnableUserWallet # SKIP deprecated' test.out
 
-#- 231 ListUserWalletTransactions
-eval_tap 0 231 'ListUserWalletTransactions # SKIP deprecated' test.out
+#- 232 ListUserWalletTransactions
+eval_tap 0 232 'ListUserWalletTransactions # SKIP deprecated' test.out
 
-#- 232 QueryWallets
-eval_tap 0 232 'QueryWallets # SKIP deprecated' test.out
+#- 233 QueryWallets
+eval_tap 0 233 'QueryWallets # SKIP deprecated' test.out
 
-#- 233 GetWallet
-eval_tap 0 233 'GetWallet # SKIP deprecated' test.out
+#- 234 GetWallet
+eval_tap 0 234 'GetWallet # SKIP deprecated' test.out
 
-#- 234 SyncOrders
+#- 235 SyncOrders
 $PYTHON -m $MODULE 'platform-sync-orders' \
-    '06kgIwCr' \
-    'EgelT8zV' \
+    'mhwd575J' \
+    'hR80UC9R' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 234 'SyncOrders' test.out
+eval_tap $? 235 'SyncOrders' test.out
 
-#- 235 TestAdyenConfig
+#- 236 TestAdyenConfig
 $PYTHON -m $MODULE 'platform-test-adyen-config' \
-    --body '{"allowedPaymentMethods": ["C1YeUyHa"], "apiKey": "XqQxmhwd", "authoriseAsCapture": false, "blockedPaymentMethods": ["R80UC9RF"], "clientKey": "vtxvMfwn", "dropInSettings": "QfvyXL00", "liveEndpointUrlPrefix": "wCE65MfN", "merchantAccount": "t8OIy8S0", "notificationHmacKey": "YmPqh1yY", "notificationPassword": "Yw5DgqWT", "notificationUsername": "zS93flME", "returnUrl": "y3MrRfCD", "settings": "tYmnBmWW"}' \
+    --body '{"allowedPaymentMethods": ["FvtxvMfw"], "apiKey": "nQfvyXL0", "authoriseAsCapture": true, "blockedPaymentMethods": ["CE65MfNt"], "clientKey": "8OIy8S0Y", "dropInSettings": "mPqh1yYY", "liveEndpointUrlPrefix": "w5DgqWTz", "merchantAccount": "S93flMEy", "notificationHmacKey": "3MrRfCDt", "notificationPassword": "YmnBmWWs", "notificationUsername": "oEqxMV23", "returnUrl": "JYjtET8O", "settings": "ONm1ccFA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 235 'TestAdyenConfig' test.out
+eval_tap $? 236 'TestAdyenConfig' test.out
 
-#- 236 TestAliPayConfig
+#- 237 TestAliPayConfig
 $PYTHON -m $MODULE 'platform-test-ali-pay-config' \
-    --body '{"appId": "soEqxMV2", "privateKey": "3JYjtET8", "publicKey": "OONm1ccF", "returnUrl": "AQh3NhEA"}' \
+    --body '{"appId": "Qh3NhEAG", "privateKey": "DA9kOIP1", "publicKey": "a4swJXie", "returnUrl": "A6PNyI4Z"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 236 'TestAliPayConfig' test.out
+eval_tap $? 237 'TestAliPayConfig' test.out
 
-#- 237 TestCheckoutConfig
+#- 238 TestCheckoutConfig
 $PYTHON -m $MODULE 'platform-test-checkout-config' \
-    --body '{"publicKey": "GDA9kOIP", "secretKey": "1a4swJXi"}' \
+    --body '{"publicKey": "D8ZALgmN", "secretKey": "weJppm1W"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 237 'TestCheckoutConfig' test.out
+eval_tap $? 238 'TestCheckoutConfig' test.out
 
-#- 238 DebugMatchedPaymentMerchantConfig
+#- 239 DebugMatchedPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-merchant-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 238 'DebugMatchedPaymentMerchantConfig' test.out
+eval_tap $? 239 'DebugMatchedPaymentMerchantConfig' test.out
 
-#- 239 TestPayPalConfig
+#- 240 TestPayPalConfig
 $PYTHON -m $MODULE 'platform-test-pay-pal-config' \
-    --body '{"clientID": "eA6PNyI4", "clientSecret": "ZD8ZALgm", "returnUrl": "NweJppm1", "webHookId": "WA5zpzKW"}' \
+    --body '{"clientID": "A5zpzKWy", "clientSecret": "KNzBoL7E", "returnUrl": "Q3TeNMSN", "webHookId": "Nex5dlwu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 239 'TestPayPalConfig' test.out
+eval_tap $? 240 'TestPayPalConfig' test.out
 
-#- 240 TestStripeConfig
+#- 241 TestStripeConfig
 $PYTHON -m $MODULE 'platform-test-stripe-config' \
-    --body '{"allowedPaymentMethodTypes": ["yKNzBoL7"], "publishableKey": "EQ3TeNMS", "secretKey": "NNex5dlw", "webhookSecret": "ul2qhfwy"}' \
+    --body '{"allowedPaymentMethodTypes": ["l2qhfwy7"], "publishableKey": "4gW8E4cH", "secretKey": "gyXCFX94", "webhookSecret": "MtRGGL68"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 240 'TestStripeConfig' test.out
+eval_tap $? 241 'TestStripeConfig' test.out
 
-#- 241 TestWxPayConfig
+#- 242 TestWxPayConfig
 $PYTHON -m $MODULE 'platform-test-wx-pay-config' \
-    --body '{"appId": "74gW8E4c", "key": "HgyXCFX9", "mchid": "4MtRGGL6", "returnUrl": "8tek2UNj"}' \
+    --body '{"appId": "tek2UNjs", "key": "gQKca6Ow", "mchid": "ZuwyOkSQ", "returnUrl": "htXEMam6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 241 'TestWxPayConfig' test.out
+eval_tap $? 242 'TestWxPayConfig' test.out
 
-#- 242 TestXsollaConfig
+#- 243 TestXsollaConfig
 $PYTHON -m $MODULE 'platform-test-xsolla-config' \
-    --body '{"apiKey": "sgQKca6O", "flowCompletionUrl": "wZuwyOkS", "merchantId": 84, "projectId": 15, "projectSecretKey": "tXEMam6I"}' \
+    --body '{"apiKey": "Ib7k8cIh", "flowCompletionUrl": "leApHrsu", "merchantId": 48, "projectId": 19, "projectSecretKey": "jbdrzATu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 242 'TestXsollaConfig' test.out
+eval_tap $? 243 'TestXsollaConfig' test.out
 
-#- 243 GetPaymentMerchantConfig
+#- 244 GetPaymentMerchantConfig
 $PYTHON -m $MODULE 'platform-get-payment-merchant-config' \
-    'b7k8cIhl' \
+    'Leuen91R' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 243 'GetPaymentMerchantConfig' test.out
+eval_tap $? 244 'GetPaymentMerchantConfig' test.out
 
-#- 244 UpdateAdyenConfig
+#- 245 UpdateAdyenConfig
 $PYTHON -m $MODULE 'platform-update-adyen-config' \
-    'eApHrsu9' \
-    --body '{"allowedPaymentMethods": ["yZjjbdrz"], "apiKey": "ATuLeuen", "authoriseAsCapture": false, "blockedPaymentMethods": ["VpH8Acac"], "clientKey": "lJ9CLnaY", "dropInSettings": "pzlQ2x3E", "liveEndpointUrlPrefix": "nMj99gEy", "merchantAccount": "4Sy9nZid", "notificationHmacKey": "lJ6t4AmH", "notificationPassword": "iTuje6S8", "notificationUsername": "7DePRQBj", "returnUrl": "ep2Is3AN", "settings": "mYmXhUrI"}' \
+    'QMkVpH8A' \
+    --body '{"allowedPaymentMethods": ["caclJ9CL"], "apiKey": "naYpzlQ2", "authoriseAsCapture": true, "blockedPaymentMethods": ["3EnMj99g"], "clientKey": "Ey4Sy9nZ", "dropInSettings": "idlJ6t4A", "liveEndpointUrlPrefix": "mHiTuje6", "merchantAccount": "S87DePRQ", "notificationHmacKey": "Bjep2Is3", "notificationPassword": "ANmYmXhU", "notificationUsername": "rICHQ1Tr", "returnUrl": "mIdK8DmY", "settings": "PF6gpPJK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 244 'UpdateAdyenConfig' test.out
+eval_tap $? 245 'UpdateAdyenConfig' test.out
 
-#- 245 TestAdyenConfigById
+#- 246 TestAdyenConfigById
 $PYTHON -m $MODULE 'platform-test-adyen-config-by-id' \
-    'CHQ1TrmI' \
+    '9qL0Emqe' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 245 'TestAdyenConfigById' test.out
+eval_tap $? 246 'TestAdyenConfigById' test.out
 
-#- 246 UpdateAliPayConfig
+#- 247 UpdateAliPayConfig
 $PYTHON -m $MODULE 'platform-update-ali-pay-config' \
-    'dK8DmYPF' \
-    --body '{"appId": "6gpPJK9q", "privateKey": "L0Emqezb", "publicKey": "Fm0Y5OsH", "returnUrl": "aOOyB4Kp"}' \
+    'zbFm0Y5O' \
+    --body '{"appId": "sHaOOyB4", "privateKey": "Kp7hzU9H", "publicKey": "aTyWFQlL", "returnUrl": "w8K5eorx"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 246 'UpdateAliPayConfig' test.out
+eval_tap $? 247 'UpdateAliPayConfig' test.out
 
-#- 247 TestAliPayConfigById
+#- 248 TestAliPayConfigById
 $PYTHON -m $MODULE 'platform-test-ali-pay-config-by-id' \
-    '7hzU9HaT' \
+    'H1KFuEYy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 247 'TestAliPayConfigById' test.out
+eval_tap $? 248 'TestAliPayConfigById' test.out
 
-#- 248 UpdateCheckoutConfig
+#- 249 UpdateCheckoutConfig
 $PYTHON -m $MODULE 'platform-update-checkout-config' \
-    'yWFQlLw8' \
-    --body '{"publicKey": "K5eorxH1", "secretKey": "KFuEYygH"}' \
+    'gH2i0Cbn' \
+    --body '{"publicKey": "gOhbnr1d", "secretKey": "Awa0f9bD"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 248 'UpdateCheckoutConfig' test.out
+eval_tap $? 249 'UpdateCheckoutConfig' test.out
 
-#- 249 TestCheckoutConfigById
+#- 250 TestCheckoutConfigById
 $PYTHON -m $MODULE 'platform-test-checkout-config-by-id' \
-    '2i0CbngO' \
+    'masQwUIm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 249 'TestCheckoutConfigById' test.out
+eval_tap $? 250 'TestCheckoutConfigById' test.out
 
-#- 250 UpdatePayPalConfig
+#- 251 UpdatePayPalConfig
 $PYTHON -m $MODULE 'platform-update-pay-pal-config' \
-    'hbnr1dAw' \
-    --body '{"clientID": "a0f9bDma", "clientSecret": "sQwUImnI", "returnUrl": "PZ2s9WLU", "webHookId": "OBr8ZsOM"}' \
+    'nIPZ2s9W' \
+    --body '{"clientID": "LUOBr8Zs", "clientSecret": "OMLNA3BJ", "returnUrl": "6xnFtsrd", "webHookId": "JPTHSCY5"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 250 'UpdatePayPalConfig' test.out
+eval_tap $? 251 'UpdatePayPalConfig' test.out
 
-#- 251 TestPayPalConfigById
+#- 252 TestPayPalConfigById
 $PYTHON -m $MODULE 'platform-test-pay-pal-config-by-id' \
-    'LNA3BJ6x' \
+    'CUxUobAt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 251 'TestPayPalConfigById' test.out
+eval_tap $? 252 'TestPayPalConfigById' test.out
 
-#- 252 UpdateStripeConfig
+#- 253 UpdateStripeConfig
 $PYTHON -m $MODULE 'platform-update-stripe-config' \
-    'nFtsrdJP' \
-    --body '{"allowedPaymentMethodTypes": ["THSCY5CU"], "publishableKey": "xUobAtEe", "secretKey": "ZgYwX4Ax", "webhookSecret": "nhDDe36H"}' \
+    'EeZgYwX4' \
+    --body '{"allowedPaymentMethodTypes": ["AxnhDDe3"], "publishableKey": "6HMeSdRZ", "secretKey": "dfbGUCVi", "webhookSecret": "BiK43SHB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 252 'UpdateStripeConfig' test.out
+eval_tap $? 253 'UpdateStripeConfig' test.out
 
-#- 253 TestStripeConfigById
+#- 254 TestStripeConfigById
 $PYTHON -m $MODULE 'platform-test-stripe-config-by-id' \
-    'MeSdRZdf' \
+    'qN3FrZ27' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 253 'TestStripeConfigById' test.out
+eval_tap $? 254 'TestStripeConfigById' test.out
 
-#- 254 UpdateWxPayConfig
+#- 255 UpdateWxPayConfig
 $PYTHON -m $MODULE 'platform-update-wx-pay-config' \
-    'bGUCViBi' \
-    --body '{"appId": "K43SHBqN", "key": "3FrZ27sT", "mchid": "WO1j8CNG", "returnUrl": "KXB1PHd0"}' \
+    'sTWO1j8C' \
+    --body '{"appId": "NGKXB1PH", "key": "d0dAJRMq", "mchid": "4Xl4dhRn", "returnUrl": "jEOdEWLJ"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 254 'UpdateWxPayConfig' test.out
+eval_tap $? 255 'UpdateWxPayConfig' test.out
 
-#- 255 UpdateWxPayConfigCert
+#- 256 UpdateWxPayConfigCert
 $PYTHON -m $MODULE 'platform-update-wx-pay-config-cert' \
-    'dAJRMq4X' \
+    'wo4jNJYK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 255 'UpdateWxPayConfigCert' test.out
+eval_tap $? 256 'UpdateWxPayConfigCert' test.out
 
-#- 256 TestWxPayConfigById
+#- 257 TestWxPayConfigById
 $PYTHON -m $MODULE 'platform-test-wx-pay-config-by-id' \
-    'l4dhRnjE' \
+    'gGYPryjv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 256 'TestWxPayConfigById' test.out
+eval_tap $? 257 'TestWxPayConfigById' test.out
 
-#- 257 UpdateXsollaConfig
+#- 258 UpdateXsollaConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-config' \
-    'OdEWLJwo' \
-    --body '{"apiKey": "4jNJYKgG", "flowCompletionUrl": "YPryjvsO", "merchantId": 83, "projectId": 12, "projectSecretKey": "nUW9TYFx"}' \
+    'sOPgnUW9' \
+    --body '{"apiKey": "TYFxn34w", "flowCompletionUrl": "V03oJwyC", "merchantId": 98, "projectId": 7, "projectSecretKey": "XlDay1d5"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 257 'UpdateXsollaConfig' test.out
+eval_tap $? 258 'UpdateXsollaConfig' test.out
 
-#- 258 TestXsollaConfigById
+#- 259 TestXsollaConfigById
 $PYTHON -m $MODULE 'platform-test-xsolla-config-by-id' \
-    'n34wV03o' \
+    'wzQ8Mi5e' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 258 'TestXsollaConfigById' test.out
+eval_tap $? 259 'TestXsollaConfigById' test.out
 
-#- 259 UpdateXsollaUIConfig
+#- 260 UpdateXsollaUIConfig
 $PYTHON -m $MODULE 'platform-update-xsolla-ui-config' \
-    'JwyCXdXl' \
-    --body '{"device": "MOBILE", "showCloseButton": false, "size": "MEDIUM", "theme": "DARK"}' \
+    '6YQR2j2N' \
+    --body '{"device": "MOBILE", "showCloseButton": true, "size": "MEDIUM", "theme": "DEFAULT_DARK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 259 'UpdateXsollaUIConfig' test.out
+eval_tap $? 260 'UpdateXsollaUIConfig' test.out
 
-#- 260 QueryPaymentProviderConfig
+#- 261 QueryPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-query-payment-provider-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 260 'QueryPaymentProviderConfig' test.out
+eval_tap $? 261 'QueryPaymentProviderConfig' test.out
 
-#- 261 CreatePaymentProviderConfig
+#- 262 CreatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-create-payment-provider-config' \
-    --body '{"aggregate": "XSOLLA", "namespace": "zQ8Mi5e6", "region": "YQR2j2Nw", "sandboxTaxJarApiToken": "EyTQqkyp", "specials": ["CHECKOUT"], "taxJarApiToken": "j3GNMz7F", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}' \
+    --body '{"aggregate": "XSOLLA", "namespace": "kypjj3GN", "region": "Mz7FCius", "sandboxTaxJarApiToken": "iVRT3F9T", "specials": ["PAYPAL"], "taxJarApiToken": "WFoOAWpC", "taxJarEnabled": false, "useGlobalTaxJarApiToken": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 261 'CreatePaymentProviderConfig' test.out
+eval_tap $? 262 'CreatePaymentProviderConfig' test.out
 
-#- 262 GetAggregatePaymentProviders
+#- 263 GetAggregatePaymentProviders
 $PYTHON -m $MODULE 'platform-get-aggregate-payment-providers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 262 'GetAggregatePaymentProviders' test.out
+eval_tap $? 263 'GetAggregatePaymentProviders' test.out
 
-#- 263 DebugMatchedPaymentProviderConfig
+#- 264 DebugMatchedPaymentProviderConfig
 $PYTHON -m $MODULE 'platform-debug-matched-payment-provider-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 263 'DebugMatchedPaymentProviderConfig' test.out
+eval_tap $? 264 'DebugMatchedPaymentProviderConfig' test.out
 
-#- 264 GetSpecialPaymentProviders
+#- 265 GetSpecialPaymentProviders
 $PYTHON -m $MODULE 'platform-get-special-payment-providers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 264 'GetSpecialPaymentProviders' test.out
+eval_tap $? 265 'GetSpecialPaymentProviders' test.out
 
-#- 265 UpdatePaymentProviderConfig
+#- 266 UpdatePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-update-payment-provider-config' \
-    'usiVRT3F' \
-    --body '{"aggregate": "ADYEN", "namespace": "WFoOAWpC", "region": "JKnXYo8e", "sandboxTaxJarApiToken": "tpjdAxIs", "specials": ["WXPAY"], "taxJarApiToken": "ZC3Lj7ou", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}' \
+    '8etpjdAx' \
+    --body '{"aggregate": "XSOLLA", "namespace": "zZC3Lj7o", "region": "urPcaznS", "sandboxTaxJarApiToken": "H2Cxs5k0", "specials": ["WXPAY"], "taxJarApiToken": "iVIvGckJ", "taxJarEnabled": true, "useGlobalTaxJarApiToken": true}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 265 'UpdatePaymentProviderConfig' test.out
+eval_tap $? 266 'UpdatePaymentProviderConfig' test.out
 
-#- 266 DeletePaymentProviderConfig
+#- 267 DeletePaymentProviderConfig
 $PYTHON -m $MODULE 'platform-delete-payment-provider-config' \
-    'aznSH2Cx' \
+    'SmRQBGDN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 266 'DeletePaymentProviderConfig' test.out
+eval_tap $? 267 'DeletePaymentProviderConfig' test.out
 
-#- 267 GetPaymentTaxConfig
+#- 268 GetPaymentTaxConfig
 $PYTHON -m $MODULE 'platform-get-payment-tax-config' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 267 'GetPaymentTaxConfig' test.out
+eval_tap $? 268 'GetPaymentTaxConfig' test.out
 
-#- 268 UpdatePaymentTaxConfig
+#- 269 UpdatePaymentTaxConfig
 $PYTHON -m $MODULE 'platform-update-payment-tax-config' \
-    --body '{"sandboxTaxJarApiToken": "s5k0AiVI", "taxJarApiToken": "vGckJ4Uy", "taxJarEnabled": true, "taxJarProductCodesMapping": {"SmRQBGDN": "gfJbtT26"}}' \
+    --body '{"sandboxTaxJarApiToken": "gfJbtT26", "taxJarApiToken": "RB4dllAO", "taxJarEnabled": true, "taxJarProductCodesMapping": {"Alx2pzgH": "47Jmh8F9"}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 268 'UpdatePaymentTaxConfig' test.out
+eval_tap $? 269 'UpdatePaymentTaxConfig' test.out
 
-#- 269 SyncPaymentOrders
+#- 270 SyncPaymentOrders
 $PYTHON -m $MODULE 'platform-sync-payment-orders' \
-    'RB4dllAO' \
-    'yAlx2pzg' \
+    'rVlUOhh6' \
+    'OgcWFoDk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 269 'SyncPaymentOrders' test.out
+eval_tap $? 270 'SyncPaymentOrders' test.out
 
-#- 270 PublicGetRootCategories
+#- 271 PublicGetRootCategories
 $PYTHON -m $MODULE 'platform-public-get-root-categories' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 270 'PublicGetRootCategories' test.out
+eval_tap $? 271 'PublicGetRootCategories' test.out
 
-#- 271 DownloadCategories
+#- 272 DownloadCategories
 $PYTHON -m $MODULE 'platform-download-categories' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 271 'DownloadCategories' test.out
+eval_tap $? 272 'DownloadCategories' test.out
 
-#- 272 PublicGetCategory
+#- 273 PublicGetCategory
 $PYTHON -m $MODULE 'platform-public-get-category' \
-    'H47Jmh8F' \
+    'Ywud3hXX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 272 'PublicGetCategory' test.out
+eval_tap $? 273 'PublicGetCategory' test.out
 
-#- 273 PublicGetChildCategories
+#- 274 PublicGetChildCategories
 $PYTHON -m $MODULE 'platform-public-get-child-categories' \
-    '9rVlUOhh' \
+    'T8cAMMjF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 273 'PublicGetChildCategories' test.out
+eval_tap $? 274 'PublicGetChildCategories' test.out
 
-#- 274 PublicGetDescendantCategories
+#- 275 PublicGetDescendantCategories
 $PYTHON -m $MODULE 'platform-public-get-descendant-categories' \
-    '6OgcWFoD' \
+    'UukAbWMl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 274 'PublicGetDescendantCategories' test.out
+eval_tap $? 275 'PublicGetDescendantCategories' test.out
 
-#- 275 PublicListCurrencies
+#- 276 PublicListCurrencies
 $PYTHON -m $MODULE 'platform-public-list-currencies' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 275 'PublicListCurrencies' test.out
+eval_tap $? 276 'PublicListCurrencies' test.out
 
-#- 276 PublicGetItemByAppId
+#- 277 PublicGetItemByAppId
 $PYTHON -m $MODULE 'platform-public-get-item-by-app-id' \
-    'kYwud3hX' \
+    'moskPfZl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 276 'PublicGetItemByAppId' test.out
+eval_tap $? 277 'PublicGetItemByAppId' test.out
 
-#- 277 PublicQueryItems
+#- 278 PublicQueryItems
 $PYTHON -m $MODULE 'platform-public-query-items' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 277 'PublicQueryItems' test.out
+eval_tap $? 278 'PublicQueryItems' test.out
 
-#- 278 PublicGetItemBySku
+#- 279 PublicGetItemBySku
 $PYTHON -m $MODULE 'platform-public-get-item-by-sku' \
-    'XT8cAMMj' \
+    'nfHna8np' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 278 'PublicGetItemBySku' test.out
+eval_tap $? 279 'PublicGetItemBySku' test.out
 
-#- 279 PublicBulkGetItems
+#- 280 PublicBulkGetItems
 $PYTHON -m $MODULE 'platform-public-bulk-get-items' \
-    'FUukAbWM' \
+    'NIaZA6bG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 279 'PublicBulkGetItems' test.out
+eval_tap $? 280 'PublicBulkGetItems' test.out
 
-#- 280 PublicValidateItemPurchaseCondition
+#- 281 PublicValidateItemPurchaseCondition
 $PYTHON -m $MODULE 'platform-public-validate-item-purchase-condition' \
-    --body '{"itemIds": ["lmoskPfZ"]}' \
+    --body '{"itemIds": ["j3weTlX2"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 280 'PublicValidateItemPurchaseCondition' test.out
+eval_tap $? 281 'PublicValidateItemPurchaseCondition' test.out
 
-#- 281 PublicSearchItems
+#- 282 PublicSearchItems
 $PYTHON -m $MODULE 'platform-public-search-items' \
-    'lnfHna8n' \
-    'pNIaZA6b' \
+    'frnV4SnI' \
+    '56iSamKf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 281 'PublicSearchItems' test.out
+eval_tap $? 282 'PublicSearchItems' test.out
 
-#- 282 PublicGetApp
+#- 283 PublicGetApp
 $PYTHON -m $MODULE 'platform-public-get-app' \
-    'Gj3weTlX' \
+    'voBCNAFl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 282 'PublicGetApp' test.out
+eval_tap $? 283 'PublicGetApp' test.out
 
-#- 283 PublicGetItemDynamicData
+#- 284 PublicGetItemDynamicData
 $PYTHON -m $MODULE 'platform-public-get-item-dynamic-data' \
-    '2frnV4Sn' \
+    'c2UDrxci' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 283 'PublicGetItemDynamicData' test.out
+eval_tap $? 284 'PublicGetItemDynamicData' test.out
 
-#- 284 PublicGetItem
+#- 285 PublicGetItem
 $PYTHON -m $MODULE 'platform-public-get-item' \
-    'I56iSamK' \
+    'FB3t7Su8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 284 'PublicGetItem' test.out
+eval_tap $? 285 'PublicGetItem' test.out
 
-#- 285 GetPaymentCustomization
-eval_tap 0 285 'GetPaymentCustomization # SKIP deprecated' test.out
+#- 286 GetPaymentCustomization
+eval_tap 0 286 'GetPaymentCustomization # SKIP deprecated' test.out
 
-#- 286 PublicGetPaymentUrl
+#- 287 PublicGetPaymentUrl
 $PYTHON -m $MODULE 'platform-public-get-payment-url' \
-    --body '{"paymentOrderNo": "fvoBCNAF", "paymentProvider": "CHECKOUT", "returnUrl": "c2UDrxci", "ui": "FB3t7Su8", "zipCode": "87Ey5S3E"}' \
+    --body '{"paymentOrderNo": "87Ey5S3E", "paymentProvider": "STRIPE", "returnUrl": "ksPusIsd", "ui": "tH5nDyVn", "zipCode": "0dADUFds"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 286 'PublicGetPaymentUrl' test.out
+eval_tap $? 287 'PublicGetPaymentUrl' test.out
 
-#- 287 PublicGetPaymentMethods
+#- 288 PublicGetPaymentMethods
 $PYTHON -m $MODULE 'platform-public-get-payment-methods' \
-    'sksPusIs' \
+    'q2oLRcIg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 287 'PublicGetPaymentMethods' test.out
+eval_tap $? 288 'PublicGetPaymentMethods' test.out
 
-#- 288 PublicGetUnpaidPaymentOrder
+#- 289 PublicGetUnpaidPaymentOrder
 $PYTHON -m $MODULE 'platform-public-get-unpaid-payment-order' \
-    'dtH5nDyV' \
+    'berqiArH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 288 'PublicGetUnpaidPaymentOrder' test.out
+eval_tap $? 289 'PublicGetUnpaidPaymentOrder' test.out
 
-#- 289 Pay
+#- 290 Pay
 $PYTHON -m $MODULE 'platform-pay' \
-    'n0dADUFd' \
-    --body '{"token": "sq2oLRcI"}' \
+    'PblrPveO' \
+    --body '{"token": "BBV9k49I"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 289 'Pay' test.out
+eval_tap $? 290 'Pay' test.out
 
-#- 290 PublicCheckPaymentOrderPaidStatus
+#- 291 PublicCheckPaymentOrderPaidStatus
 $PYTHON -m $MODULE 'platform-public-check-payment-order-paid-status' \
-    'gberqiAr' \
+    'eIHNjkoj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 290 'PublicCheckPaymentOrderPaidStatus' test.out
+eval_tap $? 291 'PublicCheckPaymentOrderPaidStatus' test.out
 
-#- 291 GetPaymentPublicConfig
+#- 292 GetPaymentPublicConfig
 $PYTHON -m $MODULE 'platform-get-payment-public-config' \
     'ADYEN' \
-    'lrPveOBB' \
+    'Ady9CDCc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 291 'GetPaymentPublicConfig' test.out
+eval_tap $? 292 'GetPaymentPublicConfig' test.out
 
-#- 292 PublicGetQRCode
+#- 293 PublicGetQRCode
 $PYTHON -m $MODULE 'platform-public-get-qr-code' \
-    'V9k49IeI' \
+    '6KWWGrLJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 292 'PublicGetQRCode' test.out
+eval_tap $? 293 'PublicGetQRCode' test.out
 
-#- 293 PublicNormalizePaymentReturnUrl
+#- 294 PublicNormalizePaymentReturnUrl
 $PYTHON -m $MODULE 'platform-public-normalize-payment-return-url' \
-    'HNjkojdA' \
-    'dy9CDCc6' \
-    'STRIPE' \
-    'LJj7aNoA' \
+    'j7aNoAWv' \
+    '2gXLP7el' \
+    'PAYPAL' \
+    'z4qzOrsR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 293 'PublicNormalizePaymentReturnUrl' test.out
+eval_tap $? 294 'PublicNormalizePaymentReturnUrl' test.out
 
-#- 294 GetPaymentTaxValue
+#- 295 GetPaymentTaxValue
 $PYTHON -m $MODULE 'platform-get-payment-tax-value' \
-    'Wv2gXLP7' \
+    'ps4NnGGx' \
     'ALIPAY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 294 'GetPaymentTaxValue' test.out
+eval_tap $? 295 'GetPaymentTaxValue' test.out
 
-#- 295 GetRewardByCode
+#- 296 GetRewardByCode
 $PYTHON -m $MODULE 'platform-get-reward-by-code' \
-    'lmz4qzOr' \
+    'LzGbmQPl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 295 'GetRewardByCode' test.out
+eval_tap $? 296 'GetRewardByCode' test.out
 
-#- 296 QueryRewards1
+#- 297 QueryRewards1
 $PYTHON -m $MODULE 'platform-query-rewards-1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 296 'QueryRewards1' test.out
+eval_tap $? 297 'QueryRewards1' test.out
 
-#- 297 GetReward1
+#- 298 GetReward1
 $PYTHON -m $MODULE 'platform-get-reward-1' \
-    'sRps4NnG' \
+    'b8usTL87' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 297 'GetReward1' test.out
+eval_tap $? 298 'GetReward1' test.out
 
-#- 298 PublicListStores
+#- 299 PublicListStores
 $PYTHON -m $MODULE 'platform-public-list-stores' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 298 'PublicListStores' test.out
+eval_tap $? 299 'PublicListStores' test.out
 
-#- 299 PublicExistsAnyMyActiveEntitlement
+#- 300 PublicExistsAnyMyActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-my-active-entitlement' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 299 'PublicExistsAnyMyActiveEntitlement' test.out
+eval_tap $? 300 'PublicExistsAnyMyActiveEntitlement' test.out
 
-#- 300 PublicGetMyAppEntitlementOwnershipByAppId
+#- 301 PublicGetMyAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-my-app-entitlement-ownership-by-app-id' \
-    'GxfLzGbm' \
+    'xMPcqN6K' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 300 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 301 'PublicGetMyAppEntitlementOwnershipByAppId' test.out
 
-#- 301 PublicGetMyEntitlementOwnershipByItemId
+#- 302 PublicGetMyEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-item-id' \
-    'QPlb8usT' \
+    'f3uB7Rko' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 301 'PublicGetMyEntitlementOwnershipByItemId' test.out
+eval_tap $? 302 'PublicGetMyEntitlementOwnershipByItemId' test.out
 
-#- 302 PublicGetMyEntitlementOwnershipBySku
+#- 303 PublicGetMyEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-my-entitlement-ownership-by-sku' \
-    'L87xMPcq' \
+    'HPclOsJa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 302 'PublicGetMyEntitlementOwnershipBySku' test.out
+eval_tap $? 303 'PublicGetMyEntitlementOwnershipBySku' test.out
 
-#- 303 PublicGetEntitlementOwnershipToken
+#- 304 PublicGetEntitlementOwnershipToken
 $PYTHON -m $MODULE 'platform-public-get-entitlement-ownership-token' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 303 'PublicGetEntitlementOwnershipToken' test.out
+eval_tap $? 304 'PublicGetEntitlementOwnershipToken' test.out
 
-#- 304 PublicGetMyWallet
+#- 305 PublicGetMyWallet
 $PYTHON -m $MODULE 'platform-public-get-my-wallet' \
-    'N6Kf3uB7' \
+    'D4RbVS0C' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 304 'PublicGetMyWallet' test.out
+eval_tap $? 305 'PublicGetMyWallet' test.out
 
-#- 305 SyncEpicGameDLC
+#- 306 SyncEpicGameDLC
 $PYTHON -m $MODULE 'platform-sync-epic-game-dlc' \
-    'RkoHPclO' \
-    --body '{"epicGamesJwtToken": "sJaD4RbV"}' \
+    'nsf4H98g' \
+    --body '{"epicGamesJwtToken": "jXlNYVv6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 305 'SyncEpicGameDLC' test.out
+eval_tap $? 306 'SyncEpicGameDLC' test.out
 
-#- 306 PublicSyncPsnDlcInventory
+#- 307 PublicSyncPsnDlcInventory
 $PYTHON -m $MODULE 'platform-public-sync-psn-dlc-inventory' \
-    'S0Cnsf4H' \
-    --body '{"serviceLabel": 12}' \
+    'BjfSEeqt' \
+    --body '{"serviceLabel": 76}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 306 'PublicSyncPsnDlcInventory' test.out
+eval_tap $? 307 'PublicSyncPsnDlcInventory' test.out
 
-#- 307 SyncSteamDLC
+#- 308 SyncSteamDLC
 $PYTHON -m $MODULE 'platform-sync-steam-dlc' \
-    'jXlNYVv6' \
-    --body '{"appId": "BjfSEeqt", "steamId": "MeNJSNg3"}' \
+    'eNJSNg3A' \
+    --body '{"appId": "JJU1oQnL", "steamId": "DQsMpjdB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 307 'SyncSteamDLC' test.out
+eval_tap $? 308 'SyncSteamDLC' test.out
 
-#- 308 SyncXboxDLC
+#- 309 SyncXboxDLC
 $PYTHON -m $MODULE 'platform-sync-xbox-dlc' \
-    'AJJU1oQn' \
-    --body '{"xstsToken": "LDQsMpjd"}' \
+    'KWrShZRZ' \
+    --body '{"xstsToken": "YP6m3rqG"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 308 'SyncXboxDLC' test.out
+eval_tap $? 309 'SyncXboxDLC' test.out
 
-#- 309 PublicQueryUserEntitlements
+#- 310 PublicQueryUserEntitlements
 $PYTHON -m $MODULE 'platform-public-query-user-entitlements' \
-    'BKWrShZR' \
+    '4IPMsbpz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 309 'PublicQueryUserEntitlements' test.out
+eval_tap $? 310 'PublicQueryUserEntitlements' test.out
 
-#- 310 PublicGetUserAppEntitlementByAppId
+#- 311 PublicGetUserAppEntitlementByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-by-app-id' \
-    'ZYP6m3rq' \
-    'G4IPMsbp' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 310 'PublicGetUserAppEntitlementByAppId' test.out
-
-#- 311 PublicQueryUserEntitlementsByAppType
-$PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
-    'zDZ1nbgt' \
-    'SOFTWARE' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 311 'PublicQueryUserEntitlementsByAppType' test.out
-
-#- 312 PublicGetUserEntitlementByItemId
-$PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
+    'DZ1nbgtD' \
     '5OViuZaI' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 311 'PublicGetUserAppEntitlementByAppId' test.out
+
+#- 312 PublicQueryUserEntitlementsByAppType
+$PYTHON -m $MODULE 'platform-public-query-user-entitlements-by-app-type' \
     '7Jv2evnH' \
+    'DEMO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 312 'PublicGetUserEntitlementByItemId' test.out
+eval_tap $? 312 'PublicQueryUserEntitlementsByAppType' test.out
 
-#- 313 PublicGetUserEntitlementBySku
+#- 313 PublicGetUserEntitlementByItemId
+$PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-item-id' \
+    'cDM73Dkq' \
+    'ohzhINjw' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 313 'PublicGetUserEntitlementByItemId' test.out
+
+#- 314 PublicGetUserEntitlementBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-by-sku' \
-    'bcDM73Dk' \
-    'qohzhINj' \
+    'DfIe7xos' \
+    'lK0BMQF7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 313 'PublicGetUserEntitlementBySku' test.out
+eval_tap $? 314 'PublicGetUserEntitlementBySku' test.out
 
-#- 314 PublicExistsAnyUserActiveEntitlement
+#- 315 PublicExistsAnyUserActiveEntitlement
 $PYTHON -m $MODULE 'platform-public-exists-any-user-active-entitlement' \
-    'wDfIe7xo' \
+    'VvTIqMBj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 314 'PublicExistsAnyUserActiveEntitlement' test.out
+eval_tap $? 315 'PublicExistsAnyUserActiveEntitlement' test.out
 
-#- 315 PublicGetUserAppEntitlementOwnershipByAppId
+#- 316 PublicGetUserAppEntitlementOwnershipByAppId
 $PYTHON -m $MODULE 'platform-public-get-user-app-entitlement-ownership-by-app-id' \
-    'slK0BMQF' \
-    '7VvTIqMB' \
+    'CCBKnPi4' \
+    'rFNHcvCK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 315 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
+eval_tap $? 316 'PublicGetUserAppEntitlementOwnershipByAppId' test.out
 
-#- 316 PublicGetUserEntitlementOwnershipByItemId
+#- 317 PublicGetUserEntitlementOwnershipByItemId
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-id' \
-    'jCCBKnPi' \
-    '4rFNHcvC' \
+    'N66VCNAT' \
+    'hE5WzjPh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 316 'PublicGetUserEntitlementOwnershipByItemId' test.out
+eval_tap $? 317 'PublicGetUserEntitlementOwnershipByItemId' test.out
 
-#- 317 PublicGetUserEntitlementOwnershipByItemIds
+#- 318 PublicGetUserEntitlementOwnershipByItemIds
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-item-ids' \
-    'KN66VCNA' \
+    'yLOQJxnb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 317 'PublicGetUserEntitlementOwnershipByItemIds' test.out
+eval_tap $? 318 'PublicGetUserEntitlementOwnershipByItemIds' test.out
 
-#- 318 PublicGetUserEntitlementOwnershipBySku
+#- 319 PublicGetUserEntitlementOwnershipBySku
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement-ownership-by-sku' \
-    'ThE5WzjP' \
-    'hyLOQJxn' \
+    'ExCczwhR' \
+    'oWp6lkuH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 318 'PublicGetUserEntitlementOwnershipBySku' test.out
+eval_tap $? 319 'PublicGetUserEntitlementOwnershipBySku' test.out
 
-#- 319 PublicGetUserEntitlement
+#- 320 PublicGetUserEntitlement
 $PYTHON -m $MODULE 'platform-public-get-user-entitlement' \
-    'bExCczwh' \
-    'RoWp6lku' \
+    'P8buZiH2' \
+    'GRmQR4At' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 319 'PublicGetUserEntitlement' test.out
+eval_tap $? 320 'PublicGetUserEntitlement' test.out
 
-#- 320 PublicConsumeUserEntitlement
+#- 321 PublicConsumeUserEntitlement
 $PYTHON -m $MODULE 'platform-public-consume-user-entitlement' \
-    'HP8buZiH' \
-    '2GRmQR4A' \
-    --body '{"options": ["tntPilLE"], "useCount": 17}' \
+    'ntPilLE8' \
+    'i8KPrA5P' \
+    --body '{"options": ["yjRz6eP9"], "useCount": 68}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 320 'PublicConsumeUserEntitlement' test.out
+eval_tap $? 321 'PublicConsumeUserEntitlement' test.out
 
-#- 321 PublicRedeemCode
+#- 322 PublicRedeemCode
 $PYTHON -m $MODULE 'platform-public-redeem-code' \
-    '8KPrA5Py' \
-    --body '{"code": "jRz6eP98", "language": "TQGO", "region": "Lj5tZDX9"}' \
+    'tqgopWhL' \
+    --body '{"code": "j5tZDX9f", "language": "qa_FC", "region": "WdRdhZ5K"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 321 'PublicRedeemCode' test.out
+eval_tap $? 322 'PublicRedeemCode' test.out
 
-#- 322 PublicFulfillAppleIAPItem
+#- 323 PublicFulfillAppleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-apple-iap-item' \
-    'fbQAYktQ' \
-    --body '{"excludeOldTransactions": false, "language": "VF", "productId": "RdhZ5Kj6", "receiptData": "MACiufnG", "region": "qyyq7F9a", "transactionId": "CoZstPAU"}' \
+    'j6MACiuf' \
+    --body '{"excludeOldTransactions": false, "language": "QYYQ_OzST-cY", "productId": "6xDIxbzI", "receiptData": "RjsgW7qJ", "region": "KLGYvWQ0", "transactionId": "T9y9ULje"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 322 'PublicFulfillAppleIAPItem' test.out
+eval_tap $? 323 'PublicFulfillAppleIAPItem' test.out
 
-#- 323 SyncEpicGamesInventory
+#- 324 SyncEpicGamesInventory
 $PYTHON -m $MODULE 'platform-sync-epic-games-inventory' \
-    'Cl2eCy6x' \
-    --body '{"epicGamesJwtToken": "DIxbzIRj"}' \
+    '9SYEdqFT' \
+    --body '{"epicGamesJwtToken": "DjabG5HA"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 323 'SyncEpicGamesInventory' test.out
+eval_tap $? 324 'SyncEpicGamesInventory' test.out
 
-#- 324 PublicFulfillGoogleIAPItem
+#- 325 PublicFulfillGoogleIAPItem
 $PYTHON -m $MODULE 'platform-public-fulfill-google-iap-item' \
-    'sgW7qJKL' \
-    --body '{"autoAck": true, "language": "tYul", "orderId": "9SYEdqFT", "packageName": "DjabG5HA", "productId": "ufl1c4Sh", "purchaseTime": 47, "purchaseToken": "cc4KF44G", "region": "sn5ewnln"}' \
+    'ufl1c4Sh' \
+    --body '{"autoAck": true, "language": "Ck-EWNL", "orderId": "49JNf4B4", "packageName": "LTFAbVqp", "productId": "d5OiYOUC", "purchaseTime": 67, "purchaseToken": "EDiDw1OG", "region": "oQx3PQmY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 324 'PublicFulfillGoogleIAPItem' test.out
+eval_tap $? 325 'PublicFulfillGoogleIAPItem' test.out
 
-#- 325 PublicReconcilePlayStationStore
+#- 326 PublicReconcilePlayStationStore
 $PYTHON -m $MODULE 'platform-public-reconcile-play-station-store' \
-    '49JNf4B4' \
-    --body '{"currencyCode": "LTFAbVqp", "price": 0.04831045050001437, "productId": "OiYOUCHE", "serviceLabel": 59}' \
+    'e1qncZKQ' \
+    --body '{"currencyCode": "gFGrSQzT", "price": 0.7109629952614805, "productId": "PWqs6TNp", "serviceLabel": 20}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 325 'PublicReconcilePlayStationStore' test.out
+eval_tap $? 326 'PublicReconcilePlayStationStore' test.out
 
-#- 326 SyncStadiaEntitlement
+#- 327 SyncStadiaEntitlement
 $PYTHON -m $MODULE 'platform-sync-stadia-entitlement' \
-    'iDw1OGoQ' \
-    --body '{"appId": "x3PQmYe1", "language": "NCz-493", "region": "k09JnLu8", "stadiaPlayerId": "mQz6huRB"}' \
+    '09JnLu8m' \
+    --body '{"appId": "Qz6huRB8", "language": "tdh_622", "region": "CIhkMiso", "stadiaPlayerId": "OPhEeg9R"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 326 'SyncStadiaEntitlement' test.out
+eval_tap $? 327 'SyncStadiaEntitlement' test.out
 
-#- 327 SyncSteamInventory
+#- 328 SyncSteamInventory
 $PYTHON -m $MODULE 'platform-sync-steam-inventory' \
-    '8ETD3HQi' \
-    --body '{"appId": "rZLaWMQt", "currencyCode": "U4oyjkCI", "language": "Km_EG", "price": 0.9597131064658917, "productId": "71nKBYT1", "region": "IjDPnThU", "steamId": "OAIPTVYr"}' \
+    '71nKBYT1' \
+    --body '{"appId": "IjDPnThU", "currencyCode": "OAIPTVYr", "language": "CQw-VHAW_135", "price": 0.3640657019839858, "productId": "YhtVuokj", "region": "xPn7cwvL", "steamId": "E15HSXy5"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 327 'SyncSteamInventory' test.out
+eval_tap $? 328 'SyncSteamInventory' test.out
 
-#- 328 SyncTwitchDropsEntitlement
+#- 329 SyncTwitchDropsEntitlement
 $PYTHON -m $MODULE 'platform-sync-twitch-drops-entitlement' \
-    'ucqWKPIZ' \
-    --body '{"gameId": "t5yavhaw", "language": "XOXy_XXXy", "region": "tVuokjxP"}' \
+    'CyY5Nfd2' \
+    --body '{"gameId": "1S2ZtC4Y", "language": "cO", "region": "XhWin1Nh"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 328 'SyncTwitchDropsEntitlement' test.out
+eval_tap $? 329 'SyncTwitchDropsEntitlement' test.out
 
-#- 329 SyncXboxInventory
+#- 330 SyncXboxInventory
 $PYTHON -m $MODULE 'platform-sync-xbox-inventory' \
-    'n7cwvLE1' \
-    --body '{"currencyCode": "5HSXy5Cy", "price": 0.7924043379834449, "productId": "Nfd21S2Z", "xstsToken": "tC4YkCoa"}' \
+    '6x6BmifM' \
+    --body '{"currencyCode": "Kt10stX6", "price": 0.12468580343037816, "productId": "kmTM6E9J", "xstsToken": "8SdcHhH6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 329 'SyncXboxInventory' test.out
+eval_tap $? 330 'SyncXboxInventory' test.out
 
-#- 330 PublicQueryUserOrders
+#- 331 PublicQueryUserOrders
 $PYTHON -m $MODULE 'platform-public-query-user-orders' \
-    'dXhWin1N' \
+    'KJxjLE1q' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 330 'PublicQueryUserOrders' test.out
+eval_tap $? 331 'PublicQueryUserOrders' test.out
 
-#- 331 PublicCreateUserOrder
+#- 332 PublicCreateUserOrder
 $PYTHON -m $MODULE 'platform-public-create-user-order' \
-    'h6x6Bmif' \
-    --body '{"currencyCode": "MKt10stX", "discountedPrice": 15, "ext": {"qkmTM6E9": {}}, "itemId": "J8SdcHhH", "language": "jXJl-iuRo-995", "price": 79, "quantity": 4, "region": "SBzlOZYs", "returnUrl": "zWZKRbDZ"}' \
+    '2WaIU35r' \
+    --body '{"currencyCode": "91OzKJ72", "discountedPrice": 53, "ext": {"rVZ9sKYM": {}}, "itemId": "vNcSBzlO", "language": "Zwz-qE", "price": 73, "quantity": 88, "region": "h1pax9HY", "returnUrl": "KxpJKcaT"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 331 'PublicCreateUserOrder' test.out
+eval_tap $? 332 'PublicCreateUserOrder' test.out
 
-#- 332 PublicGetUserOrder
+#- 333 PublicGetUserOrder
 $PYTHON -m $MODULE 'platform-public-get-user-order' \
-    'Aia8QeKS' \
-    'h1pax9HY' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 332 'PublicGetUserOrder' test.out
-
-#- 333 PublicCancelUserOrder
-$PYTHON -m $MODULE 'platform-public-cancel-user-order' \
-    'KxpJKcaT' \
     'A7WKun0r' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 333 'PublicCancelUserOrder' test.out
-
-#- 334 PublicGetUserOrderHistories
-$PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
     '5L18Eu2X' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 333 'PublicGetUserOrder' test.out
+
+#- 334 PublicCancelUserOrder
+$PYTHON -m $MODULE 'platform-public-cancel-user-order' \
     'ZttabV1r' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 334 'PublicGetUserOrderHistories' test.out
-
-#- 335 PublicDownloadUserOrderReceipt
-$PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
     'W55tquIV' \
-    '3h86PKV7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 335 'PublicDownloadUserOrderReceipt' test.out
+eval_tap $? 334 'PublicCancelUserOrder' test.out
 
-#- 336 PublicGetPaymentAccounts
-$PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
+#- 335 PublicGetUserOrderHistories
+$PYTHON -m $MODULE 'platform-public-get-user-order-histories' \
+    '3h86PKV7' \
     't0XZH4j3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 336 'PublicGetPaymentAccounts' test.out
+eval_tap $? 335 'PublicGetUserOrderHistories' test.out
 
-#- 337 PublicDeletePaymentAccount
-$PYTHON -m $MODULE 'platform-public-delete-payment-account' \
+#- 336 PublicDownloadUserOrderReceipt
+$PYTHON -m $MODULE 'platform-public-download-user-order-receipt' \
     'CPiWTJBs' \
+    'z9lOZT6f' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 336 'PublicDownloadUserOrderReceipt' test.out
+
+#- 337 PublicGetPaymentAccounts
+$PYTHON -m $MODULE 'platform-public-get-payment-accounts' \
+    'coT420K5' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 337 'PublicGetPaymentAccounts' test.out
+
+#- 338 PublicDeletePaymentAccount
+$PYTHON -m $MODULE 'platform-public-delete-payment-account' \
+    'eOIsp2YS' \
     'paypal' \
-    '9lOZT6fc' \
+    'LvRgemaf' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 337 'PublicDeletePaymentAccount' test.out
+eval_tap $? 338 'PublicDeletePaymentAccount' test.out
 
-#- 338 PublicQueryUserSubscriptions
+#- 339 PublicQueryUserSubscriptions
 $PYTHON -m $MODULE 'platform-public-query-user-subscriptions' \
-    'oT420K5e' \
+    'YQzNu1QR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 338 'PublicQueryUserSubscriptions' test.out
+eval_tap $? 339 'PublicQueryUserSubscriptions' test.out
 
-#- 339 PublicSubscribeSubscription
+#- 340 PublicSubscribeSubscription
 $PYTHON -m $MODULE 'platform-public-subscribe-subscription' \
-    'OIsp2YSD' \
-    --body '{"currencyCode": "LvRgemaf", "itemId": "YQzNu1QR", "language": "rD-TcUz-425", "region": "z7effH0K", "returnUrl": "yszQ0Yez", "source": "IEB0YzHg"}' \
+    'fRdqsx3t' \
+    --body '{"currencyCode": "CuZEy2QF", "itemId": "HaqVkSvz", "language": "FF-qyEZ-590", "region": "PVRKHS2N", "returnUrl": "ibIlEcVV", "source": "gRmbbGV9"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 339 'PublicSubscribeSubscription' test.out
+eval_tap $? 340 'PublicSubscribeSubscription' test.out
 
-#- 340 PublicCheckUserSubscriptionSubscribableByItemId
+#- 341 PublicCheckUserSubscriptionSubscribableByItemId
 $PYTHON -m $MODULE 'platform-public-check-user-subscription-subscribable-by-item-id' \
-    'wKOWVbPV' \
-    'RKHS2Nib' \
+    'g8IGQzVP' \
+    'QjRBbpwO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 340 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
+eval_tap $? 341 'PublicCheckUserSubscriptionSubscribableByItemId' test.out
 
-#- 341 PublicGetUserSubscription
+#- 342 PublicGetUserSubscription
 $PYTHON -m $MODULE 'platform-public-get-user-subscription' \
-    'IlEcVVgR' \
-    'mbbGV9g8' \
+    'MItC4XPf' \
+    'SOqQKWIT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 341 'PublicGetUserSubscription' test.out
+eval_tap $? 342 'PublicGetUserSubscription' test.out
 
-#- 342 PublicChangeSubscriptionBillingAccount
+#- 343 PublicChangeSubscriptionBillingAccount
 $PYTHON -m $MODULE 'platform-public-change-subscription-billing-account' \
-    'IGQzVPQj' \
-    'RBbpwOMI' \
+    'KcLjAZM5' \
+    'z0I03Uz8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 342 'PublicChangeSubscriptionBillingAccount' test.out
+eval_tap $? 343 'PublicChangeSubscriptionBillingAccount' test.out
 
-#- 343 PublicCancelSubscription
+#- 344 PublicCancelSubscription
 $PYTHON -m $MODULE 'platform-public-cancel-subscription' \
-    'tC4XPfSO' \
-    'qQKWITKc' \
-    --body '{"immediate": false, "reason": "AZM5z0I0"}' \
+    'o4UMy3n5' \
+    'mQfrJnvz' \
+    --body '{"immediate": true, "reason": "yX5g6KmV"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 343 'PublicCancelSubscription' test.out
+eval_tap $? 344 'PublicCancelSubscription' test.out
 
-#- 344 PublicGetUserSubscriptionBillingHistories
+#- 345 PublicGetUserSubscriptionBillingHistories
 $PYTHON -m $MODULE 'platform-public-get-user-subscription-billing-histories' \
-    '3Uz8o4UM' \
-    'y3n5mQfr' \
+    'vOMGdfwN' \
+    'tsNU2MJZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 344 'PublicGetUserSubscriptionBillingHistories' test.out
+eval_tap $? 345 'PublicGetUserSubscriptionBillingHistories' test.out
 
-#- 345 PublicGetWallet
+#- 346 PublicGetWallet
 $PYTHON -m $MODULE 'platform-public-get-wallet' \
-    'JnvzCyX5' \
-    'g6KmVvOM' \
+    'YO6kojew' \
+    '8LgE0hRy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 345 'PublicGetWallet' test.out
+eval_tap $? 346 'PublicGetWallet' test.out
 
-#- 346 PublicListUserWalletTransactions
+#- 347 PublicListUserWalletTransactions
 $PYTHON -m $MODULE 'platform-public-list-user-wallet-transactions' \
-    'GdfwNtsN' \
-    'U2MJZYO6' \
+    'w2fyo14f' \
+    'SAucPigz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 346 'PublicListUserWalletTransactions' test.out
+eval_tap $? 347 'PublicListUserWalletTransactions' test.out
 
 
 fi
