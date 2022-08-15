@@ -83,7 +83,9 @@ def parse_args():
 
 
 # noinspection PyShadowingBuiltins
-def should_skip(test_case: str, filter: Optional[str] = None, exclude: Optional[str] = None) -> bool:
+def should_skip(
+    test_case: str, filter: Optional[str] = None, exclude: Optional[str] = None
+) -> bool:
     if filter is not None and not re.match(filter, test_case):
         return True
     if exclude is not None and re.match(exclude, test_case):
@@ -97,15 +99,15 @@ def load_tests_from_module(
     module,
     filter: Optional[str] = None,
     exclude: Optional[str] = None,
-    **kwargs
+    **kwargs,
 ) -> List[unittest.TestSuite]:
     tests = []
     for name in dir(module):
         obj = getattr(module, name)
         if (
-            isinstance(obj, type) and
-            obj != unittest.case.TestCase and
-            issubclass(obj, unittest.case.TestCase)
+            isinstance(obj, type)
+            and obj != unittest.case.TestCase
+            and issubclass(obj, unittest.case.TestCase)
         ):
             if should_skip(obj.__name__, filter=filter, exclude=exclude):
                 continue
@@ -161,7 +163,9 @@ def main(*args, **kwargs) -> None:
         if dotenv_file and use_dotenv:
             tests.sample_apps.how_to.DOTENV_FILE = dotenv_file
 
-        how_to_tests = load_tests_from_module(loader, tests.sample_apps.how_to, **kwargs)
+        how_to_tests = load_tests_from_module(
+            loader, tests.sample_apps.how_to, **kwargs
+        )
 
         results_integration = runner.run(how_to_tests)
         results["test_integration"] = results_integration.wasSuccessful()

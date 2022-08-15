@@ -5,24 +5,43 @@ from datetime import datetime, timedelta
 
 
 from accelbyte_py_sdk.api.platform.models.localization import Localization
-from accelbyte_py_sdk.api.platform.models.region_data_item import CurrencyTypeEnum, RegionDataItem
+from accelbyte_py_sdk.api.platform.models.region_data_item import (
+    CurrencyTypeEnum,
+    RegionDataItem,
+)
 
 from ._integration_test_case import IntegrationTestCase
 
-from accelbyte_py_sdk.api.platform import create_store, list_stores, delete_store, create_category, create_item
-from accelbyte_py_sdk.api.seasonpass import create_season, update_season, get_season, delete_season
+from accelbyte_py_sdk.api.platform import (
+    create_store,
+    list_stores,
+    delete_store,
+    create_category,
+    create_item,
+)
+from accelbyte_py_sdk.api.seasonpass import (
+    create_season,
+    update_season,
+    get_season,
+    delete_season,
+)
 from accelbyte_py_sdk.api.platform.models.store_info import StoreInfo
 from accelbyte_py_sdk.api.platform.models.store_create import StoreCreate
 from accelbyte_py_sdk.api.platform.models.category_create import CategoryCreate
 from accelbyte_py_sdk.api.platform.models.full_item_info import FullItemInfo
-from accelbyte_py_sdk.api.platform.models.item_create import EntitlementTypeEnum, ItemCreate, ItemTypeEnum, SeasonTypeEnum
+from accelbyte_py_sdk.api.platform.models.item_create import (
+    EntitlementTypeEnum,
+    ItemCreate,
+    ItemTypeEnum,
+    SeasonTypeEnum,
+)
 from accelbyte_py_sdk.api.seasonpass.models.season_create import SeasonCreate
 from accelbyte_py_sdk.api.seasonpass.models.season_update import SeasonUpdate
 
 
 class SeasonPassTestCase(IntegrationTestCase):
-    namespace : str = os.environ.get("AB_NAMESPACE", "") 
-    storeTitle : str = "Python Server SDK Season Store"
+    namespace: str = os.environ.get("AB_NAMESPACE", "")
+    storeTitle: str = "Python Server SDK Season Store"
 
     def do_get_store(self) -> StoreInfo:
         result, error = list_stores(
@@ -31,27 +50,27 @@ class SeasonPassTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         if len(result) > 0:
             return result[0]
-        body = StoreCreate() \
-            .with_default_language("en-US") \
-            .with_default_region("US")\
-            .with_title(self.storeTitle) \
+        body = (
+            StoreCreate()
+            .with_default_language("en-US")
+            .with_default_region("US")
+            .with_title(self.storeTitle)
             .with_description(self.storeTitle)
-        result, error = create_store(
-            namespace=self.namespace,
-            body=body)
+        )
+        result, error = create_store(namespace=self.namespace, body=body)
         return result
 
-    def do_get_store_tier_item(self, store_id : str) -> FullItemInfo:
+    def do_get_store_tier_item(self, store_id: str) -> FullItemInfo:
         # create store category
 
         categoryPath = f'/{str(uuid4()).replace("-", "")}'
-        body = CategoryCreate() \
-            .with_category_path(categoryPath) \
-            .with_localization_display_names({"en-US" : categoryPath})
+        body = (
+            CategoryCreate()
+            .with_category_path(categoryPath)
+            .with_localization_display_names({"en-US": categoryPath})
+        )
         result, error = create_category(
-            namespace=self.namespace,
-            store_id=store_id,
-            body=body
+            namespace=self.namespace, store_id=store_id, body=body
         )
         self.assertIsNone(error, error)
 
@@ -60,26 +79,28 @@ class SeasonPassTestCase(IntegrationTestCase):
         itemName = "Item_SEASON_Tier1"
         itemPrice = 0
         currencyCode = "USD"
-        body = ItemCreate() \
-            .with_category_path(categoryPath) \
-            .with_entitlement_type(EntitlementTypeEnum.DURABLE) \
-            .with_item_type(ItemTypeEnum.SEASON) \
-            .with_localizations({
-                    "en-US" : Localization().with_title(itemName)
-                }) \
-            .with_name(itemName) \
-            .with_region_data({
-                    "US" : [RegionDataItem()\
-                        .with_currency_code(currencyCode) \
-                        .with_currency_namespace(self.namespace) \
-                        .with_currency_type(CurrencyTypeEnum.REAL) \
-                        .with_price(itemPrice)]
-                }) \
+        body = (
+            ItemCreate()
+            .with_category_path(categoryPath)
+            .with_entitlement_type(EntitlementTypeEnum.DURABLE)
+            .with_item_type(ItemTypeEnum.SEASON)
+            .with_localizations({"en-US": Localization().with_title(itemName)})
+            .with_name(itemName)
+            .with_region_data(
+                {
+                    "US": [
+                        RegionDataItem()
+                        .with_currency_code(currencyCode)
+                        .with_currency_namespace(self.namespace)
+                        .with_currency_type(CurrencyTypeEnum.REAL)
+                        .with_price(itemPrice)
+                    ]
+                }
+            )
             .with_season_type(SeasonTypeEnum.TIER)
+        )
         result, error = create_item(
-            namespace=self.namespace,
-            store_id=store_id,
-            body = body
+            namespace=self.namespace, store_id=store_id, body=body
         )
         self.assertIsNone(error, error)
 
@@ -95,7 +116,6 @@ class SeasonPassTestCase(IntegrationTestCase):
                 _, error = delete_store(store_id=storeInfo.store_id)
                 self.assertIsNone(error, error)
 
-
     def test_season_crud(self):
         # arrange - store
 
@@ -110,18 +130,19 @@ class SeasonPassTestCase(IntegrationTestCase):
         seasonName = "PythonServerSDKTestSeason"
         seasonRequiredExp = 100
         timeNow = datetime.now()
-        body = SeasonCreate() \
-            .with_name(seasonName) \
-            .with_start(timeNow.replace(microsecond=0).isoformat()) \
-            .with_end((timeNow + timedelta(days=7)).replace(microsecond=0).isoformat()) \
-            .with_default_required_exp(seasonRequiredExp) \
-            .with_draft_store_id(seasonStore.store_id) \
-            .with_tier_item_id(seasonStoreItemTier.item_id) \
-            .with_localizations({"en" : Localization().with_title("English").with_description("English")})
-        result, error = create_season(
-            namespace=self.namespace,
-            body = body
+        body = (
+            SeasonCreate()
+            .with_name(seasonName)
+            .with_start(timeNow.replace(microsecond=0).isoformat())
+            .with_end((timeNow + timedelta(days=7)).replace(microsecond=0).isoformat())
+            .with_default_required_exp(seasonRequiredExp)
+            .with_draft_store_id(seasonStore.store_id)
+            .with_tier_item_id(seasonStoreItemTier.item_id)
+            .with_localizations(
+                {"en": Localization().with_title("English").with_description("English")}
+            )
         )
+        result, error = create_season(namespace=self.namespace, body=body)
 
         # assert - create season
 
@@ -132,25 +153,19 @@ class SeasonPassTestCase(IntegrationTestCase):
 
         seasonId = result.id_
         updatedSeasonName = "UpdatedPythonServerSDKTestSeason"
-        body = SeasonUpdate() \
-            .with_name(updatedSeasonName)
+        body = SeasonUpdate().with_name(updatedSeasonName)
         result, error = update_season(
-            namespace=self.namespace,
-            season_id=seasonId,
-            body=body
+            namespace=self.namespace, season_id=seasonId, body=body
         )
 
         # assert - update season
-        
+
         self.assertIsNone(error, error)
         self.assertIsNotNone(result)
 
         # act - get season
 
-        result, error = get_season(
-            namespace=self.namespace,
-            season_id=seasonId
-        )
+        result, error = get_season(namespace=self.namespace, season_id=seasonId)
 
         # assert - get season
 
@@ -160,15 +175,11 @@ class SeasonPassTestCase(IntegrationTestCase):
 
         # act - delete season
 
-        result, error = delete_season(
-            namespace=self.namespace,
-            season_id=seasonId
-        )
+        result, error = delete_season(namespace=self.namespace, season_id=seasonId)
 
         # assert - delete season
 
         self.assertIsNone(error, error)
-        
 
     def tearDown(self) -> None:
         self.do_delete_all_draft_stores()
