@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.21.0
+- Remove references to Justice and replaced it with AccelByte Cloud.
+- Remove Obsolete Core Mocked tests.
+- Add QOSM and Season Pass integration tests.
+- Updated spec for AccelByte Cloud v3.29.0.
+
 ## v0.20.0
 - ! Only 4XX and 5XX **undocumented** responses are considered as an error.
     ```python
