@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  python3.9
+
+  SAM Template for tic-tac-toe-app
+
+# Globals
+#   More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 60
+    Tracing: Active
+
+Resources:
+  # Function Resource
+  #   More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  TicTacToeFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: tic_tac_toe/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      # Specifies the events that trigger this function.
+      # Events consist of a type and a set of properties that depend on the type.
+      #   Required: Yes
+      #   More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+      Events:
+        TicTacToe:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+      # The Amazon Resource Name (ARN) of the function's execution role.
+      #   Required: Yes
+      Role: ''
+      # For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC.
+      #   Required: Yes
+      #   More info about VpcConfig https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-vpcconfig.html
+      VpcConfig:
+        SecurityGroupIds:
+          - ''
+        SubnetIds:
+          - ''
+      # The configuration for the runtime environment.
+      #   Required: Yes
+      Environment:
+        Variables:
+          AB_BASE_URL: ''
+          AB_CLIENT_ID: ''
+          AB_CLIENT_SECRET: ''
+          # Use 'host.docker.internal' when running locally
+          REDIS_HOST: ''
+          REDIS_PORT: ''
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  TicTacToeApi:
+    Description: "API Gateway endpoint URL for Prod stage for TicTacToe function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+  TicTacToeFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt TicTacToeFunction.Arn
+  TicTacToeFunctionIamRole:
+    Description: "Implicit IAM Role created for TicTacToe function"
+    Value: !GetAtt TicTacToeFunctionRole.Arn

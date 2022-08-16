@@ -1,0 +1,12 @@
+backoff==1.11.1
+click>=7.0
+crontab==0.23.0
+httpx>=1.0.0b0
+redis>=4.0.2
+requests==2.26.0
+PyYAML==6.0
+pyjwt[crypto]==2.2.0
+websockets==10.0
+
+git+https://github.com/AccelByte/accelbyte-python-sdk.git@v0.21.0#egg=accelbyte_py_sdk
+# ../..   # accelbyte-py-sdk (local)
