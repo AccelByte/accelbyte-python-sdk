@@ -2,6 +2,7 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+from datetime import datetime
 from typing import Any, Dict, Optional, Union
 
 import jwt
@@ -39,6 +40,34 @@ def convert_bearer_auth_token_to_oauth_token_dict(
             patch_permission_keys, dict
         ):
             patch_jwt_permission_keys(jwt_=json_web_token, ppk_=patch_permission_keys)
+
+        # access_token
+        json_web_token["access_token"] = bearer_auth_token
+
+        # expires_in
+        if (exp := json_web_token.get("exp")) and (iat := json_web_token.get("iat")):
+            if (expires_at := safecast_datetime(exp)) and (issued_at := safecast_datetime(iat)):
+                expires_in = int((expires_at - issued_at).total_seconds())
+                json_web_token["expires_at"] = expires_at.isoformat()
+                json_web_token["issued_at"] = issued_at.isoformat()
+
+                json_web_token["expires_in"] = expires_in
+
+        # user_id
+        if "user_id" not in json_web_token and "sub" in json_web_token:
+            json_web_token["user_id"] = json_web_token["sub"]
+
         return json_web_token
-    except ValueError as e:
+
+    except ValueError:
+        return None
+
+
+def safecast_datetime(x) -> Optional[datetime]:
+    if x is None:
+        return None
+    try:
+        timestamp = int(x)
+        return datetime.utcfromtimestamp(timestamp)
+    except ValueError:
         return None
