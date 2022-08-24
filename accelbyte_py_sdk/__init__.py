@@ -9,6 +9,8 @@ __version__ = "0.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
+from .core import AccelByteSDK
+
 from .core import is_initialized
 from .core import initialize
 from .core import reset

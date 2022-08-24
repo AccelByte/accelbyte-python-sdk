@@ -492,4 +492,125 @@ class AccelByteSDK:
     # endregion Utils
 
 
+# region backwards compatibility
+
+
 SDK = AccelByteSDK()
+
+
+def s_is_initialized(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.is_initialized()
+
+
+def s_initialize(options=None, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.initialize(options=options)
+
+
+def s_reset(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.reset()
+
+
+def s_get_config_repository(raise_when_none=True, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_config_repository(raise_when_none)
+
+
+def s_set_config_repository(config_repository, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.set_config_repository(config_repository)
+
+
+def s_get_token_repository(raise_when_none=True, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_token_repository(raise_when_none)
+
+
+def s_set_token_repository(token_repository, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.set_token_repository(token_repository)
+
+
+def s_get_http_client(raise_when_none=True, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_http_client(raise_when_none)
+
+
+def s_set_http_client(http_client, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.set_http_client(http_client)
+
+
+def s_get_app_name(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_app_name()
+
+
+def s_get_app_version(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_app_version()
+
+
+def s_get_base_url(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_base_url()
+
+
+def s_get_client_auth(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_client_auth()
+
+
+def s_get_client_id(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_client_id()
+
+
+def s_get_client_secret(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_client_secret()
+
+
+def s_get_namespace(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_namespace()
+
+
+def s_get_access_token(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.get_access_token()
+
+
+def s_remove_token(sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.remove_token()
+
+
+def s_set_token(token, sdk: Optional[AccelByteSDK] = None):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.set_token(token)
+
+
+def s_run_request(operation, sdk: Optional[AccelByteSDK] = None, **kwargs):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.run_request(operation, **kwargs)
+
+
+async def s_run_request_async(operation, sdk: Optional[AccelByteSDK] = None, **kwargs):
+    sdk = sdk if sdk is not None else SDK
+    return await sdk.run_request_async(operation, **kwargs)
+
+
+def s_run_proto_request(proto, sdk: Optional[AccelByteSDK] = None, **kwargs):
+    sdk = sdk if sdk is not None else SDK
+    return sdk.run_proto_request(proto, **kwargs)
+
+
+async def s_run_proto_request_async(proto, sdk: Optional[AccelByteSDK] = None, **kwargs):
+    sdk = sdk if sdk is not None else SDK
+    return await sdk.run_proto_request_async(proto, **kwargs)
+
+
+# endregion backwards compatibility

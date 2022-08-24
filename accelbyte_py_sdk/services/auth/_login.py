@@ -76,7 +76,7 @@ def login_client(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -115,7 +115,7 @@ def login_platform(
     if error is None:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -163,7 +163,7 @@ def login_user(
     if isinstance(scope, list):
         scope = " ".join(scope)
 
-    client_id, error = get_client_id()
+    client_id, error = get_client_id(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -200,7 +200,7 @@ def login_user(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -223,11 +223,11 @@ def login_user(
 
 
 def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    access_token, error = get_access_token()
+    access_token, error = get_access_token(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
-    client_auth, error = get_client_auth()
+    client_auth, error = get_client_auth(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -245,7 +245,7 @@ def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
             set_on_demand_token_refresher(token_refresher=token_refresher, **kwargs)
         return None, error
 
-    _, error = remove_token()
+    _, error = remove_token(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -267,7 +267,7 @@ def refresh_login(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -306,7 +306,7 @@ async def login_client_async(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -345,7 +345,7 @@ async def login_platform_async(
     if error is None:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -393,7 +393,7 @@ async def login_user_async(
     if isinstance(scope, list):
         scope = " ".join(scope)
 
-    client_id, error = get_client_id()
+    client_id, error = get_client_id(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -430,7 +430,7 @@ async def login_user_async(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -453,11 +453,11 @@ async def login_user_async(
 
 
 async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    access_token, error = get_access_token()
+    access_token, error = get_access_token(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
-    client_auth, error = get_client_auth()
+    client_auth, error = get_client_auth(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -475,7 +475,7 @@ async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **
             set_on_demand_token_refresher(token_refresher=token_refresher, **kwargs)
         return None, error
 
-    _, error = remove_token()
+    _, error = remove_token(sdk=kwargs.get("sdk"))
     if error:
         return None, error
 
@@ -497,7 +497,7 @@ async def refresh_login_async(
     if error:
         return None, error
 
-    _, error = set_token(token=token)
+    _, error = set_token(token=token, sdk=kwargs.get("sdk"))
     if error:
         return None, error
 

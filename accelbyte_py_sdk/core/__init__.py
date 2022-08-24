@@ -86,30 +86,29 @@ from ._sdk import OperationPreprocessor
 from ._sdk import RequestPreprocessor
 from ._sdk import ResponsePreprocessor
 
+from ._sdk import s_is_initialized as is_initialized
+from ._sdk import s_initialize as initialize
+from ._sdk import s_reset as reset
 
-is_initialized = SDK.is_initialized
-initialize = SDK.initialize
-reset = SDK.reset
+from ._sdk import s_get_config_repository as get_config_repository
+from ._sdk import s_set_config_repository as set_config_repository
+from ._sdk import s_get_token_repository as get_token_repository
+from ._sdk import s_set_token_repository as set_token_repository
+from ._sdk import s_get_http_client as get_http_client
+from ._sdk import s_set_http_client as set_http_client
 
-get_config_repository = SDK.get_config_repository
-set_config_repository = SDK.set_config_repository
-get_token_repository = SDK.get_token_repository
-set_token_repository = SDK.set_token_repository
-get_http_client = SDK.get_http_client
-set_http_client = SDK.set_http_client
+from ._sdk import s_get_app_name as get_app_name
+from ._sdk import s_get_app_version as get_app_version
+from ._sdk import s_get_base_url as get_base_url
+from ._sdk import s_get_client_auth as get_client_auth
+from ._sdk import s_get_client_id as get_client_id
+from ._sdk import s_get_client_secret as get_client_secret
+from ._sdk import s_get_namespace as get_namespace
+from ._sdk import s_get_access_token as get_access_token
+from ._sdk import s_remove_token as remove_token
+from ._sdk import s_set_token as set_token
 
-get_app_name = SDK.get_app_name
-get_app_version = SDK.get_app_version
-get_base_url = SDK.get_base_url
-get_client_auth = SDK.get_client_auth
-get_client_id = SDK.get_client_id
-get_client_secret = SDK.get_client_secret
-get_namespace = SDK.get_namespace
-get_access_token = SDK.get_access_token
-remove_token = SDK.remove_token
-set_token = SDK.set_token
-
-run_request = SDK.run_request
-run_request_async = SDK.run_request_async
-run_proto_request = SDK.run_proto_request
-run_proto_request_async = SDK.run_proto_request_async
+from ._sdk import s_run_request as run_request
+from ._sdk import s_run_request_async as run_request_async
+from ._sdk import s_run_proto_request as run_proto_request
+from ._sdk import s_run_proto_request_async as run_proto_request_async
