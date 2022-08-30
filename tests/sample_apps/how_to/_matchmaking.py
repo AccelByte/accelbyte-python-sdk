@@ -5,6 +5,8 @@ from ._integration_test_case import IntegrationTestCase
 from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsAllianceFlexingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsChannelRequest
+from accelbyte_py_sdk.api.matchmaking.models import ModelsCombination
+from accelbyte_py_sdk.api.matchmaking.models import ModelsCombinationAlliances
 from accelbyte_py_sdk.api.matchmaking.models import ModelsFlexingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchingRule
 from accelbyte_py_sdk.api.matchmaking.models import ModelsMatchOption
@@ -20,7 +22,9 @@ class MatchmakingTestCase(IntegrationTestCase):
     game_mode: str = "gamemode"
     max_number: int = 2
     min_number: int = 2
+    models_combination = ModelsCombination.create_from_dict({})
     models_alliance_rule: ModelsAllianceRule = ModelsAllianceRule.create(
+        combination=models_combination,
         max_number=max_number,
         min_number=min_number,
         player_max_number=max_number,
@@ -28,6 +32,7 @@ class MatchmakingTestCase(IntegrationTestCase):
     )
     models_alliance_flexing_rules: List[ModelsAllianceFlexingRule] = [
         ModelsAllianceFlexingRule.create(
+            combination=models_combination,
             duration=duration,
             max_number=max_number,
             min_number=min_number,
@@ -49,7 +54,7 @@ class MatchmakingTestCase(IntegrationTestCase):
         )
     ]
     models_channel_request = ModelsChannelRequest.create(
-        deployment="default",
+        deployment="",
         description="DESCRIPTION",
         find_match_timeout_seconds=duration,
         game_mode=game_mode,
