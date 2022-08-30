@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.22.0
+- Add `sdk` param to all `accelbyte_py_sdk.core` module level functions.
+  ```python
+  import accelbyte_py_sdk
+  from accelbyte_py_sdk.core import initialize, run_request
+
+  my_sdk = accelbyte_py_sdk.SDK()
+  
+  initialize(sdk=my_sdk)
+
+  # run_request(..., sdk=my_sdk)
+  ```
+- Add additional information when converting JWT into AccelByte token.
+- Add Tic-Tac-Toe sample game and service.
+- Updated spec for AccelByte Cloud v3.30.0.
+
 ## v0.21.0
 - Remove references to Justice and replaced it with AccelByte Cloud.
 - Remove Obsolete Core Mocked tests.
