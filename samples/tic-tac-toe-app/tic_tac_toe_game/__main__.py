@@ -1,3 +1,4 @@
+import asyncio
 import os
 
 from typing import List, Optional
@@ -5,20 +6,51 @@ from typing import List, Optional
 import requests
 import yaml
 
+from aioconsole import ainput
+
 import accelbyte_py_sdk
+import accelbyte_py_sdk.core
 import accelbyte_py_sdk.services.auth as auth_service
 
-from accelbyte_py_sdk.core import get_access_token
+from accelbyte_py_sdk.core import get_access_token, get_base_url
 
 CTX: dict = {}
 
 
-def main():
+async def main():
     init()
-    start()
+    await login()
+
+    base_url, _ = get_base_url()
+    access_token, _ = get_access_token()
+
+    async def on_message(message: str):
+        print(message)
+
+    ws_client = accelbyte_py_sdk.core.WebsocketsWSClient(
+        uri=base_url,
+        access_token=access_token,
+    )
+
+    ws_client.listeners.append(on_message)
+
+    await ws_client.connect()
+    await asyncio.sleep(1)
+
+    await start()
 
 
-def choose_action(actions: List[str], strict: bool = False) -> Optional[int]:
+def init():
+    tictactoe_url = os.environ.get("TICTACTOE_URL")
+    if tictactoe_url is None or tictactoe_url == "" or tictactoe_url.isspace():
+        raise EnvironmentError("'TICTACTOE_URL' required.")
+
+    CTX["tictactoe_url"] = tictactoe_url
+
+    accelbyte_py_sdk.initialize()
+
+
+async def choose_action(actions: List[str], strict: bool = False) -> Optional[int]:
     while True:
         actions_len = len(actions)
         options_str = "\n".join(f"- {i}: {a}" for i, a in enumerate(actions))
@@ -39,51 +71,40 @@ def choose_action(actions: List[str], strict: bool = False) -> Optional[int]:
     return i
 
 
-def init():
-    tictactoe_url = os.environ.get("TICTACTOE_URL")
-    if tictactoe_url is None or tictactoe_url == "" or tictactoe_url.isspace():
-        raise EnvironmentError("'TICTACTOE_URL' required.")
-
-    CTX["tictactoe_url"] = tictactoe_url
-
-    accelbyte_py_sdk.initialize()
-
-
-def start():
-    actions = [
-        ("Login", login),
-        ("Get Stats", get_stats),
-        ("Find Match", find_match),
-        ("Make Move", make_move),
-        ("Delete All Matches", delete_all_matches),
-        ("Quit", quit_app)
-    ]
-    actions_index = choose_action(list(a[0] for a in actions), strict=True)
-    action = actions[actions_index][1]
-
-    action()
-
-
-def login():
+async def login():
     username = input("username: ")
     password = input("password: ")
 
     _, error = auth_service.login_user(username, password)
     if error:
         print(error)
-        login()
+        await login()
         return
 
     print("Login successful.")
 
-    start()
+    await start()
 
 
-def get_stats():
+async def start():
+    actions = [
+        ("Get Stats", get_stats),
+        ("Find Match", find_match),
+        ("Make Move", make_move),
+        ("Delete All Matches", delete_all_matches),
+        ("Quit", quit_app)
+    ]
+    actions_index = await choose_action(list(a[0] for a in actions), strict=True)
+    action = actions[actions_index][1]
+
+    await action()
+
+
+async def get_stats():
     access_token, error = get_access_token()
     if error:
         print("You need to login first.")
-        start()
+        await start()
         return
 
     response = requests.get(
@@ -94,19 +115,19 @@ def get_stats():
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))
-        start()
+        await start()
         return
 
     print(yaml.safe_dump(response.json()))
 
-    start()
+    await start()
 
 
-def find_match():
+async def find_match():
     access_token, error = get_access_token()
     if error:
         print("You need to login first.")
-        start()
+        await start()
         return
 
     response = requests.post(
@@ -117,7 +138,7 @@ def find_match():
     )
     if not response.ok:
         print("Unable to find match.")
-        start()
+        await start()
         return
 
     resp_json = response.json()
@@ -127,14 +148,14 @@ def find_match():
 
     print(yaml.safe_dump(resp_json))
 
-    start()
+    await start()
 
 
-def make_move():
+async def make_move():
     access_token, error = get_access_token()
     if error:
         print("You need to login first.")
-        start()
+        await start()
         return
 
     if not (game_id := CTX.get("game_id", None)):
@@ -166,19 +187,19 @@ def make_move():
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))
-        start()
+        await start()
         return
 
     print(yaml.safe_dump(response.json()))
 
-    start()
+    await start()
 
 
-def delete_all_matches():
+async def delete_all_matches():
     access_token, error = get_access_token()
     if error:
         print("You need to login first.")
-        start()
+        await start()
         return
 
     response = requests.delete(
@@ -189,17 +210,18 @@ def delete_all_matches():
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))
-        start()
+        await start()
         return
 
     print(yaml.safe_dump(response.json()))
 
-    start()
+    await start()
 
 
-def quit_app():
+async def quit_app():
     pass
 
 
 if __name__ == "__main__":
-    main()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())

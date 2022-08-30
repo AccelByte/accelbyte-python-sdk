@@ -9,6 +9,8 @@ import accelbyte_py_sdk
 import accelbyte_py_sdk.core
 import accelbyte_py_sdk.services.auth as auth_service
 import accelbyte_py_sdk.api.iam.models as iam_models
+import accelbyte_py_sdk.api.lobby as lobby_service
+import accelbyte_py_sdk.api.lobby.models as lobby_models
 
 from accelbyte_py_sdk.core import StrEnum
 
@@ -131,7 +133,7 @@ def lambda_handler(event, context):
     proxy_path_param = proxy_path_param.casefold()
 
     if proxy_path_param == "match" and http_method == "post":
-        return create_match(redis_client, user_id, user_namespace)
+        return create_match(player_sdk, redis_client, user_id, user_namespace)
     if proxy_path_param == "matches" and http_method == "delete":
         return delete_matches(redis_client)
     elif proxy_path_param == "matches" and http_method == "get":
@@ -145,7 +147,7 @@ def lambda_handler(event, context):
             )
         if isinstance(body, str):
             body = json.loads(body)
-        return make_move(redis_client, user_id, user_namespace, game_id, body)
+        return make_move(player_sdk, redis_client, user_id, user_namespace, game_id, body)
     else:
         return create_response(
             status_code=500,
@@ -153,7 +155,7 @@ def lambda_handler(event, context):
         )
 
 
-def create_match(redis_client, user_id, user_namespace):
+def create_match(sdk, redis_client, user_id, user_namespace):
     from redis.exceptions import ConnectionError as RedisConnectionError
 
     match_prefix: str = "match:"
@@ -190,8 +192,28 @@ def create_match(redis_client, user_id, user_namespace):
             match_value_str = json.dumps(match_value_dict)
             redis_client.set(name=match_key, value=match_value_str)
 
+            message = f"Found Match({game.id})."
+
+            _, send_notif_1_err = send_free_form_notif(
+                sdk=sdk,
+                user_id=game.player_ids[0],
+                user_namespace=user_namespace,
+                message=message,
+            )
+            if send_notif_1_err:
+                return send_notif_1_err
+
+            _, send_notif_2_err = send_free_form_notif(
+                sdk=sdk,
+                user_id=game.player_ids[1],
+                user_namespace=user_namespace,
+                message=message,
+            )
+            if send_notif_2_err:
+                return send_notif_2_err
+
             return create_response(status_code=200, body={
-                "message": f"Found Match({game.id}).",
+                "message": message,
                 **match_value_dict,
             })
         else:
@@ -252,7 +274,7 @@ def get_matches(redis_client, user_id):
         )
 
 
-def make_move(redis_client, user_id, user_namespace, game_id, move_body):
+def make_move(sdk, redis_client, user_id, user_namespace, game_id, move_body):
     from redis.exceptions import ConnectionError as RedisConnectionError
 
     match_prefix: str = "match:"
@@ -286,11 +308,51 @@ def make_move(redis_client, user_id, user_namespace, game_id, move_body):
         match_value_dict = game.to_dict()
         match_value_str = json.dumps(match_value_dict)
         redis_client.set(name=match_key, value=match_value_str)
+
+        if game.status == GameStatusEnum.FINISHED:
+            message = f"Game ended."
+
+            _, send_notif_1_err = send_free_form_notif(
+                sdk=sdk,
+                user_id=game.player_ids[0],
+                user_namespace=user_namespace,
+                message=message,
+            )
+            if send_notif_1_err:
+                return send_notif_1_err
+
+            _, send_notif_2_err = send_free_form_notif(
+                sdk=sdk,
+                user_id=game.player_ids[1],
+                user_namespace=user_namespace,
+                message=message,
+            )
+            if send_notif_2_err:
+                return send_notif_2_err
+
         return create_response(status_code=200, body=str(game))
     except RedisConnectionError:
         return create_response(
             status_code=500, body="Failed to connect to Redis server."
         )
+
+
+def send_free_form_notif(sdk, user_id, user_namespace, message):
+    _, error = lobby_service.free_form_notification_by_user_id(
+        body=lobby_models.ModelFreeFormNotificationRequest.create(
+            message=message,
+            topic="NOTIF"
+        ),
+        user_id=user_id,
+        namespace=user_namespace,
+        sdk=sdk
+    )
+    if error:
+        return None, create_response(
+            status_code=500, body="Failed to send notif to user."
+        )
+
+    return None, None
 
 
 # region classes
@@ -486,6 +548,10 @@ class TicTacToe(Game):
         return None
 
     def _check_win_conditions(self) -> bool:
+        def __set_tied() -> None:
+            self.status = GameStatusEnum.FINISHED
+            self.winner_id = None
+
         def __set_winner(__player_index: int) -> None:
             self.status = GameStatusEnum.FINISHED
             self.winner_id = self.player_ids[__player_index]
@@ -505,6 +571,10 @@ class TicTacToe(Game):
         player_winner_index = TicTacToe.check_diagonals(self.board_state)
         if player_winner_index is not None:
             __set_winner(player_winner_index)
+            return True
+
+        if TicTacToe.check_fill(self.board_state):
+            __set_tied()
             return True
 
         return False
@@ -611,6 +681,15 @@ class TicTacToe(Game):
             player_index = None
 
         return player_index
+
+    @staticmethod
+    def check_fill(board_state: List[List[str]]) -> bool:
+        blank_symbol = TicTacToe.get_player_symbol_from_index(-1)
+        for y in board_state:
+            for x in y:
+                if x != blank_symbol:
+                    return False
+        return True
 
 
 # endregion classes
