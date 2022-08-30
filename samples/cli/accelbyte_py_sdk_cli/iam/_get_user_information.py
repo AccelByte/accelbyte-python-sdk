@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.14.0)
+# Accelbyte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,4 +68,4 @@ def get_user_information(
 
 
 get_user_information.operation_id = "GetUserInformation"
-get_user_information.is_deprecated = False
+get_user_information.is_deprecated = True

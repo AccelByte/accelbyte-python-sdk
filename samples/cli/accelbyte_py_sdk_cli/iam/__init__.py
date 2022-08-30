@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.14.0)
+# justice-iam-service (5.15.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -210,6 +210,7 @@ from ._admin_get_user_platform_accounts_v3 import admin_get_user_platform_accoun
 from ._admin_get_list_justice_platform_accounts import (
     admin_get_list_justice_platform_accounts,
 )
+from ._admin_get_user_mapping import admin_get_user_mapping
 from ._admin_create_justice_user import admin_create_justice_user
 from ._admin_link_platform_account import admin_link_platform_account
 from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
@@ -302,6 +303,7 @@ from ._public_create_justice_user import public_create_justice_user
 from ._public_platform_link_v3 import public_platform_link_v3
 from ._public_platform_unlink_v3 import public_platform_unlink_v3
 from ._public_platform_unlink_all_v3 import public_platform_unlink_all_v3
+from ._public_force_platform_link_v3 import public_force_platform_link_v3
 from ._public_web_link_platform import public_web_link_platform
 from ._public_web_link_platform_establish import public_web_link_platform_establish
 from ._reset_password_v3 import reset_password_v3
@@ -310,6 +312,7 @@ from ._public_get_user_ban_history_v3 import public_get_user_ban_history_v3
 from ._public_list_user_all_platform_accounts_distinct_v3 import (
     public_list_user_all_platform_accounts_distinct_v3,
 )
+from ._public_get_user_information_v3 import public_get_user_information_v3
 from ._public_get_user_login_histories_v3 import public_get_user_login_histories_v3
 from ._public_get_user_platform_accounts_v3 import public_get_user_platform_accounts_v3
 from ._public_link_platform_account import public_link_platform_account
@@ -323,6 +326,8 @@ from ._public_validate_user_by_user_id_and_password_v3 import (
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
 from ._public_get_my_user_v3 import public_get_my_user_v3
+from ._public_send_verification_link_v3 import public_send_verification_link_v3
+from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
@@ -549,6 +554,7 @@ commands = [
     admin_delete_user_permission_v3,
     admin_get_user_platform_accounts_v3,
     admin_get_list_justice_platform_accounts,
+    admin_get_user_mapping,
     admin_create_justice_user,
     admin_link_platform_account,
     admin_platform_unlink_v3,
@@ -625,12 +631,14 @@ commands = [
     public_platform_link_v3,
     public_platform_unlink_v3,
     public_platform_unlink_all_v3,
+    public_force_platform_link_v3,
     public_web_link_platform,
     public_web_link_platform_establish,
     reset_password_v3,
     public_get_user_by_user_id_v3,
     public_get_user_ban_history_v3,
     public_list_user_all_platform_accounts_distinct_v3,
+    public_get_user_information_v3,
     public_get_user_login_histories_v3,
     public_get_user_platform_accounts_v3,
     public_link_platform_account,
@@ -640,6 +648,8 @@ commands = [
     public_get_roles_v3,
     public_get_role_v3,
     public_get_my_user_v3,
+    public_send_verification_link_v3,
+    public_verify_user_by_link_v3,
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-seasonpass-service (1.13.2)
+# justice-seasonpass-service (1.13.3)
 
 from ._query_seasons import query_seasons
 from ._create_season import create_season
@@ -15,6 +15,7 @@ from ._get_season import get_season
 from ._delete_season import delete_season
 from ._update_season import update_season
 from ._clone_season import clone_season
+from ._get_full_season import get_full_season
 from ._query_passes import query_passes
 from ._create_pass import create_pass
 from ._get_pass import get_pass
@@ -59,6 +60,7 @@ commands = [
     delete_season,
     update_season,
     clone_season,
+    get_full_season,
     query_passes,
     create_pass,
     get_pass,

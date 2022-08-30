@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.14.0)
+# Accelbyte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,4 +69,4 @@ def get_user_mapping(
 
 
 get_user_mapping.operation_id = "GetUserMapping"
-get_user_mapping.is_deprecated = False
+get_user_mapping.is_deprecated = True

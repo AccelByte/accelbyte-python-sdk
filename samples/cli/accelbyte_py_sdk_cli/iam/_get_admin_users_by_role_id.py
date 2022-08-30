@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.14.0)
+# Accelbyte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,4 +78,4 @@ def get_admin_users_by_role_id(
 
 
 get_admin_users_by_role_id.operation_id = "GetAdminUsersByRoleID"
-get_admin_users_by_role_id.is_deprecated = False
+get_admin_users_by_role_id.is_deprecated = True

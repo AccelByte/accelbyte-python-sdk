@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.14.0)
+# Accelbyte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,4 +78,4 @@ def upgrade_headless_account(
 
 
 upgrade_headless_account.operation_id = "upgradeHeadlessAccount"
-upgrade_headless_account.is_deprecated = False
+upgrade_headless_account.is_deprecated = True

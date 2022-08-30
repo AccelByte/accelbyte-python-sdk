@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.12.1)
+# justice-platform-service (4.13.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -14,6 +14,12 @@ from ._get_fulfillment_script import get_fulfillment_script
 from ._create_fulfillment_script import create_fulfillment_script
 from ._delete_fulfillment_script import delete_fulfillment_script
 from ._update_fulfillment_script import update_fulfillment_script
+from ._list_item_type_configs import list_item_type_configs
+from ._create_item_type_config import create_item_type_config
+from ._search_item_type_config import search_item_type_config
+from ._get_item_type_config import get_item_type_config
+from ._update_item_type_config import update_item_type_config
+from ._delete_item_type_config import delete_item_type_config
 from ._query_campaigns import query_campaigns
 from ._create_campaign import create_campaign
 from ._get_campaign import get_campaign
@@ -410,6 +416,7 @@ from ._public_get_user_subscription_billing_histories import (
 )
 from ._public_get_wallet import public_get_wallet
 from ._public_list_user_wallet_transactions import public_list_user_wallet_transactions
+from ._query_items_1 import query_items_1
 
 
 commands = [
@@ -419,6 +426,12 @@ commands = [
     create_fulfillment_script,
     delete_fulfillment_script,
     update_fulfillment_script,
+    list_item_type_configs,
+    create_item_type_config,
+    search_item_type_config,
+    get_item_type_config,
+    update_item_type_config,
+    delete_item_type_config,
     query_campaigns,
     create_campaign,
     get_campaign,
@@ -759,4 +772,5 @@ commands = [
     public_get_user_subscription_billing_histories,
     public_get_wallet,
     public_list_user_wallet_transactions,
+    query_items_1,
 ]

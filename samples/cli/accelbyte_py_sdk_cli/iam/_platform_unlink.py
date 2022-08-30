@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.14.0)
+# Accelbyte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,4 +71,4 @@ def platform_unlink(
 
 
 platform_unlink.operation_id = "PlatformUnlink"
-platform_unlink.is_deprecated = False
+platform_unlink.is_deprecated = True

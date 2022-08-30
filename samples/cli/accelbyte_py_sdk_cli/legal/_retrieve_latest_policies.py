@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Legal Service (1.22.4)
+# Accelbyte Cloud Legal Service (1.22.5)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
