@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,12 +36,21 @@ from ...models import ModelGetUserJusticePlatformAccountResponse
 class GetUserJusticePlatformAccount(Operation):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]
+
+
+
+
+
     This endpoint requires the client access token as the bearer token. Required permission 'ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [UPDATE]'
-
-
-
-
-     It is going to be removed on November 26th, 2018
 
 
 

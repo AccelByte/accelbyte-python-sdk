@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -124,6 +124,7 @@ def create_models_create_deployment_override_request_example() -> ModelsCreateDe
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.region_overrides = {}
     instance.regions = [randomize()]
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -142,6 +143,7 @@ def create_models_create_deployment_request_example() -> ModelsCreateDeploymentR
     instance.overrides = {}
     instance.region_overrides = {}
     instance.regions = [randomize()]
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -206,6 +208,7 @@ def create_models_create_region_override_request_example() -> ModelsCreateRegion
     instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -245,6 +248,7 @@ def create_models_deployment_config_override_example() -> ModelsDeploymentConfig
     instance.name = randomize()
     instance.region_overrides = {}
     instance.regions = [randomize()]
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -267,6 +271,7 @@ def create_models_deployment_with_override_example() -> ModelsDeploymentWithOver
     instance.overrides = {}
     instance.region_overrides = {}
     instance.regions = [randomize()]
+    instance.unlimited = randomize("bool")
     instance.updated_at = randomize("date")
     instance.use_buffer_percent = randomize("bool")
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
@@ -479,6 +484,7 @@ def create_models_pod_count_config_override_example() -> ModelsPodCountConfigOve
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -601,6 +607,7 @@ def create_models_update_deployment_override_request_example() -> ModelsUpdateDe
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -617,6 +624,7 @@ def create_models_update_deployment_request_example() -> ModelsUpdateDeploymentR
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.regions = [randomize()]
     instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     return instance
 
@@ -656,6 +664,7 @@ def create_models_update_region_override_request_example() -> ModelsUpdateRegion
     instance.buffer_percent = randomize("int", min_val=1, max_val=1000)
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.min_count = randomize("int", min_val=1, max_val=1000)
+    instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
     return instance
 

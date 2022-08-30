@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.5)
+# AccelByte Cloud Matchmaking Service (2.15.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,8 @@ from ..api.matchmaking.models import ModelsAllianceRuleV1
 from ..api.matchmaking.models import ModelsChannel
 from ..api.matchmaking.models import ModelsChannelRequest
 from ..api.matchmaking.models import ModelsChannelV1
+from ..api.matchmaking.models import ModelsCombination
+from ..api.matchmaking.models import ModelsCombinationAlliances
 from ..api.matchmaking.models import ModelsCreateChannelResponse
 from ..api.matchmaking.models import ModelsDequeueRequest
 from ..api.matchmaking.models import ModelsFlexingRule
@@ -84,6 +86,7 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
 
 def create_models_alliance_flexing_rule_example() -> ModelsAllianceFlexingRule:
     instance = ModelsAllianceFlexingRule()
+    instance.combination = create_models_combination_example()
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.max_number = randomize("int", min_val=1, max_val=1000)
     instance.min_number = randomize("int", min_val=1, max_val=1000)
@@ -94,6 +97,7 @@ def create_models_alliance_flexing_rule_example() -> ModelsAllianceFlexingRule:
 
 def create_models_alliance_rule_example() -> ModelsAllianceRule:
     instance = ModelsAllianceRule()
+    instance.combination = create_models_combination_example()
     instance.max_number = randomize("int", min_val=1, max_val=1000)
     instance.min_number = randomize("int", min_val=1, max_val=1000)
     instance.player_max_number = randomize("int", min_val=1, max_val=1000)
@@ -103,6 +107,7 @@ def create_models_alliance_rule_example() -> ModelsAllianceRule:
 
 def create_models_alliance_rule_v1_example() -> ModelsAllianceRuleV1:
     instance = ModelsAllianceRuleV1()
+    instance.combination = create_models_combination_example()
     instance.max_number = randomize("int", min_val=1, max_val=1000)
     instance.min_number = randomize("int", min_val=1, max_val=1000)
     instance.player_max_number = randomize("int", min_val=1, max_val=1000)
@@ -158,6 +163,21 @@ def create_models_channel_v1_example() -> ModelsChannelV1:
     instance.social_matchmaking = randomize("bool")
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
+    return instance
+
+
+def create_models_combination_example() -> ModelsCombination:
+    instance = ModelsCombination()
+    instance.alliances = [create_models_combination_alliances_example()]
+    instance.has_combination = randomize("bool")
+    return instance
+
+
+def create_models_combination_alliances_example() -> ModelsCombinationAlliances:
+    instance = ModelsCombinationAlliances()
+    instance.max = randomize("int", min_val=1, max_val=1000)
+    instance.min = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
     return instance
 
 
@@ -377,6 +397,7 @@ def create_models_sub_game_mode_example() -> ModelsSubGameMode:
 
 def create_models_update_alliance_rule_example() -> ModelsUpdateAllianceRule:
     instance = ModelsUpdateAllianceRule()
+    instance.combination = create_models_combination_example()
     instance.max_number = randomize("int", min_val=1, max_val=1000)
     instance.min_number = randomize("int", min_val=1, max_val=1000)
     instance.player_max_number = randomize("int", min_val=1, max_val=1000)

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Seasonpass Service."""
 
-__version__ = "1.13.2"
+__version__ = "1.13.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

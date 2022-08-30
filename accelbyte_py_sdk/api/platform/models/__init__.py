@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.12.1"
+__version__ = "4.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -192,6 +192,10 @@ from .epic_games_reconcile_result import (
 )
 from .error_entity import ErrorEntity
 from .event_payload import EventPayload
+from .extension_fulfillment_summary import ExtensionFulfillmentSummary
+from .extension_fulfillment_summary import (
+    ItemTypeEnum as ExtensionFulfillmentSummaryItemTypeEnum,
+)
 from .external_payment_order_create import ExternalPaymentOrderCreate
 from .external_payment_order_create import (
     ItemTypeEnum as ExternalPaymentOrderCreateItemTypeEnum,
@@ -291,6 +295,11 @@ from .item_snapshot import (
     ItemTypeEnum as ItemSnapshotItemTypeEnum,
     SeasonTypeEnum as ItemSnapshotSeasonTypeEnum,
 )
+from .item_type_config_create import ItemTypeConfigCreate
+from .item_type_config_create import ItemTypeEnum as ItemTypeConfigCreateItemTypeEnum
+from .item_type_config_info import ItemTypeConfigInfo
+from .item_type_config_info import ItemTypeEnum as ItemTypeConfigInfoItemTypeEnum
+from .item_type_config_update import ItemTypeConfigUpdate
 from .item_update import ItemUpdate
 from .item_update import (
     AppTypeEnum as ItemUpdateAppTypeEnum,

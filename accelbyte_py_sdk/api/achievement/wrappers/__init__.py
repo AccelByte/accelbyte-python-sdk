@@ -24,6 +24,8 @@ from ._achievements import admin_list_achievements
 from ._achievements import admin_list_achievements_async
 from ._achievements import admin_list_user_achievements
 from ._achievements import admin_list_user_achievements_async
+from ._achievements import admin_reset_achievement
+from ._achievements import admin_reset_achievement_async
 from ._achievements import admin_unlock_achievement
 from ._achievements import admin_unlock_achievement_async
 from ._achievements import admin_update_achievement

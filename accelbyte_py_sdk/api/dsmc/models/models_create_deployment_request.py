@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -57,6 +57,8 @@ class ModelsCreateDeploymentRequest(Model):
 
         regions: (regions) REQUIRED List[str]
 
+        unlimited: (unlimited) REQUIRED bool
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
 
         session_timeout: (session_timeout) OPTIONAL int
@@ -75,6 +77,7 @@ class ModelsCreateDeploymentRequest(Model):
     overrides: Dict[str, ModelsDeploymentConfigOverride]  # REQUIRED
     region_overrides: Dict[str, ModelsPodCountConfigOverride]  # REQUIRED
     regions: List[str]  # REQUIRED
+    unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
     session_timeout: int  # OPTIONAL
 
@@ -130,6 +133,10 @@ class ModelsCreateDeploymentRequest(Model):
 
     def with_regions(self, value: List[str]) -> ModelsCreateDeploymentRequest:
         self.regions = value
+        return self
+
+    def with_unlimited(self, value: bool) -> ModelsCreateDeploymentRequest:
+        self.unlimited = value
         return self
 
     def with_use_buffer_percent(self, value: bool) -> ModelsCreateDeploymentRequest:
@@ -196,6 +203,10 @@ class ModelsCreateDeploymentRequest(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -224,6 +235,7 @@ class ModelsCreateDeploymentRequest(Model):
         overrides: Dict[str, ModelsDeploymentConfigOverride],
         region_overrides: Dict[str, ModelsPodCountConfigOverride],
         regions: List[str],
+        unlimited: bool,
         use_buffer_percent: bool,
         session_timeout: Optional[int] = None,
     ) -> ModelsCreateDeploymentRequest:
@@ -239,6 +251,7 @@ class ModelsCreateDeploymentRequest(Model):
         instance.overrides = overrides
         instance.region_overrides = region_overrides
         instance.regions = regions
+        instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
         if session_timeout is not None:
             instance.session_timeout = session_timeout
@@ -311,6 +324,10 @@ class ModelsCreateDeploymentRequest(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -373,6 +390,7 @@ class ModelsCreateDeploymentRequest(Model):
             "overrides": "overrides",
             "region_overrides": "region_overrides",
             "regions": "regions",
+            "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
             "session_timeout": "session_timeout",
         }
@@ -391,6 +409,7 @@ class ModelsCreateDeploymentRequest(Model):
             "overrides": True,
             "region_overrides": True,
             "regions": True,
+            "unlimited": True,
             "use_buffer_percent": True,
             "session_timeout": False,
         }

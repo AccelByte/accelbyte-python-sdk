@@ -46,7 +46,9 @@ def convert_bearer_auth_token_to_oauth_token_dict(
 
         # expires_in
         if (exp := json_web_token.get("exp")) and (iat := json_web_token.get("iat")):
-            if (expires_at := safecast_datetime(exp)) and (issued_at := safecast_datetime(iat)):
+            if (expires_at := safecast_datetime(exp)) and (
+                issued_at := safecast_datetime(iat)
+            ):
                 expires_in = int((expires_at - issued_at).total_seconds())
                 json_web_token["expires_at"] = expires_at.isoformat()
                 json_web_token["issued_at"] = issued_at.isoformat()

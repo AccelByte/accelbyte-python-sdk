@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

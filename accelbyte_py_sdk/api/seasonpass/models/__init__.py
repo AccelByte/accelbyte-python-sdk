@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Seasonpass Service."""
 
-__version__ = "1.13.2"
+__version__ = "1.13.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,6 +23,7 @@ from .exp_grant_history_info import ExpGrantHistoryInfo
 from .exp_grant_history_info import SourceEnum as ExpGrantHistoryInfoSourceEnum
 from .exp_grant_history_paging_sliced_result import ExpGrantHistoryPagingSlicedResult
 from .field_validation_error import FieldValidationError
+from .full_season_info import FullSeasonInfo
 from .image import Image
 from .list_season_info import ListSeasonInfo
 from .list_season_info import StatusEnum as ListSeasonInfoStatusEnum

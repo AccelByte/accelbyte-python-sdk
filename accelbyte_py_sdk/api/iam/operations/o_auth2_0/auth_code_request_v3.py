@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -76,6 +76,10 @@ class AuthCodeRequestV3(Operation):
       * snapchat
     This endpoint redirects to snapchat login page, then redirect back to platform
     authenticate endpoint after successfully authenticating snapchat user.
+
+      * discord
+    This endpoint redirects to discord login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating discord user.
 
     action code : 10702'
 

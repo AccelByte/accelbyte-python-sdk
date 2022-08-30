@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.12.1"
+__version__ = "4.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -351,10 +351,14 @@ from .wrappers import bulk_get_locale_items
 from .wrappers import bulk_get_locale_items_async
 from .wrappers import create_item
 from .wrappers import create_item_async
+from .wrappers import create_item_type_config
+from .wrappers import create_item_type_config_async
 from .wrappers import defeature_item
 from .wrappers import defeature_item_async
 from .wrappers import delete_item
 from .wrappers import delete_item_async
+from .wrappers import delete_item_type_config
+from .wrappers import delete_item_type_config_async
 from .wrappers import disable_item
 from .wrappers import disable_item_async
 from .wrappers import enable_item
@@ -377,12 +381,16 @@ from .wrappers import get_item_dynamic_data
 from .wrappers import get_item_dynamic_data_async
 from .wrappers import get_item_id_by_sku
 from .wrappers import get_item_id_by_sku_async
+from .wrappers import get_item_type_config
+from .wrappers import get_item_type_config_async
 from .wrappers import get_locale_item
 from .wrappers import get_locale_item_async
 from .wrappers import get_locale_item_by_sku
 from .wrappers import get_locale_item_by_sku_async
 from .wrappers import list_basic_items_by_features
 from .wrappers import list_basic_items_by_features_async
+from .wrappers import list_item_type_configs
+from .wrappers import list_item_type_configs_async
 from .wrappers import public_bulk_get_items
 from .wrappers import public_bulk_get_items_async
 from .wrappers import public_get_app
@@ -403,10 +411,14 @@ from .wrappers import public_validate_item_purchase_condition
 from .wrappers import public_validate_item_purchase_condition_async
 from .wrappers import query_items
 from .wrappers import query_items_async
+from .wrappers import query_items_1
+from .wrappers import query_items_1_async
 from .wrappers import query_uncategorized_items
 from .wrappers import query_uncategorized_items_async
 from .wrappers import return_item
 from .wrappers import return_item_async
+from .wrappers import search_item_type_config
+from .wrappers import search_item_type_config_async
 from .wrappers import search_items
 from .wrappers import search_items_async
 from .wrappers import sync_in_game_item
@@ -417,6 +429,8 @@ from .wrappers import update_item
 from .wrappers import update_item_async
 from .wrappers import update_item_purchase_condition
 from .wrappers import update_item_purchase_condition_async
+from .wrappers import update_item_type_config
+from .wrappers import update_item_type_config_async
 from .wrappers import validate_item_purchase_condition
 from .wrappers import validate_item_purchase_condition_async
 

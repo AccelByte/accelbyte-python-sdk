@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.14.0"
+__version__ = "5.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -353,6 +353,8 @@ from .wrappers import admin_get_user_deletion_status_v3
 from .wrappers import admin_get_user_deletion_status_v3_async
 from .wrappers import admin_get_user_login_histories_v3
 from .wrappers import admin_get_user_login_histories_v3_async
+from .wrappers import admin_get_user_mapping
+from .wrappers import admin_get_user_mapping_async
 from .wrappers import admin_get_user_platform_accounts_v3
 from .wrappers import admin_get_user_platform_accounts_v3_async
 from .wrappers import admin_invite_user_v3
@@ -483,6 +485,8 @@ from .wrappers import public_delete_platform_link_v2
 from .wrappers import public_delete_platform_link_v2_async
 from .wrappers import public_force_link_platform_with_progression
 from .wrappers import public_force_link_platform_with_progression_async
+from .wrappers import public_force_platform_link_v3
+from .wrappers import public_force_platform_link_v3_async
 from .wrappers import public_forgot_password_v2
 from .wrappers import public_forgot_password_v2_async
 from .wrappers import public_forgot_password_v3
@@ -505,6 +509,8 @@ from .wrappers import public_get_user_by_user_id_v3
 from .wrappers import public_get_user_by_user_id_v3_async
 from .wrappers import public_get_user_by_user_idv2
 from .wrappers import public_get_user_by_user_idv2_async
+from .wrappers import public_get_user_information_v3
+from .wrappers import public_get_user_information_v3_async
 from .wrappers import public_get_user_login_histories_v3
 from .wrappers import public_get_user_login_histories_v3_async
 from .wrappers import public_get_user_platform_accounts_v3
@@ -533,6 +539,8 @@ from .wrappers import public_send_registration_code
 from .wrappers import public_send_registration_code_async
 from .wrappers import public_send_verification_code_v3
 from .wrappers import public_send_verification_code_v3_async
+from .wrappers import public_send_verification_link_v3
+from .wrappers import public_send_verification_link_v3_async
 from .wrappers import public_update_password_v2
 from .wrappers import public_update_password_v2_async
 from .wrappers import public_update_password_v3
@@ -549,6 +557,8 @@ from .wrappers import public_verify_headless_account_v3
 from .wrappers import public_verify_headless_account_v3_async
 from .wrappers import public_verify_registration_code
 from .wrappers import public_verify_registration_code_async
+from .wrappers import public_verify_user_by_link_v3
+from .wrappers import public_verify_user_by_link_v3_async
 from .wrappers import public_web_link_platform
 from .wrappers import public_web_link_platform_async
 from .wrappers import public_web_link_platform_establish

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -240,6 +240,16 @@ class TokenGrantV3(Operation):
 
 
     Align with General Data Protection Regulation in Europe, user login history will be kept within 28 days by default"
+
+
+
+
+    ## 2FA remember device
+
+
+
+
+    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
 
 
 

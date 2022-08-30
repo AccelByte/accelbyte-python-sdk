@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUpgradeHeadlessAccountRequest
 from ...models import ModelUserResponse
@@ -35,6 +36,21 @@ from ...models import ModelUserResponse
 
 class UpgradeHeadlessAccount(Operation):
     """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
+
+    ## The endpoint is going to be deprecated
+
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]
+
+
+
+
 
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 

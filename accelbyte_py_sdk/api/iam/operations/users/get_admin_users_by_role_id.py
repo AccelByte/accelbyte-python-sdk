@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelGetAdminUsersResponse
 from ...models import RestErrorResponse
@@ -35,6 +36,27 @@ from ...models import RestErrorResponse
 
 class GetAdminUsersByRoleID(Operation):
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint(Public): /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]
+
+
+
+      * Note:
+        difference in V3 response, format difference: Pascal case => Camel case
+
+
+
+
+
+
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER [READ]'
 

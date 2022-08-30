@@ -48,6 +48,9 @@ from ..models import ItemPagingSlicedResult
 from ..models import ItemPurchaseConditionValidateRequest
 from ..models import ItemPurchaseConditionValidateResult
 from ..models import ItemReturnRequest
+from ..models import ItemTypeConfigCreate
+from ..models import ItemTypeConfigInfo
+from ..models import ItemTypeConfigUpdate
 from ..models import ItemUpdate
 from ..models import PopulatedItemInfo
 from ..models import PurchaseConditionUpdate
@@ -56,8 +59,10 @@ from ..models import ValidationErrorEntity
 from ..operations.item import AcquireItem
 from ..operations.item import BulkGetLocaleItems
 from ..operations.item import CreateItem
+from ..operations.item import CreateItemTypeConfig
 from ..operations.item import DefeatureItem
 from ..operations.item import DeleteItem
+from ..operations.item import DeleteItemTypeConfig
 from ..operations.item import DisableItem
 from ..operations.item import EnableItem
 from ..operations.item import FeatureItem
@@ -69,9 +74,11 @@ from ..operations.item import GetItemByAppId
 from ..operations.item import GetItemBySku
 from ..operations.item import GetItemDynamicData
 from ..operations.item import GetItemIdBySku
+from ..operations.item import GetItemTypeConfig
 from ..operations.item import GetLocaleItem
 from ..operations.item import GetLocaleItemBySku
 from ..operations.item import ListBasicItemsByFeatures
+from ..operations.item import ListItemTypeConfigs
 from ..operations.item import PublicBulkGetItems
 from ..operations.item import PublicGetApp
 from ..operations.item import PublicGetItem
@@ -93,15 +100,24 @@ from ..operations.item import (
     QueryItemsItemTypeEnum,
     QueryItemsSortByEnum,
 )
+from ..operations.item import QueryItems1
+from ..operations.item import (
+    QueryItems1AppTypeEnum,
+    QueryItems1ItemStatusEnum,
+    QueryItems1ItemTypeEnum,
+)
 from ..operations.item import QueryUncategorizedItems
 from ..operations.item import QueryUncategorizedItemsSortByEnum
 from ..operations.item import ReturnItem
+from ..operations.item import SearchItemTypeConfig
+from ..operations.item import SearchItemTypeConfigItemTypeEnum
 from ..operations.item import SearchItems
 from ..operations.item import SearchItemsItemTypeEnum
 from ..operations.item import SyncInGameItem
 from ..operations.item import UpdateApp
 from ..operations.item import UpdateItem
 from ..operations.item import UpdateItemPurchaseCondition
+from ..operations.item import UpdateItemTypeConfig
 from ..operations.item import ValidateItemPurchaseCondition
 from ..models import (
     AppInfoGenresEnum,
@@ -154,6 +170,8 @@ from ..models import (
     ItemInfoSeasonTypeEnum,
     ItemInfoStatusEnum,
 )
+from ..models import ItemTypeConfigCreateItemTypeEnum
+from ..models import ItemTypeConfigInfoItemTypeEnum
 from ..models import (
     ItemUpdateAppTypeEnum,
     ItemUpdateEntitlementTypeEnum,
@@ -308,6 +326,32 @@ async def create_item_async(
     )
 
 
+@same_doc_as(CreateItemTypeConfig)
+def create_item_type_config(
+    body: Optional[ItemTypeConfigCreate] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = CreateItemTypeConfig.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateItemTypeConfig)
+async def create_item_type_config_async(
+    body: Optional[ItemTypeConfigCreate] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = CreateItemTypeConfig.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(DefeatureItem)
 def defeature_item(
     feature: str,
@@ -394,6 +438,28 @@ async def delete_item_async(
         force=force,
         store_id=store_id,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteItemTypeConfig)
+def delete_item_type_config(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = DeleteItemTypeConfig.create(
+        id_=id_,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteItemTypeConfig)
+async def delete_item_type_config_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = DeleteItemTypeConfig.create(
+        id_=id_,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -874,6 +940,28 @@ async def get_item_id_by_sku_async(
     )
 
 
+@same_doc_as(GetItemTypeConfig)
+def get_item_type_config(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetItemTypeConfig.create(
+        id_=id_,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetItemTypeConfig)
+async def get_item_type_config_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetItemTypeConfig.create(
+        id_=id_,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetLocaleItem)
 def get_locale_item(
     item_id: str,
@@ -1027,6 +1115,24 @@ async def list_basic_items_by_features_async(
         features=features,
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListItemTypeConfigs)
+def list_item_type_configs(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = ListItemTypeConfigs.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListItemTypeConfigs)
+async def list_item_type_configs_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = ListItemTypeConfigs.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1596,6 +1702,96 @@ async def query_items_async(
     )
 
 
+@same_doc_as(QueryItems1)
+def query_items_1(
+    app_type: Optional[Union[str, QueryItems1AppTypeEnum]] = None,
+    available_date: Optional[str] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_status: Optional[Union[str, QueryItems1ItemStatusEnum]] = None,
+    item_type: Optional[Union[str, QueryItems1ItemTypeEnum]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    target_namespace: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryItems1.create(
+        app_type=app_type,
+        available_date=available_date,
+        base_app_id=base_app_id,
+        category_path=category_path,
+        features=features,
+        item_status=item_status,
+        item_type=item_type,
+        limit=limit,
+        offset=offset,
+        region=region,
+        sort_by=sort_by,
+        store_id=store_id,
+        tags=tags,
+        target_namespace=target_namespace,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryItems1)
+async def query_items_1_async(
+    app_type: Optional[Union[str, QueryItems1AppTypeEnum]] = None,
+    available_date: Optional[str] = None,
+    base_app_id: Optional[str] = None,
+    category_path: Optional[str] = None,
+    features: Optional[str] = None,
+    item_status: Optional[Union[str, QueryItems1ItemStatusEnum]] = None,
+    item_type: Optional[Union[str, QueryItems1ItemTypeEnum]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    region: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    store_id: Optional[str] = None,
+    tags: Optional[str] = None,
+    target_namespace: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryItems1.create(
+        app_type=app_type,
+        available_date=available_date,
+        base_app_id=base_app_id,
+        category_path=category_path,
+        features=features,
+        item_status=item_status,
+        item_type=item_type,
+        limit=limit,
+        offset=offset,
+        region=region,
+        sort_by=sort_by,
+        store_id=store_id,
+        tags=tags,
+        target_namespace=target_namespace,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(QueryUncategorizedItems)
 def query_uncategorized_items(
     active_only: Optional[bool] = None,
@@ -1686,6 +1882,36 @@ async def return_item_async(
         item_id=item_id,
         body=body,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SearchItemTypeConfig)
+def search_item_type_config(
+    item_type: Union[str, SearchItemTypeConfigItemTypeEnum],
+    clazz: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = SearchItemTypeConfig.create(
+        item_type=item_type,
+        clazz=clazz,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SearchItemTypeConfig)
+async def search_item_type_config_async(
+    item_type: Union[str, SearchItemTypeConfigItemTypeEnum],
+    clazz: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = SearchItemTypeConfig.create(
+        item_type=item_type,
+        clazz=clazz,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -1928,6 +2154,36 @@ async def update_item_purchase_condition_async(
         store_id=store_id,
         body=body,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateItemTypeConfig)
+def update_item_type_config(
+    id_: str,
+    body: Optional[ItemTypeConfigUpdate] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateItemTypeConfig.create(
+        id_=id_,
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateItemTypeConfig)
+async def update_item_type_config_async(
+    id_: str,
+    body: Optional[ItemTypeConfigUpdate] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = UpdateItemTypeConfig.create(
+        id_=id_,
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

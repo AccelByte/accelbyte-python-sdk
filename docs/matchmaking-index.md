@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Matchmaking Service Index (2.15.5)
+# AccelByte Cloud Matchmaking Service Index (2.15.6)
 
 
 ## Operations
@@ -59,6 +59,8 @@
 | models.Channel | [ModelsChannel](../accelbyte_py_sdk/api/matchmaking/models/models_channel.py) |
 | models.ChannelRequest | [ModelsChannelRequest](../accelbyte_py_sdk/api/matchmaking/models/models_channel_request.py) |
 | models.ChannelV1 | [ModelsChannelV1](../accelbyte_py_sdk/api/matchmaking/models/models_channel_v1.py) |
+| models.Combination | [ModelsCombination](../accelbyte_py_sdk/api/matchmaking/models/models_combination.py) |
+| models.Combination.alliances | [ModelsCombinationAlliances](../accelbyte_py_sdk/api/matchmaking/models/models_combination_alliances.py) |
 | models.CreateChannelResponse | [ModelsCreateChannelResponse](../accelbyte_py_sdk/api/matchmaking/models/models_create_channel_response.py) |
 | models.DequeueRequest | [ModelsDequeueRequest](../accelbyte_py_sdk/api/matchmaking/models/models_dequeue_request.py) |
 | models.FlexingRule | [ModelsFlexingRule](../accelbyte_py_sdk/api/matchmaking/models/models_flexing_rule.py) |

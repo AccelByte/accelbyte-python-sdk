@@ -20,6 +20,7 @@ from .admin_get_achievement import AdminGetAchievement
 from .admin_list_achievements import AdminListAchievements
 from .admin_list_achievements import SortByEnum as AdminListAchievementsSortByEnum
 from .admin_list_user_achievements import AdminListUserAchievements
+from .admin_reset_achievement import AdminResetAchievement
 from .admin_unlock_achievement import AdminUnlockAchievement
 from .admin_update_achievement import AdminUpdateAchievement
 from .admin_update_achievemen_d288a7 import AdminUpdateAchievementListOrder

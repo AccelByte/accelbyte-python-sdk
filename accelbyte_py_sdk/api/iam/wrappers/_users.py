@@ -34,6 +34,7 @@ from ..models import AccountcommonCountryAgeRestriction
 from ..models import AccountcommonDistinctPlatformResponseV3
 from ..models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..models import AccountcommonPermissions
+from ..models import AccountcommonUserInformationV3
 from ..models import AccountcommonUserLinkedPlatform
 from ..models import AccountcommonUserLinkedPlatformsResponseV3
 from ..models import AccountcommonUserPlatforms
@@ -56,6 +57,7 @@ from ..models import ModelGetPublisherUserV3Response
 from ..models import ModelGetUserBanV3Response
 from ..models import ModelGetUserJusticePlatformAccountResponse
 from ..models import ModelGetUserMapping
+from ..models import ModelGetUserMappingV3
 from ..models import ModelGetUsersResponseWithPaginationV3
 from ..models import ModelInviteUserRequestV3
 from ..models import ModelInviteUserResponseV3
@@ -82,6 +84,7 @@ from ..models import ModelSearchUsersResponseWithPaginationV3
 from ..models import ModelSendRegisterVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequestV3
+from ..models import ModelSendVerificationLinkRequest
 from ..models import ModelUnlinkUserPlatformRequest
 from ..models import ModelUpdatePermissionScheduleRequest
 from ..models import ModelUpdateUserDeletionStatusRequest
@@ -145,6 +148,7 @@ from ..operations.users import AdminGetUserByUserIdV2
 from ..operations.users import AdminGetUserByUserIdV3
 from ..operations.users import AdminGetUserDeletionStatusV3
 from ..operations.users import AdminGetUserLoginHistoriesV3
+from ..operations.users import AdminGetUserMapping
 from ..operations.users import AdminGetUserPlatformAccountsV3
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
@@ -210,6 +214,7 @@ from ..operations.users import PublicCreateUserV2
 from ..operations.users import PublicCreateUserV3
 from ..operations.users import PublicDeletePlatformLinkV2
 from ..operations.users import PublicForceLinkPlatformWithProgression
+from ..operations.users import PublicForcePlatformLinkV3
 from ..operations.users import PublicForgotPasswordV2
 from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
@@ -221,6 +226,7 @@ from ..operations.users import PublicGetUserBanHistoryV3
 from ..operations.users import PublicGetUserByPlatformUserIDV3
 from ..operations.users import PublicGetUserByUserIdV3
 from ..operations.users import PublicGetUserByUserIDV2
+from ..operations.users import PublicGetUserInformationV3
 from ..operations.users import PublicGetUserLoginHistoriesV3
 from ..operations.users import PublicGetUserPlatformAccountsV3
 from ..operations.users import PublicLinkPlatformAccount
@@ -235,6 +241,7 @@ from ..operations.users import PublicResetPasswordV2
 from ..operations.users import PublicSearchUserV3
 from ..operations.users import PublicSendRegistrationCode
 from ..operations.users import PublicSendVerificationCodeV3
+from ..operations.users import PublicSendVerificationLinkV3
 from ..operations.users import PublicUpdatePasswordV2
 from ..operations.users import PublicUpdatePasswordV3
 from ..operations.users import PublicUpdateUserV2
@@ -243,6 +250,7 @@ from ..operations.users import PublicUserVerificationV3
 from ..operations.users import PublicValidateUserByUserIDAndPasswordV3
 from ..operations.users import PublicVerifyHeadlessAccountV3
 from ..operations.users import PublicVerifyRegistrationCode
+from ..operations.users import PublicVerifyUserByLinkV3
 from ..operations.users import PublicWebLinkPlatform
 from ..operations.users import PublicWebLinkPlatformEstablish
 from ..operations.users import ResetPassword
@@ -1474,6 +1482,48 @@ async def admin_get_user_login_histories_v3_async(
         after=after,
         before=before,
         limit=limit,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserMapping)
+def admin_get_user_mapping(
+    target_namespace: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserMapping.create(
+        target_namespace=target_namespace,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserMapping)
+async def admin_get_user_mapping_async(
+    target_namespace: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserMapping.create(
+        target_namespace=target_namespace,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -3173,6 +3223,7 @@ async def get_admin_invitation_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAdminUsersByRoleID)
 def get_admin_users_by_role_id(
     after: Optional[int] = None,
@@ -3197,6 +3248,7 @@ def get_admin_users_by_role_id(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAdminUsersByRoleID)
 async def get_admin_users_by_role_id_async(
     after: Optional[int] = None,
@@ -3549,6 +3601,7 @@ async def get_user_by_user_id_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserInformation)
 def get_user_information(
     user_id: str,
@@ -3567,6 +3620,7 @@ def get_user_information(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserInformation)
 async def get_user_information_async(
     user_id: str,
@@ -3631,6 +3685,7 @@ async def get_user_justice_platform_account_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserLoginHistories)
 def get_user_login_histories(
     user_id: str,
@@ -3655,6 +3710,7 @@ def get_user_login_histories(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserLoginHistories)
 async def get_user_login_histories_async(
     user_id: str,
@@ -3681,6 +3737,7 @@ async def get_user_login_histories_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserMapping)
 def get_user_mapping(
     target_namespace: str,
@@ -3701,6 +3758,7 @@ def get_user_mapping(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserMapping)
 async def get_user_mapping_async(
     target_namespace: str,
@@ -3723,6 +3781,7 @@ async def get_user_mapping_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserPlatformAccounts)
 def get_user_platform_accounts(
     user_id: str,
@@ -3741,6 +3800,7 @@ def get_user_platform_accounts(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserPlatformAccounts)
 async def get_user_platform_accounts_async(
     user_id: str,
@@ -3933,6 +3993,7 @@ async def list_cross_namespace_account_link_async(
     )
 
 
+@deprecated
 @same_doc_as(PlatformLink)
 def platform_link(
     platform_id: str,
@@ -3955,6 +4016,7 @@ def platform_link(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PlatformLink)
 async def platform_link_async(
     platform_id: str,
@@ -3979,6 +4041,7 @@ async def platform_link_async(
     )
 
 
+@deprecated
 @same_doc_as(PlatformUnlink)
 def platform_unlink(
     platform_id: str,
@@ -4001,6 +4064,7 @@ def platform_unlink(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PlatformUnlink)
 async def platform_unlink_async(
     platform_id: str,
@@ -4258,6 +4322,48 @@ async def public_force_link_platform_with_progression_async(
     request = PublicForceLinkPlatformWithProgression.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicForcePlatformLinkV3)
+def public_force_platform_link_v3(
+    platform_id: str,
+    ticket: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicForcePlatformLinkV3.create(
+        platform_id=platform_id,
+        ticket=ticket,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicForcePlatformLinkV3)
+async def public_force_platform_link_v3_async(
+    platform_id: str,
+    ticket: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicForcePlatformLinkV3.create(
+        platform_id=platform_id,
+        ticket=ticket,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4679,6 +4785,44 @@ async def public_get_user_by_user_idv2_async(
         if error:
             return None, error
     request = PublicGetUserByUserIDV2.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetUserInformationV3)
+def public_get_user_information_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserInformationV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserInformationV3)
+async def public_get_user_information_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserInformationV3.create(
         user_id=user_id,
         namespace=namespace,
     )
@@ -5283,6 +5427,32 @@ async def public_send_verification_code_v3_async(
     )
 
 
+@same_doc_as(PublicSendVerificationLinkV3)
+def public_send_verification_link_v3(
+    body: ModelSendVerificationLinkRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicSendVerificationLinkV3.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSendVerificationLinkV3)
+async def public_send_verification_link_v3_async(
+    body: ModelSendVerificationLinkRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicSendVerificationLinkV3.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicUpdatePasswordV2)
 def public_update_password_v2(
     body: ModelUserPasswordUpdateRequest,
@@ -5593,6 +5763,32 @@ async def public_verify_registration_code_async(
     request = PublicVerifyRegistrationCode.create(
         body=body,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicVerifyUserByLinkV3)
+def public_verify_user_by_link_v3(
+    code: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicVerifyUserByLinkV3.create(
+        code=code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicVerifyUserByLinkV3)
+async def public_verify_user_by_link_v3_async(
+    code: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicVerifyUserByLinkV3.create(
+        code=code,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -6105,6 +6301,7 @@ async def update_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(UpgradeHeadlessAccount)
 def upgrade_headless_account(
     body: ModelUpgradeHeadlessAccountRequest,
@@ -6125,6 +6322,7 @@ def upgrade_headless_account(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpgradeHeadlessAccount)
 async def upgrade_headless_account_async(
     body: ModelUpgradeHeadlessAccountRequest,
@@ -6147,6 +6345,7 @@ async def upgrade_headless_account_async(
     )
 
 
+@deprecated
 @same_doc_as(UpgradeHeadlessAccountWithVerificationCode)
 def upgrade_headless_account_with_verification_code(
     body: ModelUpgradeHeadlessAccountWithVerificationCodeRequest,
@@ -6167,6 +6366,7 @@ def upgrade_headless_account_with_verification_code(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpgradeHeadlessAccountWithVerificationCode)
 async def upgrade_headless_account_with_verification_code_async(
     body: ModelUpgradeHeadlessAccountWithVerificationCodeRequest,

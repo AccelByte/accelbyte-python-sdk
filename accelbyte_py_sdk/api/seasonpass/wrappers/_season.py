@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ClaimableUserSeasonInfo
 from ..models import ErrorEntity
 from ..models import ExpGrantHistoryPagingSlicedResult
+from ..models import FullSeasonInfo
 from ..models import ListSeasonInfoPagingSlicedResult
 from ..models import ListUserSeasonInfoPagingSlicedResult
 from ..models import LocalizedSeasonInfo
@@ -53,6 +54,7 @@ from ..operations.season import DeleteSeason
 from ..operations.season import ExistsAnyPassByPassCodes
 from ..operations.season import GetCurrentSeason
 from ..operations.season import GetCurrentUserSeasonProgression
+from ..operations.season import GetFullSeason
 from ..operations.season import GetSeason
 from ..operations.season import GetUserParticipatedSeasons
 from ..operations.season import GetUserSeason
@@ -341,6 +343,44 @@ async def get_current_user_season_progression_async(
             return None, error
     request = GetCurrentUserSeasonProgression.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetFullSeason)
+def get_full_season(
+    season_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetFullSeason.create(
+        season_id=season_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetFullSeason)
+async def get_full_season_async(
+    season_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetFullSeason.create(
+        season_id=season_id,
         namespace=namespace,
     )
     return await run_request_async(

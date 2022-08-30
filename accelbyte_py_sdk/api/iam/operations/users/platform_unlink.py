@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,10 +28,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 
 class PlatformUnlink(Operation):
     """Unlink user's account with platform (PlatformUnlink)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]
+
+
+
+
+
+
+
 
     Required permission 'NAMESPACE:{namespace}:USER:{userId} [UPDATE]'.
 

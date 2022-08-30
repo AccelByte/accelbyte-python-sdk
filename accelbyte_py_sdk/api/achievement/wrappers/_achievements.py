@@ -47,6 +47,7 @@ from ..operations.achievements import AdminGetAchievement
 from ..operations.achievements import AdminListAchievements
 from ..operations.achievements import AdminListAchievementsSortByEnum
 from ..operations.achievements import AdminListUserAchievements
+from ..operations.achievements import AdminResetAchievement
 from ..operations.achievements import AdminUnlockAchievement
 from ..operations.achievements import AdminUpdateAchievement
 from ..operations.achievements import AdminUpdateAchievementListOrder
@@ -262,6 +263,48 @@ async def admin_list_user_achievements_async(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminResetAchievement)
+def admin_reset_achievement(
+    achievement_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetAchievement.create(
+        achievement_code=achievement_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminResetAchievement)
+async def admin_reset_achievement_async(
+    achievement_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetAchievement.create(
+        achievement_code=achievement_code,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

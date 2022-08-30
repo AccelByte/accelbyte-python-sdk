@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.12.1"
+__version__ = "4.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -339,10 +339,14 @@ from ._item import bulk_get_locale_items
 from ._item import bulk_get_locale_items_async
 from ._item import create_item
 from ._item import create_item_async
+from ._item import create_item_type_config
+from ._item import create_item_type_config_async
 from ._item import defeature_item
 from ._item import defeature_item_async
 from ._item import delete_item
 from ._item import delete_item_async
+from ._item import delete_item_type_config
+from ._item import delete_item_type_config_async
 from ._item import disable_item
 from ._item import disable_item_async
 from ._item import enable_item
@@ -365,12 +369,16 @@ from ._item import get_item_dynamic_data
 from ._item import get_item_dynamic_data_async
 from ._item import get_item_id_by_sku
 from ._item import get_item_id_by_sku_async
+from ._item import get_item_type_config
+from ._item import get_item_type_config_async
 from ._item import get_locale_item
 from ._item import get_locale_item_async
 from ._item import get_locale_item_by_sku
 from ._item import get_locale_item_by_sku_async
 from ._item import list_basic_items_by_features
 from ._item import list_basic_items_by_features_async
+from ._item import list_item_type_configs
+from ._item import list_item_type_configs_async
 from ._item import public_bulk_get_items
 from ._item import public_bulk_get_items_async
 from ._item import public_get_app
@@ -391,10 +399,14 @@ from ._item import public_validate_item_purchase_condition
 from ._item import public_validate_item_purchase_condition_async
 from ._item import query_items
 from ._item import query_items_async
+from ._item import query_items_1
+from ._item import query_items_1_async
 from ._item import query_uncategorized_items
 from ._item import query_uncategorized_items_async
 from ._item import return_item
 from ._item import return_item_async
+from ._item import search_item_type_config
+from ._item import search_item_type_config_async
 from ._item import search_items
 from ._item import search_items_async
 from ._item import sync_in_game_item
@@ -405,6 +417,8 @@ from ._item import update_item
 from ._item import update_item_async
 from ._item import update_item_purchase_condition
 from ._item import update_item_purchase_condition_async
+from ._item import update_item_type_config
+from ._item import update_item_type_config_async
 from ._item import validate_item_purchase_condition
 from ._item import validate_item_purchase_condition_async
 

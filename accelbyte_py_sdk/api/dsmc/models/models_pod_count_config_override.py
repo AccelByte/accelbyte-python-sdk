@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,8 @@ class ModelsPodCountConfigOverride(Model):
 
         name: (name) REQUIRED str
 
+        unlimited: (unlimited) REQUIRED bool
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
     """
 
@@ -52,6 +54,7 @@ class ModelsPodCountConfigOverride(Model):
     max_count: int  # REQUIRED
     min_count: int  # REQUIRED
     name: str  # REQUIRED
+    unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
 
     # endregion fields
@@ -76,6 +79,10 @@ class ModelsPodCountConfigOverride(Model):
 
     def with_name(self, value: str) -> ModelsPodCountConfigOverride:
         self.name = value
+        return self
+
+    def with_unlimited(self, value: bool) -> ModelsPodCountConfigOverride:
+        self.unlimited = value
         return self
 
     def with_use_buffer_percent(self, value: bool) -> ModelsPodCountConfigOverride:
@@ -108,6 +115,10 @@ class ModelsPodCountConfigOverride(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -126,6 +137,7 @@ class ModelsPodCountConfigOverride(Model):
         max_count: int,
         min_count: int,
         name: str,
+        unlimited: bool,
         use_buffer_percent: bool,
     ) -> ModelsPodCountConfigOverride:
         instance = cls()
@@ -134,6 +146,7 @@ class ModelsPodCountConfigOverride(Model):
         instance.max_count = max_count
         instance.min_count = min_count
         instance.name = name
+        instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
         return instance
 
@@ -164,6 +177,10 @@ class ModelsPodCountConfigOverride(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -216,6 +233,7 @@ class ModelsPodCountConfigOverride(Model):
             "max_count": "max_count",
             "min_count": "min_count",
             "name": "name",
+            "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
         }
 
@@ -227,6 +245,7 @@ class ModelsPodCountConfigOverride(Model):
             "max_count": True,
             "min_count": True,
             "name": True,
+            "unlimited": True,
             "use_buffer_percent": True,
         }
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,6 +39,7 @@ class ItemTypeEnum(StrEnum):
     BUNDLE = "BUNDLE"
     CODE = "CODE"
     COINS = "COINS"
+    EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
@@ -399,6 +400,7 @@ class SearchItems(Operation):
                 "BUNDLE",
                 "CODE",
                 "COINS",
+                "EXTENSION",
                 "INGAMEITEM",
                 "MEDIA",
                 "OPTIONBOX",

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,7 @@ class ItemTypeEnum(StrEnum):
     BUNDLE = "BUNDLE"
     CODE = "CODE"
     COINS = "COINS"
+    EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
@@ -828,6 +829,7 @@ class ItemUpdate(Model):
                 "BUNDLE",
                 "CODE",
                 "COINS",
+                "EXTENSION",
                 "INGAMEITEM",
                 "MEDIA",
                 "OPTIONBOX",

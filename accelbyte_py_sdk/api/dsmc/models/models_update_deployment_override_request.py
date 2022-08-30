@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,8 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
 
         session_timeout: (session_timeout) REQUIRED int
 
+        unlimited: (unlimited) REQUIRED bool
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
     """
 
@@ -64,6 +66,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
     min_count: int  # REQUIRED
     regions: List[str]  # REQUIRED
     session_timeout: int  # REQUIRED
+    unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
 
     # endregion fields
@@ -106,6 +109,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
 
     def with_session_timeout(self, value: int) -> ModelsUpdateDeploymentOverrideRequest:
         self.session_timeout = value
+        return self
+
+    def with_unlimited(self, value: bool) -> ModelsUpdateDeploymentOverrideRequest:
+        self.unlimited = value
         return self
 
     def with_use_buffer_percent(
@@ -156,6 +163,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             result["session_timeout"] = int(self.session_timeout)
         elif include_empty:
             result["session_timeout"] = 0
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -178,6 +189,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
         min_count: int,
         regions: List[str],
         session_timeout: int,
+        unlimited: bool,
         use_buffer_percent: bool,
     ) -> ModelsUpdateDeploymentOverrideRequest:
         instance = cls()
@@ -190,6 +202,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
         instance.min_count = min_count
         instance.regions = regions
         instance.session_timeout = session_timeout
+        instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
         return instance
 
@@ -239,6 +252,10 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             instance.session_timeout = int(dict_["session_timeout"])
         elif include_empty:
             instance.session_timeout = 0
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -295,6 +312,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             "min_count": "min_count",
             "regions": "regions",
             "session_timeout": "session_timeout",
+            "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
         }
 
@@ -310,6 +328,7 @@ class ModelsUpdateDeploymentOverrideRequest(Model):
             "min_count": True,
             "regions": True,
             "session_timeout": True,
+            "unlimited": True,
             "use_buffer_percent": True,
         }
 

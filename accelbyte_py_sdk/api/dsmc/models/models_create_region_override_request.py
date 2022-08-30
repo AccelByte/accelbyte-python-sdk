@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsCreateRegionOverrideRequest(Model):
 
         min_count: (min_count) REQUIRED int
 
+        unlimited: (unlimited) REQUIRED bool
+
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
     """
 
@@ -49,6 +51,7 @@ class ModelsCreateRegionOverrideRequest(Model):
     buffer_percent: int  # REQUIRED
     max_count: int  # REQUIRED
     min_count: int  # REQUIRED
+    unlimited: bool  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
 
     # endregion fields
@@ -69,6 +72,10 @@ class ModelsCreateRegionOverrideRequest(Model):
 
     def with_min_count(self, value: int) -> ModelsCreateRegionOverrideRequest:
         self.min_count = value
+        return self
+
+    def with_unlimited(self, value: bool) -> ModelsCreateRegionOverrideRequest:
+        self.unlimited = value
         return self
 
     def with_use_buffer_percent(self, value: bool) -> ModelsCreateRegionOverrideRequest:
@@ -97,6 +104,10 @@ class ModelsCreateRegionOverrideRequest(Model):
             result["min_count"] = int(self.min_count)
         elif include_empty:
             result["min_count"] = 0
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
         if hasattr(self, "use_buffer_percent"):
             result["use_buffer_percent"] = bool(self.use_buffer_percent)
         elif include_empty:
@@ -114,6 +125,7 @@ class ModelsCreateRegionOverrideRequest(Model):
         buffer_percent: int,
         max_count: int,
         min_count: int,
+        unlimited: bool,
         use_buffer_percent: bool,
     ) -> ModelsCreateRegionOverrideRequest:
         instance = cls()
@@ -121,6 +133,7 @@ class ModelsCreateRegionOverrideRequest(Model):
         instance.buffer_percent = buffer_percent
         instance.max_count = max_count
         instance.min_count = min_count
+        instance.unlimited = unlimited
         instance.use_buffer_percent = use_buffer_percent
         return instance
 
@@ -147,6 +160,10 @@ class ModelsCreateRegionOverrideRequest(Model):
             instance.min_count = int(dict_["min_count"])
         elif include_empty:
             instance.min_count = 0
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
         if "use_buffer_percent" in dict_ and dict_["use_buffer_percent"] is not None:
             instance.use_buffer_percent = bool(dict_["use_buffer_percent"])
         elif include_empty:
@@ -198,6 +215,7 @@ class ModelsCreateRegionOverrideRequest(Model):
             "buffer_percent": "buffer_percent",
             "max_count": "max_count",
             "min_count": "min_count",
+            "unlimited": "unlimited",
             "use_buffer_percent": "use_buffer_percent",
         }
 
@@ -208,6 +226,7 @@ class ModelsCreateRegionOverrideRequest(Model):
             "buffer_percent": True,
             "max_count": True,
             "min_count": True,
+            "unlimited": True,
             "use_buffer_percent": True,
         }
 

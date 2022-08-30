@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetPublisherUserV3(Operation):
     """Get Publisher User (PublicGetPublisherUserV3)
 
-    Required permissions 'NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ].
+    Required permissions 'NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ].
 
 
 
@@ -45,7 +45,7 @@ class PublicGetPublisherUserV3(Operation):
     Path Parameter namespace can be provided only with game namespace
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:PUBLISHER:USER:{userId} [READ]
+        - NAMESPACE:{namespace}:USER:{userId}:PUBLISHER [READ]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/publisher

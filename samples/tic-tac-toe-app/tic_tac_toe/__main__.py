@@ -15,23 +15,35 @@ def parse_args():
     parser = ArgumentParser()
 
     parser.add_argument(
-        "-x", "--proxy", default="match", type=str, required=False, help="sets the proxy"
+        "-x",
+        "--proxy",
+        default="match",
+        type=str,
+        required=False,
+        help="sets the proxy",
     )
 
     parser.add_argument(
-        "-m", "--method", default="post", type=str, required=False, help="sets the method"
+        "-m",
+        "--method",
+        default="post",
+        type=str,
+        required=False,
+        help="sets the method",
     )
 
-    parser.add_argument(
-        "-b", "--body", type=str, required=False, help="sets the body"
-    )
+    parser.add_argument("-b", "--body", type=str, required=False, help="sets the body")
 
     parser.add_argument(
         "-g", "--game_id", type=str, required=False, help="sets the game identifier"
     )
 
     parser.add_argument(
-        "-i", "--user_id", type=str, required=False, help="sets the override user identifier"
+        "-i",
+        "--user_id",
+        type=str,
+        required=False,
+        help="sets the override user identifier",
     )
 
     parser.add_argument(

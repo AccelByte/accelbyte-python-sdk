@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Gdpr Service Index (1.14.7)
+# AccelByte Cloud Gdpr Service Index (1.14.8)
 
 
 ## Operations

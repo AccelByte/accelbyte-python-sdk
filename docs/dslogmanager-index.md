@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Ds Log Manager Service Index (2.4.1)
+# AccelByte Cloud Ds Log Manager Service Index (2.4.2)
 
 
 ## Operations

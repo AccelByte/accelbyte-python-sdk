@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.14.0"
+__version__ = "5.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,6 +75,9 @@ from .accountcommon_permission_v3 import AccountcommonPermissionV3
 from .accountcommon_permissions import AccountcommonPermissions
 from .accountcommon_permissions_v3 import AccountcommonPermissionsV3
 from .accountcommon_platform_account import AccountcommonPlatformAccount
+from .accountcommon_platform_user_information_v3 import (
+    AccountcommonPlatformUserInformationV3,
+)
 from .accountcommon_registered_domain import AccountcommonRegisteredDomain
 from .accountcommon_role import AccountcommonRole
 from .accountcommon_role_manager import AccountcommonRoleManager
@@ -85,6 +88,7 @@ from .accountcommon_role_v3 import AccountcommonRoleV3
 from .accountcommon_simple_user_platform_info_v3 import (
     AccountcommonSimpleUserPlatformInfoV3,
 )
+from .accountcommon_user_information_v3 import AccountcommonUserInformationV3
 from .accountcommon_user_linked_platform import AccountcommonUserLinkedPlatform
 from .accountcommon_user_linked_platform_v3 import AccountcommonUserLinkedPlatformV3
 from .accountcommon_user_linked_platforms_response_v3 import (
@@ -150,6 +154,7 @@ from .model_get_user_justice_platform_account_response import (
     ModelGetUserJusticePlatformAccountResponse,
 )
 from .model_get_user_mapping import ModelGetUserMapping
+from .model_get_user_mapping_v3 import ModelGetUserMappingV3
 from .model_get_users_response_with_pagination_v3 import (
     ModelGetUsersResponseWithPaginationV3,
 )
@@ -230,6 +235,7 @@ from .model_send_register_verification_code_request import (
 )
 from .model_send_verification_code_request import ModelSendVerificationCodeRequest
 from .model_send_verification_code_request_v3 import ModelSendVerificationCodeRequestV3
+from .model_send_verification_link_request import ModelSendVerificationLinkRequest
 from .model_sso_platform_credential_request import ModelSSOPlatformCredentialRequest
 from .model_sso_platform_credential_response import ModelSSOPlatformCredentialResponse
 from .model_third_party_login_platform_credential_request import (

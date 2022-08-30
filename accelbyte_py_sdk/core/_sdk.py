@@ -608,7 +608,9 @@ def s_run_proto_request(proto, sdk: Optional[AccelByteSDK] = None, **kwargs):
     return sdk.run_proto_request(proto, **kwargs)
 
 
-async def s_run_proto_request_async(proto, sdk: Optional[AccelByteSDK] = None, **kwargs):
+async def s_run_proto_request_async(
+    proto, sdk: Optional[AccelByteSDK] = None, **kwargs
+):
     sdk = sdk if sdk is not None else SDK
     return await sdk.run_proto_request_async(proto, **kwargs)
 

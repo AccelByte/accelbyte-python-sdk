@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -84,6 +84,10 @@ class PlatformAuthenticationV3(Operation):
 
       * snapchat
     Snapchat login page will redirects to this endpoint after login success
+    as previously defined on authorize request parameter `redirect_uri`
+
+      * discord
+    Discord login page will redirects to this endpoint after login success
     as previously defined on authorize request parameter `redirect_uri`
 
     action code : 10709

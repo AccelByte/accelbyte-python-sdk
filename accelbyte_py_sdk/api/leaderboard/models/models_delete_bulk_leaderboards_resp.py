@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Leaderboard Service (2.15.6)
+# AccelByte Cloud Leaderboard Service (2.15.7)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

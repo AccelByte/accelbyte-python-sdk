@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.14.0"
+__version__ = "5.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -44,6 +44,7 @@ from .admin_get_user_by_user_id_v2 import AdminGetUserByUserIdV2
 from .admin_get_user_by_user_id_v3 import AdminGetUserByUserIdV3
 from .admin_get_user_deletion_d1510f import AdminGetUserDeletionStatusV3
 from .admin_get_user_login_hi_f4b37e import AdminGetUserLoginHistoriesV3
+from .admin_get_user_mapping import AdminGetUserMapping
 from .admin_get_user_platform_6f9923 import AdminGetUserPlatformAccountsV3
 from .admin_invite_user_v3 import AdminInviteUserV3
 from .admin_link_platform_account import AdminLinkPlatformAccount
@@ -109,6 +110,7 @@ from .public_create_user_v2 import PublicCreateUserV2
 from .public_create_user_v3 import PublicCreateUserV3
 from .public_delete_platform_link_v2 import PublicDeletePlatformLinkV2
 from .public_force_link_platf_1f3822 import PublicForceLinkPlatformWithProgression
+from .public_force_platform_link_v3 import PublicForcePlatformLinkV3
 from .public_forgot_password_v2 import PublicForgotPasswordV2
 from .public_forgot_password_v3 import PublicForgotPasswordV3
 from .public_get_async_status import PublicGetAsyncStatus
@@ -120,6 +122,7 @@ from .public_get_user_ban_history_v3 import PublicGetUserBanHistoryV3
 from .public_get_user_by_plat_ae1e0a import PublicGetUserByPlatformUserIDV3
 from .public_get_user_by_user_id_v3 import PublicGetUserByUserIdV3
 from .public_get_user_by_user_idv2 import PublicGetUserByUserIDV2
+from .public_get_user_information_v3 import PublicGetUserInformationV3
 from .public_get_user_login_h_60bd12 import PublicGetUserLoginHistoriesV3
 from .public_get_user_platfor_890bc0 import PublicGetUserPlatformAccountsV3
 from .public_link_platform_account import PublicLinkPlatformAccount
@@ -134,6 +137,7 @@ from .public_reset_password_v2 import PublicResetPasswordV2
 from .public_search_user_v3 import PublicSearchUserV3
 from .public_send_registration_code import PublicSendRegistrationCode
 from .public_send_verificatio_dc732c import PublicSendVerificationCodeV3
+from .public_send_verificatio_1a545f import PublicSendVerificationLinkV3
 from .public_update_password_v2 import PublicUpdatePasswordV2
 from .public_update_password_v3 import PublicUpdatePasswordV3
 from .public_update_user_v2 import PublicUpdateUserV2
@@ -142,6 +146,7 @@ from .public_user_verification_v3 import PublicUserVerificationV3
 from .public_validate_user_by_fc4982 import PublicValidateUserByUserIDAndPasswordV3
 from .public_verify_headless__2e6c24 import PublicVerifyHeadlessAccountV3
 from .public_verify_registrat_4d06db import PublicVerifyRegistrationCode
+from .public_verify_user_by_link_v3 import PublicVerifyUserByLinkV3
 from .public_web_link_platform import PublicWebLinkPlatform
 from .public_web_link_platfor_667cbd import PublicWebLinkPlatformEstablish
 from .reset_password import ResetPassword

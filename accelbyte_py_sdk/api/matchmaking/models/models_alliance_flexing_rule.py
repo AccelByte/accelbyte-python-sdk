@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.5)
+# AccelByte Cloud Matchmaking Service (2.15.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,11 +27,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_combination import ModelsCombination
+
 
 class ModelsAllianceFlexingRule(Model):
     """Models alliance flexing rule (models.AllianceFlexingRule)
 
     Properties:
+        combination: (combination) REQUIRED ModelsCombination
+
         duration: (duration) REQUIRED int
 
         max_number: (max_number) REQUIRED int
@@ -45,6 +49,7 @@ class ModelsAllianceFlexingRule(Model):
 
     # region fields
 
+    combination: ModelsCombination  # REQUIRED
     duration: int  # REQUIRED
     max_number: int  # REQUIRED
     min_number: int  # REQUIRED
@@ -54,6 +59,10 @@ class ModelsAllianceFlexingRule(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_combination(self, value: ModelsCombination) -> ModelsAllianceFlexingRule:
+        self.combination = value
+        return self
 
     def with_duration(self, value: int) -> ModelsAllianceFlexingRule:
         self.duration = value
@@ -81,6 +90,12 @@ class ModelsAllianceFlexingRule(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "combination"):
+            result["combination"] = self.combination.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["combination"] = ModelsCombination()
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
@@ -110,6 +125,7 @@ class ModelsAllianceFlexingRule(Model):
     @classmethod
     def create(
         cls,
+        combination: ModelsCombination,
         duration: int,
         max_number: int,
         min_number: int,
@@ -117,6 +133,7 @@ class ModelsAllianceFlexingRule(Model):
         player_min_number: int,
     ) -> ModelsAllianceFlexingRule:
         instance = cls()
+        instance.combination = combination
         instance.duration = duration
         instance.max_number = max_number
         instance.min_number = min_number
@@ -131,6 +148,12 @@ class ModelsAllianceFlexingRule(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "combination" in dict_ and dict_["combination"] is not None:
+            instance.combination = ModelsCombination.create_from_dict(
+                dict_["combination"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.combination = ModelsCombination()
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
@@ -194,6 +217,7 @@ class ModelsAllianceFlexingRule(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "combination": "combination",
             "duration": "duration",
             "max_number": "max_number",
             "min_number": "min_number",
@@ -204,6 +228,7 @@ class ModelsAllianceFlexingRule(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "combination": True,
             "duration": True,
             "max_number": True,
             "min_number": True,

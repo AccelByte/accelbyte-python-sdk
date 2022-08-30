@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Seasonpass Service Index (1.13.2)
+# AccelByte Cloud Seasonpass Service Index (1.13.3)
 
 
 ## Operations
@@ -38,6 +38,7 @@
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes/ownership/any | GET | existsAnyPassByPassCodes | [ExistsAnyPassByPassCodes](../accelbyte_py_sdk/api/seasonpass/operations/season/exists_any_pass_by_pass_codes.py) | [exists_any_pass_by_pass_codes](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-exists-any-pass-by-pass-codes](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_exists_any_pass_by_pass_codes.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/current | GET | getCurrentSeason | [GetCurrentSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/get_current_season.py) | [get_current_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-current-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_current_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression | GET | getCurrentUserSeasonProgression | [GetCurrentUserSeasonProgression](../accelbyte_py_sdk/api/seasonpass/operations/season/get_current_user_season_eed4c8.py) | [get_current_user_season_progression](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-current-user-season-progression](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_current_user_season_eed4c8.py) |
+| /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/full | GET | getFullSeason | [GetFullSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/get_full_season.py) | [get_full_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-full-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_full_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId} | GET | getSeason | [GetSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/get_season.py) | [get_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons | GET | getUserParticipatedSeasons | [GetUserParticipatedSeasons](../accelbyte_py_sdk/api/seasonpass/operations/season/get_user_participated_seasons.py) | [get_user_participated_seasons](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-user-participated-seasons](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_user_participated_seasons.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data | GET | getUserSeason | [GetUserSeason](../accelbyte_py_sdk/api/seasonpass/operations/season/get_user_season.py) | [get_user_season](../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-get-user-season](../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_user_season.py) |
@@ -75,6 +76,7 @@
 | ExpGrantHistoryInfo | [ExpGrantHistoryInfo](../accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_info.py) |
 | ExpGrantHistoryPagingSlicedResult | [ExpGrantHistoryPagingSlicedResult](../accelbyte_py_sdk/api/seasonpass/models/exp_grant_history_paging_sliced_result.py) |
 | FieldValidationError | [FieldValidationError](../accelbyte_py_sdk/api/seasonpass/models/field_validation_error.py) |
+| FullSeasonInfo | [FullSeasonInfo](../accelbyte_py_sdk/api/seasonpass/models/full_season_info.py) |
 | Image | [Image](../accelbyte_py_sdk/api/seasonpass/models/image.py) |
 | ListSeasonInfo | [ListSeasonInfo](../accelbyte_py_sdk/api/seasonpass/models/list_season_info.py) |
 | ListSeasonInfoPagingSlicedResult | [ListSeasonInfoPagingSlicedResult](../accelbyte_py_sdk/api/seasonpass/models/list_season_info_paging_sliced_result.py) |

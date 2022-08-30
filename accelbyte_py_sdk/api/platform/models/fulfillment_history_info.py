@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.credit_summary import CreditSummary
 from ..models.entitlement_summary import EntitlementSummary
+from ..models.extension_fulfillment_summary import ExtensionFulfillmentSummary
 from ..models.fulfillment_error import FulfillmentError
 from ..models.fulfillment_item import FulfillmentItem
 
@@ -61,6 +62,8 @@ class FulfillmentHistoryInfo(Model):
 
         entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
+        extension_fulfillment_summaries: (extensionFulfillmentSummaries) OPTIONAL List[ExtensionFulfillmentSummary]
+
         fulfill_items: (fulfillItems) OPTIONAL List[FulfillmentItem]
 
         fulfillment_error: (fulfillmentError) OPTIONAL FulfillmentError
@@ -81,6 +84,7 @@ class FulfillmentHistoryInfo(Model):
     code: str  # OPTIONAL
     credit_summaries: List[CreditSummary]  # OPTIONAL
     entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
+    extension_fulfillment_summaries: List[ExtensionFulfillmentSummary]  # OPTIONAL
     fulfill_items: List[FulfillmentItem]  # OPTIONAL
     fulfillment_error: FulfillmentError  # OPTIONAL
     granted_item_ids: List[str]  # OPTIONAL
@@ -128,6 +132,12 @@ class FulfillmentHistoryInfo(Model):
         self, value: List[EntitlementSummary]
     ) -> FulfillmentHistoryInfo:
         self.entitlement_summaries = value
+        return self
+
+    def with_extension_fulfillment_summaries(
+        self, value: List[ExtensionFulfillmentSummary]
+    ) -> FulfillmentHistoryInfo:
+        self.extension_fulfillment_summaries = value
         return self
 
     def with_fulfill_items(
@@ -195,6 +205,13 @@ class FulfillmentHistoryInfo(Model):
             ]
         elif include_empty:
             result["entitlementSummaries"] = []
+        if hasattr(self, "extension_fulfillment_summaries"):
+            result["extensionFulfillmentSummaries"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.extension_fulfillment_summaries
+            ]
+        elif include_empty:
+            result["extensionFulfillmentSummaries"] = []
         if hasattr(self, "fulfill_items"):
             result["fulfillItems"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.fulfill_items
@@ -233,6 +250,9 @@ class FulfillmentHistoryInfo(Model):
         code: Optional[str] = None,
         credit_summaries: Optional[List[CreditSummary]] = None,
         entitlement_summaries: Optional[List[EntitlementSummary]] = None,
+        extension_fulfillment_summaries: Optional[
+            List[ExtensionFulfillmentSummary]
+        ] = None,
         fulfill_items: Optional[List[FulfillmentItem]] = None,
         fulfillment_error: Optional[FulfillmentError] = None,
         granted_item_ids: Optional[List[str]] = None,
@@ -251,6 +271,8 @@ class FulfillmentHistoryInfo(Model):
             instance.credit_summaries = credit_summaries
         if entitlement_summaries is not None:
             instance.entitlement_summaries = entitlement_summaries
+        if extension_fulfillment_summaries is not None:
+            instance.extension_fulfillment_summaries = extension_fulfillment_summaries
         if fulfill_items is not None:
             instance.fulfill_items = fulfill_items
         if fulfillment_error is not None:
@@ -313,6 +335,18 @@ class FulfillmentHistoryInfo(Model):
             ]
         elif include_empty:
             instance.entitlement_summaries = []
+        if (
+            "extensionFulfillmentSummaries" in dict_
+            and dict_["extensionFulfillmentSummaries"] is not None
+        ):
+            instance.extension_fulfillment_summaries = [
+                ExtensionFulfillmentSummary.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["extensionFulfillmentSummaries"]
+            ]
+        elif include_empty:
+            instance.extension_fulfillment_summaries = []
         if "fulfillItems" in dict_ and dict_["fulfillItems"] is not None:
             instance.fulfill_items = [
                 FulfillmentItem.create_from_dict(i0, include_empty=include_empty)
@@ -386,6 +420,7 @@ class FulfillmentHistoryInfo(Model):
             "code": "code",
             "creditSummaries": "credit_summaries",
             "entitlementSummaries": "entitlement_summaries",
+            "extensionFulfillmentSummaries": "extension_fulfillment_summaries",
             "fulfillItems": "fulfill_items",
             "fulfillmentError": "fulfillment_error",
             "grantedItemIds": "granted_item_ids",
@@ -404,6 +439,7 @@ class FulfillmentHistoryInfo(Model):
             "code": False,
             "creditSummaries": False,
             "entitlementSummaries": False,
+            "extensionFulfillmentSummaries": False,
             "fulfillItems": False,
             "fulfillmentError": False,
             "grantedItemIds": False,

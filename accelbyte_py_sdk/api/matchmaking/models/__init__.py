@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Matchmaking Service."""
 
-__version__ = "2.15.5"
+__version__ = "2.15.6"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,8 @@ from .models_alliance_rule_v1 import ModelsAllianceRuleV1
 from .models_channel import ModelsChannel
 from .models_channel_request import ModelsChannelRequest
 from .models_channel_v1 import ModelsChannelV1
+from .models_combination import ModelsCombination
+from .models_combination_alliances import ModelsCombinationAlliances
 from .models_create_channel_response import ModelsCreateChannelResponse
 from .models_dequeue_request import ModelsDequeueRequest
 from .models_flexing_rule import ModelsFlexingRule

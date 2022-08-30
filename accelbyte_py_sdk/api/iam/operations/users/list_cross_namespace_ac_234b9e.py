@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,18 @@ from .....core import deprecated
 class ListCrossNamespaceAccountLink(Operation):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
-    ## The endpoint is going to be deprecated at 9 July, 2018. Please use this instead: /users/{userId}/platforms/{platformId}/link
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]
+
+
+
 
 
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.13.2)
+# AccelByte Cloud Seasonpass Service (1.13.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,7 @@ from ..api.seasonpass.models import ExcessStrategy
 from ..api.seasonpass.models import ExpGrantHistoryInfo
 from ..api.seasonpass.models import ExpGrantHistoryPagingSlicedResult
 from ..api.seasonpass.models import FieldValidationError
+from ..api.seasonpass.models import FullSeasonInfo
 from ..api.seasonpass.models import Image
 from ..api.seasonpass.models import ListSeasonInfo
 from ..api.seasonpass.models import ListSeasonInfoPagingSlicedResult
@@ -144,6 +145,19 @@ def create_field_validation_error_example() -> FieldValidationError:
     instance.error_message = randomize()
     instance.error_value = randomize()
     instance.message_variables = {randomize(): randomize()}
+    return instance
+
+
+def create_full_season_info_example() -> FullSeasonInfo:
+    instance = FullSeasonInfo()
+    instance.id_ = randomize()
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.passes = [create_pass_info_example()]
+    instance.rewards = {}
+    instance.tiers = [create_tier_example()]
+    instance.images = [create_image_example()]
     return instance
 
 

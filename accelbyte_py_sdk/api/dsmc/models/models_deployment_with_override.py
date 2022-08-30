@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.4.1)
+# AccelByte Cloud Dsm Controller Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,8 @@ class ModelsDeploymentWithOverride(Model):
 
         regions: (regions) REQUIRED List[str]
 
+        unlimited: (unlimited) REQUIRED bool
+
         updated_at: (updatedAt) REQUIRED str
 
         use_buffer_percent: (use_buffer_percent) REQUIRED bool
@@ -89,6 +91,7 @@ class ModelsDeploymentWithOverride(Model):
     overrides: Dict[str, ModelsDeploymentConfigOverride]  # REQUIRED
     region_overrides: Dict[str, ModelsPodCountConfigOverride]  # REQUIRED
     regions: List[str]  # REQUIRED
+    unlimited: bool  # REQUIRED
     updated_at: str  # REQUIRED
     use_buffer_percent: bool  # REQUIRED
     session_timeout: int  # OPTIONAL
@@ -159,6 +162,10 @@ class ModelsDeploymentWithOverride(Model):
 
     def with_regions(self, value: List[str]) -> ModelsDeploymentWithOverride:
         self.regions = value
+        return self
+
+    def with_unlimited(self, value: bool) -> ModelsDeploymentWithOverride:
+        self.unlimited = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsDeploymentWithOverride:
@@ -245,6 +252,10 @@ class ModelsDeploymentWithOverride(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "unlimited"):
+            result["unlimited"] = bool(self.unlimited)
+        elif include_empty:
+            result["unlimited"] = False
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -281,6 +292,7 @@ class ModelsDeploymentWithOverride(Model):
         overrides: Dict[str, ModelsDeploymentConfigOverride],
         region_overrides: Dict[str, ModelsPodCountConfigOverride],
         regions: List[str],
+        unlimited: bool,
         updated_at: str,
         use_buffer_percent: bool,
         session_timeout: Optional[int] = None,
@@ -301,6 +313,7 @@ class ModelsDeploymentWithOverride(Model):
         instance.overrides = overrides
         instance.region_overrides = region_overrides
         instance.regions = regions
+        instance.unlimited = unlimited
         instance.updated_at = updated_at
         instance.use_buffer_percent = use_buffer_percent
         if session_timeout is not None:
@@ -390,6 +403,10 @@ class ModelsDeploymentWithOverride(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
+        if "unlimited" in dict_ and dict_["unlimited"] is not None:
+            instance.unlimited = bool(dict_["unlimited"])
+        elif include_empty:
+            instance.unlimited = False
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -460,6 +477,7 @@ class ModelsDeploymentWithOverride(Model):
             "overrides": "overrides",
             "region_overrides": "region_overrides",
             "regions": "regions",
+            "unlimited": "unlimited",
             "updatedAt": "updated_at",
             "use_buffer_percent": "use_buffer_percent",
             "session_timeout": "session_timeout",
@@ -483,6 +501,7 @@ class ModelsDeploymentWithOverride(Model):
             "overrides": True,
             "region_overrides": True,
             "regions": True,
+            "unlimited": True,
             "updatedAt": True,
             "use_buffer_percent": True,
             "session_timeout": False,

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ from ..api.platform.models import EpicGamesReconcileRequest
 from ..api.platform.models import EpicGamesReconcileResult
 from ..api.platform.models import ErrorEntity
 from ..api.platform.models import EventPayload
+from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
 from ..api.platform.models import FulfillCodeRequest
@@ -146,6 +147,9 @@ from ..api.platform.models import ItemPurchaseConditionValidateRequest
 from ..api.platform.models import ItemPurchaseConditionValidateResult
 from ..api.platform.models import ItemReturnRequest
 from ..api.platform.models import ItemSnapshot
+from ..api.platform.models import ItemTypeConfigCreate
+from ..api.platform.models import ItemTypeConfigInfo
+from ..api.platform.models import ItemTypeConfigUpdate
 from ..api.platform.models import ItemUpdate
 from ..api.platform.models import KeyGroupCreate
 from ..api.platform.models import KeyGroupDynamicInfo
@@ -1159,6 +1163,20 @@ def create_event_payload_example() -> EventPayload:
     return instance
 
 
+def create_extension_fulfillment_summary_example() -> ExtensionFulfillmentSummary:
+    instance = ExtensionFulfillmentSummary()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.granted_at = randomize("date")
+    instance.item_clazz = randomize()
+    instance.item_ext = {randomize(): randomize()}
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.metadata = {randomize(): randomize()}
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_external_payment_order_create_example() -> ExternalPaymentOrderCreate:
     instance = ExternalPaymentOrderCreate()
     instance.description = randomize()
@@ -1223,6 +1241,9 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     instance.code = randomize()
     instance.credit_summaries = [create_credit_summary_example()]
     instance.entitlement_summaries = [create_entitlement_summary_example()]
+    instance.extension_fulfillment_summaries = [
+        create_extension_fulfillment_summary_example()
+    ]
     instance.fulfill_items = [create_fulfillment_item_example()]
     instance.fulfillment_error = create_fulfillment_error_example()
     instance.granted_item_ids = [randomize()]
@@ -1711,6 +1732,38 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.thumbnail_url = randomize("url")
     instance.updated_at = randomize("date")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_item_type_config_create_example() -> ItemTypeConfigCreate:
+    instance = ItemTypeConfigCreate()
+    instance.fulfillment_url = randomize("url")
+    instance.item_type = randomize()
+    instance.clazz = randomize()
+    instance.dry_run = randomize("bool")
+    instance.purchase_condition_url = randomize("url")
+    return instance
+
+
+def create_item_type_config_info_example() -> ItemTypeConfigInfo:
+    instance = ItemTypeConfigInfo()
+    instance.created_at = randomize("date")
+    instance.fulfillment_url = randomize("url")
+    instance.id_ = randomize()
+    instance.item_type = randomize()
+    instance.updated_at = randomize("date")
+    instance.clazz = randomize()
+    instance.dry_run = randomize("bool")
+    instance.purchase_condition_url = randomize("url")
+    return instance
+
+
+def create_item_type_config_update_example() -> ItemTypeConfigUpdate:
+    instance = ItemTypeConfigUpdate()
+    instance.fulfillment_url = randomize("url")
+    instance.clazz = randomize()
+    instance.dry_run = randomize("bool")
+    instance.purchase_condition_url = randomize("url")
     return instance
 
 

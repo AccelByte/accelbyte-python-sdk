@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.12.1)
+# AccelByte Cloud Platform Service (4.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,6 +69,8 @@ class PublishSelected(Operation):
         400: Bad Request - ErrorEntity (30122: Store's meta mismatch)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
     """
 
     # region fields
@@ -180,6 +182,8 @@ class PublishSelected(Operation):
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
+        409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -198,6 +202,8 @@ class PublishSelected(Operation):
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

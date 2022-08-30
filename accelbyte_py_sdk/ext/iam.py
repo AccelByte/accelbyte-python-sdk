@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,7 @@ from ..api.iam.models import AccountcommonPermissionV3
 from ..api.iam.models import AccountcommonPermissions
 from ..api.iam.models import AccountcommonPermissionsV3
 from ..api.iam.models import AccountcommonPlatformAccount
+from ..api.iam.models import AccountcommonPlatformUserInformationV3
 from ..api.iam.models import AccountcommonRegisteredDomain
 from ..api.iam.models import AccountcommonRole
 from ..api.iam.models import AccountcommonRoleManager
@@ -73,6 +74,7 @@ from ..api.iam.models import AccountcommonRoleMember
 from ..api.iam.models import AccountcommonRoleMemberV3
 from ..api.iam.models import AccountcommonRoleV3
 from ..api.iam.models import AccountcommonSimpleUserPlatformInfoV3
+from ..api.iam.models import AccountcommonUserInformationV3
 from ..api.iam.models import AccountcommonUserLinkedPlatform
 from ..api.iam.models import AccountcommonUserLinkedPlatformV3
 from ..api.iam.models import AccountcommonUserLinkedPlatformsResponseV3
@@ -122,6 +124,7 @@ from ..api.iam.models import ModelGetPublisherUserV3Response
 from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
+from ..api.iam.models import ModelGetUserMappingV3
 from ..api.iam.models import ModelGetUsersResponseWithPaginationV3
 from ..api.iam.models import ModelInputValidationData
 from ..api.iam.models import ModelInputValidationDataPublic
@@ -190,6 +193,7 @@ from ..api.iam.models import ModelSearchUsersResponseWithPaginationV3
 from ..api.iam.models import ModelSendRegisterVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequestV3
+from ..api.iam.models import ModelSendVerificationLinkRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..api.iam.models import ModelUnlinkUserPlatformRequest
@@ -616,6 +620,18 @@ def create_accountcommon_platform_account_example() -> AccountcommonPlatformAcco
     return instance
 
 
+def create_accountcommon_platform_user_information_v3_example() -> AccountcommonPlatformUserInformationV3:
+    instance = AccountcommonPlatformUserInformationV3()
+    instance.linked_at = randomize("date")
+    instance.namespace = randomize("slug")
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.xbox_user_id = randomize()
+    return instance
+
+
 def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredDomain:
     instance = AccountcommonRegisteredDomain()
     instance.affected_client_i_ds = [randomize()]
@@ -689,6 +705,20 @@ def create_accountcommon_simple_user_platform_info_v3_example() -> Accountcommon
     instance.origin_namespace = randomize("slug")
     instance.display_name = randomize("slug")
     instance.platform_id = randomize()
+    return instance
+
+
+def create_accountcommon_user_information_v3_example() -> AccountcommonUserInformationV3:
+    instance = AccountcommonUserInformationV3()
+    instance.email_addresses = [randomize()]
+    instance.platform_users = [
+        create_accountcommon_platform_user_information_v3_example()
+    ]
+    instance.country = randomize("country")
+    instance.display_name = randomize("slug")
+    instance.phone_number = randomize()
+    instance.username = randomize("slug")
+    instance.xbox_user_id = randomize()
     return instance
 
 
@@ -1099,6 +1129,13 @@ def create_model_get_user_justice_platform_account_response_example() -> ModelGe
 
 def create_model_get_user_mapping_example() -> ModelGetUserMapping:
     instance = ModelGetUserMapping()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_get_user_mapping_v3_example() -> ModelGetUserMappingV3:
+    instance = ModelGetUserMappingV3()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     return instance
@@ -1637,6 +1674,12 @@ def create_model_send_verification_code_request_v3_example() -> ModelSendVerific
     instance = ModelSendVerificationCodeRequestV3()
     instance.email_address = randomize("email")
     instance.context = randomize()
+    instance.language_tag = randomize()
+    return instance
+
+
+def create_model_send_verification_link_request_example() -> ModelSendVerificationLinkRequest:
+    instance = ModelSendVerificationLinkRequest()
     instance.language_tag = randomize()
     return instance
 

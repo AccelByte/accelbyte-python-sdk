@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.14.0)
+# AccelByte Cloud Iam Service (5.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,6 +41,16 @@ class Verify2faCode(Operation):
 
 
     This endpoint is used for verifying 2FA code.
+
+
+
+
+    ## 2FA remember device
+
+
+
+
+    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
 
     Properties:
         url: /iam/v3/oauth/mfa/verify

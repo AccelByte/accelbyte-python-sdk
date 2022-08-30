@@ -25,6 +25,8 @@ from .wrappers import admin_list_achievements
 from .wrappers import admin_list_achievements_async
 from .wrappers import admin_list_user_achievements
 from .wrappers import admin_list_user_achievements_async
+from .wrappers import admin_reset_achievement
+from .wrappers import admin_reset_achievement_async
 from .wrappers import admin_unlock_achievement
 from .wrappers import admin_unlock_achievement_async
 from .wrappers import admin_update_achievement

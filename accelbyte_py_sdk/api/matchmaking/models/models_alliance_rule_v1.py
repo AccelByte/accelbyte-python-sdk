@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.5)
+# AccelByte Cloud Matchmaking Service (2.15.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,11 +27,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_combination import ModelsCombination
+
 
 class ModelsAllianceRuleV1(Model):
     """Models alliance rule V1 (models.AllianceRuleV1)
 
     Properties:
+        combination: (combination) REQUIRED ModelsCombination
+
         max_number: (maxNumber) REQUIRED int
 
         min_number: (minNumber) REQUIRED int
@@ -43,6 +47,7 @@ class ModelsAllianceRuleV1(Model):
 
     # region fields
 
+    combination: ModelsCombination  # REQUIRED
     max_number: int  # REQUIRED
     min_number: int  # REQUIRED
     player_max_number: int  # REQUIRED
@@ -51,6 +56,10 @@ class ModelsAllianceRuleV1(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_combination(self, value: ModelsCombination) -> ModelsAllianceRuleV1:
+        self.combination = value
+        return self
 
     def with_max_number(self, value: int) -> ModelsAllianceRuleV1:
         self.max_number = value
@@ -74,6 +83,12 @@ class ModelsAllianceRuleV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "combination"):
+            result["combination"] = self.combination.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["combination"] = ModelsCombination()
         if hasattr(self, "max_number"):
             result["maxNumber"] = int(self.max_number)
         elif include_empty:
@@ -99,12 +114,14 @@ class ModelsAllianceRuleV1(Model):
     @classmethod
     def create(
         cls,
+        combination: ModelsCombination,
         max_number: int,
         min_number: int,
         player_max_number: int,
         player_min_number: int,
     ) -> ModelsAllianceRuleV1:
         instance = cls()
+        instance.combination = combination
         instance.max_number = max_number
         instance.min_number = min_number
         instance.player_max_number = player_max_number
@@ -118,6 +135,12 @@ class ModelsAllianceRuleV1(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "combination" in dict_ and dict_["combination"] is not None:
+            instance.combination = ModelsCombination.create_from_dict(
+                dict_["combination"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.combination = ModelsCombination()
         if "maxNumber" in dict_ and dict_["maxNumber"] is not None:
             instance.max_number = int(dict_["maxNumber"])
         elif include_empty:
@@ -177,6 +200,7 @@ class ModelsAllianceRuleV1(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "combination": "combination",
             "maxNumber": "max_number",
             "minNumber": "min_number",
             "playerMaxNumber": "player_max_number",
@@ -186,6 +210,7 @@ class ModelsAllianceRuleV1(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "combination": True,
             "maxNumber": True,
             "minNumber": True,
             "playerMaxNumber": True,
