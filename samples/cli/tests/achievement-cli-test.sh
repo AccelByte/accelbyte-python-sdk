@@ -38,11 +38,12 @@ achievement-admin-update-achievement '{"defaultLanguage": "TuBdNEUs", "descripti
 achievement-admin-delete-achievement 'KOu9c19R' --login_with_auth "Bearer foo"
 achievement-admin-update-achievement-list-order '{"targetOrder": 98}' 'DqWHkkP8' --login_with_auth "Bearer foo"
 achievement-admin-list-user-achievements 'npLEKMfj' --login_with_auth "Bearer foo"
-achievement-admin-unlock-achievement 'iX7jpkVZ' 'k3IaQYEm' --login_with_auth "Bearer foo"
-achievement-public-list-achievements 'qGodOEGt' --login_with_auth "Bearer foo"
-achievement-public-get-achievement '9gPOj0c6' 'i0JkvIas' --login_with_auth "Bearer foo"
-achievement-public-list-user-achievements '73ucYnFA' --login_with_auth "Bearer foo"
-achievement-public-unlock-achievement 'J3DK5T4E' 'ogg0Y39U' --login_with_auth "Bearer foo"
+achievement-admin-reset-achievement 'iX7jpkVZ' 'k3IaQYEm' --login_with_auth "Bearer foo"
+achievement-admin-unlock-achievement 'qGodOEGt' '9gPOj0c6' --login_with_auth "Bearer foo"
+achievement-public-list-achievements 'i0JkvIas' --login_with_auth "Bearer foo"
+achievement-public-get-achievement '73ucYnFA' 'J3DK5T4E' --login_with_auth "Bearer foo"
+achievement-public-list-user-achievements 'ogg0Y39U' --login_with_auth "Bearer foo"
+achievement-public-unlock-achievement 'oYlpv5bV' 'AgtsDhUT' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -62,7 +63,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..15"
+echo "1..16"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -79,7 +80,7 @@ eval_tap $? 2 'AdminListAchievements' test.out
 
 #- 3 AdminCreateNewAchievement
 $PYTHON -m $MODULE 'achievement-admin-create-new-achievement' \
-    '{"achievementCode": "oYlpv5bV", "defaultLanguage": "AgtsDhUT", "description": {"DUscbQDj": "bTQuPMz2"}, "goalValue": 0.6436818370096625, "hidden": false, "incremental": false, "lockedIcons": [{"slug": "yU89ZPOw", "url": "6zPFJ42c"}], "name": {"wmzBBSMN": "coAAOjKN"}, "statCode": "jfcYHm09", "tags": ["3aYgBU1s"], "unlockedIcons": [{"slug": "qjyK0XH4", "url": "5PaRSOFQ"}]}' \
+    '{"achievementCode": "DUscbQDj", "defaultLanguage": "bTQuPMz2", "description": {"PTRlkyU8": "9ZPOw6zP"}, "goalValue": 0.4962602820759253, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "mzBBSMNc", "url": "oAAOjKNj"}], "name": {"fcYHm093": "aYgBU1sq"}, "statCode": "jyK0XH45", "tags": ["PaRSOFQB"], "unlockedIcons": [{"slug": "tu23REZ8", "url": "hRVX7LGO"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateNewAchievement' test.out
@@ -98,78 +99,86 @@ eval_tap $? 5 'ImportAchievements' test.out
 
 #- 6 AdminGetAchievement
 $PYTHON -m $MODULE 'achievement-admin-get-achievement' \
-    'Btu23REZ' \
+    'vDdYiQS9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'AdminGetAchievement' test.out
 
 #- 7 AdminUpdateAchievement
 $PYTHON -m $MODULE 'achievement-admin-update-achievement' \
-    '{"defaultLanguage": "8hRVX7LG", "description": {"OvDdYiQS": "9i7mV1C9"}, "goalValue": 0.8432911950372245, "hidden": false, "incremental": false, "lockedIcons": [{"slug": "pxL6ycTQ", "url": "dvln2LAu"}], "name": {"SQWEXL6L": "FE1YHo9m"}, "statCode": "126ZWc8h", "tags": ["HtWvbNYq"], "unlockedIcons": [{"slug": "gUqslArF", "url": "PiHUIvaC"}]}' \
-    'v8kU9dBB' \
+    '{"defaultLanguage": "i7mV1C91", "description": {"pjG9gpxL": "6ycTQdvl"}, "goalValue": 0.20550263560130644, "hidden": true, "incremental": true, "lockedIcons": [{"slug": "SQWEXL6L", "url": "FE1YHo9m"}], "name": {"126ZWc8h": "HtWvbNYq"}, "statCode": "gUqslArF", "tags": ["PiHUIvaC"], "unlockedIcons": [{"slug": "v8kU9dBB", "url": "pdsJLhsV"}]}' \
+    'yExrkxoo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AdminUpdateAchievement' test.out
 
 #- 8 AdminDeleteAchievement
 $PYTHON -m $MODULE 'achievement-admin-delete-achievement' \
-    'pdsJLhsV' \
+    't0B7WOfe' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'AdminDeleteAchievement' test.out
 
 #- 9 AdminUpdateAchievementListOrder
 $PYTHON -m $MODULE 'achievement-admin-update-achievement-list-order' \
-    '{"targetOrder": 49}' \
-    'Exrkxoot' \
+    '{"targetOrder": 35}' \
+    'cZdpMci3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminUpdateAchievementListOrder' test.out
 
 #- 10 AdminListUserAchievements
 $PYTHON -m $MODULE 'achievement-admin-list-user-achievements' \
-    '0B7WOfer' \
+    '7Ds7YSfE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'AdminListUserAchievements' test.out
 
-#- 11 AdminUnlockAchievement
-$PYTHON -m $MODULE 'achievement-admin-unlock-achievement' \
-    'cZdpMci3' \
-    '7Ds7YSfE' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 11 'AdminUnlockAchievement' test.out
-
-#- 12 PublicListAchievements
-$PYTHON -m $MODULE 'achievement-public-list-achievements' \
+#- 11 AdminResetAchievement
+$PYTHON -m $MODULE 'achievement-admin-reset-achievement' \
     'xaI3uzLt' \
-    --login_with_auth "Bearer foo" \
-    > test.out 2>&1
-eval_tap $? 12 'PublicListAchievements' test.out
-
-#- 13 PublicGetAchievement
-$PYTHON -m $MODULE 'achievement-public-get-achievement' \
     'eMbFAlt4' \
-    'hr7HmOYi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 13 'PublicGetAchievement' test.out
+eval_tap $? 11 'AdminResetAchievement' test.out
 
-#- 14 PublicListUserAchievements
-$PYTHON -m $MODULE 'achievement-public-list-user-achievements' \
+#- 12 AdminUnlockAchievement
+$PYTHON -m $MODULE 'achievement-admin-unlock-achievement' \
+    'hr7HmOYi' \
     'BA5ltAOX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 14 'PublicListUserAchievements' test.out
+eval_tap $? 12 'AdminUnlockAchievement' test.out
 
-#- 15 PublicUnlockAchievement
-$PYTHON -m $MODULE 'achievement-public-unlock-achievement' \
+#- 13 PublicListAchievements
+$PYTHON -m $MODULE 'achievement-public-list-achievements' \
     'mlG6eh1d' \
-    'TdoTFpBI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'PublicUnlockAchievement' test.out
+eval_tap $? 13 'PublicListAchievements' test.out
+
+#- 14 PublicGetAchievement
+$PYTHON -m $MODULE 'achievement-public-get-achievement' \
+    'TdoTFpBI' \
+    'cuC1dQY9' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 14 'PublicGetAchievement' test.out
+
+#- 15 PublicListUserAchievements
+$PYTHON -m $MODULE 'achievement-public-list-user-achievements' \
+    '3OJnJ6Te' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 15 'PublicListUserAchievements' test.out
+
+#- 16 PublicUnlockAchievement
+$PYTHON -m $MODULE 'achievement-public-unlock-achievement' \
+    '9vD8ldz7' \
+    'Hu8AD79k' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 16 'PublicUnlockAchievement' test.out
 
 
 fi
