@@ -12,9 +12,8 @@ from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchingAlly
 class DSMCTestCase(IntegrationTestCase):
 
     session_id: Optional[str] = None
-    deployment: str = "deployruli"
-    game_mode: str = "soloyogs"
-    session_namespace: str = "armadademotestqa"
+    deployment: str = "default"
+    game_mode: str = "GAME_MODE"
     session_party_id = "PARTY_ID"
     session_user_id = "USER_ID"
     models_create_session_request: Optional[
@@ -37,7 +36,7 @@ class DSMCTestCase(IntegrationTestCase):
                 ]
             )
         ],
-        namespace=session_namespace,
+        namespace="WILL BE REPLACED",
         pod_name="",
         region="",
         session_id="",
@@ -46,11 +45,16 @@ class DSMCTestCase(IntegrationTestCase):
     # noinspection PyMethodMayBeStatic
     def do_session_browser_create_session(self):
         # pylint: disable=no-self-use
+        from accelbyte_py_sdk.core import get_namespace
         from accelbyte_py_sdk.api.sessionbrowser import create_session
         from accelbyte_py_sdk.api.sessionbrowser.models import (
             ModelsCreateSessionRequest,
         )
         from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting
+
+        namespace, error = get_namespace()
+        if error:
+            self.skipTest(reason="Failed to get namespace.")
 
         current_player: int = 0
         max_player: int = 10
@@ -68,7 +72,7 @@ class DSMCTestCase(IntegrationTestCase):
                 settings={},
             ),
             game_version="0.1.0",
-            namespace=self.namespace,
+            namespace=namespace,
             session_type="p2p",
             username="username",
         )
@@ -83,14 +87,22 @@ class DSMCTestCase(IntegrationTestCase):
         return result, error, session_id
 
     def setUp(self) -> None:
+        from accelbyte_py_sdk.core import get_namespace
+
         super().setUp()
         _, error, session_id = self.do_session_browser_create_session()
         if error is not None:
             self.skipTest(
                 reason=f"Failed to set up SessionBrowser session. {str(error)}"
             )
+
+        namespace, error = get_namespace()
+        if error:
+            self.skipTest(reason="Failed to get namespace.")
+
         self.session_id = session_id
         self.models_create_session_request.session_id = self.session_id
+        self.models_create_session_request.namespace = namespace
 
     def afterSetUp(self) -> None:
         from accelbyte_py_sdk.core import ExponentialHttpBackoffPolicy
