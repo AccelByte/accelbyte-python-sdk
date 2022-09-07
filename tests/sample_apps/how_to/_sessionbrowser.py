@@ -71,6 +71,8 @@ class SessionBrowserTestCase(IntegrationTestCase):
             self.session_id = None
         super().tearDown()
 
+# region test:create_session
+
     def test_create_session(self):
         # arrange
         # NOTE(elmer): can't delete, need session id
@@ -83,6 +85,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:create_session
+
+# region test:delete_session
 
     def test_delete_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import delete_session
@@ -103,6 +109,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.session_id = None
 
+# endregion test:delete_session
+
+# region test:get_session
+
     def test_get_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import get_session
 
@@ -120,6 +130,10 @@ class SessionBrowserTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:get_session
+
+# region test:update_session
 
     def test_update_session(self):
         from accelbyte_py_sdk.api.sessionbrowser import update_session
@@ -152,3 +166,5 @@ class SessionBrowserTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.game_session_setting)
         self.assertEqual(1, result.game_session_setting.current_player)
         self.assertEqual(1, result.game_session_setting.max_player)
+
+# endregion test:update_session

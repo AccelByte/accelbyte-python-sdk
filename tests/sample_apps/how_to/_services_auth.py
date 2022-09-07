@@ -2,6 +2,8 @@ from ._integration_test_case import IntegrationTestCase
 
 
 class AuthServicesTestCase(IntegrationTestCase):
+# region test:login_client
+
     def test_login_client(self):
         from accelbyte_py_sdk.core import get_client_auth
         from accelbyte_py_sdk.services.auth import login_client
@@ -18,6 +20,10 @@ class AuthServicesTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:login_client
+
+# region test:login_user
+
     def test_login_user(self):
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.services.auth import login_user
@@ -30,6 +36,10 @@ class AuthServicesTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:login_user
+
+# region test:login_platform
 
     def test_login_platform(self):
         import requests
@@ -90,6 +100,10 @@ class AuthServicesTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:login_platform
+
+# region test:logout
+
     def test_logout(self):
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.services.auth import login_user
@@ -108,6 +122,10 @@ class AuthServicesTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         _, error = login_user(username=username, password=password)
         self.assertIsNone(error, error)
+
+# endregion test:logout
+
+# region test:refresh_login
 
     def test_refresh_login(self):
         from accelbyte_py_sdk.core import get_env_user_credentials
@@ -129,3 +147,5 @@ class AuthServicesTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:refresh_login

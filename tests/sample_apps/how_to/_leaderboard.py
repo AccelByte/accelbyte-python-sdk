@@ -50,6 +50,8 @@ class LeaderboardTestCase(IntegrationTestCase):
         )
         super().tearDown()
 
+# region test:create_leaderboard_configuration_admin_v1
+
     def test_create_leaderboard_configuration_admin_v1(self):
         from accelbyte_py_sdk.api.leaderboard import (
             create_leaderboard_configuration_admin_v1,
@@ -65,6 +67,10 @@ class LeaderboardTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:create_leaderboard_configuration_admin_v1
+
+# region test:delete_leaderboard_configuration_admin_v1
 
     def test_delete_leaderboard_configuration_admin_v1(self):
         from accelbyte_py_sdk.api.leaderboard import (
@@ -89,6 +95,10 @@ class LeaderboardTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:delete_leaderboard_configuration_admin_v1
+
+# region test:get_leaderboard_configuration_admin_v1
+
     def test_get_leaderboard_configuration_admin_v1(self):
         from accelbyte_py_sdk.api.leaderboard import (
             create_leaderboard_configuration_admin_v1,
@@ -111,6 +121,10 @@ class LeaderboardTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:get_leaderboard_configuration_admin_v1
+
+# region test:update_user
 
     def test_update_user(self):
         from accelbyte_py_sdk.api.leaderboard import (
@@ -154,3 +168,5 @@ class LeaderboardTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, ModelsGetLeaderboardConfigResp)
         self.assertEqual(result.stat_code, "KODE_STATUS")
+
+# endregion test:update_user

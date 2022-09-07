@@ -39,6 +39,8 @@ class UGCTestCase(IntegrationTestCase):
             self.tag_id = None
         super().tearDown()
 
+# region test:admin_create_tag
+
     def test_admin_create_tag(self):
         # arrange
         # NOTE(elmer): can't delete, need tag id
@@ -49,6 +51,10 @@ class UGCTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:admin_create_tag
+
+# region test:admin_delete_tag
 
     def test_admin_delete_tag(self):
         from accelbyte_py_sdk.api.ugc import admin_delete_tag
@@ -67,6 +73,10 @@ class UGCTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.tag_id = None
 
+# endregion test:admin_delete_tag
+
+# region test:admin_get_tag
+
     def test_admin_get_tag(self):
         from accelbyte_py_sdk.api.ugc import admin_get_tag
 
@@ -82,6 +92,10 @@ class UGCTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:admin_get_tag
+
+# region test:admin_update_tag
 
     def test_admin_update_tag(self):
         from accelbyte_py_sdk.api.ugc import admin_update_tag
@@ -105,3 +119,5 @@ class UGCTestCase(IntegrationTestCase):
         self.assertIsInstance(result, ModelsCreateTagResponse)
         self.assertIsNotNone(result.tag)
         self.assertEqual("MENANDAI", result.tag)
+
+# endregion test:admin_update_tag

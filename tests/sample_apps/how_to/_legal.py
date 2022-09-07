@@ -47,6 +47,8 @@ class LegalTestCase(IntegrationTestCase):
             self.user_id = None
         super().tearDown()
 
+# region test:bulk_accept_versioned_policy
+
     def test_bulk_accept_versioned_policy(self):
         from accelbyte_py_sdk.api.legal import bulk_accept_versioned_policy
         from accelbyte_py_sdk.api.legal import retrieve_agreements_public
@@ -88,6 +90,10 @@ class LegalTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:bulk_accept_versioned_policy
+
+# region test:change_preference_consent
 
     def test_change_preference_consent(self):
         from accelbyte_py_sdk.api.legal import change_preference_consent
@@ -147,6 +153,10 @@ class LegalTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:change_preference_consent
+
+# region test:retrieve_agreements_public
+
     def test_retrieve_agreements_public(self):
         from accelbyte_py_sdk.api.legal import retrieve_agreements_public
 
@@ -159,3 +169,5 @@ class LegalTestCase(IntegrationTestCase):
         # assert
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
+
+# endregion test:retrieve_agreements_public

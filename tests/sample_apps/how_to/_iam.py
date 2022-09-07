@@ -50,6 +50,8 @@ class IAMTestCase(IntegrationTestCase):
             self.user_id = None
         super().tearDown()
 
+# region test:create_user
+
     def test_create_user(self):
         # arrange
         # NOTE(elmer): can't delete, need user id
@@ -60,6 +62,10 @@ class IAMTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:create_user
+
+# region test:delete_user
 
     def test_delete_user(self):
         from accelbyte_py_sdk.api.iam import delete_user
@@ -78,6 +84,10 @@ class IAMTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.user_id = None
 
+# endregion test:delete_user
+
+# region test:get_user_by_user_id
+
     def test_get_user_by_user_id(self):
         from accelbyte_py_sdk.api.iam import get_user_by_user_id
 
@@ -93,6 +103,10 @@ class IAMTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:get_user_by_user_id
+
+# region test:update_user
 
     def test_update_user(self):
         from accelbyte_py_sdk.api.iam import update_user
@@ -116,6 +130,10 @@ class IAMTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, ModelUserResponse)
         self.assertEqual(result.country, "ID")
+
+# endregion test:update_user
+
+# region test:token_grant_v3
 
     def test_token_grant_v3(self):
         from accelbyte_py_sdk.api.iam import authorize_v3
@@ -167,6 +185,10 @@ class IAMTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:token_grant_v3
+
+# region test:user_authentication_v3
+
     def test_user_authentication_v3(self):
         from accelbyte_py_sdk.api.iam import authorize_v3
         from accelbyte_py_sdk.api.iam import user_authentication_v3
@@ -207,6 +229,10 @@ class IAMTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+# endregion test:user_authentication_v3
+
+# region test:authorize_v3
+
     def test_authorize_v3(self):
         from accelbyte_py_sdk.api.iam import authorize_v3
         from accelbyte_py_sdk.core import create_pkce_verifier_and_challenge_s256
@@ -233,3 +259,5 @@ class IAMTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:authorize_v3

@@ -5,6 +5,8 @@ from ._integration_test_case import AsyncIntegrationTestCase
 
 
 class LobbyTestCase(IntegrationTestCase):
+# region test:free_form_notification
+
     def test_free_form_notification(self):
         from accelbyte_py_sdk.api.lobby import free_form_notification
         from accelbyte_py_sdk.api.lobby.models import ModelFreeFormNotificationRequest
@@ -57,3 +59,5 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
         self.assertIsNotNone(wsm)
         self.assertIsNotNone(wsm_type)
         self.assertEqual("partyCreateResponse", wsm_type)
+
+# endregion test:free_form_notification

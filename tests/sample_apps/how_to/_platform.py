@@ -59,6 +59,8 @@ class PlatformTestCase(IntegrationTestCase):
             self.store_id = None
         super().tearDown()
 
+# region test:create_store
+
     def test_create_store(self):
         # arrange
         # NOTE(elmer): can't delete, need store id
@@ -69,6 +71,10 @@ class PlatformTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:create_store
+
+# region test:delete_store
 
     def test_delete_store(self):
         from accelbyte_py_sdk.api.platform import delete_store
@@ -87,6 +93,10 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.store_id = None
 
+# endregion test:delete_store
+
+# region test:get_store
+
     def test_get_store(self):
         from accelbyte_py_sdk.api.platform import get_store
 
@@ -102,6 +112,10 @@ class PlatformTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+# endregion test:get_store
+
+# region test:update_store
 
     def test_update_store(self):
         from accelbyte_py_sdk.api.platform import update_store
@@ -126,3 +140,5 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertIsInstance(result, StoreInfo)
         self.assertIsNotNone(result.title)
         self.assertEqual("JUDUL", result.title)
+
+# endregion test:update_store
