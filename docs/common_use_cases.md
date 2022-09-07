@@ -605,7 +605,7 @@ def test_delete_admin_email_configuration(self):
 
     # arrange
     _, error = save_admin_email_configuration(
-        body=[self.model_user_create_request.login_id]
+        body=[self.model_user_create_request.email_address]
     )
     self.log_warning(
         msg=f"Failed to set up admin email configuration {str(error)}",
@@ -615,7 +615,7 @@ def test_delete_admin_email_configuration(self):
 
     # act
     _, error = delete_admin_email_configuration(
-        emails=[self.model_user_create_request.login_id]
+        emails=[self.model_user_create_request.email_address]
     )
 
     # assert
@@ -631,7 +631,7 @@ def test_get_admin_email_configuration(self):
 
     # arrange
     _, error = save_admin_email_configuration(
-        body=[self.model_user_create_request.login_id]
+        body=[self.model_user_create_request.email_address]
     )
     self.log_warning(
         msg=f"Failed to set up admin email configuration {str(error)}",
@@ -654,12 +654,12 @@ def test_save_admin_email_configuration(self):
 
     # arrange
     _, _ = delete_admin_email_configuration(
-        emails=[self.model_user_create_request.login_id]
+        emails=[self.model_user_create_request.email_address]
     )
 
     # act
     _, error = save_admin_email_configuration(
-        body=[self.model_user_create_request.login_id]
+        body=[self.model_user_create_request.email_address]
     )
     self.did_configure = error is None
 
@@ -675,7 +675,7 @@ def test_update_admin_email_configuration(self):
 
     # arrange
     _, error = save_admin_email_configuration(
-        body=[self.model_user_create_request.login_id]
+        body=[self.model_user_create_request.email_address]
     )
     self.log_warning(
         msg=f"Failed to set up admin email configuration {str(error)}",
@@ -685,7 +685,7 @@ def test_update_admin_email_configuration(self):
 
     # act
     _, error = update_admin_email_configuration(
-        body=[self.model_user_create_request.login_id]
+        body=[self.model_user_create_request.email_address]
     )
     self.did_configure = error is None
 
