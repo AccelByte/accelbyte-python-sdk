@@ -86,10 +86,10 @@ class IAMTestCase(IntegrationTestCase):
 
 # endregion test:delete_user
 
-# region test:get_user_by_user_id
+# region test:admin_get_user_by_user_id_v3
 
-    def test_get_user_by_user_id(self):
-        from accelbyte_py_sdk.api.iam import get_user_by_user_id
+    def test_admin_get_user_by_user_id_v3(self):
+        from accelbyte_py_sdk.api.iam import admin_get_user_by_user_id_v3
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
@@ -99,19 +99,20 @@ class IAMTestCase(IntegrationTestCase):
         self.user_id = user_id
 
         # act
-        _, error = get_user_by_user_id(user_id=self.user_id)
+        _, error = admin_get_user_by_user_id_v3(user_id=self.user_id)
 
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_user_by_user_id
+# endregion test:admin_get_user_by_user_id_v3
 
-# region test:update_user
+# region test:admin_update_user_v4
 
-    def test_update_user(self):
+    def test_admin_update_user_v4(self):
         from accelbyte_py_sdk.api.iam import update_user
-        from accelbyte_py_sdk.api.iam.models import ModelUserResponse
-        from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequest
+        from accelbyte_py_sdk.api.iam import admin_update_user_v4
+        from accelbyte_py_sdk.api.iam.models import ModelUserResponseV3
+        from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequestV3
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
@@ -121,17 +122,17 @@ class IAMTestCase(IntegrationTestCase):
         self.user_id = user_id
 
         # act
-        result, error = update_user(
-            body=ModelUserUpdateRequest.create(country="ID"), user_id=self.user_id
+        result, error = admin_update_user_v4(
+            body=ModelUserUpdateRequestV3.create(country="ID"), user_id=self.user_id
         )
 
         # assert
         self.assertIsNone(error, error)
         self.assertIsNotNone(result)
-        self.assertIsInstance(result, ModelUserResponse)
+        self.assertIsInstance(result, ModelUserResponseV3)
         self.assertEqual(result.country, "ID")
 
-# endregion test:update_user
+# endregion test:admin_update_user_v4
 
 # region test:token_grant_v3
 
