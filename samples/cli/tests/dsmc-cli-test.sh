@@ -82,6 +82,7 @@ dsmc-count-session --login_with_auth "Bearer foo"
 dsmc-delete-session '5ou5xtvd' --login_with_auth "Bearer foo"
 dsmc-export-config-v1 --login_with_auth "Bearer foo"
 dsmc-import-config-v1 --login_with_auth "Bearer foo"
+dsmc-image-limit-client --login_with_auth "Bearer foo"
 dsmc-image-detail-client '28OUfCt8' --login_with_auth "Bearer foo"
 dsmc-deregister-local-server '{"name": "UJC5flNy"}' --login_with_auth "Bearer foo"
 dsmc-register-local-server '{"custom_attribute": "j6HsTtX8", "ip": "P3llnaaS", "name": "9lqyygPc", "port": 10}' --login_with_auth "Bearer foo"
@@ -114,7 +115,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..68"
+echo "1..69"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -518,93 +519,99 @@ $PYTHON -m $MODULE 'dsmc-import-config-v1' \
     > test.out 2>&1
 eval_tap $? 55 'ImportConfigV1' test.out
 
-#- 56 ImageDetailClient
+#- 56 ImageLimitClient
+$PYTHON -m $MODULE 'dsmc-image-limit-client' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 56 'ImageLimitClient' test.out
+
+#- 57 ImageDetailClient
 $PYTHON -m $MODULE 'dsmc-image-detail-client' \
     'zIsUP0Nj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'ImageDetailClient' test.out
+eval_tap $? 57 'ImageDetailClient' test.out
 
-#- 57 DeregisterLocalServer
+#- 58 DeregisterLocalServer
 $PYTHON -m $MODULE 'dsmc-deregister-local-server' \
     '{"name": "luOrGZTz"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'DeregisterLocalServer' test.out
+eval_tap $? 58 'DeregisterLocalServer' test.out
 
-#- 58 RegisterLocalServer
+#- 59 RegisterLocalServer
 $PYTHON -m $MODULE 'dsmc-register-local-server' \
     '{"custom_attribute": "sLW7Fjfs", "ip": "9nIkcZ38", "name": "fUEanjKH", "port": 3}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'RegisterLocalServer' test.out
+eval_tap $? 59 'RegisterLocalServer' test.out
 
-#- 59 RegisterServer
+#- 60 RegisterServer
 $PYTHON -m $MODULE 'dsmc-register-server' \
     '{"custom_attribute": "Xfk1zxdz", "pod_name": "xg0UXcRy"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'RegisterServer' test.out
+eval_tap $? 60 'RegisterServer' test.out
 
-#- 60 ShutdownServer
+#- 61 ShutdownServer
 $PYTHON -m $MODULE 'dsmc-shutdown-server' \
     '{"kill_me": false, "pod_name": "3u8BzVWu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'ShutdownServer' test.out
+eval_tap $? 61 'ShutdownServer' test.out
 
-#- 61 GetServerSession
+#- 62 GetServerSession
 $PYTHON -m $MODULE 'dsmc-get-server-session' \
     '1tOmhUtC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'GetServerSession' test.out
+eval_tap $? 62 'GetServerSession' test.out
 
-#- 62 CreateSession
+#- 63 CreateSession
 $PYTHON -m $MODULE 'dsmc-create-session' \
     '{"client_version": "gcpvGrEb", "configuration": "cZUDExH1", "deployment": "tayOGXIH", "game_mode": "zMRjMCtO", "matching_allies": [{"matching_parties": [{"party_attributes": {"JsEijlrb": {}}, "party_id": "pyyEcQxV", "party_members": [{"user_id": "gJIjMZqc"}]}]}], "namespace": "WfMl6dqr", "notification_payload": {}, "pod_name": "pD4tnc3Z", "region": "RB3IkdtP", "session_id": "fAJEomwe"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'CreateSession' test.out
+eval_tap $? 63 'CreateSession' test.out
 
-#- 63 ClaimServer
+#- 64 ClaimServer
 $PYTHON -m $MODULE 'dsmc-claim-server' \
     '{"session_id": "nJvQ8grt"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'ClaimServer' test.out
+eval_tap $? 64 'ClaimServer' test.out
 
-#- 64 GetSession
+#- 65 GetSession
 $PYTHON -m $MODULE 'dsmc-get-session' \
     'QSv6EcAL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'GetSession' test.out
+eval_tap $? 65 'GetSession' test.out
 
-#- 65 GetDefaultProvider
+#- 66 GetDefaultProvider
 $PYTHON -m $MODULE 'dsmc-get-default-provider' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 65 'GetDefaultProvider' test.out
+eval_tap $? 66 'GetDefaultProvider' test.out
 
-#- 66 ListProviders
+#- 67 ListProviders
 $PYTHON -m $MODULE 'dsmc-list-providers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 66 'ListProviders' test.out
+eval_tap $? 67 'ListProviders' test.out
 
-#- 67 ListProvidersByRegion
+#- 68 ListProvidersByRegion
 $PYTHON -m $MODULE 'dsmc-list-providers-by-region' \
     'cMIPms5b' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 67 'ListProvidersByRegion' test.out
+eval_tap $? 68 'ListProvidersByRegion' test.out
 
-#- 68 PublicGetMessages
+#- 69 PublicGetMessages
 $PYTHON -m $MODULE 'dsmc-public-get-messages' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 68 'PublicGetMessages' test.out
+eval_tap $? 69 'PublicGetMessages' test.out
 
 
 fi
