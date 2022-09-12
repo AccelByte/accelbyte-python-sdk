@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.0
+- Add new [Commonly Used Cases](docs/common_use_cases.md) document.
+- Fix default values in `DSMC Service` integration tests.
+- Fix new required parameter in `Matchmaking Service` integration tests.
+- Update to latest IAM User CRUD operations.
+
 ## v0.22.0
 - Add `sdk` param to all `accelbyte_py_sdk.core` module level functions.
   ```python
