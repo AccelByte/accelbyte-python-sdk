@@ -37,7 +37,7 @@ class BasicTestCase(IntegrationTestCase):
         self.do_delete_my_profile()
         super().tearDown()
 
-# region test:create_my_profile
+    # region test:create_my_profile
 
     def test_create_my_profile(self):
         # arrange
@@ -48,9 +48,9 @@ class BasicTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:create_my_profile
+    # endregion test:create_my_profile
 
-# region test:delete_user_profile
+    # region test:delete_user_profile
 
     def test_delete_user_profile(self):
         from accelbyte_py_sdk.api.basic import delete_user_profile
@@ -69,9 +69,9 @@ class BasicTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:delete_user_profile
+    # endregion test:delete_user_profile
 
-# region test:get_user_profile
+    # region test:get_user_profile
 
     def test_get_user_profile(self):
         from accelbyte_py_sdk.api.basic import public_get_user_profile_info
@@ -90,9 +90,9 @@ class BasicTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_user_profile
+    # endregion test:get_user_profile
 
-# region test:public_update_user_profile
+    # region test:public_update_user_profile
 
     def test_public_update_user_profile(self):
         from accelbyte_py_sdk.api.basic import public_update_user_profile
@@ -116,5 +116,6 @@ class BasicTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.assertEqual("Pertama", result.first_name)
         self.assertEqual("Terakhir", result.last_name)
+
 
 # endregion test:public_update_user_profile

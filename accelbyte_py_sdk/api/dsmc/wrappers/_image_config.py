@@ -51,6 +51,7 @@ from ..operations.image_config import GetImageLimit
 from ..operations.image_config import GetImagePatchDetail
 from ..operations.image_config import GetImagePatches
 from ..operations.image_config import ImageDetailClient
+from ..operations.image_config import ImageLimitClient
 from ..operations.image_config import ImportImages
 from ..operations.image_config import ListImages
 from ..operations.image_config import ListImagesSortByEnum, ListImagesSortDirectionEnum
@@ -414,6 +415,40 @@ async def image_detail_client_async(
             return None, error
     request = ImageDetailClient.create(
         version=version,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ImageLimitClient)
+def image_limit_client(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageLimitClient.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImageLimitClient)
+async def image_limit_client_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageLimitClient.create(
         namespace=namespace,
     )
     return await run_request_async(

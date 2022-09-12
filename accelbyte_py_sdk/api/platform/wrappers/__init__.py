@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.13.0"
+__version__ = "4.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -332,6 +332,11 @@ from ._iap import update_xbl_bp_cert_file
 from ._iap import update_xbl_bp_cert_file_async
 from ._iap import update_xbl_iap_config
 from ._iap import update_xbl_iap_config_async
+
+from ._invoice import download_invoice_details
+from ._invoice import download_invoice_details_async
+from ._invoice import generate_invoice_summary
+from ._invoice import generate_invoice_summary_async
 
 from ._item import acquire_item
 from ._item import acquire_item_async

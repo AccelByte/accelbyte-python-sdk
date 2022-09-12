@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserCreateRequest
 from ...models import ModelUserCreateResponse
@@ -35,6 +36,28 @@ from ...models import ModelUserCreateResponse
 
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      *  Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users [POST]
+
+      *  Substitute endpoint: /iam/v4/public/namespaces/{namespace}/users [POST]
+
+
+
+      *  Note:
+         1. v3 & v4 introduce optional verification code
+
+         2. format differenceï¼Pascal case => Camel case)
+
+
+
 
 
 

@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import OauthmodelCountryLocationResponse
 from ..models import OauthmodelErrorResponse
+from ..models import OauthmodelGameTokenCodeResponse
 from ..models import OauthmodelTokenResponseV3
 from ..models import RestErrorResponse
 
@@ -39,6 +40,8 @@ from ..operations.o_auth2_0_extension import GenerateTokenByNewHeadlessAccountV3
 from ..operations.o_auth2_0_extension import GetCountryLocationV3
 from ..operations.o_auth2_0_extension import Logout
 from ..operations.o_auth2_0_extension import PlatformAuthenticationV3
+from ..operations.o_auth2_0_extension import RequestGameTokenCodeResponseV3
+from ..operations.o_auth2_0_extension import RequestGameTokenResponseV3
 from ..operations.o_auth2_0_extension import UserAuthenticationV3
 
 
@@ -218,6 +221,66 @@ async def platform_authentication_v3_async(
         openid_return_to=openid_return_to,
         openid_sig=openid_sig,
         openid_signed=openid_signed,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RequestGameTokenCodeResponseV3)
+def request_game_token_code_response_v3(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RequestGameTokenCodeResponseV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestGameTokenCodeResponseV3)
+async def request_game_token_code_response_v3_async(
+    client_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RequestGameTokenCodeResponseV3.create(
+        client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RequestGameTokenResponseV3)
+def request_game_token_response_v3(
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RequestGameTokenResponseV3.create(
+        code=code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestGameTokenResponseV3)
+async def request_game_token_response_v3_async(
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RequestGameTokenResponseV3.create(
+        code=code,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

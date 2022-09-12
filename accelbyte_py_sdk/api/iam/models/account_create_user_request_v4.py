@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,40 +41,40 @@ class AccountCreateUserRequestV4(Model):
     Properties:
         auth_type: (authType) REQUIRED Union[str, AuthTypeEnum]
 
-        code: (code) REQUIRED str
-
         country: (country) REQUIRED str
 
-        display_name: (displayName) REQUIRED str
-
         email_address: (emailAddress) REQUIRED str
-
-        password: (password) REQUIRED str
-
-        password_md5_sum: (passwordMD5Sum) REQUIRED str
-
-        reach_minimum_age: (reachMinimumAge) REQUIRED bool
 
         username: (username) REQUIRED str
 
         accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
 
+        code: (code) OPTIONAL str
+
         date_of_birth: (dateOfBirth) OPTIONAL str
+
+        display_name: (displayName) OPTIONAL str
+
+        password: (password) OPTIONAL str
+
+        password_md5_sum: (passwordMD5Sum) OPTIONAL str
+
+        reach_minimum_age: (reachMinimumAge) OPTIONAL bool
     """
 
     # region fields
 
     auth_type: Union[str, AuthTypeEnum]  # REQUIRED
-    code: str  # REQUIRED
     country: str  # REQUIRED
-    display_name: str  # REQUIRED
     email_address: str  # REQUIRED
-    password: str  # REQUIRED
-    password_md5_sum: str  # REQUIRED
-    reach_minimum_age: bool  # REQUIRED
     username: str  # REQUIRED
     accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
+    code: str  # OPTIONAL
     date_of_birth: str  # OPTIONAL
+    display_name: str  # OPTIONAL
+    password: str  # OPTIONAL
+    password_md5_sum: str  # OPTIONAL
+    reach_minimum_age: bool  # OPTIONAL
 
     # endregion fields
 
@@ -86,20 +86,34 @@ class AccountCreateUserRequestV4(Model):
         self.auth_type = value
         return self
 
-    def with_code(self, value: str) -> AccountCreateUserRequestV4:
-        self.code = value
-        return self
-
     def with_country(self, value: str) -> AccountCreateUserRequestV4:
         self.country = value
         return self
 
-    def with_display_name(self, value: str) -> AccountCreateUserRequestV4:
-        self.display_name = value
-        return self
-
     def with_email_address(self, value: str) -> AccountCreateUserRequestV4:
         self.email_address = value
+        return self
+
+    def with_username(self, value: str) -> AccountCreateUserRequestV4:
+        self.username = value
+        return self
+
+    def with_accepted_policies(
+        self, value: List[LegalAcceptedPoliciesRequest]
+    ) -> AccountCreateUserRequestV4:
+        self.accepted_policies = value
+        return self
+
+    def with_code(self, value: str) -> AccountCreateUserRequestV4:
+        self.code = value
+        return self
+
+    def with_date_of_birth(self, value: str) -> AccountCreateUserRequestV4:
+        self.date_of_birth = value
+        return self
+
+    def with_display_name(self, value: str) -> AccountCreateUserRequestV4:
+        self.display_name = value
         return self
 
     def with_password(self, value: str) -> AccountCreateUserRequestV4:
@@ -114,20 +128,6 @@ class AccountCreateUserRequestV4(Model):
         self.reach_minimum_age = value
         return self
 
-    def with_username(self, value: str) -> AccountCreateUserRequestV4:
-        self.username = value
-        return self
-
-    def with_accepted_policies(
-        self, value: List[LegalAcceptedPoliciesRequest]
-    ) -> AccountCreateUserRequestV4:
-        self.accepted_policies = value
-        return self
-
-    def with_date_of_birth(self, value: str) -> AccountCreateUserRequestV4:
-        self.date_of_birth = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -138,22 +138,36 @@ class AccountCreateUserRequestV4(Model):
             result["authType"] = str(self.auth_type)
         elif include_empty:
             result["authType"] = Union[str, AuthTypeEnum]()
-        if hasattr(self, "code"):
-            result["code"] = str(self.code)
-        elif include_empty:
-            result["code"] = ""
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
             result["country"] = ""
-        if hasattr(self, "display_name"):
-            result["displayName"] = str(self.display_name)
-        elif include_empty:
-            result["displayName"] = ""
         if hasattr(self, "email_address"):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = ""
+        if hasattr(self, "username"):
+            result["username"] = str(self.username)
+        elif include_empty:
+            result["username"] = ""
+        if hasattr(self, "accepted_policies"):
+            result["acceptedPolicies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies
+            ]
+        elif include_empty:
+            result["acceptedPolicies"] = []
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = ""
+        if hasattr(self, "date_of_birth"):
+            result["dateOfBirth"] = str(self.date_of_birth)
+        elif include_empty:
+            result["dateOfBirth"] = ""
+        if hasattr(self, "display_name"):
+            result["displayName"] = str(self.display_name)
+        elif include_empty:
+            result["displayName"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
@@ -166,20 +180,6 @@ class AccountCreateUserRequestV4(Model):
             result["reachMinimumAge"] = bool(self.reach_minimum_age)
         elif include_empty:
             result["reachMinimumAge"] = False
-        if hasattr(self, "username"):
-            result["username"] = str(self.username)
-        elif include_empty:
-            result["username"] = ""
-        if hasattr(self, "accepted_policies"):
-            result["acceptedPolicies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies
-            ]
-        elif include_empty:
-            result["acceptedPolicies"] = []
-        if hasattr(self, "date_of_birth"):
-            result["dateOfBirth"] = str(self.date_of_birth)
-        elif include_empty:
-            result["dateOfBirth"] = ""
         return result
 
     # endregion to methods
@@ -190,31 +190,36 @@ class AccountCreateUserRequestV4(Model):
     def create(
         cls,
         auth_type: Union[str, AuthTypeEnum],
-        code: str,
         country: str,
-        display_name: str,
         email_address: str,
-        password: str,
-        password_md5_sum: str,
-        reach_minimum_age: bool,
         username: str,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        code: Optional[str] = None,
         date_of_birth: Optional[str] = None,
+        display_name: Optional[str] = None,
+        password: Optional[str] = None,
+        password_md5_sum: Optional[str] = None,
+        reach_minimum_age: Optional[bool] = None,
     ) -> AccountCreateUserRequestV4:
         instance = cls()
         instance.auth_type = auth_type
-        instance.code = code
         instance.country = country
-        instance.display_name = display_name
         instance.email_address = email_address
-        instance.password = password
-        instance.password_md5_sum = password_md5_sum
-        instance.reach_minimum_age = reach_minimum_age
         instance.username = username
         if accepted_policies is not None:
             instance.accepted_policies = accepted_policies
+        if code is not None:
+            instance.code = code
         if date_of_birth is not None:
             instance.date_of_birth = date_of_birth
+        if display_name is not None:
+            instance.display_name = display_name
+        if password is not None:
+            instance.password = password
+        if password_md5_sum is not None:
+            instance.password_md5_sum = password_md5_sum
+        if reach_minimum_age is not None:
+            instance.reach_minimum_age = reach_minimum_age
         return instance
 
     @classmethod
@@ -228,34 +233,14 @@ class AccountCreateUserRequestV4(Model):
             instance.auth_type = str(dict_["authType"])
         elif include_empty:
             instance.auth_type = Union[str, AuthTypeEnum]()
-        if "code" in dict_ and dict_["code"] is not None:
-            instance.code = str(dict_["code"])
-        elif include_empty:
-            instance.code = ""
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
             instance.country = ""
-        if "displayName" in dict_ and dict_["displayName"] is not None:
-            instance.display_name = str(dict_["displayName"])
-        elif include_empty:
-            instance.display_name = ""
         if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
             instance.email_address = ""
-        if "password" in dict_ and dict_["password"] is not None:
-            instance.password = str(dict_["password"])
-        elif include_empty:
-            instance.password = ""
-        if "passwordMD5Sum" in dict_ and dict_["passwordMD5Sum"] is not None:
-            instance.password_md5_sum = str(dict_["passwordMD5Sum"])
-        elif include_empty:
-            instance.password_md5_sum = ""
-        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
-            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
-        elif include_empty:
-            instance.reach_minimum_age = False
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -269,10 +254,30 @@ class AccountCreateUserRequestV4(Model):
             ]
         elif include_empty:
             instance.accepted_policies = []
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = ""
         if "dateOfBirth" in dict_ and dict_["dateOfBirth"] is not None:
             instance.date_of_birth = str(dict_["dateOfBirth"])
         elif include_empty:
             instance.date_of_birth = ""
+        if "displayName" in dict_ and dict_["displayName"] is not None:
+            instance.display_name = str(dict_["displayName"])
+        elif include_empty:
+            instance.display_name = ""
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
+        if "passwordMD5Sum" in dict_ and dict_["passwordMD5Sum"] is not None:
+            instance.password_md5_sum = str(dict_["passwordMD5Sum"])
+        elif include_empty:
+            instance.password_md5_sum = ""
+        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
+            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
+        elif include_empty:
+            instance.reach_minimum_age = False
         return instance
 
     @classmethod
@@ -317,32 +322,32 @@ class AccountCreateUserRequestV4(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "authType": "auth_type",
-            "code": "code",
             "country": "country",
-            "displayName": "display_name",
             "emailAddress": "email_address",
+            "username": "username",
+            "acceptedPolicies": "accepted_policies",
+            "code": "code",
+            "dateOfBirth": "date_of_birth",
+            "displayName": "display_name",
             "password": "password",
             "passwordMD5Sum": "password_md5_sum",
             "reachMinimumAge": "reach_minimum_age",
-            "username": "username",
-            "acceptedPolicies": "accepted_policies",
-            "dateOfBirth": "date_of_birth",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "authType": True,
-            "code": True,
             "country": True,
-            "displayName": True,
             "emailAddress": True,
-            "password": True,
-            "passwordMD5Sum": True,
-            "reachMinimumAge": True,
             "username": True,
             "acceptedPolicies": False,
+            "code": False,
             "dateOfBirth": False,
+            "displayName": False,
+            "password": False,
+            "passwordMD5Sum": False,
+            "reachMinimumAge": False,
         }
 
     @staticmethod

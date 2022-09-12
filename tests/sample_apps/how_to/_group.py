@@ -110,7 +110,7 @@ class GroupTestCase(IntegrationTestCase):
             )
         super().tearDown()
 
-# region test:create_new_group_public_v1
+    # region test:create_new_group_public_v1
 
     def test_create_new_group_public_v1(self):
         # arrange
@@ -126,9 +126,9 @@ class GroupTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:create_new_group_public_v1
+    # endregion test:create_new_group_public_v1
 
-# region test:delete_group_public_v1
+    # region test:delete_group_public_v1
 
     def test_delete_group_public_v1(self):
         from accelbyte_py_sdk.api.group import delete_group_public_v1
@@ -152,9 +152,9 @@ class GroupTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.group_id = None
 
-# endregion test:delete_group_public_v1
+    # endregion test:delete_group_public_v1
 
-# region test:get_single_group_public_v1
+    # region test:get_single_group_public_v1
 
     def test_get_single_group_public_v1(self):
         from accelbyte_py_sdk.api.group import get_single_group_public_v1
@@ -177,9 +177,9 @@ class GroupTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_single_group_public_v1
+    # endregion test:get_single_group_public_v1
 
-# region test:update_single_group_v1
+    # region test:update_single_group_v1
 
     def test_update_single_group_v1(self):
         from accelbyte_py_sdk.api.group import update_single_group_v1
@@ -220,5 +220,6 @@ class GroupTestCase(IntegrationTestCase):
         self.assertIsInstance(result, ModelsGroupResponseV1)
         self.assertIsNotNone(result.group_name)
         self.assertEqual("NAMA_GRUP", result.group_name)
+
 
 # endregion test:update_single_group_v1

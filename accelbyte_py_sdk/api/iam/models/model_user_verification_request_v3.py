@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,17 +36,17 @@ class ModelUserVerificationRequestV3(Model):
 
         contact_type: (contactType) REQUIRED str
 
-        language_tag: (languageTag) REQUIRED str
+        language_tag: (languageTag) OPTIONAL str
 
-        validate_only: (validateOnly) REQUIRED bool
+        validate_only: (validateOnly) OPTIONAL bool
     """
 
     # region fields
 
     code: str  # REQUIRED
     contact_type: str  # REQUIRED
-    language_tag: str  # REQUIRED
-    validate_only: bool  # REQUIRED
+    language_tag: str  # OPTIONAL
+    validate_only: bool  # OPTIONAL
 
     # endregion fields
 
@@ -101,14 +101,16 @@ class ModelUserVerificationRequestV3(Model):
         cls,
         code: str,
         contact_type: str,
-        language_tag: str,
-        validate_only: bool,
+        language_tag: Optional[str] = None,
+        validate_only: Optional[bool] = None,
     ) -> ModelUserVerificationRequestV3:
         instance = cls()
         instance.code = code
         instance.contact_type = contact_type
-        instance.language_tag = language_tag
-        instance.validate_only = validate_only
+        if language_tag is not None:
+            instance.language_tag = language_tag
+        if validate_only is not None:
+            instance.validate_only = validate_only
         return instance
 
     @classmethod
@@ -188,8 +190,8 @@ class ModelUserVerificationRequestV3(Model):
         return {
             "code": True,
             "contactType": True,
-            "languageTag": True,
-            "validateOnly": True,
+            "languageTag": False,
+            "validateOnly": False,
         }
 
     # endregion static methods

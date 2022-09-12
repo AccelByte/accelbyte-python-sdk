@@ -5,7 +5,7 @@ class GametelemetryTestCase(IntegrationTestCase):
 
     steam_id: str = "76561199259217491"
 
-# region test:get_playtime_v1
+    # region test:get_playtime_v1
 
     def test_get_playtime_v1(self):
         from accelbyte_py_sdk.api.gametelemetry import (
@@ -28,9 +28,9 @@ class GametelemetryTestCase(IntegrationTestCase):
         if not isinstance(result, int):
             self.skipTest(reason="Playtime not of type int.")
 
-# endregion test:get_playtime_v1
+    # endregion test:get_playtime_v1
 
-# region test:save_events_v1
+    # region test:save_events_v1
 
     def test_save_events_v1(self):
         from datetime import datetime
@@ -57,9 +57,9 @@ class GametelemetryTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error)
 
-# endregion test:save_events_v1
+    # endregion test:save_events_v1
 
-# region test:update_playtime_v1
+    # region test:update_playtime_v1
 
     def test_update_playtime_v1(self):
         from accelbyte_py_sdk.api.gametelemetry import (
@@ -85,5 +85,6 @@ class GametelemetryTestCase(IntegrationTestCase):
             self.skipTest(reason="User was not found.")
         else:
             self.assertIsNone(error, error)
+
 
 # endregion test:update_playtime_v1

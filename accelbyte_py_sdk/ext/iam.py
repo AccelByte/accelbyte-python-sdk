@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,7 @@ from ..api.iam.models import AccountcommonClientPermissionV3
 from ..api.iam.models import AccountcommonClientPermissions
 from ..api.iam.models import AccountcommonClientPermissionsV3
 from ..api.iam.models import AccountcommonConflictedUserPlatformAccounts
+from ..api.iam.models import AccountcommonCountry
 from ..api.iam.models import AccountcommonCountryAgeRestriction
 from ..api.iam.models import AccountcommonDescription
 from ..api.iam.models import AccountcommonDistinctLinkedPlatformV3
@@ -108,6 +109,8 @@ from ..api.iam.models import ModelAuthenticatorKeyResponseV4
 from ..api.iam.models import ModelBackupCodesResponseV4
 from ..api.iam.models import ModelBanCreateRequest
 from ..api.iam.models import ModelBanUpdateRequest
+from ..api.iam.models import ModelBulkBanCreateRequestV3
+from ..api.iam.models import ModelBulkUnbanCreateRequestV3
 from ..api.iam.models import ModelCheckValidUserIDRequestV4
 from ..api.iam.models import ModelCountry
 from ..api.iam.models import ModelCountryAgeRestrictionRequest
@@ -117,6 +120,7 @@ from ..api.iam.models import ModelCreateJusticeUserResponse
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelEnabledFactorsResponseV4
+from ..api.iam.models import ModelFailedBanUnbanUserV3
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
@@ -138,6 +142,7 @@ from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkPlatformAccountWithProgressionRequest
 from ..api.iam.models import ModelLinkRequest
 from ..api.iam.models import ModelListAssignedUsersV4Response
+from ..api.iam.models import ModelListBulkUserBanResponseV3
 from ..api.iam.models import ModelListBulkUserResponse
 from ..api.iam.models import ModelListEmailAddressRequest
 from ..api.iam.models import ModelListRoleV4Response
@@ -227,6 +232,7 @@ from ..api.iam.models import ModelUserPermissionsResponseV3
 from ..api.iam.models import ModelUserResponse
 from ..api.iam.models import ModelUserResponseV3
 from ..api.iam.models import ModelUserRolesV4Response
+from ..api.iam.models import ModelUserUnbanCreateRequestV3
 from ..api.iam.models import ModelUserUpdateRequest
 from ..api.iam.models import ModelUserUpdateRequestV3
 from ..api.iam.models import ModelUserVerificationRequest
@@ -243,6 +249,7 @@ from ..api.iam.models import OauthcommonJWKSet
 from ..api.iam.models import OauthcommonUserRevocationListRecord
 from ..api.iam.models import OauthmodelCountryLocationResponse
 from ..api.iam.models import OauthmodelErrorResponse
+from ..api.iam.models import OauthmodelGameTokenCodeResponse
 from ..api.iam.models import OauthmodelTokenIntrospectResponse
 from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
@@ -298,16 +305,16 @@ def create_account_create_test_users_response_v4_example() -> AccountCreateTestU
 def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV4:
     instance = AccountCreateUserRequestV4()
     instance.auth_type = randomize()
-    instance.code = randomize()
     instance.country = randomize("country")
-    instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
+    instance.username = randomize("slug")
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.code = randomize()
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
     instance.password = randomize("password")
     instance.password_md5_sum = randomize()
     instance.reach_minimum_age = randomize("bool")
-    instance.username = randomize("slug")
-    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
-    instance.date_of_birth = randomize()
     return instance
 
 
@@ -337,12 +344,12 @@ def create_account_upgrade_headless_account_with_verification_code_request_v4_ex
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.password = randomize("password")
-    instance.reach_minimum_age = randomize("bool")
     instance.username = randomize("slug")
-    instance.validate_only = randomize("bool")
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
+    instance.reach_minimum_age = randomize("bool")
+    instance.validate_only = randomize("bool")
     return instance
 
 
@@ -485,6 +492,16 @@ def create_accountcommon_conflicted_user_platform_accounts_example() -> Accountc
     instance.publisher_accounts = [
         create_accountcommon_user_with_linked_platform_accounts_example()
     ]
+    return instance
+
+
+def create_accountcommon_country_example() -> AccountcommonCountry:
+    instance = AccountcommonCountry()
+    instance.age_restriction = randomize("int", min_val=1, max_val=1000)
+    instance.country_code = randomize()
+    instance.country_name = randomize()
+    instance.enable = randomize("bool")
+    instance.namespace = randomize("slug")
     return instance
 
 
@@ -1000,8 +1017,8 @@ def create_model_authenticator_key_response_v4_example() -> ModelAuthenticatorKe
 def create_model_backup_codes_response_v4_example() -> ModelBackupCodesResponseV4:
     instance = ModelBackupCodesResponseV4()
     instance.generated_at = randomize("int", min_val=1, max_val=1000)
-    instance.invalid_codes = [randomize()]
     instance.valid_codes = [randomize()]
+    instance.invalid_codes = [randomize()]
     return instance
 
 
@@ -1019,6 +1036,23 @@ def create_model_ban_update_request_example() -> ModelBanUpdateRequest:
     instance = ModelBanUpdateRequest()
     instance.enabled = randomize("bool")
     instance.skip_notif = randomize("bool")
+    return instance
+
+
+def create_model_bulk_ban_create_request_v3_example() -> ModelBulkBanCreateRequestV3:
+    instance = ModelBulkBanCreateRequestV3()
+    instance.ban = randomize()
+    instance.comment = randomize()
+    instance.end_date = randomize()
+    instance.reason = randomize()
+    instance.skip_notif = randomize("bool")
+    instance.user_ids = [randomize()]
+    return instance
+
+
+def create_model_bulk_unban_create_request_v3_example() -> ModelBulkUnbanCreateRequestV3:
+    instance = ModelBulkUnbanCreateRequestV3()
+    instance.bans = [create_model_user_unban_create_request_v3_example()]
     return instance
 
 
@@ -1082,6 +1116,13 @@ def create_model_enabled_factors_response_v4_example() -> ModelEnabledFactorsRes
     instance = ModelEnabledFactorsResponseV4()
     instance.default = randomize()
     instance.enabled = [randomize()]
+    return instance
+
+
+def create_model_failed_ban_unban_user_v3_example() -> ModelFailedBanUnbanUserV3:
+    instance = ModelFailedBanUnbanUserV3()
+    instance.reason = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1244,6 +1285,13 @@ def create_model_list_assigned_users_v4_response_example() -> ModelListAssignedU
     instance = ModelListAssignedUsersV4Response()
     instance.data = [create_model_assigned_user_v4_response_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_list_bulk_user_ban_response_v3_example() -> ModelListBulkUserBanResponseV3:
+    instance = ModelListBulkUserBanResponseV3()
+    instance.failed_bans = [create_model_failed_ban_unban_user_v3_example()]
+    instance.success_bans = [create_model_user_ban_response_v3_example()]
     return instance
 
 
@@ -1826,10 +1874,10 @@ def create_model_upgrade_headless_account_with_verification_code_request_v3_exam
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.password = randomize("password")
-    instance.validate_only = randomize("bool")
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
+    instance.validate_only = randomize("bool")
     return instance
 
 
@@ -2119,6 +2167,13 @@ def create_model_user_roles_v4_response_example() -> ModelUserRolesV4Response:
     return instance
 
 
+def create_model_user_unban_create_request_v3_example() -> ModelUserUnbanCreateRequestV3:
+    instance = ModelUserUnbanCreateRequestV3()
+    instance.ban_id = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_model_user_update_request_example() -> ModelUserUpdateRequest:
     instance = ModelUserUpdateRequest()
     instance.country = randomize("country")
@@ -2170,6 +2225,7 @@ def create_model_validation_detail_example() -> ModelValidationDetail:
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")
     instance.allow_unicode = randomize("bool")
+    instance.blocked_word = [randomize()]
     instance.description = [create_accountcommon_input_validation_description_example()]
     instance.is_custom_regex = randomize("bool")
     instance.letter_case = randomize()
@@ -2190,6 +2246,7 @@ def create_model_validation_detail_public_example() -> ModelValidationDetailPubl
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")
     instance.allow_unicode = randomize("bool")
+    instance.blocked_word = [randomize()]
     instance.description = create_accountcommon_input_validation_description_example()
     instance.is_custom_regex = randomize("bool")
     instance.letter_case = randomize()
@@ -2280,6 +2337,12 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     return instance
 
 
+def create_oauthmodel_game_token_code_response_example() -> OauthmodelGameTokenCodeResponse:
+    instance = OauthmodelGameTokenCodeResponse()
+    instance.code = randomize()
+    return instance
+
+
 def create_oauthmodel_token_introspect_response_example() -> OauthmodelTokenIntrospectResponse:
     instance = OauthmodelTokenIntrospectResponse()
     instance.active = randomize("bool")
@@ -2317,22 +2380,22 @@ def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance = OauthmodelTokenResponseV3()
     instance.access_token = randomize()
     instance.bans = [create_accountcommon_jwt_ban_v3_example()]
-    instance.display_name = randomize("slug")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.namespace_roles = [create_accountcommon_namespace_role_example()]
     instance.permissions = [create_accountcommon_permission_v3_example()]
-    instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
-    instance.refresh_token = randomize()
     instance.roles = [randomize()]
     instance.scope = randomize()
     instance.token_type = randomize()
-    instance.user_id = randomize("uid")
-    instance.xuid = randomize()
+    instance.display_name = randomize("slug")
     instance.is_comply = randomize("bool")
     instance.jflgs = randomize("int", min_val=1, max_val=1000)
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
+    instance.refresh_token = randomize()
+    instance.user_id = randomize("uid")
+    instance.xuid = randomize()
     return instance
 
 
@@ -2366,6 +2429,7 @@ def create_validation_example() -> Validation:
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")
     instance.allow_unicode = randomize("bool")
+    instance.blocked_word = [randomize()]
     instance.description = [create_validation_description_example()]
     instance.is_custom_regex = randomize("bool")
     instance.letter_case = randomize()

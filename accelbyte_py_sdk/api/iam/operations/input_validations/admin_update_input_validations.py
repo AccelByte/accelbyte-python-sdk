@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,6 +57,9 @@ class AdminUpdateInputValidations(Operation):
 
 
       * username
+
+
+      * email
 
 
 
@@ -110,6 +113,11 @@ class AdminUpdateInputValidations(Operation):
 
 
     `minCharType` is used to identify how many required criteria in the regex. The supported criteria are number, letter, special character, and letter case. If set to 0 or 1 means all criteria are optional. It can be set as much as the number of criteria enabled.
+
+
+
+
+    If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
 
     Required Permission(s):
         - ADMIN:CONFIGURATION [UPDATE]

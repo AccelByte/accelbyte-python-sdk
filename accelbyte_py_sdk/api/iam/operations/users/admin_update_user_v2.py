@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserResponse
 from ...models import ModelUserUpdateRequest
@@ -36,22 +37,51 @@ from ...models import ModelUserUpdateRequest
 class AdminUpdateUserV2(Operation):
     """Update User (AdminUpdateUserV2)
 
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]
+
+
+
+
+
+
+
     Required permission 'ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]'
 
-
+    "+
+    "
 
 
     This Endpoint support update user based on given data. Single request can update single field or multi fields.
 
+    "+
+    "
+
     Supported field {Country, DisplayName, LanguageTag}
+
+    "+
+    "
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
-
-     Several case of updating email address
+    "+
+    "
+     Several case of updating email address "+
+    "
 
       * User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
+    "+
+    "
       * User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
+    "+
+    "
       * User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
 
     Required Permission(s):

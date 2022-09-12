@@ -36,7 +36,7 @@ class AchievementTestCase(IntegrationTestCase):
             self.exist = error is not None
         super().tearDown()
 
-# region test:admin_create_new_achievement
+    # region test:admin_create_new_achievement
 
     def test_admin_create_new_achievement(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
@@ -57,9 +57,9 @@ class AchievementTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_create_new_achievement
+    # endregion test:admin_create_new_achievement
 
-# region test:admin_delete_achievement
+    # region test:admin_delete_achievement
 
     def test_admin_delete_achievement(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
@@ -82,9 +82,9 @@ class AchievementTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_delete_achievement
+    # endregion test:admin_delete_achievement
 
-# region test:admin_get_achievement
+    # region test:admin_get_achievement
 
     def test_admin_get_achievement(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
@@ -106,9 +106,9 @@ class AchievementTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_get_achievement
+    # endregion test:admin_get_achievement
 
-# region test:admin_list_achievements
+    # region test:admin_list_achievements
 
     def test_admin_list_achievements(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
@@ -128,9 +128,9 @@ class AchievementTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_list_achievements
+    # endregion test:admin_list_achievements
 
-# region test:admin_update_achievement
+    # region test:admin_update_achievement
 
     def test_admin_update_achievement(self):
         from accelbyte_py_sdk.api.achievement import admin_create_new_achievement
@@ -168,5 +168,6 @@ class AchievementTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.assertIn("ID", result.name)
         self.assertEqual("NAMA", result.name["ID"])
+
 
 # endregion test:admin_update_achievement

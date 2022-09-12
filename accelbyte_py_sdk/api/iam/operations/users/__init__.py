@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.15.0"
+__version__ = "5.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -54,6 +54,7 @@ from .admin_platform_link_v3 import AdminPlatformLinkV3
 from .admin_platform_unlink_v3 import AdminPlatformUnlinkV3
 from .admin_put_user_roles_v2 import AdminPutUserRolesV2
 from .admin_reset_password_v2 import AdminResetPasswordV2
+from .admin_reset_password_v3 import AdminResetPasswordV3
 from .admin_save_user_role_v3 import AdminSaveUserRoleV3
 from .admin_search_user_v3 import AdminSearchUserV3
 from .admin_search_users_v2 import AdminSearchUsersV2
@@ -115,6 +116,7 @@ from .public_forgot_password_v2 import PublicForgotPasswordV2
 from .public_forgot_password_v3 import PublicForgotPasswordV3
 from .public_get_async_status import PublicGetAsyncStatus
 from .public_get_country_age__7cfd03 import PublicGetCountryAgeRestriction
+from .public_get_country_age__e3af67 import PublicGetCountryAgeRestrictionV3
 from .public_get_my_user_v3 import PublicGetMyUserV3
 from .public_get_publisher_user_v3 import PublicGetPublisherUserV3
 from .public_get_user_ban import PublicGetUserBan
@@ -126,6 +128,7 @@ from .public_get_user_information_v3 import PublicGetUserInformationV3
 from .public_get_user_login_h_60bd12 import PublicGetUserLoginHistoriesV3
 from .public_get_user_platfor_890bc0 import PublicGetUserPlatformAccountsV3
 from .public_link_platform_account import PublicLinkPlatformAccount
+from .public_list_justice_pla_bd1791 import PublicListJusticePlatformAccountsV3
 from .public_list_user_all_pl_0f3031 import PublicListUserAllPlatformAccountsDistinctV3
 from .public_list_user_id_by__d6f348 import PublicListUserIDByPlatformUserIDsV3
 from .public_partial_update_user_v3 import PublicPartialUpdateUserV3

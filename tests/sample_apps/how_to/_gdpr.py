@@ -64,7 +64,7 @@ class GDPRTestCase(IntegrationTestCase):
             self.did_configure = False
         super().tearDown()
 
-# region test:admin_get_user_personal_data_requests
+    # region test:admin_get_user_personal_data_requests
 
     def test_admin_get_user_personal_data_requests(self):
         from accelbyte_py_sdk.api.gdpr import admin_get_user_personal_data_requests
@@ -86,9 +86,9 @@ class GDPRTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_get_user_personal_data_requests
+    # endregion test:admin_get_user_personal_data_requests
 
-# region test:admin_submit_user_account_deletion_request
+    # region test:admin_submit_user_account_deletion_request
 
     def test_admin_submit_user_account_deletion_request(self):
         from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
@@ -110,9 +110,9 @@ class GDPRTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:admin_submit_user_account_deletion_request
+    # endregion test:admin_submit_user_account_deletion_request
 
-# region test:delete_admin_email_configuration
+    # region test:delete_admin_email_configuration
 
     def test_delete_admin_email_configuration(self):
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
@@ -137,9 +137,9 @@ class GDPRTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.did_configure = error is not None
 
-# endregion test:delete_admin_email_configuration
+    # endregion test:delete_admin_email_configuration
 
-# region test:get_admin_email_configuration
+    # region test:get_admin_email_configuration
 
     def test_get_admin_email_configuration(self):
         from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
@@ -161,9 +161,9 @@ class GDPRTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_admin_email_configuration
+    # endregion test:get_admin_email_configuration
 
-# region test:save_admin_email_configuration
+    # region test:save_admin_email_configuration
 
     def test_save_admin_email_configuration(self):
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
@@ -183,9 +183,9 @@ class GDPRTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:save_admin_email_configuration
+    # endregion test:save_admin_email_configuration
 
-# region test:update_admin_email_configuration
+    # region test:update_admin_email_configuration
 
     def test_update_admin_email_configuration(self):
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
@@ -209,5 +209,6 @@ class GDPRTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
 
 # endregion test:update_admin_email_configuration

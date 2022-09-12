@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import AccountcommonCountry
 from ..models import AccountcommonCountryAgeRestriction
 from ..models import AccountcommonDistinctPlatformResponseV3
 from ..models import AccountcommonListUsersWithPlatformAccountsResponse
@@ -158,6 +159,7 @@ from ..operations.users import AdminPlatformLinkV3
 from ..operations.users import AdminPlatformUnlinkV3
 from ..operations.users import AdminPutUserRolesV2
 from ..operations.users import AdminResetPasswordV2
+from ..operations.users import AdminResetPasswordV3
 from ..operations.users import AdminSaveUserRoleV3
 from ..operations.users import AdminSearchUserV3
 from ..operations.users import AdminSearchUsersV2
@@ -219,6 +221,7 @@ from ..operations.users import PublicForgotPasswordV2
 from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
 from ..operations.users import PublicGetCountryAgeRestriction
+from ..operations.users import PublicGetCountryAgeRestrictionV3
 from ..operations.users import PublicGetMyUserV3
 from ..operations.users import PublicGetPublisherUserV3
 from ..operations.users import PublicGetUserBan
@@ -230,6 +233,7 @@ from ..operations.users import PublicGetUserInformationV3
 from ..operations.users import PublicGetUserLoginHistoriesV3
 from ..operations.users import PublicGetUserPlatformAccountsV3
 from ..operations.users import PublicLinkPlatformAccount
+from ..operations.users import PublicListJusticePlatformAccountsV3
 from ..operations.users import PublicListUserAllPlatformAccountsDistinctV3
 from ..operations.users import PublicListUserIDByPlatformUserIDsV3
 from ..operations.users import PublicPartialUpdateUserV3
@@ -449,6 +453,7 @@ async def admin_add_user_role_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminBanUserV2)
 def admin_ban_user_v2(
     body: ModelBanCreateRequest,
@@ -469,6 +474,7 @@ def admin_ban_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminBanUserV2)
 async def admin_ban_user_v2_async(
     body: ModelBanCreateRequest,
@@ -575,6 +581,7 @@ async def admin_create_justice_user_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminCreateUserRolesV2)
 def admin_create_user_roles_v2(
     body: List[str],
@@ -595,6 +602,7 @@ def admin_create_user_roles_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminCreateUserRolesV2)
 async def admin_create_user_roles_v2_async(
     body: List[str],
@@ -617,6 +625,7 @@ async def admin_create_user_roles_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeletePlatformLinkV2)
 def admin_delete_platform_link_v2(
     platform_id: str,
@@ -639,6 +648,7 @@ def admin_delete_platform_link_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeletePlatformLinkV2)
 async def admin_delete_platform_link_v2_async(
     platform_id: str,
@@ -873,6 +883,7 @@ async def admin_delete_user_roles_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDisableUserV2)
 def admin_disable_user_v2(
     body: ModelDisableUserRequest,
@@ -893,6 +904,7 @@ def admin_disable_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDisableUserV2)
 async def admin_disable_user_v2_async(
     body: ModelDisableUserRequest,
@@ -915,6 +927,7 @@ async def admin_disable_user_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminEnableUserV2)
 def admin_enable_user_v2(
     user_id: str,
@@ -933,6 +946,7 @@ def admin_enable_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminEnableUserV2)
 async def admin_enable_user_v2_async(
     user_id: str,
@@ -953,6 +967,7 @@ async def admin_enable_user_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetAgeRestrictionStatusV2)
 def admin_get_age_restriction_status_v2(
     namespace: Optional[str] = None,
@@ -969,6 +984,7 @@ def admin_get_age_restriction_status_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetAgeRestrictionStatusV2)
 async def admin_get_age_restriction_status_v2_async(
     namespace: Optional[str] = None,
@@ -1149,6 +1165,7 @@ async def admin_get_my_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetUserBanV2)
 def admin_get_user_ban_v2(
     user_id: str,
@@ -1169,6 +1186,7 @@ def admin_get_user_ban_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetUserBanV2)
 async def admin_get_user_ban_v2_async(
     user_id: str,
@@ -1325,6 +1343,7 @@ async def admin_get_user_by_platform_user_idv3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetUserByUserIdV2)
 def admin_get_user_by_user_id_v2(
     user_id: str,
@@ -1343,6 +1362,7 @@ def admin_get_user_by_user_id_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetUserByUserIdV2)
 async def admin_get_user_by_user_id_v2_async(
     user_id: str,
@@ -1833,6 +1853,7 @@ async def admin_platform_unlink_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminPutUserRolesV2)
 def admin_put_user_roles_v2(
     body: List[str],
@@ -1853,6 +1874,7 @@ def admin_put_user_roles_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminPutUserRolesV2)
 async def admin_put_user_roles_v2_async(
     body: List[str],
@@ -1875,6 +1897,7 @@ async def admin_put_user_roles_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminResetPasswordV2)
 def admin_reset_password_v2(
     body: ModelUserPasswordUpdateRequest,
@@ -1895,6 +1918,7 @@ def admin_reset_password_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminResetPasswordV2)
 async def admin_reset_password_v2_async(
     body: ModelUserPasswordUpdateRequest,
@@ -1908,6 +1932,48 @@ async def admin_reset_password_v2_async(
         if error:
             return None, error
     request = AdminResetPasswordV2.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminResetPasswordV3)
+def admin_reset_password_v3(
+    body: ModelUserPasswordUpdateV3Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetPasswordV3.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminResetPasswordV3)
+async def admin_reset_password_v3_async(
+    body: ModelUserPasswordUpdateV3Request,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetPasswordV3.create(
         body=body,
         user_id=user_id,
         namespace=namespace,
@@ -2025,6 +2091,7 @@ async def admin_search_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminSearchUsersV2)
 def admin_search_users_v2(
     platform_id: str,
@@ -2059,6 +2126,7 @@ def admin_search_users_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminSearchUsersV2)
 async def admin_search_users_v2_async(
     platform_id: str,
@@ -2137,6 +2205,7 @@ async def admin_send_verification_code_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminUpdateAgeRestrictionConfigV2)
 def admin_update_age_restriction_config_v2(
     body: ModelAgeRestrictionRequest,
@@ -2155,6 +2224,7 @@ def admin_update_age_restriction_config_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminUpdateAgeRestrictionConfigV2)
 async def admin_update_age_restriction_config_v2_async(
     body: ModelAgeRestrictionRequest,
@@ -2427,6 +2497,7 @@ async def admin_update_user_status_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminUpdateUserV2)
 def admin_update_user_v2(
     body: ModelUserUpdateRequest,
@@ -2447,6 +2518,7 @@ def admin_update_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminUpdateUserV2)
 async def admin_update_user_v2_async(
     body: ModelUserUpdateRequest,
@@ -3325,6 +3397,7 @@ async def get_admin_users_by_role_id_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(GetListCountryAgeRestriction)
 def get_list_country_age_restriction(
     namespace: Optional[str] = None,
@@ -3341,6 +3414,7 @@ def get_list_country_age_restriction(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetListCountryAgeRestriction)
 async def get_list_country_age_restriction_async(
     namespace: Optional[str] = None,
@@ -3359,6 +3433,7 @@ async def get_list_country_age_restriction_async(
     )
 
 
+@deprecated
 @same_doc_as(GetListJusticePlatformAccounts)
 def get_list_justice_platform_accounts(
     user_id: str,
@@ -3377,6 +3452,7 @@ def get_list_justice_platform_accounts(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetListJusticePlatformAccounts)
 async def get_list_justice_platform_accounts_async(
     user_id: str,
@@ -4165,6 +4241,7 @@ async def public_create_justice_user_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicCreateUserV2)
 def public_create_user_v2(
     body: ModelUserCreateRequest,
@@ -4183,6 +4260,7 @@ def public_create_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicCreateUserV2)
 async def public_create_user_v2_async(
     body: ModelUserCreateRequest,
@@ -4241,6 +4319,7 @@ async def public_create_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicDeletePlatformLinkV2)
 def public_delete_platform_link_v2(
     platform_id: str,
@@ -4263,6 +4342,7 @@ def public_delete_platform_link_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicDeletePlatformLinkV2)
 async def public_delete_platform_link_v2_async(
     platform_id: str,
@@ -4371,6 +4451,7 @@ async def public_force_platform_link_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicForgotPasswordV2)
 def public_forgot_password_v2(
     body: ModelSendVerificationCodeRequest,
@@ -4389,6 +4470,7 @@ def public_forgot_password_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicForgotPasswordV2)
 async def public_forgot_password_v2_async(
     body: ModelSendVerificationCodeRequest,
@@ -4485,6 +4567,7 @@ async def public_get_async_status_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetCountryAgeRestriction)
 def public_get_country_age_restriction(
     country_code: str,
@@ -4503,6 +4586,7 @@ def public_get_country_age_restriction(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetCountryAgeRestriction)
 async def public_get_country_age_restriction_async(
     country_code: str,
@@ -4515,6 +4599,44 @@ async def public_get_country_age_restriction_async(
         if error:
             return None, error
     request = PublicGetCountryAgeRestriction.create(
+        country_code=country_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetCountryAgeRestrictionV3)
+def public_get_country_age_restriction_v3(
+    country_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetCountryAgeRestrictionV3.create(
+        country_code=country_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetCountryAgeRestrictionV3)
+async def public_get_country_age_restriction_v3_async(
+    country_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetCountryAgeRestrictionV3.create(
         country_code=country_code,
         namespace=namespace,
     )
@@ -4579,6 +4701,7 @@ async def public_get_publisher_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserBan)
 def public_get_user_ban(
     user_id: str,
@@ -4599,6 +4722,7 @@ def public_get_user_ban(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserBan)
 async def public_get_user_ban_async(
     user_id: str,
@@ -4755,6 +4879,7 @@ async def public_get_user_by_user_id_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserByUserIDV2)
 def public_get_user_by_user_idv2(
     user_id: str,
@@ -4773,6 +4898,7 @@ def public_get_user_by_user_idv2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserByUserIDV2)
 async def public_get_user_by_user_idv2_async(
     user_id: str,
@@ -4973,6 +5099,44 @@ async def public_link_platform_account_async(
     )
 
 
+@same_doc_as(PublicListJusticePlatformAccountsV3)
+def public_list_justice_platform_accounts_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListJusticePlatformAccountsV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicListJusticePlatformAccountsV3)
+async def public_list_justice_platform_accounts_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListJusticePlatformAccountsV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicListUserAllPlatformAccountsDistinctV3)
 def public_list_user_all_platform_accounts_distinct_v3(
     user_id: str,
@@ -5091,6 +5255,7 @@ async def public_partial_update_user_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicPlatformLinkV2)
 def public_platform_link_v2(
     platform_id: str,
@@ -5113,6 +5278,7 @@ def public_platform_link_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicPlatformLinkV2)
 async def public_platform_link_v2_async(
     platform_id: str,
@@ -5263,6 +5429,7 @@ async def public_platform_unlink_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicResetPasswordV2)
 def public_reset_password_v2(
     body: ModelResetPasswordRequest,
@@ -5281,6 +5448,7 @@ def public_reset_password_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicResetPasswordV2)
 async def public_reset_password_v2_async(
     body: ModelResetPasswordRequest,
@@ -5453,6 +5621,7 @@ async def public_send_verification_link_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdatePasswordV2)
 def public_update_password_v2(
     body: ModelUserPasswordUpdateRequest,
@@ -5473,6 +5642,7 @@ def public_update_password_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdatePasswordV2)
 async def public_update_password_v2_async(
     body: ModelUserPasswordUpdateRequest,
@@ -5533,6 +5703,7 @@ async def public_update_password_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserV2)
 def public_update_user_v2(
     body: ModelUserUpdateRequest,
@@ -5553,6 +5724,7 @@ def public_update_user_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdateUserV2)
 async def public_update_user_v2_async(
     body: ModelUserUpdateRequest,
@@ -6133,6 +6305,7 @@ async def send_verification_code_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdateCountryAgeRestriction)
 def update_country_age_restriction(
     body: ModelCountryAgeRestrictionRequest,
@@ -6153,6 +6326,7 @@ def update_country_age_restriction(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdateCountryAgeRestriction)
 async def update_country_age_restriction_async(
     body: ModelCountryAgeRestrictionRequest,

@@ -20,7 +20,7 @@ class CloudSaveTestCase(IntegrationTestCase):
         )
         super().tearDown()
 
-# region test:delete_game_record_handler_v1
+    # region test:delete_game_record_handler_v1
 
     def test_delete_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
@@ -41,9 +41,9 @@ class CloudSaveTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:delete_game_record_handler_v1
+    # endregion test:delete_game_record_handler_v1
 
-# region test:get_game_record_handler_v1
+    # region test:get_game_record_handler_v1
 
     def test_get_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
@@ -64,9 +64,9 @@ class CloudSaveTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_game_record_handler_v1
+    # endregion test:get_game_record_handler_v1
 
-# region test:post_game_record_handler_v1
+    # region test:post_game_record_handler_v1
 
     def test_post_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import delete_game_record_handler_v1
@@ -83,9 +83,9 @@ class CloudSaveTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:post_game_record_handler_v1
+    # endregion test:post_game_record_handler_v1
 
-# region test:put_game_record_handler_v1
+    # region test:put_game_record_handler_v1
 
     def test_put_game_record_handler_v1(self):
         from accelbyte_py_sdk.api.cloudsave import get_game_record_handler_v1
@@ -120,5 +120,6 @@ class CloudSaveTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.value)
         self.assertIn("foo", result.value)
         self.assertEqual("baz", result.value["foo"])
+
 
 # endregion test:put_game_record_handler_v1

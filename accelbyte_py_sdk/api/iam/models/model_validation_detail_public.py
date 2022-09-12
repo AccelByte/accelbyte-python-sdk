@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,8 @@ class ModelValidationDetailPublic(Model):
 
         allow_unicode: (allowUnicode) REQUIRED bool
 
+        blocked_word: (blockedWord) REQUIRED List[str]
+
         description: (description) REQUIRED AccountcommonInputValidationDescription
 
         is_custom_regex: (isCustomRegex) REQUIRED bool
@@ -73,6 +75,7 @@ class ModelValidationDetailPublic(Model):
     allow_letter: bool  # REQUIRED
     allow_space: bool  # REQUIRED
     allow_unicode: bool  # REQUIRED
+    blocked_word: List[str]  # REQUIRED
     description: AccountcommonInputValidationDescription  # REQUIRED
     is_custom_regex: bool  # REQUIRED
     letter_case: str  # REQUIRED
@@ -103,6 +106,10 @@ class ModelValidationDetailPublic(Model):
 
     def with_allow_unicode(self, value: bool) -> ModelValidationDetailPublic:
         self.allow_unicode = value
+        return self
+
+    def with_blocked_word(self, value: List[str]) -> ModelValidationDetailPublic:
+        self.blocked_word = value
         return self
 
     def with_description(
@@ -177,6 +184,10 @@ class ModelValidationDetailPublic(Model):
             result["allowUnicode"] = bool(self.allow_unicode)
         elif include_empty:
             result["allowUnicode"] = False
+        if hasattr(self, "blocked_word"):
+            result["blockedWord"] = [str(i0) for i0 in self.blocked_word]
+        elif include_empty:
+            result["blockedWord"] = []
         if hasattr(self, "description"):
             result["description"] = self.description.to_dict(
                 include_empty=include_empty
@@ -238,6 +249,7 @@ class ModelValidationDetailPublic(Model):
         allow_letter: bool,
         allow_space: bool,
         allow_unicode: bool,
+        blocked_word: List[str],
         description: AccountcommonInputValidationDescription,
         is_custom_regex: bool,
         letter_case: str,
@@ -255,6 +267,7 @@ class ModelValidationDetailPublic(Model):
         instance.allow_letter = allow_letter
         instance.allow_space = allow_space
         instance.allow_unicode = allow_unicode
+        instance.blocked_word = blocked_word
         instance.description = description
         instance.is_custom_regex = is_custom_regex
         instance.letter_case = letter_case
@@ -291,6 +304,10 @@ class ModelValidationDetailPublic(Model):
             instance.allow_unicode = bool(dict_["allowUnicode"])
         elif include_empty:
             instance.allow_unicode = False
+        if "blockedWord" in dict_ and dict_["blockedWord"] is not None:
+            instance.blocked_word = [str(i0) for i0 in dict_["blockedWord"]]
+        elif include_empty:
+            instance.blocked_word = []
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = (
                 AccountcommonInputValidationDescription.create_from_dict(
@@ -397,6 +414,7 @@ class ModelValidationDetailPublic(Model):
             "allowLetter": "allow_letter",
             "allowSpace": "allow_space",
             "allowUnicode": "allow_unicode",
+            "blockedWord": "blocked_word",
             "description": "description",
             "isCustomRegex": "is_custom_regex",
             "letterCase": "letter_case",
@@ -417,6 +435,7 @@ class ModelValidationDetailPublic(Model):
             "allowLetter": True,
             "allowSpace": True,
             "allowUnicode": True,
+            "blockedWord": True,
             "description": True,
             "isCustomRegex": True,
             "letterCase": True,

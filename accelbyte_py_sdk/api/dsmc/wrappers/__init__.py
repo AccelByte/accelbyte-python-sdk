@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "3.5.0"
+__version__ = "3.6.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -114,6 +114,8 @@ from ._image_config import get_image_patches
 from ._image_config import get_image_patches_async
 from ._image_config import image_detail_client
 from ._image_config import image_detail_client_async
+from ._image_config import image_limit_client
+from ._image_config import image_limit_client_async
 from ._image_config import import_images
 from ._image_config import import_images_async
 from ._image_config import list_images

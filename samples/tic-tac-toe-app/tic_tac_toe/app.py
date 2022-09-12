@@ -142,12 +142,13 @@ def lambda_handler(event, context):
         game_id = query_params.get("game_id")
         if game_id is None:
             return create_response(
-                status_code=400,
-                body=f"Missing 'game_id' query parameter."
+                status_code=400, body=f"Missing 'game_id' query parameter."
             )
         if isinstance(body, str):
             body = json.loads(body)
-        return make_move(player_sdk, redis_client, user_id, user_namespace, game_id, body)
+        return make_move(
+            player_sdk, redis_client, user_id, user_namespace, game_id, body
+        )
     else:
         return create_response(
             status_code=500,
@@ -172,10 +173,13 @@ def create_match(sdk, redis_client, user_id, user_namespace):
 
             # exit if there is already an existing pending/ongoing user's match
             if user_id in game.player_ids:
-                return create_response(status_code=400, body={
-                    "message": f"You already have an existing Match({game.id}).",
-                    **match_value_dict,
-                })
+                return create_response(
+                    status_code=400,
+                    body={
+                        "message": f"You already have an existing Match({game.id}).",
+                        **match_value_dict,
+                    },
+                )
 
             # skip all games that's already ongoing
             if game.status == GameStatusEnum.ONGOING:
@@ -212,10 +216,13 @@ def create_match(sdk, redis_client, user_id, user_namespace):
             if send_notif_2_err:
                 return send_notif_2_err
 
-            return create_response(status_code=200, body={
-                "message": message,
-                **match_value_dict,
-            })
+            return create_response(
+                status_code=200,
+                body={
+                    "message": message,
+                    **match_value_dict,
+                },
+            )
         else:
             game = TicTacToe(player_ids=[user_id])
 
@@ -225,10 +232,13 @@ def create_match(sdk, redis_client, user_id, user_namespace):
 
             redis_client.set(name=match_key, value=match_value_str)
 
-            return create_response(status_code=200, body={
-                "message": f"No match found, created Match({game.id}).",
-                **match_value_dict,
-            })
+            return create_response(
+                status_code=200,
+                body={
+                    "message": f"No match found, created Match({game.id}).",
+                    **match_value_dict,
+                },
+            )
     except RedisConnectionError:
         return create_response(
             status_code=500, body="Failed to connect to Redis server."
@@ -240,7 +250,9 @@ def delete_matches(redis_client):
 
     try:
         redis_client.flushall()
-        return create_response(status_code=200, body="Successfully deleted all matches.")
+        return create_response(
+            status_code=200, body="Successfully deleted all matches."
+        )
     except RedisConnectionError:
         return create_response(
             status_code=500, body="Failed to connect to Redis server."
@@ -264,10 +276,13 @@ def get_matches(redis_client, user_id):
 
             matches.append(match_value_dict)
 
-        return create_response(status_code=200, body={
-            "message": f"Found {len(matches)} matche(s).",
-            "matches": matches,
-        })
+        return create_response(
+            status_code=200,
+            body={
+                "message": f"Found {len(matches)} matche(s).",
+                "matches": matches,
+            },
+        )
     except RedisConnectionError:
         return create_response(
             status_code=500, body="Failed to connect to Redis server."
@@ -284,18 +299,19 @@ def make_move(sdk, redis_client, user_id, user_namespace, game_id, move_body):
         match_value_str = redis_client.get(match_key)
         if match_value_str is None:
             return create_response(
-                status_code=400,
-                body=f"Failed to find Match({game_id})."
+                status_code=400, body=f"Failed to find Match({game_id})."
             )
 
         match_value_dict = json.loads(match_value_str)
         game = TicTacToe(**match_value_dict)
 
         # update match information
-        error = game.apply_move(Move(
-            player_id=user_id,
-            data=move_body,
-        ))
+        error = game.apply_move(
+            Move(
+                player_id=user_id,
+                data=move_body,
+            )
+        )
         if error:
             return create_response(
                 status_code=500,
@@ -340,12 +356,11 @@ def make_move(sdk, redis_client, user_id, user_namespace, game_id, move_body):
 def send_free_form_notif(sdk, user_id, user_namespace, message):
     _, error = lobby_service.free_form_notification_by_user_id(
         body=lobby_models.ModelFreeFormNotificationRequest.create(
-            message=message,
-            topic="NOTIF"
+            message=message, topic="NOTIF"
         ),
         user_id=user_id,
         namespace=user_namespace,
-        sdk=sdk
+        sdk=sdk,
     )
     if error:
         return None, create_response(
@@ -365,7 +380,6 @@ class GameStatusEnum(StrEnum):
 
 
 class GameError(Exception):
-
     def __str__(self):
         s = super().__str__()
         if not s.isspace() and s != "":
@@ -665,15 +679,19 @@ class TicTacToe(Game):
         p2_symbol = TicTacToe.get_player_symbol_from_index(1)
         blank_symbol = TicTacToe.get_player_symbol_from_index(-1)
 
-        if (                                                             # [?][_][_]
-            board_state[0][0] != blank_symbol and                        # [_][?][_]
-            board_state[0][0] == board_state[1][1] == board_state[2][2]  # [_][_][?]
+        if (  # [?][_][_]
+            board_state[0][0] != blank_symbol
+            and board_state[0][0]  # [_][?][_]
+            == board_state[1][1]
+            == board_state[2][2]  # [_][_][?]
         ):
             player_symbol = board_state[0][0]
             player_index = TicTacToe.get_player_index_from_symbol(player_symbol)
-        elif (                                                           # [_][_][?]
-            board_state[2][0] != blank_symbol and                        # [_][?][_]
-            board_state[2][0] == board_state[1][1] == board_state[0][2]  # [?][_][_]
+        elif (  # [_][_][?]
+            board_state[2][0] != blank_symbol
+            and board_state[2][0]  # [_][?][_]
+            == board_state[1][1]
+            == board_state[0][2]  # [?][_][_]
         ):
             player_symbol = board_state[2][0]
             player_index = TicTacToe.get_player_index_from_symbol(player_symbol)

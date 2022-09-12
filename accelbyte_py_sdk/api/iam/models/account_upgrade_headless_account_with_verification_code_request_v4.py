@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,17 +38,17 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
 
         password: (password) REQUIRED str
 
-        reach_minimum_age: (reachMinimumAge) REQUIRED bool
-
         username: (username) REQUIRED str
-
-        validate_only: (validateOnly) REQUIRED bool
 
         country: (country) OPTIONAL str
 
         date_of_birth: (dateOfBirth) OPTIONAL str
 
         display_name: (displayName) OPTIONAL str
+
+        reach_minimum_age: (reachMinimumAge) OPTIONAL bool
+
+        validate_only: (validateOnly) OPTIONAL bool
     """
 
     # region fields
@@ -56,12 +56,12 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
     code: str  # REQUIRED
     email_address: str  # REQUIRED
     password: str  # REQUIRED
-    reach_minimum_age: bool  # REQUIRED
     username: str  # REQUIRED
-    validate_only: bool  # REQUIRED
     country: str  # OPTIONAL
     date_of_birth: str  # OPTIONAL
     display_name: str  # OPTIONAL
+    reach_minimum_age: bool  # OPTIONAL
+    validate_only: bool  # OPTIONAL
 
     # endregion fields
 
@@ -85,22 +85,10 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         self.password = value
         return self
 
-    def with_reach_minimum_age(
-        self, value: bool
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-        self.reach_minimum_age = value
-        return self
-
     def with_username(
         self, value: str
     ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         self.username = value
-        return self
-
-    def with_validate_only(
-        self, value: bool
-    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
-        self.validate_only = value
         return self
 
     def with_country(
@@ -121,6 +109,18 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         self.display_name = value
         return self
 
+    def with_reach_minimum_age(
+        self, value: bool
+    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.reach_minimum_age = value
+        return self
+
+    def with_validate_only(
+        self, value: bool
+    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.validate_only = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -139,18 +139,10 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["password"] = str(self.password)
         elif include_empty:
             result["password"] = ""
-        if hasattr(self, "reach_minimum_age"):
-            result["reachMinimumAge"] = bool(self.reach_minimum_age)
-        elif include_empty:
-            result["reachMinimumAge"] = False
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = ""
-        if hasattr(self, "validate_only"):
-            result["validateOnly"] = bool(self.validate_only)
-        elif include_empty:
-            result["validateOnly"] = False
         if hasattr(self, "country"):
             result["country"] = str(self.country)
         elif include_empty:
@@ -163,6 +155,14 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "reach_minimum_age"):
+            result["reachMinimumAge"] = bool(self.reach_minimum_age)
+        elif include_empty:
+            result["reachMinimumAge"] = False
+        if hasattr(self, "validate_only"):
+            result["validateOnly"] = bool(self.validate_only)
+        elif include_empty:
+            result["validateOnly"] = False
         return result
 
     # endregion to methods
@@ -175,26 +175,28 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         code: str,
         email_address: str,
         password: str,
-        reach_minimum_age: bool,
         username: str,
-        validate_only: bool,
         country: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
+        reach_minimum_age: Optional[bool] = None,
+        validate_only: Optional[bool] = None,
     ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
         instance = cls()
         instance.code = code
         instance.email_address = email_address
         instance.password = password
-        instance.reach_minimum_age = reach_minimum_age
         instance.username = username
-        instance.validate_only = validate_only
         if country is not None:
             instance.country = country
         if date_of_birth is not None:
             instance.date_of_birth = date_of_birth
         if display_name is not None:
             instance.display_name = display_name
+        if reach_minimum_age is not None:
+            instance.reach_minimum_age = reach_minimum_age
+        if validate_only is not None:
+            instance.validate_only = validate_only
         return instance
 
     @classmethod
@@ -216,18 +218,10 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.password = str(dict_["password"])
         elif include_empty:
             instance.password = ""
-        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
-            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
-        elif include_empty:
-            instance.reach_minimum_age = False
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
             instance.username = ""
-        if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
-            instance.validate_only = bool(dict_["validateOnly"])
-        elif include_empty:
-            instance.validate_only = False
         if "country" in dict_ and dict_["country"] is not None:
             instance.country = str(dict_["country"])
         elif include_empty:
@@ -240,6 +234,14 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "reachMinimumAge" in dict_ and dict_["reachMinimumAge"] is not None:
+            instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
+        elif include_empty:
+            instance.reach_minimum_age = False
+        if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
+            instance.validate_only = bool(dict_["validateOnly"])
+        elif include_empty:
+            instance.validate_only = False
         return instance
 
     @classmethod
@@ -286,12 +288,12 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             "code": "code",
             "emailAddress": "email_address",
             "password": "password",
-            "reachMinimumAge": "reach_minimum_age",
             "username": "username",
-            "validateOnly": "validate_only",
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
+            "reachMinimumAge": "reach_minimum_age",
+            "validateOnly": "validate_only",
         }
 
     @staticmethod
@@ -300,12 +302,12 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             "code": True,
             "emailAddress": True,
             "password": True,
-            "reachMinimumAge": True,
             "username": True,
-            "validateOnly": True,
             "country": False,
             "dateOfBirth": False,
             "displayName": False,
+            "reachMinimumAge": False,
+            "validateOnly": False,
         }
 
     # endregion static methods

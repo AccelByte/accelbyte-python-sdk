@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -121,7 +121,13 @@ class Authorization(Operation):
 
 
 
-      *  Substitute endpoint: /iam/v3/oauth/authorize [GET]
+      *  Substitute endpoint (for: basic header style): /iam/v3/oauth/authorize [GET]
+
+
+      *  Substitute endpoint (for: bearer header style):
+        step1: /iam/v3/namespace/{namespace}/token/request [POST] => get code
+        step2: /iam/v3/token/exchange [POST] => get token by step1's code
+
 
 
       *  Note:

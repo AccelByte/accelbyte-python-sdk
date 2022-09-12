@@ -22,7 +22,7 @@ class SocialTestCase(IntegrationTestCase):
             self.exist = error is not None
         super().tearDown()
 
-# region test:create_stat
+    # region test:create_stat
 
     def test_create_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
@@ -39,9 +39,9 @@ class SocialTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:create_stat
+    # endregion test:create_stat
 
-# region test:delete_stat
+    # region test:delete_stat
 
     def test_delete_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
@@ -61,9 +61,9 @@ class SocialTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:delete_stat
+    # endregion test:delete_stat
 
-# region test:get_stat
+    # region test:get_stat
 
     def test_get_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
@@ -82,9 +82,9 @@ class SocialTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_stat
+    # endregion test:get_stat
 
-# region test:update_stat
+    # region test:update_stat
 
     def test_update_stat(self):
         from accelbyte_py_sdk.api.social import create_stat
@@ -111,5 +111,6 @@ class SocialTestCase(IntegrationTestCase):
         self.assertIsInstance(result, StatInfo)
         self.assertIsNotNone(result.name)
         self.assertEqual("KODE_STATUS", result.name)
+
 
 # endregion test:update_stat

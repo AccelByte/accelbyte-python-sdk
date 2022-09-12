@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.5.0)
+# AccelByte Cloud Dsm Controller Service (3.6.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,8 @@ class ModelsGetImageLimitResponseData(Model):
         image_limit: (image_limit) REQUIRED int
 
         non_persistent_image_number: (non_persistent_image_number) REQUIRED int
+
+        non_persistent_image_used_in_deployment_number: (non_persistent_image_used_in_deployment_number) REQUIRED int
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelsGetImageLimitResponseData(Model):
     image_count: int  # REQUIRED
     image_limit: int  # REQUIRED
     non_persistent_image_number: int  # REQUIRED
+    non_persistent_image_used_in_deployment_number: int  # REQUIRED
 
     # endregion fields
 
@@ -61,6 +64,12 @@ class ModelsGetImageLimitResponseData(Model):
         self, value: int
     ) -> ModelsGetImageLimitResponseData:
         self.non_persistent_image_number = value
+        return self
+
+    def with_non_persistent_image_used_in_deployment_number(
+        self, value: int
+    ) -> ModelsGetImageLimitResponseData:
+        self.non_persistent_image_used_in_deployment_number = value
         return self
 
     # endregion with_x methods
@@ -83,6 +92,12 @@ class ModelsGetImageLimitResponseData(Model):
             )
         elif include_empty:
             result["non_persistent_image_number"] = 0
+        if hasattr(self, "non_persistent_image_used_in_deployment_number"):
+            result["non_persistent_image_used_in_deployment_number"] = int(
+                self.non_persistent_image_used_in_deployment_number
+            )
+        elif include_empty:
+            result["non_persistent_image_used_in_deployment_number"] = 0
         return result
 
     # endregion to methods
@@ -95,11 +110,15 @@ class ModelsGetImageLimitResponseData(Model):
         image_count: int,
         image_limit: int,
         non_persistent_image_number: int,
+        non_persistent_image_used_in_deployment_number: int,
     ) -> ModelsGetImageLimitResponseData:
         instance = cls()
         instance.image_count = image_count
         instance.image_limit = image_limit
         instance.non_persistent_image_number = non_persistent_image_number
+        instance.non_persistent_image_used_in_deployment_number = (
+            non_persistent_image_used_in_deployment_number
+        )
         return instance
 
     @classmethod
@@ -126,6 +145,15 @@ class ModelsGetImageLimitResponseData(Model):
             )
         elif include_empty:
             instance.non_persistent_image_number = 0
+        if (
+            "non_persistent_image_used_in_deployment_number" in dict_
+            and dict_["non_persistent_image_used_in_deployment_number"] is not None
+        ):
+            instance.non_persistent_image_used_in_deployment_number = int(
+                dict_["non_persistent_image_used_in_deployment_number"]
+            )
+        elif include_empty:
+            instance.non_persistent_image_used_in_deployment_number = 0
         return instance
 
     @classmethod
@@ -172,6 +200,7 @@ class ModelsGetImageLimitResponseData(Model):
             "image_count": "image_count",
             "image_limit": "image_limit",
             "non_persistent_image_number": "non_persistent_image_number",
+            "non_persistent_image_used_in_deployment_number": "non_persistent_image_used_in_deployment_number",
         }
 
     @staticmethod
@@ -180,6 +209,7 @@ class ModelsGetImageLimitResponseData(Model):
             "image_count": True,
             "image_limit": True,
             "non_persistent_image_number": True,
+            "non_persistent_image_used_in_deployment_number": True,
         }
 
     # endregion static methods

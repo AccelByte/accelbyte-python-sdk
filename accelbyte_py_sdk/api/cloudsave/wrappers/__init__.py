@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.1.3"
+__version__ = "3.1.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -46,6 +46,8 @@ from ._admin_player_record import admin_get_player_public_record_handler_v1
 from ._admin_player_record import admin_get_player_public_record_handler_v1_async
 from ._admin_player_record import admin_get_player_record_handler_v1
 from ._admin_player_record import admin_get_player_record_handler_v1_async
+from ._admin_player_record import admin_get_player_record_size_handler_v1
+from ._admin_player_record import admin_get_player_record_size_handler_v1_async
 from ._admin_player_record import admin_post_player_public_record_handler_v1
 from ._admin_player_record import admin_post_player_public_record_handler_v1_async
 from ._admin_player_record import admin_post_player_record_handler_v1
@@ -56,6 +58,8 @@ from ._admin_player_record import admin_put_player_record_handler_v1
 from ._admin_player_record import admin_put_player_record_handler_v1_async
 from ._admin_player_record import admin_retrieve_player_records
 from ._admin_player_record import admin_retrieve_player_records_async
+from ._admin_player_record import bulk_get_player_record_size_handler_v1
+from ._admin_player_record import bulk_get_player_record_size_handler_v1_async
 from ._admin_player_record import list_player_record_handler_v1
 from ._admin_player_record import list_player_record_handler_v1_async
 

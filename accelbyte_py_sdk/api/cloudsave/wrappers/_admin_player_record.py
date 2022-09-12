@@ -30,20 +30,25 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import ModelsBulkGetPlayerRecordSizeResponse
+from ..models import ModelsBulkUserKeyRequest
 from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
 from ..models import ModelsPlayerRecordResponse
+from ..models import ModelsPlayerRecordSizeResponse
 from ..models import ModelsResponseError
 
 from ..operations.admin_player_record import AdminDeletePlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminDeletePlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerRecordHandlerV1
+from ..operations.admin_player_record import AdminGetPlayerRecordSizeHandlerV1
 from ..operations.admin_player_record import AdminPostPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminPostPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminPutPlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminRetrievePlayerRecords
+from ..operations.admin_player_record import BulkGetPlayerRecordSizeHandlerV1
 from ..operations.admin_player_record import ListPlayerRecordHandlerV1
 
 
@@ -206,6 +211,48 @@ async def admin_get_player_record_handler_v1_async(
         if error:
             return None, error
     request = AdminGetPlayerRecordHandlerV1.create(
+        key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetPlayerRecordSizeHandlerV1)
+def admin_get_player_record_size_handler_v1(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlayerRecordSizeHandlerV1.create(
+        key=key,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetPlayerRecordSizeHandlerV1)
+async def admin_get_player_record_size_handler_v1_async(
+    key: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlayerRecordSizeHandlerV1.create(
         key=key,
         user_id=user_id,
         namespace=namespace,
@@ -438,6 +485,44 @@ async def admin_retrieve_player_records_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(BulkGetPlayerRecordSizeHandlerV1)
+def bulk_get_player_record_size_handler_v1(
+    body: ModelsBulkUserKeyRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetPlayerRecordSizeHandlerV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetPlayerRecordSizeHandlerV1)
+async def bulk_get_player_record_size_handler_v1_async(
+    body: ModelsBulkUserKeyRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetPlayerRecordSizeHandlerV1.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

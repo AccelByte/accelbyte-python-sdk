@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -106,7 +106,7 @@ class UpdateUserV3(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelUserResponseV3] (OK)
+        200: OK - ModelUserResponseV3 (OK)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
@@ -222,12 +222,11 @@ class UpdateUserV3(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelUserResponseV3]],
-        Union[None, HttpResponse, RestErrorResponse],
+        Union[None, ModelUserResponseV3], Union[None, HttpResponse, RestErrorResponse]
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelUserResponseV3] (OK)
+        200: OK - ModelUserResponseV3 (OK)
 
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body | 10154: country not found | 10130: user under age)
 
@@ -251,7 +250,7 @@ class UpdateUserV3(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelUserResponseV3.create_from_dict(i) for i in content], None
+            return ModelUserResponseV3.create_from_dict(content), None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

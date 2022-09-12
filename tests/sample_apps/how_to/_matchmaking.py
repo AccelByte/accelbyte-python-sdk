@@ -85,7 +85,7 @@ class MatchmakingTestCase(IntegrationTestCase):
         _, _ = delete_channel_handler(channel=self.models_channel_request.game_mode)
         super().tearDown()
 
-# region test:create_channel_handler
+    # region test:create_channel_handler
 
     def test_create_channel_handler(self):
         from accelbyte_py_sdk.api.matchmaking import create_channel_handler
@@ -100,9 +100,9 @@ class MatchmakingTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:create_channel_handler
+    # endregion test:create_channel_handler
 
-# region test:delete_channel_handler
+    # region test:delete_channel_handler
 
     def test_delete_channel_handler(self):
         from accelbyte_py_sdk.api.matchmaking import create_channel_handler
@@ -121,9 +121,9 @@ class MatchmakingTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:delete_channel_handler
+    # endregion test:delete_channel_handler
 
-# region test:get_single_matchmaking_channel
+    # region test:get_single_matchmaking_channel
 
     def test_get_single_matchmaking_channel(self):
         from accelbyte_py_sdk.api.matchmaking import create_channel_handler
@@ -144,9 +144,9 @@ class MatchmakingTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:get_single_matchmaking_channel
+    # endregion test:get_single_matchmaking_channel
 
-# region test:update_matchmaking_channel
+    # region test:update_matchmaking_channel
 
     def test_update_matchmaking_channel(self):
         from accelbyte_py_sdk.api.matchmaking import create_channel_handler
@@ -188,5 +188,6 @@ class MatchmakingTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
 
 # endregion test:update_matchmaking_channel

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.13.0)
+# AccelByte Cloud Platform Service Index (4.14.0)
 
 
 ## Operations
@@ -204,6 +204,12 @@
 | /platform/admin/namespaces/{namespace}/iap/config/twitch | PUT | updateTwitchIAPConfig | [UpdateTwitchIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_twitch_iap_config.py) | [update_twitch_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-update-twitch-iap-config](../samples/cli/accelbyte_py_sdk_cli/platform/_update_twitch_iap_config.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl/cert | PUT | updateXblBPCertFile | [UpdateXblBPCertFile](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_bp_cert_file.py) | [update_xbl_bp_cert_file](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-update-xbl-bp-cert-file](../samples/cli/accelbyte_py_sdk_cli/platform/_update_xbl_bp_cert_file.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/xbl | PUT | updateXblIAPConfig | [UpdateXblIAPConfig](../accelbyte_py_sdk/api/platform/operations/iap/update_xbl_iap_config.py) | [update_xbl_iap_config](../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-update-xbl-iap-config](../samples/cli/accelbyte_py_sdk_cli/platform/_update_xbl_iap_config.py) |
+
+### Invoice
+| Endpoint | Method | ID | Class | Wrapper | Example |
+|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/invoice/details.csv | GET | downloadInvoiceDetails | [DownloadInvoiceDetails](../accelbyte_py_sdk/api/platform/operations/invoice/download_invoice_details.py) | [download_invoice_details](../accelbyte_py_sdk/api/platform/wrappers/_invoice.py) | [accelbyte_py_sdk_cli platform-download-invoice-details](../samples/cli/accelbyte_py_sdk_cli/platform/_download_invoice_details.py) |
+| /platform/admin/namespaces/{namespace}/invoice/summary | GET | generateInvoiceSummary | [GenerateInvoiceSummary](../accelbyte_py_sdk/api/platform/operations/invoice/generate_invoice_summary.py) | [generate_invoice_summary](../accelbyte_py_sdk/api/platform/wrappers/_invoice.py) | [accelbyte_py_sdk_cli platform-generate-invoice-summary](../samples/cli/accelbyte_py_sdk_cli/platform/_generate_invoice_summary.py) |
 
 ### Item
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -578,6 +584,8 @@
 | IAPOrderPagingSlicedResult | [IAPOrderPagingSlicedResult](../accelbyte_py_sdk/api/platform/models/iap_order_paging_sliced_result.py) |
 | Image | [Image](../accelbyte_py_sdk/api/platform/models/image.py) |
 | InGameItemSync | [InGameItemSync](../accelbyte_py_sdk/api/platform/models/in_game_item_sync.py) |
+| InvoiceCurrencySummary | [InvoiceCurrencySummary](../accelbyte_py_sdk/api/platform/models/invoice_currency_summary.py) |
+| InvoiceSummary | [InvoiceSummary](../accelbyte_py_sdk/api/platform/models/invoice_summary.py) |
 | ItemAcquireRequest | [ItemAcquireRequest](../accelbyte_py_sdk/api/platform/models/item_acquire_request.py) |
 | ItemAcquireResult | [ItemAcquireResult](../accelbyte_py_sdk/api/platform/models/item_acquire_result.py) |
 | ItemCreate | [ItemCreate](../accelbyte_py_sdk/api/platform/models/item_create.py) |

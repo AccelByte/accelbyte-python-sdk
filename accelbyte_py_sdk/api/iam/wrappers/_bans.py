@@ -34,15 +34,59 @@ from ..models import AccountcommonBanReasons
 from ..models import AccountcommonBanReasonsV3
 from ..models import AccountcommonBans
 from ..models import AccountcommonBansV3
+from ..models import ModelBulkBanCreateRequestV3
+from ..models import ModelBulkUnbanCreateRequestV3
 from ..models import ModelGetUserBanV3Response
+from ..models import ModelListBulkUserBanResponseV3
+from ..models import RestErrorResponse
 from ..models import RestapiErrorResponse
 
+from ..operations.bans import AdminBanUserBulkV3
 from ..operations.bans import AdminGetBannedUsersV3
 from ..operations.bans import AdminGetBansTypeV3
 from ..operations.bans import AdminGetBansTypeWithNamespaceV3
 from ..operations.bans import AdminGetListBanReasonV3
+from ..operations.bans import AdminUnbanUserBulkV3
 from ..operations.bans import GetBansType
 from ..operations.bans import GetListBanReason
+
+
+@same_doc_as(AdminBanUserBulkV3)
+def admin_ban_user_bulk_v3(
+    body: ModelBulkBanCreateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBanUserBulkV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBanUserBulkV3)
+async def admin_ban_user_bulk_v3_async(
+    body: ModelBulkBanCreateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBanUserBulkV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetBannedUsersV3)
@@ -160,6 +204,44 @@ async def admin_get_list_ban_reason_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     request = AdminGetListBanReasonV3.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUnbanUserBulkV3)
+def admin_unban_user_bulk_v3(
+    body: ModelBulkUnbanCreateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUnbanUserBulkV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUnbanUserBulkV3)
+async def admin_unban_user_bulk_v3_async(
+    body: ModelBulkUnbanCreateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUnbanUserBulkV3.create(
+        body=body,
+        namespace=namespace,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

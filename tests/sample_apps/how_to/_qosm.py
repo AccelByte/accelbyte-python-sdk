@@ -2,7 +2,7 @@ from ._integration_test_case import IntegrationTestCase
 
 
 class QosmTestCase(IntegrationTestCase):
-# region test:heartbeat
+    # region test:heartbeat
 
     def test_heartbeat(self):
         from accelbyte_py_sdk.api.qosm import list_server
@@ -26,5 +26,6 @@ class QosmTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
 
 # endregion test:heartbeat

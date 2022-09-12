@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (3.5.0)
+# AccelByte Cloud Dsm Controller Service Index (3.6.1)
 
 
 ## Operations
@@ -74,6 +74,7 @@
 | /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version}/patches/{versionPatch} | GET | GetImagePatchDetail | [GetImagePatchDetail](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_patch_detail.py) | [get_image_patch_detail](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-get-image-patch-detail](../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_image_patch_detail.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version}/patches | GET | GetImagePatches | [GetImagePatches](../accelbyte_py_sdk/api/dsmc/operations/image_config/get_image_patches.py) | [get_image_patches](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-get-image-patches](../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_image_patches.py) |
 | /dsmcontroller/namespaces/{namespace}/images/versions/{version} | GET | ImageDetailClient | [ImageDetailClient](../accelbyte_py_sdk/api/dsmc/operations/image_config/image_detail_client.py) | [image_detail_client](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-image-detail-client](../samples/cli/accelbyte_py_sdk_cli/dsmc/_image_detail_client.py) |
+| /dsmcontroller/namespaces/{namespace}/images/limit | GET | ImageLimitClient | [ImageLimitClient](../accelbyte_py_sdk/api/dsmc/operations/image_config/image_limit_client.py) | [image_limit_client](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-image-limit-client](../samples/cli/accelbyte_py_sdk_cli/dsmc/_image_limit_client.py) |
 | /dsmcontroller/admin/images/import | POST | ImportImages | [ImportImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/import_images.py) | [import_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-import-images](../samples/cli/accelbyte_py_sdk_cli/dsmc/_import_images.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/images | GET | ListImages | [ListImages](../accelbyte_py_sdk/api/dsmc/operations/image_config/list_images.py) | [list_images](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-list-images](../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_images.py) |
 | /dsmcontroller/admin/images | PUT | UpdateImage | [UpdateImage](../accelbyte_py_sdk/api/dsmc/operations/image_config/update_image.py) | [update_image](../accelbyte_py_sdk/api/dsmc/wrappers/_image_config.py) | [accelbyte_py_sdk_cli dsmc-update-image](../samples/cli/accelbyte_py_sdk_cli/dsmc/_update_image.py) |

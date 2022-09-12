@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.13.0)
+# AccelByte Cloud Platform Service (4.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -136,6 +136,8 @@ from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
 from ..api.platform.models import InGameItemSync
+from ..api.platform.models import InvoiceCurrencySummary
+from ..api.platform.models import InvoiceSummary
 from ..api.platform.models import ItemAcquireRequest
 from ..api.platform.models import ItemAcquireResult
 from ..api.platform.models import ItemCreate
@@ -1547,6 +1549,23 @@ def create_in_game_item_sync_example() -> InGameItemSync:
     instance.category_path = randomize()
     instance.target_item_id = randomize()
     instance.target_namespace = randomize("slug")
+    return instance
+
+
+def create_invoice_currency_summary_example() -> InvoiceCurrencySummary:
+    instance = InvoiceCurrencySummary()
+    instance.currency = create_currency_summary_example()
+    instance.sales_volume = randomize("int", min_val=1, max_val=1000)
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    instance.total_tax = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_invoice_summary_example() -> InvoiceSummary:
+    instance = InvoiceSummary()
+    instance.invoice_currency_summary = [create_invoice_currency_summary_example()]
+    instance.total_sales_volume = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

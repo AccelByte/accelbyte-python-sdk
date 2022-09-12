@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,16 +34,16 @@ class ModelBackupCodesResponseV4(Model):
     Properties:
         generated_at: (generatedAt) REQUIRED int
 
-        invalid_codes: (invalidCodes) REQUIRED List[str]
-
         valid_codes: (validCodes) REQUIRED List[str]
+
+        invalid_codes: (invalidCodes) OPTIONAL List[str]
     """
 
     # region fields
 
     generated_at: int  # REQUIRED
-    invalid_codes: List[str]  # REQUIRED
     valid_codes: List[str]  # REQUIRED
+    invalid_codes: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -53,12 +53,12 @@ class ModelBackupCodesResponseV4(Model):
         self.generated_at = value
         return self
 
-    def with_invalid_codes(self, value: List[str]) -> ModelBackupCodesResponseV4:
-        self.invalid_codes = value
-        return self
-
     def with_valid_codes(self, value: List[str]) -> ModelBackupCodesResponseV4:
         self.valid_codes = value
+        return self
+
+    def with_invalid_codes(self, value: List[str]) -> ModelBackupCodesResponseV4:
+        self.invalid_codes = value
         return self
 
     # endregion with_x methods
@@ -71,14 +71,14 @@ class ModelBackupCodesResponseV4(Model):
             result["generatedAt"] = int(self.generated_at)
         elif include_empty:
             result["generatedAt"] = 0
-        if hasattr(self, "invalid_codes"):
-            result["invalidCodes"] = [str(i0) for i0 in self.invalid_codes]
-        elif include_empty:
-            result["invalidCodes"] = []
         if hasattr(self, "valid_codes"):
             result["validCodes"] = [str(i0) for i0 in self.valid_codes]
         elif include_empty:
             result["validCodes"] = []
+        if hasattr(self, "invalid_codes"):
+            result["invalidCodes"] = [str(i0) for i0 in self.invalid_codes]
+        elif include_empty:
+            result["invalidCodes"] = []
         return result
 
     # endregion to methods
@@ -89,13 +89,14 @@ class ModelBackupCodesResponseV4(Model):
     def create(
         cls,
         generated_at: int,
-        invalid_codes: List[str],
         valid_codes: List[str],
+        invalid_codes: Optional[List[str]] = None,
     ) -> ModelBackupCodesResponseV4:
         instance = cls()
         instance.generated_at = generated_at
-        instance.invalid_codes = invalid_codes
         instance.valid_codes = valid_codes
+        if invalid_codes is not None:
+            instance.invalid_codes = invalid_codes
         return instance
 
     @classmethod
@@ -109,14 +110,14 @@ class ModelBackupCodesResponseV4(Model):
             instance.generated_at = int(dict_["generatedAt"])
         elif include_empty:
             instance.generated_at = 0
-        if "invalidCodes" in dict_ and dict_["invalidCodes"] is not None:
-            instance.invalid_codes = [str(i0) for i0 in dict_["invalidCodes"]]
-        elif include_empty:
-            instance.invalid_codes = []
         if "validCodes" in dict_ and dict_["validCodes"] is not None:
             instance.valid_codes = [str(i0) for i0 in dict_["validCodes"]]
         elif include_empty:
             instance.valid_codes = []
+        if "invalidCodes" in dict_ and dict_["invalidCodes"] is not None:
+            instance.invalid_codes = [str(i0) for i0 in dict_["invalidCodes"]]
+        elif include_empty:
+            instance.invalid_codes = []
         return instance
 
     @classmethod
@@ -161,16 +162,16 @@ class ModelBackupCodesResponseV4(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "generatedAt": "generated_at",
-            "invalidCodes": "invalid_codes",
             "validCodes": "valid_codes",
+            "invalidCodes": "invalid_codes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "generatedAt": True,
-            "invalidCodes": True,
             "validCodes": True,
+            "invalidCodes": False,
         }
 
     # endregion static methods

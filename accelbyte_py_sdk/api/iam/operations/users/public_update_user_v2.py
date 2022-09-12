@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserResponse
 from ...models import ModelUserUpdateRequest
@@ -36,12 +37,38 @@ from ...models import ModelUserUpdateRequest
 class PublicUpdateUserV2(Operation):
     """Update User (PublicUpdateUserV2)
 
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint([PUT]): /iam/v3/public/namespaces/{namespace}/users/me [PUT]
+
+      * Substitute endpoint([PATCH]): /iam/v3/public/namespaces/{namespace}/users/me [PATCH]
+
+      * Substitute endpoint([PATCH]): /iam/v4/public/namespaces/{namespace}/users/me [PATCH]
+
+
+
+      * Note:
+        1. Prefer [PATCH] if client support PATCH method
+
+        2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
+
+
+
+
+
 
 
 
     This Endpoint support update user based on given data. Single request can update single field or multi fields.
 
-    This endpoint require valid user access token to accessed.
+    "+
+    "This endpoint require valid user access token to accessed.
 
     Supported field {Country, DisplayName, LanguageTag}
 

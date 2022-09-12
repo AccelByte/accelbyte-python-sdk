@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Cloudsave Service (3.1.3)
+# AccelByte Cloud Cloudsave Service (3.1.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,7 +26,9 @@ from .utils import randomize
 
 from ..api.cloudsave.models import ModelsAdminConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkGetPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
+from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordResponse
@@ -36,7 +38,9 @@ from ..api.cloudsave.models import ModelsPagination
 from ..api.cloudsave.models import ModelsPlayerRecordKeyInfo
 from ..api.cloudsave.models import ModelsPlayerRecordRequest
 from ..api.cloudsave.models import ModelsPlayerRecordResponse
+from ..api.cloudsave.models import ModelsPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsResponseError
+from ..api.cloudsave.models import ModelsUserKeyRequest
 
 
 def create_models_admin_concurrent_record_request_example() -> ModelsAdminConcurrentRecordRequest:
@@ -53,9 +57,21 @@ def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlay
     return instance
 
 
+def create_models_bulk_get_player_record_size_response_example() -> ModelsBulkGetPlayerRecordSizeResponse:
+    instance = ModelsBulkGetPlayerRecordSizeResponse()
+    instance.data = [create_models_player_record_size_response_example()]
+    return instance
+
+
 def create_models_bulk_user_i_ds_request_example() -> ModelsBulkUserIDsRequest:
     instance = ModelsBulkUserIDsRequest()
     instance.user_ids = [randomize()]
+    return instance
+
+
+def create_models_bulk_user_key_request_example() -> ModelsBulkUserKeyRequest:
+    instance = ModelsBulkUserKeyRequest()
+    instance.data = [create_models_user_key_request_example()]
     return instance
 
 
@@ -130,8 +146,25 @@ def create_models_player_record_response_example() -> ModelsPlayerRecordResponse
     return instance
 
 
+def create_models_player_record_size_response_example() -> ModelsPlayerRecordSizeResponse:
+    instance = ModelsPlayerRecordSizeResponse()
+    instance.current_size = randomize("int", min_val=1, max_val=1000)
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.remaining_size = randomize("int", min_val=1, max_val=1000)
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_models_response_error_example() -> ModelsResponseError:
     instance = ModelsResponseError()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    return instance
+
+
+def create_models_user_key_request_example() -> ModelsUserKeyRequest:
+    instance = ModelsUserKeyRequest()
+    instance.keys = [randomize()]
+    instance.user_id = randomize("uid")
     return instance

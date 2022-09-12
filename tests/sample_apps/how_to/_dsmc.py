@@ -136,7 +136,7 @@ class DSMCTestCase(IntegrationTestCase):
             self.session_id = None
         super().tearDown()
 
-# region test:claim_server
+    # region test:claim_server
 
     def test_claim_server(self):
         from accelbyte_py_sdk.api.dsmc import claim_server
@@ -173,9 +173,9 @@ class DSMCTestCase(IntegrationTestCase):
         else:
             self.assertIsNone(error, error)
 
-# endregion test:claim_server
+    # endregion test:claim_server
 
-# region test:create_session
+    # region test:create_session
 
     def test_create_session(self):
         from accelbyte_py_sdk.api.dsmc import create_session
@@ -194,9 +194,9 @@ class DSMCTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
-# endregion test:create_session
+    # endregion test:create_session
 
-# region test:get_session
+    # region test:get_session
 
     def test_get_session(self):
         from accelbyte_py_sdk.api.dsmc import create_session
@@ -217,5 +217,6 @@ class DSMCTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
 
 # endregion test:get_session

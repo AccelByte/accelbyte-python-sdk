@@ -92,7 +92,7 @@ async def start():
         ("Find Match", find_match),
         ("Make Move", make_move),
         ("Delete All Matches", delete_all_matches),
-        ("Quit", quit_app)
+        ("Quit", quit_app),
     ]
     actions_index = await choose_action(list(a[0] for a in actions), strict=True)
     action = actions[actions_index][1]
@@ -111,7 +111,7 @@ async def get_stats():
         url=f"{CTX['tictactoe_url']}/matches",
         headers={
             "Authorization": f"Bearer {access_token}",
-        }
+        },
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))
@@ -134,7 +134,7 @@ async def find_match():
         url=f"{CTX['tictactoe_url']}/match",
         headers={
             "Authorization": f"Bearer {access_token}",
-        }
+        },
     )
     if not response.ok:
         print("Unable to find match.")
@@ -183,7 +183,7 @@ async def make_move():
         },
         params={
             "game_id": game_id,
-        }
+        },
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))
@@ -206,7 +206,7 @@ async def delete_all_matches():
         url=f"{CTX['tictactoe_url']}/matches",
         headers={
             "Authorization": f"Bearer {access_token}",
-        }
+        },
     )
     if not response.ok:
         print(yaml.safe_dump(response.json()))

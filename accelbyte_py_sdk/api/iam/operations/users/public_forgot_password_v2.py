@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelSendVerificationCodeRequest
 
@@ -35,7 +36,25 @@ from ...models import ModelSendVerificationCodeRequest
 class PublicForgotPasswordV2(Operation):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/users/forgot [POST]
+
+
+
+
+
+
     Special note for publisher-game scenario: Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
+
+    "+
+    "
 
     The password reset code will be sent to the publisher account's email address.
 

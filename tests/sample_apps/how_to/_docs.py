@@ -19,7 +19,7 @@ class DocsTestCase(IntegrationTestCase):
         if accelbyte_py_sdk.is_initialized():
             accelbyte_py_sdk.reset()
 
-# region test:initialize_sdk_and_call_token_grant_v3
+    # region test:initialize_sdk_and_call_token_grant_v3
 
     def test_initialize_sdk_and_call_token_grant_v3(self):
         from accelbyte_py_sdk.core import get_env_config
@@ -48,5 +48,6 @@ class DocsTestCase(IntegrationTestCase):
             print(error)
 
         self.assertIsNone(error)
+
 
 # endregion test:initialize_sdk_and_call_token_grant_v3

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,12 +28,23 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
-from ...models import AccountcommonCountryAgeRestriction
+from ...models import AccountcommonCountry
 
 
 class PublicGetCountryAgeRestriction(Operation):
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/countries/{countryCode}/agerestrictions
@@ -53,7 +64,7 @@ class PublicGetCountryAgeRestriction(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[AccountcommonCountryAgeRestriction] (OK)
+        200: OK - AccountcommonCountry (OK)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -162,12 +173,10 @@ class PublicGetCountryAgeRestriction(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[AccountcommonCountryAgeRestriction]], Union[None, HttpResponse]
-    ]:
+    ) -> Tuple[Union[None, AccountcommonCountry], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - List[AccountcommonCountryAgeRestriction] (OK)
+        200: OK - AccountcommonCountry (OK)
 
         401: Unauthorized - (Unauthorized access)
 
@@ -187,9 +196,7 @@ class PublicGetCountryAgeRestriction(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                AccountcommonCountryAgeRestriction.create_from_dict(i) for i in content
-            ], None
+            return AccountcommonCountry.create_from_dict(content), None
         if code == 401:
             return None, HttpResponse.create(code, "Unauthorized")
         if code == 404:

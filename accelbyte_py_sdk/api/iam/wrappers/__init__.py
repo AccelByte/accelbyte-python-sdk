@@ -8,12 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.15.0"
+__version__ = "5.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._bans import admin_ban_user_bulk_v3
+from ._bans import admin_ban_user_bulk_v3_async
 from ._bans import admin_get_banned_users_v3
 from ._bans import admin_get_banned_users_v3_async
 from ._bans import admin_get_bans_type_v3
@@ -22,6 +24,8 @@ from ._bans import admin_get_bans_type_with_namespace_v3
 from ._bans import admin_get_bans_type_with_namespace_v3_async
 from ._bans import admin_get_list_ban_reason_v3
 from ._bans import admin_get_list_ban_reason_v3_async
+from ._bans import admin_unban_user_bulk_v3
+from ._bans import admin_unban_user_bulk_v3_async
 from ._bans import get_bans_type
 from ._bans import get_bans_type_async
 from ._bans import get_list_ban_reason
@@ -137,6 +141,10 @@ from ._o_auth2_0_extension import logout
 from ._o_auth2_0_extension import logout_async
 from ._o_auth2_0_extension import platform_authentication_v3
 from ._o_auth2_0_extension import platform_authentication_v3_async
+from ._o_auth2_0_extension import request_game_token_code_response_v3
+from ._o_auth2_0_extension import request_game_token_code_response_v3_async
+from ._o_auth2_0_extension import request_game_token_response_v3
+from ._o_auth2_0_extension import request_game_token_response_v3_async
 from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
 
@@ -375,6 +383,8 @@ from ._users import admin_put_user_roles_v2
 from ._users import admin_put_user_roles_v2_async
 from ._users import admin_reset_password_v2
 from ._users import admin_reset_password_v2_async
+from ._users import admin_reset_password_v3
+from ._users import admin_reset_password_v3_async
 from ._users import admin_save_user_role_v3
 from ._users import admin_save_user_role_v3_async
 from ._users import admin_search_user_v3
@@ -497,6 +507,8 @@ from ._users import public_get_async_status
 from ._users import public_get_async_status_async
 from ._users import public_get_country_age_restriction
 from ._users import public_get_country_age_restriction_async
+from ._users import public_get_country_age_restriction_v3
+from ._users import public_get_country_age_restriction_v3_async
 from ._users import public_get_my_user_v3
 from ._users import public_get_my_user_v3_async
 from ._users import public_get_publisher_user_v3
@@ -519,6 +531,8 @@ from ._users import public_get_user_platform_accounts_v3
 from ._users import public_get_user_platform_accounts_v3_async
 from ._users import public_link_platform_account
 from ._users import public_link_platform_account_async
+from ._users import public_list_justice_platform_accounts_v3
+from ._users import public_list_justice_platform_accounts_v3_async
 from ._users import public_list_user_all_platform_accounts_distinct_v3
 from ._users import public_list_user_all_platform_accounts_distinct_v3_async
 from ._users import public_list_user_id_by_platform_user_i_ds_v3

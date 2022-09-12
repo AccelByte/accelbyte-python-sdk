@@ -116,7 +116,7 @@ class SeasonPassTestCase(IntegrationTestCase):
                 _, error = delete_store(store_id=storeInfo.store_id)
                 self.assertIsNone(error, error)
 
-# region test:season_crud
+    # region test:season_crud
 
     def test_season_crud(self):
         # arrange - store
@@ -185,5 +185,6 @@ class SeasonPassTestCase(IntegrationTestCase):
 
     def tearDown(self) -> None:
         self.do_delete_all_draft_stores()
+
 
 # endregion test:season_crud

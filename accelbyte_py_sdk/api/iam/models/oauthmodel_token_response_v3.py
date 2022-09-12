@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.15.0)
+# AccelByte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,8 +40,6 @@ class OauthmodelTokenResponseV3(Model):
 
         bans: (bans) REQUIRED List[AccountcommonJWTBanV3]
 
-        display_name: (display_name) REQUIRED str
-
         expires_in: (expires_in) REQUIRED int
 
         namespace: (namespace) REQUIRED str
@@ -50,19 +48,13 @@ class OauthmodelTokenResponseV3(Model):
 
         permissions: (permissions) REQUIRED List[AccountcommonPermissionV3]
 
-        refresh_expires_in: (refresh_expires_in) REQUIRED int
-
-        refresh_token: (refresh_token) REQUIRED str
-
         roles: (roles) REQUIRED List[str]
 
         scope: (scope) REQUIRED str
 
         token_type: (token_type) REQUIRED str
 
-        user_id: (user_id) REQUIRED str
-
-        xuid: (xuid) REQUIRED str
+        display_name: (display_name) OPTIONAL str
 
         is_comply: (is_comply) OPTIONAL bool
 
@@ -71,28 +63,36 @@ class OauthmodelTokenResponseV3(Model):
         platform_id: (platform_id) OPTIONAL str
 
         platform_user_id: (platform_user_id) OPTIONAL str
+
+        refresh_expires_in: (refresh_expires_in) OPTIONAL int
+
+        refresh_token: (refresh_token) OPTIONAL str
+
+        user_id: (user_id) OPTIONAL str
+
+        xuid: (xuid) OPTIONAL str
     """
 
     # region fields
 
     access_token: str  # REQUIRED
     bans: List[AccountcommonJWTBanV3]  # REQUIRED
-    display_name: str  # REQUIRED
     expires_in: int  # REQUIRED
     namespace: str  # REQUIRED
     namespace_roles: List[AccountcommonNamespaceRole]  # REQUIRED
     permissions: List[AccountcommonPermissionV3]  # REQUIRED
-    refresh_expires_in: int  # REQUIRED
-    refresh_token: str  # REQUIRED
     roles: List[str]  # REQUIRED
     scope: str  # REQUIRED
     token_type: str  # REQUIRED
-    user_id: str  # REQUIRED
-    xuid: str  # REQUIRED
+    display_name: str  # OPTIONAL
     is_comply: bool  # OPTIONAL
     jflgs: int  # OPTIONAL
     platform_id: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    refresh_expires_in: int  # OPTIONAL
+    refresh_token: str  # OPTIONAL
+    user_id: str  # OPTIONAL
+    xuid: str  # OPTIONAL
 
     # endregion fields
 
@@ -106,10 +106,6 @@ class OauthmodelTokenResponseV3(Model):
         self, value: List[AccountcommonJWTBanV3]
     ) -> OauthmodelTokenResponseV3:
         self.bans = value
-        return self
-
-    def with_display_name(self, value: str) -> OauthmodelTokenResponseV3:
-        self.display_name = value
         return self
 
     def with_expires_in(self, value: int) -> OauthmodelTokenResponseV3:
@@ -132,14 +128,6 @@ class OauthmodelTokenResponseV3(Model):
         self.permissions = value
         return self
 
-    def with_refresh_expires_in(self, value: int) -> OauthmodelTokenResponseV3:
-        self.refresh_expires_in = value
-        return self
-
-    def with_refresh_token(self, value: str) -> OauthmodelTokenResponseV3:
-        self.refresh_token = value
-        return self
-
     def with_roles(self, value: List[str]) -> OauthmodelTokenResponseV3:
         self.roles = value
         return self
@@ -152,12 +140,8 @@ class OauthmodelTokenResponseV3(Model):
         self.token_type = value
         return self
 
-    def with_user_id(self, value: str) -> OauthmodelTokenResponseV3:
-        self.user_id = value
-        return self
-
-    def with_xuid(self, value: str) -> OauthmodelTokenResponseV3:
-        self.xuid = value
+    def with_display_name(self, value: str) -> OauthmodelTokenResponseV3:
+        self.display_name = value
         return self
 
     def with_is_comply(self, value: bool) -> OauthmodelTokenResponseV3:
@@ -176,6 +160,22 @@ class OauthmodelTokenResponseV3(Model):
         self.platform_user_id = value
         return self
 
+    def with_refresh_expires_in(self, value: int) -> OauthmodelTokenResponseV3:
+        self.refresh_expires_in = value
+        return self
+
+    def with_refresh_token(self, value: str) -> OauthmodelTokenResponseV3:
+        self.refresh_token = value
+        return self
+
+    def with_user_id(self, value: str) -> OauthmodelTokenResponseV3:
+        self.user_id = value
+        return self
+
+    def with_xuid(self, value: str) -> OauthmodelTokenResponseV3:
+        self.xuid = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -192,10 +192,6 @@ class OauthmodelTokenResponseV3(Model):
             ]
         elif include_empty:
             result["bans"] = []
-        if hasattr(self, "display_name"):
-            result["display_name"] = str(self.display_name)
-        elif include_empty:
-            result["display_name"] = ""
         if hasattr(self, "expires_in"):
             result["expires_in"] = int(self.expires_in)
         elif include_empty:
@@ -216,14 +212,6 @@ class OauthmodelTokenResponseV3(Model):
             ]
         elif include_empty:
             result["permissions"] = []
-        if hasattr(self, "refresh_expires_in"):
-            result["refresh_expires_in"] = int(self.refresh_expires_in)
-        elif include_empty:
-            result["refresh_expires_in"] = 0
-        if hasattr(self, "refresh_token"):
-            result["refresh_token"] = str(self.refresh_token)
-        elif include_empty:
-            result["refresh_token"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
@@ -236,14 +224,10 @@ class OauthmodelTokenResponseV3(Model):
             result["token_type"] = str(self.token_type)
         elif include_empty:
             result["token_type"] = ""
-        if hasattr(self, "user_id"):
-            result["user_id"] = str(self.user_id)
+        if hasattr(self, "display_name"):
+            result["display_name"] = str(self.display_name)
         elif include_empty:
-            result["user_id"] = ""
-        if hasattr(self, "xuid"):
-            result["xuid"] = str(self.xuid)
-        elif include_empty:
-            result["xuid"] = ""
+            result["display_name"] = ""
         if hasattr(self, "is_comply"):
             result["is_comply"] = bool(self.is_comply)
         elif include_empty:
@@ -260,6 +244,22 @@ class OauthmodelTokenResponseV3(Model):
             result["platform_user_id"] = str(self.platform_user_id)
         elif include_empty:
             result["platform_user_id"] = ""
+        if hasattr(self, "refresh_expires_in"):
+            result["refresh_expires_in"] = int(self.refresh_expires_in)
+        elif include_empty:
+            result["refresh_expires_in"] = 0
+        if hasattr(self, "refresh_token"):
+            result["refresh_token"] = str(self.refresh_token)
+        elif include_empty:
+            result["refresh_token"] = ""
+        if hasattr(self, "user_id"):
+            result["user_id"] = str(self.user_id)
+        elif include_empty:
+            result["user_id"] = ""
+        if hasattr(self, "xuid"):
+            result["xuid"] = str(self.xuid)
+        elif include_empty:
+            result["xuid"] = ""
         return result
 
     # endregion to methods
@@ -271,38 +271,35 @@ class OauthmodelTokenResponseV3(Model):
         cls,
         access_token: str,
         bans: List[AccountcommonJWTBanV3],
-        display_name: str,
         expires_in: int,
         namespace: str,
         namespace_roles: List[AccountcommonNamespaceRole],
         permissions: List[AccountcommonPermissionV3],
-        refresh_expires_in: int,
-        refresh_token: str,
         roles: List[str],
         scope: str,
         token_type: str,
-        user_id: str,
-        xuid: str,
+        display_name: Optional[str] = None,
         is_comply: Optional[bool] = None,
         jflgs: Optional[int] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
+        refresh_expires_in: Optional[int] = None,
+        refresh_token: Optional[str] = None,
+        user_id: Optional[str] = None,
+        xuid: Optional[str] = None,
     ) -> OauthmodelTokenResponseV3:
         instance = cls()
         instance.access_token = access_token
         instance.bans = bans
-        instance.display_name = display_name
         instance.expires_in = expires_in
         instance.namespace = namespace
         instance.namespace_roles = namespace_roles
         instance.permissions = permissions
-        instance.refresh_expires_in = refresh_expires_in
-        instance.refresh_token = refresh_token
         instance.roles = roles
         instance.scope = scope
         instance.token_type = token_type
-        instance.user_id = user_id
-        instance.xuid = xuid
+        if display_name is not None:
+            instance.display_name = display_name
         if is_comply is not None:
             instance.is_comply = is_comply
         if jflgs is not None:
@@ -311,6 +308,14 @@ class OauthmodelTokenResponseV3(Model):
             instance.platform_id = platform_id
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if refresh_expires_in is not None:
+            instance.refresh_expires_in = refresh_expires_in
+        if refresh_token is not None:
+            instance.refresh_token = refresh_token
+        if user_id is not None:
+            instance.user_id = user_id
+        if xuid is not None:
+            instance.xuid = xuid
         return instance
 
     @classmethod
@@ -331,10 +336,6 @@ class OauthmodelTokenResponseV3(Model):
             ]
         elif include_empty:
             instance.bans = []
-        if "display_name" in dict_ and dict_["display_name"] is not None:
-            instance.display_name = str(dict_["display_name"])
-        elif include_empty:
-            instance.display_name = ""
         if "expires_in" in dict_ and dict_["expires_in"] is not None:
             instance.expires_in = int(dict_["expires_in"])
         elif include_empty:
@@ -361,14 +362,6 @@ class OauthmodelTokenResponseV3(Model):
             ]
         elif include_empty:
             instance.permissions = []
-        if "refresh_expires_in" in dict_ and dict_["refresh_expires_in"] is not None:
-            instance.refresh_expires_in = int(dict_["refresh_expires_in"])
-        elif include_empty:
-            instance.refresh_expires_in = 0
-        if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
-            instance.refresh_token = str(dict_["refresh_token"])
-        elif include_empty:
-            instance.refresh_token = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
@@ -381,14 +374,10 @@ class OauthmodelTokenResponseV3(Model):
             instance.token_type = str(dict_["token_type"])
         elif include_empty:
             instance.token_type = ""
-        if "user_id" in dict_ and dict_["user_id"] is not None:
-            instance.user_id = str(dict_["user_id"])
+        if "display_name" in dict_ and dict_["display_name"] is not None:
+            instance.display_name = str(dict_["display_name"])
         elif include_empty:
-            instance.user_id = ""
-        if "xuid" in dict_ and dict_["xuid"] is not None:
-            instance.xuid = str(dict_["xuid"])
-        elif include_empty:
-            instance.xuid = ""
+            instance.display_name = ""
         if "is_comply" in dict_ and dict_["is_comply"] is not None:
             instance.is_comply = bool(dict_["is_comply"])
         elif include_empty:
@@ -405,6 +394,22 @@ class OauthmodelTokenResponseV3(Model):
             instance.platform_user_id = str(dict_["platform_user_id"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "refresh_expires_in" in dict_ and dict_["refresh_expires_in"] is not None:
+            instance.refresh_expires_in = int(dict_["refresh_expires_in"])
+        elif include_empty:
+            instance.refresh_expires_in = 0
+        if "refresh_token" in dict_ and dict_["refresh_token"] is not None:
+            instance.refresh_token = str(dict_["refresh_token"])
+        elif include_empty:
+            instance.refresh_token = ""
+        if "user_id" in dict_ and dict_["user_id"] is not None:
+            instance.user_id = str(dict_["user_id"])
+        elif include_empty:
+            instance.user_id = ""
+        if "xuid" in dict_ and dict_["xuid"] is not None:
+            instance.xuid = str(dict_["xuid"])
+        elif include_empty:
+            instance.xuid = ""
         return instance
 
     @classmethod
@@ -450,22 +455,22 @@ class OauthmodelTokenResponseV3(Model):
         return {
             "access_token": "access_token",
             "bans": "bans",
-            "display_name": "display_name",
             "expires_in": "expires_in",
             "namespace": "namespace",
             "namespace_roles": "namespace_roles",
             "permissions": "permissions",
-            "refresh_expires_in": "refresh_expires_in",
-            "refresh_token": "refresh_token",
             "roles": "roles",
             "scope": "scope",
             "token_type": "token_type",
-            "user_id": "user_id",
-            "xuid": "xuid",
+            "display_name": "display_name",
             "is_comply": "is_comply",
             "jflgs": "jflgs",
             "platform_id": "platform_id",
             "platform_user_id": "platform_user_id",
+            "refresh_expires_in": "refresh_expires_in",
+            "refresh_token": "refresh_token",
+            "user_id": "user_id",
+            "xuid": "xuid",
         }
 
     @staticmethod
@@ -473,22 +478,22 @@ class OauthmodelTokenResponseV3(Model):
         return {
             "access_token": True,
             "bans": True,
-            "display_name": True,
             "expires_in": True,
             "namespace": True,
             "namespace_roles": True,
             "permissions": True,
-            "refresh_expires_in": True,
-            "refresh_token": True,
             "roles": True,
             "scope": True,
             "token_type": True,
-            "user_id": True,
-            "xuid": True,
+            "display_name": False,
             "is_comply": False,
             "jflgs": False,
             "platform_id": False,
             "platform_user_id": False,
+            "refresh_expires_in": False,
+            "refresh_token": False,
+            "user_id": False,
+            "xuid": False,
         }
 
     # endregion static methods
