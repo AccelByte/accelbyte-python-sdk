@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,4 +73,4 @@ def admin_delete_platform_link_v2(
 
 
 admin_delete_platform_link_v2.operation_id = "AdminDeletePlatformLinkV2"
-admin_delete_platform_link_v2.is_deprecated = False
+admin_delete_platform_link_v2.is_deprecated = True

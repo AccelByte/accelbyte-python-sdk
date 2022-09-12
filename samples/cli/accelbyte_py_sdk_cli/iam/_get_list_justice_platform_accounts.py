@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,4 +68,4 @@ def get_list_justice_platform_accounts(
 
 
 get_list_justice_platform_accounts.operation_id = "GetListJusticePlatformAccounts"
-get_list_justice_platform_accounts.is_deprecated = False
+get_list_justice_platform_accounts.is_deprecated = True

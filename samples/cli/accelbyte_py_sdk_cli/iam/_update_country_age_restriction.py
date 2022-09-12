@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -78,4 +78,4 @@ def update_country_age_restriction(
 
 
 update_country_age_restriction.operation_id = "UpdateCountryAgeRestriction"
-update_country_age_restriction.is_deprecated = False
+update_country_age_restriction.is_deprecated = True

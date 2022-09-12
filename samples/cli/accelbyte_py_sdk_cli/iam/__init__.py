@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.15.0)
+# justice-iam-service (5.16.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -133,6 +133,8 @@ from ._admin_update_country_age_restriction_v3 import (
     admin_update_country_age_restriction_v3,
 )
 from ._admin_get_banned_users_v3 import admin_get_banned_users_v3
+from ._admin_ban_user_bulk_v3 import admin_ban_user_bulk_v3
+from ._admin_unban_user_bulk_v3 import admin_unban_user_bulk_v3
 from ._admin_get_bans_type_with_namespace_v3 import (
     admin_get_bans_type_with_namespace_v3,
 )
@@ -202,6 +204,7 @@ from ._admin_update_user_deletion_status_v3 import admin_update_user_deletion_st
 from ._admin_upgrade_headless_account_v3 import admin_upgrade_headless_account_v3
 from ._admin_delete_user_information_v3 import admin_delete_user_information_v3
 from ._admin_get_user_login_histories_v3 import admin_get_user_login_histories_v3
+from ._admin_reset_password_v3 import admin_reset_password_v3
 from ._admin_update_user_permission_v3 import admin_update_user_permission_v3
 from ._admin_add_user_permissions_v3 import admin_add_user_permissions_v3
 from ._admin_delete_user_permission_bulk_v3 import admin_delete_user_permission_bulk_v3
@@ -250,6 +253,7 @@ from ._generate_token_by_new_headless_account_v3 import (
 )
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
+from ._request_game_token_code_response_v3 import request_game_token_code_response_v3
 from ._admin_retrieve_user_third_party_platform_token_v3 import (
     admin_retrieve_user_third_party_platform_token_v3,
 )
@@ -270,6 +274,9 @@ from ._token_grant_v3 import token_grant_v3
 from ._verify_token_v3 import verify_token_v3
 from ._platform_authentication_v3 import platform_authentication_v3
 from ._public_get_input_validations import public_get_input_validations
+from ._public_get_country_age_restriction_v3 import (
+    public_get_country_age_restriction_v3,
+)
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
 )
@@ -315,6 +322,9 @@ from ._public_list_user_all_platform_accounts_distinct_v3 import (
 from ._public_get_user_information_v3 import public_get_user_information_v3
 from ._public_get_user_login_histories_v3 import public_get_user_login_histories_v3
 from ._public_get_user_platform_accounts_v3 import public_get_user_platform_accounts_v3
+from ._public_list_justice_platform_accounts_v3 import (
+    public_list_justice_platform_accounts_v3,
+)
 from ._public_link_platform_account import public_link_platform_account
 from ._public_force_link_platform_with_progression import (
     public_force_link_platform_with_progression,
@@ -331,6 +341,7 @@ from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
+from ._request_game_token_response_v3 import request_game_token_response_v3
 from ._admin_create_test_users_v4 import admin_create_test_users_v4
 from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
@@ -505,6 +516,8 @@ commands = [
     admin_get_list_country_age_restriction_v3,
     admin_update_country_age_restriction_v3,
     admin_get_banned_users_v3,
+    admin_ban_user_bulk_v3,
+    admin_unban_user_bulk_v3,
     admin_get_bans_type_with_namespace_v3,
     admin_get_clients_by_namespace_v3,
     admin_create_client_v3,
@@ -548,6 +561,7 @@ commands = [
     admin_upgrade_headless_account_v3,
     admin_delete_user_information_v3,
     admin_get_user_login_histories_v3,
+    admin_reset_password_v3,
     admin_update_user_permission_v3,
     admin_add_user_permissions_v3,
     admin_delete_user_permission_bulk_v3,
@@ -590,6 +604,7 @@ commands = [
     generate_token_by_new_headless_account_v3,
     get_country_location_v3,
     logout,
+    request_game_token_code_response_v3,
     admin_retrieve_user_third_party_platform_token_v3,
     revoke_user_v3,
     authorize_v3,
@@ -606,6 +621,7 @@ commands = [
     verify_token_v3,
     platform_authentication_v3,
     public_get_input_validations,
+    public_get_country_age_restriction_v3,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     retrieve_active_oidc_clients_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,
@@ -641,6 +657,7 @@ commands = [
     public_get_user_information_v3,
     public_get_user_login_histories_v3,
     public_get_user_platform_accounts_v3,
+    public_list_justice_platform_accounts_v3,
     public_link_platform_account,
     public_force_link_platform_with_progression,
     public_get_publisher_user_v3,
@@ -653,6 +670,7 @@ commands = [
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,
+    request_game_token_response_v3,
     admin_create_test_users_v4,
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,

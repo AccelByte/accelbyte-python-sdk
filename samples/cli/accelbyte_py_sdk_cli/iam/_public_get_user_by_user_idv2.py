@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -68,4 +68,4 @@ def public_get_user_by_user_idv2(
 
 
 public_get_user_by_user_idv2.operation_id = "PublicGetUserByUserIDV2"
-public_get_user_by_user_idv2.is_deprecated = False
+public_get_user_by_user_idv2.is_deprecated = True

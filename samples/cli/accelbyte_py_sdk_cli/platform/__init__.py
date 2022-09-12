@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.13.0)
+# justice-platform-service (4.14.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -86,6 +86,8 @@ from ._get_xbl_iap_config import get_xbl_iap_config
 from ._update_xbl_iap_config import update_xbl_iap_config
 from ._delete_xbl_ap_config import delete_xbl_ap_config
 from ._update_xbl_bp_cert_file import update_xbl_bp_cert_file
+from ._download_invoice_details import download_invoice_details
+from ._generate_invoice_summary import generate_invoice_summary
 from ._sync_in_game_item import sync_in_game_item
 from ._create_item import create_item
 from ._get_item_by_app_id import get_item_by_app_id
@@ -498,6 +500,8 @@ commands = [
     update_xbl_iap_config,
     delete_xbl_ap_config,
     update_xbl_bp_cert_file,
+    download_invoice_details,
+    generate_invoice_summary,
     sync_in_game_item,
     create_item,
     get_item_by_app_id,

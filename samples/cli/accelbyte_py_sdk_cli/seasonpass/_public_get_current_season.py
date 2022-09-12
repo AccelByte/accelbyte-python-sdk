@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Seasonpass Service (1.13.3)
+# Accelbyte Cloud Seasonpass Service (1.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

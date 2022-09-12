@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_get_country_age_restriction as public_get_country_age_restriction_internal,
 )
-from accelbyte_py_sdk.api.iam.models import AccountcommonCountryAgeRestriction
+from accelbyte_py_sdk.api.iam.models import AccountcommonCountry
 
 
 @click.command()
@@ -68,4 +68,4 @@ def public_get_country_age_restriction(
 
 
 public_get_country_age_restriction.operation_id = "PublicGetCountryAgeRestriction"
-public_get_country_age_restriction.is_deprecated = False
+public_get_country_age_restriction.is_deprecated = True

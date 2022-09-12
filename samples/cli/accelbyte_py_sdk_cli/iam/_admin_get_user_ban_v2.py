@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,4 +71,4 @@ def admin_get_user_ban_v2(
 
 
 admin_get_user_ban_v2.operation_id = "AdminGetUserBanV2"
-admin_get_user_ban_v2.is_deprecated = False
+admin_get_user_ban_v2.is_deprecated = True

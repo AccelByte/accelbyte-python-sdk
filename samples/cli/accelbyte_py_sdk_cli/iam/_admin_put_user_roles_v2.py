@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.15.0)
+# Accelbyte Cloud Iam Service (5.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,4 +76,4 @@ def admin_put_user_roles_v2(
 
 
 admin_put_user_roles_v2.operation_id = "AdminPutUserRolesV2"
-admin_put_user_roles_v2.is_deprecated = False
+admin_put_user_roles_v2.is_deprecated = True
