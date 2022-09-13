@@ -22,7 +22,7 @@ config = {
     "license": LICENSE_TYPE,
     "license_files": ["LICENSE"],
     "package_dir": {"": "."},
-    "packages": setuptools.find_packages(where=".", exclude=("sample_app",)),
+    "packages": setuptools.find_packages(where=".", exclude=("tests*", "tests.*")),
     "python_requires": f">={PYTHON_VERSION}",
     "classifiers": [
         "Development Status :: 2 - Pre-Alpha",

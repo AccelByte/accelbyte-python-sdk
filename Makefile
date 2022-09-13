@@ -60,3 +60,28 @@ test_cli:
 							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test.err; \
 					done)'
 	[ ! -f test.err ]
+
+clean_dist:
+	rm -rf *.egg-info
+	rm -rf build
+	rm -rf dist
+
+build_dist: clean_dist
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+			-c 'python -m venv /tmp && \
+					/tmp/bin/pip install --upgrade pip build setuptools setuptools_scm wheel && \
+					/tmp/bin/python setup.py sdist bdist_wheel --universal'
+
+test_upload_dist: clean_dist build_dist
+	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+			-c 'python -m venv /tmp && \
+					/tmp/bin/pip install --upgrade twine && \
+					/tmp/bin/python -m twine upload --repository testpypi --verbose dist/*'
+
+upload_dist: clean_dist build_dist
+	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
+	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
+			-c 'python -m venv /tmp && \
+					/tmp/bin/pip install --upgrade twine && \
+					/tmp/bin/python -m twine upload --verbose dist/*'
