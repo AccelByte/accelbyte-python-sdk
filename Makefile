@@ -23,15 +23,22 @@ lint:
 test_core:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
 	rm -f test.err
-	docker run -e PIP_CACHE_DIR=/tmp/pip -t -u $$(id -u):$$(id -g) -w /data -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data --rm --entrypoint /bin/bash python:3.9-slim \
-			-c 'python -m venv /tmp/server && \
-					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
-					python -m venv /tmp/client && \
-					(cd /data && /tmp/client/bin/pip install -r requirements-test.txt) && \
-					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
-					(for i in $$(seq 1 10); do bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; exit 1) && \
-					rm -f /data/test_core.tap && \
-					((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test.err) | tee "/data/test_core.tap")'
+	sed -i "s/\r//" "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" && \
+			trap "docker stop --time 1 justice-codegen-sdk-mock-server && docker rm --force mylocal_httpbin" EXIT && \
+			echo "[info] running httpbin" && \
+			docker run -d -p 8070:80 --name mylocal_httpbin --network host --rm kennethreitz/httpbin && \
+			echo "[info] httpbin ready" && \
+			echo "[info] running mock-server" && \
+			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec &) && \
+			(for i in $$(seq 1 10); do echo "[info] pinging mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to mock-server"; exit 1) && \
+			echo "[info] mock-server ready" && \
+			docker run --rm --tty --entrypoint /bin/bash --env PIP_CACHE_DIR=/tmp/pip --name ab_py_sdk_core_test --network host --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
+					-c 'rm -f /data/test_core.tap && \
+							python -m venv /tmp/client && \
+							echo "[info] installing requirements-test.txt" && \
+							(cd /data && /tmp/client/bin/pip install -r requirements-test.txt) && \
+							echo "[info] running tests" && \
+							((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test.err) | tee "/data/test_core.tap")'
 	[ ! -f test.err ]
 
 test_integration:

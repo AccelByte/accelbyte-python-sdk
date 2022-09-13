@@ -515,7 +515,7 @@ class RequestTestCase(TestCase):
 class HttpBinRequestTestCase(TestCase):
 
     reachable: bool = True
-    base_url: str = "https://httpbin.org"
+    base_url: str = "http://localhost"
 
     @classmethod
     def setUpClass(cls) -> None:
