@@ -71,6 +71,9 @@ pipeline {
             sh "git push ${githubUrl} ${params.RELEASE_TAG}"
           }
           github.createRelease(githubPat, githubOwner, githubRepo, params.RELEASE_TAG, params.RELEASE_TAG, params.RELEASE_NOTE)
+          withCredentials([file(credentialsId: 'justice-codegen-sdk-twine-env', variable: 'ENV_FILE_PATH')]) {
+            sh 'make upload_dist ENV_FILE_PATH=$ENV_FILE_PATH'
+          }
         }
       }
     }
