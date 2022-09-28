@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.24.0
+- Publish to PyPI
+- Use local HttpBin in tests
+
 ## v0.23.0
 - Add new [Commonly Used Cases](docs/common_use_cases.md) document.
 - Fix default values in `DSMC Service` integration tests.
