@@ -32,23 +32,16 @@ class ModelsUpdateSessionRequest(Model):
     """Models update session request (models.UpdateSessionRequest)
 
     Properties:
-        game_current_player: (game_current_player) REQUIRED int
-
         game_max_player: (game_max_player) REQUIRED int
     """
 
     # region fields
 
-    game_current_player: int  # REQUIRED
     game_max_player: int  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
-
-    def with_game_current_player(self, value: int) -> ModelsUpdateSessionRequest:
-        self.game_current_player = value
-        return self
 
     def with_game_max_player(self, value: int) -> ModelsUpdateSessionRequest:
         self.game_max_player = value
@@ -60,10 +53,6 @@ class ModelsUpdateSessionRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "game_current_player"):
-            result["game_current_player"] = int(self.game_current_player)
-        elif include_empty:
-            result["game_current_player"] = 0
         if hasattr(self, "game_max_player"):
             result["game_max_player"] = int(self.game_max_player)
         elif include_empty:
@@ -77,11 +66,9 @@ class ModelsUpdateSessionRequest(Model):
     @classmethod
     def create(
         cls,
-        game_current_player: int,
         game_max_player: int,
     ) -> ModelsUpdateSessionRequest:
         instance = cls()
-        instance.game_current_player = game_current_player
         instance.game_max_player = game_max_player
         return instance
 
@@ -92,10 +79,6 @@ class ModelsUpdateSessionRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "game_current_player" in dict_ and dict_["game_current_player"] is not None:
-            instance.game_current_player = int(dict_["game_current_player"])
-        elif include_empty:
-            instance.game_current_player = 0
         if "game_max_player" in dict_ and dict_["game_max_player"] is not None:
             instance.game_max_player = int(dict_["game_max_player"])
         elif include_empty:
@@ -143,14 +126,12 @@ class ModelsUpdateSessionRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "game_current_player": "game_current_player",
             "game_max_player": "game_max_player",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "game_current_player": True,
             "game_max_player": True,
         }
 

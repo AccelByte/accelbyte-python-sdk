@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,6 +58,21 @@ class ItemTypeEnum(StrEnum):
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
     SUBSCRIPTION = "SUBSCRIPTION"
+
+
+class SortByEnum(StrEnum):
+    NAME = "name"
+    NAME_ASC = "name:asc"
+    NAME_DESC = "name:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
+    DISPLAYORDER = "displayOrder"
+    DISPLAYORDER_ASC = "displayOrder:asc"
+    DISPLAYORDER_DESC = "displayOrder:desc"
 
 
 class QueryItems1(Operation):
@@ -102,6 +117,8 @@ class QueryItems1(Operation):
 
         features: (features) OPTIONAL str in query
 
+        include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
+
         item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
 
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
@@ -112,7 +129,7 @@ class QueryItems1(Operation):
 
         region: (region) OPTIONAL str in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL List[Union[str, SortByEnum]] in query
 
         store_id: (storeId) OPTIONAL str in query
 
@@ -143,12 +160,13 @@ class QueryItems1(Operation):
     base_app_id: str  # OPTIONAL in [query]
     category_path: str  # OPTIONAL in [query]
     features: str  # OPTIONAL in [query]
+    include_sub_category_item: bool  # OPTIONAL in [query]
     item_status: Union[str, ItemStatusEnum]  # OPTIONAL in [query]
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
+    sort_by: List[Union[str, SortByEnum]]  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
     tags: str  # OPTIONAL in [query]
     target_namespace: str  # OPTIONAL in [query]
@@ -213,6 +231,8 @@ class QueryItems1(Operation):
             result["categoryPath"] = self.category_path
         if hasattr(self, "features"):
             result["features"] = self.features
+        if hasattr(self, "include_sub_category_item"):
+            result["includeSubCategoryItem"] = self.include_sub_category_item
         if hasattr(self, "item_status"):
             result["itemStatus"] = self.item_status
         if hasattr(self, "item_type"):
@@ -265,6 +285,10 @@ class QueryItems1(Operation):
         self.features = value
         return self
 
+    def with_include_sub_category_item(self, value: bool) -> QueryItems1:
+        self.include_sub_category_item = value
+        return self
+
     def with_item_status(self, value: Union[str, ItemStatusEnum]) -> QueryItems1:
         self.item_status = value
         return self
@@ -285,7 +309,7 @@ class QueryItems1(Operation):
         self.region = value
         return self
 
-    def with_sort_by(self, value: str) -> QueryItems1:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryItems1:
         self.sort_by = value
         return self
 
@@ -331,6 +355,13 @@ class QueryItems1(Operation):
             result["features"] = str(self.features)
         elif include_empty:
             result["features"] = ""
+        if (
+            hasattr(self, "include_sub_category_item")
+            and self.include_sub_category_item
+        ):
+            result["includeSubCategoryItem"] = bool(self.include_sub_category_item)
+        elif include_empty:
+            result["includeSubCategoryItem"] = False
         if hasattr(self, "item_status") and self.item_status:
             result["itemStatus"] = str(self.item_status)
         elif include_empty:
@@ -352,9 +383,9 @@ class QueryItems1(Operation):
         elif include_empty:
             result["region"] = ""
         if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
+            result["sortBy"] = [str(i0) for i0 in self.sort_by]
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = []
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -425,12 +456,13 @@ class QueryItems1(Operation):
         base_app_id: Optional[str] = None,
         category_path: Optional[str] = None,
         features: Optional[str] = None,
+        include_sub_category_item: Optional[bool] = None,
         item_status: Optional[Union[str, ItemStatusEnum]] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[List[Union[str, SortByEnum]]] = None,
         store_id: Optional[str] = None,
         tags: Optional[str] = None,
         target_namespace: Optional[str] = None,
@@ -447,6 +479,8 @@ class QueryItems1(Operation):
             instance.category_path = category_path
         if features is not None:
             instance.features = features
+        if include_sub_category_item is not None:
+            instance.include_sub_category_item = include_sub_category_item
         if item_status is not None:
             instance.item_status = item_status
         if item_type is not None:
@@ -494,6 +528,13 @@ class QueryItems1(Operation):
             instance.features = str(dict_["features"])
         elif include_empty:
             instance.features = ""
+        if (
+            "includeSubCategoryItem" in dict_
+            and dict_["includeSubCategoryItem"] is not None
+        ):
+            instance.include_sub_category_item = bool(dict_["includeSubCategoryItem"])
+        elif include_empty:
+            instance.include_sub_category_item = False
         if "itemStatus" in dict_ and dict_["itemStatus"] is not None:
             instance.item_status = str(dict_["itemStatus"])
         elif include_empty:
@@ -515,9 +556,9 @@ class QueryItems1(Operation):
         elif include_empty:
             instance.region = ""
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
+            instance.sort_by = [str(i0) for i0 in dict_["sortBy"]]
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = []
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -541,6 +582,7 @@ class QueryItems1(Operation):
             "baseAppId": "base_app_id",
             "categoryPath": "category_path",
             "features": "features",
+            "includeSubCategoryItem": "include_sub_category_item",
             "itemStatus": "item_status",
             "itemType": "item_type",
             "limit": "limit",
@@ -561,6 +603,7 @@ class QueryItems1(Operation):
             "baseAppId": False,
             "categoryPath": False,
             "features": False,
+            "includeSubCategoryItem": False,
             "itemStatus": False,
             "itemType": False,
             "limit": False,
@@ -570,6 +613,12 @@ class QueryItems1(Operation):
             "storeId": False,
             "tags": False,
             "targetNamespace": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "sortBy": "csv",  # in query
         }
 
     @staticmethod
@@ -588,6 +637,20 @@ class QueryItems1(Operation):
                 "OPTIONBOX",
                 "SEASON",
                 "SUBSCRIPTION",
+            ],  # in query
+            "sortBy": [
+                "name",
+                "name:asc",
+                "name:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+                "displayOrder",
+                "displayOrder:asc",
+                "displayOrder:desc",
             ],  # in query
         }
 

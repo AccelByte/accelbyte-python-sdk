@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.7)
+# AccelByte Cloud Matchmaking Service (2.15.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class ModelsMatchmakingResult(Model):
 
         status: (status) REQUIRED str
 
+        ticket_id: (ticket_id) REQUIRED str
+
         updated_at: (updated_at) REQUIRED str
 
         joinable: (joinable) OPTIONAL bool
@@ -79,6 +81,7 @@ class ModelsMatchmakingResult(Model):
     region: str  # REQUIRED
     server_name: str  # REQUIRED
     status: str  # REQUIRED
+    ticket_id: str  # REQUIRED
     updated_at: str  # REQUIRED
     joinable: bool  # OPTIONAL
     party_id: str  # OPTIONAL
@@ -135,6 +138,10 @@ class ModelsMatchmakingResult(Model):
 
     def with_status(self, value: str) -> ModelsMatchmakingResult:
         self.status = value
+        return self
+
+    def with_ticket_id(self, value: str) -> ModelsMatchmakingResult:
+        self.ticket_id = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsMatchmakingResult:
@@ -207,6 +214,10 @@ class ModelsMatchmakingResult(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "ticket_id"):
+            result["ticket_id"] = str(self.ticket_id)
+        elif include_empty:
+            result["ticket_id"] = ""
         if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
@@ -240,6 +251,7 @@ class ModelsMatchmakingResult(Model):
         region: str,
         server_name: str,
         status: str,
+        ticket_id: str,
         updated_at: str,
         joinable: Optional[bool] = None,
         party_id: Optional[str] = None,
@@ -257,6 +269,7 @@ class ModelsMatchmakingResult(Model):
         instance.region = region
         instance.server_name = server_name
         instance.status = status
+        instance.ticket_id = ticket_id
         instance.updated_at = updated_at
         if joinable is not None:
             instance.joinable = joinable
@@ -324,6 +337,10 @@ class ModelsMatchmakingResult(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "ticket_id" in dict_ and dict_["ticket_id"] is not None:
+            instance.ticket_id = str(dict_["ticket_id"])
+        elif include_empty:
+            instance.ticket_id = ""
         if "updated_at" in dict_ and dict_["updated_at"] is not None:
             instance.updated_at = str(dict_["updated_at"])
         elif include_empty:
@@ -391,6 +408,7 @@ class ModelsMatchmakingResult(Model):
             "region": "region",
             "server_name": "server_name",
             "status": "status",
+            "ticket_id": "ticket_id",
             "updated_at": "updated_at",
             "joinable": "joinable",
             "party_id": "party_id",
@@ -411,6 +429,7 @@ class ModelsMatchmakingResult(Model):
             "region": True,
             "server_name": True,
             "status": True,
+            "ticket_id": True,
             "updated_at": True,
             "joinable": False,
             "party_id": False,

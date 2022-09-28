@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Matchmaking Service (2.15.7)
+# AccelByte Cloud Matchmaking Service (2.15.8)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ResponseError
 from ...models import ResponseErrorV1
@@ -36,6 +37,25 @@ from ...models import ServiceGetSessionHistorySearchResponseV2
 
 class SearchSessionsV2(Operation):
     """Search sessions (SearchSessionsV2)
+
+
+
+
+    ## The endpoint is going to be deprecated
+
+
+    Endpoint migration guide
+
+
+
+
+      * Substitute endpoint: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]
+
+
+
+
+
+
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:CHANNEL [Read]
 

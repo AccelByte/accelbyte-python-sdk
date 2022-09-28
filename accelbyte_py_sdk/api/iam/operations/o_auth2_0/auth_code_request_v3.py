@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.16.0)
+# AccelByte Cloud Iam Service (5.17.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -80,6 +80,10 @@ class AuthCodeRequestV3(Operation):
       * discord
     This endpoint redirects to discord login page, then redirect back to platform
     authenticate endpoint after successfully authenticating discord user.
+
+      * amazon
+    This endpoint redirects to amazon login page, then redirect back to platform
+    authenticate endpoint after successfully authenticating amazon user.
 
     action code : 10702'
 

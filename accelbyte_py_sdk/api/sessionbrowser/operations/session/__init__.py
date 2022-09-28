@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .add_player_to_session import AddPlayerToSession
 from .admin_get_session import AdminGetSession
+from .admin_search_sessions_v2 import AdminSearchSessionsV2
 from .create_session import CreateSession
 from .delete_session import DeleteSession
 from .delete_session_local_ds import DeleteSessionLocalDS
@@ -24,6 +25,7 @@ from .get_active_matchmaking__0b8050 import GetActiveMatchmakingGameSessions
 from .get_recent_player import GetRecentPlayer
 from .get_session import GetSession
 from .get_session_by_user_i_ds import GetSessionByUserIDs
+from .get_session_history_detailed import GetSessionHistoryDetailed
 from .get_total_active_session import GetTotalActiveSession
 from .join_session import JoinSession
 from .query_session import QuerySession

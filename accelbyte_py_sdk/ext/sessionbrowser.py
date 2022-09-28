@@ -34,10 +34,15 @@ from ..api.sessionbrowser.models import ModelsCreateSessionRequest
 from ..api.sessionbrowser.models import ModelsCustomGameResponse
 from ..api.sessionbrowser.models import ModelsGameSession
 from ..api.sessionbrowser.models import ModelsGameSessionSetting
+from ..api.sessionbrowser.models import ModelsGetSessionHistoryDetailedResponseItem
+from ..api.sessionbrowser.models import ModelsGetSessionHistorySearchResponseItemV2
+from ..api.sessionbrowser.models import ModelsGetSessionHistorySearchResponseV2
 from ..api.sessionbrowser.models import ModelsJoinGameSessionRequest
+from ..api.sessionbrowser.models import ModelsMatchAttributes
 from ..api.sessionbrowser.models import ModelsMatchMaking
 from ..api.sessionbrowser.models import ModelsMatchingAlly
 from ..api.sessionbrowser.models import ModelsMatchingParty
+from ..api.sessionbrowser.models import ModelsPagination
 from ..api.sessionbrowser.models import ModelsPagingCursor
 from ..api.sessionbrowser.models import ModelsPartyMember
 from ..api.sessionbrowser.models import ModelsRecentPlayerHistory
@@ -51,6 +56,7 @@ from ..api.sessionbrowser.models import ModelsUpdateSessionRequest
 from ..api.sessionbrowser.models import ModelsUpdateSettingsRequest
 from ..api.sessionbrowser.models import ResponseError
 from ..api.sessionbrowser.models import RestapiErrorResponseV2
+from ..api.sessionbrowser.models import RestapiErrorV1
 
 
 def create_models_active_custom_game_response_example() -> ModelsActiveCustomGameResponse:
@@ -166,9 +172,57 @@ def create_models_game_session_setting_example() -> ModelsGameSessionSetting:
     return instance
 
 
+def create_models_get_session_history_detailed_response_item_example() -> ModelsGetSessionHistoryDetailedResponseItem:
+    instance = ModelsGetSessionHistoryDetailedResponseItem()
+    instance.channel = randomize()
+    instance.client_version = randomize()
+    instance.created_at = randomize("date")
+    instance.event_description = randomize()
+    instance.event_name = randomize()
+    instance.game_mode = randomize()
+    instance.id_ = randomize()
+    instance.joinable = randomize("bool")
+    instance.match_id = randomize()
+    instance.matching_allies = [create_models_matching_ally_example()]
+    instance.namespace = randomize("slug")
+    instance.region = randomize()
+    instance.server_name = randomize()
+    instance.status = randomize()
+    instance.party_id = randomize("uid")
+    return instance
+
+
+def create_models_get_session_history_search_response_item_v2_example() -> ModelsGetSessionHistorySearchResponseItemV2:
+    instance = ModelsGetSessionHistorySearchResponseItemV2()
+    instance.created_at = randomize("date")
+    instance.game_mode = randomize()
+    instance.id_ = randomize()
+    instance.joinable = randomize("bool")
+    instance.match_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.sub_game_mode = [randomize()]
+    return instance
+
+
+def create_models_get_session_history_search_response_v2_example() -> ModelsGetSessionHistorySearchResponseV2:
+    instance = ModelsGetSessionHistorySearchResponseV2()
+    instance.data = [
+        create_models_get_session_history_search_response_item_v2_example()
+    ]
+    instance.pagination = create_models_pagination_example()
+    return instance
+
+
 def create_models_join_game_session_request_example() -> ModelsJoinGameSessionRequest:
     instance = ModelsJoinGameSessionRequest()
     instance.password = randomize("password")
+    return instance
+
+
+def create_models_match_attributes_example() -> ModelsMatchAttributes:
+    instance = ModelsMatchAttributes()
+    instance.first_ticket_created_at = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -202,9 +256,19 @@ def create_models_matching_ally_example() -> ModelsMatchingAlly:
 
 def create_models_matching_party_example() -> ModelsMatchingParty:
     instance = ModelsMatchingParty()
+    instance.match_attributes = create_models_match_attributes_example()
     instance.party_attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
     instance.party_members = [create_models_party_member_example()]
+    return instance
+
+
+def create_models_pagination_example() -> ModelsPagination:
+    instance = ModelsPagination()
+    instance.first = randomize()
+    instance.last = randomize()
+    instance.next_ = randomize()
+    instance.previous = randomize()
     return instance
 
 
@@ -307,7 +371,6 @@ def create_models_status_history_example() -> ModelsStatusHistory:
 
 def create_models_update_session_request_example() -> ModelsUpdateSessionRequest:
     instance = ModelsUpdateSessionRequest()
-    instance.game_current_player = randomize("int", min_val=1, max_val=1000)
     instance.game_max_player = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -331,4 +394,11 @@ def create_restapi_error_response_v2_example() -> RestapiErrorResponseV2:
     instance.error_message = randomize()
     instance.message = randomize()
     instance.name = randomize()
+    return instance
+
+
+def create_restapi_error_v1_example() -> RestapiErrorV1:
+    instance = RestapiErrorV1()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
     return instance

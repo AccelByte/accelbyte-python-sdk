@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.16.0)
+# AccelByte Cloud Iam Service (5.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.rest_error_response import RestErrorResponse
+from ..models.rest_error_response_with_conflicted_user_platform_accounts import (
+    RestErrorResponseWithConflictedUserPlatformAccounts,
+)
 
 
 class ModelLinkRequest(Model):
@@ -54,7 +56,7 @@ class ModelLinkRequest(Model):
 
         current_user_linked_games: (current_user_linked_games) OPTIONAL List[str]
 
-        error: (error) OPTIONAL RestErrorResponse
+        error: (error) OPTIONAL RestErrorResponseWithConflictedUserPlatformAccounts
 
         expiration: (expiration) OPTIONAL int
 
@@ -77,7 +79,7 @@ class ModelLinkRequest(Model):
     conflict_publisher_user_id: str  # OPTIONAL
     conflict_user_linked_games: List[str]  # OPTIONAL
     current_user_linked_games: List[str]  # OPTIONAL
-    error: RestErrorResponse  # OPTIONAL
+    error: RestErrorResponseWithConflictedUserPlatformAccounts  # OPTIONAL
     expiration: int  # OPTIONAL
     platform_display_name: str  # OPTIONAL
     platform_id: str  # OPTIONAL
@@ -127,7 +129,9 @@ class ModelLinkRequest(Model):
         self.current_user_linked_games = value
         return self
 
-    def with_error(self, value: RestErrorResponse) -> ModelLinkRequest:
+    def with_error(
+        self, value: RestErrorResponseWithConflictedUserPlatformAccounts
+    ) -> ModelLinkRequest:
         self.error = value
         return self
 
@@ -200,7 +204,7 @@ class ModelLinkRequest(Model):
         if hasattr(self, "error"):
             result["error"] = self.error.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["error"] = RestErrorResponse()
+            result["error"] = RestErrorResponseWithConflictedUserPlatformAccounts()
         if hasattr(self, "expiration"):
             result["expiration"] = int(self.expiration)
         elif include_empty:
@@ -236,7 +240,7 @@ class ModelLinkRequest(Model):
         conflict_publisher_user_id: Optional[str] = None,
         conflict_user_linked_games: Optional[List[str]] = None,
         current_user_linked_games: Optional[List[str]] = None,
-        error: Optional[RestErrorResponse] = None,
+        error: Optional[RestErrorResponseWithConflictedUserPlatformAccounts] = None,
         expiration: Optional[int] = None,
         platform_display_name: Optional[str] = None,
         platform_id: Optional[str] = None,
@@ -331,11 +335,13 @@ class ModelLinkRequest(Model):
         elif include_empty:
             instance.current_user_linked_games = []
         if "error" in dict_ and dict_["error"] is not None:
-            instance.error = RestErrorResponse.create_from_dict(
-                dict_["error"], include_empty=include_empty
+            instance.error = (
+                RestErrorResponseWithConflictedUserPlatformAccounts.create_from_dict(
+                    dict_["error"], include_empty=include_empty
+                )
             )
         elif include_empty:
-            instance.error = RestErrorResponse()
+            instance.error = RestErrorResponseWithConflictedUserPlatformAccounts()
         if "expiration" in dict_ and dict_["expiration"] is not None:
             instance.expiration = int(dict_["expiration"])
         elif include_empty:

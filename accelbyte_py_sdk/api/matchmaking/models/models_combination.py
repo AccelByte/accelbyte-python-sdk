@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.7)
+# AccelByte Cloud Matchmaking Service (2.15.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,12 +37,21 @@ class ModelsCombination(Model):
         alliances: (alliances) REQUIRED List[ModelsCombinationAlliances]
 
         has_combination: (has_combination) REQUIRED bool
+
+        role_flexing_enable: (role_flexing_enable) REQUIRED bool
+
+        role_flexing_player: (role_flexing_player) REQUIRED int
+
+        role_flexing_second: (role_flexing_second) REQUIRED int
     """
 
     # region fields
 
     alliances: List[ModelsCombinationAlliances]  # REQUIRED
     has_combination: bool  # REQUIRED
+    role_flexing_enable: bool  # REQUIRED
+    role_flexing_player: int  # REQUIRED
+    role_flexing_second: int  # REQUIRED
 
     # endregion fields
 
@@ -56,6 +65,18 @@ class ModelsCombination(Model):
 
     def with_has_combination(self, value: bool) -> ModelsCombination:
         self.has_combination = value
+        return self
+
+    def with_role_flexing_enable(self, value: bool) -> ModelsCombination:
+        self.role_flexing_enable = value
+        return self
+
+    def with_role_flexing_player(self, value: int) -> ModelsCombination:
+        self.role_flexing_player = value
+        return self
+
+    def with_role_flexing_second(self, value: int) -> ModelsCombination:
+        self.role_flexing_second = value
         return self
 
     # endregion with_x methods
@@ -74,6 +95,18 @@ class ModelsCombination(Model):
             result["has_combination"] = bool(self.has_combination)
         elif include_empty:
             result["has_combination"] = False
+        if hasattr(self, "role_flexing_enable"):
+            result["role_flexing_enable"] = bool(self.role_flexing_enable)
+        elif include_empty:
+            result["role_flexing_enable"] = False
+        if hasattr(self, "role_flexing_player"):
+            result["role_flexing_player"] = int(self.role_flexing_player)
+        elif include_empty:
+            result["role_flexing_player"] = 0
+        if hasattr(self, "role_flexing_second"):
+            result["role_flexing_second"] = int(self.role_flexing_second)
+        elif include_empty:
+            result["role_flexing_second"] = 0
         return result
 
     # endregion to methods
@@ -85,10 +118,16 @@ class ModelsCombination(Model):
         cls,
         alliances: List[ModelsCombinationAlliances],
         has_combination: bool,
+        role_flexing_enable: bool,
+        role_flexing_player: int,
+        role_flexing_second: int,
     ) -> ModelsCombination:
         instance = cls()
         instance.alliances = alliances
         instance.has_combination = has_combination
+        instance.role_flexing_enable = role_flexing_enable
+        instance.role_flexing_player = role_flexing_player
+        instance.role_flexing_second = role_flexing_second
         return instance
 
     @classmethod
@@ -111,6 +150,18 @@ class ModelsCombination(Model):
             instance.has_combination = bool(dict_["has_combination"])
         elif include_empty:
             instance.has_combination = False
+        if "role_flexing_enable" in dict_ and dict_["role_flexing_enable"] is not None:
+            instance.role_flexing_enable = bool(dict_["role_flexing_enable"])
+        elif include_empty:
+            instance.role_flexing_enable = False
+        if "role_flexing_player" in dict_ and dict_["role_flexing_player"] is not None:
+            instance.role_flexing_player = int(dict_["role_flexing_player"])
+        elif include_empty:
+            instance.role_flexing_player = 0
+        if "role_flexing_second" in dict_ and dict_["role_flexing_second"] is not None:
+            instance.role_flexing_second = int(dict_["role_flexing_second"])
+        elif include_empty:
+            instance.role_flexing_second = 0
         return instance
 
     @classmethod
@@ -154,6 +205,9 @@ class ModelsCombination(Model):
         return {
             "alliances": "alliances",
             "has_combination": "has_combination",
+            "role_flexing_enable": "role_flexing_enable",
+            "role_flexing_player": "role_flexing_player",
+            "role_flexing_second": "role_flexing_second",
         }
 
     @staticmethod
@@ -161,6 +215,9 @@ class ModelsCombination(Model):
         return {
             "alliances": True,
             "has_combination": True,
+            "role_flexing_enable": True,
+            "role_flexing_player": True,
+            "role_flexing_second": True,
         }
 
     # endregion static methods

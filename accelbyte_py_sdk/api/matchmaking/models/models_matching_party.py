@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.7)
+# AccelByte Cloud Matchmaking Service (2.15.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,6 +41,8 @@ class ModelsMatchingParty(Model):
         party_id: (party_id) REQUIRED str
 
         party_members: (party_members) REQUIRED List[ModelsPartyMember]
+
+        ticket_id: (ticket_id) REQUIRED str
     """
 
     # region fields
@@ -49,6 +51,7 @@ class ModelsMatchingParty(Model):
     party_attributes: Dict[str, Any]  # REQUIRED
     party_id: str  # REQUIRED
     party_members: List[ModelsPartyMember]  # REQUIRED
+    ticket_id: str  # REQUIRED
 
     # endregion fields
 
@@ -68,6 +71,10 @@ class ModelsMatchingParty(Model):
 
     def with_party_members(self, value: List[ModelsPartyMember]) -> ModelsMatchingParty:
         self.party_members = value
+        return self
+
+    def with_ticket_id(self, value: str) -> ModelsMatchingParty:
+        self.ticket_id = value
         return self
 
     # endregion with_x methods
@@ -96,6 +103,10 @@ class ModelsMatchingParty(Model):
             ]
         elif include_empty:
             result["party_members"] = []
+        if hasattr(self, "ticket_id"):
+            result["ticket_id"] = str(self.ticket_id)
+        elif include_empty:
+            result["ticket_id"] = ""
         return result
 
     # endregion to methods
@@ -109,12 +120,14 @@ class ModelsMatchingParty(Model):
         party_attributes: Dict[str, Any],
         party_id: str,
         party_members: List[ModelsPartyMember],
+        ticket_id: str,
     ) -> ModelsMatchingParty:
         instance = cls()
         instance.first_ticket_created_at = first_ticket_created_at
         instance.party_attributes = party_attributes
         instance.party_id = party_id
         instance.party_members = party_members
+        instance.ticket_id = ticket_id
         return instance
 
     @classmethod
@@ -148,6 +161,10 @@ class ModelsMatchingParty(Model):
             ]
         elif include_empty:
             instance.party_members = []
+        if "ticket_id" in dict_ and dict_["ticket_id"] is not None:
+            instance.ticket_id = str(dict_["ticket_id"])
+        elif include_empty:
+            instance.ticket_id = ""
         return instance
 
     @classmethod
@@ -193,6 +210,7 @@ class ModelsMatchingParty(Model):
             "party_attributes": "party_attributes",
             "party_id": "party_id",
             "party_members": "party_members",
+            "ticket_id": "ticket_id",
         }
 
     @staticmethod
@@ -202,6 +220,7 @@ class ModelsMatchingParty(Model):
             "party_attributes": True,
             "party_id": True,
             "party_members": True,
+            "ticket_id": True,
         }
 
     # endregion static methods

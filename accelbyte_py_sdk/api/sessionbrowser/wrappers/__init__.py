@@ -18,6 +18,8 @@ from ._session import add_player_to_session
 from ._session import add_player_to_session_async
 from ._session import admin_get_session
 from ._session import admin_get_session_async
+from ._session import admin_search_sessions_v2
+from ._session import admin_search_sessions_v2_async
 from ._session import create_session
 from ._session import create_session_async
 from ._session import delete_session
@@ -34,6 +36,8 @@ from ._session import get_session
 from ._session import get_session_async
 from ._session import get_session_by_user_i_ds
 from ._session import get_session_by_user_i_ds_async
+from ._session import get_session_history_detailed
+from ._session import get_session_history_detailed_async
 from ._session import get_total_active_session
 from ._session import get_total_active_session_async
 from ._session import join_session

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.0"
+__version__ = "4.14.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -454,7 +454,10 @@ from .platform_reward_currency import PlatformRewardCurrency
 from .platform_reward_item import PlatformRewardItem
 from .platform_subscribe_request import PlatformSubscribeRequest
 from .platform_wallet import PlatformWallet
-from .platform_wallet import WalletStatusEnum as PlatformWalletWalletStatusEnum
+from .platform_wallet import (
+    StatusEnum as PlatformWalletStatusEnum,
+    WalletStatusEnum as PlatformWalletWalletStatusEnum,
+)
 from .platform_wallet_config_info import PlatformWalletConfigInfo
 from .platform_wallet_config_update import PlatformWalletConfigUpdate
 from .platform_wallet_config_update import (

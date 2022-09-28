@@ -69,7 +69,7 @@ from ..operations.wallet import UpdatePlatformWalletConfig
 from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
 from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
 from ..models import PaymentRequestWalletPlatformEnum
-from ..models import PlatformWalletWalletStatusEnum
+from ..models import PlatformWalletStatusEnum, PlatformWalletWalletStatusEnum
 from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
 from ..models import WalletInfoStatusEnum
 

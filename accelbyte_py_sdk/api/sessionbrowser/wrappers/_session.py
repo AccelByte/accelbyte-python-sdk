@@ -36,6 +36,8 @@ from ..models import ModelsAddPlayerResponse
 from ..models import ModelsAdminSessionResponse
 from ..models import ModelsCountActiveSessionResponse
 from ..models import ModelsCreateSessionRequest
+from ..models import ModelsGetSessionHistoryDetailedResponseItem
+from ..models import ModelsGetSessionHistorySearchResponseV2
 from ..models import ModelsJoinGameSessionRequest
 from ..models import ModelsRecentPlayerQueryResponse
 from ..models import ModelsSessionByUserIDsResponse
@@ -45,9 +47,11 @@ from ..models import ModelsUpdateSessionRequest
 from ..models import ModelsUpdateSettingsRequest
 from ..models import ResponseError
 from ..models import RestapiErrorResponseV2
+from ..models import RestapiErrorV1
 
 from ..operations.session import AddPlayerToSession
 from ..operations.session import AdminGetSession
+from ..operations.session import AdminSearchSessionsV2
 from ..operations.session import CreateSession
 from ..operations.session import DeleteSession
 from ..operations.session import DeleteSessionLocalDS
@@ -56,6 +60,7 @@ from ..operations.session import GetActiveMatchmakingGameSessions
 from ..operations.session import GetRecentPlayer
 from ..operations.session import GetSession
 from ..operations.session import GetSessionByUserIDs
+from ..operations.session import GetSessionHistoryDetailed
 from ..operations.session import GetTotalActiveSession
 from ..operations.session import JoinSession
 from ..operations.session import QuerySession
@@ -137,6 +142,68 @@ async def admin_get_session_async(
             return None, error
     request = AdminGetSession.create(
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSearchSessionsV2)
+def admin_search_sessions_v2(
+    limit: int,
+    offset: int,
+    channel: Optional[str] = None,
+    deleted: Optional[bool] = None,
+    match_id: Optional[str] = None,
+    party_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSearchSessionsV2.create(
+        limit=limit,
+        offset=offset,
+        channel=channel,
+        deleted=deleted,
+        match_id=match_id,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSearchSessionsV2)
+async def admin_search_sessions_v2_async(
+    limit: int,
+    offset: int,
+    channel: Optional[str] = None,
+    deleted: Optional[bool] = None,
+    match_id: Optional[str] = None,
+    party_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSearchSessionsV2.create(
+        limit=limit,
+        offset=offset,
+        channel=channel,
+        deleted=deleted,
+        match_id=match_id,
+        party_id=party_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -453,6 +520,44 @@ async def get_session_by_user_i_ds_async(
             return None, error
     request = GetSessionByUserIDs.create(
         user_ids=user_ids,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetSessionHistoryDetailed)
+def get_session_history_detailed(
+    match_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetSessionHistoryDetailed.create(
+        match_id=match_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetSessionHistoryDetailed)
+async def get_session_history_detailed_async(
+    match_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetSessionHistoryDetailed.create(
+        match_id=match_id,
         namespace=namespace,
     )
     return await run_request_async(

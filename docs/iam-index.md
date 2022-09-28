@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Iam Service Index (5.16.0)
+# AccelByte Cloud Iam Service Index (5.17.0)
 
 
 ## Operations
@@ -614,6 +614,7 @@
 | oauthmodel.TokenResponseV3 | [OauthmodelTokenResponseV3](../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response_v3.py) |
 | oauthmodel.TokenThirdPartyResponse | [OauthmodelTokenThirdPartyResponse](../accelbyte_py_sdk/api/iam/models/oauthmodel_token_third_party_response.py) |
 | rest.ErrorResponse | [RestErrorResponse](../accelbyte_py_sdk/api/iam/models/rest_error_response.py) |
+| rest.ErrorResponseWithConflictedUserPlatformAccounts | [RestErrorResponseWithConflictedUserPlatformAccounts](../accelbyte_py_sdk/api/iam/models/rest_error_response_with_conflicted_user_platform_accounts.py) |
 | restapi.ErrorResponse | [RestapiErrorResponse](../accelbyte_py_sdk/api/iam/models/restapi_error_response.py) |
 | .validation | [Validation](../accelbyte_py_sdk/api/iam/models/validation.py) |
 | .validation.description | [ValidationDescription](../accelbyte_py_sdk/api/iam/models/validation_description.py) |

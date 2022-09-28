@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import XblDLCSyncRequest
 
 
@@ -63,6 +64,8 @@ class SyncXboxDLC(Operation):
 
     Responses:
         204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
     """
 
     # region fields
@@ -180,10 +183,12 @@ class SyncXboxDLC(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -200,6 +205,8 @@ class SyncXboxDLC(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

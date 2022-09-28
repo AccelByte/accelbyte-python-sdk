@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.0"
+__version__ = "4.14.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -63,6 +63,7 @@ from .query_items_1 import (
     AppTypeEnum as QueryItems1AppTypeEnum,
     ItemStatusEnum as QueryItems1ItemStatusEnum,
     ItemTypeEnum as QueryItems1ItemTypeEnum,
+    SortByEnum as QueryItems1SortByEnum,
 )
 from .query_uncategorized_items import QueryUncategorizedItems
 from .query_uncategorized_items import SortByEnum as QueryUncategorizedItemsSortByEnum

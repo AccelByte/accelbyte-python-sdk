@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.16.0)
+# AccelByte Cloud Iam Service (5.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,10 +27,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.accountcommon_conflicted_user_platform_accounts import (
-    AccountcommonConflictedUserPlatformAccounts,
-)
-
 
 class RestErrorResponse(Model):
     """Rest error response (rest.ErrorResponse)
@@ -40,14 +36,14 @@ class RestErrorResponse(Model):
 
         error_message: (errorMessage) REQUIRED str
 
-        message_variables: (messageVariables) OPTIONAL AccountcommonConflictedUserPlatformAccounts
+        message_variables: (messageVariables) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
-    message_variables: AccountcommonConflictedUserPlatformAccounts  # OPTIONAL
+    message_variables: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
@@ -61,9 +57,7 @@ class RestErrorResponse(Model):
         self.error_message = value
         return self
 
-    def with_message_variables(
-        self, value: AccountcommonConflictedUserPlatformAccounts
-    ) -> RestErrorResponse:
+    def with_message_variables(self, value: Dict[str, str]) -> RestErrorResponse:
         self.message_variables = value
         return self
 
@@ -82,11 +76,11 @@ class RestErrorResponse(Model):
         elif include_empty:
             result["errorMessage"] = ""
         if hasattr(self, "message_variables"):
-            result["messageVariables"] = self.message_variables.to_dict(
-                include_empty=include_empty
-            )
+            result["messageVariables"] = {
+                str(k0): str(v0) for k0, v0 in self.message_variables.items()
+            }
         elif include_empty:
-            result["messageVariables"] = AccountcommonConflictedUserPlatformAccounts()
+            result["messageVariables"] = {}
         return result
 
     # endregion to methods
@@ -98,7 +92,7 @@ class RestErrorResponse(Model):
         cls,
         error_code: int,
         error_message: str,
-        message_variables: Optional[AccountcommonConflictedUserPlatformAccounts] = None,
+        message_variables: Optional[Dict[str, str]] = None,
     ) -> RestErrorResponse:
         instance = cls()
         instance.error_code = error_code
@@ -123,13 +117,11 @@ class RestErrorResponse(Model):
         elif include_empty:
             instance.error_message = ""
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
-            instance.message_variables = (
-                AccountcommonConflictedUserPlatformAccounts.create_from_dict(
-                    dict_["messageVariables"], include_empty=include_empty
-                )
-            )
+            instance.message_variables = {
+                str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()
+            }
         elif include_empty:
-            instance.message_variables = AccountcommonConflictedUserPlatformAccounts()
+            instance.message_variables = {}
         return instance
 
     @classmethod

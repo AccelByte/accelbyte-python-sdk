@@ -19,6 +19,8 @@ from .wrappers import add_player_to_session
 from .wrappers import add_player_to_session_async
 from .wrappers import admin_get_session
 from .wrappers import admin_get_session_async
+from .wrappers import admin_search_sessions_v2
+from .wrappers import admin_search_sessions_v2_async
 from .wrappers import create_session
 from .wrappers import create_session_async
 from .wrappers import delete_session
@@ -35,6 +37,8 @@ from .wrappers import get_session
 from .wrappers import get_session_async
 from .wrappers import get_session_by_user_i_ds
 from .wrappers import get_session_by_user_i_ds_async
+from .wrappers import get_session_history_detailed
+from .wrappers import get_session_history_detailed_async
 from .wrappers import get_total_active_session
 from .wrappers import get_total_active_session_async
 from .wrappers import join_session

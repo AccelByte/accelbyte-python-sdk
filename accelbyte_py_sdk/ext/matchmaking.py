@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.7)
+# AccelByte Cloud Matchmaking Service (2.15.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -170,6 +170,9 @@ def create_models_combination_example() -> ModelsCombination:
     instance = ModelsCombination()
     instance.alliances = [create_models_combination_alliances_example()]
     instance.has_combination = randomize("bool")
+    instance.role_flexing_enable = randomize("bool")
+    instance.role_flexing_player = randomize("int", min_val=1, max_val=1000)
+    instance.role_flexing_second = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -277,6 +280,7 @@ def create_models_matching_party_example() -> ModelsMatchingParty:
     instance.party_attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
     instance.party_members = [create_models_party_member_example()]
+    instance.ticket_id = randomize()
     return instance
 
 
@@ -302,6 +306,7 @@ def create_models_matchmaking_result_example() -> ModelsMatchmakingResult:
     instance.region = randomize()
     instance.server_name = randomize()
     instance.status = randomize()
+    instance.ticket_id = randomize()
     instance.updated_at = randomize("date")
     instance.joinable = randomize("bool")
     instance.party_id = randomize("uid")

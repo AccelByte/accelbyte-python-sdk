@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2597,6 +2597,7 @@ def create_platform_wallet_example() -> PlatformWallet:
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.id_ = randomize()
+    instance.status = randomize()
     instance.wallet_infos = [create_wallet_info_example()]
     instance.wallet_status = randomize()
     return instance

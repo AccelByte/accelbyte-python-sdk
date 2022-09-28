@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import PlayStationReconcileRequest
 from ...models import PlayStationReconcileResult
 
@@ -67,6 +68,8 @@ class PublicReconcilePlayStationStore(Operation):
 
     Responses:
         200: OK - List[PlayStationReconcileResult] (successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
     """
 
     # region fields
@@ -187,11 +190,14 @@ class PublicReconcilePlayStationStore(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[PlayStationReconcileResult]], Union[None, HttpResponse]
+        Union[None, List[PlayStationReconcileResult]],
+        Union[None, ErrorEntity, HttpResponse],
     ]:
         """Parse the given response.
 
         200: OK - List[PlayStationReconcileResult] (successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -210,6 +216,8 @@ class PublicReconcilePlayStationStore(Operation):
             return [
                 PlayStationReconcileResult.create_from_dict(i) for i in content
             ], None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -24,10 +24,21 @@ from .models_create_session_request import ModelsCreateSessionRequest
 from .models_custom_game_response import ModelsCustomGameResponse
 from .models_game_session import ModelsGameSession
 from .models_game_session_setting import ModelsGameSessionSetting
+from .models_get_session_history_detailed_response_item import (
+    ModelsGetSessionHistoryDetailedResponseItem,
+)
+from .models_get_session_history_search_response_item_v2 import (
+    ModelsGetSessionHistorySearchResponseItemV2,
+)
+from .models_get_session_history_search_response_v2 import (
+    ModelsGetSessionHistorySearchResponseV2,
+)
 from .models_join_game_session_request import ModelsJoinGameSessionRequest
+from .models_match_attributes import ModelsMatchAttributes
 from .models_match_making import ModelsMatchMaking
 from .models_matching_ally import ModelsMatchingAlly
 from .models_matching_party import ModelsMatchingParty
+from .models_pagination import ModelsPagination
 from .models_paging_cursor import ModelsPagingCursor
 from .models_party_member import ModelsPartyMember
 from .models_recent_player_history import ModelsRecentPlayerHistory
@@ -41,3 +52,4 @@ from .models_update_session_request import ModelsUpdateSessionRequest
 from .models_update_settings_request import ModelsUpdateSettingsRequest
 from .response_error import ResponseError
 from .restapi_error_response_v2 import RestapiErrorResponseV2
+from .restapi_error_v1 import RestapiErrorV1

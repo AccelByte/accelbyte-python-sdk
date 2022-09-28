@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -114,9 +114,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
         return_url: (returnUrl) REQUIRED str in query
 
     Responses:
-        204: No Content - (no content)
+        204: No Content - (no content.(if query param 'returnUrl' is empty))
 
-        307: Temporary Redirect - (successful operation)
+        307: Temporary Redirect - (successful operation.(if query param 'returnUrl' is not empty))
     """
 
     # region fields
@@ -235,7 +235,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
     def has_redirects(self) -> bool:
         """Returns True if this operation has redirects, otherwise False.
 
-        307: Temporary Redirect - (successful operation)
+        307: Temporary Redirect - (successful operation.(if query param 'returnUrl' is not empty))
         """
         return True
 
@@ -391,9 +391,9 @@ class PublicNormalizePaymentReturnUrl(Operation):
     ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (no content)
+        204: No Content - (no content.(if query param 'returnUrl' is empty))
 
-        307: Temporary Redirect - (successful operation)
+        307: Temporary Redirect - (successful operation.(if query param 'returnUrl' is not empty))
 
         ---: HttpResponse (Undocumented Response)
 

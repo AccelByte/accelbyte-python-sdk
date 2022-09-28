@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsChannelRequest
@@ -547,6 +548,7 @@ async def get_all_sessions_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(GetSessionHistoryDetailed)
 def get_session_history_detailed(
     match_id: str,
@@ -565,6 +567,7 @@ def get_session_history_detailed(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSessionHistoryDetailed)
 async def get_session_history_detailed_async(
     match_id: str,
@@ -851,6 +854,7 @@ async def rebalance_async(
     )
 
 
+@deprecated
 @same_doc_as(SearchSessions)
 def search_sessions(
     limit: int,
@@ -881,6 +885,7 @@ def search_sessions(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SearchSessions)
 async def search_sessions_async(
     limit: int,
@@ -913,6 +918,7 @@ async def search_sessions_async(
     )
 
 
+@deprecated
 @same_doc_as(SearchSessionsV2)
 def search_sessions_v2(
     limit: int,
@@ -943,6 +949,7 @@ def search_sessions_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(SearchSessionsV2)
 async def search_sessions_v2_async(
     limit: int,

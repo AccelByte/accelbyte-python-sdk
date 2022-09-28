@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.16.0)
+# AccelByte Cloud Iam Service (5.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -255,6 +255,7 @@ from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import RestErrorResponse
+from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
 from ..api.iam.models import RestapiErrorResponse
 from ..api.iam.models import Validation
 from ..api.iam.models import ValidationDescription
@@ -1273,7 +1274,9 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.conflict_publisher_user_id = randomize()
     instance.conflict_user_linked_games = [randomize()]
     instance.current_user_linked_games = [randomize()]
-    instance.error = create_rest_error_response_example()
+    instance.error = (
+        create_rest_error_response_with_conflicted_user_platform_accounts_example()
+    )
     instance.expiration = randomize("int", min_val=1, max_val=1000)
     instance.platform_display_name = randomize()
     instance.platform_id = randomize()
@@ -2408,6 +2411,14 @@ def create_oauthmodel_token_third_party_response_example() -> OauthmodelTokenThi
 
 def create_rest_error_response_example() -> RestErrorResponse:
     instance = RestErrorResponse()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
+    instance.message_variables = {randomize(): randomize()}
+    return instance
+
+
+def create_rest_error_response_with_conflicted_user_platform_accounts_example() -> RestErrorResponseWithConflictedUserPlatformAccounts:
+    instance = RestErrorResponseWithConflictedUserPlatformAccounts()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = (

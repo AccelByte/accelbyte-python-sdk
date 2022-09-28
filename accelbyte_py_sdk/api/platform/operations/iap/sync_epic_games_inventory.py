@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,6 +31,7 @@ from .....core import HttpResponse
 
 from ...models import EpicGamesReconcileRequest
 from ...models import EpicGamesReconcileResult
+from ...models import ErrorEntity
 
 
 class SyncEpicGamesInventory(Operation):
@@ -67,6 +68,8 @@ class SyncEpicGamesInventory(Operation):
 
     Responses:
         200: OK - List[EpicGamesReconcileResult] (successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
     """
 
     # region fields
@@ -186,10 +189,15 @@ class SyncEpicGamesInventory(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[EpicGamesReconcileResult]], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[EpicGamesReconcileResult]],
+        Union[None, ErrorEntity, HttpResponse],
+    ]:
         """Parse the given response.
 
         200: OK - List[EpicGamesReconcileResult] (successful operation)
+
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -206,6 +214,8 @@ class SyncEpicGamesInventory(Operation):
 
         if code == 200:
             return [EpicGamesReconcileResult.create_from_dict(i) for i in content], None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

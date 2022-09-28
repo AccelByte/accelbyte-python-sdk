@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.14.0)
+# AccelByte Cloud Platform Service (4.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,11 @@ from ....core import StrEnum
 from ..models.wallet_info import WalletInfo
 
 
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+
+
 class WalletStatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
     INACTIVE = "INACTIVE"
@@ -52,6 +57,8 @@ class PlatformWallet(Model):
 
         id_: (id) OPTIONAL str
 
+        status: (status) OPTIONAL Union[str, StatusEnum]
+
         wallet_infos: (walletInfos) OPTIONAL List[WalletInfo]
 
         wallet_status: (walletStatus) OPTIONAL Union[str, WalletStatusEnum]
@@ -65,6 +72,7 @@ class PlatformWallet(Model):
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
     id_: str  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
     wallet_infos: List[WalletInfo]  # OPTIONAL
     wallet_status: Union[str, WalletStatusEnum]  # OPTIONAL
 
@@ -94,6 +102,10 @@ class PlatformWallet(Model):
 
     def with_id(self, value: str) -> PlatformWallet:
         self.id_ = value
+        return self
+
+    def with_status(self, value: Union[str, StatusEnum]) -> PlatformWallet:
+        self.status = value
         return self
 
     def with_wallet_infos(self, value: List[WalletInfo]) -> PlatformWallet:
@@ -134,6 +146,10 @@ class PlatformWallet(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "status"):
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "wallet_infos"):
             result["walletInfos"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.wallet_infos
@@ -159,6 +175,7 @@ class PlatformWallet(Model):
         namespace: str,
         user_id: str,
         id_: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         wallet_infos: Optional[List[WalletInfo]] = None,
         wallet_status: Optional[Union[str, WalletStatusEnum]] = None,
     ) -> PlatformWallet:
@@ -170,6 +187,8 @@ class PlatformWallet(Model):
         instance.user_id = user_id
         if id_ is not None:
             instance.id_ = id_
+        if status is not None:
+            instance.status = status
         if wallet_infos is not None:
             instance.wallet_infos = wallet_infos
         if wallet_status is not None:
@@ -207,6 +226,10 @@ class PlatformWallet(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = Union[str, StatusEnum]()
         if "walletInfos" in dict_ and dict_["walletInfos"] is not None:
             instance.wallet_infos = [
                 WalletInfo.create_from_dict(i0, include_empty=include_empty)
@@ -263,6 +286,7 @@ class PlatformWallet(Model):
             "namespace": "namespace",
             "userId": "user_id",
             "id": "id_",
+            "status": "status",
             "walletInfos": "wallet_infos",
             "walletStatus": "wallet_status",
         }
@@ -276,6 +300,7 @@ class PlatformWallet(Model):
             "namespace": True,
             "userId": True,
             "id": False,
+            "status": False,
             "walletInfos": False,
             "walletStatus": False,
         }
@@ -283,6 +308,7 @@ class PlatformWallet(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "status": ["ACTIVE", "INACTIVE"],
             "walletStatus": ["ACTIVE", "INACTIVE"],
         }
 
