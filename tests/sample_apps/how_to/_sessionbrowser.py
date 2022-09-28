@@ -153,7 +153,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
         # act
         result, error = update_session(
             body=ModelsUpdateSessionRequest.create(
-                game_current_player=1, game_max_player=1
+                game_max_player=1
             ),
             session_id=self.session_id,
         )
@@ -164,7 +164,6 @@ class SessionBrowserTestCase(IntegrationTestCase):
         self.assertIsInstance(result, ModelsSessionResponse)
         self.assertIsNotNone(result)
         self.assertIsNotNone(result.game_session_setting)
-        # self.assertEqual(1, result.game_session_setting.current_player)    # XXX 2022-09-28 current_player now stays 0 even after update session
         self.assertEqual(1, result.game_session_setting.max_player)
 
 
