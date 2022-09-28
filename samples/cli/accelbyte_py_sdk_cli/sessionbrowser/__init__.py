@@ -12,6 +12,8 @@ from ._get_total_active_session import get_total_active_session
 from ._get_active_custom_game_sessions import get_active_custom_game_sessions
 from ._get_active_matchmaking_game_sessions import get_active_matchmaking_game_sessions
 from ._admin_get_session import admin_get_session
+from ._admin_search_sessions_v2 import admin_search_sessions_v2
+from ._get_session_history_detailed import get_session_history_detailed
 from ._query_session import query_session
 from ._create_session import create_session
 from ._get_session_by_user_i_ds import get_session_by_user_i_ds
@@ -31,6 +33,8 @@ commands = [
     get_active_custom_game_sessions,
     get_active_matchmaking_game_sessions,
     admin_get_session,
+    admin_search_sessions_v2,
+    get_session_history_detailed,
     query_session,
     create_session,
     get_session_by_user_i_ds,

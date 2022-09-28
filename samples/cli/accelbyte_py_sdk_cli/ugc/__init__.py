@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (2.5.2)
+# justice-ugc-service (2.5.3)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel

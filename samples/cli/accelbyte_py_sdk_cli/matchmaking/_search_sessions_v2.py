@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Matchmaking Service (2.15.7)
+# Justice Matchmaking Service (2.15.8)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -90,4 +90,4 @@ def search_sessions_v2(
 
 
 search_sessions_v2.operation_id = "SearchSessionsV2"
-search_sessions_v2.is_deprecated = False
+search_sessions_v2.is_deprecated = True

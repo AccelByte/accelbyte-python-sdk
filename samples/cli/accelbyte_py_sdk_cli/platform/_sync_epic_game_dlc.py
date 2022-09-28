@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.0)
+# Accelbyte Cloud Platform Service (4.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.platform import (
     sync_epic_game_dlc as sync_epic_game_dlc_internal,
 )
 from accelbyte_py_sdk.api.platform.models import EpicGamesDLCSyncRequest
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

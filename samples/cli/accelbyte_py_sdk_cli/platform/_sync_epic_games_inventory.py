@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.0)
+# Accelbyte Cloud Platform Service (4.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.platform import (
 )
 from accelbyte_py_sdk.api.platform.models import EpicGamesReconcileRequest
 from accelbyte_py_sdk.api.platform.models import EpicGamesReconcileResult
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()

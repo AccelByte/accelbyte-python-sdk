@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.0)
+# Accelbyte Cloud Platform Service (4.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     sync_xbox_inventory as sync_xbox_inventory_internal,
 )
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import XblReconcileRequest
 from accelbyte_py_sdk.api.platform.models import XblReconcileResult
 
