@@ -74,6 +74,7 @@ clean_dist:
 	rm -rf dist
 
 build_dist: clean_dist
+	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
 	docker run --rm --tty --user $$(id -u):$$(id -g) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
 			-c 'python -m venv /tmp && \
 					/tmp/bin/pip install --upgrade pip build setuptools setuptools_scm wheel && \
