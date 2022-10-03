@@ -11,7 +11,11 @@ This SDK requires Python 3.9 to be installed.
 ### Install with Pip
 
 ```sh
-pip install requests httpx websockets pyyaml
+pip install requests httpx websockets pyyaml jwt
+```
+
+```sh
+pip install accelbyte-py-sdk
 ```
 
 ```sh
