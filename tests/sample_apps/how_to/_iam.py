@@ -106,6 +106,27 @@ class IAMTestCase(IntegrationTestCase):
 
     # endregion test:admin_get_user_by_user_id_v3
 
+    # region test:admin_list_users_v3
+
+    def test_admin_list_users_v3(self):
+        from accelbyte_py_sdk.api.iam import admin_list_users_v3
+
+        # arrange
+        _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+        self.log_warning(
+            msg=f"Failed to set up user. {str(error)}", condition=error is not None
+        )
+        self.user_id = user_id
+
+        # act
+        result, error = admin_list_users_v3()
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertIsNotNone(result)
+
+    # endregion test:admin_list_users_v3
+
     # region test:admin_update_user_v4
 
     def test_admin_update_user_v4(self):
