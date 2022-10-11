@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.1)
+# Accelbyte Cloud Platform Service (4.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.platform.models import FullItemPagingSlicedResult
 @click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -54,6 +55,7 @@ def search_items(
     item_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -75,6 +77,7 @@ def search_items(
         item_type=item_type,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         store_id=store_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

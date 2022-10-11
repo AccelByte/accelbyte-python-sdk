@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.1)
+# Accelbyte Cloud Platform Service (4.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,4 +66,4 @@ def export_store(
 
 
 export_store.operation_id = "exportStore"
-export_store.is_deprecated = False
+export_store.is_deprecated = True

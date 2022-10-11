@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.17.0)
+# Accelbyte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.option("--client_id", "client_id", type=str)
 @click.option("--create_headless", "create_headless", type=bool)
 @click.option("--device_id", "device_id", type=str)
+@click.option("--mac_address", "mac_address", type=str)
 @click.option("--platform_token", "platform_token", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -51,6 +52,7 @@ def platform_token_grant_v3(
     client_id: Optional[str] = None,
     create_headless: Optional[bool] = None,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,6 +71,7 @@ def platform_token_grant_v3(
         client_id=client_id,
         create_headless=create_headless,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
         x_additional_headers=x_additional_headers,
     )

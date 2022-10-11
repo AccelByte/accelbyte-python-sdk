@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.17.0)
+# Accelbyte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 @click.command()
 @click.argument("platform_id", type=str)
 @click.option("--device_id", "device_id", type=str)
+@click.option("--mac_address", "mac_address", type=str)
 @click.option("--platform_token", "platform_token", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -48,6 +49,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 def platform_token_request_handler(
     platform_id: str,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -65,6 +67,7 @@ def platform_token_request_handler(
     result, error = platform_token_request_handler_internal(
         platform_id=platform_id,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

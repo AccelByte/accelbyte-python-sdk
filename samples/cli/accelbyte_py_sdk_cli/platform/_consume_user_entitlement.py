@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.14.1)
+# Accelbyte Cloud Platform Service (4.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,8 +34,8 @@ from accelbyte_py_sdk.api.platform import (
     consume_user_entitlement as consume_user_entitlement_internal,
 )
 from accelbyte_py_sdk.api.platform.models import EntitlementDecrement
-from accelbyte_py_sdk.api.platform.models import EntitlementInfo
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import TrackedEntitlementInfo
 
 
 @click.command()

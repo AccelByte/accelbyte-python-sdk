@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.17.0)
+# Accelbyte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,11 +32,12 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import token_grant_v3 as token_grant_v3_internal
 from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
-from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
+from accelbyte_py_sdk.api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
 
 
 @click.command()
 @click.argument("grant_type", type=str)
+@click.option("--auth_trust_id", "auth_trust_id", type=str)
 @click.option("--device_id", "device_id", type=str)
 @click.option("--client_id", "client_id", type=str)
 @click.option("--code", "code", type=str)
@@ -51,6 +52,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
 @click.option("--doc", type=bool)
 def token_grant_v3(
     grant_type: str,
+    auth_trust_id: Optional[str] = None,
     device_id: Optional[str] = None,
     client_id: Optional[str] = None,
     code: Optional[str] = None,
@@ -74,6 +76,7 @@ def token_grant_v3(
         login_as_internal(login_as)
     result, error = token_grant_v3_internal(
         grant_type=grant_type,
+        auth_trust_id=auth_trust_id,
         device_id=device_id,
         client_id=client_id,
         code=code,

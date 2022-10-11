@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.17.0)
+# justice-iam-service (5.18.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -342,6 +342,18 @@ from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_game_token_response_v3 import request_game_token_response_v3
+from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
+from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
+from ._admin_get_user_device_bans_v4 import admin_get_user_device_bans_v4
+from ._admin_ban_device_v4 import admin_ban_device_v4
+from ._admin_get_device_ban_v4 import admin_get_device_ban_v4
+from ._admin_update_device_ban_v4 import admin_update_device_ban_v4
+from ._admin_generate_report_v4 import admin_generate_report_v4
+from ._admin_get_device_types_v4 import admin_get_device_types_v4
+from ._admin_get_device_bans_v4 import admin_get_device_bans_v4
+from ._admin_decrypt_device_v4 import admin_decrypt_device_v4
+from ._admin_unban_device_v4 import admin_unban_device_v4
+from ._admin_get_users_by_device_v4 import admin_get_users_by_device_v4
 from ._admin_create_test_users_v4 import admin_create_test_users_v4
 from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
@@ -671,6 +683,18 @@ commands = [
     login_sso_client,
     logout_sso_client,
     request_game_token_response_v3,
+    admin_get_devices_by_user_v4,
+    admin_get_banned_devices_v4,
+    admin_get_user_device_bans_v4,
+    admin_ban_device_v4,
+    admin_get_device_ban_v4,
+    admin_update_device_ban_v4,
+    admin_generate_report_v4,
+    admin_get_device_types_v4,
+    admin_get_device_bans_v4,
+    admin_decrypt_device_v4,
+    admin_unban_device_v4,
+    admin_get_users_by_device_v4,
     admin_create_test_users_v4,
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,

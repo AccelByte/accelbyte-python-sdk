@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.1.2)
+# justice-basic-service (2.1.3)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -64,6 +64,12 @@ from ._public_get_namespace_publisher import public_get_namespace_publisher
 from ._get_my_profile_info import get_my_profile_info
 from ._update_my_profile import update_my_profile
 from ._create_my_profile import create_my_profile
+from ._get_my_private_custom_attributes_info import (
+    get_my_private_custom_attributes_info,
+)
+from ._update_my_private_custom_attributes_partially import (
+    update_my_private_custom_attributes_partially,
+)
 from ._get_my_zip_code import get_my_zip_code
 from ._update_my_zip_code import update_my_zip_code
 from ._public_report_user import public_report_user
@@ -130,6 +136,8 @@ commands = [
     get_my_profile_info,
     update_my_profile,
     create_my_profile,
+    get_my_private_custom_attributes_info,
+    update_my_private_custom_attributes_partially,
     get_my_zip_code,
     update_my_zip_code,
     public_report_user,

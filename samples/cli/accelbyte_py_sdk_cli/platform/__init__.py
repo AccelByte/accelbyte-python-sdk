@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.14.1)
+# justice-platform-service (4.15.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -118,6 +118,7 @@ from ._update_item_purchase_condition import update_item_purchase_condition
 from ._return_item import return_item
 from ._query_key_groups import query_key_groups
 from ._create_key_group import create_key_group
+from ._get_key_group_by_booth_name import get_key_group_by_booth_name
 from ._get_key_group import get_key_group
 from ._update_key_group import update_key_group
 from ._get_key_group_dynamic import get_key_group_dynamic
@@ -419,6 +420,8 @@ from ._public_get_user_subscription_billing_histories import (
 from ._public_get_wallet import public_get_wallet
 from ._public_list_user_wallet_transactions import public_list_user_wallet_transactions
 from ._query_items_1 import query_items_1
+from ._import_store_1 import import_store_1
+from ._export_store_1 import export_store_1
 
 
 commands = [
@@ -532,6 +535,7 @@ commands = [
     return_item,
     query_key_groups,
     create_key_group,
+    get_key_group_by_booth_name,
     get_key_group,
     update_key_group,
     get_key_group_dynamic,
@@ -777,4 +781,6 @@ commands = [
     public_get_wallet,
     public_list_user_wallet_transactions,
     query_items_1,
+    import_store_1,
+    export_store_1,
 ]
