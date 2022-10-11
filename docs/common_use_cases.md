@@ -860,6 +860,26 @@ def test_admin_get_user_by_user_id_v3(self):
     # assert
     self.assertIsNone(error, error)
 ```
+### Admin List Users V3
+
+```python
+def test_admin_list_users_v3(self):
+    from accelbyte_py_sdk.api.iam import admin_list_users_v3
+
+    # arrange
+    _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+    self.log_warning(
+        msg=f"Failed to set up user. {str(error)}", condition=error is not None
+    )
+    self.user_id = user_id
+
+    # act
+    result, error = admin_list_users_v3()
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertIsNotNone(result)
+```
 ### Admin Update User V4
 
 ```python
@@ -1696,9 +1716,7 @@ def test_update_session(self):
 
     # act
     result, error = update_session(
-        body=ModelsUpdateSessionRequest.create(
-            game_current_player=1, game_max_player=1
-        ),
+        body=ModelsUpdateSessionRequest.create(game_max_player=1),
         session_id=self.session_id,
     )
 
@@ -1708,7 +1726,6 @@ def test_update_session(self):
     self.assertIsInstance(result, ModelsSessionResponse)
     self.assertIsNotNone(result)
     self.assertIsNotNone(result.game_session_setting)
-    self.assertEqual(1, result.game_session_setting.current_player)
     self.assertEqual(1, result.game_session_setting.max_player)
 ```
 ## Social
