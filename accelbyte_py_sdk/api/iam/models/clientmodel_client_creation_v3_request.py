@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,8 @@ class ClientmodelClientCreationV3Request(Model):
         secret: (secret) REQUIRED str
 
         deletable: (deletable) OPTIONAL bool
+
+        two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
     """
 
     # region fields
@@ -70,6 +72,7 @@ class ClientmodelClientCreationV3Request(Model):
     redirect_uri: str  # REQUIRED
     secret: str  # REQUIRED
     deletable: bool  # OPTIONAL
+    two_factor_enabled: bool  # OPTIONAL
 
     # endregion fields
 
@@ -119,6 +122,12 @@ class ClientmodelClientCreationV3Request(Model):
 
     def with_deletable(self, value: bool) -> ClientmodelClientCreationV3Request:
         self.deletable = value
+        return self
+
+    def with_two_factor_enabled(
+        self, value: bool
+    ) -> ClientmodelClientCreationV3Request:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -174,6 +183,10 @@ class ClientmodelClientCreationV3Request(Model):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
             result["deletable"] = False
+        if hasattr(self, "two_factor_enabled"):
+            result["twoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["twoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -194,6 +207,7 @@ class ClientmodelClientCreationV3Request(Model):
         redirect_uri: str,
         secret: str,
         deletable: Optional[bool] = None,
+        two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientCreationV3Request:
         instance = cls()
         instance.audiences = audiences
@@ -208,6 +222,8 @@ class ClientmodelClientCreationV3Request(Model):
         instance.secret = secret
         if deletable is not None:
             instance.deletable = deletable
+        if two_factor_enabled is not None:
+            instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -266,6 +282,10 @@ class ClientmodelClientCreationV3Request(Model):
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
             instance.deletable = False
+        if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -320,6 +340,7 @@ class ClientmodelClientCreationV3Request(Model):
             "redirectUri": "redirect_uri",
             "secret": "secret",
             "deletable": "deletable",
+            "twoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -336,6 +357,7 @@ class ClientmodelClientCreationV3Request(Model):
             "redirectUri": True,
             "secret": True,
             "deletable": False,
+            "twoFactorEnabled": False,
         }
 
     # endregion static methods

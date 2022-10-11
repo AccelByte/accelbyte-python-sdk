@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.1"
+__version__ = "4.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -445,6 +445,8 @@ from .wrappers import create_key_group
 from .wrappers import create_key_group_async
 from .wrappers import get_key_group
 from .wrappers import get_key_group_async
+from .wrappers import get_key_group_by_booth_name
+from .wrappers import get_key_group_by_booth_name_async
 from .wrappers import get_key_group_dynamic
 from .wrappers import get_key_group_dynamic_async
 from .wrappers import list_keys
@@ -671,6 +673,8 @@ from .wrappers import delete_store
 from .wrappers import delete_store_async
 from .wrappers import export_store
 from .wrappers import export_store_async
+from .wrappers import export_store_1
+from .wrappers import export_store_1_async
 from .wrappers import get_published_store
 from .wrappers import get_published_store_async
 from .wrappers import get_published_store_backup
@@ -679,6 +683,8 @@ from .wrappers import get_store
 from .wrappers import get_store_async
 from .wrappers import import_store
 from .wrappers import import_store_async
+from .wrappers import import_store_1
+from .wrappers import import_store_1_async
 from .wrappers import list_stores
 from .wrappers import list_stores_async
 from .wrappers import public_list_stores

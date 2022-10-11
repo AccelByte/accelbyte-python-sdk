@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "3.7.0"
+__version__ = "3.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .log_app_message_declaration import LogAppMessageDeclaration
+from .models_allocation_event import ModelsAllocationEvent
 from .models_claim_session_request import ModelsClaimSessionRequest
 from .models_count_server_response import ModelsCountServerResponse
 from .models_count_session_response import ModelsCountSessionResponse

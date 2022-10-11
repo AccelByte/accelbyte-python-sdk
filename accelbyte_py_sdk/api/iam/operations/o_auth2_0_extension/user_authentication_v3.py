@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,13 +34,20 @@ class UserAuthenticationV3(Operation):
     """Authentication API (UserAuthenticationV3)
 
     This endpoint is being used to authenticate a user account.
-    It validates user's email / username and password. Deactivated or login-banned users are unable to login
-    Redirect URI and Client ID must be specified as a pair and only used to redirect to the specified
-    redirect URI in case the requestId is no longer valid.
+    It validates user's email / username and password.
+    Deactivated or login-banned users are unable to login.
+    Redirect URI and Client ID must be specified as a pair and only used to redirect to the specified redirect URI in case the requestId is no longer valid.
 
 
 
-    action code: 10801
+    ## Device Cookie Validation
+
+
+
+    Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP.
+    This endpoint will read device cookie from cookie auth-trust-id. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+
+    Action code: 10801
 
     Properties:
         url: /iam/v3/authenticate

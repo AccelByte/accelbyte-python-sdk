@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ds Log Manager Service (2.4.2)
+# AccelByte Cloud Ds Log Manager Service (2.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_allocation_event import ModelsAllocationEvent
 from ..models.models_status_history import ModelsStatusHistory
 
 
@@ -34,6 +35,8 @@ class ModelsServer(Model):
     """Models server (models.Server)
 
     Properties:
+        allocation_events: (allocation_events) REQUIRED List[ModelsAllocationEvent]
+
         allocation_id: (allocation_id) REQUIRED str
 
         alternate_ips: (alternate_ips) REQUIRED List[str]
@@ -83,6 +86,7 @@ class ModelsServer(Model):
 
     # region fields
 
+    allocation_events: List[ModelsAllocationEvent]  # REQUIRED
     allocation_id: str  # REQUIRED
     alternate_ips: List[str]  # REQUIRED
     cpu_limit: int  # REQUIRED
@@ -110,6 +114,12 @@ class ModelsServer(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_allocation_events(
+        self, value: List[ModelsAllocationEvent]
+    ) -> ModelsServer:
+        self.allocation_events = value
+        return self
 
     def with_allocation_id(self, value: str) -> ModelsServer:
         self.allocation_id = value
@@ -209,6 +219,12 @@ class ModelsServer(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allocation_events"):
+            result["allocation_events"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
+            ]
+        elif include_empty:
+            result["allocation_events"] = []
         if hasattr(self, "allocation_id"):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
@@ -312,6 +328,7 @@ class ModelsServer(Model):
     @classmethod
     def create(
         cls,
+        allocation_events: List[ModelsAllocationEvent],
         allocation_id: str,
         alternate_ips: List[str],
         cpu_limit: int,
@@ -337,6 +354,7 @@ class ModelsServer(Model):
         status_history: List[ModelsStatusHistory],
     ) -> ModelsServer:
         instance = cls()
+        instance.allocation_events = allocation_events
         instance.allocation_id = allocation_id
         instance.alternate_ips = alternate_ips
         instance.cpu_limit = cpu_limit
@@ -367,6 +385,13 @@ class ModelsServer(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
+            instance.allocation_events = [
+                ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["allocation_events"]
+            ]
+        elif include_empty:
+            instance.allocation_events = []
         if "allocation_id" in dict_ and dict_["allocation_id"] is not None:
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
@@ -504,6 +529,7 @@ class ModelsServer(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allocation_events": "allocation_events",
             "allocation_id": "allocation_id",
             "alternate_ips": "alternate_ips",
             "cpu_limit": "cpu_limit",
@@ -532,6 +558,7 @@ class ModelsServer(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "allocation_events": True,
             "allocation_id": True,
             "alternate_ips": True,
             "cpu_limit": True,

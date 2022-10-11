@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.1)
+# AccelByte Cloud Platform Service (4.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,8 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import EntitlementDecrement
-from ...models import EntitlementInfo
 from ...models import ErrorEntity
+from ...models import TrackedEntitlementInfo
 
 
 class ConsumeUserEntitlement(Operation):
@@ -68,11 +68,11 @@ class ConsumeUserEntitlement(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - EntitlementInfo (successful operation)
+        200: OK - TrackedEntitlementInfo (successful operation)
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
     """
 
     # region fields
@@ -201,14 +201,16 @@ class ConsumeUserEntitlement(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, EntitlementInfo], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, TrackedEntitlementInfo], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        200: OK - EntitlementInfo (successful operation)
+        200: OK - TrackedEntitlementInfo (successful operation)
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -224,7 +226,7 @@ class ConsumeUserEntitlement(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return EntitlementInfo.create_from_dict(content), None
+            return TrackedEntitlementInfo.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,12 +35,15 @@ class ClientmodelClientUpdateRequest(Model):
         client_name: (ClientName) REQUIRED str
 
         redirect_uri: (RedirectUri) REQUIRED str
+
+        two_factor_enabled: (TwoFactorEnabled) REQUIRED bool
     """
 
     # region fields
 
     client_name: str  # REQUIRED
     redirect_uri: str  # REQUIRED
+    two_factor_enabled: bool  # REQUIRED
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ClientmodelClientUpdateRequest(Model):
 
     def with_redirect_uri(self, value: str) -> ClientmodelClientUpdateRequest:
         self.redirect_uri = value
+        return self
+
+    def with_two_factor_enabled(self, value: bool) -> ClientmodelClientUpdateRequest:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ClientmodelClientUpdateRequest(Model):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = ""
+        if hasattr(self, "two_factor_enabled"):
+            result["TwoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["TwoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -79,10 +90,12 @@ class ClientmodelClientUpdateRequest(Model):
         cls,
         client_name: str,
         redirect_uri: str,
+        two_factor_enabled: bool,
     ) -> ClientmodelClientUpdateRequest:
         instance = cls()
         instance.client_name = client_name
         instance.redirect_uri = redirect_uri
+        instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -100,6 +113,10 @@ class ClientmodelClientUpdateRequest(Model):
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
             instance.redirect_uri = ""
+        if "TwoFactorEnabled" in dict_ and dict_["TwoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["TwoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -145,6 +162,7 @@ class ClientmodelClientUpdateRequest(Model):
         return {
             "ClientName": "client_name",
             "RedirectUri": "redirect_uri",
+            "TwoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -152,6 +170,7 @@ class ClientmodelClientUpdateRequest(Model):
         return {
             "ClientName": True,
             "RedirectUri": True,
+            "TwoFactorEnabled": True,
         }
 
     # endregion static methods

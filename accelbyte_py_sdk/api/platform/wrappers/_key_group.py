@@ -41,6 +41,7 @@ from ..models import ValidationErrorEntity
 
 from ..operations.key_group import CreateKeyGroup
 from ..operations.key_group import GetKeyGroup
+from ..operations.key_group import GetKeyGroupByBoothName
 from ..operations.key_group import GetKeyGroupDynamic
 from ..operations.key_group import ListKeys
 from ..operations.key_group import ListKeysStatusEnum
@@ -121,6 +122,44 @@ async def get_key_group_async(
             return None, error
     request = GetKeyGroup.create(
         key_group_id=key_group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetKeyGroupByBoothName)
+def get_key_group_by_booth_name(
+    booth_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetKeyGroupByBoothName.create(
+        booth_name=booth_name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetKeyGroupByBoothName)
+async def get_key_group_by_booth_name_async(
+    booth_name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetKeyGroupByBoothName.create(
+        booth_name=booth_name,
         namespace=namespace,
     )
     return await run_request_async(

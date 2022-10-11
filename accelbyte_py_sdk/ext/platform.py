@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.14.1)
+# AccelByte Cloud Platform Service (4.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -103,6 +103,7 @@ from ..api.platform.models import EpicGamesReconcileRequest
 from ..api.platform.models import EpicGamesReconcileResult
 from ..api.platform.models import ErrorEntity
 from ..api.platform.models import EventPayload
+from ..api.platform.models import ExportStoreRequest
 from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
@@ -135,6 +136,10 @@ from ..api.platform.models import IAPItemEntry
 from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
+from ..api.platform.models import ImportErrorDetails
+from ..api.platform.models import ImportStoreError
+from ..api.platform.models import ImportStoreItemInfo
+from ..api.platform.models import ImportStoreResult
 from ..api.platform.models import InGameItemSync
 from ..api.platform.models import InvoiceCurrencySummary
 from ..api.platform.models import InvoiceSummary
@@ -281,6 +286,7 @@ from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
 from ..api.platform.models import TimeLimitedBalance
 from ..api.platform.models import TimedOwnership
+from ..api.platform.models import TrackedEntitlementInfo
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
 from ..api.platform.models import TransactionAmountDetails
@@ -1011,6 +1017,7 @@ def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
 def create_entitlement_decrement_example() -> EntitlementDecrement:
     instance = EntitlementDecrement()
     instance.options = [randomize()]
+    instance.request_id = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -1162,6 +1169,12 @@ def create_error_entity_example() -> ErrorEntity:
 def create_event_payload_example() -> EventPayload:
     instance = EventPayload()
     instance.payload = {randomize(): randomize()}
+    return instance
+
+
+def create_export_store_request_example() -> ExportStoreRequest:
+    instance = ExportStoreRequest()
+    instance.item_ids = [randomize()]
     return instance
 
 
@@ -1541,6 +1554,41 @@ def create_image_example() -> Image:
     instance.width = randomize("int", min_val=1, max_val=1000)
     instance.as_ = randomize()
     instance.caption = randomize()
+    return instance
+
+
+def create_import_error_details_example() -> ImportErrorDetails:
+    instance = ImportErrorDetails()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
+    instance.message_variables = {randomize(): randomize()}
+    return instance
+
+
+def create_import_store_error_example() -> ImportStoreError:
+    instance = ImportStoreError()
+    instance.errors = [create_import_error_details_example()]
+    instance.item = create_import_store_item_info_example()
+    instance.type_ = randomize()
+    return instance
+
+
+def create_import_store_item_info_example() -> ImportStoreItemInfo:
+    instance = ImportStoreItemInfo()
+    instance.category_path = randomize()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.sku = randomize("slug")
+    return instance
+
+
+def create_import_store_result_example() -> ImportStoreResult:
+    instance = ImportStoreResult()
+    instance.errors = [create_import_store_error_example()]
+    instance.store_info = create_store_info_example()
+    instance.success = randomize("bool")
     return instance
 
 
@@ -3268,6 +3316,37 @@ def create_timed_ownership_example() -> TimedOwnership:
     instance = TimedOwnership()
     instance.owned = randomize("bool")
     instance.end_date = randomize("date")
+    return instance
+
+
+def create_tracked_entitlement_info_example() -> TrackedEntitlementInfo:
+    instance = TrackedEntitlementInfo()
+    instance.clazz = randomize()
+    instance.created_at = randomize("date")
+    instance.granted_at = randomize("date")
+    instance.id_ = randomize()
+    instance.item_id = randomize()
+    instance.item_namespace = randomize("slug")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.source = randomize()
+    instance.status = randomize()
+    instance.type_ = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.app_id = randomize("uid")
+    instance.app_type = randomize()
+    instance.end_date = randomize("date")
+    instance.features = [randomize()]
+    instance.granted_code = randomize()
+    instance.item_snapshot = create_item_snapshot_example()
+    instance.replayed = randomize("bool")
+    instance.request_id = randomize()
+    instance.sku = randomize("slug")
+    instance.stackable = randomize("bool")
+    instance.start_date = randomize("date")
+    instance.store_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

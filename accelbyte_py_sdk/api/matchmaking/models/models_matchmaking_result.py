@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.15.8)
+# AccelByte Cloud Matchmaking Service (2.16.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,10 @@ class ModelsMatchmakingResult(Model):
 
         deployment: (deployment) REQUIRED str
 
+        error_code: (error_code) REQUIRED int
+
+        error_message: (error_message) REQUIRED str
+
         game_mode: (game_mode) REQUIRED str
 
         match_id: (match_id) REQUIRED str
@@ -72,6 +76,8 @@ class ModelsMatchmakingResult(Model):
     channel: str  # REQUIRED
     client_version: str  # REQUIRED
     deployment: str  # REQUIRED
+    error_code: int  # REQUIRED
+    error_message: str  # REQUIRED
     game_mode: str  # REQUIRED
     match_id: str  # REQUIRED
     matching_allies: List[ModelsMatchingAlly]  # REQUIRED
@@ -100,6 +106,14 @@ class ModelsMatchmakingResult(Model):
 
     def with_deployment(self, value: str) -> ModelsMatchmakingResult:
         self.deployment = value
+        return self
+
+    def with_error_code(self, value: int) -> ModelsMatchmakingResult:
+        self.error_code = value
+        return self
+
+    def with_error_message(self, value: str) -> ModelsMatchmakingResult:
+        self.error_message = value
         return self
 
     def with_game_mode(self, value: str) -> ModelsMatchmakingResult:
@@ -174,6 +188,14 @@ class ModelsMatchmakingResult(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
+        if hasattr(self, "error_code"):
+            result["error_code"] = int(self.error_code)
+        elif include_empty:
+            result["error_code"] = 0
+        if hasattr(self, "error_message"):
+            result["error_message"] = str(self.error_message)
+        elif include_empty:
+            result["error_message"] = ""
         if hasattr(self, "game_mode"):
             result["game_mode"] = str(self.game_mode)
         elif include_empty:
@@ -242,6 +264,8 @@ class ModelsMatchmakingResult(Model):
         channel: str,
         client_version: str,
         deployment: str,
+        error_code: int,
+        error_message: str,
         game_mode: str,
         match_id: str,
         matching_allies: List[ModelsMatchingAlly],
@@ -260,6 +284,8 @@ class ModelsMatchmakingResult(Model):
         instance.channel = channel
         instance.client_version = client_version
         instance.deployment = deployment
+        instance.error_code = error_code
+        instance.error_message = error_message
         instance.game_mode = game_mode
         instance.match_id = match_id
         instance.matching_allies = matching_allies
@@ -296,6 +322,14 @@ class ModelsMatchmakingResult(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
+        if "error_code" in dict_ and dict_["error_code"] is not None:
+            instance.error_code = int(dict_["error_code"])
+        elif include_empty:
+            instance.error_code = 0
+        if "error_message" in dict_ and dict_["error_message"] is not None:
+            instance.error_message = str(dict_["error_message"])
+        elif include_empty:
+            instance.error_message = ""
         if "game_mode" in dict_ and dict_["game_mode"] is not None:
             instance.game_mode = str(dict_["game_mode"])
         elif include_empty:
@@ -399,6 +433,8 @@ class ModelsMatchmakingResult(Model):
             "channel": "channel",
             "client_version": "client_version",
             "deployment": "deployment",
+            "error_code": "error_code",
+            "error_message": "error_message",
             "game_mode": "game_mode",
             "match_id": "match_id",
             "matching_allies": "matching_allies",
@@ -420,6 +456,8 @@ class ModelsMatchmakingResult(Model):
             "channel": True,
             "client_version": True,
             "deployment": True,
+            "error_code": True,
+            "error_message": True,
             "game_mode": True,
             "match_id": True,
             "matching_allies": True,

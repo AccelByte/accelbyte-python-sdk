@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Ds Log Manager Service Index (2.4.2)
+# AccelByte Cloud Ds Log Manager Service Index (2.4.3)
 
 
 ## Operations
@@ -30,6 +30,7 @@
 | Model | Class |
 |---|---|
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/dslogmanager/models/log_app_message_declaration.py) |
+| models.AllocationEvent | [ModelsAllocationEvent](../../accelbyte_py_sdk/api/dslogmanager/models/models_allocation_event.py) |
 | models.BatchDownloadLogsRequest | [ModelsBatchDownloadLogsRequest](../../accelbyte_py_sdk/api/dslogmanager/models/models_batch_download_logs_request.py) |
 | models.DownloadLogsRequest | [ModelsDownloadLogsRequest](../../accelbyte_py_sdk/api/dslogmanager/models/models_download_logs_request.py) |
 | models.ListTerminatedServersResponse | [ModelsListTerminatedServersResponse](../../accelbyte_py_sdk/api/dslogmanager/models/models_list_terminated_servers_response.py) |

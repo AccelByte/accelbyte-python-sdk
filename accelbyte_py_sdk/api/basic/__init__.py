@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Basic Service."""
 
-__version__ = "2.1.2"
+__version__ = "2.1.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -105,6 +105,8 @@ from .wrappers import delete_user_profile
 from .wrappers import delete_user_profile_async
 from .wrappers import get_custom_attributes_info
 from .wrappers import get_custom_attributes_info_async
+from .wrappers import get_my_private_custom_attributes_info
+from .wrappers import get_my_private_custom_attributes_info_async
 from .wrappers import get_my_profile_info
 from .wrappers import get_my_profile_info_async
 from .wrappers import get_my_zip_code
@@ -135,6 +137,8 @@ from .wrappers import public_update_user_profile_status
 from .wrappers import public_update_user_profile_status_async
 from .wrappers import update_custom_attributes_partially
 from .wrappers import update_custom_attributes_partially_async
+from .wrappers import update_my_private_custom_attributes_partially
+from .wrappers import update_my_private_custom_attributes_partially_async
 from .wrappers import update_my_profile
 from .wrappers import update_my_profile_async
 from .wrappers import update_my_zip_code

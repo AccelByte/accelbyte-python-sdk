@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,8 +38,17 @@ class AuthenticationWithPlatformLinkV3(Operation):
     """Authentication with platform link (AuthenticationWithPlatformLinkV3)
 
     This endpoint is being used to authenticate a user account and perform platform link.
-    It validates user's email / username and password. If user already enable 2FA,
-    invoke ''/mfa/verify' with response's mfa_token'
+    It validates user's email / username and password.
+    If user already enable 2FA, then invoke /mfa/verify using mfa_token from this endpoint response.
+
+
+
+    ## Device Cookie Validation
+
+
+
+    Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP.
+    This endpoint will read device cookie from cookie auth-trust-id. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
 
     Properties:
         url: /iam/v3/authenticateWithLink

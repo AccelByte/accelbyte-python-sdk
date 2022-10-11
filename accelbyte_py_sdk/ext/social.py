@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.29.5)
+# AccelByte Cloud Social Service (1.29.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -363,6 +363,7 @@ def create_stat_reset_info_example() -> StatResetInfo:
 
 def create_stat_update_example() -> StatUpdate:
     instance = StatUpdate()
+    instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
     instance.name = randomize()
     instance.tags = [randomize()]

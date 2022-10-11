@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.1"
+__version__ = "4.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -192,6 +192,7 @@ from .epic_games_reconcile_result import (
 )
 from .error_entity import ErrorEntity
 from .event_payload import EventPayload
+from .export_store_request import ExportStoreRequest
 from .extension_fulfillment_summary import ExtensionFulfillmentSummary
 from .extension_fulfillment_summary import (
     ItemTypeEnum as ExtensionFulfillmentSummaryItemTypeEnum,
@@ -260,6 +261,12 @@ from .iap_order_info import (
 )
 from .iap_order_paging_sliced_result import IAPOrderPagingSlicedResult
 from .image import Image
+from .import_error_details import ImportErrorDetails
+from .import_store_error import ImportStoreError
+from .import_store_error import TypeEnum as ImportStoreErrorTypeEnum
+from .import_store_item_info import ImportStoreItemInfo
+from .import_store_item_info import ItemTypeEnum as ImportStoreItemInfoItemTypeEnum
+from .import_store_result import ImportStoreResult
 from .in_game_item_sync import InGameItemSync
 from .invoice_currency_summary import InvoiceCurrencySummary
 from .invoice_summary import InvoiceSummary
@@ -567,6 +574,14 @@ from .ticket_sale_increment_request import TicketSaleIncrementRequest
 from .ticket_sale_increment_result import TicketSaleIncrementResult
 from .time_limited_balance import TimeLimitedBalance
 from .timed_ownership import TimedOwnership
+from .tracked_entitlement_info import TrackedEntitlementInfo
+from .tracked_entitlement_info import (
+    AppTypeEnum as TrackedEntitlementInfoAppTypeEnum,
+    ClazzEnum as TrackedEntitlementInfoClazzEnum,
+    SourceEnum as TrackedEntitlementInfoSourceEnum,
+    StatusEnum as TrackedEntitlementInfoStatusEnum,
+    TypeEnum as TrackedEntitlementInfoTypeEnum,
+)
 from .trade_notification import TradeNotification
 from .trade_notification import (
     PaymentProviderEnum as TradeNotificationPaymentProviderEnum,

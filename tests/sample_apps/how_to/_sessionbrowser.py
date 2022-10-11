@@ -152,9 +152,7 @@ class SessionBrowserTestCase(IntegrationTestCase):
 
         # act
         result, error = update_session(
-            body=ModelsUpdateSessionRequest.create(
-                game_max_player=1
-            ),
+            body=ModelsUpdateSessionRequest.create(game_max_player=1),
             session_id=self.session_id,
         )
 

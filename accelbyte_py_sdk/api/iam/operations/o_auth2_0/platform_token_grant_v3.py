@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -322,6 +322,8 @@ class PlatformTokenGrantV3(Operation):
 
         device_id: (device_id) OPTIONAL str in form_data
 
+        mac_address: (macAddress) OPTIONAL str in form_data
+
         platform_token: (platform_token) OPTIONAL str in form_data
 
         platform_id: (platformId) REQUIRED str in path
@@ -332,6 +334,8 @@ class PlatformTokenGrantV3(Operation):
         400: Bad Request - OauthmodelErrorResponse (General request error)
 
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
+
+        403: Forbidden - OauthmodelErrorResponse (Forbidden)
     """
 
     # region fields
@@ -346,6 +350,7 @@ class PlatformTokenGrantV3(Operation):
     client_id: str  # OPTIONAL in [form_data]
     create_headless: bool  # OPTIONAL in [form_data]
     device_id: str  # OPTIONAL in [form_data]
+    mac_address: str  # OPTIONAL in [form_data]
     platform_token: str  # OPTIONAL in [form_data]
     platform_id: str  # REQUIRED in [path]
 
@@ -399,6 +404,8 @@ class PlatformTokenGrantV3(Operation):
             result["createHeadless"] = self.create_headless
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
+        if hasattr(self, "mac_address"):
+            result["macAddress"] = self.mac_address
         if hasattr(self, "platform_token"):
             result["platform_token"] = self.platform_token
         return result
@@ -429,6 +436,10 @@ class PlatformTokenGrantV3(Operation):
         self.device_id = value
         return self
 
+    def with_mac_address(self, value: str) -> PlatformTokenGrantV3:
+        self.mac_address = value
+        return self
+
     def with_platform_token(self, value: str) -> PlatformTokenGrantV3:
         self.platform_token = value
         return self
@@ -455,6 +466,10 @@ class PlatformTokenGrantV3(Operation):
             result["device_id"] = str(self.device_id)
         elif include_empty:
             result["device_id"] = ""
+        if hasattr(self, "mac_address") and self.mac_address:
+            result["macAddress"] = str(self.mac_address)
+        elif include_empty:
+            result["macAddress"] = ""
         if hasattr(self, "platform_token") and self.platform_token:
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
@@ -484,6 +499,8 @@ class PlatformTokenGrantV3(Operation):
 
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
+        403: Forbidden - OauthmodelErrorResponse (Forbidden)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -503,6 +520,8 @@ class PlatformTokenGrantV3(Operation):
             return None, OauthmodelErrorResponse.create_from_dict(content)
         if code == 401:
             return None, OauthmodelErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, OauthmodelErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -519,6 +538,7 @@ class PlatformTokenGrantV3(Operation):
         client_id: Optional[str] = None,
         create_headless: Optional[bool] = None,
         device_id: Optional[str] = None,
+        mac_address: Optional[str] = None,
         platform_token: Optional[str] = None,
     ) -> PlatformTokenGrantV3:
         instance = cls()
@@ -529,6 +549,8 @@ class PlatformTokenGrantV3(Operation):
             instance.create_headless = create_headless
         if device_id is not None:
             instance.device_id = device_id
+        if mac_address is not None:
+            instance.mac_address = mac_address
         if platform_token is not None:
             instance.platform_token = platform_token
         return instance
@@ -550,6 +572,10 @@ class PlatformTokenGrantV3(Operation):
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
             instance.device_id = ""
+        if "macAddress" in dict_ and dict_["macAddress"] is not None:
+            instance.mac_address = str(dict_["macAddress"])
+        elif include_empty:
+            instance.mac_address = ""
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
@@ -566,6 +592,7 @@ class PlatformTokenGrantV3(Operation):
             "client_id": "client_id",
             "createHeadless": "create_headless",
             "device_id": "device_id",
+            "macAddress": "mac_address",
             "platform_token": "platform_token",
             "platformId": "platform_id",
         }
@@ -576,6 +603,7 @@ class PlatformTokenGrantV3(Operation):
             "client_id": False,
             "createHeadless": False,
             "device_id": False,
+            "macAddress": False,
             "platform_token": False,
             "platformId": True,
         }

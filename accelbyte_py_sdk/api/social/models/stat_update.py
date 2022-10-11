@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.29.5)
+# AccelByte Cloud Social Service (1.29.6)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,6 +32,8 @@ class StatUpdate(Model):
     """Stat update (StatUpdate)
 
     Properties:
+        default_value: (defaultValue) OPTIONAL float
+
         description: (description) OPTIONAL str
 
         name: (name) OPTIONAL str
@@ -41,6 +43,7 @@ class StatUpdate(Model):
 
     # region fields
 
+    default_value: float  # OPTIONAL
     description: str  # OPTIONAL
     name: str  # OPTIONAL
     tags: List[str]  # OPTIONAL
@@ -48,6 +51,10 @@ class StatUpdate(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_default_value(self, value: float) -> StatUpdate:
+        self.default_value = value
+        return self
 
     def with_description(self, value: str) -> StatUpdate:
         self.description = value
@@ -67,6 +74,10 @@ class StatUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "default_value"):
+            result["defaultValue"] = float(self.default_value)
+        elif include_empty:
+            result["defaultValue"] = 0.0
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -88,11 +99,14 @@ class StatUpdate(Model):
     @classmethod
     def create(
         cls,
+        default_value: Optional[float] = None,
         description: Optional[str] = None,
         name: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> StatUpdate:
         instance = cls()
+        if default_value is not None:
+            instance.default_value = default_value
         if description is not None:
             instance.description = description
         if name is not None:
@@ -106,6 +120,10 @@ class StatUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "defaultValue" in dict_ and dict_["defaultValue"] is not None:
+            instance.default_value = float(dict_["defaultValue"])
+        elif include_empty:
+            instance.default_value = 0.0
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -157,6 +175,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "defaultValue": "default_value",
             "description": "description",
             "name": "name",
             "tags": "tags",
@@ -165,6 +184,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "defaultValue": False,
             "description": False,
             "name": False,
             "tags": False,

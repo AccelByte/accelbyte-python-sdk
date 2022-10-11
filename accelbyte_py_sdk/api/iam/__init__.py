@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.17.0"
+__version__ = "5.18.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,6 +75,32 @@ from .wrappers import update_client_permission
 from .wrappers import update_client_permission_async
 from .wrappers import update_client_secret
 from .wrappers import update_client_secret_async
+
+# devices_v4
+from .wrappers import admin_ban_device_v4
+from .wrappers import admin_ban_device_v4_async
+from .wrappers import admin_decrypt_device_v4
+from .wrappers import admin_decrypt_device_v4_async
+from .wrappers import admin_generate_report_v4
+from .wrappers import admin_generate_report_v4_async
+from .wrappers import admin_get_banned_devices_v4
+from .wrappers import admin_get_banned_devices_v4_async
+from .wrappers import admin_get_device_ban_v4
+from .wrappers import admin_get_device_ban_v4_async
+from .wrappers import admin_get_device_bans_v4
+from .wrappers import admin_get_device_bans_v4_async
+from .wrappers import admin_get_device_types_v4
+from .wrappers import admin_get_device_types_v4_async
+from .wrappers import admin_get_devices_by_user_v4
+from .wrappers import admin_get_devices_by_user_v4_async
+from .wrappers import admin_get_user_device_bans_v4
+from .wrappers import admin_get_user_device_bans_v4_async
+from .wrappers import admin_get_users_by_device_v4
+from .wrappers import admin_get_users_by_device_v4_async
+from .wrappers import admin_unban_device_v4
+from .wrappers import admin_unban_device_v4_async
+from .wrappers import admin_update_device_ban_v4
+from .wrappers import admin_update_device_ban_v4_async
 
 # input_validations
 from .wrappers import admin_get_input_validations

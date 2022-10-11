@@ -39,6 +39,7 @@ from ..models import StatUpdate
 from ..operations.stat_configuration import CreateStat
 from ..operations.stat_configuration import CreateStat1
 from ..operations.stat_configuration import DeleteStat
+from ..operations.stat_configuration import DeleteTiedStat
 from ..operations.stat_configuration import ExportStats
 from ..operations.stat_configuration import GetStat
 from ..operations.stat_configuration import GetStats
@@ -155,6 +156,44 @@ async def delete_stat_async(
         if error:
             return None, error
     request = DeleteStat.create(
+        stat_code=stat_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteTiedStat)
+def delete_tied_stat(
+    stat_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteTiedStat.create(
+        stat_code=stat_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteTiedStat)
+async def delete_tied_stat_async(
+    stat_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteTiedStat.create(
         stat_code=stat_code,
         namespace=namespace,
     )

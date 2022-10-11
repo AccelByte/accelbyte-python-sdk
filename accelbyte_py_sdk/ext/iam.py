@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -117,6 +117,18 @@ from ..api.iam.models import ModelCountryAgeRestrictionRequest
 from ..api.iam.models import ModelCountryAgeRestrictionV3Request
 from ..api.iam.models import ModelCountryV3Response
 from ..api.iam.models import ModelCreateJusticeUserResponse
+from ..api.iam.models import ModelDeviceBanRequestV4
+from ..api.iam.models import ModelDeviceBanResponseV4
+from ..api.iam.models import ModelDeviceBanUpdateRequestV4
+from ..api.iam.models import ModelDeviceBannedResponseV4
+from ..api.iam.models import ModelDeviceBansResponseV4
+from ..api.iam.models import ModelDeviceIDDecryptResponseV4
+from ..api.iam.models import ModelDeviceResponseV4
+from ..api.iam.models import ModelDeviceTypeResponseV4
+from ..api.iam.models import ModelDeviceTypesResponseV4
+from ..api.iam.models import ModelDeviceUserResponseV4
+from ..api.iam.models import ModelDeviceUsersResponseV4
+from ..api.iam.models import ModelDevicesResponseV4
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelEnabledFactorsResponseV4
@@ -254,6 +266,7 @@ from ..api.iam.models import OauthmodelTokenIntrospectResponse
 from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
+from ..api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
 from ..api.iam.models import RestapiErrorResponse
@@ -850,6 +863,7 @@ def create_clientmodel_client_create_request_example() -> ClientmodelClientCreat
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
     instance.secret = randomize()
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -860,6 +874,7 @@ def create_clientmodel_client_creation_response_example() -> ClientmodelClientCr
     instance.client_permissions = [create_accountcommon_permission_example()]
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -876,6 +891,7 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.redirect_uri = randomize()
     instance.secret = randomize()
     instance.deletable = randomize("bool")
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -887,6 +903,7 @@ def create_clientmodel_client_response_example() -> ClientmodelClientResponse:
     instance.created_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -894,6 +911,7 @@ def create_clientmodel_client_update_request_example() -> ClientmodelClientUpdat
     instance = ClientmodelClientUpdateRequest()
     instance.client_name = randomize()
     instance.redirect_uri = randomize()
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -913,6 +931,7 @@ def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUp
     instance.deletable = randomize("bool")
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -930,6 +949,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
     instance.scopes = [randomize()]
+    instance.two_factor_enabled = randomize("bool")
     return instance
 
 
@@ -1097,6 +1117,105 @@ def create_model_create_justice_user_response_example() -> ModelCreateJusticeUse
     instance = ModelCreateJusticeUserResponse()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_device_ban_request_v4_example() -> ModelDeviceBanRequestV4:
+    instance = ModelDeviceBanRequestV4()
+    instance.comment = randomize()
+    instance.device_id = randomize()
+    instance.device_type = randomize()
+    instance.enabled = randomize("bool")
+    instance.end_date = randomize()
+    instance.ext = {randomize(): randomize()}
+    instance.reason = randomize()
+    return instance
+
+
+def create_model_device_ban_response_v4_example() -> ModelDeviceBanResponseV4:
+    instance = ModelDeviceBanResponseV4()
+    instance.banned_at = randomize("int", min_val=1, max_val=1000)
+    instance.banned_by = randomize()
+    instance.comment = randomize()
+    instance.device_id = randomize()
+    instance.device_type = randomize()
+    instance.disabled_at = randomize("int", min_val=1, max_val=1000)
+    instance.enabled = randomize("bool")
+    instance.end_date = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.reason = randomize()
+    instance.target_namespace = randomize("slug")
+    return instance
+
+
+def create_model_device_ban_update_request_v4_example() -> ModelDeviceBanUpdateRequestV4:
+    instance = ModelDeviceBanUpdateRequestV4()
+    instance.enabled = randomize("bool")
+    return instance
+
+
+def create_model_device_banned_response_v4_example() -> ModelDeviceBannedResponseV4:
+    instance = ModelDeviceBannedResponseV4()
+    instance.data = [create_model_device_ban_response_v4_example()]
+    instance.paging = create_accountcommon_pagination_example()
+    return instance
+
+
+def create_model_device_bans_response_v4_example() -> ModelDeviceBansResponseV4:
+    instance = ModelDeviceBansResponseV4()
+    instance.data = [create_model_device_ban_response_v4_example()]
+    return instance
+
+
+def create_model_device_id_decrypt_response_v4_example() -> ModelDeviceIDDecryptResponseV4:
+    instance = ModelDeviceIDDecryptResponseV4()
+    instance.device_id = randomize()
+    return instance
+
+
+def create_model_device_response_v4_example() -> ModelDeviceResponseV4:
+    instance = ModelDeviceResponseV4()
+    instance.device_id = randomize()
+    instance.device_type = randomize()
+    instance.ip = randomize()
+    instance.last_login_time = randomize("int", min_val=1, max_val=1000)
+    instance.ban = create_model_device_ban_response_v4_example()
+    instance.ext = {randomize(): randomize()}
+    return instance
+
+
+def create_model_device_type_response_v4_example() -> ModelDeviceTypeResponseV4:
+    instance = ModelDeviceTypeResponseV4()
+    instance.device_type = randomize()
+    return instance
+
+
+def create_model_device_types_response_v4_example() -> ModelDeviceTypesResponseV4:
+    instance = ModelDeviceTypesResponseV4()
+    instance.data = [create_model_device_type_response_v4_example()]
+    return instance
+
+
+def create_model_device_user_response_v4_example() -> ModelDeviceUserResponseV4:
+    instance = ModelDeviceUserResponseV4()
+    instance.ip = randomize()
+    instance.last_login_time = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    instance.ext = {randomize(): randomize()}
+    return instance
+
+
+def create_model_device_users_response_v4_example() -> ModelDeviceUsersResponseV4:
+    instance = ModelDeviceUsersResponseV4()
+    instance.users = [create_model_device_user_response_v4_example()]
+    return instance
+
+
+def create_model_devices_response_v4_example() -> ModelDevicesResponseV4:
+    instance = ModelDevicesResponseV4()
+    instance.devices = [create_model_device_response_v4_example()]
     return instance
 
 
@@ -1281,6 +1400,7 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.platform_display_name = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.refresh_token = randomize()
     return instance
 
 
@@ -2406,6 +2526,30 @@ def create_oauthmodel_token_third_party_response_example() -> OauthmodelTokenThi
     instance = OauthmodelTokenThirdPartyResponse()
     instance.platform_token = randomize()
     instance.sand_box_id = randomize()
+    return instance
+
+
+def create_oauthmodel_token_with_device_cookie_response_v3_example() -> OauthmodelTokenWithDeviceCookieResponseV3:
+    instance = OauthmodelTokenWithDeviceCookieResponseV3()
+    instance.access_token = randomize()
+    instance.bans = [create_accountcommon_jwt_ban_v3_example()]
+    instance.expires_in = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.namespace_roles = [create_accountcommon_namespace_role_example()]
+    instance.permissions = [create_accountcommon_permission_v3_example()]
+    instance.roles = [randomize()]
+    instance.scope = randomize()
+    instance.token_type = randomize()
+    instance.auth_trust_id = randomize()
+    instance.display_name = randomize("slug")
+    instance.is_comply = randomize("bool")
+    instance.jflgs = randomize("int", min_val=1, max_val=1000)
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
+    instance.refresh_token = randomize()
+    instance.user_id = randomize("uid")
+    instance.xuid = randomize()
     return instance
 
 

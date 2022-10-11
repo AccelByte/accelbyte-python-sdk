@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.1)
+# AccelByte Cloud Platform Service (4.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import StoreInfo
@@ -38,6 +39,7 @@ class ImportStore(Operation):
 
     This API is used to import a store.
 
+    This api has been deprecated, pls use /v2/admin/namespaces/{namespace}/stores/import to import store.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
@@ -67,7 +69,7 @@ class ImportStore(Operation):
     Responses:
         200: OK - StoreInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30121: Store data is invalid | 30122: Store's meta mismatch)
+        400: Bad Request - ErrorEntity (30121: Store data is invalid | 30122: Store's meta mismatch | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30122: Item [{itemId}] does not exist in namespace [{namespace}] | 30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}] | 37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
@@ -198,7 +200,7 @@ class ImportStore(Operation):
 
         200: OK - StoreInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (30121: Store data is invalid | 30122: Store's meta mismatch)
+        400: Bad Request - ErrorEntity (30121: Store data is invalid | 30122: Store's meta mismatch | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 30122: Item [{itemId}] does not exist in namespace [{namespace}] | 30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}] | 37041: Ticket booth [{boothName}] does not exist in namespace [{namespace}])
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 

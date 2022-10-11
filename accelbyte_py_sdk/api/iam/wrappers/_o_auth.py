@@ -143,6 +143,7 @@ async def get_revocation_list_async(
 def platform_token_request_handler(
     platform_id: str,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -155,6 +156,7 @@ def platform_token_request_handler(
     request = PlatformTokenRequestHandler.create(
         platform_id=platform_id,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
         namespace=namespace,
     )
@@ -166,6 +168,7 @@ def platform_token_request_handler(
 async def platform_token_request_handler_async(
     platform_id: str,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -178,6 +181,7 @@ async def platform_token_request_handler_async(
     request = PlatformTokenRequestHandler.create(
         platform_id=platform_id,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
         namespace=namespace,
     )

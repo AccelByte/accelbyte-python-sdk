@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -89,6 +89,8 @@ class PlatformTokenRequestHandler(Operation):
 
         device_id: (device_id) OPTIONAL str in form_data
 
+        mac_address: (macAddress) OPTIONAL str in form_data
+
         platform_token: (platform_token) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -113,6 +115,7 @@ class PlatformTokenRequestHandler(Operation):
     _location_query: str = None
 
     device_id: str  # OPTIONAL in [form_data]
+    mac_address: str  # OPTIONAL in [form_data]
     platform_token: str  # OPTIONAL in [form_data]
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
@@ -163,6 +166,8 @@ class PlatformTokenRequestHandler(Operation):
         result = {}
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
+        if hasattr(self, "mac_address"):
+            result["macAddress"] = self.mac_address
         if hasattr(self, "platform_token"):
             result["platform_token"] = self.platform_token
         return result
@@ -187,6 +192,10 @@ class PlatformTokenRequestHandler(Operation):
         self.device_id = value
         return self
 
+    def with_mac_address(self, value: str) -> PlatformTokenRequestHandler:
+        self.mac_address = value
+        return self
+
     def with_platform_token(self, value: str) -> PlatformTokenRequestHandler:
         self.platform_token = value
         return self
@@ -209,6 +218,10 @@ class PlatformTokenRequestHandler(Operation):
             result["device_id"] = str(self.device_id)
         elif include_empty:
             result["device_id"] = ""
+        if hasattr(self, "mac_address") and self.mac_address:
+            result["macAddress"] = str(self.mac_address)
+        elif include_empty:
+            result["macAddress"] = ""
         if hasattr(self, "platform_token") and self.platform_token:
             result["platform_token"] = str(self.platform_token)
         elif include_empty:
@@ -276,6 +289,7 @@ class PlatformTokenRequestHandler(Operation):
         namespace: str,
         platform_id: str,
         device_id: Optional[str] = None,
+        mac_address: Optional[str] = None,
         platform_token: Optional[str] = None,
     ) -> PlatformTokenRequestHandler:
         instance = cls()
@@ -283,6 +297,8 @@ class PlatformTokenRequestHandler(Operation):
         instance.platform_id = platform_id
         if device_id is not None:
             instance.device_id = device_id
+        if mac_address is not None:
+            instance.mac_address = mac_address
         if platform_token is not None:
             instance.platform_token = platform_token
         return instance
@@ -296,6 +312,10 @@ class PlatformTokenRequestHandler(Operation):
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
             instance.device_id = ""
+        if "macAddress" in dict_ and dict_["macAddress"] is not None:
+            instance.mac_address = str(dict_["macAddress"])
+        elif include_empty:
+            instance.mac_address = ""
         if "platform_token" in dict_ and dict_["platform_token"] is not None:
             instance.platform_token = str(dict_["platform_token"])
         elif include_empty:
@@ -314,6 +334,7 @@ class PlatformTokenRequestHandler(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "device_id": "device_id",
+            "macAddress": "mac_address",
             "platform_token": "platform_token",
             "namespace": "namespace",
             "platformId": "platform_id",
@@ -323,6 +344,7 @@ class PlatformTokenRequestHandler(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "device_id": False,
+            "macAddress": False,
             "platform_token": False,
             "namespace": True,
             "platformId": True,

@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ds Log Manager Service."""
 
-__version__ = "2.4.2"
+__version__ = "2.4.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .log_app_message_declaration import LogAppMessageDeclaration
+from .models_allocation_event import ModelsAllocationEvent
 from .models_batch_download_logs_request import ModelsBatchDownloadLogsRequest
 from .models_download_logs_request import ModelsDownloadLogsRequest
 from .models_list_terminated_servers_response import ModelsListTerminatedServersResponse

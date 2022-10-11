@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,7 +31,7 @@ from .....core import HttpResponse
 from .....core import StrEnum
 
 from ...models import OauthmodelErrorResponse
-from ...models import OauthmodelTokenResponseV3
+from ...models import OauthmodelTokenWithDeviceCookieResponseV3
 
 
 class GrantTypeEnum(StrEnum):
@@ -229,12 +229,32 @@ class TokenGrantV3(Operation):
 
 
 
+    ## Device Cookie Validation
+
+
+
+
+    For grant type "password" only
+
+
+
+
+    Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP.
+
+
+
+
+    This endpoint will read device cookie from request header Auth-Trust-Id. If device cookie not found, it will generate a new one and set it into response body auth_trust_id when successfully login.
+
+
+
+
     ## Track Login History
 
 
 
 
-    This endpoint will track login history to detect suspicious login activity, please provide "device_id" (alphanumeric) in request header parameter otherwise we will set to "unknown".
+    This endpoint will track login history to detect suspicious login activity, please provide Device-Id (alphanumeric) in request header parameter otherwise it will set to "unknown".
 
 
 
@@ -269,6 +289,8 @@ class TokenGrantV3(Operation):
 
         securities: [BASIC_AUTH]
 
+        auth_trust_id: (Auth-Trust-Id) OPTIONAL Union[str, HeaderStr] in header
+
         device_id: (device_id) OPTIONAL Union[str, HeaderStr] in header
 
         client_id: (client_id) OPTIONAL str in form_data
@@ -290,13 +312,15 @@ class TokenGrantV3(Operation):
         grant_type: (grant_type) REQUIRED Union[str, GrantTypeEnum] in form_data
 
     Responses:
-        200: OK - OauthmodelTokenResponseV3 (Token returned)
+        200: OK - OauthmodelTokenWithDeviceCookieResponseV3 (Token returned)
 
         400: Bad Request - OauthmodelErrorResponse (InvalidRequest)
 
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
         403: Forbidden - OauthmodelErrorResponse (Unauthorized access)
+
+        429: Too Many Requests - OauthmodelErrorResponse (Too many failed auth attempt)
     """
 
     # region fields
@@ -308,6 +332,7 @@ class TokenGrantV3(Operation):
     _securities: List[List[str]] = [["BASIC_AUTH"]]
     _location_query: str = None
 
+    auth_trust_id: Union[str, HeaderStr]  # OPTIONAL in [header]
     device_id: Union[str, HeaderStr]  # OPTIONAL in [header]
     client_id: str  # OPTIONAL in [form_data]
     code: str  # OPTIONAL in [form_data]
@@ -363,6 +388,8 @@ class TokenGrantV3(Operation):
 
     def get_header_params(self) -> dict:
         result = {}
+        if hasattr(self, "auth_trust_id"):
+            result["Auth-Trust-Id"] = self.auth_trust_id
         if hasattr(self, "device_id"):
             result["device_id"] = self.device_id
         return result
@@ -396,6 +423,10 @@ class TokenGrantV3(Operation):
     # endregion is/has methods
 
     # region with_x methods
+
+    def with_auth_trust_id(self, value: Union[str, HeaderStr]) -> TokenGrantV3:
+        self.auth_trust_id = value
+        return self
 
     def with_device_id(self, value: Union[str, HeaderStr]) -> TokenGrantV3:
         self.device_id = value
@@ -443,6 +474,10 @@ class TokenGrantV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "auth_trust_id") and self.auth_trust_id:
+            result["Auth-Trust-Id"] = str(self.auth_trust_id)
+        elif include_empty:
+            result["Auth-Trust-Id"] = ""
         if hasattr(self, "device_id") and self.device_id:
             result["device_id"] = str(self.device_id)
         elif include_empty:
@@ -493,18 +528,20 @@ class TokenGrantV3(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, OauthmodelTokenResponseV3],
+        Union[None, OauthmodelTokenWithDeviceCookieResponseV3],
         Union[None, HttpResponse, OauthmodelErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - OauthmodelTokenResponseV3 (Token returned)
+        200: OK - OauthmodelTokenWithDeviceCookieResponseV3 (Token returned)
 
         400: Bad Request - OauthmodelErrorResponse (InvalidRequest)
 
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
 
         403: Forbidden - OauthmodelErrorResponse (Unauthorized access)
+
+        429: Too Many Requests - OauthmodelErrorResponse (Too many failed auth attempt)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -520,12 +557,17 @@ class TokenGrantV3(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return OauthmodelTokenResponseV3.create_from_dict(content), None
+            return (
+                OauthmodelTokenWithDeviceCookieResponseV3.create_from_dict(content),
+                None,
+            )
         if code == 400:
             return None, OauthmodelErrorResponse.create_from_dict(content)
         if code == 401:
             return None, OauthmodelErrorResponse.create_from_dict(content)
         if code == 403:
+            return None, OauthmodelErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, OauthmodelErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
@@ -540,6 +582,7 @@ class TokenGrantV3(Operation):
     def create(
         cls,
         grant_type: Union[str, GrantTypeEnum],
+        auth_trust_id: Optional[Union[str, HeaderStr]] = None,
         device_id: Optional[Union[str, HeaderStr]] = None,
         client_id: Optional[str] = None,
         code: Optional[str] = None,
@@ -552,6 +595,8 @@ class TokenGrantV3(Operation):
     ) -> TokenGrantV3:
         instance = cls()
         instance.grant_type = grant_type
+        if auth_trust_id is not None:
+            instance.auth_trust_id = auth_trust_id
         if device_id is not None:
             instance.device_id = device_id
         if client_id is not None:
@@ -575,6 +620,10 @@ class TokenGrantV3(Operation):
     @classmethod
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> TokenGrantV3:
         instance = cls()
+        if "Auth-Trust-Id" in dict_ and dict_["Auth-Trust-Id"] is not None:
+            instance.auth_trust_id = str(dict_["Auth-Trust-Id"])
+        elif include_empty:
+            instance.auth_trust_id = ""
         if "device_id" in dict_ and dict_["device_id"] is not None:
             instance.device_id = str(dict_["device_id"])
         elif include_empty:
@@ -620,6 +669,7 @@ class TokenGrantV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "Auth-Trust-Id": "auth_trust_id",
             "device_id": "device_id",
             "client_id": "client_id",
             "code": "code",
@@ -635,6 +685,7 @@ class TokenGrantV3(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "Auth-Trust-Id": False,
             "device_id": False,
             "client_id": False,
             "code": False,

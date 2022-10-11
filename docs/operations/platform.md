@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.14.1)
+# AccelByte Cloud Platform Service Index (4.15.0)
 
 
 ## Operations
@@ -264,6 +264,7 @@
 |---|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/keygroups | POST | createKeyGroup | [CreateKeyGroup](../../accelbyte_py_sdk/api/platform/operations/key_group/create_key_group.py) | [create_key_group](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-create-key-group](../../samples/cli/accelbyte_py_sdk_cli/platform/_create_key_group.py) |
 | /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId} | GET | getKeyGroup | [GetKeyGroup](../../accelbyte_py_sdk/api/platform/operations/key_group/get_key_group.py) | [get_key_group](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-get-key-group](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_key_group.py) |
+| /platform/admin/namespaces/{namespace}/keygroups/byBoothName | GET | getKeyGroupByBoothName | [GetKeyGroupByBoothName](../../accelbyte_py_sdk/api/platform/operations/key_group/get_key_group_by_booth_name.py) | [get_key_group_by_booth_name](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-get-key-group-by-booth-name](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_key_group_by_booth_name.py) |
 | /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/dynamic | GET | getKeyGroupDynamic | [GetKeyGroupDynamic](../../accelbyte_py_sdk/api/platform/operations/key_group/get_key_group_dynamic.py) | [get_key_group_dynamic](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-get-key-group-dynamic](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_key_group_dynamic.py) |
 | /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys | GET | listKeys | [ListKeys](../../accelbyte_py_sdk/api/platform/operations/key_group/list_keys.py) | [list_keys](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-list-keys](../../samples/cli/accelbyte_py_sdk_cli/platform/_list_keys.py) |
 | /platform/admin/namespaces/{namespace}/keygroups | GET | queryKeyGroups | [QueryKeyGroups](../../accelbyte_py_sdk/api/platform/operations/key_group/query_key_groups.py) | [query_key_groups](../../accelbyte_py_sdk/api/platform/wrappers/_key_group.py) | [accelbyte_py_sdk_cli platform-query-key-groups](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_key_groups.py) |
@@ -407,10 +408,12 @@
 | /platform/admin/namespaces/{namespace}/stores/published | DELETE | deletePublishedStore | [DeletePublishedStore](../../accelbyte_py_sdk/api/platform/operations/store/delete_published_store.py) | [delete_published_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-delete-published-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_published_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId} | DELETE | deleteStore | [DeleteStore](../../accelbyte_py_sdk/api/platform/operations/store/delete_store.py) | [delete_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-delete-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/export | GET | exportStore | [ExportStore](../../accelbyte_py_sdk/api/platform/operations/store/export_store.py) | [export_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-export-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_export_store.py) |
+| /platform/v2/admin/namespaces/{namespace}/stores/{storeId}/export | POST | exportStore_1 | [ExportStore1](../../accelbyte_py_sdk/api/platform/operations/store/export_store_1.py) | [export_store_1](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-export-store-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_export_store_1.py) |
 | /platform/admin/namespaces/{namespace}/stores/published | GET | getPublishedStore | [GetPublishedStore](../../accelbyte_py_sdk/api/platform/operations/store/get_published_store.py) | [get_published_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-published-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_published_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/published/backup | GET | getPublishedStoreBackup | [GetPublishedStoreBackup](../../accelbyte_py_sdk/api/platform/operations/store/get_published_store_backup.py) | [get_published_store_backup](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-published-store-backup](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_published_store_backup.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId} | GET | getStore | [GetStore](../../accelbyte_py_sdk/api/platform/operations/store/get_store.py) | [get_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/import | PUT | importStore | [ImportStore](../../accelbyte_py_sdk/api/platform/operations/store/import_store.py) | [import_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-import-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_import_store.py) |
+| /platform/v2/admin/namespaces/{namespace}/stores/import | PUT | importStore_1 | [ImportStore1](../../accelbyte_py_sdk/api/platform/operations/store/import_store_1.py) | [import_store_1](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-import-store-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_import_store_1.py) |
 | /platform/admin/namespaces/{namespace}/stores | GET | listStores | [ListStores](../../accelbyte_py_sdk/api/platform/operations/store/list_stores.py) | [list_stores](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-list-stores](../../samples/cli/accelbyte_py_sdk_cli/platform/_list_stores.py) |
 | /platform/public/namespaces/{namespace}/stores | GET | publicListStores | [PublicListStores](../../accelbyte_py_sdk/api/platform/operations/store/public_list_stores.py) | [public_list_stores](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-public-list-stores](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_list_stores.py) |
 | /platform/admin/namespaces/{namespace}/stores/published/rollback | PUT | rollbackPublishedStore | [RollbackPublishedStore](../../accelbyte_py_sdk/api/platform/operations/store/rollback_published_store.py) | [rollback_published_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-rollback-published-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_rollback_published_store.py) |
@@ -551,6 +554,7 @@
 | EpicGamesReconcileResult | [EpicGamesReconcileResult](../../accelbyte_py_sdk/api/platform/models/epic_games_reconcile_result.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/platform/models/error_entity.py) |
 | EventPayload | [EventPayload](../../accelbyte_py_sdk/api/platform/models/event_payload.py) |
+| ExportStoreRequest | [ExportStoreRequest](../../accelbyte_py_sdk/api/platform/models/export_store_request.py) |
 | ExtensionFulfillmentSummary | [ExtensionFulfillmentSummary](../../accelbyte_py_sdk/api/platform/models/extension_fulfillment_summary.py) |
 | ExternalPaymentOrderCreate | [ExternalPaymentOrderCreate](../../accelbyte_py_sdk/api/platform/models/external_payment_order_create.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/platform/models/field_validation_error.py) |
@@ -583,6 +587,10 @@
 | IAPOrderInfo | [IAPOrderInfo](../../accelbyte_py_sdk/api/platform/models/iap_order_info.py) |
 | IAPOrderPagingSlicedResult | [IAPOrderPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/iap_order_paging_sliced_result.py) |
 | Image | [Image](../../accelbyte_py_sdk/api/platform/models/image.py) |
+| ImportErrorDetails | [ImportErrorDetails](../../accelbyte_py_sdk/api/platform/models/import_error_details.py) |
+| ImportStoreError | [ImportStoreError](../../accelbyte_py_sdk/api/platform/models/import_store_error.py) |
+| ImportStoreItemInfo | [ImportStoreItemInfo](../../accelbyte_py_sdk/api/platform/models/import_store_item_info.py) |
+| ImportStoreResult | [ImportStoreResult](../../accelbyte_py_sdk/api/platform/models/import_store_result.py) |
 | InGameItemSync | [InGameItemSync](../../accelbyte_py_sdk/api/platform/models/in_game_item_sync.py) |
 | InvoiceCurrencySummary | [InvoiceCurrencySummary](../../accelbyte_py_sdk/api/platform/models/invoice_currency_summary.py) |
 | InvoiceSummary | [InvoiceSummary](../../accelbyte_py_sdk/api/platform/models/invoice_summary.py) |
@@ -729,6 +737,7 @@
 | TicketSaleIncrementResult | [TicketSaleIncrementResult](../../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_result.py) |
 | Time-limited balance | [TimeLimitedBalance](../../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
 | TimedOwnership | [TimedOwnership](../../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
+| TrackedEntitlementInfo | [TrackedEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/tracked_entitlement_info.py) |
 | TradeNotification | [TradeNotification](../../accelbyte_py_sdk/api/platform/models/trade_notification.py) |
 | Transaction | [Transaction](../../accelbyte_py_sdk/api/platform/models/transaction.py) |
 | TransactionAmountDetails | [TransactionAmountDetails](../../accelbyte_py_sdk/api/platform/models/transaction_amount_details.py) |

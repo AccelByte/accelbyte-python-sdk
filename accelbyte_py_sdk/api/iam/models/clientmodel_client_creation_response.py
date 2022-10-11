@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -43,6 +43,8 @@ class ClientmodelClientCreationResponse(Model):
         namespace: (Namespace) REQUIRED str
 
         redirect_uri: (RedirectUri) REQUIRED str
+
+        two_factor_enabled: (TwoFactorEnabled) REQUIRED bool
     """
 
     # region fields
@@ -52,6 +54,7 @@ class ClientmodelClientCreationResponse(Model):
     client_permissions: List[AccountcommonPermission]  # REQUIRED
     namespace: str  # REQUIRED
     redirect_uri: str  # REQUIRED
+    two_factor_enabled: bool  # REQUIRED
 
     # endregion fields
 
@@ -77,6 +80,10 @@ class ClientmodelClientCreationResponse(Model):
 
     def with_redirect_uri(self, value: str) -> ClientmodelClientCreationResponse:
         self.redirect_uri = value
+        return self
+
+    def with_two_factor_enabled(self, value: bool) -> ClientmodelClientCreationResponse:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -108,6 +115,10 @@ class ClientmodelClientCreationResponse(Model):
             result["RedirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["RedirectUri"] = ""
+        if hasattr(self, "two_factor_enabled"):
+            result["TwoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["TwoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -122,6 +133,7 @@ class ClientmodelClientCreationResponse(Model):
         client_permissions: List[AccountcommonPermission],
         namespace: str,
         redirect_uri: str,
+        two_factor_enabled: bool,
     ) -> ClientmodelClientCreationResponse:
         instance = cls()
         instance.client_id = client_id
@@ -129,6 +141,7 @@ class ClientmodelClientCreationResponse(Model):
         instance.client_permissions = client_permissions
         instance.namespace = namespace
         instance.redirect_uri = redirect_uri
+        instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -163,6 +176,10 @@ class ClientmodelClientCreationResponse(Model):
             instance.redirect_uri = str(dict_["RedirectUri"])
         elif include_empty:
             instance.redirect_uri = ""
+        if "TwoFactorEnabled" in dict_ and dict_["TwoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["TwoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -211,6 +228,7 @@ class ClientmodelClientCreationResponse(Model):
             "ClientPermissions": "client_permissions",
             "Namespace": "namespace",
             "RedirectUri": "redirect_uri",
+            "TwoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -221,6 +239,7 @@ class ClientmodelClientCreationResponse(Model):
             "ClientPermissions": True,
             "Namespace": True,
             "RedirectUri": True,
+            "TwoFactorEnabled": True,
         }
 
     # endregion static methods

@@ -1939,6 +1939,7 @@ def search_items(
     item_type: Optional[Union[str, SearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1955,6 +1956,7 @@ def search_items(
         item_type=item_type,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         store_id=store_id,
         namespace=namespace,
     )
@@ -1969,6 +1971,7 @@ async def search_items_async(
     item_type: Optional[Union[str, SearchItemsItemTypeEnum]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1985,6 +1988,7 @@ async def search_items_async(
         item_type=item_type,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         store_id=store_id,
         namespace=namespace,
     )

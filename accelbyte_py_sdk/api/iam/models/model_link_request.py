@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,8 @@ class ModelLinkRequest(Model):
         platform_id: (platformID) OPTIONAL str
 
         platform_user_id: (platform_user_id) OPTIONAL str
+
+        refresh_token: (refreshToken) OPTIONAL str
     """
 
     # region fields
@@ -84,6 +86,7 @@ class ModelLinkRequest(Model):
     platform_display_name: str  # OPTIONAL
     platform_id: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    refresh_token: str  # OPTIONAL
 
     # endregion fields
 
@@ -149,6 +152,10 @@ class ModelLinkRequest(Model):
 
     def with_platform_user_id(self, value: str) -> ModelLinkRequest:
         self.platform_user_id = value
+        return self
+
+    def with_refresh_token(self, value: str) -> ModelLinkRequest:
+        self.refresh_token = value
         return self
 
     # endregion with_x methods
@@ -221,6 +228,10 @@ class ModelLinkRequest(Model):
             result["platform_user_id"] = str(self.platform_user_id)
         elif include_empty:
             result["platform_user_id"] = ""
+        if hasattr(self, "refresh_token"):
+            result["refreshToken"] = str(self.refresh_token)
+        elif include_empty:
+            result["refreshToken"] = ""
         return result
 
     # endregion to methods
@@ -245,6 +256,7 @@ class ModelLinkRequest(Model):
         platform_display_name: Optional[str] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
+        refresh_token: Optional[str] = None,
     ) -> ModelLinkRequest:
         instance = cls()
         instance.client_id = client_id
@@ -270,6 +282,8 @@ class ModelLinkRequest(Model):
             instance.platform_id = platform_id
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if refresh_token is not None:
+            instance.refresh_token = refresh_token
         return instance
 
     @classmethod
@@ -358,6 +372,10 @@ class ModelLinkRequest(Model):
             instance.platform_user_id = str(dict_["platform_user_id"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "refreshToken" in dict_ and dict_["refreshToken"] is not None:
+            instance.refresh_token = str(dict_["refreshToken"])
+        elif include_empty:
+            instance.refresh_token = ""
         return instance
 
     @classmethod
@@ -412,6 +430,7 @@ class ModelLinkRequest(Model):
             "platformDisplayName": "platform_display_name",
             "platformID": "platform_id",
             "platform_user_id": "platform_user_id",
+            "refreshToken": "refresh_token",
         }
 
     @staticmethod
@@ -432,6 +451,7 @@ class ModelLinkRequest(Model):
             "platformDisplayName": False,
             "platformID": False,
             "platform_user_id": False,
+            "refreshToken": False,
         }
 
     # endregion static methods

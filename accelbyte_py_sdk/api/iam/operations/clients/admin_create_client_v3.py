@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -110,6 +110,12 @@ class AdminCreateClientV3(Operation):
 
 
         * Nintendo
+
+
+
+
+
+      * twoFactorEnabled : The flag to indicate whether 2FA validation is enable for this client. default value: false
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]

@@ -44,6 +44,7 @@ from ..models import Ownership
 from ..models import OwnershipToken
 from ..models import StackableEntitlementInfo
 from ..models import TimedOwnership
+from ..models import TrackedEntitlementInfo
 from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
@@ -140,6 +141,13 @@ from ..models import (
     StackableEntitlementInfoSourceEnum,
     StackableEntitlementInfoStatusEnum,
     StackableEntitlementInfoTypeEnum,
+)
+from ..models import (
+    TrackedEntitlementInfoAppTypeEnum,
+    TrackedEntitlementInfoClazzEnum,
+    TrackedEntitlementInfoSourceEnum,
+    TrackedEntitlementInfoStatusEnum,
+    TrackedEntitlementInfoTypeEnum,
 )
 
 

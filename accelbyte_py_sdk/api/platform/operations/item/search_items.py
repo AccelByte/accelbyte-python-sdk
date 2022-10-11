@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.14.1)
+# AccelByte Cloud Platform Service (4.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -83,6 +83,8 @@ class SearchItems(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         store_id: (storeId) OPTIONAL str in query
 
         keyword: (keyword) REQUIRED str in query
@@ -109,6 +111,7 @@ class SearchItems(Operation):
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
     keyword: str  # REQUIRED in [query]
     language: str  # REQUIRED in [query]
@@ -171,6 +174,8 @@ class SearchItems(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "store_id"):
             result["storeId"] = self.store_id
         if hasattr(self, "keyword"):
@@ -205,6 +210,10 @@ class SearchItems(Operation):
 
     def with_offset(self, value: int) -> SearchItems:
         self.offset = value
+        return self
+
+    def with_sort_by(self, value: str) -> SearchItems:
+        self.sort_by = value
         return self
 
     def with_store_id(self, value: str) -> SearchItems:
@@ -245,6 +254,10 @@ class SearchItems(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
         if hasattr(self, "store_id") and self.store_id:
             result["storeId"] = str(self.store_id)
         elif include_empty:
@@ -311,6 +324,7 @@ class SearchItems(Operation):
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[str] = None,
         store_id: Optional[str] = None,
     ) -> SearchItems:
         instance = cls()
@@ -325,6 +339,8 @@ class SearchItems(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if store_id is not None:
             instance.store_id = store_id
         return instance
@@ -352,6 +368,10 @@ class SearchItems(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
         if "storeId" in dict_ and dict_["storeId"] is not None:
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
@@ -374,6 +394,7 @@ class SearchItems(Operation):
             "itemType": "item_type",
             "limit": "limit",
             "offset": "offset",
+            "sortBy": "sort_by",
             "storeId": "store_id",
             "keyword": "keyword",
             "language": "language",
@@ -387,6 +408,7 @@ class SearchItems(Operation):
             "itemType": False,
             "limit": False,
             "offset": False,
+            "sortBy": False,
             "storeId": False,
             "keyword": True,
             "language": True,

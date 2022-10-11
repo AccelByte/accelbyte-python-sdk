@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.1"
+__version__ = "4.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .create_key_group import CreateKeyGroup
 from .get_key_group import GetKeyGroup
+from .get_key_group_by_booth_name import GetKeyGroupByBoothName
 from .get_key_group_dynamic import GetKeyGroupDynamic
 from .list_keys import ListKeys
 from .list_keys import StatusEnum as ListKeysStatusEnum

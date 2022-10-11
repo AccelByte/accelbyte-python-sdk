@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,8 @@ class ClientmodelClientCreateRequest(Model):
         redirect_uri: (RedirectUri) REQUIRED str
 
         secret: (Secret) REQUIRED str
+
+        two_factor_enabled: (TwoFactorEnabled) REQUIRED bool
     """
 
     # region fields
@@ -55,6 +57,7 @@ class ClientmodelClientCreateRequest(Model):
     namespace: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     secret: str  # REQUIRED
+    two_factor_enabled: bool  # REQUIRED
 
     # endregion fields
 
@@ -84,6 +87,10 @@ class ClientmodelClientCreateRequest(Model):
 
     def with_secret(self, value: str) -> ClientmodelClientCreateRequest:
         self.secret = value
+        return self
+
+    def with_two_factor_enabled(self, value: bool) -> ClientmodelClientCreateRequest:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -119,6 +126,10 @@ class ClientmodelClientCreateRequest(Model):
             result["Secret"] = str(self.secret)
         elif include_empty:
             result["Secret"] = ""
+        if hasattr(self, "two_factor_enabled"):
+            result["TwoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["TwoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -134,6 +145,7 @@ class ClientmodelClientCreateRequest(Model):
         namespace: str,
         redirect_uri: str,
         secret: str,
+        two_factor_enabled: bool,
     ) -> ClientmodelClientCreateRequest:
         instance = cls()
         instance.client_id = client_id
@@ -142,6 +154,7 @@ class ClientmodelClientCreateRequest(Model):
         instance.namespace = namespace
         instance.redirect_uri = redirect_uri
         instance.secret = secret
+        instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -180,6 +193,10 @@ class ClientmodelClientCreateRequest(Model):
             instance.secret = str(dict_["Secret"])
         elif include_empty:
             instance.secret = ""
+        if "TwoFactorEnabled" in dict_ and dict_["TwoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["TwoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -229,6 +246,7 @@ class ClientmodelClientCreateRequest(Model):
             "Namespace": "namespace",
             "RedirectUri": "redirect_uri",
             "Secret": "secret",
+            "TwoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -240,6 +258,7 @@ class ClientmodelClientCreateRequest(Model):
             "Namespace": True,
             "RedirectUri": True,
             "Secret": True,
+            "TwoFactorEnabled": True,
         }
 
     # endregion static methods

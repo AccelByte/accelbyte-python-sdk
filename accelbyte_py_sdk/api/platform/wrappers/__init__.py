@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.14.1"
+__version__ = "4.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -431,6 +431,8 @@ from ._key_group import create_key_group
 from ._key_group import create_key_group_async
 from ._key_group import get_key_group
 from ._key_group import get_key_group_async
+from ._key_group import get_key_group_by_booth_name
+from ._key_group import get_key_group_by_booth_name_async
 from ._key_group import get_key_group_dynamic
 from ._key_group import get_key_group_dynamic_async
 from ._key_group import list_keys
@@ -647,6 +649,8 @@ from ._store import delete_store
 from ._store import delete_store_async
 from ._store import export_store
 from ._store import export_store_async
+from ._store import export_store_1
+from ._store import export_store_1_async
 from ._store import get_published_store
 from ._store import get_published_store_async
 from ._store import get_published_store_backup
@@ -655,6 +659,8 @@ from ._store import get_store
 from ._store import get_store_async
 from ._store import import_store
 from ._store import import_store_async
+from ._store import import_store_1
+from ._store import import_store_1_async
 from ._store import list_stores
 from ._store import list_stores_async
 from ._store import public_list_stores

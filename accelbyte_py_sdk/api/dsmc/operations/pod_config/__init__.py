@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "3.7.0"
+__version__ = "3.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

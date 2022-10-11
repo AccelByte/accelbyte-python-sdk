@@ -36,6 +36,7 @@ from ..models import OauthmodelTokenIntrospectResponse
 from ..models import OauthmodelTokenResponse
 from ..models import OauthmodelTokenResponseV3
 from ..models import OauthmodelTokenThirdPartyResponse
+from ..models import OauthmodelTokenWithDeviceCookieResponseV3
 from ..models import RestErrorResponse
 
 from ..operations.o_auth2_0 import AdminRetrieveUserThirdPartyPlatformTokenV3
@@ -271,6 +272,7 @@ def platform_token_grant_v3(
     client_id: Optional[str] = None,
     create_headless: Optional[bool] = None,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -280,6 +282,7 @@ def platform_token_grant_v3(
         client_id=client_id,
         create_headless=create_headless,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -291,6 +294,7 @@ async def platform_token_grant_v3_async(
     client_id: Optional[str] = None,
     create_headless: Optional[bool] = None,
     device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
     platform_token: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -300,6 +304,7 @@ async def platform_token_grant_v3_async(
         client_id=client_id,
         create_headless=create_headless,
         device_id=device_id,
+        mac_address=mac_address,
         platform_token=platform_token,
     )
     return await run_request_async(
@@ -390,6 +395,7 @@ async def revoke_user_v3_async(
 @same_doc_as(TokenGrantV3)
 def token_grant_v3(
     grant_type: Union[str, TokenGrantV3GrantTypeEnum],
+    auth_trust_id: Optional[Union[str, HeaderStr]] = None,
     client_id: Optional[str] = None,
     code: Optional[str] = None,
     code_verifier: Optional[str] = None,
@@ -404,6 +410,7 @@ def token_grant_v3(
 ):
     request = TokenGrantV3.create(
         grant_type=grant_type,
+        auth_trust_id=auth_trust_id,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,
@@ -420,6 +427,7 @@ def token_grant_v3(
 @same_doc_as(TokenGrantV3)
 async def token_grant_v3_async(
     grant_type: Union[str, TokenGrantV3GrantTypeEnum],
+    auth_trust_id: Optional[Union[str, HeaderStr]] = None,
     client_id: Optional[str] = None,
     code: Optional[str] = None,
     code_verifier: Optional[str] = None,
@@ -434,6 +442,7 @@ async def token_grant_v3_async(
 ):
     request = TokenGrantV3.create(
         grant_type=grant_type,
+        auth_trust_id=auth_trust_id,
         client_id=client_id,
         code=code,
         code_verifier=code_verifier,

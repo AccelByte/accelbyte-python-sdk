@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Social Service Index (1.29.5)
+# AccelByte Cloud Social Service Index (1.29.6)
 
 
 ## Operations
@@ -54,6 +54,7 @@
 | /social/v1/admin/namespaces/{namespace}/stats | POST | createStat | [CreateStat](../../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat.py) | [create_stat](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-create-stat](../../samples/cli/accelbyte_py_sdk_cli/social/_create_stat.py) |
 | /social/v1/public/namespaces/{namespace}/stats | POST | createStat_1 | [CreateStat1](../../accelbyte_py_sdk/api/social/operations/stat_configuration/create_stat_1.py) | [create_stat_1](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-create-stat-1](../../samples/cli/accelbyte_py_sdk_cli/social/_create_stat_1.py) |
 | /social/v1/admin/namespaces/{namespace}/stats/{statCode} | DELETE | deleteStat | [DeleteStat](../../accelbyte_py_sdk/api/social/operations/stat_configuration/delete_stat.py) | [delete_stat](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-delete-stat](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_stat.py) |
+| /social/v1/admin/namespaces/{namespace}/stats/{statCode}/tied | DELETE | deleteTiedStat | [DeleteTiedStat](../../accelbyte_py_sdk/api/social/operations/stat_configuration/delete_tied_stat.py) | [delete_tied_stat](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-delete-tied-stat](../../samples/cli/accelbyte_py_sdk_cli/social/_delete_tied_stat.py) |
 | /social/v1/admin/namespaces/{namespace}/stats/export | GET | exportStats | [ExportStats](../../accelbyte_py_sdk/api/social/operations/stat_configuration/export_stats.py) | [export_stats](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-export-stats](../../samples/cli/accelbyte_py_sdk_cli/social/_export_stats.py) |
 | /social/v1/admin/namespaces/{namespace}/stats/{statCode} | GET | getStat | [GetStat](../../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stat.py) | [get_stat](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-get-stat](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat.py) |
 | /social/v1/admin/namespaces/{namespace}/stats | GET | getStats | [GetStats](../../accelbyte_py_sdk/api/social/operations/stat_configuration/get_stats.py) | [get_stats](../../accelbyte_py_sdk/api/social/wrappers/_stat_configuration.py) | [accelbyte_py_sdk_cli social-get-stats](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stats.py) |

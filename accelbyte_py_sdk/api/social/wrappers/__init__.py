@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Social Service."""
 
-__version__ = "1.29.5"
+__version__ = "1.29.6"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -74,6 +74,8 @@ from ._stat_configuration import create_stat_1
 from ._stat_configuration import create_stat_1_async
 from ._stat_configuration import delete_stat
 from ._stat_configuration import delete_stat_async
+from ._stat_configuration import delete_tied_stat
+from ._stat_configuration import delete_tied_stat_async
 from ._stat_configuration import export_stats
 from ._stat_configuration import export_stats_async
 from ._stat_configuration import get_stat

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.14.1)
+# AccelByte Cloud Platform Service (4.15.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,12 +34,15 @@ class EntitlementDecrement(Model):
     Properties:
         options: (options) OPTIONAL List[str]
 
+        request_id: (requestId) OPTIONAL str
+
         use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
     options: List[str]  # OPTIONAL
+    request_id: str  # OPTIONAL
     use_count: int  # OPTIONAL
 
     # endregion fields
@@ -48,6 +51,10 @@ class EntitlementDecrement(Model):
 
     def with_options(self, value: List[str]) -> EntitlementDecrement:
         self.options = value
+        return self
+
+    def with_request_id(self, value: str) -> EntitlementDecrement:
+        self.request_id = value
         return self
 
     def with_use_count(self, value: int) -> EntitlementDecrement:
@@ -64,6 +71,10 @@ class EntitlementDecrement(Model):
             result["options"] = [str(i0) for i0 in self.options]
         elif include_empty:
             result["options"] = []
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -78,11 +89,14 @@ class EntitlementDecrement(Model):
     def create(
         cls,
         options: Optional[List[str]] = None,
+        request_id: Optional[str] = None,
         use_count: Optional[int] = None,
     ) -> EntitlementDecrement:
         instance = cls()
         if options is not None:
             instance.options = options
+        if request_id is not None:
+            instance.request_id = request_id
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -98,6 +112,10 @@ class EntitlementDecrement(Model):
             instance.options = [str(i0) for i0 in dict_["options"]]
         elif include_empty:
             instance.options = []
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -146,6 +164,7 @@ class EntitlementDecrement(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "options": "options",
+            "requestId": "request_id",
             "useCount": "use_count",
         }
 
@@ -153,6 +172,7 @@ class EntitlementDecrement(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "options": False,
+            "requestId": False,
             "useCount": False,
         }
 

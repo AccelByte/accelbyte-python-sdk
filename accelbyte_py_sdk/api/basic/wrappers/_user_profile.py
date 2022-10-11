@@ -48,6 +48,7 @@ from ..operations.user_profile import AdminGetUserProfilePublicInfoByIds
 from ..operations.user_profile import CreateMyProfile
 from ..operations.user_profile import DeleteUserProfile
 from ..operations.user_profile import GetCustomAttributesInfo
+from ..operations.user_profile import GetMyPrivateCustomAttributesInfo
 from ..operations.user_profile import GetMyProfileInfo
 from ..operations.user_profile import GetMyZipCode
 from ..operations.user_profile import GetPrivateCustomAttributesInfo
@@ -63,6 +64,7 @@ from ..operations.user_profile import PublicUpdateCustomAttributesPartially
 from ..operations.user_profile import PublicUpdateUserProfile
 from ..operations.user_profile import PublicUpdateUserProfileStatus
 from ..operations.user_profile import UpdateCustomAttributesPartially
+from ..operations.user_profile import UpdateMyPrivateCustomAttributesPartially
 from ..operations.user_profile import UpdateMyProfile
 from ..operations.user_profile import UpdateMyZipCode
 from ..operations.user_profile import UpdatePrivateCustomAttributesPartially
@@ -219,6 +221,40 @@ async def get_custom_attributes_info_async(
             return None, error
     request = GetCustomAttributesInfo.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMyPrivateCustomAttributesInfo)
+def get_my_private_custom_attributes_info(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyPrivateCustomAttributesInfo.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMyPrivateCustomAttributesInfo)
+async def get_my_private_custom_attributes_info_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyPrivateCustomAttributesInfo.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -800,6 +836,44 @@ async def update_custom_attributes_partially_async(
             return None, error
     request = UpdateCustomAttributesPartially.create(
         user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateMyPrivateCustomAttributesPartially)
+def update_my_private_custom_attributes_partially(
+    body: Optional[Dict[str, Any]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMyPrivateCustomAttributesPartially.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateMyPrivateCustomAttributesPartially)
+async def update_my_private_custom_attributes_partially_async(
+    body: Optional[Dict[str, Any]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMyPrivateCustomAttributesPartially.create(
         body=body,
         namespace=namespace,
     )

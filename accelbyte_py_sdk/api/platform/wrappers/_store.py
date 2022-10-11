@@ -27,9 +27,12 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
+from ..models import ExportStoreRequest
+from ..models import ImportStoreResult
 from ..models import StoreBackupInfo
 from ..models import StoreCreate
 from ..models import StoreInfo
@@ -41,10 +44,12 @@ from ..operations.store import CreateStore
 from ..operations.store import DeletePublishedStore
 from ..operations.store import DeleteStore
 from ..operations.store import ExportStore
+from ..operations.store import ExportStore1
 from ..operations.store import GetPublishedStore
 from ..operations.store import GetPublishedStoreBackup
 from ..operations.store import GetStore
 from ..operations.store import ImportStore
+from ..operations.store import ImportStore1
 from ..operations.store import ListStores
 from ..operations.store import PublicListStores
 from ..operations.store import RollbackPublishedStore
@@ -203,6 +208,7 @@ async def delete_store_async(
     )
 
 
+@deprecated
 @same_doc_as(ExportStore)
 def export_store(
     store_id: str,
@@ -221,6 +227,7 @@ def export_store(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ExportStore)
 async def export_store_async(
     store_id: str,
@@ -234,6 +241,48 @@ async def export_store_async(
             return None, error
     request = ExportStore.create(
         store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ExportStore1)
+def export_store_1(
+    store_id: str,
+    body: Optional[ExportStoreRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStore1.create(
+        store_id=store_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ExportStore1)
+async def export_store_1_async(
+    store_id: str,
+    body: Optional[ExportStoreRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStore1.create(
+        store_id=store_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -347,6 +396,7 @@ async def get_store_async(
     )
 
 
+@deprecated
 @same_doc_as(ImportStore)
 def import_store(
     file: Optional[Any] = None,
@@ -367,6 +417,7 @@ def import_store(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ImportStore)
 async def import_store_async(
     file: Optional[Any] = None,
@@ -380,6 +431,48 @@ async def import_store_async(
         if error:
             return None, error
     request = ImportStore.create(
+        file=file,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ImportStore1)
+def import_store_1(
+    file: Optional[Any] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStore1.create(
+        file=file,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImportStore1)
+async def import_store_1_async(
+    file: Optional[Any] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStore1.create(
         file=file,
         store_id=store_id,
         namespace=namespace,

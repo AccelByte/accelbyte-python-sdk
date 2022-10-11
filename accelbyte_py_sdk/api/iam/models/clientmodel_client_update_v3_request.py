@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,8 @@ class ClientmodelClientUpdateV3Request(Model):
         namespace: (namespace) OPTIONAL str
 
         redirect_uri: (redirectUri) OPTIONAL str
+
+        two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
     """
 
     # region fields
@@ -61,6 +63,7 @@ class ClientmodelClientUpdateV3Request(Model):
     deletable: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     redirect_uri: str  # OPTIONAL
+    two_factor_enabled: bool  # OPTIONAL
 
     # endregion fields
 
@@ -98,6 +101,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_redirect_uri(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.redirect_uri = value
+        return self
+
+    def with_two_factor_enabled(self, value: bool) -> ClientmodelClientUpdateV3Request:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -141,6 +148,10 @@ class ClientmodelClientUpdateV3Request(Model):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = ""
+        if hasattr(self, "two_factor_enabled"):
+            result["twoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["twoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -158,6 +169,7 @@ class ClientmodelClientUpdateV3Request(Model):
         deletable: Optional[bool] = None,
         namespace: Optional[str] = None,
         redirect_uri: Optional[str] = None,
+        two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientUpdateV3Request:
         instance = cls()
         instance.client_platform = client_platform
@@ -175,6 +187,8 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.namespace = namespace
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
+        if two_factor_enabled is not None:
+            instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -221,6 +235,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
             instance.redirect_uri = ""
+        if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -272,6 +290,7 @@ class ClientmodelClientUpdateV3Request(Model):
             "deletable": "deletable",
             "namespace": "namespace",
             "redirectUri": "redirect_uri",
+            "twoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -285,6 +304,7 @@ class ClientmodelClientUpdateV3Request(Model):
             "deletable": False,
             "namespace": False,
             "redirectUri": False,
+            "twoFactorEnabled": False,
         }
 
     # endregion static methods

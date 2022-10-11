@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (3.7.0)
+# AccelByte Cloud Dsm Controller Service Index (3.8.0)
 
 
 ## Operations
@@ -116,6 +116,7 @@
 | Model | Class |
 |---|---|
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/dsmc/models/log_app_message_declaration.py) |
+| models.AllocationEvent | [ModelsAllocationEvent](../../accelbyte_py_sdk/api/dsmc/models/models_allocation_event.py) |
 | models.ClaimSessionRequest | [ModelsClaimSessionRequest](../../accelbyte_py_sdk/api/dsmc/models/models_claim_session_request.py) |
 | models.CountServerResponse | [ModelsCountServerResponse](../../accelbyte_py_sdk/api/dsmc/models/models_count_server_response.py) |
 | models.CountSessionResponse | [ModelsCountSessionResponse](../../accelbyte_py_sdk/api/dsmc/models/models_count_session_response.py) |

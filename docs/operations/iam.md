@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Iam Service Index (5.17.0)
+# AccelByte Cloud Iam Service Index (5.18.0)
 
 
 ## Operations
@@ -43,6 +43,22 @@
 | /iam/clients/{clientId} | PUT | UpdateClient | [UpdateClient](../../accelbyte_py_sdk/api/iam/operations/clients/update_client.py) | [update_client](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client.py) |
 | /iam/clients/{clientId}/clientpermissions | POST | UpdateClientPermission | [UpdateClientPermission](../../accelbyte_py_sdk/api/iam/operations/clients/update_client_permission.py) | [update_client_permission](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client-permission](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client_permission.py) |
 | /iam/clients/{clientId}/secret | PUT | UpdateClientSecret | [UpdateClientSecret](../../accelbyte_py_sdk/api/iam/operations/clients/update_client_secret.py) | [update_client_secret](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client-secret](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client_secret.py) |
+
+### Devices V4
+| Endpoint | Method | ID | Class | Wrapper | Example |
+|---|---|---|---|---|---|
+| /iam/v4/admin/namespaces/{namespace}/devices/bans | POST | AdminBanDeviceV4 | [AdminBanDeviceV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_ban_device_v4.py) | [admin_ban_device_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-ban-device-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_ban_device_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/decrypt | GET | AdminDecryptDeviceV4 | [AdminDecryptDeviceV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_decrypt_device_v4.py) | [admin_decrypt_device_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-decrypt-device-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_decrypt_device_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/report | GET | AdminGenerateReportV4 | [AdminGenerateReportV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_generate_report_v4.py) | [admin_generate_report_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-generate-report-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_generate_report_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/banned | GET | AdminGetBannedDevicesV4 | [AdminGetBannedDevicesV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_banned_devices_v4.py) | [admin_get_banned_devices_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-banned-devices-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_banned_devices_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId} | GET | AdminGetDeviceBanV4 | [AdminGetDeviceBanV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_device_ban_v4.py) | [admin_get_device_ban_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-device-ban-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_device_ban_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/bans | GET | AdminGetDeviceBansV4 | [AdminGetDeviceBansV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_device_bans_v4.py) | [admin_get_device_bans_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-device-bans-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_device_bans_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/types | GET | AdminGetDeviceTypesV4 | [AdminGetDeviceTypesV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_device_types_v4.py) | [admin_get_device_types_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-device-types-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_device_types_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices | GET | AdminGetDevicesByUserV4 | [AdminGetDevicesByUserV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_devices_by_user_v4.py) | [admin_get_devices_by_user_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-devices-by-user-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_devices_by_user_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/bans | GET | AdminGetUserDeviceBansV4 | [AdminGetUserDeviceBansV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_user_device_bans_v4.py) | [admin_get_user_device_bans_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-user-device-bans-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_device_bans_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/users | GET | AdminGetUsersByDeviceV4 | [AdminGetUsersByDeviceV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_get_users_by_device_v4.py) | [admin_get_users_by_device_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-users-by-device-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_users_by_device_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/unban | PUT | AdminUnbanDeviceV4 | [AdminUnbanDeviceV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_unban_device_v4.py) | [admin_unban_device_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-unban-device-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_unban_device_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId} | PUT | AdminUpdateDeviceBanV4 | [AdminUpdateDeviceBanV4](../../accelbyte_py_sdk/api/iam/operations/devices_v4/admin_update_device_ban_v4.py) | [admin_update_device_ban_v4](../../accelbyte_py_sdk/api/iam/wrappers/_devices_v4.py) | [accelbyte_py_sdk_cli iam-admin-update-device-ban-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_update_device_ban_v4.py) |
 
 ### InputValidations
 | Endpoint | Method | ID | Class | Wrapper | Example |
@@ -476,6 +492,18 @@
 | model.CountryAgeRestrictionV3Request | [ModelCountryAgeRestrictionV3Request](../../accelbyte_py_sdk/api/iam/models/model_country_age_restriction_v3_request.py) |
 | model.CountryV3Response | [ModelCountryV3Response](../../accelbyte_py_sdk/api/iam/models/model_country_v3_response.py) |
 | model.CreateJusticeUserResponse | [ModelCreateJusticeUserResponse](../../accelbyte_py_sdk/api/iam/models/model_create_justice_user_response.py) |
+| model.DeviceBanRequestV4 | [ModelDeviceBanRequestV4](../../accelbyte_py_sdk/api/iam/models/model_device_ban_request_v4.py) |
+| model.DeviceBanResponseV4 | [ModelDeviceBanResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_ban_response_v4.py) |
+| model.DeviceBanUpdateRequestV4 | [ModelDeviceBanUpdateRequestV4](../../accelbyte_py_sdk/api/iam/models/model_device_ban_update_request_v4.py) |
+| model.DeviceBannedResponseV4 | [ModelDeviceBannedResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_banned_response_v4.py) |
+| model.DeviceBansResponseV4 | [ModelDeviceBansResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_bans_response_v4.py) |
+| model.DeviceIDDecryptResponseV4 | [ModelDeviceIDDecryptResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_id_decrypt_response_v4.py) |
+| model.DeviceResponseV4 | [ModelDeviceResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_response_v4.py) |
+| model.DeviceTypeResponseV4 | [ModelDeviceTypeResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_type_response_v4.py) |
+| model.DeviceTypesResponseV4 | [ModelDeviceTypesResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_types_response_v4.py) |
+| model.DeviceUserResponseV4 | [ModelDeviceUserResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_user_response_v4.py) |
+| model.DeviceUsersResponseV4 | [ModelDeviceUsersResponseV4](../../accelbyte_py_sdk/api/iam/models/model_device_users_response_v4.py) |
+| model.DevicesResponseV4 | [ModelDevicesResponseV4](../../accelbyte_py_sdk/api/iam/models/model_devices_response_v4.py) |
 | model.DisableUserRequest | [ModelDisableUserRequest](../../accelbyte_py_sdk/api/iam/models/model_disable_user_request.py) |
 | model.EmailUpdateRequestV4 | [ModelEmailUpdateRequestV4](../../accelbyte_py_sdk/api/iam/models/model_email_update_request_v4.py) |
 | model.EnabledFactorsResponseV4 | [ModelEnabledFactorsResponseV4](../../accelbyte_py_sdk/api/iam/models/model_enabled_factors_response_v4.py) |
@@ -613,6 +641,7 @@
 | oauthmodel.TokenResponse | [OauthmodelTokenResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response.py) |
 | oauthmodel.TokenResponseV3 | [OauthmodelTokenResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response_v3.py) |
 | oauthmodel.TokenThirdPartyResponse | [OauthmodelTokenThirdPartyResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_third_party_response.py) |
+| oauthmodel.TokenWithDeviceCookieResponseV3 | [OauthmodelTokenWithDeviceCookieResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_with_device_cookie_response_v3.py) |
 | rest.ErrorResponse | [RestErrorResponse](../../accelbyte_py_sdk/api/iam/models/rest_error_response.py) |
 | rest.ErrorResponseWithConflictedUserPlatformAccounts | [RestErrorResponseWithConflictedUserPlatformAccounts](../../accelbyte_py_sdk/api/iam/models/rest_error_response_with_conflicted_user_platform_accounts.py) |
 | restapi.ErrorResponse | [RestapiErrorResponse](../../accelbyte_py_sdk/api/iam/models/restapi_error_response.py) |

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.7.0)
+# AccelByte Cloud Dsm Controller Service (3.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,7 @@
 from .utils import randomize
 
 from ..api.dsmc.models import LogAppMessageDeclaration
+from ..api.dsmc.models import ModelsAllocationEvent
 from ..api.dsmc.models import ModelsClaimSessionRequest
 from ..api.dsmc.models import ModelsCountServerResponse
 from ..api.dsmc.models import ModelsCountSessionResponse
@@ -92,6 +93,14 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
+    return instance
+
+
+def create_models_allocation_event_example() -> ModelsAllocationEvent:
+    instance = ModelsAllocationEvent()
+    instance.description = randomize()
+    instance.time_stamp = randomize("date")
+    instance.type_ = randomize()
     return instance
 
 
@@ -530,6 +539,7 @@ def create_models_request_matching_ally_example() -> ModelsRequestMatchingAlly:
 
 def create_models_server_example() -> ModelsServer:
     instance = ModelsServer()
+    instance.allocation_events = [create_models_allocation_event_example()]
     instance.allocation_id = randomize()
     instance.alternate_ips = [randomize()]
     instance.cpu_limit = randomize("int", min_val=1, max_val=1000)

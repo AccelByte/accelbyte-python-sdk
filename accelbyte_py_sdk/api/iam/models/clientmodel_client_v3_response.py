@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.17.0)
+# AccelByte Cloud Iam Service (5.18.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -57,6 +57,8 @@ class ClientmodelClientV3Response(Model):
         redirect_uri: (redirectUri) REQUIRED str
 
         scopes: (scopes) REQUIRED List[str]
+
+        two_factor_enabled: (twoFactorEnabled) REQUIRED bool
     """
 
     # region fields
@@ -73,6 +75,7 @@ class ClientmodelClientV3Response(Model):
     oauth_client_type: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     scopes: List[str]  # REQUIRED
+    two_factor_enabled: bool  # REQUIRED
 
     # endregion fields
 
@@ -126,6 +129,10 @@ class ClientmodelClientV3Response(Model):
 
     def with_scopes(self, value: List[str]) -> ClientmodelClientV3Response:
         self.scopes = value
+        return self
+
+    def with_two_factor_enabled(self, value: bool) -> ClientmodelClientV3Response:
+        self.two_factor_enabled = value
         return self
 
     # endregion with_x methods
@@ -185,6 +192,10 @@ class ClientmodelClientV3Response(Model):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
             result["scopes"] = []
+        if hasattr(self, "two_factor_enabled"):
+            result["twoFactorEnabled"] = bool(self.two_factor_enabled)
+        elif include_empty:
+            result["twoFactorEnabled"] = False
         return result
 
     # endregion to methods
@@ -206,6 +217,7 @@ class ClientmodelClientV3Response(Model):
         oauth_client_type: str,
         redirect_uri: str,
         scopes: List[str],
+        two_factor_enabled: bool,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences
@@ -220,6 +232,7 @@ class ClientmodelClientV3Response(Model):
         instance.oauth_client_type = oauth_client_type
         instance.redirect_uri = redirect_uri
         instance.scopes = scopes
+        instance.two_factor_enabled = two_factor_enabled
         return instance
 
     @classmethod
@@ -282,6 +295,10 @@ class ClientmodelClientV3Response(Model):
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:
             instance.scopes = []
+        if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
+            instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
+        elif include_empty:
+            instance.two_factor_enabled = False
         return instance
 
     @classmethod
@@ -337,6 +354,7 @@ class ClientmodelClientV3Response(Model):
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
             "scopes": "scopes",
+            "twoFactorEnabled": "two_factor_enabled",
         }
 
     @staticmethod
@@ -354,6 +372,7 @@ class ClientmodelClientV3Response(Model):
             "oauthClientType": True,
             "redirectUri": True,
             "scopes": True,
+            "twoFactorEnabled": True,
         }
 
     # endregion static methods
