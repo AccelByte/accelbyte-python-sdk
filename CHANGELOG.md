@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.25.0
+- Add new tests
+- Restructure docs folder
+
 ## v0.24.0
 - Publish to PyPI
 - Use local HttpBin in tests
