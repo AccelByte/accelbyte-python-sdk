@@ -36,24 +36,24 @@ matchmaking-create-channel-handler '{"deployment": "FtBxyZcD", "description": "X
 matchmaking-delete-channel-handler 'SUoxdxxF' --login_with_auth "Bearer foo"
 matchmaking-store-match-results '{"match_id": "qmAGTJ8I", "players": [{"results": [{"attribute": "EdagEtp4", "value": 0.3478854734870396}], "user_id": "9KOu9c19"}]}' --login_with_auth "Bearer foo"
 matchmaking-rebalance '{"match_id": "R6XDqWHk"}' --login_with_auth "Bearer foo"
-matchmaking-queue-session-handler '{"channel": "kP8npLEK", "client_version": "MfjiX7jp", "deployment": "kVZk3IaQ", "game_mode": "YEmqGodO", "joinable": true, "match_id": "Gt9gPOj0", "matching_allies": [{"matching_parties": [{"first_ticket_created_at": 5, "party_attributes": {"6i0JkvIa": {}}, "party_id": "s73ucYnF", "party_members": [{"extra_attributes": {"AJ3DK5T4": {}}, "user_id": "Eogg0Y39"}], "ticket_id": "UoYlpv5b"}]}], "namespace": "VAgtsDhU", "party_attributes": {"TDUscbQD": {}}, "party_id": "jbTQuPMz", "queued_at": 82, "region": "TRlkyU89", "server_name": "ZPOw6zPF", "status": "J42cwmzB", "ticket_id": "BSMNcoAA", "updated_at": "1991-03-14T00:00:00Z"}' --login_with_auth "Bearer foo"
-matchmaking-dequeue-session-handler '{"match_id": "KNjfcYHm"}' --login_with_auth "Bearer foo"
-matchmaking-query-session-handler '093aYgBU' --login_with_auth "Bearer foo"
-matchmaking-update-play-time-weight '{"playtime": 36, "userID": "qjyK0XH4", "weight": 0.8927508715610223}' --login_with_auth "Bearer foo"
+matchmaking-queue-session-handler '{"channel": "kP8npLEK", "client_version": "MfjiX7jp", "deployment": "kVZk3IaQ", "error_code": 60, "error_message": "mqGodOEG", "game_mode": "t9gPOj0c", "joinable": false, "match_id": "0JkvIas7", "matching_allies": [{"matching_parties": [{"first_ticket_created_at": 40, "party_attributes": {"cYnFAJ3D": {}}, "party_id": "K5T4Eogg", "party_members": [{"extra_attributes": {"0Y39UoYl": {}}, "user_id": "pv5bVAgt"}], "ticket_id": "sDhUTDUs"}]}], "namespace": "cbQDjbTQ", "party_attributes": {"uPMz2PTR": {}}, "party_id": "lkyU89ZP", "queued_at": 80, "region": "w6zPFJ42", "server_name": "cwmzBBSM", "status": "NcoAAOjK", "ticket_id": "NjfcYHm0", "updated_at": "1997-12-26T00:00:00Z"}' --login_with_auth "Bearer foo"
+matchmaking-dequeue-session-handler '{"match_id": "YgBU1sqj"}' --login_with_auth "Bearer foo"
+matchmaking-query-session-handler 'yK0XH45P' --login_with_auth "Bearer foo"
+matchmaking-update-play-time-weight '{"playtime": 0, "userID": "RSOFQBtu", "weight": 0.8568434929403991}' --login_with_auth "Bearer foo"
 matchmaking-get-all-party-in-all-channel --login_with_auth "Bearer foo"
 matchmaking-bulk-get-sessions --login_with_auth "Bearer foo"
 matchmaking-export-channels --login_with_auth "Bearer foo"
 matchmaking-import-channels --login_with_auth "Bearer foo"
-matchmaking-get-single-matchmaking-channel 'aRSOFQBt' --login_with_auth "Bearer foo"
-matchmaking-update-matchmaking-channel '{"deployment": "u23REZ8h", "description": "RVX7LGOv", "findMatchTimeoutSeconds": 58, "joinable": false, "max_delay_ms": 17, "ruleSet": {"alliance": {"combination": {"alliances": [{"max": 84, "min": 89, "name": "9i7mV1C9"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 64, "role_flexing_second": 13}, "maxNumber": 31, "minNumber": 47, "playerMaxNumber": 75, "playerMinNumber": 48}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 4, "min": 90, "name": "Qdvln2LA"}], "has_combination": true, "role_flexing_enable": true, "role_flexing_player": 99, "role_flexing_second": 74}, "duration": 74, "max_number": 62, "min_number": 60, "player_max_number": 67, "player_min_number": 28}], "flexingRules": [{"attribute": "9m126ZWc", "criteria": "8hHtWvbN", "duration": 33, "reference": 0.09496333985774819}], "match_options": {"options": [{"name": "qslArFPi", "type": "HUIvaCv8"}]}, "matchingRules": [{"attribute": "kU9dBBpd", "criteria": "sJLhsVyE", "reference": 0.36673205551875165}], "sub_game_modes": {}}, "sessionQueueTimeoutSeconds": 20, "socialMatchmaking": true, "use_sub_gamemode": false}' 'ot0B7WOf' --login_with_auth "Bearer foo"
-matchmaking-get-all-party-in-channel 'ercZdpMc' --login_with_auth "Bearer foo"
-matchmaking-get-all-sessions-in-channel 'i37Ds7YS' --login_with_auth "Bearer foo"
-matchmaking-add-user-into-session-in-channel '{"blocked_players": ["fExaI3uz"], "party_id": "LteMbFAl", "user_id": "t4hr7HmO"}' 'YiBA5ltA' 'OXmlG6eh' --login_with_auth "Bearer foo"
-matchmaking-delete-session-in-channel '1dTdoTFp' 'BIcuC1dQ' --login_with_auth "Bearer foo"
-matchmaking-delete-user-from-session-in-channel 'Y93OJnJ6' 'Te9vD8ld' 'z7Hu8AD7' --login_with_auth "Bearer foo"
+matchmaking-get-single-matchmaking-channel 'REZ8hRVX' --login_with_auth "Bearer foo"
+matchmaking-update-matchmaking-channel '{"deployment": "7LGOvDdY", "description": "iQS9i7mV", "findMatchTimeoutSeconds": 57, "joinable": false, "max_delay_ms": 18, "ruleSet": {"alliance": {"combination": {"alliances": [{"max": 64, "min": 13, "name": "pxL6ycTQ"}], "has_combination": false, "role_flexing_enable": true, "role_flexing_player": 22, "role_flexing_second": 26}, "maxNumber": 74, "minNumber": 52, "playerMaxNumber": 41, "playerMinNumber": 89}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 85, "min": 97, "name": "EXL6LFE1"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 96, "role_flexing_second": 4}, "duration": 14, "max_number": 66, "min_number": 38, "player_max_number": 97, "player_min_number": 43}], "flexingRules": [{"attribute": "bNYqgUqs", "criteria": "lArFPiHU", "duration": 68, "reference": 0.34017068895228875}], "match_options": {"options": [{"name": "Cv8kU9dB", "type": "BpdsJLhs"}]}, "matchingRules": [{"attribute": "VyExrkxo", "criteria": "ot0B7WOf", "reference": 0.06938643216836282}], "sub_game_modes": {}}, "sessionQueueTimeoutSeconds": 4, "socialMatchmaking": false, "use_sub_gamemode": false}' 'Mci37Ds7' --login_with_auth "Bearer foo"
+matchmaking-get-all-party-in-channel 'YSfExaI3' --login_with_auth "Bearer foo"
+matchmaking-get-all-sessions-in-channel 'uzLteMbF' --login_with_auth "Bearer foo"
+matchmaking-add-user-into-session-in-channel '{"blocked_players": ["Alt4hr7H"], "party_id": "mOYiBA5l", "user_id": "tAOXmlG6"}' 'eh1dTdoT' 'FpBIcuC1' --login_with_auth "Bearer foo"
+matchmaking-delete-session-in-channel 'dQY93OJn' 'J6Te9vD8' --login_with_auth "Bearer foo"
+matchmaking-delete-user-from-session-in-channel 'ldz7Hu8A' 'D79kdWun' 'vizU0q1p' --login_with_auth "Bearer foo"
 matchmaking-public-get-messages --login_with_auth "Bearer foo"
 matchmaking-public-get-all-matchmaking-channel --login_with_auth "Bearer foo"
-matchmaking-public-get-single-matchmaking-channel '9kdWunvi' --login_with_auth "Bearer foo"
+matchmaking-public-get-single-matchmaking-channel 'HyhhERoG' --login_with_auth "Bearer foo"
 matchmaking-version-check-handler --login_with_auth "Bearer foo"
 exit()
 END
@@ -103,56 +103,56 @@ eval_tap $? 4 'GetAllChannelsHandler' test.out
 
 #- 5 CreateChannelHandler
 $PYTHON -m $MODULE 'matchmaking-create-channel-handler' \
-    '{"deployment": "zU0q1pHy", "description": "hhERoGgd", "find_match_timeout_seconds": 34, "game_mode": "ysMizBGS", "joinable": false, "max_delay_ms": 82, "rule_set": {"alliance": {"combination": {"alliances": [{"max": 23, "min": 59, "name": "NSZ8Aq0X"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 7, "role_flexing_second": 6}, "max_number": 80, "min_number": 65, "player_max_number": 90, "player_min_number": 76}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 23, "min": 70, "name": "jBwj9HJH"}], "has_combination": true, "role_flexing_enable": false, "role_flexing_player": 60, "role_flexing_second": 6}, "duration": 88, "max_number": 98, "min_number": 87, "player_max_number": 59, "player_min_number": 89}], "flexing_rule": [{"attribute": "vguauw1x", "criteria": "T7eMwSl9", "duration": 76, "reference": 0.5925349259478901}], "match_options": {"options": [{"name": "0NnTJ2ul", "type": "NzBvwJaQ"}]}, "matching_rule": [{"attribute": "a547Jllv", "criteria": "A8RWSpab", "reference": 0.7321266033159729}], "sub_game_modes": {"7xk6QxyW": {"alliance": {"combination": {"alliances": [{"max": 15, "min": 11, "name": "qoWfJw2o"}], "has_combination": false, "role_flexing_enable": true, "role_flexing_player": 43, "role_flexing_second": 83}, "max_number": 56, "min_number": 66, "player_max_number": 50, "player_min_number": 91}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 78, "min": 99, "name": "mWDlXsuN"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 37, "role_flexing_second": 78}, "duration": 81, "max_number": 23, "min_number": 43, "player_max_number": 20, "player_min_number": 10}], "name": "waSbnsuL"}}}, "session_queue_timeout_seconds": 57, "social_matchmaking": false, "use_sub_gamemode": false}' \
+    '{"deployment": "gdrysMiz", "description": "BGSRdP2l", "find_match_timeout_seconds": 59, "game_mode": "NSZ8Aq0X", "joinable": false, "max_delay_ms": 82, "rule_set": {"alliance": {"combination": {"alliances": [{"max": 75, "min": 85, "name": "XSe07Zdd"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 54, "role_flexing_second": 45}, "max_number": 19, "min_number": 66, "player_max_number": 71, "player_min_number": 66}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 85, "min": 72, "name": "seEdSXRD"}], "has_combination": true, "role_flexing_enable": false, "role_flexing_player": 41, "role_flexing_second": 0}, "duration": 40, "max_number": 44, "min_number": 47, "player_max_number": 91, "player_min_number": 9}], "flexing_rule": [{"attribute": "MwSl9MLH", "criteria": "0NnTJ2ul", "duration": 79, "reference": 0.39104799506060306}], "match_options": {"options": [{"name": "vwJaQa54", "type": "7JllvA8R"}]}, "matching_rule": [{"attribute": "WSpabUt7", "criteria": "xk6QxyWh", "reference": 0.087813923250749}], "sub_game_modes": {"oWfJw2o8": {"alliance": {"combination": {"alliances": [{"max": 28, "min": 96, "name": "UqvPCZ2H"}], "has_combination": true, "role_flexing_enable": false, "role_flexing_player": 96, "role_flexing_second": 59}, "max_number": 23, "min_number": 98, "player_max_number": 36, "player_min_number": 41}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 79, "min": 69, "name": "dQJR5lsN"}], "has_combination": false, "role_flexing_enable": true, "role_flexing_player": 20, "role_flexing_second": 10}, "duration": 45, "max_number": 1, "min_number": 89, "player_max_number": 2, "player_min_number": 26}], "name": "suLCgTox"}}}, "session_queue_timeout_seconds": 41, "social_matchmaking": false, "use_sub_gamemode": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'CreateChannelHandler' test.out
 
 #- 6 DeleteChannelHandler
 $PYTHON -m $MODULE 'matchmaking-delete-channel-handler' \
-    'xuVTekJg' \
+    'Jgvg6h5H' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'DeleteChannelHandler' test.out
 
 #- 7 StoreMatchResults
 $PYTHON -m $MODULE 'matchmaking-store-match-results' \
-    '{"match_id": "vg6h5HIp", "players": [{"results": [{"attribute": "H0DviplE", "value": 0.16056817686329217}], "user_id": "vj3LDp4y"}]}' \
+    '{"match_id": "IpH0Dvip", "players": [{"results": [{"attribute": "lEk4vj3L", "value": 0.4655779767004765}], "user_id": "4yqDt8QU"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'StoreMatchResults' test.out
 
 #- 8 Rebalance
 $PYTHON -m $MODULE 'matchmaking-rebalance' \
-    '{"match_id": "qDt8QUZD"}' \
+    '{"match_id": "ZDpxlHas"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'Rebalance' test.out
 
 #- 9 QueueSessionHandler
 $PYTHON -m $MODULE 'matchmaking-queue-session-handler' \
-    '{"channel": "pxlHasin", "client_version": "GcjrkmRM", "deployment": "ttgjDSaI", "game_mode": "VBmft3Ud", "joinable": false, "match_id": "7p9PGmY2", "matching_allies": [{"matching_parties": [{"first_ticket_created_at": 67, "party_attributes": {"5kX4Msis": {}}, "party_id": "SX28nARx", "party_members": [{"extra_attributes": {"WRpv5ou5": {}}, "user_id": "xtvd28OU"}], "ticket_id": "fCt8UJC5"}]}], "namespace": "flNyj6Hs", "party_attributes": {"TtX8P3ll": {}}, "party_id": "naaS9lqy", "queued_at": 48, "region": "gPcfkJIx", "server_name": "fQZza8kN", "status": "VbDxVMq7", "ticket_id": "HJk0F89x", "updated_at": "1984-01-20T00:00:00Z"}' \
+    '{"channel": "inGcjrkm", "client_version": "RMttgjDS", "deployment": "aIVBmft3", "error_code": 93, "error_message": "dg7p9PGm", "game_mode": "Y2H5kX4M", "joinable": true, "match_id": "isSX28nA", "matching_allies": [{"matching_parties": [{"first_ticket_created_at": 86, "party_attributes": {"xWRpv5ou": {}}, "party_id": "5xtvd28O", "party_members": [{"extra_attributes": {"UfCt8UJC": {}}, "user_id": "5flNyj6H"}], "ticket_id": "sTtX8P3l"}]}], "namespace": "lnaaS9lq", "party_attributes": {"yygPcfkJ": {}}, "party_id": "IxfQZza8", "queued_at": 21, "region": "NVbDxVMq", "server_name": "7HJk0F89", "status": "xAc3YVfa", "ticket_id": "ENtrl0pT", "updated_at": "1989-05-11T00:00:00Z"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'QueueSessionHandler' test.out
 
 #- 10 DequeueSessionHandler
 $PYTHON -m $MODULE 'matchmaking-dequeue-session-handler' \
-    '{"match_id": "3YVfaENt"}' \
+    '{"match_id": "zHuBMYQS"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'DequeueSessionHandler' test.out
 
 #- 11 QuerySessionHandler
 $PYTHON -m $MODULE 'matchmaking-query-session-handler' \
-    'rl0pTKZT' \
+    'A2jz1ZOp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'QuerySessionHandler' test.out
 
 #- 12 UpdatePlayTimeWeight
 $PYTHON -m $MODULE 'matchmaking-update-play-time-weight' \
-    '{"playtime": 99, "userID": "qzHuBMYQ", "weight": 0.6906874135604464}' \
+    '{"playtime": 7, "userID": "OjSyMddB", "weight": 0.890206037697401}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'UpdatePlayTimeWeight' test.out
@@ -183,55 +183,55 @@ eval_tap $? 16 'ImportChannels' test.out
 
 #- 17 GetSingleMatchmakingChannel
 $PYTHON -m $MODULE 'matchmaking-get-single-matchmaking-channel' \
-    '2jz1ZOpd' \
+    'JuMf7RUy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'GetSingleMatchmakingChannel' test.out
 
 #- 18 UpdateMatchmakingChannel
 $PYTHON -m $MODULE 'matchmaking-update-matchmaking-channel' \
-    '{"deployment": "OjSyMddB", "description": "41JuMf7R", "findMatchTimeoutSeconds": 93, "joinable": true, "max_delay_ms": 54, "ruleSet": {"alliance": {"combination": {"alliances": [{"max": 66, "min": 87, "name": "j8IiRimR"}], "has_combination": false, "role_flexing_enable": false, "role_flexing_player": 67, "role_flexing_second": 91}, "maxNumber": 59, "minNumber": 5, "playerMaxNumber": 42, "playerMinNumber": 62}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 63, "min": 52, "name": "6gpU7EW3"}], "has_combination": true, "role_flexing_enable": false, "role_flexing_player": 56, "role_flexing_second": 30}, "duration": 24, "max_number": 12, "min_number": 80, "player_max_number": 8, "player_min_number": 33}], "flexingRules": [{"attribute": "QIqcJVKm", "criteria": "BM1J1Ibu", "duration": 91, "reference": 0.2778162529184305}], "match_options": {"options": [{"name": "kbmuT1wh", "type": "OqmEnDXI"}]}, "matchingRules": [{"attribute": "WrBPlSay", "criteria": "46mv71BA", "reference": 0.8123571754994697}], "sub_game_modes": {}}, "sessionQueueTimeoutSeconds": 81, "socialMatchmaking": false, "use_sub_gamemode": true}' \
-    'FJ2vmTj7' \
+    '{"deployment": "BHRj8IiR", "description": "imRllHT6", "findMatchTimeoutSeconds": 59, "joinable": false, "max_delay_ms": 42, "ruleSet": {"alliance": {"combination": {"alliances": [{"max": 62, "min": 63, "name": "A6gpU7EW"}], "has_combination": true, "role_flexing_enable": false, "role_flexing_player": 56, "role_flexing_second": 30}, "maxNumber": 24, "minNumber": 12, "playerMaxNumber": 80, "playerMinNumber": 8}, "alliance_flexing_rule": [{"combination": {"alliances": [{"max": 33, "min": 84, "name": "IqcJVKmB"}], "has_combination": false, "role_flexing_enable": true, "role_flexing_player": 91, "role_flexing_second": 35}, "duration": 34, "max_number": 21, "min_number": 2, "player_max_number": 25, "player_min_number": 41}], "flexingRules": [{"attribute": "T1whOqmE", "criteria": "nDXIWrBP", "duration": 22, "reference": 0.6891951934537008}], "match_options": {"options": [{"name": "y46mv71B", "type": "AZAOjtFJ"}]}, "matchingRules": [{"attribute": "2vmTj7tT", "criteria": "7TZHWDdC", "reference": 0.15841057558012273}], "sub_game_modes": {}}, "sessionQueueTimeoutSeconds": 37, "socialMatchmaking": false, "use_sub_gamemode": true}' \
+    'rWwPHcyF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'UpdateMatchmakingChannel' test.out
 
 #- 19 GetAllPartyInChannel
 $PYTHON -m $MODULE 'matchmaking-get-all-party-in-channel' \
-    'tT7TZHWD' \
+    'AdAtYciL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'GetAllPartyInChannel' test.out
 
 #- 20 GetAllSessionsInChannel
 $PYTHON -m $MODULE 'matchmaking-get-all-sessions-in-channel' \
-    'dCkIsZoA' \
+    'IgRwFRr0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'GetAllSessionsInChannel' test.out
 
 #- 21 AddUserIntoSessionInChannel
 $PYTHON -m $MODULE 'matchmaking-add-user-into-session-in-channel' \
-    '{"blocked_players": ["rWwPHcyF"], "party_id": "AdAtYciL", "user_id": "IgRwFRr0"}' \
-    'gwB9tz3v' \
-    'p99XVlV8' \
+    '{"blocked_players": ["gwB9tz3v"], "party_id": "p99XVlV8", "user_id": "rK3tE6n0"}' \
+    'smip1tw3' \
+    'L7cUd9pq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'AddUserIntoSessionInChannel' test.out
 
 #- 22 DeleteSessionInChannel
 $PYTHON -m $MODULE 'matchmaking-delete-session-in-channel' \
-    'rK3tE6n0' \
-    'smip1tw3' \
+    'tv6JfPZw' \
+    'cCVOXcVa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'DeleteSessionInChannel' test.out
 
 #- 23 DeleteUserFromSessionInChannel
 $PYTHON -m $MODULE 'matchmaking-delete-user-from-session-in-channel' \
-    'L7cUd9pq' \
-    'tv6JfPZw' \
-    'cCVOXcVa' \
+    '80TmCwtD' \
+    '2lAH01o6' \
+    'NdcBIgzr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'DeleteUserFromSessionInChannel' test.out
@@ -256,7 +256,7 @@ eval_tap $? 27 'PublicGetAllMatchmakingChannel' test.out
 
 #- 28 PublicGetSingleMatchmakingChannel
 $PYTHON -m $MODULE 'matchmaking-public-get-single-matchmaking-channel' \
-    '80TmCwtD' \
+    'DyWpFBYG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'PublicGetSingleMatchmakingChannel' test.out
