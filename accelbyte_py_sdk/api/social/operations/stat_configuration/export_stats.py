@@ -58,7 +58,7 @@ class ExportStats(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (successful export of stat configs)
+        200: OK - Any (successful export of stat configs)
     """
 
     # region fields
@@ -150,10 +150,10 @@ class ExportStats(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful export of stat configs)
+        200: OK - Any (successful export of stat configs)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -169,7 +169,7 @@ class ExportStats(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return content, None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
