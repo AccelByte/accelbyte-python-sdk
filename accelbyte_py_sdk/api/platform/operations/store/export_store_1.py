@@ -65,7 +65,7 @@ class ExportStore1(Operation):
         store_id: (storeId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful operation)
+        200: OK - Any (Successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
@@ -185,10 +185,10 @@ class ExportStore1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[Union[None, Any], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (Successful operation)
+        200: OK - Any (Successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
 
@@ -206,7 +206,7 @@ class ExportStore1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return content, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
