@@ -520,7 +520,10 @@ def process_response(
         status_code, content_type, content = temp_status_code, "location", temp_content
     elif "Content-Type" in headers:
         content_type = headers.get("Content-Type")
-        if is_json_mime_type(content_type):
+        content_disposition = headers.get("Content-Disposition", "")
+        if "filename=" in content_disposition:
+            content = content_raw()
+        elif is_json_mime_type(content_type):
             try:
                 content = content_json()
                 if content is None:
