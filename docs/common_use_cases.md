@@ -1483,6 +1483,56 @@ def test_delete_store(self):
     self.assertIsNone(error, error)
     self.store_id = None
 ```
+### Export Rewards
+
+```python
+def test_export_rewards(self):
+    from pathlib import Path
+    from accelbyte_py_sdk.api.platform import export_rewards
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = export_rewards()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
+### Export Store
+
+```python
+def test_export_store(self):
+    from pathlib import Path
+    from accelbyte_py_sdk.api.platform import export_store_1
+    from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    _, error, store_id = self.do_create_store(body=self.store_create)
+    if error is not None:
+        self.skipTest(reason=f"Failed to create store. {str(error)}")
+    self.store_id = store_id
+
+    # act
+    result, error = export_store_1(store_id=store_id)
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
 ### Get Store
 
 ```python
@@ -1498,6 +1548,41 @@ def test_get_store(self):
 
     # act
     _, error = get_store(store_id=self.store_id)
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Import Store
+
+```python
+def test_import_store(self):
+    from pathlib import Path
+    from accelbyte_py_sdk.api.platform import export_store_1
+    from accelbyte_py_sdk.api.platform import import_store_1
+    from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    _, error, store_id = self.do_create_store(body=self.store_create)
+    if error is not None:
+        self.skipTest(reason=f"Failed to create store. {str(error)}")
+    self.store_id = store_id
+
+    result, error = export_store_1(store_id=self.store_id)
+    if error is not None:
+        self.skipTest(reason=f"Failed to export store. {str(error)}")
+    if result is None:
+        self.skipTest(reason="Exported store not found.")
+
+    exported_file_path.write_bytes(result)
+    if not exported_file_path.exists():
+        self.skipTest(reason="Failed to save exported store.")
+
+    # act
+    with exported_file_path.open("rb") as exported_file:
+        result, error = import_store_1(file=exported_file, store_id=store_id)
 
     # assert
     self.assertIsNone(error, error)
@@ -1770,6 +1855,28 @@ def test_delete_stat(self):
 
     # assert
     self.assertIsNone(error, error)
+```
+### Export Stat
+
+```python
+def test_export_stats(self):
+    from pathlib import Path
+    from accelbyte_py_sdk.api.social import export_stats
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = export_stats()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
 ```
 ### Get Stat
 
