@@ -8,8 +8,13 @@ from accelbyte_py_sdk.api.platform.models import StoreCreate
 class PlatformTestCase(IntegrationTestCase):
 
     did_delete_drafts: bool = False
+    exported_filename: str = "export_store"
     store_id: Optional[str] = None
-    store_create: StoreCreate = StoreCreate.create(title="Python Server SDK Store")
+    store_create: StoreCreate = StoreCreate.create(
+        title="Python Server SDK Store",
+        default_language="en-US",
+        default_region="US",
+    )
 
     # noinspection PyMethodMayBeStatic
     def do_create_store(self, body: Optional[StoreCreate]):
@@ -48,6 +53,7 @@ class PlatformTestCase(IntegrationTestCase):
         return result, error, store_id
 
     def tearDown(self) -> None:
+        from pathlib import Path
         from accelbyte_py_sdk.api.platform import delete_store
 
         if self.store_id is not None:
@@ -57,6 +63,10 @@ class PlatformTestCase(IntegrationTestCase):
                 condition=error is not None,
             )
             self.store_id = None
+
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
         super().tearDown()
 
     # region test:create_store
@@ -95,6 +105,35 @@ class PlatformTestCase(IntegrationTestCase):
 
     # endregion test:delete_store
 
+    # region test:export_store
+
+    def test_export_store(self):
+        from pathlib import Path
+        from accelbyte_py_sdk.api.platform import export_store_1
+        from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        if error is not None:
+            self.skipTest(reason=f"Failed to create store. {str(error)}")
+        self.store_id = store_id
+
+        # act
+        result, error = export_store_1(store_id=store_id)
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:export_store
+
     # region test:get_store
 
     def test_get_store(self):
@@ -114,6 +153,42 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:get_store
+
+    # region test:import_store
+
+    def test_import_store(self):
+        from pathlib import Path
+        from accelbyte_py_sdk.api.platform import export_store_1
+        from accelbyte_py_sdk.api.platform import import_store_1
+        from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        if error is not None:
+            self.skipTest(reason=f"Failed to create store. {str(error)}")
+        self.store_id = store_id
+
+        result, error = export_store_1(store_id=self.store_id)
+        if error is not None:
+            self.skipTest(reason=f"Failed to export store. {str(error)}")
+        if result is None:
+            self.skipTest(reason="Exported store not found.")
+
+        exported_file_path.write_bytes(result)
+        if not exported_file_path.exists():
+            self.skipTest(reason="Failed to save exported store.")
+
+        # act
+        with exported_file_path.open("rb") as exported_file:
+            result, error = import_store_1(file=exported_file, store_id=store_id)
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:import_store
 
     # region test:update_store
 
@@ -141,5 +216,4 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.title)
         self.assertEqual("JUDUL", result.title)
 
-
-# endregion test:update_store
+    # endregion test:update_store
