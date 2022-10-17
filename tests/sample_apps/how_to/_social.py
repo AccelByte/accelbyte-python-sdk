@@ -6,11 +6,13 @@ from accelbyte_py_sdk.api.social.models import StatCreate
 class SocialTestCase(IntegrationTestCase):
 
     exist: bool = False
+    exported_filename: str = "export_stat"
     stat_create: StatCreate = StatCreate.create(
         default_value=0, name="STAT", set_by="SERVER", stat_code="stat"
     )
 
     def tearDown(self) -> None:
+        from pathlib import Path
         from accelbyte_py_sdk.api.social import delete_stat
 
         if self.exist:
@@ -20,6 +22,10 @@ class SocialTestCase(IntegrationTestCase):
                 condition=error is not None,
             )
             self.exist = error is not None
+
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
         super().tearDown()
 
     # region test:create_stat
@@ -62,6 +68,29 @@ class SocialTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:delete_stat
+
+    # region test:export_stat
+
+    def test_export_stats(self):
+        from pathlib import Path
+        from accelbyte_py_sdk.api.social import export_stats
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = export_stats()
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:export_stat
 
     # region test:get_stat
 
@@ -112,5 +141,4 @@ class SocialTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.name)
         self.assertEqual("KODE_STATUS", result.name)
 
-
-# endregion test:update_stat
+    # endregion test:update_stat
