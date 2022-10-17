@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.25.1
+- ! Fixed Social `export_stats` operation
+    ```python
+    file, error = export_stats(...)
+    ```
+- ! Fixed Platform `export_rewards`, `export_store`, `export_store_1`, `download_user_order_receipt`, `public_download_user_order_receipt` operations
+    ```python
+    file, error = export_*(...)
+    file, error = *download_*(...)
+    ```
+- Fixed bug in regarding Content-Type checking
+- Fixed bug when receiving file responses
+- Added tests for `export_store_1`, `import_store_1`, `export_rewards`, `export_stats`
+
 ## v0.25.0
 - Add new tests
 - Restructure docs folder
