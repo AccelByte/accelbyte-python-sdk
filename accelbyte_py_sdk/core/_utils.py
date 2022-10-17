@@ -336,7 +336,15 @@ def set_logger_level(
 def try_convert_content_type(
     actual_content_type: str, expected_content_types: List[str], content: Any
 ) -> Tuple[bool, Any]:
+    same_content_type = {
+        "application/zip": ("application/x-zip-compressed",),
+    }
     for expected_content_type in expected_content_types:
+        if (
+            expected_content_type in same_content_type and
+            actual_content_type in same_content_type[expected_content_type]
+        ):
+            return True, content
         if actual_content_type == "text/plain":
             if expected_content_type == "application/json":
                 # noinspection PyBroadException
