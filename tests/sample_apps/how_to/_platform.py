@@ -105,6 +105,29 @@ class PlatformTestCase(IntegrationTestCase):
 
     # endregion test:delete_store
 
+    # region test:export_rewards
+
+    def test_export_rewards(self):
+        from pathlib import Path
+        from accelbyte_py_sdk.api.platform import export_rewards
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = export_rewards()
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:export_rewards
+
     # region test:export_store
 
     def test_export_store(self):
