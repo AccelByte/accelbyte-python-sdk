@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -90,6 +90,13 @@ class AdminUpdateInputValidations(Operation):
 
       * mixed: uppercase and/or lowercase
 
+
+
+    flexible special character non words with `allowAllSpecialCharacters`
+
+
+
+    if `allowAllSpecialCharacters` is set to true `specialCharacters` will forced to empty.
 
 
     Supported `specialCharacterLocation`:

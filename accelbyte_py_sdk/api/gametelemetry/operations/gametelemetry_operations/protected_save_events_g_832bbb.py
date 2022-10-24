@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (1.10.0)
+# Analytics Game Telemetry (1.11.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,7 +44,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     Format of the event:
 
-    - **EventNamespace (required)**: namespace of the relevant game with domain name format.
+    - **EventNamespace (required)**: Namespace of the relevant game with domain name format.
 
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
@@ -61,7 +61,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
 
 
-    - **EventName (required)**: name of the event.
+    - **EventName (required)**: Name of the event.
 
 
     Only accept input with valid characters. Allowed characters: Aa-Zz0-9_.-
@@ -78,7 +78,10 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
 
 
-    - **Payload (required)**: an arbitrary json with the payload of the said event
+    - **Payload (required)**: An arbitrary json with the payload of the said event.
+
+
+    Default maximum payload size is 1MB
 
     Properties:
         url: /game-telemetry/v1/protected/events

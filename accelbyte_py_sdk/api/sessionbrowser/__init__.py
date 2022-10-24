@@ -17,6 +17,8 @@ __email__ = "dev@accelbyte.net"
 # session
 from .wrappers import add_player_to_session
 from .wrappers import add_player_to_session_async
+from .wrappers import admin_delete_session
+from .wrappers import admin_delete_session_async
 from .wrappers import admin_get_session
 from .wrappers import admin_get_session_async
 from .wrappers import admin_search_sessions_v2

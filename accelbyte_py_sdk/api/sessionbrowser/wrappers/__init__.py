@@ -16,6 +16,8 @@ __email__ = "dev@accelbyte.net"
 
 from ._session import add_player_to_session
 from ._session import add_player_to_session_async
+from ._session import admin_delete_session
+from ._session import admin_delete_session_async
 from ._session import admin_get_session
 from ._session import admin_get_session_async
 from ._session import admin_search_sessions_v2

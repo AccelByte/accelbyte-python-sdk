@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Social Service Index (1.29.6)
+# AccelByte Cloud Social Service Index (1.30.1)
 
 
 ## Operations

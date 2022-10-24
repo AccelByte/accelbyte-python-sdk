@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelValidationDetail(Model):
     """Model validation detail (model.ValidationDetail)
 
     Properties:
+        allow_all_special_characters: (allowAllSpecialCharacters) REQUIRED bool
+
         allow_digit: (allowDigit) REQUIRED bool
 
         allow_letter: (allowLetter) REQUIRED bool
@@ -71,6 +73,7 @@ class ModelValidationDetail(Model):
 
     # region fields
 
+    allow_all_special_characters: bool  # REQUIRED
     allow_digit: bool  # REQUIRED
     allow_letter: bool  # REQUIRED
     allow_space: bool  # REQUIRED
@@ -91,6 +94,10 @@ class ModelValidationDetail(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_allow_all_special_characters(self, value: bool) -> ModelValidationDetail:
+        self.allow_all_special_characters = value
+        return self
 
     def with_allow_digit(self, value: bool) -> ModelValidationDetail:
         self.allow_digit = value
@@ -164,6 +171,12 @@ class ModelValidationDetail(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allow_all_special_characters"):
+            result["allowAllSpecialCharacters"] = bool(
+                self.allow_all_special_characters
+            )
+        elif include_empty:
+            result["allowAllSpecialCharacters"] = False
         if hasattr(self, "allow_digit"):
             result["allowDigit"] = bool(self.allow_digit)
         elif include_empty:
@@ -241,6 +254,7 @@ class ModelValidationDetail(Model):
     @classmethod
     def create(
         cls,
+        allow_all_special_characters: bool,
         allow_digit: bool,
         allow_letter: bool,
         allow_space: bool,
@@ -259,6 +273,7 @@ class ModelValidationDetail(Model):
         special_characters: List[str],
     ) -> ModelValidationDetail:
         instance = cls()
+        instance.allow_all_special_characters = allow_all_special_characters
         instance.allow_digit = allow_digit
         instance.allow_letter = allow_letter
         instance.allow_space = allow_space
@@ -284,6 +299,15 @@ class ModelValidationDetail(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "allowAllSpecialCharacters" in dict_
+            and dict_["allowAllSpecialCharacters"] is not None
+        ):
+            instance.allow_all_special_characters = bool(
+                dict_["allowAllSpecialCharacters"]
+            )
+        elif include_empty:
+            instance.allow_all_special_characters = False
         if "allowDigit" in dict_ and dict_["allowDigit"] is not None:
             instance.allow_digit = bool(dict_["allowDigit"])
         elif include_empty:
@@ -407,6 +431,7 @@ class ModelValidationDetail(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowAllSpecialCharacters": "allow_all_special_characters",
             "allowDigit": "allow_digit",
             "allowLetter": "allow_letter",
             "allowSpace": "allow_space",
@@ -428,6 +453,7 @@ class ModelValidationDetail(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "allowAllSpecialCharacters": True,
             "allowDigit": True,
             "allowLetter": True,
             "allowSpace": True,

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Seasonpass Service Index (1.15.0)
+# AccelByte Cloud Seasonpass Service Index (1.16.0)
 
 
 ## Operations
@@ -31,6 +31,7 @@
 ### Season
 | Endpoint | Method | ID | Class | Wrapper | Example |
 |---|---|---|---|---|---|
+| /seasonpass/admin/namespaces/{namespace}/seasons/current/users/bulk/progression | POST | bulkGetUserSeasonProgression | [BulkGetUserSeasonProgression](../../accelbyte_py_sdk/api/seasonpass/operations/season/bulk_get_user_season_pr_a15d63.py) | [bulk_get_user_season_progression](../../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-bulk-get-user-season-progression](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_bulk_get_user_season_pr_a15d63.py) |
 | /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable | POST | checkSeasonPurchasable | [CheckSeasonPurchasable](../../accelbyte_py_sdk/api/seasonpass/operations/season/check_season_purchasable.py) | [check_season_purchasable](../../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-check-season-purchasable](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_check_season_purchasable.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone | POST | cloneSeason | [CloneSeason](../../accelbyte_py_sdk/api/seasonpass/operations/season/clone_season.py) | [clone_season](../../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-clone-season](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_clone_season.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons | POST | createSeason | [CreateSeason](../../accelbyte_py_sdk/api/seasonpass/operations/season/create_season.py) | [create_season](../../accelbyte_py_sdk/api/seasonpass/wrappers/_season.py) | [accelbyte_py_sdk_cli seasonpass-create-season](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_create_season.py) |
@@ -69,6 +70,7 @@
 ## Models
 | Model | Class |
 |---|---|
+| BulkUserProgressionRequest | [BulkUserProgressionRequest](../../accelbyte_py_sdk/api/seasonpass/models/bulk_user_progression_request.py) |
 | ClaimableRewards | [ClaimableRewards](../../accelbyte_py_sdk/api/seasonpass/models/claimable_rewards.py) |
 | ClaimableUserSeasonInfo | [ClaimableUserSeasonInfo](../../accelbyte_py_sdk/api/seasonpass/models/claimable_user_season_info.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/seasonpass/models/error_entity.py) |

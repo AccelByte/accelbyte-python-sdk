@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.23.0)
+# AccelByte Cloud Legal Service (1.24.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

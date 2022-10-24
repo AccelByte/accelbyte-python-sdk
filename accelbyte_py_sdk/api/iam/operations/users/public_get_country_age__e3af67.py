@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,9 +36,6 @@ class PublicGetCountryAgeRestrictionV3(Operation):
     """Public get age restriction by country code (PublicGetCountryAgeRestrictionV3)
 
     Get age restriction by country code. It will always get by publisher namespace
-
-
-    Requires valid user access token
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode}

@@ -341,8 +341,8 @@ def try_convert_content_type(
     }
     for expected_content_type in expected_content_types:
         if (
-            expected_content_type in same_content_type and
-            actual_content_type in same_content_type[expected_content_type]
+            expected_content_type in same_content_type
+            and actual_content_type in same_content_type[expected_content_type]
         ):
             return True, content
         if actual_content_type == "text/plain":

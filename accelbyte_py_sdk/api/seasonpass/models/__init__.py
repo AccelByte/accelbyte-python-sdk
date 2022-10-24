@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Seasonpass Service."""
 
-__version__ = "1.15.0"
+__version__ = "1.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_user_progression_request import BulkUserProgressionRequest
 from .claimable_rewards import ClaimableRewards
 from .claimable_user_season_info import ClaimableUserSeasonInfo
 from .error_entity import ErrorEntity

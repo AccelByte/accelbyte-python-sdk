@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.15.0"
+__version__ = "4.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -298,6 +298,8 @@ from ._iap import public_reconcile_play_station_store
 from ._iap import public_reconcile_play_station_store_async
 from ._iap import query_all_user_iap_orders
 from ._iap import query_all_user_iap_orders_async
+from ._iap import query_user_iap_consume_history
+from ._iap import query_user_iap_consume_history_async
 from ._iap import query_user_iap_orders
 from ._iap import query_user_iap_orders_async
 from ._iap import sync_epic_games_inventory

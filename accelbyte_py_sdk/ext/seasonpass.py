@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.15.0)
+# AccelByte Cloud Seasonpass Service (1.16.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -24,6 +24,7 @@
 
 from .utils import randomize
 
+from ..api.seasonpass.models import BulkUserProgressionRequest
 from ..api.seasonpass.models import ClaimableRewards
 from ..api.seasonpass.models import ClaimableUserSeasonInfo
 from ..api.seasonpass.models import ErrorEntity
@@ -67,6 +68,12 @@ from ..api.seasonpass.models import UserRewardClaim
 from ..api.seasonpass.models import UserSeasonSummary
 from ..api.seasonpass.models import UserTierGrant
 from ..api.seasonpass.models import ValidationErrorEntity
+
+
+def create_bulk_user_progression_request_example() -> BulkUserProgressionRequest:
+    instance = BulkUserProgressionRequest()
+    instance.user_ids = [randomize()]
+    return instance
 
 
 def create_claimable_rewards_example() -> ClaimableRewards:

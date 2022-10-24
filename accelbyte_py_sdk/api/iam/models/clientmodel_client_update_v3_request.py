@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
+
+        oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
+
         redirect_uri: (redirectUri) OPTIONAL str
 
         two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
@@ -62,6 +66,8 @@ class ClientmodelClientUpdateV3Request(Model):
     client_permissions: List[AccountcommonPermissionV3]  # OPTIONAL
     deletable: bool  # OPTIONAL
     namespace: str  # OPTIONAL
+    oauth_access_token_expiration: int  # OPTIONAL
+    oauth_refresh_token_expiration: int  # OPTIONAL
     redirect_uri: str  # OPTIONAL
     two_factor_enabled: bool  # OPTIONAL
 
@@ -97,6 +103,18 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_namespace(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.namespace = value
+        return self
+
+    def with_oauth_access_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientUpdateV3Request:
+        self.oauth_access_token_expiration = value
+        return self
+
+    def with_oauth_refresh_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientUpdateV3Request:
+        self.oauth_refresh_token_expiration = value
         return self
 
     def with_redirect_uri(self, value: str) -> ClientmodelClientUpdateV3Request:
@@ -144,6 +162,18 @@ class ClientmodelClientUpdateV3Request(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "oauth_access_token_expiration"):
+            result["oauthAccessTokenExpiration"] = int(
+                self.oauth_access_token_expiration
+            )
+        elif include_empty:
+            result["oauthAccessTokenExpiration"] = 0
+        if hasattr(self, "oauth_refresh_token_expiration"):
+            result["oauthRefreshTokenExpiration"] = int(
+                self.oauth_refresh_token_expiration
+            )
+        elif include_empty:
+            result["oauthRefreshTokenExpiration"] = 0
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
@@ -168,6 +198,8 @@ class ClientmodelClientUpdateV3Request(Model):
         client_permissions: Optional[List[AccountcommonPermissionV3]] = None,
         deletable: Optional[bool] = None,
         namespace: Optional[str] = None,
+        oauth_access_token_expiration: Optional[int] = None,
+        oauth_refresh_token_expiration: Optional[int] = None,
         redirect_uri: Optional[str] = None,
         two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientUpdateV3Request:
@@ -185,6 +217,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.deletable = deletable
         if namespace is not None:
             instance.namespace = namespace
+        if oauth_access_token_expiration is not None:
+            instance.oauth_access_token_expiration = oauth_access_token_expiration
+        if oauth_refresh_token_expiration is not None:
+            instance.oauth_refresh_token_expiration = oauth_refresh_token_expiration
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
         if two_factor_enabled is not None:
@@ -231,6 +267,24 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "oauthAccessTokenExpiration" in dict_
+            and dict_["oauthAccessTokenExpiration"] is not None
+        ):
+            instance.oauth_access_token_expiration = int(
+                dict_["oauthAccessTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_access_token_expiration = 0
+        if (
+            "oauthRefreshTokenExpiration" in dict_
+            and dict_["oauthRefreshTokenExpiration"] is not None
+        ):
+            instance.oauth_refresh_token_expiration = int(
+                dict_["oauthRefreshTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_refresh_token_expiration = 0
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
@@ -289,6 +343,8 @@ class ClientmodelClientUpdateV3Request(Model):
             "clientPermissions": "client_permissions",
             "deletable": "deletable",
             "namespace": "namespace",
+            "oauthAccessTokenExpiration": "oauth_access_token_expiration",
+            "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
             "redirectUri": "redirect_uri",
             "twoFactorEnabled": "two_factor_enabled",
         }
@@ -303,6 +359,8 @@ class ClientmodelClientUpdateV3Request(Model):
             "clientPermissions": False,
             "deletable": False,
             "namespace": False,
+            "oauthAccessTokenExpiration": False,
+            "oauthRefreshTokenExpiration": False,
             "redirectUri": False,
             "twoFactorEnabled": False,
         }

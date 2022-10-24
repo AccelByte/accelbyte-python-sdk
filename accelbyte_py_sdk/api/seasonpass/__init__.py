@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Seasonpass Service."""
 
-__version__ = "1.15.0"
+__version__ = "1.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -45,6 +45,8 @@ from .wrappers import update_reward
 from .wrappers import update_reward_async
 
 # season
+from .wrappers import bulk_get_user_season_progression
+from .wrappers import bulk_get_user_season_progression_async
 from .wrappers import check_season_purchasable
 from .wrappers import check_season_purchasable_async
 from .wrappers import clone_season

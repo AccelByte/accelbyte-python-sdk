@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import BulkUserProgressionRequest
 from ..models import ClaimableUserSeasonInfo
 from ..models import ErrorEntity
 from ..models import ExpGrantHistoryPagingSlicedResult
@@ -47,6 +48,7 @@ from ..models import UserPurchasable
 from ..models import UserSeasonSummary
 from ..models import ValidationErrorEntity
 
+from ..operations.season import BulkGetUserSeasonProgression
 from ..operations.season import CheckSeasonPurchasable
 from ..operations.season import CloneSeason
 from ..operations.season import CreateSeason
@@ -74,6 +76,44 @@ from ..operations.season import UpdateSeason
 from ..models import LocalizedSeasonInfoStatusEnum
 from ..models import SeasonInfoStatusEnum
 from ..models import SeasonSummaryStatusEnum
+
+
+@same_doc_as(BulkGetUserSeasonProgression)
+def bulk_get_user_season_progression(
+    body: Optional[BulkUserProgressionRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetUserSeasonProgression.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetUserSeasonProgression)
+async def bulk_get_user_season_progression_async(
+    body: Optional[BulkUserProgressionRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetUserSeasonProgression.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CheckSeasonPurchasable)

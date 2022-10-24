@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Seasonpass Service."""
 
-__version__ = "1.15.0"
+__version__ = "1.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_get_user_season_pr_a15d63 import BulkGetUserSeasonProgression
 from .check_season_purchasable import CheckSeasonPurchasable
 from .clone_season import CloneSeason
 from .create_season import CreateSeason

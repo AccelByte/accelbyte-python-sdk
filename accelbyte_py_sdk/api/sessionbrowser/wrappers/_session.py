@@ -50,6 +50,7 @@ from ..models import RestapiErrorResponseV2
 from ..models import RestapiErrorV1
 
 from ..operations.session import AddPlayerToSession
+from ..operations.session import AdminDeleteSession
 from ..operations.session import AdminGetSession
 from ..operations.session import AdminSearchSessionsV2
 from ..operations.session import CreateSession
@@ -103,6 +104,44 @@ async def add_player_to_session_async(
             return None, error
     request = AddPlayerToSession.create(
         body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminDeleteSession)
+def admin_delete_session(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteSession.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteSession)
+async def admin_delete_session_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteSession.create(
         session_id=session_id,
         namespace=namespace,
     )

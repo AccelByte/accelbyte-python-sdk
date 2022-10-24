@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.16.1)
+# AccelByte Cloud Matchmaking Service (2.17.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -379,6 +379,7 @@ def create_models_rule_set_example() -> ModelsRuleSet:
     instance.flexing_rule = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rule = [create_models_matching_rule_example()]
+    instance.rebalance_enable = randomize("bool")
     instance.sub_game_modes = {}
     return instance
 

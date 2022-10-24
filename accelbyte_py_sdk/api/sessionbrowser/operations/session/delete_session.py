@@ -34,13 +34,13 @@ from ...models import ResponseError
 
 
 class DeleteSession(Operation):
-    """Delete specified session by session ID (DeleteSession)
+    """Delete specified (p2p) session by session ID (DeleteSession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
 
     Required scope: social
 
-    Delete the session by session ID
+    Delete the session (p2p) by session ID
 
     Required Permission(s):
         - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]

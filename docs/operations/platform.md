@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.15.0)
+# AccelByte Cloud Platform Service Index (4.17.0)
 
 
 ## Operations
@@ -187,6 +187,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt | PUT | publicFulfillGoogleIAPItem | [PublicFulfillGoogleIAPItem](../../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_google_iap_item.py) | [public_fulfill_google_iap_item](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-fulfill-google-iap-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_fulfill_google_iap_item.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync | PUT | publicReconcilePlayStationStore | [PublicReconcilePlayStationStore](../../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_s_7ac4de.py) | [public_reconcile_play_station_store](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-reconcile-play-station-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_reconcile_play_s_7ac4de.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/all | GET | queryAllUserIAPOrders | [QueryAllUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_all_user_iap_orders.py) | [query_all_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-all-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_all_user_iap_orders.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history | GET | queryUserIAPConsumeHistory | [QueryUserIAPConsumeHistory](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_consume_history.py) | [query_user_iap_consume_history](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-consume-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_consume_history.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap | GET | queryUserIAPOrders | [QueryUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_orders.py) | [query_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_orders.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync | PUT | syncEpicGamesInventory | [SyncEpicGamesInventory](../../accelbyte_py_sdk/api/platform/operations/iap/sync_epic_games_inventory.py) | [sync_epic_games_inventory](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-epic-games-inventory](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_epic_games_inventory.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/stadia/sync | PUT | syncStadiaEntitlement | [SyncStadiaEntitlement](../../accelbyte_py_sdk/api/platform/operations/iap/sync_stadia_entitlement.py) | [sync_stadia_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-stadia-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_stadia_entitlement.py) |
@@ -516,6 +517,7 @@
 | CategoryInfo | [CategoryInfo](../../accelbyte_py_sdk/api/platform/models/category_info.py) |
 | CategoryUpdate | [CategoryUpdate](../../accelbyte_py_sdk/api/platform/models/category_update.py) |
 | CheckoutConfig | [CheckoutConfig](../../accelbyte_py_sdk/api/platform/models/checkout_config.py) |
+| ClientRequestParameter | [ClientRequestParameter](../../accelbyte_py_sdk/api/platform/models/client_request_parameter.py) |
 | CodeCreate | [CodeCreate](../../accelbyte_py_sdk/api/platform/models/code_create.py) |
 | CodeCreateResult | [CodeCreateResult](../../accelbyte_py_sdk/api/platform/models/code_create_result.py) |
 | CodeInfo | [CodeInfo](../../accelbyte_py_sdk/api/platform/models/code_info.py) |
@@ -523,6 +525,7 @@
 | ConditionGroup | [ConditionGroup](../../accelbyte_py_sdk/api/platform/models/condition_group.py) |
 | ConditionGroupValidateResult | [ConditionGroupValidateResult](../../accelbyte_py_sdk/api/platform/models/condition_group_validate_result.py) |
 | ConditionMatchResult | [ConditionMatchResult](../../accelbyte_py_sdk/api/platform/models/condition_match_result.py) |
+| ConsumeItem | [ConsumeItem](../../accelbyte_py_sdk/api/platform/models/consume_item.py) |
 | CreditRequest | [CreditRequest](../../accelbyte_py_sdk/api/platform/models/credit_request.py) |
 | CreditSummary | [CreditSummary](../../accelbyte_py_sdk/api/platform/models/credit_summary.py) |
 | CurrencyConfig | [CurrencyConfig](../../accelbyte_py_sdk/api/platform/models/currency_config.py) |
@@ -581,6 +584,8 @@
 | GoogleReceiptResolveResult | [GoogleReceiptResolveResult](../../accelbyte_py_sdk/api/platform/models/google_receipt_resolve_result.py) |
 | GrantSubscriptionDaysRequest | [GrantSubscriptionDaysRequest](../../accelbyte_py_sdk/api/platform/models/grant_subscription_days_request.py) |
 | HierarchicalCategoryInfo | [HierarchicalCategoryInfo](../../accelbyte_py_sdk/api/platform/models/hierarchical_category_info.py) |
+| IAPConsumeHistoryInfo | [IAPConsumeHistoryInfo](../../accelbyte_py_sdk/api/platform/models/iap_consume_history_info.py) |
+| IAPConsumeHistoryPagingSlicedResult | [IAPConsumeHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/iap_consume_history_paging_sliced_result.py) |
 | IAPItemConfigInfo | [IAPItemConfigInfo](../../accelbyte_py_sdk/api/platform/models/iap_item_config_info.py) |
 | IAPItemConfigUpdate | [IAPItemConfigUpdate](../../accelbyte_py_sdk/api/platform/models/iap_item_config_update.py) |
 | IAPItemEntry | [IAPItemEntry](../../accelbyte_py_sdk/api/platform/models/iap_item_entry.py) |
@@ -696,6 +701,7 @@
 | RedeemResult | [RedeemResult](../../accelbyte_py_sdk/api/platform/models/redeem_result.py) |
 | RedeemableItem | [RedeemableItem](../../accelbyte_py_sdk/api/platform/models/redeemable_item.py) |
 | RegionDataItem | [RegionDataItem](../../accelbyte_py_sdk/api/platform/models/region_data_item.py) |
+| RequestHistory | [RequestHistory](../../accelbyte_py_sdk/api/platform/models/request_history.py) |
 | Requirement | [Requirement](../../accelbyte_py_sdk/api/platform/models/requirement.py) |
 | RewardCondition | [RewardCondition](../../accelbyte_py_sdk/api/platform/models/reward_condition.py) |
 | RewardCreate | [RewardCreate](../../accelbyte_py_sdk/api/platform/models/reward_create.py) |

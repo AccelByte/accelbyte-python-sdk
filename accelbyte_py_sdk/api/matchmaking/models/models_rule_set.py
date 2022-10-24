@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Matchmaking Service (2.16.1)
+# AccelByte Cloud Matchmaking Service (2.17.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -49,6 +49,8 @@ class ModelsRuleSet(Model):
 
         matching_rule: (matching_rule) REQUIRED List[ModelsMatchingRule]
 
+        rebalance_enable: (rebalance_enable) REQUIRED bool
+
         sub_game_modes: (sub_game_modes) REQUIRED Dict[str, ModelsSubGameMode]
     """
 
@@ -59,6 +61,7 @@ class ModelsRuleSet(Model):
     flexing_rule: List[ModelsFlexingRule]  # REQUIRED
     match_options: ModelsMatchOptionRule  # REQUIRED
     matching_rule: List[ModelsMatchingRule]  # REQUIRED
+    rebalance_enable: bool  # REQUIRED
     sub_game_modes: Dict[str, ModelsSubGameMode]  # REQUIRED
 
     # endregion fields
@@ -85,6 +88,10 @@ class ModelsRuleSet(Model):
 
     def with_matching_rule(self, value: List[ModelsMatchingRule]) -> ModelsRuleSet:
         self.matching_rule = value
+        return self
+
+    def with_rebalance_enable(self, value: bool) -> ModelsRuleSet:
+        self.rebalance_enable = value
         return self
 
     def with_sub_game_modes(self, value: Dict[str, ModelsSubGameMode]) -> ModelsRuleSet:
@@ -126,6 +133,10 @@ class ModelsRuleSet(Model):
             ]
         elif include_empty:
             result["matching_rule"] = []
+        if hasattr(self, "rebalance_enable"):
+            result["rebalance_enable"] = bool(self.rebalance_enable)
+        elif include_empty:
+            result["rebalance_enable"] = False
         if hasattr(self, "sub_game_modes"):
             result["sub_game_modes"] = {
                 str(k0): v0.to_dict(include_empty=include_empty)
@@ -147,6 +158,7 @@ class ModelsRuleSet(Model):
         flexing_rule: List[ModelsFlexingRule],
         match_options: ModelsMatchOptionRule,
         matching_rule: List[ModelsMatchingRule],
+        rebalance_enable: bool,
         sub_game_modes: Dict[str, ModelsSubGameMode],
     ) -> ModelsRuleSet:
         instance = cls()
@@ -155,6 +167,7 @@ class ModelsRuleSet(Model):
         instance.flexing_rule = flexing_rule
         instance.match_options = match_options
         instance.matching_rule = matching_rule
+        instance.rebalance_enable = rebalance_enable
         instance.sub_game_modes = sub_game_modes
         return instance
 
@@ -203,6 +216,10 @@ class ModelsRuleSet(Model):
             ]
         elif include_empty:
             instance.matching_rule = []
+        if "rebalance_enable" in dict_ and dict_["rebalance_enable"] is not None:
+            instance.rebalance_enable = bool(dict_["rebalance_enable"])
+        elif include_empty:
+            instance.rebalance_enable = False
         if "sub_game_modes" in dict_ and dict_["sub_game_modes"] is not None:
             instance.sub_game_modes = {
                 str(k0): ModelsSubGameMode.create_from_dict(
@@ -256,6 +273,7 @@ class ModelsRuleSet(Model):
             "flexing_rule": "flexing_rule",
             "match_options": "match_options",
             "matching_rule": "matching_rule",
+            "rebalance_enable": "rebalance_enable",
             "sub_game_modes": "sub_game_modes",
         }
 
@@ -267,6 +285,7 @@ class ModelsRuleSet(Model):
             "flexing_rule": True,
             "match_options": True,
             "matching_rule": True,
+            "rebalance_enable": True,
             "sub_game_modes": True,
         }
 

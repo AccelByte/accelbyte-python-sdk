@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.15.0"
+__version__ = "4.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -119,6 +119,7 @@ from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate
 from .checkout_config import CheckoutConfig
+from .client_request_parameter import ClientRequestParameter
 from .code_create import CodeCreate
 from .code_create_result import CodeCreateResult
 from .code_info import CodeInfo
@@ -132,6 +133,8 @@ from .condition_group import ConditionGroup
 from .condition_group import OperatorEnum as ConditionGroupOperatorEnum
 from .condition_group_validate_result import ConditionGroupValidateResult
 from .condition_match_result import ConditionMatchResult
+from .consume_item import ConsumeItem
+from .consume_item import ItemIdentityTypeEnum as ConsumeItemItemIdentityTypeEnum
 from .credit_request import CreditRequest
 from .credit_request import (
     OriginEnum as CreditRequestOriginEnum,
@@ -250,6 +253,14 @@ from .google_iap_receipt import GoogleIAPReceipt
 from .google_receipt_resolve_result import GoogleReceiptResolveResult
 from .grant_subscription_days_request import GrantSubscriptionDaysRequest
 from .hierarchical_category_info import HierarchicalCategoryInfo
+from .iap_consume_history_info import IAPConsumeHistoryInfo
+from .iap_consume_history_info import (
+    IapTypeEnum as IAPConsumeHistoryInfoIapTypeEnum,
+    StatusEnum as IAPConsumeHistoryInfoStatusEnum,
+)
+from .iap_consume_history_paging_sliced_result import (
+    IAPConsumeHistoryPagingSlicedResult,
+)
 from .iap_item_config_info import IAPItemConfigInfo
 from .iap_item_config_update import IAPItemConfigUpdate
 from .iap_item_entry import IAPItemEntry
@@ -505,6 +516,8 @@ from .redeem_result import RedeemResult
 from .redeemable_item import RedeemableItem
 from .region_data_item import RegionDataItem
 from .region_data_item import CurrencyTypeEnum as RegionDataItemCurrencyTypeEnum
+from .request_history import RequestHistory
+from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
 from .reward_condition import RewardCondition
 from .reward_create import RewardCreate

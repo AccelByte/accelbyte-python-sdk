@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,8 @@ class OauthmodelErrorResponse(Model):
 
         linking_token: (linkingToken) OPTIONAL str
 
+        message_variables: (messageVariables) OPTIONAL Dict[str, str]
+
         mfa_token: (mfa_token) OPTIONAL str
 
         platform_id: (platformId) OPTIONAL str
@@ -60,6 +62,7 @@ class OauthmodelErrorResponse(Model):
     error_uri: str  # OPTIONAL
     factors: List[str]  # OPTIONAL
     linking_token: str  # OPTIONAL
+    message_variables: Dict[str, str]  # OPTIONAL
     mfa_token: str  # OPTIONAL
     platform_id: str  # OPTIONAL
 
@@ -93,6 +96,10 @@ class OauthmodelErrorResponse(Model):
 
     def with_linking_token(self, value: str) -> OauthmodelErrorResponse:
         self.linking_token = value
+        return self
+
+    def with_message_variables(self, value: Dict[str, str]) -> OauthmodelErrorResponse:
+        self.message_variables = value
         return self
 
     def with_mfa_token(self, value: str) -> OauthmodelErrorResponse:
@@ -137,6 +144,12 @@ class OauthmodelErrorResponse(Model):
             result["linkingToken"] = str(self.linking_token)
         elif include_empty:
             result["linkingToken"] = ""
+        if hasattr(self, "message_variables"):
+            result["messageVariables"] = {
+                str(k0): str(v0) for k0, v0 in self.message_variables.items()
+            }
+        elif include_empty:
+            result["messageVariables"] = {}
         if hasattr(self, "mfa_token"):
             result["mfa_token"] = str(self.mfa_token)
         elif include_empty:
@@ -161,6 +174,7 @@ class OauthmodelErrorResponse(Model):
         error_uri: Optional[str] = None,
         factors: Optional[List[str]] = None,
         linking_token: Optional[str] = None,
+        message_variables: Optional[Dict[str, str]] = None,
         mfa_token: Optional[str] = None,
         platform_id: Optional[str] = None,
     ) -> OauthmodelErrorResponse:
@@ -178,6 +192,8 @@ class OauthmodelErrorResponse(Model):
             instance.factors = factors
         if linking_token is not None:
             instance.linking_token = linking_token
+        if message_variables is not None:
+            instance.message_variables = message_variables
         if mfa_token is not None:
             instance.mfa_token = mfa_token
         if platform_id is not None:
@@ -219,6 +235,12 @@ class OauthmodelErrorResponse(Model):
             instance.linking_token = str(dict_["linkingToken"])
         elif include_empty:
             instance.linking_token = ""
+        if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
+            instance.message_variables = {
+                str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()
+            }
+        elif include_empty:
+            instance.message_variables = {}
         if "mfa_token" in dict_ and dict_["mfa_token"] is not None:
             instance.mfa_token = str(dict_["mfa_token"])
         elif include_empty:
@@ -277,6 +299,7 @@ class OauthmodelErrorResponse(Model):
             "error_uri": "error_uri",
             "factors": "factors",
             "linkingToken": "linking_token",
+            "messageVariables": "message_variables",
             "mfa_token": "mfa_token",
             "platformId": "platform_id",
         }
@@ -291,6 +314,7 @@ class OauthmodelErrorResponse(Model):
             "error_uri": False,
             "factors": False,
             "linkingToken": False,
+            "messageVariables": False,
             "mfa_token": False,
             "platformId": False,
         }

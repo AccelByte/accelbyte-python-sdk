@@ -41,6 +41,7 @@ from ..models import GoogleIAPConfigInfo
 from ..models import GoogleIAPConfigRequest
 from ..models import GoogleIAPReceipt
 from ..models import GoogleReceiptResolveResult
+from ..models import IAPConsumeHistoryPagingSlicedResult
 from ..models import IAPItemConfigInfo
 from ..models import IAPItemConfigUpdate
 from ..models import IAPOrderPagingSlicedResult
@@ -87,6 +88,11 @@ from ..operations.iap import PublicFulfillAppleIAPItem
 from ..operations.iap import PublicFulfillGoogleIAPItem
 from ..operations.iap import PublicReconcilePlayStationStore
 from ..operations.iap import QueryAllUserIAPOrders
+from ..operations.iap import QueryUserIAPConsumeHistory
+from ..operations.iap import (
+    QueryUserIAPConsumeHistoryStatusEnum,
+    QueryUserIAPConsumeHistoryTypeEnum,
+)
 from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTypeEnum
 from ..operations.iap import SyncEpicGamesInventory
@@ -922,6 +928,68 @@ async def query_all_user_iap_orders_async(
             return None, error
     request = QueryAllUserIAPOrders.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(QueryUserIAPConsumeHistory)
+def query_user_iap_consume_history(
+    user_id: str,
+    end_time: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[str] = None,
+    status: Optional[Union[str, QueryUserIAPConsumeHistoryStatusEnum]] = None,
+    type_: Optional[Union[str, QueryUserIAPConsumeHistoryTypeEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserIAPConsumeHistory.create(
+        user_id=user_id,
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        status=status,
+        type_=type_,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryUserIAPConsumeHistory)
+async def query_user_iap_consume_history_async(
+    user_id: str,
+    end_time: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[str] = None,
+    status: Optional[Union[str, QueryUserIAPConsumeHistoryStatusEnum]] = None,
+    type_: Optional[Union[str, QueryUserIAPConsumeHistoryTypeEnum]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryUserIAPConsumeHistory.create(
+        user_id=user_id,
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        status=status,
+        type_=type_,
         namespace=namespace,
     )
     return await run_request_async(

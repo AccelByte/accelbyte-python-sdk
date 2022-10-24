@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -891,6 +891,8 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.redirect_uri = randomize()
     instance.secret = randomize()
     instance.deletable = randomize("bool")
+    instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.two_factor_enabled = randomize("bool")
     return instance
 
@@ -930,6 +932,8 @@ def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUp
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.deletable = randomize("bool")
     instance.namespace = randomize("slug")
+    instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.redirect_uri = randomize()
     instance.two_factor_enabled = randomize("bool")
     return instance
@@ -950,6 +954,8 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.redirect_uri = randomize()
     instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
+    instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2344,6 +2350,7 @@ def create_model_valid_user_id_response_v4_example() -> ModelValidUserIDResponse
 
 def create_model_validation_detail_example() -> ModelValidationDetail:
     instance = ModelValidationDetail()
+    instance.allow_all_special_characters = randomize("bool")
     instance.allow_digit = randomize("bool")
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")
@@ -2365,6 +2372,7 @@ def create_model_validation_detail_example() -> ModelValidationDetail:
 
 def create_model_validation_detail_public_example() -> ModelValidationDetailPublic:
     instance = ModelValidationDetailPublic()
+    instance.allow_all_special_characters = randomize("bool")
     instance.allow_digit = randomize("bool")
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")
@@ -2455,6 +2463,7 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance.error_uri = randomize()
     instance.factors = [randomize()]
     instance.linking_token = randomize()
+    instance.message_variables = {randomize(): randomize()}
     instance.mfa_token = randomize()
     instance.platform_id = randomize()
     return instance
@@ -2580,6 +2589,7 @@ def create_restapi_error_response_example() -> RestapiErrorResponse:
 
 def create_validation_example() -> Validation:
     instance = Validation()
+    instance.allow_all_special_characters = randomize("bool")
     instance.allow_digit = randomize("bool")
     instance.allow_letter = randomize("bool")
     instance.allow_space = randomize("bool")

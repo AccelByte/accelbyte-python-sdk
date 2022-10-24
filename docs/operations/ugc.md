@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Ugc Service Index (2.5.4)
+# AccelByte Cloud Ugc Service Index (2.5.5)
 
 
 ## Operations

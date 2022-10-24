@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -59,6 +59,10 @@ class ClientmodelClientV3Response(Model):
         scopes: (scopes) REQUIRED List[str]
 
         two_factor_enabled: (twoFactorEnabled) REQUIRED bool
+
+        oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
+
+        oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
     """
 
     # region fields
@@ -76,6 +80,8 @@ class ClientmodelClientV3Response(Model):
     redirect_uri: str  # REQUIRED
     scopes: List[str]  # REQUIRED
     two_factor_enabled: bool  # REQUIRED
+    oauth_access_token_expiration: int  # OPTIONAL
+    oauth_refresh_token_expiration: int  # OPTIONAL
 
     # endregion fields
 
@@ -133,6 +139,18 @@ class ClientmodelClientV3Response(Model):
 
     def with_two_factor_enabled(self, value: bool) -> ClientmodelClientV3Response:
         self.two_factor_enabled = value
+        return self
+
+    def with_oauth_access_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientV3Response:
+        self.oauth_access_token_expiration = value
+        return self
+
+    def with_oauth_refresh_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientV3Response:
+        self.oauth_refresh_token_expiration = value
         return self
 
     # endregion with_x methods
@@ -196,6 +214,18 @@ class ClientmodelClientV3Response(Model):
             result["twoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
             result["twoFactorEnabled"] = False
+        if hasattr(self, "oauth_access_token_expiration"):
+            result["oauthAccessTokenExpiration"] = int(
+                self.oauth_access_token_expiration
+            )
+        elif include_empty:
+            result["oauthAccessTokenExpiration"] = 0
+        if hasattr(self, "oauth_refresh_token_expiration"):
+            result["oauthRefreshTokenExpiration"] = int(
+                self.oauth_refresh_token_expiration
+            )
+        elif include_empty:
+            result["oauthRefreshTokenExpiration"] = 0
         return result
 
     # endregion to methods
@@ -218,6 +248,8 @@ class ClientmodelClientV3Response(Model):
         redirect_uri: str,
         scopes: List[str],
         two_factor_enabled: bool,
+        oauth_access_token_expiration: Optional[int] = None,
+        oauth_refresh_token_expiration: Optional[int] = None,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences
@@ -233,6 +265,10 @@ class ClientmodelClientV3Response(Model):
         instance.redirect_uri = redirect_uri
         instance.scopes = scopes
         instance.two_factor_enabled = two_factor_enabled
+        if oauth_access_token_expiration is not None:
+            instance.oauth_access_token_expiration = oauth_access_token_expiration
+        if oauth_refresh_token_expiration is not None:
+            instance.oauth_refresh_token_expiration = oauth_refresh_token_expiration
         return instance
 
     @classmethod
@@ -299,6 +335,24 @@ class ClientmodelClientV3Response(Model):
             instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
         elif include_empty:
             instance.two_factor_enabled = False
+        if (
+            "oauthAccessTokenExpiration" in dict_
+            and dict_["oauthAccessTokenExpiration"] is not None
+        ):
+            instance.oauth_access_token_expiration = int(
+                dict_["oauthAccessTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_access_token_expiration = 0
+        if (
+            "oauthRefreshTokenExpiration" in dict_
+            and dict_["oauthRefreshTokenExpiration"] is not None
+        ):
+            instance.oauth_refresh_token_expiration = int(
+                dict_["oauthRefreshTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_refresh_token_expiration = 0
         return instance
 
     @classmethod
@@ -355,6 +409,8 @@ class ClientmodelClientV3Response(Model):
             "redirectUri": "redirect_uri",
             "scopes": "scopes",
             "twoFactorEnabled": "two_factor_enabled",
+            "oauthAccessTokenExpiration": "oauth_access_token_expiration",
+            "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
         }
 
     @staticmethod
@@ -373,6 +429,8 @@ class ClientmodelClientV3Response(Model):
             "redirectUri": True,
             "scopes": True,
             "twoFactorEnabled": True,
+            "oauthAccessTokenExpiration": False,
+            "oauthRefreshTokenExpiration": False,
         }
 
     # endregion static methods

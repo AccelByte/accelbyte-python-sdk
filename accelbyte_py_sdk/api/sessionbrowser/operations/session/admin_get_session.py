@@ -55,9 +55,9 @@ class AdminGetSession(Operation):
 
         tags: ["Session"]
 
-        consumes: []
+        consumes: ["application/json"]
 
-        produces: []
+        produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
@@ -77,8 +77,8 @@ class AdminGetSession(Operation):
 
     _url: str = "/sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}"
     _method: str = "GET"
-    _consumes: List[str] = []
-    _produces: List[str] = []
+    _consumes: List[str] = ["application/json"]
+    _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 

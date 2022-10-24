@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.15.0)
+# AccelByte Cloud Platform Service (4.17.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,7 @@ from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
 from ..api.platform.models import CheckoutConfig
+from ..api.platform.models import ClientRequestParameter
 from ..api.platform.models import CodeCreate
 from ..api.platform.models import CodeCreateResult
 from ..api.platform.models import CodeInfo
@@ -72,6 +73,7 @@ from ..api.platform.models import CodeInfoPagingSlicedResult
 from ..api.platform.models import ConditionGroup
 from ..api.platform.models import ConditionGroupValidateResult
 from ..api.platform.models import ConditionMatchResult
+from ..api.platform.models import ConsumeItem
 from ..api.platform.models import CreditRequest
 from ..api.platform.models import CreditSummary
 from ..api.platform.models import CurrencyConfig
@@ -130,6 +132,8 @@ from ..api.platform.models import GoogleIAPReceipt
 from ..api.platform.models import GoogleReceiptResolveResult
 from ..api.platform.models import GrantSubscriptionDaysRequest
 from ..api.platform.models import HierarchicalCategoryInfo
+from ..api.platform.models import IAPConsumeHistoryInfo
+from ..api.platform.models import IAPConsumeHistoryPagingSlicedResult
 from ..api.platform.models import IAPItemConfigInfo
 from ..api.platform.models import IAPItemConfigUpdate
 from ..api.platform.models import IAPItemEntry
@@ -245,6 +249,7 @@ from ..api.platform.models import RedeemRequest
 from ..api.platform.models import RedeemResult
 from ..api.platform.models import RedeemableItem
 from ..api.platform.models import RegionDataItem
+from ..api.platform.models import RequestHistory
 from ..api.platform.models import Requirement
 from ..api.platform.models import RewardCondition
 from ..api.platform.models import RewardCreate
@@ -806,6 +811,15 @@ def create_checkout_config_example() -> CheckoutConfig:
     return instance
 
 
+def create_client_request_parameter_example() -> ClientRequestParameter:
+    instance = ClientRequestParameter()
+    instance.currency_code = randomize()
+    instance.language = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.region = randomize()
+    return instance
+
+
 def create_code_create_example() -> CodeCreate:
     instance = CodeCreate()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
@@ -872,6 +886,14 @@ def create_condition_match_result_example() -> ConditionMatchResult:
     instance.matched = randomize("bool")
     instance.matched_conditions = [{randomize(): randomize()}]
     instance.not_match_reason = randomize()
+    return instance
+
+
+def create_consume_item_example() -> ConsumeItem:
+    instance = ConsumeItem()
+    instance.ext_item_id = randomize()
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
     return instance
 
 
@@ -1490,6 +1512,28 @@ def create_hierarchical_category_info_example() -> HierarchicalCategoryInfo:
     instance.parent_category_path = randomize()
     instance.updated_at = randomize("date")
     instance.root = randomize("bool")
+    return instance
+
+
+def create_iap_consume_history_info_example() -> IAPConsumeHistoryInfo:
+    instance = IAPConsumeHistoryInfo()
+    instance.client_request_parameter = create_client_request_parameter_example()
+    instance.consume_items = [create_consume_item_example()]
+    instance.iap_type = randomize()
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.request_body = {randomize(): randomize()}
+    instance.request_histories = [create_request_history_example()]
+    instance.request_url = randomize("url")
+    instance.status = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_iap_consume_history_paging_sliced_result_example() -> IAPConsumeHistoryPagingSlicedResult:
+    instance = IAPConsumeHistoryPagingSlicedResult()
+    instance.data = [create_iap_consume_history_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 
@@ -2869,6 +2913,16 @@ def create_region_data_item_example() -> RegionDataItem:
     instance.expire_at = randomize("date")
     instance.purchase_at = randomize("date")
     instance.trial_price = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_request_history_example() -> RequestHistory:
+    instance = RequestHistory()
+    instance.request_time = randomize("date")
+    instance.response_body = {randomize(): randomize()}
+    instance.response_time = randomize("date")
+    instance.status = randomize()
+    instance.status_code = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

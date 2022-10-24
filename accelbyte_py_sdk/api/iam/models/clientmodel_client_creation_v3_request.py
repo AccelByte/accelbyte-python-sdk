@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.18.0)
+# AccelByte Cloud Iam Service (5.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,10 @@ class ClientmodelClientCreationV3Request(Model):
 
         deletable: (deletable) OPTIONAL bool
 
+        oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
+
+        oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
+
         two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
     """
 
@@ -72,6 +76,8 @@ class ClientmodelClientCreationV3Request(Model):
     redirect_uri: str  # REQUIRED
     secret: str  # REQUIRED
     deletable: bool  # OPTIONAL
+    oauth_access_token_expiration: int  # OPTIONAL
+    oauth_refresh_token_expiration: int  # OPTIONAL
     two_factor_enabled: bool  # OPTIONAL
 
     # endregion fields
@@ -122,6 +128,18 @@ class ClientmodelClientCreationV3Request(Model):
 
     def with_deletable(self, value: bool) -> ClientmodelClientCreationV3Request:
         self.deletable = value
+        return self
+
+    def with_oauth_access_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientCreationV3Request:
+        self.oauth_access_token_expiration = value
+        return self
+
+    def with_oauth_refresh_token_expiration(
+        self, value: int
+    ) -> ClientmodelClientCreationV3Request:
+        self.oauth_refresh_token_expiration = value
         return self
 
     def with_two_factor_enabled(
@@ -183,6 +201,18 @@ class ClientmodelClientCreationV3Request(Model):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
             result["deletable"] = False
+        if hasattr(self, "oauth_access_token_expiration"):
+            result["oauthAccessTokenExpiration"] = int(
+                self.oauth_access_token_expiration
+            )
+        elif include_empty:
+            result["oauthAccessTokenExpiration"] = 0
+        if hasattr(self, "oauth_refresh_token_expiration"):
+            result["oauthRefreshTokenExpiration"] = int(
+                self.oauth_refresh_token_expiration
+            )
+        elif include_empty:
+            result["oauthRefreshTokenExpiration"] = 0
         if hasattr(self, "two_factor_enabled"):
             result["twoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
@@ -207,6 +237,8 @@ class ClientmodelClientCreationV3Request(Model):
         redirect_uri: str,
         secret: str,
         deletable: Optional[bool] = None,
+        oauth_access_token_expiration: Optional[int] = None,
+        oauth_refresh_token_expiration: Optional[int] = None,
         two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientCreationV3Request:
         instance = cls()
@@ -222,6 +254,10 @@ class ClientmodelClientCreationV3Request(Model):
         instance.secret = secret
         if deletable is not None:
             instance.deletable = deletable
+        if oauth_access_token_expiration is not None:
+            instance.oauth_access_token_expiration = oauth_access_token_expiration
+        if oauth_refresh_token_expiration is not None:
+            instance.oauth_refresh_token_expiration = oauth_refresh_token_expiration
         if two_factor_enabled is not None:
             instance.two_factor_enabled = two_factor_enabled
         return instance
@@ -282,6 +318,24 @@ class ClientmodelClientCreationV3Request(Model):
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
             instance.deletable = False
+        if (
+            "oauthAccessTokenExpiration" in dict_
+            and dict_["oauthAccessTokenExpiration"] is not None
+        ):
+            instance.oauth_access_token_expiration = int(
+                dict_["oauthAccessTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_access_token_expiration = 0
+        if (
+            "oauthRefreshTokenExpiration" in dict_
+            and dict_["oauthRefreshTokenExpiration"] is not None
+        ):
+            instance.oauth_refresh_token_expiration = int(
+                dict_["oauthRefreshTokenExpiration"]
+            )
+        elif include_empty:
+            instance.oauth_refresh_token_expiration = 0
         if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
             instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
         elif include_empty:
@@ -340,6 +394,8 @@ class ClientmodelClientCreationV3Request(Model):
             "redirectUri": "redirect_uri",
             "secret": "secret",
             "deletable": "deletable",
+            "oauthAccessTokenExpiration": "oauth_access_token_expiration",
+            "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
             "twoFactorEnabled": "two_factor_enabled",
         }
 
@@ -357,6 +413,8 @@ class ClientmodelClientCreationV3Request(Model):
             "redirectUri": True,
             "secret": True,
             "deletable": False,
+            "oauthAccessTokenExpiration": False,
+            "oauthRefreshTokenExpiration": False,
             "twoFactorEnabled": False,
         }
 

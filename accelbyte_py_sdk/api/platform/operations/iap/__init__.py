@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.15.0"
+__version__ = "4.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,6 +37,11 @@ from .public_fulfill_apple_iap_item import PublicFulfillAppleIAPItem
 from .public_fulfill_google_iap_item import PublicFulfillGoogleIAPItem
 from .public_reconcile_play_s_7ac4de import PublicReconcilePlayStationStore
 from .query_all_user_iap_orders import QueryAllUserIAPOrders
+from .query_user_iap_consume_history import QueryUserIAPConsumeHistory
+from .query_user_iap_consume_history import (
+    StatusEnum as QueryUserIAPConsumeHistoryStatusEnum,
+    TypeEnum as QueryUserIAPConsumeHistoryTypeEnum,
+)
 from .query_user_iap_orders import QueryUserIAPOrders
 from .query_user_iap_orders import (
     StatusEnum as QueryUserIAPOrdersStatusEnum,
