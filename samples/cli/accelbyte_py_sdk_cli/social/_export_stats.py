@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Social Service (1.29.6)
+# Accelbyte Cloud Social Service (1.30.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.social import export_stats as export_stats_internal
+from accelbyte_py_sdk.api.social.models import ConfigInfo
 
 
 @click.command()

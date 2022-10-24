@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.15.0)
+# justice-platform-service (4.17.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -223,6 +223,7 @@ from ._redeem_code import redeem_code
 from ._fulfill_rewards import fulfill_rewards
 from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
+from ._query_user_iap_consume_history import query_user_iap_consume_history
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
 from ._query_user_orders import query_user_orders
 from ._admin_create_user_order import admin_create_user_order
@@ -630,6 +631,7 @@ commands = [
     fulfill_rewards,
     query_user_iap_orders,
     query_all_user_iap_orders,
+    query_user_iap_consume_history,
     mock_fulfill_iap_item,
     query_user_orders,
     admin_create_user_order,
