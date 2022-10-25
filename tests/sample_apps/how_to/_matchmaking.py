@@ -65,6 +65,7 @@ class MatchmakingTestCase(IntegrationTestCase):
             flexing_rule=models_flexing_rules,
             match_options=ModelsMatchOptionRule.create(options=models_match_options),
             matching_rule=models_matching_rules,
+            rebalance_enable=False,
             sub_game_modes={
                 game_mode: ModelsSubGameMode.create(
                     alliance=models_alliance_rule,
