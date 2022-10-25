@@ -31,7 +31,6 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import export_rewards as export_rewards_internal
-from accelbyte_py_sdk.api.platform.models import ConfigInfo
 
 
 @click.command()

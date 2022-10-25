@@ -31,7 +31,6 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.social import export_stats as export_stats_internal
-from accelbyte_py_sdk.api.social.models import ConfigInfo
 
 
 @click.command()
