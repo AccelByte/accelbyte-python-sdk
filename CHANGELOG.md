@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.26.0
+- Updated spec for AccelByte Cloud v3.34.0.
+
 ## v0.25.1
 - ! Fixed Social `export_stats` operation
     ```python
