@@ -9,8 +9,8 @@ You can use the AccelByte Python SDK to implement our backend services within yo
 
 ## Prerequisites
 
-*  <a href="/guides/access/namespaces.html#how-to-create-a-game-namespace" target="_blank">Create a Game Namespace</a> if you don't have one yet. Be sure to keep the namespace's **Namespace ID** as you will need it later
-*  <a href="/guides/access/iam-client.html#create-a-client" target="_blank">Create an OAuth Client</a> with a **Confidential** client type. Keep the **Client ID** and the **Client Secret** somewhere safe as you will be using them in this tutorial
+*  <a href="https://docs.accelbyte.io/guides/access/namespaces.html#how-to-create-a-game-namespace" target="_blank">Create a Game Namespace</a> if you don't have one yet. Be sure to keep the namespace's **Namespace ID** as you will need it later
+*  <a href="https://docs.accelbyte.io/guides/access/iam-client.html#create-a-client" target="_blank">Create an OAuth Client</a> with a **Confidential** client type. Keep the **Client ID** and the **Client Secret** somewhere safe as you will be using them in this tutorial
 * Download the [AccelByte Python SDK](https://github.com/AccelByte/accelbyte-python-sdk).
 
 ## Additional Resources
