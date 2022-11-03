@@ -190,5 +190,19 @@ class MatchmakingTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:update_matchmaking_channel
 
-# endregion test:update_matchmaking_channel
+    # region test:get_all_party_in_all_channel
+
+    def test_get_all_party_in_all_channel(self):
+        from accelbyte_py_sdk.api.matchmaking import get_all_party_in_all_channel
+
+        # arrange
+
+        # act
+        result, error = get_all_party_in_all_channel()
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:get_all_party_in_all_channel
