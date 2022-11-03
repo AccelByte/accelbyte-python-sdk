@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from ._integration_test_case import IntegrationTestCase
 
 from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
@@ -6,6 +8,7 @@ from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 class AchievementTestCase(IntegrationTestCase):
 
     exist: bool = False
+    exported_filename: str = "export_achievements"
     models_achievement_request: ModelsAchievementRequest = (
         ModelsAchievementRequest.create(
             achievement_code="CODE",
@@ -34,6 +37,10 @@ class AchievementTestCase(IntegrationTestCase):
                 condition=error is not None,
             )
             self.exist = error is not None
+
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
         super().tearDown()
 
     # region test:admin_create_new_achievement
@@ -107,6 +114,28 @@ class AchievementTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:admin_get_achievement
+
+    # region test:export_achievements
+
+    def test_export_achievements(self):
+        from accelbyte_py_sdk.api.achievement import export_achievements
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = export_achievements()
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:export_achievements
 
     # region test:admin_list_achievements
 
