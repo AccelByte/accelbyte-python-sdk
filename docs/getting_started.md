@@ -24,7 +24,7 @@ You can use the AccelByte Python SDK to implement our backend services within yo
 You can install the SDK with **pip** directly from the GitHub repository, as seen below:
 
 ```py
-pip install git+ssh://git@github.com/AccelByte/accelbyte-python-sdk.git@v0.26.0#egg=accelbyte_py_sdk
+pip install git+ssh://git@github.com/AccelByte/accelbyte-python-sdk.git@v0.26.1#egg=accelbyte_py_sdk
 ```
 
 ### Log in as a Client using the SDK
