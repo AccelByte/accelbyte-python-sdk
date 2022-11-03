@@ -73,6 +73,27 @@ def test_admin_get_achievement(self):
     # assert
     self.assertIsNone(error, error)
 ```
+### Export Achievements
+
+```python
+def test_export_achievements(self):
+    from accelbyte_py_sdk.api.achievement import export_achievements
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = export_achievements()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
 ### Admin List Achievements
 
 ```python
@@ -1302,9 +1323,31 @@ def test_free_form_notification(self):
 
     # assert
     self.assertIsNone(error, error)
+```
+### Admin Export Config V1
 
+```python
+def test_admin_export_config_v1(self):
+    from accelbyte_py_sdk.api.lobby import admin_export_config_v1
 
-class AsyncLobbyTestCase(AsyncIntegrationTestCase):
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = admin_export_config_v1()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
+### Send And Receive Notifications
+
+```python
 async def test_send_and_receive_notifications(self):
     from accelbyte_py_sdk.api.lobby.wss_models import PartyCreateRequest
     from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm
@@ -1442,6 +1485,20 @@ def test_update_matchmaking_channel(self):
         ),
         channel_name=self.game_mode,
     )
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Get All Party In All Channel
+
+```python
+def test_get_all_party_in_all_channel(self):
+    from accelbyte_py_sdk.api.matchmaking import get_all_party_in_all_channel
+
+    # arrange
+
+    # act
+    result, error = get_all_party_in_all_channel()
 
     # assert
     self.assertIsNone(error, error)
