@@ -199,7 +199,7 @@ class GetAllPartyInAllChannel(Operation):
 
         if code == 200:
             return {
-                str(k): [ModelsMatchingParty.create_from_dict(i) for i in v]
+                str(k): ModelsMatchingParty.create_many_from_list(v)
                 for k, v in content.items()
             }, None
         if code == 400:
