@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.26.1
+- Fixed handling of null arrays in responses.
+  - `GetAllPartyInAllChannel `
+- Updated spec files to fix issues in `achievement` and `lobby`.
+  - `ExportAchievements` and `AdminExportConfigV1`
+
 ## v0.26.0
 - Updated spec for AccelByte Cloud v3.34.0.
 
