@@ -1,10 +1,20 @@
 import asyncio
+from pathlib import Path
 
 from ._integration_test_case import IntegrationTestCase
 from ._integration_test_case import AsyncIntegrationTestCase
 
 
 class LobbyTestCase(IntegrationTestCase):
+
+    exported_filename: str = "export_config"
+
+    def tearDown(self) -> None:
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        super().tearDown()
+
     # region test:free_form_notification
 
     def test_free_form_notification(self):
@@ -23,8 +33,35 @@ class LobbyTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:free_form_notification
+
+    # region test:admin_export_config_v1
+
+    def test_admin_export_config_v1(self):
+        from accelbyte_py_sdk.api.lobby import admin_export_config_v1
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = admin_export_config_v1()
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:admin_export_config_v1
+
 
 class AsyncLobbyTestCase(AsyncIntegrationTestCase):
+
+    # region test:send_and_receive_notifications
+
     async def test_send_and_receive_notifications(self):
         from accelbyte_py_sdk.api.lobby.wss_models import PartyCreateRequest
         from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm
@@ -60,5 +97,4 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
         self.assertIsNotNone(wsm_type)
         self.assertEqual("partyCreateResponse", wsm_type)
 
-
-# endregion test:free_form_notification
+    # endregion test:send_and_receive_notifications
