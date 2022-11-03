@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.lobby import (
     admin_export_config_v1 as admin_export_config_v1_internal,
 )
-from accelbyte_py_sdk.api.lobby.models import ModelsConfigExport
 from accelbyte_py_sdk.api.lobby.models import ResponseError
 
 

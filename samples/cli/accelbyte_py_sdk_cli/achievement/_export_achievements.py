@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.achievement import (
     export_achievements as export_achievements_internal,
 )
-from accelbyte_py_sdk.api.achievement.models import ModelsAchievement
 from accelbyte_py_sdk.api.achievement.models import ResponseError
 
 
