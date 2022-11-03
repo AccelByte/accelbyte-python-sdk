@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsConfigExport
 from ...models import ResponseError
 
 
@@ -65,7 +64,7 @@ class AdminExportConfigV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsConfigExport (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -163,12 +162,10 @@ class AdminExportConfigV1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsConfigExport], Union[None, HttpResponse, ResponseError]
-    ]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsConfigExport (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -190,7 +187,7 @@ class AdminExportConfigV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsConfigExport.create_from_dict(content), None
+            return content, None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

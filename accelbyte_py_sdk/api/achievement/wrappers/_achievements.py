@@ -29,7 +29,6 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelsAchievement
 from ..models import ModelsAchievementOrderUpdateRequest
 from ..models import ModelsAchievementRequest
 from ..models import ModelsAchievementResponse

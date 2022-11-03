@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsAchievement
 from ...models import ResponseError
 
 
@@ -63,7 +62,7 @@ class ExportAchievements(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsAchievement] (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -161,12 +160,10 @@ class ExportAchievements(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[ModelsAchievement]], Union[None, HttpResponse, ResponseError]
-    ]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - List[ModelsAchievement] (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -188,7 +185,7 @@ class ExportAchievements(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelsAchievement.create_from_dict(i) for i in content], None
+            return content, None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

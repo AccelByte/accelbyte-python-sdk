@@ -29,7 +29,6 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ModelsConfigExport
 from ..models import ModelsConfigList
 from ..models import ModelsConfigReq
 from ..models import ModelsImportConfigResponse
