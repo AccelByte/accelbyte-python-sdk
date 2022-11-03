@@ -235,10 +235,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "items": {
-                "$ref": "#/definitions/models.Achievement"
-              },
-              "type": "array"
+              "type": "file"
             }
           },
           "401": {
