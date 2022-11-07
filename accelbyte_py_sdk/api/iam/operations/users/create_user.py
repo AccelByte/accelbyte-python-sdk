@@ -32,6 +32,7 @@ from .....core import deprecated
 
 from ...models import ModelUserCreateRequest
 from ...models import ModelUserCreateResponse
+from ...models import RestErrorResponse
 
 
 class CreateUser(Operation):
@@ -111,9 +112,9 @@ class CreateUser(Operation):
 
         400: Bad Request -
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         409: Conflict -
     """
@@ -222,16 +223,19 @@ class CreateUser(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelUserCreateResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelUserCreateResponse],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         201: Created - ModelUserCreateResponse (Created)
 
         400: Bad Request -
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         409: Conflict -
 
@@ -253,9 +257,9 @@ class CreateUser(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
             return None, HttpResponse.create(code, "Conflict")
 

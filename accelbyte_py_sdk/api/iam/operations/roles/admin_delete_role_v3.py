@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import RestapiErrorResponse
+from ...models import RestErrorResponse
 
 
 class AdminDeleteRoleV3(Operation):
@@ -59,17 +59,17 @@ class AdminDeleteRoleV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10456: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
 
-        409: Conflict - RestapiErrorResponse (20009: request_conflict)
+        409: Conflict - RestErrorResponse (20009: request_conflict)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -161,22 +161,22 @@ class AdminDeleteRoleV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10456: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
 
-        409: Conflict - RestapiErrorResponse (20009: request_conflict)
+        409: Conflict - RestErrorResponse (20009: request_conflict)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -194,17 +194,17 @@ class AdminDeleteRoleV3(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

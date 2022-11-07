@@ -85,6 +85,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
 
+        scopes: (scopes) OPTIONAL List[str]
+
         token_endpoint: (TokenEndpoint) OPTIONAL str
     """
 
@@ -115,6 +117,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     token_claims_mapping: Dict[str, str]  # REQUIRED
     authorization_endpoint: str  # OPTIONAL
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
+    scopes: List[str]  # OPTIONAL
     token_endpoint: str  # OPTIONAL
 
     # endregion fields
@@ -261,6 +264,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.netflix_certificates = value
         return self
 
+    def with_scopes(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.scopes = value
+        return self
+
     def with_token_endpoint(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -380,6 +389,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             )
         elif include_empty:
             result["NetflixCertificates"] = AccountcommonNetflixCertificates()
+        if hasattr(self, "scopes"):
+            result["scopes"] = [str(i0) for i0 in self.scopes]
+        elif include_empty:
+            result["scopes"] = []
         if hasattr(self, "token_endpoint"):
             result["TokenEndpoint"] = str(self.token_endpoint)
         elif include_empty:
@@ -418,6 +431,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         token_claims_mapping: Dict[str, str],
         authorization_endpoint: Optional[str] = None,
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
+        scopes: Optional[List[str]] = None,
         token_endpoint: Optional[str] = None,
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         instance = cls()
@@ -448,6 +462,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.authorization_endpoint = authorization_endpoint
         if netflix_certificates is not None:
             instance.netflix_certificates = netflix_certificates
+        if scopes is not None:
+            instance.scopes = scopes
         if token_endpoint is not None:
             instance.token_endpoint = token_endpoint
         return instance
@@ -579,6 +595,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             )
         elif include_empty:
             instance.netflix_certificates = AccountcommonNetflixCertificates()
+        if "scopes" in dict_ and dict_["scopes"] is not None:
+            instance.scopes = [str(i0) for i0 in dict_["scopes"]]
+        elif include_empty:
+            instance.scopes = []
         if "TokenEndpoint" in dict_ and dict_["TokenEndpoint"] is not None:
             instance.token_endpoint = str(dict_["TokenEndpoint"])
         elif include_empty:
@@ -651,6 +671,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenClaimsMapping": "token_claims_mapping",
             "AuthorizationEndpoint": "authorization_endpoint",
             "NetflixCertificates": "netflix_certificates",
+            "scopes": "scopes",
             "TokenEndpoint": "token_endpoint",
         }
 
@@ -682,6 +703,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenClaimsMapping": True,
             "AuthorizationEndpoint": False,
             "NetflixCertificates": False,
+            "scopes": False,
             "TokenEndpoint": False,
         }
 

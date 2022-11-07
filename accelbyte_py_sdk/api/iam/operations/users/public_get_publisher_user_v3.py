@@ -69,9 +69,9 @@ class PublicGetPublisherUserV3(Operation):
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
     """
@@ -186,9 +186,9 @@ class PublicGetPublisherUserV3(Operation):
 
         400: Bad Request - RestErrorResponse (Error Code: 7239 - Error Message: wrong namespace: required game namespace)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
@@ -210,9 +210,9 @@ class PublicGetPublisherUserV3(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 

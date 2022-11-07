@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import AccountcommonBanReasonsV3
-from ...models import RestapiErrorResponse
+from ...models import RestErrorResponse
 
 
 class AdminGetListBanReasonV3(Operation):
@@ -63,9 +63,11 @@ class AdminGetListBanReasonV3(Operation):
     Responses:
         200: OK - AccountcommonBanReasonsV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -141,15 +143,17 @@ class AdminGetListBanReasonV3(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, AccountcommonBanReasonsV3],
-        Union[None, HttpResponse, RestapiErrorResponse],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
         200: OK - AccountcommonBanReasonsV3 (OK)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -167,9 +171,11 @@ class AdminGetListBanReasonV3(Operation):
         if code == 200:
             return AccountcommonBanReasonsV3.create_from_dict(content), None
         if code == 401:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

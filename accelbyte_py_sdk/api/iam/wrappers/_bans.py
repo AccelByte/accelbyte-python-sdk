@@ -39,7 +39,6 @@ from ..models import ModelBulkUnbanCreateRequestV3
 from ..models import ModelGetUserBanV3Response
 from ..models import ModelListBulkUserBanResponseV3
 from ..models import RestErrorResponse
-from ..models import RestapiErrorResponse
 
 from ..operations.bans import AdminBanUserBulkV3
 from ..operations.bans import AdminGetBannedUsersV3

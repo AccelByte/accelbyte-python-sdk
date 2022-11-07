@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelVerificationCodeResponse
+from ...models import RestErrorResponse
 
 
 class GetUserVerificationCode(Operation):
@@ -65,13 +66,13 @@ class GetUserVerificationCode(Operation):
     Responses:
         200: OK - ModelVerificationCodeResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -174,18 +175,21 @@ class GetUserVerificationCode(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelVerificationCodeResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelVerificationCodeResponse],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - ModelVerificationCodeResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -203,13 +207,13 @@ class GetUserVerificationCode(Operation):
         if code == 200:
             return ModelVerificationCodeResponse.create_from_dict(content), None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelLoginHistoriesResponse
+from ...models import RestErrorResponse
 
 
 class AdminGetUserLoginHistoriesV3(Operation):
@@ -73,9 +74,9 @@ class AdminGetUserLoginHistoriesV3(Operation):
     Responses:
         200: OK - ModelLoginHistoriesResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
     """
@@ -218,14 +219,17 @@ class AdminGetUserLoginHistoriesV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelLoginHistoriesResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelLoginHistoriesResponse],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - ModelLoginHistoriesResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
@@ -245,9 +249,9 @@ class AdminGetUserLoginHistoriesV3(Operation):
         if code == 200:
             return ModelLoginHistoriesResponse.create_from_dict(content), None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 

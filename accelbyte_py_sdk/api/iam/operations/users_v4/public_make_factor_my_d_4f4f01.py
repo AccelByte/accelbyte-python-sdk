@@ -66,7 +66,7 @@ class PublicMakeFactorMyDefaultV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
@@ -187,7 +187,7 @@ class PublicMakeFactorMyDefaultV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 

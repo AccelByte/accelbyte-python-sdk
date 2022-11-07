@@ -30,6 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
+from ...models import RestErrorResponse
+
 
 class SaveUserRoles(Operation):
     """Save User Roles (SaveUserRoles)
@@ -74,11 +76,11 @@ class SaveUserRoles(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
@@ -200,16 +202,16 @@ class SaveUserRoles(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
@@ -231,11 +233,11 @@ class SaveUserRoles(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 409:

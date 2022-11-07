@@ -62,7 +62,6 @@ from ..models import ModelRoleV4Request
 from ..models import ModelRoleV4Response
 from ..models import ModelUpdatePermissionScheduleRequest
 from ..models import RestErrorResponse
-from ..models import RestapiErrorResponse
 
 from ..operations.roles import AddRoleManagers
 from ..operations.roles import AddRoleMembers

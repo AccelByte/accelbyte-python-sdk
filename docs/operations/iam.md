@@ -644,6 +644,5 @@
 | oauthmodel.TokenWithDeviceCookieResponseV3 | [OauthmodelTokenWithDeviceCookieResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_with_device_cookie_response_v3.py) |
 | rest.ErrorResponse | [RestErrorResponse](../../accelbyte_py_sdk/api/iam/models/rest_error_response.py) |
 | rest.ErrorResponseWithConflictedUserPlatformAccounts | [RestErrorResponseWithConflictedUserPlatformAccounts](../../accelbyte_py_sdk/api/iam/models/rest_error_response_with_conflicted_user_platform_accounts.py) |
-| restapi.ErrorResponse | [RestapiErrorResponse](../../accelbyte_py_sdk/api/iam/models/restapi_error_response.py) |
 | .validation | [Validation](../../accelbyte_py_sdk/api/iam/models/validation.py) |
 | .validation.description | [ValidationDescription](../../accelbyte_py_sdk/api/iam/models/validation_description.py) |

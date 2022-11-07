@@ -39,6 +39,8 @@ class ModelUserBaseInfo(Model):
         platform_user_ids: (platformUserIds) REQUIRED Dict[str, str]
 
         user_id: (userId) REQUIRED str
+
+        username: (username) OPTIONAL str
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelUserBaseInfo(Model):
     display_name: str  # REQUIRED
     platform_user_ids: Dict[str, str]  # REQUIRED
     user_id: str  # REQUIRED
+    username: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelUserBaseInfo(Model):
 
     def with_user_id(self, value: str) -> ModelUserBaseInfo:
         self.user_id = value
+        return self
+
+    def with_username(self, value: str) -> ModelUserBaseInfo:
+        self.username = value
         return self
 
     # endregion with_x methods
@@ -92,6 +99,10 @@ class ModelUserBaseInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "username"):
+            result["username"] = str(self.username)
+        elif include_empty:
+            result["username"] = ""
         return result
 
     # endregion to methods
@@ -105,12 +116,15 @@ class ModelUserBaseInfo(Model):
         display_name: str,
         platform_user_ids: Dict[str, str],
         user_id: str,
+        username: Optional[str] = None,
     ) -> ModelUserBaseInfo:
         instance = cls()
         instance.avatar_url = avatar_url
         instance.display_name = display_name
         instance.platform_user_ids = platform_user_ids
         instance.user_id = user_id
+        if username is not None:
+            instance.username = username
         return instance
 
     @classmethod
@@ -138,6 +152,10 @@ class ModelUserBaseInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "username" in dict_ and dict_["username"] is not None:
+            instance.username = str(dict_["username"])
+        elif include_empty:
+            instance.username = ""
         return instance
 
     @classmethod
@@ -183,6 +201,7 @@ class ModelUserBaseInfo(Model):
             "displayName": "display_name",
             "platformUserIds": "platform_user_ids",
             "userId": "user_id",
+            "username": "username",
         }
 
     @staticmethod
@@ -192,6 +211,7 @@ class ModelUserBaseInfo(Model):
             "displayName": True,
             "platformUserIds": True,
             "userId": True,
+            "username": False,
         }
 
     # endregion static methods

@@ -71,13 +71,13 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
 
         400: Bad Request - RestErrorResponse (Bad Request)
 
-        401: Unauthorized - (Unauthorized)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (Platform client not found)
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
 
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -209,13 +209,13 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
 
         400: Bad Request - RestErrorResponse (Bad Request)
 
-        401: Unauthorized - (Unauthorized)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestErrorResponse (Platform client not found)
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
 
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -235,9 +235,9 @@ class UpdateThirdPartyLoginPlatformDomainV3(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:

@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import BulkOperationResult
@@ -129,6 +130,7 @@ async def get_key_group_async(
     )
 
 
+@deprecated
 @same_doc_as(GetKeyGroupByBoothName)
 def get_key_group_by_booth_name(
     booth_name: str,
@@ -147,6 +149,7 @@ def get_key_group_by_booth_name(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetKeyGroupByBoothName)
 async def get_key_group_by_booth_name_async(
     booth_name: str,

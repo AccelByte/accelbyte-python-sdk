@@ -31,7 +31,7 @@ from .....core import HttpResponse
 
 from ...models import ModelRoleV4Request
 from ...models import ModelRoleV4Response
-from ...models import RestapiErrorResponse
+from ...models import RestErrorResponse
 
 
 class AdminUpdateRoleV4(Operation):
@@ -70,13 +70,13 @@ class AdminUpdateRoleV4(Operation):
     Responses:
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10456: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
     """
 
     # region fields
@@ -184,20 +184,19 @@ class AdminUpdateRoleV4(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelRoleV4Response],
-        Union[None, HttpResponse, RestapiErrorResponse],
+        Union[None, ModelRoleV4Response], Union[None, HttpResponse, RestErrorResponse]
     ]:
         """Parse the given response.
 
         200: OK - ModelRoleV4Response (OK)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error | 20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10456: role not found)
+        404: Not Found - RestErrorResponse (10456: role not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -215,13 +214,13 @@ class AdminUpdateRoleV4(Operation):
         if code == 200:
             return ModelRoleV4Response.create_from_dict(content), None
         if code == 400:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

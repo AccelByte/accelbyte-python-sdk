@@ -269,7 +269,6 @@ from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
-from ..api.iam.models import RestapiErrorResponse
 from ..api.iam.models import Validation
 from ..api.iam.models import ValidationDescription
 
@@ -1910,6 +1909,7 @@ def create_model_third_party_login_platform_credential_request_example() -> Mode
     instance.platform_name = randomize()
     instance.redirect_uri = randomize()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
+    instance.scopes = [randomize()]
     instance.secret = randomize()
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
@@ -1945,6 +1945,7 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.token_claims_mapping = {randomize(): randomize()}
     instance.authorization_endpoint = randomize()
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
+    instance.scopes = [randomize()]
     instance.token_endpoint = randomize()
     return instance
 
@@ -2064,6 +2065,7 @@ def create_model_user_base_info_example() -> ModelUserBaseInfo:
     instance.display_name = randomize("slug")
     instance.platform_user_ids = {randomize(): randomize()}
     instance.user_id = randomize("uid")
+    instance.username = randomize("slug")
     return instance
 
 
@@ -2577,13 +2579,6 @@ def create_rest_error_response_with_conflicted_user_platform_accounts_example() 
     instance.message_variables = (
         create_accountcommon_conflicted_user_platform_accounts_example()
     )
-    return instance
-
-
-def create_restapi_error_response_example() -> RestapiErrorResponse:
-    instance = RestapiErrorResponse()
-    instance.message = randomize()
-    instance.code = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

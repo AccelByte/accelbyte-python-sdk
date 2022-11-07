@@ -29,6 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import RestErrorResponse
+
 
 class AdminPlatformLinkV3(Operation):
     """Link user's account with platform (AdminPlatformLinkV3)
@@ -122,15 +124,15 @@ class AdminPlatformLinkV3(Operation):
 
         400: Bad Request - (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (20008: user not found)
 
         409: Conflict - (10163: platform is already linked with the user account)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -260,22 +262,22 @@ class AdminPlatformLinkV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
         400: Bad Request - (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (20008: user not found)
 
         409: Conflict - (10163: platform is already linked with the user account)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -295,15 +297,15 @@ class AdminPlatformLinkV3(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 409:
             return None, HttpResponse.create(code, "Conflict")
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

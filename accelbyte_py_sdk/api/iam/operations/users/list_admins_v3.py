@@ -69,7 +69,7 @@ class ListAdminsV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -211,7 +211,7 @@ class ListAdminsV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelGetUsersResponseWithPaginationV3
-from ...models import RestapiErrorResponse
+from ...models import RestErrorResponse
 
 
 class GetAdminUsersByRoleIdV3(Operation):
@@ -82,15 +82,15 @@ class GetAdminUsersByRoleIdV3(Operation):
     Responses:
         200: OK - ModelGetUsersResponseWithPaginationV3 (OK)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error | 10157: specified role is not admin role)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10157: specified role is not admin role)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10156: role not found)
+        404: Not Found - RestErrorResponse (10156: role not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -233,21 +233,21 @@ class GetAdminUsersByRoleIdV3(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, ModelGetUsersResponseWithPaginationV3],
-        Union[None, HttpResponse, RestapiErrorResponse],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
         200: OK - ModelGetUsersResponseWithPaginationV3 (OK)
 
-        400: Bad Request - RestapiErrorResponse (20002: validation error | 10157: specified role is not admin role)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10157: specified role is not admin role)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (10156: role not found)
+        404: Not Found - RestErrorResponse (10156: role not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -265,15 +265,15 @@ class GetAdminUsersByRoleIdV3(Operation):
         if code == 200:
             return ModelGetUsersResponseWithPaginationV3.create_from_dict(content), None
         if code == 400:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

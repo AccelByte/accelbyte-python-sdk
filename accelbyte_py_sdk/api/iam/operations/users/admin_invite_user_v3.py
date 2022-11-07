@@ -71,6 +71,10 @@ class AdminInviteUserV3(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         404: Not Found - RestErrorResponse (10154: country not found)
 
         409: Conflict - RestErrorResponse (10133: email already used)
@@ -194,6 +198,10 @@ class AdminInviteUserV3(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         404: Not Found - RestErrorResponse (10154: country not found)
 
         409: Conflict - RestErrorResponse (10133: email already used)
@@ -218,6 +226,10 @@ class AdminInviteUserV3(Operation):
         if code == 201:
             return ModelInviteUserResponseV3.create_from_dict(content), None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)

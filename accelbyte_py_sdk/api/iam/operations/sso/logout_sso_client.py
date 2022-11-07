@@ -62,7 +62,7 @@ class LogoutSSOClient(Operation):
 
         422: Unprocessable Entity - RestErrorResponse (Unprocessable Entity)
 
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -163,7 +163,7 @@ class LogoutSSOClient(Operation):
 
         422: Unprocessable Entity - RestErrorResponse (Unprocessable Entity)
 
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

@@ -31,6 +31,7 @@ from .....core import HttpResponse
 
 from ...models import DLCItemConfigInfo
 from ...models import DLCItemConfigUpdate
+from ...models import ErrorEntity
 from ...models import ValidationErrorEntity
 
 
@@ -64,6 +65,8 @@ class UpdateDLCItemConfig(Operation):
 
     Responses:
         200: OK - DLCItemConfigInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -173,11 +176,14 @@ class UpdateDLCItemConfig(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, DLCItemConfigInfo], Union[None, HttpResponse, ValidationErrorEntity]
+        Union[None, DLCItemConfigInfo],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
         200: OK - DLCItemConfigInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -196,6 +202,8 @@ class UpdateDLCItemConfig(Operation):
 
         if code == 200:
             return DLCItemConfigInfo.create_from_dict(content), None
+        if code == 409:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
 

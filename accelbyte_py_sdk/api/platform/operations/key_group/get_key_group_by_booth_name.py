@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import KeyGroupInfo

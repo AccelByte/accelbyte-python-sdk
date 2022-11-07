@@ -117,7 +117,6 @@ from ..models import ModelVerificationCodeResponse
 from ..models import ModelVerifyRegistrationCode
 from ..models import ModelWebLinkingResponse
 from ..models import RestErrorResponse
-from ..models import RestapiErrorResponse
 
 from ..operations.users import AddUserPermission
 from ..operations.users import AddUserRole

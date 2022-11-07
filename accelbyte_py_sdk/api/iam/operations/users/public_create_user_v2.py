@@ -32,6 +32,7 @@ from .....core import deprecated
 
 from ...models import ModelUserCreateRequest
 from ...models import ModelUserCreateResponse
+from ...models import RestErrorResponse
 
 
 class PublicCreateUserV2(Operation):
@@ -97,11 +98,11 @@ class PublicCreateUserV2(Operation):
     Responses:
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         409: Conflict - (Conflict)
     """
@@ -210,16 +211,19 @@ class PublicCreateUserV2(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelUserCreateResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelUserCreateResponse],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         201: Created - ModelUserCreateResponse (Created)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         409: Conflict - (Conflict)
 
@@ -239,11 +243,11 @@ class PublicCreateUserV2(Operation):
         if code == 201:
             return ModelUserCreateResponse.create_from_dict(content), None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
             return None, HttpResponse.create(code, "Conflict")
 

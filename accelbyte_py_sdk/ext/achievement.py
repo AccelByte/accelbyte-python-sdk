@@ -24,7 +24,6 @@
 
 from .utils import randomize
 
-from ..api.achievement.models import ModelsAchievement
 from ..api.achievement.models import ModelsAchievementOrderUpdateRequest
 from ..api.achievement.models import ModelsAchievementRequest
 from ..api.achievement.models import ModelsAchievementResponse
@@ -39,27 +38,6 @@ from ..api.achievement.models import ModelsPublicAchievementsResponse
 from ..api.achievement.models import ModelsUserAchievementResponse
 from ..api.achievement.models import ResponseError
 from ..api.achievement.models import ServiceImportConfigResponse
-
-
-def create_models_achievement_example() -> ModelsAchievement:
-    instance = ModelsAchievement()
-    instance.achievement_code = randomize()
-    instance.created_at = randomize("date")
-    instance.default_language = randomize()
-    instance.description = {randomize(): randomize()}
-    instance.goal_value = randomize("int", min_val=1, max_val=1000)
-    instance.hidden = randomize("bool")
-    instance.id_ = randomize()
-    instance.incremental = randomize("bool")
-    instance.list_order = randomize("int", min_val=1, max_val=1000)
-    instance.locked_icons = [create_models_icon_example()]
-    instance.name = {randomize(): randomize()}
-    instance.namespace = randomize("slug")
-    instance.stat_code = randomize()
-    instance.tags = [randomize()]
-    instance.unlocked_icons = [create_models_icon_example()]
-    instance.updated_at = randomize("date")
-    return instance
 
 
 def create_models_achievement_order_update_request_example() -> ModelsAchievementOrderUpdateRequest:
@@ -184,12 +162,12 @@ def create_models_public_achievements_response_example() -> ModelsPublicAchievem
 
 def create_models_user_achievement_response_example() -> ModelsUserAchievementResponse:
     instance = ModelsUserAchievementResponse()
-    instance.achieved_at = randomize("date")
     instance.achievement_code = randomize()
     instance.id_ = randomize()
     instance.latest_value = randomize("int", min_val=1, max_val=1000)
     instance.name = {randomize(): randomize()}
     instance.status = randomize("int", min_val=1, max_val=1000)
+    instance.achieved_at = randomize("date")
     return instance
 
 

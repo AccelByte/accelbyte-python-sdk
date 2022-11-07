@@ -77,6 +77,35 @@ class AdminPutGameRecordHandlerV1(Operation):
 
 
 
+    ## Restriction
+
+
+    This is the restriction of Key Naming for the record:
+    1. Cannot use "." as the key name
+    -
+
+
+        { "data.2": "value" }
+
+
+    2. Cannot use "$" as the prefix in key names
+    -
+
+
+        { "$data": "value" }
+
+
+    3. Cannot use empty string in key names
+    -
+
+
+        { "": "value" }
+
+
+
+
+
+
     ## Record Metadata
 
 

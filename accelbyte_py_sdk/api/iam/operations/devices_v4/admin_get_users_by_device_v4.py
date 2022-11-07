@@ -72,6 +72,8 @@ class AdminGetUsersByDeviceV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
@@ -187,6 +189,8 @@ class AdminGetUsersByDeviceV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -207,6 +211,8 @@ class AdminGetUsersByDeviceV4(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

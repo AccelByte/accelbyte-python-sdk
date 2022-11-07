@@ -69,13 +69,15 @@ class AdminAddUserRoleV4(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
         422: Unprocessable Entity - RestErrorResponse
 
-        500: Internal Server Error - RestErrorResponse
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -203,13 +205,15 @@ class AdminAddUserRoleV4(Operation):
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
         422: Unprocessable Entity - RestErrorResponse
 
-        500: Internal Server Error - RestErrorResponse
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -227,6 +231,8 @@ class AdminAddUserRoleV4(Operation):
         if code == 200:
             return ModelListUserRolesV4Response.create_from_dict(content), None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
             return None, RestErrorResponse.create_from_dict(content)

@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUserVerificationRequest
+from ...models import RestErrorResponse
 
 
 class AdminVerifyAccountV3(Operation):
@@ -73,15 +74,15 @@ class AdminVerifyAccountV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
-        404: Not Found - (10139: platform account not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -199,20 +200,20 @@ class AdminVerifyAccountV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
+        403: Forbidden - RestErrorResponse (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
-        404: Not Found - (10139: platform account not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -230,15 +231,15 @@ class AdminVerifyAccountV3(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, HttpResponse.create(code, "Not Found")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

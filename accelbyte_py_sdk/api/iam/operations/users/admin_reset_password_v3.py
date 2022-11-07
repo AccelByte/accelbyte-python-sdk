@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUserPasswordUpdateV3Request
+from ...models import RestErrorResponse
 
 
 class AdminResetPasswordV3(Operation):
@@ -64,13 +65,13 @@ class AdminResetPasswordV3(Operation):
 
         400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -190,20 +191,20 @@ class AdminResetPasswordV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
         400: Bad Request - (20019: unable to parse request body | 20002: validation error | 10142: new password cannot be same with original | 10143: password not match)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -223,13 +224,13 @@ class AdminResetPasswordV3(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

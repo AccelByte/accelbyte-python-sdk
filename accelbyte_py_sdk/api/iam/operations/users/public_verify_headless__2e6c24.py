@@ -68,7 +68,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
 
         409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -192,7 +192,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
 
         409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -218,7 +218,7 @@ class PublicVerifyHeadlessAccountV3(Operation):
         if code == 409:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

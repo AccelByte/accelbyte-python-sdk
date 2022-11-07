@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelUnlinkUserPlatformRequest
-from ...models import RestapiErrorResponse
+from ...models import RestErrorResponse
 
 
 class AdminPlatformUnlinkV3(Operation):
@@ -140,15 +140,15 @@ class AdminPlatformUnlinkV3(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (20019: unable to parse request body | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -279,20 +279,20 @@ class AdminPlatformUnlinkV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
-        400: Bad Request - RestapiErrorResponse (20019: unable to parse request body | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        401: Unauthorized - RestapiErrorResponse (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestapiErrorResponse (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - RestapiErrorResponse (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -310,15 +310,15 @@ class AdminPlatformUnlinkV3(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, RestapiErrorResponse.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -29,6 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import RestErrorResponse
+
 
 class PublicValidateUserByUserIDAndPasswordV3(Operation):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
@@ -67,15 +69,15 @@ class PublicValidateUserByUserIDAndPasswordV3(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - (10143: password not match | 20002: validation error)
+        400: Bad Request - RestErrorResponse (10143: password not match | 20002: validation error)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -194,20 +196,20 @@ class PublicValidateUserByUserIDAndPasswordV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (No Content)
 
-        400: Bad Request - (10143: password not match | 20002: validation error)
+        400: Bad Request - RestErrorResponse (10143: password not match | 20002: validation error)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - (20008: user not found)
+        404: Not Found - RestErrorResponse (20008: user not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -225,15 +227,15 @@ class PublicValidateUserByUserIDAndPasswordV3(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, HttpResponse.create(code, "Not Found")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

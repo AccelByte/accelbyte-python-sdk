@@ -14,7 +14,6 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .models_achievement import ModelsAchievement
 from .models_achievement_order_update_request import ModelsAchievementOrderUpdateRequest
 from .models_achievement_request import ModelsAchievementRequest
 from .models_achievement_response import ModelsAchievementResponse

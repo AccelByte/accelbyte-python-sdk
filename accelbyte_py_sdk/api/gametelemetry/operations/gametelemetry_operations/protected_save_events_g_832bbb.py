@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (1.11.0)
+# Analytics Game Telemetry (1.12.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,7 +57,7 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
 
 
-    Example: io.accelbyte.justice.dev.samplegame
+    Example: accelbyte
 
 
 

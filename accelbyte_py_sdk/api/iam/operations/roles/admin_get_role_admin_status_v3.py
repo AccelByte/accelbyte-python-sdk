@@ -76,6 +76,8 @@ class AdminGetRoleAdminStatusV3(Operation):
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (10456: role not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -183,6 +185,8 @@ class AdminGetRoleAdminStatusV3(Operation):
 
         404: Not Found - RestErrorResponse (10456: role not found)
 
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -205,6 +209,8 @@ class AdminGetRoleAdminStatusV3(Operation):
         if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(

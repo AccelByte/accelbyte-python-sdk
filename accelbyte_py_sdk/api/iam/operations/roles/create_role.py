@@ -32,6 +32,7 @@ from .....core import deprecated
 
 from ...models import AccountcommonRole
 from ...models import ModelRoleCreateRequest
+from ...models import RestErrorResponse
 
 
 class CreateRole(Operation):
@@ -86,11 +87,11 @@ class CreateRole(Operation):
     Responses:
         201: Created - AccountcommonRole (Created)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -181,16 +182,18 @@ class CreateRole(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, AccountcommonRole], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, AccountcommonRole], Union[None, HttpResponse, RestErrorResponse]
+    ]:
         """Parse the given response.
 
         201: Created - AccountcommonRole (Created)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -208,11 +211,11 @@ class CreateRole(Operation):
         if code == 201:
             return AccountcommonRole.create_from_dict(content), None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

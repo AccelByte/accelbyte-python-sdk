@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelGetUserBanV3Response
+from ...models import RestErrorResponse
 
 
 class PublicGetUserBanHistoryV3(Operation):
@@ -78,15 +79,15 @@ class PublicGetUserBanHistoryV3(Operation):
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - (20008: user not found | 10139: platform account not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -238,20 +239,23 @@ class PublicGetUserBanHistoryV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelGetUserBanV3Response], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelGetUserBanV3Response],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - (20008: user not found | 10139: platform account not found)
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
 
-        500: Internal Server Error - (20000: internal server error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -269,15 +273,15 @@ class PublicGetUserBanHistoryV3(Operation):
         if code == 200:
             return ModelGetUserBanV3Response.create_from_dict(content), None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
-            return None, HttpResponse.create(code, "Not Found")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

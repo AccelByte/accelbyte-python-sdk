@@ -73,6 +73,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         registered_domains: (RegisteredDomains) REQUIRED List[AccountcommonRegisteredDomain]
 
+        scopes: (scopes) REQUIRED List[str]
+
         secret: (Secret) REQUIRED str
 
         team_id: (TeamID) REQUIRED str
@@ -105,6 +107,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     platform_name: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     registered_domains: List[AccountcommonRegisteredDomain]  # REQUIRED
+    scopes: List[str]  # REQUIRED
     secret: str  # REQUIRED
     team_id: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
@@ -221,6 +224,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.registered_domains = value
         return self
 
+    def with_scopes(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.scopes = value
+        return self
+
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.secret = value
         return self
@@ -334,6 +343,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             ]
         elif include_empty:
             result["RegisteredDomains"] = []
+        if hasattr(self, "scopes"):
+            result["scopes"] = [str(i0) for i0 in self.scopes]
+        elif include_empty:
+            result["scopes"] = []
         if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
@@ -384,6 +397,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         platform_name: str,
         redirect_uri: str,
         registered_domains: List[AccountcommonRegisteredDomain],
+        scopes: List[str],
         secret: str,
         team_id: str,
         token_authentication_type: str,
@@ -410,6 +424,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.platform_name = platform_name
         instance.redirect_uri = redirect_uri
         instance.registered_domains = registered_domains
+        instance.scopes = scopes
         instance.secret = secret
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
@@ -515,6 +530,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             ]
         elif include_empty:
             instance.registered_domains = []
+        if "scopes" in dict_ and dict_["scopes"] is not None:
+            instance.scopes = [str(i0) for i0 in dict_["scopes"]]
+        elif include_empty:
+            instance.scopes = []
         if "Secret" in dict_ and dict_["Secret"] is not None:
             instance.secret = str(dict_["Secret"])
         elif include_empty:
@@ -602,6 +621,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "PlatformName": "platform_name",
             "RedirectUri": "redirect_uri",
             "RegisteredDomains": "registered_domains",
+            "scopes": "scopes",
             "Secret": "secret",
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
@@ -631,6 +651,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "PlatformName": True,
             "RedirectUri": True,
             "RegisteredDomains": True,
+            "scopes": True,
             "Secret": True,
             "TeamID": True,
             "TokenAuthenticationType": True,

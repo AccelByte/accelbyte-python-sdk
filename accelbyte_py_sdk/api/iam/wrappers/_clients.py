@@ -43,7 +43,6 @@ from ..models import ClientmodelClientV3Response
 from ..models import ClientmodelClientsV3Response
 from ..models import ClientmodelV3ClientUpdateSecretRequest
 from ..models import RestErrorResponse
-from ..models import RestapiErrorResponse
 
 from ..operations.clients import AddClientPermission
 from ..operations.clients import AdminAddClientPermissionsV3

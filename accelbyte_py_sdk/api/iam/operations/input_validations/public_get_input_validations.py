@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelInputValidationsPublicResponse
+from ...models import RestErrorResponse
 
 
 class PublicGetInputValidations(Operation):
@@ -69,7 +70,7 @@ class PublicGetInputValidations(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -173,7 +174,8 @@ class PublicGetInputValidations(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelInputValidationsPublicResponse], Union[None, HttpResponse]
+        Union[None, ModelInputValidationsPublicResponse],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
@@ -181,7 +183,7 @@ class PublicGetInputValidations(Operation):
 
         404: Not Found - (Data not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -201,7 +203,7 @@ class PublicGetInputValidations(Operation):
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

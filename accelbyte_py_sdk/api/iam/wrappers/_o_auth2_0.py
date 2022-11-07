@@ -153,6 +153,7 @@ def authorize_v3(
     scope: Optional[str] = None,
     state: Optional[str] = None,
     target_auth_page: Optional[str] = None,
+    use_redirect_uri_as_login_url_when_locked: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -166,6 +167,7 @@ def authorize_v3(
         scope=scope,
         state=state,
         target_auth_page=target_auth_page,
+        use_redirect_uri_as_login_url_when_locked=use_redirect_uri_as_login_url_when_locked,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -183,6 +185,7 @@ async def authorize_v3_async(
     scope: Optional[str] = None,
     state: Optional[str] = None,
     target_auth_page: Optional[str] = None,
+    use_redirect_uri_as_login_url_when_locked: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -196,6 +199,7 @@ async def authorize_v3_async(
         scope=scope,
         state=state,
         target_auth_page=target_auth_page,
+        use_redirect_uri_as_login_url_when_locked=use_redirect_uri_as_login_url_when_locked,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

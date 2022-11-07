@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# Analytics Game Telemetry (1.11.0)
+# Analytics Game Telemetry (1.12.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,10 +37,6 @@ class TelemetryBody(Model):
         event_namespace: (EventNamespace) REQUIRED str
 
         payload: (Payload) REQUIRED Dict[str, Any]
-
-        event_id: (EventId) OPTIONAL str
-
-        event_timestamp: (EventTimestamp) OPTIONAL str
     """
 
     # region fields
@@ -48,8 +44,6 @@ class TelemetryBody(Model):
     event_name: str  # REQUIRED
     event_namespace: str  # REQUIRED
     payload: Dict[str, Any]  # REQUIRED
-    event_id: str  # OPTIONAL
-    event_timestamp: str  # OPTIONAL
 
     # endregion fields
 
@@ -65,14 +59,6 @@ class TelemetryBody(Model):
 
     def with_payload(self, value: Dict[str, Any]) -> TelemetryBody:
         self.payload = value
-        return self
-
-    def with_event_id(self, value: str) -> TelemetryBody:
-        self.event_id = value
-        return self
-
-    def with_event_timestamp(self, value: str) -> TelemetryBody:
-        self.event_timestamp = value
         return self
 
     # endregion with_x methods
@@ -93,14 +79,6 @@ class TelemetryBody(Model):
             result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
         elif include_empty:
             result["Payload"] = {}
-        if hasattr(self, "event_id"):
-            result["EventId"] = str(self.event_id)
-        elif include_empty:
-            result["EventId"] = ""
-        if hasattr(self, "event_timestamp"):
-            result["EventTimestamp"] = str(self.event_timestamp)
-        elif include_empty:
-            result["EventTimestamp"] = ""
         return result
 
     # endregion to methods
@@ -113,17 +91,11 @@ class TelemetryBody(Model):
         event_name: str,
         event_namespace: str,
         payload: Dict[str, Any],
-        event_id: Optional[str] = None,
-        event_timestamp: Optional[str] = None,
     ) -> TelemetryBody:
         instance = cls()
         instance.event_name = event_name
         instance.event_namespace = event_namespace
         instance.payload = payload
-        if event_id is not None:
-            instance.event_id = event_id
-        if event_timestamp is not None:
-            instance.event_timestamp = event_timestamp
         return instance
 
     @classmethod
@@ -145,14 +117,6 @@ class TelemetryBody(Model):
             instance.payload = {str(k0): v0 for k0, v0 in dict_["Payload"].items()}
         elif include_empty:
             instance.payload = {}
-        if "EventId" in dict_ and dict_["EventId"] is not None:
-            instance.event_id = str(dict_["EventId"])
-        elif include_empty:
-            instance.event_id = ""
-        if "EventTimestamp" in dict_ and dict_["EventTimestamp"] is not None:
-            instance.event_timestamp = str(dict_["EventTimestamp"])
-        elif include_empty:
-            instance.event_timestamp = ""
         return instance
 
     @classmethod
@@ -195,8 +159,6 @@ class TelemetryBody(Model):
             "EventName": "event_name",
             "EventNamespace": "event_namespace",
             "Payload": "payload",
-            "EventId": "event_id",
-            "EventTimestamp": "event_timestamp",
         }
 
     @staticmethod
@@ -205,8 +167,6 @@ class TelemetryBody(Model):
             "EventName": True,
             "EventNamespace": True,
             "Payload": True,
-            "EventId": False,
-            "EventTimestamp": False,
         }
 
     # endregion static methods

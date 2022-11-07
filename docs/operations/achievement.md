@@ -30,7 +30,6 @@
 ## Models
 | Model | Class |
 |---|---|
-| models.Achievement | [ModelsAchievement](../../accelbyte_py_sdk/api/achievement/models/models_achievement.py) |
 | models.AchievementOrderUpdateRequest | [ModelsAchievementOrderUpdateRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_order_update_request.py) |
 | models.AchievementRequest | [ModelsAchievementRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_request.py) |
 | models.AchievementResponse | [ModelsAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_achievement_response.py) |

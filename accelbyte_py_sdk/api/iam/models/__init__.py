@@ -341,6 +341,5 @@ from .rest_error_response import RestErrorResponse
 from .rest_error_response_with_conflicted_user_platform_accounts import (
     RestErrorResponseWithConflictedUserPlatformAccounts,
 )
-from .restapi_error_response import RestapiErrorResponse
 from .validation import Validation
 from .validation_description import ValidationDescription

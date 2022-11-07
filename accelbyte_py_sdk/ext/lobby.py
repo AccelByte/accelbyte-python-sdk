@@ -75,7 +75,6 @@ from ..api.lobby.models import ModelsAdminVerifyMessageProfanityResponse
 from ..api.lobby.models import ModelsBlockedByPlayerData
 from ..api.lobby.models import ModelsBlockedPlayerData
 from ..api.lobby.models import ModelsConfig
-from ..api.lobby.models import ModelsConfigExport
 from ..api.lobby.models import ModelsConfigList
 from ..api.lobby.models import ModelsConfigReq
 from ..api.lobby.models import ModelsCreateConfigRequest
@@ -500,31 +499,6 @@ def create_models_config_example() -> ModelsConfig:
     instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.keep_presence_activity_on_disconnect = randomize("bool")
-    instance.max_party_member = randomize("int", min_val=1, max_val=1000)
-    instance.namespace = randomize("slug")
-    instance.profanity_filter = randomize("bool")
-    instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_models_config_export_example() -> ModelsConfigExport:
-    instance = ModelsConfigExport()
-    instance.allow_invite_non_connected_user = randomize("bool")
-    instance.allow_join_party_during_matchmaking = randomize("bool")
-    instance.auto_kick_on_disconnect = randomize("bool")
-    instance.auto_kick_on_disconnect_delay = randomize("int", min_val=1, max_val=1000)
-    instance.cancel_ticket_on_disconnect = randomize("bool")
-    instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
-    instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
-    instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
-    instance.disable_invitation_on_join_party = randomize("bool")
-    instance.enable_chat = randomize("bool")
-    instance.entitlement_check = randomize("bool")
-    instance.entitlement_item_id = randomize()
-    instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
-    instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
-    instance.keep_presence_activity_on_disconnect = randomize("bool")
-    instance.max_ds_wait_time = randomize("int", min_val=1, max_val=1000)
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")

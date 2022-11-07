@@ -63,7 +63,9 @@ class AdminListUserRolesV4(Operation):
     Responses:
         200: OK - ModelListUserRolesV4Response (Operation succeeded)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
@@ -178,7 +180,9 @@ class AdminListUserRolesV4(Operation):
 
         200: OK - ModelListUserRolesV4Response (Operation succeeded)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
@@ -199,6 +203,8 @@ class AdminListUserRolesV4(Operation):
 
         if code == 200:
             return ModelListUserRolesV4Response.create_from_dict(content), None
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:

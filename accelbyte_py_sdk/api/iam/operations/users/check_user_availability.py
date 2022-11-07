@@ -68,11 +68,7 @@ class CheckUserAvailability(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - (Invalid request)
-
-        401: Unauthorized - (Unauthorized access)
-
-        403: Forbidden - (Forbidden)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
         404: Not Found - (Not Found)
 
@@ -200,11 +196,7 @@ class CheckUserAvailability(Operation):
 
         204: No Content - (No Content)
 
-        400: Bad Request - (Invalid request)
-
-        401: Unauthorized - (Unauthorized access)
-
-        403: Forbidden - (Forbidden)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
         404: Not Found - (Not Found)
 
@@ -226,11 +218,7 @@ class CheckUserAvailability(Operation):
         if code == 204:
             return None, None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
-        if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
-        if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 422:

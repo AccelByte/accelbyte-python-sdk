@@ -74,7 +74,7 @@ class AdminDisableUserMFAV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -190,7 +190,7 @@ class AdminDisableUserMFAV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        500: Internal Server Error - (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -216,7 +216,7 @@ class AdminDisableUserMFAV4(Operation):
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, HttpResponse.create(code, "Internal Server Error")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

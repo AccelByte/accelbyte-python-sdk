@@ -30,6 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
+from ...models import RestErrorResponse
+
 
 class ListCrossNamespaceAccountLink(Operation):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
@@ -87,11 +89,11 @@ class ListCrossNamespaceAccountLink(Operation):
     Responses:
         200: OK - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
     """
@@ -223,16 +225,16 @@ class ListCrossNamespaceAccountLink(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         200: OK - (Operation succeeded)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - (Data not found)
 
@@ -252,11 +254,11 @@ class ListCrossNamespaceAccountLink(Operation):
         if code == 200:
             return HttpResponse.create(code, "OK"), None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 

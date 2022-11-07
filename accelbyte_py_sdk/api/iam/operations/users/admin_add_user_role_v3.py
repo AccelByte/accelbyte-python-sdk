@@ -76,6 +76,8 @@ class AdminAddUserRoleV3(Operation):
         404: Not Found - RestErrorResponse (20008: user not found | 10156: role not found)
 
         409: Conflict - RestErrorResponse (10160: user already has the role | 10161: user already the role member)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -204,6 +206,8 @@ class AdminAddUserRoleV3(Operation):
 
         409: Conflict - RestErrorResponse (10160: user already has the role | 10161: user already the role member)
 
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -228,6 +232,8 @@ class AdminAddUserRoleV3(Operation):
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(

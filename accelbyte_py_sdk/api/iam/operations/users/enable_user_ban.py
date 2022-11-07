@@ -31,6 +31,7 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 from ...models import ModelUserBanResponse
+from ...models import RestErrorResponse
 
 
 class EnableUserBan(Operation):
@@ -76,7 +77,7 @@ class EnableUserBan(Operation):
     Responses:
         200: OK - ModelUserBanResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10145: disallow game access publisher user's ban)
 
@@ -196,12 +197,14 @@ class EnableUserBan(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelUserBanResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelUserBanResponse], Union[None, HttpResponse, RestErrorResponse]
+    ]:
         """Parse the given response.
 
         200: OK - ModelUserBanResponse (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10145: disallow game access publisher user's ban)
 
@@ -225,7 +228,7 @@ class EnableUserBan(Operation):
         if code == 200:
             return ModelUserBanResponse.create_from_dict(content), None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
             return None, HttpResponse.create(code, "Forbidden")
         if code == 404:

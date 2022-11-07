@@ -58,13 +58,9 @@ class RetrieveActiveOIDCClientsPublicV3(Operation):
     Responses:
         200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
 
-        401: Unauthorized - (Unauthorized)
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
 
-        403: Forbidden - (Forbidden)
-
-        404: Not Found - RestErrorResponse (OIDC Credential Not Found)
-
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -180,13 +176,9 @@ class RetrieveActiveOIDCClientsPublicV3(Operation):
 
         200: OK - List[ModelPublicThirdPartyPlatformInfo] (All Active OIDC Credential Retrieved)
 
-        401: Unauthorized - (Unauthorized)
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
 
-        403: Forbidden - (Forbidden)
-
-        404: Not Found - RestErrorResponse (OIDC Credential Not Found)
-
-        500: Internal Server Error - RestErrorResponse (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -205,10 +197,6 @@ class RetrieveActiveOIDCClientsPublicV3(Operation):
             return [
                 ModelPublicThirdPartyPlatformInfo.create_from_dict(i) for i in content
             ], None
-        if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
-        if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:

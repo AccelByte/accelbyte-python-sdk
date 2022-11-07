@@ -31,6 +31,7 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 from ...models import ModelUserVerificationRequest
+from ...models import RestErrorResponse
 
 
 class UserVerification(Operation):
@@ -87,7 +88,7 @@ class UserVerification(Operation):
 
         400: Bad Request - (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
@@ -211,14 +212,14 @@ class UserVerification(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
         400: Bad Request - (20019: unable to parse request body)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10152: verification code not found | 10137: code is expired | 10136: code is either been used or not valid anymore | 10138: code not match | 10149: verification contact type doesn't match | 10148: verification code context doesn't match the required context | 10162: invalid verification)
 
@@ -244,7 +245,7 @@ class UserVerification(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
             return None, HttpResponse.create(code, "Forbidden")
         if code == 404:

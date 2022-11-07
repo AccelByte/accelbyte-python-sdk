@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelGetUserBanV3Response
+from ...models import RestErrorResponse
 
 
 class AdminGetBannedUsersV3(Operation):
@@ -69,9 +70,11 @@ class AdminGetBannedUsersV3(Operation):
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        401: Unauthorized - ModelGetUserBanV3Response (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ModelGetUserBanV3Response (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -214,15 +217,17 @@ class AdminGetBannedUsersV3(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, ModelGetUserBanV3Response],
-        Union[None, HttpResponse, ModelGetUserBanV3Response],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
         200: OK - ModelGetUserBanV3Response (OK)
 
-        401: Unauthorized - ModelGetUserBanV3Response (20001: unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ModelGetUserBanV3Response (20013: insufficient permissions)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -240,9 +245,11 @@ class AdminGetBannedUsersV3(Operation):
         if code == 200:
             return ModelGetUserBanV3Response.create_from_dict(content), None
         if code == 401:
-            return None, ModelGetUserBanV3Response.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ModelGetUserBanV3Response.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

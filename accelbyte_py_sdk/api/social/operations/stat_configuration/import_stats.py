@@ -65,7 +65,7 @@ class ImportStats(Operation):
         replace_existing: (replaceExisting) OPTIONAL bool in query
 
     Responses:
-        201: Created - StatImportInfo (successful operation)
+        201: Created - StatImportInfo (Import stats successfully)
 
         400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
     """
@@ -194,7 +194,7 @@ class ImportStats(Operation):
     ) -> Tuple[Union[None, StatImportInfo], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        201: Created - StatImportInfo (successful operation)
+        201: Created - StatImportInfo (Import stats successfully)
 
         400: Bad Request - ErrorEntity (70138: Stats data for namespace [{namespace}] is invalid)
 

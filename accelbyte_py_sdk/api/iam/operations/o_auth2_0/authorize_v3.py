@@ -162,6 +162,8 @@ class AuthorizeV3(Operation):
 
         target_auth_page: (target_auth_page) OPTIONAL str in query
 
+        use_redirect_uri_as_login_url_when_locked: (useRedirectUriAsLoginUrlWhenLocked) OPTIONAL bool in query
+
         client_id: (client_id) REQUIRED str in query
 
         response_type: (response_type) REQUIRED Union[str, ResponseTypeEnum] in query
@@ -186,6 +188,7 @@ class AuthorizeV3(Operation):
     scope: str  # OPTIONAL in [query]
     state: str  # OPTIONAL in [query]
     target_auth_page: str  # OPTIONAL in [query]
+    use_redirect_uri_as_login_url_when_locked: bool  # OPTIONAL in [query]
     client_id: str  # REQUIRED in [query]
     response_type: Union[str, ResponseTypeEnum]  # REQUIRED in [query]
 
@@ -246,6 +249,10 @@ class AuthorizeV3(Operation):
             result["state"] = self.state
         if hasattr(self, "target_auth_page"):
             result["target_auth_page"] = self.target_auth_page
+        if hasattr(self, "use_redirect_uri_as_login_url_when_locked"):
+            result[
+                "useRedirectUriAsLoginUrlWhenLocked"
+            ] = self.use_redirect_uri_as_login_url_when_locked
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
         if hasattr(self, "response_type"):
@@ -298,6 +305,12 @@ class AuthorizeV3(Operation):
         self.target_auth_page = value
         return self
 
+    def with_use_redirect_uri_as_login_url_when_locked(
+        self, value: bool
+    ) -> AuthorizeV3:
+        self.use_redirect_uri_as_login_url_when_locked = value
+        return self
+
     def with_client_id(self, value: str) -> AuthorizeV3:
         self.client_id = value
         return self
@@ -340,6 +353,15 @@ class AuthorizeV3(Operation):
             result["target_auth_page"] = str(self.target_auth_page)
         elif include_empty:
             result["target_auth_page"] = ""
+        if (
+            hasattr(self, "use_redirect_uri_as_login_url_when_locked")
+            and self.use_redirect_uri_as_login_url_when_locked
+        ):
+            result["useRedirectUriAsLoginUrlWhenLocked"] = bool(
+                self.use_redirect_uri_as_login_url_when_locked
+            )
+        elif include_empty:
+            result["useRedirectUriAsLoginUrlWhenLocked"] = False
         if hasattr(self, "client_id") and self.client_id:
             result["client_id"] = str(self.client_id)
         elif include_empty:
@@ -398,6 +420,7 @@ class AuthorizeV3(Operation):
         scope: Optional[str] = None,
         state: Optional[str] = None,
         target_auth_page: Optional[str] = None,
+        use_redirect_uri_as_login_url_when_locked: Optional[bool] = None,
     ) -> AuthorizeV3:
         instance = cls()
         instance.client_id = client_id
@@ -416,6 +439,10 @@ class AuthorizeV3(Operation):
             instance.state = state
         if target_auth_page is not None:
             instance.target_auth_page = target_auth_page
+        if use_redirect_uri_as_login_url_when_locked is not None:
+            instance.use_redirect_uri_as_login_url_when_locked = (
+                use_redirect_uri_as_login_url_when_locked
+            )
         return instance
 
     @classmethod
@@ -452,6 +479,15 @@ class AuthorizeV3(Operation):
             instance.target_auth_page = str(dict_["target_auth_page"])
         elif include_empty:
             instance.target_auth_page = ""
+        if (
+            "useRedirectUriAsLoginUrlWhenLocked" in dict_
+            and dict_["useRedirectUriAsLoginUrlWhenLocked"] is not None
+        ):
+            instance.use_redirect_uri_as_login_url_when_locked = bool(
+                dict_["useRedirectUriAsLoginUrlWhenLocked"]
+            )
+        elif include_empty:
+            instance.use_redirect_uri_as_login_url_when_locked = False
         if "client_id" in dict_ and dict_["client_id"] is not None:
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
@@ -472,6 +508,7 @@ class AuthorizeV3(Operation):
             "scope": "scope",
             "state": "state",
             "target_auth_page": "target_auth_page",
+            "useRedirectUriAsLoginUrlWhenLocked": "use_redirect_uri_as_login_url_when_locked",
             "client_id": "client_id",
             "response_type": "response_type",
         }
@@ -486,6 +523,7 @@ class AuthorizeV3(Operation):
             "scope": False,
             "state": False,
             "target_auth_page": False,
+            "useRedirectUriAsLoginUrlWhenLocked": False,
             "client_id": True,
             "response_type": True,
         }

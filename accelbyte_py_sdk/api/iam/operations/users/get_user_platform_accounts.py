@@ -31,6 +31,7 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 from ...models import AccountcommonUserLinkedPlatform
+from ...models import RestErrorResponse
 
 
 class GetUserPlatformAccounts(Operation):
@@ -91,11 +92,11 @@ class GetUserPlatformAccounts(Operation):
     Responses:
         200: OK - List[AccountcommonUserLinkedPlatform] (OK)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -199,17 +200,18 @@ class GetUserPlatformAccounts(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[AccountcommonUserLinkedPlatform]], Union[None, HttpResponse]
+        Union[None, List[AccountcommonUserLinkedPlatform]],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
         200: OK - List[AccountcommonUserLinkedPlatform] (OK)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -229,11 +231,11 @@ class GetUserPlatformAccounts(Operation):
                 AccountcommonUserLinkedPlatform.create_from_dict(i) for i in content
             ], None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -31,6 +31,7 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 from ...models import ModelRoleResponseWithManagers
+from ...models import RestErrorResponse
 
 
 class GetRoles(Operation):
@@ -68,9 +69,9 @@ class GetRoles(Operation):
     Responses:
         200: OK - List[ModelRoleResponseWithManagers] (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
 
     # region fields
@@ -163,15 +164,16 @@ class GetRoles(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelRoleResponseWithManagers]], Union[None, HttpResponse]
+        Union[None, List[ModelRoleResponseWithManagers]],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
         200: OK - List[ModelRoleResponseWithManagers] (OK)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - (Forbidden)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -191,9 +193,9 @@ class GetRoles(Operation):
                 ModelRoleResponseWithManagers.create_from_dict(i) for i in content
             ], None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, HttpResponse.create(code, "Forbidden")
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

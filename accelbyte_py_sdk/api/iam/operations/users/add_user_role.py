@@ -30,6 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import deprecated
 
+from ...models import RestErrorResponse
+
 
 class AddUserRole(Operation):
     """Add User Role (AddUserRole)
@@ -74,7 +76,7 @@ class AddUserRole(Operation):
     Responses:
         204: No Content - (Operation succeeded)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10159: operator is not a role manager)
 
@@ -196,12 +198,12 @@ class AddUserRole(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
         204: No Content - (Operation succeeded)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - (10159: operator is not a role manager)
 
@@ -227,7 +229,7 @@ class AddUserRole(Operation):
         if code == 204:
             return None, None
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 403:
             return None, HttpResponse.create(code, "Forbidden")
         if code == 404:

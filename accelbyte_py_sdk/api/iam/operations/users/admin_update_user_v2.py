@@ -32,6 +32,7 @@ from .....core import deprecated
 
 from ...models import ModelUserResponse
 from ...models import ModelUserUpdateRequest
+from ...models import RestErrorResponse
 
 
 class AdminUpdateUserV2(Operation):
@@ -111,7 +112,7 @@ class AdminUpdateUserV2(Operation):
 
         400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         404: Not Found - (10139: platform account not found | 20008: user not found)
 
@@ -235,14 +236,16 @@ class AdminUpdateUserV2(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelUserResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelUserResponse], Union[None, HttpResponse, RestErrorResponse]
+    ]:
         """Parse the given response.
 
         200: OK - ModelUserResponse (OK)
 
         400: Bad Request - (20019: unable to parse request body | 10131: invalid date of birth | 10155: country is not defined | 10154: country not found | 10130: user under age | 10132: invalid email address)
 
-        401: Unauthorized - (Unauthorized access)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         404: Not Found - (10139: platform account not found | 20008: user not found)
 
@@ -268,7 +271,7 @@ class AdminUpdateUserV2(Operation):
         if code == 400:
             return None, HttpResponse.create(code, "Bad Request")
         if code == 401:
-            return None, HttpResponse.create(code, "Unauthorized")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
         if code == 409:

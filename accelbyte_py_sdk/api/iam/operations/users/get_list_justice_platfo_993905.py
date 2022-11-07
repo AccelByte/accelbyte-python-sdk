@@ -31,6 +31,7 @@ from .....core import HttpResponse
 from .....core import deprecated
 
 from ...models import ModelGetUserMapping
+from ...models import RestErrorResponse
 
 
 class GetListJusticePlatformAccounts(Operation):
@@ -72,7 +73,7 @@ class GetListJusticePlatformAccounts(Operation):
     Responses:
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
         404: Not Found - (Data not found)
     """
@@ -177,12 +178,15 @@ class GetListJusticePlatformAccounts(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, List[ModelGetUserMapping]], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[ModelGetUserMapping]],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - List[ModelGetUserMapping] (OK)
 
-        400: Bad Request - (Invalid request)
+        400: Bad Request - RestErrorResponse (Invalid request)
 
         404: Not Found - (Data not found)
 
@@ -202,7 +206,7 @@ class GetListJusticePlatformAccounts(Operation):
         if code == 200:
             return [ModelGetUserMapping.create_from_dict(i) for i in content], None
         if code == 400:
-            return None, HttpResponse.create(code, "Bad Request")
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, HttpResponse.create(code, "Not Found")
 

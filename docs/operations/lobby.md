@@ -193,7 +193,6 @@
 | models.BlockedByPlayerData | [ModelsBlockedByPlayerData](../../accelbyte_py_sdk/api/lobby/models/models_blocked_by_player_data.py) |
 | models.BlockedPlayerData | [ModelsBlockedPlayerData](../../accelbyte_py_sdk/api/lobby/models/models_blocked_player_data.py) |
 | models.Config | [ModelsConfig](../../accelbyte_py_sdk/api/lobby/models/models_config.py) |
-| models.ConfigExport | [ModelsConfigExport](../../accelbyte_py_sdk/api/lobby/models/models_config_export.py) |
 | models.ConfigList | [ModelsConfigList](../../accelbyte_py_sdk/api/lobby/models/models_config_list.py) |
 | models.ConfigReq | [ModelsConfigReq](../../accelbyte_py_sdk/api/lobby/models/models_config_req.py) |
 | models.CreateConfigRequest | [ModelsCreateConfigRequest](../../accelbyte_py_sdk/api/lobby/models/models_create_config_request.py) |

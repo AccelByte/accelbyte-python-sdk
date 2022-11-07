@@ -62,7 +62,7 @@ class AdminGetListJusticePlatformAccounts(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
@@ -181,7 +181,7 @@ class AdminGetListJusticePlatformAccounts(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
         404: Not Found - RestErrorResponse (20008: user not found)
 

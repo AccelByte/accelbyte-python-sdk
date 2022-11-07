@@ -72,6 +72,8 @@ class AdminBanDeviceV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         409: Conflict - RestErrorResponse (10202: active device ban config already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -190,6 +192,8 @@ class AdminBanDeviceV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
         409: Conflict - RestErrorResponse (10202: active device ban config already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
@@ -212,6 +216,8 @@ class AdminBanDeviceV4(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
             return None, RestErrorResponse.create_from_dict(content)
