@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.27.0
+- Updated Getting Started doc.
+- Updated spec for AccelByte Cloud v3.34.0.
+
 ## v0.26.1
 - Fixed handling of null arrays in responses.
   - `GetAllPartyInAllChannel `
