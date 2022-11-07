@@ -1,144 +1,136 @@
----
-id: python-sdk-guide
-title: Python SDK Getting Started Guide
----
+# Getting Started Guide for AccelByte Python Server SDK
 
-# {{ $frontmatter.title }}
-## Overview
-You can use the AccelByte Python SDK to implement our backend services within your game. The SDK acts as a bridge between your game and our services. Follow the tutorials below to learn how to set up our Python SDK.
+This guide will show you how to create an application which uses Python Server SDK from scratch.
 
 ## Prerequisites
 
-*  <a href="https://docs.accelbyte.io/guides/access/namespaces.html#how-to-create-a-game-namespace" target="_blank">Create a Game Namespace</a> if you don't have one yet. Be sure to keep the namespace's **Namespace ID** as you will need it later
-*  <a href="https://docs.accelbyte.io/guides/access/iam-client.html#create-a-client" target="_blank">Create an OAuth Client</a> with a **Confidential** client type. Keep the **Client ID** and the **Client Secret** somewhere safe as you will be using them in this tutorial
-* Download the [AccelByte Python SDK](https://github.com/AccelByte/accelbyte-python-sdk).
+* AccelByte Cloud (demo environment):
+    * Use https://demo.accelbyte.io for `AB_BASE_URL` environment variable.
+    * [Create an Oauth Client](https://docs.accelbyte.io/guides/access/iam-client.html#create-a-client) with client type `Confidential`.
+        * Use `Client ID` value for `AB_CLIENT_ID` environment variable.
+        * Use `Client Secret` value for `AB_CLIENT_SECRET` environment variable.
+* Python 3.9
+* Python IDE e.g. Visual Studio Code, etc
 
-## Additional Resources
+## Tutorial
 
-* Download the [Sample App for the AccelByte Python SDK](https://github.com/AccelByte/accelbyte-python-sdk/tree/master/sample_app).
-* Refer to [AccelByte Python SDK Index](https://github.com/AccelByte/accelbyte-python-sdk/tree/master/docs) to find information about classes and functions related to the Open API 2.0 operation.
+### 1. Create a Python Project
 
-## Tutorials
-### Install the AccelByte Python SDK
+Create a folder and use `venv` to create a Python virtual environment.
 
-You can install the SDK with **pip** directly from the GitHub repository, as seen below:
+MacOS or Linux (Bash):
 
-```py
-pip install git+ssh://git@github.com/AccelByte/accelbyte-python-sdk.git@v0.26.1#egg=accelbyte_py_sdk
+```bash
+$ mkdir myproject
+$ cd myproject/
+$ python -m venv venv
+$ source venv/bin/activate
+$ python -c "import sys; print(sys.executable)"     # Check which Python executable is active
 ```
 
-### Log in as a Client using the SDK
+Windows (PowerShell):
 
-To log in as the client you created earlier, import the **accelbyte_py_sdk**, **MyConfigRepository**, and list the client's **Base URL**, **Client ID**, **Client Secret**, and **Namespace**.
+```pwsh
+C:\> mkdir myproject
+C:\> cd myproject/
+C:\> python -m venv venv
+C:\> venv\Scripts\Activate.ps1
+C:\> python -c "import sys; print(sys.executable)"      # Check which Python executable is active
+```
 
-Next, initialize the python SDK and call  **token_grant_v3**  with the grant type set as **"client_credentials"**.
+### 2. Add to Project Dependency
 
-```py
-from accelbyte_py_sdk.core import get_env_config
+Install SDK dependencies.
 
-base_url, client_id, client_secret, namespace = get_env_config()
+```bash
+$ pip install requests httpx websockets pyyaml
+```
+
+Install the SDK.
+
+```bash
+$ pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
+```
+
+Replace `{VERSION}` with a specific release version tag from [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases).
+
+It is recommended to use the matching Python Server SDK version for the given AccelByte Cloud version.
+
+### 3. Use in Code
+
+Create an SDK instance, login using client credentials, and call an AccelByte Cloud API in `app.py`. 
+
+The `EnvironmentConfigRepository` gets its values from `AB_BASE_URL`, `AB_CLIENT_ID`, and `AB_CLIENT_SECRET` environment variables.
+
+```python
+# app.py
 
 import accelbyte_py_sdk
-from accelbyte_py_sdk.core import MyConfigRepository
-from accelbyte_py_sdk.api.iam import token_grant_v3
-
-config = MyConfigRepository(
-    base_url=base_url,
-    client_id=client_id,
-    client_secret=client_secret,
-    namespace=namespace,
+from accelbyte_py_sdk.core import (
+    RequestsHttpClient,
+    EnvironmentConfigRepository,
+    InMemoryTokenRepository,
 )
+import accelbyte_py_sdk.services.auth as auth_service
+import accelbyte_py_sdk.api.iam as iam_service
 
-accelbyte_py_sdk.initialize(
-    options={
-        "config": config,
-    },
-)
 
-_, error = token_grant_v3(grant_type="client_credentials")
-if error:
-    print(error)
+def main():
+    # Create default HTTP client, token repository, and config repository instances
+    http_client = RequestsHttpClient()
+    config_repository = EnvironmentConfigRepository()
+    token_repository = InMemoryTokenRepository()
+
+    # Initialize the SDK
+    accelbyte_py_sdk.initialize(
+        options={
+            "config": config_repository,
+            "token": token_repository,
+            "http": http_client,
+        }
+    )
+
+    # Login using client credentials
+    token, error = auth_service.login_client()
+    if error:
+        exit(1)  # Login failed
+
+    # Call an AccelByte Cloud API e.g. GetCountryLocationV3
+    response, error = iam_service.get_country_location_v3()
+    if error:
+        exit(1)  # Response error
+
+    print(response.country_name)
+
+
+if __name__ == "__main__":
+    main()
+
 ```
 
-:::tip NOTE
-You can also paste in configuration by replacing **MyConfigRepository(...)** with the following value.
+### 4. Run the Code
 
-* If your configuration data is in a JSON file, replace it with **JsonFileConfigRepository("path/to/the/config/file.json")**
-* If your configuration data is set as Environment Variables (AB_BASE_URL, AB_CLIENT_ID, AB_CLIENT_SECRET, AB_NAMESPACE, etc.), replace it with **EnvironmentConfigRepository(...)**
-:::
+Set the required environment variables and run the code using the python interpreter.
 
-### Import AccelByte Services
-
-Now you can start using any of the following AccelByte services in your application, by importing the following syntax to your code. See the model for each service below or in the [how-to](https://github.com/AccelByte/accelbyte-python-sdk/tree/main/samples/how-to) folder inside the [accelbyte-python-sdk](https://github.com/AccelByte/accelbyte-python-sdk) repository.
-
-:::details <strong>IAM</strong>
-[API Docs](https://demo.accelbyte.io/iam/apidocs/)
-```py
-from accelbyte_py_sdk.api.iam import *
-from accelbyte_py_sdk.services.auth import *
+```shell
+$ export AB_BASE_URL="https://demo.accelbyte.io"              # AccelByte Cloud Base URL e.g. demo environment
+$ export AB_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"      # AccelByte Cloud OAuth Client ID
+$ export AB_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # AccelByte Cloud OAuth Client Secret
+$ python app.py
 ```
-:::
 
-:::details <strong>Basic</strong>
-[API Docs](https://demo.accelbyte.io/basic/apidocs/)
-```py
-from accelbyte_py_sdk.api.basic import *
-```
-:::
+## Follow Up Resources
 
-:::details <strong>Social</strong>
-[API Docs](https://demo.accelbyte.io/social/apidocs/)
-```py
-from accelbyte_py_sdk.api.social import *
-```
-:::
+* Python Server SDK [README.md](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/README.md)
+* Reference documentation on AccelByte Cloud endpoints, their corresponding Python Server SDK API, and short examples on how to use them is available in [docs](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/docs)
+* Sample apps which show some practical usage of Python Server SDK are available in [samples](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/samples)
 
-:::details <strong>Platform</strong>
-[API Docs](https://demo.accelbyte.io/platform/apidocs/)
-```py
-from accelbyte_py_sdk.api.platform import *
-```
-:::
+## FAQ
 
-:::details <strong>Group</strong>
-[API Docs](https://demo.accelbyte.io/group/apidocs/)
-```py
-from accelbyte_py_sdk.api.group import *
-```
-:::
+### 1. Can I customize the default token repository and/or the default config repository?
 
-:::details <strong>Cloud Save</strong>
-[API Docs](https://demo.accelbyte.io/cloudsave/apidocs/)
-```py
-from accelbyte_py_sdk.api.cloudsave import *
-```
-:::
+Yes. You just need to inherit from the base class.
 
-:::details <strong>DSM Controller</strong>
-[API Docs](https://demo.accelbyte.io/dsmcontroller/apidocs/)
-```py
-from accelbyte_py_sdk.api.dsmc import *
-```
-:::
+### 2. How can I use more advanced features of Python Server SDK e.g. HTTP retry and automatic token refresh? 
 
-:::details <strong>Session Browser</strong>
-[API Docs](https://demo.accelbyte.io/sessionbrowser/apidocs/)
-```py
-from accelbyte_py_sdk.api.sessionbrowser import *
-```
-:::
-
-:::details <strong>Lobby</strong>
-[API Docs](https://demo.accelbyte.io/lobby/apidocs/)
-```py
-from accelbyte_py_sdk.api.lobby import *
-```
-:::
-
-:::details <strong>Telemetry</strong>
-[API Docs](https://demo.accelbyte.io/game-telemetry/apidocs)
-```py
-from accelbyte_py_sdk.api.gametelemetry import *
-```
-:::
-
+See [here](https://github.com/AccelByte/accelbyte-python-sdk/blob/main/README.md).
