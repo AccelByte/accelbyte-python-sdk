@@ -30,9 +30,9 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 dslogmanager-list-terminated-servers --login_with_auth "Bearer foo"
-dslogmanager-download-server-logs 'FtBxyZcD' --login_with_auth "Bearer foo"
-dslogmanager-check-server-logs 'XBpGlsQu' --login_with_auth "Bearer foo"
-dslogmanager-batch-download-server-logs '{"Downloads": [{"alloc_id": "Ju8vMf0I", "namespace": "sJkTrd8I", "pod_name": "DcV2zXnT"}]}' --login_with_auth "Bearer foo"
+dslogmanager-download-server-logs 'ikV6M9Bt' --login_with_auth "Bearer foo"
+dslogmanager-check-server-logs 'sDzVepeP' --login_with_auth "Bearer foo"
+dslogmanager-batch-download-server-logs '{"Downloads": [{"alloc_id": "Q74fXJYO", "namespace": "25Cbgy8G", "pod_name": "ojwMjYED"}, {"alloc_id": "EBSuai31", "namespace": "cPCqhwbj", "pod_name": "TCxD5dNt"}, {"alloc_id": "5TNNalId", "namespace": "z7e4GEiH", "pod_name": "J4pES1aL"}]}' --login_with_auth "Bearer foo"
 dslogmanager-list-all-terminated-servers --login_with_auth "Bearer foo"
 dslogmanager-public-get-messages --login_with_auth "Bearer foo"
 exit()
@@ -71,21 +71,21 @@ eval_tap $? 2 'ListTerminatedServers' test.out
 
 #- 3 DownloadServerLogs
 $PYTHON -m $MODULE 'dslogmanager-download-server-logs' \
-    'KjXY1bPq' \
+    'dWXTMsP6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'DownloadServerLogs' test.out
 
 #- 4 CheckServerLogs
 $PYTHON -m $MODULE 'dslogmanager-check-server-logs' \
-    'amiBxx9C' \
+    'ilA0dZbS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'CheckServerLogs' test.out
 
 #- 5 BatchDownloadServerLogs
 $PYTHON -m $MODULE 'dslogmanager-batch-download-server-logs' \
-    '{"Downloads": [{"alloc_id": "s18EY84e", "namespace": "kItqRzHU", "pod_name": "1oh570KQ"}]}' \
+    '{"Downloads": [{"alloc_id": "rYJXZUvY", "namespace": "pIw9hljN", "pod_name": "VRhPmk8q"}, {"alloc_id": "PPhLMzN7", "namespace": "uxiorg4C", "pod_name": "vWhTywkN"}, {"alloc_id": "NrNtitWC", "namespace": "A6Ler6NL", "pod_name": "i5IoTHOz"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'BatchDownloadServerLogs' test.out
