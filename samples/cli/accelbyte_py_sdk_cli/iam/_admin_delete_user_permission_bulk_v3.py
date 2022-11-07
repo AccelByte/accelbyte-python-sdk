@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_delete_user_permission_bulk_v3 as admin_delete_user_permission_bulk_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelPermissionDeleteRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

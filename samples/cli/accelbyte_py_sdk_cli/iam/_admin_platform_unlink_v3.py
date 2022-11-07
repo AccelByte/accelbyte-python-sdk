@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_platform_unlink_v3 as admin_platform_unlink_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUnlinkUserPlatformRequest
-from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import create_user as create_user_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequest
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

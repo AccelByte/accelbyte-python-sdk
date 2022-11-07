@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_verify_account_v3 as admin_verify_account_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserVerificationRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

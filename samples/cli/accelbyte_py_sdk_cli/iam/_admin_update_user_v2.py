@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.iam import (
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserResponse
 from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

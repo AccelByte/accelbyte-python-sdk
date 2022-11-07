@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     admin_put_user_roles_v2 as admin_put_user_roles_v2_internal,
 )
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

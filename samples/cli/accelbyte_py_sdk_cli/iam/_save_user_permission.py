@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     save_user_permission as save_user_permission_internal,
 )
 from accelbyte_py_sdk.api.iam.models import AccountcommonPermissions
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

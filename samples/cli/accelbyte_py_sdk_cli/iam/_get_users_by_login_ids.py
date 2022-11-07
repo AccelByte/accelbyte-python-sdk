@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_users_by_login_ids as get_users_by_login_ids_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelPublicUsersResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

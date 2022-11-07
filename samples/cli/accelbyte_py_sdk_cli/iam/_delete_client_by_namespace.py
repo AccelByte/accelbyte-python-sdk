@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     delete_client_by_namespace as delete_client_by_namespace_internal,
 )
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

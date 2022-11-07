@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import disable_user_ban as disable_user_ban_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserBanResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

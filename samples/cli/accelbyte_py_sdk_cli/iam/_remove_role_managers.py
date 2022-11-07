@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     remove_role_managers as remove_role_managers_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelRoleManagersRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

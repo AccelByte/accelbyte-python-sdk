@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_role_admin_status as get_role_admin_status_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelRoleAdminStatusResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

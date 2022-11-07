@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_delete_platform_link_v2 as public_delete_platform_link_v2_internal,
 )
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

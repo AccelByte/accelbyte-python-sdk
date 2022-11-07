@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_reset_password_v3 as admin_reset_password_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserPasswordUpdateV3Request
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

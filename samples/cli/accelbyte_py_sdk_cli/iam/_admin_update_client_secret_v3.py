@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_update_client_secret_v3 as admin_update_client_secret_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ClientmodelV3ClientUpdateSecretRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

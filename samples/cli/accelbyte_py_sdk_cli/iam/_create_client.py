@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import create_client as create_client_internal
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientCreateRequest
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientCreationResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

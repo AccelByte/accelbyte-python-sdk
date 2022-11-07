@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import create_role as create_role_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonRole
 from accelbyte_py_sdk.api.iam.models import ModelRoleCreateRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

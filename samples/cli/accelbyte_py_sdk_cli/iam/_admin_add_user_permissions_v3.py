@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_add_user_permissions_v3 as admin_add_user_permissions_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import AccountcommonPermissions
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_list_justice_platform_accounts as get_list_justice_platform_accounts_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelGetUserMapping
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

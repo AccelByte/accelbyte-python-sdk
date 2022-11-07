@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     delete_user_information as delete_user_information_internal,
 )
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

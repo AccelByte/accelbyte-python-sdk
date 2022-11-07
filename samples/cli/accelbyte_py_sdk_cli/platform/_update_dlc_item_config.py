@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.platform import (
 )
 from accelbyte_py_sdk.api.platform.models import DLCItemConfigInfo
 from accelbyte_py_sdk.api.platform.models import DLCItemConfigUpdate
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 

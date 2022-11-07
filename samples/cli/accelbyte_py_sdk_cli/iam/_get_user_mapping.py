@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_user_mapping as get_user_mapping_internal
 from accelbyte_py_sdk.api.iam.models import ModelGetUserMapping
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

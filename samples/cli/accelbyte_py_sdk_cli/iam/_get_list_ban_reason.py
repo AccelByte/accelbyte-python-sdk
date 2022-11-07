@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import get_list_ban_reason as get_list_ban_reason_internal
 from accelbyte_py_sdk.api.iam.models import AccountcommonBanReasons
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_clientsby_namespace as get_clientsby_namespace_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

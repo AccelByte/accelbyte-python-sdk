@@ -35,7 +35,7 @@ from accelbyte_py_sdk.api.iam import (
 )
 from accelbyte_py_sdk.api.iam.models import ModelRoleV4Request
 from accelbyte_py_sdk.api.iam.models import ModelRoleV4Response
-from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_validate_user_by_user_id_and_password_v3 as public_validate_user_by_user_id_and_password_v3_internal,
 )
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

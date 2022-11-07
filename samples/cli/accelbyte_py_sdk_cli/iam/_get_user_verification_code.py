@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_user_verification_code as get_user_verification_code_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelVerificationCodeResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

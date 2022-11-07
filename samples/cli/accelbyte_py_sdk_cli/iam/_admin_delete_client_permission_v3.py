@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     admin_delete_client_permission_v3 as admin_delete_client_permission_v3_internal,
 )
-from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

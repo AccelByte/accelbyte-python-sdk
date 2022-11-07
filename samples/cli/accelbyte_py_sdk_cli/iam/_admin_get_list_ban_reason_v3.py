@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_get_list_ban_reason_v3 as admin_get_list_ban_reason_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import AccountcommonBanReasonsV3
-from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

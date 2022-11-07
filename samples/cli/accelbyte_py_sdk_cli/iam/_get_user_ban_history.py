@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_user_ban_history as get_user_ban_history_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserBanResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

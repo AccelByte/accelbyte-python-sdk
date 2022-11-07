@@ -37,6 +37,7 @@ from accelbyte_py_sdk.api.iam.models import (
     ModelUpgradeHeadlessAccountWithVerificationCodeRequest,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

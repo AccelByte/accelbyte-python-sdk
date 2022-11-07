@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     public_get_input_validations as public_get_input_validations_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelInputValidationsPublicResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

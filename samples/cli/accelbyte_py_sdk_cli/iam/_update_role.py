@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_role as update_role_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleResponse
 from accelbyte_py_sdk.api.iam.models import ModelRoleUpdateRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

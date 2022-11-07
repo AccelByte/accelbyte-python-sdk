@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import remove_role_members as remove_role_members_internal
 from accelbyte_py_sdk.api.iam.models import ModelRoleMembersRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

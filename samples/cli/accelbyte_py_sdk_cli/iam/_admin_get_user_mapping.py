@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_get_user_mapping as admin_get_user_mapping_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelGetUserMappingV3
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

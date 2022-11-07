@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     admin_get_banned_users_v3 as admin_get_banned_users_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelGetUserBanV3Response
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

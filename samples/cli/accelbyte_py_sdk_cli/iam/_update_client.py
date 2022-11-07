@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_client as update_client_internal
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientResponse
 from accelbyte_py_sdk.api.iam.models import ClientmodelClientUpdateRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

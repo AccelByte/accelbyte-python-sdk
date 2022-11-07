@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     public_get_country_age_restriction as public_get_country_age_restriction_internal,
 )
 from accelbyte_py_sdk.api.iam.models import AccountcommonCountry
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

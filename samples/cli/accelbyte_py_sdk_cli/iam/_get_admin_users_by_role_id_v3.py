@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_admin_users_by_role_id_v3 as get_admin_users_by_role_id_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelGetUsersResponseWithPaginationV3
-from accelbyte_py_sdk.api.iam.models import RestapiErrorResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

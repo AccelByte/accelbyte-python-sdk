@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     update_client_permission as update_client_permission_internal,
 )
 from accelbyte_py_sdk.api.iam.models import AccountcommonClientPermissions
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

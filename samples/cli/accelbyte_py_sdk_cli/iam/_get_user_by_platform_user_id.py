@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_user_by_platform_user_id as get_user_by_platform_user_id_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelPublicUserResponse
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

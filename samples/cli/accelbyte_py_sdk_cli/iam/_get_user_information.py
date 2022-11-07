@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     get_user_information as get_user_information_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelUserInformation
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

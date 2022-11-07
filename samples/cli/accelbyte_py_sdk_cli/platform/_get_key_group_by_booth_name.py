@@ -69,4 +69,4 @@ def get_key_group_by_booth_name(
 
 
 get_key_group_by_booth_name.operation_id = "getKeyGroupByBoothName"
-get_key_group_by_booth_name.is_deprecated = False
+get_key_group_by_booth_name.is_deprecated = True

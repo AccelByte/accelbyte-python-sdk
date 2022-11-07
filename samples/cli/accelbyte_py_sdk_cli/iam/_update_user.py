@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_user as update_user_internal
 from accelbyte_py_sdk.api.iam.models import ModelUserResponse
 from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequest
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
