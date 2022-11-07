@@ -43,17 +43,14 @@ C:\> python -c "import sys; print(sys.executable)"      # Check which Python exe
 Install SDK dependencies.
 
 ```bash
-$ pip install requests httpx websockets pyyaml
+$ pip install requests httpx websockets pyyaml jwt
 ```
 
 Install the SDK.
 
 ```bash
-$ pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
+$ pip install accelbyte-py-sdk
 ```
-
-Replace `{VERSION}` with a specific release version tag from [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases).
-
 It is recommended to use the matching Python Server SDK version for the given AccelByte Cloud version.
 
 ### 3. Use in Code

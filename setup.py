@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 NAME = "accelbyte_py_sdk"
-VERSION = "0.26.1"
+VERSION = "0.27.0"
 AUTHOR = "AccelByte"
 AUTHOR_EMAIL = "dev@accelbyte.net"
 SHORT_DESCRIPTION = "AccelByte Python SDK"
