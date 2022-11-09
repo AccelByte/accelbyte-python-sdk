@@ -19,9 +19,11 @@ from accelbyte_py_sdk_cli.group import commands as group_commands
 from accelbyte_py_sdk_cli.leaderboard import commands as leaderboard_commands
 from accelbyte_py_sdk_cli.legal import commands as legal_commands
 from accelbyte_py_sdk_cli.lobby import commands as lobby_commands
+from accelbyte_py_sdk_cli.match2 import commands as match2_commands
 from accelbyte_py_sdk_cli.matchmaking import commands as matchmaking_commands
 from accelbyte_py_sdk_cli.platform import commands as platform_commands
 from accelbyte_py_sdk_cli.qosm import commands as qosm_commands
+from accelbyte_py_sdk_cli.session import commands as session_commands
 from accelbyte_py_sdk_cli.seasonpass import commands as seasonpass_commands
 from accelbyte_py_sdk_cli.sessionbrowser import commands as sessionbrowser_commands
 from accelbyte_py_sdk_cli.social import commands as social_commands
@@ -169,9 +171,11 @@ add_commands(entry_point, group_commands, prefix="group")
 add_commands(entry_point, leaderboard_commands, prefix="leaderboard")
 add_commands(entry_point, legal_commands, prefix="legal")
 add_commands(entry_point, lobby_commands, prefix="lobby")
+add_commands(entry_point, match2_commands, prefix="match2")
 add_commands(entry_point, matchmaking_commands, prefix="matchmaking")
 add_commands(entry_point, platform_commands, prefix="platform")
 add_commands(entry_point, qosm_commands, prefix="qosm")
+add_commands(entry_point, session_commands, prefix="session")
 add_commands(entry_point, seasonpass_commands, prefix="seasonpass")
 add_commands(entry_point, sessionbrowser_commands, prefix="sessionbrowser")
 add_commands(entry_point, social_commands, prefix="social")
