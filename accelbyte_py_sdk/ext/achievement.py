@@ -162,12 +162,12 @@ def create_models_public_achievements_response_example() -> ModelsPublicAchievem
 
 def create_models_user_achievement_response_example() -> ModelsUserAchievementResponse:
     instance = ModelsUserAchievementResponse()
+    instance.achieved_at = randomize("date")
     instance.achievement_code = randomize()
     instance.id_ = randomize()
     instance.latest_value = randomize("int", min_val=1, max_val=1000)
     instance.name = {randomize(): randomize()}
     instance.status = randomize("int", min_val=1, max_val=1000)
-    instance.achieved_at = randomize("date")
     return instance
 
 
