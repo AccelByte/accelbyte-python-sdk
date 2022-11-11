@@ -32,6 +32,8 @@ class ModelsUserAchievementResponse(Model):
     """Models user achievement response (models.UserAchievementResponse)
 
     Properties:
+        achieved_at: (achievedAt) REQUIRED str
+
         achievement_code: (achievementCode) REQUIRED str
 
         id_: (id) REQUIRED str
@@ -41,22 +43,24 @@ class ModelsUserAchievementResponse(Model):
         name: (name) REQUIRED Dict[str, str]
 
         status: (status) REQUIRED int
-
-        achieved_at: (achievedAt) OPTIONAL str
     """
 
     # region fields
 
+    achieved_at: str  # REQUIRED
     achievement_code: str  # REQUIRED
     id_: str  # REQUIRED
     latest_value: float  # REQUIRED
     name: Dict[str, str]  # REQUIRED
     status: int  # REQUIRED
-    achieved_at: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_achieved_at(self, value: str) -> ModelsUserAchievementResponse:
+        self.achieved_at = value
+        return self
 
     def with_achievement_code(self, value: str) -> ModelsUserAchievementResponse:
         self.achievement_code = value
@@ -78,16 +82,16 @@ class ModelsUserAchievementResponse(Model):
         self.status = value
         return self
 
-    def with_achieved_at(self, value: str) -> ModelsUserAchievementResponse:
-        self.achieved_at = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "achieved_at"):
+            result["achievedAt"] = str(self.achieved_at)
+        elif include_empty:
+            result["achievedAt"] = ""
         if hasattr(self, "achievement_code"):
             result["achievementCode"] = str(self.achievement_code)
         elif include_empty:
@@ -108,10 +112,6 @@ class ModelsUserAchievementResponse(Model):
             result["status"] = int(self.status)
         elif include_empty:
             result["status"] = 0
-        if hasattr(self, "achieved_at"):
-            result["achievedAt"] = str(self.achieved_at)
-        elif include_empty:
-            result["achievedAt"] = ""
         return result
 
     # endregion to methods
@@ -121,21 +121,20 @@ class ModelsUserAchievementResponse(Model):
     @classmethod
     def create(
         cls,
+        achieved_at: str,
         achievement_code: str,
         id_: str,
         latest_value: float,
         name: Dict[str, str],
         status: int,
-        achieved_at: Optional[str] = None,
     ) -> ModelsUserAchievementResponse:
         instance = cls()
+        instance.achieved_at = achieved_at
         instance.achievement_code = achievement_code
         instance.id_ = id_
         instance.latest_value = latest_value
         instance.name = name
         instance.status = status
-        if achieved_at is not None:
-            instance.achieved_at = achieved_at
         return instance
 
     @classmethod
@@ -145,6 +144,10 @@ class ModelsUserAchievementResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "achievedAt" in dict_ and dict_["achievedAt"] is not None:
+            instance.achieved_at = str(dict_["achievedAt"])
+        elif include_empty:
+            instance.achieved_at = ""
         if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
             instance.achievement_code = str(dict_["achievementCode"])
         elif include_empty:
@@ -165,10 +168,6 @@ class ModelsUserAchievementResponse(Model):
             instance.status = int(dict_["status"])
         elif include_empty:
             instance.status = 0
-        if "achievedAt" in dict_ and dict_["achievedAt"] is not None:
-            instance.achieved_at = str(dict_["achievedAt"])
-        elif include_empty:
-            instance.achieved_at = ""
         return instance
 
     @classmethod
@@ -212,23 +211,23 @@ class ModelsUserAchievementResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "achievedAt": "achieved_at",
             "achievementCode": "achievement_code",
             "id": "id_",
             "latestValue": "latest_value",
             "name": "name",
             "status": "status",
-            "achievedAt": "achieved_at",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "achievedAt": True,
             "achievementCode": True,
             "id": True,
             "latestValue": True,
             "name": True,
             "status": True,
-            "achievedAt": False,
         }
 
     # endregion static methods

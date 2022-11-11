@@ -42,9 +42,17 @@ class PublicListUserAchievements(Operation):
 
 
 
-    Note: user achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)
+    Note:
 
-    `
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
