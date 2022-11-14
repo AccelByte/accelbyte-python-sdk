@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.27.2
+- Updated spec for AccelByte Cloud v3.35.2.
+
 ## v0.27.1
 - Updated spec for AccelByte Cloud v3.35.1.
 
