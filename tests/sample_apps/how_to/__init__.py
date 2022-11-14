@@ -11,6 +11,7 @@ from ._iam import IAMTestCase
 from ._leaderboard import LeaderboardTestCase
 from ._legal import LegalTestCase
 from ._lobby import AsyncLobbyTestCase, LobbyTestCase
+from ._match2 import Match2TestCase
 from ._matchmaking import MatchmakingTestCase
 from ._platform import PlatformTestCase
 from ._qosm import QosmTestCase
