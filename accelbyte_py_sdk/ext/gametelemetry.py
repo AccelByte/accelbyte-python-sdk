@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# Analytics Game Telemetry (1.12.0)
+# Analytics Game Telemetry (1.13.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ def create_telemetry_body_example() -> TelemetryBody:
     instance.event_name = randomize()
     instance.event_namespace = randomize("slug")
     instance.payload = {randomize(): randomize()}
+    instance.event_id = randomize()
+    instance.event_timestamp = randomize("date")
     return instance
 
 
