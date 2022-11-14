@@ -45,10 +45,8 @@ class GametelemetryTestCase(IntegrationTestCase):
         result, error = protected_save_events_game_telemetry_v1_protected_events_post(
             body=[
                 TelemetryBody.create(
-                    event_id="pythonsdk",
                     event_name="pythonevent",
                     event_namespace="test",
-                    event_timestamp=datetime.utcnow().isoformat(),
                     payload={"foo": "bar"},
                 )
             ]
