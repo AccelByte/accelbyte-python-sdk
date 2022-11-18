@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import List
 
 from ._integration_test_case import IntegrationTestCase
@@ -17,6 +18,7 @@ from accelbyte_py_sdk.api.matchmaking.models import ModelsSubGameMode
 
 class MatchmakingTestCase(IntegrationTestCase):
 
+    exported_filename: str = "exported"
     criteria: str = "distance"
     duration: int = 300
     game_mode: str = "gamemode"
@@ -84,6 +86,10 @@ class MatchmakingTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.matchmaking import delete_channel_handler
 
         _, _ = delete_channel_handler(channel=self.models_channel_request.game_mode)
+
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
         super().tearDown()
 
     # region test:create_channel_handler
@@ -206,3 +212,27 @@ class MatchmakingTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:get_all_party_in_all_channel
+
+    # region test:export_channels
+
+    def test_export_channels(self):
+        from accelbyte_py_sdk.api.matchmaking import export_channels
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = export_channels()
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:export_channels
+
+    # end of file
