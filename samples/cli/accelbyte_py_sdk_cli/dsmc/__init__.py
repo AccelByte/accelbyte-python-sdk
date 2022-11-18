@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (3.10.1)
+# justice-dsm-controller-service (3.11.0)
 
 from ._list_config import list_config
 from ._save_config import save_config
@@ -14,6 +14,7 @@ from ._update_image import update_image
 from ._create_image import create_image
 from ._import_images import import_images
 from ._create_image_patch import create_image_patch
+from ._get_lowest_instance_spec import get_lowest_instance_spec
 from ._get_config import get_config
 from ._create_config import create_config
 from ._delete_config import delete_config
@@ -85,6 +86,7 @@ commands = [
     create_image,
     import_images,
     create_image_patch,
+    get_lowest_instance_spec,
     get_config,
     create_config,
     delete_config,

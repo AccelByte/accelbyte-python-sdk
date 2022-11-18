@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.20.0)
+# justice-iam-service (5.21.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -261,6 +261,7 @@ from ._revoke_user_v3 import revoke_user_v3
 from ._authorize_v3 import authorize_v3
 from ._token_introspection_v3 import token_introspection_v3
 from ._get_jwksv3 import get_jwksv3
+from ._send_mfa_authentication_code import send_mfa_authentication_code
 from ._change2fa_method import change2fa_method
 from ._verify2fa_code import verify2fa_code
 from ._retrieve_user_third_party_platform_token_v3 import (
@@ -385,6 +386,9 @@ from ._admin_generate_my_backup_codes_v4 import admin_generate_my_backup_codes_v
 from ._admin_disable_my_backup_codes_v4 import admin_disable_my_backup_codes_v4
 from ._admin_download_my_backup_codes_v4 import admin_download_my_backup_codes_v4
 from ._admin_enable_my_backup_codes_v4 import admin_enable_my_backup_codes_v4
+from ._admin_send_my_mfa_email_code_v4 import admin_send_my_mfa_email_code_v4
+from ._admin_disable_my_email_v4 import admin_disable_my_email_v4
+from ._admin_enable_my_email_v4 import admin_enable_my_email_v4
 from ._admin_get_my_enabled_factors_v4 import admin_get_my_enabled_factors_v4
 from ._admin_make_factor_my_default_v4 import admin_make_factor_my_default_v4
 from ._admin_invite_user_v4 import admin_invite_user_v4
@@ -408,6 +412,9 @@ from ._public_disable_my_backup_codes_v4 import public_disable_my_backup_codes_v
 from ._public_download_my_backup_codes_v4 import public_download_my_backup_codes_v4
 from ._public_enable_my_backup_codes_v4 import public_enable_my_backup_codes_v4
 from ._public_remove_trusted_device_v4 import public_remove_trusted_device_v4
+from ._public_send_my_mfa_email_code_v4 import public_send_my_mfa_email_code_v4
+from ._public_disable_my_email_v4 import public_disable_my_email_v4
+from ._public_enable_my_email_v4 import public_enable_my_email_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
 
@@ -622,6 +629,7 @@ commands = [
     authorize_v3,
     token_introspection_v3,
     get_jwksv3,
+    send_mfa_authentication_code,
     change2fa_method,
     verify2fa_code,
     retrieve_user_third_party_platform_token_v3,
@@ -724,6 +732,9 @@ commands = [
     admin_disable_my_backup_codes_v4,
     admin_download_my_backup_codes_v4,
     admin_enable_my_backup_codes_v4,
+    admin_send_my_mfa_email_code_v4,
+    admin_disable_my_email_v4,
+    admin_enable_my_email_v4,
     admin_get_my_enabled_factors_v4,
     admin_make_factor_my_default_v4,
     admin_invite_user_v4,
@@ -743,6 +754,9 @@ commands = [
     public_download_my_backup_codes_v4,
     public_enable_my_backup_codes_v4,
     public_remove_trusted_device_v4,
+    public_send_my_mfa_email_code_v4,
+    public_disable_my_email_v4,
+    public_enable_my_email_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
 ]

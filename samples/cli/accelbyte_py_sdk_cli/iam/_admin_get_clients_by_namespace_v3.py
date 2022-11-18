@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.20.0)
+# Accelbyte Cloud Iam Service (5.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,9 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.option("--client_id", "client_id", type=str)
+@click.option("--client_name", "client_name", type=str)
+@click.option("--client_type", "client_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -45,6 +48,9 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_clients_by_namespace_v3(
+    client_id: Optional[str] = None,
+    client_name: Optional[str] = None,
+    client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -61,6 +67,9 @@ def admin_get_clients_by_namespace_v3(
     else:
         login_as_internal(login_as)
     result, error = admin_get_clients_by_namespace_v3_internal(
+        client_id=client_id,
+        client_name=client_name,
+        client_type=client_type,
         limit=limit,
         offset=offset,
         namespace=namespace,
