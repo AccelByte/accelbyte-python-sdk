@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Matchmaking Service (2.17.2)
+# AccelByte Cloud Matchmaking Service (2.17.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsChannelV1
 from ...models import ResponseErrorV1
 
 
@@ -66,7 +65,7 @@ class ExportChannels(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsChannelV1] (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
 
@@ -164,12 +163,10 @@ class ExportChannels(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, List[ModelsChannelV1]], Union[None, HttpResponse, ResponseErrorV1]
-    ]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseErrorV1]]:
         """Parse the given response.
 
-        200: OK - List[ModelsChannelV1] (OK)
+        200: OK - Any (OK)
 
         401: Unauthorized - ResponseErrorV1 (20001: unauthorized access)
 
@@ -191,7 +188,7 @@ class ExportChannels(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelsChannelV1.create_from_dict(i) for i in content], None
+            return content, None
         if code == 401:
             return None, ResponseErrorV1.create_from_dict(content)
         if code == 403:

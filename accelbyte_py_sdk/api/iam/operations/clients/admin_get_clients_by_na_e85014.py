@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,6 +61,12 @@ class AdminGetClientsByNamespaceV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        client_id: (clientId) OPTIONAL str in query
+
+        client_name: (clientName) OPTIONAL str in query
+
+        client_type: (clientType) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -85,6 +91,9 @@ class AdminGetClientsByNamespaceV3(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    client_id: str  # OPTIONAL in [query]
+    client_name: str  # OPTIONAL in [query]
+    client_type: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
@@ -138,6 +147,12 @@ class AdminGetClientsByNamespaceV3(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "client_id"):
+            result["clientId"] = self.client_id
+        if hasattr(self, "client_name"):
+            result["clientName"] = self.client_name
+        if hasattr(self, "client_type"):
+            result["clientType"] = self.client_type
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -154,6 +169,18 @@ class AdminGetClientsByNamespaceV3(Operation):
 
     def with_namespace(self, value: str) -> AdminGetClientsByNamespaceV3:
         self.namespace = value
+        return self
+
+    def with_client_id(self, value: str) -> AdminGetClientsByNamespaceV3:
+        self.client_id = value
+        return self
+
+    def with_client_name(self, value: str) -> AdminGetClientsByNamespaceV3:
+        self.client_name = value
+        return self
+
+    def with_client_type(self, value: str) -> AdminGetClientsByNamespaceV3:
+        self.client_type = value
         return self
 
     def with_limit(self, value: int) -> AdminGetClientsByNamespaceV3:
@@ -174,6 +201,18 @@ class AdminGetClientsByNamespaceV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "client_id") and self.client_id:
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
+        if hasattr(self, "client_name") and self.client_name:
+            result["clientName"] = str(self.client_name)
+        elif include_empty:
+            result["clientName"] = ""
+        if hasattr(self, "client_type") and self.client_type:
+            result["clientType"] = str(self.client_type)
+        elif include_empty:
+            result["clientType"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -239,11 +278,20 @@ class AdminGetClientsByNamespaceV3(Operation):
     def create(
         cls,
         namespace: str,
+        client_id: Optional[str] = None,
+        client_name: Optional[str] = None,
+        client_type: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> AdminGetClientsByNamespaceV3:
         instance = cls()
         instance.namespace = namespace
+        if client_id is not None:
+            instance.client_id = client_id
+        if client_name is not None:
+            instance.client_name = client_name
+        if client_type is not None:
+            instance.client_type = client_type
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -259,6 +307,18 @@ class AdminGetClientsByNamespaceV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
+        if "clientName" in dict_ and dict_["clientName"] is not None:
+            instance.client_name = str(dict_["clientName"])
+        elif include_empty:
+            instance.client_name = ""
+        if "clientType" in dict_ and dict_["clientType"] is not None:
+            instance.client_type = str(dict_["clientType"])
+        elif include_empty:
+            instance.client_type = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -273,6 +333,9 @@ class AdminGetClientsByNamespaceV3(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "clientId": "client_id",
+            "clientName": "client_name",
+            "clientType": "client_type",
             "limit": "limit",
             "offset": "offset",
         }
@@ -281,6 +344,9 @@ class AdminGetClientsByNamespaceV3(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "clientId": False,
+            "clientName": False,
+            "clientType": False,
             "limit": False,
             "offset": False,
         }

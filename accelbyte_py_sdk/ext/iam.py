@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -885,13 +885,17 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.client_platform = randomize()
+    instance.description = randomize()
     instance.namespace = randomize("slug")
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
     instance.deletable = randomize("bool")
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration_time_unit = randomize()
+    instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
     return instance
 
@@ -925,6 +929,7 @@ def create_clientmodel_client_update_secret_request_example() -> ClientmodelClie
 def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUpdateV3Request:
     instance = ClientmodelClientUpdateV3Request()
     instance.client_platform = randomize()
+    instance.description = randomize()
     instance.audiences = [randomize()]
     instance.base_uri = randomize()
     instance.client_name = randomize()
@@ -932,8 +937,11 @@ def create_clientmodel_client_update_v3_request_example() -> ClientmodelClientUp
     instance.deletable = randomize("bool")
     instance.namespace = randomize("slug")
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration_time_unit = randomize()
     instance.redirect_uri = randomize()
+    instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
     return instance
 
@@ -947,6 +955,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.client_platform = randomize()
     instance.created_at = randomize("date")
+    instance.description = randomize()
     instance.modified_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.oauth_client_type = randomize()
@@ -954,7 +963,9 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
+    instance.oauth_refresh_token_expiration_time_unit = randomize()
     return instance
 
 
@@ -2461,6 +2472,7 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance.error = randomize()
     instance.client_id = randomize("uid")
     instance.default_factor = randomize()
+    instance.email = randomize("email")
     instance.error_description = randomize()
     instance.error_uri = randomize()
     instance.factors = [randomize()]

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -56,7 +56,7 @@ class AdminDownloadMyBackupCodesV4(Operation):
         securities: [BEARER_AUTH]
 
     Responses:
-        200: OK - (Backup codes downloaded)
+        200: OK - Any (Backup codes downloaded)
 
         400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found | 10171: email address not found)
 
@@ -140,10 +140,10 @@ class AdminDownloadMyBackupCodesV4(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse, RestErrorResponse]]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        200: OK - (Backup codes downloaded)
+        200: OK - Any (Backup codes downloaded)
 
         400: Bad Request - RestErrorResponse (10192: factor not enabled | 10191: email address not verified | 10195: no valid backup code found | 10171: email address not found)
 
@@ -169,7 +169,7 @@ class AdminDownloadMyBackupCodesV4(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return content, None
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:

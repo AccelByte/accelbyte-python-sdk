@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -122,6 +122,12 @@ class AdminCreateClientV3(Operation):
 
 
       * oauthRefreshTokenExpiration : a configurable expiration time for refresh_token , default value: 0 (mean fetch value from environment variable)
+
+
+      * oauthAccessTokenExpirationTimeUnit : a configurable expiration time unit for access_token , default value: SECONDS
+
+
+      * oauthRefreshTokenExpirationTimeUnit : a configurable expiration time unit for refresh_token , default value: SECONDS
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]

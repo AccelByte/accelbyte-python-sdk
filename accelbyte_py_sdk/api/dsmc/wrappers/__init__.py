@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "3.10.1"
+__version__ = "3.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -129,6 +129,8 @@ from ._pod_config import delete_pod_config
 from ._pod_config import delete_pod_config_async
 from ._pod_config import get_all_pod_config
 from ._pod_config import get_all_pod_config_async
+from ._pod_config import get_lowest_instance_spec
+from ._pod_config import get_lowest_instance_spec_async
 from ._pod_config import get_pod_config
 from ._pod_config import get_pod_config_async
 from ._pod_config import update_pod_config

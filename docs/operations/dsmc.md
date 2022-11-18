@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (3.10.1)
+# AccelByte Cloud Dsm Controller Service Index (3.11.0)
 
 
 ## Operations
@@ -85,6 +85,7 @@
 | /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name} | POST | CreatePodConfig | [CreatePodConfig](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/create_pod_config.py) | [create_pod_config](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-create-pod-config](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_create_pod_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name} | DELETE | DeletePodConfig | [DeletePodConfig](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/delete_pod_config.py) | [delete_pod_config](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-delete-pod-config](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_delete_pod_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/configs/pods | GET | GetAllPodConfig | [GetAllPodConfig](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/get_all_pod_config.py) | [get_all_pod_config](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-get-all-pod-config](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_all_pod_config.py) |
+| /dsmcontroller/admin/instances/spec/lowest | GET | GetLowestInstanceSpec | [GetLowestInstanceSpec](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/get_lowest_instance_spec.py) | [get_lowest_instance_spec](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-get-lowest-instance-spec](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_lowest_instance_spec.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name} | GET | GetPodConfig | [GetPodConfig](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/get_pod_config.py) | [get_pod_config](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-get-pod-config](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_pod_config.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name} | PATCH | UpdatePodConfig | [UpdatePodConfig](../../accelbyte_py_sdk/api/dsmc/operations/pod_config/update_pod_config.py) | [update_pod_config](../../accelbyte_py_sdk/api/dsmc/wrappers/_pod_config.py) | [accelbyte_py_sdk_cli dsmc-update-pod-config](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_update_pod_config.py) |
 
@@ -134,7 +135,6 @@
 | models.DeploymentWithOverride | [ModelsDeploymentWithOverride](../../accelbyte_py_sdk/api/dsmc/models/models_deployment_with_override.py) |
 | models.DeregisterLocalServerRequest | [ModelsDeregisterLocalServerRequest](../../accelbyte_py_sdk/api/dsmc/models/models_deregister_local_server_request.py) |
 | models.DetailedCountServerResponse | [ModelsDetailedCountServerResponse](../../accelbyte_py_sdk/api/dsmc/models/models_detailed_count_server_response.py) |
-| models.DSMConfigExport | [ModelsDSMConfigExport](../../accelbyte_py_sdk/api/dsmc/models/models_dsm_config_export.py) |
 | models.DSMConfigRecord | [ModelsDSMConfigRecord](../../accelbyte_py_sdk/api/dsmc/models/models_dsm_config_record.py) |
 | models.GetImageDetailResponse | [ModelsGetImageDetailResponse](../../accelbyte_py_sdk/api/dsmc/models/models_get_image_detail_response.py) |
 | models.GetImageLimitResponse | [ModelsGetImageLimitResponse](../../accelbyte_py_sdk/api/dsmc/models/models_get_image_limit_response.py) |
@@ -143,6 +143,7 @@
 | models.ImageRecord | [ModelsImageRecord](../../accelbyte_py_sdk/api/dsmc/models/models_image_record.py) |
 | models.ImageRecordUpdate | [ModelsImageRecordUpdate](../../accelbyte_py_sdk/api/dsmc/models/models_image_record_update.py) |
 | models.ImportResponse | [ModelsImportResponse](../../accelbyte_py_sdk/api/dsmc/models/models_import_response.py) |
+| models.InstanceSpec | [ModelsInstanceSpec](../../accelbyte_py_sdk/api/dsmc/models/models_instance_spec.py) |
 | models.ListConfigResponse | [ModelsListConfigResponse](../../accelbyte_py_sdk/api/dsmc/models/models_list_config_response.py) |
 | models.ListDeploymentResponse | [ModelsListDeploymentResponse](../../accelbyte_py_sdk/api/dsmc/models/models_list_deployment_response.py) |
 | models.ListImagePatchesResponse | [ModelsListImagePatchesResponse](../../accelbyte_py_sdk/api/dsmc/models/models_list_image_patches_response.py) |

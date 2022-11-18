@@ -32,7 +32,6 @@ from ....core import same_doc_as
 
 from ..models import ModelsCreateDSMConfigRequest
 from ..models import ModelsCreatePortRequest
-from ..models import ModelsDSMConfigExport
 from ..models import ModelsDSMConfigRecord
 from ..models import ModelsImportResponse
 from ..models import ModelsListConfigResponse
