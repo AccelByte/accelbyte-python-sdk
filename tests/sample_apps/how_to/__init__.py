@@ -4,7 +4,7 @@ from ._achievement import AchievementTestCase
 from ._basic import BasicTestCase
 from ._cloudsave import CloudSaveTestCase
 from ._dslogmanager import DSLogManagerTestCase
-from ._dsmc import DSMCTestCase
+from ._dsmc import DSMCTestCase, DSMCSessionTestCase
 from ._gdpr import GDPRTestCase
 from ._group import GroupTestCase
 from ._iam import IAMTestCase

@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Optional
 
 from ._integration_test_case import IntegrationTestCase
@@ -5,7 +6,14 @@ from ._integration_test_case import IntegrationTestCase
 
 class DSLogManagerTestCase(IntegrationTestCase):
 
+    exported_filename: str = "exported"
     pod_name: Optional[str] = None
+
+    def tearDown(self) -> None:
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        super().tearDown()
 
     # noinspection PyMethodMayBeStatic
     def pre_fetch_pod_name(self):
@@ -72,6 +80,8 @@ class DSLogManagerTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.dslogmanager import download_server_logs
 
         # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
         pod_name = self.pre_fetch_pod_name()
         if not pod_name:
             self.skipTest(reason="Can't get a pod name to use.")
@@ -80,10 +90,15 @@ class DSLogManagerTestCase(IntegrationTestCase):
             self.skipTest(reason="No terminated servers to use.")
 
         # act
-        _, error = download_server_logs(pod_name=self.pod_name)
+        result, error = download_server_logs(pod_name=self.pod_name)
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
 
         # assert
         self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
 
     # endregion test:download_server_logs
 
@@ -100,5 +115,6 @@ class DSLogManagerTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:list_terminated_servers
 
-# endregion test:list_terminated_servers
+    # end of file

@@ -1,4 +1,5 @@
 from random import randint
+from pathlib import Path
 from typing import Optional
 
 from ._integration_test_case import IntegrationTestCase
@@ -8,6 +9,7 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 class IAMTestCase(IntegrationTestCase):
 
+    exported_filename: str = "exported"
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
@@ -48,6 +50,10 @@ class IAMTestCase(IntegrationTestCase):
                 condition=error is not None,
             )
             self.user_id = None
+
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
         super().tearDown()
 
     # region test:create_user
@@ -282,5 +288,58 @@ class IAMTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:authorize_v3
 
-# endregion test:authorize_v3
+    # region test:admin_download_my_backup_codes_v4
+
+    def test_admin_download_my_backup_codes_v4(self):
+        from accelbyte_py_sdk.api.iam import admin_download_my_backup_codes_v4
+        from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = admin_download_my_backup_codes_v4()
+        if error and isinstance(error, RestErrorResponse):
+            if error.error_code == 10191:  # email not verified
+                self.skipTest(reason=error.error_message)
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:admin_download_my_backup_codes_v4
+
+    # region test:public_download_my_backup_codes_v4
+
+    def test_public_download_my_backup_codes_v4(self):
+        from accelbyte_py_sdk.api.iam import public_download_my_backup_codes_v4
+        from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+
+        # arrange
+        exported_file_path = Path(self.exported_filename)
+        exported_file_path.unlink(missing_ok=True)
+
+        # act
+        result, error = public_download_my_backup_codes_v4()
+        if error and isinstance(error, RestErrorResponse):
+            if error.error_code == 10191:  # email not verified
+                self.skipTest(reason=error.error_message)
+
+        if result is not None:
+            exported_file_path.write_bytes(result)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertTrue(exported_file_path.exists())
+        self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # endregion test:public_download_my_backup_codes_v4
+
+    # end of file
