@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Dsm Controller Service (3.10.1)
+# Accelbyte Cloud Dsm Controller Service (3.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,6 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import export_config_v1 as export_config_v1_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsDSMConfigExport
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Matchmaking Service (2.17.2)
+# Justice Matchmaking Service (2.17.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,6 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.matchmaking import export_channels as export_channels_internal
-from accelbyte_py_sdk.api.matchmaking.models import ModelsChannelV1
 from accelbyte_py_sdk.api.matchmaking.models import ResponseErrorV1
 
 
