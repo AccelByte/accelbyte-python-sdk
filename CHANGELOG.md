@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.27.3
+- Updated spec files to fix issues in `dslogmanager`, `dsmc`, `iam` and `matchmaking`.
+  - `downloadServerLogs` and `batchDownloadServerLogs` in `dslogmanager`
+  - `exportConfigV1` in `dsmc`
+  - `AdminDownloadMyBackupCodesV4` and `PublicDownloadMyBackupCodesV4` in `iam`
+  - `ExportChannels` in `matchmaking`
+- Added tests for `downloadServerLogs`, `exportConfigV1`, `AdminDownloadMyBackupCodesV4`, `PublicDownloadMyBackupCodesV4`, `ExportChannels`
+- Fixes bug when receiving undeclared file responses
+
 ## v0.27.2
 - Updated spec for AccelByte Cloud v3.35.2.
 
