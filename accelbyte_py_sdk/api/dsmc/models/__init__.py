@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "3.10.1"
+__version__ = "3.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,7 +35,6 @@ from .models_deployment_config_override import ModelsDeploymentConfigOverride
 from .models_deployment_with_override import ModelsDeploymentWithOverride
 from .models_deregister_local_server_request import ModelsDeregisterLocalServerRequest
 from .models_detailed_count_server_response import ModelsDetailedCountServerResponse
-from .models_dsm_config_export import ModelsDSMConfigExport
 from .models_dsm_config_record import ModelsDSMConfigRecord
 from .models_get_image_detail_response import ModelsGetImageDetailResponse
 from .models_get_image_limit_response import ModelsGetImageLimitResponse
@@ -44,6 +43,7 @@ from .models_get_image_patch_detail_response import ModelsGetImagePatchDetailRes
 from .models_image_record import ModelsImageRecord
 from .models_image_record_update import ModelsImageRecordUpdate
 from .models_import_response import ModelsImportResponse
+from .models_instance_spec import ModelsInstanceSpec
 from .models_list_config_response import ModelsListConfigResponse
 from .models_list_deployment_response import ModelsListDeploymentResponse
 from .models_list_image_patches_response import ModelsListImagePatchesResponse

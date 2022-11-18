@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -48,6 +48,8 @@ class ClientmodelClientV3Response(Model):
 
         created_at: (createdAt) REQUIRED str
 
+        description: (description) REQUIRED str
+
         modified_at: (modifiedAt) REQUIRED str
 
         namespace: (namespace) REQUIRED str
@@ -62,7 +64,11 @@ class ClientmodelClientV3Response(Model):
 
         oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
 
+        oauth_access_token_expiration_time_unit: (oauthAccessTokenExpirationTimeUnit) OPTIONAL str
+
         oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
+
+        oauth_refresh_token_expiration_time_unit: (oauthRefreshTokenExpirationTimeUnit) OPTIONAL str
     """
 
     # region fields
@@ -74,6 +80,7 @@ class ClientmodelClientV3Response(Model):
     client_permissions: List[AccountcommonPermissionV3]  # REQUIRED
     client_platform: str  # REQUIRED
     created_at: str  # REQUIRED
+    description: str  # REQUIRED
     modified_at: str  # REQUIRED
     namespace: str  # REQUIRED
     oauth_client_type: str  # REQUIRED
@@ -81,7 +88,9 @@ class ClientmodelClientV3Response(Model):
     scopes: List[str]  # REQUIRED
     two_factor_enabled: bool  # REQUIRED
     oauth_access_token_expiration: int  # OPTIONAL
+    oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
+    oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
 
     # endregion fields
 
@@ -117,6 +126,10 @@ class ClientmodelClientV3Response(Model):
         self.created_at = value
         return self
 
+    def with_description(self, value: str) -> ClientmodelClientV3Response:
+        self.description = value
+        return self
+
     def with_modified_at(self, value: str) -> ClientmodelClientV3Response:
         self.modified_at = value
         return self
@@ -147,10 +160,22 @@ class ClientmodelClientV3Response(Model):
         self.oauth_access_token_expiration = value
         return self
 
+    def with_oauth_access_token_expiration_time_unit(
+        self, value: str
+    ) -> ClientmodelClientV3Response:
+        self.oauth_access_token_expiration_time_unit = value
+        return self
+
     def with_oauth_refresh_token_expiration(
         self, value: int
     ) -> ClientmodelClientV3Response:
         self.oauth_refresh_token_expiration = value
+        return self
+
+    def with_oauth_refresh_token_expiration_time_unit(
+        self, value: str
+    ) -> ClientmodelClientV3Response:
+        self.oauth_refresh_token_expiration_time_unit = value
         return self
 
     # endregion with_x methods
@@ -190,6 +215,10 @@ class ClientmodelClientV3Response(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = ""
         if hasattr(self, "modified_at"):
             result["modifiedAt"] = str(self.modified_at)
         elif include_empty:
@@ -220,12 +249,24 @@ class ClientmodelClientV3Response(Model):
             )
         elif include_empty:
             result["oauthAccessTokenExpiration"] = 0
+        if hasattr(self, "oauth_access_token_expiration_time_unit"):
+            result["oauthAccessTokenExpirationTimeUnit"] = str(
+                self.oauth_access_token_expiration_time_unit
+            )
+        elif include_empty:
+            result["oauthAccessTokenExpirationTimeUnit"] = ""
         if hasattr(self, "oauth_refresh_token_expiration"):
             result["oauthRefreshTokenExpiration"] = int(
                 self.oauth_refresh_token_expiration
             )
         elif include_empty:
             result["oauthRefreshTokenExpiration"] = 0
+        if hasattr(self, "oauth_refresh_token_expiration_time_unit"):
+            result["oauthRefreshTokenExpirationTimeUnit"] = str(
+                self.oauth_refresh_token_expiration_time_unit
+            )
+        elif include_empty:
+            result["oauthRefreshTokenExpirationTimeUnit"] = ""
         return result
 
     # endregion to methods
@@ -242,6 +283,7 @@ class ClientmodelClientV3Response(Model):
         client_permissions: List[AccountcommonPermissionV3],
         client_platform: str,
         created_at: str,
+        description: str,
         modified_at: str,
         namespace: str,
         oauth_client_type: str,
@@ -249,7 +291,9 @@ class ClientmodelClientV3Response(Model):
         scopes: List[str],
         two_factor_enabled: bool,
         oauth_access_token_expiration: Optional[int] = None,
+        oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
+        oauth_refresh_token_expiration_time_unit: Optional[str] = None,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences
@@ -259,6 +303,7 @@ class ClientmodelClientV3Response(Model):
         instance.client_permissions = client_permissions
         instance.client_platform = client_platform
         instance.created_at = created_at
+        instance.description = description
         instance.modified_at = modified_at
         instance.namespace = namespace
         instance.oauth_client_type = oauth_client_type
@@ -267,8 +312,16 @@ class ClientmodelClientV3Response(Model):
         instance.two_factor_enabled = two_factor_enabled
         if oauth_access_token_expiration is not None:
             instance.oauth_access_token_expiration = oauth_access_token_expiration
+        if oauth_access_token_expiration_time_unit is not None:
+            instance.oauth_access_token_expiration_time_unit = (
+                oauth_access_token_expiration_time_unit
+            )
         if oauth_refresh_token_expiration is not None:
             instance.oauth_refresh_token_expiration = oauth_refresh_token_expiration
+        if oauth_refresh_token_expiration_time_unit is not None:
+            instance.oauth_refresh_token_expiration_time_unit = (
+                oauth_refresh_token_expiration_time_unit
+            )
         return instance
 
     @classmethod
@@ -311,6 +364,10 @@ class ClientmodelClientV3Response(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = ""
         if "modifiedAt" in dict_ and dict_["modifiedAt"] is not None:
             instance.modified_at = str(dict_["modifiedAt"])
         elif include_empty:
@@ -345,6 +402,15 @@ class ClientmodelClientV3Response(Model):
         elif include_empty:
             instance.oauth_access_token_expiration = 0
         if (
+            "oauthAccessTokenExpirationTimeUnit" in dict_
+            and dict_["oauthAccessTokenExpirationTimeUnit"] is not None
+        ):
+            instance.oauth_access_token_expiration_time_unit = str(
+                dict_["oauthAccessTokenExpirationTimeUnit"]
+            )
+        elif include_empty:
+            instance.oauth_access_token_expiration_time_unit = ""
+        if (
             "oauthRefreshTokenExpiration" in dict_
             and dict_["oauthRefreshTokenExpiration"] is not None
         ):
@@ -353,6 +419,15 @@ class ClientmodelClientV3Response(Model):
             )
         elif include_empty:
             instance.oauth_refresh_token_expiration = 0
+        if (
+            "oauthRefreshTokenExpirationTimeUnit" in dict_
+            and dict_["oauthRefreshTokenExpirationTimeUnit"] is not None
+        ):
+            instance.oauth_refresh_token_expiration_time_unit = str(
+                dict_["oauthRefreshTokenExpirationTimeUnit"]
+            )
+        elif include_empty:
+            instance.oauth_refresh_token_expiration_time_unit = ""
         return instance
 
     @classmethod
@@ -403,6 +478,7 @@ class ClientmodelClientV3Response(Model):
             "clientPermissions": "client_permissions",
             "clientPlatform": "client_platform",
             "createdAt": "created_at",
+            "description": "description",
             "modifiedAt": "modified_at",
             "namespace": "namespace",
             "oauthClientType": "oauth_client_type",
@@ -410,7 +486,9 @@ class ClientmodelClientV3Response(Model):
             "scopes": "scopes",
             "twoFactorEnabled": "two_factor_enabled",
             "oauthAccessTokenExpiration": "oauth_access_token_expiration",
+            "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
+            "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
         }
 
     @staticmethod
@@ -423,6 +501,7 @@ class ClientmodelClientV3Response(Model):
             "clientPermissions": True,
             "clientPlatform": True,
             "createdAt": True,
+            "description": True,
             "modifiedAt": True,
             "namespace": True,
             "oauthClientType": True,
@@ -430,7 +509,9 @@ class ClientmodelClientV3Response(Model):
             "scopes": True,
             "twoFactorEnabled": True,
             "oauthAccessTokenExpiration": False,
+            "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,
+            "oauthRefreshTokenExpirationTimeUnit": False,
         }
 
     # endregion static methods

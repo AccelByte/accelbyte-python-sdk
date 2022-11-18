@@ -269,6 +269,9 @@ async def admin_delete_client_v3_async(
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
 def admin_get_clients_by_namespace_v3(
+    client_id: Optional[str] = None,
+    client_name: Optional[str] = None,
+    client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -280,6 +283,9 @@ def admin_get_clients_by_namespace_v3(
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
+        client_id=client_id,
+        client_name=client_name,
+        client_type=client_type,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -289,6 +295,9 @@ def admin_get_clients_by_namespace_v3(
 
 @same_doc_as(AdminGetClientsByNamespaceV3)
 async def admin_get_clients_by_namespace_v3_async(
+    client_id: Optional[str] = None,
+    client_name: Optional[str] = None,
+    client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -300,6 +309,9 @@ async def admin_get_clients_by_namespace_v3_async(
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
+        client_id=client_id,
+        client_name=client_name,
+        client_type=client_type,
         limit=limit,
         offset=offset,
         namespace=namespace,

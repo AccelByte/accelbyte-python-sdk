@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsCreatePodConfigRequest
+from ..models import ModelsInstanceSpec
 from ..models import ModelsListPodConfigResponse
 from ..models import ModelsPodConfigRecord
 from ..models import ModelsUpdatePodConfigRequest
@@ -38,6 +39,7 @@ from ..models import ResponseError
 from ..operations.pod_config import CreatePodConfig
 from ..operations.pod_config import DeletePodConfig
 from ..operations.pod_config import GetAllPodConfig
+from ..operations.pod_config import GetLowestInstanceSpec
 from ..operations.pod_config import GetPodConfig
 from ..operations.pod_config import UpdatePodConfig
 
@@ -159,6 +161,24 @@ async def get_all_pod_config_async(
         offset=offset,
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetLowestInstanceSpec)
+def get_lowest_instance_spec(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetLowestInstanceSpec.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetLowestInstanceSpec)
+async def get_lowest_instance_spec_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = GetLowestInstanceSpec.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

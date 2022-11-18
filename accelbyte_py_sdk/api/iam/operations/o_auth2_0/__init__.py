@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.20.0"
+__version__ = "5.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,6 +27,7 @@ from .get_revocation_list_v3 import GetRevocationListV3
 from .platform_token_grant_v3 import PlatformTokenGrantV3
 from .retrieve_user_third_par_204b6e import RetrieveUserThirdPartyPlatformTokenV3
 from .revoke_user_v3 import RevokeUserV3
+from .send_mfa_authentication_code import SendMFAAuthenticationCode
 from .token_grant_v3 import TokenGrantV3
 from .token_grant_v3 import GrantTypeEnum as TokenGrantV3GrantTypeEnum
 from .token_introspection_v3 import TokenIntrospectionV3

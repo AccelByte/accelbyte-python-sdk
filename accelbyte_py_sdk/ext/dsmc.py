@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (3.10.1)
+# AccelByte Cloud Dsm Controller Service (3.11.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,7 +38,6 @@ from ..api.dsmc.models import ModelsCreatePodConfigRequest
 from ..api.dsmc.models import ModelsCreatePortRequest
 from ..api.dsmc.models import ModelsCreateRegionOverrideRequest
 from ..api.dsmc.models import ModelsCreateSessionRequest
-from ..api.dsmc.models import ModelsDSMConfigExport
 from ..api.dsmc.models import ModelsDSMConfigRecord
 from ..api.dsmc.models import ModelsDefaultProvider
 from ..api.dsmc.models import ModelsDeploymentConfigOverride
@@ -52,6 +51,7 @@ from ..api.dsmc.models import ModelsGetImagePatchDetailResponse
 from ..api.dsmc.models import ModelsImageRecord
 from ..api.dsmc.models import ModelsImageRecordUpdate
 from ..api.dsmc.models import ModelsImportResponse
+from ..api.dsmc.models import ModelsInstanceSpec
 from ..api.dsmc.models import ModelsListConfigResponse
 from ..api.dsmc.models import ModelsListDeploymentResponse
 from ..api.dsmc.models import ModelsListImagePatchesResponse
@@ -302,26 +302,6 @@ def create_models_detailed_count_server_response_example() -> ModelsDetailedCoun
     return instance
 
 
-def create_models_dsm_config_export_example() -> ModelsDSMConfigExport:
-    instance = ModelsDSMConfigExport()
-    instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.created_at = randomize("date")
-    instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.default_version = randomize()
-    instance.deployments = [create_models_deployment_with_override_example()]
-    instance.images = [create_models_image_record_example()]
-    instance.namespace = randomize("slug")
-    instance.pod_configs = [create_models_pod_config_record_example()]
-    instance.port = randomize("int", min_val=1, max_val=1000)
-    instance.ports = {}
-    instance.protocol = randomize()
-    instance.providers = [randomize()]
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.unreachable_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.updated_at = randomize("date")
-    return instance
-
-
 def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
     instance = ModelsDSMConfigRecord()
     instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
@@ -398,6 +378,13 @@ def create_models_import_response_example() -> ModelsImportResponse:
     instance = ModelsImportResponse()
     instance.affected = [randomize()]
     instance.failed = [randomize()]
+    return instance
+
+
+def create_models_instance_spec_example() -> ModelsInstanceSpec:
+    instance = ModelsInstanceSpec()
+    instance.cpu = randomize("int", min_val=1, max_val=1000)
+    instance.mem = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

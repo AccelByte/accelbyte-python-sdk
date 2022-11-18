@@ -58,10 +58,12 @@ from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
 from ..operations.users_v4 import AdminCreateTestUsersV4
 from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
 from ..operations.users_v4 import AdminDisableMyBackupCodesV4
+from ..operations.users_v4 import AdminDisableMyEmailV4
 from ..operations.users_v4 import AdminDisableUserMFAV4
 from ..operations.users_v4 import AdminDownloadMyBackupCodesV4
 from ..operations.users_v4 import AdminEnableMyAuthenticatorV4
 from ..operations.users_v4 import AdminEnableMyBackupCodesV4
+from ..operations.users_v4 import AdminEnableMyEmailV4
 from ..operations.users_v4 import AdminGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
@@ -70,6 +72,7 @@ from ..operations.users_v4 import AdminInviteUserV4
 from ..operations.users_v4 import AdminListUserRolesV4
 from ..operations.users_v4 import AdminMakeFactorMyDefaultV4
 from ..operations.users_v4 import AdminRemoveUserRoleV4
+from ..operations.users_v4 import AdminSendMyMFAEmailCodeV4
 from ..operations.users_v4 import AdminUpdateMyUserV4
 from ..operations.users_v4 import AdminUpdateUserEmailAddressV4
 from ..operations.users_v4 import AdminUpdateUserRoleV4
@@ -79,15 +82,18 @@ from ..operations.users_v4 import PublicCreateTestUserV4
 from ..operations.users_v4 import PublicCreateUserV4
 from ..operations.users_v4 import PublicDisableMyAuthenticatorV4
 from ..operations.users_v4 import PublicDisableMyBackupCodesV4
+from ..operations.users_v4 import PublicDisableMyEmailV4
 from ..operations.users_v4 import PublicDownloadMyBackupCodesV4
 from ..operations.users_v4 import PublicEnableMyAuthenticatorV4
 from ..operations.users_v4 import PublicEnableMyBackupCodesV4
+from ..operations.users_v4 import PublicEnableMyEmailV4
 from ..operations.users_v4 import PublicGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
 from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
 from ..operations.users_v4 import PublicRemoveTrustedDeviceV4
+from ..operations.users_v4 import PublicSendMyMFAEmailCodeV4
 from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
@@ -251,6 +257,24 @@ async def admin_disable_my_backup_codes_v4_async(
     )
 
 
+@same_doc_as(AdminDisableMyEmailV4)
+def admin_disable_my_email_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminDisableMyEmailV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDisableMyEmailV4)
+async def admin_disable_my_email_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminDisableMyEmailV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminDisableUserMFAV4)
 def admin_disable_user_mfav4(
     user_id: str,
@@ -346,6 +370,28 @@ async def admin_enable_my_backup_codes_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     request = AdminEnableMyBackupCodesV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminEnableMyEmailV4)
+def admin_enable_my_email_v4(
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminEnableMyEmailV4.create(
+        code=code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminEnableMyEmailV4)
+async def admin_enable_my_email_v4_async(
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminEnableMyEmailV4.create(
+        code=code,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -546,6 +592,24 @@ async def admin_remove_user_role_v4_async(
         user_id=user_id,
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSendMyMFAEmailCodeV4)
+def admin_send_my_mfa_email_code_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminSendMyMFAEmailCodeV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSendMyMFAEmailCodeV4)
+async def admin_send_my_mfa_email_code_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = AdminSendMyMFAEmailCodeV4.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -889,6 +953,40 @@ async def public_disable_my_backup_codes_v4_async(
     )
 
 
+@same_doc_as(PublicDisableMyEmailV4)
+def public_disable_my_email_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyEmailV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicDisableMyEmailV4)
+async def public_disable_my_email_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicDisableMyEmailV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicDownloadMyBackupCodesV4)
 def public_download_my_backup_codes_v4(
     namespace: Optional[str] = None,
@@ -988,6 +1086,44 @@ async def public_enable_my_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicEnableMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicEnableMyEmailV4)
+def public_enable_my_email_v4(
+    code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyEmailV4.create(
+        code=code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicEnableMyEmailV4)
+async def public_enable_my_email_v4_async(
+    code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableMyEmailV4.create(
+        code=code,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1200,6 +1336,40 @@ async def public_remove_trusted_device_v4_async(
             return None, error
     request = PublicRemoveTrustedDeviceV4.create(
         cookie=cookie,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicSendMyMFAEmailCodeV4)
+def public_send_my_mfa_email_code_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSendMyMFAEmailCodeV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSendMyMFAEmailCodeV4)
+async def public_send_my_mfa_email_code_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSendMyMFAEmailCodeV4.create(
         namespace=namespace,
     )
     return await run_request_async(

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -54,7 +54,10 @@ class Change2faMethod(Operation):
       * authenticator
 
 
-      * backupCodes
+      * backupCode
+
+
+      * email
 
     Properties:
         url: /iam/v3/oauth/mfa/factor/change
@@ -76,7 +79,9 @@ class Change2faMethod(Operation):
     Responses:
         204: No Content - (Method changed)
 
-        400: Bad Request - RestErrorResponse (10189: invalid factor)
+        400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -184,7 +189,9 @@ class Change2faMethod(Operation):
 
         204: No Content - (Method changed)
 
-        400: Bad Request - RestErrorResponse (10189: invalid factor)
+        400: Bad Request - RestErrorResponse (10189: invalid factor | 20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -202,6 +209,8 @@ class Change2faMethod(Operation):
         if code == 204:
             return None, None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(

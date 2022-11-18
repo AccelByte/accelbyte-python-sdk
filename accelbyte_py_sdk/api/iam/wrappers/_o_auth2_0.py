@@ -52,6 +52,7 @@ from ..operations.o_auth2_0 import GetRevocationListV3
 from ..operations.o_auth2_0 import PlatformTokenGrantV3
 from ..operations.o_auth2_0 import RetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import RevokeUserV3
+from ..operations.o_auth2_0 import SendMFAAuthenticationCode
 from ..operations.o_auth2_0 import TokenGrantV3
 from ..operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 from ..operations.o_auth2_0 import TokenIntrospectionV3
@@ -390,6 +391,40 @@ async def revoke_user_v3_async(
     request = RevokeUserV3.create(
         user_id=user_id,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SendMFAAuthenticationCode)
+def send_mfa_authentication_code(
+    client_id: str,
+    factor: str,
+    mfa_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = SendMFAAuthenticationCode.create(
+        client_id=client_id,
+        factor=factor,
+        mfa_token=mfa_token,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SendMFAAuthenticationCode)
+async def send_mfa_authentication_code_async(
+    client_id: str,
+    factor: str,
+    mfa_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = SendMFAAuthenticationCode.create(
+        client_id=client_id,
+        factor=factor,
+        mfa_token=mfa_token,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

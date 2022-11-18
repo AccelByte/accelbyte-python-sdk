@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.20.0"
+__version__ = "5.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -151,6 +151,8 @@ from .wrappers import retrieve_user_third_party_platform_token_v3
 from .wrappers import retrieve_user_third_party_platform_token_v3_async
 from .wrappers import revoke_user_v3
 from .wrappers import revoke_user_v3_async
+from .wrappers import send_mfa_authentication_code
+from .wrappers import send_mfa_authentication_code_async
 from .wrappers import token_grant_v3
 from .wrappers import token_grant_v3_async
 from .wrappers import token_introspection_v3
@@ -641,6 +643,8 @@ from .wrappers import admin_disable_my_authenticator_v4
 from .wrappers import admin_disable_my_authenticator_v4_async
 from .wrappers import admin_disable_my_backup_codes_v4
 from .wrappers import admin_disable_my_backup_codes_v4_async
+from .wrappers import admin_disable_my_email_v4
+from .wrappers import admin_disable_my_email_v4_async
 from .wrappers import admin_disable_user_mfav4
 from .wrappers import admin_disable_user_mfav4_async
 from .wrappers import admin_download_my_backup_codes_v4
@@ -649,6 +653,8 @@ from .wrappers import admin_enable_my_authenticator_v4
 from .wrappers import admin_enable_my_authenticator_v4_async
 from .wrappers import admin_enable_my_backup_codes_v4
 from .wrappers import admin_enable_my_backup_codes_v4_async
+from .wrappers import admin_enable_my_email_v4
+from .wrappers import admin_enable_my_email_v4_async
 from .wrappers import admin_generate_my_authenticator_key_v4
 from .wrappers import admin_generate_my_authenticator_key_v4_async
 from .wrappers import admin_generate_my_backup_codes_v4
@@ -665,6 +671,8 @@ from .wrappers import admin_make_factor_my_default_v4
 from .wrappers import admin_make_factor_my_default_v4_async
 from .wrappers import admin_remove_user_role_v4
 from .wrappers import admin_remove_user_role_v4_async
+from .wrappers import admin_send_my_mfa_email_code_v4
+from .wrappers import admin_send_my_mfa_email_code_v4_async
 from .wrappers import admin_update_my_user_v4
 from .wrappers import admin_update_my_user_v4_async
 from .wrappers import admin_update_user_email_address_v4
@@ -683,12 +691,16 @@ from .wrappers import public_disable_my_authenticator_v4
 from .wrappers import public_disable_my_authenticator_v4_async
 from .wrappers import public_disable_my_backup_codes_v4
 from .wrappers import public_disable_my_backup_codes_v4_async
+from .wrappers import public_disable_my_email_v4
+from .wrappers import public_disable_my_email_v4_async
 from .wrappers import public_download_my_backup_codes_v4
 from .wrappers import public_download_my_backup_codes_v4_async
 from .wrappers import public_enable_my_authenticator_v4
 from .wrappers import public_enable_my_authenticator_v4_async
 from .wrappers import public_enable_my_backup_codes_v4
 from .wrappers import public_enable_my_backup_codes_v4_async
+from .wrappers import public_enable_my_email_v4
+from .wrappers import public_enable_my_email_v4_async
 from .wrappers import public_generate_my_authenticator_key_v4
 from .wrappers import public_generate_my_authenticator_key_v4_async
 from .wrappers import public_generate_my_backup_codes_v4
@@ -701,6 +713,8 @@ from .wrappers import public_make_factor_my_default_v4
 from .wrappers import public_make_factor_my_default_v4_async
 from .wrappers import public_remove_trusted_device_v4
 from .wrappers import public_remove_trusted_device_v4_async
+from .wrappers import public_send_my_mfa_email_code_v4
+from .wrappers import public_send_my_mfa_email_code_v4_async
 from .wrappers import public_update_user_email_address_v4
 from .wrappers import public_update_user_email_address_v4_async
 from .wrappers import public_update_user_v4

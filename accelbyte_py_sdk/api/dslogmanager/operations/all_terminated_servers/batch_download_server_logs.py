@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Ds Log Manager Service (2.6.0)
+# AccelByte Cloud Ds Log Manager Service (2.7.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,7 +64,7 @@ class BatchDownloadServerLogs(Operation):
         body: (body) REQUIRED ModelsBatchDownloadLogsRequest in body
 
     Responses:
-        200: OK - (server logs downloaded.)
+        200: OK - Any (server logs downloaded.)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -161,10 +161,10 @@ class BatchDownloadServerLogs(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - (server logs downloaded.)
+        200: OK - Any (server logs downloaded.)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -184,7 +184,7 @@ class BatchDownloadServerLogs(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return content, None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 500:

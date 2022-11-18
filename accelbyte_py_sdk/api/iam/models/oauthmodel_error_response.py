@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,8 @@ class OauthmodelErrorResponse(Model):
 
         default_factor: (default_factor) OPTIONAL str
 
+        email: (email) OPTIONAL str
+
         error_description: (error_description) OPTIONAL str
 
         error_uri: (error_uri) OPTIONAL str
@@ -58,6 +60,7 @@ class OauthmodelErrorResponse(Model):
     error: str  # REQUIRED
     client_id: str  # OPTIONAL
     default_factor: str  # OPTIONAL
+    email: str  # OPTIONAL
     error_description: str  # OPTIONAL
     error_uri: str  # OPTIONAL
     factors: List[str]  # OPTIONAL
@@ -80,6 +83,10 @@ class OauthmodelErrorResponse(Model):
 
     def with_default_factor(self, value: str) -> OauthmodelErrorResponse:
         self.default_factor = value
+        return self
+
+    def with_email(self, value: str) -> OauthmodelErrorResponse:
+        self.email = value
         return self
 
     def with_error_description(self, value: str) -> OauthmodelErrorResponse:
@@ -128,6 +135,10 @@ class OauthmodelErrorResponse(Model):
             result["default_factor"] = str(self.default_factor)
         elif include_empty:
             result["default_factor"] = ""
+        if hasattr(self, "email"):
+            result["email"] = str(self.email)
+        elif include_empty:
+            result["email"] = ""
         if hasattr(self, "error_description"):
             result["error_description"] = str(self.error_description)
         elif include_empty:
@@ -170,6 +181,7 @@ class OauthmodelErrorResponse(Model):
         error: str,
         client_id: Optional[str] = None,
         default_factor: Optional[str] = None,
+        email: Optional[str] = None,
         error_description: Optional[str] = None,
         error_uri: Optional[str] = None,
         factors: Optional[List[str]] = None,
@@ -184,6 +196,8 @@ class OauthmodelErrorResponse(Model):
             instance.client_id = client_id
         if default_factor is not None:
             instance.default_factor = default_factor
+        if email is not None:
+            instance.email = email
         if error_description is not None:
             instance.error_description = error_description
         if error_uri is not None:
@@ -219,6 +233,10 @@ class OauthmodelErrorResponse(Model):
             instance.default_factor = str(dict_["default_factor"])
         elif include_empty:
             instance.default_factor = ""
+        if "email" in dict_ and dict_["email"] is not None:
+            instance.email = str(dict_["email"])
+        elif include_empty:
+            instance.email = ""
         if "error_description" in dict_ and dict_["error_description"] is not None:
             instance.error_description = str(dict_["error_description"])
         elif include_empty:
@@ -295,6 +313,7 @@ class OauthmodelErrorResponse(Model):
             "error": "error",
             "clientId": "client_id",
             "default_factor": "default_factor",
+            "email": "email",
             "error_description": "error_description",
             "error_uri": "error_uri",
             "factors": "factors",
@@ -310,6 +329,7 @@ class OauthmodelErrorResponse(Model):
             "error": True,
             "clientId": False,
             "default_factor": False,
+            "email": False,
             "error_description": False,
             "error_uri": False,
             "factors": False,

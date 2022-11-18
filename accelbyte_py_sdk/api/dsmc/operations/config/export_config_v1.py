@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Dsm Controller Service (3.10.1)
+# AccelByte Cloud Dsm Controller Service (3.11.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsDSMConfigExport
 from ...models import ResponseError
 
 
@@ -64,7 +63,7 @@ class ExportConfigV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDSMConfigExport (config exported)
+        200: OK - Any (config exported)
 
         401: Unauthorized - ResponseError (unauthorized access)
 
@@ -164,12 +163,10 @@ class ExportConfigV1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsDSMConfigExport], Union[None, HttpResponse, ResponseError]
-    ]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsDSMConfigExport (config exported)
+        200: OK - Any (config exported)
 
         401: Unauthorized - ResponseError (unauthorized access)
 
@@ -193,7 +190,7 @@ class ExportConfigV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsDSMConfigExport.create_from_dict(content), None
+            return content, None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

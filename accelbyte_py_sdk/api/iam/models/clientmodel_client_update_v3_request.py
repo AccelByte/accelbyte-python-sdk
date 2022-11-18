@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.20.0)
+# AccelByte Cloud Iam Service (5.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ClientmodelClientUpdateV3Request(Model):
     Properties:
         client_platform: (clientPlatform) REQUIRED str
 
+        description: (description) REQUIRED str
+
         audiences: (audiences) OPTIONAL List[str]
 
         base_uri: (baseUri) OPTIONAL str
@@ -50,9 +52,15 @@ class ClientmodelClientUpdateV3Request(Model):
 
         oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
 
+        oauth_access_token_expiration_time_unit: (oauthAccessTokenExpirationTimeUnit) OPTIONAL str
+
         oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
 
+        oauth_refresh_token_expiration_time_unit: (oauthRefreshTokenExpirationTimeUnit) OPTIONAL str
+
         redirect_uri: (redirectUri) OPTIONAL str
+
+        scopes: (scopes) OPTIONAL List[str]
 
         two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
     """
@@ -60,6 +68,7 @@ class ClientmodelClientUpdateV3Request(Model):
     # region fields
 
     client_platform: str  # REQUIRED
+    description: str  # REQUIRED
     audiences: List[str]  # OPTIONAL
     base_uri: str  # OPTIONAL
     client_name: str  # OPTIONAL
@@ -67,8 +76,11 @@ class ClientmodelClientUpdateV3Request(Model):
     deletable: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     oauth_access_token_expiration: int  # OPTIONAL
+    oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
+    oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
     redirect_uri: str  # OPTIONAL
+    scopes: List[str]  # OPTIONAL
     two_factor_enabled: bool  # OPTIONAL
 
     # endregion fields
@@ -77,6 +89,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_client_platform(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.client_platform = value
+        return self
+
+    def with_description(self, value: str) -> ClientmodelClientUpdateV3Request:
+        self.description = value
         return self
 
     def with_audiences(self, value: List[str]) -> ClientmodelClientUpdateV3Request:
@@ -111,14 +127,30 @@ class ClientmodelClientUpdateV3Request(Model):
         self.oauth_access_token_expiration = value
         return self
 
+    def with_oauth_access_token_expiration_time_unit(
+        self, value: str
+    ) -> ClientmodelClientUpdateV3Request:
+        self.oauth_access_token_expiration_time_unit = value
+        return self
+
     def with_oauth_refresh_token_expiration(
         self, value: int
     ) -> ClientmodelClientUpdateV3Request:
         self.oauth_refresh_token_expiration = value
         return self
 
+    def with_oauth_refresh_token_expiration_time_unit(
+        self, value: str
+    ) -> ClientmodelClientUpdateV3Request:
+        self.oauth_refresh_token_expiration_time_unit = value
+        return self
+
     def with_redirect_uri(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.redirect_uri = value
+        return self
+
+    def with_scopes(self, value: List[str]) -> ClientmodelClientUpdateV3Request:
+        self.scopes = value
         return self
 
     def with_two_factor_enabled(self, value: bool) -> ClientmodelClientUpdateV3Request:
@@ -135,6 +167,10 @@ class ClientmodelClientUpdateV3Request(Model):
             result["clientPlatform"] = str(self.client_platform)
         elif include_empty:
             result["clientPlatform"] = ""
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = ""
         if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
@@ -168,16 +204,32 @@ class ClientmodelClientUpdateV3Request(Model):
             )
         elif include_empty:
             result["oauthAccessTokenExpiration"] = 0
+        if hasattr(self, "oauth_access_token_expiration_time_unit"):
+            result["oauthAccessTokenExpirationTimeUnit"] = str(
+                self.oauth_access_token_expiration_time_unit
+            )
+        elif include_empty:
+            result["oauthAccessTokenExpirationTimeUnit"] = ""
         if hasattr(self, "oauth_refresh_token_expiration"):
             result["oauthRefreshTokenExpiration"] = int(
                 self.oauth_refresh_token_expiration
             )
         elif include_empty:
             result["oauthRefreshTokenExpiration"] = 0
+        if hasattr(self, "oauth_refresh_token_expiration_time_unit"):
+            result["oauthRefreshTokenExpirationTimeUnit"] = str(
+                self.oauth_refresh_token_expiration_time_unit
+            )
+        elif include_empty:
+            result["oauthRefreshTokenExpirationTimeUnit"] = ""
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
             result["redirectUri"] = ""
+        if hasattr(self, "scopes"):
+            result["scopes"] = [str(i0) for i0 in self.scopes]
+        elif include_empty:
+            result["scopes"] = []
         if hasattr(self, "two_factor_enabled"):
             result["twoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
@@ -192,6 +244,7 @@ class ClientmodelClientUpdateV3Request(Model):
     def create(
         cls,
         client_platform: str,
+        description: str,
         audiences: Optional[List[str]] = None,
         base_uri: Optional[str] = None,
         client_name: Optional[str] = None,
@@ -199,12 +252,16 @@ class ClientmodelClientUpdateV3Request(Model):
         deletable: Optional[bool] = None,
         namespace: Optional[str] = None,
         oauth_access_token_expiration: Optional[int] = None,
+        oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
+        oauth_refresh_token_expiration_time_unit: Optional[str] = None,
         redirect_uri: Optional[str] = None,
+        scopes: Optional[List[str]] = None,
         two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientUpdateV3Request:
         instance = cls()
         instance.client_platform = client_platform
+        instance.description = description
         if audiences is not None:
             instance.audiences = audiences
         if base_uri is not None:
@@ -219,10 +276,20 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.namespace = namespace
         if oauth_access_token_expiration is not None:
             instance.oauth_access_token_expiration = oauth_access_token_expiration
+        if oauth_access_token_expiration_time_unit is not None:
+            instance.oauth_access_token_expiration_time_unit = (
+                oauth_access_token_expiration_time_unit
+            )
         if oauth_refresh_token_expiration is not None:
             instance.oauth_refresh_token_expiration = oauth_refresh_token_expiration
+        if oauth_refresh_token_expiration_time_unit is not None:
+            instance.oauth_refresh_token_expiration_time_unit = (
+                oauth_refresh_token_expiration_time_unit
+            )
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
+        if scopes is not None:
+            instance.scopes = scopes
         if two_factor_enabled is not None:
             instance.two_factor_enabled = two_factor_enabled
         return instance
@@ -238,6 +305,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.client_platform = str(dict_["clientPlatform"])
         elif include_empty:
             instance.client_platform = ""
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = ""
         if "audiences" in dict_ and dict_["audiences"] is not None:
             instance.audiences = [str(i0) for i0 in dict_["audiences"]]
         elif include_empty:
@@ -277,6 +348,15 @@ class ClientmodelClientUpdateV3Request(Model):
         elif include_empty:
             instance.oauth_access_token_expiration = 0
         if (
+            "oauthAccessTokenExpirationTimeUnit" in dict_
+            and dict_["oauthAccessTokenExpirationTimeUnit"] is not None
+        ):
+            instance.oauth_access_token_expiration_time_unit = str(
+                dict_["oauthAccessTokenExpirationTimeUnit"]
+            )
+        elif include_empty:
+            instance.oauth_access_token_expiration_time_unit = ""
+        if (
             "oauthRefreshTokenExpiration" in dict_
             and dict_["oauthRefreshTokenExpiration"] is not None
         ):
@@ -285,10 +365,23 @@ class ClientmodelClientUpdateV3Request(Model):
             )
         elif include_empty:
             instance.oauth_refresh_token_expiration = 0
+        if (
+            "oauthRefreshTokenExpirationTimeUnit" in dict_
+            and dict_["oauthRefreshTokenExpirationTimeUnit"] is not None
+        ):
+            instance.oauth_refresh_token_expiration_time_unit = str(
+                dict_["oauthRefreshTokenExpirationTimeUnit"]
+            )
+        elif include_empty:
+            instance.oauth_refresh_token_expiration_time_unit = ""
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
             instance.redirect_uri = ""
+        if "scopes" in dict_ and dict_["scopes"] is not None:
+            instance.scopes = [str(i0) for i0 in dict_["scopes"]]
+        elif include_empty:
+            instance.scopes = []
         if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
             instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
         elif include_empty:
@@ -337,6 +430,7 @@ class ClientmodelClientUpdateV3Request(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "clientPlatform": "client_platform",
+            "description": "description",
             "audiences": "audiences",
             "baseUri": "base_uri",
             "clientName": "client_name",
@@ -344,8 +438,11 @@ class ClientmodelClientUpdateV3Request(Model):
             "deletable": "deletable",
             "namespace": "namespace",
             "oauthAccessTokenExpiration": "oauth_access_token_expiration",
+            "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
+            "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
             "redirectUri": "redirect_uri",
+            "scopes": "scopes",
             "twoFactorEnabled": "two_factor_enabled",
         }
 
@@ -353,6 +450,7 @@ class ClientmodelClientUpdateV3Request(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "clientPlatform": True,
+            "description": True,
             "audiences": False,
             "baseUri": False,
             "clientName": False,
@@ -360,8 +458,11 @@ class ClientmodelClientUpdateV3Request(Model):
             "deletable": False,
             "namespace": False,
             "oauthAccessTokenExpiration": False,
+            "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,
+            "oauthRefreshTokenExpirationTimeUnit": False,
             "redirectUri": False,
+            "scopes": False,
             "twoFactorEnabled": False,
         }
 
