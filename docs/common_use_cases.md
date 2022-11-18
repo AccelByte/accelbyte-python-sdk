@@ -371,6 +371,8 @@ def test_download_server_logs(self):
     from accelbyte_py_sdk.api.dslogmanager import download_server_logs
 
     # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
     pod_name = self.pre_fetch_pod_name()
     if not pod_name:
         self.skipTest(reason="Can't get a pod name to use.")
@@ -379,10 +381,15 @@ def test_download_server_logs(self):
         self.skipTest(reason="No terminated servers to use.")
 
     # act
-    _, error = download_server_logs(pod_name=self.pod_name)
+    result, error = download_server_logs(pod_name=self.pod_name)
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
 
     # assert
     self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
 ```
 ### List Terminated Servers
 
@@ -402,6 +409,27 @@ def test_list_terminated_servers(self):
 
 Source: [_dsmc.py](../tests/sample_apps/how_to/_dsmc.py)
 
+### Export Config
+
+```python
+def test_export_config_v1(self):
+    from accelbyte_py_sdk.api.dsmc import export_config_v1
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = export_config_v1()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
 ### Claim Server
 
 ```python
@@ -1052,6 +1080,56 @@ def test_authorize_v3(self):
     # assert
     self.assertIsNone(error, error)
 ```
+### Admin Download My Backup Codes V4
+
+```python
+def test_admin_download_my_backup_codes_v4(self):
+    from accelbyte_py_sdk.api.iam import admin_download_my_backup_codes_v4
+    from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = admin_download_my_backup_codes_v4()
+    if error and isinstance(error, RestErrorResponse):
+        if error.error_code == 10191:  # email not verified
+            self.skipTest(reason=error.error_message)
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
+### Public Download My Backup Codes V4
+
+```python
+def test_public_download_my_backup_codes_v4(self):
+    from accelbyte_py_sdk.api.iam import public_download_my_backup_codes_v4
+    from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = public_download_my_backup_codes_v4()
+    if error and isinstance(error, RestErrorResponse):
+        if error.error_code == 10191:  # email not verified
+            self.skipTest(reason=error.error_message)
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
+```
 ## Leaderboard
 
 Source: [_leaderboard.py](../tests/sample_apps/how_to/_leaderboard.py)
@@ -1500,6 +1578,27 @@ def test_get_all_party_in_all_channel(self):
 
     # assert
     self.assertIsNone(error, error)
+```
+### Export Channels
+
+```python
+def test_export_channels(self):
+    from accelbyte_py_sdk.api.matchmaking import export_channels
+
+    # arrange
+    exported_file_path = Path(self.exported_filename)
+    exported_file_path.unlink(missing_ok=True)
+
+    # act
+    result, error = export_channels()
+
+    if result is not None:
+        exported_file_path.write_bytes(result)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertTrue(exported_file_path.exists())
+    self.assertGreater(exported_file_path.stat().st_size, 0)
 ```
 ## Platform
 
