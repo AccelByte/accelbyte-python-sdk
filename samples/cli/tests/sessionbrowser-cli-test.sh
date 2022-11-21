@@ -32,22 +32,22 @@ $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap
 sessionbrowser-get-total-active-session --login_with_auth "Bearer foo"
 sessionbrowser-get-active-custom-game-sessions --login_with_auth "Bearer foo"
 sessionbrowser-get-active-matchmaking-game-sessions --login_with_auth "Bearer foo"
-sessionbrowser-admin-get-session 'ZmDQnsYm' --login_with_auth "Bearer foo"
-sessionbrowser-admin-delete-session 'QfKFRCyy' --login_with_auth "Bearer foo"
-sessionbrowser-admin-search-sessions-v2 '42' '65' --login_with_auth "Bearer foo"
-sessionbrowser-get-session-history-detailed 'K89prA9I' --login_with_auth "Bearer foo"
-sessionbrowser-query-session 'AeTmkVeZ' --login_with_auth "Bearer foo"
-sessionbrowser-create-session '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 19, "current_player": 72, "map_name": "tthnq9Du", "max_internal_player": 21, "max_player": 96, "mode": "DTk4fDXR", "num_bot": 29, "password": "XqO2o9aT", "settings": {"KvMxnJ42": {}, "1D3dDky3": {}, "ni7pfdwl": {}}}, "game_version": "WmZdaYuE", "namespace": "vwKePJmO", "session_type": "wlSWP5mk", "username": "58z2Imip"}' --login_with_auth "Bearer foo"
-sessionbrowser-get-session-by-user-i-ds 'cIXlH2Ej' --login_with_auth "Bearer foo"
-sessionbrowser-get-session 'ce0JIFt4' --login_with_auth "Bearer foo"
-sessionbrowser-update-session '{"game_max_player": 44}' 'CSqifyzE' --login_with_auth "Bearer foo"
-sessionbrowser-delete-session 'YZo02VuG' --login_with_auth "Bearer foo"
-sessionbrowser-join-session '{"password": "WsC4O0Hl"}' 'nuI3HZ84' --login_with_auth "Bearer foo"
-sessionbrowser-delete-session-local-ds 'W4SZUkT1' --login_with_auth "Bearer foo"
-sessionbrowser-add-player-to-session '{"as_spectator": true, "user_id": "vKFSQjbm"}' '4DqNMIQR' --login_with_auth "Bearer foo"
-sessionbrowser-remove-player-from-session 'KkjIDeSX' 'O2IuIhyh' --login_with_auth "Bearer foo"
-sessionbrowser-update-settings '{}' 'c8y5R84S' --login_with_auth "Bearer foo"
-sessionbrowser-get-recent-player '3YUxUpCi' --login_with_auth "Bearer foo"
+sessionbrowser-admin-get-session 'a66ZwlPj' --login_with_auth "Bearer foo"
+sessionbrowser-admin-delete-session 'OMISMPAd' --login_with_auth "Bearer foo"
+sessionbrowser-admin-search-sessions-v2 '55' '14' --login_with_auth "Bearer foo"
+sessionbrowser-get-session-history-detailed 'WekEt30l' --login_with_auth "Bearer foo"
+sessionbrowser-query-session 'wIqqlBdD' --login_with_auth "Bearer foo"
+sessionbrowser-create-session '{"game_session_setting": {"allow_join_in_progress": false, "current_internal_player": 57, "current_player": 0, "map_name": "oeJbKYZ1", "max_internal_player": 97, "max_player": 85, "mode": "fb2jL0io", "num_bot": 73, "password": "4W0Z9KIz", "settings": {"bYo2fOwO": {}, "WrpGcxyx": {}, "RvGZvD29": {}}}, "game_version": "bs2eYRKL", "namespace": "zODTB6BI", "session_type": "MYZuU4qv", "username": "gGY6Vz6J"}' --login_with_auth "Bearer foo"
+sessionbrowser-get-session-by-user-i-ds 'vNiaOVVJ' --login_with_auth "Bearer foo"
+sessionbrowser-get-session 'SsaoE8Bz' --login_with_auth "Bearer foo"
+sessionbrowser-update-session '{"game_max_player": 50}' '8goKP9vR' --login_with_auth "Bearer foo"
+sessionbrowser-delete-session 'vuhcd7WZ' --login_with_auth "Bearer foo"
+sessionbrowser-join-session '{"password": "uLvOqroo"}' '95FyZLXd' --login_with_auth "Bearer foo"
+sessionbrowser-delete-session-local-ds 'IMfBYlc5' --login_with_auth "Bearer foo"
+sessionbrowser-add-player-to-session '{"as_spectator": false, "user_id": "fvZIDHR8"}' 'ZDfUvO86' --login_with_auth "Bearer foo"
+sessionbrowser-remove-player-from-session 'eN3ZMR4u' 'SxFi3xbV' --login_with_auth "Bearer foo"
+sessionbrowser-update-settings '{}' 'yb2ciiON' --login_with_auth "Bearer foo"
+sessionbrowser-get-recent-player 'BRv2HA0Y' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -96,14 +96,14 @@ eval_tap $? 4 'GetActiveMatchmakingGameSessions' test.out
 
 #- 5 AdminGetSession
 $PYTHON -m $MODULE 'sessionbrowser-admin-get-session' \
-    '34BuOgmv' \
+    'oCYC5uzT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AdminGetSession' test.out
 
 #- 6 AdminDeleteSession
 $PYTHON -m $MODULE 'sessionbrowser-admin-delete-session' \
-    'r2XjmzSD' \
+    'TADpjtTB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'AdminDeleteSession' test.out
@@ -111,88 +111,88 @@ eval_tap $? 6 'AdminDeleteSession' test.out
 #- 7 AdminSearchSessionsV2
 $PYTHON -m $MODULE 'sessionbrowser-admin-search-sessions-v2' \
     '89' \
-    '59' \
+    '90' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AdminSearchSessionsV2' test.out
 
 #- 8 GetSessionHistoryDetailed
 $PYTHON -m $MODULE 'sessionbrowser-get-session-history-detailed' \
-    'rH9Xc2u7' \
+    'eKLxfXmE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'GetSessionHistoryDetailed' test.out
 
 #- 9 QuerySession
 $PYTHON -m $MODULE 'sessionbrowser-query-session' \
-    'burTMuwe' \
+    'axPtfZM1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'QuerySession' test.out
 
 #- 10 CreateSession
 $PYTHON -m $MODULE 'sessionbrowser-create-session' \
-    '{"game_session_setting": {"allow_join_in_progress": false, "current_internal_player": 23, "current_player": 23, "map_name": "bgPGNQg0", "max_internal_player": 73, "max_player": 61, "mode": "jO6fr5rQ", "num_bot": 46, "password": "E4Jn4zps", "settings": {"em3NNfq7": {}, "7phUl6VC": {}, "ME8J8SEp": {}}}, "game_version": "g89rvWqQ", "namespace": "NTFXYmYE", "session_type": "sanV0Uxk", "username": "SD6mgPkU"}' \
+    '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 74, "current_player": 43, "map_name": "Z98y0E7J", "max_internal_player": 11, "max_player": 19, "mode": "NykCiP7r", "num_bot": 63, "password": "JslFCgnF", "settings": {"O9QEvxEK": {}, "gJ4CiPBb": {}, "T47ky0qN": {}}}, "game_version": "zOTYo1PX", "namespace": "uNoP9NVb", "session_type": "mO2MGIbj", "username": "Yd3c0L12"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'CreateSession' test.out
 
 #- 11 GetSessionByUserIDs
 $PYTHON -m $MODULE 'sessionbrowser-get-session-by-user-i-ds' \
-    'vpG67bwz' \
+    'ucxQNquA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'GetSessionByUserIDs' test.out
 
 #- 12 GetSession
 $PYTHON -m $MODULE 'sessionbrowser-get-session' \
-    '90rjFKTN' \
+    'hlp2DZ06' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'GetSession' test.out
 
 #- 13 UpdateSession
 $PYTHON -m $MODULE 'sessionbrowser-update-session' \
-    '{"game_max_player": 20}' \
-    'cwyGy2tx' \
+    '{"game_max_player": 23}' \
+    '222oZzTH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'UpdateSession' test.out
 
 #- 14 DeleteSession
 $PYTHON -m $MODULE 'sessionbrowser-delete-session' \
-    'YcuTcb7u' \
+    'fcNp3o0f' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'DeleteSession' test.out
 
 #- 15 JoinSession
 $PYTHON -m $MODULE 'sessionbrowser-join-session' \
-    '{"password": "Vd9Ji5MI"}' \
-    'K3PJnNxH' \
+    '{"password": "xx6v0f0n"}' \
+    'XT7Pbbk9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'JoinSession' test.out
 
 #- 16 DeleteSessionLocalDS
 $PYTHON -m $MODULE 'sessionbrowser-delete-session-local-ds' \
-    'UBYTqNn2' \
+    'eudPK4El' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'DeleteSessionLocalDS' test.out
 
 #- 17 AddPlayerToSession
 $PYTHON -m $MODULE 'sessionbrowser-add-player-to-session' \
-    '{"as_spectator": true, "user_id": "6rPgeVUs"}' \
-    '8JbX4RRw' \
+    '{"as_spectator": false, "user_id": "fXgxeJUT"}' \
+    'QjEcPY5N' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'AddPlayerToSession' test.out
 
 #- 18 RemovePlayerFromSession
 $PYTHON -m $MODULE 'sessionbrowser-remove-player-from-session' \
-    '1VvnJzIj' \
-    'q1j6P0Xj' \
+    'kXK7yP3v' \
+    'rYkFVHR4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'RemovePlayerFromSession' test.out
@@ -200,14 +200,14 @@ eval_tap $? 18 'RemovePlayerFromSession' test.out
 #- 19 UpdateSettings
 $PYTHON -m $MODULE 'sessionbrowser-update-settings' \
     '{}' \
-    '8Dtulpg8' \
+    'gj7QKCLl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'UpdateSettings' test.out
 
 #- 20 GetRecentPlayer
 $PYTHON -m $MODULE 'sessionbrowser-get-recent-player' \
-    'zBF8kAQI' \
+    'h4HOE3m3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'GetRecentPlayer' test.out
