@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.28.0
+- Updated spec for AccelByte Cloud v3.36.0.
+
 ## v0.27.3
 - Updated spec files to fix issues in `dslogmanager`, `dsmc`, `iam` and `matchmaking`.
   - `downloadServerLogs` and `batchDownloadServerLogs` in `dslogmanager`
