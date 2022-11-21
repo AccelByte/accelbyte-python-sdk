@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-social-service (1.30.1)
+# justice-social-service (1.31.0)
 
 from ._get_namespace_slot_config import get_namespace_slot_config
 from ._update_namespace_slot_config import update_namespace_slot_config

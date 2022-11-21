@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.17.0)
+# Accelbyte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,7 +35,6 @@ from accelbyte_py_sdk.api.platform import (
 )
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import PlayStationReconcileRequest
-from accelbyte_py_sdk.api.platform.models import PlayStationReconcileResult
 
 
 @click.command()

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Basic Service (2.2.1)
+# Accelbyte Cloud Basic Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

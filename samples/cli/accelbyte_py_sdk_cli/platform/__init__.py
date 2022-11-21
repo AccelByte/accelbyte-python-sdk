@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.17.0)
+# justice-platform-service (4.17.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -358,6 +358,9 @@ from ._public_get_entitlement_ownership_token import (
 from ._public_get_my_wallet import public_get_my_wallet
 from ._sync_epic_game_dlc import sync_epic_game_dlc
 from ._public_sync_psn_dlc_inventory import public_sync_psn_dlc_inventory
+from ._public_sync_psn_dlc_inventory_with_multiple_service_labels import (
+    public_sync_psn_dlc_inventory_with_multiple_service_labels,
+)
 from ._sync_steam_dlc import sync_steam_dlc
 from ._sync_xbox_dlc import sync_xbox_dlc
 from ._public_query_user_entitlements import public_query_user_entitlements
@@ -393,6 +396,9 @@ from ._public_fulfill_apple_iap_item import public_fulfill_apple_iap_item
 from ._sync_epic_games_inventory import sync_epic_games_inventory
 from ._public_fulfill_google_iap_item import public_fulfill_google_iap_item
 from ._public_reconcile_play_station_store import public_reconcile_play_station_store
+from ._public_reconcile_play_station_store_with_multiple_service_labels import (
+    public_reconcile_play_station_store_with_multiple_service_labels,
+)
 from ._sync_stadia_entitlement import sync_stadia_entitlement
 from ._sync_steam_inventory import sync_steam_inventory
 from ._sync_twitch_drops_entitlement import sync_twitch_drops_entitlement
@@ -742,6 +748,7 @@ commands = [
     public_get_my_wallet,
     sync_epic_game_dlc,
     public_sync_psn_dlc_inventory,
+    public_sync_psn_dlc_inventory_with_multiple_service_labels,
     sync_steam_dlc,
     sync_xbox_dlc,
     public_query_user_entitlements,
@@ -761,6 +768,7 @@ commands = [
     sync_epic_games_inventory,
     public_fulfill_google_iap_item,
     public_reconcile_play_station_store,
+    public_reconcile_play_station_store_with_multiple_service_labels,
     sync_stadia_entitlement,
     sync_steam_inventory,
     sync_twitch_drops_entitlement,

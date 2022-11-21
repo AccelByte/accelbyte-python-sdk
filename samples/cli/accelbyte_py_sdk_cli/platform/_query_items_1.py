@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.17.0)
+# Accelbyte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -43,6 +43,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--category_path", "category_path", type=str)
 @click.option("--features", "features", type=str)
 @click.option("--include_sub_category_item", "include_sub_category_item", type=bool)
+@click.option("--item_name", "item_name", type=str)
 @click.option("--item_status", "item_status", type=str)
 @click.option("--item_type", "item_type", type=str)
 @click.option("--limit", "limit", type=int)
@@ -63,6 +64,7 @@ def query_items_1(
     category_path: Optional[str] = None,
     features: Optional[str] = None,
     include_sub_category_item: Optional[bool] = None,
+    item_name: Optional[str] = None,
     item_status: Optional[str] = None,
     item_type: Optional[str] = None,
     limit: Optional[int] = None,
@@ -98,6 +100,7 @@ def query_items_1(
         category_path=category_path,
         features=features,
         include_sub_category_item=include_sub_category_item,
+        item_name=item_name,
         item_status=item_status,
         item_type=item_type,
         limit=limit,
