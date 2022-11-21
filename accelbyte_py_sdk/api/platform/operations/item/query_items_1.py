@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -54,6 +54,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
@@ -119,6 +120,8 @@ class QueryItems1(Operation):
 
         include_sub_category_item: (includeSubCategoryItem) OPTIONAL bool in query
 
+        item_name: (itemName) OPTIONAL str in query
+
         item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
 
         item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
@@ -161,6 +164,7 @@ class QueryItems1(Operation):
     category_path: str  # OPTIONAL in [query]
     features: str  # OPTIONAL in [query]
     include_sub_category_item: bool  # OPTIONAL in [query]
+    item_name: str  # OPTIONAL in [query]
     item_status: Union[str, ItemStatusEnum]  # OPTIONAL in [query]
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
@@ -233,6 +237,8 @@ class QueryItems1(Operation):
             result["features"] = self.features
         if hasattr(self, "include_sub_category_item"):
             result["includeSubCategoryItem"] = self.include_sub_category_item
+        if hasattr(self, "item_name"):
+            result["itemName"] = self.item_name
         if hasattr(self, "item_status"):
             result["itemStatus"] = self.item_status
         if hasattr(self, "item_type"):
@@ -287,6 +293,10 @@ class QueryItems1(Operation):
 
     def with_include_sub_category_item(self, value: bool) -> QueryItems1:
         self.include_sub_category_item = value
+        return self
+
+    def with_item_name(self, value: str) -> QueryItems1:
+        self.item_name = value
         return self
 
     def with_item_status(self, value: Union[str, ItemStatusEnum]) -> QueryItems1:
@@ -362,6 +372,10 @@ class QueryItems1(Operation):
             result["includeSubCategoryItem"] = bool(self.include_sub_category_item)
         elif include_empty:
             result["includeSubCategoryItem"] = False
+        if hasattr(self, "item_name") and self.item_name:
+            result["itemName"] = str(self.item_name)
+        elif include_empty:
+            result["itemName"] = ""
         if hasattr(self, "item_status") and self.item_status:
             result["itemStatus"] = str(self.item_status)
         elif include_empty:
@@ -457,6 +471,7 @@ class QueryItems1(Operation):
         category_path: Optional[str] = None,
         features: Optional[str] = None,
         include_sub_category_item: Optional[bool] = None,
+        item_name: Optional[str] = None,
         item_status: Optional[Union[str, ItemStatusEnum]] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         limit: Optional[int] = None,
@@ -481,6 +496,8 @@ class QueryItems1(Operation):
             instance.features = features
         if include_sub_category_item is not None:
             instance.include_sub_category_item = include_sub_category_item
+        if item_name is not None:
+            instance.item_name = item_name
         if item_status is not None:
             instance.item_status = item_status
         if item_type is not None:
@@ -535,6 +552,10 @@ class QueryItems1(Operation):
             instance.include_sub_category_item = bool(dict_["includeSubCategoryItem"])
         elif include_empty:
             instance.include_sub_category_item = False
+        if "itemName" in dict_ and dict_["itemName"] is not None:
+            instance.item_name = str(dict_["itemName"])
+        elif include_empty:
+            instance.item_name = ""
         if "itemStatus" in dict_ and dict_["itemStatus"] is not None:
             instance.item_status = str(dict_["itemStatus"])
         elif include_empty:
@@ -583,6 +604,7 @@ class QueryItems1(Operation):
             "categoryPath": "category_path",
             "features": "features",
             "includeSubCategoryItem": "include_sub_category_item",
+            "itemName": "item_name",
             "itemStatus": "item_status",
             "itemType": "item_type",
             "limit": "limit",
@@ -604,6 +626,7 @@ class QueryItems1(Operation):
             "categoryPath": False,
             "features": False,
             "includeSubCategoryItem": False,
+            "itemName": False,
             "itemStatus": False,
             "itemType": False,
             "limit": False,
@@ -633,6 +656,7 @@ class QueryItems1(Operation):
                 "COINS",
                 "EXTENSION",
                 "INGAMEITEM",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SEASON",

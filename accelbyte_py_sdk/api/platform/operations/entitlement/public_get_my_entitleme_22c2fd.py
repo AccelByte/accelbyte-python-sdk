@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,6 +37,7 @@ class EntitlementClazzEnum(StrEnum):
     APP = "APP"
     CODE = "CODE"
     ENTITLEMENT = "ENTITLEMENT"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
@@ -285,6 +286,7 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
                 "APP",
                 "CODE",
                 "ENTITLEMENT",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",

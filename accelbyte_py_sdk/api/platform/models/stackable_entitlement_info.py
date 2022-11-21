@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ class ClazzEnum(StrEnum):
     APP = "APP"
     CODE = "CODE"
     ENTITLEMENT = "ENTITLEMENT"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
@@ -657,6 +658,7 @@ class StackableEntitlementInfo(Model):
                 "APP",
                 "CODE",
                 "ENTITLEMENT",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",

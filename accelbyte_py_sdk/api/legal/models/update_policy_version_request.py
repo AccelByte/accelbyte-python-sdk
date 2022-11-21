@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Legal Service (1.24.1)
+# AccelByte Cloud Legal Service (1.25.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

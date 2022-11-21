@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.0"
+__version__ = "4.17.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -145,6 +145,8 @@ from .wrappers import get_platform_dlc_config
 from .wrappers import get_platform_dlc_config_async
 from .wrappers import public_sync_psn_dlc_inventory
 from .wrappers import public_sync_psn_dlc_inventory_async
+from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels
+from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels_async
 from .wrappers import sync_epic_game_dlc
 from .wrappers import sync_epic_game_dlc_async
 from .wrappers import sync_steam_dlc
@@ -307,6 +309,10 @@ from .wrappers import public_fulfill_google_iap_item
 from .wrappers import public_fulfill_google_iap_item_async
 from .wrappers import public_reconcile_play_station_store
 from .wrappers import public_reconcile_play_station_store_async
+from .wrappers import public_reconcile_play_station_store_with_multiple_service_labels
+from .wrappers import (
+    public_reconcile_play_station_store_with_multiple_service_labels_async,
+)
 from .wrappers import query_all_user_iap_orders
 from .wrappers import query_all_user_iap_orders_async
 from .wrappers import query_user_iap_consume_history

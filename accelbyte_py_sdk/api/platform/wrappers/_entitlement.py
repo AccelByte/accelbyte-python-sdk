@@ -33,6 +33,7 @@ from ..models import AppEntitlementInfo
 from ..models import AppEntitlementPagingSlicedResult
 from ..models import BulkOperationResult
 from ..models import EntitlementDecrement
+from ..models import EntitlementDecrementResult
 from ..models import EntitlementGrant
 from ..models import EntitlementHistoryInfo
 from ..models import EntitlementInfo
@@ -44,7 +45,6 @@ from ..models import Ownership
 from ..models import OwnershipToken
 from ..models import StackableEntitlementInfo
 from ..models import TimedOwnership
-from ..models import TrackedEntitlementInfo
 from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
@@ -125,6 +125,13 @@ from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import UpdateUserEntitlement
 from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
+from ..models import (
+    EntitlementDecrementResultAppTypeEnum,
+    EntitlementDecrementResultClazzEnum,
+    EntitlementDecrementResultSourceEnum,
+    EntitlementDecrementResultStatusEnum,
+    EntitlementDecrementResultTypeEnum,
+)
 from ..models import EntitlementGrantSourceEnum
 from ..models import EntitlementHistoryInfoActionEnum
 from ..models import (
@@ -141,13 +148,6 @@ from ..models import (
     StackableEntitlementInfoSourceEnum,
     StackableEntitlementInfoStatusEnum,
     StackableEntitlementInfoTypeEnum,
-)
-from ..models import (
-    TrackedEntitlementInfoAppTypeEnum,
-    TrackedEntitlementInfoClazzEnum,
-    TrackedEntitlementInfoSourceEnum,
-    TrackedEntitlementInfoStatusEnum,
-    TrackedEntitlementInfoTypeEnum,
 )
 
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Seasonpass Service (1.16.0)
+# AccelByte Cloud Seasonpass Service (1.16.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,7 +42,9 @@ class ItemTypeEnum(StrEnum):
     BUNDLE = "BUNDLE"
     CODE = "CODE"
     COINS = "COINS"
+    EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
@@ -360,7 +362,9 @@ class RewardInfo(Model):
                 "BUNDLE",
                 "CODE",
                 "COINS",
+                "EXTENSION",
                 "INGAMEITEM",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SEASON",

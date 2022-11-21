@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,8 +30,8 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import EntitlementDecrement
+from ...models import EntitlementDecrementResult
 from ...models import ErrorEntity
-from ...models import TrackedEntitlementInfo
 
 
 class ConsumeUserEntitlement(Operation):
@@ -68,7 +68,7 @@ class ConsumeUserEntitlement(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - TrackedEntitlementInfo (successful operation)
+        200: OK - EntitlementDecrementResult (successful operation)
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
@@ -202,11 +202,11 @@ class ConsumeUserEntitlement(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, TrackedEntitlementInfo], Union[None, ErrorEntity, HttpResponse]
+        Union[None, EntitlementDecrementResult], Union[None, ErrorEntity, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - TrackedEntitlementInfo (successful operation)
+        200: OK - EntitlementDecrementResult (successful operation)
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
@@ -226,7 +226,7 @@ class ConsumeUserEntitlement(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return TrackedEntitlementInfo.create_from_dict(content), None
+            return EntitlementDecrementResult.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:

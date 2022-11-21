@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.localization import Localization
+from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
 from ..models.region_data_item import RegionDataItem
@@ -47,6 +48,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
@@ -106,6 +108,8 @@ class ItemUpdate(Model):
 
         localizations: (localizations) OPTIONAL Dict[str, Localization]
 
+        loot_box_config: (lootBoxConfig) OPTIONAL LootBoxConfig
+
         max_count: (maxCount) OPTIONAL int
 
         max_count_per_user: (maxCountPerUser) OPTIONAL int
@@ -157,6 +161,7 @@ class ItemUpdate(Model):
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
     localizations: Dict[str, Localization]  # OPTIONAL
+    loot_box_config: LootBoxConfig  # OPTIONAL
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
     name: str  # OPTIONAL
@@ -242,6 +247,10 @@ class ItemUpdate(Model):
 
     def with_localizations(self, value: Dict[str, Localization]) -> ItemUpdate:
         self.localizations = value
+        return self
+
+    def with_loot_box_config(self, value: LootBoxConfig) -> ItemUpdate:
+        self.loot_box_config = value
         return self
 
     def with_max_count(self, value: int) -> ItemUpdate:
@@ -383,6 +392,12 @@ class ItemUpdate(Model):
             }
         elif include_empty:
             result["localizations"] = {}
+        if hasattr(self, "loot_box_config"):
+            result["lootBoxConfig"] = self.loot_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["lootBoxConfig"] = LootBoxConfig()
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
@@ -477,6 +492,7 @@ class ItemUpdate(Model):
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
         localizations: Optional[Dict[str, Localization]] = None,
+        loot_box_config: Optional[LootBoxConfig] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
         name: Optional[str] = None,
@@ -525,6 +541,8 @@ class ItemUpdate(Model):
             instance.listable = listable
         if localizations is not None:
             instance.localizations = localizations
+        if loot_box_config is not None:
+            instance.loot_box_config = loot_box_config
         if max_count is not None:
             instance.max_count = max_count
         if max_count_per_user is not None:
@@ -636,6 +654,12 @@ class ItemUpdate(Model):
             }
         elif include_empty:
             instance.localizations = {}
+        if "lootBoxConfig" in dict_ and dict_["lootBoxConfig"] is not None:
+            instance.loot_box_config = LootBoxConfig.create_from_dict(
+                dict_["lootBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.loot_box_config = LootBoxConfig()
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
@@ -765,6 +789,7 @@ class ItemUpdate(Model):
             "itemQty": "item_qty",
             "listable": "listable",
             "localizations": "localizations",
+            "lootBoxConfig": "loot_box_config",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
             "name": "name",
@@ -802,6 +827,7 @@ class ItemUpdate(Model):
             "itemQty": False,
             "listable": False,
             "localizations": False,
+            "lootBoxConfig": False,
             "maxCount": False,
             "maxCountPerUser": False,
             "name": False,
@@ -831,6 +857,7 @@ class ItemUpdate(Model):
                 "COINS",
                 "EXTENSION",
                 "INGAMEITEM",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SEASON",

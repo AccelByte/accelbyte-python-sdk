@@ -2,7 +2,6 @@ from ._integration_test_case import IntegrationTestCase
 
 
 class Match2TestCase(IntegrationTestCase):
-
     def test_get_healthcheck_info(self):
         from accelbyte_py_sdk.api.match2 import get_healthcheck_info
 

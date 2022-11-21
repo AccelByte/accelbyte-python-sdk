@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.0"
+__version__ = "4.17.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -77,6 +77,7 @@ from .billing_account import PaymentProviderEnum as BillingAccountPaymentProvide
 from .billing_history_info import BillingHistoryInfo
 from .billing_history_info import StatusEnum as BillingHistoryInfoStatusEnum
 from .billing_history_paging_sliced_result import BillingHistoryPagingSlicedResult
+from .box_item import BoxItem
 from .bulk_operation_result import BulkOperationResult
 from .bundled_item_info import BundledItemInfo
 from .bundled_item_info import (
@@ -164,6 +165,14 @@ from .dlc_item import DLCItem
 from .dlc_item_config_info import DLCItemConfigInfo
 from .dlc_item_config_update import DLCItemConfigUpdate
 from .entitlement_decrement import EntitlementDecrement
+from .entitlement_decrement_result import EntitlementDecrementResult
+from .entitlement_decrement_result import (
+    AppTypeEnum as EntitlementDecrementResultAppTypeEnum,
+    ClazzEnum as EntitlementDecrementResultClazzEnum,
+    SourceEnum as EntitlementDecrementResultSourceEnum,
+    StatusEnum as EntitlementDecrementResultStatusEnum,
+    TypeEnum as EntitlementDecrementResultTypeEnum,
+)
 from .entitlement_grant import EntitlementGrant
 from .entitlement_grant import SourceEnum as EntitlementGrantSourceEnum
 from .entitlement_history_info import EntitlementHistoryInfo
@@ -176,6 +185,7 @@ from .entitlement_info import (
     StatusEnum as EntitlementInfoStatusEnum,
     TypeEnum as EntitlementInfoTypeEnum,
 )
+from .entitlement_loot_box_reward import EntitlementLootBoxReward
 from .entitlement_ownership import EntitlementOwnership
 from .entitlement_paging_sliced_result import EntitlementPagingSlicedResult
 from .entitlement_summary import EntitlementSummary
@@ -340,6 +350,9 @@ from .key_info import KeyInfo
 from .key_info import StatusEnum as KeyInfoStatusEnum
 from .key_paging_slice_result import KeyPagingSliceResult
 from .localization import Localization
+from .loot_box_config import LootBoxConfig
+from .loot_box_reward import LootBoxReward
+from .loot_box_reward import TypeEnum as LootBoxRewardTypeEnum
 from .mock_iap_receipt import MockIAPReceipt
 from .mock_iap_receipt import (
     ItemIdentityTypeEnum as MockIAPReceiptItemIdentityTypeEnum,
@@ -350,7 +363,6 @@ from .notification_process_result import (
     StatusEnum as NotificationProcessResultStatusEnum,
 )
 from .option_box_config import OptionBoxConfig
-from .option_box_item import OptionBoxItem
 from .order import Order
 from .order import (
     PaymentProviderEnum as OrderPaymentProviderEnum,
@@ -481,13 +493,15 @@ from .platform_wallet_config_update import PlatformWalletConfigUpdate
 from .platform_wallet_config_update import (
     AllowedBalanceOriginsEnum as PlatformWalletConfigUpdateAllowedBalanceOriginsEnum,
 )
+from .play_station_dlc_sync_multi_service_labels_request import (
+    PlayStationDLCSyncMultiServiceLabelsRequest,
+)
 from .play_station_dlc_sync_request import PlayStationDLCSyncRequest
 from .play_station_iap_config_info import PlayStationIAPConfigInfo
-from .play_station_reconcile_request import PlayStationReconcileRequest
-from .play_station_reconcile_result import PlayStationReconcileResult
-from .play_station_reconcile_result import (
-    StatusEnum as PlayStationReconcileResultStatusEnum,
+from .play_station_multi_service_labels_reconcile_request import (
+    PlayStationMultiServiceLabelsReconcileRequest,
 )
+from .play_station_reconcile_request import PlayStationReconcileRequest
 from .playstation_iap_config_request import PlaystationIAPConfigRequest
 from .populated_item_info import PopulatedItemInfo
 from .populated_item_info import (
@@ -587,14 +601,6 @@ from .ticket_sale_increment_request import TicketSaleIncrementRequest
 from .ticket_sale_increment_result import TicketSaleIncrementResult
 from .time_limited_balance import TimeLimitedBalance
 from .timed_ownership import TimedOwnership
-from .tracked_entitlement_info import TrackedEntitlementInfo
-from .tracked_entitlement_info import (
-    AppTypeEnum as TrackedEntitlementInfoAppTypeEnum,
-    ClazzEnum as TrackedEntitlementInfoClazzEnum,
-    SourceEnum as TrackedEntitlementInfoSourceEnum,
-    StatusEnum as TrackedEntitlementInfoStatusEnum,
-    TypeEnum as TrackedEntitlementInfoTypeEnum,
-)
 from .trade_notification import TradeNotification
 from .trade_notification import (
     PaymentProviderEnum as TradeNotificationPaymentProviderEnum,

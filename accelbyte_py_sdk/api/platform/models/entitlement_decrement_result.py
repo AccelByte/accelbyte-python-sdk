@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.entitlement_loot_box_reward import EntitlementLootBoxReward
 from ..models.item_snapshot import ItemSnapshot
 
 
@@ -35,6 +36,7 @@ class ClazzEnum(StrEnum):
     APP = "APP"
     CODE = "CODE"
     ENTITLEMENT = "ENTITLEMENT"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
@@ -71,8 +73,8 @@ class AppTypeEnum(StrEnum):
     SOFTWARE = "SOFTWARE"
 
 
-class TrackedEntitlementInfo(Model):
-    """Tracked entitlement info (TrackedEntitlementInfo)
+class EntitlementDecrementResult(Model):
+    """Entitlement decrement result (EntitlementDecrementResult)
 
     Properties:
         clazz: (clazz) REQUIRED Union[str, ClazzEnum]
@@ -117,6 +119,8 @@ class TrackedEntitlementInfo(Model):
 
         request_id: (requestId) OPTIONAL str
 
+        rewards: (rewards) OPTIONAL List[EntitlementLootBoxReward]
+
         sku: (sku) OPTIONAL str
 
         stackable: (stackable) OPTIONAL bool
@@ -151,6 +155,7 @@ class TrackedEntitlementInfo(Model):
     item_snapshot: ItemSnapshot  # OPTIONAL
     replayed: bool  # OPTIONAL
     request_id: str  # OPTIONAL
+    rewards: List[EntitlementLootBoxReward]  # OPTIONAL
     sku: str  # OPTIONAL
     stackable: bool  # OPTIONAL
     start_date: str  # OPTIONAL
@@ -161,107 +166,115 @@ class TrackedEntitlementInfo(Model):
 
     # region with_x methods
 
-    def with_clazz(self, value: Union[str, ClazzEnum]) -> TrackedEntitlementInfo:
+    def with_clazz(self, value: Union[str, ClazzEnum]) -> EntitlementDecrementResult:
         self.clazz = value
         return self
 
-    def with_created_at(self, value: str) -> TrackedEntitlementInfo:
+    def with_created_at(self, value: str) -> EntitlementDecrementResult:
         self.created_at = value
         return self
 
-    def with_granted_at(self, value: str) -> TrackedEntitlementInfo:
+    def with_granted_at(self, value: str) -> EntitlementDecrementResult:
         self.granted_at = value
         return self
 
-    def with_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_id(self, value: str) -> EntitlementDecrementResult:
         self.id_ = value
         return self
 
-    def with_item_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_item_id(self, value: str) -> EntitlementDecrementResult:
         self.item_id = value
         return self
 
-    def with_item_namespace(self, value: str) -> TrackedEntitlementInfo:
+    def with_item_namespace(self, value: str) -> EntitlementDecrementResult:
         self.item_namespace = value
         return self
 
-    def with_name(self, value: str) -> TrackedEntitlementInfo:
+    def with_name(self, value: str) -> EntitlementDecrementResult:
         self.name = value
         return self
 
-    def with_namespace(self, value: str) -> TrackedEntitlementInfo:
+    def with_namespace(self, value: str) -> EntitlementDecrementResult:
         self.namespace = value
         return self
 
-    def with_source(self, value: Union[str, SourceEnum]) -> TrackedEntitlementInfo:
+    def with_source(self, value: Union[str, SourceEnum]) -> EntitlementDecrementResult:
         self.source = value
         return self
 
-    def with_status(self, value: Union[str, StatusEnum]) -> TrackedEntitlementInfo:
+    def with_status(self, value: Union[str, StatusEnum]) -> EntitlementDecrementResult:
         self.status = value
         return self
 
-    def with_type(self, value: Union[str, TypeEnum]) -> TrackedEntitlementInfo:
+    def with_type(self, value: Union[str, TypeEnum]) -> EntitlementDecrementResult:
         self.type_ = value
         return self
 
-    def with_updated_at(self, value: str) -> TrackedEntitlementInfo:
+    def with_updated_at(self, value: str) -> EntitlementDecrementResult:
         self.updated_at = value
         return self
 
-    def with_user_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_user_id(self, value: str) -> EntitlementDecrementResult:
         self.user_id = value
         return self
 
-    def with_app_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_app_id(self, value: str) -> EntitlementDecrementResult:
         self.app_id = value
         return self
 
-    def with_app_type(self, value: Union[str, AppTypeEnum]) -> TrackedEntitlementInfo:
+    def with_app_type(
+        self, value: Union[str, AppTypeEnum]
+    ) -> EntitlementDecrementResult:
         self.app_type = value
         return self
 
-    def with_end_date(self, value: str) -> TrackedEntitlementInfo:
+    def with_end_date(self, value: str) -> EntitlementDecrementResult:
         self.end_date = value
         return self
 
-    def with_features(self, value: List[str]) -> TrackedEntitlementInfo:
+    def with_features(self, value: List[str]) -> EntitlementDecrementResult:
         self.features = value
         return self
 
-    def with_granted_code(self, value: str) -> TrackedEntitlementInfo:
+    def with_granted_code(self, value: str) -> EntitlementDecrementResult:
         self.granted_code = value
         return self
 
-    def with_item_snapshot(self, value: ItemSnapshot) -> TrackedEntitlementInfo:
+    def with_item_snapshot(self, value: ItemSnapshot) -> EntitlementDecrementResult:
         self.item_snapshot = value
         return self
 
-    def with_replayed(self, value: bool) -> TrackedEntitlementInfo:
+    def with_replayed(self, value: bool) -> EntitlementDecrementResult:
         self.replayed = value
         return self
 
-    def with_request_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_request_id(self, value: str) -> EntitlementDecrementResult:
         self.request_id = value
         return self
 
-    def with_sku(self, value: str) -> TrackedEntitlementInfo:
+    def with_rewards(
+        self, value: List[EntitlementLootBoxReward]
+    ) -> EntitlementDecrementResult:
+        self.rewards = value
+        return self
+
+    def with_sku(self, value: str) -> EntitlementDecrementResult:
         self.sku = value
         return self
 
-    def with_stackable(self, value: bool) -> TrackedEntitlementInfo:
+    def with_stackable(self, value: bool) -> EntitlementDecrementResult:
         self.stackable = value
         return self
 
-    def with_start_date(self, value: str) -> TrackedEntitlementInfo:
+    def with_start_date(self, value: str) -> EntitlementDecrementResult:
         self.start_date = value
         return self
 
-    def with_store_id(self, value: str) -> TrackedEntitlementInfo:
+    def with_store_id(self, value: str) -> EntitlementDecrementResult:
         self.store_id = value
         return self
 
-    def with_use_count(self, value: int) -> TrackedEntitlementInfo:
+    def with_use_count(self, value: int) -> EntitlementDecrementResult:
         self.use_count = value
         return self
 
@@ -357,6 +370,12 @@ class TrackedEntitlementInfo(Model):
             result["requestId"] = str(self.request_id)
         elif include_empty:
             result["requestId"] = ""
+        if hasattr(self, "rewards"):
+            result["rewards"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.rewards
+            ]
+        elif include_empty:
+            result["rewards"] = []
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -407,12 +426,13 @@ class TrackedEntitlementInfo(Model):
         item_snapshot: Optional[ItemSnapshot] = None,
         replayed: Optional[bool] = None,
         request_id: Optional[str] = None,
+        rewards: Optional[List[EntitlementLootBoxReward]] = None,
         sku: Optional[str] = None,
         stackable: Optional[bool] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
         use_count: Optional[int] = None,
-    ) -> TrackedEntitlementInfo:
+    ) -> EntitlementDecrementResult:
         instance = cls()
         instance.clazz = clazz
         instance.created_at = created_at
@@ -443,6 +463,8 @@ class TrackedEntitlementInfo(Model):
             instance.replayed = replayed
         if request_id is not None:
             instance.request_id = request_id
+        if rewards is not None:
+            instance.rewards = rewards
         if sku is not None:
             instance.sku = sku
         if stackable is not None:
@@ -458,7 +480,7 @@ class TrackedEntitlementInfo(Model):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> TrackedEntitlementInfo:
+    ) -> EntitlementDecrementResult:
         instance = cls()
         if not dict_:
             return instance
@@ -548,6 +570,15 @@ class TrackedEntitlementInfo(Model):
             instance.request_id = str(dict_["requestId"])
         elif include_empty:
             instance.request_id = ""
+        if "rewards" in dict_ and dict_["rewards"] is not None:
+            instance.rewards = [
+                EntitlementLootBoxReward.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["rewards"]
+            ]
+        elif include_empty:
+            instance.rewards = []
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -573,7 +604,7 @@ class TrackedEntitlementInfo(Model):
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, TrackedEntitlementInfo]:
+    ) -> Dict[str, EntitlementDecrementResult]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -583,7 +614,7 @@ class TrackedEntitlementInfo(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[TrackedEntitlementInfo]:
+    ) -> List[EntitlementDecrementResult]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -594,9 +625,9 @@ class TrackedEntitlementInfo(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        TrackedEntitlementInfo,
-        List[TrackedEntitlementInfo],
-        Dict[Any, TrackedEntitlementInfo],
+        EntitlementDecrementResult,
+        List[EntitlementDecrementResult],
+        Dict[Any, EntitlementDecrementResult],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -632,6 +663,7 @@ class TrackedEntitlementInfo(Model):
             "itemSnapshot": "item_snapshot",
             "replayed": "replayed",
             "requestId": "request_id",
+            "rewards": "rewards",
             "sku": "sku",
             "stackable": "stackable",
             "startDate": "start_date",
@@ -663,6 +695,7 @@ class TrackedEntitlementInfo(Model):
             "itemSnapshot": False,
             "replayed": False,
             "requestId": False,
+            "rewards": False,
             "sku": False,
             "stackable": False,
             "startDate": False,
@@ -677,6 +710,7 @@ class TrackedEntitlementInfo(Model):
                 "APP",
                 "CODE",
                 "ENTITLEMENT",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -62,7 +62,7 @@ class Download(Operation):
         batch_no: (batchNo) OPTIONAL int in query
 
     Responses:
-        200: OK - (Successful operation)
+        200: OK - Any (Successful operation)
     """
 
     # region fields
@@ -183,10 +183,10 @@ class Download(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, Any], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (Successful operation)
+        200: OK - Any (Successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -202,7 +202,7 @@ class Download(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return content, None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

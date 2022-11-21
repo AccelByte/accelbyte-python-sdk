@@ -35,6 +35,7 @@ from ..models import EpicGamesDLCSyncRequest
 from ..models import ErrorEntity
 from ..models import PlatformDLCConfigInfo
 from ..models import PlatformDLCConfigUpdate
+from ..models import PlayStationDLCSyncMultiServiceLabelsRequest
 from ..models import PlayStationDLCSyncRequest
 from ..models import SteamDLCSyncRequest
 from ..models import ValidationErrorEntity
@@ -45,6 +46,7 @@ from ..operations.dlc import DeletePlatformDLCConfig
 from ..operations.dlc import GetDLCItemConfig
 from ..operations.dlc import GetPlatformDLCConfig
 from ..operations.dlc import PublicSyncPsnDlcInventory
+from ..operations.dlc import PublicSyncPsnDlcInventoryWithMultipleServiceLabels
 from ..operations.dlc import SyncEpicGameDLC
 from ..operations.dlc import SyncSteamDLC
 from ..operations.dlc import SyncXboxDLC
@@ -221,6 +223,48 @@ async def public_sync_psn_dlc_inventory_async(
         if error:
             return None, error
     request = PublicSyncPsnDlcInventory.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicSyncPsnDlcInventoryWithMultipleServiceLabels)
+def public_sync_psn_dlc_inventory_with_multiple_service_labels(
+    user_id: str,
+    body: Optional[PlayStationDLCSyncMultiServiceLabelsRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSyncPsnDlcInventoryWithMultipleServiceLabels.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSyncPsnDlcInventoryWithMultipleServiceLabels)
+async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
+    user_id: str,
+    body: Optional[PlayStationDLCSyncMultiServiceLabelsRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSyncPsnDlcInventoryWithMultipleServiceLabels.create(
         user_id=user_id,
         body=body,
         namespace=namespace,

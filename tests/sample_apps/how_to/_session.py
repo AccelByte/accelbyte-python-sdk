@@ -4,16 +4,13 @@ from accelbyte_py_sdk.api.session.models import ApimodelsCreateGameSessionReques
 
 
 class SessionTestCase(IntegrationTestCase):
-
     def test_public_query_game_sessions(self):
         from accelbyte_py_sdk.api.session import public_query_game_sessions
 
         # arrange
 
         # act
-        result, error = public_query_game_sessions(
-            body={}
-        )
+        result, error = public_query_game_sessions(body={})
 
         # assert
         self.assertIsNone(error, error)

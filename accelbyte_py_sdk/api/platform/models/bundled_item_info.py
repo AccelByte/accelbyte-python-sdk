@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,7 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.image import Image
+from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.purchase_condition import PurchaseCondition
 from ..models.recurring import Recurring
@@ -47,6 +48,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
@@ -134,6 +136,8 @@ class BundledItemInfo(Model):
 
         long_description: (longDescription) OPTIONAL str
 
+        loot_box_config: (lootBoxConfig) OPTIONAL LootBoxConfig
+
         max_count: (maxCount) OPTIONAL int
 
         max_count_per_user: (maxCountPerUser) OPTIONAL int
@@ -199,6 +203,7 @@ class BundledItemInfo(Model):
     listable: bool  # OPTIONAL
     local_ext: Dict[str, Any]  # OPTIONAL
     long_description: str  # OPTIONAL
+    loot_box_config: LootBoxConfig  # OPTIONAL
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
     option_box_config: OptionBoxConfig  # OPTIONAL
@@ -340,6 +345,10 @@ class BundledItemInfo(Model):
 
     def with_long_description(self, value: str) -> BundledItemInfo:
         self.long_description = value
+        return self
+
+    def with_loot_box_config(self, value: LootBoxConfig) -> BundledItemInfo:
+        self.loot_box_config = value
         return self
 
     def with_max_count(self, value: int) -> BundledItemInfo:
@@ -534,6 +543,12 @@ class BundledItemInfo(Model):
             result["longDescription"] = str(self.long_description)
         elif include_empty:
             result["longDescription"] = ""
+        if hasattr(self, "loot_box_config"):
+            result["lootBoxConfig"] = self.loot_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["lootBoxConfig"] = LootBoxConfig()
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
@@ -643,6 +658,7 @@ class BundledItemInfo(Model):
         listable: Optional[bool] = None,
         local_ext: Optional[Dict[str, Any]] = None,
         long_description: Optional[str] = None,
+        loot_box_config: Optional[LootBoxConfig] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
         option_box_config: Optional[OptionBoxConfig] = None,
@@ -709,6 +725,8 @@ class BundledItemInfo(Model):
             instance.local_ext = local_ext
         if long_description is not None:
             instance.long_description = long_description
+        if loot_box_config is not None:
+            instance.loot_box_config = loot_box_config
         if max_count is not None:
             instance.max_count = max_count
         if max_count_per_user is not None:
@@ -875,6 +893,12 @@ class BundledItemInfo(Model):
             instance.long_description = str(dict_["longDescription"])
         elif include_empty:
             instance.long_description = ""
+        if "lootBoxConfig" in dict_ and dict_["lootBoxConfig"] is not None:
+            instance.loot_box_config = LootBoxConfig.create_from_dict(
+                dict_["lootBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.loot_box_config = LootBoxConfig()
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
@@ -1017,6 +1041,7 @@ class BundledItemInfo(Model):
             "listable": "listable",
             "localExt": "local_ext",
             "longDescription": "long_description",
+            "lootBoxConfig": "loot_box_config",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
             "optionBoxConfig": "option_box_config",
@@ -1068,6 +1093,7 @@ class BundledItemInfo(Model):
             "listable": False,
             "localExt": False,
             "longDescription": False,
+            "lootBoxConfig": False,
             "maxCount": False,
             "maxCountPerUser": False,
             "optionBoxConfig": False,
@@ -1097,6 +1123,7 @@ class BundledItemInfo(Model):
                 "COINS",
                 "EXTENSION",
                 "INGAMEITEM",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SEASON",

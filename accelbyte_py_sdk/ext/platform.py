@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,7 @@ from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
 from ..api.platform.models import BillingHistoryInfo
 from ..api.platform.models import BillingHistoryPagingSlicedResult
+from ..api.platform.models import BoxItem
 from ..api.platform.models import BulkOperationResult
 from ..api.platform.models import BundledItemInfo
 from ..api.platform.models import CampaignCreate
@@ -91,9 +92,11 @@ from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
 from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
 from ..api.platform.models import EntitlementDecrement
+from ..api.platform.models import EntitlementDecrementResult
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementHistoryInfo
 from ..api.platform.models import EntitlementInfo
+from ..api.platform.models import EntitlementLootBoxReward
 from ..api.platform.models import EntitlementOwnership
 from ..api.platform.models import EntitlementPagingSlicedResult
 from ..api.platform.models import EntitlementSummary
@@ -170,10 +173,11 @@ from ..api.platform.models import KeyGroupUpdate
 from ..api.platform.models import KeyInfo
 from ..api.platform.models import KeyPagingSliceResult
 from ..api.platform.models import Localization
+from ..api.platform.models import LootBoxConfig
+from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
 from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OptionBoxConfig
-from ..api.platform.models import OptionBoxItem
 from ..api.platform.models import Order
 from ..api.platform.models import OrderCreate
 from ..api.platform.models import OrderGrantInfo
@@ -230,10 +234,11 @@ from ..api.platform.models import PlatformSubscribeRequest
 from ..api.platform.models import PlatformWallet
 from ..api.platform.models import PlatformWalletConfigInfo
 from ..api.platform.models import PlatformWalletConfigUpdate
+from ..api.platform.models import PlayStationDLCSyncMultiServiceLabelsRequest
 from ..api.platform.models import PlayStationDLCSyncRequest
 from ..api.platform.models import PlayStationIAPConfigInfo
+from ..api.platform.models import PlayStationMultiServiceLabelsReconcileRequest
 from ..api.platform.models import PlayStationReconcileRequest
-from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
 from ..api.platform.models import PredicateObject
@@ -291,7 +296,6 @@ from ..api.platform.models import TicketSaleIncrementRequest
 from ..api.platform.models import TicketSaleIncrementResult
 from ..api.platform.models import TimeLimitedBalance
 from ..api.platform.models import TimedOwnership
-from ..api.platform.models import TrackedEntitlementInfo
 from ..api.platform.models import TradeNotification
 from ..api.platform.models import Transaction
 from ..api.platform.models import TransactionAmountDetails
@@ -593,6 +597,15 @@ def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagin
     return instance
 
 
+def create_box_item_example() -> BoxItem:
+    instance = BoxItem()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.item_type = randomize()
+    return instance
+
+
 def create_bulk_operation_result_example() -> BulkOperationResult:
     instance = BulkOperationResult()
     instance.affected = randomize("int", min_val=1, max_val=1000)
@@ -631,6 +644,7 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     instance.listable = randomize("bool")
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -1044,6 +1058,38 @@ def create_entitlement_decrement_example() -> EntitlementDecrement:
     return instance
 
 
+def create_entitlement_decrement_result_example() -> EntitlementDecrementResult:
+    instance = EntitlementDecrementResult()
+    instance.clazz = randomize()
+    instance.created_at = randomize("date")
+    instance.granted_at = randomize("date")
+    instance.id_ = randomize()
+    instance.item_id = randomize()
+    instance.item_namespace = randomize("slug")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.source = randomize()
+    instance.status = randomize()
+    instance.type_ = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.app_id = randomize("uid")
+    instance.app_type = randomize()
+    instance.end_date = randomize("date")
+    instance.features = [randomize()]
+    instance.granted_code = randomize()
+    instance.item_snapshot = create_item_snapshot_example()
+    instance.replayed = randomize("bool")
+    instance.request_id = randomize()
+    instance.rewards = [create_entitlement_loot_box_reward_example()]
+    instance.sku = randomize("slug")
+    instance.stackable = randomize("bool")
+    instance.start_date = randomize("date")
+    instance.store_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_entitlement_grant_example() -> EntitlementGrant:
     instance = EntitlementGrant()
     instance.item_id = randomize()
@@ -1098,6 +1144,14 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.start_date = randomize("date")
     instance.store_id = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_entitlement_loot_box_reward_example() -> EntitlementLootBoxReward:
+    instance = EntitlementLootBoxReward()
+    instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
     return instance
 
 
@@ -1435,6 +1489,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -1696,6 +1751,7 @@ def create_item_create_example() -> ItemCreate:
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -1761,6 +1817,7 @@ def create_item_info_example() -> ItemInfo:
     instance.listable = randomize("bool")
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -1828,6 +1885,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -1896,6 +1954,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.item_qty = {}
     instance.listable = randomize("bool")
     instance.localizations = {}
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
@@ -1993,6 +2052,23 @@ def create_localization_example() -> Localization:
     return instance
 
 
+def create_loot_box_config_example() -> LootBoxConfig:
+    instance = LootBoxConfig()
+    instance.reward_count = randomize("int", min_val=1, max_val=1000)
+    instance.rewards = [create_loot_box_reward_example()]
+    return instance
+
+
+def create_loot_box_reward_example() -> LootBoxReward:
+    instance = LootBoxReward()
+    instance.loot_box_items = [create_box_item_example()]
+    instance.name = randomize()
+    instance.odds = randomize("int", min_val=1, max_val=1000)
+    instance.type_ = randomize()
+    instance.weight = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_mock_iap_receipt_example() -> MockIAPReceipt:
     instance = MockIAPReceipt()
     instance.product_id = randomize("uid")
@@ -2014,15 +2090,7 @@ def create_notification_process_result_example() -> NotificationProcessResult:
 
 def create_option_box_config_example() -> OptionBoxConfig:
     instance = OptionBoxConfig()
-    instance.box_items = [create_option_box_item_example()]
-    return instance
-
-
-def create_option_box_item_example() -> OptionBoxItem:
-    instance = OptionBoxItem()
-    instance.count = randomize("int", min_val=1, max_val=1000)
-    instance.item_id = randomize()
-    instance.item_sku = randomize()
+    instance.box_items = [create_box_item_example()]
     return instance
 
 
@@ -2712,6 +2780,12 @@ def create_platform_wallet_config_update_example() -> PlatformWalletConfigUpdate
     return instance
 
 
+def create_play_station_dlc_sync_multi_service_labels_request_example() -> PlayStationDLCSyncMultiServiceLabelsRequest:
+    instance = PlayStationDLCSyncMultiServiceLabelsRequest()
+    instance.service_labels = [randomize("int", min_val=1, max_val=1000)]
+    return instance
+
+
 def create_play_station_dlc_sync_request_example() -> PlayStationDLCSyncRequest:
     instance = PlayStationDLCSyncRequest()
     instance.service_label = randomize("int", min_val=1, max_val=1000)
@@ -2725,22 +2799,21 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     return instance
 
 
+def create_play_station_multi_service_labels_reconcile_request_example() -> PlayStationMultiServiceLabelsReconcileRequest:
+    instance = PlayStationMultiServiceLabelsReconcileRequest()
+    instance.currency_code = randomize()
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    instance.product_id = randomize("uid")
+    instance.service_labels = [randomize("int", min_val=1, max_val=1000)]
+    return instance
+
+
 def create_play_station_reconcile_request_example() -> PlayStationReconcileRequest:
     instance = PlayStationReconcileRequest()
     instance.currency_code = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
     instance.product_id = randomize("uid")
     instance.service_label = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_play_station_reconcile_result_example() -> PlayStationReconcileResult:
-    instance = PlayStationReconcileResult()
-    instance.item_id = randomize()
-    instance.psn_item_id = randomize()
-    instance.sku = randomize("slug")
-    instance.status = randomize()
-    instance.transaction_id = randomize("uid")
     return instance
 
 
@@ -2782,6 +2855,7 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.listable = randomize("bool")
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
+    instance.loot_box_config = create_loot_box_config_example()
     instance.max_count = randomize("int", min_val=1, max_val=1000)
     instance.max_count_per_user = randomize("int", min_val=1, max_val=1000)
     instance.option_box_config = create_option_box_config_example()
@@ -3370,37 +3444,6 @@ def create_timed_ownership_example() -> TimedOwnership:
     instance = TimedOwnership()
     instance.owned = randomize("bool")
     instance.end_date = randomize("date")
-    return instance
-
-
-def create_tracked_entitlement_info_example() -> TrackedEntitlementInfo:
-    instance = TrackedEntitlementInfo()
-    instance.clazz = randomize()
-    instance.created_at = randomize("date")
-    instance.granted_at = randomize("date")
-    instance.id_ = randomize()
-    instance.item_id = randomize()
-    instance.item_namespace = randomize("slug")
-    instance.name = randomize()
-    instance.namespace = randomize("slug")
-    instance.source = randomize()
-    instance.status = randomize()
-    instance.type_ = randomize()
-    instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
-    instance.app_id = randomize("uid")
-    instance.app_type = randomize()
-    instance.end_date = randomize("date")
-    instance.features = [randomize()]
-    instance.granted_code = randomize()
-    instance.item_snapshot = create_item_snapshot_example()
-    instance.replayed = randomize("bool")
-    instance.request_id = randomize()
-    instance.sku = randomize("slug")
-    instance.stackable = randomize("bool")
-    instance.start_date = randomize("date")
-    instance.store_id = randomize()
-    instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

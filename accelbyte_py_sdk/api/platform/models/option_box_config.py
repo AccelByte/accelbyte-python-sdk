@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,25 +27,25 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.option_box_item import OptionBoxItem
+from ..models.box_item import BoxItem
 
 
 class OptionBoxConfig(Model):
     """Option box config. (OptionBoxConfig)
 
     Properties:
-        box_items: (boxItems) OPTIONAL List[OptionBoxItem]
+        box_items: (boxItems) OPTIONAL List[BoxItem]
     """
 
     # region fields
 
-    box_items: List[OptionBoxItem]  # OPTIONAL
+    box_items: List[BoxItem]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_box_items(self, value: List[OptionBoxItem]) -> OptionBoxConfig:
+    def with_box_items(self, value: List[BoxItem]) -> OptionBoxConfig:
         self.box_items = value
         return self
 
@@ -70,7 +70,7 @@ class OptionBoxConfig(Model):
     @classmethod
     def create(
         cls,
-        box_items: Optional[List[OptionBoxItem]] = None,
+        box_items: Optional[List[BoxItem]] = None,
     ) -> OptionBoxConfig:
         instance = cls()
         if box_items is not None:
@@ -86,7 +86,7 @@ class OptionBoxConfig(Model):
             return instance
         if "boxItems" in dict_ and dict_["boxItems"] is not None:
             instance.box_items = [
-                OptionBoxItem.create_from_dict(i0, include_empty=include_empty)
+                BoxItem.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["boxItems"]
             ]
         elif include_empty:

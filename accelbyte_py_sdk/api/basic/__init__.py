@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Basic Service."""
 
-__version__ = "2.2.1"
+__version__ = "2.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 from ..models.image import Image
 from ..models.localization import Localization
+from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.purchase_condition import PurchaseCondition
 from ..models.recurring import Recurring
@@ -48,6 +49,7 @@ class ItemTypeEnum(StrEnum):
     COINS = "COINS"
     EXTENSION = "EXTENSION"
     INGAMEITEM = "INGAMEITEM"
+    LOOTBOX = "LOOTBOX"
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SEASON = "SEASON"
@@ -123,6 +125,8 @@ class FullItemInfo(Model):
 
         listable: (listable) OPTIONAL bool
 
+        loot_box_config: (lootBoxConfig) OPTIONAL LootBoxConfig
+
         max_count: (maxCount) OPTIONAL int
 
         max_count_per_user: (maxCountPerUser) OPTIONAL int
@@ -180,6 +184,7 @@ class FullItemInfo(Model):
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
+    loot_box_config: LootBoxConfig  # OPTIONAL
     max_count: int  # OPTIONAL
     max_count_per_user: int  # OPTIONAL
     option_box_config: OptionBoxConfig  # OPTIONAL
@@ -296,6 +301,10 @@ class FullItemInfo(Model):
 
     def with_listable(self, value: bool) -> FullItemInfo:
         self.listable = value
+        return self
+
+    def with_loot_box_config(self, value: LootBoxConfig) -> FullItemInfo:
+        self.loot_box_config = value
         return self
 
     def with_max_count(self, value: int) -> FullItemInfo:
@@ -468,6 +477,12 @@ class FullItemInfo(Model):
             result["listable"] = bool(self.listable)
         elif include_empty:
             result["listable"] = False
+        if hasattr(self, "loot_box_config"):
+            result["lootBoxConfig"] = self.loot_box_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["lootBoxConfig"] = LootBoxConfig()
         if hasattr(self, "max_count"):
             result["maxCount"] = int(self.max_count)
         elif include_empty:
@@ -565,6 +580,7 @@ class FullItemInfo(Model):
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
+        loot_box_config: Optional[LootBoxConfig] = None,
         max_count: Optional[int] = None,
         max_count_per_user: Optional[int] = None,
         option_box_config: Optional[OptionBoxConfig] = None,
@@ -619,6 +635,8 @@ class FullItemInfo(Model):
             instance.item_qty = item_qty
         if listable is not None:
             instance.listable = listable
+        if loot_box_config is not None:
+            instance.loot_box_config = loot_box_config
         if max_count is not None:
             instance.max_count = max_count
         if max_count_per_user is not None:
@@ -766,6 +784,12 @@ class FullItemInfo(Model):
             instance.listable = bool(dict_["listable"])
         elif include_empty:
             instance.listable = False
+        if "lootBoxConfig" in dict_ and dict_["lootBoxConfig"] is not None:
+            instance.loot_box_config = LootBoxConfig.create_from_dict(
+                dict_["lootBoxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.loot_box_config = LootBoxConfig()
         if "maxCount" in dict_ and dict_["maxCount"] is not None:
             instance.max_count = int(dict_["maxCount"])
         elif include_empty:
@@ -895,6 +919,7 @@ class FullItemInfo(Model):
             "itemIds": "item_ids",
             "itemQty": "item_qty",
             "listable": "listable",
+            "lootBoxConfig": "loot_box_config",
             "maxCount": "max_count",
             "maxCountPerUser": "max_count_per_user",
             "optionBoxConfig": "option_box_config",
@@ -939,6 +964,7 @@ class FullItemInfo(Model):
             "itemIds": False,
             "itemQty": False,
             "listable": False,
+            "lootBoxConfig": False,
             "maxCount": False,
             "maxCountPerUser": False,
             "optionBoxConfig": False,
@@ -967,6 +993,7 @@ class FullItemInfo(Model):
                 "COINS",
                 "EXTENSION",
                 "INGAMEITEM",
+                "LOOTBOX",
                 "MEDIA",
                 "OPTIONBOX",
                 "SEASON",

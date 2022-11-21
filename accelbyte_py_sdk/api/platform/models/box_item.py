@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.0)
+# AccelByte Cloud Platform Service (4.17.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,8 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class OptionBoxItem(Model):
-    """Option box item (OptionBoxItem)
+class BoxItem(Model):
+    """box item (BoxItem)
 
     Properties:
         count: (count) OPTIONAL int
@@ -37,6 +37,8 @@ class OptionBoxItem(Model):
         item_id: (itemId) OPTIONAL str
 
         item_sku: (itemSku) OPTIONAL str
+
+        item_type: (itemType) OPTIONAL str
     """
 
     # region fields
@@ -44,21 +46,26 @@ class OptionBoxItem(Model):
     count: int  # OPTIONAL
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
+    item_type: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_count(self, value: int) -> OptionBoxItem:
+    def with_count(self, value: int) -> BoxItem:
         self.count = value
         return self
 
-    def with_item_id(self, value: str) -> OptionBoxItem:
+    def with_item_id(self, value: str) -> BoxItem:
         self.item_id = value
         return self
 
-    def with_item_sku(self, value: str) -> OptionBoxItem:
+    def with_item_sku(self, value: str) -> BoxItem:
         self.item_sku = value
+        return self
+
+    def with_item_type(self, value: str) -> BoxItem:
+        self.item_type = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class OptionBoxItem(Model):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
             result["itemSku"] = ""
+        if hasattr(self, "item_type"):
+            result["itemType"] = str(self.item_type)
+        elif include_empty:
+            result["itemType"] = ""
         return result
 
     # endregion to methods
@@ -91,7 +102,8 @@ class OptionBoxItem(Model):
         count: Optional[int] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
-    ) -> OptionBoxItem:
+        item_type: Optional[str] = None,
+    ) -> BoxItem:
         instance = cls()
         if count is not None:
             instance.count = count
@@ -99,12 +111,12 @@ class OptionBoxItem(Model):
             instance.item_id = item_id
         if item_sku is not None:
             instance.item_sku = item_sku
+        if item_type is not None:
+            instance.item_type = item_type
         return instance
 
     @classmethod
-    def create_from_dict(
-        cls, dict_: dict, include_empty: bool = False
-    ) -> OptionBoxItem:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> BoxItem:
         instance = cls()
         if not dict_:
             return instance
@@ -120,12 +132,16 @@ class OptionBoxItem(Model):
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
             instance.item_sku = ""
+        if "itemType" in dict_ and dict_["itemType"] is not None:
+            instance.item_type = str(dict_["itemType"])
+        elif include_empty:
+            instance.item_type = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, OptionBoxItem]:
+    ) -> Dict[str, BoxItem]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -135,7 +151,7 @@ class OptionBoxItem(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[OptionBoxItem]:
+    ) -> List[BoxItem]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -145,7 +161,7 @@ class OptionBoxItem(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[OptionBoxItem, List[OptionBoxItem], Dict[Any, OptionBoxItem]]:
+    ) -> Union[BoxItem, List[BoxItem], Dict[Any, BoxItem]]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -162,6 +178,7 @@ class OptionBoxItem(Model):
             "count": "count",
             "itemId": "item_id",
             "itemSku": "item_sku",
+            "itemType": "item_type",
         }
 
     @staticmethod
@@ -170,6 +187,7 @@ class OptionBoxItem(Model):
             "count": False,
             "itemId": False,
             "itemSku": False,
+            "itemType": False,
         }
 
     # endregion static methods

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.17.0)
+# AccelByte Cloud Platform Service Index (4.17.1)
 
 
 ## Operations
@@ -93,6 +93,7 @@
 | /platform/admin/namespaces/{namespace}/dlc/config/item | GET | getDLCItemConfig | [GetDLCItemConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/get_dlc_item_config.py) | [get_dlc_item_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-dlc-item-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_dlc_item_config.py) |
 | /platform/admin/namespaces/{namespace}/dlc/config/platformMap | GET | getPlatformDLCConfig | [GetPlatformDLCConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/get_platform_dlc_config.py) | [get_platform_dlc_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-platform-dlc-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_platform_dlc_config.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync | PUT | publicSyncPsnDlcInventory | [PublicSyncPsnDlcInventory](../../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inventory.py) | [public_sync_psn_dlc_inventory](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-sync-psn-dlc-inventory](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sync_psn_dlc_inventory.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels | PUT | publicSyncPsnDlcInventoryWithMultipleServiceLabels | [PublicSyncPsnDlcInventoryWithMultipleServiceLabels](../../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inv_429118.py) | [public_sync_psn_dlc_inventory_with_multiple_service_labels](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-sync-psn-dlc-inventory-with-multiple-service-labels](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sync_psn_dlc_inv_429118.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync | PUT | syncEpicGameDLC | [SyncEpicGameDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/sync_epic_game_dlc.py) | [sync_epic_game_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-epic-game-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_epic_game_dlc.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync | PUT | syncSteamDLC | [SyncSteamDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/sync_steam_dlc.py) | [sync_steam_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-steam-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_steam_dlc.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync | PUT | syncXboxDLC | [SyncXboxDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/sync_xbox_dlc.py) | [sync_xbox_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-xbox-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_xbox_dlc.py) |
@@ -186,6 +187,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt | PUT | publicFulfillAppleIAPItem | [PublicFulfillAppleIAPItem](../../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_apple_iap_item.py) | [public_fulfill_apple_iap_item](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-fulfill-apple-iap-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_fulfill_apple_iap_item.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt | PUT | publicFulfillGoogleIAPItem | [PublicFulfillGoogleIAPItem](../../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_google_iap_item.py) | [public_fulfill_google_iap_item](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-fulfill-google-iap-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_fulfill_google_iap_item.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync | PUT | publicReconcilePlayStationStore | [PublicReconcilePlayStationStore](../../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_s_7ac4de.py) | [public_reconcile_play_station_store](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-reconcile-play-station-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_reconcile_play_s_7ac4de.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels | PUT | publicReconcilePlayStationStoreWithMultipleServiceLabels | [PublicReconcilePlayStationStoreWithMultipleServiceLabels](../../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_s_6be6c0.py) | [public_reconcile_play_station_store_with_multiple_service_labels](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-reconcile-play-station-store-with-multiple-service-labels](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_reconcile_play_s_6be6c0.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/all | GET | queryAllUserIAPOrders | [QueryAllUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_all_user_iap_orders.py) | [query_all_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-all-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_all_user_iap_orders.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history | GET | queryUserIAPConsumeHistory | [QueryUserIAPConsumeHistory](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_consume_history.py) | [query_user_iap_consume_history](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-consume-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_consume_history.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap | GET | queryUserIAPOrders | [QueryUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_orders.py) | [query_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_orders.py) |
@@ -502,6 +504,7 @@
 | BillingAccount | [BillingAccount](../../accelbyte_py_sdk/api/platform/models/billing_account.py) |
 | BillingHistoryInfo | [BillingHistoryInfo](../../accelbyte_py_sdk/api/platform/models/billing_history_info.py) |
 | BillingHistoryPagingSlicedResult | [BillingHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/billing_history_paging_sliced_result.py) |
+| BoxItem | [BoxItem](../../accelbyte_py_sdk/api/platform/models/box_item.py) |
 | BulkOperationResult | [BulkOperationResult](../../accelbyte_py_sdk/api/platform/models/bulk_operation_result.py) |
 | BundledItemInfo | [BundledItemInfo](../../accelbyte_py_sdk/api/platform/models/bundled_item_info.py) |
 | CampaignCreate | [CampaignCreate](../../accelbyte_py_sdk/api/platform/models/campaign_create.py) |
@@ -543,9 +546,11 @@
 | DLCItemConfigInfo | [DLCItemConfigInfo](../../accelbyte_py_sdk/api/platform/models/dlc_item_config_info.py) |
 | DLCItemConfigUpdate | [DLCItemConfigUpdate](../../accelbyte_py_sdk/api/platform/models/dlc_item_config_update.py) |
 | EntitlementDecrement | [EntitlementDecrement](../../accelbyte_py_sdk/api/platform/models/entitlement_decrement.py) |
+| EntitlementDecrementResult | [EntitlementDecrementResult](../../accelbyte_py_sdk/api/platform/models/entitlement_decrement_result.py) |
 | EntitlementGrant | [EntitlementGrant](../../accelbyte_py_sdk/api/platform/models/entitlement_grant.py) |
 | EntitlementHistoryInfo | [EntitlementHistoryInfo](../../accelbyte_py_sdk/api/platform/models/entitlement_history_info.py) |
 | EntitlementInfo | [EntitlementInfo](../../accelbyte_py_sdk/api/platform/models/entitlement_info.py) |
+| EntitlementLootBoxReward | [EntitlementLootBoxReward](../../accelbyte_py_sdk/api/platform/models/entitlement_loot_box_reward.py) |
 | EntitlementOwnership | [EntitlementOwnership](../../accelbyte_py_sdk/api/platform/models/entitlement_ownership.py) |
 | EntitlementPagingSlicedResult | [EntitlementPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/entitlement_paging_sliced_result.py) |
 | EntitlementSummary | [EntitlementSummary](../../accelbyte_py_sdk/api/platform/models/entitlement_summary.py) |
@@ -622,10 +627,11 @@
 | KeyInfo | [KeyInfo](../../accelbyte_py_sdk/api/platform/models/key_info.py) |
 | KeyPagingSliceResult | [KeyPagingSliceResult](../../accelbyte_py_sdk/api/platform/models/key_paging_slice_result.py) |
 | Localization | [Localization](../../accelbyte_py_sdk/api/platform/models/localization.py) |
+| LootBoxConfig | [LootBoxConfig](../../accelbyte_py_sdk/api/platform/models/loot_box_config.py) |
+| LootBoxReward | [LootBoxReward](../../accelbyte_py_sdk/api/platform/models/loot_box_reward.py) |
 | MockIAPReceipt | [MockIAPReceipt](../../accelbyte_py_sdk/api/platform/models/mock_iap_receipt.py) |
 | NotificationProcessResult | [NotificationProcessResult](../../accelbyte_py_sdk/api/platform/models/notification_process_result.py) |
 | OptionBoxConfig | [OptionBoxConfig](../../accelbyte_py_sdk/api/platform/models/option_box_config.py) |
-| OptionBoxItem | [OptionBoxItem](../../accelbyte_py_sdk/api/platform/models/option_box_item.py) |
 | Order | [Order](../../accelbyte_py_sdk/api/platform/models/order.py) |
 | OrderCreate | [OrderCreate](../../accelbyte_py_sdk/api/platform/models/order_create.py) |
 | OrderGrantInfo | [OrderGrantInfo](../../accelbyte_py_sdk/api/platform/models/order_grant_info.py) |
@@ -682,10 +688,11 @@
 | PlatformWallet | [PlatformWallet](../../accelbyte_py_sdk/api/platform/models/platform_wallet.py) |
 | PlatformWalletConfigInfo | [PlatformWalletConfigInfo](../../accelbyte_py_sdk/api/platform/models/platform_wallet_config_info.py) |
 | PlatformWalletConfigUpdate | [PlatformWalletConfigUpdate](../../accelbyte_py_sdk/api/platform/models/platform_wallet_config_update.py) |
+| PlayStationDLCSyncMultiServiceLabelsRequest | [PlayStationDLCSyncMultiServiceLabelsRequest](../../accelbyte_py_sdk/api/platform/models/play_station_dlc_sync_multi_service_labels_request.py) |
 | PlayStationDLCSyncRequest | [PlayStationDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/play_station_dlc_sync_request.py) |
 | PlayStationIAPConfigInfo | [PlayStationIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/play_station_iap_config_info.py) |
+| PlayStationMultiServiceLabelsReconcileRequest | [PlayStationMultiServiceLabelsReconcileRequest](../../accelbyte_py_sdk/api/platform/models/play_station_multi_service_labels_reconcile_request.py) |
 | PlayStationReconcileRequest | [PlayStationReconcileRequest](../../accelbyte_py_sdk/api/platform/models/play_station_reconcile_request.py) |
-| PlayStationReconcileResult | [PlayStationReconcileResult](../../accelbyte_py_sdk/api/platform/models/play_station_reconcile_result.py) |
 | PlaystationIAPConfigRequest | [PlaystationIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/playstation_iap_config_request.py) |
 | PopulatedItemInfo | [PopulatedItemInfo](../../accelbyte_py_sdk/api/platform/models/populated_item_info.py) |
 | predicate object | [PredicateObject](../../accelbyte_py_sdk/api/platform/models/predicate_object.py) |
@@ -743,7 +750,6 @@
 | TicketSaleIncrementResult | [TicketSaleIncrementResult](../../accelbyte_py_sdk/api/platform/models/ticket_sale_increment_result.py) |
 | Time-limited balance | [TimeLimitedBalance](../../accelbyte_py_sdk/api/platform/models/time_limited_balance.py) |
 | TimedOwnership | [TimedOwnership](../../accelbyte_py_sdk/api/platform/models/timed_ownership.py) |
-| TrackedEntitlementInfo | [TrackedEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/tracked_entitlement_info.py) |
 | TradeNotification | [TradeNotification](../../accelbyte_py_sdk/api/platform/models/trade_notification.py) |
 | Transaction | [Transaction](../../accelbyte_py_sdk/api/platform/models/transaction.py) |
 | TransactionAmountDetails | [TransactionAmountDetails](../../accelbyte_py_sdk/api/platform/models/transaction_amount_details.py) |

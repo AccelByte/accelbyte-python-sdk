@@ -47,8 +47,8 @@ from ..models import IAPItemConfigUpdate
 from ..models import IAPOrderPagingSlicedResult
 from ..models import MockIAPReceipt
 from ..models import PlayStationIAPConfigInfo
+from ..models import PlayStationMultiServiceLabelsReconcileRequest
 from ..models import PlayStationReconcileRequest
-from ..models import PlayStationReconcileResult
 from ..models import PlaystationIAPConfigRequest
 from ..models import StadiaIAPConfigInfo
 from ..models import StadiaSyncRequest
@@ -87,6 +87,7 @@ from ..operations.iap import MockFulfillIAPItem
 from ..operations.iap import PublicFulfillAppleIAPItem
 from ..operations.iap import PublicFulfillGoogleIAPItem
 from ..operations.iap import PublicReconcilePlayStationStore
+from ..operations.iap import PublicReconcilePlayStationStoreWithMultipleServiceLabels
 from ..operations.iap import QueryAllUserIAPOrders
 from ..operations.iap import QueryUserIAPConsumeHistory
 from ..operations.iap import (
@@ -113,7 +114,6 @@ from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
-from ..models import PlayStationReconcileResultStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
 
 
@@ -888,6 +888,48 @@ async def public_reconcile_play_station_store_async(
         if error:
             return None, error
     request = PublicReconcilePlayStationStore.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicReconcilePlayStationStoreWithMultipleServiceLabels)
+def public_reconcile_play_station_store_with_multiple_service_labels(
+    user_id: str,
+    body: Optional[PlayStationMultiServiceLabelsReconcileRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicReconcilePlayStationStoreWithMultipleServiceLabels.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicReconcilePlayStationStoreWithMultipleServiceLabels)
+async def public_reconcile_play_station_store_with_multiple_service_labels_async(
+    user_id: str,
+    body: Optional[PlayStationMultiServiceLabelsReconcileRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicReconcilePlayStationStoreWithMultipleServiceLabels.create(
         user_id=user_id,
         body=body,
         namespace=namespace,
