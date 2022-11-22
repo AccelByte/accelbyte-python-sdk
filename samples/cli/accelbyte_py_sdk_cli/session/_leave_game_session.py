@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.session import (
     leave_game_session as leave_game_session_internal,
 )
-from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionResponse
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
