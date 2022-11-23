@@ -41,10 +41,10 @@ class IAMTestCase(IntegrationTestCase):
         return result, error, user_id
 
     def tearDown(self) -> None:
-        from accelbyte_py_sdk.api.iam import delete_user
+        from accelbyte_py_sdk.api.iam import admin_delete_user_information_v3
 
         if self.user_id is not None:
-            _, error = delete_user(user_id=self.user_id)
+            _, error = admin_delete_user_information_v3(user_id=self.user_id)
             self.log_warning(
                 msg=f"Failed to tear down user. {str(error)}",
                 condition=error is not None,
@@ -74,7 +74,7 @@ class IAMTestCase(IntegrationTestCase):
     # region test:delete_user
 
     def test_delete_user(self):
-        from accelbyte_py_sdk.api.iam import delete_user
+        from accelbyte_py_sdk.api.iam import admin_delete_user_information_v3
 
         # arrange
         _, error, user_id = self.do_create_user(body=self.model_user_create_request)
@@ -84,7 +84,7 @@ class IAMTestCase(IntegrationTestCase):
         self.user_id = user_id
 
         # act
-        _, error = delete_user(user_id=self.user_id)
+        _, error = admin_delete_user_information_v3(user_id=self.user_id)
 
         # assert
         self.assertIsNone(error, error)
