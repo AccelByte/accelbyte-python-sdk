@@ -6,11 +6,13 @@ import yaml
 from abc import ABC
 from pathlib import Path
 from queue import Queue
-from typing import Optional
+from typing import Any, Optional, Tuple
 from unittest import IsolatedAsyncioTestCase
 from unittest import TestCase
 
 import accelbyte_py_sdk
+from accelbyte_py_sdk import AccelByteSDK
+from accelbyte_py_sdk.core import EnvironmentConfigRepository, InMemoryTokenRepository
 from accelbyte_py_sdk.core import WebsocketsWSClient
 
 LOGGER = logging.getLogger("tests.sample_apps.how_to")
@@ -144,6 +146,87 @@ class SDKTestCaseUtils:
         http_client = get_http_client()
         http_client.retry_policy = retry
         http_client.backoff_policy = backoff
+
+    @staticmethod
+    def generate_user(
+        country: str = "US",
+        date_of_birth: str = "1990-01-01",
+        email_domain: str = "test.com",
+        user_prefix: str = "python_sdk_",
+        namespace: Optional[str] = None,
+        sdk: Optional[AccelByteSDK] = None,
+    ) -> Tuple[Optional[Tuple[str, str, str]], Any]:
+        import accelbyte_py_sdk.api.iam as iam_service
+        import accelbyte_py_sdk.api.iam.models as iam_models
+        from accelbyte_py_sdk.core import generate_id
+
+        username = f"{user_prefix}{generate_id(8)}"
+        password = f"$1,{generate_id(16)}aZ"
+        email_address = f"{username}@{email_domain}"
+
+        result, error = iam_service.public_create_user_v4(
+            body=iam_models.AccountCreateUserRequestV4.create_from_dict(
+                {
+                    "authType": "EMAILPASSWD",
+                    "country": country,
+                    "emailAddress": email_address,
+                    "username": username,
+                    "password": password,
+                    # optional
+                    "dateOfBirth": date_of_birth,
+                }
+            ),
+            namespace=namespace,
+            sdk=sdk,
+        )
+        if error:
+            return None, error
+
+        if not (user_id := getattr(result, "user_id", None)):
+            return None, "userId not found"
+
+        return (username, password, user_id), None
+
+    @staticmethod
+    def delete_user(
+        user_id: str,
+        namespace: Optional[str] = None,
+        sdk: Optional[AccelByteSDK] = None,
+    ):
+        import accelbyte_py_sdk.api.iam as iam_service
+        import accelbyte_py_sdk.api.iam.models as iam_models
+
+        _, _ = iam_service.admin_delete_user_information_v3(
+            user_id=user_id,
+            namespace=namespace,
+            sdk=sdk,
+        )
+
+    @staticmethod
+    def create_user_sdk(
+        username: str, password: str, existing_sdk: Optional[AccelByteSDK] = None
+    ) -> Tuple[Optional[AccelByteSDK], Any]:
+        from accelbyte_py_sdk.services.auth import login_user
+
+        sdk = AccelByteSDK()
+        sdk.initialize(
+            options={
+                "config": existing_sdk.get_config_repository()
+                if existing_sdk is not None
+                else EnvironmentConfigRepository(),
+                "token": InMemoryTokenRepository(),
+            }
+        )
+
+        result, error = login_user(
+            username=username,
+            password=password,
+            sdk=sdk,
+        )
+        if error:
+            return None, error
+
+        return sdk, None
 
 
 class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
