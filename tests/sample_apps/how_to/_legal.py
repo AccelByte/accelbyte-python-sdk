@@ -173,5 +173,6 @@ class LegalTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
 
+    # endregion test:retrieve_agreements_public
 
-# endregion test:retrieve_agreements_public
+    # end of file

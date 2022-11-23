@@ -164,5 +164,6 @@ class SessionBrowserTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.game_session_setting)
         self.assertEqual(1, result.game_session_setting.max_player)
 
+    # endregion test:update_session
 
-# endregion test:update_session
+    # end of file

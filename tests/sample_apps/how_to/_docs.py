@@ -49,5 +49,6 @@ class DocsTestCase(IntegrationTestCase):
 
         self.assertIsNone(error)
 
+    # endregion test:initialize_sdk_and_call_token_grant_v3
 
-# endregion test:initialize_sdk_and_call_token_grant_v3
+    # end of file

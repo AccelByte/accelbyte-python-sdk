@@ -198,5 +198,6 @@ class AchievementTestCase(IntegrationTestCase):
         self.assertIn("ID", result.name)
         self.assertEqual("NAMA", result.name["ID"])
 
+    # endregion test:admin_update_achievement
 
-# endregion test:admin_update_achievement
+    # end of file

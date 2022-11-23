@@ -117,5 +117,6 @@ class BasicTestCase(IntegrationTestCase):
         self.assertEqual("Pertama", result.first_name)
         self.assertEqual("Terakhir", result.last_name)
 
+    # endregion test:public_update_user_profile
 
-# endregion test:public_update_user_profile
+    # end of file

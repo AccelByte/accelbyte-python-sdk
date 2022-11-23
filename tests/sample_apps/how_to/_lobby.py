@@ -98,3 +98,5 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
         self.assertEqual("partyCreateResponse", wsm_type)
 
     # endregion test:send_and_receive_notifications
+
+    # end of file

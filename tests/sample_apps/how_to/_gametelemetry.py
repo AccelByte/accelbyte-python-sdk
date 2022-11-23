@@ -84,5 +84,6 @@ class GametelemetryTestCase(IntegrationTestCase):
         else:
             self.assertIsNone(error, error)
 
+    # endregion test:update_playtime_v1
 
-# endregion test:update_playtime_v1
+    # end of file

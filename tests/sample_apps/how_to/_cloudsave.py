@@ -121,5 +121,6 @@ class CloudSaveTestCase(IntegrationTestCase):
         self.assertIn("foo", result.value)
         self.assertEqual("baz", result.value["foo"])
 
+    # endregion test:put_game_record_handler_v1
 
-# endregion test:put_game_record_handler_v1
+    # end of file

@@ -27,5 +27,6 @@ class QosmTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:heartbeat
 
-# endregion test:heartbeat
+    # end of file

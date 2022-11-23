@@ -221,5 +221,6 @@ class GroupTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.group_name)
         self.assertEqual("NAMA_GRUP", result.group_name)
 
+    # endregion test:update_single_group_v1
 
-# endregion test:update_single_group_v1
+    # end of file

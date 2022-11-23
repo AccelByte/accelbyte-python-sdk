@@ -169,5 +169,6 @@ class LeaderboardTestCase(IntegrationTestCase):
         self.assertIsInstance(result, ModelsGetLeaderboardConfigResp)
         self.assertEqual(result.stat_code, "KODE_STATUS")
 
+    # endregion test:update_user
 
-# endregion test:update_user
+    # end of file

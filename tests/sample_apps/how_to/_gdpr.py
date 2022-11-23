@@ -210,5 +210,6 @@ class GDPRTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:update_admin_email_configuration
 
-# endregion test:update_admin_email_configuration
+    # end of file

@@ -240,3 +240,5 @@ class PlatformTestCase(IntegrationTestCase):
         self.assertEqual("JUDUL", result.title)
 
     # endregion test:update_store
+
+    # end of file

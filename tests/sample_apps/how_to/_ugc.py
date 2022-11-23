@@ -120,5 +120,6 @@ class UGCTestCase(IntegrationTestCase):
         self.assertIsNotNone(result.tag)
         self.assertEqual("MENANDAI", result.tag)
 
+    # endregion test:admin_update_tag
 
-# endregion test:admin_update_tag
+    # end of file
