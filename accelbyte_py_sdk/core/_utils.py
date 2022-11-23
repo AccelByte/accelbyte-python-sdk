@@ -201,6 +201,11 @@ def flatten_query_params(
     return "?" + "&".join(f"{k}={v}" for k, v in flattened_query_params)
 
 
+def generate_id(length: int) -> str:
+    uuid_str = str(uuid4()).replace("-", "")[0:length]
+    return uuid_str
+
+
 def generate_amazon_xray_trace_id(
     version: int = 1, request_time: Union[None, float] = None
 ) -> str:
@@ -215,8 +220,7 @@ def generate_amazon_xray_trace_id(
 
 
 def generate_websocket_message_id() -> str:
-    uuid_str = str(uuid4()).replace("-", "")[0:24]
-    return uuid_str
+    return generate_id(24)
 
 
 def get_env_config() -> Tuple[str, str, str, str]:
