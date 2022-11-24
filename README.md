@@ -78,6 +78,7 @@ if __name__ == "__main__":
 You could also pass in options like so:
 
 ```python
+from os import environ
 import accelbyte_py_sdk
 from accelbyte_py_sdk.core import MyConfigRepository
 
@@ -138,6 +139,7 @@ Here `login_user(username, password)` and `logout()` are wrapper functions.
 #### Login using OAuth Client (Public or Confidential)
 
 ```python
+from os import environ
 import accelbyte_py_sdk
 from accelbyte_py_sdk.services.auth import login_client
 
