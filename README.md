@@ -463,7 +463,7 @@ Sample apps are available in the [samples](samples) directory
 
 For documentation about AccelByte services and SDK, see [docs.accelbyte.io](https://docs.accelbyte.io/)
 
-:bulb: Check out the index files in the [docs](/docs) directory if you are looking for a specific endpoint.
+:bulb: Check out the index files in the [docs](docs) directory if you are looking for a specific endpoint.
 
 ---
 
