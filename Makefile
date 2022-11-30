@@ -93,3 +93,14 @@ upload_dist: clean_dist build_dist
 			-c 'python -m venv /tmp && \
 					/tmp/bin/pip install --upgrade twine && \
 					/tmp/bin/python -m twine upload --verbose dist/*'
+
+test_broken_link:
+	@test -n "$(SDK_MD_CRAWLER_PATH)" || (echo "SDK_MD_CRAWLER_PATH is not set" ; exit 1)
+	rm -f test.err
+	bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i README.md
+	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i CHANGELOG.md
+	(for FILE in $$(find docs -type f); do \
+			(set -o pipefail; DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i $$FILE) || touch test.err; \
+	done)
+	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i "https://docs.accelbyte.io/guides/customization/python-sdk-guide.html"
+	[ ! -f test.err ]
