@@ -872,7 +872,7 @@ def test_create_user(self):
 
 ```python
 def test_delete_user(self):
-    from accelbyte_py_sdk.api.iam import delete_user
+    from accelbyte_py_sdk.api.iam import admin_delete_user_information_v3
 
     # arrange
     _, error, user_id = self.do_create_user(body=self.model_user_create_request)
@@ -882,7 +882,7 @@ def test_delete_user(self):
     self.user_id = user_id
 
     # act
-    _, error = delete_user(user_id=self.user_id)
+    _, error = admin_delete_user_information_v3(user_id=self.user_id)
 
     # assert
     self.assertIsNone(error, error)
@@ -1459,6 +1459,199 @@ async def test_send_and_receive_notifications(self):
     self.assertIsNotNone(wsm_type)
     self.assertEqual("partyCreateResponse", wsm_type)
 ```
+## Match V2
+
+Source: [_match2.py](../tests/sample_apps/how_to/_match2.py)
+
+### Create Match Pool
+
+```python
+def test_create_match_pool(self):
+    from accelbyte_py_sdk.core import generate_id
+
+    # arrange
+    rid = generate_id(8)
+    match_pool_name = f"python_sdk_pool_{rid}"
+    rule_set_name = f"python_sdk_ruleset_{rid}"
+    session_template_name = f"python_sdk_template_{rid}"
+
+    # act
+    pre_error, error = self.do_create_match_pool(
+        match_pool_name=match_pool_name,
+        rule_set_name=rule_set_name,
+        session_template_name=session_template_name,
+    )
+    if pre_error:
+        self.skipTest(reason=pre_error)
+    if error is None:
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Delete Match Pool
+
+```python
+def test_delete_match_pool(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.match2 import delete_match_pool
+
+    # arrange
+    rid = generate_id(8)
+    match_pool_name = f"python_sdk_pool_{rid}"
+    rule_set_name = f"python_sdk_ruleset_{rid}"
+    session_template_name = f"python_sdk_template_{rid}"
+    pre_error, error = self.do_create_match_pool(
+        match_pool_name=match_pool_name,
+        rule_set_name=rule_set_name,
+        session_template_name=session_template_name,
+    )
+    if pre_error:
+        self.skipTest(reason=pre_error)
+    if error:
+        self.skipTest(reason=f"unable to create match pool: {error}")
+    else:
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
+
+    # act
+    _, error = delete_match_pool(pool=match_pool_name)
+    if error is None:
+        self.match_pool_name = None
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Create Delete Match Ticket
+
+```python
+def test_create_delete_match_ticket(self):
+    from accelbyte_py_sdk.core import SDK
+    from accelbyte_py_sdk.core import generate_id
+    import accelbyte_py_sdk.api.match2 as match2_service
+    import accelbyte_py_sdk.api.match2.models as match2_models
+    import accelbyte_py_sdk.api.session as session_service
+    import accelbyte_py_sdk.api.session.models as session_models
+
+    # arrange
+    rid = generate_id(8)
+    match_pool_name = f"python_sdk_pool_{rid}"
+    rule_set_name = f"python_sdk_ruleset_{rid}"
+    session_template_name = f"python_sdk_template_{rid}"
+    pre_error, error = self.do_create_match_pool(
+        match_pool_name=match_pool_name,
+        rule_set_name=rule_set_name,
+        session_template_name=session_template_name,
+    )
+    if pre_error:
+        self.skipTest(reason=pre_error)
+    if error:
+        self.skipTest(reason=f"unable to create match pool: {error}")
+    else:
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
+
+    generate_user_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user: {error}")
+
+    username, password, user_id = generate_user_result
+    self.user_id = user_id
+
+    user_sdk, error = self.create_user_sdk(
+        username=username,
+        password=password,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user sdk: {error}")
+    else:
+        self.sdks.append(user_sdk)
+
+    result, error = session_service.create_game_session(
+        body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+            {
+                "configurationName": session_template_name,
+            }
+        ),
+        sdk=user_sdk,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create game session: {error}")
+
+    if not (game_session_id := getattr(result, "id_", None)):
+        self.skipTest(reason=f"unable to find game session id: {error}")
+
+    # act & assert (create_match_ticket)
+    result, error = match2_service.create_match_ticket(
+        body=match2_models.ApiMatchTicketRequest.create_from_dict(
+            {
+                "matchPool": match_pool_name,
+                "sessionId": game_session_id,
+            }
+        ),
+        sdk=user_sdk,
+    )
+
+    self.assertIsNone(error, error)
+
+    if not (match_ticket_id := getattr(result, "match_ticket_id", None)):
+        self.fail(msg="unable to find match ticket id")
+
+    # act & assert (delete_match_ticket)
+    _, error = match2_service.delete_match_ticket(
+        ticketid=match_ticket_id,
+        sdk=user_sdk,
+    )
+
+    self.assertIsNone(error, error)
+```
+### Match Pool List
+
+```python
+def test_match_pool_list(self):
+    from accelbyte_py_sdk.api.match2 import match_pool_list
+
+    # arrange
+
+    # act
+    _, error = match_pool_list()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Get Healthcheck Info
+
+```python
+def test_get_healthcheck_info(self):
+    from accelbyte_py_sdk.api.match2 import get_healthcheck_info
+
+    # arrange
+
+    # act
+    x, error = get_healthcheck_info()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Match Function List
+
+```python
+def test_match_function_list(self):
+    from accelbyte_py_sdk.api.match2 import match_function_list
+
+    # arrange
+
+    # act
+    result, error = match_function_list()
+
+    # assert
+    self.assertIsNone(error, error)
+```
 ## Matchmaking
 
 Source: [_matchmaking.py](../tests/sample_apps/how_to/_matchmaking.py)
@@ -1872,6 +2065,241 @@ def test_season_crud(self):
 
 def tearDown(self) -> None:
     self.do_delete_all_draft_stores()
+```
+## Session
+
+Source: [_session.py](../tests/sample_apps/how_to/_session.py)
+
+### Admin Create Configuration Template V1
+
+```python
+def test_admin_create_configuration_template_v1(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.session import admin_create_configuration_template_v1
+    from accelbyte_py_sdk.api.session.models import (
+        ApimodelsCreateConfigurationTemplateRequest,
+    )
+
+    # arrange
+    rid = generate_id(8)
+    template_name = f"python_sdk_template_{rid}"
+
+    # act
+    error = self.do_create_configuration_template(template_name=template_name)
+    if error is None:
+        self.template_name = template_name
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Delete Configuration Template V1
+
+```python
+def test_admin_delete_configuration_template_v1(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.session import admin_delete_configuration_template_v1
+
+    # arrange
+    rid = generate_id(8)
+    template_name = f"python_sdk_template_{rid}"
+    error = self.do_create_configuration_template(template_name=template_name)
+    if error:
+        self.skipTest(reason=f"unable to create configuration template: {error}")
+
+    # act
+    _, error = admin_delete_configuration_template_v1(name=template_name)
+    if error is None:
+        self.template_name = None
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Public Query Game Sessions
+
+```python
+def test_public_query_game_sessions(self):
+    from accelbyte_py_sdk.api.session import public_query_game_sessions
+
+    # arrange
+
+    # act
+    result, error = public_query_game_sessions(body={})
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Game Session Flow
+
+```python
+def test_game_session_flow(self):
+    from accelbyte_py_sdk.core import SDK, generate_id
+    import accelbyte_py_sdk.api.session as session_service
+    import accelbyte_py_sdk.api.session.models as session_models
+
+    # arrange
+    rid = generate_id(8)
+    template_name = f"python_sdk_template_{rid}"
+    error = self.do_create_configuration_template(template_name=template_name)
+    if error:
+        self.skipTest(reason=f"unable to create configuration template: {error}")
+    else:
+        self.template_name = template_name
+
+    generate_user1_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user1: {error}")
+    username1, password1, user_id1 = generate_user1_result
+    self.user_ids.append(user_id1)
+
+    generate_user2_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user2: {error}")
+    username2, password2, user_id2 = generate_user2_result
+    self.user_ids.append(user_id2)
+
+    user_sdk1, error = self.create_user_sdk(
+        username=username1,
+        password=password1,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user1 sdk: {error}")
+    else:
+        self.sdks.append(user_sdk1)
+
+    user_sdk2, error = self.create_user_sdk(
+        username=username2,
+        password=password2,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user2 sdk: {error}")
+    else:
+        self.sdks.append(user_sdk2)
+
+    # act & assert (create_game_session)
+    result, error = session_service.create_game_session(
+        body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+            {
+                "configurationName": template_name,
+            }
+        ),
+        sdk=user_sdk1,
+    )
+    self.assertIsNone(error, error)
+
+    if not (game_session_id := getattr(result, "id_", None)):
+        self.fail(msd=f"unable to find game session id")
+
+    # act & assert (join_game_sesion)
+    result, error = session_service.join_game_session(
+        session_id=game_session_id,
+        sdk=user_sdk2,
+    )
+    self.assertIsNone(error, error)
+
+    # act & assert (get_game_session)
+    result, error = session_service.get_game_session(
+        session_id=game_session_id,
+    )
+    self.assertIsNone(error, error)
+    self.assertEqual(len(result.members), 2)
+    user_ids = [member.id_ for member in result.members]
+    self.assertIn(user_id1, user_ids)
+    self.assertIn(user_id2, user_ids)
+```
+### Party Flow
+
+```python
+def test_party_flow(self):
+    from accelbyte_py_sdk.core import SDK, generate_id
+    import accelbyte_py_sdk.api.session as session_service
+    import accelbyte_py_sdk.api.session.models as session_models
+
+    # arrange
+    rid = generate_id(8)
+    template_name = f"python_sdk_template_{rid}"
+    error = self.do_create_configuration_template(template_name=template_name)
+    if error:
+        self.skipTest(reason=f"unable to create configuration template: {error}")
+    else:
+        self.template_name = template_name
+
+    generate_user1_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user1: {error}")
+    username1, password1, user_id1 = generate_user1_result
+    self.user_ids.append(user_id1)
+
+    generate_user2_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user2: {error}")
+    username2, password2, user_id2 = generate_user2_result
+    self.user_ids.append(user_id2)
+
+    user_sdk1, error = self.create_user_sdk(
+        username=username1,
+        password=password1,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user1 sdk: {error}")
+    else:
+        self.sdks.append(user_sdk1)
+
+    user_sdk2, error = self.create_user_sdk(
+        username=username2,
+        password=password2,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user2 sdk: {error}")
+    else:
+        self.sdks.append(user_sdk2)
+
+    # act & assert (public_create_party)
+    result, error = session_service.public_create_party(
+        body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
+            {
+                "configurationName": template_name,
+                "members": [
+                    {
+                        "ID": user_id1,
+                    }
+                ],
+            }
+        ),
+        sdk=user_sdk1,
+    )
+    self.assertIsNone(error, error)
+
+    if not (party_id := getattr(result, "id_", None)):
+        self.fail(msd=f"unable to find party id")
+
+    if not (party_code := getattr(result, "code", None)):
+        self.fail(msd=f"unable to find party code")
+
+    # act & assert (public_party_join_code)
+    result, error = session_service.public_party_join_code(
+        body=session_models.ApimodelsJoinByCodeRequest.create_from_dict(
+            {
+                "code": party_code,
+            }
+        ),
+        sdk=user_sdk2,
+    )
+    self.assertIsNone(error, error)
+
+    # act & assert (public_get_party)
+    result, error = session_service.public_get_party(
+        party_id=party_id,
+        sdk=user_sdk1,
+    )
+    self.assertIsNone(error, error)
+    self.assertEqual(len(result.members), 2)
+    user_ids = [member.id_ for member in result.members]
+    self.assertIn(user_id1, user_ids)
+    self.assertIn(user_id2, user_ids)
 ```
 ## Session Browser
 
