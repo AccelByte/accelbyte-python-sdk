@@ -8,5 +8,6 @@ PyYAML==6.0
 pyjwt[crypto]==2.2.0
 websockets==10.0
 
+accelbyte-py-sdk
+
 git+git://github.com/AccelByte/iam-python-sdk.git@1.0.0#egg=iam-python-sdk
-git+git://github.com/AccelByte/accelbyte-python-sdk.git@v0.28.0#egg=accelbyte_py_sdk
