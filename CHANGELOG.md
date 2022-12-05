@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.29.0
+- Add AccelByte OpenAPI2 Vendor Extensions document.
+- Add Getting Started sample.
+- Add new tests for Match2 and Session services.
+- Fix broken links in `docs/operations` and in `README.md`. 
+- Update IAM delete user test.
+- Update spec for AccelByte Cloud v3.37.0.
+
 ## v0.28.0
 - Updated spec for AccelByte Cloud v3.36.0.
 

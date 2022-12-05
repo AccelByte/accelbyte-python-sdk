@@ -43,15 +43,10 @@ class GDPRTestCase(IntegrationTestCase):
         return result, error, user_id
 
     def tearDown(self) -> None:
-        from accelbyte_py_sdk.api.iam import delete_user
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
 
         if self.user_id is not None:
-            _, error = delete_user(user_id=self.user_id, namespace=self.user_namespace)
-            self.log_warning(
-                msg=f"Failed to tear down user. {str(error)}",
-                condition=error is not None,
-            )
+            self.delete_user(user_id=self.user_id, namespace=self.user_namespace)
             self.user_id = None
         if self.did_configure:
             _, error = delete_admin_email_configuration(

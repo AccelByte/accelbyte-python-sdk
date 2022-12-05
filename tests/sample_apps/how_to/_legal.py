@@ -39,14 +39,8 @@ class LegalTestCase(IntegrationTestCase):
         return result, error, user_id
 
     def tearDown(self) -> None:
-        from accelbyte_py_sdk.api.iam import delete_user
-
         if self.user_id is not None:
-            _, error = delete_user(user_id=self.user_id)
-            self.log_warning(
-                msg=f"Failed to tear down user. {str(error)}",
-                condition=error is not None,
-            )
+            self.delete_user(user_id=self.user_id)
             self.user_id = None
         super().tearDown()
 

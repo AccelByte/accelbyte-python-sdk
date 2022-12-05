@@ -184,10 +184,8 @@ class DSMCSessionTestCase(IntegrationTestCase):
             body=self.models_create_session_request,
             namespace=self.models_create_session_request.namespace,
         )
-        self.log_warning(
-            msg=f"Failed to set up DSMC session. {str(error)}",
-            condition=error is not None,
-        )
+        if error is not None:
+            self.skipTest(reason=f"Failed to set up DSMC session. {str(error)}")
 
         time.sleep(5)
 
@@ -202,9 +200,14 @@ class DSMCSessionTestCase(IntegrationTestCase):
         if (
             error is not None
             and isinstance(error, ResponseError)
-            and "server is not ready" in error.error_message.lower()
         ):
-            self.skipTest(reason=f"Server is not ready yet.")
+            error_message = error.error_message.lower()
+            if "server is not ready" in error_message:
+                self.skipTest(reason=f"Server is not ready yet.")
+            elif "server is already claimed" in error_message:
+                self.skipTest(reason=f"Server was already claimed.")
+            else:
+                self.fail(msg=error)
         else:
             self.assertIsNone(error, error)
 
