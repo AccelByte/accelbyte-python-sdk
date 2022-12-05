@@ -42,14 +42,21 @@ class AuthServicesTestCase(IntegrationTestCase):
     # region test:login_platform
 
     def test_login_platform(self):
+        import os
         import requests
         from accelbyte_py_sdk.services.auth import login_platform
 
         # arrange
+        phantauth_url = os.environ.get("PHANTAUTH_URL")
+
         client_id = "test.client"
         client_secret = "UTBcWwt5"
         grant_type = "authorization_code"
-        phant_auth_host = "https://phantauth.net"
+        phantauth_host = (
+            phantauth_url.removesuffix("/")
+            if phantauth_url
+            else "https://phantauth.net"
+        )
         platform_id = "phantauth"
         redirect_uri = "http://localhost"
         token_type = "authorization"
@@ -58,7 +65,7 @@ class AuthServicesTestCase(IntegrationTestCase):
         response = requests.get(
             url="{host}/user/{username}/token/{tokenType}".format_map(
                 {
-                    "host": phant_auth_host,
+                    "host": phantauth_host,
                     "username": username,
                     "tokenType": token_type,
                 }
@@ -67,13 +74,13 @@ class AuthServicesTestCase(IntegrationTestCase):
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Code.")
 
-        phant_auth_code = response.text
-        self.assertTrue(phant_auth_code)
+        phantauth_code = response.text
+        self.assertTrue(phantauth_code)
 
         response = requests.post(
             url="{host}/auth/token".format_map(
                 {
-                    "host": phant_auth_host,
+                    "host": phantauth_host,
                 }
             ),
             data={
@@ -81,20 +88,20 @@ class AuthServicesTestCase(IntegrationTestCase):
                 "client_id": client_id,
                 "client_secret": client_secret,
                 "redirect_uri": redirect_uri,
-                "code": phant_auth_code,
+                "code": phantauth_code,
             },
         )
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Token.")
 
-        phant_auth_token = response.json()
-        self.assertTrue(phant_auth_token)
+        phantauth_token = response.json()
+        self.assertTrue(phantauth_token)
 
-        phant_auth_token_id = phant_auth_token["id_token"]
+        phantauth_token_id = phantauth_token["id_token"]
 
         # act
         _, error = login_platform(
-            platform_id=platform_id, platform_token=phant_auth_token_id
+            platform_id=platform_id, platform_token=phantauth_token_id
         )
 
         # assert
