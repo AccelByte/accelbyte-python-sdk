@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Social Service (1.31.0)
+# Accelbyte Cloud Social Service (1.31.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

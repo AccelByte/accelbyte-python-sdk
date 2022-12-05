@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.17.1)
+# justice-platform-service (4.18.1)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -188,11 +188,15 @@ from ._anonymize_order import anonymize_order
 from ._anonymize_payment import anonymize_payment
 from ._anonymize_subscription import anonymize_subscription
 from ._anonymize_wallet import anonymize_wallet
+from ._get_user_dlc import get_user_dlc
 from ._query_user_entitlements import query_user_entitlements
 from ._grant_user_entitlement import grant_user_entitlement
 from ._get_user_app_entitlement_by_app_id import get_user_app_entitlement_by_app_id
 from ._query_user_entitlements_by_app_type import query_user_entitlements_by_app_type
 from ._get_user_entitlement_by_item_id import get_user_entitlement_by_item_id
+from ._get_user_active_entitlements_by_item_ids import (
+    get_user_active_entitlements_by_item_ids,
+)
 from ._get_user_entitlement_by_sku import get_user_entitlement_by_sku
 from ._exists_any_user_active_entitlement import exists_any_user_active_entitlement
 from ._exists_any_user_active_entitlement_by_item_ids import (
@@ -612,11 +616,13 @@ commands = [
     anonymize_payment,
     anonymize_subscription,
     anonymize_wallet,
+    get_user_dlc,
     query_user_entitlements,
     grant_user_entitlement,
     get_user_app_entitlement_by_app_id,
     query_user_entitlements_by_app_type,
     get_user_entitlement_by_item_id,
+    get_user_active_entitlements_by_item_ids,
     get_user_entitlement_by_sku,
     exists_any_user_active_entitlement,
     exists_any_user_active_entitlement_by_item_ids,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Leaderboard Service (2.16.0)
+# Accelbyte Cloud Leaderboard Service (2.16.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

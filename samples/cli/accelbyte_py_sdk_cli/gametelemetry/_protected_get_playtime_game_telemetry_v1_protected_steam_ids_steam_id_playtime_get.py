@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Analytics Game Telemetry (1.13.1)
+# Analytics Game Telemetry (1.14.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
