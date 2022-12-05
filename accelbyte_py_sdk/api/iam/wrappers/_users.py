@@ -86,6 +86,7 @@ from ..models import ModelSendRegisterVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequest
 from ..models import ModelSendVerificationCodeRequestV3
 from ..models import ModelSendVerificationLinkRequest
+from ..models import ModelTokenThirdPartyLinkStatusResponse
 from ..models import ModelUnlinkUserPlatformRequest
 from ..models import ModelUpdatePermissionScheduleRequest
 from ..models import ModelUpdateUserDeletionStatusRequest
@@ -140,6 +141,7 @@ from ..operations.users import AdminGetBulkUserByEmailAddressV3
 from ..operations.users import AdminGetListCountryAgeRestrictionV3
 from ..operations.users import AdminGetListJusticePlatformAccounts
 from ..operations.users import AdminGetMyUserV3
+from ..operations.users import AdminGetThirdPartyPlatformTokenLinkStatusV3
 from ..operations.users import AdminGetUserBanV2
 from ..operations.users import AdminGetUserBanV3
 from ..operations.users import AdminGetUserByEmailAddressV3
@@ -1159,6 +1161,52 @@ async def admin_get_my_user_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     request = AdminGetMyUserV3.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetThirdPartyPlatformTokenLinkStatusV3)
+def admin_get_third_party_platform_token_link_status_v3(
+    platform_id: str,
+    platform_token: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetThirdPartyPlatformTokenLinkStatusV3.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetThirdPartyPlatformTokenLinkStatusV3)
+async def admin_get_third_party_platform_token_link_status_v3_async(
+    platform_id: str,
+    platform_token: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetThirdPartyPlatformTokenLinkStatusV3.create(
+        platform_id=platform_id,
+        platform_token=platform_token,
+        user_id=user_id,
+        namespace=namespace,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

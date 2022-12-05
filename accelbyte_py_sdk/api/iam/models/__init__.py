@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.21.0"
+__version__ = "5.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -260,6 +260,9 @@ from .model_third_party_login_platform_credential_request import (
 )
 from .model_third_party_login_platform_credential_response import (
     ModelThirdPartyLoginPlatformCredentialResponse,
+)
+from .model_token_third_party_link_status_response import (
+    ModelTokenThirdPartyLinkStatusResponse,
 )
 from .model_unlink_user_platform_request import ModelUnlinkUserPlatformRequest
 from .model_update_permission_schedule_request import (

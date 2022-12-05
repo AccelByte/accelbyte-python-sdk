@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.1"
+__version__ = "4.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,7 @@ from .enable_user_entitlement import EnableUserEntitlement
 from .exists_any_user_active__fca16a import ExistsAnyUserActiveEntitlement
 from .exists_any_user_active__9d3175 import ExistsAnyUserActiveEntitlementByItemIds
 from .get_entitlement import GetEntitlement
+from .get_user_active_entitle_d52ca8 import GetUserActiveEntitlementsByItemIds
 from .get_user_app_entitlemen_2375db import GetUserAppEntitlementByAppId
 from .get_user_app_entitlemen_282639 import GetUserAppEntitlementOwnershipByAppId
 from .get_user_entitlement import GetUserEntitlement

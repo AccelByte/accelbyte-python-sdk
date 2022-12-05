@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.1"
+__version__ = "4.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,8 @@ from .delete_dlc_item_config import DeleteDLCItemConfig
 from .delete_platform_dlc_config import DeletePlatformDLCConfig
 from .get_dlc_item_config import GetDLCItemConfig
 from .get_platform_dlc_config import GetPlatformDLCConfig
+from .get_user_dlc import GetUserDLC
+from .get_user_dlc import TypeEnum as GetUserDLCTypeEnum
 from .public_sync_psn_dlc_inventory import PublicSyncPsnDlcInventory
 from .public_sync_psn_dlc_inv_429118 import (
     PublicSyncPsnDlcInventoryWithMultipleServiceLabels,

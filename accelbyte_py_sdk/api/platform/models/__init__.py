@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.1"
+__version__ = "4.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -164,6 +164,8 @@ from .detailed_wallet_transaction_paging_sliced_result import (
 from .dlc_item import DLCItem
 from .dlc_item_config_info import DLCItemConfigInfo
 from .dlc_item_config_update import DLCItemConfigUpdate
+from .dlc_record import DLCRecord
+from .dlc_record import StatusEnum as DLCRecordStatusEnum
 from .entitlement_decrement import EntitlementDecrement
 from .entitlement_decrement_result import EntitlementDecrementResult
 from .entitlement_decrement_result import (
@@ -502,6 +504,10 @@ from .play_station_multi_service_labels_reconcile_request import (
     PlayStationMultiServiceLabelsReconcileRequest,
 )
 from .play_station_reconcile_request import PlayStationReconcileRequest
+from .play_station_reconcile_result import PlayStationReconcileResult
+from .play_station_reconcile_result import (
+    StatusEnum as PlayStationReconcileResultStatusEnum,
+)
 from .playstation_iap_config_request import PlaystationIAPConfigRequest
 from .populated_item_info import PopulatedItemInfo
 from .populated_item_info import (
@@ -533,6 +539,10 @@ from .region_data_item import CurrencyTypeEnum as RegionDataItemCurrencyTypeEnum
 from .request_history import RequestHistory
 from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
+from .revoke_item_summary import RevokeItemSummary
+from .revoke_item_summary import RevokeStatusEnum as RevokeItemSummaryRevokeStatusEnum
+from .revoke_result import RevokeResult
+from .revoke_result import StatusEnum as RevokeResultStatusEnum
 from .reward_condition import RewardCondition
 from .reward_create import RewardCreate
 from .reward_info import RewardInfo
@@ -616,6 +626,8 @@ from .transaction_amount_details import TransactionAmountDetails
 from .twitch_iap_config_info import TwitchIAPConfigInfo
 from .twitch_iap_config_request import TwitchIAPConfigRequest
 from .twitch_sync_request import TwitchSyncRequest
+from .user_dlc import UserDLC
+from .user_dlc import PlatformEnum as UserDLCPlatformEnum
 from .validation_error_entity import ValidationErrorEntity
 from .wallet_info import WalletInfo
 from .wallet_info import StatusEnum as WalletInfoStatusEnum

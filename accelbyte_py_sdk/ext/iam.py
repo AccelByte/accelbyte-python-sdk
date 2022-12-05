@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.21.0)
+# AccelByte Cloud Iam Service (5.22.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -213,6 +213,7 @@ from ..api.iam.models import ModelSendVerificationCodeRequestV3
 from ..api.iam.models import ModelSendVerificationLinkRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
+from ..api.iam.models import ModelTokenThirdPartyLinkStatusResponse
 from ..api.iam.models import ModelUnlinkUserPlatformRequest
 from ..api.iam.models import ModelUpdatePermissionScheduleRequest
 from ..api.iam.models import ModelUpdateUserDeletionStatusRequest
@@ -1958,6 +1959,12 @@ def create_model_third_party_login_platform_credential_response_example() -> Mod
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
     instance.scopes = [randomize()]
     instance.token_endpoint = randomize()
+    return instance
+
+
+def create_model_token_third_party_link_status_response_example() -> ModelTokenThirdPartyLinkStatusResponse:
+    instance = ModelTokenThirdPartyLinkStatusResponse()
+    instance.linked = randomize("bool")
     return instance
 
 

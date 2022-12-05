@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.1.0)
+# AccelByte Cloud Session Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         teams: (teams) REQUIRED List[ModelsTeam]
 
+        text_chat: (textChat) REQUIRED bool
+
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
 
         type_: (type) REQUIRED str
@@ -83,6 +85,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     requested_regions: List[str]  # REQUIRED
     server_name: str  # REQUIRED
     teams: List[ModelsTeam]  # REQUIRED
+    text_chat: bool  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
 
@@ -148,6 +151,10 @@ class ApimodelsCreateGameSessionRequest(Model):
 
     def with_teams(self, value: List[ModelsTeam]) -> ApimodelsCreateGameSessionRequest:
         self.teams = value
+        return self
+
+    def with_text_chat(self, value: bool) -> ApimodelsCreateGameSessionRequest:
+        self.text_chat = value
         return self
 
     def with_ticket_i_ds(self, value: List[str]) -> ApimodelsCreateGameSessionRequest:
@@ -222,6 +229,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             ]
         elif include_empty:
             result["teams"] = []
+        if hasattr(self, "text_chat"):
+            result["textChat"] = bool(self.text_chat)
+        elif include_empty:
+            result["textChat"] = False
         if hasattr(self, "ticket_i_ds"):
             result["ticketIDs"] = [str(i0) for i0 in self.ticket_i_ds]
         elif include_empty:
@@ -253,6 +264,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         requested_regions: List[str],
         server_name: str,
         teams: List[ModelsTeam],
+        text_chat: bool,
         ticket_i_ds: List[str],
         type_: str,
     ) -> ApimodelsCreateGameSessionRequest:
@@ -271,6 +283,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         instance.requested_regions = requested_regions
         instance.server_name = server_name
         instance.teams = teams
+        instance.text_chat = text_chat
         instance.ticket_i_ds = ticket_i_ds
         instance.type_ = type_
         return instance
@@ -343,6 +356,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             ]
         elif include_empty:
             instance.teams = []
+        if "textChat" in dict_ and dict_["textChat"] is not None:
+            instance.text_chat = bool(dict_["textChat"])
+        elif include_empty:
+            instance.text_chat = False
         if "ticketIDs" in dict_ and dict_["ticketIDs"] is not None:
             instance.ticket_i_ds = [str(i0) for i0 in dict_["ticketIDs"]]
         elif include_empty:
@@ -408,6 +425,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "requestedRegions": "requested_regions",
             "serverName": "server_name",
             "teams": "teams",
+            "textChat": "text_chat",
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
         }
@@ -429,6 +447,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "requestedRegions": True,
             "serverName": True,
             "teams": True,
+            "textChat": True,
             "ticketIDs": True,
             "type": True,
         }

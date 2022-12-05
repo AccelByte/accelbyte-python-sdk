@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service ()
+# AccelByte Cloud Achievement Service (2.12.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,10 +41,10 @@ class ImportAchievements(Operation):
 
     Required Scope: social
 
-    Import channels configuration from file. It will merge with existing channels.
+    Import achievement configuration from file. It will merge with existing achievement.
     Available import strategy:
-    - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default)
-    - replace: if channel with same key exist, the imported channel will be used and existing one will be removed
+    - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
+    - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]

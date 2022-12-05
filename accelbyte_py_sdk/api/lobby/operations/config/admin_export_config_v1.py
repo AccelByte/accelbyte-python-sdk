@@ -36,41 +36,46 @@ class AdminExportConfigV1(Operation):
     """Export lobby config to a json file. (adminExportConfigV1)
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+        Required permission ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
 
-    Required Scope: social
+        Required Scope: social
 
-    Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
+        Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
+        JSON Schema of the exported file:
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}}
 
-    Required Scope(s):
-        - social
+        Required Permission(s):
+            - ADMIN:NAMESPACE:{namespace}:LOBBY:CONFIG [READ]
 
-    Properties:
-        url: /lobby/v1/admin/config/namespaces/{namespace}/export
+        Required Scope(s):
+            - social
 
-        method: GET
+        Properties:
+            url: /lobby/v1/admin/config/namespaces/{namespace}/export
 
-        tags: ["config"]
+            method: GET
 
-        consumes: []
+            tags: ["config"]
 
-        produces: ["application/json"]
+            consumes: []
 
-        securities: [BEARER_AUTH]
+            produces: ["application/json"]
 
-        namespace: (namespace) REQUIRED str in path
+            securities: [BEARER_AUTH]
 
-    Responses:
-        200: OK - Any (OK)
+            namespace: (namespace) REQUIRED str in path
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        Responses:
+            200: OK - Any (OK
+    JSON Schema of the exported file:
+    {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}})
 
-        403: Forbidden - ResponseError (Forbidden)
+            401: Unauthorized - ResponseError (Unauthorized)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+            403: Forbidden - ResponseError (Forbidden)
+
+            500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
@@ -165,19 +170,21 @@ class AdminExportConfigV1(Operation):
     ) -> Tuple[Union[None, Any], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - Any (OK)
+                200: OK - Any (OK
+        JSON Schema of the exported file:
+        {"required":["namespace","entitlementItemID","chatRateLimitDuration","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"integer"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"integer"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"integer"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"integer"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"integer"}}})
 
-        401: Unauthorized - ResponseError (Unauthorized)
+                401: Unauthorized - ResponseError (Unauthorized)
 
-        403: Forbidden - ResponseError (Forbidden)
+                403: Forbidden - ResponseError (Forbidden)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+                500: Internal Server Error - ResponseError (Internal Server Error)
 
-        ---: HttpResponse (Undocumented Response)
+                ---: HttpResponse (Undocumented Response)
 
-        ---: HttpResponse (Unexpected Content-Type Error)
+                ---: HttpResponse (Unexpected Content-Type Error)
 
-        ---: HttpResponse (Unhandled Error)
+                ---: HttpResponse (Unhandled Error)
         """
         pre_processed_response, error = self.pre_process_response(
             code=code, content_type=content_type, content=content

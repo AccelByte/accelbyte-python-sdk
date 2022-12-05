@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.1.0)
+# AccelByte Cloud Session Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,6 +65,7 @@ def create_apimodels_configuration_template_response_example() -> ApimodelsConfi
     instance.name = randomize()
     instance.namespace = randomize("slug")
     instance.requested_regions = [randomize()]
+    instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
     return instance
@@ -88,6 +89,7 @@ def create_apimodels_create_configuration_template_request_example() -> Apimodel
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.requested_regions = [randomize()]
+    instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     return instance
 
@@ -108,6 +110,7 @@ def create_apimodels_create_game_session_request_example() -> ApimodelsCreateGam
     instance.requested_regions = [randomize()]
     instance.server_name = randomize()
     instance.teams = [create_models_team_example()]
+    instance.text_chat = randomize("bool")
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
     return instance
@@ -123,6 +126,7 @@ def create_apimodels_create_party_request_example() -> ApimodelsCreatePartyReque
     instance.max_players = randomize("int", min_val=1, max_val=1000)
     instance.members = [create_apimodels_request_member_example()]
     instance.min_players = randomize("int", min_val=1, max_val=1000)
+    instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     return instance
 
@@ -231,6 +235,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.requested_regions = [randomize()]
+    instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     return instance
 
@@ -260,6 +265,7 @@ def create_apimodels_update_configuration_template_request_example() -> Apimodel
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
     instance.requested_regions = [randomize()]
+    instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     return instance
 

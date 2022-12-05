@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (1.3.0)
+# AccelByte Cloud Match Service V2 (1.4.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

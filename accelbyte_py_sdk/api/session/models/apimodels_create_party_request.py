@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.1.0)
+# AccelByte Cloud Session Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,8 @@ class ApimodelsCreatePartyRequest(Model):
 
         min_players: (minPlayers) REQUIRED int
 
+        text_chat: (textChat) REQUIRED bool
+
         type_: (type) REQUIRED str
     """
 
@@ -63,6 +65,7 @@ class ApimodelsCreatePartyRequest(Model):
     max_players: int  # REQUIRED
     members: List[ApimodelsRequestMember]  # REQUIRED
     min_players: int  # REQUIRED
+    text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
 
     # endregion fields
@@ -101,6 +104,10 @@ class ApimodelsCreatePartyRequest(Model):
 
     def with_min_players(self, value: int) -> ApimodelsCreatePartyRequest:
         self.min_players = value
+        return self
+
+    def with_text_chat(self, value: bool) -> ApimodelsCreatePartyRequest:
+        self.text_chat = value
         return self
 
     def with_type(self, value: str) -> ApimodelsCreatePartyRequest:
@@ -147,6 +154,10 @@ class ApimodelsCreatePartyRequest(Model):
             result["minPlayers"] = int(self.min_players)
         elif include_empty:
             result["minPlayers"] = 0
+        if hasattr(self, "text_chat"):
+            result["textChat"] = bool(self.text_chat)
+        elif include_empty:
+            result["textChat"] = False
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -168,6 +179,7 @@ class ApimodelsCreatePartyRequest(Model):
         max_players: int,
         members: List[ApimodelsRequestMember],
         min_players: int,
+        text_chat: bool,
         type_: str,
     ) -> ApimodelsCreatePartyRequest:
         instance = cls()
@@ -179,6 +191,7 @@ class ApimodelsCreatePartyRequest(Model):
         instance.max_players = max_players
         instance.members = members
         instance.min_players = min_players
+        instance.text_chat = text_chat
         instance.type_ = type_
         return instance
 
@@ -226,6 +239,10 @@ class ApimodelsCreatePartyRequest(Model):
             instance.min_players = int(dict_["minPlayers"])
         elif include_empty:
             instance.min_players = 0
+        if "textChat" in dict_ and dict_["textChat"] is not None:
+            instance.text_chat = bool(dict_["textChat"])
+        elif include_empty:
+            instance.text_chat = False
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -281,6 +298,7 @@ class ApimodelsCreatePartyRequest(Model):
             "maxPlayers": "max_players",
             "members": "members",
             "minPlayers": "min_players",
+            "textChat": "text_chat",
             "type": "type_",
         }
 
@@ -295,6 +313,7 @@ class ApimodelsCreatePartyRequest(Model):
             "maxPlayers": True,
             "members": True,
             "minPlayers": True,
+            "textChat": True,
             "type": True,
         }
 

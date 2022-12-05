@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ds Log Manager Service."""
 
-__version__ = "2.7.3"
+__version__ = "2.8.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

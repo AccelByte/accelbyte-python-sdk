@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.17.1)
+# AccelByte Cloud Platform Service (4.18.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -87,6 +87,7 @@ from ..api.platform.models import Customization
 from ..api.platform.models import DLCItem
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
+from ..api.platform.models import DLCRecord
 from ..api.platform.models import DebitRequest
 from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
@@ -239,6 +240,7 @@ from ..api.platform.models import PlayStationDLCSyncRequest
 from ..api.platform.models import PlayStationIAPConfigInfo
 from ..api.platform.models import PlayStationMultiServiceLabelsReconcileRequest
 from ..api.platform.models import PlayStationReconcileRequest
+from ..api.platform.models import PlayStationReconcileResult
 from ..api.platform.models import PlaystationIAPConfigRequest
 from ..api.platform.models import PopulatedItemInfo
 from ..api.platform.models import PredicateObject
@@ -256,6 +258,8 @@ from ..api.platform.models import RedeemableItem
 from ..api.platform.models import RegionDataItem
 from ..api.platform.models import RequestHistory
 from ..api.platform.models import Requirement
+from ..api.platform.models import RevokeItemSummary
+from ..api.platform.models import RevokeResult
 from ..api.platform.models import RewardCondition
 from ..api.platform.models import RewardCreate
 from ..api.platform.models import RewardInfo
@@ -302,6 +306,7 @@ from ..api.platform.models import TransactionAmountDetails
 from ..api.platform.models import TwitchIAPConfigInfo
 from ..api.platform.models import TwitchIAPConfigRequest
 from ..api.platform.models import TwitchSyncRequest
+from ..api.platform.models import UserDLC
 from ..api.platform.models import ValidationErrorEntity
 from ..api.platform.models import WalletInfo
 from ..api.platform.models import WalletPagingSlicedResult
@@ -1047,6 +1052,18 @@ def create_dlc_item_config_info_example() -> DLCItemConfigInfo:
 def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
     instance = DLCItemConfigUpdate()
     instance.data = [create_dlc_item_example()]
+    return instance
+
+
+def create_dlc_record_example() -> DLCRecord:
+    instance = DLCRecord()
+    instance.id_ = randomize()
+    instance.obtained_at = randomize("date")
+    instance.revoke_results = [create_revoke_result_example()]
+    instance.revoked_at = randomize("date")
+    instance.rewards = [create_platform_reward_example()]
+    instance.sources = [randomize()]
+    instance.status = randomize()
     return instance
 
 
@@ -2817,6 +2834,16 @@ def create_play_station_reconcile_request_example() -> PlayStationReconcileReque
     return instance
 
 
+def create_play_station_reconcile_result_example() -> PlayStationReconcileResult:
+    instance = PlayStationReconcileResult()
+    instance.item_id = randomize()
+    instance.psn_item_id = randomize()
+    instance.sku = randomize("slug")
+    instance.status = randomize()
+    instance.transaction_id = randomize("uid")
+    return instance
+
+
 def create_playstation_iap_config_request_example() -> PlaystationIAPConfigRequest:
     instance = PlaystationIAPConfigRequest()
     instance.environment = randomize()
@@ -3011,6 +3038,23 @@ def create_requirement_example() -> Requirement:
     instance.processor = randomize()
     instance.ram = randomize()
     instance.sound_card = randomize()
+    return instance
+
+
+def create_revoke_item_summary_example() -> RevokeItemSummary:
+    instance = RevokeItemSummary()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.item_type = randomize()
+    instance.revoke_status = randomize()
+    return instance
+
+
+def create_revoke_result_example() -> RevokeResult:
+    instance = RevokeResult()
+    instance.revoke_item_summaries = [create_revoke_item_summary_example()]
+    instance.reward = create_platform_reward_example()
+    instance.status = randomize()
     return instance
 
 
@@ -3546,6 +3590,19 @@ def create_twitch_sync_request_example() -> TwitchSyncRequest:
     instance.game_id = randomize()
     instance.language = randomize()
     instance.region = randomize()
+    return instance
+
+
+def create_user_dlc_example() -> UserDLC:
+    instance = UserDLC()
+    instance.created_at = randomize("date")
+    instance.dlcs = [create_dlc_record_example()]
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
     return instance
 
 

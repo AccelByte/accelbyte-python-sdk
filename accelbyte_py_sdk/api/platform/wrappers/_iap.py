@@ -49,6 +49,7 @@ from ..models import MockIAPReceipt
 from ..models import PlayStationIAPConfigInfo
 from ..models import PlayStationMultiServiceLabelsReconcileRequest
 from ..models import PlayStationReconcileRequest
+from ..models import PlayStationReconcileResult
 from ..models import PlaystationIAPConfigRequest
 from ..models import StadiaIAPConfigInfo
 from ..models import StadiaSyncRequest
@@ -114,6 +115,7 @@ from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
+from ..models import PlayStationReconcileResultStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
 
 

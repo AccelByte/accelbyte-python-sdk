@@ -38,6 +38,7 @@ from ..models import PlatformDLCConfigUpdate
 from ..models import PlayStationDLCSyncMultiServiceLabelsRequest
 from ..models import PlayStationDLCSyncRequest
 from ..models import SteamDLCSyncRequest
+from ..models import UserDLC
 from ..models import ValidationErrorEntity
 from ..models import XblDLCSyncRequest
 
@@ -45,6 +46,8 @@ from ..operations.dlc import DeleteDLCItemConfig
 from ..operations.dlc import DeletePlatformDLCConfig
 from ..operations.dlc import GetDLCItemConfig
 from ..operations.dlc import GetPlatformDLCConfig
+from ..operations.dlc import GetUserDLC
+from ..operations.dlc import GetUserDLCTypeEnum
 from ..operations.dlc import PublicSyncPsnDlcInventory
 from ..operations.dlc import PublicSyncPsnDlcInventoryWithMultipleServiceLabels
 from ..operations.dlc import SyncEpicGameDLC
@@ -52,6 +55,7 @@ from ..operations.dlc import SyncSteamDLC
 from ..operations.dlc import SyncXboxDLC
 from ..operations.dlc import UpdateDLCItemConfig
 from ..operations.dlc import UpdatePlatformDLCConfig
+from ..models import UserDLCPlatformEnum
 
 
 @same_doc_as(DeleteDLCItemConfig)
@@ -183,6 +187,48 @@ async def get_platform_dlc_config_async(
         if error:
             return None, error
     request = GetPlatformDLCConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetUserDLC)
+def get_user_dlc(
+    type_: Union[str, GetUserDLCTypeEnum],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserDLC.create(
+        type_=type_,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserDLC)
+async def get_user_dlc_async(
+    type_: Union[str, GetUserDLCTypeEnum],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserDLC.create(
+        type_=type_,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

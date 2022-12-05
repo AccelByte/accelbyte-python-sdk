@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Social Service."""
 
-__version__ = "1.31.0"
+__version__ = "1.31.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

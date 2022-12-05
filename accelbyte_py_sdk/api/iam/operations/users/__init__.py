@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.21.0"
+__version__ = "5.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -36,6 +36,7 @@ from .admin_get_bulk_user_by__b42a39 import AdminGetBulkUserByEmailAddressV3
 from .admin_get_list_country__a160f3 import AdminGetListCountryAgeRestrictionV3
 from .admin_get_list_justice__0399f2 import AdminGetListJusticePlatformAccounts
 from .admin_get_my_user_v3 import AdminGetMyUserV3
+from .admin_get_third_party_p_5d509c import AdminGetThirdPartyPlatformTokenLinkStatusV3
 from .admin_get_user_ban_v2 import AdminGetUserBanV2
 from .admin_get_user_ban_v3 import AdminGetUserBanV3
 from .admin_get_user_by_email_160113 import AdminGetUserByEmailAddressV3

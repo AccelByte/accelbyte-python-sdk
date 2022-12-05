@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ds Log Manager Service (2.7.3)
+# AccelByte Cloud Ds Log Manager Service (2.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

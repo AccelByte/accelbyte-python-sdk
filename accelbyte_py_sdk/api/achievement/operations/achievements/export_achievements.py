@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service ()
+# AccelByte Cloud Achievement Service (2.12.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,17 @@ class ExportAchievements(Operation):
     """Export achievements configuration into a json file (ExportAchievements)
 
 
-    Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
+    Required permission `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]`
 
-    Required Scope: social
+    Required Scope: `social`
+
+    Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
 
     Required Scope(s):
-        - social
+        - socialSuccessful
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/export

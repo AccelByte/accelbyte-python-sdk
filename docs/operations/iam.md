@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Iam Service Index (5.21.0)
+# AccelByte Cloud Iam Service Index (5.22.0)
 
 
 ## Operations
@@ -223,6 +223,7 @@
 | /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries | GET | AdminGetListCountryAgeRestrictionV3 | [AdminGetListCountryAgeRestrictionV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_list_country__a160f3.py) | [admin_get_list_country_age_restriction_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-list-country-age-restriction-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_list_country_age_restriction_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice | GET | AdminGetListJusticePlatformAccounts | [AdminGetListJusticePlatformAccounts](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_list_justice__0399f2.py) | [admin_get_list_justice_platform_accounts](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-list-justice-platform-accounts](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_list_justice_platform_accounts.py) |
 | /iam/v3/admin/users/me | GET | AdminGetMyUserV3 | [AdminGetMyUserV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_my_user_v3.py) | [admin_get_my_user_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-my-user-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_my_user_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus | POST | AdminGetThirdPartyPlatformTokenLinkStatusV3 | [AdminGetThirdPartyPlatformTokenLinkStatusV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_third_party_p_5d509c.py) | [admin_get_third_party_platform_token_link_status_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-third-party-platform-token-link-status-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_third_party_platform_token_link_status_v3.py) |
 | /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV2 | [AdminGetUserBanV2](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v2.py) | [admin_get_user_ban_v2](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-ban-v2](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_ban_v2.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV3 | [AdminGetUserBanV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v3.py) | [admin_get_user_ban_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-ban-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_ban_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users | GET | AdminGetUserByEmailAddressV3 | [AdminGetUserByEmailAddressV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_email_160113.py) | [admin_get_user_by_email_address_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-by-email-address-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_by_email_address_v3.py) |
@@ -595,6 +596,7 @@
 | model.SSOPlatformCredentialResponse | [ModelSSOPlatformCredentialResponse](../../accelbyte_py_sdk/api/iam/models/model_sso_platform_credential_response.py) |
 | model.ThirdPartyLoginPlatformCredentialRequest | [ModelThirdPartyLoginPlatformCredentialRequest](../../accelbyte_py_sdk/api/iam/models/model_third_party_login_platform_credential_request.py) |
 | model.ThirdPartyLoginPlatformCredentialResponse | [ModelThirdPartyLoginPlatformCredentialResponse](../../accelbyte_py_sdk/api/iam/models/model_third_party_login_platform_credential_response.py) |
+| model.TokenThirdPartyLinkStatusResponse | [ModelTokenThirdPartyLinkStatusResponse](../../accelbyte_py_sdk/api/iam/models/model_token_third_party_link_status_response.py) |
 | model.UnlinkUserPlatformRequest | [ModelUnlinkUserPlatformRequest](../../accelbyte_py_sdk/api/iam/models/model_unlink_user_platform_request.py) |
 | model.UpdatePermissionScheduleRequest | [ModelUpdatePermissionScheduleRequest](../../accelbyte_py_sdk/api/iam/models/model_update_permission_schedule_request.py) |
 | model.UpdateUserDeletionStatusRequest | [ModelUpdateUserDeletionStatusRequest](../../accelbyte_py_sdk/api/iam/models/model_update_user_deletion_status_request.py) |

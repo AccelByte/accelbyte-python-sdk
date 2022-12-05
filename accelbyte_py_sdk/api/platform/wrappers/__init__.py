@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.17.1"
+__version__ = "4.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -136,6 +136,8 @@ from ._dlc import get_dlc_item_config
 from ._dlc import get_dlc_item_config_async
 from ._dlc import get_platform_dlc_config
 from ._dlc import get_platform_dlc_config_async
+from ._dlc import get_user_dlc
+from ._dlc import get_user_dlc_async
 from ._dlc import public_sync_psn_dlc_inventory
 from ._dlc import public_sync_psn_dlc_inventory_async
 from ._dlc import public_sync_psn_dlc_inventory_with_multiple_service_labels
@@ -163,6 +165,8 @@ from ._entitlement import exists_any_user_active_entitlement_by_item_ids
 from ._entitlement import exists_any_user_active_entitlement_by_item_ids_async
 from ._entitlement import get_entitlement
 from ._entitlement import get_entitlement_async
+from ._entitlement import get_user_active_entitlements_by_item_ids
+from ._entitlement import get_user_active_entitlements_by_item_ids_async
 from ._entitlement import get_user_app_entitlement_by_app_id
 from ._entitlement import get_user_app_entitlement_by_app_id_async
 from ._entitlement import get_user_app_entitlement_ownership_by_app_id

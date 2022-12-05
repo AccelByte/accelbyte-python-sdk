@@ -53,6 +53,7 @@ from ..operations.entitlement import EnableUserEntitlement
 from ..operations.entitlement import ExistsAnyUserActiveEntitlement
 from ..operations.entitlement import ExistsAnyUserActiveEntitlementByItemIds
 from ..operations.entitlement import GetEntitlement
+from ..operations.entitlement import GetUserActiveEntitlementsByItemIds
 from ..operations.entitlement import GetUserAppEntitlementByAppId
 from ..operations.entitlement import GetUserAppEntitlementOwnershipByAppId
 from ..operations.entitlement import GetUserEntitlement
@@ -404,6 +405,48 @@ async def get_entitlement_async(
             return None, error
     request = GetEntitlement.create(
         entitlement_id=entitlement_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetUserActiveEntitlementsByItemIds)
+def get_user_active_entitlements_by_item_ids(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserActiveEntitlementsByItemIds.create(
+        user_id=user_id,
+        ids=ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserActiveEntitlementsByItemIds)
+async def get_user_active_entitlements_by_item_ids_async(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserActiveEntitlementsByItemIds.create(
+        user_id=user_id,
+        ids=ids,
         namespace=namespace,
     )
     return await run_request_async(

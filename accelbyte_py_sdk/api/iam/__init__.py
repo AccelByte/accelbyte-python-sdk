@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.21.0"
+__version__ = "5.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -373,6 +373,8 @@ from .wrappers import admin_get_list_justice_platform_accounts
 from .wrappers import admin_get_list_justice_platform_accounts_async
 from .wrappers import admin_get_my_user_v3
 from .wrappers import admin_get_my_user_v3_async
+from .wrappers import admin_get_third_party_platform_token_link_status_v3
+from .wrappers import admin_get_third_party_platform_token_link_status_v3_async
 from .wrappers import admin_get_user_ban_v2
 from .wrappers import admin_get_user_ban_v2_async
 from .wrappers import admin_get_user_ban_v3

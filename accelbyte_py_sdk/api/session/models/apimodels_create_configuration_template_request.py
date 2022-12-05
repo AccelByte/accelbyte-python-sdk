@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.1.0)
+# AccelByte Cloud Session Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -50,6 +50,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         requested_regions: (requestedRegions) REQUIRED List[str]
 
+        text_chat: (textChat) REQUIRED bool
+
         type_: (type) REQUIRED str
     """
 
@@ -64,6 +66,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     min_players: int  # REQUIRED
     name: str  # REQUIRED
     requested_regions: List[str]  # REQUIRED
+    text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
 
     # endregion fields
@@ -122,6 +125,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self.requested_regions = value
         return self
 
+    def with_text_chat(
+        self, value: bool
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.text_chat = value
+        return self
+
     def with_type(self, value: str) -> ApimodelsCreateConfigurationTemplateRequest:
         self.type_ = value
         return self
@@ -168,6 +177,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
             result["requestedRegions"] = []
+        if hasattr(self, "text_chat"):
+            result["textChat"] = bool(self.text_chat)
+        elif include_empty:
+            result["textChat"] = False
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -190,6 +203,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         min_players: int,
         name: str,
         requested_regions: List[str],
+        text_chat: bool,
         type_: str,
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         instance = cls()
@@ -202,6 +216,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         instance.min_players = min_players
         instance.name = name
         instance.requested_regions = requested_regions
+        instance.text_chat = text_chat
         instance.type_ = type_
         return instance
 
@@ -248,6 +263,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
             instance.requested_regions = []
+        if "textChat" in dict_ and dict_["textChat"] is not None:
+            instance.text_chat = bool(dict_["textChat"])
+        elif include_empty:
+            instance.text_chat = False
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -304,6 +323,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "minPlayers": "min_players",
             "name": "name",
             "requestedRegions": "requested_regions",
+            "textChat": "text_chat",
             "type": "type_",
         }
 
@@ -319,6 +339,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "minPlayers": True,
             "name": True,
             "requestedRegions": True,
+            "textChat": True,
             "type": True,
         }
 

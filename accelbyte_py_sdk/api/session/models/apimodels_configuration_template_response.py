@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.1.0)
+# AccelByte Cloud Session Service (2.3.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -56,6 +56,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         requested_regions: (requestedRegions) REQUIRED List[str]
 
+        text_chat: (textChat) REQUIRED bool
+
         type_: (type) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
@@ -75,6 +77,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     name: str  # REQUIRED
     namespace: str  # REQUIRED
     requested_regions: List[str]  # REQUIRED
+    text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
 
@@ -132,6 +135,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self, value: List[str]
     ) -> ApimodelsConfigurationTemplateResponse:
         self.requested_regions = value
+        return self
+
+    def with_text_chat(self, value: bool) -> ApimodelsConfigurationTemplateResponse:
+        self.text_chat = value
         return self
 
     def with_type(self, value: str) -> ApimodelsConfigurationTemplateResponse:
@@ -196,6 +203,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
             result["requestedRegions"] = []
+        if hasattr(self, "text_chat"):
+            result["textChat"] = bool(self.text_chat)
+        elif include_empty:
+            result["textChat"] = False
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
@@ -225,6 +236,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         name: str,
         namespace: str,
         requested_regions: List[str],
+        text_chat: bool,
         type_: str,
         updated_at: str,
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -241,6 +253,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.name = name
         instance.namespace = namespace
         instance.requested_regions = requested_regions
+        instance.text_chat = text_chat
         instance.type_ = type_
         instance.updated_at = updated_at
         return instance
@@ -300,6 +313,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
             instance.requested_regions = []
+        if "textChat" in dict_ and dict_["textChat"] is not None:
+            instance.text_chat = bool(dict_["textChat"])
+        elif include_empty:
+            instance.text_chat = False
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -363,6 +380,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "name": "name",
             "namespace": "namespace",
             "requestedRegions": "requested_regions",
+            "textChat": "text_chat",
             "type": "type_",
             "updatedAt": "updated_at",
         }
@@ -382,6 +400,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "name": True,
             "namespace": True,
             "requestedRegions": True,
+            "textChat": True,
             "type": True,
             "updatedAt": True,
         }
