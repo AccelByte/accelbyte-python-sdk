@@ -8,22 +8,22 @@
 ## Operations
 
 ### All Terminated Servers
-| Endpoint | Method | ID | Class | Wrapper | Example |
-|---|---|---|---|---|---|
-| /dslogmanager/servers/logs/download | POST | batchDownloadServerLogs | [BatchDownloadServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/batch_download_server_logs.py) | [batch_download_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-batch-download-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_batch_download_server_logs.py) |
-| /dslogmanager/servers/search | GET | listAllTerminatedServers | [ListAllTerminatedServers](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_all_terminated_servers.py) | [list_all_terminated_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-all-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_all_terminated_servers.py) |
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /dslogmanager/servers/logs/download | POST | batchDownloadServerLogs | `false` | [BatchDownloadServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/batch_download_server_logs.py) | [batch_download_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-batch-download-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_batch_download_server_logs.py) |
+| /dslogmanager/servers/search | GET | listAllTerminatedServers | `false` | [ListAllTerminatedServers](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_all_terminated_servers.py) | [list_all_terminated_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-all-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_all_terminated_servers.py) |
 
 ### Dslogmanager Operations
-| Endpoint | Method | ID | Class | Wrapper | Example |
-|---|---|---|---|---|---|
-| /dslogmanager/v1/messages | GET | publicGetMessages | [PublicGetMessages](../../accelbyte_py_sdk/api/dslogmanager/operations/dslogmanager_operations/public_get_messages.py) | [public_get_messages](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_dslogmanager_operations.py) | [accelbyte_py_sdk_cli dslogmanager-public-get-messages](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_public_get_messages.py) |
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /dslogmanager/v1/messages | GET | publicGetMessages | `false` | [PublicGetMessages](../../accelbyte_py_sdk/api/dslogmanager/operations/dslogmanager_operations/public_get_messages.py) | [public_get_messages](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_dslogmanager_operations.py) | [accelbyte_py_sdk_cli dslogmanager-public-get-messages](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_public_get_messages.py) |
 
 ### Terminated Servers
-| Endpoint | Method | ID | Class | Wrapper | Example |
-|---|---|---|---|---|---|
-| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists | GET | checkServerLogs | [CheckServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/check_server_logs.py) | [check_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-check-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_check_server_logs.py) |
-| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download | GET | downloadServerLogs | [DownloadServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/download_server_logs.py) | [download_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-download-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_download_server_logs.py) |
-| /dslogmanager/namespaces/{namespace}/servers/search | GET | listTerminatedServers | [ListTerminatedServers](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/list_terminated_servers.py) | [list_terminated_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_terminated_servers.py) |
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists | GET | checkServerLogs | `false` | [CheckServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/check_server_logs.py) | [check_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-check-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_check_server_logs.py) |
+| /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download | GET | downloadServerLogs | `false` | [DownloadServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/download_server_logs.py) | [download_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-download-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_download_server_logs.py) |
+| /dslogmanager/namespaces/{namespace}/servers/search | GET | listTerminatedServers | `false` | [ListTerminatedServers](../../accelbyte_py_sdk/api/dslogmanager/operations/terminated_servers/list_terminated_servers.py) | [list_terminated_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_terminated_servers.py) |
 
 
 ## Models
