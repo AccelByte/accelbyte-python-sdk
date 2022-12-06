@@ -2,7 +2,7 @@
 
 ## Achievement
 
-Source: [_achievement.py](../tests/sample_apps/how_to/_achievement.py)
+Source: [achievement.py](../tests/integration/api/achievement.py)
 
 ### Admin Create New Achievement
 
@@ -157,7 +157,7 @@ def test_admin_update_achievement(self):
 ```
 ## Basic
 
-Source: [_basic.py](../tests/sample_apps/how_to/_basic.py)
+Source: [basic.py](../tests/integration/api/basic.py)
 
 ### Create My Profile
 
@@ -239,7 +239,7 @@ def test_public_update_user_profile(self):
 ```
 ## Cloud Save
 
-Source: [_cloudsave.py](../tests/sample_apps/how_to/_cloudsave.py)
+Source: [cloudsave.py](../tests/integration/api/cloudsave.py)
 
 ### Delete Game Record Handler V1
 
@@ -342,7 +342,7 @@ def test_put_game_record_handler_v1(self):
 ```
 ## DS Log Manager
 
-Source: [_dslogmanager.py](../tests/sample_apps/how_to/_dslogmanager.py)
+Source: [dslogmanager.py](../tests/integration/api/dslogmanager.py)
 
 ### Check Server Logs
 
@@ -407,7 +407,7 @@ def test_list_terminated_servers(self):
 ```
 ## DSMC
 
-Source: [_dsmc.py](../tests/sample_apps/how_to/_dsmc.py)
+Source: [dsmc.py](../tests/integration/api/dsmc.py)
 
 ### Export Config
 
@@ -444,10 +444,8 @@ def test_claim_server(self):
         body=self.models_create_session_request,
         namespace=self.models_create_session_request.namespace,
     )
-    self.log_warning(
-        msg=f"Failed to set up DSMC session. {str(error)}",
-        condition=error is not None,
-    )
+    if error is not None:
+        self.skipTest(reason=f"Failed to set up DSMC session. {str(error)}")
 
     time.sleep(5)
 
@@ -462,9 +460,14 @@ def test_claim_server(self):
     if (
         error is not None
         and isinstance(error, ResponseError)
-        and "server is not ready" in error.error_message.lower()
     ):
-        self.skipTest(reason=f"Server is not ready yet.")
+        error_message = error.error_message.lower()
+        if "server is not ready" in error_message:
+            self.skipTest(reason=f"Server is not ready yet.")
+        elif "server is already claimed" in error_message:
+            self.skipTest(reason=f"Server was already claimed.")
+        else:
+            self.fail(msg=error)
     else:
         self.assertIsNone(error, error)
 ```
@@ -513,7 +516,7 @@ def test_get_session(self):
 ```
 ## Game Telemetry
 
-Source: [_gametelemetry.py](../tests/sample_apps/how_to/_gametelemetry.py)
+Source: [gametelemetry.py](../tests/integration/api/gametelemetry.py)
 
 ### Get Playtime V1
 
@@ -595,7 +598,7 @@ def test_update_playtime_v1(self):
 ```
 ## GDPR
 
-Source: [_gdpr.py](../tests/sample_apps/how_to/_gdpr.py)
+Source: [gdpr.py](../tests/integration/api/gdpr.py)
 
 ### Admin Get User Personal Data Requests
 
@@ -741,7 +744,7 @@ def test_update_admin_email_configuration(self):
 ```
 ## Group
 
-Source: [_group.py](../tests/sample_apps/how_to/_group.py)
+Source: [group.py](../tests/integration/api/group.py)
 
 ### Create New Group Public V1
 
@@ -853,7 +856,7 @@ def test_update_single_group_v1(self):
 ```
 ## IAM
 
-Source: [_iam.py](../tests/sample_apps/how_to/_iam.py)
+Source: [iam.py](../tests/integration/api/iam.py)
 
 ### Create User
 
@@ -1132,7 +1135,7 @@ def test_public_download_my_backup_codes_v4(self):
 ```
 ## Leaderboard
 
-Source: [_leaderboard.py](../tests/sample_apps/how_to/_leaderboard.py)
+Source: [leaderboard.py](../tests/integration/api/leaderboard.py)
 
 ### Create Leaderboard Configuration Admin V1
 
@@ -1253,7 +1256,7 @@ def test_update_user(self):
 ```
 ## Legal
 
-Source: [_legal.py](../tests/sample_apps/how_to/_legal.py)
+Source: [legal.py](../tests/integration/api/legal.py)
 
 ### Bulk Accept Versioned Policy
 
@@ -1379,7 +1382,7 @@ def test_retrieve_agreements_public(self):
 ```
 ## Lobby
 
-Source: [_lobby.py](../tests/sample_apps/how_to/_lobby.py)
+Source: [lobby.py](../tests/integration/api/lobby.py)
 
 ### Free Form Notification
 
@@ -1461,7 +1464,7 @@ async def test_send_and_receive_notifications(self):
 ```
 ## Match V2
 
-Source: [_match2.py](../tests/sample_apps/how_to/_match2.py)
+Source: [match2.py](../tests/integration/api/match2.py)
 
 ### Create Match Pool
 
@@ -1654,7 +1657,7 @@ def test_match_function_list(self):
 ```
 ## Matchmaking
 
-Source: [_matchmaking.py](../tests/sample_apps/how_to/_matchmaking.py)
+Source: [matchmaking.py](../tests/integration/api/matchmaking.py)
 
 ### Create Channel Handler
 
@@ -1795,7 +1798,7 @@ def test_export_channels(self):
 ```
 ## Platform
 
-Source: [_platform.py](../tests/sample_apps/how_to/_platform.py)
+Source: [platform.py](../tests/integration/api/platform.py)
 
 ### Create Store
 
@@ -1963,7 +1966,7 @@ def test_update_store(self):
 ```
 ## QOSM
 
-Source: [_qosm.py](../tests/sample_apps/how_to/_qosm.py)
+Source: [qosm.py](../tests/integration/api/qosm.py)
 
 ### Heartbeat
 
@@ -1993,7 +1996,7 @@ def test_heartbeat(self):
 ```
 ## Season Pass
 
-Source: [_seasonpass.py](../tests/sample_apps/how_to/_seasonpass.py)
+Source: [seasonpass.py](../tests/integration/api/seasonpass.py)
 
 ### Season Crud
 
@@ -2068,7 +2071,7 @@ def tearDown(self) -> None:
 ```
 ## Session
 
-Source: [_session.py](../tests/sample_apps/how_to/_session.py)
+Source: [session.py](../tests/integration/api/session.py)
 
 ### Admin Create Configuration Template V1
 
@@ -2303,7 +2306,7 @@ def test_party_flow(self):
 ```
 ## Session Browser
 
-Source: [_sessionbrowser.py](../tests/sample_apps/how_to/_sessionbrowser.py)
+Source: [sessionbrowser.py](../tests/integration/api/sessionbrowser.py)
 
 ### Create Session
 
@@ -2397,7 +2400,7 @@ def test_update_session(self):
 ```
 ## Social
 
-Source: [_social.py](../tests/sample_apps/how_to/_social.py)
+Source: [social.py](../tests/integration/api/social.py)
 
 ### Create Stat
 
@@ -2511,7 +2514,7 @@ def test_update_stat(self):
 ```
 ## UGC
 
-Source: [_ugc.py](../tests/sample_apps/how_to/_ugc.py)
+Source: [ugc.py](../tests/integration/api/ugc.py)
 
 ### Admin Create Tag
 
