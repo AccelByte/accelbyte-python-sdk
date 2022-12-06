@@ -163,7 +163,9 @@ def main(*args, **kwargs) -> None:
         if dotenv_file and use_dotenv:
             tests.integration.DOTENV_FILE = dotenv_file
 
-        integration_tests = load_tests_from_module(loader, tests.integration, **kwargs)
+        integration_tests = load_tests_from_module(
+            loader, tests.integration, **kwargs
+        )
 
         suite = unittest.TestSuite(
             [
