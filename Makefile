@@ -4,7 +4,7 @@
 
 SHELL := /bin/bash
 
-#ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/how_to.env
+#ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/.env
 
 lint:
 	rm -f lint.err

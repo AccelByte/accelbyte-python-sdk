@@ -63,7 +63,7 @@ pipeline {
           post {
             always {
               script {
-                sh 'rm -f tests/sample_apps/how_to.env'
+                sh 'rm -f tests/integration/.env'
                 archiveArtifacts artifacts: 'test_integration.tap'
                 step([$class: "TapPublisher", testResults: "test_integration.tap"])
               }

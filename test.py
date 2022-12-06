@@ -3,7 +3,7 @@ import re
 import unittest.case
 from argparse import ArgumentParser
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import List, Optional
 
 
 def set_logger_level(level):
@@ -43,7 +43,7 @@ def parse_args():
 
     parser.add_argument(
         "--dotenv_file",
-        default="tests/sample_apps/how_to.env",
+        default="tests/integration/.env",
         type=file_path,
         required=False,
     )
@@ -156,18 +156,22 @@ def main(*args, **kwargs) -> None:
         reset()
 
     if kwargs.get("test_integration", False):
-        import tests.sample_apps.how_to
+        import tests.integration
 
         dotenv_file = kwargs.get("dotenv_file", None)
         use_dotenv = kwargs.get("use_dotenv", False)
         if dotenv_file and use_dotenv:
-            tests.sample_apps.how_to.DOTENV_FILE = dotenv_file
+            tests.integration.DOTENV_FILE = dotenv_file
 
-        how_to_tests = load_tests_from_module(
-            loader, tests.sample_apps.how_to, **kwargs
+        integration_tests = load_tests_from_module(loader, tests.integration, **kwargs)
+
+        suite = unittest.TestSuite(
+            [
+                integration_tests,
+            ]
         )
 
-        results_integration = runner.run(how_to_tests)
+        results_integration = runner.run(suite)
         results["test_integration"] = results_integration.wasSuccessful()
 
         reset()
