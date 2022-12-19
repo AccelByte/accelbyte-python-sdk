@@ -30,20 +30,23 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 achievement-admin-list-achievements --login_with_auth "Bearer foo"
-achievement-admin-create-new-achievement '{"achievementCode": "p62KhrY9", "defaultLanguage": "XfjRcWwo", "description": {"P8iz7cZL": "q0l9SIcB", "sYuSaxoo": "6mwacedY", "SkmGscqv": "CMOjCwkk"}, "goalValue": 0.1844850513059959, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "VRcKFCYN", "url": "No8gts3w"}, {"slug": "pSvTdYDX", "url": "zTPUacKB"}, {"slug": "ZzsV2hdU", "url": "PwJEPItc"}], "name": {"Uu2QL170": "55VwbRSw", "deK2TSGg": "cBnzEfhR", "dawiaAmQ": "Am5dpvNZ"}, "statCode": "8vkFquxq", "tags": ["1tNwOS6S", "AwJC3eO7", "Api2lWAm"], "unlockedIcons": [{"slug": "iz9bM4I4", "url": "8qX0mlxp"}, {"slug": "sE4bLJV1", "url": "A7AU25v4"}, {"slug": "NPDimFlH", "url": "UurMH5Vf"}]}' --login_with_auth "Bearer foo"
+achievement-admin-create-new-achievement '{"achievementCode": "6QSfQVQj", "defaultLanguage": "qTUxRyhI", "description": {"BIF650eU": "hJO3zwB4", "tU9xAyem": "SehIoCxQ", "398qU89Q": "CLLfR5WY"}, "goalValue": 0.5535231465758552, "hidden": true, "incremental": false, "lockedIcons": [{"slug": "tvPPcqIA", "url": "OY4XqmVN"}, {"slug": "TYRdfvR8", "url": "ZKSoovMP"}, {"slug": "gToTxIRY", "url": "U8RSnhYt"}], "name": {"MD8udrPs": "kcSMiEli", "kZvlQaLB": "iTYA3kfX", "z8gxPLVA": "oo9IihTh"}, "statCode": "Sd6szCVo", "tags": ["g6E31Uig", "Xv5ryCMK", "MOIJxoSK"], "unlockedIcons": [{"slug": "1M27wH3O", "url": "ftV32NvB"}, {"slug": "28zaidfG", "url": "wZfAahka"}, {"slug": "wSzQF4a4", "url": "JNG8yEyN"}]}' --login_with_auth "Bearer foo"
 achievement-export-achievements --login_with_auth "Bearer foo"
 achievement-import-achievements --login_with_auth "Bearer foo"
-achievement-admin-get-achievement 'LqrFiA1i' --login_with_auth "Bearer foo"
-achievement-admin-update-achievement '{"defaultLanguage": "LtYJfXV9", "description": {"BLxIZBKr": "YYZ1VSp0", "bpJV1qgZ": "kKsS3N0x", "JtSErjCE": "bzi4rsOy"}, "goalValue": 0.32242501043828686, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "ONrq9eAr", "url": "EvaEmh0Z"}, {"slug": "i0W7NMhu", "url": "EqByZ4DI"}, {"slug": "qe7YddG1", "url": "KN4blkNC"}], "name": {"l4LqBaAR": "KIa62eB9", "wm8opEJG": "DjVR5IK9", "MUgbyY6x": "9pkivMlh"}, "statCode": "VyPqwnjz", "tags": ["GkzkL910", "OJomI7Pw", "U6dP3QmF"], "unlockedIcons": [{"slug": "zUXK9bM5", "url": "cFTJYp37"}, {"slug": "eEBoMUeo", "url": "qISIcRCU"}, {"slug": "fvADEiBc", "url": "2Gf30ml0"}]}' 'JWgUH77c' --login_with_auth "Bearer foo"
-achievement-admin-delete-achievement 'A30k8tHV' --login_with_auth "Bearer foo"
-achievement-admin-update-achievement-list-order '{"targetOrder": 75}' 'rhFTaaHg' --login_with_auth "Bearer foo"
-achievement-admin-list-user-achievements '7zL3lNLH' --login_with_auth "Bearer foo"
-achievement-admin-reset-achievement '8HpdbuH6' 'jsBhGROK' --login_with_auth "Bearer foo"
-achievement-admin-unlock-achievement 'LOejEN9V' 'bVWyRKvY' --login_with_auth "Bearer foo"
-achievement-public-list-achievements 'trQ6NCHG' --login_with_auth "Bearer foo"
-achievement-public-get-achievement 'UHslxIXR' '7GmFBc3R' --login_with_auth "Bearer foo"
-achievement-public-list-user-achievements 'jDb1a8IL' --login_with_auth "Bearer foo"
-achievement-public-unlock-achievement 'lX6DSIbx' 'SJxVVuHf' --login_with_auth "Bearer foo"
+achievement-admin-get-achievement '0BN16529' --login_with_auth "Bearer foo"
+achievement-admin-update-achievement '{"defaultLanguage": "eCiOJBNH", "description": {"9EvBt7fP": "ySR0aycv", "ZgJeGSPl": "5oysHnH4", "k53cUB0e": "7NytGsrm"}, "goalValue": 0.24073585268237818, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "tPcbLTU3", "url": "0Xj9mVEC"}, {"slug": "vbyLXfiZ", "url": "0429V7gQ"}, {"slug": "gbUlEs2Q", "url": "hrSOWixP"}], "name": {"Ohgn7jvJ": "4cUvFKmE", "NlRdneIz": "BzJRuHgb", "e0b4eHEM": "l6RO72ne"}, "statCode": "yKWl7iGc", "tags": ["uxoRe9ir", "NaakE60l", "CeiG3hVr"], "unlockedIcons": [{"slug": "VfQOyKoF", "url": "bEJUwOtL"}, {"slug": "ZYpD39Om", "url": "zCWlieFQ"}, {"slug": "nIW4VnAa", "url": "0n9uQUkG"}]}' 'MCznTMCJ' --login_with_auth "Bearer foo"
+achievement-admin-delete-achievement 'cbvWsJ54' --login_with_auth "Bearer foo"
+achievement-admin-update-achievement-list-order '{"targetOrder": 65}' 'c9LLiBWR' --login_with_auth "Bearer foo"
+achievement-admin-list-tags --login_with_auth "Bearer foo"
+achievement-admin-list-user-achievements 'fgC1ijGd' --login_with_auth "Bearer foo"
+achievement-admin-reset-achievement 'r5VGZWtX' 'T4LFIB8J' --login_with_auth "Bearer foo"
+achievement-admin-unlock-achievement 'kfdj6ldx' 'mzpene37' --login_with_auth "Bearer foo"
+achievement-admin-anonymize-user-achievement 'dK7J45vf' --login_with_auth "Bearer foo"
+achievement-public-list-achievements 'hUaqXU4i' --login_with_auth "Bearer foo"
+achievement-public-get-achievement 'dNdyNmk7' 'iACOj6ff' --login_with_auth "Bearer foo"
+achievement-public-list-tags --login_with_auth "Bearer foo"
+achievement-public-list-user-achievements 'Ww3cyWgL' --login_with_auth "Bearer foo"
+achievement-public-unlock-achievement 'NLvv1gLb' 'pIoHGody' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -63,7 +66,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..16"
+echo "1..19"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -80,7 +83,7 @@ eval_tap $? 2 'AdminListAchievements' test.out
 
 #- 3 AdminCreateNewAchievement
 $PYTHON -m $MODULE 'achievement-admin-create-new-achievement' \
-    '{"achievementCode": "CKUGeEmR", "defaultLanguage": "sYtqvdkn", "description": {"owXYz19x": "XQH1WsQs", "IB61l5vi": "CII5bmR3", "olAjcv5O": "TGUYJqGZ"}, "goalValue": 0.9259413627384431, "hidden": true, "incremental": false, "lockedIcons": [{"slug": "zD9u7PsI", "url": "nFgppsUj"}, {"slug": "Who06MKI", "url": "Q78pIKv3"}, {"slug": "ZGyd4FqL", "url": "phokJfSP"}], "name": {"nSr0Yl2l": "9NKYtyps", "1Acf3pE6": "Ch5UQRgd", "flKpu0O6": "2rIu5tJy"}, "statCode": "b2YfV0xk", "tags": ["FG0V82No", "iTWstAQG", "kVRbe6fr"], "unlockedIcons": [{"slug": "LWE5A0PT", "url": "2vTlCjdw"}, {"slug": "IXeVgzz8", "url": "yJLdUi9B"}, {"slug": "Qc1OpE61", "url": "88t2jfSM"}]}' \
+    '{"achievementCode": "VLqoIb5c", "defaultLanguage": "4LaTdV0L", "description": {"cdKsOSQw": "jcYEQZBy", "e7i3iUvI": "87T2XBmk", "RZqOQniU": "cshtk3YO"}, "goalValue": 0.6537487893320247, "hidden": true, "incremental": false, "lockedIcons": [{"slug": "TjDgWQ6X", "url": "hCZcOuBD"}, {"slug": "kl6sCc6y", "url": "heuG19XR"}, {"slug": "YK9qFI2H", "url": "Rh2KcS6J"}], "name": {"dNIyM4wZ": "6HcHnzCR", "gQDQFefd": "cUsNOpBb", "W97bSb5v": "tucmJCWk"}, "statCode": "2B8z0xVq", "tags": ["5ra3QPl3", "hmX3D5y1", "v9dEznbx"], "unlockedIcons": [{"slug": "GYS5mPAb", "url": "Lr1rRISM"}, {"slug": "qBhLoYWY", "url": "G2Ht4Z4n"}, {"slug": "QZ9NX8eg", "url": "OlIjDxwe"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateNewAchievement' test.out
@@ -99,86 +102,105 @@ eval_tap $? 5 'ImportAchievements' test.out
 
 #- 6 AdminGetAchievement
 $PYTHON -m $MODULE 'achievement-admin-get-achievement' \
-    'OwEKiTAA' \
+    'cmUxnaLH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'AdminGetAchievement' test.out
 
 #- 7 AdminUpdateAchievement
 $PYTHON -m $MODULE 'achievement-admin-update-achievement' \
-    '{"defaultLanguage": "9WS2nC9m", "description": {"OaLMxMte": "jq1ZevY7", "gTODDPxS": "aYOgf6ol", "4ceuzneo": "qMEsGS7H"}, "goalValue": 0.45069903223417684, "hidden": false, "incremental": false, "lockedIcons": [{"slug": "gUTWHEvY", "url": "bmLXOBtq"}, {"slug": "KDfuCqnl", "url": "0vd0x4Ir"}, {"slug": "WSE6acrx", "url": "cS6C4gsZ"}], "name": {"mu1Hoc11": "mMij9Dhz", "5ksqbdix": "EeDxSrRy", "8Vz9H5d3": "QnPvn0op"}, "statCode": "LMvOjUF3", "tags": ["sSULqINn", "zdtj9SAU", "3OXHLKUb"], "unlockedIcons": [{"slug": "juFF1J0p", "url": "tLxg8VpC"}, {"slug": "JbV6yGkc", "url": "71Fmtt00"}, {"slug": "JQFrw5Rz", "url": "MmirNszf"}]}' \
-    'b1GZFlg7' \
+    '{"defaultLanguage": "E9QXRoKA", "description": {"Sqao3VCV": "ppkLpVFQ", "bTyQLU2G": "MVzyumsg", "bypKxaoC": "dCDWHCaL"}, "goalValue": 0.4503291010857302, "hidden": false, "incremental": true, "lockedIcons": [{"slug": "dvCjq9ae", "url": "P5fmEyPJ"}, {"slug": "HnRcolgE", "url": "hqNNbGJl"}, {"slug": "BKQ4gSuj", "url": "YmYKWmJ9"}], "name": {"k328LcpU": "jOy451VA", "s27ENqZF": "FuGbEnLd", "xw8Zh9To": "Ie8gn4I5"}, "statCode": "fuAC20Bf", "tags": ["6FRhSpIT", "xb3K8epC", "TWIdrX1C"], "unlockedIcons": [{"slug": "jarRYwex", "url": "5xo7My6p"}, {"slug": "qWD1yE6i", "url": "zmH1XQc7"}, {"slug": "GD7OHgt5", "url": "WgUpv6rj"}]}' \
+    'KubHN4nE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AdminUpdateAchievement' test.out
 
 #- 8 AdminDeleteAchievement
 $PYTHON -m $MODULE 'achievement-admin-delete-achievement' \
-    'QHeZhFLn' \
+    '8GhCrKKL' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'AdminDeleteAchievement' test.out
 
 #- 9 AdminUpdateAchievementListOrder
 $PYTHON -m $MODULE 'achievement-admin-update-achievement-list-order' \
-    '{"targetOrder": 56}' \
-    'w0ubKQMs' \
+    '{"targetOrder": 71}' \
+    'mQvCmL1Z' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminUpdateAchievementListOrder' test.out
 
-#- 10 AdminListUserAchievements
+#- 10 AdminListTags
+$PYTHON -m $MODULE 'achievement-admin-list-tags' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 10 'AdminListTags' test.out
+
+#- 11 AdminListUserAchievements
 $PYTHON -m $MODULE 'achievement-admin-list-user-achievements' \
-    '4in0gJ6V' \
+    'uzIuMnH7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 10 'AdminListUserAchievements' test.out
+eval_tap $? 11 'AdminListUserAchievements' test.out
 
-#- 11 AdminResetAchievement
+#- 12 AdminResetAchievement
 $PYTHON -m $MODULE 'achievement-admin-reset-achievement' \
-    'F6JEEWZj' \
-    'kFCc4p3i' \
+    '1Ut4FVUk' \
+    'LsIp8nDs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 11 'AdminResetAchievement' test.out
+eval_tap $? 12 'AdminResetAchievement' test.out
 
-#- 12 AdminUnlockAchievement
+#- 13 AdminUnlockAchievement
 $PYTHON -m $MODULE 'achievement-admin-unlock-achievement' \
-    'B1Sy3x6R' \
-    'A1Z0T27a' \
+    'aQYBigvk' \
+    'xJnq2hn2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 12 'AdminUnlockAchievement' test.out
+eval_tap $? 13 'AdminUnlockAchievement' test.out
 
-#- 13 PublicListAchievements
+#- 14 AdminAnonymizeUserAchievement
+$PYTHON -m $MODULE 'achievement-admin-anonymize-user-achievement' \
+    '4gXjrKDS' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 14 'AdminAnonymizeUserAchievement' test.out
+
+#- 15 PublicListAchievements
 $PYTHON -m $MODULE 'achievement-public-list-achievements' \
-    'Jj34EBUM' \
+    'wBfhVtMT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 13 'PublicListAchievements' test.out
+eval_tap $? 15 'PublicListAchievements' test.out
 
-#- 14 PublicGetAchievement
+#- 16 PublicGetAchievement
 $PYTHON -m $MODULE 'achievement-public-get-achievement' \
-    '6WAIzovY' \
-    'HZeoLpsT' \
+    'trMIJWyh' \
+    'GyfXiPSD' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 14 'PublicGetAchievement' test.out
+eval_tap $? 16 'PublicGetAchievement' test.out
 
-#- 15 PublicListUserAchievements
+#- 17 PublicListTags
+$PYTHON -m $MODULE 'achievement-public-list-tags' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 17 'PublicListTags' test.out
+
+#- 18 PublicListUserAchievements
 $PYTHON -m $MODULE 'achievement-public-list-user-achievements' \
-    'n8gIxZBx' \
+    's0HfYHR7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'PublicListUserAchievements' test.out
+eval_tap $? 18 'PublicListUserAchievements' test.out
 
-#- 16 PublicUnlockAchievement
+#- 19 PublicUnlockAchievement
 $PYTHON -m $MODULE 'achievement-public-unlock-achievement' \
-    '99A1g4Ie' \
-    'HVGCMHlL' \
+    'IE9ocnSw' \
+    'h8f2cjc7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 16 'PublicUnlockAchievement' test.out
+eval_tap $? 19 'PublicUnlockAchievement' test.out
 
 
 fi
