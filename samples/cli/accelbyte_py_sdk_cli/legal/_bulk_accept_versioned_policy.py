@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Legal Service (1.25.1)
+# Accelbyte Cloud Legal Service (1.25.2)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.legal import (
 )
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementRequest
 from accelbyte_py_sdk.api.legal.models import AcceptAgreementResponse
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.3.3)
+# justice-basic-service (2.3.4)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -23,6 +23,7 @@ from ._get_config import get_config
 from ._delete_config import delete_config
 from ._update_config import update_config
 from ._generated_upload_url import generated_upload_url
+from ._get_game_namespaces import get_game_namespaces
 from ._get_countries import get_countries
 from ._get_country_groups import get_country_groups
 from ._add_country_group import add_country_group
@@ -103,6 +104,7 @@ commands = [
     delete_config,
     update_config,
     generated_upload_url,
+    get_game_namespaces,
     get_countries,
     get_country_groups,
     add_country_group,

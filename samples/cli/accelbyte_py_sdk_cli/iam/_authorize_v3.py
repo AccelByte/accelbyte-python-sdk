@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.22.0)
+# Accelbyte Cloud Iam Service (5.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 @click.option("--code_challenge", "code_challenge", type=str)
 @click.option("--code_challenge_method", "code_challenge_method", type=str)
 @click.option("--create_headless", "create_headless", type=bool)
+@click.option("--one_time_link_code", "one_time_link_code", type=str)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--scope", "scope", type=str)
 @click.option("--state", "state", type=str)
@@ -57,6 +58,7 @@ def authorize_v3(
     code_challenge: Optional[str] = None,
     code_challenge_method: Optional[str] = None,
     create_headless: Optional[bool] = None,
+    one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
     state: Optional[str] = None,
@@ -80,6 +82,7 @@ def authorize_v3(
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,

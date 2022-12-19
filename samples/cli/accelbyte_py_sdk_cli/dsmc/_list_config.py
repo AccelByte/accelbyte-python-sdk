@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Dsm Controller Service (4.0.2)
+# Accelbyte Cloud Dsm Controller Service (5.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

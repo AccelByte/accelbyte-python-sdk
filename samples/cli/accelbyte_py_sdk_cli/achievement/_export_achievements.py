@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.12.2)
+# Accelbyte Cloud Achievement Service (2.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,11 +37,13 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 
 
 @click.command()
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def export_achievements(
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -55,7 +57,14 @@ def export_achievements(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = export_achievements_internal(
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

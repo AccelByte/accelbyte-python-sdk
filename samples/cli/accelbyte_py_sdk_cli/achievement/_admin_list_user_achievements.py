@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.12.2)
+# Accelbyte Cloud Achievement Service (2.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,7 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--prefer_unlocked", "prefer_unlocked", type=bool)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -53,6 +54,7 @@ def admin_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,11 +68,18 @@ def admin_list_user_achievements(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = admin_list_user_achievements_internal(
         user_id=user_id,
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

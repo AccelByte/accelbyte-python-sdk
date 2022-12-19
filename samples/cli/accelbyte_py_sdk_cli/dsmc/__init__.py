@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-dsm-controller-service (4.0.2)
+# justice-dsm-controller-service (5.0.1)
 
 from ._list_config import list_config
 from ._save_config import save_config
@@ -57,7 +57,6 @@ from ._list_local_server import list_local_server
 from ._delete_local_server import delete_local_server
 from ._get_server import get_server
 from ._delete_server import delete_server
-from ._get_server_logs import get_server_logs
 from ._list_session import list_session
 from ._count_session import count_session
 from ._delete_session import delete_session
@@ -129,7 +128,6 @@ commands = [
     delete_local_server,
     get_server,
     delete_server,
-    get_server_logs,
     list_session,
     count_session,
     delete_session,

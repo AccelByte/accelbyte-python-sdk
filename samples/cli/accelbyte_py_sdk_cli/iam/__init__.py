@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (5.22.0)
+# justice-iam-service (5.23.0)
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -186,6 +186,9 @@ from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
 from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds_v3
 from ._admin_invite_user_v3 import admin_invite_user_v3
+from ._admin_query_third_platform_link_history_v3 import (
+    admin_query_third_platform_link_history_v3,
+)
 from ._admin_list_users_v3 import admin_list_users_v3
 from ._admin_search_user_v3 import admin_search_user_v3
 from ._admin_get_bulk_user_by_email_address_v3 import (
@@ -253,6 +256,11 @@ from ._user_authentication_v3 import user_authentication_v3
 from ._authentication_with_platform_link_v3 import authentication_with_platform_link_v3
 from ._generate_token_by_new_headless_account_v3 import (
     generate_token_by_new_headless_account_v3,
+)
+from ._request_one_time_linking_code_v3 import request_one_time_linking_code_v3
+from ._validate_one_time_linking_code_v3 import validate_one_time_linking_code_v3
+from ._request_token_by_one_time_link_code_response_v3 import (
+    request_token_by_one_time_link_code_response_v3,
 )
 from ._get_country_location_v3 import get_country_location_v3
 from ._logout import logout
@@ -340,6 +348,12 @@ from ._public_validate_user_by_user_id_and_password_v3 import (
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
 from ._public_get_my_user_v3 import public_get_my_user_v3
+from ._public_get_link_headless_account_to_my_account_conflict_v3 import (
+    public_get_link_headless_account_to_my_account_conflict_v3,
+)
+from ._link_headless_account_to_my_account_v3 import (
+    link_headless_account_to_my_account_v3,
+)
 from ._public_send_verification_link_v3 import public_send_verification_link_v3
 from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
@@ -567,6 +581,7 @@ commands = [
     admin_get_user_by_email_address_v3,
     admin_list_user_id_by_user_i_ds_v3,
     admin_invite_user_v3,
+    admin_query_third_platform_link_history_v3,
     admin_list_users_v3,
     admin_search_user_v3,
     admin_get_bulk_user_by_email_address_v3,
@@ -625,6 +640,9 @@ commands = [
     user_authentication_v3,
     authentication_with_platform_link_v3,
     generate_token_by_new_headless_account_v3,
+    request_one_time_linking_code_v3,
+    validate_one_time_linking_code_v3,
+    request_token_by_one_time_link_code_response_v3,
     get_country_location_v3,
     logout,
     request_game_token_code_response_v3,
@@ -689,6 +707,8 @@ commands = [
     public_get_roles_v3,
     public_get_role_v3,
     public_get_my_user_v3,
+    public_get_link_headless_account_to_my_account_conflict_v3,
+    link_headless_account_to_my_account_v3,
     public_send_verification_link_v3,
     public_verify_user_by_link_v3,
     platform_authenticate_samlv3_handler,

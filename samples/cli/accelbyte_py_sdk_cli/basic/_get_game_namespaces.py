@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Dsm Controller Service (4.0.2)
+# Accelbyte Cloud Basic Service (2.3.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,41 +30,43 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dsmc import get_server_logs as get_server_logs_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsServerLogs
-from accelbyte_py_sdk.api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.basic import (
+    get_game_namespaces as get_game_namespaces_internal,
+)
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import NamespaceInfo
 
 
 @click.command()
-@click.argument("pod_name", type=str)
+@click.option("--active_only", "active_only", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_server_logs(
-    pod_name: str,
+def get_game_namespaces(
+    active_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_server_logs_internal.__doc__)
+        click.echo(get_game_namespaces_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_server_logs_internal(
-        pod_name=pod_name,
+    result, error = get_game_namespaces_internal(
+        active_only=active_only,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getServerLogs failed: {str(error)}")
+        raise Exception(f"getGameNamespaces failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_server_logs.operation_id = "getServerLogs"
-get_server_logs.is_deprecated = False
+get_game_namespaces.operation_id = "getGameNamespaces"
+get_game_namespaces.is_deprecated = False

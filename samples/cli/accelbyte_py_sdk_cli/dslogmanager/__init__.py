@@ -8,6 +8,7 @@
 
 # justice-ds-log-manager-service (2.8.0)
 
+from ._get_server_logs import get_server_logs
 from ._list_terminated_servers import list_terminated_servers
 from ._download_server_logs import download_server_logs
 from ._check_server_logs import check_server_logs
@@ -17,6 +18,7 @@ from ._public_get_messages import public_get_messages
 
 
 commands = [
+    get_server_logs,
     list_terminated_servers,
     download_server_logs,
     check_server_logs,
