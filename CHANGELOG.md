@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.30.0
+- Add deprecation information in docs/operation files.
+- Fix PhantAuth tests.
+- Move integration tests into another directory.
+- Update common use cases file.
+- Update spec for AccelByte Cloud v3.38.0.
+
 ## v0.29.0
 - Add AccelByte OpenAPI2 Vendor Extensions document.
 - Add Getting Started sample.
