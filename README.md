@@ -10,13 +10,19 @@ This SDK requires Python 3.9 to be installed.
 
 ### Install with Pip
 
+Install dependencies.
+
 ```sh
 pip install requests httpx websockets pyyaml jwt
 ```
 
+Install from PyPI
+
 ```sh
 pip install accelbyte-py-sdk
 ```
+
+or install from source.
 
 ```sh
 pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#egg=accelbyte_py_sdk
@@ -201,6 +207,85 @@ refresh_token = token_repo.get_refresh_token()
 
 token, error = refresh_login(refresh_token)
 assert error is None
+```
+
+## Using multiple SDK instances
+
+The examples above demonstrates using just one instance of the Python SDK (the default which is also global), but you could also instantiate multiple instances of the SDK and use them at the same time.
+
+```python
+import accelbyte_py_sdk.services.auth as auth_service
+import accelbyte_py_sdk.api.iam as iam_service
+import accelbyte_py_sdk.api.iam.models as iam_models
+
+from accelbyte_py_sdk import AccelByteSDK
+from accelbyte_py_sdk.core import EnvironmentConfigRepository
+from accelbyte_py_sdk.core import InMemoryTokenRepository
+
+
+# Create 3 instances of the SDK
+client_sdk = AccelByteSDK()
+user_sdk1 = AccelByteSDK()
+user_sdk2 = AccelByteSDK()
+
+
+# Initialize the SDKs
+client_sdk.initialize(
+    options={
+        "config": EnvironmentConfigRepository(),
+        "token": InMemoryTokenRepository(),
+    }
+)
+
+user_sdk1.initialize(
+    options={
+        "config": EnvironmentConfigRepository(),
+        "token": InMemoryTokenRepository(),
+    }
+)
+
+user_sdk2.initialize(
+    options={
+        "config": user_sdk1.get_config_repository(),  # you could also share the config repo with User 1 SDK's
+        "token": InMemoryTokenRepository(),  # you could also do the same thing with token repos but that is not advisable. 
+    }
+)
+
+
+# Login the SDKs
+_, error = auth_service.login_client(sdk=client_sdk)
+
+username1, password1 = ...
+_, error = auth_service.login_user(username1, password1, sdk=user_sdk1)
+
+username2, password2 = ...
+_, error = auth_service.login_user(username2, password2, sdk=user_sdk2)
+
+
+# Call an endpoint as User 1
+result1, error = iam_service.public_create_user_v4(
+    body=iam_models.AccountCreateUserRequestV4.create_from_dict({...}),
+    sdk=user_sdk1,
+)
+
+# Call an endpoint as User 2
+result2, error = iam_service.public_create_user_v4(
+    body=iam_models.AccountCreateUserRequestV4.create_from_dict({...}),
+    sdk=user_sdk2,
+)
+
+# Call an endpoint as the Admin IAM Client
+result, error = admin_update_user_v4(
+    body=iam_models.ModelUserUpdateRequestV3.create_from_dict({...}),
+    user_id=result1.user_id,
+    sdk=client_sdk,
+)
+
+
+# Reset/Deintialize the SDKs after using
+client_sdk1.deintialize()
+client_sdk1.deintialize()
+client_sdk1.deintialize()
 ```
 
 ## Interacting with a Service Endpoint
