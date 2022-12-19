@@ -220,6 +220,9 @@ class AccelByteSDK:
 
         self.logger.info("AccelByte Python SDK initialized.")
 
+    def deinitialize(self) -> None:
+        self.reset()
+
     def reset(self) -> None:
         if self._http_client is not None:
             self._http_client.close()
