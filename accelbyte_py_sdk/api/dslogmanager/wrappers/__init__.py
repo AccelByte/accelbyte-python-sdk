@@ -14,6 +14,9 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._admin import get_server_logs
+from ._admin import get_server_logs_async
+
 from ._all_terminated_servers import batch_download_server_logs
 from ._all_terminated_servers import batch_download_server_logs_async
 from ._all_terminated_servers import list_all_terminated_servers

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Basic Service (2.3.3)
+# AccelByte Cloud Basic Service (2.3.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,8 @@ class NamespaceInfo(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        parent_namespace: (parentNamespace) OPTIONAL str
+
         status: (status) OPTIONAL Union[str, StatusEnum]
 
         updated_at: (updatedAt) OPTIONAL str
@@ -55,6 +57,7 @@ class NamespaceInfo(Model):
     created_at: str  # OPTIONAL
     display_name: str  # OPTIONAL
     namespace: str  # OPTIONAL
+    parent_namespace: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
     updated_at: str  # OPTIONAL
 
@@ -72,6 +75,10 @@ class NamespaceInfo(Model):
 
     def with_namespace(self, value: str) -> NamespaceInfo:
         self.namespace = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> NamespaceInfo:
+        self.parent_namespace = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> NamespaceInfo:
@@ -100,6 +107,10 @@ class NamespaceInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -120,6 +131,7 @@ class NamespaceInfo(Model):
         created_at: Optional[str] = None,
         display_name: Optional[str] = None,
         namespace: Optional[str] = None,
+        parent_namespace: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         updated_at: Optional[str] = None,
     ) -> NamespaceInfo:
@@ -130,6 +142,8 @@ class NamespaceInfo(Model):
             instance.display_name = display_name
         if namespace is not None:
             instance.namespace = namespace
+        if parent_namespace is not None:
+            instance.parent_namespace = parent_namespace
         if status is not None:
             instance.status = status
         if updated_at is not None:
@@ -155,6 +169,10 @@ class NamespaceInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -205,6 +223,7 @@ class NamespaceInfo(Model):
             "createdAt": "created_at",
             "displayName": "display_name",
             "namespace": "namespace",
+            "parentNamespace": "parent_namespace",
             "status": "status",
             "updatedAt": "updated_at",
         }
@@ -215,6 +234,7 @@ class NamespaceInfo(Model):
             "createdAt": False,
             "displayName": False,
             "namespace": False,
+            "parentNamespace": False,
             "status": False,
             "updatedAt": False,
         }

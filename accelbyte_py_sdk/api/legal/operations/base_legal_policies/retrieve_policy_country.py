@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,7 +64,7 @@ class RetrievePolicyCountry(Operation):
     Responses:
         200: OK - RetrievePolicyResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
 
     # region fields
@@ -174,7 +174,7 @@ class RetrievePolicyCountry(Operation):
 
         200: OK - RetrievePolicyResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
 
         ---: HttpResponse (Undocumented Response)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Iam Service (5.23.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,43 +29,28 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsPaginatedUserAchievementResponse
-from ...models import ResponseError
+from ...models import ModelLinkingHistoryResponseWithPaginationV3
+from ...models import RestErrorResponse
 
 
-class PublicListUserAchievements(Operation):
-    """Query user achievements [include achieved and in-progress] (PublicListUserAchievements)
+class AdminQueryThirdPlatformLinkHistoryV3(Operation):
+    """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    Required permission
-    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
-
-
-
-
-    Note:
+    Required permission ADMIN:NAMESPACE:{namespace}:USER [READ]
 
 
 
-
-    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
-
-
-
-
-    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    * if limit is not defined, The default limit is 100
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
+        - ADMIN:NAMESPACE:{namespace}:USER [READ]
 
     Properties:
-        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
+        url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
 
         method: GET
 
-        tags: ["achievements"]
+        tags: ["Users"]
 
         consumes: ["application/json"]
 
@@ -75,31 +60,29 @@ class PublicListUserAchievements(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
+        platform_id: (platformId) REQUIRED str in query
 
     Responses:
-        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+        200: OK - ModelLinkingHistoryResponseWithPaginationV3 (OK)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
 
-    _url: str = (
-        "/achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements"
-    )
+    _url: str = "/iam/v3/admin/namespaces/{namespace}/users/linkhistories"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -107,10 +90,10 @@ class PublicListUserAchievements(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
-    prefer_unlocked: bool  # OPTIONAL in [query]
+    platform_user_id: str  # OPTIONAL in [query]
+    platform_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -158,8 +141,6 @@ class PublicListUserAchievements(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
@@ -168,8 +149,10 @@ class PublicListUserAchievements(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
-        if hasattr(self, "prefer_unlocked"):
-            result["preferUnlocked"] = self.prefer_unlocked
+        if hasattr(self, "platform_user_id"):
+            result["platformUserId"] = self.platform_user_id
+        if hasattr(self, "platform_id"):
+            result["platformId"] = self.platform_id
         return result
 
     # endregion get_x_params methods
@@ -180,24 +163,24 @@ class PublicListUserAchievements(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> PublicListUserAchievements:
+    def with_namespace(self, value: str) -> AdminQueryThirdPlatformLinkHistoryV3:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicListUserAchievements:
-        self.user_id = value
-        return self
-
-    def with_limit(self, value: int) -> PublicListUserAchievements:
+    def with_limit(self, value: int) -> AdminQueryThirdPlatformLinkHistoryV3:
         self.limit = value
         return self
 
-    def with_offset(self, value: int) -> PublicListUserAchievements:
+    def with_offset(self, value: int) -> AdminQueryThirdPlatformLinkHistoryV3:
         self.offset = value
         return self
 
-    def with_prefer_unlocked(self, value: bool) -> PublicListUserAchievements:
-        self.prefer_unlocked = value
+    def with_platform_user_id(self, value: str) -> AdminQueryThirdPlatformLinkHistoryV3:
+        self.platform_user_id = value
+        return self
+
+    def with_platform_id(self, value: str) -> AdminQueryThirdPlatformLinkHistoryV3:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -210,10 +193,6 @@ class PublicListUserAchievements(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -222,10 +201,14 @@ class PublicListUserAchievements(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
-        if hasattr(self, "prefer_unlocked") and self.prefer_unlocked:
-            result["preferUnlocked"] = bool(self.prefer_unlocked)
+        if hasattr(self, "platform_user_id") and self.platform_user_id:
+            result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
-            result["preferUnlocked"] = False
+            result["platformUserId"] = ""
+        if hasattr(self, "platform_id") and self.platform_id:
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -236,20 +219,20 @@ class PublicListUserAchievements(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsPaginatedUserAchievementResponse],
-        Union[None, HttpResponse, ResponseError],
+        Union[None, ModelLinkingHistoryResponseWithPaginationV3],
+        Union[None, HttpResponse, RestErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+        200: OK - ModelLinkingHistoryResponseWithPaginationV3 (OK)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - RestErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseError (Unauthorized)
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
-        404: Not Found - ResponseError (Not Found)
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -266,17 +249,17 @@ class PublicListUserAchievements(Operation):
 
         if code == 200:
             return (
-                ModelsPaginatedUserAchievementResponse.create_from_dict(content),
+                ModelLinkingHistoryResponseWithPaginationV3.create_from_dict(content),
                 None,
             )
         if code == 400:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 404:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -290,35 +273,31 @@ class PublicListUserAchievements(Operation):
     def create(
         cls,
         namespace: str,
-        user_id: str,
+        platform_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        prefer_unlocked: Optional[bool] = None,
-    ) -> PublicListUserAchievements:
+        platform_user_id: Optional[str] = None,
+    ) -> AdminQueryThirdPlatformLinkHistoryV3:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
+        instance.platform_id = platform_id
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
-        if prefer_unlocked is not None:
-            instance.prefer_unlocked = prefer_unlocked
+        if platform_user_id is not None:
+            instance.platform_user_id = platform_user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> PublicListUserAchievements:
+    ) -> AdminQueryThirdPlatformLinkHistoryV3:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -327,30 +306,34 @@ class PublicListUserAchievements(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
-        if "preferUnlocked" in dict_ and dict_["preferUnlocked"] is not None:
-            instance.prefer_unlocked = bool(dict_["preferUnlocked"])
+        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
+            instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
-            instance.prefer_unlocked = False
+            instance.platform_user_id = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
-            "preferUnlocked": "prefer_unlocked",
+            "platformUserId": "platform_user_id",
+            "platformId": "platform_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "userId": True,
             "limit": False,
             "offset": False,
-            "preferUnlocked": False,
+            "platformUserId": False,
+            "platformId": True,
         }
 
     # endregion static methods

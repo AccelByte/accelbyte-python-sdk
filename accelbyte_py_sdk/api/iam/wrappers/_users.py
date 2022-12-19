@@ -53,6 +53,7 @@ from ..models import ModelCreateJusticeUserResponse
 from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
 from ..models import ModelGetAdminUsersResponse
+from ..models import ModelGetLinkHeadlessAccountConflictResponse
 from ..models import ModelGetPublisherUserResponse
 from ..models import ModelGetPublisherUserV3Response
 from ..models import ModelGetUserBanV3Response
@@ -62,9 +63,11 @@ from ..models import ModelGetUserMappingV3
 from ..models import ModelGetUsersResponseWithPaginationV3
 from ..models import ModelInviteUserRequestV3
 from ..models import ModelInviteUserResponseV3
+from ..models import ModelLinkHeadlessAccountRequest
 from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkPlatformAccountWithProgressionRequest
 from ..models import ModelLinkRequest
+from ..models import ModelLinkingHistoryResponseWithPaginationV3
 from ..models import ModelListBulkUserResponse
 from ..models import ModelListEmailAddressRequest
 from ..models import ModelListUserInformationResult
@@ -159,6 +162,7 @@ from ..operations.users import AdminListUsersV3
 from ..operations.users import AdminPlatformLinkV3
 from ..operations.users import AdminPlatformUnlinkV3
 from ..operations.users import AdminPutUserRolesV2
+from ..operations.users import AdminQueryThirdPlatformLinkHistoryV3
 from ..operations.users import AdminResetPasswordV2
 from ..operations.users import AdminResetPasswordV3
 from ..operations.users import AdminSaveUserRoleV3
@@ -207,6 +211,7 @@ from ..operations.users import GetUserMapping
 from ..operations.users import GetUserPlatformAccounts
 from ..operations.users import GetUserVerificationCode
 from ..operations.users import GetUsersByLoginIds
+from ..operations.users import LinkHeadlessAccountToMyAccountV3
 from ..operations.users import ListAdminsV3
 from ..operations.users import ListCrossNamespaceAccountLink
 from ..operations.users import PlatformLink
@@ -223,6 +228,7 @@ from ..operations.users import PublicForgotPasswordV3
 from ..operations.users import PublicGetAsyncStatus
 from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetCountryAgeRestrictionV3
+from ..operations.users import PublicGetLinkHeadlessAccountToMyAccountConflictV3
 from ..operations.users import PublicGetMyUserV3
 from ..operations.users import PublicGetPublisherUserV3
 from ..operations.users import PublicGetUserBan
@@ -1937,6 +1943,56 @@ async def admin_put_user_roles_v2_async(
     request = AdminPutUserRolesV2.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminQueryThirdPlatformLinkHistoryV3)
+def admin_query_third_platform_link_history_v3(
+    platform_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    platform_user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQueryThirdPlatformLinkHistoryV3.create(
+        platform_id=platform_id,
+        limit=limit,
+        offset=offset,
+        platform_user_id=platform_user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminQueryThirdPlatformLinkHistoryV3)
+async def admin_query_third_platform_link_history_v3_async(
+    platform_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    platform_user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQueryThirdPlatformLinkHistoryV3.create(
+        platform_id=platform_id,
+        limit=limit,
+        offset=offset,
+        platform_user_id=platform_user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4022,6 +4078,32 @@ async def get_users_by_login_ids_async(
     )
 
 
+@same_doc_as(LinkHeadlessAccountToMyAccountV3)
+def link_headless_account_to_my_account_v3(
+    body: ModelLinkHeadlessAccountRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = LinkHeadlessAccountToMyAccountV3.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(LinkHeadlessAccountToMyAccountV3)
+async def link_headless_account_to_my_account_v3_async(
+    body: ModelLinkHeadlessAccountRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = LinkHeadlessAccountToMyAccountV3.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(ListAdminsV3)
 def list_admins_v3(
     after: Optional[str] = None,
@@ -4686,6 +4768,32 @@ async def public_get_country_age_restriction_v3_async(
     request = PublicGetCountryAgeRestrictionV3.create(
         country_code=country_code,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetLinkHeadlessAccountToMyAccountConflictV3)
+def public_get_link_headless_account_to_my_account_conflict_v3(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicGetLinkHeadlessAccountToMyAccountConflictV3.create(
+        one_time_link_code=one_time_link_code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetLinkHeadlessAccountToMyAccountConflictV3)
+async def public_get_link_headless_account_to_my_account_conflict_v3_async(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = PublicGetLinkHeadlessAccountToMyAccountConflictV3.create(
+        one_time_link_code=one_time_link_code,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

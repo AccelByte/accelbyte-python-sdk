@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Basic Service Index (2.3.3)
+# AccelByte Cloud Basic Service Index (2.3.4)
 
 
 ## Operations
@@ -48,6 +48,7 @@
 | /basic/v1/admin/namespaces/{namespace}/status | PATCH | changeNamespaceStatus | `false` | [ChangeNamespaceStatus](../../accelbyte_py_sdk/api/basic/operations/namespace/change_namespace_status.py) | [change_namespace_status](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-change-namespace-status](../../samples/cli/accelbyte_py_sdk_cli/basic/_change_namespace_status.py) |
 | /basic/v1/admin/namespaces | POST | createNamespace | `false` | [CreateNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/create_namespace.py) | [create_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-create-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_create_namespace.py) |
 | /basic/v1/admin/namespaces/{namespace} | DELETE | deleteNamespace | `false` | [DeleteNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/delete_namespace.py) | [delete_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-delete-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_namespace.py) |
+| /basic/v1/admin/namespaces/{namespace}/game | GET | getGameNamespaces | `false` | [GetGameNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/get_game_namespaces.py) | [get_game_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-game-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_game_namespaces.py) |
 | /basic/v1/admin/namespaces/{namespace} | GET | getNamespace | `false` | [GetNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace.py) | [get_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace.py) |
 | /basic/v1/admin/namespaces/{namespace}/publisher | GET | getNamespacePublisher | `false` | [GetNamespacePublisher](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace_publisher.py) | [get_namespace_publisher](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace-publisher](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace_publisher.py) |
 | /basic/v1/admin/namespaces | GET | getNamespaces | `false` | [GetNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespaces.py) | [get_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespaces.py) |

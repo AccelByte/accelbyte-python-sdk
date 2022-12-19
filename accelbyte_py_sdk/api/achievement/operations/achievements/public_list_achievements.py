@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Achievement Service (2.12.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,7 +63,7 @@ class PublicListAchievements(Operation):
 
         method: GET
 
-        tags: ["achievements"]
+        tags: ["Achievements"]
 
         consumes: ["application/json"]
 
@@ -78,6 +78,8 @@ class PublicListAchievements(Operation):
         offset: (offset) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        tags: (tags) OPTIONAL List[str] in query
 
         language: (language) REQUIRED str in query
 
@@ -106,6 +108,7 @@ class PublicListAchievements(Operation):
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
+    tags: List[str]  # OPTIONAL in [query]
     language: str  # REQUIRED in [query]
 
     # endregion fields
@@ -164,6 +167,8 @@ class PublicListAchievements(Operation):
             result["offset"] = self.offset
         if hasattr(self, "sort_by"):
             result["sortBy"] = self.sort_by
+        if hasattr(self, "tags"):
+            result["tags"] = self.tags
         if hasattr(self, "language"):
             result["language"] = self.language
         return result
@@ -192,6 +197,10 @@ class PublicListAchievements(Operation):
         self.sort_by = value
         return self
 
+    def with_tags(self, value: List[str]) -> PublicListAchievements:
+        self.tags = value
+        return self
+
     def with_language(self, value: str) -> PublicListAchievements:
         self.language = value
         return self
@@ -218,6 +227,10 @@ class PublicListAchievements(Operation):
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
             result["sortBy"] = Union[str, SortByEnum]()
+        if hasattr(self, "tags") and self.tags:
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "language") and self.language:
             result["language"] = str(self.language)
         elif include_empty:
@@ -287,6 +300,7 @@ class PublicListAchievements(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
+        tags: Optional[List[str]] = None,
     ) -> PublicListAchievements:
         instance = cls()
         instance.namespace = namespace
@@ -297,6 +311,8 @@ class PublicListAchievements(Operation):
             instance.offset = offset
         if sort_by is not None:
             instance.sort_by = sort_by
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -320,6 +336,10 @@ class PublicListAchievements(Operation):
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
             instance.sort_by = Union[str, SortByEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "language" in dict_ and dict_["language"] is not None:
             instance.language = str(dict_["language"])
         elif include_empty:
@@ -333,6 +353,7 @@ class PublicListAchievements(Operation):
             "limit": "limit",
             "offset": "offset",
             "sortBy": "sort_by",
+            "tags": "tags",
             "language": "language",
         }
 
@@ -343,7 +364,14 @@ class PublicListAchievements(Operation):
             "limit": False,
             "offset": False,
             "sortBy": False,
+            "tags": False,
             "language": True,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "csv",  # in query
         }
 
     @staticmethod

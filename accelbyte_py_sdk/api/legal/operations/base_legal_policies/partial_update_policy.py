@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,7 +65,9 @@ class PartialUpdatePolicy(Operation):
     Responses:
         200: OK - UpdateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
     """
 
     # region fields
@@ -179,7 +181,9 @@ class PartialUpdatePolicy(Operation):
 
         200: OK - UpdateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -197,6 +201,8 @@ class PartialUpdatePolicy(Operation):
         if code == 200:
             return UpdateBasePolicyResponse.create_from_dict(content), None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

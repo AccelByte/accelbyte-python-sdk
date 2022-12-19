@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (4.0.2)
+# AccelByte Cloud Dsm Controller Service (5.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -70,7 +70,6 @@ from ..api.dsmc.models import ModelsRequestMatchMember
 from ..api.dsmc.models import ModelsRequestMatchParty
 from ..api.dsmc.models import ModelsRequestMatchingAlly
 from ..api.dsmc.models import ModelsServer
-from ..api.dsmc.models import ModelsServerLogs
 from ..api.dsmc.models import ModelsServerSessionResponse
 from ..api.dsmc.models import ModelsSession
 from ..api.dsmc.models import ModelsSessionResponse
@@ -551,12 +550,6 @@ def create_models_server_example() -> ModelsServer:
     instance.session_id = randomize("uid")
     instance.status = randomize()
     instance.status_history = [create_models_status_history_example()]
-    return instance
-
-
-def create_models_server_logs_example() -> ModelsServerLogs:
-    instance = ModelsServerLogs()
-    instance.logs = randomize()
     return instance
 
 

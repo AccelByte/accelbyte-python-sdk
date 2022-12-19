@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Basic Service."""
 
-__version__ = "2.3.3"
+__version__ = "2.3.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -62,6 +62,8 @@ from ._namespace import create_namespace
 from ._namespace import create_namespace_async
 from ._namespace import delete_namespace
 from ._namespace import delete_namespace_async
+from ._namespace import get_game_namespaces
+from ._namespace import get_game_namespaces_async
 from ._namespace import get_namespace
 from ._namespace import get_namespace_async
 from ._namespace import get_namespace_publisher

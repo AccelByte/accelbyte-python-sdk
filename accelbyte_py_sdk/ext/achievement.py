@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Achievement Service (2.12.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,10 +31,12 @@ from ..api.achievement.models import ModelsAchievementUpdateRequest
 from ..api.achievement.models import ModelsAdditionalInfo
 from ..api.achievement.models import ModelsIcon
 from ..api.achievement.models import ModelsPaginatedAchievementResponse
+from ..api.achievement.models import ModelsPaginatedTagResponse
 from ..api.achievement.models import ModelsPaginatedUserAchievementResponse
 from ..api.achievement.models import ModelsPagination
 from ..api.achievement.models import ModelsPublicAchievementResponse
 from ..api.achievement.models import ModelsPublicAchievementsResponse
+from ..api.achievement.models import ModelsTagResponse
 from ..api.achievement.models import ModelsUserAchievementResponse
 from ..api.achievement.models import ResponseError
 from ..api.achievement.models import ServiceImportConfigResponse
@@ -119,6 +121,13 @@ def create_models_paginated_achievement_response_example() -> ModelsPaginatedAch
     return instance
 
 
+def create_models_paginated_tag_response_example() -> ModelsPaginatedTagResponse:
+    instance = ModelsPaginatedTagResponse()
+    instance.data = [create_models_tag_response_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
 def create_models_paginated_user_achievement_response_example() -> ModelsPaginatedUserAchievementResponse:
     instance = ModelsPaginatedUserAchievementResponse()
     instance.count_info = create_models_additional_info_example()
@@ -157,6 +166,14 @@ def create_models_public_achievements_response_example() -> ModelsPublicAchievem
     instance = ModelsPublicAchievementsResponse()
     instance.data = [create_models_public_achievement_response_example()]
     instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_tag_response_example() -> ModelsTagResponse:
+    instance = ModelsTagResponse()
+    instance.created_at = randomize("date")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
     return instance
 
 

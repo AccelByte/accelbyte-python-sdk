@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Dsm Controller Service Index (4.0.2)
+# AccelByte Cloud Dsm Controller Service Index (5.0.1)
 
 
 ## Operations
@@ -17,7 +17,6 @@
 | /dsmcontroller/admin/namespaces/{namespace}/servers/{podName} | DELETE | DeleteServer | `false` | [DeleteServer](../../accelbyte_py_sdk/api/dsmc/operations/admin/delete_server.py) | [delete_server](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-delete-server](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_delete_server.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID} | DELETE | DeleteSession | `false` | [DeleteSession](../../accelbyte_py_sdk/api/dsmc/operations/admin/delete_session.py) | [delete_session](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-delete-session](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_delete_session.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/servers/{podName} | GET | GetServer | `false` | [GetServer](../../accelbyte_py_sdk/api/dsmc/operations/admin/get_server.py) | [get_server](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-get-server](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_server.py) |
-| /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}/logs | GET | getServerLogs | `false` | [GetServerLogs](../../accelbyte_py_sdk/api/dsmc/operations/admin/get_server_logs.py) | [get_server_logs](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-get-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_get_server_logs.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/servers/local | GET | ListLocalServer | `false` | [ListLocalServer](../../accelbyte_py_sdk/api/dsmc/operations/admin/list_local_server.py) | [list_local_server](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-list-local-server](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_local_server.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/servers | GET | ListServer | `false` | [ListServer](../../accelbyte_py_sdk/api/dsmc/operations/admin/list_server.py) | [list_server](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-list-server](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_server.py) |
 | /dsmcontroller/admin/namespaces/{namespace}/sessions | GET | ListSession | `false` | [ListSession](../../accelbyte_py_sdk/api/dsmc/operations/admin/list_session.py) | [list_session](../../accelbyte_py_sdk/api/dsmc/wrappers/_admin.py) | [accelbyte_py_sdk_cli dsmc-list-session](../../samples/cli/accelbyte_py_sdk_cli/dsmc/_list_session.py) |
@@ -162,7 +161,6 @@
 | models.RequestMatchParty | [ModelsRequestMatchParty](../../accelbyte_py_sdk/api/dsmc/models/models_request_match_party.py) |
 | models.RequestMatchingAlly | [ModelsRequestMatchingAlly](../../accelbyte_py_sdk/api/dsmc/models/models_request_matching_ally.py) |
 | models.Server | [ModelsServer](../../accelbyte_py_sdk/api/dsmc/models/models_server.py) |
-| models.ServerLogs | [ModelsServerLogs](../../accelbyte_py_sdk/api/dsmc/models/models_server_logs.py) |
 | models.ServerSessionResponse | [ModelsServerSessionResponse](../../accelbyte_py_sdk/api/dsmc/models/models_server_session_response.py) |
 | models.Session | [ModelsSession](../../accelbyte_py_sdk/api/dsmc/models/models_session.py) |
 | models.SessionResponse | [ModelsSessionResponse](../../accelbyte_py_sdk/api/dsmc/models/models_session_response.py) |

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -58,9 +58,9 @@ class AnonymizeUserAgreement(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (Anonymize successfully)
+        204: No Content - (successful anonymize)
 
-        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+        404: Not Found - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_agreement_not_found)
     """
 
     # region fields
@@ -155,9 +155,9 @@ class AnonymizeUserAgreement(Operation):
     ) -> Tuple[None, Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (Anonymize successfully)
+        204: No Content - (successful anonymize)
 
-        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
+        404: Not Found - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_agreement_not_found)
 
         ---: HttpResponse (Undocumented Response)
 

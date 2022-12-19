@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ErrorEntity
 from ..models import RetrieveUserEligibilitiesIndirectResponse
 
 from ..operations.admin_user_eligibilities import AdminRetrieveEligibilities

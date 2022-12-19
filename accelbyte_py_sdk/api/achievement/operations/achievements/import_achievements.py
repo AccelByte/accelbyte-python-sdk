@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Achievement Service (2.12.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,7 +57,7 @@ class ImportAchievements(Operation):
 
         method: POST
 
-        tags: ["achievements"]
+        tags: ["Achievements"]
 
         consumes: ["multipart/form-data"]
 

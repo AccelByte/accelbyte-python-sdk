@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Dsm Controller Service (4.0.2)
+# AccelByte Cloud Iam Service (5.23.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,65 +29,49 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsServerLogs
-from ...models import ResponseError
+from ...models import OauthmodelOneTimeLinkingCodeValidationResponse
 
 
-class GetServerLogs(Operation):
-    """Queries server logs (getServerLogs)
+class ValidateOneTimeLinkingCodeV3(Operation):
+    """Validate one time linking code (ValidateOneTimeLinkingCodeV3)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+    This endpoint is being used to validate one time link code.
 
-    Required scope: social
+    It require a valid user token.
 
-    This endpoint queries a specified dedicated server's logs.
+    Should specify the target platform id and current user should already linked to this platform.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
+    Current user should be a headless account.
 
     Properties:
-        url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}/logs
+        url: /iam/v3/link/code/validate
 
-        method: GET
+        method: POST
 
-        tags: ["Admin"]
+        tags: ["OAuth2.0 - Extension"]
 
-        consumes: ["application/json"]
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        namespace: (namespace) REQUIRED str in path
-
-        pod_name: (podName) REQUIRED str in path
+        one_time_link_code: (oneTimeLinkCode) REQUIRED str in form_data
 
     Responses:
-        200: OK - ModelsServerLogs (server logs queried)
-
-        400: Bad Request - ResponseError (malformed request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        404: Not Found - ResponseError (server not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        200: OK - OauthmodelOneTimeLinkingCodeValidationResponse (Succeed to validate one time code.)
     """
 
     # region fields
 
-    _url: str = "/dsmcontroller/admin/namespaces/{namespace}/servers/{podName}/logs"
-    _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/iam/v3/link/code/validate"
+    _method: str = "POST"
+    _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
-    pod_name: str  # REQUIRED in [path]
+    one_time_link_code: str  # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -127,15 +111,13 @@ class GetServerLogs(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "path": self.get_path_params(),
+            "form_data": self.get_form_data_params(),
         }
 
-    def get_path_params(self) -> dict:
+    def get_form_data_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
-        if hasattr(self, "pod_name"):
-            result["podName"] = self.pod_name
+        if hasattr(self, "one_time_link_code"):
+            result["oneTimeLinkCode"] = self.one_time_link_code
         return result
 
     # endregion get_x_params methods
@@ -146,12 +128,8 @@ class GetServerLogs(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetServerLogs:
-        self.namespace = value
-        return self
-
-    def with_pod_name(self, value: str) -> GetServerLogs:
-        self.pod_name = value
+    def with_one_time_link_code(self, value: str) -> ValidateOneTimeLinkingCodeV3:
+        self.one_time_link_code = value
         return self
 
     # endregion with_x methods
@@ -160,14 +138,10 @@ class GetServerLogs(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "one_time_link_code") and self.one_time_link_code:
+            result["oneTimeLinkCode"] = str(self.one_time_link_code)
         elif include_empty:
-            result["namespace"] = ""
-        if hasattr(self, "pod_name") and self.pod_name:
-            result["podName"] = str(self.pod_name)
-        elif include_empty:
-            result["podName"] = ""
+            result["oneTimeLinkCode"] = ""
         return result
 
     # endregion to methods
@@ -177,18 +151,13 @@ class GetServerLogs(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelsServerLogs], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, OauthmodelOneTimeLinkingCodeValidationResponse],
+        Union[None, HttpResponse],
+    ]:
         """Parse the given response.
 
-        200: OK - ModelsServerLogs (server logs queried)
-
-        400: Bad Request - ResponseError (malformed request)
-
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        404: Not Found - ResponseError (server not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        200: OK - OauthmodelOneTimeLinkingCodeValidationResponse (Succeed to validate one time code.)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -204,15 +173,12 @@ class GetServerLogs(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsServerLogs.create_from_dict(content), None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
-        if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 404:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return (
+                OauthmodelOneTimeLinkingCodeValidationResponse.create_from_dict(
+                    content
+                ),
+                None,
+            )
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -225,41 +191,33 @@ class GetServerLogs(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        pod_name: str,
-    ) -> GetServerLogs:
+        one_time_link_code: str,
+    ) -> ValidateOneTimeLinkingCodeV3:
         instance = cls()
-        instance.namespace = namespace
-        instance.pod_name = pod_name
+        instance.one_time_link_code = one_time_link_code
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetServerLogs:
+    ) -> ValidateOneTimeLinkingCodeV3:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "oneTimeLinkCode" in dict_ and dict_["oneTimeLinkCode"] is not None:
+            instance.one_time_link_code = str(dict_["oneTimeLinkCode"])
         elif include_empty:
-            instance.namespace = ""
-        if "podName" in dict_ and dict_["podName"] is not None:
-            instance.pod_name = str(dict_["podName"])
-        elif include_empty:
-            instance.pod_name = ""
+            instance.one_time_link_code = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "podName": "pod_name",
+            "oneTimeLinkCode": "one_time_link_code",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "namespace": True,
-            "podName": True,
+            "oneTimeLinkCode": True,
         }
 
     # endregion static methods

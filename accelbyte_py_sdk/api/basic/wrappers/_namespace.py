@@ -40,6 +40,7 @@ from ..models import ValidationErrorEntity
 from ..operations.namespace import ChangeNamespaceStatus
 from ..operations.namespace import CreateNamespace
 from ..operations.namespace import DeleteNamespace
+from ..operations.namespace import GetGameNamespaces
 from ..operations.namespace import GetNamespace
 from ..operations.namespace import GetNamespacePublisher
 from ..operations.namespace import GetNamespaces
@@ -141,6 +142,44 @@ async def delete_namespace_async(
         if error:
             return None, error
     request = DeleteNamespace.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetGameNamespaces)
+def get_game_namespaces(
+    active_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGameNamespaces.create(
+        active_only=active_only,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetGameNamespaces)
+async def get_game_namespaces_async(
+    active_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGameNamespaces.create(
+        active_only=active_only,
         namespace=namespace,
     )
     return await run_request_async(

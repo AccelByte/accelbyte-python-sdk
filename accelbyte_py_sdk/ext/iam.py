@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.22.0)
+# AccelByte Cloud Iam Service (5.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -98,6 +98,7 @@ from ..api.iam.models import ClientmodelClientV3Response
 from ..api.iam.models import ClientmodelClientsV3Response
 from ..api.iam.models import ClientmodelV3ClientUpdateSecretRequest
 from ..api.iam.models import LegalAcceptedPoliciesRequest
+from ..api.iam.models import ModelAccountProgressionInfo
 from ..api.iam.models import ModelAddUserRoleV4Request
 from ..api.iam.models import ModelAgeRestrictionRequest
 from ..api.iam.models import ModelAgeRestrictionRequestV3
@@ -135,6 +136,7 @@ from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelFailedBanUnbanUserV3
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
+from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
 from ..api.iam.models import ModelGetPublisherUserV3Response
 from ..api.iam.models import ModelGetUserBanV3Response
@@ -150,9 +152,11 @@ from ..api.iam.models import ModelInputValidationsResponse
 from ..api.iam.models import ModelInviteUserRequestV3
 from ..api.iam.models import ModelInviteUserRequestV4
 from ..api.iam.models import ModelInviteUserResponseV3
+from ..api.iam.models import ModelLinkHeadlessAccountRequest
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkPlatformAccountWithProgressionRequest
 from ..api.iam.models import ModelLinkRequest
+from ..api.iam.models import ModelLinkingHistoryResponseWithPaginationV3
 from ..api.iam.models import ModelListAssignedUsersV4Response
 from ..api.iam.models import ModelListBulkUserBanResponseV3
 from ..api.iam.models import ModelListBulkUserResponse
@@ -263,6 +267,8 @@ from ..api.iam.models import OauthcommonUserRevocationListRecord
 from ..api.iam.models import OauthmodelCountryLocationResponse
 from ..api.iam.models import OauthmodelErrorResponse
 from ..api.iam.models import OauthmodelGameTokenCodeResponse
+from ..api.iam.models import OauthmodelOneTimeLinkingCodeResponse
+from ..api.iam.models import OauthmodelOneTimeLinkingCodeValidationResponse
 from ..api.iam.models import OauthmodelTokenIntrospectResponse
 from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
@@ -992,6 +998,15 @@ def create_legal_accepted_policies_request_example() -> LegalAcceptedPoliciesReq
     return instance
 
 
+def create_model_account_progression_info_example() -> ModelAccountProgressionInfo:
+    instance = ModelAccountProgressionInfo()
+    instance.linked_games = [randomize()]
+    instance.display_name = randomize("slug")
+    instance.email = randomize("email")
+    instance.user_name = randomize("slug")
+    return instance
+
+
 def create_model_add_user_role_v4_request_example() -> ModelAddUserRoleV4Request:
     instance = ModelAddUserRoleV4Request()
     instance.assigned_namespaces = [randomize()]
@@ -1277,6 +1292,16 @@ def create_model_get_admin_users_response_example() -> ModelGetAdminUsersRespons
     return instance
 
 
+def create_model_get_link_headless_account_conflict_response_example() -> ModelGetLinkHeadlessAccountConflictResponse:
+    instance = ModelGetLinkHeadlessAccountConflictResponse()
+    instance.platform_already_linked = randomize("bool")
+    instance.platform_id = randomize()
+    instance.platform_link_conflict = randomize("bool")
+    instance.current_account = create_model_account_progression_info_example()
+    instance.headless_account = create_model_account_progression_info_example()
+    return instance
+
+
 def create_model_get_publisher_user_response_example() -> ModelGetPublisherUserResponse:
     instance = ModelGetPublisherUserResponse()
     instance.namespace = randomize("slug")
@@ -1384,6 +1409,13 @@ def create_model_invite_user_response_v3_example() -> ModelInviteUserResponseV3:
     return instance
 
 
+def create_model_link_headless_account_request_example() -> ModelLinkHeadlessAccountRequest:
+    instance = ModelLinkHeadlessAccountRequest()
+    instance.chosen_namespaces = [randomize()]
+    instance.one_time_link_code = randomize()
+    return instance
+
+
 def create_model_link_platform_account_request_example() -> ModelLinkPlatformAccountRequest:
     instance = ModelLinkPlatformAccountRequest()
     instance.platform_id = randomize()
@@ -1418,6 +1450,14 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.refresh_token = randomize()
+    return instance
+
+
+def create_model_linking_history_response_with_pagination_v3_example() -> ModelLinkingHistoryResponseWithPaginationV3:
+    instance = ModelLinkingHistoryResponseWithPaginationV3()
+    instance.data = [randomize()]
+    instance.paging = create_accountcommon_pagination_v3_example()
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2493,6 +2533,21 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
 def create_oauthmodel_game_token_code_response_example() -> OauthmodelGameTokenCodeResponse:
     instance = OauthmodelGameTokenCodeResponse()
     instance.code = randomize()
+    return instance
+
+
+def create_oauthmodel_one_time_linking_code_response_example() -> OauthmodelOneTimeLinkingCodeResponse:
+    instance = OauthmodelOneTimeLinkingCodeResponse()
+    instance.exp = randomize("int", min_val=1, max_val=1000)
+    instance.one_time_link_code = randomize()
+    instance.one_time_link_url = randomize("url")
+    return instance
+
+
+def create_oauthmodel_one_time_linking_code_validation_response_example() -> OauthmodelOneTimeLinkingCodeValidationResponse:
+    instance = OauthmodelOneTimeLinkingCodeValidationResponse()
+    instance.expired = randomize("bool")
+    instance.valid = randomize("bool")
     return instance
 
 

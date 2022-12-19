@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Ds Log Manager Service (2.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,27 +29,31 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelsServerLogs
 from ...models import ResponseError
 
 
-class AdminUnlockAchievement(Operation):
-    """Unlock an achievement (AdminUnlockAchievement)
+class GetServerLogs(Operation):
+    """Queries server logs (getServerLogs)
 
-    Required permission
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint queries a specified dedicated server's logs.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
 
     Required Scope(s):
         - social
 
     Properties:
-        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+        url: /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs
 
-        method: PUT
+        method: GET
 
-        tags: ["achievements"]
+        tags: ["Admin"]
 
         consumes: ["application/json"]
 
@@ -57,34 +61,42 @@ class AdminUnlockAchievement(Operation):
 
         securities: [BEARER_AUTH]
 
-        achievement_code: (achievementCode) REQUIRED str in path
-
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        pod_name: (podName) REQUIRED str in path
+
+        log_type: (logType) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL str in query
 
     Responses:
-        204: No Content - (No Content)
+        200: OK - ModelsServerLogs (server logs queried)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (malformed request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock"
-    _method: str = "PUT"
+    _url: str = "/dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs"
+    _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    achievement_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
+    pod_name: str  # REQUIRED in [path]
+    log_type: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
+    origin: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -125,16 +137,25 @@ class AdminUnlockAchievement(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "achievement_code"):
-            result["achievementCode"] = self.achievement_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
+        if hasattr(self, "pod_name"):
+            result["podName"] = self.pod_name
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "log_type"):
+            result["logType"] = self.log_type
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
+        if hasattr(self, "origin"):
+            result["origin"] = self.origin
         return result
 
     # endregion get_x_params methods
@@ -145,16 +166,24 @@ class AdminUnlockAchievement(Operation):
 
     # region with_x methods
 
-    def with_achievement_code(self, value: str) -> AdminUnlockAchievement:
-        self.achievement_code = value
-        return self
-
-    def with_namespace(self, value: str) -> AdminUnlockAchievement:
+    def with_namespace(self, value: str) -> GetServerLogs:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> AdminUnlockAchievement:
-        self.user_id = value
+    def with_pod_name(self, value: str) -> GetServerLogs:
+        self.pod_name = value
+        return self
+
+    def with_log_type(self, value: str) -> GetServerLogs:
+        self.log_type = value
+        return self
+
+    def with_offset(self, value: int) -> GetServerLogs:
+        self.offset = value
+        return self
+
+    def with_origin(self, value: str) -> GetServerLogs:
+        self.origin = value
         return self
 
     # endregion with_x methods
@@ -163,18 +192,26 @@ class AdminUnlockAchievement(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "achievement_code") and self.achievement_code:
-            result["achievementCode"] = str(self.achievement_code)
-        elif include_empty:
-            result["achievementCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "pod_name") and self.pod_name:
+            result["podName"] = str(self.pod_name)
         elif include_empty:
-            result["userId"] = ""
+            result["podName"] = ""
+        if hasattr(self, "log_type") and self.log_type:
+            result["logType"] = str(self.log_type)
+        elif include_empty:
+            result["logType"] = ""
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
+        if hasattr(self, "origin") and self.origin:
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = ""
         return result
 
     # endregion to methods
@@ -184,14 +221,16 @@ class AdminUnlockAchievement(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[Union[None, ModelsServerLogs], Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        200: OK - ModelsServerLogs (server logs queried)
 
-        400: Bad Request - ResponseError (Bad Request)
+        400: Bad Request - ResponseError (malformed request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (server not found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
 
@@ -208,11 +247,13 @@ class AdminUnlockAchievement(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return ModelsServerLogs.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
@@ -228,49 +269,68 @@ class AdminUnlockAchievement(Operation):
     @classmethod
     def create(
         cls,
-        achievement_code: str,
         namespace: str,
-        user_id: str,
-    ) -> AdminUnlockAchievement:
+        pod_name: str,
+        log_type: Optional[str] = None,
+        offset: Optional[int] = None,
+        origin: Optional[str] = None,
+    ) -> GetServerLogs:
         instance = cls()
-        instance.achievement_code = achievement_code
         instance.namespace = namespace
-        instance.user_id = user_id
+        instance.pod_name = pod_name
+        if log_type is not None:
+            instance.log_type = log_type
+        if offset is not None:
+            instance.offset = offset
+        if origin is not None:
+            instance.origin = origin
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> AdminUnlockAchievement:
+    ) -> GetServerLogs:
         instance = cls()
-        if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
-            instance.achievement_code = str(dict_["achievementCode"])
-        elif include_empty:
-            instance.achievement_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "podName" in dict_ and dict_["podName"] is not None:
+            instance.pod_name = str(dict_["podName"])
         elif include_empty:
-            instance.user_id = ""
+            instance.pod_name = ""
+        if "logType" in dict_ and dict_["logType"] is not None:
+            instance.log_type = str(dict_["logType"])
+        elif include_empty:
+            instance.log_type = ""
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "achievementCode": "achievement_code",
             "namespace": "namespace",
-            "userId": "user_id",
+            "podName": "pod_name",
+            "logType": "log_type",
+            "offset": "offset",
+            "origin": "origin",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "achievementCode": True,
             "namespace": True,
-            "userId": True,
+            "podName": True,
+            "logType": False,
+            "offset": False,
+            "origin": False,
         }
 
     # endregion static methods

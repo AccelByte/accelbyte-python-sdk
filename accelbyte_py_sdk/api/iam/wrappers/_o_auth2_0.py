@@ -150,6 +150,7 @@ def authorize_v3(
         Union[str, AuthorizeV3CodeChallengeMethodEnum]
     ] = None,
     create_headless: Optional[bool] = None,
+    one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
     state: Optional[str] = None,
@@ -164,6 +165,7 @@ def authorize_v3(
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,
@@ -182,6 +184,7 @@ async def authorize_v3_async(
         Union[str, AuthorizeV3CodeChallengeMethodEnum]
     ] = None,
     create_headless: Optional[bool] = None,
+    one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
     state: Optional[str] = None,
@@ -196,6 +199,7 @@ async def authorize_v3_async(
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,
         state=state,

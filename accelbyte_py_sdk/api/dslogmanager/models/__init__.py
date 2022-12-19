@@ -29,5 +29,6 @@ from .models_request_match_member import ModelsRequestMatchMember
 from .models_request_match_party import ModelsRequestMatchParty
 from .models_request_matching_ally import ModelsRequestMatchingAlly
 from .models_server import ModelsServer
+from .models_server_logs import ModelsServerLogs
 from .models_status_history import ModelsStatusHistory
 from .response_error import ResponseError

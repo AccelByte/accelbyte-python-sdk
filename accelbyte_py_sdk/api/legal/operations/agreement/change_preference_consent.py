@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,10 +30,18 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import AcceptAgreementRequest
+from ...models import ErrorEntity
 
 
 class ChangePreferenceConsent(Operation):
-    """Change preference consent (changePreferenceConsent)
+    """Change Preference Consent (changePreferenceConsent)
+
+    This API will Update Preference Consent. Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
@@ -46,7 +54,7 @@ class ChangePreferenceConsent(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -55,7 +63,9 @@ class ChangePreferenceConsent(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - (successful operation)
+        200: OK - (operation successful)
+
+        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
     """
 
     # region fields
@@ -64,7 +74,7 @@ class ChangePreferenceConsent(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[AcceptAgreementRequest]  # OPTIONAL in [body]
@@ -175,10 +185,12 @@ class ChangePreferenceConsent(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful operation)
+        200: OK - (operation successful)
+
+        404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -195,6 +207,8 @@ class ChangePreferenceConsent(Operation):
 
         if code == 200:
             return HttpResponse.create(code, "OK"), None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

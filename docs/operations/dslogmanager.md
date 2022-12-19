@@ -7,6 +7,11 @@
 
 ## Operations
 
+### Admin
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs | GET | getServerLogs | `false` | [GetServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/admin/get_server_logs.py) | [get_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_admin.py) | [accelbyte_py_sdk_cli dslogmanager-get-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_get_server_logs.py) |
+
 ### All Terminated Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -42,5 +47,6 @@
 | models.RequestMatchParty | [ModelsRequestMatchParty](../../accelbyte_py_sdk/api/dslogmanager/models/models_request_match_party.py) |
 | models.RequestMatchingAlly | [ModelsRequestMatchingAlly](../../accelbyte_py_sdk/api/dslogmanager/models/models_request_matching_ally.py) |
 | models.Server | [ModelsServer](../../accelbyte_py_sdk/api/dslogmanager/models/models_server.py) |
+| models.ServerLogs | [ModelsServerLogs](../../accelbyte_py_sdk/api/dslogmanager/models/models_server_logs.py) |
 | models.StatusHistory | [ModelsStatusHistory](../../accelbyte_py_sdk/api/dslogmanager/models/models_status_history.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/dslogmanager/models/response_error.py) |

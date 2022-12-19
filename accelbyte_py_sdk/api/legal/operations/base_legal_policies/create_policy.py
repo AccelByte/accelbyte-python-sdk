@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -64,7 +64,9 @@ class CreatePolicy(Operation):
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -165,7 +167,9 @@ class CreatePolicy(Operation):
 
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+
+        404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -184,7 +188,9 @@ class CreatePolicy(Operation):
 
         if code == 201:
             return CreateBasePolicyResponse.create_from_dict(content), None
-        if code == 409:
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)

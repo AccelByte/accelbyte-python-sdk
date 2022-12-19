@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import RetrieveUserEligibilitiesResponse
 
 
@@ -59,6 +60,10 @@ class RetrieveEligibilitiesPublic(Operation):
 
     Responses:
         200: OK - List[RetrieveUserEligibilitiesResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
 
     # region fields
@@ -151,11 +156,16 @@ class RetrieveEligibilitiesPublic(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[RetrieveUserEligibilitiesResponse]], Union[None, HttpResponse]
+        Union[None, List[RetrieveUserEligibilitiesResponse]],
+        Union[None, ErrorEntity, HttpResponse],
     ]:
         """Parse the given response.
 
         200: OK - List[RetrieveUserEligibilitiesResponse] (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -174,6 +184,10 @@ class RetrieveEligibilitiesPublic(Operation):
             return [
                 RetrieveUserEligibilitiesResponse.create_from_dict(i) for i in content
             ], None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

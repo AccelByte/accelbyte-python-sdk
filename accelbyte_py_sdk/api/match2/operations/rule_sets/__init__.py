@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "1.4.1"
+__version__ = "1.4.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,7 +59,7 @@ class SyncUserInfo(Operation):
         namespace: (namespace) REQUIRED str in query
 
     Responses:
-        200: OK - (successful operation)
+        200: OK - (Successful operation)
     """
 
     # region fields
@@ -154,7 +154,7 @@ class SyncUserInfo(Operation):
     ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful operation)
+        200: OK - (Successful operation)
 
         ---: HttpResponse (Undocumented Response)
 

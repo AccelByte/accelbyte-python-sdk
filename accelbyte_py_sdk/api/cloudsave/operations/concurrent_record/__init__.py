@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.2.1"
+__version__ = "3.2.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

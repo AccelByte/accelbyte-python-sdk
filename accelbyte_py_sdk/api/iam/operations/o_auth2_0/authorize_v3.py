@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.22.0)
+# AccelByte Cloud Iam Service (5.23.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -154,6 +154,8 @@ class AuthorizeV3(Operation):
 
         create_headless: (createHeadless) OPTIONAL bool in query
 
+        one_time_link_code: (oneTimeLinkCode) OPTIONAL str in query
+
         redirect_uri: (redirect_uri) OPTIONAL str in query
 
         scope: (scope) OPTIONAL str in query
@@ -184,6 +186,7 @@ class AuthorizeV3(Operation):
     code_challenge: str  # OPTIONAL in [query]
     code_challenge_method: Union[str, CodeChallengeMethodEnum]  # OPTIONAL in [query]
     create_headless: bool  # OPTIONAL in [query]
+    one_time_link_code: str  # OPTIONAL in [query]
     redirect_uri: str  # OPTIONAL in [query]
     scope: str  # OPTIONAL in [query]
     state: str  # OPTIONAL in [query]
@@ -241,6 +244,8 @@ class AuthorizeV3(Operation):
             result["code_challenge_method"] = self.code_challenge_method
         if hasattr(self, "create_headless"):
             result["createHeadless"] = self.create_headless
+        if hasattr(self, "one_time_link_code"):
+            result["oneTimeLinkCode"] = self.one_time_link_code
         if hasattr(self, "redirect_uri"):
             result["redirect_uri"] = self.redirect_uri
         if hasattr(self, "scope"):
@@ -287,6 +292,10 @@ class AuthorizeV3(Operation):
 
     def with_create_headless(self, value: bool) -> AuthorizeV3:
         self.create_headless = value
+        return self
+
+    def with_one_time_link_code(self, value: str) -> AuthorizeV3:
+        self.one_time_link_code = value
         return self
 
     def with_redirect_uri(self, value: str) -> AuthorizeV3:
@@ -337,6 +346,10 @@ class AuthorizeV3(Operation):
             result["createHeadless"] = bool(self.create_headless)
         elif include_empty:
             result["createHeadless"] = False
+        if hasattr(self, "one_time_link_code") and self.one_time_link_code:
+            result["oneTimeLinkCode"] = str(self.one_time_link_code)
+        elif include_empty:
+            result["oneTimeLinkCode"] = ""
         if hasattr(self, "redirect_uri") and self.redirect_uri:
             result["redirect_uri"] = str(self.redirect_uri)
         elif include_empty:
@@ -416,6 +429,7 @@ class AuthorizeV3(Operation):
         code_challenge: Optional[str] = None,
         code_challenge_method: Optional[Union[str, CodeChallengeMethodEnum]] = None,
         create_headless: Optional[bool] = None,
+        one_time_link_code: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         scope: Optional[str] = None,
         state: Optional[str] = None,
@@ -431,6 +445,8 @@ class AuthorizeV3(Operation):
             instance.code_challenge_method = code_challenge_method
         if create_headless is not None:
             instance.create_headless = create_headless
+        if one_time_link_code is not None:
+            instance.one_time_link_code = one_time_link_code
         if redirect_uri is not None:
             instance.redirect_uri = redirect_uri
         if scope is not None:
@@ -463,6 +479,10 @@ class AuthorizeV3(Operation):
             instance.create_headless = bool(dict_["createHeadless"])
         elif include_empty:
             instance.create_headless = False
+        if "oneTimeLinkCode" in dict_ and dict_["oneTimeLinkCode"] is not None:
+            instance.one_time_link_code = str(dict_["oneTimeLinkCode"])
+        elif include_empty:
+            instance.one_time_link_code = ""
         if "redirect_uri" in dict_ and dict_["redirect_uri"] is not None:
             instance.redirect_uri = str(dict_["redirect_uri"])
         elif include_empty:
@@ -504,6 +524,7 @@ class AuthorizeV3(Operation):
             "code_challenge": "code_challenge",
             "code_challenge_method": "code_challenge_method",
             "createHeadless": "create_headless",
+            "oneTimeLinkCode": "one_time_link_code",
             "redirect_uri": "redirect_uri",
             "scope": "scope",
             "state": "state",
@@ -519,6 +540,7 @@ class AuthorizeV3(Operation):
             "code_challenge": False,
             "code_challenge_method": False,
             "createHeadless": False,
+            "oneTimeLinkCode": False,
             "redirect_uri": False,
             "scope": False,
             "state": False,

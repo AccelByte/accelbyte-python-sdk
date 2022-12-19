@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Achievement Service."""
 
-__version__ = "2.12.2"
+__version__ = "2.12.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,12 +23,6 @@ from .wrappers import admin_get_achievement
 from .wrappers import admin_get_achievement_async
 from .wrappers import admin_list_achievements
 from .wrappers import admin_list_achievements_async
-from .wrappers import admin_list_user_achievements
-from .wrappers import admin_list_user_achievements_async
-from .wrappers import admin_reset_achievement
-from .wrappers import admin_reset_achievement_async
-from .wrappers import admin_unlock_achievement
-from .wrappers import admin_unlock_achievement_async
 from .wrappers import admin_update_achievement
 from .wrappers import admin_update_achievement_async
 from .wrappers import admin_update_achievement_list_order
@@ -41,6 +35,24 @@ from .wrappers import public_get_achievement
 from .wrappers import public_get_achievement_async
 from .wrappers import public_list_achievements
 from .wrappers import public_list_achievements_async
+
+# anonymization
+from .wrappers import admin_anonymize_user_achievement
+from .wrappers import admin_anonymize_user_achievement_async
+
+# tags
+from .wrappers import admin_list_tags
+from .wrappers import admin_list_tags_async
+from .wrappers import public_list_tags
+from .wrappers import public_list_tags_async
+
+# user_achievements
+from .wrappers import admin_list_user_achievements
+from .wrappers import admin_list_user_achievements_async
+from .wrappers import admin_reset_achievement
+from .wrappers import admin_reset_achievement_async
+from .wrappers import admin_unlock_achievement
+from .wrappers import admin_unlock_achievement_async
 from .wrappers import public_list_user_achievements
 from .wrappers import public_list_user_achievements_async
 from .wrappers import public_unlock_achievement

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -31,6 +31,7 @@ from .....core import HttpResponse
 
 from ...models import AcceptAgreementRequest
 from ...models import AcceptAgreementResponse
+from ...models import ErrorEntity
 
 
 class IndirectBulkAcceptVersionedPolicy1(Operation):
@@ -65,6 +66,8 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
     Responses:
         201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
 
     # region fields
@@ -175,10 +178,14 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, AcceptAgreementResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, AcceptAgreementResponse], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
         201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -195,6 +202,8 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
 
         if code == 201:
             return AcceptAgreementResponse.create_from_dict(content), None
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "4.0.2"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -64,7 +64,6 @@ from .models_request_match_member import ModelsRequestMatchMember
 from .models_request_match_party import ModelsRequestMatchParty
 from .models_request_matching_ally import ModelsRequestMatchingAlly
 from .models_server import ModelsServer
-from .models_server_logs import ModelsServerLogs
 from .models_server_session_response import ModelsServerSessionResponse
 from .models_session import ModelsSession
 from .models_session_response import ModelsSessionResponse

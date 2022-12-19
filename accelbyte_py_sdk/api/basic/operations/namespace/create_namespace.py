@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Basic Service (2.3.3)
+# AccelByte Cloud Basic Service (2.3.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,7 @@ class CreateNamespace(Operation):
 
     Create a namespace.
     By default the namespace is enabled.
+    In multi tenant mode, parentNamespace will be automatically filled with requester namespace.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)

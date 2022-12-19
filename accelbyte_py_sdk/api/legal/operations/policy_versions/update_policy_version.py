@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -66,6 +66,8 @@ class UpdatePolicyVersion(Operation):
         200: OK - UpdatePolicyVersionResponse (successful operation)
 
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
 
     # region fields
@@ -181,6 +183,8 @@ class UpdatePolicyVersion(Operation):
 
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
 
+        409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -197,6 +201,8 @@ class UpdatePolicyVersion(Operation):
         if code == 200:
             return UpdatePolicyVersionResponse.create_from_dict(content), None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

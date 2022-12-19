@@ -32,6 +32,8 @@ from ....core import same_doc_as
 from ..models import OauthmodelCountryLocationResponse
 from ..models import OauthmodelErrorResponse
 from ..models import OauthmodelGameTokenCodeResponse
+from ..models import OauthmodelOneTimeLinkingCodeResponse
+from ..models import OauthmodelOneTimeLinkingCodeValidationResponse
 from ..models import OauthmodelTokenResponseV3
 from ..models import RestErrorResponse
 
@@ -42,7 +44,10 @@ from ..operations.o_auth2_0_extension import Logout
 from ..operations.o_auth2_0_extension import PlatformAuthenticationV3
 from ..operations.o_auth2_0_extension import RequestGameTokenCodeResponseV3
 from ..operations.o_auth2_0_extension import RequestGameTokenResponseV3
+from ..operations.o_auth2_0_extension import RequestOneTimeLinkingCodeV3
+from ..operations.o_auth2_0_extension import RequestTokenByOneTimeLinkCodeResponseV3
 from ..operations.o_auth2_0_extension import UserAuthenticationV3
+from ..operations.o_auth2_0_extension import ValidateOneTimeLinkingCodeV3
 
 
 @same_doc_as(AuthenticationWithPlatformLinkV3)
@@ -287,6 +292,58 @@ async def request_game_token_response_v3_async(
     )
 
 
+@same_doc_as(RequestOneTimeLinkingCodeV3)
+def request_one_time_linking_code_v3(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RequestOneTimeLinkingCodeV3.create(
+        platform_id=platform_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestOneTimeLinkingCodeV3)
+async def request_one_time_linking_code_v3_async(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    request = RequestOneTimeLinkingCodeV3.create(
+        platform_id=platform_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RequestTokenByOneTimeLinkCodeResponseV3)
+def request_token_by_one_time_link_code_response_v3(
+    client_id: str,
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RequestTokenByOneTimeLinkCodeResponseV3.create(
+        client_id=client_id,
+        one_time_link_code=one_time_link_code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RequestTokenByOneTimeLinkCodeResponseV3)
+async def request_token_by_one_time_link_code_response_v3_async(
+    client_id: str,
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = RequestTokenByOneTimeLinkCodeResponseV3.create(
+        client_id=client_id,
+        one_time_link_code=one_time_link_code,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UserAuthenticationV3)
 def user_authentication_v3(
     password: str,
@@ -327,6 +384,32 @@ async def user_authentication_v3_async(
         client_id=client_id,
         extend_exp=extend_exp,
         redirect_uri=redirect_uri,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ValidateOneTimeLinkingCodeV3)
+def validate_one_time_linking_code_v3(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = ValidateOneTimeLinkingCodeV3.create(
+        one_time_link_code=one_time_link_code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ValidateOneTimeLinkingCodeV3)
+async def validate_one_time_linking_code_v3_async(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    request = ValidateOneTimeLinkingCodeV3.create(
+        one_time_link_code=one_time_link_code,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

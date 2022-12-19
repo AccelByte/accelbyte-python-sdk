@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "4.0.2"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,7 +21,6 @@ from .delete_local_server import DeleteLocalServer
 from .delete_server import DeleteServer
 from .delete_session import DeleteSession
 from .get_server import GetServer
-from .get_server_logs import GetServerLogs
 from .list_local_server import ListLocalServer
 from .list_server import ListServer
 from .list_session import ListSession

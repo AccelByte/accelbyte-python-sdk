@@ -34,7 +34,6 @@ from ..models import ModelsAchievementRequest
 from ..models import ModelsAchievementResponse
 from ..models import ModelsAchievementUpdateRequest
 from ..models import ModelsPaginatedAchievementResponse
-from ..models import ModelsPaginatedUserAchievementResponse
 from ..models import ModelsPublicAchievementResponse
 from ..models import ModelsPublicAchievementsResponse
 from ..models import ResponseError
@@ -45,9 +44,6 @@ from ..operations.achievements import AdminDeleteAchievement
 from ..operations.achievements import AdminGetAchievement
 from ..operations.achievements import AdminListAchievements
 from ..operations.achievements import AdminListAchievementsSortByEnum
-from ..operations.achievements import AdminListUserAchievements
-from ..operations.achievements import AdminResetAchievement
-from ..operations.achievements import AdminUnlockAchievement
 from ..operations.achievements import AdminUpdateAchievement
 from ..operations.achievements import AdminUpdateAchievementListOrder
 from ..operations.achievements import ExportAchievements
@@ -55,8 +51,6 @@ from ..operations.achievements import ImportAchievements
 from ..operations.achievements import PublicGetAchievement
 from ..operations.achievements import PublicListAchievements
 from ..operations.achievements import PublicListAchievementsSortByEnum
-from ..operations.achievements import PublicListUserAchievements
-from ..operations.achievements import PublicUnlockAchievement
 
 
 @same_doc_as(AdminCreateNewAchievement)
@@ -178,6 +172,7 @@ def admin_list_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -190,6 +185,7 @@ def admin_list_achievements(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -200,6 +196,7 @@ async def admin_list_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -212,140 +209,7 @@ async def admin_list_achievements_async(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(AdminListUserAchievements)
-def admin_list_user_achievements(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    prefer_unlocked: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminListUserAchievements.create(
-        user_id=user_id,
-        limit=limit,
-        offset=offset,
-        prefer_unlocked=prefer_unlocked,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(AdminListUserAchievements)
-async def admin_list_user_achievements_async(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    prefer_unlocked: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminListUserAchievements.create(
-        user_id=user_id,
-        limit=limit,
-        offset=offset,
-        prefer_unlocked=prefer_unlocked,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(AdminResetAchievement)
-def admin_reset_achievement(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminResetAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(AdminResetAchievement)
-async def admin_reset_achievement_async(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminResetAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(AdminUnlockAchievement)
-def admin_unlock_achievement(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminUnlockAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(AdminUnlockAchievement)
-async def admin_unlock_achievement_async(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminUnlockAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -439,6 +303,7 @@ async def admin_update_achievement_list_order_async(
 
 @same_doc_as(ExportAchievements)
 def export_achievements(
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -448,6 +313,7 @@ def export_achievements(
         if error:
             return None, error
     request = ExportAchievements.create(
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -455,6 +321,7 @@ def export_achievements(
 
 @same_doc_as(ExportAchievements)
 async def export_achievements_async(
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -464,6 +331,7 @@ async def export_achievements_async(
         if error:
             return None, error
     request = ExportAchievements.create(
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -561,6 +429,7 @@ def public_list_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -574,6 +443,7 @@ def public_list_achievements(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -585,6 +455,7 @@ async def public_list_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -598,98 +469,7 @@ async def public_list_achievements_async(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(PublicListUserAchievements)
-def public_list_user_achievements(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    prefer_unlocked: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicListUserAchievements.create(
-        user_id=user_id,
-        limit=limit,
-        offset=offset,
-        prefer_unlocked=prefer_unlocked,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(PublicListUserAchievements)
-async def public_list_user_achievements_async(
-    user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    prefer_unlocked: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicListUserAchievements.create(
-        user_id=user_id,
-        limit=limit,
-        offset=offset,
-        prefer_unlocked=prefer_unlocked,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(PublicUnlockAchievement)
-def public_unlock_achievement(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUnlockAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(PublicUnlockAchievement)
-async def public_unlock_achievement_async(
-    achievement_code: str,
-    user_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = PublicUnlockAchievement.create(
-        achievement_code=achievement_code,
-        user_id=user_id,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

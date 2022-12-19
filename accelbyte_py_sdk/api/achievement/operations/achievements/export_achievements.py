@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Achievement Service (2.12.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,7 +53,7 @@ class ExportAchievements(Operation):
 
         method: GET
 
-        tags: ["achievements"]
+        tags: ["Achievements"]
 
         consumes: ["application/json"]
 
@@ -62,6 +62,8 @@ class ExportAchievements(Operation):
         securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
+
+        tags: (tags) OPTIONAL List[str] in query
 
     Responses:
         200: OK - Any (OK)
@@ -83,6 +85,7 @@ class ExportAchievements(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -123,12 +126,19 @@ class ExportAchievements(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "tags"):
+            result["tags"] = self.tags
         return result
 
     # endregion get_x_params methods
@@ -143,6 +153,10 @@ class ExportAchievements(Operation):
         self.namespace = value
         return self
 
+    def with_tags(self, value: List[str]) -> ExportAchievements:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -153,6 +167,10 @@ class ExportAchievements(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "tags") and self.tags:
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -207,9 +225,12 @@ class ExportAchievements(Operation):
     def create(
         cls,
         namespace: str,
+        tags: Optional[List[str]] = None,
     ) -> ExportAchievements:
         instance = cls()
         instance.namespace = namespace
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -221,18 +242,30 @@ class ExportAchievements(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "tags": "tags",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "csv",  # in query
         }
 
     # endregion static methods

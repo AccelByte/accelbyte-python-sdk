@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import RetrieveUserEligibilitiesIndirectResponse
 
 
@@ -64,6 +65,8 @@ class RetrieveEligibilitiesPublicIndirect(Operation):
 
     Responses:
         200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
 
     # region fields
@@ -190,11 +193,13 @@ class RetrieveEligibilitiesPublicIndirect(Operation):
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
         Union[None, RetrieveUserEligibilitiesIndirectResponse],
-        Union[None, HttpResponse],
+        Union[None, ErrorEntity, HttpResponse],
     ]:
         """Parse the given response.
 
         200: OK - RetrieveUserEligibilitiesIndirectResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -214,6 +219,8 @@ class RetrieveEligibilitiesPublicIndirect(Operation):
                 RetrieveUserEligibilitiesIndirectResponse.create_from_dict(content),
                 None,
             )
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

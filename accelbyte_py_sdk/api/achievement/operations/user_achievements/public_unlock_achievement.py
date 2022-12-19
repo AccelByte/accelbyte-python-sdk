@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Achievement Service (2.12.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,43 +29,27 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsPaginatedUserAchievementResponse
 from ...models import ResponseError
 
 
-class AdminListUserAchievements(Operation):
-    """Query user achievements [include achieved and in-progress] (AdminListUserAchievements)
+class PublicUnlockAchievement(Operation):
+    """Unlock an achievement (PublicUnlockAchievement)
 
     Required permission
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
-
-
-
-
-    Note:
-
-
-
-
-    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
-
-
-
-
-    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
+        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
 
     Required Scope(s):
         - social
 
     Properties:
-        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
 
-        method: GET
+        method: PUT
 
-        tags: ["achievements"]
+        tags: ["User Achievements"]
 
         consumes: ["application/json"]
 
@@ -73,44 +57,34 @@ class AdminListUserAchievements(Operation):
 
         securities: [BEARER_AUTH]
 
+        achievement_code: (achievementCode) REQUIRED str in path
+
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
-
     Responses:
-        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
-
-        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = (
-        "/achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements"
-    )
-    _method: str = "GET"
+    _url: str = "/achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock"
+    _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    achievement_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
-    limit: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
-    prefer_unlocked: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -151,25 +125,16 @@ class AdminListUserAchievements(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "achievement_code"):
+            result["achievementCode"] = self.achievement_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
-        if hasattr(self, "prefer_unlocked"):
-            result["preferUnlocked"] = self.prefer_unlocked
         return result
 
     # endregion get_x_params methods
@@ -180,24 +145,16 @@ class AdminListUserAchievements(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AdminListUserAchievements:
+    def with_achievement_code(self, value: str) -> PublicUnlockAchievement:
+        self.achievement_code = value
+        return self
+
+    def with_namespace(self, value: str) -> PublicUnlockAchievement:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> AdminListUserAchievements:
+    def with_user_id(self, value: str) -> PublicUnlockAchievement:
         self.user_id = value
-        return self
-
-    def with_limit(self, value: int) -> AdminListUserAchievements:
-        self.limit = value
-        return self
-
-    def with_offset(self, value: int) -> AdminListUserAchievements:
-        self.offset = value
-        return self
-
-    def with_prefer_unlocked(self, value: bool) -> AdminListUserAchievements:
-        self.prefer_unlocked = value
         return self
 
     # endregion with_x methods
@@ -206,6 +163,10 @@ class AdminListUserAchievements(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "achievement_code") and self.achievement_code:
+            result["achievementCode"] = str(self.achievement_code)
+        elif include_empty:
+            result["achievementCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -214,18 +175,6 @@ class AdminListUserAchievements(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = 0
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = 0
-        if hasattr(self, "prefer_unlocked") and self.prefer_unlocked:
-            result["preferUnlocked"] = bool(self.prefer_unlocked)
-        elif include_empty:
-            result["preferUnlocked"] = False
         return result
 
     # endregion to methods
@@ -235,19 +184,14 @@ class AdminListUserAchievements(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, ModelsPaginatedUserAchievementResponse],
-        Union[None, HttpResponse, ResponseError],
-    ]:
+    ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - ModelsPaginatedUserAchievementResponse (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
-
-        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
 
@@ -264,16 +208,11 @@ class AdminListUserAchievements(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return (
-                ModelsPaginatedUserAchievementResponse.create_from_dict(content),
-                None,
-            )
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
@@ -289,28 +228,25 @@ class AdminListUserAchievements(Operation):
     @classmethod
     def create(
         cls,
+        achievement_code: str,
         namespace: str,
         user_id: str,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        prefer_unlocked: Optional[bool] = None,
-    ) -> AdminListUserAchievements:
+    ) -> PublicUnlockAchievement:
         instance = cls()
+        instance.achievement_code = achievement_code
         instance.namespace = namespace
         instance.user_id = user_id
-        if limit is not None:
-            instance.limit = limit
-        if offset is not None:
-            instance.offset = offset
-        if prefer_unlocked is not None:
-            instance.prefer_unlocked = prefer_unlocked
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> AdminListUserAchievements:
+    ) -> PublicUnlockAchievement:
         instance = cls()
+        if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
+            instance.achievement_code = str(dict_["achievementCode"])
+        elif include_empty:
+            instance.achievement_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -319,38 +255,22 @@ class AdminListUserAchievements(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = 0
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = 0
-        if "preferUnlocked" in dict_ and dict_["preferUnlocked"] is not None:
-            instance.prefer_unlocked = bool(dict_["preferUnlocked"])
-        elif include_empty:
-            instance.prefer_unlocked = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "achievementCode": "achievement_code",
             "namespace": "namespace",
             "userId": "user_id",
-            "limit": "limit",
-            "offset": "offset",
-            "preferUnlocked": "prefer_unlocked",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "achievementCode": True,
             "namespace": True,
             "userId": True,
-            "limit": False,
-            "offset": False,
-            "preferUnlocked": False,
         }
 
     # endregion static methods

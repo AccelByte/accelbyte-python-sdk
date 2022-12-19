@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Dsm Controller Service."""
 
-__version__ = "4.0.2"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,8 +29,6 @@ from .wrappers import delete_session
 from .wrappers import delete_session_async
 from .wrappers import get_server
 from .wrappers import get_server_async
-from .wrappers import get_server_logs
-from .wrappers import get_server_logs_async
 from .wrappers import list_local_server
 from .wrappers import list_local_server_async
 from .wrappers import list_server

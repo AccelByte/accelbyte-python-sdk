@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Basic Service (2.3.3)
+# AccelByte Cloud Basic Service (2.3.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -182,6 +182,7 @@ def create_namespace_info_example() -> NamespaceInfo:
     instance.created_at = randomize("date")
     instance.display_name = randomize("slug")
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.status = randomize()
     instance.updated_at = randomize("date")
     return instance

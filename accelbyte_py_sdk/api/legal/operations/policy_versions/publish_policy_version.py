@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,9 +61,11 @@ class PublishPolicyVersion(Operation):
         should_notify: (shouldNotify) OPTIONAL bool in query
 
     Responses:
-        200: OK - (successful operation)
+        200: OK - (operation successful)
 
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_version)
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
     """
 
     # region fields
@@ -174,9 +176,11 @@ class PublishPolicyVersion(Operation):
     ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful operation)
+        200: OK - (operation successful)
 
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_version)
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40046: errors.net.accelbyte.platform.legal.default_selection_not_provided | 40030: errors.net.accelbyte.platform.legal.localized_policy_version_not_provided)
+
+        409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -194,6 +198,8 @@ class PublishPolicyVersion(Operation):
         if code == 200:
             return HttpResponse.create(code, "OK"), None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 409:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,9 +57,9 @@ class ChangePreferenceConsent1(Operation):
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
     Responses:
-        200: OK - (successful operation)
+        200: OK - (Successful operation)
 
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference)
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
 
     # region fields
@@ -157,9 +157,9 @@ class ChangePreferenceConsent1(Operation):
     ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - (successful operation)
+        200: OK - (Successful operation)
 
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference)
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
 
         ---: HttpResponse (Undocumented Response)
 

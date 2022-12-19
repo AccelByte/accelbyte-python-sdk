@@ -37,6 +37,7 @@ from ..api.dslogmanager.models import ModelsRequestMatchMember
 from ..api.dslogmanager.models import ModelsRequestMatchParty
 from ..api.dslogmanager.models import ModelsRequestMatchingAlly
 from ..api.dslogmanager.models import ModelsServer
+from ..api.dslogmanager.models import ModelsServerLogs
 from ..api.dslogmanager.models import ModelsStatusHistory
 from ..api.dslogmanager.models import ResponseError
 
@@ -158,6 +159,13 @@ def create_models_server_example() -> ModelsServer:
     instance.session_id = randomize("uid")
     instance.status = randomize()
     instance.status_history = [create_models_status_history_example()]
+    return instance
+
+
+def create_models_server_logs_example() -> ModelsServerLogs:
+    instance = ModelsServerLogs()
+    instance.std_err_logs = randomize()
+    instance.std_out_logs = randomize()
     return instance
 
 

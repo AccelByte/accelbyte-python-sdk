@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.1)
+# AccelByte Cloud Legal Service (1.25.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+
+from ...models import ErrorEntity
 
 
 class AcceptVersionedPolicy(Operation):
@@ -54,7 +56,9 @@ class AcceptVersionedPolicy(Operation):
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
     Responses:
-        201: Created - (successful operation)
+        201: Created - (successful anonymize)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
     """
 
     # region fields
@@ -149,10 +153,12 @@ class AcceptVersionedPolicy(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Optional[str]], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, Optional[str]], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
-        201: Created - (successful operation)
+        201: Created - (successful anonymize)
+
+        400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed | 40035: errors.net.accelbyte.platform.legal.invalid_localize_policy_version_id)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -169,6 +175,8 @@ class AcceptVersionedPolicy(Operation):
 
         if code == 201:
             return HttpResponse.create(code, "Created"), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

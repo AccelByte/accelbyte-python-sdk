@@ -35,7 +35,6 @@ from ..models import ModelsDetailedCountServerResponse
 from ..models import ModelsListServerResponse
 from ..models import ModelsListSessionResponse
 from ..models import ModelsServer
-from ..models import ModelsServerLogs
 from ..models import ResponseError
 
 from ..operations.admin import CountServer
@@ -45,7 +44,6 @@ from ..operations.admin import DeleteLocalServer
 from ..operations.admin import DeleteServer
 from ..operations.admin import DeleteSession
 from ..operations.admin import GetServer
-from ..operations.admin import GetServerLogs
 from ..operations.admin import ListLocalServer
 from ..operations.admin import ListServer
 from ..operations.admin import ListSession
@@ -305,44 +303,6 @@ async def get_server_async(
         if error:
             return None, error
     request = GetServer.create(
-        pod_name=pod_name,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(GetServerLogs)
-def get_server_logs(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetServerLogs.create(
-        pod_name=pod_name,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(GetServerLogs)
-async def get_server_logs_async(
-    pod_name: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetServerLogs.create(
         pod_name=pod_name,
         namespace=namespace,
     )

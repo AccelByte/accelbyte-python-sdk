@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Basic Service (2.3.3)
+# AccelByte Cloud Basic Service (2.3.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,6 +38,7 @@ class GetNamespace(Operation):
     """Get a namespace (getNamespace)
 
     Get a namespace.
+    In multi tenant mode, parentNamespace will be returned.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)

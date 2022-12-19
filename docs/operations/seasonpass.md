@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Seasonpass Service Index (1.17.0)
+# AccelByte Cloud Seasonpass Service Index (1.17.1)
 
 
 ## Operations

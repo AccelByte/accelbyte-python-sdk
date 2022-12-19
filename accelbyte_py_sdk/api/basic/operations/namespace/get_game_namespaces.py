@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.2)
+# AccelByte Cloud Basic Service (2.3.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,62 +29,60 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ResponseError
+from ...models import ErrorEntity
+from ...models import NamespaceInfo
 
 
-class PublicUnlockAchievement(Operation):
-    """Unlock an achievement (PublicUnlockAchievement)
+class GetGameNamespaces(Operation):
+    """Get game namespaces (getGameNamespaces)
 
-    Required permission
-    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+    Get game namespaces.
+    In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Action code : 11308
+      *  Returns : list of namespaces
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
-        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
+        url: /basic/v1/admin/namespaces/{namespace}/game
 
-        method: PUT
+        method: GET
 
-        tags: ["achievements"]
+        tags: ["Namespace"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
-
-        achievement_code: (achievementCode) REQUIRED str in path
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        active_only: (activeOnly) OPTIONAL bool in query
 
     Responses:
-        204: No Content - (No Content)
+        200: OK - List[NamespaceInfo] (Successful operation)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
 
     # region fields
 
-    _url: str = "/achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock"
-    _method: str = "PUT"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/basic/v1/admin/namespaces/{namespace}/game"
+    _method: str = "GET"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    achievement_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
+    active_only: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -125,16 +123,19 @@ class PublicUnlockAchievement(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "achievement_code"):
-            result["achievementCode"] = self.achievement_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "active_only"):
+            result["activeOnly"] = self.active_only
         return result
 
     # endregion get_x_params methods
@@ -145,16 +146,12 @@ class PublicUnlockAchievement(Operation):
 
     # region with_x methods
 
-    def with_achievement_code(self, value: str) -> PublicUnlockAchievement:
-        self.achievement_code = value
-        return self
-
-    def with_namespace(self, value: str) -> PublicUnlockAchievement:
+    def with_namespace(self, value: str) -> GetGameNamespaces:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicUnlockAchievement:
-        self.user_id = value
+    def with_active_only(self, value: bool) -> GetGameNamespaces:
+        self.active_only = value
         return self
 
     # endregion with_x methods
@@ -163,18 +160,14 @@ class PublicUnlockAchievement(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "achievement_code") and self.achievement_code:
-            result["achievementCode"] = str(self.achievement_code)
-        elif include_empty:
-            result["achievementCode"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "active_only") and self.active_only:
+            result["activeOnly"] = bool(self.active_only)
         elif include_empty:
-            result["userId"] = ""
+            result["activeOnly"] = False
         return result
 
     # endregion to methods
@@ -184,16 +177,16 @@ class PublicUnlockAchievement(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, List[NamespaceInfo]], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        200: OK - List[NamespaceInfo] (Successful operation)
 
-        400: Bad Request - ResponseError (Bad Request)
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
-        401: Unauthorized - ResponseError (Unauthorized)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -208,14 +201,12 @@ class PublicUnlockAchievement(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
-        if code == 400:
-            return None, ResponseError.create_from_dict(content)
+        if code == 200:
+            return [NamespaceInfo.create_from_dict(i) for i in content], None
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -228,49 +219,42 @@ class PublicUnlockAchievement(Operation):
     @classmethod
     def create(
         cls,
-        achievement_code: str,
         namespace: str,
-        user_id: str,
-    ) -> PublicUnlockAchievement:
+        active_only: Optional[bool] = None,
+    ) -> GetGameNamespaces:
         instance = cls()
-        instance.achievement_code = achievement_code
         instance.namespace = namespace
-        instance.user_id = user_id
+        if active_only is not None:
+            instance.active_only = active_only
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> PublicUnlockAchievement:
+    ) -> GetGameNamespaces:
         instance = cls()
-        if "achievementCode" in dict_ and dict_["achievementCode"] is not None:
-            instance.achievement_code = str(dict_["achievementCode"])
-        elif include_empty:
-            instance.achievement_code = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
+            instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
-            instance.user_id = ""
+            instance.active_only = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "achievementCode": "achievement_code",
             "namespace": "namespace",
-            "userId": "user_id",
+            "activeOnly": "active_only",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "achievementCode": True,
             "namespace": True,
-            "userId": True,
+            "activeOnly": False,
         }
 
     # endregion static methods
