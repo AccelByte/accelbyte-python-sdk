@@ -2,6 +2,8 @@
 
 ## v0.30.0
 - Add deprecation information in docs/operation files.
+- Add missing integration tests.
+- Add multi-SDK usage example in README.md
 - Fix PhantAuth tests.
 - Move integration tests into another directory.
 - Update common use cases file.
