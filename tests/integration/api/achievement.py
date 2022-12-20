@@ -2,6 +2,7 @@ from pathlib import Path
 
 from tests.integration.test_case import IntegrationTestCase
 
+from accelbyte_py_sdk.core import generate_id
 from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 
 
@@ -9,9 +10,10 @@ class AchievementTestCase(IntegrationTestCase):
 
     exist: bool = False
     exported_filename: str = "export_achievements"
+    stat_code: str = generate_id(8)
     models_achievement_request: ModelsAchievementRequest = (
         ModelsAchievementRequest.create(
-            achievement_code="CODE",
+            achievement_code=stat_code,
             default_language="EN",
             description={"EN": "DESCRIPTION"},
             goal_value=1,
@@ -19,7 +21,7 @@ class AchievementTestCase(IntegrationTestCase):
             incremental=False,
             locked_icons=[],
             name={"EN": "NAME"},
-            stat_code="STAT_CODE",
+            stat_code=stat_code.upper(),
             tags=["TAG"],
             unlocked_icons=[],
         )
@@ -187,7 +189,7 @@ class AchievementTestCase(IntegrationTestCase):
                 incremental=False,
                 locked_icons=[],
                 name={"ID": "NAMA"},
-                stat_code="KODE_STATUS",
+                stat_code=self.stat_code[::-1],
                 tags=["MENANDAI"],
                 unlocked_icons=[],
             ),
