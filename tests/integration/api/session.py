@@ -30,6 +30,7 @@ class SessionTestCase(IntegrationTestCase):
                 min_players=2,
                 name=template_name,
                 requested_regions=["us-west-2"],
+                text_chat=False,
                 type_="P2P",
             )
         )
