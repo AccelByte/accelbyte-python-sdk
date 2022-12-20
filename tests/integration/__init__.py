@@ -15,7 +15,7 @@ from .api.legal import LegalTestCase
 from .api.lobby import AsyncLobbyTestCase, LobbyTestCase
 from .api.match2 import Match2TestCase
 from .api.matchmaking import MatchmakingTestCase
-from .api.platform import PlatformTestCase
+from .api.platformx import PlatformTestCase
 from .api.qosm import QosmTestCase
 from .api.seasonpass import SeasonPassTestCase
 from .api.session import SessionTestCase
