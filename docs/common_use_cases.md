@@ -1798,7 +1798,7 @@ def test_export_channels(self):
 ```
 ## Platform
 
-Source: [platform.py](../tests/integration/api/platform.py)
+Source: [platformx.py](../tests/integration/api/platformx.py)
 
 ### Create Store
 
