@@ -5,7 +5,7 @@ from .api.basic import BasicTestCase
 from .api.cloudsave import CloudSaveTestCase
 from .api.dslogmanager import DSLogManagerTestCase
 from .api.dsmc import DSMCTestCase
-from .api.eventlog import EventLogTestCase
+# from .api.eventlog import EventLogTestCase
 from .api.gametelemetry import GametelemetryTestCase
 from .api.gdpr import GDPRTestCase
 from .api.group import GroupTestCase
