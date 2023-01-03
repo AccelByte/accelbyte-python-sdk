@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.31.0
+- Update spec for AccelByte Cloud v3.39.0.
+
 ## v0.30.0
 - Add deprecation information in docs/operation files.
 - Add missing integration tests.
