@@ -144,7 +144,7 @@ def test_admin_update_achievement(self):
             incremental=False,
             locked_icons=[],
             name={"ID": "NAMA"},
-            stat_code="KODE_STATUS",
+            stat_code=self.stat_code[::-1],
             tags=["MENANDAI"],
             unlocked_icons=[],
         ),
@@ -457,10 +457,7 @@ def test_claim_server(self):
     )
 
     # assert
-    if (
-        error is not None
-        and isinstance(error, ResponseError)
-    ):
+    if error is not None and isinstance(error, ResponseError):
         error_message = error.error_message.lower()
         if "server is not ready" in error_message:
             self.skipTest(reason=f"Server is not ready yet.")
