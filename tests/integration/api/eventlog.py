@@ -44,9 +44,11 @@ class EventLog(IntegrationTestCase):
 
         # act
         _, error = query_event_stream_handler(
-            body=ModelsGenericQueryPayload.create_from_dict({
-                "clientId": client_id,
-            })
+            body=ModelsGenericQueryPayload.create_from_dict(
+                {
+                    "clientId": client_id,
+                }
+            )
         )
 
         # assert

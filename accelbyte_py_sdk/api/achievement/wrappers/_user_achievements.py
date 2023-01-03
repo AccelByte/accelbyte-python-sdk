@@ -45,6 +45,7 @@ def admin_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -59,6 +60,7 @@ def admin_list_user_achievements(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )
@@ -71,6 +73,7 @@ async def admin_list_user_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -85,6 +88,7 @@ async def admin_list_user_achievements_async(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )
@@ -183,6 +187,7 @@ def public_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -197,6 +202,7 @@ def public_list_user_achievements(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )
@@ -209,6 +215,7 @@ async def public_list_user_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -223,6 +230,7 @@ async def public_list_user_achievements_async(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )

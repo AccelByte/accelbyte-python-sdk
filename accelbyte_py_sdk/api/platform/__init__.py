@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.19.0"
+__version__ = "4.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -674,6 +674,22 @@ from .wrappers import query_rewards_1_async
 from .wrappers import update_reward
 from .wrappers import update_reward_async
 
+# section
+from .wrappers import create_section
+from .wrappers import create_section_async
+from .wrappers import delete_section
+from .wrappers import delete_section_async
+from .wrappers import get_section
+from .wrappers import get_section_async
+from .wrappers import public_list_active_sections
+from .wrappers import public_list_active_sections_async
+from .wrappers import purge_expired_section
+from .wrappers import purge_expired_section_async
+from .wrappers import query_sections
+from .wrappers import query_sections_async
+from .wrappers import update_section
+from .wrappers import update_section_async
+
 # store
 from .wrappers import clone_store
 from .wrappers import clone_store_async
@@ -757,6 +773,20 @@ from .wrappers import get_ticket_dynamic
 from .wrappers import get_ticket_dynamic_async
 from .wrappers import increase_ticket_sale
 from .wrappers import increase_ticket_sale_async
+
+# view
+from .wrappers import create_view
+from .wrappers import create_view_async
+from .wrappers import delete_view
+from .wrappers import delete_view_async
+from .wrappers import get_view
+from .wrappers import get_view_async
+from .wrappers import list_views
+from .wrappers import list_views_async
+from .wrappers import public_list_views
+from .wrappers import public_list_views_async
+from .wrappers import update_view
+from .wrappers import update_view_async
 
 # wallet
 from .wrappers import check_wallet

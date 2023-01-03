@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.12.3)
+# AccelByte Cloud Achievement Service (2.12.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -83,6 +83,8 @@ class AdminListUserAchievements(Operation):
 
         prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -113,6 +115,7 @@ class AdminListUserAchievements(Operation):
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     prefer_unlocked: bool  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
@@ -173,6 +176,8 @@ class AdminListUserAchievements(Operation):
             result["offset"] = self.offset
         if hasattr(self, "prefer_unlocked"):
             result["preferUnlocked"] = self.prefer_unlocked
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "tags"):
             result["tags"] = self.tags
         return result
@@ -205,6 +210,10 @@ class AdminListUserAchievements(Operation):
         self.prefer_unlocked = value
         return self
 
+    def with_sort_by(self, value: str) -> AdminListUserAchievements:
+        self.sort_by = value
+        return self
+
     def with_tags(self, value: List[str]) -> AdminListUserAchievements:
         self.tags = value
         return self
@@ -235,6 +244,10 @@ class AdminListUserAchievements(Operation):
             result["preferUnlocked"] = bool(self.prefer_unlocked)
         elif include_empty:
             result["preferUnlocked"] = False
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -307,6 +320,7 @@ class AdminListUserAchievements(Operation):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         prefer_unlocked: Optional[bool] = None,
+        sort_by: Optional[str] = None,
         tags: Optional[List[str]] = None,
     ) -> AdminListUserAchievements:
         instance = cls()
@@ -318,6 +332,8 @@ class AdminListUserAchievements(Operation):
             instance.offset = offset
         if prefer_unlocked is not None:
             instance.prefer_unlocked = prefer_unlocked
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if tags is not None:
             instance.tags = tags
         return instance
@@ -347,6 +363,10 @@ class AdminListUserAchievements(Operation):
             instance.prefer_unlocked = bool(dict_["preferUnlocked"])
         elif include_empty:
             instance.prefer_unlocked = False
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -361,6 +381,7 @@ class AdminListUserAchievements(Operation):
             "limit": "limit",
             "offset": "offset",
             "preferUnlocked": "prefer_unlocked",
+            "sortBy": "sort_by",
             "tags": "tags",
         }
 
@@ -372,6 +393,7 @@ class AdminListUserAchievements(Operation):
             "limit": False,
             "offset": False,
             "preferUnlocked": False,
+            "sortBy": False,
             "tags": False,
         }
 

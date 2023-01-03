@@ -35,8 +35,14 @@ from ._game_profile import public_update_attribute_async
 from ._game_profile import public_update_profile
 from ._game_profile import public_update_profile_async
 
+from ._global_statistic import get_global_stat_item_by_stat_code
+from ._global_statistic import get_global_stat_item_by_stat_code_async
+from ._global_statistic import get_global_stat_item_by_stat_code_1
+from ._global_statistic import get_global_stat_item_by_stat_code_1_async
 from ._global_statistic import get_global_stat_items
 from ._global_statistic import get_global_stat_items_async
+from ._global_statistic import get_global_stat_items_1
+from ._global_statistic import get_global_stat_items_1_async
 
 from ._slot import get_slot_data
 from ._slot import get_slot_data_async

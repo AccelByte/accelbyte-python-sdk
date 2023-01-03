@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.19.0"
+__version__ = "4.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -217,6 +217,8 @@ from .external_payment_order_create import (
     ItemTypeEnum as ExternalPaymentOrderCreateItemTypeEnum,
 )
 from .field_validation_error import FieldValidationError
+from .fixed_period_rotation_config import FixedPeriodRotationConfig
+from .fixed_period_rotation_config import RuleEnum as FixedPeriodRotationConfigRuleEnum
 from .fulfill_code_request import FulfillCodeRequest
 from .fulfillment_error import FulfillmentError
 from .fulfillment_history_info import FulfillmentHistoryInfo
@@ -259,6 +261,9 @@ from .full_item_info import (
     StatusEnum as FullItemInfoStatusEnum,
 )
 from .full_item_paging_sliced_result import FullItemPagingSlicedResult
+from .full_section_info import FullSectionInfo
+from .full_section_info import RotationTypeEnum as FullSectionInfoRotationTypeEnum
+from .full_view_info import FullViewInfo
 from .google_iap_config_info import GoogleIAPConfigInfo
 from .google_iap_config_request import GoogleIAPConfigRequest
 from .google_iap_receipt import GoogleIAPReceipt
@@ -314,6 +319,12 @@ from .item_info import (
     SeasonTypeEnum as ItemInfoSeasonTypeEnum,
     StatusEnum as ItemInfoStatusEnum,
 )
+from .item_naming import ItemNaming
+from .item_naming import (
+    ItemTypeEnum as ItemNamingItemTypeEnum,
+    SeasonTypeEnum as ItemNamingSeasonTypeEnum,
+    StatusEnum as ItemNamingStatusEnum,
+)
 from .item_paging_sliced_result import ItemPagingSlicedResult
 from .item_purchase_condition_validate_request import (
     ItemPurchaseConditionValidateRequest,
@@ -351,6 +362,7 @@ from .key_group_update import StatusEnum as KeyGroupUpdateStatusEnum
 from .key_info import KeyInfo
 from .key_info import StatusEnum as KeyInfoStatusEnum
 from .key_paging_slice_result import KeyPagingSliceResult
+from .list_view_info import ListViewInfo
 from .localization import Localization
 from .loot_box_config import LootBoxConfig
 from .loot_box_reward import LootBoxReward
@@ -554,6 +566,13 @@ from .rewards_request import (
     OriginEnum as RewardsRequestOriginEnum,
     SourceEnum as RewardsRequestSourceEnum,
 )
+from .section_create import SectionCreate
+from .section_create import RotationTypeEnum as SectionCreateRotationTypeEnum
+from .section_info import SectionInfo
+from .section_item import SectionItem
+from .section_paging_sliced_result import SectionPagingSlicedResult
+from .section_update import SectionUpdate
+from .section_update import RotationTypeEnum as SectionUpdateRotationTypeEnum
 from .slide import Slide
 from .slide import TypeEnum as SlideTypeEnum, VideoSourceEnum as SlideVideoSourceEnum
 from .stackable_entitlement_info import StackableEntitlementInfo
@@ -629,6 +648,9 @@ from .twitch_sync_request import TwitchSyncRequest
 from .user_dlc import UserDLC
 from .user_dlc import PlatformEnum as UserDLCPlatformEnum
 from .validation_error_entity import ValidationErrorEntity
+from .view_create import ViewCreate
+from .view_info import ViewInfo
+from .view_update import ViewUpdate
 from .wallet_info import WalletInfo
 from .wallet_info import StatusEnum as WalletInfoStatusEnum
 from .wallet_paging_sliced_result import WalletPagingSlicedResult

@@ -40,7 +40,6 @@ class GetGlobalStatItems(Operation):
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
       *  Returns : stat items
-    ul
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
@@ -64,6 +63,8 @@ class GetGlobalStatItems(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        stat_codes: (statCodes) OPTIONAL str in query
+
     Responses:
         200: OK - GlobalStatItemPagingSlicedResult (successful operation)
     """
@@ -80,6 +81,7 @@ class GetGlobalStatItems(Operation):
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    stat_codes: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -135,6 +137,8 @@ class GetGlobalStatItems(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "stat_codes"):
+            result["statCodes"] = self.stat_codes
         return result
 
     # endregion get_x_params methods
@@ -157,6 +161,10 @@ class GetGlobalStatItems(Operation):
         self.offset = value
         return self
 
+    def with_stat_codes(self, value: str) -> GetGlobalStatItems:
+        self.stat_codes = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -175,6 +183,10 @@ class GetGlobalStatItems(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "stat_codes") and self.stat_codes:
+            result["statCodes"] = str(self.stat_codes)
+        elif include_empty:
+            result["statCodes"] = ""
         return result
 
     # endregion to methods
@@ -221,6 +233,7 @@ class GetGlobalStatItems(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        stat_codes: Optional[str] = None,
     ) -> GetGlobalStatItems:
         instance = cls()
         instance.namespace = namespace
@@ -228,6 +241,8 @@ class GetGlobalStatItems(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if stat_codes is not None:
+            instance.stat_codes = stat_codes
         return instance
 
     @classmethod
@@ -247,6 +262,10 @@ class GetGlobalStatItems(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "statCodes" in dict_ and dict_["statCodes"] is not None:
+            instance.stat_codes = str(dict_["statCodes"])
+        elif include_empty:
+            instance.stat_codes = ""
         return instance
 
     @staticmethod
@@ -255,6 +274,7 @@ class GetGlobalStatItems(Operation):
             "namespace": "namespace",
             "limit": "limit",
             "offset": "offset",
+            "statCodes": "stat_codes",
         }
 
     @staticmethod
@@ -263,6 +283,7 @@ class GetGlobalStatItems(Operation):
             "namespace": True,
             "limit": False,
             "offset": False,
+            "statCodes": False,
         }
 
     # endregion static methods

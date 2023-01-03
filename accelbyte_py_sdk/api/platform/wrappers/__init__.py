@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.19.0"
+__version__ = "4.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -649,6 +649,21 @@ from ._reward import query_rewards_1_async
 from ._reward import update_reward
 from ._reward import update_reward_async
 
+from ._section import create_section
+from ._section import create_section_async
+from ._section import delete_section
+from ._section import delete_section_async
+from ._section import get_section
+from ._section import get_section_async
+from ._section import public_list_active_sections
+from ._section import public_list_active_sections_async
+from ._section import purge_expired_section
+from ._section import purge_expired_section_async
+from ._section import query_sections
+from ._section import query_sections_async
+from ._section import update_section
+from ._section import update_section_async
+
 from ._store import clone_store
 from ._store import clone_store_async
 from ._store import create_store
@@ -729,6 +744,19 @@ from ._ticket import get_ticket_dynamic
 from ._ticket import get_ticket_dynamic_async
 from ._ticket import increase_ticket_sale
 from ._ticket import increase_ticket_sale_async
+
+from ._view import create_view
+from ._view import create_view_async
+from ._view import delete_view
+from ._view import delete_view_async
+from ._view import get_view
+from ._view import get_view_async
+from ._view import list_views
+from ._view import list_views_async
+from ._view import public_list_views
+from ._view import public_list_views_async
+from ._view import update_view
+from ._view import update_view_async
 
 from ._wallet import check_wallet
 from ._wallet import check_wallet_async

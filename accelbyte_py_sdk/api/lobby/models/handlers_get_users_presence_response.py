@@ -34,6 +34,8 @@ class HandlersGetUsersPresenceResponse(Model):
     """Handlers get users presence response (handlers.GetUsersPresenceResponse)
 
     Properties:
+        away: (away) REQUIRED int
+
         busy: (busy) REQUIRED int
 
         data: (data) REQUIRED List[HandlersUserPresence]
@@ -47,6 +49,7 @@ class HandlersGetUsersPresenceResponse(Model):
 
     # region fields
 
+    away: int  # REQUIRED
     busy: int  # REQUIRED
     data: List[HandlersUserPresence]  # REQUIRED
     invisible: int  # REQUIRED
@@ -56,6 +59,10 @@ class HandlersGetUsersPresenceResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_away(self, value: int) -> HandlersGetUsersPresenceResponse:
+        self.away = value
+        return self
 
     def with_busy(self, value: int) -> HandlersGetUsersPresenceResponse:
         self.busy = value
@@ -85,6 +92,10 @@ class HandlersGetUsersPresenceResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "away"):
+            result["away"] = int(self.away)
+        elif include_empty:
+            result["away"] = 0
         if hasattr(self, "busy"):
             result["busy"] = int(self.busy)
         elif include_empty:
@@ -116,6 +127,7 @@ class HandlersGetUsersPresenceResponse(Model):
     @classmethod
     def create(
         cls,
+        away: int,
         busy: int,
         data: List[HandlersUserPresence],
         invisible: int,
@@ -123,6 +135,7 @@ class HandlersGetUsersPresenceResponse(Model):
         online: int,
     ) -> HandlersGetUsersPresenceResponse:
         instance = cls()
+        instance.away = away
         instance.busy = busy
         instance.data = data
         instance.invisible = invisible
@@ -137,6 +150,10 @@ class HandlersGetUsersPresenceResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "away" in dict_ and dict_["away"] is not None:
+            instance.away = int(dict_["away"])
+        elif include_empty:
+            instance.away = 0
         if "busy" in dict_ and dict_["busy"] is not None:
             instance.busy = int(dict_["busy"])
         elif include_empty:
@@ -203,6 +220,7 @@ class HandlersGetUsersPresenceResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "away": "away",
             "busy": "busy",
             "data": "data",
             "invisible": "invisible",
@@ -213,6 +231,7 @@ class HandlersGetUsersPresenceResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "away": True,
             "busy": True,
             "data": True,
             "invisible": True,

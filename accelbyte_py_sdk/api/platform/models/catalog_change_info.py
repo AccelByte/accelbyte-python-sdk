@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.19.0)
+# AccelByte Cloud Platform Service (4.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -57,7 +57,9 @@ class ItemTypeEnum(StrEnum):
 class TypeEnum(StrEnum):
     CATEGORY = "CATEGORY"
     ITEM = "ITEM"
+    SECTION = "SECTION"
     STORE = "STORE"
+    VIEW = "VIEW"
 
 
 class CatalogChangeInfo(Model):
@@ -90,11 +92,15 @@ class CatalogChangeInfo(Model):
 
         published_at: (publishedAt) OPTIONAL str
 
+        section_id: (sectionId) OPTIONAL str
+
         sku: (sku) OPTIONAL str
 
         title: (title) OPTIONAL str
 
         type_: (type) OPTIONAL Union[str, TypeEnum]
+
+        view_id: (viewId) OPTIONAL str
     """
 
     # region fields
@@ -112,9 +118,11 @@ class CatalogChangeInfo(Model):
     item_id: str  # OPTIONAL
     item_type: Union[str, ItemTypeEnum]  # OPTIONAL
     published_at: str  # OPTIONAL
+    section_id: str  # OPTIONAL
     sku: str  # OPTIONAL
     title: str  # OPTIONAL
     type_: Union[str, TypeEnum]  # OPTIONAL
+    view_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -172,6 +180,10 @@ class CatalogChangeInfo(Model):
         self.published_at = value
         return self
 
+    def with_section_id(self, value: str) -> CatalogChangeInfo:
+        self.section_id = value
+        return self
+
     def with_sku(self, value: str) -> CatalogChangeInfo:
         self.sku = value
         return self
@@ -182,6 +194,10 @@ class CatalogChangeInfo(Model):
 
     def with_type(self, value: Union[str, TypeEnum]) -> CatalogChangeInfo:
         self.type_ = value
+        return self
+
+    def with_view_id(self, value: str) -> CatalogChangeInfo:
+        self.view_id = value
         return self
 
     # endregion with_x methods
@@ -242,6 +258,10 @@ class CatalogChangeInfo(Model):
             result["publishedAt"] = str(self.published_at)
         elif include_empty:
             result["publishedAt"] = ""
+        if hasattr(self, "section_id"):
+            result["sectionId"] = str(self.section_id)
+        elif include_empty:
+            result["sectionId"] = ""
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -254,6 +274,10 @@ class CatalogChangeInfo(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = Union[str, TypeEnum]()
+        if hasattr(self, "view_id"):
+            result["viewId"] = str(self.view_id)
+        elif include_empty:
+            result["viewId"] = ""
         return result
 
     # endregion to methods
@@ -276,9 +300,11 @@ class CatalogChangeInfo(Model):
         item_id: Optional[str] = None,
         item_type: Optional[Union[str, ItemTypeEnum]] = None,
         published_at: Optional[str] = None,
+        section_id: Optional[str] = None,
         sku: Optional[str] = None,
         title: Optional[str] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
+        view_id: Optional[str] = None,
     ) -> CatalogChangeInfo:
         instance = cls()
         instance.action = action
@@ -299,12 +325,16 @@ class CatalogChangeInfo(Model):
             instance.item_type = item_type
         if published_at is not None:
             instance.published_at = published_at
+        if section_id is not None:
+            instance.section_id = section_id
         if sku is not None:
             instance.sku = sku
         if title is not None:
             instance.title = title
         if type_ is not None:
             instance.type_ = type_
+        if view_id is not None:
+            instance.view_id = view_id
         return instance
 
     @classmethod
@@ -366,6 +396,10 @@ class CatalogChangeInfo(Model):
             instance.published_at = str(dict_["publishedAt"])
         elif include_empty:
             instance.published_at = ""
+        if "sectionId" in dict_ and dict_["sectionId"] is not None:
+            instance.section_id = str(dict_["sectionId"])
+        elif include_empty:
+            instance.section_id = ""
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -378,6 +412,10 @@ class CatalogChangeInfo(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = Union[str, TypeEnum]()
+        if "viewId" in dict_ and dict_["viewId"] is not None:
+            instance.view_id = str(dict_["viewId"])
+        elif include_empty:
+            instance.view_id = ""
         return instance
 
     @classmethod
@@ -432,9 +470,11 @@ class CatalogChangeInfo(Model):
             "itemId": "item_id",
             "itemType": "item_type",
             "publishedAt": "published_at",
+            "sectionId": "section_id",
             "sku": "sku",
             "title": "title",
             "type": "type_",
+            "viewId": "view_id",
         }
 
     @staticmethod
@@ -453,9 +493,11 @@ class CatalogChangeInfo(Model):
             "itemId": False,
             "itemType": False,
             "publishedAt": False,
+            "sectionId": False,
             "sku": False,
             "title": False,
             "type": False,
+            "viewId": False,
         }
 
     @staticmethod
@@ -476,7 +518,7 @@ class CatalogChangeInfo(Model):
                 "SEASON",
                 "SUBSCRIPTION",
             ],
-            "type": ["CATEGORY", "ITEM", "STORE"],
+            "type": ["CATEGORY", "ITEM", "SECTION", "STORE", "VIEW"],
         }
 
     # endregion static methods

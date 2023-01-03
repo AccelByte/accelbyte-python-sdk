@@ -103,6 +103,7 @@ from ..api.lobby.models import RestapiErrorResponseV1
 
 def create_handlers_get_users_presence_response_example() -> HandlersGetUsersPresenceResponse:
     instance = HandlersGetUsersPresenceResponse()
+    instance.away = randomize("int", min_val=1, max_val=1000)
     instance.busy = randomize("int", min_val=1, max_val=1000)
     instance.data = [create_handlers_user_presence_example()]
     instance.invisible = randomize("int", min_val=1, max_val=1000)

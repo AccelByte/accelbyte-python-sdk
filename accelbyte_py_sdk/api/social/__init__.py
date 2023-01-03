@@ -37,8 +37,14 @@ from .wrappers import public_update_profile
 from .wrappers import public_update_profile_async
 
 # global_statistic
+from .wrappers import get_global_stat_item_by_stat_code
+from .wrappers import get_global_stat_item_by_stat_code_async
+from .wrappers import get_global_stat_item_by_stat_code_1
+from .wrappers import get_global_stat_item_by_stat_code_1_async
 from .wrappers import get_global_stat_items
 from .wrappers import get_global_stat_items_async
+from .wrappers import get_global_stat_items_1
+from .wrappers import get_global_stat_items_1_async
 
 # slot
 from .wrappers import get_slot_data

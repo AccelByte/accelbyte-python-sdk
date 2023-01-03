@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.23.0)
+# AccelByte Cloud Iam Service (5.24.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import RestErrorResponse
 
 
 class AdminGetClientsbyNamespacebyIDV3(Operation):
-    """Get clients by namespace and client id. If multi tenant mode is on and the clientId match withadmin portal client id env var, it will ignore the namespace (AdminGetClientsbyNamespacebyIDV3)
+    """Get clients by namespace and client id. Multi tenant mode allows admin portal client to be accessible regardless of namespace path. (AdminGetClientsbyNamespacebyIDV3)
 
     Required permission 'ADMIN:NAMESPACE:{namespace}:CLIENT [READ]'
     action code: 10309

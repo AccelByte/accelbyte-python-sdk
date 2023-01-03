@@ -61,6 +61,10 @@ class GetActiveCustomGameSessions(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
         server_region: (server_region) OPTIONAL str in query
 
         session_id: (session_id) OPTIONAL str in query
@@ -85,6 +89,8 @@ class GetActiveCustomGameSessions(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
     server_region: str  # OPTIONAL in [query]
     session_id: str  # OPTIONAL in [query]
 
@@ -138,6 +144,10 @@ class GetActiveCustomGameSessions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "server_region"):
             result["server_region"] = self.server_region
         if hasattr(self, "session_id"):
@@ -154,6 +164,14 @@ class GetActiveCustomGameSessions(Operation):
 
     def with_namespace(self, value: str) -> GetActiveCustomGameSessions:
         self.namespace = value
+        return self
+
+    def with_limit(self, value: int) -> GetActiveCustomGameSessions:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> GetActiveCustomGameSessions:
+        self.offset = value
         return self
 
     def with_server_region(self, value: str) -> GetActiveCustomGameSessions:
@@ -174,6 +192,14 @@ class GetActiveCustomGameSessions(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         if hasattr(self, "server_region") and self.server_region:
             result["server_region"] = str(self.server_region)
         elif include_empty:
@@ -235,11 +261,17 @@ class GetActiveCustomGameSessions(Operation):
     def create(
         cls,
         namespace: str,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
         server_region: Optional[str] = None,
         session_id: Optional[str] = None,
     ) -> GetActiveCustomGameSessions:
         instance = cls()
         instance.namespace = namespace
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if server_region is not None:
             instance.server_region = server_region
         if session_id is not None:
@@ -255,6 +287,14 @@ class GetActiveCustomGameSessions(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         if "server_region" in dict_ and dict_["server_region"] is not None:
             instance.server_region = str(dict_["server_region"])
         elif include_empty:
@@ -269,6 +309,8 @@ class GetActiveCustomGameSessions(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "limit": "limit",
+            "offset": "offset",
             "server_region": "server_region",
             "session_id": "session_id",
         }
@@ -277,6 +319,8 @@ class GetActiveCustomGameSessions(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "limit": False,
+            "offset": False,
             "server_region": False,
             "session_id": False,
         }

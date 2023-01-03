@@ -61,7 +61,11 @@ class GetActiveMatchmakingGameSessions(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
         match_id: (match_id) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
 
         server_region: (server_region) OPTIONAL str in query
 
@@ -85,7 +89,9 @@ class GetActiveMatchmakingGameSessions(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    limit: int  # OPTIONAL in [query]
     match_id: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
     server_region: str  # OPTIONAL in [query]
     session_id: str  # OPTIONAL in [query]
 
@@ -139,8 +145,12 @@ class GetActiveMatchmakingGameSessions(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
         if hasattr(self, "match_id"):
             result["match_id"] = self.match_id
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "server_region"):
             result["server_region"] = self.server_region
         if hasattr(self, "session_id"):
@@ -159,8 +169,16 @@ class GetActiveMatchmakingGameSessions(Operation):
         self.namespace = value
         return self
 
+    def with_limit(self, value: int) -> GetActiveMatchmakingGameSessions:
+        self.limit = value
+        return self
+
     def with_match_id(self, value: str) -> GetActiveMatchmakingGameSessions:
         self.match_id = value
+        return self
+
+    def with_offset(self, value: int) -> GetActiveMatchmakingGameSessions:
+        self.offset = value
         return self
 
     def with_server_region(self, value: str) -> GetActiveMatchmakingGameSessions:
@@ -181,10 +199,18 @@ class GetActiveMatchmakingGameSessions(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
         if hasattr(self, "match_id") and self.match_id:
             result["match_id"] = str(self.match_id)
         elif include_empty:
             result["match_id"] = ""
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         if hasattr(self, "server_region") and self.server_region:
             result["server_region"] = str(self.server_region)
         elif include_empty:
@@ -246,14 +272,20 @@ class GetActiveMatchmakingGameSessions(Operation):
     def create(
         cls,
         namespace: str,
+        limit: Optional[int] = None,
         match_id: Optional[str] = None,
+        offset: Optional[int] = None,
         server_region: Optional[str] = None,
         session_id: Optional[str] = None,
     ) -> GetActiveMatchmakingGameSessions:
         instance = cls()
         instance.namespace = namespace
+        if limit is not None:
+            instance.limit = limit
         if match_id is not None:
             instance.match_id = match_id
+        if offset is not None:
+            instance.offset = offset
         if server_region is not None:
             instance.server_region = server_region
         if session_id is not None:
@@ -269,10 +301,18 @@ class GetActiveMatchmakingGameSessions(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
             instance.match_id = ""
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         if "server_region" in dict_ and dict_["server_region"] is not None:
             instance.server_region = str(dict_["server_region"])
         elif include_empty:
@@ -287,7 +327,9 @@ class GetActiveMatchmakingGameSessions(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "limit": "limit",
             "match_id": "match_id",
+            "offset": "offset",
             "server_region": "server_region",
             "session_id": "session_id",
         }
@@ -296,7 +338,9 @@ class GetActiveMatchmakingGameSessions(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "limit": False,
             "match_id": False,
+            "offset": False,
             "server_region": False,
             "session_id": False,
         }

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.19.0)
+# AccelByte Cloud Platform Service Index (4.20.0)
 
 
 ## Operations
@@ -405,6 +405,17 @@
 | /platform/public/namespaces/{namespace}/rewards/byCriteria | GET | queryRewards_1 | `false` | [QueryRewards1](../../accelbyte_py_sdk/api/platform/operations/reward/query_rewards_1.py) | [query_rewards_1](../../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-query-rewards-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_rewards_1.py) |
 | /platform/admin/namespaces/{namespace}/rewards/{rewardId} | PUT | updateReward | `false` | [UpdateReward](../../accelbyte_py_sdk/api/platform/operations/reward/update_reward.py) | [update_reward](../../accelbyte_py_sdk/api/platform/wrappers/_reward.py) | [accelbyte_py_sdk_cli platform-update-reward](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_reward.py) |
 
+### Section
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/sections | POST | createSection | `false` | [CreateSection](../../accelbyte_py_sdk/api/platform/operations/section/create_section.py) | [create_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-create-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_create_section.py) |
+| /platform/admin/namespaces/{namespace}/sections/{sectionId} | DELETE | deleteSection | `false` | [DeleteSection](../../accelbyte_py_sdk/api/platform/operations/section/delete_section.py) | [delete_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-delete-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_section.py) |
+| /platform/admin/namespaces/{namespace}/sections/{sectionId} | GET | getSection | `false` | [GetSection](../../accelbyte_py_sdk/api/platform/operations/section/get_section.py) | [get_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-get-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_section.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/sections | GET | publicListActiveSections | `false` | [PublicListActiveSections](../../accelbyte_py_sdk/api/platform/operations/section/public_list_active_sections.py) | [public_list_active_sections](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-public-list-active-sections](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_list_active_sections.py) |
+| /platform/admin/namespaces/{namespace}/sections/purge/expired | DELETE | purgeExpiredSection | `false` | [PurgeExpiredSection](../../accelbyte_py_sdk/api/platform/operations/section/purge_expired_section.py) | [purge_expired_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-purge-expired-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_purge_expired_section.py) |
+| /platform/admin/namespaces/{namespace}/sections | GET | querySections | `false` | [QuerySections](../../accelbyte_py_sdk/api/platform/operations/section/query_sections.py) | [query_sections](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-query-sections](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_sections.py) |
+| /platform/admin/namespaces/{namespace}/sections/{sectionId} | PUT | updateSection | `false` | [UpdateSection](../../accelbyte_py_sdk/api/platform/operations/section/update_section.py) | [update_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-update-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_section.py) |
+
 ### Store
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -455,6 +466,16 @@
 | /platform/admin/namespaces/{namespace}/tickets/{boothName}/id | GET | getTicketBoothID | `false` | [GetTicketBoothID](../../accelbyte_py_sdk/api/platform/operations/ticket/get_ticket_booth_id.py) | [get_ticket_booth_id](../../accelbyte_py_sdk/api/platform/wrappers/_ticket.py) | [accelbyte_py_sdk_cli platform-get-ticket-booth-id](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_ticket_booth_id.py) |
 | /platform/admin/namespaces/{namespace}/tickets/{boothName} | GET | getTicketDynamic | `false` | [GetTicketDynamic](../../accelbyte_py_sdk/api/platform/operations/ticket/get_ticket_dynamic.py) | [get_ticket_dynamic](../../accelbyte_py_sdk/api/platform/wrappers/_ticket.py) | [accelbyte_py_sdk_cli platform-get-ticket-dynamic](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_ticket_dynamic.py) |
 | /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment | PUT | increaseTicketSale | `false` | [IncreaseTicketSale](../../accelbyte_py_sdk/api/platform/operations/ticket/increase_ticket_sale.py) | [increase_ticket_sale](../../accelbyte_py_sdk/api/platform/wrappers/_ticket.py) | [accelbyte_py_sdk_cli platform-increase-ticket-sale](../../samples/cli/accelbyte_py_sdk_cli/platform/_increase_ticket_sale.py) |
+
+### View
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/views | POST | createView | `false` | [CreateView](../../accelbyte_py_sdk/api/platform/operations/view/create_view.py) | [create_view](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-create-view](../../samples/cli/accelbyte_py_sdk_cli/platform/_create_view.py) |
+| /platform/admin/namespaces/{namespace}/views/{viewId} | DELETE | deleteView | `false` | [DeleteView](../../accelbyte_py_sdk/api/platform/operations/view/delete_view.py) | [delete_view](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-delete-view](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_view.py) |
+| /platform/admin/namespaces/{namespace}/views/{viewId} | GET | getView | `false` | [GetView](../../accelbyte_py_sdk/api/platform/operations/view/get_view.py) | [get_view](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-get-view](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_view.py) |
+| /platform/admin/namespaces/{namespace}/views | GET | listViews | `false` | [ListViews](../../accelbyte_py_sdk/api/platform/operations/view/list_views.py) | [list_views](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-list-views](../../samples/cli/accelbyte_py_sdk_cli/platform/_list_views.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/views | GET | publicListViews | `false` | [PublicListViews](../../accelbyte_py_sdk/api/platform/operations/view/public_list_views.py) | [public_list_views](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-public-list-views](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_list_views.py) |
+| /platform/admin/namespaces/{namespace}/views/{viewId} | PUT | updateView | `false` | [UpdateView](../../accelbyte_py_sdk/api/platform/operations/view/update_view.py) | [update_view](../../accelbyte_py_sdk/api/platform/wrappers/_view.py) | [accelbyte_py_sdk_cli platform-update-view](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_view.py) |
 
 ### Wallet
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -569,6 +590,7 @@
 | ExtensionFulfillmentSummary | [ExtensionFulfillmentSummary](../../accelbyte_py_sdk/api/platform/models/extension_fulfillment_summary.py) |
 | ExternalPaymentOrderCreate | [ExternalPaymentOrderCreate](../../accelbyte_py_sdk/api/platform/models/external_payment_order_create.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/platform/models/field_validation_error.py) |
+| FixedPeriodRotationConfig | [FixedPeriodRotationConfig](../../accelbyte_py_sdk/api/platform/models/fixed_period_rotation_config.py) |
 | FulfillCodeRequest | [FulfillCodeRequest](../../accelbyte_py_sdk/api/platform/models/fulfill_code_request.py) |
 | FulfillmentError | [FulfillmentError](../../accelbyte_py_sdk/api/platform/models/fulfillment_error.py) |
 | FulfillmentHistoryInfo | [FulfillmentHistoryInfo](../../accelbyte_py_sdk/api/platform/models/fulfillment_history_info.py) |
@@ -586,6 +608,8 @@
 | FullCategoryInfo | [FullCategoryInfo](../../accelbyte_py_sdk/api/platform/models/full_category_info.py) |
 | FullItemInfo | [FullItemInfo](../../accelbyte_py_sdk/api/platform/models/full_item_info.py) |
 | FullItemPagingSlicedResult | [FullItemPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/full_item_paging_sliced_result.py) |
+| FullSectionInfo | [FullSectionInfo](../../accelbyte_py_sdk/api/platform/models/full_section_info.py) |
+| FullViewInfo | [FullViewInfo](../../accelbyte_py_sdk/api/platform/models/full_view_info.py) |
 | GoogleIAPConfigInfo | [GoogleIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/google_iap_config_info.py) |
 | GoogleIAPConfigRequest | [GoogleIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/google_iap_config_request.py) |
 | GoogleIAPReceipt | [GoogleIAPReceipt](../../accelbyte_py_sdk/api/platform/models/google_iap_receipt.py) |
@@ -613,6 +637,7 @@
 | ItemDynamicDataInfo | [ItemDynamicDataInfo](../../accelbyte_py_sdk/api/platform/models/item_dynamic_data_info.py) |
 | ItemId | [ItemId](../../accelbyte_py_sdk/api/platform/models/item_id.py) |
 | ItemInfo | [ItemInfo](../../accelbyte_py_sdk/api/platform/models/item_info.py) |
+| ItemNaming | [ItemNaming](../../accelbyte_py_sdk/api/platform/models/item_naming.py) |
 | ItemPagingSlicedResult | [ItemPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/item_paging_sliced_result.py) |
 | ItemPurchaseConditionValidateRequest | [ItemPurchaseConditionValidateRequest](../../accelbyte_py_sdk/api/platform/models/item_purchase_condition_validate_request.py) |
 | ItemPurchaseConditionValidateResult | [ItemPurchaseConditionValidateResult](../../accelbyte_py_sdk/api/platform/models/item_purchase_condition_validate_result.py) |
@@ -629,6 +654,7 @@
 | KeyGroupUpdate | [KeyGroupUpdate](../../accelbyte_py_sdk/api/platform/models/key_group_update.py) |
 | KeyInfo | [KeyInfo](../../accelbyte_py_sdk/api/platform/models/key_info.py) |
 | KeyPagingSliceResult | [KeyPagingSliceResult](../../accelbyte_py_sdk/api/platform/models/key_paging_slice_result.py) |
+| ListViewInfo | [ListViewInfo](../../accelbyte_py_sdk/api/platform/models/list_view_info.py) |
 | Localization | [Localization](../../accelbyte_py_sdk/api/platform/models/localization.py) |
 | LootBoxConfig | [LootBoxConfig](../../accelbyte_py_sdk/api/platform/models/loot_box_config.py) |
 | LootBoxReward | [LootBoxReward](../../accelbyte_py_sdk/api/platform/models/loot_box_reward.py) |
@@ -723,6 +749,11 @@
 | RewardPagingSlicedResult | [RewardPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/reward_paging_sliced_result.py) |
 | RewardUpdate | [RewardUpdate](../../accelbyte_py_sdk/api/platform/models/reward_update.py) |
 | RewardsRequest | [RewardsRequest](../../accelbyte_py_sdk/api/platform/models/rewards_request.py) |
+| SectionCreate | [SectionCreate](../../accelbyte_py_sdk/api/platform/models/section_create.py) |
+| SectionInfo | [SectionInfo](../../accelbyte_py_sdk/api/platform/models/section_info.py) |
+| SectionItem | [SectionItem](../../accelbyte_py_sdk/api/platform/models/section_item.py) |
+| SectionPagingSlicedResult | [SectionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/section_paging_sliced_result.py) |
+| SectionUpdate | [SectionUpdate](../../accelbyte_py_sdk/api/platform/models/section_update.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
 | StadiaIAPConfigInfo | [StadiaIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/stadia_iap_config_info.py) |
@@ -764,6 +795,9 @@
 | TwitchSyncRequest | [TwitchSyncRequest](../../accelbyte_py_sdk/api/platform/models/twitch_sync_request.py) |
 | UserDLC | [UserDLC](../../accelbyte_py_sdk/api/platform/models/user_dlc.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../../accelbyte_py_sdk/api/platform/models/validation_error_entity.py) |
+| ViewCreate | [ViewCreate](../../accelbyte_py_sdk/api/platform/models/view_create.py) |
+| ViewInfo | [ViewInfo](../../accelbyte_py_sdk/api/platform/models/view_info.py) |
+| ViewUpdate | [ViewUpdate](../../accelbyte_py_sdk/api/platform/models/view_update.py) |
 | WalletInfo | [WalletInfo](../../accelbyte_py_sdk/api/platform/models/wallet_info.py) |
 | WalletPagingSlicedResult | [WalletPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/wallet_paging_sliced_result.py) |
 | WalletTransactionInfo | [WalletTransactionInfo](../../accelbyte_py_sdk/api/platform/models/wallet_transaction_info.py) |

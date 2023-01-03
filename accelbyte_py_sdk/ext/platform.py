@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.19.0)
+# AccelByte Cloud Platform Service (4.20.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -113,6 +113,7 @@ from ..api.platform.models import ExportStoreRequest
 from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
+from ..api.platform.models import FixedPeriodRotationConfig
 from ..api.platform.models import FulfillCodeRequest
 from ..api.platform.models import FulfillmentError
 from ..api.platform.models import FulfillmentHistoryInfo
@@ -130,6 +131,8 @@ from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
 from ..api.platform.models import FullItemPagingSlicedResult
+from ..api.platform.models import FullSectionInfo
+from ..api.platform.models import FullViewInfo
 from ..api.platform.models import GoogleIAPConfigInfo
 from ..api.platform.models import GoogleIAPConfigRequest
 from ..api.platform.models import GoogleIAPReceipt
@@ -157,6 +160,7 @@ from ..api.platform.models import ItemCreate
 from ..api.platform.models import ItemDynamicDataInfo
 from ..api.platform.models import ItemId
 from ..api.platform.models import ItemInfo
+from ..api.platform.models import ItemNaming
 from ..api.platform.models import ItemPagingSlicedResult
 from ..api.platform.models import ItemPurchaseConditionValidateRequest
 from ..api.platform.models import ItemPurchaseConditionValidateResult
@@ -173,6 +177,7 @@ from ..api.platform.models import KeyGroupPagingSlicedResult
 from ..api.platform.models import KeyGroupUpdate
 from ..api.platform.models import KeyInfo
 from ..api.platform.models import KeyPagingSliceResult
+from ..api.platform.models import ListViewInfo
 from ..api.platform.models import Localization
 from ..api.platform.models import LootBoxConfig
 from ..api.platform.models import LootBoxReward
@@ -267,6 +272,11 @@ from ..api.platform.models import RewardItem
 from ..api.platform.models import RewardPagingSlicedResult
 from ..api.platform.models import RewardUpdate
 from ..api.platform.models import RewardsRequest
+from ..api.platform.models import SectionCreate
+from ..api.platform.models import SectionInfo
+from ..api.platform.models import SectionItem
+from ..api.platform.models import SectionPagingSlicedResult
+from ..api.platform.models import SectionUpdate
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
 from ..api.platform.models import StadiaIAPConfigInfo
@@ -308,6 +318,9 @@ from ..api.platform.models import TwitchIAPConfigRequest
 from ..api.platform.models import TwitchSyncRequest
 from ..api.platform.models import UserDLC
 from ..api.platform.models import ValidationErrorEntity
+from ..api.platform.models import ViewCreate
+from ..api.platform.models import ViewInfo
+from ..api.platform.models import ViewUpdate
 from ..api.platform.models import WalletInfo
 from ..api.platform.models import WalletPagingSlicedResult
 from ..api.platform.models import WalletTransactionInfo
@@ -778,9 +791,11 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     instance.item_id = randomize()
     instance.item_type = randomize()
     instance.published_at = randomize("date")
+    instance.section_id = randomize()
     instance.sku = randomize("slug")
     instance.title = randomize()
     instance.type_ = randomize()
+    instance.view_id = randomize()
     return instance
 
 
@@ -1322,6 +1337,14 @@ def create_field_validation_error_example() -> FieldValidationError:
     return instance
 
 
+def create_fixed_period_rotation_config_example() -> FixedPeriodRotationConfig:
+    instance = FixedPeriodRotationConfig()
+    instance.duration = randomize("int", min_val=1, max_val=1000)
+    instance.item_count = randomize("int", min_val=1, max_val=1000)
+    instance.rule = randomize()
+    return instance
+
+
 def create_fulfill_code_request_example() -> FulfillCodeRequest:
     instance = FulfillCodeRequest()
     instance.code = randomize()
@@ -1529,6 +1552,41 @@ def create_full_item_paging_sliced_result_example() -> FullItemPagingSlicedResul
     instance = FullItemPagingSlicedResult()
     instance.data = [create_full_item_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_full_section_info_example() -> FullSectionInfo:
+    instance = FullSectionInfo()
+    instance.active = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.end_date = randomize("date")
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.section_id = randomize()
+    instance.start_date = randomize("date")
+    instance.updated_at = randomize("date")
+    instance.view_id = randomize()
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.ext = {randomize(): randomize()}
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
+    instance.item_namings = [create_item_naming_example()]
+    instance.items = [create_section_item_example()]
+    instance.rotation_type = randomize()
+    return instance
+
+
+def create_full_view_info_example() -> FullViewInfo:
+    instance = FullViewInfo()
+    instance.created_at = randomize("date")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.view_id = randomize()
     return instance
 
 
@@ -1854,6 +1912,19 @@ def create_item_info_example() -> ItemInfo:
     return instance
 
 
+def create_item_naming_example() -> ItemNaming:
+    instance = ItemNaming()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.category_path = randomize()
+    instance.season_type = randomize()
+    instance.sku = randomize("slug")
+    instance.status = randomize()
+    return instance
+
+
 def create_item_paging_sliced_result_example() -> ItemPagingSlicedResult:
     instance = ItemPagingSlicedResult()
     instance.data = [create_item_info_example()]
@@ -2057,6 +2128,17 @@ def create_key_paging_slice_result_example() -> KeyPagingSliceResult:
     instance = KeyPagingSliceResult()
     instance.data = [create_key_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_list_view_info_example() -> ListViewInfo:
+    instance = ListViewInfo()
+    instance.created_at = randomize("date")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.view_id = randomize()
     return instance
 
 
@@ -3133,6 +3215,76 @@ def create_rewards_request_example() -> RewardsRequest:
     return instance
 
 
+def create_section_create_example() -> SectionCreate:
+    instance = SectionCreate()
+    instance.end_date = randomize("date")
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.start_date = randomize("date")
+    instance.active = randomize("bool")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.ext = {randomize(): randomize()}
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
+    instance.items = [create_section_item_example()]
+    instance.rotation_type = randomize()
+    instance.view_id = randomize()
+    return instance
+
+
+def create_section_info_example() -> SectionInfo:
+    instance = SectionInfo()
+    instance.active = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.end_date = randomize("date")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.section_id = randomize()
+    instance.start_date = randomize("date")
+    instance.title = randomize()
+    instance.updated_at = randomize("date")
+    instance.view_id = randomize()
+    instance.current_rotation_expire_at = randomize("date")
+    instance.current_rotation_items = [create_item_info_example()]
+    instance.description = randomize()
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.local_ext = {randomize(): randomize()}
+    instance.long_description = randomize()
+    return instance
+
+
+def create_section_item_example() -> SectionItem:
+    instance = SectionItem()
+    instance.id_ = randomize()
+    return instance
+
+
+def create_section_paging_sliced_result_example() -> SectionPagingSlicedResult:
+    instance = SectionPagingSlicedResult()
+    instance.data = [create_full_section_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_section_update_example() -> SectionUpdate:
+    instance = SectionUpdate()
+    instance.end_date = randomize("date")
+    instance.localizations = {}
+    instance.name = randomize()
+    instance.start_date = randomize("date")
+    instance.active = randomize("bool")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.ext = {randomize(): randomize()}
+    instance.fixed_period_rotation_config = (
+        create_fixed_period_rotation_config_example()
+    )
+    instance.items = [create_section_item_example()]
+    instance.rotation_type = randomize()
+    instance.view_id = randomize()
+    return instance
+
+
 def create_slide_example() -> Slide:
     instance = Slide()
     instance.alt = randomize()
@@ -3611,6 +3763,37 @@ def create_validation_error_entity_example() -> ValidationErrorEntity:
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.errors = [create_field_validation_error_example()]
+    return instance
+
+
+def create_view_create_example() -> ViewCreate:
+    instance = ViewCreate()
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.localizations = {}
+    instance.name = randomize()
+    return instance
+
+
+def create_view_info_example() -> ViewInfo:
+    instance = ViewInfo()
+    instance.created_at = randomize("date")
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.title = randomize()
+    instance.updated_at = randomize("date")
+    instance.view_id = randomize()
+    instance.description = randomize()
+    instance.local_ext = {randomize(): randomize()}
+    instance.long_description = randomize()
+    return instance
+
+
+def create_view_update_example() -> ViewUpdate:
+    instance = ViewUpdate()
+    instance.name = randomize()
+    instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.localizations = {}
     return instance
 
 

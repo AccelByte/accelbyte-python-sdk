@@ -24,7 +24,10 @@
 ### GlobalStatistic
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /social/v1/admin/namespaces/{namespace}/globalstatitems/{statCode} | GET | getGlobalStatItemByStatCode | `false` | [GetGlobalStatItemByStatCode](../../accelbyte_py_sdk/api/social/operations/global_statistic/get_global_stat_item_by_f4e6d4.py) | [get_global_stat_item_by_stat_code](../../accelbyte_py_sdk/api/social/wrappers/_global_statistic.py) | [accelbyte_py_sdk_cli social-get-global-stat-item-by-stat-code](../../samples/cli/accelbyte_py_sdk_cli/social/_get_global_stat_item_by_stat_code.py) |
+| /social/v1/public/namespaces/{namespace}/globalstatitems/{statCode} | GET | getGlobalStatItemByStatCode_1 | `false` | [GetGlobalStatItemByStatCode1](../../accelbyte_py_sdk/api/social/operations/global_statistic/get_global_stat_item_by_4617a3.py) | [get_global_stat_item_by_stat_code_1](../../accelbyte_py_sdk/api/social/wrappers/_global_statistic.py) | [accelbyte_py_sdk_cli social-get-global-stat-item-by-stat-code-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_global_stat_item_by_stat_code_1.py) |
 | /social/v1/admin/namespaces/{namespace}/globalstatitems | GET | getGlobalStatItems | `false` | [GetGlobalStatItems](../../accelbyte_py_sdk/api/social/operations/global_statistic/get_global_stat_items.py) | [get_global_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_global_statistic.py) | [accelbyte_py_sdk_cli social-get-global-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_get_global_stat_items.py) |
+| /social/v1/public/namespaces/{namespace}/globalstatitems | GET | getGlobalStatItems_1 | `false` | [GetGlobalStatItems1](../../accelbyte_py_sdk/api/social/operations/global_statistic/get_global_stat_items_1.py) | [get_global_stat_items_1](../../accelbyte_py_sdk/api/social/wrappers/_global_statistic.py) | [accelbyte_py_sdk_cli social-get-global-stat-items-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_global_stat_items_1.py) |
 
 ### Slot
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

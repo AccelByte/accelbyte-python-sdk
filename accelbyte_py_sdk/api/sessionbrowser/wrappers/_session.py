@@ -366,6 +366,8 @@ async def delete_session_local_ds_async(
 
 @same_doc_as(GetActiveCustomGameSessions)
 def get_active_custom_game_sessions(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     server_region: Optional[str] = None,
     session_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -377,6 +379,8 @@ def get_active_custom_game_sessions(
         if error:
             return None, error
     request = GetActiveCustomGameSessions.create(
+        limit=limit,
+        offset=offset,
         server_region=server_region,
         session_id=session_id,
         namespace=namespace,
@@ -386,6 +390,8 @@ def get_active_custom_game_sessions(
 
 @same_doc_as(GetActiveCustomGameSessions)
 async def get_active_custom_game_sessions_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     server_region: Optional[str] = None,
     session_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -397,6 +403,8 @@ async def get_active_custom_game_sessions_async(
         if error:
             return None, error
     request = GetActiveCustomGameSessions.create(
+        limit=limit,
+        offset=offset,
         server_region=server_region,
         session_id=session_id,
         namespace=namespace,
@@ -408,7 +416,9 @@ async def get_active_custom_game_sessions_async(
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
 def get_active_matchmaking_game_sessions(
+    limit: Optional[int] = None,
     match_id: Optional[str] = None,
+    offset: Optional[int] = None,
     server_region: Optional[str] = None,
     session_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -420,7 +430,9 @@ def get_active_matchmaking_game_sessions(
         if error:
             return None, error
     request = GetActiveMatchmakingGameSessions.create(
+        limit=limit,
         match_id=match_id,
+        offset=offset,
         server_region=server_region,
         session_id=session_id,
         namespace=namespace,
@@ -430,7 +442,9 @@ def get_active_matchmaking_game_sessions(
 
 @same_doc_as(GetActiveMatchmakingGameSessions)
 async def get_active_matchmaking_game_sessions_async(
+    limit: Optional[int] = None,
     match_id: Optional[str] = None,
+    offset: Optional[int] = None,
     server_region: Optional[str] = None,
     session_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -442,7 +456,9 @@ async def get_active_matchmaking_game_sessions_async(
         if error:
             return None, error
     request = GetActiveMatchmakingGameSessions.create(
+        limit=limit,
         match_id=match_id,
+        offset=offset,
         server_region=server_region,
         session_id=session_id,
         namespace=namespace,

@@ -14,4 +14,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .get_global_stat_item_by_f4e6d4 import GetGlobalStatItemByStatCode
+from .get_global_stat_item_by_4617a3 import GetGlobalStatItemByStatCode1
 from .get_global_stat_items import GetGlobalStatItems
+from .get_global_stat_items_1 import GetGlobalStatItems1

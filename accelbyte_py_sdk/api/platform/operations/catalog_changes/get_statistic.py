@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.19.0)
+# AccelByte Cloud Platform Service (4.20.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -56,7 +56,9 @@ class ItemTypeEnum(StrEnum):
 class TypeEnum(StrEnum):
     CATEGORY = "CATEGORY"
     ITEM = "ITEM"
+    SECTION = "SECTION"
     STORE = "STORE"
+    VIEW = "VIEW"
 
 
 class GetStatistic(Operation):
@@ -414,7 +416,7 @@ class GetStatistic(Operation):
                 "SEASON",
                 "SUBSCRIPTION",
             ],  # in query
-            "type": ["CATEGORY", "ITEM", "STORE"],  # in query
+            "type": ["CATEGORY", "ITEM", "SECTION", "STORE", "VIEW"],  # in query
         }
 
     # endregion static methods
