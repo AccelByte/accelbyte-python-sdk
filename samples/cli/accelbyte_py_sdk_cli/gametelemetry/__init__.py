@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Analytics Game Telemetry (1.14.2)
+# Analytics Game Telemetry (1.15.0)
 
 from ._get_events_game_telemetry_v1_admin_namespaces_namespace_events_get import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get,

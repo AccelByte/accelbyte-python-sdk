@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.social.models import GlobalStatItemPagingSlicedResult
 @click.command()
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--stat_codes", "stat_codes", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -46,6 +47,7 @@ from accelbyte_py_sdk.api.social.models import GlobalStatItemPagingSlicedResult
 def get_global_stat_items(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    stat_codes: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -62,6 +64,7 @@ def get_global_stat_items(
     result, error = get_global_stat_items_internal(
         limit=limit,
         offset=offset,
+        stat_codes=stat_codes,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

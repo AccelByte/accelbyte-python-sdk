@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.12.3)
+# Accelbyte Cloud Achievement Service (2.12.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,7 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--prefer_unlocked", "prefer_unlocked", type=bool)
+@click.option("--sort_by", "sort_by", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -54,6 +55,7 @@ def admin_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -79,6 +81,7 @@ def admin_list_user_achievements(
         limit=limit,
         offset=offset,
         prefer_unlocked=prefer_unlocked,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

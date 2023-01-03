@@ -35,6 +35,7 @@ from ._public_update_user_namespace_slot_metadata import (
     public_update_user_namespace_slot_metadata,
 )
 from ._get_global_stat_items import get_global_stat_items
+from ._get_global_stat_item_by_stat_code import get_global_stat_item_by_stat_code
 from ._bulk_fetch_stat_items import bulk_fetch_stat_items
 from ._bulk_inc_user_stat_item import bulk_inc_user_stat_item
 from ._bulk_inc_user_stat_item_value import bulk_inc_user_stat_item_value
@@ -58,6 +59,8 @@ from ._create_user_stat_item import create_user_stat_item
 from ._delete_user_stat_items import delete_user_stat_items
 from ._inc_user_stat_item_value import inc_user_stat_item_value
 from ._reset_user_stat_item_value import reset_user_stat_item_value
+from ._get_global_stat_items_1 import get_global_stat_items_1
+from ._get_global_stat_item_by_stat_code_1 import get_global_stat_item_by_stat_code_1
 from ._bulk_fetch_stat_items_1 import bulk_fetch_stat_items_1
 from ._public_bulk_inc_user_stat_item import public_bulk_inc_user_stat_item
 from ._public_bulk_inc_user_stat_item_value import public_bulk_inc_user_stat_item_value
@@ -112,6 +115,7 @@ commands = [
     public_delete_user_namespace_slot,
     public_update_user_namespace_slot_metadata,
     get_global_stat_items,
+    get_global_stat_item_by_stat_code,
     bulk_fetch_stat_items,
     bulk_inc_user_stat_item,
     bulk_inc_user_stat_item_value,
@@ -135,6 +139,8 @@ commands = [
     delete_user_stat_items,
     inc_user_stat_item_value,
     reset_user_stat_item_value,
+    get_global_stat_items_1,
+    get_global_stat_item_by_stat_code_1,
     bulk_fetch_stat_items_1,
     public_bulk_inc_user_stat_item,
     public_bulk_inc_user_stat_item_value,

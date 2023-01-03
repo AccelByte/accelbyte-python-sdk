@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.19.0)
+# justice-platform-service (4.20.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -151,6 +151,12 @@ from ._update_reward import update_reward
 from ._delete_reward import delete_reward
 from ._check_event_condition import check_event_condition
 from ._delete_reward_condition_record import delete_reward_condition_record
+from ._query_sections import query_sections
+from ._create_section import create_section
+from ._purge_expired_section import purge_expired_section
+from ._get_section import get_section
+from ._update_section import update_section
+from ._delete_section import delete_section
 from ._list_stores import list_stores
 from ._create_store import create_store
 from ._import_store import import_store
@@ -269,6 +275,11 @@ from ._debit_user_wallet import debit_user_wallet
 from ._disable_user_wallet import disable_user_wallet
 from ._enable_user_wallet import enable_user_wallet
 from ._list_user_wallet_transactions import list_user_wallet_transactions
+from ._list_views import list_views
+from ._create_view import create_view
+from ._get_view import get_view
+from ._update_view import update_view
+from ._delete_view import delete_view
 from ._query_wallets import query_wallets
 from ._get_wallet import get_wallet
 from ._sync_orders import sync_orders
@@ -415,6 +426,7 @@ from ._public_get_user_order_histories import public_get_user_order_histories
 from ._public_download_user_order_receipt import public_download_user_order_receipt
 from ._public_get_payment_accounts import public_get_payment_accounts
 from ._public_delete_payment_account import public_delete_payment_account
+from ._public_list_active_sections import public_list_active_sections
 from ._public_query_user_subscriptions import public_query_user_subscriptions
 from ._public_subscribe_subscription import public_subscribe_subscription
 from ._public_check_user_subscription_subscribable_by_item_id import (
@@ -428,6 +440,7 @@ from ._public_cancel_subscription import public_cancel_subscription
 from ._public_get_user_subscription_billing_histories import (
     public_get_user_subscription_billing_histories,
 )
+from ._public_list_views import public_list_views
 from ._public_get_wallet import public_get_wallet
 from ._public_list_user_wallet_transactions import public_list_user_wallet_transactions
 from ._query_items_1 import query_items_1
@@ -579,6 +592,12 @@ commands = [
     delete_reward,
     check_event_condition,
     delete_reward_condition_record,
+    query_sections,
+    create_section,
+    purge_expired_section,
+    get_section,
+    update_section,
+    delete_section,
     list_stores,
     create_store,
     import_store,
@@ -679,6 +698,11 @@ commands = [
     disable_user_wallet,
     enable_user_wallet,
     list_user_wallet_transactions,
+    list_views,
+    create_view,
+    get_view,
+    update_view,
+    delete_view,
     query_wallets,
     get_wallet,
     sync_orders,
@@ -787,6 +811,7 @@ commands = [
     public_download_user_order_receipt,
     public_get_payment_accounts,
     public_delete_payment_account,
+    public_list_active_sections,
     public_query_user_subscriptions,
     public_subscribe_subscription,
     public_check_user_subscription_subscribable_by_item_id,
@@ -794,6 +819,7 @@ commands = [
     public_change_subscription_billing_account,
     public_cancel_subscription,
     public_get_user_subscription_billing_histories,
+    public_list_views,
     public_get_wallet,
     public_list_user_wallet_transactions,
     query_items_1,

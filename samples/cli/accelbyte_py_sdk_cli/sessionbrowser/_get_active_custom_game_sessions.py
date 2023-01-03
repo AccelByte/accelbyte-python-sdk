@@ -38,6 +38,8 @@ from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 
 
 @click.command()
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--server_region", "server_region", type=str)
 @click.option("--session_id", "session_id", type=str)
 @click.option("--namespace", type=str)
@@ -45,6 +47,8 @@ from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorResponseV2
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_active_custom_game_sessions(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     server_region: Optional[str] = None,
     session_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -61,6 +65,8 @@ def get_active_custom_game_sessions(
     else:
         login_as_internal(login_as)
     result, error = get_active_custom_game_sessions_internal(
+        limit=limit,
+        offset=offset,
         server_region=server_region,
         session_id=session_id,
         namespace=namespace,

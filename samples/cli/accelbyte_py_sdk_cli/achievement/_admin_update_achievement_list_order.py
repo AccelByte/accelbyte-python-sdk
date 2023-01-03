@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.12.3)
+# Accelbyte Cloud Achievement Service (2.12.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
