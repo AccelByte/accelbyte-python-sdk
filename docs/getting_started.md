@@ -51,7 +51,8 @@ Install the SDK.
 ```bash
 $ pip install accelbyte-py-sdk
 ```
-It is recommended to use the matching Python Server SDK version for the given AccelByte Cloud version.
+
+It is recommended to use the matching Python Server SDK version for the given AccelByte Cloud version. For the list of available versions, see [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases). 
 
 ### 3. Use in Code
 

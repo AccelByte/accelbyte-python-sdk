@@ -29,7 +29,7 @@ pip install git+https://github.com/AccelByte/accelbyte-python-sdk.git@{VERSION}#
 ```
 
 Replace `{VERSION}` with a specific release version tag. When starting a new project, 
-using the latest release version is recommended.
+using the latest release version is recommended. For the list of available versions, see [releases](https://github.com/AccelByte/accelbyte-python-sdk/releases). 
 
 **Special note only for Windows environment**
 
