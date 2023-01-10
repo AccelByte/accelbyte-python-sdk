@@ -290,6 +290,14 @@ class SessionTestCase(IntegrationTestCase):
         self.assertIn(user_id1, user_ids)
         self.assertIn(user_id2, user_ids)
 
+        # act & assert (admin_query_parties)
+        result, error = session_service.admin_query_parties(
+            leader_id=user_id1,
+        )
+        self.assertIsNone(error, error)
+        party_ids = [party.id_ for party in result.data]
+        self.assertIn(party_id, party_ids)
+
     # endregion test:party_flow
 
     # end of file
