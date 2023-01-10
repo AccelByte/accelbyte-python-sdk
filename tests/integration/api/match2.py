@@ -262,7 +262,7 @@ class Match2TestCase(IntegrationTestCase):
                     "configurationName": session_template_name,
                     "members": [
                         {"ID": user_id},
-                    ]
+                    ],
                 }
             ),
             sdk=user_sdk,

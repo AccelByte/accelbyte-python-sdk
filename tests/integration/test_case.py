@@ -1,5 +1,7 @@
 import asyncio
 import logging
+import random
+import string
 import time
 
 from abc import ABC
@@ -175,7 +177,7 @@ class SDKTestCaseUtils:
         from accelbyte_py_sdk.core import generate_id
 
         username = f"{user_prefix}{generate_id(8)}"
-        password = f"$1,{generate_id(16)}aZ"
+        password = SDKTestCaseUtils.generate_password(16)
         email_address = f"{username}@{email_domain}"
 
         result, error = iam_service.public_create_user_v4(
@@ -200,6 +202,25 @@ class SDKTestCaseUtils:
             return None, "userId not found"
 
         return (username, password, user_id), None
+
+    @staticmethod
+    def generate_password(length: int) -> str:
+        strings = [
+            string.ascii_lowercase,
+            string.ascii_uppercase,
+            string.digits,
+            "!@#$%^&*()_+-=",
+        ]
+
+        si = 0
+        result = ""
+        for _ in range(length):
+            result += random.choice(strings[si])
+            si += 1
+            if si == len(strings):
+                si = 0
+
+        return result
 
 
 class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
