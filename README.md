@@ -13,7 +13,7 @@ This SDK requires Python 3.9 to be installed.
 Install dependencies.
 
 ```sh
-pip install requests httpx websockets pyyaml jwt
+pip install requests httpx websockets PyYAML PyJWT[crypto] mmh3 bitarray
 ```
 
 Install from PyPI
