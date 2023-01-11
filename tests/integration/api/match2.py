@@ -256,26 +256,29 @@ class Match2TestCase(IntegrationTestCase):
         else:
             self.sdks.append(user_sdk)
 
-        result, error = session_service.create_game_session(
-            body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+        result, error = session_service.public_create_party(
+            body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
                 {
                     "configurationName": session_template_name,
+                    "members": [
+                        {"ID": user_id},
+                    ]
                 }
             ),
             sdk=user_sdk,
         )
         if error:
-            self.skipTest(reason=f"unable to create game session: {error}")
+            self.skipTest(reason=f"unable to create party: {error}")
 
-        if not (game_session_id := getattr(result, "id_", None)):
-            self.skipTest(reason=f"unable to find game session id: {error}")
+        if not (party_id := getattr(result, "id_", None)):
+            self.skipTest(reason=f"unable to find party id: {error}")
 
         # act & assert (create_match_ticket)
         result, error = match2_service.create_match_ticket(
             body=match2_models.ApiMatchTicketRequest.create_from_dict(
                 {
                     "matchPool": match_pool_name,
-                    "sessionId": game_session_id,
+                    "sessionID": party_id,
                 }
             ),
             sdk=user_sdk,
@@ -289,6 +292,14 @@ class Match2TestCase(IntegrationTestCase):
         # act & assert (delete_match_ticket)
         _, error = match2_service.delete_match_ticket(
             ticketid=match_ticket_id,
+            sdk=user_sdk,
+        )
+
+        self.assertIsNone(error, error)
+
+        # act & assert (public_party_leave)
+        _, error = session_service.public_party_leave(
+            party_id=party_id,
             sdk=user_sdk,
         )
 
