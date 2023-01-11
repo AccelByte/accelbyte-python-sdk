@@ -155,5 +155,6 @@ class AuthServicesTestCase(IntegrationTestCase):
         # assert
         self.assertIsNone(error, error)
 
+    # endregion test:refresh_login
 
-# endregion test:refresh_login
+    # end of file
