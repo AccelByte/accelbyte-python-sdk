@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (1.5.0)
+# AccelByte Cloud Match Service V2 (2.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.api_match_function_override import ApiMatchFunctionOverride
+
 
 class ApiMatchPoolConfig(Model):
     """Api match pool config (api.MatchPoolConfig)
@@ -35,6 +37,8 @@ class ApiMatchPoolConfig(Model):
         backfill_ticket_expiration_seconds: (backfill_ticket_expiration_seconds) REQUIRED int
 
         match_function: (match_function) REQUIRED str
+
+        match_function_override: (match_function_override) REQUIRED ApiMatchFunctionOverride
 
         rule_set: (rule_set) REQUIRED str
 
@@ -47,6 +51,7 @@ class ApiMatchPoolConfig(Model):
 
     backfill_ticket_expiration_seconds: int  # REQUIRED
     match_function: str  # REQUIRED
+    match_function_override: ApiMatchFunctionOverride  # REQUIRED
     rule_set: str  # REQUIRED
     session_template: str  # REQUIRED
     ticket_expiration_seconds: int  # REQUIRED
@@ -61,6 +66,12 @@ class ApiMatchPoolConfig(Model):
 
     def with_match_function(self, value: str) -> ApiMatchPoolConfig:
         self.match_function = value
+        return self
+
+    def with_match_function_override(
+        self, value: ApiMatchFunctionOverride
+    ) -> ApiMatchPoolConfig:
+        self.match_function_override = value
         return self
 
     def with_rule_set(self, value: str) -> ApiMatchPoolConfig:
@@ -91,6 +102,12 @@ class ApiMatchPoolConfig(Model):
             result["match_function"] = str(self.match_function)
         elif include_empty:
             result["match_function"] = ""
+        if hasattr(self, "match_function_override"):
+            result["match_function_override"] = self.match_function_override.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["match_function_override"] = ApiMatchFunctionOverride()
         if hasattr(self, "rule_set"):
             result["rule_set"] = str(self.rule_set)
         elif include_empty:
@@ -114,6 +131,7 @@ class ApiMatchPoolConfig(Model):
         cls,
         backfill_ticket_expiration_seconds: int,
         match_function: str,
+        match_function_override: ApiMatchFunctionOverride,
         rule_set: str,
         session_template: str,
         ticket_expiration_seconds: int,
@@ -121,6 +139,7 @@ class ApiMatchPoolConfig(Model):
         instance = cls()
         instance.backfill_ticket_expiration_seconds = backfill_ticket_expiration_seconds
         instance.match_function = match_function
+        instance.match_function_override = match_function_override
         instance.rule_set = rule_set
         instance.session_template = session_template
         instance.ticket_expiration_seconds = ticket_expiration_seconds
@@ -146,6 +165,17 @@ class ApiMatchPoolConfig(Model):
             instance.match_function = str(dict_["match_function"])
         elif include_empty:
             instance.match_function = ""
+        if (
+            "match_function_override" in dict_
+            and dict_["match_function_override"] is not None
+        ):
+            instance.match_function_override = (
+                ApiMatchFunctionOverride.create_from_dict(
+                    dict_["match_function_override"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.match_function_override = ApiMatchFunctionOverride()
         if "rule_set" in dict_ and dict_["rule_set"] is not None:
             instance.rule_set = str(dict_["rule_set"])
         elif include_empty:
@@ -204,6 +234,7 @@ class ApiMatchPoolConfig(Model):
         return {
             "backfill_ticket_expiration_seconds": "backfill_ticket_expiration_seconds",
             "match_function": "match_function",
+            "match_function_override": "match_function_override",
             "rule_set": "rule_set",
             "session_template": "session_template",
             "ticket_expiration_seconds": "ticket_expiration_seconds",
@@ -214,6 +245,7 @@ class ApiMatchPoolConfig(Model):
         return {
             "backfill_ticket_expiration_seconds": True,
             "match_function": True,
+            "match_function_override": True,
             "rule_set": True,
             "session_template": True,
             "ticket_expiration_seconds": True,

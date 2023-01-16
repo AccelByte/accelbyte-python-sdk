@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (1.5.0)
+# AccelByte Cloud Match Service V2 (2.0.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -44,6 +44,19 @@ class UpdateMatchPool(Operation):
     Updates an existing matchmaking pool.
 
     ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled.
+
+    Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide ("default" and "basic").
+    Match Function will be used as reference value for Match Function Overrides if not set.
+    In case Customer would like to use matchmaking service default match logic, then specify it in "match_function_overrides".
+    This sample configuration will let matchmaking service will use "default" match logic for make matches, while validation will hit both "default" and "custom" match logics.
+    e.g.
+    {
+    "match_function": "custom",
+    "match_function_overrides": {
+    "validation": []{"default","custom"},
+    "make_matches": "default",
+    }
+    }
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHMAKING:POOL [UPDATE]

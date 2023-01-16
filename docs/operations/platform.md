@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Platform Service Index (4.20.0)
+# AccelByte Cloud Platform Service Index (4.21.0)
 
 
 ## Operations
@@ -416,6 +416,13 @@
 | /platform/admin/namespaces/{namespace}/sections | GET | querySections | `false` | [QuerySections](../../accelbyte_py_sdk/api/platform/operations/section/query_sections.py) | [query_sections](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-query-sections](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_sections.py) |
 | /platform/admin/namespaces/{namespace}/sections/{sectionId} | PUT | updateSection | `false` | [UpdateSection](../../accelbyte_py_sdk/api/platform/operations/section/update_section.py) | [update_section](../../accelbyte_py_sdk/api/platform/wrappers/_section.py) | [accelbyte_py_sdk_cli platform-update-section](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_section.py) |
 
+### ServicePluginConfig
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | DELETE | deleteServicePluginConfig | `false` | [DeleteServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/delete_service_plugin_config.py) | [delete_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-delete-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | GET | getServicePluginConfig | `false` | [GetServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/get_service_plugin_config.py) | [get_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-get-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_service_plugin_config.py) |
+| /platform/admin/namespaces/{namespace}/configs/servicePlugin | PUT | updateServicePluginConfig | `false` | [UpdateServicePluginConfig](../../accelbyte_py_sdk/api/platform/operations/service_plugin_config/update_service_plugin_config.py) | [update_service_plugin_config](../../accelbyte_py_sdk/api/platform/wrappers/_service_plugin_config.py) | [accelbyte_py_sdk_cli platform-update-service-plugin-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_service_plugin_config.py) |
+
 ### Store
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -754,6 +761,8 @@
 | SectionItem | [SectionItem](../../accelbyte_py_sdk/api/platform/models/section_item.py) |
 | SectionPagingSlicedResult | [SectionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/section_paging_sliced_result.py) |
 | SectionUpdate | [SectionUpdate](../../accelbyte_py_sdk/api/platform/models/section_update.py) |
+| ServicePluginConfigInfo | [ServicePluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_info.py) |
+| ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
 | StadiaIAPConfigInfo | [StadiaIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/stadia_iap_config_info.py) |

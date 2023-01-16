@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ugc Service."""
 
-__version__ = "2.6.2"
+__version__ = "2.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,6 +37,8 @@ from ._admin_content import admin_download_content_preview
 from ._admin_content import admin_download_content_preview_async
 from ._admin_content import admin_get_content
 from ._admin_content import admin_get_content_async
+from ._admin_content import admin_get_content_bulk
+from ._admin_content import admin_get_content_bulk_async
 from ._admin_content import admin_get_specific_content
 from ._admin_content import admin_get_specific_content_async
 from ._admin_content import admin_get_user_content_by_share_code

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (6.0.0)
+# AccelByte Cloud Dsm Controller Service (6.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -84,6 +84,8 @@ class ModelsServer(Model):
         status: (status) REQUIRED str
 
         status_history: (status_history) REQUIRED List[ModelsStatusHistory]
+
+        termination_reason: (termination_reason) REQUIRED str
     """
 
     # region fields
@@ -113,6 +115,7 @@ class ModelsServer(Model):
     session_id: str  # REQUIRED
     status: str  # REQUIRED
     status_history: List[ModelsStatusHistory]  # REQUIRED
+    termination_reason: str  # REQUIRED
 
     # endregion fields
 
@@ -218,6 +221,10 @@ class ModelsServer(Model):
 
     def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
         self.status_history = value
+        return self
+
+    def with_termination_reason(self, value: str) -> ModelsServer:
+        self.termination_reason = value
         return self
 
     # endregion with_x methods
@@ -330,6 +337,10 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             result["status_history"] = []
+        if hasattr(self, "termination_reason"):
+            result["termination_reason"] = str(self.termination_reason)
+        elif include_empty:
+            result["termination_reason"] = ""
         return result
 
     # endregion to methods
@@ -364,6 +375,7 @@ class ModelsServer(Model):
         session_id: str,
         status: str,
         status_history: List[ModelsStatusHistory],
+        termination_reason: str,
     ) -> ModelsServer:
         instance = cls()
         instance.allocation_events = allocation_events
@@ -391,6 +403,7 @@ class ModelsServer(Model):
         instance.session_id = session_id
         instance.status = status
         instance.status_history = status_history
+        instance.termination_reason = termination_reason
         return instance
 
     @classmethod
@@ -507,6 +520,10 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             instance.status_history = []
+        if "termination_reason" in dict_ and dict_["termination_reason"] is not None:
+            instance.termination_reason = str(dict_["termination_reason"])
+        elif include_empty:
+            instance.termination_reason = ""
         return instance
 
     @classmethod
@@ -571,6 +588,7 @@ class ModelsServer(Model):
             "session_id": "session_id",
             "status": "status",
             "status_history": "status_history",
+            "termination_reason": "termination_reason",
         }
 
     @staticmethod
@@ -601,6 +619,7 @@ class ModelsServer(Model):
             "session_id": True,
             "status": True,
             "status_history": True,
+            "termination_reason": True,
         }
 
     # endregion static methods

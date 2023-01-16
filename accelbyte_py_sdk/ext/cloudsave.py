@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Cloudsave Service (3.3.0)
+# AccelByte Cloud Cloudsave Service (3.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,8 +25,11 @@
 from .utils import randomize
 
 from ..api.cloudsave.models import ModelsAdminConcurrentRecordRequest
+from ..api.cloudsave.models import ModelsBulkGetGameRecordRequest
+from ..api.cloudsave.models import ModelsBulkGetGameRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordSizeResponse
+from ..api.cloudsave.models import ModelsBulkGetPlayerRecordsRequest
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
@@ -51,6 +54,18 @@ def create_models_admin_concurrent_record_request_example() -> ModelsAdminConcur
     return instance
 
 
+def create_models_bulk_get_game_record_request_example() -> ModelsBulkGetGameRecordRequest:
+    instance = ModelsBulkGetGameRecordRequest()
+    instance.keys = [randomize()]
+    return instance
+
+
+def create_models_bulk_get_game_record_response_example() -> ModelsBulkGetGameRecordResponse:
+    instance = ModelsBulkGetGameRecordResponse()
+    instance.data = [create_models_game_record_response_example()]
+    return instance
+
+
 def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlayerRecordResponse:
     instance = ModelsBulkGetPlayerRecordResponse()
     instance.data = [create_models_player_record_response_example()]
@@ -60,6 +75,12 @@ def create_models_bulk_get_player_record_response_example() -> ModelsBulkGetPlay
 def create_models_bulk_get_player_record_size_response_example() -> ModelsBulkGetPlayerRecordSizeResponse:
     instance = ModelsBulkGetPlayerRecordSizeResponse()
     instance.data = [create_models_player_record_size_response_example()]
+    return instance
+
+
+def create_models_bulk_get_player_records_request_example() -> ModelsBulkGetPlayerRecordsRequest:
+    instance = ModelsBulkGetPlayerRecordsRequest()
+    instance.keys = [randomize()]
     return instance
 
 

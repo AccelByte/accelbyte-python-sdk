@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ from ..models.section_item import SectionItem
 
 
 class RotationTypeEnum(StrEnum):
+    CUSTOM = "CUSTOM"
     FIXED_PERIOD = "FIXED_PERIOD"
     NONE = "NONE"
 
@@ -63,6 +64,8 @@ class FullSectionInfo(Model):
 
         view_id: (viewId) REQUIRED str
 
+        view_name: (viewName) REQUIRED str
+
         display_order: (displayOrder) OPTIONAL int
 
         ext: (ext) OPTIONAL Dict[str, Any]
@@ -88,6 +91,7 @@ class FullSectionInfo(Model):
     start_date: str  # REQUIRED
     updated_at: str  # REQUIRED
     view_id: str  # REQUIRED
+    view_name: str  # REQUIRED
     display_order: int  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     fixed_period_rotation_config: FixedPeriodRotationConfig  # OPTIONAL
@@ -137,6 +141,10 @@ class FullSectionInfo(Model):
 
     def with_view_id(self, value: str) -> FullSectionInfo:
         self.view_id = value
+        return self
+
+    def with_view_name(self, value: str) -> FullSectionInfo:
+        self.view_name = value
         return self
 
     def with_display_order(self, value: int) -> FullSectionInfo:
@@ -216,6 +224,10 @@ class FullSectionInfo(Model):
             result["viewId"] = str(self.view_id)
         elif include_empty:
             result["viewId"] = ""
+        if hasattr(self, "view_name"):
+            result["viewName"] = str(self.view_name)
+        elif include_empty:
+            result["viewName"] = ""
         if hasattr(self, "display_order"):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
@@ -265,6 +277,7 @@ class FullSectionInfo(Model):
         start_date: str,
         updated_at: str,
         view_id: str,
+        view_name: str,
         display_order: Optional[int] = None,
         ext: Optional[Dict[str, Any]] = None,
         fixed_period_rotation_config: Optional[FixedPeriodRotationConfig] = None,
@@ -283,6 +296,7 @@ class FullSectionInfo(Model):
         instance.start_date = start_date
         instance.updated_at = updated_at
         instance.view_id = view_id
+        instance.view_name = view_name
         if display_order is not None:
             instance.display_order = display_order
         if ext is not None:
@@ -347,6 +361,10 @@ class FullSectionInfo(Model):
             instance.view_id = str(dict_["viewId"])
         elif include_empty:
             instance.view_id = ""
+        if "viewName" in dict_ and dict_["viewName"] is not None:
+            instance.view_name = str(dict_["viewName"])
+        elif include_empty:
+            instance.view_name = ""
         if "displayOrder" in dict_ and dict_["displayOrder"] is not None:
             instance.display_order = int(dict_["displayOrder"])
         elif include_empty:
@@ -433,6 +451,7 @@ class FullSectionInfo(Model):
             "startDate": "start_date",
             "updatedAt": "updated_at",
             "viewId": "view_id",
+            "viewName": "view_name",
             "displayOrder": "display_order",
             "ext": "ext",
             "fixedPeriodRotationConfig": "fixed_period_rotation_config",
@@ -454,6 +473,7 @@ class FullSectionInfo(Model):
             "startDate": True,
             "updatedAt": True,
             "viewId": True,
+            "viewName": True,
             "displayOrder": False,
             "ext": False,
             "fixedPeriodRotationConfig": False,
@@ -465,7 +485,7 @@ class FullSectionInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "rotationType": ["FIXED_PERIOD", "NONE"],
+            "rotationType": ["CUSTOM", "FIXED_PERIOD", "NONE"],
         }
 
     # endregion static methods

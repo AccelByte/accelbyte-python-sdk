@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Ugc Service Index (2.6.2)
+# AccelByte Cloud Ugc Service Index (2.7.0)
 
 
 ## Operations
@@ -25,6 +25,7 @@
 | /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId} | DELETE | AdminDeleteContentScreenshot | `false` | [AdminDeleteContentScreenshot](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_delete_content_sc_eeb785.py) | [admin_delete_content_screenshot](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-delete-content-screenshot](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_delete_content_screenshot.py) |
 | /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview | GET | AdminDownloadContentPreview | `false` | [AdminDownloadContentPreview](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_download_content_preview.py) | [admin_download_content_preview](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-download-content-preview](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_download_content_preview.py) |
 | /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents | GET | AdminGetContent | `false` | [AdminGetContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_get_content.py) | [admin_get_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-get-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_get_content.py) |
+| /ugc/v1/admin/namespaces/{namespace}/contents/bulk | POST | AdminGetContentBulk | `false` | [AdminGetContentBulk](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_get_content_bulk.py) | [admin_get_content_bulk](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-get-content-bulk](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_get_content_bulk.py) |
 | /ugc/v1/admin/namespaces/{namespace}/contents/{contentId} | GET | AdminGetSpecificContent | `false` | [AdminGetSpecificContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_get_specific_content.py) | [admin_get_specific_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-get-specific-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_get_specific_content.py) |
 | /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/{shareCode} | GET | AdminGetUserContentByShareCode | `false` | [AdminGetUserContentByShareCode](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_get_user_content__d4dc92.py) | [admin_get_user_content_by_share_code](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-get-user-content-by-share-code](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_get_user_content_by_share_code.py) |
 | /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide | PUT | AdminHideUserContent | `false` | [AdminHideUserContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content/admin_hide_user_content.py) | [admin_hide_user_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content.py) | [accelbyte_py_sdk_cli ugc-admin-hide-user-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_hide_user_content.py) |
@@ -162,6 +163,7 @@
 | Model | Class |
 |---|---|
 | models.AddDownloadCountResponse | [ModelsAddDownloadCountResponse](../../accelbyte_py_sdk/api/ugc/models/models_add_download_count_response.py) |
+| models.AdminGetContentBulkRequest | [ModelsAdminGetContentBulkRequest](../../accelbyte_py_sdk/api/ugc/models/models_admin_get_content_bulk_request.py) |
 | models.ChannelRequest | [ModelsChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_channel_request.py) |
 | models.ChannelResponse | [ModelsChannelResponse](../../accelbyte_py_sdk/api/ugc/models/models_channel_response.py) |
 | models.ContentDownloadResponse | [ModelsContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_download_response.py) |

@@ -68,6 +68,7 @@ def admin_query_game_sessions(
     order_by: Optional[str] = None,
     session_id: Optional[str] = None,
     status: Optional[str] = None,
+    status_v2: Optional[str] = None,
     to_time: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -91,6 +92,7 @@ def admin_query_game_sessions(
         order_by=order_by,
         session_id=session_id,
         status=status,
+        status_v2=status_v2,
         to_time=to_time,
         namespace=namespace,
     )
@@ -112,6 +114,7 @@ async def admin_query_game_sessions_async(
     order_by: Optional[str] = None,
     session_id: Optional[str] = None,
     status: Optional[str] = None,
+    status_v2: Optional[str] = None,
     to_time: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -135,6 +138,7 @@ async def admin_query_game_sessions_async(
         order_by=order_by,
         session_id=session_id,
         status=status,
+        status_v2=status_v2,
         to_time=to_time,
         namespace=namespace,
     )

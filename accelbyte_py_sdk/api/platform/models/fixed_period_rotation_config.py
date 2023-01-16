@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,11 @@ from ....core import Model
 from ....core import StrEnum
 
 
+class BackfillTypeEnum(StrEnum):
+    CUSTOM = "CUSTOM"
+    NONE = "NONE"
+
+
 class RuleEnum(StrEnum):
     SEQUENCE = "SEQUENCE"
 
@@ -37,6 +42,8 @@ class FixedPeriodRotationConfig(Model):
     """Fixed period rotation config (FixedPeriodRotationConfig)
 
     Properties:
+        backfill_type: (backfillType) OPTIONAL Union[str, BackfillTypeEnum]
+
         duration: (duration) OPTIONAL int
 
         item_count: (itemCount) OPTIONAL int
@@ -46,6 +53,7 @@ class FixedPeriodRotationConfig(Model):
 
     # region fields
 
+    backfill_type: Union[str, BackfillTypeEnum]  # OPTIONAL
     duration: int  # OPTIONAL
     item_count: int  # OPTIONAL
     rule: Union[str, RuleEnum]  # OPTIONAL
@@ -53,6 +61,12 @@ class FixedPeriodRotationConfig(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_backfill_type(
+        self, value: Union[str, BackfillTypeEnum]
+    ) -> FixedPeriodRotationConfig:
+        self.backfill_type = value
+        return self
 
     def with_duration(self, value: int) -> FixedPeriodRotationConfig:
         self.duration = value
@@ -72,6 +86,10 @@ class FixedPeriodRotationConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "backfill_type"):
+            result["backfillType"] = str(self.backfill_type)
+        elif include_empty:
+            result["backfillType"] = Union[str, BackfillTypeEnum]()
         if hasattr(self, "duration"):
             result["duration"] = int(self.duration)
         elif include_empty:
@@ -93,11 +111,14 @@ class FixedPeriodRotationConfig(Model):
     @classmethod
     def create(
         cls,
+        backfill_type: Optional[Union[str, BackfillTypeEnum]] = None,
         duration: Optional[int] = None,
         item_count: Optional[int] = None,
         rule: Optional[Union[str, RuleEnum]] = None,
     ) -> FixedPeriodRotationConfig:
         instance = cls()
+        if backfill_type is not None:
+            instance.backfill_type = backfill_type
         if duration is not None:
             instance.duration = duration
         if item_count is not None:
@@ -113,6 +134,10 @@ class FixedPeriodRotationConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "backfillType" in dict_ and dict_["backfillType"] is not None:
+            instance.backfill_type = str(dict_["backfillType"])
+        elif include_empty:
+            instance.backfill_type = Union[str, BackfillTypeEnum]()
         if "duration" in dict_ and dict_["duration"] is not None:
             instance.duration = int(dict_["duration"])
         elif include_empty:
@@ -168,6 +193,7 @@ class FixedPeriodRotationConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "backfillType": "backfill_type",
             "duration": "duration",
             "itemCount": "item_count",
             "rule": "rule",
@@ -176,6 +202,7 @@ class FixedPeriodRotationConfig(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "backfillType": False,
             "duration": False,
             "itemCount": False,
             "rule": False,
@@ -184,6 +211,7 @@ class FixedPeriodRotationConfig(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "backfillType": ["CUSTOM", "NONE"],
             "rule": ["SEQUENCE"],
         }
 

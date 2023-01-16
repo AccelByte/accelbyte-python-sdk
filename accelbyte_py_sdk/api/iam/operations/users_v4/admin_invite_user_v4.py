@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,7 +41,15 @@ class AdminInviteUserV4(Operation):
 
     Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
     assign role with namespaces that the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
-    Role is optional, if not specified then it will only assign User role
+
+    Detail request body :
+    - Assigned Namespaces is required, List of namespaces that will be assigned to the user.
+    - Email Address is required, List of email addresses that will be invited
+    - isAdmin is required, true if user is admin, false if user is not admin
+    - Namespace is optional. Only works on multi tenant mode,
+    if not specified then it will be assigned Publisher namespace,
+    if specified, it will become that studio/publisher where user is invited to.
+    - Role is optional, if not specified then it will only assign User role.
 
     The invited admin will also assigned with "User" role by default.
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,8 @@ class ModelUserInvitationV3(Model):
 
         expired_at: (expiredAt) REQUIRED str
 
+        namespace: (namespace) REQUIRED str
+
         roles: (roles) REQUIRED List[AccountcommonNamespaceRole]
 
         id_: (id) OPTIONAL str
@@ -47,6 +49,7 @@ class ModelUserInvitationV3(Model):
 
     email: str  # REQUIRED
     expired_at: str  # REQUIRED
+    namespace: str  # REQUIRED
     roles: List[AccountcommonNamespaceRole]  # REQUIRED
     id_: str  # OPTIONAL
 
@@ -60,6 +63,10 @@ class ModelUserInvitationV3(Model):
 
     def with_expired_at(self, value: str) -> ModelUserInvitationV3:
         self.expired_at = value
+        return self
+
+    def with_namespace(self, value: str) -> ModelUserInvitationV3:
+        self.namespace = value
         return self
 
     def with_roles(
@@ -86,6 +93,10 @@ class ModelUserInvitationV3(Model):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
             result["expiredAt"] = ""
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         if hasattr(self, "roles"):
             result["roles"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.roles
@@ -107,12 +118,14 @@ class ModelUserInvitationV3(Model):
         cls,
         email: str,
         expired_at: str,
+        namespace: str,
         roles: List[AccountcommonNamespaceRole],
         id_: Optional[str] = None,
     ) -> ModelUserInvitationV3:
         instance = cls()
         instance.email = email
         instance.expired_at = expired_at
+        instance.namespace = namespace
         instance.roles = roles
         if id_ is not None:
             instance.id_ = id_
@@ -133,6 +146,10 @@ class ModelUserInvitationV3(Model):
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
             instance.expired_at = ""
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         if "roles" in dict_ and dict_["roles"] is not None:
             instance.roles = [
                 AccountcommonNamespaceRole.create_from_dict(
@@ -191,6 +208,7 @@ class ModelUserInvitationV3(Model):
         return {
             "email": "email",
             "expiredAt": "expired_at",
+            "namespace": "namespace",
             "roles": "roles",
             "id": "id_",
         }
@@ -200,6 +218,7 @@ class ModelUserInvitationV3(Model):
         return {
             "email": True,
             "expiredAt": True,
+            "namespace": True,
             "roles": True,
             "id": False,
         }

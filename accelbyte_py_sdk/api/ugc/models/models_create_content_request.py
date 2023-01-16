@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.6.2)
+# AccelByte Cloud Ugc Service (2.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ModelsCreateContentRequest(Model):
     """Models create content request (models.CreateContentRequest)
 
     Properties:
+        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
+
         name: (name) REQUIRED str
 
         payload: (payload) REQUIRED str
@@ -51,6 +53,7 @@ class ModelsCreateContentRequest(Model):
 
     # region fields
 
+    custom_attributes: Dict[str, Any]  # REQUIRED
     name: str  # REQUIRED
     payload: str  # REQUIRED
     preview: str  # REQUIRED
@@ -62,6 +65,12 @@ class ModelsCreateContentRequest(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsCreateContentRequest:
+        self.custom_attributes = value
+        return self
 
     def with_name(self, value: str) -> ModelsCreateContentRequest:
         self.name = value
@@ -99,6 +108,12 @@ class ModelsCreateContentRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -138,6 +153,7 @@ class ModelsCreateContentRequest(Model):
     @classmethod
     def create(
         cls,
+        custom_attributes: Dict[str, Any],
         name: str,
         payload: str,
         preview: str,
@@ -147,6 +163,7 @@ class ModelsCreateContentRequest(Model):
         type_: str,
     ) -> ModelsCreateContentRequest:
         instance = cls()
+        instance.custom_attributes = custom_attributes
         instance.name = name
         instance.payload = payload
         instance.preview = preview
@@ -163,6 +180,12 @@ class ModelsCreateContentRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -236,6 +259,7 @@ class ModelsCreateContentRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "customAttributes": "custom_attributes",
             "name": "name",
             "payload": "payload",
             "preview": "preview",
@@ -248,6 +272,7 @@ class ModelsCreateContentRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "customAttributes": True,
             "name": True,
             "payload": True,
             "preview": True,

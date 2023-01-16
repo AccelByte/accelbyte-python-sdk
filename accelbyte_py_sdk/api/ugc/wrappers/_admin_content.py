@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import ModelsAdminGetContentBulkRequest
 from ..models import ModelsContentDownloadResponse
 from ..models import ModelsCreateContentRequest
 from ..models import ModelsCreateContentRequestS3
@@ -47,6 +48,7 @@ from ..operations.admin_content import AdminDeleteContent
 from ..operations.admin_content import AdminDeleteContentScreenshot
 from ..operations.admin_content import AdminDownloadContentPreview
 from ..operations.admin_content import AdminGetContent
+from ..operations.admin_content import AdminGetContentBulk
 from ..operations.admin_content import AdminGetSpecificContent
 from ..operations.admin_content import AdminGetUserContentByShareCode
 from ..operations.admin_content import AdminHideUserContent
@@ -229,6 +231,44 @@ async def admin_get_content_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetContentBulk)
+def admin_get_content_bulk(
+    body: ModelsAdminGetContentBulkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulk.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetContentBulk)
+async def admin_get_content_bulk_async(
+    body: ModelsAdminGetContentBulkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetContentBulk.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

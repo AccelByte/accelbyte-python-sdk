@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.3.2)
+# AccelByte Cloud Session Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class ApimodelsDSInformationResponse(Model):
         server: (Server) REQUIRED ModelsGameServer
 
         status: (Status) REQUIRED str
+
+        status_v2: (StatusV2) REQUIRED str
     """
 
     # region fields
@@ -46,6 +48,7 @@ class ApimodelsDSInformationResponse(Model):
     requested_at: str  # REQUIRED
     server: ModelsGameServer  # REQUIRED
     status: str  # REQUIRED
+    status_v2: str  # REQUIRED
 
     # endregion fields
 
@@ -61,6 +64,10 @@ class ApimodelsDSInformationResponse(Model):
 
     def with_status(self, value: str) -> ApimodelsDSInformationResponse:
         self.status = value
+        return self
+
+    def with_status_v2(self, value: str) -> ApimodelsDSInformationResponse:
+        self.status_v2 = value
         return self
 
     # endregion with_x methods
@@ -81,6 +88,10 @@ class ApimodelsDSInformationResponse(Model):
             result["Status"] = str(self.status)
         elif include_empty:
             result["Status"] = ""
+        if hasattr(self, "status_v2"):
+            result["StatusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["StatusV2"] = ""
         return result
 
     # endregion to methods
@@ -93,11 +104,13 @@ class ApimodelsDSInformationResponse(Model):
         requested_at: str,
         server: ModelsGameServer,
         status: str,
+        status_v2: str,
     ) -> ApimodelsDSInformationResponse:
         instance = cls()
         instance.requested_at = requested_at
         instance.server = server
         instance.status = status
+        instance.status_v2 = status_v2
         return instance
 
     @classmethod
@@ -121,6 +134,10 @@ class ApimodelsDSInformationResponse(Model):
             instance.status = str(dict_["Status"])
         elif include_empty:
             instance.status = ""
+        if "StatusV2" in dict_ and dict_["StatusV2"] is not None:
+            instance.status_v2 = str(dict_["StatusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         return instance
 
     @classmethod
@@ -167,6 +184,7 @@ class ApimodelsDSInformationResponse(Model):
             "RequestedAt": "requested_at",
             "Server": "server",
             "Status": "status",
+            "StatusV2": "status_v2",
         }
 
     @staticmethod
@@ -175,6 +193,7 @@ class ApimodelsDSInformationResponse(Model):
             "RequestedAt": True,
             "Server": True,
             "Status": True,
+            "StatusV2": True,
         }
 
     # endregion static methods

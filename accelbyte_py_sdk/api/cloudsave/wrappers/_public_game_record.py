@@ -29,12 +29,15 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBulkGetGameRecordRequest
+from ..models import ModelsBulkGetGameRecordResponse
 from ..models import ModelsGameRecordRequest
 from ..models import ModelsGameRecordResponse
 from ..models import ModelsResponseError
 
 from ..operations.public_game_record import DeleteGameRecordHandlerV1
 from ..operations.public_game_record import GetGameRecordHandlerV1
+from ..operations.public_game_record import GetGameRecordsBulk
 from ..operations.public_game_record import PostGameRecordHandlerV1
 from ..operations.public_game_record import PutGameRecordHandlerV1
 
@@ -108,6 +111,44 @@ async def get_game_record_handler_v1_async(
             return None, error
     request = GetGameRecordHandlerV1.create(
         key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetGameRecordsBulk)
+def get_game_records_bulk(
+    body: ModelsBulkGetGameRecordRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGameRecordsBulk.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetGameRecordsBulk)
+async def get_game_records_bulk_async(
+    body: ModelsBulkGetGameRecordRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGameRecordsBulk.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

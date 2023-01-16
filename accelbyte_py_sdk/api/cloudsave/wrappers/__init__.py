@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -74,6 +74,8 @@ from ._public_game_record import delete_game_record_handler_v1
 from ._public_game_record import delete_game_record_handler_v1_async
 from ._public_game_record import get_game_record_handler_v1
 from ._public_game_record import get_game_record_handler_v1_async
+from ._public_game_record import get_game_records_bulk
+from ._public_game_record import get_game_records_bulk_async
 from ._public_game_record import post_game_record_handler_v1
 from ._public_game_record import post_game_record_handler_v1_async
 from ._public_game_record import put_game_record_handler_v1
@@ -87,6 +89,8 @@ from ._public_player_record import get_player_public_record_handler_v1
 from ._public_player_record import get_player_public_record_handler_v1_async
 from ._public_player_record import get_player_record_handler_v1
 from ._public_player_record import get_player_record_handler_v1_async
+from ._public_player_record import get_player_records_bulk_handler_v1
+from ._public_player_record import get_player_records_bulk_handler_v1_async
 from ._public_player_record import post_player_public_record_handler_v1
 from ._public_player_record import post_player_public_record_handler_v1_async
 from ._public_player_record import post_player_record_handler_v1
@@ -97,3 +101,5 @@ from ._public_player_record import put_player_public_record_handler_v1
 from ._public_player_record import put_player_public_record_handler_v1_async
 from ._public_player_record import put_player_record_handler_v1
 from ._public_player_record import put_player_record_handler_v1_async
+from ._public_player_record import retrieve_player_records
+from ._public_player_record import retrieve_player_records_async

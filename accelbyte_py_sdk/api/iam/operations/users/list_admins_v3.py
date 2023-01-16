@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,6 +39,9 @@ class ListAdminsV3(Operation):
     This endpoint requires ADMIN:NAMESPACE:{namespace}:USER [READ] permission.
 
     List all users that has admin role (role that has admin_role attribute set to true).
+
+    The endpoint will return all admin from all namespace when called from publisher namespace.
+    When not called from publisher namespace, the endpoint will return all admin from the path namespace.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER [READ]

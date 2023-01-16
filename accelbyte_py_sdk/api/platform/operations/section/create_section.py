@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -70,7 +70,7 @@ class CreateSection(Operation):
     Responses:
         201: Created - FullSectionInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
 
@@ -207,7 +207,7 @@ class CreateSection(Operation):
 
         201: Created - FullSectionInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required)
+        400: Bad Request - ErrorEntity (20027: Invalid time range | 30021: Default language [{language}] required | 30023: Catalog plugin grpc server address required)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30641: View [{viewId}] does not exist in namespace [{namespace}])
 

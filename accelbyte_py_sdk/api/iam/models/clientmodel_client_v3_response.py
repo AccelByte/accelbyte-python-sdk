@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -69,6 +69,8 @@ class ClientmodelClientV3Response(Model):
         oauth_refresh_token_expiration: (oauthRefreshTokenExpiration) OPTIONAL int
 
         oauth_refresh_token_expiration_time_unit: (oauthRefreshTokenExpirationTimeUnit) OPTIONAL str
+
+        parent_namespace: (parentNamespace) OPTIONAL str
     """
 
     # region fields
@@ -91,6 +93,7 @@ class ClientmodelClientV3Response(Model):
     oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
     oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
+    parent_namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -176,6 +179,10 @@ class ClientmodelClientV3Response(Model):
         self, value: str
     ) -> ClientmodelClientV3Response:
         self.oauth_refresh_token_expiration_time_unit = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ClientmodelClientV3Response:
+        self.parent_namespace = value
         return self
 
     # endregion with_x methods
@@ -267,6 +274,10 @@ class ClientmodelClientV3Response(Model):
             )
         elif include_empty:
             result["oauthRefreshTokenExpirationTimeUnit"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         return result
 
     # endregion to methods
@@ -294,6 +305,7 @@ class ClientmodelClientV3Response(Model):
         oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
         oauth_refresh_token_expiration_time_unit: Optional[str] = None,
+        parent_namespace: Optional[str] = None,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences
@@ -322,6 +334,8 @@ class ClientmodelClientV3Response(Model):
             instance.oauth_refresh_token_expiration_time_unit = (
                 oauth_refresh_token_expiration_time_unit
             )
+        if parent_namespace is not None:
+            instance.parent_namespace = parent_namespace
         return instance
 
     @classmethod
@@ -428,6 +442,10 @@ class ClientmodelClientV3Response(Model):
             )
         elif include_empty:
             instance.oauth_refresh_token_expiration_time_unit = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         return instance
 
     @classmethod
@@ -489,6 +507,7 @@ class ClientmodelClientV3Response(Model):
             "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
             "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
+            "parentNamespace": "parent_namespace",
         }
 
     @staticmethod
@@ -512,6 +531,7 @@ class ClientmodelClientV3Response(Model):
             "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,
             "oauthRefreshTokenExpirationTimeUnit": False,
+            "parentNamespace": False,
         }
 
     # endregion static methods

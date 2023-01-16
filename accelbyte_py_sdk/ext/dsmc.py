@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (6.0.0)
+# AccelByte Cloud Dsm Controller Service (6.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -550,6 +550,7 @@ def create_models_server_example() -> ModelsServer:
     instance.session_id = randomize("uid")
     instance.status = randomize()
     instance.status_history = [create_models_status_history_example()]
+    instance.termination_reason = randomize()
     return instance
 
 

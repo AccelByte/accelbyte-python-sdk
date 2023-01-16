@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.6.2)
+# AccelByte Cloud Ugc Service (2.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsCreateContentResponse(Model):
         created_time: (createdTime) REQUIRED str
 
         creator_name: (creatorName) REQUIRED str
+
+        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
 
         file_extension: (fileExtension) REQUIRED str
 
@@ -79,6 +81,7 @@ class ModelsCreateContentResponse(Model):
     channel_id: str  # REQUIRED
     created_time: str  # REQUIRED
     creator_name: str  # REQUIRED
+    custom_attributes: Dict[str, Any]  # REQUIRED
     file_extension: str  # REQUIRED
     id_: str  # REQUIRED
     is_hidden: bool  # REQUIRED
@@ -110,6 +113,12 @@ class ModelsCreateContentResponse(Model):
 
     def with_creator_name(self, value: str) -> ModelsCreateContentResponse:
         self.creator_name = value
+        return self
+
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsCreateContentResponse:
+        self.custom_attributes = value
         return self
 
     def with_file_extension(self, value: str) -> ModelsCreateContentResponse:
@@ -198,6 +207,12 @@ class ModelsCreateContentResponse(Model):
             result["creatorName"] = str(self.creator_name)
         elif include_empty:
             result["creatorName"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
@@ -278,6 +293,7 @@ class ModelsCreateContentResponse(Model):
         channel_id: str,
         created_time: str,
         creator_name: str,
+        custom_attributes: Dict[str, Any],
         file_extension: str,
         id_: str,
         is_hidden: bool,
@@ -299,6 +315,7 @@ class ModelsCreateContentResponse(Model):
         instance.channel_id = channel_id
         instance.created_time = created_time
         instance.creator_name = creator_name
+        instance.custom_attributes = custom_attributes
         instance.file_extension = file_extension
         instance.id_ = id_
         instance.is_hidden = is_hidden
@@ -339,6 +356,12 @@ class ModelsCreateContentResponse(Model):
             instance.creator_name = str(dict_["creatorName"])
         elif include_empty:
             instance.creator_name = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
@@ -455,6 +478,7 @@ class ModelsCreateContentResponse(Model):
             "channelId": "channel_id",
             "createdTime": "created_time",
             "creatorName": "creator_name",
+            "customAttributes": "custom_attributes",
             "fileExtension": "file_extension",
             "id": "id_",
             "isHidden": "is_hidden",
@@ -479,6 +503,7 @@ class ModelsCreateContentResponse(Model):
             "channelId": True,
             "createdTime": True,
             "creatorName": True,
+            "customAttributes": True,
             "fileExtension": True,
             "id": True,
             "isHidden": True,

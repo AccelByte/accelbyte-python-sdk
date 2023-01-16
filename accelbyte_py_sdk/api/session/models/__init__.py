@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Session Service."""
 
-__version__ = "2.3.2"
+__version__ = "2.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -47,5 +47,6 @@ from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionReq
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_user_response import ApimodelsUserResponse
 from .models_game_server import ModelsGameServer
+from .models_party_members import ModelsPartyMembers
 from .models_team import ModelsTeam
 from .response_error import ResponseError

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from ..models.section_item import SectionItem
 
 
 class RotationTypeEnum(StrEnum):
+    CUSTOM = "CUSTOM"
     FIXED_PERIOD = "FIXED_PERIOD"
     NONE = "NONE"
 
@@ -363,7 +364,7 @@ class SectionCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "rotationType": ["FIXED_PERIOD", "NONE"],
+            "rotationType": ["CUSTOM", "FIXED_PERIOD", "NONE"],
         }
 
     # endregion static methods

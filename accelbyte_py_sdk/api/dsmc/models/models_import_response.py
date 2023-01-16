@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Dsm Controller Service (6.0.0)
+# AccelByte Cloud Dsm Controller Service (6.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

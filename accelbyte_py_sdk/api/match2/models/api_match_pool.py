@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (1.5.0)
+# AccelByte Cloud Match Service V2 (2.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.api_match_function_override import ApiMatchFunctionOverride
+
 
 class ApiMatchPool(Model):
     """Api match pool (api.MatchPool)
@@ -35,6 +37,8 @@ class ApiMatchPool(Model):
         backfill_ticket_expiration_seconds: (backfill_ticket_expiration_seconds) REQUIRED int
 
         match_function: (match_function) REQUIRED str
+
+        match_function_override: (match_function_override) REQUIRED ApiMatchFunctionOverride
 
         name: (name) REQUIRED str
 
@@ -49,6 +53,7 @@ class ApiMatchPool(Model):
 
     backfill_ticket_expiration_seconds: int  # REQUIRED
     match_function: str  # REQUIRED
+    match_function_override: ApiMatchFunctionOverride  # REQUIRED
     name: str  # REQUIRED
     rule_set: str  # REQUIRED
     session_template: str  # REQUIRED
@@ -64,6 +69,12 @@ class ApiMatchPool(Model):
 
     def with_match_function(self, value: str) -> ApiMatchPool:
         self.match_function = value
+        return self
+
+    def with_match_function_override(
+        self, value: ApiMatchFunctionOverride
+    ) -> ApiMatchPool:
+        self.match_function_override = value
         return self
 
     def with_name(self, value: str) -> ApiMatchPool:
@@ -98,6 +109,12 @@ class ApiMatchPool(Model):
             result["match_function"] = str(self.match_function)
         elif include_empty:
             result["match_function"] = ""
+        if hasattr(self, "match_function_override"):
+            result["match_function_override"] = self.match_function_override.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["match_function_override"] = ApiMatchFunctionOverride()
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -125,6 +142,7 @@ class ApiMatchPool(Model):
         cls,
         backfill_ticket_expiration_seconds: int,
         match_function: str,
+        match_function_override: ApiMatchFunctionOverride,
         name: str,
         rule_set: str,
         session_template: str,
@@ -133,6 +151,7 @@ class ApiMatchPool(Model):
         instance = cls()
         instance.backfill_ticket_expiration_seconds = backfill_ticket_expiration_seconds
         instance.match_function = match_function
+        instance.match_function_override = match_function_override
         instance.name = name
         instance.rule_set = rule_set
         instance.session_template = session_template
@@ -157,6 +176,17 @@ class ApiMatchPool(Model):
             instance.match_function = str(dict_["match_function"])
         elif include_empty:
             instance.match_function = ""
+        if (
+            "match_function_override" in dict_
+            and dict_["match_function_override"] is not None
+        ):
+            instance.match_function_override = (
+                ApiMatchFunctionOverride.create_from_dict(
+                    dict_["match_function_override"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.match_function_override = ApiMatchFunctionOverride()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -217,6 +247,7 @@ class ApiMatchPool(Model):
         return {
             "backfill_ticket_expiration_seconds": "backfill_ticket_expiration_seconds",
             "match_function": "match_function",
+            "match_function_override": "match_function_override",
             "name": "name",
             "rule_set": "rule_set",
             "session_template": "session_template",
@@ -228,6 +259,7 @@ class ApiMatchPool(Model):
         return {
             "backfill_ticket_expiration_seconds": True,
             "match_function": True,
+            "match_function_override": True,
             "name": True,
             "rule_set": True,
             "session_template": True,

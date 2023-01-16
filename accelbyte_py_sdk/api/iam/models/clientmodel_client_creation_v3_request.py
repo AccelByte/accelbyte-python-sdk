@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ClientmodelClientCreationV3Request(Model):
 
         oauth_refresh_token_expiration_time_unit: (oauthRefreshTokenExpirationTimeUnit) OPTIONAL str
 
+        parent_namespace: (parentNamespace) OPTIONAL str
+
         scopes: (scopes) OPTIONAL List[str]
 
         two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
@@ -89,6 +91,7 @@ class ClientmodelClientCreationV3Request(Model):
     oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
     oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
+    parent_namespace: str  # OPTIONAL
     scopes: List[str]  # OPTIONAL
     two_factor_enabled: bool  # OPTIONAL
 
@@ -168,6 +171,10 @@ class ClientmodelClientCreationV3Request(Model):
         self, value: str
     ) -> ClientmodelClientCreationV3Request:
         self.oauth_refresh_token_expiration_time_unit = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ClientmodelClientCreationV3Request:
+        self.parent_namespace = value
         return self
 
     def with_scopes(self, value: List[str]) -> ClientmodelClientCreationV3Request:
@@ -261,6 +268,10 @@ class ClientmodelClientCreationV3Request(Model):
             )
         elif include_empty:
             result["oauthRefreshTokenExpirationTimeUnit"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "scopes"):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
@@ -294,6 +305,7 @@ class ClientmodelClientCreationV3Request(Model):
         oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
         oauth_refresh_token_expiration_time_unit: Optional[str] = None,
+        parent_namespace: Optional[str] = None,
         scopes: Optional[List[str]] = None,
         two_factor_enabled: Optional[bool] = None,
     ) -> ClientmodelClientCreationV3Request:
@@ -323,6 +335,8 @@ class ClientmodelClientCreationV3Request(Model):
             instance.oauth_refresh_token_expiration_time_unit = (
                 oauth_refresh_token_expiration_time_unit
             )
+        if parent_namespace is not None:
+            instance.parent_namespace = parent_namespace
         if scopes is not None:
             instance.scopes = scopes
         if two_factor_enabled is not None:
@@ -425,6 +439,10 @@ class ClientmodelClientCreationV3Request(Model):
             )
         elif include_empty:
             instance.oauth_refresh_token_expiration_time_unit = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "scopes" in dict_ and dict_["scopes"] is not None:
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:
@@ -492,6 +510,7 @@ class ClientmodelClientCreationV3Request(Model):
             "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
             "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
+            "parentNamespace": "parent_namespace",
             "scopes": "scopes",
             "twoFactorEnabled": "two_factor_enabled",
         }
@@ -515,6 +534,7 @@ class ClientmodelClientCreationV3Request(Model):
             "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,
             "oauthRefreshTokenExpirationTimeUnit": False,
+            "parentNamespace": False,
             "scopes": False,
             "twoFactorEnabled": False,
         }

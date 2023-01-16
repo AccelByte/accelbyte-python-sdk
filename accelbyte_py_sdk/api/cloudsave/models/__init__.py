@@ -8,17 +8,20 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .models_admin_concurrent_record_request import ModelsAdminConcurrentRecordRequest
+from .models_bulk_get_game_record_request import ModelsBulkGetGameRecordRequest
+from .models_bulk_get_game_record_response import ModelsBulkGetGameRecordResponse
 from .models_bulk_get_player_record_response import ModelsBulkGetPlayerRecordResponse
 from .models_bulk_get_player_record_size_response import (
     ModelsBulkGetPlayerRecordSizeResponse,
 )
+from .models_bulk_get_player_records_request import ModelsBulkGetPlayerRecordsRequest
 from .models_bulk_user_i_ds_request import ModelsBulkUserIDsRequest
 from .models_bulk_user_key_request import ModelsBulkUserKeyRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest

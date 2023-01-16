@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,5 +16,6 @@ __email__ = "dev@accelbyte.net"
 
 from .delete_game_record_handler_v1 import DeleteGameRecordHandlerV1
 from .get_game_record_handler_v1 import GetGameRecordHandlerV1
+from .get_game_records_bulk import GetGameRecordsBulk
 from .post_game_record_handler_v1 import PostGameRecordHandlerV1
 from .put_game_record_handler_v1 import PutGameRecordHandlerV1

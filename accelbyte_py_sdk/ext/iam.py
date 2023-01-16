@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -902,6 +902,7 @@ def create_clientmodel_client_creation_v3_request_example() -> ClientmodelClient
     instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_refresh_token_expiration_time_unit = randomize()
+    instance.parent_namespace = randomize("slug")
     instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
     return instance
@@ -973,6 +974,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_refresh_token_expiration_time_unit = randomize()
+    instance.parent_namespace = randomize("slug")
     return instance
 
 
@@ -1390,6 +1392,7 @@ def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
     instance = ModelInviteUserRequestV3()
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
+    instance.namespace = randomize("slug")
     instance.roles = [randomize()]
     return instance
 
@@ -1399,6 +1402,7 @@ def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
     instance.assigned_namespaces = [randomize()]
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
+    instance.namespace = randomize("slug")
     instance.role_id = randomize("uid")
     return instance
 
@@ -2241,6 +2245,7 @@ def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
     instance = ModelUserInvitationV3()
     instance.email = randomize("email")
     instance.expired_at = randomize("date")
+    instance.namespace = randomize("slug")
     instance.roles = [create_accountcommon_namespace_role_example()]
     instance.id_ = randomize()
     return instance

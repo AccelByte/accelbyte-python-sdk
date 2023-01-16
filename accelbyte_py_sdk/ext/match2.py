@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (1.5.0)
+# AccelByte Cloud Match Service V2 (2.0.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,7 @@ from ..api.match2.models import ApiListMatchFunctionsResponse
 from ..api.match2.models import ApiListMatchPoolsResponse
 from ..api.match2.models import ApiListRuleSetsResponse
 from ..api.match2.models import ApiMatchFunctionConfig
+from ..api.match2.models import ApiMatchFunctionOverride
 from ..api.match2.models import ApiMatchFunctionRequest
 from ..api.match2.models import ApiMatchPool
 from ..api.match2.models import ApiMatchPoolConfig
@@ -94,6 +95,16 @@ def create_api_match_function_config_example() -> ApiMatchFunctionConfig:
     return instance
 
 
+def create_api_match_function_override_example() -> ApiMatchFunctionOverride:
+    instance = ApiMatchFunctionOverride()
+    instance.backfill_matches = randomize()
+    instance.hydration = [randomize()]
+    instance.make_matches = randomize()
+    instance.stat_codes = [randomize()]
+    instance.validation = [randomize()]
+    return instance
+
+
 def create_api_match_function_request_example() -> ApiMatchFunctionRequest:
     instance = ApiMatchFunctionRequest()
     instance.match_function = randomize()
@@ -107,6 +118,7 @@ def create_api_match_pool_example() -> ApiMatchPool:
         "int", min_val=1, max_val=1000
     )
     instance.match_function = randomize()
+    instance.match_function_override = create_api_match_function_override_example()
     instance.name = randomize()
     instance.rule_set = randomize()
     instance.session_template = randomize()
@@ -120,6 +132,7 @@ def create_api_match_pool_config_example() -> ApiMatchPoolConfig:
         "int", min_val=1, max_val=1000
     )
     instance.match_function = randomize()
+    instance.match_function_override = create_api_match_function_override_example()
     instance.rule_set = randomize()
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)

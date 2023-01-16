@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.3.2)
+# AccelByte Cloud Session Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,14 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
 
     Properties:
         status: (status) REQUIRED str
+
+        status_v2: (statusV2) REQUIRED str
     """
 
     # region fields
 
     status: str  # REQUIRED
+    status_v2: str  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +48,12 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
 
     def with_status(self, value: str) -> ApimodelsUpdateGameSessionMemberStatusResponse:
         self.status = value
+        return self
+
+    def with_status_v2(
+        self, value: str
+    ) -> ApimodelsUpdateGameSessionMemberStatusResponse:
+        self.status_v2 = value
         return self
 
     # endregion with_x methods
@@ -57,6 +66,10 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "status_v2"):
+            result["statusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["statusV2"] = ""
         return result
 
     # endregion to methods
@@ -67,9 +80,11 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
     def create(
         cls,
         status: str,
+        status_v2: str,
     ) -> ApimodelsUpdateGameSessionMemberStatusResponse:
         instance = cls()
         instance.status = status
+        instance.status_v2 = status_v2
         return instance
 
     @classmethod
@@ -83,6 +98,10 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "statusV2" in dict_ and dict_["statusV2"] is not None:
+            instance.status_v2 = str(dict_["statusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         return instance
 
     @classmethod
@@ -127,12 +146,14 @@ class ApimodelsUpdateGameSessionMemberStatusResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "status": "status",
+            "statusV2": "status_v2",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "status": True,
+            "statusV2": True,
         }
 
     # endregion static methods

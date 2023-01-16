@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Iam Service Index (5.24.0)
+# AccelByte Cloud Iam Service Index (5.25.4)
 
 
 ## Operations

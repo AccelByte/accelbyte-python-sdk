@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.3.2)
+# AccelByte Cloud Session Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -47,6 +47,7 @@ from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ModelsGameServer
+from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ResponseError
 
@@ -136,6 +137,7 @@ def create_apimodels_ds_information_response_example() -> ApimodelsDSInformation
     instance.requested_at = randomize()
     instance.server = create_models_game_server_example()
     instance.status = randomize()
+    instance.status_v2 = randomize()
     return instance
 
 
@@ -273,6 +275,7 @@ def create_apimodels_update_configuration_template_request_example() -> Apimodel
 def create_apimodels_update_game_session_member_status_response_example() -> ApimodelsUpdateGameSessionMemberStatusResponse:
     instance = ApimodelsUpdateGameSessionMemberStatusResponse()
     instance.status = randomize()
+    instance.status_v2 = randomize()
     return instance
 
 
@@ -315,6 +318,7 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.status = randomize()
+    instance.status_v2 = randomize()
     instance.updated_at = randomize()
     return instance
 
@@ -341,8 +345,16 @@ def create_models_game_server_example() -> ModelsGameServer:
     return instance
 
 
+def create_models_party_members_example() -> ModelsPartyMembers:
+    instance = ModelsPartyMembers()
+    instance.party_id = randomize("uid")
+    instance.user_i_ds = [randomize()]
+    return instance
+
+
 def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
+    instance.parties = [create_models_party_members_example()]
     instance.user_i_ds = [randomize()]
     return instance
 

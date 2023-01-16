@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ugc Service."""
 
-__version__ = "2.6.2"
+__version__ = "2.7.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .models_add_download_count_response import ModelsAddDownloadCountResponse
+from .models_admin_get_content_bulk_request import ModelsAdminGetContentBulkRequest
 from .models_channel_request import ModelsChannelRequest
 from .models_channel_response import ModelsChannelResponse
 from .models_content_download_response import ModelsContentDownloadResponse

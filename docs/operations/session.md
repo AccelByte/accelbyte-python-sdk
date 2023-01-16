@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Session Service Index (2.3.2)
+# AccelByte Cloud Session Service Index (2.4.0)
 
 
 ## Operations
@@ -86,5 +86,6 @@
 | apimodels.UpdatePartyRequest | [ApimodelsUpdatePartyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_party_request.py) |
 | apimodels.UserResponse | [ApimodelsUserResponse](../../accelbyte_py_sdk/api/session/models/apimodels_user_response.py) |
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
+| models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/session/models/response_error.py) |

@@ -21,6 +21,8 @@ from .wrappers import admin_delete_session
 from .wrappers import admin_delete_session_async
 from .wrappers import admin_get_session
 from .wrappers import admin_get_session_async
+from .wrappers import admin_query_session
+from .wrappers import admin_query_session_async
 from .wrappers import admin_search_sessions_v2
 from .wrappers import admin_search_sessions_v2_async
 from .wrappers import create_session

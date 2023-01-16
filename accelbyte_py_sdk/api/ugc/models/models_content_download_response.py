@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.6.2)
+# AccelByte Cloud Ugc Service (2.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -45,6 +45,8 @@ class ModelsContentDownloadResponse(Model):
         creator_follow_state: (creatorFollowState) REQUIRED ModelsCreatorFollowState
 
         creator_name: (creatorName) REQUIRED str
+
+        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
 
         download_count: (downloadCount) REQUIRED int
 
@@ -93,6 +95,7 @@ class ModelsContentDownloadResponse(Model):
     created_time: str  # REQUIRED
     creator_follow_state: ModelsCreatorFollowState  # REQUIRED
     creator_name: str  # REQUIRED
+    custom_attributes: Dict[str, Any]  # REQUIRED
     download_count: int  # REQUIRED
     file_extension: str  # REQUIRED
     id_: str  # REQUIRED
@@ -134,6 +137,12 @@ class ModelsContentDownloadResponse(Model):
 
     def with_creator_name(self, value: str) -> ModelsContentDownloadResponse:
         self.creator_name = value
+        return self
+
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsContentDownloadResponse:
+        self.custom_attributes = value
         return self
 
     def with_download_count(self, value: int) -> ModelsContentDownloadResponse:
@@ -246,6 +255,12 @@ class ModelsContentDownloadResponse(Model):
             result["creatorName"] = str(self.creator_name)
         elif include_empty:
             result["creatorName"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "download_count"):
             result["downloadCount"] = int(self.download_count)
         elif include_empty:
@@ -345,6 +360,7 @@ class ModelsContentDownloadResponse(Model):
         created_time: str,
         creator_follow_state: ModelsCreatorFollowState,
         creator_name: str,
+        custom_attributes: Dict[str, Any],
         download_count: int,
         file_extension: str,
         id_: str,
@@ -371,6 +387,7 @@ class ModelsContentDownloadResponse(Model):
         instance.created_time = created_time
         instance.creator_follow_state = creator_follow_state
         instance.creator_name = creator_name
+        instance.custom_attributes = custom_attributes
         instance.download_count = download_count
         instance.file_extension = file_extension
         instance.id_ = id_
@@ -424,6 +441,12 @@ class ModelsContentDownloadResponse(Model):
             instance.creator_name = str(dict_["creatorName"])
         elif include_empty:
             instance.creator_name = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "downloadCount" in dict_ and dict_["downloadCount"] is not None:
             instance.download_count = int(dict_["downloadCount"])
         elif include_empty:
@@ -564,6 +587,7 @@ class ModelsContentDownloadResponse(Model):
             "createdTime": "created_time",
             "creatorFollowState": "creator_follow_state",
             "creatorName": "creator_name",
+            "customAttributes": "custom_attributes",
             "downloadCount": "download_count",
             "fileExtension": "file_extension",
             "id": "id_",
@@ -593,6 +617,7 @@ class ModelsContentDownloadResponse(Model):
             "createdTime": True,
             "creatorFollowState": True,
             "creatorName": True,
+            "customAttributes": True,
             "downloadCount": True,
             "fileExtension": True,
             "id": True,

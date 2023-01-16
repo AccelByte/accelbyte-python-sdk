@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.24.0)
+# AccelByte Cloud Iam Service (5.25.4)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,8 @@ class ModelInviteUserRequestV4(Model):
 
         is_admin: (isAdmin) REQUIRED bool
 
+        namespace: (namespace) REQUIRED str
+
         role_id: (roleId) REQUIRED str
     """
 
@@ -46,6 +48,7 @@ class ModelInviteUserRequestV4(Model):
     assigned_namespaces: List[str]  # REQUIRED
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
+    namespace: str  # REQUIRED
     role_id: str  # REQUIRED
 
     # endregion fields
@@ -62,6 +65,10 @@ class ModelInviteUserRequestV4(Model):
 
     def with_is_admin(self, value: bool) -> ModelInviteUserRequestV4:
         self.is_admin = value
+        return self
+
+    def with_namespace(self, value: str) -> ModelInviteUserRequestV4:
+        self.namespace = value
         return self
 
     def with_role_id(self, value: str) -> ModelInviteUserRequestV4:
@@ -86,6 +93,10 @@ class ModelInviteUserRequestV4(Model):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
             result["isAdmin"] = False
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         if hasattr(self, "role_id"):
             result["roleId"] = str(self.role_id)
         elif include_empty:
@@ -102,12 +113,14 @@ class ModelInviteUserRequestV4(Model):
         assigned_namespaces: List[str],
         email_addresses: List[str],
         is_admin: bool,
+        namespace: str,
         role_id: str,
     ) -> ModelInviteUserRequestV4:
         instance = cls()
         instance.assigned_namespaces = assigned_namespaces
         instance.email_addresses = email_addresses
         instance.is_admin = is_admin
+        instance.namespace = namespace
         instance.role_id = role_id
         return instance
 
@@ -132,6 +145,10 @@ class ModelInviteUserRequestV4(Model):
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
             instance.is_admin = False
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         if "roleId" in dict_ and dict_["roleId"] is not None:
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
@@ -182,6 +199,7 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": "assigned_namespaces",
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
+            "namespace": "namespace",
             "roleId": "role_id",
         }
 
@@ -191,6 +209,7 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": True,
             "emailAddresses": True,
             "isAdmin": True,
+            "namespace": True,
             "roleId": True,
         }
 

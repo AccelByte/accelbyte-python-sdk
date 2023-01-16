@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.6.2)
+# AccelByte Cloud Ugc Service (2.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelsCreateContentRequestS3(Model):
     Properties:
         content_type: (contentType) REQUIRED str
 
+        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
+
         file_extension: (fileExtension) REQUIRED str
 
         name: (name) REQUIRED str
@@ -54,6 +56,7 @@ class ModelsCreateContentRequestS3(Model):
     # region fields
 
     content_type: str  # REQUIRED
+    custom_attributes: Dict[str, Any]  # REQUIRED
     file_extension: str  # REQUIRED
     name: str  # REQUIRED
     preview: str  # REQUIRED
@@ -68,6 +71,12 @@ class ModelsCreateContentRequestS3(Model):
 
     def with_content_type(self, value: str) -> ModelsCreateContentRequestS3:
         self.content_type = value
+        return self
+
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsCreateContentRequestS3:
+        self.custom_attributes = value
         return self
 
     def with_file_extension(self, value: str) -> ModelsCreateContentRequestS3:
@@ -110,6 +119,12 @@ class ModelsCreateContentRequestS3(Model):
             result["contentType"] = str(self.content_type)
         elif include_empty:
             result["contentType"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
@@ -150,6 +165,7 @@ class ModelsCreateContentRequestS3(Model):
     def create(
         cls,
         content_type: str,
+        custom_attributes: Dict[str, Any],
         file_extension: str,
         name: str,
         preview: str,
@@ -160,6 +176,7 @@ class ModelsCreateContentRequestS3(Model):
     ) -> ModelsCreateContentRequestS3:
         instance = cls()
         instance.content_type = content_type
+        instance.custom_attributes = custom_attributes
         instance.file_extension = file_extension
         instance.name = name
         instance.preview = preview
@@ -180,6 +197,12 @@ class ModelsCreateContentRequestS3(Model):
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
             instance.content_type = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
@@ -254,6 +277,7 @@ class ModelsCreateContentRequestS3(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "contentType": "content_type",
+            "customAttributes": "custom_attributes",
             "fileExtension": "file_extension",
             "name": "name",
             "preview": "preview",
@@ -267,6 +291,7 @@ class ModelsCreateContentRequestS3(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "contentType": True,
+            "customAttributes": True,
             "fileExtension": True,
             "name": True,
             "preview": True,

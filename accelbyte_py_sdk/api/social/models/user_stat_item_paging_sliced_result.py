@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Social Service (1.31.2)
+# AccelByte Cloud Social Service (1.32.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

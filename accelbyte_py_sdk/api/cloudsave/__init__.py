@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Cloudsave Service."""
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -73,6 +73,8 @@ from .wrappers import delete_game_record_handler_v1
 from .wrappers import delete_game_record_handler_v1_async
 from .wrappers import get_game_record_handler_v1
 from .wrappers import get_game_record_handler_v1_async
+from .wrappers import get_game_records_bulk
+from .wrappers import get_game_records_bulk_async
 from .wrappers import post_game_record_handler_v1
 from .wrappers import post_game_record_handler_v1_async
 from .wrappers import put_game_record_handler_v1
@@ -87,6 +89,8 @@ from .wrappers import get_player_public_record_handler_v1
 from .wrappers import get_player_public_record_handler_v1_async
 from .wrappers import get_player_record_handler_v1
 from .wrappers import get_player_record_handler_v1_async
+from .wrappers import get_player_records_bulk_handler_v1
+from .wrappers import get_player_records_bulk_handler_v1_async
 from .wrappers import post_player_public_record_handler_v1
 from .wrappers import post_player_public_record_handler_v1_async
 from .wrappers import post_player_record_handler_v1
@@ -97,3 +101,5 @@ from .wrappers import put_player_public_record_handler_v1
 from .wrappers import put_player_public_record_handler_v1_async
 from .wrappers import put_player_record_handler_v1
 from .wrappers import put_player_record_handler_v1_async
+from .wrappers import retrieve_player_records
+from .wrappers import retrieve_player_records_async

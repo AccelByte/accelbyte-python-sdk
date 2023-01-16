@@ -20,6 +20,8 @@ from ._session import admin_delete_session
 from ._session import admin_delete_session_async
 from ._session import admin_get_session
 from ._session import admin_get_session_async
+from ._session import admin_query_session
+from ._session import admin_query_session_async
 from ._session import admin_search_sessions_v2
 from ._session import admin_search_sessions_v2_async
 from ._session import create_session

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.6.2)
+# AccelByte Cloud Ugc Service (2.7.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -25,6 +25,7 @@
 from .utils import randomize
 
 from ..api.ugc.models import ModelsAddDownloadCountResponse
+from ..api.ugc.models import ModelsAdminGetContentBulkRequest
 from ..api.ugc.models import ModelsChannelRequest
 from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
@@ -74,6 +75,12 @@ def create_models_add_download_count_response_example() -> ModelsAddDownloadCoun
     return instance
 
 
+def create_models_admin_get_content_bulk_request_example() -> ModelsAdminGetContentBulkRequest:
+    instance = ModelsAdminGetContentBulkRequest()
+    instance.content_ids = [randomize()]
+    return instance
+
+
 def create_models_channel_request_example() -> ModelsChannelRequest:
     instance = ModelsChannelRequest()
     instance.name = randomize()
@@ -95,6 +102,7 @@ def create_models_content_download_response_example() -> ModelsContentDownloadRe
     instance.created_time = randomize()
     instance.creator_follow_state = create_models_creator_follow_state_example()
     instance.creator_name = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
     instance.download_count = randomize("int", min_val=1, max_val=1000)
     instance.file_extension = randomize()
     instance.id_ = randomize()
@@ -133,6 +141,7 @@ def create_models_content_like_response_example() -> ModelsContentLikeResponse:
 
 def create_models_create_content_request_example() -> ModelsCreateContentRequest:
     instance = ModelsCreateContentRequest()
+    instance.custom_attributes = {randomize(): randomize()}
     instance.name = randomize()
     instance.payload = randomize()
     instance.preview = randomize()
@@ -146,6 +155,7 @@ def create_models_create_content_request_example() -> ModelsCreateContentRequest
 def create_models_create_content_request_s3_example() -> ModelsCreateContentRequestS3:
     instance = ModelsCreateContentRequestS3()
     instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
     instance.file_extension = randomize()
     instance.name = randomize()
     instance.preview = randomize()
@@ -161,6 +171,7 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.channel_id = randomize()
     instance.created_time = randomize()
     instance.creator_name = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
     instance.file_extension = randomize()
     instance.id_ = randomize()
     instance.is_hidden = randomize("bool")

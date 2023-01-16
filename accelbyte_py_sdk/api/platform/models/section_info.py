@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -62,6 +62,8 @@ class SectionInfo(Model):
 
         display_order: (displayOrder) OPTIONAL int
 
+        ext: (ext) OPTIONAL Dict[str, Any]
+
         local_ext: (localExt) OPTIONAL Dict[str, Any]
 
         long_description: (longDescription) OPTIONAL str
@@ -83,6 +85,7 @@ class SectionInfo(Model):
     current_rotation_items: List[ItemInfo]  # OPTIONAL
     description: str  # OPTIONAL
     display_order: int  # OPTIONAL
+    ext: Dict[str, Any]  # OPTIONAL
     local_ext: Dict[str, Any]  # OPTIONAL
     long_description: str  # OPTIONAL
 
@@ -144,6 +147,10 @@ class SectionInfo(Model):
 
     def with_display_order(self, value: int) -> SectionInfo:
         self.display_order = value
+        return self
+
+    def with_ext(self, value: Dict[str, Any]) -> SectionInfo:
+        self.ext = value
         return self
 
     def with_local_ext(self, value: Dict[str, Any]) -> SectionInfo:
@@ -219,6 +226,10 @@ class SectionInfo(Model):
             result["displayOrder"] = int(self.display_order)
         elif include_empty:
             result["displayOrder"] = 0
+        if hasattr(self, "ext"):
+            result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
+        elif include_empty:
+            result["ext"] = {}
         if hasattr(self, "local_ext"):
             result["localExt"] = {str(k0): v0 for k0, v0 in self.local_ext.items()}
         elif include_empty:
@@ -250,6 +261,7 @@ class SectionInfo(Model):
         current_rotation_items: Optional[List[ItemInfo]] = None,
         description: Optional[str] = None,
         display_order: Optional[int] = None,
+        ext: Optional[Dict[str, Any]] = None,
         local_ext: Optional[Dict[str, Any]] = None,
         long_description: Optional[str] = None,
     ) -> SectionInfo:
@@ -272,6 +284,8 @@ class SectionInfo(Model):
             instance.description = description
         if display_order is not None:
             instance.display_order = display_order
+        if ext is not None:
+            instance.ext = ext
         if local_ext is not None:
             instance.local_ext = local_ext
         if long_description is not None:
@@ -348,6 +362,10 @@ class SectionInfo(Model):
             instance.display_order = int(dict_["displayOrder"])
         elif include_empty:
             instance.display_order = 0
+        if "ext" in dict_ and dict_["ext"] is not None:
+            instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
+        elif include_empty:
+            instance.ext = {}
         if "localExt" in dict_ and dict_["localExt"] is not None:
             instance.local_ext = {str(k0): v0 for k0, v0 in dict_["localExt"].items()}
         elif include_empty:
@@ -409,6 +427,7 @@ class SectionInfo(Model):
             "currentRotationItems": "current_rotation_items",
             "description": "description",
             "displayOrder": "display_order",
+            "ext": "ext",
             "localExt": "local_ext",
             "longDescription": "long_description",
         }
@@ -430,6 +449,7 @@ class SectionInfo(Model):
             "currentRotationItems": False,
             "description": False,
             "displayOrder": False,
+            "ext": False,
             "localExt": False,
             "longDescription": False,
         }

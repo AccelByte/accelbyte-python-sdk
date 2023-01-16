@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.20.0"
+__version__ = "4.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -663,6 +663,13 @@ from ._section import query_sections
 from ._section import query_sections_async
 from ._section import update_section
 from ._section import update_section_async
+
+from ._service_plugin_config import delete_service_plugin_config
+from ._service_plugin_config import delete_service_plugin_config_async
+from ._service_plugin_config import get_service_plugin_config
+from ._service_plugin_config import get_service_plugin_config_async
+from ._service_plugin_config import update_service_plugin_config
+from ._service_plugin_config import update_service_plugin_config_async
 
 from ._store import clone_store
 from ._store import clone_store_async

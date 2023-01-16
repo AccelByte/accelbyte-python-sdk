@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Leaderboard Service Index (2.16.2)
+# AccelByte Cloud Leaderboard Service Index (2.17.0)
 
 
 ## Operations

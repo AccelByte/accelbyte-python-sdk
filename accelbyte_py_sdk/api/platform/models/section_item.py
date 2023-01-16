@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,11 +33,14 @@ class SectionItem(Model):
 
     Properties:
         id_: (id) REQUIRED str
+
+        sku: (sku) OPTIONAL str
     """
 
     # region fields
 
     id_: str  # REQUIRED
+    sku: str  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class SectionItem(Model):
 
     def with_id(self, value: str) -> SectionItem:
         self.id_ = value
+        return self
+
+    def with_sku(self, value: str) -> SectionItem:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class SectionItem(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = ""
         return result
 
     # endregion to methods
@@ -67,9 +78,12 @@ class SectionItem(Model):
     def create(
         cls,
         id_: str,
+        sku: Optional[str] = None,
     ) -> SectionItem:
         instance = cls()
         instance.id_ = id_
+        if sku is not None:
+            instance.sku = sku
         return instance
 
     @classmethod
@@ -81,6 +95,10 @@ class SectionItem(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = ""
         return instance
 
     @classmethod
@@ -121,12 +139,14 @@ class SectionItem(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
+            "sku": "sku",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": True,
+            "sku": False,
         }
 
     # endregion static methods

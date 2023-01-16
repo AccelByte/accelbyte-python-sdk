@@ -30,7 +30,9 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsBulkGetPlayerRecordResponse
+from ..models import ModelsBulkGetPlayerRecordsRequest
 from ..models import ModelsBulkUserIDsRequest
+from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
 from ..models import ModelsPlayerRecordResponse
 from ..models import ModelsResponseError
@@ -39,11 +41,13 @@ from ..operations.public_player_record import BulkGetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import DeletePlayerRecordHandlerV1
 from ..operations.public_player_record import GetPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import GetPlayerRecordHandlerV1
+from ..operations.public_player_record import GetPlayerRecordsBulkHandlerV1
 from ..operations.public_player_record import PostPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PostPlayerRecordHandlerV1
 from ..operations.public_player_record import PublicDeletePlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerPublicRecordHandlerV1
 from ..operations.public_player_record import PutPlayerRecordHandlerV1
+from ..operations.public_player_record import RetrievePlayerRecords
 
 
 @same_doc_as(BulkGetPlayerPublicRecordHandlerV1)
@@ -207,6 +211,44 @@ async def get_player_record_handler_v1_async(
     request = GetPlayerRecordHandlerV1.create(
         key=key,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetPlayerRecordsBulkHandlerV1)
+def get_player_records_bulk_handler_v1(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlayerRecordsBulkHandlerV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetPlayerRecordsBulkHandlerV1)
+async def get_player_records_bulk_handler_v1_async(
+    body: ModelsBulkGetPlayerRecordsRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlayerRecordsBulkHandlerV1.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -429,6 +471,48 @@ async def put_player_record_handler_v1_async(
         body=body,
         key=key,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetrievePlayerRecords)
+def retrieve_player_records(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrievePlayerRecords.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrievePlayerRecords)
+async def retrieve_player_records_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetrievePlayerRecords.create(
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

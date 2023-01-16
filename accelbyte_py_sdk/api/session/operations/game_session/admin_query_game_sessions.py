@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.3.2)
+# AccelByte Cloud Session Service (2.4.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -82,6 +82,8 @@ class AdminQueryGameSessions(Operation):
 
         status: (status) OPTIONAL str in query
 
+        status_v2: (statusV2) OPTIONAL str in query
+
         to_time: (toTime) OPTIONAL str in query
 
     Responses:
@@ -119,6 +121,7 @@ class AdminQueryGameSessions(Operation):
     order_by: str  # OPTIONAL in [query]
     session_id: str  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
+    status_v2: str  # OPTIONAL in [query]
     to_time: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -197,6 +200,8 @@ class AdminQueryGameSessions(Operation):
             result["sessionID"] = self.session_id
         if hasattr(self, "status"):
             result["status"] = self.status
+        if hasattr(self, "status_v2"):
+            result["statusV2"] = self.status_v2
         if hasattr(self, "to_time"):
             result["toTime"] = self.to_time
         return result
@@ -265,6 +270,10 @@ class AdminQueryGameSessions(Operation):
         self.status = value
         return self
 
+    def with_status_v2(self, value: str) -> AdminQueryGameSessions:
+        self.status_v2 = value
+        return self
+
     def with_to_time(self, value: str) -> AdminQueryGameSessions:
         self.to_time = value
         return self
@@ -331,6 +340,10 @@ class AdminQueryGameSessions(Operation):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "status_v2") and self.status_v2:
+            result["statusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["statusV2"] = ""
         if hasattr(self, "to_time") and self.to_time:
             result["toTime"] = str(self.to_time)
         elif include_empty:
@@ -409,6 +422,7 @@ class AdminQueryGameSessions(Operation):
         order_by: Optional[str] = None,
         session_id: Optional[str] = None,
         status: Optional[str] = None,
+        status_v2: Optional[str] = None,
         to_time: Optional[str] = None,
     ) -> AdminQueryGameSessions:
         instance = cls()
@@ -439,6 +453,8 @@ class AdminQueryGameSessions(Operation):
             instance.session_id = session_id
         if status is not None:
             instance.status = status
+        if status_v2 is not None:
+            instance.status_v2 = status_v2
         if to_time is not None:
             instance.to_time = to_time
         return instance
@@ -504,6 +520,10 @@ class AdminQueryGameSessions(Operation):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "statusV2" in dict_ and dict_["statusV2"] is not None:
+            instance.status_v2 = str(dict_["statusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         if "toTime" in dict_ and dict_["toTime"] is not None:
             instance.to_time = str(dict_["toTime"])
         elif include_empty:
@@ -527,6 +547,7 @@ class AdminQueryGameSessions(Operation):
             "orderBy": "order_by",
             "sessionID": "session_id",
             "status": "status",
+            "statusV2": "status_v2",
             "toTime": "to_time",
         }
 
@@ -547,6 +568,7 @@ class AdminQueryGameSessions(Operation):
             "orderBy": False,
             "sessionID": False,
             "status": False,
+            "statusV2": False,
             "toTime": False,
         }
 

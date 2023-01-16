@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.20.0"
+__version__ = "4.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -218,7 +218,10 @@ from .external_payment_order_create import (
 )
 from .field_validation_error import FieldValidationError
 from .fixed_period_rotation_config import FixedPeriodRotationConfig
-from .fixed_period_rotation_config import RuleEnum as FixedPeriodRotationConfigRuleEnum
+from .fixed_period_rotation_config import (
+    BackfillTypeEnum as FixedPeriodRotationConfigBackfillTypeEnum,
+    RuleEnum as FixedPeriodRotationConfigRuleEnum,
+)
 from .fulfill_code_request import FulfillCodeRequest
 from .fulfillment_error import FulfillmentError
 from .fulfillment_history_info import FulfillmentHistoryInfo
@@ -573,6 +576,8 @@ from .section_item import SectionItem
 from .section_paging_sliced_result import SectionPagingSlicedResult
 from .section_update import SectionUpdate
 from .section_update import RotationTypeEnum as SectionUpdateRotationTypeEnum
+from .service_plugin_config_info import ServicePluginConfigInfo
+from .service_plugin_config_update import ServicePluginConfigUpdate
 from .slide import Slide
 from .slide import TypeEnum as SlideTypeEnum, VideoSourceEnum as SlideVideoSourceEnum
 from .stackable_entitlement_info import StackableEntitlementInfo

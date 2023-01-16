@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.20.0)
+# AccelByte Cloud Platform Service (4.21.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -277,6 +277,8 @@ from ..api.platform.models import SectionInfo
 from ..api.platform.models import SectionItem
 from ..api.platform.models import SectionPagingSlicedResult
 from ..api.platform.models import SectionUpdate
+from ..api.platform.models import ServicePluginConfigInfo
+from ..api.platform.models import ServicePluginConfigUpdate
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
 from ..api.platform.models import StadiaIAPConfigInfo
@@ -1339,6 +1341,7 @@ def create_field_validation_error_example() -> FieldValidationError:
 
 def create_fixed_period_rotation_config_example() -> FixedPeriodRotationConfig:
     instance = FixedPeriodRotationConfig()
+    instance.backfill_type = randomize()
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.item_count = randomize("int", min_val=1, max_val=1000)
     instance.rule = randomize()
@@ -1567,6 +1570,7 @@ def create_full_section_info_example() -> FullSectionInfo:
     instance.start_date = randomize("date")
     instance.updated_at = randomize("date")
     instance.view_id = randomize()
+    instance.view_name = randomize()
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.ext = {randomize(): randomize()}
     instance.fixed_period_rotation_config = (
@@ -3249,6 +3253,7 @@ def create_section_info_example() -> SectionInfo:
     instance.current_rotation_items = [create_item_info_example()]
     instance.description = randomize()
     instance.display_order = randomize("int", min_val=1, max_val=1000)
+    instance.ext = {randomize(): randomize()}
     instance.local_ext = {randomize(): randomize()}
     instance.long_description = randomize()
     return instance
@@ -3257,6 +3262,7 @@ def create_section_info_example() -> SectionInfo:
 def create_section_item_example() -> SectionItem:
     instance = SectionItem()
     instance.id_ = randomize()
+    instance.sku = randomize("slug")
     return instance
 
 
@@ -3282,6 +3288,19 @@ def create_section_update_example() -> SectionUpdate:
     instance.items = [create_section_item_example()]
     instance.rotation_type = randomize()
     instance.view_id = randomize()
+    return instance
+
+
+def create_service_plugin_config_info_example() -> ServicePluginConfigInfo:
+    instance = ServicePluginConfigInfo()
+    instance.grpc_server_address = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_service_plugin_config_update_example() -> ServicePluginConfigUpdate:
+    instance = ServicePluginConfigUpdate()
+    instance.grpc_server_address = randomize()
     return instance
 
 

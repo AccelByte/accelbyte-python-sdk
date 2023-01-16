@@ -52,6 +52,7 @@ from ..models import RestapiErrorV1
 from ..operations.session import AddPlayerToSession
 from ..operations.session import AdminDeleteSession
 from ..operations.session import AdminGetSession
+from ..operations.session import AdminQuerySession
 from ..operations.session import AdminSearchSessionsV2
 from ..operations.session import CreateSession
 from ..operations.session import DeleteSession
@@ -181,6 +182,80 @@ async def admin_get_session_async(
             return None, error
     request = AdminGetSession.create(
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminQuerySession)
+def admin_query_session(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQuerySession.create(
+        session_type=session_type,
+        game_mode=game_mode,
+        game_version=game_version,
+        joinable=joinable,
+        limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminQuerySession)
+async def admin_query_session_async(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminQuerySession.create(
+        session_type=session_type,
+        game_mode=game_mode,
+        game_version=game_version,
+        joinable=joinable,
+        limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

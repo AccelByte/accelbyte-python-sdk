@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.3.2)
+# AccelByte Cloud Session Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ApimodelsUserResponse(Model):
 
         status: (status) REQUIRED str
 
+        status_v2: (statusV2) REQUIRED str
+
         updated_at: (updatedAt) REQUIRED str
     """
 
@@ -49,6 +51,7 @@ class ApimodelsUserResponse(Model):
     platform_id: str  # REQUIRED
     platform_user_id: str  # REQUIRED
     status: str  # REQUIRED
+    status_v2: str  # REQUIRED
     updated_at: str  # REQUIRED
 
     # endregion fields
@@ -69,6 +72,10 @@ class ApimodelsUserResponse(Model):
 
     def with_status(self, value: str) -> ApimodelsUserResponse:
         self.status = value
+        return self
+
+    def with_status_v2(self, value: str) -> ApimodelsUserResponse:
+        self.status_v2 = value
         return self
 
     def with_updated_at(self, value: str) -> ApimodelsUserResponse:
@@ -97,6 +104,10 @@ class ApimodelsUserResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "status_v2"):
+            result["statusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["statusV2"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -114,6 +125,7 @@ class ApimodelsUserResponse(Model):
         platform_id: str,
         platform_user_id: str,
         status: str,
+        status_v2: str,
         updated_at: str,
     ) -> ApimodelsUserResponse:
         instance = cls()
@@ -121,6 +133,7 @@ class ApimodelsUserResponse(Model):
         instance.platform_id = platform_id
         instance.platform_user_id = platform_user_id
         instance.status = status
+        instance.status_v2 = status_v2
         instance.updated_at = updated_at
         return instance
 
@@ -147,6 +160,10 @@ class ApimodelsUserResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "statusV2" in dict_ and dict_["statusV2"] is not None:
+            instance.status_v2 = str(dict_["statusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -198,6 +215,7 @@ class ApimodelsUserResponse(Model):
             "platformID": "platform_id",
             "platformUserID": "platform_user_id",
             "status": "status",
+            "statusV2": "status_v2",
             "updatedAt": "updated_at",
         }
 
@@ -208,6 +226,7 @@ class ApimodelsUserResponse(Model):
             "platformID": True,
             "platformUserID": True,
             "status": True,
+            "statusV2": True,
             "updatedAt": True,
         }
 
