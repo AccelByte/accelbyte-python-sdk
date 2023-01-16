@@ -29,12 +29,12 @@ touch "tmp.dat"
 if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
-qosm-update-server-config '{"status": "OQ0Beyfu"}' 'd3Dclzce' --login_with_auth "Bearer foo"
-qosm-delete-server '6ZLqxoJT' --login_with_auth "Bearer foo"
-qosm-set-server-alias '{"alias": "bLLmX8Q3"}' 'ExvGGLDy' --login_with_auth "Bearer foo"
+qosm-update-server-config '{"status": "6YOkqTi4"}' 'IELmwdjO' --login_with_auth "Bearer foo"
+qosm-delete-server '5BfgjfVW' --login_with_auth "Bearer foo"
+qosm-set-server-alias '{"alias": "5bFuQkE5"}' 'FoeGMzS4' --login_with_auth "Bearer foo"
 qosm-list-server-per-namespace --login_with_auth "Bearer foo"
 qosm-list-server --login_with_auth "Bearer foo"
-qosm-heartbeat '{"ip": "zzFjkgvX", "port": 100, "region": "KiUACFTq"}' --login_with_auth "Bearer foo"
+qosm-heartbeat '{"ip": "pISXfOtP", "port": 82, "region": "orm1wznd"}' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -65,23 +65,23 @@ fi
 
 #- 2 UpdateServerConfig
 $PYTHON -m $MODULE 'qosm-update-server-config' \
-    '{"status": "erCLeUxS"}' \
-    'hOicuYcD' \
+    '{"status": "G27dFDV6"}' \
+    'BexQ32SV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 2 'UpdateServerConfig' test.out
 
 #- 3 DeleteServer
 $PYTHON -m $MODULE 'qosm-delete-server' \
-    'apWzaGnD' \
+    'H97MHQ4l' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'DeleteServer' test.out
 
 #- 4 SetServerAlias
 $PYTHON -m $MODULE 'qosm-set-server-alias' \
-    '{"alias": "Pnm2k7dH"}' \
-    'fLRSOHag' \
+    '{"alias": "n2CZki6o"}' \
+    'kYFrof7y' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'SetServerAlias' test.out
@@ -100,7 +100,7 @@ eval_tap $? 6 'ListServer' test.out
 
 #- 7 Heartbeat
 $PYTHON -m $MODULE 'qosm-heartbeat' \
-    '{"ip": "RTVSuzHw", "port": 10, "region": "7WooshO1"}' \
+    '{"ip": "2xtRShxQ", "port": 84, "region": "SiQRHG2O"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'Heartbeat' test.out
