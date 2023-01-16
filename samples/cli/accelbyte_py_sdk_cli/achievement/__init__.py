@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-achievement-service (2.12.4)
+# justice-achievement-service (2.13.0)
 
 from ._admin_list_achievements import admin_list_achievements
 from ._admin_create_new_achievement import admin_create_new_achievement

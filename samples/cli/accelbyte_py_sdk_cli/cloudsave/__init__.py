@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-cloudsave-service (3.3.0)
+# justice-cloudsave-service (3.4.0)
 
 from ._admin_put_game_record_concurrent_handler_v1 import (
     admin_put_game_record_concurrent_handler_v1,
@@ -51,6 +51,7 @@ from ._admin_get_player_record_size_handler_v1 import (
 from ._put_game_record_concurrent_handler_v1 import (
     put_game_record_concurrent_handler_v1,
 )
+from ._get_game_records_bulk import get_game_records_bulk
 from ._get_game_record_handler_v1 import get_game_record_handler_v1
 from ._put_game_record_handler_v1 import put_game_record_handler_v1
 from ._post_game_record_handler_v1 import post_game_record_handler_v1
@@ -58,6 +59,8 @@ from ._delete_game_record_handler_v1 import delete_game_record_handler_v1
 from ._bulk_get_player_public_record_handler_v1 import (
     bulk_get_player_public_record_handler_v1,
 )
+from ._retrieve_player_records import retrieve_player_records
+from ._get_player_records_bulk_handler_v1 import get_player_records_bulk_handler_v1
 from ._public_delete_player_public_record_handler_v1 import (
     public_delete_player_public_record_handler_v1,
 )
@@ -98,11 +101,14 @@ commands = [
     admin_delete_player_public_record_handler_v1,
     admin_get_player_record_size_handler_v1,
     put_game_record_concurrent_handler_v1,
+    get_game_records_bulk,
     get_game_record_handler_v1,
     put_game_record_handler_v1,
     post_game_record_handler_v1,
     delete_game_record_handler_v1,
     bulk_get_player_public_record_handler_v1,
+    retrieve_player_records,
+    get_player_records_bulk_handler_v1,
     public_delete_player_public_record_handler_v1,
     put_player_record_concurrent_handler_v1,
     put_player_public_record_concurrent_handler_v1,

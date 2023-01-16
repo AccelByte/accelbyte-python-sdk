@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Session Service (2.3.2)
+# Accelbyte Cloud Session Service (2.4.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -51,6 +51,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--order_by", "order_by", type=str)
 @click.option("--session_id", "session_id", type=str)
 @click.option("--status", "status", type=str)
+@click.option("--status_v2", "status_v2", type=str)
 @click.option("--to_time", "to_time", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -70,6 +71,7 @@ def admin_query_game_sessions(
     order_by: Optional[str] = None,
     session_id: Optional[str] = None,
     status: Optional[str] = None,
+    status_v2: Optional[str] = None,
     to_time: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -98,6 +100,7 @@ def admin_query_game_sessions(
         order_by=order_by,
         session_id=session_id,
         status=status,
+        status_v2=status_v2,
         to_time=to_time,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.20.0)
+# justice-platform-service (4.21.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -42,6 +42,9 @@ from ._query_redeem_history import query_redeem_history
 from ._get_code import get_code
 from ._disable_code import disable_code
 from ._enable_code import enable_code
+from ._get_service_plugin_config import get_service_plugin_config
+from ._update_service_plugin_config import update_service_plugin_config
+from ._delete_service_plugin_config import delete_service_plugin_config
 from ._list_currencies import list_currencies
 from ._create_currency import create_currency
 from ._update_currency import update_currency
@@ -483,6 +486,9 @@ commands = [
     get_code,
     disable_code,
     enable_code,
+    get_service_plugin_config,
+    update_service_plugin_config,
+    delete_service_plugin_config,
     list_currencies,
     create_currency,
     update_currency,

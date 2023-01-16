@@ -8,6 +8,7 @@
 
 # justice-session-browser-service ()
 
+from ._admin_query_session import admin_query_session
 from ._get_total_active_session import get_total_active_session
 from ._get_active_custom_game_sessions import get_active_custom_game_sessions
 from ._get_active_matchmaking_game_sessions import get_active_matchmaking_game_sessions
@@ -30,6 +31,7 @@ from ._get_recent_player import get_recent_player
 
 
 commands = [
+    admin_query_session,
     get_total_active_session,
     get_active_custom_game_sessions,
     get_active_matchmaking_game_sessions,
