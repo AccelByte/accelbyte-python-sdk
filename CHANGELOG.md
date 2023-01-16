@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.32.0
+- Add `/releases` info in README.
+- Add `AdminQueryParties` in session integration test.
+- Fix `create_match_ticket` usage in match2 integration test.
+- Update requirements.txt file.
+- Update spec for AccelByte Cloud v3.40.0.
+
 ## v0.31.0
 - Update spec for AccelByte Cloud v3.39.0.
 
