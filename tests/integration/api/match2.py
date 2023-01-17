@@ -89,7 +89,7 @@ class Match2TestCase(IntegrationTestCase):
         match_pool_name: str, rule_set_name: str, session_template_name: str
     ):
         from accelbyte_py_sdk.api.match2 import create_match_pool
-        from accelbyte_py_sdk.api.match2.models import ApiMatchPool
+        from accelbyte_py_sdk.api.match2.models import ApiMatchPool, ApiMatchFunctionOverride
 
         error = Match2TestCase.do_create_configuration_template(
             template_name=session_template_name
@@ -105,6 +105,7 @@ class Match2TestCase(IntegrationTestCase):
             body=ApiMatchPool.create(
                 backfill_ticket_expiration_seconds=600,
                 match_function="basic",
+                match_function_override=ApiMatchFunctionOverride.create(),
                 name=match_pool_name,
                 rule_set=rule_set_name,
                 session_template=session_template_name,
