@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional, Protocol, Tuple, Union
 import jwt
 
 import accelbyte_py_sdk.api.iam as iam_service
+import accelbyte_py_sdk.services.auth as auth_service
 from accelbyte_py_sdk.core import AccelByteSDK, Timer
 from accelbyte_py_sdk.api.iam.models import ModelRoleResponseV3
 
@@ -55,22 +56,23 @@ class TokenValidatorProtocol(Protocol):
         ...
 
 
-class BaseCache(ABC):
-    def __init__(self):
-        self._lock = RLock()
-
-    @abstractmethod
-    def update(self):
-        pass
-
-
-class JWKSCache(BaseCache):
+class JWKSCache(Timer):
     JWKS_KEYS_KEY: str = "keys"
 
-    def __init__(self, sdk: AccelByteSDK):
+    def __init__(self, sdk: AccelByteSDK, interval: Optional[Union[int, float]] = None):
         self.sdk = sdk
         self._jwks: Dict[str, PublicPrivateKey] = {}
-        super().__init__()
+        self._lock = RLock()
+        if interval is not None:
+            Timer.__init__(
+                self,
+                interval,
+                self.update,
+                daemon=True,
+                repeats=-1,
+                autostart=True,
+                repeat_on_exception=True,
+            )
 
     def update(self):
         result, error = iam_service.get_jwksv3(sdk=self.sdk)
@@ -97,7 +99,7 @@ class JWKSCache(BaseCache):
         return self.get_key_from_cache(key_id)
 
 
-class RevocationListCache(BaseCache, Timer):
+class RevocationListCache(Timer):
     def __init__(self, sdk: AccelByteSDK, interval: Union[int, float]):
         self.sdk = sdk
         self._revoked_token_filter: Optional[BloomFilter] = None
@@ -144,11 +146,24 @@ class RevocationListCache(BaseCache, Timer):
         return False
 
 
-class RolesCache(BaseCache):
-    def __init__(self, sdk: AccelByteSDK):
+class RolesCache(Timer):
+    def __init__(self, sdk: AccelByteSDK, interval: Union[int, float]):
         self.sdk = sdk
         self._roles: Dict[str, Any] = {}
-        super().__init__()
+        self._lock = RLock()
+        Timer.__init__(
+            self,
+            interval,
+            self.clear,
+            daemon=True,
+            repeats=-1,
+            autostart=True,
+            repeat_on_exception=True,
+        )
+
+    def clear(self):
+        with self._lock:
+            self._roles = {}
 
     def update(self):
         pass
@@ -229,7 +244,10 @@ class TokenValidator:
         algorithms: Optional[List[str]] = None,
         options: Optional[Dict[str, Any]] = None,
         publisher_namespace: Optional[str] = None,
-        revocation_list_refresh_interval: Union[int, float] = 3600,
+        token_refresh_interval: Optional[Union[int, float]] = None,
+        jwks_refresh_interval: Optional[Union[int, float]] = None,
+        revocation_list_refresh_interval: Union[int, float] = 60,
+        role_cache_time: Union[int, float] = 60,
     ) -> None:
         self.algorithms = (
             algorithms
@@ -241,11 +259,18 @@ class TokenValidator:
         )
         self.publisher_namespace = publisher_namespace
 
-        self.jwks_cache = JWKSCache(sdk=sdk)
-        self.revocation_list_cache = RevocationListCache(
-            sdk=sdk, interval=revocation_list_refresh_interval
-        )
-        self.roles_cache = RolesCache(sdk=sdk)
+        if token_refresh_interval is not None:
+            auth_service.LoginClientTimer(
+                token_refresh_interval,
+                repeats=-1,
+                autostart=True,
+                repeat_on_exception=True,
+                sdk=sdk,
+            )
+
+        self.jwks_cache = JWKSCache(sdk, jwks_refresh_interval)
+        self.revocation_list_cache = RevocationListCache(sdk, revocation_list_refresh_interval)
+        self.roles_cache = RolesCache(sdk, role_cache_time)
 
         self.jwks_cache.update()
         self.revocation_list_cache.update()
