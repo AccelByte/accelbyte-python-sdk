@@ -41,5 +41,7 @@ PermissionStruct = Union[PermissionFieldStruct, PermissionPropertyStruct]
 
 
 # noinspection PyTypeChecker
-def create_permission_struct(action: PermissionAction, resource: str) -> PermissionStruct:
+def create_permission_struct(
+    action: PermissionAction, resource: str
+) -> PermissionStruct:
     return SimpleNamespace(action=action, resource=resource)

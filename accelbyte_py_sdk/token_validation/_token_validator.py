@@ -48,8 +48,8 @@ class TokenValidatorProtocol(Protocol):
     def validate_token(
         self,
         token: str,
-        resource: str,
-        action: PermissionAction,
+        resource: Optional[str] = None,
+        action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
@@ -225,15 +225,47 @@ class MockTokenValidator:
     def validate_token(
         self,
         token: str,
-        resource: str,
-        action: PermissionAction,
+        resource: Optional[str] = None,
+        action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
         return None if self.value else InsufficientPermissionsError()
 
 
-class TokenValidator:
+class IAMTokenValidator:
+    def __init__(
+        self,
+        sdk: AccelByteSDK,
+        token_refresh_interval: Optional[Union[int, float]] = None,
+    ) -> None:
+        self.sdk = sdk
+
+        if token_refresh_interval is not None:
+            auth_service.LoginClientTimer(
+                token_refresh_interval,
+                repeats=-1,
+                autostart=True,
+                repeat_on_exception=True,
+                sdk=sdk,
+            )
+
+    def validate_token(
+        self,
+        token: str,
+        resource: Optional[str] = None,
+        action: Optional[PermissionAction] = None,
+        namespace: Optional[str] = None,
+        **kwargs,
+    ) -> Optional[Exception]:
+        result, error = iam_service.verify_token_v3(token=token, sdk=self.sdk)
+        if error:
+            return TokenValidationError(error)
+
+        return None
+
+
+class CachingTokenValidator:
     DEFAULT_DECODE_ALGORITHMS: List[str] = ["RS256"]
     DEFAULT_DECODE_OPTIONS: Dict[str, Any] = {"verify_aud": False, "verify_exp": True}
     JWS_HEADER_PARAM_KEY_ID_KEY: str = "kid"
@@ -252,10 +284,12 @@ class TokenValidator:
         self.algorithms = (
             algorithms
             if algorithms is not None
-            else TokenValidator.DEFAULT_DECODE_ALGORITHMS
+            else CachingTokenValidator.DEFAULT_DECODE_ALGORITHMS
         )
         self.options = (
-            options if options is not None else TokenValidator.DEFAULT_DECODE_OPTIONS
+            options
+            if options is not None
+            else CachingTokenValidator.DEFAULT_DECODE_OPTIONS
         )
         self.publisher_namespace = publisher_namespace
 
@@ -269,7 +303,9 @@ class TokenValidator:
             )
 
         self.jwks_cache = JWKSCache(sdk, jwks_refresh_interval)
-        self.revocation_list_cache = RevocationListCache(sdk, revocation_list_refresh_interval)
+        self.revocation_list_cache = RevocationListCache(
+            sdk, revocation_list_refresh_interval
+        )
         self.roles_cache = RolesCache(sdk, role_cache_time)
 
         self.jwks_cache.update()
@@ -344,8 +380,8 @@ class TokenValidator:
     def validate_token(
         self,
         token: str,
-        resource: str,
-        action: PermissionAction,
+        resource: Optional[str] = None,
+        action: Optional[PermissionAction] = None,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
@@ -353,7 +389,9 @@ class TokenValidator:
         if self.revocation_list_cache.is_token_revoked(token=token):
             return TokenRevokedError()
 
-        claims = self._decode(token=token, **kwargs)
+        claims, error = self._decode(token=token, **kwargs)
+        if error:
+            return error
 
         # Check if user was revoked.
         if claims_user_id := claims.get("user_id"):
@@ -363,10 +401,14 @@ class TokenValidator:
                 return UserRevokedError()
 
         # Check if the claims has valid permissions.
-        if not self.has_valid_permissions(
-            claims=claims,
-            permission=create_permission_struct(action, resource),
-            namespace=namespace,
+        if (
+            resource is not None
+            and action is not None
+            and not self.has_valid_permissions(
+                claims=claims,
+                permission=create_permission_struct(action, resource),
+                namespace=namespace,
+            )
         ):
             return InsufficientPermissionsError()
 
@@ -378,16 +420,18 @@ class TokenValidator:
         algorithms: Optional[List[str]] = None,
         options: Optional[Dict[str, Any]] = None,
         **kwargs,
-    ) -> JWTClaims:
+    ) -> Tuple[Optional[JWTClaims], Optional[Exception]]:
         algorithms = algorithms if algorithms is not None else self.algorithms
         options = options if options is not None else self.options
 
         header_params = jwt.get_unverified_header(jwt=token)
-        if not (kid := header_params.get(TokenValidator.JWS_HEADER_PARAM_KEY_ID_KEY)):
-            raise KeyError(TokenValidator.JWS_HEADER_PARAM_KEY_ID_KEY)
+        if not (
+            kid := header_params.get(CachingTokenValidator.JWS_HEADER_PARAM_KEY_ID_KEY)
+        ):
+            return None, KeyError(CachingTokenValidator.JWS_HEADER_PARAM_KEY_ID_KEY)
 
         if not (key := self.jwks_cache.get_key(kid)):
-            raise KeyError(kid)
+            return None, KeyError(kid)
 
         claims = jwt.decode(
             jwt=token,
@@ -399,4 +443,4 @@ class TokenValidator:
         if "user_id" not in claims and (sub := claims.get("sub")):
             claims["user_id"] = sub
 
-        return claims
+        return claims, None

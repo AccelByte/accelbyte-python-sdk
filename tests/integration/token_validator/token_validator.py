@@ -5,7 +5,7 @@ import accelbyte_py_sdk.services.auth as auth_service
 
 from accelbyte_py_sdk import AccelByteSDK
 from accelbyte_py_sdk.core import SDK
-from accelbyte_py_sdk.token_validation import TokenValidator
+from accelbyte_py_sdk.token_validation import CachingTokenValidator
 
 from tests.integration.test_case import IntegrationTestCase
 
@@ -55,7 +55,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
         if access_token is None:
             self.skipTest(reason=f"unable to get access token")
 
-        token_validator = TokenValidator(sdk=SDK)
+        token_validator = CachingTokenValidator(sdk=SDK)
 
         # act & assert
         error = token_validator.validate_token(
