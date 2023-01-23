@@ -77,7 +77,7 @@ def validate_permission(
                 if not matched:
                     continue
 
-            if (permission.action & target.action) > 0:
+            if (int(permission.action) & int(target.action)) > 0:
                 return True
 
     return False

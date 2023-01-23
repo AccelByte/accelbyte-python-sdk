@@ -9,7 +9,7 @@ from accelbyte_py_sdk.core import AccelByteSDK, Timer
 from accelbyte_py_sdk.api.iam.models import ModelRoleResponseV3
 
 from ._bloom_filter import BloomFilter
-from ._ctypes import PermissionStruct, create_permission_struct
+from ._ctypes import PermissionAction, PermissionStruct, create_permission_struct
 from ._utils import replace_resource, str2datetime, validate_permission
 
 PublicPrivateKey = Any
@@ -48,7 +48,7 @@ class TokenValidatorProtocol(Protocol):
         self,
         token: str,
         resource: str,
-        action: int,
+        action: PermissionAction,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
@@ -211,7 +211,7 @@ class MockTokenValidator:
         self,
         token: str,
         resource: str,
-        action: int,
+        action: PermissionAction,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:
@@ -320,7 +320,7 @@ class TokenValidator:
         self,
         token: str,
         resource: str,
-        action: int,
+        action: PermissionAction,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> Optional[Exception]:

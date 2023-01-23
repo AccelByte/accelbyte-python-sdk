@@ -1,20 +1,31 @@
+from enum import IntFlag
 from types import SimpleNamespace
 from typing import Protocol, Union
 
 
+class PermissionActionFlag(IntFlag):
+    CREATE = 0b0001
+    READ = 0b0010
+    UPDATE = 0b0100
+    DELETE = 0b1000
+
+
+PermissionAction = Union[int, PermissionActionFlag]
+
+
 class PermissionFieldStruct(Protocol):
-    action: int
+    action: PermissionAction
     resource: str
 
 
 # noinspection PyPropertyDefinition
 class PermissionPropertyStruct(Protocol):
     @property
-    def action(self) -> int:
+    def action(self) -> PermissionAction:
         ...
 
     @action.setter
-    def action(self, i: int) -> None:
+    def action(self, i: PermissionAction) -> None:
         ...
 
     @property
@@ -30,5 +41,5 @@ PermissionStruct = Union[PermissionFieldStruct, PermissionPropertyStruct]
 
 
 # noinspection PyTypeChecker
-def create_permission_struct(action: int, resource: str) -> PermissionStruct:
+def create_permission_struct(action: PermissionAction, resource: str) -> PermissionStruct:
     return SimpleNamespace(action=action, resource=resource)
