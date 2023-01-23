@@ -5,7 +5,7 @@ import accelbyte_py_sdk.services.auth as auth_service
 
 from accelbyte_py_sdk import AccelByteSDK
 from accelbyte_py_sdk.core import SDK
-from accelbyte_py_sdk.token_validation import CachingTokenValidator
+from accelbyte_py_sdk.token_validation.caching import CachingTokenValidator
 
 from tests.integration.test_case import IntegrationTestCase
 

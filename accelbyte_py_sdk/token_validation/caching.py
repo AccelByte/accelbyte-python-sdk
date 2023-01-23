@@ -1,59 +1,40 @@
-from abc import ABC, abstractmethod
+from datetime import datetime
 from threading import RLock
 from typing import Any, Dict, List, Optional, Protocol, Tuple, Union
 
 import jwt
 
 import accelbyte_py_sdk.api.iam as iam_service
+import accelbyte_py_sdk.api.iam.models as iam_models
 import accelbyte_py_sdk.services.auth as auth_service
-from accelbyte_py_sdk.core import AccelByteSDK, Timer
-from accelbyte_py_sdk.api.iam.models import ModelRoleResponseV3
+from accelbyte_py_sdk import AccelByteSDK
+from accelbyte_py_sdk.core import Timer
 
 from ._bloom_filter import BloomFilter
+from ._ctypes import PermissionAction, create_permission_struct
+from ._ctypes import FetchValidationDataError, FetchRoleError
+from ._ctypes import (
+    TokenValidationError,
+    InsufficientPermissionsError,
+    TokenRevokedError,
+    UserRevokedError,
+)
 from ._ctypes import PermissionAction, PermissionStruct, create_permission_struct
-from ._utils import replace_resource, str2datetime, validate_permission
+from ._utils import replace_resource, validate_permission
 
 PublicPrivateKey = Any
 JWKSet = Dict[str, PublicPrivateKey]
 JWTClaims = Dict[str, Any]
-Role = ModelRoleResponseV3
+Role = iam_models.ModelRoleResponseV3
 NamespaceRole = Dict[str, str]
 
 
-class FetchValidationDataError(Exception):
-    pass
-
-
-class FetchRoleError(FetchValidationDataError):
-    pass
-
-
-class TokenValidationError(Exception):
-    pass
-
-
-class InsufficientPermissionsError(TokenValidationError):
-    pass
-
-
-class TokenRevokedError(TokenValidationError):
-    pass
-
-
-class UserRevokedError(TokenValidationError):
-    pass
-
-
-class TokenValidatorProtocol(Protocol):
-    def validate_token(
-        self,
-        token: str,
-        resource: Optional[str] = None,
-        action: Optional[PermissionAction] = None,
-        namespace: Optional[str] = None,
-        **kwargs,
-    ) -> Optional[Exception]:
-        ...
+def str2datetime(s: str) -> datetime:
+    # from: 'YYYY-mm-ddTHH:MM:SS.fffffffffZ'
+    # to:   'YYYY-mm-ddTHH:MM:SS.fffZ+0000'
+    tz = "Z+0000" if s.endswith("Z") else ""  # Add explicit UTC timezone.
+    s = s[0:23] + tz
+    return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ%z")
 
 
 class JWKSCache(Timer):
@@ -216,53 +197,6 @@ class RolesCache(Timer):
             namespace=namespace_role.get("namespace"),
             user_id=user_id,
         )
-
-
-class MockTokenValidator:
-    def __init__(self, value: bool = False):
-        self.value = value
-
-    def validate_token(
-        self,
-        token: str,
-        resource: Optional[str] = None,
-        action: Optional[PermissionAction] = None,
-        namespace: Optional[str] = None,
-        **kwargs,
-    ) -> Optional[Exception]:
-        return None if self.value else InsufficientPermissionsError()
-
-
-class IAMTokenValidator:
-    def __init__(
-        self,
-        sdk: AccelByteSDK,
-        token_refresh_interval: Optional[Union[int, float]] = None,
-    ) -> None:
-        self.sdk = sdk
-
-        if token_refresh_interval is not None:
-            auth_service.LoginClientTimer(
-                token_refresh_interval,
-                repeats=-1,
-                autostart=True,
-                repeat_on_exception=True,
-                sdk=sdk,
-            )
-
-    def validate_token(
-        self,
-        token: str,
-        resource: Optional[str] = None,
-        action: Optional[PermissionAction] = None,
-        namespace: Optional[str] = None,
-        **kwargs,
-    ) -> Optional[Exception]:
-        result, error = iam_service.verify_token_v3(token=token, sdk=self.sdk)
-        if error:
-            return TokenValidationError(error)
-
-        return None
 
 
 class CachingTokenValidator:
@@ -444,3 +378,8 @@ class CachingTokenValidator:
             claims["user_id"] = sub
 
         return claims, None
+
+
+__all__ = [
+    "CachingTokenValidator",
+]

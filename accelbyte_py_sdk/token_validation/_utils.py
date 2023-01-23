@@ -30,14 +30,6 @@ def replace_resource(
     return new_resource
 
 
-def str2datetime(s: str) -> datetime:
-    # from: 'YYYY-mm-ddTHH:MM:SS.fffffffffZ'
-    # to:   'YYYY-mm-ddTHH:MM:SS.fffZ+0000'
-    tz = "Z+0000" if s.endswith("Z") else ""  # Add explicit UTC timezone.
-    s = s[0:23] + tz
-    return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ%z")
-
-
 def validate_permission(
     target: PermissionStruct, permissions: List[PermissionStruct]
 ) -> bool:

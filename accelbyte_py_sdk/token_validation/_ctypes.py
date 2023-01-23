@@ -3,6 +3,30 @@ from types import SimpleNamespace
 from typing import Protocol, Union
 
 
+class FetchValidationDataError(Exception):
+    pass
+
+
+class FetchRoleError(FetchValidationDataError):
+    pass
+
+
+class TokenValidationError(Exception):
+    pass
+
+
+class InsufficientPermissionsError(TokenValidationError):
+    pass
+
+
+class TokenRevokedError(TokenValidationError):
+    pass
+
+
+class UserRevokedError(TokenValidationError):
+    pass
+
+
 class PermissionActionFlag(IntFlag):
     CREATE = 0b0001
     READ = 0b0010
