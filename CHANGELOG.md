@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.33.0
+- Add Token Validation feature. Check out the `Validating Tokens` section in the `README.md`.
+- Update spec for AccelByte Cloud v3.41.0.
+
 ## v0.32.0
 - Add `/releases` info in README.
 - Add `AdminQueryParties` in session integration test.
