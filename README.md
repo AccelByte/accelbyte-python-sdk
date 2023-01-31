@@ -538,6 +538,23 @@ http_client.retry_policy = CompositeHttpRetryPolicy(
 )
 ```
 
+---
+
+## Validating Tokens
+
+You can use `accelbyte_py_sdk.token_validation.caching.CachingTokenValidator` or `accelbyte_py_sdk.token_validation.iam.IAMTokenValidator`.
+
+```python
+token_validator = CachingTokenValidator(sdk)  # or IAMTokenValidator(sdk)
+
+# access_token = ...
+error = token_validator.validate_token(access_token)
+if error:
+    raise error
+```
+
+---
+
 See [tests](tests/sdk/core/_request.py) for more usage.
 
 ## Samples
