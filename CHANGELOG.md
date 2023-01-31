@@ -2,6 +2,7 @@
 
 ## v0.33.0
 - Add Token Validation feature. Check out the `Validating Tokens` section in the `README.md`.
+- Disable `DSMC` tests temporarily.
 - Update spec for AccelByte Cloud v3.41.0.
 
 ## v0.32.0
