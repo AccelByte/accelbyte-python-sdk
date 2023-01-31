@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,18 +27,20 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_rule import ModelsRule
+from ..models.models_rule_response_v1 import ModelsRuleResponseV1
 
 
 class ModelsCreateGroupConfigurationResponseV1(Model):
     """Models create group configuration response V1 (models.CreateGroupConfigurationResponseV1)
 
     Properties:
+        allow_multiple: (allowMultiple) REQUIRED bool
+
         configuration_code: (configurationCode) REQUIRED str
 
         description: (description) REQUIRED str
 
-        global_rules: (globalRules) REQUIRED List[ModelsRule]
+        global_rules: (globalRules) REQUIRED List[ModelsRuleResponseV1]
 
         group_admin_role_id: (groupAdminRoleId) REQUIRED str
 
@@ -51,9 +53,10 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
 
     # region fields
 
+    allow_multiple: bool  # REQUIRED
     configuration_code: str  # REQUIRED
     description: str  # REQUIRED
-    global_rules: List[ModelsRule]  # REQUIRED
+    global_rules: List[ModelsRuleResponseV1]  # REQUIRED
     group_admin_role_id: str  # REQUIRED
     group_max_member: int  # REQUIRED
     group_member_role_id: str  # REQUIRED
@@ -62,6 +65,12 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_allow_multiple(
+        self, value: bool
+    ) -> ModelsCreateGroupConfigurationResponseV1:
+        self.allow_multiple = value
+        return self
 
     def with_configuration_code(
         self, value: str
@@ -74,7 +83,7 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
         return self
 
     def with_global_rules(
-        self, value: List[ModelsRule]
+        self, value: List[ModelsRuleResponseV1]
     ) -> ModelsCreateGroupConfigurationResponseV1:
         self.global_rules = value
         return self
@@ -107,6 +116,10 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allow_multiple"):
+            result["allowMultiple"] = bool(self.allow_multiple)
+        elif include_empty:
+            result["allowMultiple"] = False
         if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
@@ -146,15 +159,17 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
     @classmethod
     def create(
         cls,
+        allow_multiple: bool,
         configuration_code: str,
         description: str,
-        global_rules: List[ModelsRule],
+        global_rules: List[ModelsRuleResponseV1],
         group_admin_role_id: str,
         group_max_member: int,
         group_member_role_id: str,
         name: str,
     ) -> ModelsCreateGroupConfigurationResponseV1:
         instance = cls()
+        instance.allow_multiple = allow_multiple
         instance.configuration_code = configuration_code
         instance.description = description
         instance.global_rules = global_rules
@@ -171,6 +186,10 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowMultiple" in dict_ and dict_["allowMultiple"] is not None:
+            instance.allow_multiple = bool(dict_["allowMultiple"])
+        elif include_empty:
+            instance.allow_multiple = False
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
@@ -181,7 +200,7 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
             instance.description = ""
         if "globalRules" in dict_ and dict_["globalRules"] is not None:
             instance.global_rules = [
-                ModelsRule.create_from_dict(i0, include_empty=include_empty)
+                ModelsRuleResponseV1.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["globalRules"]
             ]
         elif include_empty:
@@ -245,6 +264,7 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowMultiple": "allow_multiple",
             "configurationCode": "configuration_code",
             "description": "description",
             "globalRules": "global_rules",
@@ -257,6 +277,7 @@ class ModelsCreateGroupConfigurationResponseV1(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "allowMultiple": True,
             "configurationCode": True,
             "description": True,
             "globalRules": True,

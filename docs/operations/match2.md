@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Match Service V2 Index (2.0.1)
+# AccelByte Cloud Match Service V2 Index (2.1.0)
 
 
 ## Operations
@@ -12,6 +12,9 @@
 |---|---|---|---|---|---|---|
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept | PUT | AcceptBackfill | `false` | [AcceptBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/accept_backfill.py) | [accept_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-accept-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_accept_backfill.py) |
 | /match2/v1/namespaces/{namespace}/backfill | POST | CreateBackfill | `false` | [CreateBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/create_backfill.py) | [create_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-create-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_create_backfill.py) |
+| /match2/v1/namespaces/{namespace}/backfill/{backfillID} | DELETE | DeleteBackfill | `false` | [DeleteBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/delete_backfill.py) | [delete_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-delete-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_delete_backfill.py) |
+| /match2/v1/namespaces/{namespace}/backfill/{backfillID} | GET | GetBackfill | `false` | [GetBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/get_backfill.py) | [get_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-get-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_backfill.py) |
+| /match2/v1/namespaces/{namespace}/backfill/proposal | GET | GetBackfillProposal | `false` | [GetBackfillProposal](../../accelbyte_py_sdk/api/match2/operations/backfill/get_backfill_proposal.py) | [get_backfill_proposal](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-get-backfill-proposal](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_backfill_proposal.py) |
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject | PUT | RejectBackfill | `false` | [RejectBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/reject_backfill.py) | [reject_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-reject-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_reject_backfill.py) |
 
 ### Match-Functions
@@ -60,9 +63,12 @@
 | api.BackFillAcceptRequest | [ApiBackFillAcceptRequest](../../accelbyte_py_sdk/api/match2/models/api_back_fill_accept_request.py) |
 | api.BackFillCreateRequest | [ApiBackFillCreateRequest](../../accelbyte_py_sdk/api/match2/models/api_back_fill_create_request.py) |
 | api.backFillRejectRequest | [ApiBackFillRejectRequest](../../accelbyte_py_sdk/api/match2/models/api_back_fill_reject_request.py) |
+| api.BackfillGetResponse | [ApiBackfillGetResponse](../../accelbyte_py_sdk/api/match2/models/api_backfill_get_response.py) |
+| api.BackfillProposalResponse | [ApiBackfillProposalResponse](../../accelbyte_py_sdk/api/match2/models/api_backfill_proposal_response.py) |
 | api.ListMatchFunctionsResponse | [ApiListMatchFunctionsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_functions_response.py) |
 | api.ListMatchPoolsResponse | [ApiListMatchPoolsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_pools_response.py) |
 | api.ListRuleSetsResponse | [ApiListRuleSetsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_rule_sets_response.py) |
+| api.Match | [ApiMatch](../../accelbyte_py_sdk/api/match2/models/api_match.py) |
 | api.MatchFunctionConfig | [ApiMatchFunctionConfig](../../accelbyte_py_sdk/api/match2/models/api_match_function_config.py) |
 | api.MatchFunctionOverride | [ApiMatchFunctionOverride](../../accelbyte_py_sdk/api/match2/models/api_match_function_override.py) |
 | api.MatchFunctionRequest | [ApiMatchFunctionRequest](../../accelbyte_py_sdk/api/match2/models/api_match_function_request.py) |
@@ -74,5 +80,10 @@
 | api.MatchTicketRequest | [ApiMatchTicketRequest](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_request.py) |
 | api.MatchTicketResponse | [ApiMatchTicketResponse](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_response.py) |
 | api.MatchTicketStatus | [ApiMatchTicketStatus](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_status.py) |
+| api.Party | [ApiParty](../../accelbyte_py_sdk/api/match2/models/api_party.py) |
+| api.PlayerData | [ApiPlayerData](../../accelbyte_py_sdk/api/match2/models/api_player_data.py) |
+| api.ProposedProposal | [ApiProposedProposal](../../accelbyte_py_sdk/api/match2/models/api_proposed_proposal.py) |
+| api.Team | [ApiTeam](../../accelbyte_py_sdk/api/match2/models/api_team.py) |
+| api.Ticket | [ApiTicket](../../accelbyte_py_sdk/api/match2/models/api_ticket.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/match2/models/models_pagination.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/match2/models/response_error.py) |

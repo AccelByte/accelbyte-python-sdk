@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.4.0)
+# AccelByte Cloud Session Service (2.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,6 +63,8 @@ class AdminQueryGameSessions(Operation):
         from_time: (fromTime) OPTIONAL str in query
 
         game_mode: (gameMode) OPTIONAL str in query
+
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
 
@@ -112,6 +114,7 @@ class AdminQueryGameSessions(Operation):
     ds_pod_name: str  # OPTIONAL in [query]
     from_time: str  # OPTIONAL in [query]
     game_mode: str  # OPTIONAL in [query]
+    is_soft_deleted: str  # OPTIONAL in [query]
     joinability: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     match_pool: str  # OPTIONAL in [query]
@@ -182,6 +185,8 @@ class AdminQueryGameSessions(Operation):
             result["fromTime"] = self.from_time
         if hasattr(self, "game_mode"):
             result["gameMode"] = self.game_mode
+        if hasattr(self, "is_soft_deleted"):
+            result["isSoftDeleted"] = self.is_soft_deleted
         if hasattr(self, "joinability"):
             result["joinability"] = self.joinability
         if hasattr(self, "limit"):
@@ -232,6 +237,10 @@ class AdminQueryGameSessions(Operation):
 
     def with_game_mode(self, value: str) -> AdminQueryGameSessions:
         self.game_mode = value
+        return self
+
+    def with_is_soft_deleted(self, value: str) -> AdminQueryGameSessions:
+        self.is_soft_deleted = value
         return self
 
     def with_joinability(self, value: str) -> AdminQueryGameSessions:
@@ -304,6 +313,10 @@ class AdminQueryGameSessions(Operation):
             result["gameMode"] = str(self.game_mode)
         elif include_empty:
             result["gameMode"] = ""
+        if hasattr(self, "is_soft_deleted") and self.is_soft_deleted:
+            result["isSoftDeleted"] = str(self.is_soft_deleted)
+        elif include_empty:
+            result["isSoftDeleted"] = ""
         if hasattr(self, "joinability") and self.joinability:
             result["joinability"] = str(self.joinability)
         elif include_empty:
@@ -413,6 +426,7 @@ class AdminQueryGameSessions(Operation):
         ds_pod_name: Optional[str] = None,
         from_time: Optional[str] = None,
         game_mode: Optional[str] = None,
+        is_soft_deleted: Optional[str] = None,
         joinability: Optional[str] = None,
         limit: Optional[int] = None,
         match_pool: Optional[str] = None,
@@ -435,6 +449,8 @@ class AdminQueryGameSessions(Operation):
             instance.from_time = from_time
         if game_mode is not None:
             instance.game_mode = game_mode
+        if is_soft_deleted is not None:
+            instance.is_soft_deleted = is_soft_deleted
         if joinability is not None:
             instance.joinability = joinability
         if limit is not None:
@@ -484,6 +500,10 @@ class AdminQueryGameSessions(Operation):
             instance.game_mode = str(dict_["gameMode"])
         elif include_empty:
             instance.game_mode = ""
+        if "isSoftDeleted" in dict_ and dict_["isSoftDeleted"] is not None:
+            instance.is_soft_deleted = str(dict_["isSoftDeleted"])
+        elif include_empty:
+            instance.is_soft_deleted = ""
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
@@ -538,6 +558,7 @@ class AdminQueryGameSessions(Operation):
             "dsPodName": "ds_pod_name",
             "fromTime": "from_time",
             "gameMode": "game_mode",
+            "isSoftDeleted": "is_soft_deleted",
             "joinability": "joinability",
             "limit": "limit",
             "matchPool": "match_pool",
@@ -559,6 +580,7 @@ class AdminQueryGameSessions(Operation):
             "dsPodName": False,
             "fromTime": False,
             "gameMode": False,
+            "isSoftDeleted": False,
             "joinability": False,
             "limit": False,
             "matchPool": False,

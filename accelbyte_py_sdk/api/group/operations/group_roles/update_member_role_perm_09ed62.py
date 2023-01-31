@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelsMemberRoleResponseV1
 from ...models import ModelsUpdateMemberRolePermissionsRequestV1
-from ...models import ModelsUpdateMemberRoleResponseV1
 from ...models import ResponseErrorResponse
 
 
@@ -94,7 +94,7 @@ class UpdateMemberRolePermissionAdminV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
+        200: OK - ModelsMemberRoleResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
@@ -227,12 +227,12 @@ class UpdateMemberRolePermissionAdminV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsUpdateMemberRoleResponseV1],
+        Union[None, ModelsMemberRoleResponseV1],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsUpdateMemberRoleResponseV1 (OK)
+        200: OK - ModelsMemberRoleResponseV1 (OK)
 
         400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
@@ -258,7 +258,7 @@ class UpdateMemberRolePermissionAdminV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsUpdateMemberRoleResponseV1.create_from_dict(content), None
+            return ModelsMemberRoleResponseV1.create_from_dict(content), None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

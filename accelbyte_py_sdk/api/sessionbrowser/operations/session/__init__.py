@@ -30,7 +30,7 @@ from .get_session_by_user_i_ds import GetSessionByUserIDs
 from .get_session_history_detailed import GetSessionHistoryDetailed
 from .get_total_active_session import GetTotalActiveSession
 from .join_session import JoinSession
-from .query_session import QuerySession
 from .remove_player_from_session import RemovePlayerFromSession
 from .update_session import UpdateSession
 from .update_settings import UpdateSettings
+from .user_query_session import UserQuerySession

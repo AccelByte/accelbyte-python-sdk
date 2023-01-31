@@ -532,6 +532,7 @@ def create_models_server_example() -> ModelsServer:
     instance.created_at = randomize("date")
     instance.custom_attribute = randomize()
     instance.deployment = randomize()
+    instance.deployment_override = randomize()
     instance.game_version = randomize("version")
     instance.image_version = randomize()
     instance.ip = randomize()

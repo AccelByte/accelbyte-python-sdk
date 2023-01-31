@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Session Service."""
 
-__version__ = "2.4.0"
+__version__ = "2.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -93,3 +93,15 @@ from .wrappers import public_revoke_party_code
 from .wrappers import public_revoke_party_code_async
 from .wrappers import public_update_party
 from .wrappers import public_update_party_async
+
+# player
+from .wrappers import admin_get_player_attributes
+from .wrappers import admin_get_player_attributes_async
+from .wrappers import admin_query_player_attributes
+from .wrappers import admin_query_player_attributes_async
+from .wrappers import public_delete_player_attributes
+from .wrappers import public_delete_player_attributes_async
+from .wrappers import public_get_player_attributes
+from .wrappers import public_get_player_attributes_async
+from .wrappers import public_store_player_attributes
+from .wrappers import public_store_player_attributes_async

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import OauthmodelTokenResponseV3
+from ...models import RestErrorResponse
 
 
 class GenerateTokenByNewHeadlessAccountV3(Operation):
@@ -58,6 +59,12 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
     Responses:
         200: OK - OauthmodelTokenResponseV3 (Succeed to create headless account and response token info.)
+
+        400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
+
+        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+
+        404: Not Found - RestErrorResponse (Platform linking token not found.)
     """
 
     # region fields
@@ -160,10 +167,19 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, OauthmodelTokenResponseV3], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, OauthmodelTokenResponseV3],
+        Union[None, HttpResponse, RestErrorResponse],
+    ]:
         """Parse the given response.
 
         200: OK - OauthmodelTokenResponseV3 (Succeed to create headless account and response token info.)
+
+        400: Bad Request - RestErrorResponse (Invalid platform linking token or clientID not match.)
+
+        401: Unauthorized - RestErrorResponse (Invalid Basic header.)
+
+        404: Not Found - RestErrorResponse (Platform linking token not found.)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -180,6 +196,12 @@ class GenerateTokenByNewHeadlessAccountV3(Operation):
 
         if code == 200:
             return OauthmodelTokenResponseV3.create_from_dict(content), None
+        if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,6 +69,31 @@ class AdminSearchUserV3(Operation):
 
 
       * if limit is not defined, The default limit is 100
+
+
+
+
+
+
+
+    In multi tenant mode :
+
+
+
+
+      * if super admin search in super admin namespace, the result will be all game admin user
+
+
+      * if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+
+
+      * if super admin search in game namespace, the result will be all game admin users and players under the game namespace
+
+
+      * if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+
+
+      * if game admin search in their game namespace, the result will be all player in the game namespace
 
 
 

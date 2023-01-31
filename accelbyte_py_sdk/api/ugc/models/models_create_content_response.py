@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -41,8 +41,6 @@ class ModelsCreateContentResponse(Model):
 
         creator_name: (creatorName) REQUIRED str
 
-        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
-
         file_extension: (fileExtension) REQUIRED str
 
         id_: (id) REQUIRED str
@@ -54,6 +52,8 @@ class ModelsCreateContentResponse(Model):
         name: (name) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        parent_namespace: (parentNamespace) REQUIRED str
 
         preview: (preview) REQUIRED str
 
@@ -71,6 +71,8 @@ class ModelsCreateContentResponse(Model):
 
         content_type: (contentType) OPTIONAL str
 
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
         payload_url: (payloadURL) OPTIONAL List[ModelsPayloadURL]
 
         preview_url: (previewURL) OPTIONAL List[ModelsPreviewURL]
@@ -81,13 +83,13 @@ class ModelsCreateContentResponse(Model):
     channel_id: str  # REQUIRED
     created_time: str  # REQUIRED
     creator_name: str  # REQUIRED
-    custom_attributes: Dict[str, Any]  # REQUIRED
     file_extension: str  # REQUIRED
     id_: str  # REQUIRED
     is_hidden: bool  # REQUIRED
     is_official: bool  # REQUIRED
     name: str  # REQUIRED
     namespace: str  # REQUIRED
+    parent_namespace: str  # REQUIRED
     preview: str  # REQUIRED
     share_code: str  # REQUIRED
     sub_type: str  # REQUIRED
@@ -96,6 +98,7 @@ class ModelsCreateContentResponse(Model):
     updated_time: str  # REQUIRED
     user_id: str  # REQUIRED
     content_type: str  # OPTIONAL
+    custom_attributes: Dict[str, Any]  # OPTIONAL
     payload_url: List[ModelsPayloadURL]  # OPTIONAL
     preview_url: List[ModelsPreviewURL]  # OPTIONAL
 
@@ -113,12 +116,6 @@ class ModelsCreateContentResponse(Model):
 
     def with_creator_name(self, value: str) -> ModelsCreateContentResponse:
         self.creator_name = value
-        return self
-
-    def with_custom_attributes(
-        self, value: Dict[str, Any]
-    ) -> ModelsCreateContentResponse:
-        self.custom_attributes = value
         return self
 
     def with_file_extension(self, value: str) -> ModelsCreateContentResponse:
@@ -143,6 +140,10 @@ class ModelsCreateContentResponse(Model):
 
     def with_namespace(self, value: str) -> ModelsCreateContentResponse:
         self.namespace = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ModelsCreateContentResponse:
+        self.parent_namespace = value
         return self
 
     def with_preview(self, value: str) -> ModelsCreateContentResponse:
@@ -177,6 +178,12 @@ class ModelsCreateContentResponse(Model):
         self.content_type = value
         return self
 
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsCreateContentResponse:
+        self.custom_attributes = value
+        return self
+
     def with_payload_url(
         self, value: List[ModelsPayloadURL]
     ) -> ModelsCreateContentResponse:
@@ -207,12 +214,6 @@ class ModelsCreateContentResponse(Model):
             result["creatorName"] = str(self.creator_name)
         elif include_empty:
             result["creatorName"] = ""
-        if hasattr(self, "custom_attributes"):
-            result["customAttributes"] = {
-                str(k0): v0 for k0, v0 in self.custom_attributes.items()
-            }
-        elif include_empty:
-            result["customAttributes"] = {}
         if hasattr(self, "file_extension"):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
@@ -237,6 +238,10 @@ class ModelsCreateContentResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "preview"):
             result["preview"] = str(self.preview)
         elif include_empty:
@@ -269,6 +274,12 @@ class ModelsCreateContentResponse(Model):
             result["contentType"] = str(self.content_type)
         elif include_empty:
             result["contentType"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "payload_url"):
             result["payloadURL"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.payload_url
@@ -293,13 +304,13 @@ class ModelsCreateContentResponse(Model):
         channel_id: str,
         created_time: str,
         creator_name: str,
-        custom_attributes: Dict[str, Any],
         file_extension: str,
         id_: str,
         is_hidden: bool,
         is_official: bool,
         name: str,
         namespace: str,
+        parent_namespace: str,
         preview: str,
         share_code: str,
         sub_type: str,
@@ -308,6 +319,7 @@ class ModelsCreateContentResponse(Model):
         updated_time: str,
         user_id: str,
         content_type: Optional[str] = None,
+        custom_attributes: Optional[Dict[str, Any]] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
         preview_url: Optional[List[ModelsPreviewURL]] = None,
     ) -> ModelsCreateContentResponse:
@@ -315,13 +327,13 @@ class ModelsCreateContentResponse(Model):
         instance.channel_id = channel_id
         instance.created_time = created_time
         instance.creator_name = creator_name
-        instance.custom_attributes = custom_attributes
         instance.file_extension = file_extension
         instance.id_ = id_
         instance.is_hidden = is_hidden
         instance.is_official = is_official
         instance.name = name
         instance.namespace = namespace
+        instance.parent_namespace = parent_namespace
         instance.preview = preview
         instance.share_code = share_code
         instance.sub_type = sub_type
@@ -331,6 +343,8 @@ class ModelsCreateContentResponse(Model):
         instance.user_id = user_id
         if content_type is not None:
             instance.content_type = content_type
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
         if payload_url is not None:
             instance.payload_url = payload_url
         if preview_url is not None:
@@ -356,12 +370,6 @@ class ModelsCreateContentResponse(Model):
             instance.creator_name = str(dict_["creatorName"])
         elif include_empty:
             instance.creator_name = ""
-        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
-            instance.custom_attributes = {
-                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
-            }
-        elif include_empty:
-            instance.custom_attributes = {}
         if "fileExtension" in dict_ and dict_["fileExtension"] is not None:
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
@@ -386,6 +394,10 @@ class ModelsCreateContentResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "preview" in dict_ and dict_["preview"] is not None:
             instance.preview = str(dict_["preview"])
         elif include_empty:
@@ -418,6 +430,12 @@ class ModelsCreateContentResponse(Model):
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
             instance.content_type = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "payloadURL" in dict_ and dict_["payloadURL"] is not None:
             instance.payload_url = [
                 ModelsPayloadURL.create_from_dict(i0, include_empty=include_empty)
@@ -478,13 +496,13 @@ class ModelsCreateContentResponse(Model):
             "channelId": "channel_id",
             "createdTime": "created_time",
             "creatorName": "creator_name",
-            "customAttributes": "custom_attributes",
             "fileExtension": "file_extension",
             "id": "id_",
             "isHidden": "is_hidden",
             "isOfficial": "is_official",
             "name": "name",
             "namespace": "namespace",
+            "parentNamespace": "parent_namespace",
             "preview": "preview",
             "shareCode": "share_code",
             "subType": "sub_type",
@@ -493,6 +511,7 @@ class ModelsCreateContentResponse(Model):
             "updatedTime": "updated_time",
             "userId": "user_id",
             "contentType": "content_type",
+            "customAttributes": "custom_attributes",
             "payloadURL": "payload_url",
             "previewURL": "preview_url",
         }
@@ -503,13 +522,13 @@ class ModelsCreateContentResponse(Model):
             "channelId": True,
             "createdTime": True,
             "creatorName": True,
-            "customAttributes": True,
             "fileExtension": True,
             "id": True,
             "isHidden": True,
             "isOfficial": True,
             "name": True,
             "namespace": True,
+            "parentNamespace": True,
             "preview": True,
             "shareCode": True,
             "subType": True,
@@ -518,6 +537,7 @@ class ModelsCreateContentResponse(Model):
             "updatedTime": True,
             "userId": True,
             "contentType": False,
+            "customAttributes": False,
             "payloadURL": False,
             "previewURL": False,
         }

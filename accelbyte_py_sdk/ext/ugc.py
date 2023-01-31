@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,7 @@ from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsContentDownloadResponse
 from ..api.ugc.models import ModelsContentLikeRequest
 from ..api.ugc.models import ModelsContentLikeResponse
+from ..api.ugc.models import ModelsContentRequest
 from ..api.ugc.models import ModelsCreateContentRequest
 from ..api.ugc.models import ModelsCreateContentRequestS3
 from ..api.ugc.models import ModelsCreateContentResponse
@@ -93,6 +94,7 @@ def create_models_channel_response_example() -> ModelsChannelResponse:
     instance.name = randomize()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.parent_namespace = randomize("slug")
     return instance
 
 
@@ -102,7 +104,6 @@ def create_models_content_download_response_example() -> ModelsContentDownloadRe
     instance.created_time = randomize()
     instance.creator_follow_state = create_models_creator_follow_state_example()
     instance.creator_name = randomize()
-    instance.custom_attributes = {randomize(): randomize()}
     instance.download_count = randomize("int", min_val=1, max_val=1000)
     instance.file_extension = randomize()
     instance.id_ = randomize()
@@ -117,6 +118,7 @@ def create_models_content_download_response_example() -> ModelsContentDownloadRe
     instance.type_ = randomize()
     instance.updated_time = randomize()
     instance.user_id = randomize("uid")
+    instance.custom_attributes = {randomize(): randomize()}
     instance.groups = [randomize()]
     instance.like_state = create_models_like_state_example()
     instance.payload = randomize()
@@ -136,6 +138,22 @@ def create_models_content_like_response_example() -> ModelsContentLikeResponse:
     instance = ModelsContentLikeResponse()
     instance.content_id = randomize()
     instance.like_status = randomize("bool")
+    return instance
+
+
+def create_models_content_request_example() -> ModelsContentRequest:
+    instance = ModelsContentRequest()
+    instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.name = randomize()
+    instance.payload = randomize()
+    instance.preview = randomize()
+    instance.preview_metadata = create_models_preview_metadata_example()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
+    instance.update_content_file = randomize("bool")
     return instance
 
 
@@ -171,13 +189,13 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.channel_id = randomize()
     instance.created_time = randomize()
     instance.creator_name = randomize()
-    instance.custom_attributes = {randomize(): randomize()}
     instance.file_extension = randomize()
     instance.id_ = randomize()
     instance.is_hidden = randomize("bool")
     instance.is_official = randomize("bool")
     instance.name = randomize()
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.preview = randomize()
     instance.share_code = randomize()
     instance.sub_type = randomize()
@@ -186,6 +204,7 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.updated_time = randomize()
     instance.user_id = randomize("uid")
     instance.content_type = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
     instance.payload_url = randomize("url")
     instance.preview_url = randomize("url")
     return instance
@@ -205,6 +224,7 @@ def create_models_create_group_response_example() -> ModelsCreateGroupResponse:
     instance.id_ = randomize()
     instance.name = randomize()
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.user_id = randomize("uid")
     return instance
 
@@ -254,6 +274,7 @@ def create_models_create_type_response_example() -> ModelsCreateTypeResponse:
     instance = ModelsCreateTypeResponse()
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.subtype = [randomize()]
     instance.type_ = randomize()
     return instance
@@ -272,6 +293,7 @@ def create_models_creator_overview_response_example() -> ModelsCreatorOverviewRe
     instance.following_count = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.total_liked_content = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -283,6 +305,7 @@ def create_models_creator_response_example() -> ModelsCreatorResponse:
     instance.following_count = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
+    instance.parent_namespace = randomize("slug")
     instance.total_liked_content = randomize("int", min_val=1, max_val=1000)
     return instance
 

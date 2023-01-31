@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,6 +40,9 @@ class AdminCreateClientV3(Operation):
     Add a new OAuth 2.0 client. Protected by the permission: ADMIN:NAMESPACE:{namespace}:CLIENT [CREATE]
 
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
+
+    In multi tenant mode, new confidential client will have default client role assigned to it. The role will have all
+    permissions to access all APIs that's supported by game server SDK and DS uploader.
 
     action code: 10301
 

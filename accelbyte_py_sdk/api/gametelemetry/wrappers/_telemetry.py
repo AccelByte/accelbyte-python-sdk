@@ -31,7 +31,7 @@ from ....core import same_doc_as
 
 from ..models import HTTPValidationError
 
-from ..operations.operations import (
+from ..operations.telemetry import (
     GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet,
 )
 

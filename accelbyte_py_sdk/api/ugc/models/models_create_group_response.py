@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,8 @@ class ModelsCreateGroupResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        parent_namespace: (parentNamespace) REQUIRED str
+
         user_id: (userId) REQUIRED str
     """
 
@@ -52,6 +54,7 @@ class ModelsCreateGroupResponse(Model):
     id_: str  # REQUIRED
     name: str  # REQUIRED
     namespace: str  # REQUIRED
+    parent_namespace: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
@@ -76,6 +79,10 @@ class ModelsCreateGroupResponse(Model):
 
     def with_namespace(self, value: str) -> ModelsCreateGroupResponse:
         self.namespace = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ModelsCreateGroupResponse:
+        self.parent_namespace = value
         return self
 
     def with_user_id(self, value: str) -> ModelsCreateGroupResponse:
@@ -108,6 +115,10 @@ class ModelsCreateGroupResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -126,6 +137,7 @@ class ModelsCreateGroupResponse(Model):
         id_: str,
         name: str,
         namespace: str,
+        parent_namespace: str,
         user_id: str,
     ) -> ModelsCreateGroupResponse:
         instance = cls()
@@ -134,6 +146,7 @@ class ModelsCreateGroupResponse(Model):
         instance.id_ = id_
         instance.name = name
         instance.namespace = namespace
+        instance.parent_namespace = parent_namespace
         instance.user_id = user_id
         return instance
 
@@ -164,6 +177,10 @@ class ModelsCreateGroupResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -216,6 +233,7 @@ class ModelsCreateGroupResponse(Model):
             "id": "id_",
             "name": "name",
             "namespace": "namespace",
+            "parentNamespace": "parent_namespace",
             "userId": "user_id",
         }
 
@@ -227,6 +245,7 @@ class ModelsCreateGroupResponse(Model):
             "id": True,
             "name": True,
             "namespace": True,
+            "parentNamespace": True,
             "userId": True,
         }
 

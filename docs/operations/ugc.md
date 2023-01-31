@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Ugc Service Index (2.7.0)
+# AccelByte Cloud Ugc Service Index (2.8.1)
 
 
 ## Operations
@@ -169,6 +169,7 @@
 | models.ContentDownloadResponse | [ModelsContentDownloadResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_download_response.py) |
 | models.ContentLikeRequest | [ModelsContentLikeRequest](../../accelbyte_py_sdk/api/ugc/models/models_content_like_request.py) |
 | models.ContentLikeResponse | [ModelsContentLikeResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_like_response.py) |
+| models.ContentRequest | [ModelsContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_content_request.py) |
 | models.CreateContentRequest | [ModelsCreateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request.py) |
 | models.CreateContentRequestS3 | [ModelsCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request_s3.py) |
 | models.CreateContentResponse | [ModelsCreateContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_create_content_response.py) |

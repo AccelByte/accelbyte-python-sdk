@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Basic Service (2.4.1)
+# AccelByte Cloud Basic Service (2.4.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,12 +38,8 @@ class PublicGetCustomAttributesInfo(Operation):
     Get custom attributes info.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Action code : 11404
+      * Action code : 11404
       *  Returns : user custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -56,7 +52,7 @@ class PublicGetCustomAttributesInfo(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -64,8 +60,6 @@ class PublicGetCustomAttributesInfo(Operation):
 
     Responses:
         200: OK - Dict[str, Any] (Successful operation)
-
-        401: Unauthorized - ErrorEntity (20001: unauthorized)
 
         404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
     """
@@ -76,7 +70,7 @@ class PublicGetCustomAttributesInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
@@ -175,8 +169,6 @@ class PublicGetCustomAttributesInfo(Operation):
 
         200: OK - Dict[str, Any] (Successful operation)
 
-        401: Unauthorized - ErrorEntity (20001: unauthorized)
-
         404: Not Found - ErrorEntity (11440: Unable to {action}: User profile not found in namespace [{namespace}])
 
         ---: HttpResponse (Undocumented Response)
@@ -194,8 +186,6 @@ class PublicGetCustomAttributesInfo(Operation):
 
         if code == 200:
             return {str(k): v for k, v in content.items()}, None
-        if code == 401:
-            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsCreatorOverviewResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        parent_namespace: (parentNamespace) REQUIRED str
+
         total_liked_content: (totalLikedContent) REQUIRED int
     """
 
@@ -49,6 +51,7 @@ class ModelsCreatorOverviewResponse(Model):
     following_count: int  # REQUIRED
     id_: str  # REQUIRED
     namespace: str  # REQUIRED
+    parent_namespace: str  # REQUIRED
     total_liked_content: int  # REQUIRED
 
     # endregion fields
@@ -69,6 +72,10 @@ class ModelsCreatorOverviewResponse(Model):
 
     def with_namespace(self, value: str) -> ModelsCreatorOverviewResponse:
         self.namespace = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ModelsCreatorOverviewResponse:
+        self.parent_namespace = value
         return self
 
     def with_total_liked_content(self, value: int) -> ModelsCreatorOverviewResponse:
@@ -97,6 +104,10 @@ class ModelsCreatorOverviewResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "total_liked_content"):
             result["totalLikedContent"] = int(self.total_liked_content)
         elif include_empty:
@@ -114,6 +125,7 @@ class ModelsCreatorOverviewResponse(Model):
         following_count: int,
         id_: str,
         namespace: str,
+        parent_namespace: str,
         total_liked_content: int,
     ) -> ModelsCreatorOverviewResponse:
         instance = cls()
@@ -121,6 +133,7 @@ class ModelsCreatorOverviewResponse(Model):
         instance.following_count = following_count
         instance.id_ = id_
         instance.namespace = namespace
+        instance.parent_namespace = parent_namespace
         instance.total_liked_content = total_liked_content
         return instance
 
@@ -147,6 +160,10 @@ class ModelsCreatorOverviewResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "totalLikedContent" in dict_ and dict_["totalLikedContent"] is not None:
             instance.total_liked_content = int(dict_["totalLikedContent"])
         elif include_empty:
@@ -198,6 +215,7 @@ class ModelsCreatorOverviewResponse(Model):
             "followingCount": "following_count",
             "id": "id_",
             "namespace": "namespace",
+            "parentNamespace": "parent_namespace",
             "totalLikedContent": "total_liked_content",
         }
 
@@ -208,6 +226,7 @@ class ModelsCreatorOverviewResponse(Model):
             "followingCount": True,
             "id": True,
             "namespace": True,
+            "parentNamespace": True,
             "totalLikedContent": True,
         }
 

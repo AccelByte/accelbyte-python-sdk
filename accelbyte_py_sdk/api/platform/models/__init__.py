@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.21.0"
+__version__ = "4.22.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -368,6 +368,7 @@ from .key_paging_slice_result import KeyPagingSliceResult
 from .list_view_info import ListViewInfo
 from .localization import Localization
 from .loot_box_config import LootBoxConfig
+from .loot_box_config import RollFunctionEnum as LootBoxConfigRollFunctionEnum
 from .loot_box_reward import LootBoxReward
 from .loot_box_reward import TypeEnum as LootBoxRewardTypeEnum
 from .mock_iap_receipt import MockIAPReceipt

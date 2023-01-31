@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.0.1)
+# AccelByte Cloud Match Service V2 (2.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,7 +53,7 @@ class CreateMatchFunction(Operation):
 
         method: POST
 
-        tags: ["Match-Functions"]
+        tags: ["Match-Functions", "admin"]
 
         consumes: ["application/json"]
 

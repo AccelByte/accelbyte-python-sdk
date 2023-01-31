@@ -30,8 +30,10 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsGetGroupsListResponseV1
+from ..models import ModelsGetGroupsResponseV1
 from ..models import ModelsGroupResponseV1
 from ..models import ModelsPublicCreateNewGroupRequestV1
+from ..models import ModelsPublicGetGroupListRequestV2
 from ..models import ModelsUpdateGroupCustomAttributesRequestV1
 from ..models import ModelsUpdateGroupCustomRuleRequestV1
 from ..models import ModelsUpdateGroupPredefinedRuleRequestV1
@@ -39,17 +41,26 @@ from ..models import ModelsUpdateGroupRequestV1
 from ..models import ResponseErrorResponse
 
 from ..operations.group import CreateNewGroupPublicV1
+from ..operations.group import CreateNewGroupPublicV2
 from ..operations.group import DeleteGroupAdminV1
 from ..operations.group import DeleteGroupPredefinedRulePublicV1
+from ..operations.group import DeleteGroupPredefinedRulePublicV2
 from ..operations.group import DeleteGroupPublicV1
+from ..operations.group import DeleteGroupPublicV2
 from ..operations.group import GetGroupListAdminV1
 from ..operations.group import GetGroupListPublicV1
+from ..operations.group import GetListGroupByIDsV2
 from ..operations.group import GetSingleGroupAdminV1
 from ..operations.group import GetSingleGroupPublicV1
 from ..operations.group import UpdateGroupCustomAttributesPublicV1
+from ..operations.group import UpdateGroupCustomAttributesPublicV2
 from ..operations.group import UpdateGroupCustomRulePublicV1
+from ..operations.group import UpdateGroupCustomRulePublicV2
 from ..operations.group import UpdateGroupPredefinedRulePublicV1
+from ..operations.group import UpdateGroupPredefinedRulePublicV2
 from ..operations.group import UpdatePatchSingleGroupPublicV1
+from ..operations.group import UpdatePatchSingleGroupPublicV2
+from ..operations.group import UpdatePutSingleGroupPublicV2
 from ..operations.group import UpdateSingleGroupV1
 
 
@@ -83,6 +94,44 @@ async def create_new_group_public_v1_async(
         if error:
             return None, error
     request = CreateNewGroupPublicV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CreateNewGroupPublicV2)
+def create_new_group_public_v2(
+    body: ModelsPublicCreateNewGroupRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateNewGroupPublicV2.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateNewGroupPublicV2)
+async def create_new_group_public_v2_async(
+    body: ModelsPublicCreateNewGroupRequestV1,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateNewGroupPublicV2.create(
         body=body,
         namespace=namespace,
     )
@@ -171,6 +220,48 @@ async def delete_group_predefined_rule_public_v1_async(
     )
 
 
+@same_doc_as(DeleteGroupPredefinedRulePublicV2)
+def delete_group_predefined_rule_public_v2(
+    allowed_action: str,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGroupPredefinedRulePublicV2.create(
+        allowed_action=allowed_action,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteGroupPredefinedRulePublicV2)
+async def delete_group_predefined_rule_public_v2_async(
+    allowed_action: str,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGroupPredefinedRulePublicV2.create(
+        allowed_action=allowed_action,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(DeleteGroupPublicV1)
 def delete_group_public_v1(
     group_id: str,
@@ -201,6 +292,44 @@ async def delete_group_public_v1_async(
         if error:
             return None, error
     request = DeleteGroupPublicV1.create(
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteGroupPublicV2)
+def delete_group_public_v2(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGroupPublicV2.create(
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteGroupPublicV2)
+async def delete_group_public_v2_async(
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteGroupPublicV2.create(
         group_id=group_id,
         namespace=namespace,
     )
@@ -306,6 +435,44 @@ async def get_group_list_public_v1_async(
         group_region=group_region,
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetListGroupByIDsV2)
+def get_list_group_by_i_ds_v2(
+    body: ModelsPublicGetGroupListRequestV2,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetListGroupByIDsV2.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetListGroupByIDsV2)
+async def get_list_group_by_i_ds_v2_async(
+    body: ModelsPublicGetGroupListRequestV2,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetListGroupByIDsV2.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -431,6 +598,48 @@ async def update_group_custom_attributes_public_v1_async(
     )
 
 
+@same_doc_as(UpdateGroupCustomAttributesPublicV2)
+def update_group_custom_attributes_public_v2(
+    body: ModelsUpdateGroupCustomAttributesRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupCustomAttributesPublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateGroupCustomAttributesPublicV2)
+async def update_group_custom_attributes_public_v2_async(
+    body: ModelsUpdateGroupCustomAttributesRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupCustomAttributesPublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdateGroupCustomRulePublicV1)
 def update_group_custom_rule_public_v1(
     body: ModelsUpdateGroupCustomRuleRequestV1,
@@ -464,6 +673,48 @@ async def update_group_custom_rule_public_v1_async(
         if error:
             return None, error
     request = UpdateGroupCustomRulePublicV1.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateGroupCustomRulePublicV2)
+def update_group_custom_rule_public_v2(
+    body: ModelsUpdateGroupCustomRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupCustomRulePublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateGroupCustomRulePublicV2)
+async def update_group_custom_rule_public_v2_async(
+    body: ModelsUpdateGroupCustomRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupCustomRulePublicV2.create(
         body=body,
         group_id=group_id,
         namespace=namespace,
@@ -519,6 +770,52 @@ async def update_group_predefined_rule_public_v1_async(
     )
 
 
+@same_doc_as(UpdateGroupPredefinedRulePublicV2)
+def update_group_predefined_rule_public_v2(
+    allowed_action: str,
+    body: ModelsUpdateGroupPredefinedRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupPredefinedRulePublicV2.create(
+        allowed_action=allowed_action,
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateGroupPredefinedRulePublicV2)
+async def update_group_predefined_rule_public_v2_async(
+    allowed_action: str,
+    body: ModelsUpdateGroupPredefinedRuleRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateGroupPredefinedRulePublicV2.create(
+        allowed_action=allowed_action,
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdatePatchSingleGroupPublicV1)
 def update_patch_single_group_public_v1(
     body: ModelsUpdateGroupRequestV1,
@@ -552,6 +849,90 @@ async def update_patch_single_group_public_v1_async(
         if error:
             return None, error
     request = UpdatePatchSingleGroupPublicV1.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdatePatchSingleGroupPublicV2)
+def update_patch_single_group_public_v2(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePatchSingleGroupPublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdatePatchSingleGroupPublicV2)
+async def update_patch_single_group_public_v2_async(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePatchSingleGroupPublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdatePutSingleGroupPublicV2)
+def update_put_single_group_public_v2(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePutSingleGroupPublicV2.create(
+        body=body,
+        group_id=group_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdatePutSingleGroupPublicV2)
+async def update_put_single_group_public_v2_async(
+    body: ModelsUpdateGroupRequestV1,
+    group_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePutSingleGroupPublicV2.create(
         body=body,
         group_id=group_id,
         namespace=namespace,

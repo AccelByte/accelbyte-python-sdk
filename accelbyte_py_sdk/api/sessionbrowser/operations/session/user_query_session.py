@@ -33,8 +33,8 @@ from ...models import ModelsSessionQueryResponse
 from ...models import ResponseError
 
 
-class QuerySession(Operation):
-    """Query to available game session (QuerySession)
+class UserQuerySession(Operation):
+    """Query to available game session (UserQuerySession)
 
     Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
 
@@ -192,47 +192,47 @@ class QuerySession(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> QuerySession:
+    def with_namespace(self, value: str) -> UserQuerySession:
         self.namespace = value
         return self
 
-    def with_game_mode(self, value: str) -> QuerySession:
+    def with_game_mode(self, value: str) -> UserQuerySession:
         self.game_mode = value
         return self
 
-    def with_game_version(self, value: str) -> QuerySession:
+    def with_game_version(self, value: str) -> UserQuerySession:
         self.game_version = value
         return self
 
-    def with_joinable(self, value: str) -> QuerySession:
+    def with_joinable(self, value: str) -> UserQuerySession:
         self.joinable = value
         return self
 
-    def with_limit(self, value: int) -> QuerySession:
+    def with_limit(self, value: int) -> UserQuerySession:
         self.limit = value
         return self
 
-    def with_match_exist(self, value: str) -> QuerySession:
+    def with_match_exist(self, value: str) -> UserQuerySession:
         self.match_exist = value
         return self
 
-    def with_match_id(self, value: str) -> QuerySession:
+    def with_match_id(self, value: str) -> UserQuerySession:
         self.match_id = value
         return self
 
-    def with_offset(self, value: int) -> QuerySession:
+    def with_offset(self, value: int) -> UserQuerySession:
         self.offset = value
         return self
 
-    def with_server_status(self, value: str) -> QuerySession:
+    def with_server_status(self, value: str) -> UserQuerySession:
         self.server_status = value
         return self
 
-    def with_user_id(self, value: str) -> QuerySession:
+    def with_user_id(self, value: str) -> UserQuerySession:
         self.user_id = value
         return self
 
-    def with_session_type(self, value: str) -> QuerySession:
+    def with_session_type(self, value: str) -> UserQuerySession:
         self.session_type = value
         return self
 
@@ -349,7 +349,7 @@ class QuerySession(Operation):
         offset: Optional[int] = None,
         server_status: Optional[str] = None,
         user_id: Optional[str] = None,
-    ) -> QuerySession:
+    ) -> UserQuerySession:
         instance = cls()
         instance.namespace = namespace
         instance.session_type = session_type
@@ -374,7 +374,9 @@ class QuerySession(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QuerySession:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> UserQuerySession:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])

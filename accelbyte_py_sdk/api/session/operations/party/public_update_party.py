@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.4.0)
+# AccelByte Cloud Session Service (2.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,8 +38,11 @@ class PublicUpdateParty(Operation):
     """Update a party. Requires NAMESPACE:{namespace}:SESSION:PARTY [UPDATE] (publicUpdateParty)
 
     Updates party blob, this endpoint will override stored party data.
-    To update only specified fields, please use `PATCH /session/v1/public/namespaces/{namespace}/parties/{partyId}` endpoint.
-    Note: Join type can only be updated by the party's leader.
+
+    Join type can only be updated by the party's leader.
+    To update only specified fields, please use following endpoint:
+    method : PATCH
+    API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

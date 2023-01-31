@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,6 +36,8 @@ class ModelsCreateTypeResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        parent_namespace: (parentNamespace) REQUIRED str
+
         subtype: (subtype) REQUIRED List[str]
 
         type_: (type) REQUIRED str
@@ -45,6 +47,7 @@ class ModelsCreateTypeResponse(Model):
 
     id_: str  # REQUIRED
     namespace: str  # REQUIRED
+    parent_namespace: str  # REQUIRED
     subtype: List[str]  # REQUIRED
     type_: str  # REQUIRED
 
@@ -58,6 +61,10 @@ class ModelsCreateTypeResponse(Model):
 
     def with_namespace(self, value: str) -> ModelsCreateTypeResponse:
         self.namespace = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ModelsCreateTypeResponse:
+        self.parent_namespace = value
         return self
 
     def with_subtype(self, value: List[str]) -> ModelsCreateTypeResponse:
@@ -82,6 +89,10 @@ class ModelsCreateTypeResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         if hasattr(self, "subtype"):
             result["subtype"] = [str(i0) for i0 in self.subtype]
         elif include_empty:
@@ -101,12 +112,14 @@ class ModelsCreateTypeResponse(Model):
         cls,
         id_: str,
         namespace: str,
+        parent_namespace: str,
         subtype: List[str],
         type_: str,
     ) -> ModelsCreateTypeResponse:
         instance = cls()
         instance.id_ = id_
         instance.namespace = namespace
+        instance.parent_namespace = parent_namespace
         instance.subtype = subtype
         instance.type_ = type_
         return instance
@@ -126,6 +139,10 @@ class ModelsCreateTypeResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         if "subtype" in dict_ and dict_["subtype"] is not None:
             instance.subtype = [str(i0) for i0 in dict_["subtype"]]
         elif include_empty:
@@ -179,6 +196,7 @@ class ModelsCreateTypeResponse(Model):
         return {
             "id": "id_",
             "namespace": "namespace",
+            "parentNamespace": "parent_namespace",
             "subtype": "subtype",
             "type": "type_",
         }
@@ -188,6 +206,7 @@ class ModelsCreateTypeResponse(Model):
         return {
             "id": True,
             "namespace": True,
+            "parentNamespace": True,
             "subtype": True,
             "type": True,
         }

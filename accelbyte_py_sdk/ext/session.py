@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Session Service (2.4.0)
+# AccelByte Cloud Session Service (2.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,6 +37,8 @@ from ..api.session.models import ApimodelsKickResponse
 from ..api.session.models import ApimodelsPagination
 from ..api.session.models import ApimodelsPartyQueryResponse
 from ..api.session.models import ApimodelsPartySessionResponse
+from ..api.session.models import ApimodelsPlayerAttributesRequestBody
+from ..api.session.models import ApimodelsPlayerAttributesResponseBody
 from ..api.session.models import ApimodelsPromoteLeaderRequest
 from ..api.session.models import ApimodelsPublicConfiguration
 from ..api.session.models import ApimodelsRequestMember
@@ -49,6 +51,7 @@ from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ModelsGameServer
 from ..api.session.models import ModelsPartyMembers
 from ..api.session.models import ModelsTeam
+from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
 
 
@@ -220,6 +223,23 @@ def create_apimodels_party_session_response_example() -> ApimodelsPartySessionRe
     return instance
 
 
+def create_apimodels_player_attributes_request_body_example() -> ApimodelsPlayerAttributesRequestBody:
+    instance = ApimodelsPlayerAttributesRequestBody()
+    instance.crossplay_enabled = randomize("bool")
+    instance.data = {randomize(): randomize()}
+    instance.platforms = [create_models_user_platform_info_example()]
+    return instance
+
+
+def create_apimodels_player_attributes_response_body_example() -> ApimodelsPlayerAttributesResponseBody:
+    instance = ApimodelsPlayerAttributesResponseBody()
+    instance.crossplay_enabled = randomize("bool")
+    instance.data = {randomize(): randomize()}
+    instance.platforms = [create_models_user_platform_info_example()]
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_apimodels_promote_leader_request_example() -> ApimodelsPromoteLeaderRequest:
     instance = ApimodelsPromoteLeaderRequest()
     instance.leader_id = randomize()
@@ -356,6 +376,13 @@ def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
     instance.parties = [create_models_party_members_example()]
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_models_user_platform_info_example() -> ModelsUserPlatformInfo:
+    instance = ModelsUserPlatformInfo()
+    instance.name = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 

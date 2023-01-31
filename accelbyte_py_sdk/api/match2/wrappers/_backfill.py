@@ -32,10 +32,15 @@ from ....core import same_doc_as
 from ..models import ApiBackFillAcceptRequest
 from ..models import ApiBackFillCreateRequest
 from ..models import ApiBackFillRejectRequest
+from ..models import ApiBackfillGetResponse
+from ..models import ApiBackfillProposalResponse
 from ..models import ResponseError
 
 from ..operations.backfill import AcceptBackfill
 from ..operations.backfill import CreateBackfill
+from ..operations.backfill import DeleteBackfill
+from ..operations.backfill import GetBackfill
+from ..operations.backfill import GetBackfillProposal
 from ..operations.backfill import RejectBackfill
 
 
@@ -112,6 +117,120 @@ async def create_backfill_async(
             return None, error
     request = CreateBackfill.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteBackfill)
+def delete_backfill(
+    backfill_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteBackfill.create(
+        backfill_id=backfill_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteBackfill)
+async def delete_backfill_async(
+    backfill_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteBackfill.create(
+        backfill_id=backfill_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetBackfill)
+def get_backfill(
+    backfill_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBackfill.create(
+        backfill_id=backfill_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetBackfill)
+async def get_backfill_async(
+    backfill_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBackfill.create(
+        backfill_id=backfill_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetBackfillProposal)
+def get_backfill_proposal(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBackfillProposal.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetBackfillProposal)
+async def get_backfill_proposal_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetBackfillProposal.create(
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(

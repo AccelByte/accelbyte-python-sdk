@@ -65,10 +65,10 @@ from ..operations.session import GetSessionByUserIDs
 from ..operations.session import GetSessionHistoryDetailed
 from ..operations.session import GetTotalActiveSession
 from ..operations.session import JoinSession
-from ..operations.session import QuerySession
 from ..operations.session import RemovePlayerFromSession
 from ..operations.session import UpdateSession
 from ..operations.session import UpdateSettings
+from ..operations.session import UserQuerySession
 
 
 @same_doc_as(AddPlayerToSession)
@@ -271,6 +271,8 @@ def admin_search_sessions_v2(
     deleted: Optional[bool] = None,
     match_id: Optional[str] = None,
     party_id: Optional[str] = None,
+    session_type: Optional[str] = None,
+    status: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -287,6 +289,8 @@ def admin_search_sessions_v2(
         deleted=deleted,
         match_id=match_id,
         party_id=party_id,
+        session_type=session_type,
+        status=status,
         user_id=user_id,
         namespace=namespace,
     )
@@ -301,6 +305,8 @@ async def admin_search_sessions_v2_async(
     deleted: Optional[bool] = None,
     match_id: Optional[str] = None,
     party_id: Optional[str] = None,
+    session_type: Optional[str] = None,
+    status: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -317,6 +323,8 @@ async def admin_search_sessions_v2_async(
         deleted=deleted,
         match_id=match_id,
         party_id=party_id,
+        session_type=session_type,
+        status=status,
         user_id=user_id,
         namespace=namespace,
     )
@@ -775,80 +783,6 @@ async def join_session_async(
     )
 
 
-@same_doc_as(QuerySession)
-def query_session(
-    session_type: str,
-    game_mode: Optional[str] = None,
-    game_version: Optional[str] = None,
-    joinable: Optional[str] = None,
-    limit: Optional[int] = None,
-    match_exist: Optional[str] = None,
-    match_id: Optional[str] = None,
-    offset: Optional[int] = None,
-    server_status: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = QuerySession.create(
-        session_type=session_type,
-        game_mode=game_mode,
-        game_version=game_version,
-        joinable=joinable,
-        limit=limit,
-        match_exist=match_exist,
-        match_id=match_id,
-        offset=offset,
-        server_status=server_status,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(QuerySession)
-async def query_session_async(
-    session_type: str,
-    game_mode: Optional[str] = None,
-    game_version: Optional[str] = None,
-    joinable: Optional[str] = None,
-    limit: Optional[int] = None,
-    match_exist: Optional[str] = None,
-    match_id: Optional[str] = None,
-    offset: Optional[int] = None,
-    server_status: Optional[str] = None,
-    user_id: Optional[str] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = QuerySession.create(
-        session_type=session_type,
-        game_mode=game_mode,
-        game_version=game_version,
-        joinable=joinable,
-        limit=limit,
-        match_exist=match_exist,
-        match_id=match_id,
-        offset=offset,
-        server_status=server_status,
-        user_id=user_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(RemovePlayerFromSession)
 def remove_player_from_session(
     session_id: str,
@@ -968,6 +902,80 @@ async def update_settings_async(
     request = UpdateSettings.create(
         body=body,
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UserQuerySession)
+def user_query_session(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UserQuerySession.create(
+        session_type=session_type,
+        game_mode=game_mode,
+        game_version=game_version,
+        joinable=joinable,
+        limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UserQuerySession)
+async def user_query_session_async(
+    session_type: str,
+    game_mode: Optional[str] = None,
+    game_version: Optional[str] = None,
+    joinable: Optional[str] = None,
+    limit: Optional[int] = None,
+    match_exist: Optional[str] = None,
+    match_id: Optional[str] = None,
+    offset: Optional[int] = None,
+    server_status: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UserQuerySession.create(
+        session_type=session_type,
+        game_mode=game_mode,
+        game_version=game_version,
+        joinable=joinable,
+        limit=limit,
+        match_exist=match_exist,
+        match_id=match_id,
+        offset=offset,
+        server_status=server_status,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

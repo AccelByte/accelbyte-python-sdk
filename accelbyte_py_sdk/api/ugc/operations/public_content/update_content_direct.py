@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,7 +40,7 @@ class UpdateContentDirect(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
-    All request body are required except preview and tags.
+    All request body are required except preview, tags and customAttributes.
 
     Required Permission(s):
         - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]

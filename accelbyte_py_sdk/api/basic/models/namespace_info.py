@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Basic Service (2.4.1)
+# AccelByte Cloud Basic Service (2.4.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class NamespaceInfo(Model):
     """Namespace info (NamespaceInfo)
 
     Properties:
+        client_id: (clientId) OPTIONAL str
+
         created_at: (createdAt) OPTIONAL str
 
         display_name: (displayName) OPTIONAL str
@@ -54,6 +56,7 @@ class NamespaceInfo(Model):
 
     # region fields
 
+    client_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
     display_name: str  # OPTIONAL
     namespace: str  # OPTIONAL
@@ -64,6 +67,10 @@ class NamespaceInfo(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_client_id(self, value: str) -> NamespaceInfo:
+        self.client_id = value
+        return self
 
     def with_created_at(self, value: str) -> NamespaceInfo:
         self.created_at = value
@@ -95,6 +102,10 @@ class NamespaceInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "client_id"):
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -128,6 +139,7 @@ class NamespaceInfo(Model):
     @classmethod
     def create(
         cls,
+        client_id: Optional[str] = None,
         created_at: Optional[str] = None,
         display_name: Optional[str] = None,
         namespace: Optional[str] = None,
@@ -136,6 +148,8 @@ class NamespaceInfo(Model):
         updated_at: Optional[str] = None,
     ) -> NamespaceInfo:
         instance = cls()
+        if client_id is not None:
+            instance.client_id = client_id
         if created_at is not None:
             instance.created_at = created_at
         if display_name is not None:
@@ -157,6 +171,10 @@ class NamespaceInfo(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -220,6 +238,7 @@ class NamespaceInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "clientId": "client_id",
             "createdAt": "created_at",
             "displayName": "display_name",
             "namespace": "namespace",
@@ -231,6 +250,7 @@ class NamespaceInfo(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "clientId": False,
             "createdAt": False,
             "displayName": False,
             "namespace": False,

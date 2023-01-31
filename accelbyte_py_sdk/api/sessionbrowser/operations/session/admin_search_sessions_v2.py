@@ -73,6 +73,10 @@ class AdminSearchSessionsV2(Operation):
 
         party_id: (partyID) OPTIONAL str in query
 
+        session_type: (sessionType) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
         user_id: (userID) OPTIONAL str in query
 
         limit: (limit) REQUIRED int in query
@@ -105,6 +109,8 @@ class AdminSearchSessionsV2(Operation):
     deleted: bool  # OPTIONAL in [query]
     match_id: str  # OPTIONAL in [query]
     party_id: str  # OPTIONAL in [query]
+    session_type: str  # OPTIONAL in [query]
+    status: str  # OPTIONAL in [query]
     user_id: str  # OPTIONAL in [query]
     limit: int  # REQUIRED in [query]
     offset: int  # REQUIRED in [query]
@@ -167,6 +173,10 @@ class AdminSearchSessionsV2(Operation):
             result["matchID"] = self.match_id
         if hasattr(self, "party_id"):
             result["partyID"] = self.party_id
+        if hasattr(self, "session_type"):
+            result["sessionType"] = self.session_type
+        if hasattr(self, "status"):
+            result["status"] = self.status
         if hasattr(self, "user_id"):
             result["userID"] = self.user_id
         if hasattr(self, "limit"):
@@ -201,6 +211,14 @@ class AdminSearchSessionsV2(Operation):
 
     def with_party_id(self, value: str) -> AdminSearchSessionsV2:
         self.party_id = value
+        return self
+
+    def with_session_type(self, value: str) -> AdminSearchSessionsV2:
+        self.session_type = value
+        return self
+
+    def with_status(self, value: str) -> AdminSearchSessionsV2:
+        self.status = value
         return self
 
     def with_user_id(self, value: str) -> AdminSearchSessionsV2:
@@ -241,6 +259,14 @@ class AdminSearchSessionsV2(Operation):
             result["partyID"] = str(self.party_id)
         elif include_empty:
             result["partyID"] = ""
+        if hasattr(self, "session_type") and self.session_type:
+            result["sessionType"] = str(self.session_type)
+        elif include_empty:
+            result["sessionType"] = ""
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -323,6 +349,8 @@ class AdminSearchSessionsV2(Operation):
         deleted: Optional[bool] = None,
         match_id: Optional[str] = None,
         party_id: Optional[str] = None,
+        session_type: Optional[str] = None,
+        status: Optional[str] = None,
         user_id: Optional[str] = None,
     ) -> AdminSearchSessionsV2:
         instance = cls()
@@ -337,6 +365,10 @@ class AdminSearchSessionsV2(Operation):
             instance.match_id = match_id
         if party_id is not None:
             instance.party_id = party_id
+        if session_type is not None:
+            instance.session_type = session_type
+        if status is not None:
+            instance.status = status
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -366,6 +398,14 @@ class AdminSearchSessionsV2(Operation):
             instance.party_id = str(dict_["partyID"])
         elif include_empty:
             instance.party_id = ""
+        if "sessionType" in dict_ and dict_["sessionType"] is not None:
+            instance.session_type = str(dict_["sessionType"])
+        elif include_empty:
+            instance.session_type = ""
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -388,6 +428,8 @@ class AdminSearchSessionsV2(Operation):
             "deleted": "deleted",
             "matchID": "match_id",
             "partyID": "party_id",
+            "sessionType": "session_type",
+            "status": "status",
             "userID": "user_id",
             "limit": "limit",
             "offset": "offset",
@@ -401,6 +443,8 @@ class AdminSearchSessionsV2(Operation):
             "deleted": False,
             "matchID": False,
             "partyID": False,
+            "sessionType": False,
+            "status": False,
             "userID": False,
             "limit": True,
             "offset": True,

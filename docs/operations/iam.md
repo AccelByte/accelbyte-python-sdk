@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Iam Service Index (5.25.4)
+# AccelByte Cloud Iam Service Index (5.26.1)
 
 
 ## Operations
@@ -663,6 +663,7 @@
 | oauthmodel.TokenResponseV3 | [OauthmodelTokenResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response_v3.py) |
 | oauthmodel.TokenThirdPartyResponse | [OauthmodelTokenThirdPartyResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_third_party_response.py) |
 | oauthmodel.TokenWithDeviceCookieResponseV3 | [OauthmodelTokenWithDeviceCookieResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_with_device_cookie_response_v3.py) |
+| oauthmodel.UserBan | [OauthmodelUserBan](../../accelbyte_py_sdk/api/iam/models/oauthmodel_user_ban.py) |
 | rest.ErrorResponse | [RestErrorResponse](../../accelbyte_py_sdk/api/iam/models/rest_error_response.py) |
 | rest.ErrorResponseWithConflictedUserPlatformAccounts | [RestErrorResponseWithConflictedUserPlatformAccounts](../../accelbyte_py_sdk/api/iam/models/rest_error_response_with_conflicted_user_platform_accounts.py) |
 | .validation | [Validation](../../accelbyte_py_sdk/api/iam/models/validation.py) |

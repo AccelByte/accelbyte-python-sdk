@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,8 @@ class ModelsChannelResponse(Model):
         namespace: (namespace) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        parent_namespace: (parentNamespace) OPTIONAL str
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelsChannelResponse(Model):
     name: str  # REQUIRED
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
+    parent_namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelsChannelResponse(Model):
 
     def with_user_id(self, value: str) -> ModelsChannelResponse:
         self.user_id = value
+        return self
+
+    def with_parent_namespace(self, value: str) -> ModelsChannelResponse:
+        self.parent_namespace = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ModelsChannelResponse(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "parent_namespace"):
+            result["parentNamespace"] = str(self.parent_namespace)
+        elif include_empty:
+            result["parentNamespace"] = ""
         return result
 
     # endregion to methods
@@ -103,12 +114,15 @@ class ModelsChannelResponse(Model):
         name: str,
         namespace: str,
         user_id: str,
+        parent_namespace: Optional[str] = None,
     ) -> ModelsChannelResponse:
         instance = cls()
         instance.id_ = id_
         instance.name = name
         instance.namespace = namespace
         instance.user_id = user_id
+        if parent_namespace is not None:
+            instance.parent_namespace = parent_namespace
         return instance
 
     @classmethod
@@ -134,6 +148,10 @@ class ModelsChannelResponse(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
+            instance.parent_namespace = str(dict_["parentNamespace"])
+        elif include_empty:
+            instance.parent_namespace = ""
         return instance
 
     @classmethod
@@ -181,6 +199,7 @@ class ModelsChannelResponse(Model):
             "name": "name",
             "namespace": "namespace",
             "userId": "user_id",
+            "parentNamespace": "parent_namespace",
         }
 
     @staticmethod
@@ -190,6 +209,7 @@ class ModelsChannelResponse(Model):
             "name": True,
             "namespace": True,
             "userId": True,
+            "parentNamespace": False,
         }
 
     # endregion static methods

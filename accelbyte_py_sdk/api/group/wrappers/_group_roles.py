@@ -31,25 +31,26 @@ from ....core import same_doc_as
 
 from ..models import ModelsAssignRoleToMemberRequestV1
 from ..models import ModelsCreateMemberRoleRequestV1
-from ..models import ModelsCreateMemberRoleResponseV1
-from ..models import ModelsGetMemberRoleResponseV1
 from ..models import ModelsGetMemberRolesListResponseV1
 from ..models import ModelsGetUserGroupInformationResponseV1
+from ..models import ModelsMemberRoleResponseV1
 from ..models import ModelsRemoveRoleFromMemberRequestV1
 from ..models import ModelsUpdateMemberRolePermissionsRequestV1
 from ..models import ModelsUpdateMemberRoleRequestV1
-from ..models import ModelsUpdateMemberRoleResponseV1
 from ..models import ResponseErrorResponse
 
 from ..operations.group_roles import CreateMemberRoleAdminV1
 from ..operations.group_roles import DeleteMemberRoleAdminV1
 from ..operations.group_roles import DeleteMemberRolePublicV1
+from ..operations.group_roles import DeleteMemberRolePublicV2
 from ..operations.group_roles import GetMemberRolesListAdminV1
 from ..operations.group_roles import GetMemberRolesListPublicV1
+from ..operations.group_roles import GetMemberRolesListPublicV2
 from ..operations.group_roles import GetSingleMemberRoleAdminV1
 from ..operations.group_roles import UpdateMemberRoleAdminV1
 from ..operations.group_roles import UpdateMemberRolePermissionAdminV1
 from ..operations.group_roles import UpdateMemberRolePublicV1
+from ..operations.group_roles import UpdateMemberRolePublicV2
 
 
 @same_doc_as(CreateMemberRoleAdminV1)
@@ -170,6 +171,52 @@ async def delete_member_role_public_v1_async(
     )
 
 
+@same_doc_as(DeleteMemberRolePublicV2)
+def delete_member_role_public_v2(
+    body: ModelsRemoveRoleFromMemberRequestV1,
+    group_id: str,
+    member_role_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteMemberRolePublicV2.create(
+        body=body,
+        group_id=group_id,
+        member_role_id=member_role_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteMemberRolePublicV2)
+async def delete_member_role_public_v2_async(
+    body: ModelsRemoveRoleFromMemberRequestV1,
+    group_id: str,
+    member_role_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteMemberRolePublicV2.create(
+        body=body,
+        group_id=group_id,
+        member_role_id=member_role_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetMemberRolesListAdminV1)
 def get_member_roles_list_admin_v1(
     limit: Optional[int] = None,
@@ -245,6 +292,48 @@ async def get_member_roles_list_public_v1_async(
         if error:
             return None, error
     request = GetMemberRolesListPublicV1.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMemberRolesListPublicV2)
+def get_member_roles_list_public_v2(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMemberRolesListPublicV2.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMemberRolesListPublicV2)
+async def get_member_roles_list_public_v2_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMemberRolesListPublicV2.create(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -410,6 +499,52 @@ async def update_member_role_public_v1_async(
             return None, error
     request = UpdateMemberRolePublicV1.create(
         body=body,
+        member_role_id=member_role_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateMemberRolePublicV2)
+def update_member_role_public_v2(
+    body: ModelsAssignRoleToMemberRequestV1,
+    group_id: str,
+    member_role_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMemberRolePublicV2.create(
+        body=body,
+        group_id=group_id,
+        member_role_id=member_role_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateMemberRolePublicV2)
+async def update_member_role_public_v2_async(
+    body: ModelsAssignRoleToMemberRequestV1,
+    group_id: str,
+    member_role_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateMemberRolePublicV2.create(
+        body=body,
+        group_id=group_id,
         member_role_id=member_role_id,
         namespace=namespace,
     )

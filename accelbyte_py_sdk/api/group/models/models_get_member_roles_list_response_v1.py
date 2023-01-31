@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_get_member_role_response_v1 import ModelsGetMemberRoleResponseV1
+from ..models.models_member_role_response_v1 import ModelsMemberRoleResponseV1
 from ..models.models_pagination import ModelsPagination
 
 
@@ -35,14 +35,14 @@ class ModelsGetMemberRolesListResponseV1(Model):
     """Models get member roles list response V1 (models.GetMemberRolesListResponseV1)
 
     Properties:
-        data: (data) REQUIRED List[ModelsGetMemberRoleResponseV1]
+        data: (data) REQUIRED List[ModelsMemberRoleResponseV1]
 
         paging: (paging) REQUIRED ModelsPagination
     """
 
     # region fields
 
-    data: List[ModelsGetMemberRoleResponseV1]  # REQUIRED
+    data: List[ModelsMemberRoleResponseV1]  # REQUIRED
     paging: ModelsPagination  # REQUIRED
 
     # endregion fields
@@ -50,7 +50,7 @@ class ModelsGetMemberRolesListResponseV1(Model):
     # region with_x methods
 
     def with_data(
-        self, value: List[ModelsGetMemberRoleResponseV1]
+        self, value: List[ModelsMemberRoleResponseV1]
     ) -> ModelsGetMemberRolesListResponseV1:
         self.data = value
         return self
@@ -86,7 +86,7 @@ class ModelsGetMemberRolesListResponseV1(Model):
     @classmethod
     def create(
         cls,
-        data: List[ModelsGetMemberRoleResponseV1],
+        data: List[ModelsMemberRoleResponseV1],
         paging: ModelsPagination,
     ) -> ModelsGetMemberRolesListResponseV1:
         instance = cls()
@@ -103,7 +103,7 @@ class ModelsGetMemberRolesListResponseV1(Model):
             return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [
-                ModelsGetMemberRoleResponseV1.create_from_dict(
+                ModelsMemberRoleResponseV1.create_from_dict(
                     i0, include_empty=include_empty
                 )
                 for i0 in dict_["data"]

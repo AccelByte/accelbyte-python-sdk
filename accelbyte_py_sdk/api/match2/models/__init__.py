@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,9 +17,12 @@ __email__ = "dev@accelbyte.net"
 from .api_back_fill_accept_request import ApiBackFillAcceptRequest
 from .api_back_fill_create_request import ApiBackFillCreateRequest
 from .api_back_fill_reject_request import ApiBackFillRejectRequest
+from .api_backfill_get_response import ApiBackfillGetResponse
+from .api_backfill_proposal_response import ApiBackfillProposalResponse
 from .api_list_match_functions_response import ApiListMatchFunctionsResponse
 from .api_list_match_pools_response import ApiListMatchPoolsResponse
 from .api_list_rule_sets_response import ApiListRuleSetsResponse
+from .api_match import ApiMatch
 from .api_match_function_config import ApiMatchFunctionConfig
 from .api_match_function_override import ApiMatchFunctionOverride
 from .api_match_function_request import ApiMatchFunctionRequest
@@ -31,5 +34,10 @@ from .api_match_rule_set_name_data import ApiMatchRuleSetNameData
 from .api_match_ticket_request import ApiMatchTicketRequest
 from .api_match_ticket_response import ApiMatchTicketResponse
 from .api_match_ticket_status import ApiMatchTicketStatus
+from .api_party import ApiParty
+from .api_player_data import ApiPlayerData
+from .api_proposed_proposal import ApiProposedProposal
+from .api_team import ApiTeam
+from .api_ticket import ApiTicket
 from .models_pagination import ModelsPagination
 from .response_error import ResponseError

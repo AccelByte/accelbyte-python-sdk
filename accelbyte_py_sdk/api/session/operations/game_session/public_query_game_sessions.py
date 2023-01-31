@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.4.0)
+# AccelByte Cloud Session Service (2.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,22 +37,13 @@ class PublicQueryGameSessions(Operation):
     """Query game sessions (publicQueryGameSessions)
 
     Query game sessions.
+
     By default, API will return a list of available game sessions (joinability: open).
     Session service has several DSInformation status to track DS request to DSMC:
-
-
-
-
-      * NEED_TO_REQUEST : number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
-
-
-      * REQUESTED : DS is being requested to DSMC.
-
-
-      * AVAILABLE : DS is ready to use. The DSMC status for this DS is either READY/BUSY.
-
-
-      * FAILED_TO_REQUEST : DSMC fails to create the DS.
+    - NEED_TO_REQUEST: number of active players hasn't reached session's minPlayers therefore DS has not yet requested.
+    - REQUESTED: DS is being requested to DSMC.
+    - AVAILABLE: DS is ready to use. The DSMC status for this DS is either READY/BUSY.
+    - FAILED_TO_REQUEST: DSMC fails to create the DS.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions

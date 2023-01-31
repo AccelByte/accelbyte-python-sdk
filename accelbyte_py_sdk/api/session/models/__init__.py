@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Session Service."""
 
-__version__ = "2.4.0"
+__version__ = "2.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -33,6 +33,12 @@ from .apimodels_kick_response import ApimodelsKickResponse
 from .apimodels_pagination import ApimodelsPagination
 from .apimodels_party_query_response import ApimodelsPartyQueryResponse
 from .apimodels_party_session_response import ApimodelsPartySessionResponse
+from .apimodels_player_attributes_request_body import (
+    ApimodelsPlayerAttributesRequestBody,
+)
+from .apimodels_player_attributes_response_body import (
+    ApimodelsPlayerAttributesResponseBody,
+)
 from .apimodels_promote_leader_request import ApimodelsPromoteLeaderRequest
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
 from .apimodels_request_member import ApimodelsRequestMember
@@ -49,4 +55,5 @@ from .apimodels_user_response import ApimodelsUserResponse
 from .models_game_server import ModelsGameServer
 from .models_party_members import ModelsPartyMembers
 from .models_team import ModelsTeam
+from .models_user_platform_info import ModelsUserPlatformInfo
 from .response_error import ResponseError

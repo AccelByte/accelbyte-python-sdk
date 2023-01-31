@@ -31,6 +31,7 @@ from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsContentDownloadResponse
+from ..models import ModelsContentRequest
 from ..models import ModelsCreateContentRequest
 from ..models import ModelsCreateContentRequestS3
 from ..models import ModelsCreateContentResponse
@@ -658,7 +659,7 @@ async def update_content_direct_async(
 
 @same_doc_as(UpdateContentS3)
 def update_content_s3(
-    body: ModelsCreateContentRequestS3,
+    body: ModelsContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,
@@ -682,7 +683,7 @@ def update_content_s3(
 
 @same_doc_as(UpdateContentS3)
 async def update_content_s3_async(
-    body: ModelsCreateContentRequestS3,
+    body: ModelsContentRequest,
     channel_id: str,
     content_id: str,
     user_id: str,

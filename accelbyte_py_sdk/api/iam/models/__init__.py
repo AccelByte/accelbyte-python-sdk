@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Iam Service."""
 
-__version__ = "5.25.4"
+__version__ = "5.26.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -354,6 +354,7 @@ from .oauthmodel_token_third_party_response import OauthmodelTokenThirdPartyResp
 from .oauthmodel_token_with_device_cookie_response_v3 import (
     OauthmodelTokenWithDeviceCookieResponseV3,
 )
+from .oauthmodel_user_ban import OauthmodelUserBan
 from .rest_error_response import RestErrorResponse
 from .rest_error_response_with_conflicted_user_platform_accounts import (
     RestErrorResponseWithConflictedUserPlatformAccounts,

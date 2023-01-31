@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.0.1)
+# AccelByte Cloud Match Service V2 (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,10 @@ class ApiMatchPoolConfig(Model):
     """Api match pool config (api.MatchPoolConfig)
 
     Properties:
+        auto_accept_backfill_proposal: (auto_accept_backfill_proposal) REQUIRED bool
+
+        backfill_proposal_expiration_seconds: (backfill_proposal_expiration_seconds) REQUIRED int
+
         backfill_ticket_expiration_seconds: (backfill_ticket_expiration_seconds) REQUIRED int
 
         match_function: (match_function) REQUIRED str
@@ -49,6 +53,8 @@ class ApiMatchPoolConfig(Model):
 
     # region fields
 
+    auto_accept_backfill_proposal: bool  # REQUIRED
+    backfill_proposal_expiration_seconds: int  # REQUIRED
     backfill_ticket_expiration_seconds: int  # REQUIRED
     match_function: str  # REQUIRED
     match_function_override: ApiMatchFunctionOverride  # REQUIRED
@@ -59,6 +65,16 @@ class ApiMatchPoolConfig(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_auto_accept_backfill_proposal(self, value: bool) -> ApiMatchPoolConfig:
+        self.auto_accept_backfill_proposal = value
+        return self
+
+    def with_backfill_proposal_expiration_seconds(
+        self, value: int
+    ) -> ApiMatchPoolConfig:
+        self.backfill_proposal_expiration_seconds = value
+        return self
 
     def with_backfill_ticket_expiration_seconds(self, value: int) -> ApiMatchPoolConfig:
         self.backfill_ticket_expiration_seconds = value
@@ -92,6 +108,18 @@ class ApiMatchPoolConfig(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "auto_accept_backfill_proposal"):
+            result["auto_accept_backfill_proposal"] = bool(
+                self.auto_accept_backfill_proposal
+            )
+        elif include_empty:
+            result["auto_accept_backfill_proposal"] = False
+        if hasattr(self, "backfill_proposal_expiration_seconds"):
+            result["backfill_proposal_expiration_seconds"] = int(
+                self.backfill_proposal_expiration_seconds
+            )
+        elif include_empty:
+            result["backfill_proposal_expiration_seconds"] = 0
         if hasattr(self, "backfill_ticket_expiration_seconds"):
             result["backfill_ticket_expiration_seconds"] = int(
                 self.backfill_ticket_expiration_seconds
@@ -129,6 +157,8 @@ class ApiMatchPoolConfig(Model):
     @classmethod
     def create(
         cls,
+        auto_accept_backfill_proposal: bool,
+        backfill_proposal_expiration_seconds: int,
         backfill_ticket_expiration_seconds: int,
         match_function: str,
         match_function_override: ApiMatchFunctionOverride,
@@ -137,6 +167,10 @@ class ApiMatchPoolConfig(Model):
         ticket_expiration_seconds: int,
     ) -> ApiMatchPoolConfig:
         instance = cls()
+        instance.auto_accept_backfill_proposal = auto_accept_backfill_proposal
+        instance.backfill_proposal_expiration_seconds = (
+            backfill_proposal_expiration_seconds
+        )
         instance.backfill_ticket_expiration_seconds = backfill_ticket_expiration_seconds
         instance.match_function = match_function
         instance.match_function_override = match_function_override
@@ -152,6 +186,24 @@ class ApiMatchPoolConfig(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "auto_accept_backfill_proposal" in dict_
+            and dict_["auto_accept_backfill_proposal"] is not None
+        ):
+            instance.auto_accept_backfill_proposal = bool(
+                dict_["auto_accept_backfill_proposal"]
+            )
+        elif include_empty:
+            instance.auto_accept_backfill_proposal = False
+        if (
+            "backfill_proposal_expiration_seconds" in dict_
+            and dict_["backfill_proposal_expiration_seconds"] is not None
+        ):
+            instance.backfill_proposal_expiration_seconds = int(
+                dict_["backfill_proposal_expiration_seconds"]
+            )
+        elif include_empty:
+            instance.backfill_proposal_expiration_seconds = 0
         if (
             "backfill_ticket_expiration_seconds" in dict_
             and dict_["backfill_ticket_expiration_seconds"] is not None
@@ -232,6 +284,8 @@ class ApiMatchPoolConfig(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "auto_accept_backfill_proposal": "auto_accept_backfill_proposal",
+            "backfill_proposal_expiration_seconds": "backfill_proposal_expiration_seconds",
             "backfill_ticket_expiration_seconds": "backfill_ticket_expiration_seconds",
             "match_function": "match_function",
             "match_function_override": "match_function_override",
@@ -243,6 +297,8 @@ class ApiMatchPoolConfig(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "auto_accept_backfill_proposal": True,
+            "backfill_proposal_expiration_seconds": True,
             "backfill_ticket_expiration_seconds": True,
             "match_function": True,
             "match_function_override": True,

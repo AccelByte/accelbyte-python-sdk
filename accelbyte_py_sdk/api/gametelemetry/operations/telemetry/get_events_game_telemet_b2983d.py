@@ -40,7 +40,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
 
         method: GET
 
-        tags: []
+        tags: ["telemetry"]
 
         consumes: []
 

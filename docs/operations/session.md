@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Session Service Index (2.4.0)
+# AccelByte Cloud Session Service Index (2.6.0)
 
 
 ## Operations
@@ -59,6 +59,15 @@
 | /session/v1/public/namespaces/{namespace}/parties/{partyId}/code | DELETE | publicRevokePartyCode | `false` | [PublicRevokePartyCode](../../accelbyte_py_sdk/api/session/operations/party/public_revoke_party_code.py) | [public_revoke_party_code](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-public-revoke-party-code](../../samples/cli/accelbyte_py_sdk_cli/session/_public_revoke_party_code.py) |
 | /session/v1/public/namespaces/{namespace}/parties/{partyId} | PUT | publicUpdateParty | `false` | [PublicUpdateParty](../../accelbyte_py_sdk/api/session/operations/party/public_update_party.py) | [public_update_party](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-public-update-party](../../samples/cli/accelbyte_py_sdk_cli/session/_public_update_party.py) |
 
+### Player
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /session/v1/admin/namespaces/{namespace}/users/{userId}/attributes | GET | adminGetPlayerAttributes | `false` | [AdminGetPlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/admin_get_player_attributes.py) | [admin_get_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-admin-get-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_player_attributes.py) |
+| /session/v1/admin/namespaces/{namespace}/users/attributes | GET | adminQueryPlayerAttributes | `false` | [AdminQueryPlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/admin_query_player_attributes.py) | [admin_query_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-admin-query-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_query_player_attributes.py) |
+| /session/v1/public/namespaces/{namespace}/users/me/attributes | DELETE | publicDeletePlayerAttributes | `false` | [PublicDeletePlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/public_delete_player_at_57835b.py) | [public_delete_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-public-delete-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_public_delete_player_attributes.py) |
+| /session/v1/public/namespaces/{namespace}/users/me/attributes | GET | publicGetPlayerAttributes | `false` | [PublicGetPlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/public_get_player_attributes.py) | [public_get_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-public-get-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_player_attributes.py) |
+| /session/v1/public/namespaces/{namespace}/users/me/attributes | POST | publicStorePlayerAttributes | `false` | [PublicStorePlayerAttributes](../../accelbyte_py_sdk/api/session/operations/player/public_store_player_attributes.py) | [public_store_player_attributes](../../accelbyte_py_sdk/api/session/wrappers/_player.py) | [accelbyte_py_sdk_cli session-public-store-player-attributes](../../samples/cli/accelbyte_py_sdk_cli/session/_public_store_player_attributes.py) |
+
 
 ## Models
 | Model | Class |
@@ -76,6 +85,8 @@
 | apimodels.Pagination | [ApimodelsPagination](../../accelbyte_py_sdk/api/session/models/apimodels_pagination.py) |
 | apimodels.PartyQueryResponse | [ApimodelsPartyQueryResponse](../../accelbyte_py_sdk/api/session/models/apimodels_party_query_response.py) |
 | apimodels.PartySessionResponse | [ApimodelsPartySessionResponse](../../accelbyte_py_sdk/api/session/models/apimodels_party_session_response.py) |
+| apimodels.PlayerAttributesRequestBody | [ApimodelsPlayerAttributesRequestBody](../../accelbyte_py_sdk/api/session/models/apimodels_player_attributes_request_body.py) |
+| apimodels.PlayerAttributesResponseBody | [ApimodelsPlayerAttributesResponseBody](../../accelbyte_py_sdk/api/session/models/apimodels_player_attributes_response_body.py) |
 | apimodels.PromoteLeaderRequest | [ApimodelsPromoteLeaderRequest](../../accelbyte_py_sdk/api/session/models/apimodels_promote_leader_request.py) |
 | apimodels.PublicConfiguration | [ApimodelsPublicConfiguration](../../accelbyte_py_sdk/api/session/models/apimodels_public_configuration.py) |
 | apimodels.RequestMember | [ApimodelsRequestMember](../../accelbyte_py_sdk/api/session/models/apimodels_request_member.py) |
@@ -88,4 +99,5 @@
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
 | models.PartyMembers | [ModelsPartyMembers](../../accelbyte_py_sdk/api/session/models/models_party_members.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
+| models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/session/models/response_error.py) |

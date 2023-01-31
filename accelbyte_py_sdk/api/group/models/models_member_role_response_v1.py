@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,8 +30,8 @@ from ....core import Model
 from ..models.models_role_permission import ModelsRolePermission
 
 
-class ModelsGetMemberRoleResponseV1(Model):
-    """Models get member role response V1 (models.GetMemberRoleResponseV1)
+class ModelsMemberRoleResponseV1(Model):
+    """Models member role response V1 (models.MemberRoleResponseV1)
 
     Properties:
         member_role_id: (memberRoleId) REQUIRED str
@@ -51,17 +51,17 @@ class ModelsGetMemberRoleResponseV1(Model):
 
     # region with_x methods
 
-    def with_member_role_id(self, value: str) -> ModelsGetMemberRoleResponseV1:
+    def with_member_role_id(self, value: str) -> ModelsMemberRoleResponseV1:
         self.member_role_id = value
         return self
 
-    def with_member_role_name(self, value: str) -> ModelsGetMemberRoleResponseV1:
+    def with_member_role_name(self, value: str) -> ModelsMemberRoleResponseV1:
         self.member_role_name = value
         return self
 
     def with_member_role_permissions(
         self, value: List[ModelsRolePermission]
-    ) -> ModelsGetMemberRoleResponseV1:
+    ) -> ModelsMemberRoleResponseV1:
         self.member_role_permissions = value
         return self
 
@@ -98,7 +98,7 @@ class ModelsGetMemberRoleResponseV1(Model):
         member_role_id: str,
         member_role_name: str,
         member_role_permissions: List[ModelsRolePermission],
-    ) -> ModelsGetMemberRoleResponseV1:
+    ) -> ModelsMemberRoleResponseV1:
         instance = cls()
         instance.member_role_id = member_role_id
         instance.member_role_name = member_role_name
@@ -108,7 +108,7 @@ class ModelsGetMemberRoleResponseV1(Model):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsGetMemberRoleResponseV1:
+    ) -> ModelsMemberRoleResponseV1:
         instance = cls()
         if not dict_:
             return instance
@@ -135,7 +135,7 @@ class ModelsGetMemberRoleResponseV1(Model):
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsGetMemberRoleResponseV1]:
+    ) -> Dict[str, ModelsMemberRoleResponseV1]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -145,7 +145,7 @@ class ModelsGetMemberRoleResponseV1(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsGetMemberRoleResponseV1]:
+    ) -> List[ModelsMemberRoleResponseV1]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -156,9 +156,9 @@ class ModelsGetMemberRoleResponseV1(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsGetMemberRoleResponseV1,
-        List[ModelsGetMemberRoleResponseV1],
-        Dict[Any, ModelsGetMemberRoleResponseV1],
+        ModelsMemberRoleResponseV1,
+        List[ModelsMemberRoleResponseV1],
+        Dict[Any, ModelsMemberRoleResponseV1],
     ]:
         if many:
             if isinstance(any_, dict):

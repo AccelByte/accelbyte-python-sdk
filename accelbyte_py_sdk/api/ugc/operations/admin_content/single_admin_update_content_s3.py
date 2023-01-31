@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsCreateContentRequestS3
+from ...models import ModelsContentRequest
 from ...models import ModelsCreateContentResponse
 from ...models import ResponseError
 
@@ -38,10 +38,10 @@ class SingleAdminUpdateContentS3(Operation):
     """Update content to S3 bucket (SingleAdminUpdateContentS3)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    All request body are required except payload, preview, tags, and contentType.
+    All request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes.
     contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL.
     If not specified, it will use fileExtension value.
+    To update content's file, set `updateContentFile` to `true` and upload the file using URL in `payloadURL.url` in response body.
 
 
 
@@ -63,7 +63,7 @@ class SingleAdminUpdateContentS3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsCreateContentRequestS3 in body
+        body: (body) REQUIRED ModelsContentRequest in body
 
         channel_id: (channelId) REQUIRED str in path
 
@@ -92,7 +92,7 @@ class SingleAdminUpdateContentS3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelsCreateContentRequestS3  # REQUIRED in [body]
+    body: ModelsContentRequest  # REQUIRED in [body]
     channel_id: str  # REQUIRED in [path]
     content_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
@@ -162,9 +162,7 @@ class SingleAdminUpdateContentS3(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelsCreateContentRequestS3
-    ) -> SingleAdminUpdateContentS3:
+    def with_body(self, value: ModelsContentRequest) -> SingleAdminUpdateContentS3:
         self.body = value
         return self
 
@@ -189,7 +187,7 @@ class SingleAdminUpdateContentS3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelsCreateContentRequestS3()
+            result["body"] = ModelsContentRequest()
         if hasattr(self, "channel_id") and self.channel_id:
             result["channelId"] = str(self.channel_id)
         elif include_empty:
@@ -262,7 +260,7 @@ class SingleAdminUpdateContentS3(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelsCreateContentRequestS3,
+        body: ModelsContentRequest,
         channel_id: str,
         content_id: str,
         namespace: str,
@@ -280,11 +278,11 @@ class SingleAdminUpdateContentS3(Operation):
     ) -> SingleAdminUpdateContentS3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelsCreateContentRequestS3.create_from_dict(
+            instance.body = ModelsContentRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelsCreateContentRequestS3()
+            instance.body = ModelsContentRequest()
         if "channelId" in dict_ and dict_["channelId"] is not None:
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:

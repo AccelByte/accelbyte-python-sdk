@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.0.1)
+# AccelByte Cloud Match Service V2 (2.1.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -52,7 +52,7 @@ class DeleteMatchPool(Operation):
 
         method: DELETE
 
-        tags: ["Match-Pools"]
+        tags: ["Match-Pools", "admin"]
 
         consumes: ["application/json"]
 

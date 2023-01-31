@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -71,6 +71,8 @@ class ClientmodelClientV3Response(Model):
         oauth_refresh_token_expiration_time_unit: (oauthRefreshTokenExpirationTimeUnit) OPTIONAL str
 
         parent_namespace: (parentNamespace) OPTIONAL str
+
+        roles: (roles) OPTIONAL List[str]
     """
 
     # region fields
@@ -94,6 +96,7 @@ class ClientmodelClientV3Response(Model):
     oauth_refresh_token_expiration: int  # OPTIONAL
     oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
     parent_namespace: str  # OPTIONAL
+    roles: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -183,6 +186,10 @@ class ClientmodelClientV3Response(Model):
 
     def with_parent_namespace(self, value: str) -> ClientmodelClientV3Response:
         self.parent_namespace = value
+        return self
+
+    def with_roles(self, value: List[str]) -> ClientmodelClientV3Response:
+        self.roles = value
         return self
 
     # endregion with_x methods
@@ -278,6 +285,10 @@ class ClientmodelClientV3Response(Model):
             result["parentNamespace"] = str(self.parent_namespace)
         elif include_empty:
             result["parentNamespace"] = ""
+        if hasattr(self, "roles"):
+            result["roles"] = [str(i0) for i0 in self.roles]
+        elif include_empty:
+            result["roles"] = []
         return result
 
     # endregion to methods
@@ -306,6 +317,7 @@ class ClientmodelClientV3Response(Model):
         oauth_refresh_token_expiration: Optional[int] = None,
         oauth_refresh_token_expiration_time_unit: Optional[str] = None,
         parent_namespace: Optional[str] = None,
+        roles: Optional[List[str]] = None,
     ) -> ClientmodelClientV3Response:
         instance = cls()
         instance.audiences = audiences
@@ -336,6 +348,8 @@ class ClientmodelClientV3Response(Model):
             )
         if parent_namespace is not None:
             instance.parent_namespace = parent_namespace
+        if roles is not None:
+            instance.roles = roles
         return instance
 
     @classmethod
@@ -446,6 +460,10 @@ class ClientmodelClientV3Response(Model):
             instance.parent_namespace = str(dict_["parentNamespace"])
         elif include_empty:
             instance.parent_namespace = ""
+        if "roles" in dict_ and dict_["roles"] is not None:
+            instance.roles = [str(i0) for i0 in dict_["roles"]]
+        elif include_empty:
+            instance.roles = []
         return instance
 
     @classmethod
@@ -508,6 +526,7 @@ class ClientmodelClientV3Response(Model):
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
             "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
             "parentNamespace": "parent_namespace",
+            "roles": "roles",
         }
 
     @staticmethod
@@ -532,6 +551,7 @@ class ClientmodelClientV3Response(Model):
             "oauthRefreshTokenExpiration": False,
             "oauthRefreshTokenExpirationTimeUnit": False,
             "parentNamespace": False,
+            "roles": False,
         }
 
     # endregion static methods

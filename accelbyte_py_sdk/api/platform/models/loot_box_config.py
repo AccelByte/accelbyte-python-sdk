@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.21.0)
+# AccelByte Cloud Platform Service (4.22.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,8 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.loot_box_reward import LootBoxReward
+
+
+class RollFunctionEnum(StrEnum):
+    CUSTOM = "CUSTOM"
+    DEFAULT = "DEFAULT"
 
 
 class LootBoxConfig(Model):
@@ -37,12 +43,15 @@ class LootBoxConfig(Model):
         reward_count: (rewardCount) OPTIONAL int
 
         rewards: (rewards) OPTIONAL List[LootBoxReward]
+
+        roll_function: (rollFunction) OPTIONAL Union[str, RollFunctionEnum]
     """
 
     # region fields
 
     reward_count: int  # OPTIONAL
     rewards: List[LootBoxReward]  # OPTIONAL
+    roll_function: Union[str, RollFunctionEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -54,6 +63,10 @@ class LootBoxConfig(Model):
 
     def with_rewards(self, value: List[LootBoxReward]) -> LootBoxConfig:
         self.rewards = value
+        return self
+
+    def with_roll_function(self, value: Union[str, RollFunctionEnum]) -> LootBoxConfig:
+        self.roll_function = value
         return self
 
     # endregion with_x methods
@@ -72,6 +85,10 @@ class LootBoxConfig(Model):
             ]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "roll_function"):
+            result["rollFunction"] = str(self.roll_function)
+        elif include_empty:
+            result["rollFunction"] = Union[str, RollFunctionEnum]()
         return result
 
     # endregion to methods
@@ -83,12 +100,15 @@ class LootBoxConfig(Model):
         cls,
         reward_count: Optional[int] = None,
         rewards: Optional[List[LootBoxReward]] = None,
+        roll_function: Optional[Union[str, RollFunctionEnum]] = None,
     ) -> LootBoxConfig:
         instance = cls()
         if reward_count is not None:
             instance.reward_count = reward_count
         if rewards is not None:
             instance.rewards = rewards
+        if roll_function is not None:
+            instance.roll_function = roll_function
         return instance
 
     @classmethod
@@ -109,6 +129,10 @@ class LootBoxConfig(Model):
             ]
         elif include_empty:
             instance.rewards = []
+        if "rollFunction" in dict_ and dict_["rollFunction"] is not None:
+            instance.roll_function = str(dict_["rollFunction"])
+        elif include_empty:
+            instance.roll_function = Union[str, RollFunctionEnum]()
         return instance
 
     @classmethod
@@ -150,6 +174,7 @@ class LootBoxConfig(Model):
         return {
             "rewardCount": "reward_count",
             "rewards": "rewards",
+            "rollFunction": "roll_function",
         }
 
     @staticmethod
@@ -157,6 +182,13 @@ class LootBoxConfig(Model):
         return {
             "rewardCount": False,
             "rewards": False,
+            "rollFunction": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "rollFunction": ["CUSTOM", "DEFAULT"],
         }
 
     # endregion static methods

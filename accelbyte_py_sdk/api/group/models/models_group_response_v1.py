@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,7 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.models_group_member import ModelsGroupMember
-from ..models.models_group_rule import ModelsGroupRule
+from ..models.models_group_rule_response_v1 import ModelsGroupRuleResponseV1
 
 
 class ModelsGroupResponseV1(Model):
@@ -53,7 +53,7 @@ class ModelsGroupResponseV1(Model):
 
         group_region: (groupRegion) REQUIRED str
 
-        group_rules: (groupRules) REQUIRED ModelsGroupRule
+        group_rules: (groupRules) REQUIRED ModelsGroupRuleResponseV1
 
         group_type: (groupType) REQUIRED str
     """
@@ -69,7 +69,7 @@ class ModelsGroupResponseV1(Model):
     group_members: List[ModelsGroupMember]  # REQUIRED
     group_name: str  # REQUIRED
     group_region: str  # REQUIRED
-    group_rules: ModelsGroupRule  # REQUIRED
+    group_rules: ModelsGroupRuleResponseV1  # REQUIRED
     group_type: str  # REQUIRED
 
     # endregion fields
@@ -114,7 +114,9 @@ class ModelsGroupResponseV1(Model):
         self.group_region = value
         return self
 
-    def with_group_rules(self, value: ModelsGroupRule) -> ModelsGroupResponseV1:
+    def with_group_rules(
+        self, value: ModelsGroupRuleResponseV1
+    ) -> ModelsGroupResponseV1:
         self.group_rules = value
         return self
 
@@ -171,7 +173,7 @@ class ModelsGroupResponseV1(Model):
         if hasattr(self, "group_rules"):
             result["groupRules"] = self.group_rules.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["groupRules"] = ModelsGroupRule()
+            result["groupRules"] = ModelsGroupRuleResponseV1()
         if hasattr(self, "group_type"):
             result["groupType"] = str(self.group_type)
         elif include_empty:
@@ -194,7 +196,7 @@ class ModelsGroupResponseV1(Model):
         group_members: List[ModelsGroupMember],
         group_name: str,
         group_region: str,
-        group_rules: ModelsGroupRule,
+        group_rules: ModelsGroupRuleResponseV1,
         group_type: str,
     ) -> ModelsGroupResponseV1:
         instance = cls()
@@ -260,11 +262,11 @@ class ModelsGroupResponseV1(Model):
         elif include_empty:
             instance.group_region = ""
         if "groupRules" in dict_ and dict_["groupRules"] is not None:
-            instance.group_rules = ModelsGroupRule.create_from_dict(
+            instance.group_rules = ModelsGroupRuleResponseV1.create_from_dict(
                 dict_["groupRules"], include_empty=include_empty
             )
         elif include_empty:
-            instance.group_rules = ModelsGroupRule()
+            instance.group_rules = ModelsGroupRuleResponseV1()
         if "groupType" in dict_ and dict_["groupType"] is not None:
             instance.group_type = str(dict_["groupType"])
         elif include_empty:

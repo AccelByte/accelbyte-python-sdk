@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Ugc Service."""
 
-__version__ = "2.7.0"
+__version__ = "2.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .models_channel_response import ModelsChannelResponse
 from .models_content_download_response import ModelsContentDownloadResponse
 from .models_content_like_request import ModelsContentLikeRequest
 from .models_content_like_response import ModelsContentLikeResponse
+from .models_content_request import ModelsContentRequest
 from .models_create_content_request import ModelsCreateContentRequest
 from .models_create_content_request_s3 import ModelsCreateContentRequestS3
 from .models_create_content_response import ModelsCreateContentResponse

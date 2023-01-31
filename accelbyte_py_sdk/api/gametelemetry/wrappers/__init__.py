@@ -33,9 +33,9 @@ from ._gametelemetry_operations import (
     protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put_async,
 )
 
-from ._operations import (
+from ._telemetry import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get,
 )
-from ._operations import (
+from ._telemetry import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_async,
 )

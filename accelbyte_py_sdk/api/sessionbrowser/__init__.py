@@ -47,11 +47,11 @@ from .wrappers import get_total_active_session
 from .wrappers import get_total_active_session_async
 from .wrappers import join_session
 from .wrappers import join_session_async
-from .wrappers import query_session
-from .wrappers import query_session_async
 from .wrappers import remove_player_from_session
 from .wrappers import remove_player_from_session_async
 from .wrappers import update_session
 from .wrappers import update_session_async
 from .wrappers import update_settings
 from .wrappers import update_settings_async
+from .wrappers import user_query_session
+from .wrappers import user_query_session_async

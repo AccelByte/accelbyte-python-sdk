@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+
+from ..models.oauthmodel_user_ban import OauthmodelUserBan
 
 
 class OauthmodelErrorResponse(Model):
@@ -53,6 +55,8 @@ class OauthmodelErrorResponse(Model):
         mfa_token: (mfa_token) OPTIONAL str
 
         platform_id: (platformId) OPTIONAL str
+
+        user_ban: (userBan) OPTIONAL OauthmodelUserBan
     """
 
     # region fields
@@ -68,6 +72,7 @@ class OauthmodelErrorResponse(Model):
     message_variables: Dict[str, str]  # OPTIONAL
     mfa_token: str  # OPTIONAL
     platform_id: str  # OPTIONAL
+    user_ban: OauthmodelUserBan  # OPTIONAL
 
     # endregion fields
 
@@ -115,6 +120,10 @@ class OauthmodelErrorResponse(Model):
 
     def with_platform_id(self, value: str) -> OauthmodelErrorResponse:
         self.platform_id = value
+        return self
+
+    def with_user_ban(self, value: OauthmodelUserBan) -> OauthmodelErrorResponse:
+        self.user_ban = value
         return self
 
     # endregion with_x methods
@@ -169,6 +178,10 @@ class OauthmodelErrorResponse(Model):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "user_ban"):
+            result["userBan"] = self.user_ban.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["userBan"] = OauthmodelUserBan()
         return result
 
     # endregion to methods
@@ -189,6 +202,7 @@ class OauthmodelErrorResponse(Model):
         message_variables: Optional[Dict[str, str]] = None,
         mfa_token: Optional[str] = None,
         platform_id: Optional[str] = None,
+        user_ban: Optional[OauthmodelUserBan] = None,
     ) -> OauthmodelErrorResponse:
         instance = cls()
         instance.error = error
@@ -212,6 +226,8 @@ class OauthmodelErrorResponse(Model):
             instance.mfa_token = mfa_token
         if platform_id is not None:
             instance.platform_id = platform_id
+        if user_ban is not None:
+            instance.user_ban = user_ban
         return instance
 
     @classmethod
@@ -267,6 +283,12 @@ class OauthmodelErrorResponse(Model):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "userBan" in dict_ and dict_["userBan"] is not None:
+            instance.user_ban = OauthmodelUserBan.create_from_dict(
+                dict_["userBan"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.user_ban = OauthmodelUserBan()
         return instance
 
     @classmethod
@@ -321,6 +343,7 @@ class OauthmodelErrorResponse(Model):
             "messageVariables": "message_variables",
             "mfa_token": "mfa_token",
             "platformId": "platform_id",
+            "userBan": "user_ban",
         }
 
     @staticmethod
@@ -337,6 +360,7 @@ class OauthmodelErrorResponse(Model):
             "messageVariables": False,
             "mfa_token": False,
             "platformId": False,
+            "userBan": False,
         }
 
     # endregion static methods

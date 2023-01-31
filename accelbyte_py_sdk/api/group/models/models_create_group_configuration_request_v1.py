@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Group Service (2.13.0)
+# AccelByte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
     """Models create group configuration request V1 (models.CreateGroupConfigurationRequestV1)
 
     Properties:
+        allow_multiple: (allowMultiple) REQUIRED bool
+
         configuration_code: (configurationCode) REQUIRED str
 
         description: (description) REQUIRED str
@@ -51,6 +53,7 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
 
     # region fields
 
+    allow_multiple: bool  # REQUIRED
     configuration_code: str  # REQUIRED
     description: str  # REQUIRED
     global_rules: List[ModelsRule]  # REQUIRED
@@ -62,6 +65,12 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_allow_multiple(
+        self, value: bool
+    ) -> ModelsCreateGroupConfigurationRequestV1:
+        self.allow_multiple = value
+        return self
 
     def with_configuration_code(
         self, value: str
@@ -107,6 +116,10 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "allow_multiple"):
+            result["allowMultiple"] = bool(self.allow_multiple)
+        elif include_empty:
+            result["allowMultiple"] = False
         if hasattr(self, "configuration_code"):
             result["configurationCode"] = str(self.configuration_code)
         elif include_empty:
@@ -146,6 +159,7 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
     @classmethod
     def create(
         cls,
+        allow_multiple: bool,
         configuration_code: str,
         description: str,
         global_rules: List[ModelsRule],
@@ -155,6 +169,7 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         name: str,
     ) -> ModelsCreateGroupConfigurationRequestV1:
         instance = cls()
+        instance.allow_multiple = allow_multiple
         instance.configuration_code = configuration_code
         instance.description = description
         instance.global_rules = global_rules
@@ -171,6 +186,10 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "allowMultiple" in dict_ and dict_["allowMultiple"] is not None:
+            instance.allow_multiple = bool(dict_["allowMultiple"])
+        elif include_empty:
+            instance.allow_multiple = False
         if "configurationCode" in dict_ and dict_["configurationCode"] is not None:
             instance.configuration_code = str(dict_["configurationCode"])
         elif include_empty:
@@ -245,6 +264,7 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "allowMultiple": "allow_multiple",
             "configurationCode": "configuration_code",
             "description": "description",
             "globalRules": "global_rules",
@@ -257,6 +277,7 @@ class ModelsCreateGroupConfigurationRequestV1(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "allowMultiple": True,
             "configurationCode": True,
             "description": True,
             "globalRules": True,

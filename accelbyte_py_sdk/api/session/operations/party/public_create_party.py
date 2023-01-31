@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Session Service (2.4.0)
+# AccelByte Cloud Session Service (2.6.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -41,44 +41,15 @@ class PublicCreateParty(Operation):
     Creator will be removed from previous party (if any) and automatically join into the created party as a leader.
     Party members will be sent invitation to join the party.
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
-
-
-
-
-
-
-      * type
-
-
-      * joinability
-
-
-      * minPlayers
-
-
-      * maxPlayers
-
-
-      * inviteTimeout
-
-
-      * inactiveTimeout
-
-
-
-
+    - type
+    - joinability
+    - minPlayers
+    - maxPlayers
+    - inviteTimeout
+    - inactiveTimeout
 
     Supported platforms:
-
-
-
-
-
-
-      * STEAM
-
-
-    .
+    1. STEAM
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party

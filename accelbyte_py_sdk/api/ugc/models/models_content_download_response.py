@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Ugc Service (2.7.0)
+# AccelByte Cloud Ugc Service (2.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,8 +46,6 @@ class ModelsContentDownloadResponse(Model):
 
         creator_name: (creatorName) REQUIRED str
 
-        custom_attributes: (customAttributes) REQUIRED Dict[str, Any]
-
         download_count: (downloadCount) REQUIRED int
 
         file_extension: (fileExtension) REQUIRED str
@@ -76,6 +74,8 @@ class ModelsContentDownloadResponse(Model):
 
         user_id: (userId) REQUIRED str
 
+        custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
+
         groups: (groups) OPTIONAL List[str]
 
         like_state: (likeState) OPTIONAL ModelsLikeState
@@ -95,7 +95,6 @@ class ModelsContentDownloadResponse(Model):
     created_time: str  # REQUIRED
     creator_follow_state: ModelsCreatorFollowState  # REQUIRED
     creator_name: str  # REQUIRED
-    custom_attributes: Dict[str, Any]  # REQUIRED
     download_count: int  # REQUIRED
     file_extension: str  # REQUIRED
     id_: str  # REQUIRED
@@ -110,6 +109,7 @@ class ModelsContentDownloadResponse(Model):
     type_: str  # REQUIRED
     updated_time: str  # REQUIRED
     user_id: str  # REQUIRED
+    custom_attributes: Dict[str, Any]  # OPTIONAL
     groups: List[str]  # OPTIONAL
     like_state: ModelsLikeState  # OPTIONAL
     payload: str  # OPTIONAL
@@ -137,12 +137,6 @@ class ModelsContentDownloadResponse(Model):
 
     def with_creator_name(self, value: str) -> ModelsContentDownloadResponse:
         self.creator_name = value
-        return self
-
-    def with_custom_attributes(
-        self, value: Dict[str, Any]
-    ) -> ModelsContentDownloadResponse:
-        self.custom_attributes = value
         return self
 
     def with_download_count(self, value: int) -> ModelsContentDownloadResponse:
@@ -201,6 +195,12 @@ class ModelsContentDownloadResponse(Model):
         self.user_id = value
         return self
 
+    def with_custom_attributes(
+        self, value: Dict[str, Any]
+    ) -> ModelsContentDownloadResponse:
+        self.custom_attributes = value
+        return self
+
     def with_groups(self, value: List[str]) -> ModelsContentDownloadResponse:
         self.groups = value
         return self
@@ -255,12 +255,6 @@ class ModelsContentDownloadResponse(Model):
             result["creatorName"] = str(self.creator_name)
         elif include_empty:
             result["creatorName"] = ""
-        if hasattr(self, "custom_attributes"):
-            result["customAttributes"] = {
-                str(k0): v0 for k0, v0 in self.custom_attributes.items()
-            }
-        elif include_empty:
-            result["customAttributes"] = {}
         if hasattr(self, "download_count"):
             result["downloadCount"] = int(self.download_count)
         elif include_empty:
@@ -317,6 +311,12 @@ class ModelsContentDownloadResponse(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "custom_attributes"):
+            result["customAttributes"] = {
+                str(k0): v0 for k0, v0 in self.custom_attributes.items()
+            }
+        elif include_empty:
+            result["customAttributes"] = {}
         if hasattr(self, "groups"):
             result["groups"] = [str(i0) for i0 in self.groups]
         elif include_empty:
@@ -360,7 +360,6 @@ class ModelsContentDownloadResponse(Model):
         created_time: str,
         creator_follow_state: ModelsCreatorFollowState,
         creator_name: str,
-        custom_attributes: Dict[str, Any],
         download_count: int,
         file_extension: str,
         id_: str,
@@ -375,6 +374,7 @@ class ModelsContentDownloadResponse(Model):
         type_: str,
         updated_time: str,
         user_id: str,
+        custom_attributes: Optional[Dict[str, Any]] = None,
         groups: Optional[List[str]] = None,
         like_state: Optional[ModelsLikeState] = None,
         payload: Optional[str] = None,
@@ -387,7 +387,6 @@ class ModelsContentDownloadResponse(Model):
         instance.created_time = created_time
         instance.creator_follow_state = creator_follow_state
         instance.creator_name = creator_name
-        instance.custom_attributes = custom_attributes
         instance.download_count = download_count
         instance.file_extension = file_extension
         instance.id_ = id_
@@ -402,6 +401,8 @@ class ModelsContentDownloadResponse(Model):
         instance.type_ = type_
         instance.updated_time = updated_time
         instance.user_id = user_id
+        if custom_attributes is not None:
+            instance.custom_attributes = custom_attributes
         if groups is not None:
             instance.groups = groups
         if like_state is not None:
@@ -441,12 +442,6 @@ class ModelsContentDownloadResponse(Model):
             instance.creator_name = str(dict_["creatorName"])
         elif include_empty:
             instance.creator_name = ""
-        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
-            instance.custom_attributes = {
-                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
-            }
-        elif include_empty:
-            instance.custom_attributes = {}
         if "downloadCount" in dict_ and dict_["downloadCount"] is not None:
             instance.download_count = int(dict_["downloadCount"])
         elif include_empty:
@@ -503,6 +498,12 @@ class ModelsContentDownloadResponse(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "customAttributes" in dict_ and dict_["customAttributes"] is not None:
+            instance.custom_attributes = {
+                str(k0): v0 for k0, v0 in dict_["customAttributes"].items()
+            }
+        elif include_empty:
+            instance.custom_attributes = {}
         if "groups" in dict_ and dict_["groups"] is not None:
             instance.groups = [str(i0) for i0 in dict_["groups"]]
         elif include_empty:
@@ -587,7 +588,6 @@ class ModelsContentDownloadResponse(Model):
             "createdTime": "created_time",
             "creatorFollowState": "creator_follow_state",
             "creatorName": "creator_name",
-            "customAttributes": "custom_attributes",
             "downloadCount": "download_count",
             "fileExtension": "file_extension",
             "id": "id_",
@@ -602,6 +602,7 @@ class ModelsContentDownloadResponse(Model):
             "type": "type_",
             "updatedTime": "updated_time",
             "userId": "user_id",
+            "customAttributes": "custom_attributes",
             "groups": "groups",
             "likeState": "like_state",
             "payload": "payload",
@@ -617,7 +618,6 @@ class ModelsContentDownloadResponse(Model):
             "createdTime": True,
             "creatorFollowState": True,
             "creatorName": True,
-            "customAttributes": True,
             "downloadCount": True,
             "fileExtension": True,
             "id": True,
@@ -632,6 +632,7 @@ class ModelsContentDownloadResponse(Model):
             "type": True,
             "updatedTime": True,
             "userId": True,
+            "customAttributes": False,
             "groups": False,
             "likeState": False,
             "payload": False,

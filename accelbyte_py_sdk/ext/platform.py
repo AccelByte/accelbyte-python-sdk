@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.21.0)
+# AccelByte Cloud Platform Service (4.22.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -2159,6 +2159,7 @@ def create_loot_box_config_example() -> LootBoxConfig:
     instance = LootBoxConfig()
     instance.reward_count = randomize("int", min_val=1, max_val=1000)
     instance.rewards = [create_loot_box_reward_example()]
+    instance.roll_function = randomize()
     return instance
 
 

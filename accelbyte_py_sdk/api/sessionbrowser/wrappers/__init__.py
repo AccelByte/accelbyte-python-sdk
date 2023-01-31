@@ -46,11 +46,11 @@ from ._session import get_total_active_session
 from ._session import get_total_active_session_async
 from ._session import join_session
 from ._session import join_session_async
-from ._session import query_session
-from ._session import query_session_async
 from ._session import remove_player_from_session
 from ._session import remove_player_from_session_async
 from ._session import update_session
 from ._session import update_session_async
 from ._session import update_settings
 from ._session import update_settings_async
+from ._session import user_query_session
+from ._session import user_query_session_async

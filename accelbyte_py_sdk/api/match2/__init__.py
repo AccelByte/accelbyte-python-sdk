@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,12 @@ from .wrappers import accept_backfill
 from .wrappers import accept_backfill_async
 from .wrappers import create_backfill
 from .wrappers import create_backfill_async
+from .wrappers import delete_backfill
+from .wrappers import delete_backfill_async
+from .wrappers import get_backfill
+from .wrappers import get_backfill_async
+from .wrappers import get_backfill_proposal
+from .wrappers import get_backfill_proposal_async
 from .wrappers import reject_backfill
 from .wrappers import reject_backfill_async
 

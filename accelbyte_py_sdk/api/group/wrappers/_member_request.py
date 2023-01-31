@@ -29,11 +29,58 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsCancelInvitationGroupResponseV2
 from ..models import ModelsGetMemberRequestsListResponseV1
 from ..models import ResponseErrorResponse
 
+from ..operations.member_request import CancelInvitationGroupMemberV2
 from ..operations.member_request import GetGroupInvitationRequestPublicV1
+from ..operations.member_request import GetGroupInviteRequestPublicV2
 from ..operations.member_request import GetGroupJoinRequestPublicV1
+from ..operations.member_request import GetGroupJoinRequestPublicV2
+from ..operations.member_request import GetMyGroupJoinRequestV2
+
+
+@same_doc_as(CancelInvitationGroupMemberV2)
+def cancel_invitation_group_member_v2(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelInvitationGroupMemberV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CancelInvitationGroupMemberV2)
+async def cancel_invitation_group_member_v2_async(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelInvitationGroupMemberV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetGroupInvitationRequestPublicV1)
@@ -69,6 +116,52 @@ async def get_group_invitation_request_public_v1_async(
         if error:
             return None, error
     request = GetGroupInvitationRequestPublicV1.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetGroupInviteRequestPublicV2)
+def get_group_invite_request_public_v2(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupInviteRequestPublicV2.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetGroupInviteRequestPublicV2)
+async def get_group_invite_request_public_v2_async(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupInviteRequestPublicV2.create(
+        group_id=group_id,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -115,6 +208,94 @@ async def get_group_join_request_public_v1_async(
             return None, error
     request = GetGroupJoinRequestPublicV1.create(
         group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetGroupJoinRequestPublicV2)
+def get_group_join_request_public_v2(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupJoinRequestPublicV2.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetGroupJoinRequestPublicV2)
+async def get_group_join_request_public_v2_async(
+    group_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetGroupJoinRequestPublicV2.create(
+        group_id=group_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMyGroupJoinRequestV2)
+def get_my_group_join_request_v2(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyGroupJoinRequestV2.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMyGroupJoinRequestV2)
+async def get_my_group_join_request_v2_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyGroupJoinRequestV2.create(
         limit=limit,
         offset=offset,
         namespace=namespace,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "2.0.1"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,4 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .accept_backfill import AcceptBackfill
 from .create_backfill import CreateBackfill
+from .delete_backfill import DeleteBackfill
+from .get_backfill import GetBackfill
+from .get_backfill_proposal import GetBackfillProposal
 from .reject_backfill import RejectBackfill

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.0.1)
+# AccelByte Cloud Match Service V2 (2.1.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.api_proposed_proposal import ApiProposedProposal
+
 
 class ApiMatchTicketStatus(Model):
     """Api match ticket status (api.MatchTicketStatus)
@@ -35,12 +37,15 @@ class ApiMatchTicketStatus(Model):
         match_found: (matchFound) REQUIRED bool
 
         session_id: (sessionID) REQUIRED str
+
+        proposed_proposal: (proposedProposal) OPTIONAL ApiProposedProposal
     """
 
     # region fields
 
     match_found: bool  # REQUIRED
     session_id: str  # REQUIRED
+    proposed_proposal: ApiProposedProposal  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +57,12 @@ class ApiMatchTicketStatus(Model):
 
     def with_session_id(self, value: str) -> ApiMatchTicketStatus:
         self.session_id = value
+        return self
+
+    def with_proposed_proposal(
+        self, value: ApiProposedProposal
+    ) -> ApiMatchTicketStatus:
+        self.proposed_proposal = value
         return self
 
     # endregion with_x methods
@@ -68,6 +79,12 @@ class ApiMatchTicketStatus(Model):
             result["sessionID"] = str(self.session_id)
         elif include_empty:
             result["sessionID"] = ""
+        if hasattr(self, "proposed_proposal"):
+            result["proposedProposal"] = self.proposed_proposal.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["proposedProposal"] = ApiProposedProposal()
         return result
 
     # endregion to methods
@@ -79,10 +96,13 @@ class ApiMatchTicketStatus(Model):
         cls,
         match_found: bool,
         session_id: str,
+        proposed_proposal: Optional[ApiProposedProposal] = None,
     ) -> ApiMatchTicketStatus:
         instance = cls()
         instance.match_found = match_found
         instance.session_id = session_id
+        if proposed_proposal is not None:
+            instance.proposed_proposal = proposed_proposal
         return instance
 
     @classmethod
@@ -100,6 +120,12 @@ class ApiMatchTicketStatus(Model):
             instance.session_id = str(dict_["sessionID"])
         elif include_empty:
             instance.session_id = ""
+        if "proposedProposal" in dict_ and dict_["proposedProposal"] is not None:
+            instance.proposed_proposal = ApiProposedProposal.create_from_dict(
+                dict_["proposedProposal"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.proposed_proposal = ApiProposedProposal()
         return instance
 
     @classmethod
@@ -145,6 +171,7 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": "match_found",
             "sessionID": "session_id",
+            "proposedProposal": "proposed_proposal",
         }
 
     @staticmethod
@@ -152,6 +179,7 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": True,
             "sessionID": True,
+            "proposedProposal": False,
         }
 
     # endregion static methods

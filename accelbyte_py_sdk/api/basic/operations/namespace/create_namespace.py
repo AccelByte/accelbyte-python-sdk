@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Basic Service (2.4.1)
+# AccelByte Cloud Basic Service (2.4.3)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -40,7 +40,7 @@ class CreateNamespace(Operation):
 
     Create a namespace.
     By default the namespace is enabled.
-    In multi tenant mode, parentNamespace will be automatically filled with requester namespace.
+    In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
     Other detail info:
 
       * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Iam Service (5.25.4)
+# AccelByte Cloud Iam Service (5.26.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -274,6 +274,7 @@ from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
+from ..api.iam.models import OauthmodelUserBan
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
 from ..api.iam.models import Validation
@@ -975,6 +976,7 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_refresh_token_expiration_time_unit = randomize()
     instance.parent_namespace = randomize("slug")
+    instance.roles = [randomize()]
     return instance
 
 
@@ -2532,6 +2534,7 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance.message_variables = {randomize(): randomize()}
     instance.mfa_token = randomize()
     instance.platform_id = randomize()
+    instance.user_ban = create_oauthmodel_user_ban_example()
     return instance
 
 
@@ -2640,6 +2643,14 @@ def create_oauthmodel_token_with_device_cookie_response_v3_example() -> Oauthmod
     instance.refresh_token = randomize()
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
+    return instance
+
+
+def create_oauthmodel_user_ban_example() -> OauthmodelUserBan:
+    instance = OauthmodelUserBan()
+    instance.comment = randomize()
+    instance.end_date = randomize("int", min_val=1, max_val=1000)
+    instance.reason = randomize()
     return instance
 
 
