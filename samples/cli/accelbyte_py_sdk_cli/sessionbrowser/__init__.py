@@ -16,7 +16,7 @@ from ._admin_get_session import admin_get_session
 from ._admin_delete_session import admin_delete_session
 from ._admin_search_sessions_v2 import admin_search_sessions_v2
 from ._get_session_history_detailed import get_session_history_detailed
-from ._query_session import query_session
+from ._user_query_session import user_query_session
 from ._create_session import create_session
 from ._get_session_by_user_i_ds import get_session_by_user_i_ds
 from ._get_session import get_session
@@ -39,7 +39,7 @@ commands = [
     admin_delete_session,
     admin_search_sessions_v2,
     get_session_history_detailed,
-    query_session,
+    user_query_session,
     create_session,
     get_session_by_user_i_ds,
     get_session,

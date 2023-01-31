@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.25.4)
+# Accelbyte Cloud Iam Service (5.26.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     generate_token_by_new_headless_account_v3 as generate_token_by_new_headless_account_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponseV3
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()

@@ -6,11 +6,14 @@
 
 # template_file: python-cli-init.j2
 
-# Justice Match Service v2 (2.0.1)
+# Justice Match Service v2 (2.1.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._create_backfill import create_backfill
+from ._get_backfill_proposal import get_backfill_proposal
+from ._get_backfill import get_backfill
+from ._delete_backfill import delete_backfill
 from ._accept_backfill import accept_backfill
 from ._reject_backfill import reject_backfill
 from ._match_function_list import match_function_list
@@ -36,6 +39,9 @@ commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
     create_backfill,
+    get_backfill_proposal,
+    get_backfill,
+    delete_backfill,
     accept_backfill,
     reject_backfill,
     match_function_list,

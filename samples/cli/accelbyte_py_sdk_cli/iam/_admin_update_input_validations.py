@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Iam Service (5.25.4)
+# Accelbyte Cloud Iam Service (5.26.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

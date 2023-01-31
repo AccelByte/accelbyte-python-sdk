@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Cloudsave Service (3.4.0)
+# Accelbyte Cloud Cloudsave Service (3.5.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

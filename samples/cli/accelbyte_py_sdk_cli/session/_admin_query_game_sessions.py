@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Session Service (2.4.0)
+# Accelbyte Cloud Session Service (2.6.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--ds_pod_name", "ds_pod_name", type=str)
 @click.option("--from_time", "from_time", type=str)
 @click.option("--game_mode", "game_mode", type=str)
+@click.option("--is_soft_deleted", "is_soft_deleted", type=str)
 @click.option("--joinability", "joinability", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--match_pool", "match_pool", type=str)
@@ -62,6 +63,7 @@ def admin_query_game_sessions(
     ds_pod_name: Optional[str] = None,
     from_time: Optional[str] = None,
     game_mode: Optional[str] = None,
+    is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     limit: Optional[int] = None,
     match_pool: Optional[str] = None,
@@ -91,6 +93,7 @@ def admin_query_game_sessions(
         ds_pod_name=ds_pod_name,
         from_time=from_time,
         game_mode=game_mode,
+        is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         limit=limit,
         match_pool=match_pool,

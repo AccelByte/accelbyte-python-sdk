@@ -47,6 +47,8 @@ from accelbyte_py_sdk.api.sessionbrowser.models import RestapiErrorV1
 @click.option("--deleted", "deleted", type=bool)
 @click.option("--match_id", "match_id", type=str)
 @click.option("--party_id", "party_id", type=str)
+@click.option("--session_type", "session_type", type=str)
+@click.option("--status", "status", type=str)
 @click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -59,6 +61,8 @@ def admin_search_sessions_v2(
     deleted: Optional[bool] = None,
     match_id: Optional[str] = None,
     party_id: Optional[str] = None,
+    session_type: Optional[str] = None,
+    status: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -80,6 +84,8 @@ def admin_search_sessions_v2(
         deleted=deleted,
         match_id=match_id,
         party_id=party_id,
+        session_type=session_type,
+        status=status,
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Group Service (2.13.0)
+# Accelbyte Cloud Group Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.group import (
     create_member_role_admin_v1 as create_member_role_admin_v1_internal,
 )
 from accelbyte_py_sdk.api.group.models import ModelsCreateMemberRoleRequestV1
-from accelbyte_py_sdk.api.group.models import ModelsCreateMemberRoleResponseV1
+from accelbyte_py_sdk.api.group.models import ModelsMemberRoleResponseV1
 from accelbyte_py_sdk.api.group.models import ResponseErrorResponse
 
 
