@@ -106,6 +106,8 @@ class Match2TestCase(IntegrationTestCase):
 
         _, error = create_match_pool(
             body=ApiMatchPool.create(
+                auto_accept_backfill_proposal=True,
+                backfill_proposal_expiration_seconds=600,
                 backfill_ticket_expiration_seconds=600,
                 match_function="basic",
                 match_function_override=ApiMatchFunctionOverride.create(),

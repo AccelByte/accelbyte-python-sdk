@@ -67,6 +67,7 @@ class GroupTestCase(IntegrationTestCase):
 
         _, _ = create_group_configuration_admin_v1(
             body=ModelsCreateGroupConfigurationRequestV1.create(
+                allow_multiple=False,
                 configuration_code=self.group_configuration_code,
                 description="DESCRIPTION",
                 global_rules=[],
