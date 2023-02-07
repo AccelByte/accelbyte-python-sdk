@@ -46,6 +46,20 @@ class SDKTestCaseUtils:
         # pylint: disable=no-self-use
         time.sleep(0.5)
 
+    def get_user_id(self, sdk: Optional[AccelByteSDK] = None) -> Optional[str]:
+        if (
+            not self.sdk_initialized or
+            not self.user_found or
+            not self.logged_in
+        ):
+            return None
+
+        from accelbyte_py_sdk.core import get_token_repository
+
+        token_repo = get_token_repository(sdk=sdk)
+        token = token_repo.get_token()
+        return token.user_id
+
     def log(
         self, msg: object, level: Optional[int] = None, condition: Optional[bool] = None
     ):
