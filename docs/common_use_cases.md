@@ -1572,26 +1572,29 @@ def test_create_delete_match_ticket(self):
     else:
         self.sdks.append(user_sdk)
 
-    result, error = session_service.create_game_session(
-        body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+    result, error = session_service.public_create_party(
+        body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
             {
                 "configurationName": session_template_name,
+                "members": [
+                    {"ID": user_id},
+                ],
             }
         ),
         sdk=user_sdk,
     )
     if error:
-        self.skipTest(reason=f"unable to create game session: {error}")
+        self.skipTest(reason=f"unable to create party: {error}")
 
-    if not (game_session_id := getattr(result, "id_", None)):
-        self.skipTest(reason=f"unable to find game session id: {error}")
+    if not (party_id := getattr(result, "id_", None)):
+        self.skipTest(reason=f"unable to find party id: {error}")
 
     # act & assert (create_match_ticket)
     result, error = match2_service.create_match_ticket(
         body=match2_models.ApiMatchTicketRequest.create_from_dict(
             {
                 "matchPool": match_pool_name,
-                "sessionId": game_session_id,
+                "sessionID": party_id,
             }
         ),
         sdk=user_sdk,
@@ -1605,6 +1608,14 @@ def test_create_delete_match_ticket(self):
     # act & assert (delete_match_ticket)
     _, error = match2_service.delete_match_ticket(
         ticketid=match_ticket_id,
+        sdk=user_sdk,
+    )
+
+    self.assertIsNone(error, error)
+
+    # act & assert (public_party_leave)
+    _, error = session_service.public_party_leave(
+        party_id=party_id,
         sdk=user_sdk,
     )
 
@@ -1991,6 +2002,10 @@ def test_heartbeat(self):
     # assert
     self.assertIsNone(error, error)
 ```
+## Reporting
+
+Source: [reporting.py](../tests/integration/api/reporting.py)
+
 ## Season Pass
 
 Source: [seasonpass.py](../tests/integration/api/seasonpass.py)
@@ -2300,6 +2315,14 @@ def test_party_flow(self):
     user_ids = [member.id_ for member in result.members]
     self.assertIn(user_id1, user_ids)
     self.assertIn(user_id2, user_ids)
+
+    # act & assert (admin_query_parties)
+    result, error = session_service.admin_query_parties(
+        leader_id=user_id1,
+    )
+    self.assertIsNone(error, error)
+    party_ids = [party.id_ for party in result.data]
+    self.assertIn(party_id, party_ids)
 ```
 ## Session Browser
 
