@@ -22,7 +22,7 @@ lint:
 
 test_core:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
-	rm -f test.err
+	rm -f test_core.err
 	sed -i "s/\r//" "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" && \
 			trap "docker stop --time 1 justice-codegen-sdk-mock-server && docker rm --force mylocal_httpbin" EXIT && \
 			echo "[info] running httpbin" && \
@@ -38,22 +38,22 @@ test_core:
 							echo "[info] installing requirements-test.txt" && \
 							(cd /data && /tmp/client/bin/pip install -r requirements-test.txt) && \
 							echo "[info] running tests" && \
-							((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test.err) | tee "/data/test_core.tap")'
-	[ ! -f test.err ]
+							((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test_core.err) | tee "/data/test_core.tap")'
+	[ ! -f test_core.err ]
 
 test_integration:
 	@test -n "$(ENV_FILE_PATH)" || (echo "ENV_FILE_PATH is not set" ; exit 1)
-	rm -f test.err
+	rm -f test_integration.err
 	docker run --rm --tty --user $$(id -u):$$(id -g) --env PIP_CACHE_DIR=/tmp/pip --env PHANTAUTH_URL=$(PHANTAUTH_URL) --env-file $(ENV_FILE_PATH) -v $$(pwd):/data -w /data --entrypoint /bin/sh python:3.9-slim \
 			-c 'python -m venv /tmp && \
 				/tmp/bin/pip install -r requirements-test.txt && \
 				rm -f /data/test_integration.tap && \
-				((PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core N --test_integration Y --use_tap || touch /data/test.err) | tee "/data/test_integration.tap")'
-	[ ! -f test.err ]
+				((PYTHONPATH=/data:$$PYTHONPATH /tmp/bin/python test.py --test_core N --test_integration Y --use_tap || touch /data/test_integration.err) | tee "/data/test_integration.tap")'
+	[ ! -f test_integration.err ]
 
 test_cli:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
-	rm -f test.err
+	rm -f test_cli.err
 	docker run -t --rm -u $$(id -u):$$(id -g) -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data -w /data --entrypoint /bin/bash -e PIP_CACHE_DIR=/tmp/pip -e BATCH=true python:3.9-slim \
 			-c 'python -m venv /tmp/server && \
 					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
@@ -64,9 +64,9 @@ test_cli:
 					sed -i "s/\r//" samples/cli/tests/* && \
 					rm -f samples/cli/tests/*.tap && \
 					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/samples/cli/tests/*.sh); do \
-							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test.err; \
+							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test_cli.err; \
 					done)'
-	[ ! -f test.err ]
+	[ ! -f test_cli.err ]
 
 clean_dist:
 	rm -rf *.egg-info
@@ -96,14 +96,14 @@ upload_dist: clean_dist build_dist
 
 test_broken_link:
 	@test -n "$(SDK_MD_CRAWLER_PATH)" || (echo "SDK_MD_CRAWLER_PATH is not set" ; exit 1)
-	rm -f test.err
+	rm -f test_broken_link.err
 	bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i README.md
 	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i CHANGELOG.md
 	(for FILE in $$(find docs -type f); do \
-			(set -o pipefail; DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i $$FILE) || touch test.err; \
+			(set -o pipefail; DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i $$FILE) || touch test_broken_link.err; \
 	done)
 	DOCKER_SKIP_BUILD=1 bash "$(SDK_MD_CRAWLER_PATH)/md-crawler.sh" -i "https://docs.accelbyte.io/guides/customization/python-sdk-guide.html"
-	[ ! -f test.err ]
+	[ ! -f test_broken_link.err ]
 
 version:
 	if [ -n "$$MAJOR" ]; then VERSION_PART=1; elif [ -n "$$PATCH" ]; then VERSION_PART=3; else VERSION_PART=2; fi &&	# Bump minor version if MAJOR or MINOR is not set \
