@@ -10,7 +10,6 @@ from accelbyte_py_sdk.api.leaderboard.models import ModelsWeeklyConfig
 
 
 class LeaderboardTestCase(IntegrationTestCase):
-
     leaderboard_code: str = ""
     reset_date: int = 1  # Reset Date must be a number 1 - 31. Default is 1.
     reset_day: int = 0  # Sunday

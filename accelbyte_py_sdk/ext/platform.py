@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Platform Service (4.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,6 +76,7 @@ from ..api.platform.models import ConditionGroupValidateResult
 from ..api.platform.models import ConditionMatchResult
 from ..api.platform.models import ConsumeItem
 from ..api.platform.models import CreditRequest
+from ..api.platform.models import CreditRevocation
 from ..api.platform.models import CreditSummary
 from ..api.platform.models import CurrencyConfig
 from ..api.platform.models import CurrencyCreate
@@ -88,10 +89,12 @@ from ..api.platform.models import DLCItem
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DLCRecord
+from ..api.platform.models import DebitByCurrencyCodeRequest
 from ..api.platform.models import DebitRequest
 from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
 from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
+from ..api.platform.models import DurableEntitlementRevocationConfig
 from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementDecrementResult
 from ..api.platform.models import EntitlementGrant
@@ -100,6 +103,8 @@ from ..api.platform.models import EntitlementInfo
 from ..api.platform.models import EntitlementLootBoxReward
 from ..api.platform.models import EntitlementOwnership
 from ..api.platform.models import EntitlementPagingSlicedResult
+from ..api.platform.models import EntitlementRevocation
+from ..api.platform.models import EntitlementRevocationConfig
 from ..api.platform.models import EntitlementSummary
 from ..api.platform.models import EntitlementUpdate
 from ..api.platform.models import EpicGamesDLCSyncRequest
@@ -165,6 +170,7 @@ from ..api.platform.models import ItemPagingSlicedResult
 from ..api.platform.models import ItemPurchaseConditionValidateRequest
 from ..api.platform.models import ItemPurchaseConditionValidateResult
 from ..api.platform.models import ItemReturnRequest
+from ..api.platform.models import ItemRevocation
 from ..api.platform.models import ItemSnapshot
 from ..api.platform.models import ItemTypeConfigCreate
 from ..api.platform.models import ItemTypeConfigInfo
@@ -263,6 +269,16 @@ from ..api.platform.models import RedeemableItem
 from ..api.platform.models import RegionDataItem
 from ..api.platform.models import RequestHistory
 from ..api.platform.models import Requirement
+from ..api.platform.models import RevocationConfigInfo
+from ..api.platform.models import RevocationConfigUpdate
+from ..api.platform.models import RevocationHistoryInfo
+from ..api.platform.models import RevocationHistoryPagingSlicedResult
+from ..api.platform.models import RevocationRequest
+from ..api.platform.models import RevocationResult
+from ..api.platform.models import RevokeCurrency
+from ..api.platform.models import RevokeEntitlement
+from ..api.platform.models import RevokeEntry
+from ..api.platform.models import RevokeItem
 from ..api.platform.models import RevokeItemSummary
 from ..api.platform.models import RevokeResult
 from ..api.platform.models import RewardCondition
@@ -281,8 +297,6 @@ from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
-from ..api.platform.models import StadiaIAPConfigInfo
-from ..api.platform.models import StadiaSyncRequest
 from ..api.platform.models import SteamAchievementRequest
 from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
@@ -325,6 +339,7 @@ from ..api.platform.models import ViewInfo
 from ..api.platform.models import ViewUpdate
 from ..api.platform.models import WalletInfo
 from ..api.platform.models import WalletPagingSlicedResult
+from ..api.platform.models import WalletRevocationConfig
 from ..api.platform.models import WalletTransactionInfo
 from ..api.platform.models import WalletTransactionPagingSlicedResult
 from ..api.platform.models import WxPayConfigInfo
@@ -340,26 +355,34 @@ from ..api.platform.models import XsollaPaywallConfig
 from ..api.platform.models import XsollaPaywallConfigRequest
 
 
-def create_a_dto_object_for_order_creation_options_example() -> ADTOObjectForOrderCreationOptions:
+def create_a_dto_object_for_order_creation_options_example() -> (
+    ADTOObjectForOrderCreationOptions
+):
     instance = ADTOObjectForOrderCreationOptions()
     instance.skip_price_validation = randomize("bool")
     return instance
 
 
-def create_a_dto_object_for_querying_xbox_user_achievements_example() -> ADTOObjectForQueryingXboxUserAchievements:
+def create_a_dto_object_for_querying_xbox_user_achievements_example() -> (
+    ADTOObjectForQueryingXboxUserAchievements
+):
     instance = ADTOObjectForQueryingXboxUserAchievements()
     instance.achievements = [create_achievement_info_example()]
     return instance
 
 
-def create_a_dto_object_for_unlock_steam_achievement_api_example() -> ADTOObjectForUnlockSteamAchievementAPI:
+def create_a_dto_object_for_unlock_steam_achievement_api_example() -> (
+    ADTOObjectForUnlockSteamAchievementAPI
+):
     instance = ADTOObjectForUnlockSteamAchievementAPI()
     instance.achievements = [create_steam_achievement_request_example()]
     instance.steam_user_id = randomize()
     return instance
 
 
-def create_a_dto_object_for_update_xbox_achievement_complete_percentage_api_example() -> ADTOObjectForUpdateXboxAchievementCompletePercentageAPI:
+def create_a_dto_object_for_update_xbox_achievement_complete_percentage_api_example() -> (
+    ADTOObjectForUpdateXboxAchievementCompletePercentageAPI
+):
     instance = ADTOObjectForUpdateXboxAchievementCompletePercentageAPI()
     instance.achievements = [create_xbox_achievement_request_example()]
     instance.service_config_id = randomize()
@@ -446,7 +469,9 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     return instance
 
 
-def create_app_entitlement_paging_sliced_result_example() -> AppEntitlementPagingSlicedResult:
+def create_app_entitlement_paging_sliced_result_example() -> (
+    AppEntitlementPagingSlicedResult
+):
     instance = AppEntitlementPagingSlicedResult()
     instance.data = [create_app_entitlement_info_example()]
     instance.paging = create_paging_example()
@@ -610,7 +635,9 @@ def create_billing_history_info_example() -> BillingHistoryInfo:
     return instance
 
 
-def create_billing_history_paging_sliced_result_example() -> BillingHistoryPagingSlicedResult:
+def create_billing_history_paging_sliced_result_example() -> (
+    BillingHistoryPagingSlicedResult
+):
     instance = BillingHistoryPagingSlicedResult()
     instance.data = [create_billing_history_info_example()]
     instance.paging = create_paging_example()
@@ -801,7 +828,9 @@ def create_catalog_change_info_example() -> CatalogChangeInfo:
     return instance
 
 
-def create_catalog_change_paging_sliced_result_example() -> CatalogChangePagingSlicedResult:
+def create_catalog_change_paging_sliced_result_example() -> (
+    CatalogChangePagingSlicedResult
+):
     instance = CatalogChangePagingSlicedResult()
     instance.data = [create_catalog_change_info_example()]
     instance.paging = create_paging_example()
@@ -943,6 +972,19 @@ def create_credit_request_example() -> CreditRequest:
     return instance
 
 
+def create_credit_revocation_example() -> CreditRevocation:
+    instance = CreditRevocation()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.balance_origin = randomize()
+    instance.currency_code = randomize()
+    instance.reason = randomize()
+    instance.revocation_strategy = randomize()
+    instance.skipped = randomize("bool")
+    instance.status = randomize()
+    instance.wallet_id = randomize()
+    return instance
+
+
 def create_credit_summary_example() -> CreditSummary:
     instance = CreditSummary()
     instance.amount = randomize("int", min_val=1, max_val=1000)
@@ -1016,6 +1058,15 @@ def create_customization_example() -> Customization:
     return instance
 
 
+def create_debit_by_currency_code_request_example() -> DebitByCurrencyCodeRequest:
+    instance = DebitByCurrencyCodeRequest()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.allow_overdraft = randomize("bool")
+    instance.balance_origin = randomize()
+    instance.reason = randomize()
+    return instance
+
+
 def create_debit_request_example() -> DebitRequest:
     instance = DebitRequest()
     instance.amount = randomize("int", min_val=1, max_val=1000)
@@ -1046,7 +1097,9 @@ def create_detailed_wallet_transaction_info_example() -> DetailedWalletTransacti
     return instance
 
 
-def create_detailed_wallet_transaction_paging_sliced_result_example() -> DetailedWalletTransactionPagingSlicedResult:
+def create_detailed_wallet_transaction_paging_sliced_result_example() -> (
+    DetailedWalletTransactionPagingSlicedResult
+):
     instance = DetailedWalletTransactionPagingSlicedResult()
     instance.data = [create_detailed_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
@@ -1076,11 +1129,23 @@ def create_dlc_record_example() -> DLCRecord:
     instance = DLCRecord()
     instance.id_ = randomize()
     instance.obtained_at = randomize("date")
+    instance.revocation_result = create_revocation_result_example()
     instance.revoke_results = [create_revoke_result_example()]
     instance.revoked_at = randomize("date")
     instance.rewards = [create_platform_reward_example()]
     instance.sources = [randomize()]
     instance.status = randomize()
+    instance.transaction_id = randomize("uid")
+    instance.version = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_durable_entitlement_revocation_config_example() -> (
+    DurableEntitlementRevocationConfig
+):
+    instance = DurableEntitlementRevocationConfig()
+    instance.enabled = randomize("bool")
+    instance.strategy = randomize()
     return instance
 
 
@@ -1200,6 +1265,25 @@ def create_entitlement_paging_sliced_result_example() -> EntitlementPagingSliced
     instance = EntitlementPagingSlicedResult()
     instance.data = [create_entitlement_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_entitlement_revocation_example() -> EntitlementRevocation:
+    instance = EntitlementRevocation()
+    instance.entitlement_id = randomize()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.reason = randomize()
+    instance.revocation_strategy = randomize()
+    instance.skipped = randomize("bool")
+    instance.status = randomize()
+    return instance
+
+
+def create_entitlement_revocation_config_example() -> EntitlementRevocationConfig:
+    instance = EntitlementRevocationConfig()
+    instance.durable = create_durable_entitlement_revocation_config_example()
     return instance
 
 
@@ -1385,7 +1469,9 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     return instance
 
 
-def create_fulfillment_history_paging_sliced_result_example() -> FulfillmentHistoryPagingSlicedResult:
+def create_fulfillment_history_paging_sliced_result_example() -> (
+    FulfillmentHistoryPagingSlicedResult
+):
     instance = FulfillmentHistoryPagingSlicedResult()
     instance.data = [create_fulfillment_history_info_example()]
     instance.paging = create_paging_example()
@@ -1447,7 +1533,9 @@ def create_fulfillment_script_create_example() -> FulfillmentScriptCreate:
     return instance
 
 
-def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEvalTestRequest:
+def create_fulfillment_script_eval_test_request_example() -> (
+    FulfillmentScriptEvalTestRequest
+):
     instance = FulfillmentScriptEvalTestRequest()
     instance.context = create_fulfillment_script_context_example()
     instance.script = randomize()
@@ -1455,7 +1543,9 @@ def create_fulfillment_script_eval_test_request_example() -> FulfillmentScriptEv
     return instance
 
 
-def create_fulfillment_script_eval_test_result_example() -> FulfillmentScriptEvalTestResult:
+def create_fulfillment_script_eval_test_result_example() -> (
+    FulfillmentScriptEvalTestResult
+):
     instance = FulfillmentScriptEvalTestResult()
     instance.error_stack_trace = randomize()
     instance.result = {randomize(): randomize()}
@@ -1664,7 +1754,9 @@ def create_iap_consume_history_info_example() -> IAPConsumeHistoryInfo:
     return instance
 
 
-def create_iap_consume_history_paging_sliced_result_example() -> IAPConsumeHistoryPagingSlicedResult:
+def create_iap_consume_history_paging_sliced_result_example() -> (
+    IAPConsumeHistoryPagingSlicedResult
+):
     instance = IAPConsumeHistoryPagingSlicedResult()
     instance.data = [create_iap_consume_history_info_example()]
     instance.paging = create_paging_example()
@@ -1936,13 +2028,17 @@ def create_item_paging_sliced_result_example() -> ItemPagingSlicedResult:
     return instance
 
 
-def create_item_purchase_condition_validate_request_example() -> ItemPurchaseConditionValidateRequest:
+def create_item_purchase_condition_validate_request_example() -> (
+    ItemPurchaseConditionValidateRequest
+):
     instance = ItemPurchaseConditionValidateRequest()
     instance.item_ids = [randomize()]
     return instance
 
 
-def create_item_purchase_condition_validate_result_example() -> ItemPurchaseConditionValidateResult:
+def create_item_purchase_condition_validate_result_example() -> (
+    ItemPurchaseConditionValidateResult
+):
     instance = ItemPurchaseConditionValidateResult()
     instance.item_id = randomize()
     instance.purchasable = randomize("bool")
@@ -1954,6 +2050,20 @@ def create_item_purchase_condition_validate_result_example() -> ItemPurchaseCond
 def create_item_return_request_example() -> ItemReturnRequest:
     instance = ItemReturnRequest()
     instance.order_no = randomize()
+    return instance
+
+
+def create_item_revocation_example() -> ItemRevocation:
+    instance = ItemRevocation()
+    instance.credit_revocations = [create_credit_revocation_example()]
+    instance.entitlement_revocations = [create_entitlement_revocation_example()]
+    instance.item_id = randomize()
+    instance.item_revocations = [create_item_revocation_example()]
+    instance.item_sku = randomize()
+    instance.item_type = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.skipped = randomize("bool")
+    instance.status = randomize()
     return instance
 
 
@@ -2472,7 +2582,9 @@ def create_payment_notification_info_example() -> PaymentNotificationInfo:
     return instance
 
 
-def create_payment_notification_paging_sliced_result_example() -> PaymentNotificationPagingSlicedResult:
+def create_payment_notification_paging_sliced_result_example() -> (
+    PaymentNotificationPagingSlicedResult
+):
     instance = PaymentNotificationPagingSlicedResult()
     instance.data = [create_payment_notification_info_example()]
     instance.paging = create_paging_example()
@@ -2664,7 +2776,9 @@ def create_payment_order_notify_simulation_example() -> PaymentOrderNotifySimula
     return instance
 
 
-def create_payment_order_paging_sliced_result_example() -> PaymentOrderPagingSlicedResult:
+def create_payment_order_paging_sliced_result_example() -> (
+    PaymentOrderPagingSlicedResult
+):
     instance = PaymentOrderPagingSlicedResult()
     instance.data = [create_payment_order_info_example()]
     instance.paging = create_paging_example()
@@ -2740,7 +2854,9 @@ def create_payment_provider_config_info_example() -> PaymentProviderConfigInfo:
     return instance
 
 
-def create_payment_provider_config_paging_sliced_result_example() -> PaymentProviderConfigPagingSlicedResult:
+def create_payment_provider_config_paging_sliced_result_example() -> (
+    PaymentProviderConfigPagingSlicedResult
+):
     instance = PaymentProviderConfigPagingSlicedResult()
     instance.data = [create_payment_provider_config_info_example()]
     instance.paging = create_paging_example()
@@ -2884,7 +3000,9 @@ def create_platform_wallet_config_update_example() -> PlatformWalletConfigUpdate
     return instance
 
 
-def create_play_station_dlc_sync_multi_service_labels_request_example() -> PlayStationDLCSyncMultiServiceLabelsRequest:
+def create_play_station_dlc_sync_multi_service_labels_request_example() -> (
+    PlayStationDLCSyncMultiServiceLabelsRequest
+):
     instance = PlayStationDLCSyncMultiServiceLabelsRequest()
     instance.service_labels = [randomize("int", min_val=1, max_val=1000)]
     return instance
@@ -2903,7 +3021,9 @@ def create_play_station_iap_config_info_example() -> PlayStationIAPConfigInfo:
     return instance
 
 
-def create_play_station_multi_service_labels_reconcile_request_example() -> PlayStationMultiServiceLabelsReconcileRequest:
+def create_play_station_multi_service_labels_reconcile_request_example() -> (
+    PlayStationMultiServiceLabelsReconcileRequest
+):
     instance = PlayStationMultiServiceLabelsReconcileRequest()
     instance.currency_code = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
@@ -3058,7 +3178,9 @@ def create_redeem_history_info_example() -> RedeemHistoryInfo:
     return instance
 
 
-def create_redeem_history_paging_sliced_result_example() -> RedeemHistoryPagingSlicedResult:
+def create_redeem_history_paging_sliced_result_example() -> (
+    RedeemHistoryPagingSlicedResult
+):
     instance = RedeemHistoryPagingSlicedResult()
     instance.data = [create_redeem_history_info_example()]
     instance.paging = create_paging_example()
@@ -3125,6 +3247,100 @@ def create_requirement_example() -> Requirement:
     instance.processor = randomize()
     instance.ram = randomize()
     instance.sound_card = randomize()
+    return instance
+
+
+def create_revocation_config_info_example() -> RevocationConfigInfo:
+    instance = RevocationConfigInfo()
+    instance.entitlement = create_entitlement_revocation_config_example()
+    instance.namespace = randomize("slug")
+    instance.wallet = create_wallet_revocation_config_example()
+    return instance
+
+
+def create_revocation_config_update_example() -> RevocationConfigUpdate:
+    instance = RevocationConfigUpdate()
+    instance.entitlement = create_entitlement_revocation_config_example()
+    instance.wallet = create_wallet_revocation_config_example()
+    return instance
+
+
+def create_revocation_history_info_example() -> RevocationHistoryInfo:
+    instance = RevocationHistoryInfo()
+    instance.created_at = randomize("date")
+    instance.credit_revocations = [create_credit_revocation_example()]
+    instance.entitlement_revocations = [create_entitlement_revocation_example()]
+    instance.id_ = randomize()
+    instance.item_revocations = [create_item_revocation_example()]
+    instance.meta = {randomize(): randomize()}
+    instance.namespace = randomize("slug")
+    instance.revoke_entries = [create_revoke_entry_example()]
+    instance.source = randomize()
+    instance.status = randomize()
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_revocation_history_paging_sliced_result_example() -> (
+    RevocationHistoryPagingSlicedResult
+):
+    instance = RevocationHistoryPagingSlicedResult()
+    instance.data = [create_revocation_history_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_revocation_request_example() -> RevocationRequest:
+    instance = RevocationRequest()
+    instance.meta = {randomize(): randomize()}
+    instance.revoke_entries = [create_revoke_entry_example()]
+    instance.source = randomize()
+    instance.transaction_id = randomize("uid")
+    return instance
+
+
+def create_revocation_result_example() -> RevocationResult:
+    instance = RevocationResult()
+    instance.id_ = randomize()
+    instance.status = randomize()
+    instance.credit_revocations = [create_credit_revocation_example()]
+    instance.entitlement_revocations = [create_entitlement_revocation_example()]
+    instance.item_revocations = [create_item_revocation_example()]
+    return instance
+
+
+def create_revoke_currency_example() -> RevokeCurrency:
+    instance = RevokeCurrency()
+    instance.balance_origin = randomize()
+    instance.currency_code = randomize()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_revoke_entitlement_example() -> RevokeEntitlement:
+    instance = RevokeEntitlement()
+    instance.clazz = randomize()
+    instance.entitlement_id = randomize()
+    instance.type_ = randomize()
+    return instance
+
+
+def create_revoke_entry_example() -> RevokeEntry:
+    instance = RevokeEntry()
+    instance.currency = create_revoke_currency_example()
+    instance.entitlement = create_revoke_entitlement_example()
+    instance.item = create_revoke_item_example()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.type_ = randomize()
+    return instance
+
+
+def create_revoke_item_example() -> RevokeItem:
+    instance = RevokeItem()
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
+    instance.origin = randomize()
     return instance
 
 
@@ -3346,22 +3562,6 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     return instance
 
 
-def create_stadia_iap_config_info_example() -> StadiaIAPConfigInfo:
-    instance = StadiaIAPConfigInfo()
-    instance.namespace = randomize("slug")
-    instance.json_file = randomize()
-    return instance
-
-
-def create_stadia_sync_request_example() -> StadiaSyncRequest:
-    instance = StadiaSyncRequest()
-    instance.app_id = randomize("uid")
-    instance.stadia_player_id = randomize()
-    instance.language = randomize()
-    instance.region = randomize()
-    return instance
-
-
 def create_steam_achievement_request_example() -> SteamAchievementRequest:
     instance = SteamAchievementRequest()
     instance.id_ = randomize()
@@ -3510,7 +3710,9 @@ def create_subscription_activity_info_example() -> SubscriptionActivityInfo:
     return instance
 
 
-def create_subscription_activity_paging_sliced_result_example() -> SubscriptionActivityPagingSlicedResult:
+def create_subscription_activity_paging_sliced_result_example() -> (
+    SubscriptionActivityPagingSlicedResult
+):
     instance = SubscriptionActivityPagingSlicedResult()
     instance.data = [create_subscription_activity_info_example()]
     instance.paging = create_paging_example()
@@ -3565,7 +3767,9 @@ def create_subscription_info_example() -> SubscriptionInfo:
     return instance
 
 
-def create_subscription_paging_sliced_result_example() -> SubscriptionPagingSlicedResult:
+def create_subscription_paging_sliced_result_example() -> (
+    SubscriptionPagingSlicedResult
+):
     instance = SubscriptionPagingSlicedResult()
     instance.data = [create_subscription_info_example()]
     instance.paging = create_paging_example()
@@ -3842,6 +4046,13 @@ def create_wallet_paging_sliced_result_example() -> WalletPagingSlicedResult:
     return instance
 
 
+def create_wallet_revocation_config_example() -> WalletRevocationConfig:
+    instance = WalletRevocationConfig()
+    instance.enabled = randomize("bool")
+    instance.strategy = randomize()
+    return instance
+
+
 def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     instance = WalletTransactionInfo()
     instance.amount = randomize("int", min_val=1, max_val=1000)
@@ -3858,7 +4069,9 @@ def create_wallet_transaction_info_example() -> WalletTransactionInfo:
     return instance
 
 
-def create_wallet_transaction_paging_sliced_result_example() -> WalletTransactionPagingSlicedResult:
+def create_wallet_transaction_paging_sliced_result_example() -> (
+    WalletTransactionPagingSlicedResult
+):
     instance = WalletTransactionPagingSlicedResult()
     instance.data = [create_wallet_transaction_info_example()]
     instance.paging = create_paging_example()

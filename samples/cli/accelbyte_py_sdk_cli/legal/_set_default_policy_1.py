@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Legal Service (1.25.5)
+# Accelbyte Cloud Legal Service (1.26.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,16 +33,17 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import (
     set_default_policy_1 as set_default_policy_1_internal,
 )
-from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
-@click.argument("policy_id", type=str)
+@click.argument("localized_policy_version_id", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def set_default_policy_1(
-    policy_id: str,
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -56,7 +57,8 @@ def set_default_policy_1(
     else:
         login_as_internal(login_as)
     result, error = set_default_policy_1_internal(
-        policy_id=policy_id,
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.13.1)
+# AccelByte Cloud Achievement Service (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -69,6 +69,8 @@ class PublicUnlockAchievement(Operation):
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -193,6 +195,8 @@ class PublicUnlockAchievement(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -213,6 +217,8 @@ class PublicUnlockAchievement(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 422:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

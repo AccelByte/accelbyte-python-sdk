@@ -51,8 +51,6 @@ from ..models import PlayStationMultiServiceLabelsReconcileRequest
 from ..models import PlayStationReconcileRequest
 from ..models import PlayStationReconcileResult
 from ..models import PlaystationIAPConfigRequest
-from ..models import StadiaIAPConfigInfo
-from ..models import StadiaSyncRequest
 from ..models import SteamIAPConfig
 from ..models import SteamIAPConfigInfo
 from ..models import SteamIAPConfigRequest
@@ -71,7 +69,6 @@ from ..operations.iap import DeleteEpicGamesIAPConfig
 from ..operations.iap import DeleteGoogleIAPConfig
 from ..operations.iap import DeleteIAPItemConfig
 from ..operations.iap import DeletePlaystationIAPConfig
-from ..operations.iap import DeleteStadiaIAPConfig
 from ..operations.iap import DeleteSteamIAPConfig
 from ..operations.iap import DeleteTwitchIAPConfig
 from ..operations.iap import DeleteXblAPConfig
@@ -80,7 +77,6 @@ from ..operations.iap import GetEpicGamesIAPConfig
 from ..operations.iap import GetGoogleIAPConfig
 from ..operations.iap import GetIAPItemConfig
 from ..operations.iap import GetPlayStationIAPConfig
-from ..operations.iap import GetStadiaIAPConfig
 from ..operations.iap import GetSteamIAPConfig
 from ..operations.iap import GetTwitchIAPConfig
 from ..operations.iap import GetXblIAPConfig
@@ -98,7 +94,6 @@ from ..operations.iap import (
 from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTypeEnum
 from ..operations.iap import SyncEpicGamesInventory
-from ..operations.iap import SyncStadiaEntitlement
 from ..operations.iap import SyncSteamInventory
 from ..operations.iap import SyncTwitchDropsEntitlement
 from ..operations.iap import SyncXboxInventory
@@ -108,7 +103,6 @@ from ..operations.iap import UpdateGoogleIAPConfig
 from ..operations.iap import UpdateGoogleP12File
 from ..operations.iap import UpdateIAPItemConfig
 from ..operations.iap import UpdatePlaystationIAPConfig
-from ..operations.iap import UpdateStadiaJsonConfigFile
 from ..operations.iap import UpdateSteamIAPConfig
 from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
@@ -282,40 +276,6 @@ async def delete_playstation_iap_config_async(
         if error:
             return None, error
     request = DeletePlaystationIAPConfig.create(
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(DeleteStadiaIAPConfig)
-def delete_stadia_iap_config(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteStadiaIAPConfig.create(
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(DeleteStadiaIAPConfig)
-async def delete_stadia_iap_config_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = DeleteStadiaIAPConfig.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -588,40 +548,6 @@ async def get_play_station_iap_config_async(
         if error:
             return None, error
     request = GetPlayStationIAPConfig.create(
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(GetStadiaIAPConfig)
-def get_stadia_iap_config(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetStadiaIAPConfig.create(
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(GetStadiaIAPConfig)
-async def get_stadia_iap_config_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = GetStadiaIAPConfig.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -1149,48 +1075,6 @@ async def sync_epic_games_inventory_async(
     )
 
 
-@same_doc_as(SyncStadiaEntitlement)
-def sync_stadia_entitlement(
-    user_id: str,
-    body: Optional[StadiaSyncRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = SyncStadiaEntitlement.create(
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(SyncStadiaEntitlement)
-async def sync_stadia_entitlement_async(
-    user_id: str,
-    body: Optional[StadiaSyncRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = SyncStadiaEntitlement.create(
-        user_id=user_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(SyncSteamInventory)
 def sync_steam_inventory(
     user_id: str,
@@ -1538,44 +1422,6 @@ async def update_playstation_iap_config_async(
             return None, error
     request = UpdatePlaystationIAPConfig.create(
         body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(UpdateStadiaJsonConfigFile)
-def update_stadia_json_config_file(
-    file: Optional[Any] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateStadiaJsonConfigFile.create(
-        file=file,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(UpdateStadiaJsonConfigFile)
-async def update_stadia_json_config_file_async(
-    file: Optional[Any] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = UpdateStadiaJsonConfigFile.create(
-        file=file,
         namespace=namespace,
     )
     return await run_request_async(

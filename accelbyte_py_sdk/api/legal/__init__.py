@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Legal Service."""
 
-__version__ = "1.25.5"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -42,6 +42,12 @@ from .wrappers import retrieve_agreements_public_async
 from .wrappers import retrieve_all_users_by_policy_version
 from .wrappers import retrieve_all_users_by_policy_version_async
 
+# agreement_with_namespace
+from .wrappers import retrieve_accepted_agreements_1
+from .wrappers import retrieve_accepted_agreements_1_async
+from .wrappers import retrieve_all_users_by_policy_version_1
+from .wrappers import retrieve_all_users_by_policy_version_1_async
+
 # anonymization
 from .wrappers import anonymize_user_agreement
 from .wrappers import anonymize_user_agreement_async
@@ -60,6 +66,20 @@ from .wrappers import retrieve_policy_country_async
 from .wrappers import retrieve_single_policy
 from .wrappers import retrieve_single_policy_async
 
+# base_legal_policies_with_namespace
+from .wrappers import create_policy_1
+from .wrappers import create_policy_1_async
+from .wrappers import partial_update_policy_1
+from .wrappers import partial_update_policy_1_async
+from .wrappers import retrieve_all_legal_policies_by_namespace
+from .wrappers import retrieve_all_legal_policies_by_namespace_async
+from .wrappers import retrieve_all_policy_types_1
+from .wrappers import retrieve_all_policy_types_1_async
+from .wrappers import retrieve_policy_country_1
+from .wrappers import retrieve_policy_country_1_async
+from .wrappers import retrieve_single_policy_1
+from .wrappers import retrieve_single_policy_1_async
+
 # eligibilities
 from .wrappers import retrieve_eligibilities_public
 from .wrappers import retrieve_eligibilities_public_async
@@ -75,12 +95,28 @@ from .wrappers import retrieve_localized_policy_versions
 from .wrappers import retrieve_localized_policy_versions_async
 from .wrappers import retrieve_single_localized_policy_version
 from .wrappers import retrieve_single_localized_policy_version_async
-from .wrappers import retrieve_single_localized_policy_version_1
-from .wrappers import retrieve_single_localized_policy_version_1_async
+from .wrappers import retrieve_single_localized_policy_version_2
+from .wrappers import retrieve_single_localized_policy_version_2_async
 from .wrappers import set_default_policy
 from .wrappers import set_default_policy_async
 from .wrappers import update_localized_policy_version
 from .wrappers import update_localized_policy_version_async
+
+# localized_policy_versions_with_namespace
+from .wrappers import create_localized_policy_version_1
+from .wrappers import create_localized_policy_version_1_async
+from .wrappers import request_presigned_url_1
+from .wrappers import request_presigned_url_1_async
+from .wrappers import retrieve_localized_policy_versions_1
+from .wrappers import retrieve_localized_policy_versions_1_async
+from .wrappers import retrieve_single_localized_policy_version_1
+from .wrappers import retrieve_single_localized_policy_version_1_async
+from .wrappers import retrieve_single_localized_policy_version_3
+from .wrappers import retrieve_single_localized_policy_version_3_async
+from .wrappers import set_default_policy_1
+from .wrappers import set_default_policy_1_async
+from .wrappers import update_localized_policy_version_1
+from .wrappers import update_localized_policy_version_1_async
 
 # policies
 from .wrappers import retrieve_latest_policies
@@ -91,10 +127,16 @@ from .wrappers import retrieve_latest_policies_public
 from .wrappers import retrieve_latest_policies_public_async
 from .wrappers import retrieve_policies
 from .wrappers import retrieve_policies_async
-from .wrappers import set_default_policy_1
-from .wrappers import set_default_policy_1_async
+from .wrappers import set_default_policy_2
+from .wrappers import set_default_policy_2_async
 from .wrappers import update_policy
 from .wrappers import update_policy_async
+
+# policies_with_namespace
+from .wrappers import set_default_policy_3
+from .wrappers import set_default_policy_3_async
+from .wrappers import update_policy_1
+from .wrappers import update_policy_1_async
 
 # policy_versions
 from .wrappers import create_policy_version
@@ -105,6 +147,16 @@ from .wrappers import retrieve_single_policy_version
 from .wrappers import retrieve_single_policy_version_async
 from .wrappers import update_policy_version
 from .wrappers import update_policy_version_async
+
+# policy_versions_with_namespace
+from .wrappers import create_policy_version_1
+from .wrappers import create_policy_version_1_async
+from .wrappers import publish_policy_version_1
+from .wrappers import publish_policy_version_1_async
+from .wrappers import retrieve_single_policy_version_1
+from .wrappers import retrieve_single_policy_version_1_async
+from .wrappers import update_policy_version_1
+from .wrappers import update_policy_version_1_async
 
 # user_info
 from .wrappers import get_user_info_status

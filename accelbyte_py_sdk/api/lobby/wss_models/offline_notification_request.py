@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class OfflineNotificationRequest(WebSocketMessage):
-
     # region fields
 
     id_: str

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Gdpr Service (1.18.2)
+# AccelByte Cloud Gdpr Service (1.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -65,14 +65,18 @@ def create_models_deletion_status_example() -> ModelsDeletionStatus:
     return instance
 
 
-def create_models_list_deletion_data_response_example() -> ModelsListDeletionDataResponse:
+def create_models_list_deletion_data_response_example() -> (
+    ModelsListDeletionDataResponse
+):
     instance = ModelsListDeletionDataResponse()
     instance.data = [create_models_deletion_data_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_list_personal_data_response_example() -> ModelsListPersonalDataResponse:
+def create_models_list_personal_data_response_example() -> (
+    ModelsListPersonalDataResponse
+):
     instance = ModelsListPersonalDataResponse()
     instance.data = [create_models_personal_data_example()]
     instance.paging = create_models_pagination_example()
@@ -121,7 +125,9 @@ def create_models_user_personal_data_example() -> ModelsUserPersonalData:
     return instance
 
 
-def create_models_user_personal_data_response_example() -> ModelsUserPersonalDataResponse:
+def create_models_user_personal_data_response_example() -> (
+    ModelsUserPersonalDataResponse
+):
     instance = ModelsUserPersonalDataResponse()
     instance.data = [create_models_user_personal_data_example()]
     instance.paging = create_models_pagination_example()

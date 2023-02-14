@@ -495,7 +495,6 @@ class Game(ABC):
 
 
 class TicTacToe(Game):
-
     BLANK_SYMBOL: str = "_"
     P1_SYMBOL: str = "X"
     P2_SYMBOL: str = "O"

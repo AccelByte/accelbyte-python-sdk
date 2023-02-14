@@ -25,7 +25,6 @@ HttpRawResponse = Tuple[int, str, Any]  # code, content-type, content
 
 
 class HttpClient(ABC):
-
     backoff_policy: Optional[HttpBackoffPolicy] = None
     request_log_formatter: Optional[Callable[[dict], str]] = None
     response_log_formatter: Optional[Callable[[dict], str]] = None

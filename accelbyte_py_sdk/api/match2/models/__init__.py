@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Match Service V2."""
 
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,8 +28,6 @@ from .api_match_function_override import ApiMatchFunctionOverride
 from .api_match_function_request import ApiMatchFunctionRequest
 from .api_match_pool import ApiMatchPool
 from .api_match_pool_config import ApiMatchPoolConfig
-from .api_match_rule_set import ApiMatchRuleSet
-from .api_match_rule_set_data import ApiMatchRuleSetData
 from .api_match_rule_set_name_data import ApiMatchRuleSetNameData
 from .api_match_ticket_request import ApiMatchTicketRequest
 from .api_match_ticket_response import ApiMatchTicketResponse
@@ -37,6 +35,7 @@ from .api_match_ticket_status import ApiMatchTicketStatus
 from .api_party import ApiParty
 from .api_player_data import ApiPlayerData
 from .api_proposed_proposal import ApiProposedProposal
+from .api_rule_set_payload import ApiRuleSetPayload
 from .api_team import ApiTeam
 from .api_ticket import ApiTicket
 from .models_pagination import ModelsPagination

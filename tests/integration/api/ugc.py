@@ -6,7 +6,6 @@ from accelbyte_py_sdk.api.ugc.models import ModelsCreateTagRequest
 
 
 class UGCTestCase(IntegrationTestCase):
-
     tag_id: Optional[str] = None
     models_create_tag_request: ModelsCreateTagRequest = ModelsCreateTagRequest.create(
         tag="TAG"

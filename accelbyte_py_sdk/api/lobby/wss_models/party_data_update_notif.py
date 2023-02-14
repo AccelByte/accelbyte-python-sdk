@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class PartyDataUpdateNotif(WebSocketMessage):
-
     # region fields
 
     custom_attributes: Dict[str, Any]

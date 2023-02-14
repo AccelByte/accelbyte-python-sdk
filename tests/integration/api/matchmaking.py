@@ -17,7 +17,6 @@ from accelbyte_py_sdk.api.matchmaking.models import ModelsSubGameMode
 
 
 class MatchmakingTestCase(IntegrationTestCase):
-
     exported_filename: str = "exported"
     criteria: str = "distance"
     duration: int = 300

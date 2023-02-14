@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Session Service Index (2.6.0)
+# AccelByte Cloud Session Service Index (2.6.1)
 
 
 ## Operations

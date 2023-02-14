@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Achievement Service Index (2.13.1)
+# AccelByte Cloud Achievement Service Index (2.14.0)
 
 
 ## Operations
@@ -25,6 +25,12 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements | DELETE | AdminAnonymizeUserAchievement | `false` | [AdminAnonymizeUserAchievement](../../accelbyte_py_sdk/api/achievement/operations/anonymization/admin_anonymize_user_ac_c61ab2.py) | [admin_anonymize_user_achievement](../../accelbyte_py_sdk/api/achievement/wrappers/_anonymization.py) | [accelbyte_py_sdk_cli achievement-admin-anonymize-user-achievement](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_anonymize_user_achievement.py) |
+
+### Global Achievements
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim | POST | ClaimGlobalAchievementReward | `false` | [ClaimGlobalAchievementReward](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/claim_global_achievemen_1ea8df.py) | [claim_global_achievement_reward](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-claim-global-achievement-reward](../../samples/cli/accelbyte_py_sdk_cli/achievement/_claim_global_achievement_reward.py) |
+| /achievement/v1/public/namespaces/{namespace}/global/achievements | GET | PublicListGlobalAchievements | `false` | [PublicListGlobalAchievements](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/public_list_global_achi_9c838b.py) | [public_list_global_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-public-list-global-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_public_list_global_achievements.py) |
 
 ### Tags
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -50,8 +56,10 @@
 | models.AchievementResponse | [ModelsAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_achievement_response.py) |
 | models.AchievementUpdateRequest | [ModelsAchievementUpdateRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_update_request.py) |
 | models.AdditionalInfo | [ModelsAdditionalInfo](../../accelbyte_py_sdk/api/achievement/models/models_additional_info.py) |
+| models.GlobalAchievementResponse | [ModelsGlobalAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_global_achievement_response.py) |
 | models.Icon | [ModelsIcon](../../accelbyte_py_sdk/api/achievement/models/models_icon.py) |
 | models.PaginatedAchievementResponse | [ModelsPaginatedAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_achievement_response.py) |
+| models.PaginatedGlobalAchievementResponse | [ModelsPaginatedGlobalAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_global_achievement_response.py) |
 | models.PaginatedTagResponse | [ModelsPaginatedTagResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_tag_response.py) |
 | models.PaginatedUserAchievementResponse | [ModelsPaginatedUserAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_user_achievement_response.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/achievement/models/models_pagination.py) |

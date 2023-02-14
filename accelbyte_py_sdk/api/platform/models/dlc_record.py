@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Platform Service (4.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,12 +29,14 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.platform_reward import PlatformReward
+from ..models.revocation_result import RevocationResult
 from ..models.revoke_result import RevokeResult
 
 
 class StatusEnum(StrEnum):
     FULFILLED = "FULFILLED"
     REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
 
 
 class DLCRecord(Model):
@@ -45,6 +47,8 @@ class DLCRecord(Model):
 
         obtained_at: (obtainedAt) OPTIONAL str
 
+        revocation_result: (revocationResult) OPTIONAL RevocationResult
+
         revoke_results: (revokeResults) OPTIONAL List[RevokeResult]
 
         revoked_at: (revokedAt) OPTIONAL str
@@ -54,17 +58,24 @@ class DLCRecord(Model):
         sources: (sources) OPTIONAL List[str]
 
         status: (status) OPTIONAL Union[str, StatusEnum]
+
+        transaction_id: (transactionId) OPTIONAL str
+
+        version: (version) OPTIONAL int
     """
 
     # region fields
 
     id_: str  # OPTIONAL
     obtained_at: str  # OPTIONAL
+    revocation_result: RevocationResult  # OPTIONAL
     revoke_results: List[RevokeResult]  # OPTIONAL
     revoked_at: str  # OPTIONAL
     rewards: List[PlatformReward]  # OPTIONAL
     sources: List[str]  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
+    transaction_id: str  # OPTIONAL
+    version: int  # OPTIONAL
 
     # endregion fields
 
@@ -76,6 +87,10 @@ class DLCRecord(Model):
 
     def with_obtained_at(self, value: str) -> DLCRecord:
         self.obtained_at = value
+        return self
+
+    def with_revocation_result(self, value: RevocationResult) -> DLCRecord:
+        self.revocation_result = value
         return self
 
     def with_revoke_results(self, value: List[RevokeResult]) -> DLCRecord:
@@ -98,6 +113,14 @@ class DLCRecord(Model):
         self.status = value
         return self
 
+    def with_transaction_id(self, value: str) -> DLCRecord:
+        self.transaction_id = value
+        return self
+
+    def with_version(self, value: int) -> DLCRecord:
+        self.version = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -112,6 +135,12 @@ class DLCRecord(Model):
             result["obtainedAt"] = str(self.obtained_at)
         elif include_empty:
             result["obtainedAt"] = ""
+        if hasattr(self, "revocation_result"):
+            result["revocationResult"] = self.revocation_result.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["revocationResult"] = RevocationResult()
         if hasattr(self, "revoke_results"):
             result["revokeResults"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.revoke_results
@@ -136,6 +165,14 @@ class DLCRecord(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = ""
+        if hasattr(self, "version"):
+            result["version"] = int(self.version)
+        elif include_empty:
+            result["version"] = 0
         return result
 
     # endregion to methods
@@ -147,17 +184,22 @@ class DLCRecord(Model):
         cls,
         id_: Optional[str] = None,
         obtained_at: Optional[str] = None,
+        revocation_result: Optional[RevocationResult] = None,
         revoke_results: Optional[List[RevokeResult]] = None,
         revoked_at: Optional[str] = None,
         rewards: Optional[List[PlatformReward]] = None,
         sources: Optional[List[str]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
+        transaction_id: Optional[str] = None,
+        version: Optional[int] = None,
     ) -> DLCRecord:
         instance = cls()
         if id_ is not None:
             instance.id_ = id_
         if obtained_at is not None:
             instance.obtained_at = obtained_at
+        if revocation_result is not None:
+            instance.revocation_result = revocation_result
         if revoke_results is not None:
             instance.revoke_results = revoke_results
         if revoked_at is not None:
@@ -168,6 +210,10 @@ class DLCRecord(Model):
             instance.sources = sources
         if status is not None:
             instance.status = status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
+        if version is not None:
+            instance.version = version
         return instance
 
     @classmethod
@@ -183,6 +229,12 @@ class DLCRecord(Model):
             instance.obtained_at = str(dict_["obtainedAt"])
         elif include_empty:
             instance.obtained_at = ""
+        if "revocationResult" in dict_ and dict_["revocationResult"] is not None:
+            instance.revocation_result = RevocationResult.create_from_dict(
+                dict_["revocationResult"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.revocation_result = RevocationResult()
         if "revokeResults" in dict_ and dict_["revokeResults"] is not None:
             instance.revoke_results = [
                 RevokeResult.create_from_dict(i0, include_empty=include_empty)
@@ -209,6 +261,14 @@ class DLCRecord(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = ""
+        if "version" in dict_ and dict_["version"] is not None:
+            instance.version = int(dict_["version"])
+        elif include_empty:
+            instance.version = 0
         return instance
 
     @classmethod
@@ -250,11 +310,14 @@ class DLCRecord(Model):
         return {
             "id": "id_",
             "obtainedAt": "obtained_at",
+            "revocationResult": "revocation_result",
             "revokeResults": "revoke_results",
             "revokedAt": "revoked_at",
             "rewards": "rewards",
             "sources": "sources",
             "status": "status",
+            "transactionId": "transaction_id",
+            "version": "version",
         }
 
     @staticmethod
@@ -262,17 +325,20 @@ class DLCRecord(Model):
         return {
             "id": False,
             "obtainedAt": False,
+            "revocationResult": False,
             "revokeResults": False,
             "revokedAt": False,
             "rewards": False,
             "sources": False,
             "status": False,
+            "transactionId": False,
+            "version": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["FULFILLED", "REVOKED"],
+            "status": ["FULFILLED", "REVOKED", "REVOKE_FAILED"],
         }
 
     # endregion static methods

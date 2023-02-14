@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.26.1)
+# AccelByte Cloud Iam Service (5.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -89,9 +89,6 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
 
       * epicgames
-
-
-      * stadia
 
 
       * ps4

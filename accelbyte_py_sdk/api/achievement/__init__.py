@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Achievement Service."""
 
-__version__ = "2.13.1"
+__version__ = "2.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,12 @@ from .wrappers import public_list_achievements_async
 # anonymization
 from .wrappers import admin_anonymize_user_achievement
 from .wrappers import admin_anonymize_user_achievement_async
+
+# global_achievements
+from .wrappers import claim_global_achievement_reward
+from .wrappers import claim_global_achievement_reward_async
+from .wrappers import public_list_global_achievements
+from .wrappers import public_list_global_achievements_async
 
 # tags
 from .wrappers import admin_list_tags

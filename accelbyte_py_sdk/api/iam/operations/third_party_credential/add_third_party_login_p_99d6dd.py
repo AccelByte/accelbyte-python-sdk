@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.26.1)
+# AccelByte Cloud Iam Service (5.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -93,16 +93,6 @@ class AddThirdPartyLoginPlatformCredentialV3(Operation):
 
 
     The secret for ps4, ps5, and ps4web is client secret of the psn web server.
-
-
-
-
-    The secret for stadia is the google cloud service account in base64 encode JSON format.
-
-
-
-
-    The secret for stadiaweb is client secret of the google OAuth client.
 
 
 

@@ -60,7 +60,6 @@ def extract_redirect_query(
 
 
 class AccelByteSDK:
-
     LOGGER_NAME: str = "accelbyte_py_sdk"
 
     def __init__(self):
@@ -367,7 +366,6 @@ class AccelByteSDK:
     # region Requests
 
     def run_request(self, operation: Operation, **kwargs) -> Tuple[Any, Any]:
-
         proto, error, kwargs = self._pre_run_request(operation=operation, **kwargs)
         if error:
             return None, error

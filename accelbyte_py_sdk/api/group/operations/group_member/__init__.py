@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Group Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .accept_group_invitation_eae968 import AcceptGroupInvitationPublicV2
 from .accept_group_join_reque_5995a4 import AcceptGroupJoinRequestPublicV1
 from .accept_group_join_reque_fe83bc import AcceptGroupJoinRequestPublicV2
 from .cancel_group_join_request_v1 import CancelGroupJoinRequestV1
+from .cancel_invitation_group_02cc21 import CancelInvitationGroupMemberV2
 from .get_group_members_list__2e05f5 import GetGroupMembersListAdminV1
 from .get_group_members_list__b75ca5 import GetGroupMembersListPublicV1
 from .get_user_group_informat_51aafe import GetUserGroupInformationPublicV1

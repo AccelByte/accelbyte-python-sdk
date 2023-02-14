@@ -2,7 +2,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class GametelemetryTestCase(IntegrationTestCase):
-
     steam_id: str = "76561199259217491"
 
     # region test:get_playtime_v1

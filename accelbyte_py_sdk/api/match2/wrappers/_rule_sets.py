@@ -30,8 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApiListRuleSetsResponse
-from ..models import ApiMatchRuleSet
-from ..models import ApiMatchRuleSetData
+from ..models import ApiRuleSetPayload
 from ..models import ResponseError
 
 from ..operations.rule_sets import CreateRuleSet
@@ -43,7 +42,7 @@ from ..operations.rule_sets import UpdateRuleSet
 
 @same_doc_as(CreateRuleSet)
 def create_rule_set(
-    body: ApiMatchRuleSet,
+    body: ApiRuleSetPayload,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -61,7 +60,7 @@ def create_rule_set(
 
 @same_doc_as(CreateRuleSet)
 async def create_rule_set_async(
-    body: ApiMatchRuleSet,
+    body: ApiRuleSetPayload,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -199,7 +198,7 @@ async def rule_set_list_async(
 
 @same_doc_as(UpdateRuleSet)
 def update_rule_set(
-    body: ApiMatchRuleSetData,
+    body: ApiRuleSetPayload,
     ruleset: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -219,7 +218,7 @@ def update_rule_set(
 
 @same_doc_as(UpdateRuleSet)
 async def update_rule_set_async(
-    body: ApiMatchRuleSetData,
+    body: ApiRuleSetPayload,
     ruleset: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,

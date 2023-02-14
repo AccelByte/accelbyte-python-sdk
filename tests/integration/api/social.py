@@ -4,7 +4,6 @@ from accelbyte_py_sdk.api.social.models import StatCreate
 
 
 class SocialTestCase(IntegrationTestCase):
-
     exist: bool = False
     exported_filename: str = "export_stat"
     stat_create: StatCreate = StatCreate.create(

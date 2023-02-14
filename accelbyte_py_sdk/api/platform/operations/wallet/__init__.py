@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.22.1"
+__version__ = "4.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,7 @@ from .check_wallet import CheckWallet
 from .check_wallet import OriginEnum as CheckWalletOriginEnum
 from .credit_user_wallet import CreditUserWallet
 from .debit_user_wallet import DebitUserWallet
+from .debit_user_wallet_by_cu_54daab import DebitUserWalletByCurrencyCode
 from .disable_user_wallet import DisableUserWallet
 from .enable_user_wallet import EnableUserWallet
 from .get_platform_wallet_config import GetPlatformWalletConfig

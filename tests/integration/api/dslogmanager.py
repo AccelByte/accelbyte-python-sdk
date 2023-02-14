@@ -5,7 +5,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class DSLogManagerTestCase(IntegrationTestCase):
-
     exported_filename: str = "exported"
     pod_name: Optional[str] = None
 

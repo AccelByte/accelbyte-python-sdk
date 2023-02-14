@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.22.1"
+__version__ = "4.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -33,6 +33,8 @@ from ._anonymization import anonymize_order
 from ._anonymization import anonymize_order_async
 from ._anonymization import anonymize_payment
 from ._anonymization import anonymize_payment_async
+from ._anonymization import anonymize_revocation
+from ._anonymization import anonymize_revocation_async
 from ._anonymization import anonymize_subscription
 from ._anonymization import anonymize_subscription_async
 from ._anonymization import anonymize_wallet
@@ -268,8 +270,6 @@ from ._iap import delete_iap_item_config
 from ._iap import delete_iap_item_config_async
 from ._iap import delete_playstation_iap_config
 from ._iap import delete_playstation_iap_config_async
-from ._iap import delete_stadia_iap_config
-from ._iap import delete_stadia_iap_config_async
 from ._iap import delete_steam_iap_config
 from ._iap import delete_steam_iap_config_async
 from ._iap import delete_twitch_iap_config
@@ -286,8 +286,6 @@ from ._iap import get_iap_item_config
 from ._iap import get_iap_item_config_async
 from ._iap import get_play_station_iap_config
 from ._iap import get_play_station_iap_config_async
-from ._iap import get_stadia_iap_config
-from ._iap import get_stadia_iap_config_async
 from ._iap import get_steam_iap_config
 from ._iap import get_steam_iap_config_async
 from ._iap import get_twitch_iap_config
@@ -312,8 +310,6 @@ from ._iap import query_user_iap_orders
 from ._iap import query_user_iap_orders_async
 from ._iap import sync_epic_games_inventory
 from ._iap import sync_epic_games_inventory_async
-from ._iap import sync_stadia_entitlement
-from ._iap import sync_stadia_entitlement_async
 from ._iap import sync_steam_inventory
 from ._iap import sync_steam_inventory_async
 from ._iap import sync_twitch_drops_entitlement
@@ -332,8 +328,6 @@ from ._iap import update_iap_item_config
 from ._iap import update_iap_item_config_async
 from ._iap import update_playstation_iap_config
 from ._iap import update_playstation_iap_config_async
-from ._iap import update_stadia_json_config_file
-from ._iap import update_stadia_json_config_file_async
 from ._iap import update_steam_iap_config
 from ._iap import update_steam_iap_config_async
 from ._iap import update_twitch_iap_config
@@ -624,6 +618,17 @@ from ._payment_station import public_get_unpaid_payment_order_async
 from ._payment_station import public_normalize_payment_return_url
 from ._payment_station import public_normalize_payment_return_url_async
 
+from ._revocation import delete_revocation_config
+from ._revocation import delete_revocation_config_async
+from ._revocation import do_revocation
+from ._revocation import do_revocation_async
+from ._revocation import get_payment_callback_config_1
+from ._revocation import get_payment_callback_config_1_async
+from ._revocation import query_revocation_histories
+from ._revocation import query_revocation_histories_async
+from ._revocation import update_revocation_config
+from ._revocation import update_revocation_config_async
+
 from ._reward import check_event_condition
 from ._reward import check_event_condition_async
 from ._reward import create_reward
@@ -771,6 +776,8 @@ from ._wallet import credit_user_wallet
 from ._wallet import credit_user_wallet_async
 from ._wallet import debit_user_wallet
 from ._wallet import debit_user_wallet_async
+from ._wallet import debit_user_wallet_by_currency_code
+from ._wallet import debit_user_wallet_by_currency_code_async
 from ._wallet import disable_user_wallet
 from ._wallet import disable_user_wallet_async
 from ._wallet import enable_user_wallet

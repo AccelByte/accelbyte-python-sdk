@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Achievement Service (2.13.1)
+# AccelByte Cloud Achievement Service (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -73,6 +73,8 @@ class AdminListAchievements(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        global_: (global) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -103,6 +105,7 @@ class AdminListAchievements(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    global_: bool  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
@@ -158,6 +161,8 @@ class AdminListAchievements(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "global_"):
+            result["global"] = self.global_
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -178,6 +183,10 @@ class AdminListAchievements(Operation):
 
     def with_namespace(self, value: str) -> AdminListAchievements:
         self.namespace = value
+        return self
+
+    def with_global_(self, value: bool) -> AdminListAchievements:
+        self.global_ = value
         return self
 
     def with_limit(self, value: int) -> AdminListAchievements:
@@ -206,6 +215,10 @@ class AdminListAchievements(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "global_") and self.global_:
+            result["global"] = bool(self.global_)
+        elif include_empty:
+            result["global"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -283,6 +296,7 @@ class AdminListAchievements(Operation):
     def create(
         cls,
         namespace: str,
+        global_: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
@@ -290,6 +304,8 @@ class AdminListAchievements(Operation):
     ) -> AdminListAchievements:
         instance = cls()
         instance.namespace = namespace
+        if global_ is not None:
+            instance.global_ = global_
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -309,6 +325,10 @@ class AdminListAchievements(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "global" in dict_ and dict_["global"] is not None:
+            instance.global_ = bool(dict_["global"])
+        elif include_empty:
+            instance.global_ = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -331,6 +351,7 @@ class AdminListAchievements(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "global": "global_",
             "limit": "limit",
             "offset": "offset",
             "sortBy": "sort_by",
@@ -341,6 +362,7 @@ class AdminListAchievements(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "global": False,
             "limit": False,
             "offset": False,
             "sortBy": False,

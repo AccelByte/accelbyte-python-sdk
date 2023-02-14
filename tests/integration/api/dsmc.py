@@ -11,7 +11,6 @@ from accelbyte_py_sdk.api.dsmc.models import ModelsRequestMatchingAlly
 
 
 class DSMCTestCase(IntegrationTestCase):
-
     exported_filename: str = "exported"
 
     def tearDown(self) -> None:
@@ -44,7 +43,6 @@ class DSMCTestCase(IntegrationTestCase):
 
 
 class DSMCSessionTestCase(IntegrationTestCase):
-
     session_id: Optional[str] = None
     deployment: str = "default"
     game_mode: str = "GAME_MODE"

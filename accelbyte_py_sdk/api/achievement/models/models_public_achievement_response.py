@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Achievement Service (2.13.1)
+# AccelByte Cloud Achievement Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,8 @@ class ModelsPublicAchievementResponse(Model):
 
         description: (description) REQUIRED str
 
+        global_: (global) REQUIRED bool
+
         hidden: (hidden) REQUIRED bool
 
         incremental: (incremental) REQUIRED bool
@@ -68,6 +70,7 @@ class ModelsPublicAchievementResponse(Model):
     achievement_code: str  # REQUIRED
     created_at: str  # REQUIRED
     description: str  # REQUIRED
+    global_: bool  # REQUIRED
     hidden: bool  # REQUIRED
     incremental: bool  # REQUIRED
     list_order: int  # REQUIRED
@@ -94,6 +97,10 @@ class ModelsPublicAchievementResponse(Model):
 
     def with_description(self, value: str) -> ModelsPublicAchievementResponse:
         self.description = value
+        return self
+
+    def with_global(self, value: bool) -> ModelsPublicAchievementResponse:
+        self.global_ = value
         return self
 
     def with_hidden(self, value: bool) -> ModelsPublicAchievementResponse:
@@ -162,6 +169,10 @@ class ModelsPublicAchievementResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "global_"):
+            result["global"] = bool(self.global_)
+        elif include_empty:
+            result["global"] = False
         if hasattr(self, "hidden"):
             result["hidden"] = bool(self.hidden)
         elif include_empty:
@@ -222,6 +233,7 @@ class ModelsPublicAchievementResponse(Model):
         achievement_code: str,
         created_at: str,
         description: str,
+        global_: bool,
         hidden: bool,
         incremental: bool,
         list_order: int,
@@ -238,6 +250,7 @@ class ModelsPublicAchievementResponse(Model):
         instance.achievement_code = achievement_code
         instance.created_at = created_at
         instance.description = description
+        instance.global_ = global_
         instance.hidden = hidden
         instance.incremental = incremental
         instance.list_order = list_order
@@ -272,6 +285,10 @@ class ModelsPublicAchievementResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "global" in dict_ and dict_["global"] is not None:
+            instance.global_ = bool(dict_["global"])
+        elif include_empty:
+            instance.global_ = False
         if "hidden" in dict_ and dict_["hidden"] is not None:
             instance.hidden = bool(dict_["hidden"])
         elif include_empty:
@@ -368,6 +385,7 @@ class ModelsPublicAchievementResponse(Model):
             "achievementCode": "achievement_code",
             "createdAt": "created_at",
             "description": "description",
+            "global": "global_",
             "hidden": "hidden",
             "incremental": "incremental",
             "listOrder": "list_order",
@@ -387,6 +405,7 @@ class ModelsPublicAchievementResponse(Model):
             "achievementCode": True,
             "createdAt": True,
             "description": True,
+            "global": True,
             "hidden": True,
             "incremental": True,
             "listOrder": True,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Match Service V2 (2.1.0)
+# Justice Match Service V2 (2.1.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,8 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.match2 import update_rule_set as update_rule_set_internal
-from accelbyte_py_sdk.api.match2.models import ApiMatchRuleSet
-from accelbyte_py_sdk.api.match2.models import ApiMatchRuleSetData
+from accelbyte_py_sdk.api.match2.models import ApiRuleSetPayload
 from accelbyte_py_sdk.api.match2.models import ResponseError
 
 
@@ -62,7 +61,7 @@ def update_rule_set(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApiMatchRuleSetData.create_from_dict(body_json)
+            body = ApiRuleSetPayload.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_rule_set_internal(

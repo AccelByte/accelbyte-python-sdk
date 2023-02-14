@@ -7,7 +7,6 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 
 class LegalTestCase(IntegrationTestCase):
-
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"

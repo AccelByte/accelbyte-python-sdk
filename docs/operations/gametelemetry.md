@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# Analytics Game Telemetry Index (1.15.0)
+# Analytics Game Telemetry Index (1.16.0)
 
 
 ## Operations

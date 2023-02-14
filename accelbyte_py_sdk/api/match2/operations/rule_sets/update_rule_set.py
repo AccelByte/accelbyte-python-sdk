@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Match Service V2 (2.1.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,8 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiMatchRuleSet
-from ...models import ApiMatchRuleSetData
+from ...models import ApiRuleSetPayload
 from ...models import ResponseError
 
 
@@ -42,6 +41,8 @@ class UpdateRuleSet(Operation):
     Required Scope: social
 
     Updates an existing matchmaking rule set.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
@@ -62,14 +63,14 @@ class UpdateRuleSet(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiMatchRuleSetData in body
+        body: (body) REQUIRED ApiRuleSetPayload in body
 
         namespace: (namespace) REQUIRED str in path
 
         ruleset: (ruleset) REQUIRED str in path
 
     Responses:
-        200: OK - ApiMatchRuleSet (OK)
+        200: OK - ApiRuleSetPayload (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -91,7 +92,7 @@ class UpdateRuleSet(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApiMatchRuleSetData  # REQUIRED in [body]
+    body: ApiRuleSetPayload  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     ruleset: str  # REQUIRED in [path]
 
@@ -158,7 +159,7 @@ class UpdateRuleSet(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApiMatchRuleSetData) -> UpdateRuleSet:
+    def with_body(self, value: ApiRuleSetPayload) -> UpdateRuleSet:
         self.body = value
         return self
 
@@ -179,7 +180,7 @@ class UpdateRuleSet(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ApiMatchRuleSetData()
+            result["body"] = ApiRuleSetPayload()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -197,10 +198,12 @@ class UpdateRuleSet(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ApiMatchRuleSet], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApiRuleSetPayload], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - ApiMatchRuleSet (OK)
+        200: OK - ApiRuleSetPayload (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -226,7 +229,7 @@ class UpdateRuleSet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApiMatchRuleSet.create_from_dict(content), None
+            return ApiRuleSetPayload.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
@@ -249,7 +252,7 @@ class UpdateRuleSet(Operation):
     @classmethod
     def create(
         cls,
-        body: ApiMatchRuleSetData,
+        body: ApiRuleSetPayload,
         namespace: str,
         ruleset: str,
     ) -> UpdateRuleSet:
@@ -265,11 +268,11 @@ class UpdateRuleSet(Operation):
     ) -> UpdateRuleSet:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApiMatchRuleSetData.create_from_dict(
+            instance.body = ApiRuleSetPayload.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ApiMatchRuleSetData()
+            instance.body = ApiRuleSetPayload()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

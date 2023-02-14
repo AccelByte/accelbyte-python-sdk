@@ -66,7 +66,6 @@ class TestEnum(StrEnum):
 
 
 class TestModel(Model):
-
     date_of_birth: str
 
     def with_date_of_birth(self, value: str):
@@ -87,7 +86,6 @@ class TestModel(Model):
 
 
 class TestOperation(Operation):
-
     _url: str = "/test/profiles"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]

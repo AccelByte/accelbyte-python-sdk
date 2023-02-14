@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-legal-service (1.25.5)
+# justice-legal-service (1.26.0)
 
 from ._change_preference_consent import change_preference_consent
 from ._retrieve_accepted_agreements import retrieve_accepted_agreements
@@ -24,6 +24,32 @@ from ._retrieve_single_localized_policy_version import (
 from ._update_localized_policy_version import update_localized_policy_version
 from ._request_presigned_url import request_presigned_url
 from ._set_default_policy import set_default_policy
+from ._retrieve_accepted_agreements_1 import retrieve_accepted_agreements_1
+from ._retrieve_all_users_by_policy_version_1 import (
+    retrieve_all_users_by_policy_version_1,
+)
+from ._retrieve_all_legal_policies_by_namespace import (
+    retrieve_all_legal_policies_by_namespace,
+)
+from ._create_policy_1 import create_policy_1
+from ._retrieve_single_policy_1 import retrieve_single_policy_1
+from ._partial_update_policy_1 import partial_update_policy_1
+from ._retrieve_policy_country_1 import retrieve_policy_country_1
+from ._retrieve_localized_policy_versions_1 import retrieve_localized_policy_versions_1
+from ._create_localized_policy_version_1 import create_localized_policy_version_1
+from ._retrieve_single_localized_policy_version_1 import (
+    retrieve_single_localized_policy_version_1,
+)
+from ._update_localized_policy_version_1 import update_localized_policy_version_1
+from ._request_presigned_url_1 import request_presigned_url_1
+from ._set_default_policy_1 import set_default_policy_1
+from ._update_policy_version_1 import update_policy_version_1
+from ._publish_policy_version_1 import publish_policy_version_1
+from ._update_policy_1 import update_policy_1
+from ._set_default_policy_3 import set_default_policy_3
+from ._retrieve_single_policy_version_1 import retrieve_single_policy_version_1
+from ._create_policy_version_1 import create_policy_version_1
+from ._retrieve_all_policy_types_1 import retrieve_all_policy_types_1
 from ._indirect_bulk_accept_versioned_policy import (
     indirect_bulk_accept_versioned_policy,
 )
@@ -32,7 +58,7 @@ from ._retrieve_policies import retrieve_policies
 from ._update_policy_version import update_policy_version
 from ._publish_policy_version import publish_policy_version
 from ._update_policy import update_policy
-from ._set_default_policy_1 import set_default_policy_1
+from ._set_default_policy_2 import set_default_policy_2
 from ._retrieve_single_policy_version import retrieve_single_policy_version
 from ._create_policy_version import create_policy_version
 from ._retrieve_all_policy_types import retrieve_all_policy_types
@@ -54,8 +80,11 @@ from ._retrieve_eligibilities_public import retrieve_eligibilities_public
 from ._retrieve_eligibilities_public_indirect import (
     retrieve_eligibilities_public_indirect,
 )
-from ._retrieve_single_localized_policy_version_1 import (
-    retrieve_single_localized_policy_version_1,
+from ._retrieve_single_localized_policy_version_2 import (
+    retrieve_single_localized_policy_version_2,
+)
+from ._retrieve_single_localized_policy_version_3 import (
+    retrieve_single_localized_policy_version_3,
 )
 from ._retrieve_latest_policies import retrieve_latest_policies
 from ._retrieve_latest_policies_public import retrieve_latest_policies_public
@@ -80,13 +109,33 @@ commands = [
     update_localized_policy_version,
     request_presigned_url,
     set_default_policy,
+    retrieve_accepted_agreements_1,
+    retrieve_all_users_by_policy_version_1,
+    retrieve_all_legal_policies_by_namespace,
+    create_policy_1,
+    retrieve_single_policy_1,
+    partial_update_policy_1,
+    retrieve_policy_country_1,
+    retrieve_localized_policy_versions_1,
+    create_localized_policy_version_1,
+    retrieve_single_localized_policy_version_1,
+    update_localized_policy_version_1,
+    request_presigned_url_1,
+    set_default_policy_1,
+    update_policy_version_1,
+    publish_policy_version_1,
+    update_policy_1,
+    set_default_policy_3,
+    retrieve_single_policy_version_1,
+    create_policy_version_1,
+    retrieve_all_policy_types_1,
     indirect_bulk_accept_versioned_policy,
     admin_retrieve_eligibilities,
     retrieve_policies,
     update_policy_version,
     publish_policy_version,
     update_policy,
-    set_default_policy_1,
+    set_default_policy_2,
     retrieve_single_policy_version,
     create_policy_version,
     retrieve_all_policy_types,
@@ -102,7 +151,8 @@ commands = [
     indirect_bulk_accept_versioned_policy_1,
     retrieve_eligibilities_public,
     retrieve_eligibilities_public_indirect,
-    retrieve_single_localized_policy_version_1,
+    retrieve_single_localized_policy_version_2,
+    retrieve_single_localized_policy_version_3,
     retrieve_latest_policies,
     retrieve_latest_policies_public,
     retrieve_latest_policies_by_namespace_and_country_public,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Achievement Service (2.13.1)
+# Accelbyte Cloud Achievement Service (2.14.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 
 
 @click.command()
+@click.option("--global", "global_", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.achievement.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_list_achievements(
+    global_: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
@@ -71,6 +73,7 @@ def admin_list_achievements(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = admin_list_achievements_internal(
+        global_=global_,
         limit=limit,
         offset=offset,
         sort_by=sort_by,

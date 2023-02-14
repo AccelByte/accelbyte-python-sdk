@@ -25,7 +25,6 @@ from ....core import generate_websocket_message_id
 
 
 class CancelMatchmakingResponse(WebSocketMessage):
-
     # region fields
 
     code: int

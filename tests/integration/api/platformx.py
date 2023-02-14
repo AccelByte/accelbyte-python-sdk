@@ -6,7 +6,6 @@ from accelbyte_py_sdk.api.platform.models import StoreCreate
 
 
 class PlatformTestCase(IntegrationTestCase):
-
     did_delete_drafts: bool = False
     exported_filename: str = "export_store"
     store_id: Optional[str] = None

@@ -36,6 +36,7 @@ from ..operations.anonymization import AnonymizeFulfillment
 from ..operations.anonymization import AnonymizeIntegration
 from ..operations.anonymization import AnonymizeOrder
 from ..operations.anonymization import AnonymizePayment
+from ..operations.anonymization import AnonymizeRevocation
 from ..operations.anonymization import AnonymizeSubscription
 from ..operations.anonymization import AnonymizeWallet
 
@@ -260,6 +261,44 @@ async def anonymize_payment_async(
         if error:
             return None, error
     request = AnonymizePayment.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AnonymizeRevocation)
+def anonymize_revocation(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeRevocation.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AnonymizeRevocation)
+async def anonymize_revocation_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AnonymizeRevocation.create(
         user_id=user_id,
         namespace=namespace,
     )

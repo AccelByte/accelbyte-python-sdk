@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.22.1)
+# justice-platform-service (4.23.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._test_fulfillment_script_eval import test_fulfillment_script_eval
@@ -76,9 +76,6 @@ from ._delete_iap_item_config import delete_iap_item_config
 from ._get_play_station_iap_config import get_play_station_iap_config
 from ._update_playstation_iap_config import update_playstation_iap_config
 from ._delete_playstation_iap_config import delete_playstation_iap_config
-from ._get_stadia_iap_config import get_stadia_iap_config
-from ._delete_stadia_iap_config import delete_stadia_iap_config
-from ._update_stadia_json_config_file import update_stadia_json_config_file
 from ._get_steam_iap_config import get_steam_iap_config
 from ._update_steam_iap_config import update_steam_iap_config
 from ._delete_steam_iap_config import delete_steam_iap_config
@@ -145,6 +142,10 @@ from ._get_payment_order_charge_status import get_payment_order_charge_status
 from ._get_platform_wallet_config import get_platform_wallet_config
 from ._update_platform_wallet_config import update_platform_wallet_config
 from ._reset_platform_wallet_config import reset_platform_wallet_config
+from ._get_payment_callback_config_1 import get_payment_callback_config_1
+from ._update_revocation_config import update_revocation_config
+from ._delete_revocation_config import delete_revocation_config
+from ._query_revocation_histories import query_revocation_histories
 from ._create_reward import create_reward
 from ._query_rewards import query_rewards
 from ._export_rewards import export_rewards
@@ -195,6 +196,7 @@ from ._anonymize_fulfillment import anonymize_fulfillment
 from ._anonymize_integration import anonymize_integration
 from ._anonymize_order import anonymize_order
 from ._anonymize_payment import anonymize_payment
+from ._anonymize_revocation import anonymize_revocation
 from ._anonymize_subscription import anonymize_subscription
 from ._anonymize_wallet import anonymize_wallet
 from ._get_user_dlc import get_user_dlc
@@ -251,6 +253,7 @@ from ._download_user_order_receipt import download_user_order_receipt
 from ._create_user_payment_order import create_user_payment_order
 from ._refund_user_payment_order import refund_user_payment_order
 from ._apply_user_redemption import apply_user_redemption
+from ._do_revocation import do_revocation
 from ._query_user_subscriptions import query_user_subscriptions
 from ._get_user_subscription_activities import get_user_subscription_activities
 from ._platform_subscribe_subscription import platform_subscribe_subscription
@@ -269,6 +272,7 @@ from ._process_user_subscription_notification import (
 )
 from ._acquire_user_ticket import acquire_user_ticket
 from ._query_user_currency_wallets import query_user_currency_wallets
+from ._debit_user_wallet_by_currency_code import debit_user_wallet_by_currency_code
 from ._list_user_currency_transactions import list_user_currency_transactions
 from ._check_wallet import check_wallet
 from ._credit_user_wallet import credit_user_wallet
@@ -417,7 +421,6 @@ from ._public_reconcile_play_station_store import public_reconcile_play_station_
 from ._public_reconcile_play_station_store_with_multiple_service_labels import (
     public_reconcile_play_station_store_with_multiple_service_labels,
 )
-from ._sync_stadia_entitlement import sync_stadia_entitlement
 from ._sync_steam_inventory import sync_steam_inventory
 from ._sync_twitch_drops_entitlement import sync_twitch_drops_entitlement
 from ._sync_xbox_inventory import sync_xbox_inventory
@@ -520,9 +523,6 @@ commands = [
     get_play_station_iap_config,
     update_playstation_iap_config,
     delete_playstation_iap_config,
-    get_stadia_iap_config,
-    delete_stadia_iap_config,
-    update_stadia_json_config_file,
     get_steam_iap_config,
     update_steam_iap_config,
     delete_steam_iap_config,
@@ -589,6 +589,10 @@ commands = [
     get_platform_wallet_config,
     update_platform_wallet_config,
     reset_platform_wallet_config,
+    get_payment_callback_config_1,
+    update_revocation_config,
+    delete_revocation_config,
+    query_revocation_histories,
     create_reward,
     query_rewards,
     export_rewards,
@@ -639,6 +643,7 @@ commands = [
     anonymize_integration,
     anonymize_order,
     anonymize_payment,
+    anonymize_revocation,
     anonymize_subscription,
     anonymize_wallet,
     get_user_dlc,
@@ -683,6 +688,7 @@ commands = [
     create_user_payment_order,
     refund_user_payment_order,
     apply_user_redemption,
+    do_revocation,
     query_user_subscriptions,
     get_user_subscription_activities,
     platform_subscribe_subscription,
@@ -695,6 +701,7 @@ commands = [
     process_user_subscription_notification,
     acquire_user_ticket,
     query_user_currency_wallets,
+    debit_user_wallet_by_currency_code,
     list_user_currency_transactions,
     check_wallet,
     credit_user_wallet,
@@ -805,7 +812,6 @@ commands = [
     public_fulfill_google_iap_item,
     public_reconcile_play_station_store,
     public_reconcile_play_station_store_with_multiple_service_labels,
-    sync_stadia_entitlement,
     sync_steam_inventory,
     sync_twitch_drops_entitlement,
     sync_xbox_inventory,

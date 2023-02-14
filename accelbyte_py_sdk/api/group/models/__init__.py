@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Group Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -40,6 +40,9 @@ from .models_get_user_group_information_response_v1 import (
 )
 from .models_group_member import ModelsGroupMember
 from .models_group_response_v1 import ModelsGroupResponseV1
+from .models_group_response_v1 import (
+    GroupTypeEnum as ModelsGroupResponseV1GroupTypeEnum,
+)
 from .models_group_rule import ModelsGroupRule
 from .models_group_rule_group_custom_rule import ModelsGroupRuleGroupCustomRule
 from .models_group_rule_response_v1 import ModelsGroupRuleResponseV1

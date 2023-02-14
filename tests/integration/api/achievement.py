@@ -7,7 +7,6 @@ from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 
 
 class AchievementTestCase(IntegrationTestCase):
-
     exist: bool = False
     exported_filename: str = "export_achievements"
     stat_code: str = generate_id(8)
