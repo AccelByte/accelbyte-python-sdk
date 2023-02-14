@@ -23,6 +23,7 @@ from accelbyte_py_sdk_cli.match2 import commands as match2_commands
 from accelbyte_py_sdk_cli.matchmaking import commands as matchmaking_commands
 from accelbyte_py_sdk_cli.platform import commands as platform_commands
 from accelbyte_py_sdk_cli.qosm import commands as qosm_commands
+from accelbyte_py_sdk_cli.reporting import commands as reporting_commands
 from accelbyte_py_sdk_cli.session import commands as session_commands
 from accelbyte_py_sdk_cli.seasonpass import commands as seasonpass_commands
 from accelbyte_py_sdk_cli.sessionbrowser import commands as sessionbrowser_commands
@@ -176,6 +177,7 @@ add_commands(entry_point, matchmaking_commands, prefix="matchmaking")
 add_commands(entry_point, platform_commands, prefix="platform")
 add_commands(entry_point, qosm_commands, prefix="qosm")
 add_commands(entry_point, session_commands, prefix="session")
+add_commands(entry_point, reporting_commands, prefix="reporting")
 add_commands(entry_point, seasonpass_commands, prefix="seasonpass")
 add_commands(entry_point, sessionbrowser_commands, prefix="sessionbrowser")
 add_commands(entry_point, social_commands, prefix="social")
