@@ -1,39 +1,17 @@
+import importlib.util
 import logging
 import shlex
+from pathlib import Path
 from typing import Any, Optional
 
 import click
 
 from accelbyte_py_sdk import initialize
 
-from accelbyte_py_sdk_cli.iam import commands as iam_commands
-from accelbyte_py_sdk_cli.achievement import commands as achievement_commands
-from accelbyte_py_sdk_cli.basic import commands as basic_commands
-from accelbyte_py_sdk_cli.cloudsave import commands as cloudsave_commands
-from accelbyte_py_sdk_cli.dslogmanager import commands as dslogmanager_commands
-from accelbyte_py_sdk_cli.dsmc import commands as dsmc_commands
-from accelbyte_py_sdk_cli.eventlog import commands as eventlog_commands
-from accelbyte_py_sdk_cli.gametelemetry import commands as gametelemetry_commands
-from accelbyte_py_sdk_cli.gdpr import commands as gdpr_commands
-from accelbyte_py_sdk_cli.group import commands as group_commands
-from accelbyte_py_sdk_cli.leaderboard import commands as leaderboard_commands
-from accelbyte_py_sdk_cli.legal import commands as legal_commands
-from accelbyte_py_sdk_cli.lobby import commands as lobby_commands
-from accelbyte_py_sdk_cli.match2 import commands as match2_commands
-from accelbyte_py_sdk_cli.matchmaking import commands as matchmaking_commands
-from accelbyte_py_sdk_cli.platform import commands as platform_commands
-from accelbyte_py_sdk_cli.qosm import commands as qosm_commands
-from accelbyte_py_sdk_cli.reporting import commands as reporting_commands
-from accelbyte_py_sdk_cli.session import commands as session_commands
-from accelbyte_py_sdk_cli.seasonpass import commands as seasonpass_commands
-from accelbyte_py_sdk_cli.sessionbrowser import commands as sessionbrowser_commands
-from accelbyte_py_sdk_cli.social import commands as social_commands
-from accelbyte_py_sdk_cli.ugc import commands as ugc_commands
-
-from accelbyte_py_sdk_cli._sessions import SessionWriter
-from accelbyte_py_sdk_cli._sessions import TapSessionWriter
-from accelbyte_py_sdk_cli._sessions import one_shot_websocket
-from accelbyte_py_sdk_cli._sessions import start_batched_ws_session
+from ._sessions import SessionWriter
+from ._sessions import TapSessionWriter
+from ._sessions import one_shot_websocket
+from ._sessions import start_batched_ws_session
 
 
 @click.group()
@@ -159,33 +137,22 @@ def __intercept(obj, attr: str):
     return __intercept_impl
 
 
-add_commands(entry_point, iam_commands, prefix="iam")
-add_commands(entry_point, achievement_commands, prefix="achievement")
-add_commands(entry_point, basic_commands, prefix="basic")
-add_commands(entry_point, dslogmanager_commands, prefix="dslogmanager")
-add_commands(entry_point, cloudsave_commands, prefix="cloudsave")
-add_commands(entry_point, dsmc_commands, prefix="dsmc")
-add_commands(entry_point, eventlog_commands, prefix="eventlog")
-add_commands(entry_point, gametelemetry_commands, prefix="gametelemetry")
-add_commands(entry_point, gdpr_commands, prefix="gdpr")
-add_commands(entry_point, group_commands, prefix="group")
-add_commands(entry_point, leaderboard_commands, prefix="leaderboard")
-add_commands(entry_point, legal_commands, prefix="legal")
-add_commands(entry_point, lobby_commands, prefix="lobby")
-add_commands(entry_point, match2_commands, prefix="match2")
-add_commands(entry_point, matchmaking_commands, prefix="matchmaking")
-add_commands(entry_point, platform_commands, prefix="platform")
-add_commands(entry_point, qosm_commands, prefix="qosm")
-add_commands(entry_point, session_commands, prefix="session")
-add_commands(entry_point, reporting_commands, prefix="reporting")
-add_commands(entry_point, seasonpass_commands, prefix="seasonpass")
-add_commands(entry_point, sessionbrowser_commands, prefix="sessionbrowser")
-add_commands(entry_point, social_commands, prefix="social")
-add_commands(entry_point, ugc_commands, prefix="ugc")
-
 entry_point.add_command(start_interactive_session)
 entry_point.add_command(one_shot_websocket)
 entry_point.add_command(start_batched_ws_session)
+
+# add submodules programmatically
+cwd = Path(__file__).parent
+whitelist = ()
+dirs = [
+    d.name
+    for d in cwd.glob("*")
+    if d.is_dir() and not d.name.startswith("_") and d.name not in whitelist
+]
+for d in dirs:
+    module = importlib.import_module(name=f".{d}", package=cwd.name)
+    if module and (commands := getattr(module, "commands", None)):
+        add_commands(entry_point, commands, prefix=d)
 
 
 if __name__ == "__main__":
