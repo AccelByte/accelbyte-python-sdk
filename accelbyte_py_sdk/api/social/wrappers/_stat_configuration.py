@@ -276,6 +276,7 @@ async def get_stat_async(
 
 @same_doc_as(GetStats)
 def get_stats(
+    is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -287,6 +288,7 @@ def get_stats(
         if error:
             return None, error
     request = GetStats.create(
+        is_global=is_global,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -296,6 +298,7 @@ def get_stats(
 
 @same_doc_as(GetStats)
 async def get_stats_async(
+    is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -307,6 +310,7 @@ async def get_stats_async(
         if error:
             return None, error
     request = GetStats.create(
+        is_global=is_global,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -361,6 +365,7 @@ async def import_stats_async(
 @same_doc_as(QueryStats)
 def query_stats(
     keyword: str,
+    is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -373,6 +378,7 @@ def query_stats(
             return None, error
     request = QueryStats.create(
         keyword=keyword,
+        is_global=is_global,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -383,6 +389,7 @@ def query_stats(
 @same_doc_as(QueryStats)
 async def query_stats_async(
     keyword: str,
+    is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -395,6 +402,7 @@ async def query_stats_async(
             return None, error
     request = QueryStats.create(
         keyword=keyword,
+        is_global=is_global,
         limit=limit,
         offset=offset,
         namespace=namespace,

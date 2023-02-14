@@ -6,7 +6,6 @@ from tests.integration.test_case import AsyncIntegrationTestCase
 
 
 class LobbyTestCase(IntegrationTestCase):
-
     exported_filename: str = "export_config"
 
     def tearDown(self) -> None:
@@ -59,7 +58,6 @@ class LobbyTestCase(IntegrationTestCase):
 
 
 class AsyncLobbyTestCase(AsyncIntegrationTestCase):
-
     # region test:send_and_receive_notifications
 
     async def test_send_and_receive_notifications(self):

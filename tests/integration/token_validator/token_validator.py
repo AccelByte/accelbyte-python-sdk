@@ -11,7 +11,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class TokenValidatorTestCase(IntegrationTestCase):
-
     sdks: List[AccelByteSDK] = []
     user_id: Optional[str] = None
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.22.1"
+__version__ = "4.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -141,6 +141,8 @@ from .credit_request import (
     OriginEnum as CreditRequestOriginEnum,
     SourceEnum as CreditRequestSourceEnum,
 )
+from .credit_revocation import CreditRevocation
+from .credit_revocation import StatusEnum as CreditRevocationStatusEnum
 from .credit_summary import CreditSummary
 from .currency_config import CurrencyConfig
 from .currency_create import CurrencyCreate
@@ -152,6 +154,10 @@ from .currency_summary import CurrencyTypeEnum as CurrencySummaryCurrencyTypeEnu
 from .currency_update import CurrencyUpdate
 from .currency_wallet import CurrencyWallet
 from .customization import Customization
+from .debit_by_currency_code_request import DebitByCurrencyCodeRequest
+from .debit_by_currency_code_request import (
+    BalanceOriginEnum as DebitByCurrencyCodeRequestBalanceOriginEnum,
+)
 from .debit_request import DebitRequest
 from .delete_reward_condition_request import DeleteRewardConditionRequest
 from .detailed_wallet_transaction_info import DetailedWalletTransactionInfo
@@ -166,6 +172,10 @@ from .dlc_item_config_info import DLCItemConfigInfo
 from .dlc_item_config_update import DLCItemConfigUpdate
 from .dlc_record import DLCRecord
 from .dlc_record import StatusEnum as DLCRecordStatusEnum
+from .durable_entitlement_revocation_config import DurableEntitlementRevocationConfig
+from .durable_entitlement_revocation_config import (
+    StrategyEnum as DurableEntitlementRevocationConfigStrategyEnum,
+)
 from .entitlement_decrement import EntitlementDecrement
 from .entitlement_decrement_result import EntitlementDecrementResult
 from .entitlement_decrement_result import (
@@ -190,6 +200,9 @@ from .entitlement_info import (
 from .entitlement_loot_box_reward import EntitlementLootBoxReward
 from .entitlement_ownership import EntitlementOwnership
 from .entitlement_paging_sliced_result import EntitlementPagingSlicedResult
+from .entitlement_revocation import EntitlementRevocation
+from .entitlement_revocation import StatusEnum as EntitlementRevocationStatusEnum
+from .entitlement_revocation_config import EntitlementRevocationConfig
 from .entitlement_summary import EntitlementSummary
 from .entitlement_summary import (
     ClazzEnum as EntitlementSummaryClazzEnum,
@@ -334,6 +347,11 @@ from .item_purchase_condition_validate_request import (
 )
 from .item_purchase_condition_validate_result import ItemPurchaseConditionValidateResult
 from .item_return_request import ItemReturnRequest
+from .item_revocation import ItemRevocation
+from .item_revocation import (
+    ItemTypeEnum as ItemRevocationItemTypeEnum,
+    StatusEnum as ItemRevocationStatusEnum,
+)
 from .item_snapshot import ItemSnapshot
 from .item_snapshot import (
     AppTypeEnum as ItemSnapshotAppTypeEnum,
@@ -555,6 +573,29 @@ from .region_data_item import CurrencyTypeEnum as RegionDataItemCurrencyTypeEnum
 from .request_history import RequestHistory
 from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
+from .revocation_config_info import RevocationConfigInfo
+from .revocation_config_update import RevocationConfigUpdate
+from .revocation_history_info import RevocationHistoryInfo
+from .revocation_history_info import StatusEnum as RevocationHistoryInfoStatusEnum
+from .revocation_history_paging_sliced_result import RevocationHistoryPagingSlicedResult
+from .revocation_request import RevocationRequest
+from .revocation_request import SourceEnum as RevocationRequestSourceEnum
+from .revocation_result import RevocationResult
+from .revocation_result import StatusEnum as RevocationResultStatusEnum
+from .revoke_currency import RevokeCurrency
+from .revoke_currency import BalanceOriginEnum as RevokeCurrencyBalanceOriginEnum
+from .revoke_entitlement import RevokeEntitlement
+from .revoke_entitlement import (
+    ClazzEnum as RevokeEntitlementClazzEnum,
+    TypeEnum as RevokeEntitlementTypeEnum,
+)
+from .revoke_entry import RevokeEntry
+from .revoke_entry import TypeEnum as RevokeEntryTypeEnum
+from .revoke_item import RevokeItem
+from .revoke_item import (
+    ItemIdentityTypeEnum as RevokeItemItemIdentityTypeEnum,
+    OriginEnum as RevokeItemOriginEnum,
+)
 from .revoke_item_summary import RevokeItemSummary
 from .revoke_item_summary import RevokeStatusEnum as RevokeItemSummaryRevokeStatusEnum
 from .revoke_result import RevokeResult
@@ -589,8 +630,6 @@ from .stackable_entitlement_info import (
     StatusEnum as StackableEntitlementInfoStatusEnum,
     TypeEnum as StackableEntitlementInfoTypeEnum,
 )
-from .stadia_iap_config_info import StadiaIAPConfigInfo
-from .stadia_sync_request import StadiaSyncRequest
 from .steam_achievement_request import SteamAchievementRequest
 from .steam_dlc_sync_request import SteamDLCSyncRequest
 from .steam_iap_config import SteamIAPConfig
@@ -660,6 +699,8 @@ from .view_update import ViewUpdate
 from .wallet_info import WalletInfo
 from .wallet_info import StatusEnum as WalletInfoStatusEnum
 from .wallet_paging_sliced_result import WalletPagingSlicedResult
+from .wallet_revocation_config import WalletRevocationConfig
+from .wallet_revocation_config import StrategyEnum as WalletRevocationConfigStrategyEnum
 from .wallet_transaction_info import WalletTransactionInfo
 from .wallet_transaction_info import (
     WalletActionEnum as WalletTransactionInfoWalletActionEnum,

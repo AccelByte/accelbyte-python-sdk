@@ -22,7 +22,6 @@ import accelbyte_py_sdk.services.auth as auth_service
 
 
 class User(UserMixin):
-
     DB: Dict[str, User] = {}
 
     def __init__(self, id_: str) -> None:

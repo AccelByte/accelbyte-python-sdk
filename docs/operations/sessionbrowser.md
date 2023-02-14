@@ -60,6 +60,8 @@
 | models.RecentPlayerQueryResponse | [ModelsRecentPlayerQueryResponse](../../accelbyte_py_sdk/api/sessionbrowser/models/models_recent_player_query_response.py) |
 | models.Server | [ModelsServer](../../accelbyte_py_sdk/api/sessionbrowser/models/models_server.py) |
 | models.SessionByUserIDsResponse | [ModelsSessionByUserIDsResponse](../../accelbyte_py_sdk/api/sessionbrowser/models/models_session_by_user_i_ds_response.py) |
+| models.SessionPlayerHistory | [ModelsSessionPlayerHistory](../../accelbyte_py_sdk/api/sessionbrowser/models/models_session_player_history.py) |
+| models.SessionPlayerJoining | [ModelsSessionPlayerJoining](../../accelbyte_py_sdk/api/sessionbrowser/models/models_session_player_joining.py) |
 | models.SessionQueryResponse | [ModelsSessionQueryResponse](../../accelbyte_py_sdk/api/sessionbrowser/models/models_session_query_response.py) |
 | models.SessionResponse | [ModelsSessionResponse](../../accelbyte_py_sdk/api/sessionbrowser/models/models_session_response.py) |
 | models.StatusHistory | [ModelsStatusHistory](../../accelbyte_py_sdk/api/sessionbrowser/models/models_status_history.py) |

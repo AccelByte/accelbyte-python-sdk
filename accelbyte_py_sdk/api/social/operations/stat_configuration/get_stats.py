@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.32.1)
+# AccelByte Cloud Social Service (1.33.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -59,6 +59,8 @@ class GetStats(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        is_global: (isGlobal) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -77,6 +79,7 @@ class GetStats(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    is_global: bool  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
@@ -130,6 +133,8 @@ class GetStats(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "is_global"):
+            result["isGlobal"] = self.is_global
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -146,6 +151,10 @@ class GetStats(Operation):
 
     def with_namespace(self, value: str) -> GetStats:
         self.namespace = value
+        return self
+
+    def with_is_global(self, value: bool) -> GetStats:
+        self.is_global = value
         return self
 
     def with_limit(self, value: int) -> GetStats:
@@ -166,6 +175,10 @@ class GetStats(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "is_global") and self.is_global:
+            result["isGlobal"] = bool(self.is_global)
+        elif include_empty:
+            result["isGlobal"] = False
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -216,11 +229,14 @@ class GetStats(Operation):
     def create(
         cls,
         namespace: str,
+        is_global: Optional[bool] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> GetStats:
         instance = cls()
         instance.namespace = namespace
+        if is_global is not None:
+            instance.is_global = is_global
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -234,6 +250,10 @@ class GetStats(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "isGlobal" in dict_ and dict_["isGlobal"] is not None:
+            instance.is_global = bool(dict_["isGlobal"])
+        elif include_empty:
+            instance.is_global = False
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -248,6 +268,7 @@ class GetStats(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "isGlobal": "is_global",
             "limit": "limit",
             "offset": "offset",
         }
@@ -256,6 +277,7 @@ class GetStats(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "isGlobal": False,
             "limit": False,
             "offset": False,
         }

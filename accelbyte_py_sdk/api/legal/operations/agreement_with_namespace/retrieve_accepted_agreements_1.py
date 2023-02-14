@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Legal Service (1.26.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,53 +29,53 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import StadiaIAPConfigInfo
+from ...models import RetrieveAcceptedAgreementResponse
 
 
-class UpdateStadiaJsonConfigFile(Operation):
-    """Upload stadia json config file (updateStadiaJsonConfigFile)
+class RetrieveAcceptedAgreements1(Operation):
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements_1)
 
-    Upload stadia json config file.
-    Other detail info:
+    This API will return all accepted Legal Agreements for specified user. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated stadia iap config
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/stadia/cert
+        url: /agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId}
 
-        method: PUT
+        method: GET
 
-        tags: ["IAP"]
+        tags: ["Agreement With Namespace"]
 
-        consumes: ["multipart/form-data"]
+        consumes: []
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        file: (file) OPTIONAL Any in form_data
-
         namespace: (namespace) REQUIRED str in path
 
+        user_id: (userId) REQUIRED str in path
+
     Responses:
-        200: OK - StadiaIAPConfigInfo (successful operation)
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/iap/config/stadia/cert"
-    _method: str = "PUT"
-    _consumes: List[str] = ["multipart/form-data"]
+    _url: str = (
+        "/agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId}"
+    )
+    _method: str = "GET"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    file: Any  # OPTIONAL in [form_data]
     namespace: str  # REQUIRED in [path]
+    user_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -115,20 +115,15 @@ class UpdateStadiaJsonConfigFile(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "form_data": self.get_form_data_params(),
             "path": self.get_path_params(),
         }
-
-    def get_form_data_params(self) -> dict:
-        result = {}
-        if hasattr(self, "file"):
-            result["file"] = self.file
-        return result
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -139,12 +134,12 @@ class UpdateStadiaJsonConfigFile(Operation):
 
     # region with_x methods
 
-    def with_file(self, value: Any) -> UpdateStadiaJsonConfigFile:
-        self.file = value
+    def with_namespace(self, value: str) -> RetrieveAcceptedAgreements1:
+        self.namespace = value
         return self
 
-    def with_namespace(self, value: str) -> UpdateStadiaJsonConfigFile:
-        self.namespace = value
+    def with_user_id(self, value: str) -> RetrieveAcceptedAgreements1:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -153,14 +148,14 @@ class UpdateStadiaJsonConfigFile(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "file") and self.file:
-            result["file"] = Any(self.file)
-        elif include_empty:
-            result["file"] = Any()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -170,10 +165,12 @@ class UpdateStadiaJsonConfigFile(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, StadiaIAPConfigInfo], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[RetrieveAcceptedAgreementResponse]], Union[None, HttpResponse]
+    ]:
         """Parse the given response.
 
-        200: OK - StadiaIAPConfigInfo (successful operation)
+        200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -189,7 +186,9 @@ class UpdateStadiaJsonConfigFile(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return StadiaIAPConfigInfo.create_from_dict(content), None
+            return [
+                RetrieveAcceptedAgreementResponse.create_from_dict(i) for i in content
+            ], None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -203,41 +202,40 @@ class UpdateStadiaJsonConfigFile(Operation):
     def create(
         cls,
         namespace: str,
-        file: Optional[Any] = None,
-    ) -> UpdateStadiaJsonConfigFile:
+        user_id: str,
+    ) -> RetrieveAcceptedAgreements1:
         instance = cls()
         instance.namespace = namespace
-        if file is not None:
-            instance.file = file
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> UpdateStadiaJsonConfigFile:
+    ) -> RetrieveAcceptedAgreements1:
         instance = cls()
-        if "file" in dict_ and dict_["file"] is not None:
-            instance.file = Any(dict_["file"])
-        elif include_empty:
-            instance.file = Any()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "file": "file",
             "namespace": "namespace",
+            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "file": False,
             "namespace": True,
+            "userId": True,
         }
 
     # endregion static methods

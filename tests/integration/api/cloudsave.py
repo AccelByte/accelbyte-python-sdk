@@ -4,7 +4,6 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordRequest
 
 
 class CloudSaveTestCase(IntegrationTestCase):
-
     post_game_record_handler_key: str = "key"
     models_game_record_request: ModelsGameRecordRequest = (
         ModelsGameRecordRequest.create(dict_={"foo": "bar"})

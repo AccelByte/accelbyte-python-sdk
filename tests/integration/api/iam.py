@@ -8,7 +8,6 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 
 class IAMTestCase(IntegrationTestCase):
-
     exported_filename: str = "exported"
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Legal Service."""
 
-__version__ = "1.25.5"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,6 +17,7 @@ __email__ = "dev@accelbyte.net"
 from .accept_agreement_request import AcceptAgreementRequest
 from .accept_agreement_response import AcceptAgreementResponse
 from .create_base_policy_request import CreateBasePolicyRequest
+from .create_base_policy_request_v2 import CreateBasePolicyRequestV2
 from .create_base_policy_response import CreateBasePolicyResponse
 from .create_localized_policy_version_request import CreateLocalizedPolicyVersionRequest
 from .create_localized_policy_version_response import (
@@ -60,6 +61,7 @@ from .retrieve_user_info_cache_status_response import (
     RetrieveUserInfoCacheStatusResponse,
 )
 from .update_base_policy_request import UpdateBasePolicyRequest
+from .update_base_policy_request_v2 import UpdateBasePolicyRequestV2
 from .update_base_policy_response import UpdateBasePolicyResponse
 from .update_localized_policy_version_request import UpdateLocalizedPolicyVersionRequest
 from .update_localized_policy_version_response import (

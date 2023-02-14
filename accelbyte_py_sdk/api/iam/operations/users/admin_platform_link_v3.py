@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.26.1)
+# AccelByte Cloud Iam Service (5.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -91,9 +91,6 @@ class AdminPlatformLinkV3(Operation):
 
 
       * nintendo : The ticketâs value is the authorization code(id_token) returned by Nintendo OAuth.
-
-
-      * stadia : The ticketâs value is a JWT Token, which can be obtained after calling the Stadia SDK's function.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId} [UPDATE]

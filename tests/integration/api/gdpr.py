@@ -7,7 +7,6 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 
 class GDPRTestCase(IntegrationTestCase):
-
     did_configure: bool = False
     user_namespace: str = "accelbyte"
     user_id: Optional[str] = None

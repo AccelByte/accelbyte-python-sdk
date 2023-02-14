@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_session_player_history import ModelsSessionPlayerHistory
+from ..models.models_session_player_joining import ModelsSessionPlayerJoining
+
 
 class ModelsGetSessionHistorySearchResponseItemV2(Model):
     """Models get session history search response item V2 (models.GetSessionHistorySearchResponseItemV2)
@@ -40,9 +43,17 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
 
         joinable: (joinable) REQUIRED bool
 
+        joining: (joining) REQUIRED List[ModelsSessionPlayerJoining]
+
         match_id: (match_id) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        players: (players) REQUIRED List[ModelsSessionPlayerHistory]
+
+        removed_reason: (removed_reason) REQUIRED str
+
+        session_type: (session_type) REQUIRED str
 
         status: (status) REQUIRED str
 
@@ -55,8 +66,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
     game_mode: str  # REQUIRED
     id_: str  # REQUIRED
     joinable: bool  # REQUIRED
+    joining: List[ModelsSessionPlayerJoining]  # REQUIRED
     match_id: str  # REQUIRED
     namespace: str  # REQUIRED
+    players: List[ModelsSessionPlayerHistory]  # REQUIRED
+    removed_reason: str  # REQUIRED
+    session_type: str  # REQUIRED
     status: str  # REQUIRED
     sub_game_mode: List[str]  # REQUIRED
 
@@ -82,12 +97,36 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         self.joinable = value
         return self
 
+    def with_joining(
+        self, value: List[ModelsSessionPlayerJoining]
+    ) -> ModelsGetSessionHistorySearchResponseItemV2:
+        self.joining = value
+        return self
+
     def with_match_id(self, value: str) -> ModelsGetSessionHistorySearchResponseItemV2:
         self.match_id = value
         return self
 
     def with_namespace(self, value: str) -> ModelsGetSessionHistorySearchResponseItemV2:
         self.namespace = value
+        return self
+
+    def with_players(
+        self, value: List[ModelsSessionPlayerHistory]
+    ) -> ModelsGetSessionHistorySearchResponseItemV2:
+        self.players = value
+        return self
+
+    def with_removed_reason(
+        self, value: str
+    ) -> ModelsGetSessionHistorySearchResponseItemV2:
+        self.removed_reason = value
+        return self
+
+    def with_session_type(
+        self, value: str
+    ) -> ModelsGetSessionHistorySearchResponseItemV2:
+        self.session_type = value
         return self
 
     def with_status(self, value: str) -> ModelsGetSessionHistorySearchResponseItemV2:
@@ -122,6 +161,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = False
+        if hasattr(self, "joining"):
+            result["joining"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.joining
+            ]
+        elif include_empty:
+            result["joining"] = []
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
@@ -130,6 +175,20 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "players"):
+            result["players"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.players
+            ]
+        elif include_empty:
+            result["players"] = []
+        if hasattr(self, "removed_reason"):
+            result["removed_reason"] = str(self.removed_reason)
+        elif include_empty:
+            result["removed_reason"] = ""
+        if hasattr(self, "session_type"):
+            result["session_type"] = str(self.session_type)
+        elif include_empty:
+            result["session_type"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -151,8 +210,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         game_mode: str,
         id_: str,
         joinable: bool,
+        joining: List[ModelsSessionPlayerJoining],
         match_id: str,
         namespace: str,
+        players: List[ModelsSessionPlayerHistory],
+        removed_reason: str,
+        session_type: str,
         status: str,
         sub_game_mode: List[str],
     ) -> ModelsGetSessionHistorySearchResponseItemV2:
@@ -161,8 +224,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
         instance.game_mode = game_mode
         instance.id_ = id_
         instance.joinable = joinable
+        instance.joining = joining
         instance.match_id = match_id
         instance.namespace = namespace
+        instance.players = players
+        instance.removed_reason = removed_reason
+        instance.session_type = session_type
         instance.status = status
         instance.sub_game_mode = sub_game_mode
         return instance
@@ -190,6 +257,15 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
             instance.joinable = False
+        if "joining" in dict_ and dict_["joining"] is not None:
+            instance.joining = [
+                ModelsSessionPlayerJoining.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["joining"]
+            ]
+        elif include_empty:
+            instance.joining = []
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
@@ -198,6 +274,23 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "players" in dict_ and dict_["players"] is not None:
+            instance.players = [
+                ModelsSessionPlayerHistory.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["players"]
+            ]
+        elif include_empty:
+            instance.players = []
+        if "removed_reason" in dict_ and dict_["removed_reason"] is not None:
+            instance.removed_reason = str(dict_["removed_reason"])
+        elif include_empty:
+            instance.removed_reason = ""
+        if "session_type" in dict_ and dict_["session_type"] is not None:
+            instance.session_type = str(dict_["session_type"])
+        elif include_empty:
+            instance.session_type = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -253,8 +346,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             "game_mode": "game_mode",
             "_id": "id_",
             "joinable": "joinable",
+            "joining": "joining",
             "match_id": "match_id",
             "namespace": "namespace",
+            "players": "players",
+            "removed_reason": "removed_reason",
+            "session_type": "session_type",
             "status": "status",
             "sub_game_mode": "sub_game_mode",
         }
@@ -266,8 +363,12 @@ class ModelsGetSessionHistorySearchResponseItemV2(Model):
             "game_mode": True,
             "_id": True,
             "joinable": True,
+            "joining": True,
             "match_id": True,
             "namespace": True,
+            "players": True,
+            "removed_reason": True,
+            "session_type": True,
             "status": True,
             "sub_game_mode": True,
         }

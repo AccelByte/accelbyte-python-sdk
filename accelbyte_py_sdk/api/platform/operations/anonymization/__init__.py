@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.22.1"
+__version__ = "4.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,5 +20,6 @@ from .anonymize_fulfillment import AnonymizeFulfillment
 from .anonymize_integration import AnonymizeIntegration
 from .anonymize_order import AnonymizeOrder
 from .anonymize_payment import AnonymizePayment
+from .anonymize_revocation import AnonymizeRevocation
 from .anonymize_subscription import AnonymizeSubscription
 from .anonymize_wallet import AnonymizeWallet

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Match Service V2 (2.1.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiMatchRuleSet
+from ...models import ApiRuleSetPayload
 from ...models import ResponseError
 
 
@@ -66,7 +66,7 @@ class RuleSetDetails(Operation):
         ruleset: (ruleset) REQUIRED str in path
 
     Responses:
-        200: OK - ApiMatchRuleSet (Created)
+        200: OK - ApiRuleSetPayload (Created)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -175,10 +175,12 @@ class RuleSetDetails(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ApiMatchRuleSet], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApiRuleSetPayload], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - ApiMatchRuleSet (Created)
+        200: OK - ApiRuleSetPayload (Created)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -200,7 +202,7 @@ class RuleSetDetails(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApiMatchRuleSet.create_from_dict(content), None
+            return ApiRuleSetPayload.create_from_dict(content), None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 403:

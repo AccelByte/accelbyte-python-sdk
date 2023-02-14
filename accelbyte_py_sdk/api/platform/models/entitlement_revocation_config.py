@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Platform Service (4.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,24 +27,30 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.durable_entitlement_revocation_config import (
+    DurableEntitlementRevocationConfig,
+)
 
-class ApiMatchRuleSetData(Model):
-    """Api match rule set data (api.MatchRuleSetData)
+
+class EntitlementRevocationConfig(Model):
+    """Entitlement revocation config (EntitlementRevocationConfig)
 
     Properties:
-        data: (data) REQUIRED str
+        durable: (durable) OPTIONAL DurableEntitlementRevocationConfig
     """
 
     # region fields
 
-    data: str  # REQUIRED
+    durable: DurableEntitlementRevocationConfig  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: str) -> ApiMatchRuleSetData:
-        self.data = value
+    def with_durable(
+        self, value: DurableEntitlementRevocationConfig
+    ) -> EntitlementRevocationConfig:
+        self.durable = value
         return self
 
     # endregion with_x methods
@@ -53,10 +59,10 @@ class ApiMatchRuleSetData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = str(self.data)
+        if hasattr(self, "durable"):
+            result["durable"] = self.durable.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["data"] = ""
+            result["durable"] = DurableEntitlementRevocationConfig()
         return result
 
     # endregion to methods
@@ -66,29 +72,32 @@ class ApiMatchRuleSetData(Model):
     @classmethod
     def create(
         cls,
-        data: str,
-    ) -> ApiMatchRuleSetData:
+        durable: Optional[DurableEntitlementRevocationConfig] = None,
+    ) -> EntitlementRevocationConfig:
         instance = cls()
-        instance.data = data
+        if durable is not None:
+            instance.durable = durable
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApiMatchRuleSetData:
+    ) -> EntitlementRevocationConfig:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = str(dict_["data"])
+        if "durable" in dict_ and dict_["durable"] is not None:
+            instance.durable = DurableEntitlementRevocationConfig.create_from_dict(
+                dict_["durable"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.data = ""
+            instance.durable = DurableEntitlementRevocationConfig()
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiMatchRuleSetData]:
+    ) -> Dict[str, EntitlementRevocationConfig]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -98,7 +107,7 @@ class ApiMatchRuleSetData(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApiMatchRuleSetData]:
+    ) -> List[EntitlementRevocationConfig]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -109,7 +118,9 @@ class ApiMatchRuleSetData(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ApiMatchRuleSetData, List[ApiMatchRuleSetData], Dict[Any, ApiMatchRuleSetData]
+        EntitlementRevocationConfig,
+        List[EntitlementRevocationConfig],
+        Dict[Any, EntitlementRevocationConfig],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -124,13 +135,13 @@ class ApiMatchRuleSetData(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
+            "durable": "durable",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "data": True,
+            "durable": False,
         }
 
     # endregion static methods

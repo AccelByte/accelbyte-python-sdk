@@ -43,7 +43,7 @@ from ..operations.localized_policy_versions import CreateLocalizedPolicyVersion
 from ..operations.localized_policy_versions import RequestPresignedURL
 from ..operations.localized_policy_versions import RetrieveLocalizedPolicyVersions
 from ..operations.localized_policy_versions import RetrieveSingleLocalizedPolicyVersion
-from ..operations.localized_policy_versions import RetrieveSingleLocalizedPolicyVersion1
+from ..operations.localized_policy_versions import RetrieveSingleLocalizedPolicyVersion2
 from ..operations.localized_policy_versions import SetDefaultPolicy
 from ..operations.localized_policy_versions import UpdateLocalizedPolicyVersion
 
@@ -160,25 +160,25 @@ async def retrieve_single_localized_policy_version_async(
     )
 
 
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion1)
-def retrieve_single_localized_policy_version_1(
+@same_doc_as(RetrieveSingleLocalizedPolicyVersion2)
+def retrieve_single_localized_policy_version_2(
     localized_policy_version_id: str,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    request = RetrieveSingleLocalizedPolicyVersion1.create(
+    request = RetrieveSingleLocalizedPolicyVersion2.create(
         localized_policy_version_id=localized_policy_version_id,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion1)
-async def retrieve_single_localized_policy_version_1_async(
+@same_doc_as(RetrieveSingleLocalizedPolicyVersion2)
+async def retrieve_single_localized_policy_version_2_async(
     localized_policy_version_id: str,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    request = RetrieveSingleLocalizedPolicyVersion1.create(
+    request = RetrieveSingleLocalizedPolicyVersion2.create(
         localized_policy_version_id=localized_policy_version_id,
     )
     return await run_request_async(

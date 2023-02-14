@@ -62,6 +62,7 @@ from ..operations.group import UpdatePatchSingleGroupPublicV1
 from ..operations.group import UpdatePatchSingleGroupPublicV2
 from ..operations.group import UpdatePutSingleGroupPublicV2
 from ..operations.group import UpdateSingleGroupV1
+from ..models import ModelsGroupResponseV1GroupTypeEnum
 
 
 @same_doc_as(CreateNewGroupPublicV1)

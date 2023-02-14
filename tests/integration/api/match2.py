@@ -7,7 +7,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class Match2TestCase(IntegrationTestCase):
-
     match_pool_name: Optional[str] = None
     rule_set_name: Optional[str] = None
     sdks: List[AccelByteSDK] = []

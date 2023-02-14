@@ -21,7 +21,6 @@ from .values import LOGGER
 
 
 class SDKTestCaseUtils:
-
     logger: logging.Logger = LOGGER
 
     sdk_initialized: bool = False
@@ -47,11 +46,7 @@ class SDKTestCaseUtils:
         time.sleep(0.5)
 
     def get_user_id(self, sdk: Optional[AccelByteSDK] = None) -> Optional[str]:
-        if (
-            not self.sdk_initialized or
-            not self.user_found or
-            not self.logged_in
-        ):
+        if not self.sdk_initialized or not self.user_found or not self.logged_in:
             return None
 
         from accelbyte_py_sdk.core import get_token_repository
@@ -238,7 +233,6 @@ class SDKTestCaseUtils:
 
 
 class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
-
     login_type: Optional[str] = None
 
     @classmethod
@@ -269,7 +263,6 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
 
 
 class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
-
     login_type: Optional[str] = None
 
     ws_client: Optional[WebsocketsWSClient] = None

@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsCancelInvitationGroupResponseV2
 from ..models import ModelsGetGroupMemberListResponseV1
 from ..models import ModelsGetUserGroupInformationResponseV1
 from ..models import ModelsJoinGroupResponseV1
@@ -43,6 +44,7 @@ from ..operations.group_member import AcceptGroupInvitationPublicV2
 from ..operations.group_member import AcceptGroupJoinRequestPublicV1
 from ..operations.group_member import AcceptGroupJoinRequestPublicV2
 from ..operations.group_member import CancelGroupJoinRequestV1
+from ..operations.group_member import CancelInvitationGroupMemberV2
 from ..operations.group_member import GetGroupMembersListAdminV1
 from ..operations.group_member import GetGroupMembersListPublicV1
 from ..operations.group_member import GetUserGroupInformationPublicV1
@@ -250,6 +252,48 @@ async def cancel_group_join_request_v1_async(
             return None, error
     request = CancelGroupJoinRequestV1.create(
         group_id=group_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CancelInvitationGroupMemberV2)
+def cancel_invitation_group_member_v2(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelInvitationGroupMemberV2.create(
+        group_id=group_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CancelInvitationGroupMemberV2)
+async def cancel_invitation_group_member_v2_async(
+    group_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CancelInvitationGroupMemberV2.create(
+        group_id=group_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

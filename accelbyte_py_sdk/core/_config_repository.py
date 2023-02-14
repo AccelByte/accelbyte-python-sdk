@@ -100,7 +100,6 @@ class MyConfigRepository(ConfigRepository):
 
 
 class DictConfigRepository(ConfigRepository):
-
     base_url_keys: List[str] = [
         "AB_BASE_URL",
         "baseUrl",

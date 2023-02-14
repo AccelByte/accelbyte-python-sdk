@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Group Service (2.15.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,55 +29,81 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import StadiaSyncRequest
+from ...models import ModelsCancelInvitationGroupResponseV2
+from ...models import ResponseErrorResponse
 
 
-class SyncStadiaEntitlement(Operation):
-    """Sync stadia inventory. (syncStadiaEntitlement)
+class CancelInvitationGroupMemberV2(Operation):
+    """Cancel Invitation Group Member (CancelInvitationGroupMemberV2)
 
-    Sync stadia entitlements.
+    Required valid user authentication
 
-    Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
+
+
+    Required Member Role Permission: "GROUP:INVITE [DELETE]"
+
+
+
+
+    This endpoint is used to cancel invitation group member.
+
+
+
+
+    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+
+
+
+
+    Action Code: 73409
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+        - GROUP:INVITE [DELETE]
 
     Properties:
-        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/stadia/sync
+        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
 
-        method: PUT
+        method: POST
 
-        tags: ["IAP"]
+        tags: ["Group Member"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StadiaSyncRequest in body
+        group_id: (groupId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (Successful operation)
+        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/platform/public/namespaces/{namespace}/users/{userId}/iap/stadia/sync"
-    _method: str = "PUT"
-    _consumes: List[str] = ["application/json"]
+    _url: str = "/group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel"
+    _method: str = "POST"
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StadiaSyncRequest  # OPTIONAL in [body]
+    group_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -119,17 +145,13 @@ class SyncStadiaEntitlement(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
 
-    def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
-            return None
-        return self.body.to_dict()
-
     def get_path_params(self) -> dict:
         result = {}
+        if hasattr(self, "group_id"):
+            result["groupId"] = self.group_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
@@ -144,15 +166,15 @@ class SyncStadiaEntitlement(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: StadiaSyncRequest) -> SyncStadiaEntitlement:
-        self.body = value
+    def with_group_id(self, value: str) -> CancelInvitationGroupMemberV2:
+        self.group_id = value
         return self
 
-    def with_namespace(self, value: str) -> SyncStadiaEntitlement:
+    def with_namespace(self, value: str) -> CancelInvitationGroupMemberV2:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> SyncStadiaEntitlement:
+    def with_user_id(self, value: str) -> CancelInvitationGroupMemberV2:
         self.user_id = value
         return self
 
@@ -162,10 +184,10 @@ class SyncStadiaEntitlement(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = self.body.to_dict(include_empty=include_empty)
+        if hasattr(self, "group_id") and self.group_id:
+            result["groupId"] = str(self.group_id)
         elif include_empty:
-            result["body"] = StadiaSyncRequest()
+            result["groupId"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -183,10 +205,23 @@ class SyncStadiaEntitlement(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ModelsCancelInvitationGroupResponseV2],
+        Union[None, HttpResponse, ResponseErrorResponse],
+    ]:
         """Parse the given response.
 
-        204: No Content - (Successful operation)
+        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
+
+        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -201,8 +236,18 @@ class SyncStadiaEntitlement(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return ModelsCancelInvitationGroupResponseV2.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 401:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 403:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 404:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, ResponseErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -215,28 +260,25 @@ class SyncStadiaEntitlement(Operation):
     @classmethod
     def create(
         cls,
+        group_id: str,
         namespace: str,
         user_id: str,
-        body: Optional[StadiaSyncRequest] = None,
-    ) -> SyncStadiaEntitlement:
+    ) -> CancelInvitationGroupMemberV2:
         instance = cls()
+        instance.group_id = group_id
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> SyncStadiaEntitlement:
+    ) -> CancelInvitationGroupMemberV2:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = StadiaSyncRequest.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
+        if "groupId" in dict_ and dict_["groupId"] is not None:
+            instance.group_id = str(dict_["groupId"])
         elif include_empty:
-            instance.body = StadiaSyncRequest()
+            instance.group_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -250,7 +292,7 @@ class SyncStadiaEntitlement(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "body": "body",
+            "groupId": "group_id",
             "namespace": "namespace",
             "userId": "user_id",
         }
@@ -258,7 +300,7 @@ class SyncStadiaEntitlement(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "groupId": True,
             "namespace": True,
             "userId": True,
         }

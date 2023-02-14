@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Platform Service."""
 
-__version__ = "4.22.1"
+__version__ = "4.23.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,8 @@ from .wrappers import anonymize_order
 from .wrappers import anonymize_order_async
 from .wrappers import anonymize_payment
 from .wrappers import anonymize_payment_async
+from .wrappers import anonymize_revocation
+from .wrappers import anonymize_revocation_async
 from .wrappers import anonymize_subscription
 from .wrappers import anonymize_subscription_async
 from .wrappers import anonymize_wallet
@@ -279,8 +281,6 @@ from .wrappers import delete_iap_item_config
 from .wrappers import delete_iap_item_config_async
 from .wrappers import delete_playstation_iap_config
 from .wrappers import delete_playstation_iap_config_async
-from .wrappers import delete_stadia_iap_config
-from .wrappers import delete_stadia_iap_config_async
 from .wrappers import delete_steam_iap_config
 from .wrappers import delete_steam_iap_config_async
 from .wrappers import delete_twitch_iap_config
@@ -297,8 +297,6 @@ from .wrappers import get_iap_item_config
 from .wrappers import get_iap_item_config_async
 from .wrappers import get_play_station_iap_config
 from .wrappers import get_play_station_iap_config_async
-from .wrappers import get_stadia_iap_config
-from .wrappers import get_stadia_iap_config_async
 from .wrappers import get_steam_iap_config
 from .wrappers import get_steam_iap_config_async
 from .wrappers import get_twitch_iap_config
@@ -325,8 +323,6 @@ from .wrappers import query_user_iap_orders
 from .wrappers import query_user_iap_orders_async
 from .wrappers import sync_epic_games_inventory
 from .wrappers import sync_epic_games_inventory_async
-from .wrappers import sync_stadia_entitlement
-from .wrappers import sync_stadia_entitlement_async
 from .wrappers import sync_steam_inventory
 from .wrappers import sync_steam_inventory_async
 from .wrappers import sync_twitch_drops_entitlement
@@ -345,8 +341,6 @@ from .wrappers import update_iap_item_config
 from .wrappers import update_iap_item_config_async
 from .wrappers import update_playstation_iap_config
 from .wrappers import update_playstation_iap_config_async
-from .wrappers import update_stadia_json_config_file
-from .wrappers import update_stadia_json_config_file_async
 from .wrappers import update_steam_iap_config
 from .wrappers import update_steam_iap_config_async
 from .wrappers import update_twitch_iap_config
@@ -648,6 +642,18 @@ from .wrappers import public_get_unpaid_payment_order_async
 from .wrappers import public_normalize_payment_return_url
 from .wrappers import public_normalize_payment_return_url_async
 
+# revocation
+from .wrappers import delete_revocation_config
+from .wrappers import delete_revocation_config_async
+from .wrappers import do_revocation
+from .wrappers import do_revocation_async
+from .wrappers import get_payment_callback_config_1
+from .wrappers import get_payment_callback_config_1_async
+from .wrappers import query_revocation_histories
+from .wrappers import query_revocation_histories_async
+from .wrappers import update_revocation_config
+from .wrappers import update_revocation_config_async
+
 # reward
 from .wrappers import check_event_condition
 from .wrappers import check_event_condition_async
@@ -803,6 +809,8 @@ from .wrappers import credit_user_wallet
 from .wrappers import credit_user_wallet_async
 from .wrappers import debit_user_wallet
 from .wrappers import debit_user_wallet_async
+from .wrappers import debit_user_wallet_by_currency_code
+from .wrappers import debit_user_wallet_by_currency_code_async
 from .wrappers import disable_user_wallet
 from .wrappers import disable_user_wallet_async
 from .wrappers import enable_user_wallet

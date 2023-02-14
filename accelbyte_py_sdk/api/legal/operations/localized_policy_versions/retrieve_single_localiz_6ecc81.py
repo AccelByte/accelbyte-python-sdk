@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Legal Service (1.26.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,50 +29,47 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import StadiaIAPConfigInfo
+from ...models import ErrorEntity
+from ...models import RetrieveLocalizedPolicyVersionPublicResponse
 
 
-class GetStadiaIAPConfig(Operation):
-    """Get stadia iap config (getStadiaIAPConfig)
+class RetrieveSingleLocalizedPolicyVersion2(Operation):
+    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_2)
 
-    Get stadia iap config.
+    Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : stadia iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
-
     Properties:
-        url: /platform/admin/namespaces/{namespace}/iap/config/stadia
+        url: /agreement/public/localized-policy-versions/{localizedPolicyVersionId}
 
         method: GET
 
-        tags: ["IAP"]
+        tags: ["Localized Policy Versions"]
 
         consumes: []
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
-        namespace: (namespace) REQUIRED str in path
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
     Responses:
-        200: OK - StadiaIAPConfigInfo (successful operation)
+        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/namespaces/{namespace}/iap/config/stadia"
+    _url: str = "/agreement/public/localized-policy-versions/{localizedPolicyVersionId}"
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    namespace: str  # REQUIRED in [path]
+    localized_policy_version_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -117,8 +114,8 @@ class GetStadiaIAPConfig(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
+        if hasattr(self, "localized_policy_version_id"):
+            result["localizedPolicyVersionId"] = self.localized_policy_version_id
         return result
 
     # endregion get_x_params methods
@@ -129,8 +126,10 @@ class GetStadiaIAPConfig(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> GetStadiaIAPConfig:
-        self.namespace = value
+    def with_localized_policy_version_id(
+        self, value: str
+    ) -> RetrieveSingleLocalizedPolicyVersion2:
+        self.localized_policy_version_id = value
         return self
 
     # endregion with_x methods
@@ -139,10 +138,13 @@ class GetStadiaIAPConfig(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
+        if (
+            hasattr(self, "localized_policy_version_id")
+            and self.localized_policy_version_id
+        ):
+            result["localizedPolicyVersionId"] = str(self.localized_policy_version_id)
         elif include_empty:
-            result["namespace"] = ""
+            result["localizedPolicyVersionId"] = ""
         return result
 
     # endregion to methods
@@ -152,10 +154,15 @@ class GetStadiaIAPConfig(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, StadiaIAPConfigInfo], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, RetrieveLocalizedPolicyVersionPublicResponse],
+        Union[None, ErrorEntity, HttpResponse],
+    ]:
         """Parse the given response.
 
-        200: OK - StadiaIAPConfigInfo (successful operation)
+        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -171,7 +178,12 @@ class GetStadiaIAPConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return StadiaIAPConfigInfo.create_from_dict(content), None
+            return (
+                RetrieveLocalizedPolicyVersionPublicResponse.create_from_dict(content),
+                None,
+            )
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -184,33 +196,38 @@ class GetStadiaIAPConfig(Operation):
     @classmethod
     def create(
         cls,
-        namespace: str,
-    ) -> GetStadiaIAPConfig:
+        localized_policy_version_id: str,
+    ) -> RetrieveSingleLocalizedPolicyVersion2:
         instance = cls()
-        instance.namespace = namespace
+        instance.localized_policy_version_id = localized_policy_version_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> GetStadiaIAPConfig:
+    ) -> RetrieveSingleLocalizedPolicyVersion2:
         instance = cls()
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if (
+            "localizedPolicyVersionId" in dict_
+            and dict_["localizedPolicyVersionId"] is not None
+        ):
+            instance.localized_policy_version_id = str(
+                dict_["localizedPolicyVersionId"]
+            )
         elif include_empty:
-            instance.namespace = ""
+            instance.localized_policy_version_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
+            "localizedPolicyVersionId": "localized_policy_version_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "namespace": True,
+            "localizedPolicyVersionId": True,
         }
 
     # endregion static methods

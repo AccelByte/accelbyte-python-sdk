@@ -7,7 +7,6 @@ from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 
 
 class EventLog(IntegrationTestCase):
-
     # region test:get_event_specific_user_v2_handler
 
     def test_get_event_specific_user_v2_handler(self):

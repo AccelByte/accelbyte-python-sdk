@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Match Service V2 (2.1.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -38,8 +38,6 @@ from ..api.match2.models import ApiMatchFunctionOverride
 from ..api.match2.models import ApiMatchFunctionRequest
 from ..api.match2.models import ApiMatchPool
 from ..api.match2.models import ApiMatchPoolConfig
-from ..api.match2.models import ApiMatchRuleSet
-from ..api.match2.models import ApiMatchRuleSetData
 from ..api.match2.models import ApiMatchRuleSetNameData
 from ..api.match2.models import ApiMatchTicketRequest
 from ..api.match2.models import ApiMatchTicketResponse
@@ -47,6 +45,7 @@ from ..api.match2.models import ApiMatchTicketStatus
 from ..api.match2.models import ApiParty
 from ..api.match2.models import ApiPlayerData
 from ..api.match2.models import ApiProposedProposal
+from ..api.match2.models import ApiRuleSetPayload
 from ..api.match2.models import ApiTeam
 from ..api.match2.models import ApiTicket
 from ..api.match2.models import ModelsPagination
@@ -189,19 +188,6 @@ def create_api_match_pool_config_example() -> ApiMatchPoolConfig:
     return instance
 
 
-def create_api_match_rule_set_example() -> ApiMatchRuleSet:
-    instance = ApiMatchRuleSet()
-    instance.data = randomize()
-    instance.name = randomize()
-    return instance
-
-
-def create_api_match_rule_set_data_example() -> ApiMatchRuleSetData:
-    instance = ApiMatchRuleSetData()
-    instance.data = randomize()
-    return instance
-
-
 def create_api_match_rule_set_name_data_example() -> ApiMatchRuleSetNameData:
     instance = ApiMatchRuleSetNameData()
     instance.name = randomize()
@@ -251,6 +237,14 @@ def create_api_proposed_proposal_example() -> ApiProposedProposal:
     instance.backfill_id = randomize()
     instance.proposal_id = randomize()
     instance.status = randomize()
+    return instance
+
+
+def create_api_rule_set_payload_example() -> ApiRuleSetPayload:
+    instance = ApiRuleSetPayload()
+    instance.data = {randomize(): randomize()}
+    instance.enable_custom_match_function = randomize("bool")
+    instance.name = randomize()
     return instance
 
 

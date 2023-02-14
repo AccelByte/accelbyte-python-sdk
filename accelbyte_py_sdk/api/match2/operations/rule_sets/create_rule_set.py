@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Match Service V2 (2.1.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiMatchRuleSet
+from ...models import ApiRuleSetPayload
 from ...models import ResponseError
 
 
@@ -44,6 +44,8 @@ class CreateRuleSet(Operation):
 
     A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
     The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
+
+    To use custom rules set please set enable_custom_match_function=true. Default (false).
 
     Required Permission(s):
         - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
@@ -64,7 +66,7 @@ class CreateRuleSet(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiMatchRuleSet in body
+        body: (body) REQUIRED ApiRuleSetPayload in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -91,7 +93,7 @@ class CreateRuleSet(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApiMatchRuleSet  # REQUIRED in [body]
+    body: ApiRuleSetPayload  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -155,7 +157,7 @@ class CreateRuleSet(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApiMatchRuleSet) -> CreateRuleSet:
+    def with_body(self, value: ApiRuleSetPayload) -> CreateRuleSet:
         self.body = value
         return self
 
@@ -172,7 +174,7 @@ class CreateRuleSet(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ApiMatchRuleSet()
+            result["body"] = ApiRuleSetPayload()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -238,7 +240,7 @@ class CreateRuleSet(Operation):
     @classmethod
     def create(
         cls,
-        body: ApiMatchRuleSet,
+        body: ApiRuleSetPayload,
         namespace: str,
     ) -> CreateRuleSet:
         instance = cls()
@@ -252,11 +254,11 @@ class CreateRuleSet(Operation):
     ) -> CreateRuleSet:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApiMatchRuleSet.create_from_dict(
+            instance.body = ApiRuleSetPayload.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ApiMatchRuleSet()
+            instance.body = ApiRuleSetPayload()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

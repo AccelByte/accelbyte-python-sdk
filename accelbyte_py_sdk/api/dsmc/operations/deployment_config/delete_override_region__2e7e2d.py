@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Dsm Controller Service (6.1.0)
+# AccelByte Cloud Dsm Controller Service (6.2.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union

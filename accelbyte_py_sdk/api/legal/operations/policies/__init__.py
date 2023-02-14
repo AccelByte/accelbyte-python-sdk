@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Legal Service."""
 
-__version__ = "1.25.5"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,5 +29,5 @@ from .retrieve_latest_policie_29f65f import (
     PolicyTypeEnum as RetrieveLatestPoliciesPublicPolicyTypeEnum,
 )
 from .retrieve_policies import RetrievePolicies
-from .set_default_policy_1 import SetDefaultPolicy1
+from .set_default_policy_2 import SetDefaultPolicy2
 from .update_policy import UpdatePolicy

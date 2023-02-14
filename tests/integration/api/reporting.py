@@ -10,7 +10,6 @@ from accelbyte_py_sdk.core import generate_id
 
 
 class ReportingTestCase(IntegrationTestCase):
-
     sdk: Optional[AccelByteSDK] = None
     reason_id: Optional[str] = None
     user_id: Optional[str] = None
@@ -83,12 +82,16 @@ class ReportingTestCase(IntegrationTestCase):
         self.assertIsNone(error)
         self.reason_id = None
 
-
     def test_submit_report(self):
         logs = []
 
         # arrange
-        generate_user_result, error = self.generate_user()  # create user to avoid '[84202] user max report reached'
+        (
+            generate_user_result,
+            error,
+        ) = (
+            self.generate_user()
+        )  # create user to avoid '[84202] user max report reached'
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
 
@@ -116,7 +119,9 @@ class ReportingTestCase(IntegrationTestCase):
         else:
             self.reason_id = reason_id
 
-        logs.append(f"created reason with id: '{reason_id}' and title: '{reason_title}'")
+        logs.append(
+            f"created reason with id: '{reason_id}' and title: '{reason_title}'"
+        )
 
         logs.append(f"get reasons (public)")
 
@@ -125,9 +130,17 @@ class ReportingTestCase(IntegrationTestCase):
         self.assertIsInstance(result, reporting_models.RestapiPublicReasonListResponse)
         self.assertIn(reason_title, [d.title for d in result.data])
 
-        logs.append("- " + "\n- ".join(f"{d.title} <<< exists!" if d.title == reason_title else d.title for d in result.data))
+        logs.append(
+            "- "
+            + "\n- ".join(
+                f"{d.title} <<< exists!" if d.title == reason_title else d.title
+                for d in result.data
+            )
+        )
 
-        logs.append(f"submitting report with reason title: '{reason_title}' with user '{user_id}'")
+        logs.append(
+            f"submitting report with reason title: '{reason_title}' with user '{user_id}'"
+        )
 
         # act
         _, error = reporting_service.submit_report(
@@ -143,7 +156,10 @@ class ReportingTestCase(IntegrationTestCase):
         if error:
             if isinstance(error, reporting_models.RestapiErrorResponse):
                 if error.error_code == 84101:  # reason not found
-                    logs.insert(0, f"skipping test due to weird server behavior: {error.error_message}")
+                    logs.insert(
+                        0,
+                        f"skipping test due to weird server behavior: {error.error_message}",
+                    )
                     self.skipTest(reason="\n".join(logs))
 
         # assert

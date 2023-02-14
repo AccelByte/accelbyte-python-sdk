@@ -6,7 +6,6 @@ from accelbyte_py_sdk.api.basic.models import UserProfilePrivateCreate
 
 
 class BasicTestCase(IntegrationTestCase):
-
     user_profile_private_create: UserProfilePrivateCreate = (
         UserProfilePrivateCreate.create(first_name="First", last_name="Last")
     )

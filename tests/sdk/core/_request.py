@@ -513,7 +513,6 @@ class RequestTestCase(TestCase):
 
 
 class HttpBinRequestTestCase(TestCase):
-
     reachable: bool = True
     base_url: str = "http://localhost"
 
@@ -663,7 +662,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class HttpBinJsonModel(Model):
-
             slideshow: Dict[str, Any]
 
             @classmethod
@@ -740,7 +738,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class HttpBinJsonModel(Model):
-
             slideshow: Dict[str, Any]
 
             @classmethod
@@ -930,7 +927,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class HttpBinJsonModel(Model):
-
             slideshow: Dict[str, Any]
 
             @classmethod
@@ -1009,7 +1005,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class HttpBinJsonModel(Model):
-
             slideshow: Dict[str, Any]
 
             @classmethod
@@ -1088,7 +1083,6 @@ class HttpBinRequestTestCase(TestCase):
         from accelbyte_py_sdk.core._core import _post_run_request
 
         class HttpBinJsonModel(Model):
-
             slideshow: Dict[str, Any]
 
             @classmethod
@@ -1383,7 +1377,6 @@ class HttpBinRequestTestCase(TestCase):
 
 
 class MockServerRequestTestCase(TestCase):
-
     reachable: bool = True
     base_url: str = "http://localhost:8080"
     ready_endpoint: str = f"{base_url}/ready"
@@ -1800,7 +1793,6 @@ class MockServerRequestTestCase(TestCase):
 
 
 class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
-
     reachable: bool = True
     base_url: str = "http://localhost:8080"
     ready_endpoint: str = f"{base_url}/ready"

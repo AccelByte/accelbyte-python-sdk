@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Match Service V2 (2.1.0)
+# AccelByte Cloud Session Browser Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,37 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class ApiMatchRuleSet(Model):
-    """Api match rule set (api.MatchRuleSet)
+class ModelsSessionPlayerHistory(Model):
+    """Models session player history (models.SessionPlayerHistory)
 
     Properties:
-        data: (data) REQUIRED str
+        action: (Action) REQUIRED str
 
-        name: (name) REQUIRED str
+        date: (Date) REQUIRED str
+
+        user_id: (UserID) REQUIRED str
     """
 
     # region fields
 
-    data: str  # REQUIRED
-    name: str  # REQUIRED
+    action: str  # REQUIRED
+    date: str  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: str) -> ApiMatchRuleSet:
-        self.data = value
+    def with_action(self, value: str) -> ModelsSessionPlayerHistory:
+        self.action = value
         return self
 
-    def with_name(self, value: str) -> ApiMatchRuleSet:
-        self.name = value
+    def with_date(self, value: str) -> ModelsSessionPlayerHistory:
+        self.date = value
+        return self
+
+    def with_user_id(self, value: str) -> ModelsSessionPlayerHistory:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +67,18 @@ class ApiMatchRuleSet(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "data"):
-            result["data"] = str(self.data)
+        if hasattr(self, "action"):
+            result["Action"] = str(self.action)
         elif include_empty:
-            result["data"] = ""
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
+            result["Action"] = ""
+        if hasattr(self, "date"):
+            result["Date"] = str(self.date)
         elif include_empty:
-            result["name"] = ""
+            result["Date"] = ""
+        if hasattr(self, "user_id"):
+            result["UserID"] = str(self.user_id)
+        elif include_empty:
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -77,35 +88,41 @@ class ApiMatchRuleSet(Model):
     @classmethod
     def create(
         cls,
-        data: str,
-        name: str,
-    ) -> ApiMatchRuleSet:
+        action: str,
+        date: str,
+        user_id: str,
+    ) -> ModelsSessionPlayerHistory:
         instance = cls()
-        instance.data = data
-        instance.name = name
+        instance.action = action
+        instance.date = date
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ApiMatchRuleSet:
+    ) -> ModelsSessionPlayerHistory:
         instance = cls()
         if not dict_:
             return instance
-        if "data" in dict_ and dict_["data"] is not None:
-            instance.data = str(dict_["data"])
+        if "Action" in dict_ and dict_["Action"] is not None:
+            instance.action = str(dict_["Action"])
         elif include_empty:
-            instance.data = ""
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
+            instance.action = ""
+        if "Date" in dict_ and dict_["Date"] is not None:
+            instance.date = str(dict_["Date"])
         elif include_empty:
-            instance.name = ""
+            instance.date = ""
+        if "UserID" in dict_ and dict_["UserID"] is not None:
+            instance.user_id = str(dict_["UserID"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ApiMatchRuleSet]:
+    ) -> Dict[str, ModelsSessionPlayerHistory]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -115,7 +132,7 @@ class ApiMatchRuleSet(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ApiMatchRuleSet]:
+    ) -> List[ModelsSessionPlayerHistory]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -125,7 +142,11 @@ class ApiMatchRuleSet(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ApiMatchRuleSet, List[ApiMatchRuleSet], Dict[Any, ApiMatchRuleSet]]:
+    ) -> Union[
+        ModelsSessionPlayerHistory,
+        List[ModelsSessionPlayerHistory],
+        Dict[Any, ModelsSessionPlayerHistory],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -139,15 +160,17 @@ class ApiMatchRuleSet(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "data": "data",
-            "name": "name",
+            "Action": "action",
+            "Date": "date",
+            "UserID": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "data": True,
-            "name": True,
+            "Action": True,
+            "Date": True,
+            "UserID": True,
         }
 
     # endregion static methods

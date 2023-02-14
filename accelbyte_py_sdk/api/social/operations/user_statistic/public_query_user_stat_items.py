@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Social Service (1.32.1)
+# AccelByte Cloud Social Service (1.33.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class PublicQueryUserStatItems(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
         stat_codes: (statCodes) OPTIONAL str in query
 
         tags: (tags) OPTIONAL str in query
@@ -86,6 +88,7 @@ class PublicQueryUserStatItems(Operation):
     user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
     stat_codes: str  # OPTIONAL in [query]
     tags: str  # OPTIONAL in [query]
 
@@ -145,6 +148,8 @@ class PublicQueryUserStatItems(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "stat_codes"):
             result["statCodes"] = self.stat_codes
         if hasattr(self, "tags"):
@@ -173,6 +178,10 @@ class PublicQueryUserStatItems(Operation):
 
     def with_offset(self, value: int) -> PublicQueryUserStatItems:
         self.offset = value
+        return self
+
+    def with_sort_by(self, value: str) -> PublicQueryUserStatItems:
+        self.sort_by = value
         return self
 
     def with_stat_codes(self, value: str) -> PublicQueryUserStatItems:
@@ -205,6 +214,10 @@ class PublicQueryUserStatItems(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
         if hasattr(self, "stat_codes") and self.stat_codes:
             result["statCodes"] = str(self.stat_codes)
         elif include_empty:
@@ -258,6 +271,7 @@ class PublicQueryUserStatItems(Operation):
         user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[str] = None,
         stat_codes: Optional[str] = None,
         tags: Optional[str] = None,
     ) -> PublicQueryUserStatItems:
@@ -268,6 +282,8 @@ class PublicQueryUserStatItems(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if stat_codes is not None:
             instance.stat_codes = stat_codes
         if tags is not None:
@@ -295,6 +311,10 @@ class PublicQueryUserStatItems(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
         if "statCodes" in dict_ and dict_["statCodes"] is not None:
             instance.stat_codes = str(dict_["statCodes"])
         elif include_empty:
@@ -312,6 +332,7 @@ class PublicQueryUserStatItems(Operation):
             "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
+            "sortBy": "sort_by",
             "statCodes": "stat_codes",
             "tags": "tags",
         }
@@ -323,6 +344,7 @@ class PublicQueryUserStatItems(Operation):
             "userId": True,
             "limit": False,
             "offset": False,
+            "sortBy": False,
             "statCodes": False,
             "tags": False,
         }

@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Leaderboard Service (2.18.0)
+# AccelByte Cloud Leaderboard Service (2.19.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,7 +66,9 @@ def create_models_archive_leaderboard_req_example() -> ModelsArchiveLeaderboardR
     return instance
 
 
-def create_models_archive_leaderboard_signed_url_response_example() -> ModelsArchiveLeaderboardSignedURLResponse:
+def create_models_archive_leaderboard_signed_url_response_example() -> (
+    ModelsArchiveLeaderboardSignedURLResponse
+):
     instance = ModelsArchiveLeaderboardSignedURLResponse()
     instance.leaderboard_code = randomize()
     instance.url = randomize("url")
@@ -79,40 +81,52 @@ def create_models_daily_config_example() -> ModelsDailyConfig:
     return instance
 
 
-def create_models_delete_bulk_leaderboard_failed_resp_example() -> ModelsDeleteBulkLeaderboardFailedResp:
+def create_models_delete_bulk_leaderboard_failed_resp_example() -> (
+    ModelsDeleteBulkLeaderboardFailedResp
+):
     instance = ModelsDeleteBulkLeaderboardFailedResp()
     instance.error = randomize()
     instance.leaderboard_code = randomize()
     return instance
 
 
-def create_models_delete_bulk_leaderboards_req_example() -> ModelsDeleteBulkLeaderboardsReq:
+def create_models_delete_bulk_leaderboards_req_example() -> (
+    ModelsDeleteBulkLeaderboardsReq
+):
     instance = ModelsDeleteBulkLeaderboardsReq()
     instance.leaderboard_codes = [randomize()]
     return instance
 
 
-def create_models_delete_bulk_leaderboards_resp_example() -> ModelsDeleteBulkLeaderboardsResp:
+def create_models_delete_bulk_leaderboards_resp_example() -> (
+    ModelsDeleteBulkLeaderboardsResp
+):
     instance = ModelsDeleteBulkLeaderboardsResp()
     instance.failed = [create_models_delete_bulk_leaderboard_failed_resp_example()]
     return instance
 
 
-def create_models_get_all_leaderboard_configs_public_resp_example() -> ModelsGetAllLeaderboardConfigsPublicResp:
+def create_models_get_all_leaderboard_configs_public_resp_example() -> (
+    ModelsGetAllLeaderboardConfigsPublicResp
+):
     instance = ModelsGetAllLeaderboardConfigsPublicResp()
     instance.data = [create_models_get_leaderboard_config_public_resp_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_all_leaderboard_configs_resp_example() -> ModelsGetAllLeaderboardConfigsResp:
+def create_models_get_all_leaderboard_configs_resp_example() -> (
+    ModelsGetAllLeaderboardConfigsResp
+):
     instance = ModelsGetAllLeaderboardConfigsResp()
     instance.data = [create_models_get_leaderboard_config_resp_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_all_user_leaderboards_resp_example() -> ModelsGetAllUserLeaderboardsResp:
+def create_models_get_all_user_leaderboards_resp_example() -> (
+    ModelsGetAllUserLeaderboardsResp
+):
     instance = ModelsGetAllUserLeaderboardsResp()
     instance.data = [create_models_user_leaderboard_ranking_example()]
     instance.paging = create_models_pagination_example()
@@ -126,7 +140,9 @@ def create_models_get_hidden_user_response_example() -> ModelsGetHiddenUserRespo
     return instance
 
 
-def create_models_get_leaderboard_config_public_resp_example() -> ModelsGetLeaderboardConfigPublicResp:
+def create_models_get_leaderboard_config_public_resp_example() -> (
+    ModelsGetLeaderboardConfigPublicResp
+):
     instance = ModelsGetLeaderboardConfigPublicResp()
     instance.icon_url = randomize("url")
     instance.leaderboard_code = randomize()
@@ -135,7 +151,9 @@ def create_models_get_leaderboard_config_public_resp_example() -> ModelsGetLeade
     return instance
 
 
-def create_models_get_leaderboard_config_resp_example() -> ModelsGetLeaderboardConfigResp:
+def create_models_get_leaderboard_config_resp_example() -> (
+    ModelsGetLeaderboardConfigResp
+):
     instance = ModelsGetLeaderboardConfigResp()
     instance.daily = create_models_daily_config_example()
     instance.descending = randomize("bool")
@@ -153,14 +171,18 @@ def create_models_get_leaderboard_config_resp_example() -> ModelsGetLeaderboardC
     return instance
 
 
-def create_models_get_leaderboard_ranking_resp_example() -> ModelsGetLeaderboardRankingResp:
+def create_models_get_leaderboard_ranking_resp_example() -> (
+    ModelsGetLeaderboardRankingResp
+):
     instance = ModelsGetLeaderboardRankingResp()
     instance.data = [create_models_user_point_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
 
-def create_models_get_user_visibility_response_example() -> ModelsGetUserVisibilityResponse:
+def create_models_get_user_visibility_response_example() -> (
+    ModelsGetUserVisibilityResponse
+):
     instance = ModelsGetUserVisibilityResponse()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
@@ -199,13 +221,17 @@ def create_models_pagination_example() -> ModelsPagination:
     return instance
 
 
-def create_models_set_user_visibility_request_example() -> ModelsSetUserVisibilityRequest:
+def create_models_set_user_visibility_request_example() -> (
+    ModelsSetUserVisibilityRequest
+):
     instance = ModelsSetUserVisibilityRequest()
     instance.visibility = randomize("bool")
     return instance
 
 
-def create_models_update_leaderboard_config_req_example() -> ModelsUpdateLeaderboardConfigReq:
+def create_models_update_leaderboard_config_req_example() -> (
+    ModelsUpdateLeaderboardConfigReq
+):
     instance = ModelsUpdateLeaderboardConfigReq()
     instance.daily = create_models_daily_config_example()
     instance.descending = randomize("bool")
@@ -219,14 +245,18 @@ def create_models_update_leaderboard_config_req_example() -> ModelsUpdateLeaderb
     return instance
 
 
-def create_models_update_user_point_admin_v1_request_example() -> ModelsUpdateUserPointAdminV1Request:
+def create_models_update_user_point_admin_v1_request_example() -> (
+    ModelsUpdateUserPointAdminV1Request
+):
     instance = ModelsUpdateUserPointAdminV1Request()
     instance.inc = randomize("int", min_val=1, max_val=1000)
     instance.latest_value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
-def create_models_update_user_point_admin_v1_response_example() -> ModelsUpdateUserPointAdminV1Response:
+def create_models_update_user_point_admin_v1_response_example() -> (
+    ModelsUpdateUserPointAdminV1Response
+):
     instance = ModelsUpdateUserPointAdminV1Response()
     instance.point = randomize("int", min_val=1, max_val=1000)
     instance.user_id = randomize("uid")
@@ -266,7 +296,9 @@ def create_models_user_ranking_response_example() -> ModelsUserRankingResponse:
     return instance
 
 
-def create_models_user_ranking_response_detail_example() -> ModelsUserRankingResponseDetail:
+def create_models_user_ranking_response_detail_example() -> (
+    ModelsUserRankingResponseDetail
+):
     instance = ModelsUserRankingResponseDetail()
     instance.additional_data = {randomize(): randomize()}
     instance.point = randomize("int", min_val=1, max_val=1000)
@@ -297,14 +329,18 @@ def create_v2_entry_example() -> V2Entry:
     return instance
 
 
-def create_v2_get_all_leaderboard_configs_public_resp_example() -> V2GetAllLeaderboardConfigsPublicResp:
+def create_v2_get_all_leaderboard_configs_public_resp_example() -> (
+    V2GetAllLeaderboardConfigsPublicResp
+):
     instance = V2GetAllLeaderboardConfigsPublicResp()
     instance.data = [create_v2_get_leaderboard_config_public_resp_example()]
     instance.paging = create_v2_pagination_example()
     return instance
 
 
-def create_v2_get_leaderboard_config_public_resp_example() -> V2GetLeaderboardConfigPublicResp:
+def create_v2_get_leaderboard_config_public_resp_example() -> (
+    V2GetLeaderboardConfigPublicResp
+):
     instance = V2GetLeaderboardConfigPublicResp()
     instance.icon_url = randomize("url")
     instance.leaderboard_code = randomize()
@@ -313,7 +349,9 @@ def create_v2_get_leaderboard_config_public_resp_example() -> V2GetLeaderboardCo
     return instance
 
 
-def create_v2_get_public_leaderboard_ranking_response_example() -> V2GetPublicLeaderboardRankingResponse:
+def create_v2_get_public_leaderboard_ranking_response_example() -> (
+    V2GetPublicLeaderboardRankingResponse
+):
     instance = V2GetPublicLeaderboardRankingResponse()
     instance.data = [create_v2_entry_example()]
     instance.paging = create_v2_pagination_example()

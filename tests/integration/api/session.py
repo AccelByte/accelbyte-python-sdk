@@ -7,7 +7,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class SessionTestCase(IntegrationTestCase):
-
     template_name: Optional[str] = None
     sdks: List[AccelByteSDK] = []
     user_ids: List[str] = []

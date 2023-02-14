@@ -32,6 +32,7 @@ from ....core import same_doc_as
 
 from ..models import CreditRequest
 from ..models import CurrencyWallet
+from ..models import DebitByCurrencyCodeRequest
 from ..models import DebitRequest
 from ..models import DetailedWalletTransactionPagingSlicedResult
 from ..models import ErrorEntity
@@ -48,6 +49,7 @@ from ..operations.wallet import CheckWallet
 from ..operations.wallet import CheckWalletOriginEnum
 from ..operations.wallet import CreditUserWallet
 from ..operations.wallet import DebitUserWallet
+from ..operations.wallet import DebitUserWalletByCurrencyCode
 from ..operations.wallet import DisableUserWallet
 from ..operations.wallet import EnableUserWallet
 from ..operations.wallet import GetPlatformWalletConfig
@@ -68,6 +70,7 @@ from ..operations.wallet import ResetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import UpdatePlatformWalletConfig
 from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
 from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
+from ..models import DebitByCurrencyCodeRequestBalanceOriginEnum
 from ..models import PaymentRequestWalletPlatformEnum
 from ..models import PlatformWalletStatusEnum, PlatformWalletWalletStatusEnum
 from ..models import PlatformWalletConfigUpdateAllowedBalanceOriginsEnum
@@ -208,6 +211,52 @@ async def debit_user_wallet_async(
     request = DebitUserWallet.create(
         user_id=user_id,
         wallet_id=wallet_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DebitUserWalletByCurrencyCode)
+def debit_user_wallet_by_currency_code(
+    currency_code: str,
+    user_id: str,
+    body: Optional[DebitByCurrencyCodeRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DebitUserWalletByCurrencyCode.create(
+        currency_code=currency_code,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DebitUserWalletByCurrencyCode)
+async def debit_user_wallet_by_currency_code_async(
+    currency_code: str,
+    user_id: str,
+    body: Optional[DebitByCurrencyCodeRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DebitUserWalletByCurrencyCode.create(
+        currency_code=currency_code,
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

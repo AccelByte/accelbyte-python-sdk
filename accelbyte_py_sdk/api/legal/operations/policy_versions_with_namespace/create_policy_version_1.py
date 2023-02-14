@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Group Service (2.14.0)
+# AccelByte Cloud Legal Service (1.26.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,83 +29,59 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsCancelInvitationGroupResponseV2
-from ...models import ResponseErrorResponse
+from ...models import CreatePolicyVersionRequest
+from ...models import CreatePolicyVersionResponse
+from ...models import ErrorEntity
 
 
-class CancelInvitationGroupMemberV2(Operation):
-    """Cancel Invitation Group Member (CancelInvitationGroupMemberV2)
+class CreatePolicyVersion1(Operation):
+    """Create a Version from Country-Specific Policy (createPolicyVersion_1)
 
-    Required valid user authentication
+    Create a version of a particular country-specific policy.
+    Other detail info:
 
-
-
-
-    Required Member Role Permission: "GROUP:INVITE [DELETE]"
-
-
-
-
-    This endpoint is used to cancel invitation group member.
-
-
-
-
-    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
-
-
-
-
-    Action Code: 73409
+      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
 
     Required Permission(s):
-        - GROUP:INVITE [DELETE]
+        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
 
     Properties:
-        url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/versions
 
         method: POST
 
-        tags: ["Member Request"]
+        tags: ["Policy Versions With Namespace"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        group_id: (groupId) REQUIRED str in path
+        body: (body) OPTIONAL CreatePolicyVersionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
+        policy_id: (policyId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+        201: Created - CreatePolicyVersionResponse (successful operation)
 
-        400: Bad Request - ResponseErrorResponse (20002: validation error)
-
-        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
-
-        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
-
-        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
     """
 
     # region fields
 
-    _url: str = "/group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel"
+    _url: str = "/agreement/admin/namespaces/{namespace}/policies/{policyId}/versions"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    group_id: str  # REQUIRED in [path]
+    body: CreatePolicyVersionRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
+    policy_id: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -145,17 +121,21 @@ class CancelInvitationGroupMemberV2(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
 
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
+
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "group_id"):
-            result["groupId"] = self.group_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
+        if hasattr(self, "policy_id"):
+            result["policyId"] = self.policy_id
         return result
 
     # endregion get_x_params methods
@@ -166,16 +146,16 @@ class CancelInvitationGroupMemberV2(Operation):
 
     # region with_x methods
 
-    def with_group_id(self, value: str) -> CancelInvitationGroupMemberV2:
-        self.group_id = value
+    def with_body(self, value: CreatePolicyVersionRequest) -> CreatePolicyVersion1:
+        self.body = value
         return self
 
-    def with_namespace(self, value: str) -> CancelInvitationGroupMemberV2:
+    def with_namespace(self, value: str) -> CreatePolicyVersion1:
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> CancelInvitationGroupMemberV2:
-        self.user_id = value
+    def with_policy_id(self, value: str) -> CreatePolicyVersion1:
+        self.policy_id = value
         return self
 
     # endregion with_x methods
@@ -184,18 +164,18 @@ class CancelInvitationGroupMemberV2(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "group_id") and self.group_id:
-            result["groupId"] = str(self.group_id)
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["groupId"] = ""
+            result["body"] = CreatePolicyVersionRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
+        if hasattr(self, "policy_id") and self.policy_id:
+            result["policyId"] = str(self.policy_id)
         elif include_empty:
-            result["userId"] = ""
+            result["policyId"] = ""
         return result
 
     # endregion to methods
@@ -206,22 +186,13 @@ class CancelInvitationGroupMemberV2(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsCancelInvitationGroupResponseV2],
-        Union[None, HttpResponse, ResponseErrorResponse],
+        Union[None, CreatePolicyVersionResponse], Union[None, ErrorEntity, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - ModelsCancelInvitationGroupResponseV2 (OK)
+        201: Created - CreatePolicyVersionResponse (successful operation)
 
-        400: Bad Request - ResponseErrorResponse (20002: validation error)
-
-        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
-
-        403: Forbidden - ResponseErrorResponse (20022: token is not user token | 73036: insufficient member role permission)
-
-        404: Not Found - ResponseErrorResponse (73433: member group not found | 73034: user not belong to any group)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -236,18 +207,10 @@ class CancelInvitationGroupMemberV2(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return ModelsCancelInvitationGroupResponseV2.create_from_dict(content), None
+        if code == 201:
+            return CreatePolicyVersionResponse.create_from_dict(content), None
         if code == 400:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 401:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 403:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 404:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 500:
-            return None, ResponseErrorResponse.create_from_dict(content)
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -260,49 +223,52 @@ class CancelInvitationGroupMemberV2(Operation):
     @classmethod
     def create(
         cls,
-        group_id: str,
         namespace: str,
-        user_id: str,
-    ) -> CancelInvitationGroupMemberV2:
+        policy_id: str,
+        body: Optional[CreatePolicyVersionRequest] = None,
+    ) -> CreatePolicyVersion1:
         instance = cls()
-        instance.group_id = group_id
         instance.namespace = namespace
-        instance.user_id = user_id
+        instance.policy_id = policy_id
+        if body is not None:
+            instance.body = body
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> CancelInvitationGroupMemberV2:
+    ) -> CreatePolicyVersion1:
         instance = cls()
-        if "groupId" in dict_ and dict_["groupId"] is not None:
-            instance.group_id = str(dict_["groupId"])
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = CreatePolicyVersionRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.group_id = ""
+            instance.body = CreatePolicyVersionRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
+        if "policyId" in dict_ and dict_["policyId"] is not None:
+            instance.policy_id = str(dict_["policyId"])
         elif include_empty:
-            instance.user_id = ""
+            instance.policy_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "groupId": "group_id",
+            "body": "body",
             "namespace": "namespace",
-            "userId": "user_id",
+            "policyId": "policy_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "groupId": True,
+            "body": False,
             "namespace": True,
-            "userId": True,
+            "policyId": True,
         }
 
     # endregion static methods

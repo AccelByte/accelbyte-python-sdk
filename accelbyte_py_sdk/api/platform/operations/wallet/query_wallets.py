@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Platform Service (4.23.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,7 +42,6 @@ class OriginEnum(StrEnum):
     NINTENDO = "Nintendo"
     OTHER = "Other"
     PLAYSTATION = "Playstation"
-    STADIA = "Stadia"
     STEAM = "Steam"
     SYSTEM = "System"
     TWITCH = "Twitch"
@@ -353,7 +352,6 @@ class QueryWallets(Operation):
                 "Nintendo",
                 "Other",
                 "Playstation",
-                "Stadia",
                 "Steam",
                 "System",
                 "Twitch",

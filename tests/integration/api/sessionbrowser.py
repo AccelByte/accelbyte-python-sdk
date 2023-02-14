@@ -8,7 +8,6 @@ from accelbyte_py_sdk.api.sessionbrowser.models import ModelsSessionResponse
 
 
 class SessionBrowserTestCase(IntegrationTestCase):
-
     session_id: Optional[str] = None
 
     allow_join_in_progress: bool = False

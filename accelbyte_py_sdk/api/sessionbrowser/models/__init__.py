@@ -45,6 +45,8 @@ from .models_recent_player_history import ModelsRecentPlayerHistory
 from .models_recent_player_query_response import ModelsRecentPlayerQueryResponse
 from .models_server import ModelsServer
 from .models_session_by_user_i_ds_response import ModelsSessionByUserIDsResponse
+from .models_session_player_history import ModelsSessionPlayerHistory
+from .models_session_player_joining import ModelsSessionPlayerJoining
 from .models_session_query_response import ModelsSessionQueryResponse
 from .models_session_response import ModelsSessionResponse
 from .models_status_history import ModelsStatusHistory

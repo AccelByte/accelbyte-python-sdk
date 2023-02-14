@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Legal Service (1.25.5)
+# AccelByte Cloud Legal Service (1.26.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -30,46 +30,57 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ErrorEntity
-from ...models import RetrieveLocalizedPolicyVersionPublicResponse
+from ...models import RetrievePolicyResponse
 
 
-class RetrieveSingleLocalizedPolicyVersion1(Operation):
-    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_1)
+class RetrievePolicyCountry1(Operation):
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
 
-    Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
+    Retrieve a Base Legal Policy based on a Particular Country.
     Other detail info:
 
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
+
     Properties:
-        url: /agreement/public/localized-policy-versions/{localizedPolicyVersionId}
+        url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}
 
         method: GET
 
-        tags: ["Localized Policy Versions"]
+        tags: ["Base Legal Policies With Namespace"]
 
         consumes: []
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+        200: OK - RetrievePolicyResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
     """
 
     # region fields
 
-    _url: str = "/agreement/public/localized-policy-versions/{localizedPolicyVersionId}"
+    _url: str = "/agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}"
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
     _location_query: str = None
 
-    localized_policy_version_id: str  # REQUIRED in [path]
+    base_policy_id: str  # REQUIRED in [path]
+    country_code: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -114,8 +125,12 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "localized_policy_version_id"):
-            result["localizedPolicyVersionId"] = self.localized_policy_version_id
+        if hasattr(self, "base_policy_id"):
+            result["basePolicyId"] = self.base_policy_id
+        if hasattr(self, "country_code"):
+            result["countryCode"] = self.country_code
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -126,10 +141,16 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
 
     # region with_x methods
 
-    def with_localized_policy_version_id(
-        self, value: str
-    ) -> RetrieveSingleLocalizedPolicyVersion1:
-        self.localized_policy_version_id = value
+    def with_base_policy_id(self, value: str) -> RetrievePolicyCountry1:
+        self.base_policy_id = value
+        return self
+
+    def with_country_code(self, value: str) -> RetrievePolicyCountry1:
+        self.country_code = value
+        return self
+
+    def with_namespace(self, value: str) -> RetrievePolicyCountry1:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -138,13 +159,18 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if (
-            hasattr(self, "localized_policy_version_id")
-            and self.localized_policy_version_id
-        ):
-            result["localizedPolicyVersionId"] = str(self.localized_policy_version_id)
+        if hasattr(self, "base_policy_id") and self.base_policy_id:
+            result["basePolicyId"] = str(self.base_policy_id)
         elif include_empty:
-            result["localizedPolicyVersionId"] = ""
+            result["basePolicyId"] = ""
+        if hasattr(self, "country_code") and self.country_code:
+            result["countryCode"] = str(self.country_code)
+        elif include_empty:
+            result["countryCode"] = ""
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -155,14 +181,13 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, RetrieveLocalizedPolicyVersionPublicResponse],
-        Union[None, ErrorEntity, HttpResponse],
+        Union[None, RetrievePolicyResponse], Union[None, ErrorEntity, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - RetrieveLocalizedPolicyVersionPublicResponse (successful operation)
+        200: OK - RetrievePolicyResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -178,10 +203,7 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return (
-                RetrieveLocalizedPolicyVersionPublicResponse.create_from_dict(content),
-                None,
-            )
+            return RetrievePolicyResponse.create_from_dict(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
@@ -196,38 +218,49 @@ class RetrieveSingleLocalizedPolicyVersion1(Operation):
     @classmethod
     def create(
         cls,
-        localized_policy_version_id: str,
-    ) -> RetrieveSingleLocalizedPolicyVersion1:
+        base_policy_id: str,
+        country_code: str,
+        namespace: str,
+    ) -> RetrievePolicyCountry1:
         instance = cls()
-        instance.localized_policy_version_id = localized_policy_version_id
+        instance.base_policy_id = base_policy_id
+        instance.country_code = country_code
+        instance.namespace = namespace
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> RetrieveSingleLocalizedPolicyVersion1:
+    ) -> RetrievePolicyCountry1:
         instance = cls()
-        if (
-            "localizedPolicyVersionId" in dict_
-            and dict_["localizedPolicyVersionId"] is not None
-        ):
-            instance.localized_policy_version_id = str(
-                dict_["localizedPolicyVersionId"]
-            )
+        if "basePolicyId" in dict_ and dict_["basePolicyId"] is not None:
+            instance.base_policy_id = str(dict_["basePolicyId"])
         elif include_empty:
-            instance.localized_policy_version_id = ""
+            instance.base_policy_id = ""
+        if "countryCode" in dict_ and dict_["countryCode"] is not None:
+            instance.country_code = str(dict_["countryCode"])
+        elif include_empty:
+            instance.country_code = ""
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "localizedPolicyVersionId": "localized_policy_version_id",
+            "basePolicyId": "base_policy_id",
+            "countryCode": "country_code",
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "localizedPolicyVersionId": True,
+            "basePolicyId": True,
+            "countryCode": True,
+            "namespace": True,
         }
 
     # endregion static methods

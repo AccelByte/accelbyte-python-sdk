@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Platform Service (4.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -36,7 +36,6 @@ class AllowedBalanceOriginsEnum(StrEnum):
     NINTENDO = "Nintendo"
     OTHER = "Other"
     PLAYSTATION = "Playstation"
-    STADIA = "Stadia"
     STEAM = "Steam"
     SYSTEM = "System"
     TWITCH = "Twitch"
@@ -172,7 +171,6 @@ class PlatformWalletConfigUpdate(Model):
                 "Nintendo",
                 "Other",
                 "Playstation",
-                "Stadia",
                 "Steam",
                 "System",
                 "Twitch",

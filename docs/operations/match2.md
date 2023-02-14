@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Match Service V2 Index (2.1.0)
+# AccelByte Cloud Match Service V2 Index (2.1.1)
 
 
 ## Operations
@@ -74,8 +74,6 @@
 | api.MatchFunctionRequest | [ApiMatchFunctionRequest](../../accelbyte_py_sdk/api/match2/models/api_match_function_request.py) |
 | api.MatchPool | [ApiMatchPool](../../accelbyte_py_sdk/api/match2/models/api_match_pool.py) |
 | api.MatchPoolConfig | [ApiMatchPoolConfig](../../accelbyte_py_sdk/api/match2/models/api_match_pool_config.py) |
-| api.MatchRuleSet | [ApiMatchRuleSet](../../accelbyte_py_sdk/api/match2/models/api_match_rule_set.py) |
-| api.MatchRuleSetData | [ApiMatchRuleSetData](../../accelbyte_py_sdk/api/match2/models/api_match_rule_set_data.py) |
 | api.MatchRuleSetNameData | [ApiMatchRuleSetNameData](../../accelbyte_py_sdk/api/match2/models/api_match_rule_set_name_data.py) |
 | api.MatchTicketRequest | [ApiMatchTicketRequest](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_request.py) |
 | api.MatchTicketResponse | [ApiMatchTicketResponse](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_response.py) |
@@ -83,6 +81,7 @@
 | api.Party | [ApiParty](../../accelbyte_py_sdk/api/match2/models/api_party.py) |
 | api.PlayerData | [ApiPlayerData](../../accelbyte_py_sdk/api/match2/models/api_player_data.py) |
 | api.ProposedProposal | [ApiProposedProposal](../../accelbyte_py_sdk/api/match2/models/api_proposed_proposal.py) |
+| api.RuleSetPayload | [ApiRuleSetPayload](../../accelbyte_py_sdk/api/match2/models/api_rule_set_payload.py) |
 | api.Team | [ApiTeam](../../accelbyte_py_sdk/api/match2/models/api_team.py) |
 | api.Ticket | [ApiTicket](../../accelbyte_py_sdk/api/match2/models/api_ticket.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/match2/models/models_pagination.py) |

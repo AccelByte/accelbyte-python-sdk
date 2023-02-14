@@ -6,7 +6,7 @@
 
 # template file: accelbyte_cloud_py_codegen
 
-# AccelByte Cloud Platform Service (4.22.1)
+# AccelByte Cloud Session Browser Service ()
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,30 +28,37 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 
-class StadiaIAPConfigInfo(Model):
-    """Stadia IAP config info (StadiaIAPConfigInfo)
+class ModelsSessionPlayerJoining(Model):
+    """Models session player joining (models.SessionPlayerJoining)
 
     Properties:
-        namespace: (namespace) REQUIRED str
+        date: (Date) REQUIRED str
 
-        json_file: (jsonFile) OPTIONAL str
+        state: (State) REQUIRED str
+
+        user_id: (UserID) REQUIRED str
     """
 
     # region fields
 
-    namespace: str  # REQUIRED
-    json_file: str  # OPTIONAL
+    date: str  # REQUIRED
+    state: str  # REQUIRED
+    user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> StadiaIAPConfigInfo:
-        self.namespace = value
+    def with_date(self, value: str) -> ModelsSessionPlayerJoining:
+        self.date = value
         return self
 
-    def with_json_file(self, value: str) -> StadiaIAPConfigInfo:
-        self.json_file = value
+    def with_state(self, value: str) -> ModelsSessionPlayerJoining:
+        self.state = value
+        return self
+
+    def with_user_id(self, value: str) -> ModelsSessionPlayerJoining:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +67,18 @@ class StadiaIAPConfigInfo(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "namespace"):
-            result["namespace"] = str(self.namespace)
+        if hasattr(self, "date"):
+            result["Date"] = str(self.date)
         elif include_empty:
-            result["namespace"] = ""
-        if hasattr(self, "json_file"):
-            result["jsonFile"] = str(self.json_file)
+            result["Date"] = ""
+        if hasattr(self, "state"):
+            result["State"] = str(self.state)
         elif include_empty:
-            result["jsonFile"] = ""
+            result["State"] = ""
+        if hasattr(self, "user_id"):
+            result["UserID"] = str(self.user_id)
+        elif include_empty:
+            result["UserID"] = ""
         return result
 
     # endregion to methods
@@ -77,36 +88,41 @@ class StadiaIAPConfigInfo(Model):
     @classmethod
     def create(
         cls,
-        namespace: str,
-        json_file: Optional[str] = None,
-    ) -> StadiaIAPConfigInfo:
+        date: str,
+        state: str,
+        user_id: str,
+    ) -> ModelsSessionPlayerJoining:
         instance = cls()
-        instance.namespace = namespace
-        if json_file is not None:
-            instance.json_file = json_file
+        instance.date = date
+        instance.state = state
+        instance.user_id = user_id
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> StadiaIAPConfigInfo:
+    ) -> ModelsSessionPlayerJoining:
         instance = cls()
         if not dict_:
             return instance
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
+        if "Date" in dict_ and dict_["Date"] is not None:
+            instance.date = str(dict_["Date"])
         elif include_empty:
-            instance.namespace = ""
-        if "jsonFile" in dict_ and dict_["jsonFile"] is not None:
-            instance.json_file = str(dict_["jsonFile"])
+            instance.date = ""
+        if "State" in dict_ and dict_["State"] is not None:
+            instance.state = str(dict_["State"])
         elif include_empty:
-            instance.json_file = ""
+            instance.state = ""
+        if "UserID" in dict_ and dict_["UserID"] is not None:
+            instance.user_id = str(dict_["UserID"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, StadiaIAPConfigInfo]:
+    ) -> Dict[str, ModelsSessionPlayerJoining]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -116,7 +132,7 @@ class StadiaIAPConfigInfo(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[StadiaIAPConfigInfo]:
+    ) -> List[ModelsSessionPlayerJoining]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -127,7 +143,9 @@ class StadiaIAPConfigInfo(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        StadiaIAPConfigInfo, List[StadiaIAPConfigInfo], Dict[Any, StadiaIAPConfigInfo]
+        ModelsSessionPlayerJoining,
+        List[ModelsSessionPlayerJoining],
+        Dict[Any, ModelsSessionPlayerJoining],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -142,15 +160,17 @@ class StadiaIAPConfigInfo(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "namespace": "namespace",
-            "jsonFile": "json_file",
+            "Date": "date",
+            "State": "state",
+            "UserID": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "namespace": True,
-            "jsonFile": False,
+            "Date": True,
+            "State": True,
+            "UserID": True,
         }
 
     # endregion static methods

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: accelbyte_cloud_py_codegen)
 
-# AccelByte Cloud Cloudsave Service Index (3.5.0)
+# AccelByte Cloud Cloudsave Service Index (3.6.1)
 
 
 ## Operations

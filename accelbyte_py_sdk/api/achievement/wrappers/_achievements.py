@@ -169,6 +169,7 @@ async def admin_get_achievement_async(
 
 @same_doc_as(AdminListAchievements)
 def admin_list_achievements(
+    global_: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None,
@@ -182,6 +183,7 @@ def admin_list_achievements(
         if error:
             return None, error
     request = AdminListAchievements.create(
+        global_=global_,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -193,6 +195,7 @@ def admin_list_achievements(
 
 @same_doc_as(AdminListAchievements)
 async def admin_list_achievements_async(
+    global_: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListAchievementsSortByEnum]] = None,
@@ -206,6 +209,7 @@ async def admin_list_achievements_async(
         if error:
             return None, error
     request = AdminListAchievements.create(
+        global_=global_,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -426,6 +430,7 @@ async def public_get_achievement_async(
 @same_doc_as(PublicListAchievements)
 def public_list_achievements(
     language: str,
+    global_: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None,
@@ -440,6 +445,7 @@ def public_list_achievements(
             return None, error
     request = PublicListAchievements.create(
         language=language,
+        global_=global_,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -452,6 +458,7 @@ def public_list_achievements(
 @same_doc_as(PublicListAchievements)
 async def public_list_achievements_async(
     language: str,
+    global_: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, PublicListAchievementsSortByEnum]] = None,
@@ -466,6 +473,7 @@ async def public_list_achievements_async(
             return None, error
     request = PublicListAchievements.create(
         language=language,
+        global_=global_,
         limit=limit,
         offset=offset,
         sort_by=sort_by,

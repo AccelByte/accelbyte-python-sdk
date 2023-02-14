@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Legal Service."""
 
-__version__ = "1.25.5"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,6 @@ from .create_localized_policy_19e4a3 import CreateLocalizedPolicyVersion
 from .request_presigned_url import RequestPresignedURL
 from .retrieve_localized_poli_24a671 import RetrieveLocalizedPolicyVersions
 from .retrieve_single_localiz_2f6231 import RetrieveSingleLocalizedPolicyVersion
-from .retrieve_single_localiz_f21ac4 import RetrieveSingleLocalizedPolicyVersion1
+from .retrieve_single_localiz_6ecc81 import RetrieveSingleLocalizedPolicyVersion2
 from .set_default_policy import SetDefaultPolicy
 from .update_localized_policy_a8a90f import UpdateLocalizedPolicyVersion

@@ -43,7 +43,7 @@ from ..operations.policies import (
 from ..operations.policies import RetrieveLatestPoliciesPublic
 from ..operations.policies import RetrieveLatestPoliciesPublicPolicyTypeEnum
 from ..operations.policies import RetrievePolicies
-from ..operations.policies import SetDefaultPolicy1
+from ..operations.policies import SetDefaultPolicy2
 from ..operations.policies import UpdatePolicy
 
 
@@ -219,21 +219,21 @@ async def retrieve_policies_async(
     )
 
 
-@same_doc_as(SetDefaultPolicy1)
-def set_default_policy_1(
+@same_doc_as(SetDefaultPolicy2)
+def set_default_policy_2(
     policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    request = SetDefaultPolicy1.create(
+    request = SetDefaultPolicy2.create(
         policy_id=policy_id,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(SetDefaultPolicy1)
-async def set_default_policy_1_async(
+@same_doc_as(SetDefaultPolicy2)
+async def set_default_policy_2_async(
     policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    request = SetDefaultPolicy1.create(
+    request = SetDefaultPolicy2.create(
         policy_id=policy_id,
     )
     return await run_request_async(

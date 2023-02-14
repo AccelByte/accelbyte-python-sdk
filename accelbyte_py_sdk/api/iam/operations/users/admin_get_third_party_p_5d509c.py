@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Cloud Iam Service (5.26.1)
+# AccelByte Cloud Iam Service (5.27.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -105,9 +105,6 @@ class AdminGetThirdPartyPlatformTokenLinkStatusV3(Operation):
 
 
       * epicgames : The platform_tokenâs value is an access-token obtained from Epicgames EOS Account Service.
-
-
-      * stadia : The platform_token's value is a JWT Token, which can be obtained after calling the Stadia SDK's function.
 
 
       * ps4 : The platform_tokenâs value is the authorization code returned by Sony OAuth.

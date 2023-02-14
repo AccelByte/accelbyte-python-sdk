@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Cloud Group Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -86,6 +86,8 @@ from ._group_member import accept_group_join_request_public_v2
 from ._group_member import accept_group_join_request_public_v2_async
 from ._group_member import cancel_group_join_request_v1
 from ._group_member import cancel_group_join_request_v1_async
+from ._group_member import cancel_invitation_group_member_v2
+from ._group_member import cancel_invitation_group_member_v2_async
 from ._group_member import get_group_members_list_admin_v1
 from ._group_member import get_group_members_list_admin_v1_async
 from ._group_member import get_group_members_list_public_v1
@@ -148,8 +150,6 @@ from ._group_roles import update_member_role_public_v1_async
 from ._group_roles import update_member_role_public_v2
 from ._group_roles import update_member_role_public_v2_async
 
-from ._member_request import cancel_invitation_group_member_v2
-from ._member_request import cancel_invitation_group_member_v2_async
 from ._member_request import get_group_invitation_request_public_v1
 from ._member_request import get_group_invitation_request_public_v1_async
 from ._member_request import get_group_invite_request_public_v2

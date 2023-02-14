@@ -10,7 +10,6 @@ from accelbyte_py_sdk.api.group.models import ModelsGroupResponseV1
 
 
 class GroupTestCase(IntegrationTestCase):
-
     initial_configuration_code = "initialConfigurationCode"
     group_admin_role_id: str = ""
     group_member_role_id: str = ""
