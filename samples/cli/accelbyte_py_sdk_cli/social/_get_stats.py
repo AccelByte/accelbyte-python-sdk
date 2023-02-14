@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Social Service (1.32.1)
+# Accelbyte Cloud Social Service (1.33.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 
 
 @click.command()
+@click.option("--is_global", "is_global", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -42,6 +43,7 @@ from accelbyte_py_sdk.api.social.models import StatPagingSlicedResult
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_stats(
+    is_global: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -58,6 +60,7 @@ def get_stats(
     else:
         login_as_internal(login_as)
     result, error = get_stats_internal(
+        is_global=is_global,
         limit=limit,
         offset=offset,
         namespace=namespace,

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Social Service (1.32.1)
+# Accelbyte Cloud Social Service (1.33.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.social.models import UserStatItemPagingSlicedResult
 @click.argument("user_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
 @click.option("--stat_codes", "stat_codes", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
@@ -50,6 +51,7 @@ def public_query_user_stat_items(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     stat_codes: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -69,6 +71,7 @@ def public_query_user_stat_items(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

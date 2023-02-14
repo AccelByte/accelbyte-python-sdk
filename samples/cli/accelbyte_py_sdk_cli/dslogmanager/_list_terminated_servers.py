@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Ds Log Manager Service (3.1.1)
+# Accelbyte Cloud Ds Log Manager Service (3.2.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

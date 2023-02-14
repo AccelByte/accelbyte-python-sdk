@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.22.1)
+# Accelbyte Cloud Platform Service (4.23.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,10 +30,9 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    sync_stadia_entitlement as sync_stadia_entitlement_internal,
-)
-from accelbyte_py_sdk.api.platform.models import StadiaSyncRequest
+from accelbyte_py_sdk.api.platform import do_revocation as do_revocation_internal
+from accelbyte_py_sdk.api.platform.models import RevocationRequest
+from accelbyte_py_sdk.api.platform.models import RevocationResult
 
 
 @click.command()
@@ -43,7 +42,7 @@ from accelbyte_py_sdk.api.platform.models import StadiaSyncRequest
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def sync_stadia_entitlement(
+def do_revocation(
     user_id: str,
     body: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -52,7 +51,7 @@ def sync_stadia_entitlement(
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(sync_stadia_entitlement_internal.__doc__)
+        click.echo(do_revocation_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -62,19 +61,19 @@ def sync_stadia_entitlement(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = StadiaSyncRequest.create_from_dict(body_json)
+            body = RevocationRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = sync_stadia_entitlement_internal(
+    result, error = do_revocation_internal(
         user_id=user_id,
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"syncStadiaEntitlement failed: {str(error)}")
+        raise Exception(f"doRevocation failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-sync_stadia_entitlement.operation_id = "syncStadiaEntitlement"
-sync_stadia_entitlement.is_deprecated = False
+do_revocation.operation_id = "doRevocation"
+do_revocation.is_deprecated = False

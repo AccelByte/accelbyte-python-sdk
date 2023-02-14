@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.22.1)
+# Accelbyte Cloud Legal Service (1.26.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,42 +30,42 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    update_stadia_json_config_file as update_stadia_json_config_file_internal,
+from accelbyte_py_sdk.api.legal import (
+    retrieve_accepted_agreements_1 as retrieve_accepted_agreements_1_internal,
 )
-from accelbyte_py_sdk.api.platform.models import StadiaIAPConfigInfo
+from accelbyte_py_sdk.api.legal.models import RetrieveAcceptedAgreementResponse
 
 
 @click.command()
-@click.option("--file", "file", type=str)
+@click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def update_stadia_json_config_file(
-    file: Optional[str] = None,
+def retrieve_accepted_agreements_1(
+    user_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(update_stadia_json_config_file_internal.__doc__)
+        click.echo(retrieve_accepted_agreements_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = update_stadia_json_config_file_internal(
-        file=file,
+    result, error = retrieve_accepted_agreements_1_internal(
+        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"updateStadiaJsonConfigFile failed: {str(error)}")
+        raise Exception(f"retrieveAcceptedAgreements_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-update_stadia_json_config_file.operation_id = "updateStadiaJsonConfigFile"
-update_stadia_json_config_file.is_deprecated = False
+retrieve_accepted_agreements_1.operation_id = "retrieveAcceptedAgreements_1"
+retrieve_accepted_agreements_1.is_deprecated = False

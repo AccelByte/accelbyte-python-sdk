@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.22.1)
+# Accelbyte Cloud Legal Service (1.26.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,39 +30,53 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    get_stadia_iap_config as get_stadia_iap_config_internal,
+from accelbyte_py_sdk.api.legal import (
+    update_localized_policy_version_1 as update_localized_policy_version_1_internal,
 )
-from accelbyte_py_sdk.api.platform.models import StadiaIAPConfigInfo
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
+from accelbyte_py_sdk.api.legal.models import UpdateLocalizedPolicyVersionRequest
+from accelbyte_py_sdk.api.legal.models import UpdateLocalizedPolicyVersionResponse
 
 
 @click.command()
+@click.argument("localized_policy_version_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_stadia_iap_config(
+def update_localized_policy_version_1(
+    localized_policy_version_id: str,
+    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_stadia_iap_config_internal.__doc__)
+        click.echo(update_localized_policy_version_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = get_stadia_iap_config_internal(
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = UpdateLocalizedPolicyVersionRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = update_localized_policy_version_1_internal(
+        localized_policy_version_id=localized_policy_version_id,
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"getStadiaIAPConfig failed: {str(error)}")
+        raise Exception(f"updateLocalizedPolicyVersion_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_stadia_iap_config.operation_id = "getStadiaIAPConfig"
-get_stadia_iap_config.is_deprecated = False
+update_localized_policy_version_1.operation_id = "updateLocalizedPolicyVersion_1"
+update_localized_policy_version_1.is_deprecated = False

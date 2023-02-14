@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Accelbyte Cloud Platform Service (4.22.1)
+# Accelbyte Cloud Legal Service (1.26.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,38 +30,53 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import (
-    delete_stadia_iap_config as delete_stadia_iap_config_internal,
+from accelbyte_py_sdk.api.legal import (
+    create_localized_policy_version_1 as create_localized_policy_version_1_internal,
 )
+from accelbyte_py_sdk.api.legal.models import CreateLocalizedPolicyVersionRequest
+from accelbyte_py_sdk.api.legal.models import CreateLocalizedPolicyVersionResponse
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
+@click.argument("policy_version_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def delete_stadia_iap_config(
+def create_localized_policy_version_1(
+    policy_version_id: str,
+    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(delete_stadia_iap_config_internal.__doc__)
+        click.echo(create_localized_policy_version_1_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = delete_stadia_iap_config_internal(
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = CreateLocalizedPolicyVersionRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    result, error = create_localized_policy_version_1_internal(
+        policy_version_id=policy_version_id,
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"deleteStadiaIAPConfig failed: {str(error)}")
+        raise Exception(f"createLocalizedPolicyVersion_1 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-delete_stadia_iap_config.operation_id = "deleteStadiaIAPConfig"
-delete_stadia_iap_config.is_deprecated = False
+create_localized_policy_version_1.operation_id = "createLocalizedPolicyVersion_1"
+create_localized_policy_version_1.is_deprecated = False
