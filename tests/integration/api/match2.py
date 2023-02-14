@@ -1,4 +1,3 @@
-import json
 from typing import List, Optional
 
 from accelbyte_py_sdk import AccelByteSDK
@@ -41,7 +40,7 @@ class Match2TestCase(IntegrationTestCase):
     @staticmethod
     def do_create_rule_set(rule_set_name: str):
         from accelbyte_py_sdk.api.match2 import create_rule_set
-        from accelbyte_py_sdk.api.match2.models import ApiMatchRuleSet
+        from accelbyte_py_sdk.api.match2.models import ApiRuleSetPayload
 
         rule_set_data = {
             "alliance": {
@@ -72,11 +71,11 @@ class Match2TestCase(IntegrationTestCase):
                 }
             ],
         }
-        rule_set_data_str = json.dumps(json.dumps(rule_set_data))
 
         _, error = create_rule_set(
-            body=ApiMatchRuleSet.create(
-                data=rule_set_data_str,
+            body=ApiRuleSetPayload.create(
+                data=rule_set_data,
+                enable_custom_match_function=False,
                 name=rule_set_name,
             )
         )
