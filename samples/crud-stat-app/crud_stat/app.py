@@ -4,6 +4,10 @@ from argparse import ArgumentParser
 from typing import Optional
 
 import accelbyte_py_sdk
+from accelbyte_py_sdk.core import HttpResponse
+from accelbyte_py_sdk.api.social import delete_user_stat_items
+from accelbyte_py_sdk.api.social import get_user_stat_items
+from accelbyte_py_sdk.api.social import create_user_stat_item
 
 # region constants
 
@@ -22,11 +26,10 @@ class Environment(object):
                 raise EnvironmentError
             setattr(self, key, os.environ[key])
 
-
 # endregion classes
 
+def lambda_handler(event, context):
 
-def shared_lambda_handler_process(event):
     # 01. Load Environment Variables.
     env = Environment(keys=ENVIRONMENT_KEYS)
     log_done("load environment variables")
@@ -63,14 +66,36 @@ def shared_lambda_handler_process(event):
     )
     log_done("initialize SDK")
 
+    http_method = event["requestContext"]["http"]["method"]
+    if http_method == 'GET':
+        return handel_get_request(event)
+    
+    # Handle POST request
+    elif http_method == 'POST':
+        return handel_post_request(event)
+    
+    # Handle DELETE request
+    elif http_method == 'DELETE':
+        return handle_delete_request(event)
+    
+    elif http_method == "PUT":
+        return handel_put_request(event)
+        
+    # Return an error for unsupported methods
+    else:
+        return create_response(
+            405, 
+            json.dumps({'message': 'Method not allowed'})
+        )
 
-def delete_user_stat_lambda_handler(event, context):
+
+def handle_delete_request(event):
     """Delete Stat Lambda function
 
     Parameters
     ----------
     event: dict, required
-        API Gateway Lambda Proxy Input Format
+        AWS API Gateway V2 HTTP API Input Format
 
         Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
 
@@ -81,17 +106,12 @@ def delete_user_stat_lambda_handler(event, context):
 
     Returns
     ------
-    API Gateway Lambda Proxy Output Format: dict
+    AWS API Gateway V2 HTTP API Output Format: dict
 
         Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
     """
 
-    # 01-04.
-    shared_lambda_handler_process(event)
-
     # 05. Extract request query parameters and convert it into parameters for the DeleteUserStatItems request.
-    from accelbyte_py_sdk.core import HttpResponse
-    from accelbyte_py_sdk.api.social import delete_user_stat_items
 
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId", "statCode"]
@@ -118,13 +138,13 @@ def delete_user_stat_lambda_handler(event, context):
     )
 
 
-def get_user_stat_lambda_handler(event, context):
+def handel_get_request(event):
     """Get Stat Lambda function
 
     Parameters
     ----------
     event: dict, required
-        API Gateway Lambda Proxy Input Format
+        AWS API Gateway V2 HTTP API Input Format
 
         Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
 
@@ -135,17 +155,13 @@ def get_user_stat_lambda_handler(event, context):
 
     Returns
     ------
-    API Gateway Lambda Proxy Output Format: dict
+    AWS API Gateway V2 HTTP API Output Format: dict
 
         Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
     """
 
-    # 01-04.
-    shared_lambda_handler_process(event)
-
     # 05. Extract request query parameters and convert it into parameters for the GetUserStatItems request.
-    from accelbyte_py_sdk.core import HttpResponse
-    from accelbyte_py_sdk.api.social import get_user_stat_items
+
 
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId"]
@@ -175,13 +191,13 @@ def get_user_stat_lambda_handler(event, context):
     )
 
 
-def post_user_stat_lambda_handler(event, context):
+def handel_post_request(event):
     """Post Stat Lambda function
 
     Parameters
     ----------
     event: dict, required
-        API Gateway Lambda Proxy Input Format
+        AWS API Gateway V2 HTTP API Input Format
 
         Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
 
@@ -192,17 +208,12 @@ def post_user_stat_lambda_handler(event, context):
 
     Returns
     ------
-    API Gateway Lambda Proxy Output Format: dict
+    AWS API Gateway V2 HTTP API Output Format: dict
 
         Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
     """
 
-    # 01-04.
-    shared_lambda_handler_process(event)
-
     # 05. Extract request query parameters and convert it into parameters for the CreateUserStatItem request.
-    from accelbyte_py_sdk.core import HttpResponse
-    from accelbyte_py_sdk.api.social import create_user_stat_item
 
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId", "statCode"]
@@ -229,13 +240,13 @@ def post_user_stat_lambda_handler(event, context):
     )
 
 
-def put_user_stat_lambda_handler(event, context):
+def handel_put_request(event):
     """Put Stat Lambda function
 
     Parameters
     ----------
     event: dict, required
-        API Gateway Lambda Proxy Input Format
+        AWS API Gateway V2 HTTP API Input Format
 
         Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
 
@@ -246,13 +257,10 @@ def put_user_stat_lambda_handler(event, context):
 
     Returns
     ------
-    API Gateway Lambda Proxy Output Format: dict
+    AWS API Gateway V2 HTTP API Output Format: dict
 
         Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
     """
-
-    # 01-04.
-    shared_lambda_handler_process(event)
 
     # 05. Extract request query parameters and convert it into parameters for the IncUserStatItemValue request.
     from accelbyte_py_sdk.core import HttpResponse
@@ -370,14 +378,14 @@ def main(args):
 
     mode = args["mode"]
     if mode == "delete":
-        result = delete_user_stat_lambda_handler(event, context)
+        result = handle_delete_request(event, context)
     elif mode == "get":
-        result = get_user_stat_lambda_handler(event, context)
+        result = handel_get_request(event, context)
     elif mode == "post":
-        result = post_user_stat_lambda_handler(event, context)
+        result = handel_post_request(event, context)
     elif mode == "put":
         event["body"] = {"inc": 1}
-        result = put_user_stat_lambda_handler(event, context)
+        result = handel_put_request(event, context)
     else:
         raise ValueError
 

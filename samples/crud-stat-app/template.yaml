@@ -11,117 +11,38 @@ Globals:
     Timeout: 15
     Environment:
       Variables:
-        APP_BASE_URL: # fill this up
-        APP_CLIENT_ID: # fill this up
-        APP_CLIENT_SECRET: # fill this up
+        APP_BASE_URL: 'https://demo.accelbyte.io'
+        APP_CLIENT_ID: 693478c898014d97ae4d34fb84f66861
+        APP_CLIENT_SECRET: AgNypp)RiT0&Gs1v!-!V_hwA)18YDnBF
 
 Resources:
-  DeleteUserStatFunction:
+  UserStatsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: crud_stat/
-      Handler: app.delete_user_stat_lambda_handler
+      CodeUri: crud_stat
+      Handler: app.lambda_handler
       Runtime: python3.9
       Architectures:
         - x86_64
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /user-stats
-            Method: delete
-  GetUserStatFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: crud_stat/
-      Handler: app.get_user_stat_lambda_handler
-      Runtime: python3.9
-      Architectures:
-        - x86_64
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /user-stats
-            Method: get
-  PostUserStatFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: crud_stat/
-      Handler: app.post_user_stat_lambda_handler
-      Runtime: python3.9
-      Architectures:
-        - x86_64
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /user-stats
-            Method: post
-  PutUserStatFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: crud_stat/
-      Handler: app.put_user_stat_lambda_handler
-      Runtime: python3.9
-      Architectures:
-        - x86_64
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /user-stats
-            Method: put
+      MemorySize: 512
+      FunctionUrlConfig: # https://docs.aws.amazon.com/lambda/latest/dg/urls-tutorial.html
+        AuthType: NONE # Change to "AWS_IAM" based on your needs https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html
+        Cors:
+          AllowOrigins:
+            - "*"
+          AllowHeaders:
+            - "*"
+          AllowMethods:
+            - "*"
 
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  DeleteUserStatApi:
-    Description: "API Gateway endpoint URL for Prod stage for the Delete User Stat function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/user-stats/"
-  DeleteUserStatFunction:
-    Description: "Delete User Stat Lambda Function ARN"
-    Value: !GetAtt DeleteUserStatFunction.Arn
-  DeleteUserStatFunctionIamRole:
-    Description: "Implicit IAM Role created for Delete User function"
-    Value: !GetAtt DeleteUserStatFunctionRole.Arn
-
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  GetUserStatApi:
-    Description: "API Gateway endpoint URL for Prod stage for the Get User Stat function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/user-stats/"
-  GetUserStatFunction:
-    Description: "Get User Stat Lambda Function ARN"
-    Value: !GetAtt GetUserStatFunction.Arn
-  GetUserStatFunctionIamRole:
-    Description: "Implicit IAM Role created for Get User function"
-    Value: !GetAtt GetUserStatFunctionRole.Arn
-
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  PostUserStatApi:
-    Description: "API Gateway endpoint URL for Prod stage for the Post User Stat function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/user-stats/"
-  PostUserStatFunction:
-    Description: "Post User Stat Lambda Function ARN"
-    Value: !GetAtt PostUserStatFunction.Arn
-  PostUserStatFunctionIamRole:
-    Description: "Implicit IAM Role created for Post User function"
-    Value: !GetAtt PostUserStatFunctionRole.Arn
-
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  PutUserStatApi:
-    Description: "API Gateway endpoint URL for Prod stage for the Put User Stat function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/user-stats/"
-  PutUserStatFunction:
-    Description: "Put User Stat Lambda Function ARN"
-    Value: !GetAtt PutUserStatFunction.Arn
-  PutUserStatFunctionIamRole:
-    Description: "Implicit IAM Role created for Put User function"
-    Value: !GetAtt PutUserStatFunctionRole.Arn
+  UserStatsFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt UserStatsFunction.Arn
+  UserStatsFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt UserStatsFunctionRole.Arn
+  UserStatsFunctionUrlEndpoint:
+    Description: "Java Simple App Lambda Function URL Endpoint"
+    Value:
+      Fn::GetAtt: UserStatsFunctionUrl.FunctionUrl # {Function Name}Url.FunctionUrl

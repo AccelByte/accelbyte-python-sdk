@@ -1,4 +1,4 @@
-httpx>=1.0.0b0
+httpx>=0.23.3
 requests==2.26.0
 PyYAML==6.0
 pyjwt[crypto]==2.2.0
