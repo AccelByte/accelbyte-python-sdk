@@ -8,12 +8,12 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 15
+    Timeout: 20
     Environment:
       Variables:
         APP_BASE_URL: 'https://demo.accelbyte.io'
-        APP_CLIENT_ID: 693478c898014d97ae4d34fb84f66861
-        APP_CLIENT_SECRET: AgNypp)RiT0&Gs1v!-!V_hwA)18YDnBF
+        APP_CLIENT_ID: xxxxxxxxxxxxxxxxxx
+        APP_CLIENT_SECRET: xxxxxxxxxxxxxxxxxx
 
 Resources:
   UserStatsFunction:
@@ -43,6 +43,6 @@ Outputs:
     Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt UserStatsFunctionRole.Arn
   UserStatsFunctionUrlEndpoint:
-    Description: "Java Simple App Lambda Function URL Endpoint"
+    Description: "Python Simple App Lambda Function URL Endpoint"
     Value:
       Fn::GetAtt: UserStatsFunctionUrl.FunctionUrl # {Function Name}Url.FunctionUrl

@@ -35,7 +35,7 @@ def lambda_handler(event, context):
     log_done("load environment variables")
 
     # 02. Extract the Bearer Auth Token from the Authorization header.
-    authorization = str(event.get("headers").get("Authorization"))
+    authorization = str(event.get("headers").get("authorization"))
     bearer_auth_token, error = extract_bearer_auth_token(authorization)
     if error:
         return error

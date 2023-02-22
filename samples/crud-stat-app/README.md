@@ -24,6 +24,23 @@ The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI
 * [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
 * [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
 
+## Setup
+
+Set the environment variables required by the lambda function in `template.yml`.
+
+```yml
+Globals:
+  Function:
+    Timeout: 20   # Give enough time to complete API calls
+    Environment:
+        Variables:
+          AB_BASE_URL: https://demo.accelbyte.io    # Base URL
+          AB_CLIENT_ID: 'xxxxxxxxxx'                # Cliend ID
+          AB_CLIENT_SECRET: 'xxxxxxxxxx'            # Client Secret
+```
+
+Also, make sure you have obtained the `access token` for the field `bearer token` show below.
+
 ## Deploy the sample application
 
 The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
@@ -31,7 +48,7 @@ The Serverless Application Model Command Line Interface (SAM CLI) is an extensio
 To use the SAM CLI, you need the following tools.
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* [Python 3 installed](https://www.python.org/downloads/)
+* [Python 3.9 installed](https://www.python.org/downloads/)
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
 
 To build and deploy your application for the first time, run the following in your shell:
@@ -49,46 +66,52 @@ The first command will build the source of your application. The second command 
 * **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
 * **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
 
-You can find your API Gateway Endpoint URL in the output values displayed after deployment.
+You can find your FunctionURL in the output values displayed after deployment.
 
-## Use the SAM CLI to build and test locally
+Try it out. Use the your `FunctionURL`, `Namespace`, `User ID`, and `Stat Code`
 
-Build your application with the `sam build --use-container` command.
+    ```bash
+    # Add a statistic to a user
+    curl -X POST '{FunctionURL}?namespace={namespace}&userId={user_id}&statCode={stat_code}' \
+    --header 'Authorization: Bearer {access token}'
+    
+    # Get a list of statistics of a user
+    curl '{FunctionURL}?namespace={Namespace}&userId={user_id}' \
+    --header 'Authorization: Bearer {access token}'
+    
+    # Delete a statistic from a user
+    curl -X DELETE '{FunctionURL}?namespace={Namespace}&userId={user_id}&statCode={stat_code}' \
+    --header 'Authorization: Bearer {access token}'
+    ```
+    
+## Build and Test Locally
 
-```bash
-crud-stat-app$ sam build --use-container
-```
+Start the lambda, in this case, locally for testing purpose.
 
-The SAM CLI installs dependencies defined in `crud_stat/requirements.txt`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+1. Input credentials in `POST_AND_PUT.json`, `GET.json`, `DELETE.json` files.
+    
+    ```json
+    "headers": {
+        "Content-Type": "application/json",
+        "authorization": "Bearer xxxxxxxxxxxxxxxxxxx"
+    },
+    "queryStringParameters": {
+        "namespace": "xxxxxxxxxx",
+        "userId": "xxxxxxxxxx"
+    },
+    "body": "{\"statCode\": \"xxxxxxxxxx\"}"
+    ```
+2. Build lambda.
 
-Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
+    ```bash
+    sam build --use-container
+    ```
 
-Run functions locally and invoke them with the `sam local invoke` command.
+3. Run the following command and replace `httpMethod` with POST_AND_PUT/GET/DELETE. 
 
-```bash
-crud-stat-app$ sam local invoke DeleteStatFunction --event events/event.json
-crud-stat-app$ sam local invoke GetStatFunction --event events/event.json
-crud-stat-app$ sam local invoke PostStatFunction --event events/event.json
-crud-stat-app$ sam local invoke PutStatFunction --event events/event.json
-```
-
-The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
-
-```bash
-crud-stat-app$ sam local start-api
-crud-stat-app$ curl http://localhost:3000/
-```
-
-The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
-
-```yaml
-      Events:
-        GetStat:
-          Type: Api
-          Properties:
-            Path: /get-stat
-            Method: get
-```
+    ```bash
+    sam local invoke UserStatsFunction --event ./{httpMethod}.json
+    ```
 
 ## Add a resource to your application
 The application template uses AWS Serverless Application Model (AWS SAM) to define application resources. AWS SAM is an extension of AWS CloudFormation with a simpler syntax for configuring common serverless application resources such as functions, triggers, and APIs. For resources not included in [the SAM specification](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md), you can use standard [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) resource types.
@@ -100,23 +123,10 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-crud-stat-app$ sam logs -n GetStatFunction --stack-name crud-stat-app --tail
+crud-stat-app$ sam logs -n UserStatsFunction --stack-name crud-stat-app --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
-
-## Tests
-
-Tests are defined in the `tests` folder in this project. Use PIP to install the test dependencies and run tests.
-
-```bash
-crud-stat-app$ pip install -r tests/requirements.txt --user
-# unit test
-crud-stat-app$ python -m pytest tests/unit -v
-# integration test, requiring deploying the stack first.
-# Create the env variable AWS_SAM_STACK_NAME with the name of the stack we are testing
-crud-stat-app$ AWS_SAM_STACK_NAME=<stack-name> python -m pytest tests/integration -v
-```
 
 ## Cleanup
 
