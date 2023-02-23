@@ -70,17 +70,20 @@ You can find your FunctionURL in the output values displayed after deployment.
 
 Try it out. Use the your `FunctionURL`, `Namespace`, `User ID`, and `Stat Code`
 
-    ```bash
+     ```bash
     # Add a statistic to a user
     curl -X POST '{FunctionURL}?namespace={namespace}&userId={user_id}&statCode={stat_code}' \
+    --header 'Content-Type: application/json' \
     --header 'Authorization: Bearer {access token}'
     
     # Get a list of statistics of a user
     curl '{FunctionURL}?namespace={Namespace}&userId={user_id}' \
+    --header 'Content-Type: application/json' \
     --header 'Authorization: Bearer {access token}'
     
     # Delete a statistic from a user
     curl -X DELETE '{FunctionURL}?namespace={Namespace}&userId={user_id}&statCode={stat_code}' \
+    --header 'Content-Type: application/json' \
     --header 'Authorization: Bearer {access token}'
     ```
     
@@ -93,13 +96,13 @@ Start the lambda, in this case, locally for testing purpose.
     ```json
     "headers": {
         "Content-Type": "application/json",
-        "authorization": "Bearer xxxxxxxxxxxxxxxxxxx"
+        "authorization": "Bearer xxxxxxxxxxxxxxxxxx"
     },
     "queryStringParameters": {
-        "namespace": "xxxxxxxxxx",
-        "userId": "xxxxxxxxxx"
-    },
-    "body": "{\"statCode\": \"xxxxxxxxxx\"}"
+        "namespace": "xxxxxxxxxxxxxxxxxx",
+        "userId": "xxxxxxxxxxxxxxxxxx",
+        "statCode": "xxxxxxxxxxxxxxxxxx"
+    }
     ```
 2. Build lambda.
 
