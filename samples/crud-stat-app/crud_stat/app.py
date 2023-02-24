@@ -26,7 +26,9 @@ class Environment(object):
                 raise EnvironmentError
             setattr(self, key, os.environ[key])
 
+
 # endregion classes
+
 
 def lambda_handler(event, context):
 
@@ -67,26 +69,23 @@ def lambda_handler(event, context):
     log_done("initialize SDK")
 
     http_method = event["requestContext"]["http"]["method"]
-    if http_method == 'GET':
+    if http_method == "GET":
         return handel_get_request(event)
-    
+
     # Handle POST request
-    elif http_method == 'POST':
+    elif http_method == "POST":
         return handel_post_request(event)
-    
+
     # Handle DELETE request
-    elif http_method == 'DELETE':
+    elif http_method == "DELETE":
         return handle_delete_request(event)
-    
+
     elif http_method == "PUT":
         return handel_put_request(event)
-        
+
     # Return an error for unsupported methods
     else:
-        return create_response(
-            405, 
-            json.dumps({'message': 'Method not allowed'})
-        )
+        return create_response(405, json.dumps({"message": "Method not allowed"}))
 
 
 def handle_delete_request(event):
@@ -161,7 +160,6 @@ def handel_get_request(event):
     """
 
     # 05. Extract request query parameters and convert it into parameters for the GetUserStatItems request.
-
 
     query_params = event.get("queryStringParameters", {}) or {}
     required_query_param = ["namespace", "userId"]
