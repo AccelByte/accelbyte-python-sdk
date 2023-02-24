@@ -22,6 +22,7 @@ from accelbyte_py_sdk.core import HttpResponse
 from accelbyte_py_sdk.core import Model
 from accelbyte_py_sdk.core import Operation
 
+from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import create_proto_from_operation
 from accelbyte_py_sdk.core import get_http_client
 
@@ -511,6 +512,152 @@ class RequestTestCase(TestCase):
             request.url,
         )
 
+    def test_security_resolution(self):
+        # arrange
+        class TestOperation(Operation):
+            def __init__(self):
+                self.url = "/foo"
+
+            def get_all_params(self) -> dict:
+                return {}
+
+            def parse_response(self, code: int, content_type: str, content: Any):
+                return HttpResponse.create_error(500, "test")
+
+            @staticmethod
+            def get_field_info() -> Dict[str, str]:
+                return {}
+
+        kwargs = {
+            "operation": TestOperation(),
+            "config_repo": TestConfigRepository(),
+            "token_repo": TestTokenRepository(),
+            "base_url": "http://0.0.0.0:8080",
+        }
+
+        # act & assert
+        TestOperation.securities = []
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNone(error, error)
+
+        # act & assert
+        TestOperation.securities = [["BASIC_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNotNone(error, error)
+        self.assertEqual(
+            """[400] error: Failed to resolve security.
+- tried to resolve security combination (BASIC_AUTH)
+  - BASIC_AUTH: No Client ID found, did you forget to login?""",
+            str(error),
+        )
+
+        # act & assert
+        TestOperation.securities = [["BEARER_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNotNone(error, error)
+        self.assertEqual(
+            """[400] error: Failed to resolve security.
+- tried to resolve security combination (BEARER_AUTH)
+  - BEARER_AUTH: No Access Token found, did you forget to login?""",
+            str(error),
+        )
+
+        # act & assert
+        TestOperation.securities = [["COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNotNone(error, error)
+        self.assertEqual(
+            """[400] error: Failed to resolve security.
+- tried to resolve security combination (COOKIE_AUTH)
+  - COOKIE_AUTH: No Access Token found, did you forget to login?""",
+            str(error),
+        )
+
+        # act & assert
+        TestOperation.securities = [["BASIC_AUTH"], ["COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNotNone(error, error)
+        self.assertEqual(
+            """[400] error: Failed to resolve security.
+- tried to resolve security combination (BASIC_AUTH)
+  - BASIC_AUTH: No Client ID found, did you forget to login?
+- tried to resolve security combination (COOKIE_AUTH)
+  - COOKIE_AUTH: No Access Token found, did you forget to login?""",
+            str(error),
+        )
+
+        # act & assert
+        TestOperation.securities = [["BASIC_AUTH"], ["BEARER_AUTH", "COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNotNone(error, error)
+        self.assertEqual(
+            """[400] error: Failed to resolve security.
+- tried to resolve security combination (BASIC_AUTH)
+  - BASIC_AUTH: No Client ID found, did you forget to login?
+- tried to resolve security combination (BEARER_AUTH && COOKIE_AUTH)
+  - BEARER_AUTH: No Access Token found, did you forget to login?""",
+            str(error),
+        )
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository(
+            data={"AB_CLIENT_ID": "foo", "AB_CLIENT_SECRET": "bar"}
+        )
+        kwargs["token_repo"] = TestTokenRepository()
+        TestOperation.securities = [["BASIC_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNone(error, error)
+        self.assertEqual(
+            create_basic_authentication("foo", "bar"),
+            proto.headers.get("Authorization"),
+        )
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository()
+        kwargs["token_repo"] = TestTokenRepository(token={"access_token": "foo"})
+        TestOperation.securities = [["BEARER_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertEqual("Bearer foo", proto.headers.get("Authorization"))
+        self.assertIsNone(error, error)
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository()
+        kwargs["token_repo"] = TestTokenRepository(token={"access_token": "foo"})
+        TestOperation.securities = [["COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIn("access_token=foo", proto.headers.get("Cookie"))
+        self.assertIsNone(error, error)
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository()
+        kwargs["token_repo"] = TestTokenRepository(token={"access_token": "foo"})
+        TestOperation.securities = [["BEARER_AUTH", "COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertEqual("Bearer foo", proto.headers.get("Authorization"))
+        self.assertIn("access_token=foo", proto.headers.get("Cookie"))
+        self.assertIsNone(error, error)
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository(
+            data={"AB_CLIENT_ID": "foo", "AB_CLIENT_SECRET": "bar"}
+        )
+        kwargs["token_repo"] = TestTokenRepository()
+        TestOperation.securities = [["BASIC_AUTH"], ["COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIsNone(error, error)
+        self.assertEqual(
+            create_basic_authentication("foo", "bar"),
+            proto.headers.get("Authorization"),
+        )
+
+        # act & assert
+        kwargs["config_repo"] = TestConfigRepository()
+        kwargs["token_repo"] = TestTokenRepository(token={"access_token": "foo"})
+        TestOperation.securities = [["BASIC_AUTH"], ["COOKIE_AUTH"]]
+        proto, error = create_proto_from_operation(**kwargs)
+        self.assertIn("access_token=foo", proto.headers.get("Cookie"))
+        self.assertIsNone(error, error)
+
 
 class HttpBinRequestTestCase(TestCase):
     reachable: bool = True
@@ -633,7 +780,7 @@ class HttpBinRequestTestCase(TestCase):
                 if code == 200:
                     return content, None
 
-                admin_get_bans_type_v3ocumented_response(
+                return HttpResponse.create_undocumented_response(
                     code=code, content_type=content_type, content=content
                 )
 

@@ -59,95 +59,115 @@ class SecuritiesResolver:
         self.basic_auth = SENTINEL
         self.access_token = SENTINEL
 
-    def _resolve_basic_auth(self, proto: ProtoHttpRequest):
+    def _resolve_basic_auth(
+        self, proto: ProtoHttpRequest
+    ) -> Tuple[bool, Optional[str]]:
         result = False
         if proto.headers.has_authorization():
             if not self.replace_existing:
-                return True
+                return True, "Authorization already exists."
             else:
                 result = True
         if self.basic_auth is not None and self.basic_auth is not SENTINEL:
             proto.headers.add_authorization(self.basic_auth)
-            return True
+            return True, None
         if self.basic_auth is SENTINEL:
             client_id = self.config_repo.get_client_id()
             if not client_id:
-                return result
+                return result, "No Client ID found, did you forget to login?"
             client_secret = self.config_repo.get_client_secret() or ""
             self.basic_auth = create_basic_authentication(
                 username=client_id, password=client_secret
             )
             proto.headers.add_authorization(self.basic_auth)
-            return True
-        return result
+            return True, None
+        return result, "Can't resolve Basic Auth, did you forget to login?"
 
-    def _resolve_bearer_auth(self, proto: ProtoHttpRequest):
+    def _resolve_bearer_auth(
+        self, proto: ProtoHttpRequest
+    ) -> Tuple[bool, Optional[str]]:
         result = False
         if proto.headers.has_authorization():
             if not self.replace_existing:
-                return True
+                return True, "Authorization already exists."
             else:
                 result = True
         if self.access_token is not None and self.access_token is not SENTINEL:
             proto.headers.add_bearer_authorization(self.access_token)
-            return True
+            return True, None
         if self.access_token is SENTINEL:
             self.access_token = self.token_repo.get_access_token()
             if self.access_token is None:
-                return result
+                return result, "No Access Token found, did you forget to login?"
             proto.headers.add_bearer_authorization(self.access_token)
-            return True
-        return result
+            return True, None
+        return result, "Can't resolve Bearer Auth, did you forget to login?"
 
     def _resolve_cookie_auth(
         self, proto: ProtoHttpRequest, cookie_auth_key: str = "access_token"
-    ):
+    ) -> Tuple[bool, Optional[str]]:
         result = False
         if proto.headers.has_cookie_key(cookie_auth_key):
             if not self.replace_existing:
-                return True
+                return True, f"Cookie ({cookie_auth_key}) already exists."
             else:
                 result = True
         if self.access_token is not None and self.access_token is not SENTINEL:
             proto.headers.add_cookie(
                 key=cookie_auth_key, value=self.access_token, replace_existing=True
             )
-            return True
+            return True, None
         if self.access_token is SENTINEL:
             self.access_token = self.token_repo.get_access_token()
             if self.access_token is None:
-                return result
+                return result, "No Access Token found, did you forget to login?"
             proto.headers.add_cookie(
                 key=cookie_auth_key, value=self.access_token, replace_existing=True
             )
-            return True
-        return result
+            return True, None
+        return result, "Can't resolve Cookie Auth, did you forget to login?"
 
     def resolve(
         self, proto: ProtoHttpRequest, securities: List[List[str]] = None
-    ) -> bool:
+    ) -> Tuple[bool, Optional[str]]:
         if not securities:
-            return True
+            return True, None
+        errors = []
         for security in securities:
             fulfilled = True
+            s_errors = []
             for requirement in security:
                 if requirement == "BASIC_AUTH":
-                    if not self._resolve_basic_auth(proto=proto):
+                    success, error = self._resolve_basic_auth(proto=proto)
+                    if not success:
                         fulfilled = False
+                        s_errors.append((requirement, error))
                         break
                 elif requirement == "BEARER_AUTH":
-                    if not self._resolve_bearer_auth(proto=proto):
+                    success, error = self._resolve_bearer_auth(proto=proto)
+                    if not success:
                         fulfilled = False
+                        s_errors.append((requirement, error))
                         break
                 elif requirement == "COOKIE_AUTH":
-                    if not self._resolve_cookie_auth(proto=proto):
+                    success, error = self._resolve_cookie_auth(proto=proto)
+                    if not success:
                         fulfilled = False
+                        s_errors.append((requirement, error))
                         break
                 else:
                     raise NotImplementedError()
             if fulfilled:
-                return True
-        return False
+                return True, None
+
+            s_error = (
+                f"- tried to resolve security combination ({' && '.join(security)})"
+            )
+            for se in s_errors:
+                see = se[1] if se[1] else "*"
+                s_error += "\n" + f"  - {se[0]}: {see}"
+            errors.append(s_error)
+        return False, "\n".join(errors)
 
 
 def convert_any_to_file_tuple(name: str, file: Any) -> Tuple[str, Union[IO, IOBase]]:
@@ -169,7 +189,7 @@ def create_headers(
     additional_headers: Optional[Dict[str, str]] = None,
     additional_headers_override: bool = True,
     authorization_override: Optional[str] = None,
-    **kwargs
+    **kwargs,
 ) -> Header:
     headers = Header()
 
@@ -199,7 +219,7 @@ def create_proto_from_operation(
     base_url: str = "",
     additional_headers: Optional[Dict[str, str]] = None,
     additional_headers_override: bool = True,
-    **kwargs
+    **kwargs,
 ) -> Tuple[Optional[ProtoHttpRequest], Optional[HttpResponse]]:
     base_url = base_url if base_url is not None else ""
 
@@ -253,11 +273,11 @@ def create_proto_from_operation(
         json_=json_,
     )
 
-    success = SecuritiesResolver(
+    success, error = SecuritiesResolver(
         config_repo=config_repo, token_repo=token_repo
     ).resolve(proto=proto, securities=operation.securities)
     if not success:
-        return None, HttpResponse.create_failed_to_resolve_security_error()
+        return None, HttpResponse.create_failed_to_resolve_security_error(detail=error)
 
     return proto, None
 

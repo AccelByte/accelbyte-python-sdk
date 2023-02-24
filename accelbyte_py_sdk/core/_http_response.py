@@ -182,11 +182,13 @@ class HttpResponse(Model):
         return instance
 
     @classmethod
-    def create_failed_to_resolve_security_error(cls):
+    def create_failed_to_resolve_security_error(cls, detail: Optional[str] = None):
         instance = cls()
         instance.code = 400
         instance.content_type = "error"
         instance.content = "Failed to resolve security."
+        if detail:
+            instance.content += f"\n{detail}"
         return instance
 
     @classmethod
