@@ -41,6 +41,84 @@ class DSMCTestCase(IntegrationTestCase):
 
     # endregion test:export_config
 
+    # region test:update_deployment
+
+    def test_update_deployment(self):
+        from accelbyte_py_sdk.api.dsmc import get_deployment
+        from accelbyte_py_sdk.api.dsmc import update_deployment
+        from accelbyte_py_sdk.api.dsmc.models import ModelsUpdateDeploymentRequest
+
+        # arrange
+        deployment_name = "default"
+        result, error = get_deployment(
+            deployment=deployment_name,
+        )
+        self.assertIsNone(error, error)
+
+        # act
+        _, error = update_deployment(
+            body=ModelsUpdateDeploymentRequest.create(
+                allow_version_override=result.allow_version_override,
+                buffer_count=result.buffer_count,
+                buffer_percent=result.buffer_percent,
+                configuration=result.configuration,
+                enable_region_overrides=result.enable_region_overrides,
+                game_version=result.game_version,
+                max_count=result.max_count,
+                min_count=result.min_count,
+                regions=result.regions,
+                session_timeout=0,
+                unlimited=result.unlimited,
+                use_buffer_percent=result.use_buffer_percent,
+            ),
+            deployment=deployment_name,
+        )
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:update_deployment
+
+    # region test:update_deployment_with_missing_image
+
+    def test_update_deployment_with_missing_image(self):
+        from accelbyte_py_sdk.api.dsmc import get_deployment
+        from accelbyte_py_sdk.api.dsmc import update_deployment
+        from accelbyte_py_sdk.api.dsmc.models import ModelsUpdateDeploymentRequest
+
+        # arrange
+        deployment_name = "default"
+        result, error = get_deployment(
+            deployment=deployment_name,
+        )
+        self.assertIsNone(error, error)
+
+        # act
+        _, error = update_deployment(
+            body=ModelsUpdateDeploymentRequest.create(
+                allow_version_override=result.allow_version_override,
+                buffer_count=result.buffer_count,
+                buffer_percent=result.buffer_percent,
+                configuration=result.configuration,
+                enable_region_overrides=result.enable_region_overrides,
+                game_version="xxx",
+                max_count=result.max_count,
+                min_count=result.min_count,
+                regions=result.regions,
+                session_timeout=0,
+                unlimited=result.unlimited,
+                use_buffer_percent=result.use_buffer_percent,
+            ),
+            deployment=deployment_name,
+        )
+
+        # assert
+        self.assertIsNotNone(error, error)
+        self.assertEqual(720510, error.error_code)
+        self.assertIn("DS image not found", error.error_message)
+
+    # endregion test:update_deployment_with_missing_image
+
 
 class DSMCSessionTestCase(IntegrationTestCase):
     session_id: Optional[str] = None
